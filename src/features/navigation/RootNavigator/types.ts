@@ -203,6 +203,7 @@ export type RootStackParamList = {
   AccountStatusScreenHandler: undefined
   Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
+  AISearch: undefined
   Artist: { id: string }
   BannedCountryError: undefined
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }

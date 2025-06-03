@@ -15,5 +15,10 @@ export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['co
       parse: {},
       stringify: {},
     },
+    AISearch: {
+      path: 'recherche/inspirational',
+      parse: {},
+      stringify: {},
+    },
   },
 }

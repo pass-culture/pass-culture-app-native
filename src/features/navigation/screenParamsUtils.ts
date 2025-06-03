@@ -5,6 +5,7 @@ type ScreensRequiringParsing = Extract<
   | 'AccountSecurity'
   | 'AccountSecurityBuffer'
   | 'AfterSignupEmailValidationBuffer'
+  | 'AISearch'
   | 'BookingDetails'
   | 'BookingConfirmation'
   | 'Chronicles'
@@ -148,6 +149,7 @@ export const screenParamsParser: ParamsParsers = {
   SearchResults: searchParamsParser,
   SearchLanding: searchParamsParser,
   ThematicSearch: searchParamsParser,
+  AISearch: searchParamsParser,
   SearchFilter: searchParamsParser,
   LocationFilter: {
     selectedVenue: JSON.parse,

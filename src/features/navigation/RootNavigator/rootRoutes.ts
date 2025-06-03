@@ -48,11 +48,17 @@ import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 
 import { RootRoute, RootScreenNames } from './types'
+import { AISearch } from 'features/search/pages/AISearch/AISearch'
 
 export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
+  {
+    name: 'AISearch',
+    component: AISearch,
+    path: 'recherche-inspirationnelle',
+  },
   {
     name: 'OnboardingStackNavigator',
     component: SuspenseOnboardingStackNavigator,

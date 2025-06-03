@@ -41,6 +41,16 @@ const searchRoutes: SearchStackRoute[] = [
     },
     options: { title: 'recherche dans les sous-catégories' },
   },
+  {
+    name: SearchView.AISearch,
+    component: ComponentForPathConfig,
+    pathConfig: {
+      path: 'recherche/inspirational',
+      parse: screenParamsParser[SearchView.AISearch],
+      stringify: screenParamsStringifier[SearchView.AISearch],
+    },
+    options: { title: 'recherche dans les sous-catégories' },
+  },
 ]
 
 const { screensConfig: searchScreensConfig } = getScreensAndConfig(searchRoutes, SearchStack.Screen)

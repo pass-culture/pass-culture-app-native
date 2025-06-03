@@ -17,6 +17,7 @@ type HasAThematicSearch = typeof hasAThematicSearch
 type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
 
 export type SearchStackParamList = {
+  AISearch?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SearchResults?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   ThematicSearch?: Partial<
