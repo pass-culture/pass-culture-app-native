@@ -4,6 +4,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { BlurAmount } from 'ui/components/BlurryWrapper/BlurAmount'
 
 type Props = {
@@ -14,7 +15,7 @@ type Props = {
 export function BlurryWrapper({ blurAmount = BlurAmount.LIGHT, children }: Props) {
   const { colorScheme } = useTheme()
 
-  const blurType: 'light' | 'dark' = colorScheme === 'dark' ? 'dark' : 'light'
+  const blurType = colorScheme === ColorScheme.DARK ? ColorScheme.DARK : ColorScheme.LIGHT
 
   return Platform.OS === 'android' ? (
     <TransparentBackground>{children}</TransparentBackground>

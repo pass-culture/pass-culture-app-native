@@ -176,7 +176,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
   >
     <div
-      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
       data-testid="profile-scrollview"
     >
       <div
@@ -190,7 +190,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingHorizontal-s1qlax r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
@@ -203,7 +203,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
                     Cheatcodes
@@ -215,14 +215,14 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               class="css-view-175oi2r r-height-10ptun7"
             />
             <div
-              class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginHorizontal-1hy1u7s r-marginTop-11c0sde r-zIndex-184en5c"
+              class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginInline-14mg64r r-marginTop-11c0sde r-zIndex-184en5c"
             >
               <div
                 class="css-view-175oi2r r-flexShrink-1wbh5a2"
               >
                 <h1
                   aria-level="1"
-                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
                   dir="ltr"
                   role="heading"
                 >
@@ -231,20 +231,20 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-marginBottom-1peese0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
+              class="css-view-175oi2r r-marginBottom-1peese0 r-marginInline-14mg64r r-marginTop-14gqq1x"
             >
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Tu as 17 ou 18 ans ?
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginHorizontal-1hy1u7s r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-7xmw5f"
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginInline-14mg64r r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-7xmw5f"
             >
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
@@ -266,7 +266,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                       dir="ltr"
                     >
                       Créer un compte
@@ -274,13 +274,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                 </button>
                 <div
-                  class="css-view-175oi2r r-borderRightColor-oty4kz r-borderRightWidth-13l2t4g r-marginHorizontal-1hy1u7s"
+                  class="css-view-175oi2r r-borderRightColor-oty4kz r-borderRightWidth-13l2t4g r-marginInline-14mg64r"
                 />
                 <div
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-justifyContent-1777fci"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                     dir="ltr"
                   >
                     Déjà un compte ?
@@ -300,7 +300,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         data-testid="button-icon"
                       >
                         <div
-                          class="css-text-1rynq56"
+                          class="css-text-146c3p1"
                           dir="ltr"
                         >
                           button-icon-SVG-Mock
@@ -310,7 +310,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         class="css-view-175oi2r r-width-10g5efv"
                       />
                       <div
-                        class="css-text-1rynq56 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Se connecter
@@ -321,7 +321,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingHorizontal-1guathk"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
             >
               <div
                 class="css-view-175oi2r r-height-10ptun7"
@@ -331,7 +331,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -356,13 +356,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -375,7 +375,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Notifications
@@ -389,7 +389,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -400,7 +400,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj r-marginVertical-1r5su4o"
+                    class="css-view-175oi2r r-display-ixj5dj r-marginBlock-12kyg2d"
                     role="listitem"
                   >
                     <div
@@ -413,7 +413,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -427,7 +427,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           for="testUuidV4"
                         >
                           <div
-                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Activer ma géolocalisation
@@ -445,7 +445,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                            class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                             dir="ltr"
                           >
                             Case à cocher - 
@@ -465,8 +465,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r"
-                                style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; box-shadow: 0px 2px 2.5px rgba(22,22,23,0.20); margin-left: 2px;"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                style="margin-left: 2px;"
                               />
                             </div>
                           </div>
@@ -491,7 +491,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -516,13 +516,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -535,7 +535,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Comment ça marche ?
@@ -549,7 +549,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -571,14 +571,14 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       style="transition-duration: 0s;"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           aria-label="Nouvelle fenêtre"
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -591,7 +591,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Centre d’aide
@@ -607,7 +607,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -632,13 +632,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -651,7 +651,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Accessibilité
@@ -665,7 +665,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -687,13 +687,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -706,7 +706,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Informations légales
@@ -720,7 +720,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -742,13 +742,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -761,7 +761,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Confidentialité
@@ -775,7 +775,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -792,7 +792,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -805,7 +805,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-maxWidth-1ik5qf4 r-width-13qz1uu"
                 >
                   <div
-                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                   >
                     <ul
                       class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -830,7 +830,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -838,7 +838,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Instagram
@@ -865,7 +865,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -873,7 +873,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               X
@@ -900,7 +900,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -908,7 +908,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Tiktok
@@ -935,7 +935,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -943,7 +943,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Facebook
@@ -962,7 +962,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginVertical-1r5su4o"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBlock-12kyg2d"
                   dir="ltr"
                 >
                   Version 1.10.5
@@ -976,13 +976,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
             role="contentinfo"
           >
             <div
-              class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
+              class="css-view-175oi2r r-marginInline-14mg64r"
             >
               <div
                 class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
               />
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-16pcm1t r-paddingVertical-tvv088"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-16pcm1t r-paddingBlock-dd0y9b"
               >
                 <div
                   class="css-view-175oi2r r-width-1glkqn6"
@@ -992,7 +992,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-1rynq56"
+                      class="css-text-146c3p1"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -1000,7 +1000,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginHorizontal-1k86l4r"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1v74nt2"
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
@@ -1008,7 +1008,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Accessibilité : partiellement conforme
@@ -1020,7 +1020,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Plan du site
@@ -1032,7 +1032,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Informations légales
@@ -1058,7 +1058,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           data-testid="button-icon-left"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             button-icon-left-SVG-Mock
@@ -1069,7 +1069,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                        class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         CGU utilisateurs
@@ -1096,7 +1096,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           data-testid="button-icon-left"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             button-icon-left-SVG-Mock
@@ -1107,7 +1107,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                        class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         Charte des données personnelles
@@ -1123,7 +1123,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-1rynq56"
+                      class="css-text-146c3p1"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -1322,7 +1322,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
   >
     <div
-      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
       data-testid="profile-scrollview"
     >
       <div
@@ -1336,7 +1336,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingHorizontal-s1qlax r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
@@ -1349,7 +1349,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
                     Cheatcodes
@@ -1361,14 +1361,14 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               class="css-view-175oi2r r-height-10ptun7"
             />
             <div
-              class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginHorizontal-1hy1u7s r-marginTop-11c0sde r-zIndex-184en5c"
+              class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginInline-14mg64r r-marginTop-11c0sde r-zIndex-184en5c"
             >
               <div
                 class="css-view-175oi2r r-flexShrink-1wbh5a2"
               >
                 <h1
                   aria-level="1"
-                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
                   dir="ltr"
                   role="heading"
                 >
@@ -1377,20 +1377,20 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-marginBottom-1peese0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
+              class="css-view-175oi2r r-marginBottom-1peese0 r-marginInline-14mg64r r-marginTop-14gqq1x"
             >
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Tu as 17 ou 18 ans ?
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginHorizontal-1hy1u7s r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginInline-14mg64r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
@@ -1412,7 +1412,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                       dir="ltr"
                     >
                       Créer un compte
@@ -1426,7 +1426,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-justifyContent-1777fci"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                     dir="ltr"
                   >
                     Déjà un compte ?
@@ -1446,7 +1446,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         data-testid="button-icon"
                       >
                         <div
-                          class="css-text-1rynq56"
+                          class="css-text-146c3p1"
                           dir="ltr"
                         >
                           button-icon-SVG-Mock
@@ -1456,7 +1456,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         class="css-view-175oi2r r-width-10g5efv"
                       />
                       <div
-                        class="css-text-1rynq56 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Se connecter
@@ -1467,7 +1467,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingHorizontal-1guathk"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
             >
               <div
                 class="css-view-175oi2r r-height-10ptun7"
@@ -1477,7 +1477,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -1502,13 +1502,13 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -1521,7 +1521,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Notifications
@@ -1535,7 +1535,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -1546,7 +1546,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj r-marginVertical-1r5su4o"
+                    class="css-view-175oi2r r-display-ixj5dj r-marginBlock-12kyg2d"
                     role="listitem"
                   >
                     <div
@@ -1559,7 +1559,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -1573,7 +1573,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           for="testUuidV4"
                         >
                           <div
-                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Activer ma géolocalisation
@@ -1591,7 +1591,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         >
                           <div
                             aria-hidden="true"
-                            class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                            class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                             dir="ltr"
                           >
                             Case à cocher - 
@@ -1611,8 +1611,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r"
-                                style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; box-shadow: 0px 2px 2.5px rgba(22,22,23,0.20); margin-left: 2px;"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                style="margin-left: 2px;"
                               />
                             </div>
                           </div>
@@ -1637,7 +1637,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -1662,13 +1662,13 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -1681,7 +1681,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Comment ça marche ?
@@ -1695,7 +1695,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -1717,14 +1717,14 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       style="transition-duration: 0s;"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           aria-label="Nouvelle fenêtre"
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -1737,7 +1737,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Centre d’aide
@@ -1753,7 +1753,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -1778,13 +1778,13 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -1797,7 +1797,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Accessibilité
@@ -1811,7 +1811,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -1833,13 +1833,13 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -1852,7 +1852,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Informations légales
@@ -1866,7 +1866,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -1888,13 +1888,13 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                       >
                         <div
                           class="css-view-175oi2r"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             undefined-SVG-Mock
@@ -1907,7 +1907,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
                         >
                           <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                             dir="ltr"
                           >
                             Confidentialité
@@ -1921,7 +1921,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             data-testid="section-row-navigable-icon"
                           >
                             <div
-                              class="css-text-1rynq56"
+                              class="css-text-146c3p1"
                               dir="ltr"
                             >
                               section-row-navigable-icon-SVG-Mock
@@ -1938,7 +1938,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h2
                   aria-level="2"
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                   dir="ltr"
                   role="heading"
                 >
@@ -1951,7 +1951,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-marginBottom-1qahzrx r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1t01tom r-maxWidth-1ik5qf4 r-width-13qz1uu"
                 >
                   <div
-                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
                   >
                     <ul
                       class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -1976,7 +1976,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -1984,7 +1984,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Instagram
@@ -2011,7 +2011,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -2019,7 +2019,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               X
@@ -2046,7 +2046,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -2054,7 +2054,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Tiktok
@@ -2081,7 +2081,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-1rynq56"
+                                  class="css-text-146c3p1"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -2089,7 +2089,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               </div>
                             </div>
                             <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
                             >
                               Facebook
@@ -2108,7 +2108,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginVertical-1r5su4o"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBlock-12kyg2d"
                   dir="ltr"
                 >
                   Version 1.10.5
@@ -2122,13 +2122,13 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
             role="contentinfo"
           >
             <div
-              class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
+              class="css-view-175oi2r r-marginInline-14mg64r"
             >
               <div
                 class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
               />
               <div
-                class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-16pcm1t r-paddingVertical-tvv088"
+                class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-16pcm1t r-paddingBlock-dd0y9b"
               >
                 <div
                   class="css-view-175oi2r r-width-1glkqn6"
@@ -2138,7 +2138,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-1rynq56"
+                      class="css-text-146c3p1"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -2146,7 +2146,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginHorizontal-mvpalk"
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1j93nrh"
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
@@ -2154,7 +2154,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Accessibilité : partiellement conforme
@@ -2166,7 +2166,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Plan du site
@@ -2178,7 +2178,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Informations légales
@@ -2204,7 +2204,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           data-testid="button-icon-left"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             button-icon-left-SVG-Mock
@@ -2215,7 +2215,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                        class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         CGU utilisateurs
@@ -2242,7 +2242,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           data-testid="button-icon-left"
                         >
                           <div
-                            class="css-text-1rynq56"
+                            class="css-text-146c3p1"
                             dir="ltr"
                           >
                             button-icon-left-SVG-Mock
@@ -2253,7 +2253,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         />
                       </div>
                       <div
-                        class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                        class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
                         dir="ltr"
                       >
                         Charte des données personnelles
@@ -2269,7 +2269,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-1rynq56"
+                      class="css-text-146c3p1"
                       dir="ltr"
                     >
                       undefined-SVG-Mock

@@ -512,7 +512,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
           {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
-            "borderColor": "#320096",
+            "borderColor": "#eb0055",
             "borderRadius": 24,
             "borderStyle": "solid",
             "borderWidth": 2,
@@ -547,7 +547,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#320096",
+                  "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,

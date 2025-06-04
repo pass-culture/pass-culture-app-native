@@ -178,7 +178,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   >
     <h2
       aria-level="2"
-      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
       dir="ltr"
       role="heading"
     >
@@ -200,7 +200,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             class="css-view-175oi2r"
           >
             <div
-              class="css-text-1rynq56"
+              class="css-text-146c3p1"
               dir="ltr"
             >
               undefined-SVG-Mock
@@ -211,7 +211,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
             dir="ltr"
           >
             Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
@@ -476,7 +476,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-1rynq56"
+                    class="css-text-146c3p1"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
@@ -606,7 +606,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-1rynq56"
+                    class="css-text-146c3p1"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
@@ -1401,7 +1401,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-1rynq56"
+                    class="css-text-146c3p1"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
@@ -1433,7 +1433,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
         >
           <div
-            class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+            class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
             dir="ltr"
           >
             Continuer
@@ -1521,7 +1521,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
   >
     <h2
       aria-level="2"
-      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
       dir="ltr"
       role="heading"
     >
@@ -1543,7 +1543,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             class="css-view-175oi2r"
           >
             <div
-              class="css-text-1rynq56"
+              class="css-text-146c3p1"
               dir="ltr"
             >
               undefined-SVG-Mock
@@ -1554,7 +1554,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
             dir="ltr"
           >
             Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
@@ -1582,7 +1582,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           data-testid="styled-input-container"
         >
           <div
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
             dir="ltr"
             id="testUuidV4"
           >
@@ -2553,7 +2553,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
         >
           <div
-            class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+            class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
             dir="ltr"
           >
             Continuer

@@ -426,7 +426,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
                 "width": "100%",
               },
               {
-                "borderColor": "#320096",
+                "borderColor": "#eb0055",
                 "borderStyle": "solid",
                 "borderWidth": 2,
               },
@@ -484,7 +484,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
             style={
               [
                 {
-                  "color": "#320096",
+                  "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,

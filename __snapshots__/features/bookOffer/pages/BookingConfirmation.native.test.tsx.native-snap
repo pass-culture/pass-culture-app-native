@@ -367,7 +367,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
                 "width": "100%",
               },
               {
-                "borderColor": "#320096",
+                "borderColor": "#eb0055",
                 "borderStyle": "solid",
                 "borderWidth": 2,
               },
@@ -395,7 +395,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
             style={
               [
                 {
-                  "color": "#320096",
+                  "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
