@@ -31,7 +31,7 @@ const PlainMoreSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const PlainMore = styled(PlainMoreSvg).attrs(({ color, color2, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   color2: color2 ?? theme.colors.white,
   size: size ?? theme.icons.sizes.standard,
 }))``

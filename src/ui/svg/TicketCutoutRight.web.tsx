@@ -68,5 +68,5 @@ const TicketCutoutRightSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const TicketCutoutRight = styled(TicketCutoutRightSvg).attrs(({ color, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
 }))``

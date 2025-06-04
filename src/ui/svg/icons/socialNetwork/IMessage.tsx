@@ -48,7 +48,6 @@ const IMessageRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: A
   )
 }
 
-export const IMessageRound = styled(IMessageRoundSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.greyDark,
+export const IMessageRound = styled(IMessageRoundSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

@@ -22,7 +22,6 @@ const TwitterRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: Ac
   )
 }
 
-export const TwitterRound = styled(TwitterRoundSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.greyDark,
+export const TwitterRound = styled(TwitterRoundSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

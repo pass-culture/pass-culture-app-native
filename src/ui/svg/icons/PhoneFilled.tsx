@@ -26,6 +26,6 @@ const PhoneFilledSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const PhoneFilled = styled(PhoneFilledSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.smaller,
 }))``

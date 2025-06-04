@@ -33,7 +33,7 @@
         ")",
         "",
         "export const ${1:IconName} = styled(${1:IconName}Svg).attrs(({ color, size, theme }) => ({",
-        "    color: color ?? theme.colors.black,",
+        "    color: color ?? theme.designSystem.color.icon.default,",
         "    size: size ?? theme.icons.sizes.standard,",
         "}))``",
       ],

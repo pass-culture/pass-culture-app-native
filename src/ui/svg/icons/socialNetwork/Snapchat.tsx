@@ -40,7 +40,6 @@ const SnapchatSvg: React.FunctionComponent<AccessibleIcon> = ({
   </AccessibleSvg>
 )
 
-export const Snapchat = styled(SnapchatSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+export const Snapchat = styled(SnapchatSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

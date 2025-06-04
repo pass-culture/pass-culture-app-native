@@ -53,7 +53,6 @@ const TikTokSvg: React.FunctionComponent<AccessibleIcon> = ({
   </AccessibleSvg>
 )
 
-export const TikTok = styled(TikTokSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+export const TikTok = styled(TikTokSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

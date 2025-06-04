@@ -30,6 +30,6 @@ const SadFaceSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const SadFace = styled(SadFaceSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.illustrations.sizes.medium,
 }))``

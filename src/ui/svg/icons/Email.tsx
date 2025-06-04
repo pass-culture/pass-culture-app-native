@@ -26,6 +26,6 @@ const EmailSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const Email = styled(EmailSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``
