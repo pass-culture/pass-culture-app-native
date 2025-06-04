@@ -42,6 +42,6 @@ const PaletteSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Palette = styled(PaletteSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``

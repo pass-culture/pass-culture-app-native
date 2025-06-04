@@ -62,7 +62,7 @@ const MyIllustrationSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const MyIllustration = styled(MyIllustrationSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``
 ```
@@ -101,7 +101,7 @@ const MyRegularPictogramSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const MyRegularPictogram = styled(MyRegularPictogramSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``
 ```

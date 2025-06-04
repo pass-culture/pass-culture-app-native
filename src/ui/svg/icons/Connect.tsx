@@ -26,6 +26,6 @@ function ConnectSvg({
 }
 
 export const Connect = styled(ConnectSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.smaller,
 }))``

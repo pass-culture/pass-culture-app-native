@@ -28,6 +28,6 @@ const LocationBuildingSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const LocationBuilding = styled(LocationBuildingSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``

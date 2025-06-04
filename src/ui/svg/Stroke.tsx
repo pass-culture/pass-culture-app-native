@@ -29,5 +29,5 @@ const StrokeSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const Stroke = styled(StrokeSvg).attrs(({ color, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
 }))``

@@ -41,6 +41,6 @@ const VideoSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Video = styled(VideoSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``
