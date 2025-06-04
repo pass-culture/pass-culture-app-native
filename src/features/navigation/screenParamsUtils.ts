@@ -67,6 +67,7 @@ const searchParamsParser = {
   shouldRedirect: JSON.parse,
   defaultMinPrice: JSON.stringify,
   defaultMaxPrice: JSON.stringify,
+  calendarFilterId: JSON.parse,
 }
 
 export const screenParamsParser: ParamsParsers = {
@@ -238,6 +239,7 @@ const searchParamsStringifier = {
   shouldRedirect: JSON.stringify,
   defaultMinPrice: JSON.stringify,
   defaultMaxPrice: JSON.stringify,
+  calendarFilterId: JSON.stringify,
 }
 
 export const screenParamsStringifier: ParamsStringifiers = {

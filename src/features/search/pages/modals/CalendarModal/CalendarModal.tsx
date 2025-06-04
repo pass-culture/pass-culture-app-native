@@ -1,28 +1,27 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { addYears, format } from 'date-fns'
+import { addMonths, addYears, format } from 'date-fns'
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
+import { View } from 'react-native'
 import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { getCalendarFormData } from 'features/search/helpers/getCalendarFormData/getCalendarFormData'
 import { getMarkedDates } from 'features/search/helpers/getMarkedDates/getMarkedDates'
 import { getPastScrollRange } from 'features/search/helpers/getPastScrollRange/getPastScrollRange'
 import { calendarSchema } from 'features/search/helpers/schema/calendarSchema/calendarSchema'
-import { SearchState } from 'features/search/types'
+import { CalendarFilterId, CalendarModalFormData, SearchState } from 'features/search/types'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
+import { FilterButtonList, FilterButtonListItem } from 'ui/components/FilterButtonList'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-
-type CalendarModalFormData = {
-  selectedStartDate?: Date
-  selectedEndDate?: Date
-}
+import { getSpacing } from 'ui/theme'
 
 export type CalendarModalProps = {
   title: string
@@ -44,6 +43,9 @@ LocaleConfig.defaultLocale = 'fr'
 const titleId = uuidv4()
 const today = new Date()
 const twoYearsLater = addYears(today, 2)
+const nextMonth = addMonths(today, 1)
+const nextMonthName = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(nextMonth)
+const capitalizedMonth = nextMonthName.charAt(0).toUpperCase() + nextMonthName.slice(1)
 
 export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   title,
@@ -53,7 +55,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
-  const { modal, designSystem } = useTheme()
+  const { modal, designSystem, isMobileViewport, isDesktopViewport } = useTheme()
   const { searchState, dispatch } = useSearch()
 
   const defaultValues = useMemo(() => {
@@ -64,8 +66,9 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       selectedEndDate: searchState.endingDatetime
         ? new Date(searchState.endingDatetime)
         : undefined,
+      selectedFilterMode: searchState.calendarFilterId,
     }
-  }, [searchState.beginningDatetime, searchState.endingDatetime])
+  }, [searchState.beginningDatetime, searchState.calendarFilterId, searchState.endingDatetime])
 
   const {
     handleSubmit,
@@ -73,12 +76,13 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     setValue,
     formState: { isSubmitting, isValid },
     watch,
+    getValues,
   } = useForm<CalendarModalFormData>({
     mode: 'onChange',
     resolver: yupResolver(calendarSchema),
     defaultValues,
   })
-  const { selectedStartDate, selectedEndDate } = watch()
+  const { selectedStartDate, selectedEndDate, selectedFilterMode } = watch()
 
   const markedDates = useMemo(
     () =>
@@ -109,6 +113,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       {
         selectedStartDate: undefined,
         selectedEndDate: undefined,
+        selectedFilterMode: undefined,
       },
       { keepDefaultValues: true }
     )
@@ -119,16 +124,19 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         ...searchState,
         beginningDatetime: undefined,
         endingDatetime: undefined,
+        calendarFilterId: undefined,
       },
     })
   }, [dispatch, reset, searchState])
 
   const search = useCallback(
-    ({ selectedStartDate, selectedEndDate }: CalendarModalFormData) => {
+    (formData: CalendarModalFormData) => {
+      const { selectedStartDate, selectedEndDate } = formData
       const additionalSearchState: SearchState = {
         ...searchState,
         beginningDatetime: selectedStartDate ? selectedStartDate.toISOString() : undefined,
         endingDatetime: selectedEndDate ? selectedEndDate.toISOString() : undefined,
+        calendarFilterId: formData.selectedFilterMode,
       }
 
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })
@@ -153,6 +161,57 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     },
     [setValue]
   )
+
+  const onFilterButtonPress = (id: CalendarFilterId) => {
+    const isApplied = getValues('selectedFilterMode') === id
+
+    if (isApplied) {
+      reset({
+        selectedStartDate: undefined,
+        selectedEndDate: undefined,
+        selectedFilterMode: undefined,
+      })
+      return
+    }
+
+    const values = getCalendarFormData(id, today, nextMonth)
+    setValueWithValidation('selectedStartDate', values.selectedStartDate)
+    setValueWithValidation('selectedEndDate', values.selectedEndDate)
+    setValueWithValidation('selectedFilterMode', id)
+  }
+
+  const filterButtonListItems: FilterButtonListItem[] = [
+    {
+      label: 'Aujourd’hui',
+      onPress: () => onFilterButtonPress('today'),
+      isApplied: selectedFilterMode === 'today',
+      testID: 'today',
+    },
+    {
+      label: 'Cette semaine',
+      onPress: () => onFilterButtonPress('thisWeek'),
+      isApplied: selectedFilterMode === 'thisWeek',
+      testID: 'thisWeek',
+    },
+    {
+      label: 'Ce week-end',
+      onPress: () => onFilterButtonPress('thisWeekend'),
+      isApplied: selectedFilterMode === 'thisWeekend',
+      testID: 'thisWeekend',
+    },
+    {
+      label: 'Ce mois-ci',
+      onPress: () => onFilterButtonPress('thisMonth'),
+      isApplied: selectedFilterMode === 'thisMonth',
+      testID: 'thisMonth',
+    },
+    {
+      label: capitalizedMonth,
+      onPress: () => onFilterButtonPress('nextMonth'),
+      isApplied: selectedFilterMode === 'nextMonth',
+      testID: 'nextMonth',
+    },
+  ]
 
   const onDayPress = (date: DateData) => {
     const selectedDate = new Date(date.dateString)
@@ -199,7 +258,16 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         />
       }
       scrollEnabled={false}>
-      <CalendarList
+      <View>
+        <FilterButtonList
+          items={filterButtonListItems}
+          horizontal={isMobileViewport}
+          contentContainerStyle={
+            isDesktopViewport ? { marginHorizontal: getSpacing(2) } : undefined
+          }
+        />
+      </View>
+      <StyledCalendarList
         current={
           searchState.beginningDatetime
             ? format(new Date(searchState.beginningDatetime), 'yyyy-MM-dd')
@@ -222,3 +290,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     </AppModal>
   )
 }
+
+const StyledCalendarList = styled(CalendarList)({
+  marginTop: getSpacing(4),
+})

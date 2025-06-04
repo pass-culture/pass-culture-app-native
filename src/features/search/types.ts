@@ -65,6 +65,7 @@ export interface SearchState {
   isFromHistory?: boolean
   venue?: Venue
   gtls?: GTL[]
+  calendarFilterId?: CalendarFilterId
 }
 
 export type DescriptionContext = {
@@ -130,3 +131,11 @@ export enum BooksNativeCategoriesEnum {
 export type NativeCategoryEnum = NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum
 
 export type MarkedDatesColors = { backgroundColor: ColorsType; textColor: ColorsType }
+
+export type CalendarModalFormData = {
+  selectedStartDate?: Date
+  selectedEndDate?: Date
+  selectedFilterMode?: CalendarFilterId
+}
+
+export type CalendarFilterId = 'today' | 'thisWeek' | 'thisWeekend' | 'thisMonth' | 'nextMonth'
