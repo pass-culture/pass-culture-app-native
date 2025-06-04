@@ -388,7 +388,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
@@ -403,7 +403,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
                   style={
                     [
                       {
-                        "color": "#b60025",
+                        "color": "#a20121",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
@@ -907,7 +907,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,

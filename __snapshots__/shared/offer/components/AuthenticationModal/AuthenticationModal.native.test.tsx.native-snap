@@ -422,12 +422,11 @@ pour réserver l’offre
               >
                 <View
                   accessibilityLabel="Créer un compte"
-                  accessibilityRole="link"
                   accessibilityState={
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": false,
+                      "disabled": undefined,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -457,14 +456,19 @@ pour réserver l’offre
                         },
                         {
                           "alignItems": "center",
+                          "backgroundColor": "#eb0055",
                           "borderRadius": 24,
+                          "flexDirection": "row",
                           "justifyContent": "center",
-                          "overflow": "hidden",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
+                          "maxWidth": 500,
+                          "minHeight": 40,
+                          "paddingBottom": 2,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 2,
+                          "width": "100%",
                         },
+                        {},
                       ],
                       {
                         "opacity": 1,
@@ -474,27 +478,17 @@ pour réserver l’offre
                   testID="Créer un compte"
                 >
                   <View
-                    height={48}
-                    width="100%"
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
-                          "position": "absolute",
                         },
                       ]
                     }
                   >
                     <Text
-                      adjustsFontSizeToFit={true}
-                      isDisabled={false}
+                      adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
                         [
@@ -503,10 +497,7 @@ pour réserver l’offre
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
-                            "paddingBottom": 8,
-                            "paddingLeft": 8,
-                            "paddingRight": 8,
-                            "paddingTop": 8,
+                            "maxWidth": "100%",
                           },
                         ]
                       }

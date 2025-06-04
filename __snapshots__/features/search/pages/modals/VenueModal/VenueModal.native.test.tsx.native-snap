@@ -636,7 +636,7 @@ exports[`VenueModal should render correctly 1`] = `
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "transparent",
+                      "backgroundColor": "#ffffff",
                       "width": "auto",
                     },
                   ],

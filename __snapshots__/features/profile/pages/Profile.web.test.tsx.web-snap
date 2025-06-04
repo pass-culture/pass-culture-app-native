@@ -50,7 +50,57 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   text-decoration: none;
 }
 
-.c4 {
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -85,19 +135,19 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #696A6F;
   text-decoration-color: #696A6F;
 }
 
-.c4:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -106,63 +156,18 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   background-color: #ffffff;
 }
 
-.c2 {
-  overflow: hidden;
-  cursor: pointer;
-  height: 48px;
-  border-radius: 24px;
-  background-color: #eb0055;
-  background-image: linear-gradient(0.25turn,#eb0055,#320096);
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 0;
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 72px;
-  padding-right: 72px;
+.c3:disabled {
+  background-color: #f1f1f4;
 }
 
-.c2:disabled {
-  cursor: initial;
-  background: none;
-  color: #696A6F;
-  background-color: #F1F1F4;
-}
-
-.c2:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c2:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3 {
+.c4 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
   cursor: pointer;
 }
 
-.c5 {
+.c6 {
   background-color: transparent;
 }
 
@@ -252,15 +257,16 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <button
                   aria-label="Créer un compte"
-                  class="c2"
+                  class="c2 c3"
                   data-testid="Créer un compte"
+                  tabindex="0"
                   type="button"
                 >
                   <div
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                       dir="ltr"
                     >
                       Créer un compte
@@ -417,7 +423,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-width-1jg9483"
                         />
                         <label
-                          class="c3"
+                          class="c4"
                           for="testUuidV4"
                         >
                           <div
@@ -1034,7 +1040,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="c4 c5"
+                    class="c5 c6"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -1072,7 +1078,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c4 c5"
+                    class="c5 c6"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"
@@ -1190,7 +1196,57 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   text-decoration: none;
 }
 
-.c4 {
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1225,19 +1281,19 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #696A6F;
   text-decoration-color: #696A6F;
 }
 
-.c4:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -1246,60 +1302,18 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   background-color: #ffffff;
 }
 
-.c2 {
-  overflow: hidden;
-  cursor: pointer;
-  height: 48px;
-  border-radius: 24px;
-  background-color: #eb0055;
-  background-image: linear-gradient(0.25turn,#eb0055,#320096);
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
+.c3:disabled {
+  background-color: #f1f1f4;
 }
 
-.c2:disabled {
-  cursor: initial;
-  background: none;
-  color: #696A6F;
-  background-color: #F1F1F4;
-}
-
-.c2:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c2:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3 {
+.c4 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
   cursor: pointer;
 }
 
-.c5 {
+.c6 {
   background-color: transparent;
 }
 
@@ -1389,15 +1403,16 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <button
                   aria-label="Créer un compte"
-                  class="c2"
+                  class="c2 c3"
                   data-testid="Créer un compte"
+                  tabindex="0"
                   type="button"
                 >
                   <div
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                       dir="ltr"
                     >
                       Créer un compte
@@ -1554,7 +1569,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-width-1jg9483"
                         />
                         <label
-                          class="c3"
+                          class="c4"
                           for="testUuidV4"
                         >
                           <div
@@ -2171,7 +2186,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="c4 c5"
+                    class="c5 c6"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -2209,7 +2224,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c4 c5"
+                    class="c5 c6"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"

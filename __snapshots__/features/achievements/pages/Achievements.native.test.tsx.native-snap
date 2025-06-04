@@ -147,6 +147,22 @@ exports[`<Achievements/> should match snapshot 1`] = `
             </Text>
           </View>
         </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Mes succès
+        </Text>
         <View
           positionInHeader="right"
           style={
@@ -207,20 +223,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
           ]
         }
       >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 21,
-                "lineHeight": 33.6,
-              },
-            ]
-          }
-        >
-          Mes succès
-        </Text>
         <View
           gap={4}
           style={
@@ -261,7 +263,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
                 style={
                   [
                     {
-                      "color": "#90949D",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -316,7 +318,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     style={
                       [
                         {
-                          "borderColor": "#CBCDD2",
+                          "borderColor": "#cbcdd2",
                           "borderRadius": 48,
                           "borderStyle": "solid",
                           "borderWidth": 1,

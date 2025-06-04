@@ -235,12 +235,12 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           }
         >
           <View
-            backgroundColor="#870087"
+            backgroundColor="#eb0055"
             style={
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#870087",
+                  "backgroundColor": "#eb0055",
                   "borderRadius": 32,
                   "height": 32,
                   "justifyContent": "center",
@@ -265,7 +265,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
             style={
               [
                 {
-                  "borderColor": "#CBCDD2",
+                  "borderColor": "#cbcdd2",
                   "borderRadius": 20,
                   "borderWidth": 2,
                   "flexBasis": 0,
@@ -282,7 +282,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
             }
           >
             <View
-              backgroundColor="#870087"
+              backgroundColor="#eb0055"
               barWidth={0}
               isAnimated={true}
               onLayout={[Function]}
@@ -291,7 +291,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
                 [
                   [
                     {
-                      "backgroundColor": "#870087",
+                      "backgroundColor": "#eb0055",
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -312,7 +312,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           style={
             [
               {
-                "color": "#870087",
+                "color": "#eb0055",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 21,
                 "lineHeight": 33.6,
@@ -690,12 +690,12 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           }
         >
           <View
-            backgroundColor="#870087"
+            backgroundColor="#eb0055"
             style={
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#870087",
+                  "backgroundColor": "#eb0055",
                   "borderRadius": 32,
                   "height": 32,
                   "justifyContent": "center",
@@ -720,7 +720,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
             style={
               [
                 {
-                  "borderColor": "#CBCDD2",
+                  "borderColor": "#cbcdd2",
                   "borderRadius": 20,
                   "borderWidth": 2,
                   "flexBasis": 0,
@@ -737,7 +737,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
             }
           >
             <View
-              backgroundColor="#870087"
+              backgroundColor="#eb0055"
               barWidth={0}
               isAnimated={true}
               onLayout={[Function]}
@@ -746,7 +746,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
                 [
                   [
                     {
-                      "backgroundColor": "#870087",
+                      "backgroundColor": "#eb0055",
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -767,7 +767,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           style={
             [
               {
-                "color": "#870087",
+                "color": "#eb0055",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 21,
                 "lineHeight": 33.6,
