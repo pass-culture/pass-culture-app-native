@@ -36,7 +36,7 @@ const LocationPointerWithBorderSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const LocationPointerWithBorder = styled(LocationPointerWithBorderSvg).attrs(
   ({ color, color2, size, theme }) => ({
-    color: color ?? theme.colors.black,
+    color: color ?? theme.designSystem.color.icon.default,
     color2: color2 ?? undefined,
     size: size ?? theme.icons.sizes.smaller,
   })

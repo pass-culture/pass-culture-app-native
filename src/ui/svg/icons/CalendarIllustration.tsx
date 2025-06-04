@@ -31,7 +31,7 @@ const CalendarIllustrationSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const CalendarIllustration = styled(CalendarIllustrationSvg).attrs(
   ({ color, size, theme }) => ({
-    color: color ?? theme.colors.black,
+    color: color ?? theme.designSystem.color.icon.default,
     size: size ?? theme.illustrations.sizes.medium,
   })
 )``

@@ -28,6 +28,6 @@ const RightFilledSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const RightFilled = styled(RightFilledSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.smaller,
 }))``

@@ -26,6 +26,6 @@ const CheckSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const Check = styled(CheckSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``

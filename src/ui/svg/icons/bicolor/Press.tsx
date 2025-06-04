@@ -42,6 +42,6 @@ const PressSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Press = styled(PressSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``

@@ -24,6 +24,6 @@ function OffersSvg({ size, testID, accessibilityLabel, color }: AccessibleIcon) 
 }
 
 export const Offers = styled(OffersSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``

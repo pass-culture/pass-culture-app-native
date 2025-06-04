@@ -30,6 +30,6 @@ const SMSFilledSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const SMSFilled = styled(SMSFilledSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.smaller,
 }))``

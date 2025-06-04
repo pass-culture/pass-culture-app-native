@@ -29,7 +29,7 @@ const LocationPointerAppV2Svg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const LocationPointerAppV2 = styled(LocationPointerAppV2Svg).attrs(
   ({ color, size, theme }) => ({
-    color: color ?? theme.colors.black,
+    color: color ?? theme.designSystem.color.icon.default,
     size: size ?? theme.icons.sizes.smaller,
   })
 )``
