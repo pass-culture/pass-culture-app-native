@@ -125,7 +125,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   )
   const pushWithVoiceSearch = (
     partialSearchState: Partial<SearchState>,
-    disabilitiesProperties: DisabilitiesProperties = defaultDisabilitiesProperties,
+    // disabilitiesProperties: DisabilitiesProperties = defaultDisabilitiesProperties,
+    disabilitiesProperties: DisabilitiesProperties,
     options: { reset?: boolean } = {},
     hasSearchedForBookKeyword?: boolean,
     hasSearchedForCinemaKeyword?: boolean
@@ -146,6 +147,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     }
 
     if (newSearchState.query !== '') {
+      console.log({ disabilitiesProperties })
       navigateToSearchResults(newSearchState, disabilitiesProperties)
     }
   }
@@ -401,8 +403,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               query={displayedQuery}
               setQuery={setQuery}
               isFocusable={isFocusOnSuggestions}
-              // onSubmitQuery={onSubmitQuery}
-              onSubmitQuery={onSubmitVoiceSearchQuery}
+              onSubmitQuery={onSubmitQuery}
+              // onSubmitQuery={onSubmitVoiceSearchQuery}
               resetQuery={resetQuery}
               onFocus={onFocus}
               showLocationButton={showLocationButton}
@@ -411,7 +413,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               placeholder={placeholder}
             />
             <Dictaphone />
-            {/* <Toto wording="Rechercher" onPress={onSubmitVoiceSearchQuery} /> */}
+            <Toto wording="Rechercher" onPress={onSubmitVoiceSearchQuery} />
           </FlexView>
         </SearchInputA11yContainer>
       </SearchInputContainer>
@@ -488,10 +490,10 @@ const Tutu = styled.TouchableHighlight<{ listening: boolean }>(({ theme, listeni
   height: 48,
   alignItems: 'center',
   justifyContent: 'center',
-  marginLeft: '8px',
+  marginHorizontal: '8px',
 }))
 
-const StyledLottieView = styled(LottieView)({
+const StyledLottieView = styled(LottieView)(({ theme }) => ({
   width: 240,
   height: 240,
-})
+}))
