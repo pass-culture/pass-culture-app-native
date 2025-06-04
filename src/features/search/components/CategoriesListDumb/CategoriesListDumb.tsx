@@ -10,6 +10,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { MagicWand } from 'ui/svg/icons/MagicWand'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export type ListCategoryButtonProps = CategoryButtonProps[]
 
@@ -39,11 +40,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   const { showSuggestions } = useSearch()
   return (
     <StyledScrollView vertical showsHorizontalScrollIndicator={false} testID="categoriesButtons">
-      <ButtonSecondaryBlack
-        wording={'Trouver de l’inspi'}
-        icon={MagicWand}
-        onPress={showSuggestions}
-      />
+      <ButtonPrimary wording={'J’ai besoin d’inspi'} icon={MagicWand} onPress={showSuggestions} />
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
         <Container>
           <ContainerVenueMapBlock>

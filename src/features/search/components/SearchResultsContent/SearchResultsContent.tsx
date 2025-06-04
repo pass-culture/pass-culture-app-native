@@ -96,14 +96,15 @@ export const SearchResultsContent: React.FC = () => {
     offerVenues,
   } = useSearchResults()
 
-  const { data: magicApiData } = useMagicAPI()
-  console.log(magicApiData)
-  if (!magicApiData) return null
-  const { best, discover } = magicApiData
-  const bestHits = useAlgoliaSimilarOffers(best.offers.map((item) => item.offerId)) ?? []
-  const discoverHits = useAlgoliaSimilarOffers(discover.offers.map((item) => item.offerId)) ?? []
+  // const { data: magicApiData } = useMagicAPI()
+  // console.log(magicApiData)
 
-  const hits = bestHits.slice(0, 5).concat(discoverHits.slice(0, 5))
+  // const { best, discover } = magicApiData ?? {}
+  // const bestHits = (best && useAlgoliaSimilarOffers(best.offers.map((item) => item.offerId))) ?? []
+  // const discoverHits =
+  //   (discover && useAlgoliaSimilarOffers(discover.offers.map((item) => item.offerId))) ?? []
+
+  // const hits = bestHits.slice(0, 5).concat(discoverHits.slice(0, 5))
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
@@ -357,7 +358,7 @@ export const SearchResultsContent: React.FC = () => {
       <SearchList
         ref={searchListRef}
         isFetchingNextPage={isFetchingNextPage}
-        hits={hits}
+        hits={[]}
         nbHits={nbHits}
         renderItem={renderItem}
         autoScrollEnabled={autoScrollEnabled}

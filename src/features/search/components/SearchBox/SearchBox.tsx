@@ -63,7 +63,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
-  const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
+  const { navigateToSearch: navigateToAISearchResults } = useNavigateToSearch('AISearchResults')
   const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const currentView = route.name
 
@@ -109,10 +109,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       }
 
       if (newSearchState.query !== '') {
-        navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+        navigateToAISearchResults(newSearchState, defaultDisabilitiesProperties)
       }
     },
-    [dispatch, navigateToThematicSearch, navigateToSearchResults, searchState]
+    [dispatch, navigateToThematicSearch, navigateToAISearchResults, searchState]
   )
 
   const hasEditableSearchInput =

@@ -44,7 +44,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
     onFocus,
     showLocationButton = false,
     disableInputClearButton,
-    placeholder = 'Offre, artiste, lieu culturel...',
+    placeholder = 'Rechercher...',
     ...props
   }: Props,
   ref

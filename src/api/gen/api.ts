@@ -5175,7 +5175,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
-    async postNativeV1MagicApi(body: MagicApiRequest, options: any = {}): Promise<FetchArgs> {
+    async postNativeV1MagicApi(body?: MagicApiRequest, options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/magic-api`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
@@ -7148,7 +7148,7 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
       )
       return handleGeneratedApiResponse(response)
     },
-    async postNativeV1MagicApi(body: MagicApiRequest, options?: any): Promise<MagicApiResponse> {
+    async postNativeV1MagicApi(body?: MagicApiRequest, options?: any): Promise<MagicApiResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(
         configuration
       ).postNativeV1MagicApi(body, options)
@@ -8689,7 +8689,7 @@ export class DefaultApi extends BaseAPI {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeReminders(options)
   }
-  public async postNativeV1MagicApi(body: MagicApiRequest, options?: any) {
+  public async postNativeV1MagicApi(body?: MagicApiRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1MagicApi(body, options)
   }

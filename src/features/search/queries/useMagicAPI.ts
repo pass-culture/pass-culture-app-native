@@ -6,12 +6,13 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_MAGIC_API = 5 * 60 * 1000
 
-export const useMagicAPI = <TData = MagicApiResponse>() => {
+export const useMagicAPI = <TData = MagicApiResponse>(query: string) => {
   return useQuery<MagicApiResponse, Error, TData>(
     [QueryKeys.MAGIC_API],
     () => {
+      console.log({ query })
       const response = api.postNativeV1MagicApi({
-        query: 'Concert de Rap pour ce weekend à Marseille',
+        query,
       })
       console.log(response)
       return response

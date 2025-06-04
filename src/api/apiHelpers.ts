@@ -74,6 +74,7 @@ export const safeFetch = async (
     },
   }
 
+  console.log({ url })
   if (options.credentials === 'omit') {
     return fetch(url, runtimeOptions)
   }
@@ -114,7 +115,6 @@ export const safeFetch = async (
       return createNeedsAuthenticationResponse(url)
     }
   }
-
   return fetch(url, runtimeOptions)
 }
 

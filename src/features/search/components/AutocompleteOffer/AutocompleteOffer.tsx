@@ -30,9 +30,10 @@ export function AutocompleteOffer({
     navigateToSearch(searchState)
   }
   const suggestedPrompts = [
-    'Concert de rap ce weekend à Marseille',
-    'Expo à Paris ce soir',
-    'Festival en Dordogne cet été',
+    'Les festivals à faire autour de Brest',
+    'Les expos de ce week-end à Paris',
+    'Le spectacle de stand-up ce week-end près de chez moi',
+    'Les sorties à faire en famille cet été à Marseille',
   ]
   return (
     <React.Fragment>
