@@ -1,4 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const fs = require('fs')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path')
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { GoogleGenAI } = require('@google/genai')
 // eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires
 require('dotenv').config({ path: '.env.local' })
@@ -14,13 +19,13 @@ const instructions = `À partir de ces informations, génère une documentation 
 6. Si possible, ajoute un titre général pour la documentation de la fonctionnalité.
 Ne te contente pas de lister les tests, mais interprète-les pour décrire le fonctionnement de la fonctionnalité.
 
-Le résultat attendu doit ressembler à ca\u00a0:
+Le résultat attendu doit ressembler à ca (il s'agit d'un exemple)\u00a0:
 ---
 title: EmailResendModal
 slug: /tests/emailresendmodal
 ---
 
-# 🧪 Documentation des tests\u00a0: EmailResendModal
+# EmailResendModal
 
 ## 🧩 Comportement avec la configuration distante 'shouldLogInfo'
 
@@ -41,40 +46,64 @@ slug: /tests/emailresendmodal
 - Doit afficher un message d’erreur si le nombre maximal de renvois est atteint.
 - Doit réinitialiser le message d’erreur lorsqu’une nouvelle tentative est faite.
 - Doit afficher une bannière d’alerte lorsqu’il ne reste plus aucune tentative.
+ `
 
-Fin du résultat attendu.
+const INPUT_DIR = 'documentation/outputs'
+const DOCUSAURUS_DIR = 'AJSMD/docs/tests-unitaires'
 
-Voici les informations en entrée\u00a0: 
-
-EmailResendModal
- When shouldLogInfo remote config is false
-- should not log to Sentry on error
-
-
- When shouldLogInfo remote config is true
-- should log to Sentry on error
-
-
- <EmailResendModal />
-- should render correctly
-- should dismiss modal when close icon is pressed
-- should log analytics when resend email button is clicked
-- should resend email when resend email button is clicked
-- should display timer when resend email button is clicked
-- should display error message when email resend fails
-- should display error message when maximum number of resends is reached
-- should reset error message when another resend attempt is made
-- should display alert banner when there is no attempt left
-
-
-`
-
-async function main() {
-  const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash-lite',
-    contents: `${instructions}`,
-  })
-  console.log(response.text)
+function formatName(fileName) {
+  // Enlève les extensions et nettoie le nom du composant
+  return fileName
+    .replace(/\.native\.test\.tsx\.md$/, '')
+    .replace(/\.native\.test\.ts\.md$/, '')
+    .replace(/\.test\.ts\.md$/, '')
+    .split('_')
+    .pop()
 }
 
-main()
+async function callLLM(input) {
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.0-flash-lite',
+    contents: `${input}`,
+  })
+  return response.text
+}
+
+async function processFile(file) {
+  const parts = file.replace('.md', '').split('_')
+  const [namespace, ...subdirs] = parts
+
+  const baseName = formatName(file)
+  const destDir = path.join(DOCUSAURUS_DIR, ...subdirs.slice(0, -1))
+  const destPath = path.join(destDir, `${baseName}.md`)
+  const slug = `/${namespace}/${subdirs.join('/').toLowerCase()}/${baseName.toLowerCase()}`
+
+  const rawContent = fs.readFileSync(path.join(INPUT_DIR, file), 'utf8')
+
+  // ✨ Appel LLM
+  const llmOutput = await callLLM(rawContent + instructions)
+
+  // 🧾 Génère le fichier final
+  const frontmatter = `---\ntitle: ${baseName}\nslug: ${slug}\n---\n\n`
+  const finalContent = frontmatter + llmOutput
+
+  fs.mkdirSync(destDir, { recursive: true })
+  fs.writeFileSync(destPath, finalContent)
+
+  console.log(`✅ Documentation écrite\u00a0: ${destPath}`)
+}
+
+async function run() {
+  const files = fs.readdirSync(INPUT_DIR).filter((f) => f.endsWith('.md'))
+  const firstFiles = files.slice(100, 110)
+  // await processFile(firstFile)
+  for (const file of firstFiles) {
+    try {
+      await processFile(file)
+    } catch (err) {
+      console.error(`❌ Erreur sur ${file}`, err)
+    }
+  }
+}
+
+run()

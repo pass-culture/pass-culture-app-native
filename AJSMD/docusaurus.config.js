@@ -89,18 +89,18 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-          //  sidebarId: 'tutorialSidebar',
-            sidebarId: 'introductionSidebar',
+           sidebarId: 'tutorialSidebar',
+            // sidebarId: 'introductionSidebar',
             position: 'left',
             label: 'Introduction',
           },
-          {
-            type: 'docSidebar',
-           // sidebarId: 'tutorialSidebar',
-            sidebarId: 'testsSidebar', 
-            position: 'left',
-            label: 'Tests',
-          },
+          // {
+          //   type: 'docSidebar',
+          //  // sidebarId: 'tutorialSidebar',
+          //   sidebarId: 'testsSidebar', 
+          //   position: 'left',
+          //   label: 'Tests',
+          // },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/pass-culture/pass-culture-app-native',
