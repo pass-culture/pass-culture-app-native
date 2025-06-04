@@ -1,76 +1,39 @@
 import * as perf from '@react-native-firebase/perf'
-import performance, { PerformanceObserver } from 'react-native-performance'
+import performance from 'react-native-performance'
 
 import { CustomMarks } from 'performance/CustomMarks'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
 import { renderHook } from 'tests/utils'
 
-const APP_START_TIME = 1748968544490
-const APP_INTERACTIVE_TIME = APP_START_TIME + 30000
-
-// Test 1:
-const performanceObserverSpy = PerformanceObserver as jest.Mock
-
-// Test 2:
-const measureSpy = jest.spyOn(performance, 'measure')
-
-// Test 3:
-const mockTrace = {
-  putMetric: jest.fn(),
-  stop: jest.fn().mockResolvedValue(undefined),
-}
-const mockStartTrace = jest.fn().mockResolvedValue(mockTrace)
-
-const mockPerfInstance = {
-  startTrace: mockStartTrace,
-}
-
-jest.spyOn(perf, 'default').mockImplementation(() => mockPerfInstance)
-// End test 3
-
 jest.useFakeTimers()
 
-describe('useLaunchPerformanceObserver', () => {
-  beforeEach(() => {
-    performance.clearMarks('nativeLaunchStart')
-    performance.clearMarks(CustomMarks.SCREEN_INTERACTIVE)
-  })
+const APP_START_TIME = 0
+const FIRST_SCREEN_APPEARING_TIME = 3000
+const TTI = FIRST_SCREEN_APPEARING_TIME - APP_START_TIME
 
-  it('should instantiate the observer', () => {
-    const { unmount } = renderHook(() => useLaunchPerformanceObserver())
-
-    SimulateAppStart()
-
-    expect(performanceObserverSpy).toBeTruthy()
-
-    unmount()
-  })
-
-  it('should call performance measure', () => {
-    const { unmount } = renderHook(() => useLaunchPerformanceObserver())
-
-    SimulateAppStart()
-
-    expect(measureSpy).toHaveBeenCalledTimes(1)
-
-    unmount()
-  })
-
-  it('should call send measure to firebase', () => {
-    const { unmount } = renderHook(() => useLaunchPerformanceObserver())
-
-    SimulateAppStart()
-
-    expect(mockStartTrace).toHaveBeenCalledWith(3000)
-
-    unmount()
-  })
+Object.defineProperty(global, '__DEV__', {
+  value: false,
+  writable: true,
 })
 
-function SimulateAppStart() {
-  performance.mark('nativeLaunchStart', { startTime: APP_START_TIME })
-
-  jest.advanceTimersByTimeAsync(3000)
-
-  performance.mark(CustomMarks.SCREEN_INTERACTIVE, { startTime: APP_INTERACTIVE_TIME })
+const mockPutMetric = jest.fn()
+const mockTrace = {
+  putMetric: mockPutMetric,
+  stop: jest.fn().mockResolvedValue(undefined),
 }
+
+const mockPerf = jest.fn().mockReturnValue({ startTrace: jest.fn().mockResolvedValue(mockTrace) })
+jest.spyOn(perf, 'default').mockImplementation(mockPerf)
+
+describe('useLaunchPerformanceObserver', () => {
+  it('should send the correct value to Firebase', async () => {
+    renderHook(() => useLaunchPerformanceObserver())
+
+    performance.mark('nativeLaunchStart', { startTime: APP_START_TIME })
+    performance.mark(CustomMarks.SCREEN_INTERACTIVE, { startTime: FIRST_SCREEN_APPEARING_TIME })
+
+    await jest.runAllTimers()
+
+    expect(mockPutMetric).toHaveBeenCalledWith('time_to_interactive_in_ms', TTI)
+  })
+})
