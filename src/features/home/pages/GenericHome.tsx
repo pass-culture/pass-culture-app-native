@@ -41,6 +41,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
+import { markScreenInteractiveOnHomeLayout } from 'performance/markScreenInteractiveOnHomeLayout'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
 import {
@@ -334,6 +335,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
+          onLayout={markScreenInteractiveOnHomeLayout}
           accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"

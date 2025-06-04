@@ -116,7 +116,7 @@ export default ({ mode }) => {
       extensions: allExtensions,
       alias: [
         {
-          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|tests|web|store).*)/, // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
+          find: /^((api|cheatcodes|features|fixtures|libs|performance|queries|shared|theme|ui|tests|web|store).*)/, // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
           replacement: '/src/$1',
         },
         // if you add something below, it should also be added to storybook config file in modulesToAlias
