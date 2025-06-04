@@ -1,3 +1,4 @@
+import { addMonths } from 'date-fns'
 import mockdate from 'mockdate'
 import React from 'react'
 
@@ -22,6 +23,10 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const TODAY = new Date(2025, 3, 28)
+
+const nextMonth = addMonths(new Date(), 1)
+const nextMonthName = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(nextMonth)
+const capitalizedMonth = nextMonthName.charAt(0).toUpperCase() + nextMonthName.slice(1)
 
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
@@ -148,6 +153,23 @@ describe('CalendarModal', () => {
             type: 'SET_STATE',
             payload: expect.objectContaining({
               calendarFilterId: 'thisMonth',
+            }),
+          })
+        )
+      })
+
+      it('With this next month filter', async () => {
+        renderCalendarModal()
+
+        await user.press(screen.getByText(capitalizedMonth))
+
+        await user.press(screen.getByText('Rechercher'))
+
+        expect(mockDispatch).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'SET_STATE',
+            payload: expect.objectContaining({
+              calendarFilterId: 'nextMonth',
             }),
           })
         )

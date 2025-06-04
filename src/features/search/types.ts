@@ -133,13 +133,9 @@ export type NativeCategoryEnum = NativeCategoryIdEnumv2 | BooksNativeCategoriesE
 export type MarkedDatesColors = { backgroundColor: ColorsType; textColor: ColorsType }
 
 export type CalendarModalFormData = {
-  isToday: boolean
-  isThisWeek: boolean
-  isThisWeekend: boolean
-  isThisMonth: boolean
-  isNextMonth: boolean
   selectedStartDate?: Date
   selectedEndDate?: Date
+  selectedFilterMode?: CalendarFilterId
 }
 
 export type CalendarFilterId = 'today' | 'thisWeek' | 'thisWeekend' | 'thisMonth' | 'nextMonth'

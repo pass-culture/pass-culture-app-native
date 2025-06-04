@@ -15,24 +15,13 @@ import { getCalendarFormData } from 'features/search/helpers/getCalendarFormData
 const today = new Date('2025-06-03T10:00:00Z')
 const nextMonth = new Date('2025-07-01T00:00:00Z')
 
-const defaultValues = {
-  selectedStartDate: undefined,
-  selectedEndDate: undefined,
-  isToday: false,
-  isThisWeek: false,
-  isThisWeekend: false,
-  isThisMonth: false,
-  isNextMonth: false,
-}
-
 describe('getCalendarFormData', () => {
   it('should return values for "today"', () => {
     const result = getCalendarFormData('today', today, nextMonth)
 
     expect(result).toEqual({
-      ...defaultValues,
       selectedStartDate: today,
-      isToday: true,
+      selectedEndDate: undefined,
     })
   })
 
@@ -40,10 +29,8 @@ describe('getCalendarFormData', () => {
     const result = getCalendarFormData('thisWeek', today, nextMonth)
 
     expect(result).toEqual({
-      ...defaultValues,
       selectedStartDate: today,
       selectedEndDate: endOfWeek(today, { weekStartsOn: 1 }),
-      isThisWeek: true,
     })
   })
 
@@ -54,10 +41,8 @@ describe('getCalendarFormData', () => {
       const expectedEnd = endOfDay(nextSunday(today))
 
       expect(result).toEqual({
-        ...defaultValues,
         selectedStartDate: expectedStart,
         selectedEndDate: expectedEnd,
-        isThisWeekend: true,
       })
     })
 
@@ -71,10 +56,8 @@ describe('getCalendarFormData', () => {
       const expectedEnd = endOfDay(nextSunday(saturday))
 
       expect(result).toEqual({
-        ...defaultValues,
         selectedStartDate: expectedStart,
         selectedEndDate: expectedEnd,
-        isThisWeekend: true,
       })
     })
 
@@ -88,10 +71,8 @@ describe('getCalendarFormData', () => {
       const expectedEnd = endOfDay(sunday)
 
       expect(result).toEqual({
-        ...defaultValues,
         selectedStartDate: expectedStart,
         selectedEndDate: expectedEnd,
-        isThisWeekend: true,
       })
     })
   })
@@ -100,10 +81,8 @@ describe('getCalendarFormData', () => {
     const result = getCalendarFormData('thisMonth', today, nextMonth)
 
     expect(result).toEqual({
-      ...defaultValues,
       selectedStartDate: today,
       selectedEndDate: endOfMonth(today),
-      isThisMonth: true,
     })
   })
 
@@ -111,10 +90,8 @@ describe('getCalendarFormData', () => {
     const result = getCalendarFormData('nextMonth', today, nextMonth)
 
     expect(result).toEqual({
-      ...defaultValues,
       selectedStartDate: startOfMonth(nextMonth),
       selectedEndDate: endOfMonth(nextMonth),
-      isNextMonth: true,
     })
   })
 })

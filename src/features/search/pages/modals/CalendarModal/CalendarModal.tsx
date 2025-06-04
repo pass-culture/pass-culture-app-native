@@ -11,7 +11,6 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { getCalendarFilterId } from 'features/search/helpers/getCalendarFilterId/getCalendarFilterId'
 import { getCalendarFormData } from 'features/search/helpers/getCalendarFormData/getCalendarFormData'
 import { getMarkedDates } from 'features/search/helpers/getMarkedDates/getMarkedDates'
 import { getPastScrollRange } from 'features/search/helpers/getPastScrollRange/getPastScrollRange'
@@ -48,14 +47,6 @@ const nextMonth = addMonths(today, 1)
 const nextMonthName = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(nextMonth)
 const capitalizedMonth = nextMonthName.charAt(0).toUpperCase() + nextMonthName.slice(1)
 
-const filterKeyMap: Record<CalendarFilterId, keyof CalendarModalFormData> = {
-  today: 'isToday',
-  thisWeek: 'isThisWeek',
-  thisWeekend: 'isThisWeekend',
-  thisMonth: 'isThisMonth',
-  nextMonth: 'isNextMonth',
-}
-
 export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   title,
   accessibilityLabel,
@@ -75,11 +66,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       selectedEndDate: searchState.endingDatetime
         ? new Date(searchState.endingDatetime)
         : undefined,
-      isToday: searchState.calendarFilterId === 'today',
-      isThisWeek: searchState.calendarFilterId === 'thisWeek',
-      isThisWeekend: searchState.calendarFilterId === 'thisWeekend',
-      isThisMonth: searchState.calendarFilterId === 'thisMonth',
-      isNextMonth: searchState.calendarFilterId === 'nextMonth',
+      selectedFilterMode: searchState.calendarFilterId,
     }
   }, [searchState.beginningDatetime, searchState.calendarFilterId, searchState.endingDatetime])
 
@@ -95,15 +82,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     resolver: yupResolver(calendarSchema),
     defaultValues,
   })
-  const {
-    selectedStartDate,
-    selectedEndDate,
-    isToday,
-    isThisWeek,
-    isThisWeekend,
-    isThisMonth,
-    isNextMonth,
-  } = watch()
+  const { selectedStartDate, selectedEndDate, selectedFilterMode } = watch()
 
   const markedDates = useMemo(
     () =>
@@ -134,11 +113,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       {
         selectedStartDate: undefined,
         selectedEndDate: undefined,
-        isToday: false,
-        isThisWeek: false,
-        isThisWeekend: false,
-        isThisMonth: false,
-        isNextMonth: false,
+        selectedFilterMode: undefined,
       },
       { keepDefaultValues: true }
     )
@@ -161,7 +136,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         ...searchState,
         beginningDatetime: selectedStartDate ? selectedStartDate.toISOString() : undefined,
         endingDatetime: selectedEndDate ? selectedEndDate.toISOString() : undefined,
-        calendarFilterId: getCalendarFilterId(formData),
+        calendarFilterId: formData.selectedFilterMode,
       }
 
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })
@@ -188,18 +163,13 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   )
 
   const onFilterButtonPress = (id: CalendarFilterId) => {
-    const filterKey = filterKeyMap[id]
-    const isApplied = getValues(filterKey)
+    const isApplied = getValues('selectedFilterMode') === id
 
     if (isApplied) {
       reset({
         selectedStartDate: undefined,
         selectedEndDate: undefined,
-        isToday: false,
-        isThisWeek: false,
-        isThisWeekend: false,
-        isThisMonth: false,
-        isNextMonth: false,
+        selectedFilterMode: undefined,
       })
       return
     }
@@ -207,42 +177,38 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     const values = getCalendarFormData(id, today, nextMonth)
     setValueWithValidation('selectedStartDate', values.selectedStartDate)
     setValueWithValidation('selectedEndDate', values.selectedEndDate)
-    setValueWithValidation('isToday', values.isToday)
-    setValueWithValidation('isThisWeek', values.isThisWeek)
-    setValueWithValidation('isThisWeekend', values.isThisWeekend)
-    setValueWithValidation('isThisMonth', values.isThisMonth)
-    setValueWithValidation('isNextMonth', values.isNextMonth)
+    setValueWithValidation('selectedFilterMode', id)
   }
 
   const filterButtonListItems: FilterButtonListItem[] = [
     {
       label: 'Aujourd’hui',
       onPress: () => onFilterButtonPress('today'),
-      isApplied: isToday,
+      isApplied: selectedFilterMode === 'today',
       testID: 'today',
     },
     {
       label: 'Cette semaine',
       onPress: () => onFilterButtonPress('thisWeek'),
-      isApplied: isThisWeek,
+      isApplied: selectedFilterMode === 'thisWeek',
       testID: 'thisWeek',
     },
     {
       label: 'Ce week-end',
       onPress: () => onFilterButtonPress('thisWeekend'),
-      isApplied: isThisWeekend,
+      isApplied: selectedFilterMode === 'thisWeekend',
       testID: 'thisWeekend',
     },
     {
       label: 'Ce mois-ci',
       onPress: () => onFilterButtonPress('thisMonth'),
-      isApplied: isThisMonth,
+      isApplied: selectedFilterMode === 'thisMonth',
       testID: 'thisMonth',
     },
     {
       label: capitalizedMonth,
       onPress: () => onFilterButtonPress('nextMonth'),
-      isApplied: isNextMonth,
+      isApplied: selectedFilterMode === 'nextMonth',
       testID: 'nextMonth',
     },
   ]
