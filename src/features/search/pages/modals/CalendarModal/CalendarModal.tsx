@@ -203,7 +203,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         current={
           searchState.beginningDatetime
             ? format(new Date(searchState.beginningDatetime), 'yyyy-MM-dd')
-            : undefined
+            : format(today, 'yyyy-MM-dd')
         }
         minDate={format(today, 'yyyy-MM-dd')}
         maxDate={format(twoYearsLater, 'yyyy-MM-dd')}
