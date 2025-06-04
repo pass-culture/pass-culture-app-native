@@ -513,7 +513,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
+                          "borderColor": "#90949d",
                           "borderRadius": 4,
                           "borderStyle": "solid",
                           "borderWidth": 1,
@@ -600,7 +600,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
+                          "borderColor": "#90949d",
                           "borderRadius": 4,
                           "borderStyle": "solid",
                           "borderWidth": 1,
@@ -687,7 +687,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
+                          "borderColor": "#90949d",
                           "borderRadius": 4,
                           "borderStyle": "solid",
                           "borderWidth": 1,
@@ -774,7 +774,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
+                          "borderColor": "#90949d",
                           "borderRadius": 4,
                           "borderStyle": "solid",
                           "borderWidth": 1,
@@ -889,7 +889,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         "width": "100%",
                       },
                       {
-                        "backgroundColor": "transparent",
+                        "backgroundColor": "#ffffff",
                         "width": "auto",
                       },
                     ],
@@ -946,7 +946,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     style={
                       [
                         {
-                          "color": "#696A6F",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,

@@ -241,7 +241,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
                       "borderWidth": 1,
                       "overflow": "hidden",
@@ -286,7 +286,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#320096",
+                            "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 19,
                             "lineHeight": 30.4,
@@ -295,7 +295,22 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         ]
                       }
                     >
-                      Tu reçois 50 €
+                      Tu reçois
+                       
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#320096",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 19,
+                              "lineHeight": 30.4,
+                            },
+                          ]
+                        }
+                      >
+                        50 €
+                      </Text>
                     </Text>
                     <View
                       style={
@@ -324,67 +339,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           ]
                         }
                       >
-                        <BVLinearGradient
-                          angle={180}
-                          colors={
-                            [
-                              451608661,
-                              439484566,
-                            ]
-                          }
-                          endPoint={
-                            {
-                              "x": 1,
-                              "y": 1,
-                            }
-                          }
-                          locations={null}
-                          startPoint={
-                            {
-                              "x": 0,
-                              "y": 0,
-                            }
-                          }
+                        <View
                           style={
                             [
                               {
-                                "borderColor": "#ffffff",
-                                "borderRadius": 48,
-                                "borderWidth": 2,
-                                "height": "100%",
-                                "left": 0,
-                                "position": "absolute",
-                                "top": 0,
-                                "width": "100%",
-                              },
-                            ]
-                          }
-                          useAngle={true}
-                        />
-                        <BVLinearGradient
-                          colors={
-                            [
-                              872415231,
-                              4294967295,
-                              872415231,
-                            ]
-                          }
-                          endPoint={
-                            {
-                              "x": 0.5,
-                              "y": 1,
-                            }
-                          }
-                          locations={null}
-                          startPoint={
-                            {
-                              "x": 0.5,
-                              "y": 0,
-                            }
-                          }
-                          style={
-                            [
-                              {
+                                "backgroundColor": "#f1f1f4",
                                 "borderRadius": 48,
                                 "height": "100%",
                                 "left": 0,
@@ -395,31 +354,13 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             ]
                           }
                         />
-                        <BVLinearGradient
-                          angle={90}
-                          colors={
-                            [
-                              4293591125,
-                              4281467030,
-                            ]
-                          }
-                          endPoint={
-                            {
-                              "x": 0.5,
-                              "y": 1,
-                            }
-                          }
-                          locations={null}
+                        <View
+                          color="#eb0055"
                           progress={0.5}
-                          startPoint={
-                            {
-                              "x": 0.5,
-                              "y": 0,
-                            }
-                          }
                           style={
                             [
                               {
+                                "backgroundColor": "#eb0055",
                                 "borderRadius": 48,
                                 "flexBasis": 0,
                                 "flexGrow": 0.5,
@@ -428,7 +369,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             ]
                           }
                           testID="progress-bar"
-                          useAngle={true}
                         />
                       </View>
                     </View>
@@ -634,7 +574,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
                       "borderWidth": 1,
                       "overflow": "hidden",
@@ -679,7 +619,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#320096",
+                            "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 19,
                             "lineHeight": 30.4,
@@ -688,7 +628,22 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         ]
                       }
                     >
-                      Tu reçois 150 €
+                      Tu reçois
+                       
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#320096",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 19,
+                              "lineHeight": 30.4,
+                            },
+                          ]
+                        }
+                      >
+                        150 €
+                      </Text>
                     </Text>
                     <View
                       style={
@@ -717,67 +672,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           ]
                         }
                       >
-                        <BVLinearGradient
-                          angle={180}
-                          colors={
-                            [
-                              451608661,
-                              439484566,
-                            ]
-                          }
-                          endPoint={
-                            {
-                              "x": 1,
-                              "y": 1,
-                            }
-                          }
-                          locations={null}
-                          startPoint={
-                            {
-                              "x": 0,
-                              "y": 0,
-                            }
-                          }
+                        <View
                           style={
                             [
                               {
-                                "borderColor": "#ffffff",
-                                "borderRadius": 48,
-                                "borderWidth": 2,
-                                "height": "100%",
-                                "left": 0,
-                                "position": "absolute",
-                                "top": 0,
-                                "width": "100%",
-                              },
-                            ]
-                          }
-                          useAngle={true}
-                        />
-                        <BVLinearGradient
-                          colors={
-                            [
-                              872415231,
-                              4294967295,
-                              872415231,
-                            ]
-                          }
-                          endPoint={
-                            {
-                              "x": 0.5,
-                              "y": 1,
-                            }
-                          }
-                          locations={null}
-                          startPoint={
-                            {
-                              "x": 0.5,
-                              "y": 0,
-                            }
-                          }
-                          style={
-                            [
-                              {
+                                "backgroundColor": "#f1f1f4",
                                 "borderRadius": 48,
                                 "height": "100%",
                                 "left": 0,
@@ -788,31 +687,13 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             ]
                           }
                         />
-                        <BVLinearGradient
-                          angle={90}
-                          colors={
-                            [
-                              4293591125,
-                              4281467030,
-                            ]
-                          }
-                          endPoint={
-                            {
-                              "x": 0.5,
-                              "y": 1,
-                            }
-                          }
-                          locations={null}
+                        <View
+                          color="#eb0055"
                           progress={1}
-                          startPoint={
-                            {
-                              "x": 0.5,
-                              "y": 0,
-                            }
-                          }
                           style={
                             [
                               {
+                                "backgroundColor": "#eb0055",
                                 "borderRadius": 48,
                                 "flexBasis": 0,
                                 "flexGrow": 1,
@@ -821,7 +702,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             ]
                           }
                           testID="progress-bar"
-                          useAngle={true}
                         />
                       </View>
                     </View>
@@ -1349,7 +1229,7 @@ Les récents ajustements du dispositif peuvent en être la raison.
       {
         "backdropFilter": "blur(0px)",
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "borderBottomColor": "#F1F1F4",
+        "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 0,
         "height": 80,
         "left": 0,
@@ -1457,7 +1337,7 @@ Les récents ajustements du dispositif peuvent en être la raison.
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderColor": "rgba(255, 255, 255, 1)",
               "borderRadius": 40,
               "borderStyle": "solid",
               "borderWidth": 1,

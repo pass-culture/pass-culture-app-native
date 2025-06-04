@@ -3512,7 +3512,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#696A6F",
+                        "borderColor": "#90949d",
                         "borderRadius": 4,
                         "borderStyle": "solid",
                         "borderWidth": 1,

@@ -2404,7 +2404,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "transparent",
+                      "backgroundColor": "#ffffff",
                       "width": "auto",
                     },
                   ],
@@ -2461,7 +2461,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,

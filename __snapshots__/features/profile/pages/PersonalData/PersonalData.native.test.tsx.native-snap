@@ -234,7 +234,7 @@ exports[`PersonalData should render personal data success 1`] = `
           style={
             [
               {
-                "color": "#696A6F",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -275,7 +275,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#696a6f",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
@@ -362,7 +362,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                 },
               ],
               {
@@ -459,7 +459,7 @@ exports[`PersonalData should render personal data success 1`] = `
           style={
             [
               {
-                "color": "#696A6F",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -500,7 +500,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#696a6f",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
@@ -587,7 +587,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                 },
               ],
               {
@@ -674,7 +674,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#696a6f",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
@@ -761,7 +761,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                 },
               ],
               {
@@ -848,7 +848,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#696a6f",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
@@ -936,7 +936,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                 },
               ],
               {

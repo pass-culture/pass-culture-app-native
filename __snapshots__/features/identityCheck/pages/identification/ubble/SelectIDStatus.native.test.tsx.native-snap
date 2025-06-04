@@ -583,7 +583,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#90949D",
+                        "backgroundColor": "#90949d",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -612,7 +612,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#90949D",
+                        "backgroundColor": "#90949d",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
