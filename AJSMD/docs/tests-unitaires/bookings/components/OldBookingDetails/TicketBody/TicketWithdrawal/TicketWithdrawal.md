@@ -3,33 +3,33 @@ title: TicketWithdrawal
 slug: /features/bookings/components/oldbookingdetails/ticketbody/ticketwithdrawal/ticketwithdrawal.native.test.tsx/ticketwithdrawal
 ---
 
----
-title: TicketWithdrawal
-slug: /components/ticketwithdrawal
----
-
 # TicketWithdrawal
 
-## ⚙️ Comportement général de `<TicketWithdrawal />`
+Ce composant gère l'affichage des informations relatives au retrait de billets, en fonction du type de retrait et de la présence d'un délai.
 
-Cette section décrit le comportement général du composant `<TicketWithdrawal />` basé sur la configuration fournie.
+**Contexte 1 : Retrait par email**
 
-### Scénario 1 : Affichage selon le type de retrait
+*   **Description:** Ce contexte concerne l'affichage des informations lorsqu'un retrait de billet est configuré pour être effectué par email.
 
-Ce scénario concerne l'affichage de l'icône en fonction du type de retrait spécifié.
+*   **Comportements attendus:**
 
-*   **Quand le type de retrait est "par email"**
-    *   Doit afficher l'icône de retrait par email.
+    *   Afficher l'icône de retrait par email.
+    *   Ne pas afficher de délai de retrait, quel que soit le délai configuré.
 
-*   **Quand le type de retrait est "sur site"**
-    *   Ne doit pas afficher l'icône de retrait par email.
+**Contexte 2 : Retrait sur site sans délai**
 
-### Scénario 2 : Affichage du délai de retrait
+*   **Description:** Ce contexte gère l'affichage des informations lorsqu'un retrait de billet est configuré pour être effectué sur site et qu'aucun délai n'est spécifié.
 
-Ce scénario concerne l'affichage du délai de retrait lorsqu'il est spécifié pour un retrait "sur site".
+*   **Comportements attendus:**
 
-*   **Quand le délai de retrait est spécifié**
-    *   Doit afficher le délai de retrait "sur site".
+    *   Ne pas afficher l'icône de retrait par email.
+    *   Ne pas afficher le délai de retrait.
 
-*   **Quand le délai de retrait n'est pas spécifié**
-    *   Ne doit pas afficher le délai de retrait "sur site".
+**Contexte 3 : Retrait sur site avec délai**
+
+*   **Description:** Ce contexte gère l'affichage des informations lorsqu'un retrait de billet est configuré pour être effectué sur site et qu'un délai est spécifié.
+
+*   **Comportements attendus:**
+
+    *   Ne pas afficher l'icône de retrait par email.
+    *   Afficher le délai de retrait.

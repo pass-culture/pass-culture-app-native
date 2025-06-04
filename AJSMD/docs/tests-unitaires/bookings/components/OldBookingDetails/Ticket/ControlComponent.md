@@ -3,38 +3,35 @@ title: ControlComponent
 slug: /features/bookings/components/oldbookingdetails/ticket/controlcomponent.native.test.tsx/controlcomponent
 ---
 
----
-title: ControlComponent
-slug: /components/controlcomponent
----
+# ControlComponent
 
-# ControlComponent - Documentation
+Ce composant est responsable de l'affichage de flèches de navigation (précédent et suivant) et de la gestion des événements de clic.
 
-## 🎯 Vue d'ensemble
+## Comportements et Scénarios
 
-Le `ControlComponent` est un composant d'interface utilisateur qui gère l'affichage et l'interaction avec des flèches de navigation (précédent et suivant). Il permet de contrôler le passage d'un élément à l'autre dans une séquence, souvent utilisé pour des carrousels, des galeries, ou des formulaires multi-étapes.
+Voici les différents scénarios et les comportements attendus pour `ControlComponent` :
 
-## 🎬 Comportements et Scénarios
+### 1. Affichage par défaut et comportement de base
 
-### 1. Affichage par défaut
+*   **Description:** Ce scénario décrit le comportement par défaut du composant, sans configuration spécifique.
 
-*   **Comportement:** Le composant affiche par défaut la flèche "précédent" (prev).
+*   **Règles de gestion:**
+    *   Le composant doit afficher la flèche "précédent" par défaut.
+    *   Le composant doit déclencher l'événement `onPress` lorsque l'utilisateur clique sur la flèche.
 
-### 2. Affichage des flèches basé sur le type
+### 2. Affichage des flèches en fonction du type
 
-*   **Scénario:** Le type de flèche à afficher est contrôlé par la propriété `type`.
-*   **Comportement:**
-    *   Si `type` est égal à "prev", affiche la flèche "précédent".
-    *   Si `type` est égal à "next", affiche la flèche "suivant".
+*   **Description:** Ce scénario définit comment le composant réagit en fonction du type spécifié (précédent ou suivant).
 
-### 3. Interaction : onPress
+*   **Règles de gestion:**
+    *   Si le `type` est défini sur "prev", le composant doit afficher la flèche "précédent".
+    *   Si le `type` est défini sur "next", le composant doit afficher la flèche "suivant".
+    *   Le composant doit déclencher l'événement `onPress` lorsque l'utilisateur clique sur une flèche (peu importe le type).
 
-*   **Scénario:** L'utilisateur interagit avec les flèches en les pressant.
-*   **Comportement:** Le composant déclenche la fonction `onPress` fournie lorsque l'utilisateur appuie sur une flèche.
+### 3. Gestion des marges
 
-### 4. Marges : withMargin
+*   **Description:** Ce scénario décrit comment le composant gère les marges des boutons de navigation en fonction d'une propriété.
 
-*   **Scénario:** Contrôle l'ajout de marges pour l'espacement des flèches.
-*   **Comportement:**
-    *   Si `withMargin` est `true` pour le bouton "précédent", le composant affiche le bouton avec une marge à gauche.
-    *   Si `withMargin` est `true` pour le bouton "suivant", le composant affiche le bouton avec une marge à droite.
+*   **Règles de gestion:**
+    *   Si la propriété `withMargin` est définie sur `true` et qu'il s'agit de la flèche "précédent", le composant doit rendre le bouton avec une marge gauche.
+    *   Si la propriété `withMargin` est définie sur `true` et qu'il s'agit de la flèche "suivant", le composant doit rendre le bouton avec une marge droite.

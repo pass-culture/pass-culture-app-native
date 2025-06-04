@@ -3,51 +3,34 @@ title: TicketSwiper
 slug: /features/bookings/components/oldbookingdetails/ticket/ticketswiper.native.test.tsx/ticketswiper
 ---
 
----
-title: TicketSwiper - Affichage et gestion des tickets
-slug: /components/ticketswiper
----
+# TicketSwiper - Documentation Technique
 
-# TicketSwiper
+Cette documentation décrit le comportement du composant `TicketSwiper`, responsable de l'affichage et de la navigation des tickets.
 
-## ⚙️ Généralités
+## Scénarios et Comportements
 
-Cette fonctionnalité gère l'affichage et l'interaction avec les tickets, en particulier lorsqu'il y a plusieurs tickets à afficher. Elle utilise le composant `<TicketSwiper />` pour afficher les informations relatives aux tickets.
+### 1. Affichage du Contrôle de Navigation (Swiper)
 
-## 🎟️ Comportement du contrôleur Swiper
+Ce scénario concerne la visibilité des contrôles de navigation (flèches, indicateurs) permettant de faire défiler les tickets.
 
-Le composant `<TicketSwiper />` affiche des contrôles de type "swiper" (navigation par glissement) pour parcourir les différents tickets.
+*   **Règle:** Le contrôle de navigation **ne doit pas** s'afficher si un seul ticket est disponible.
+*   **Règle:** Le contrôle de navigation **doit** s'afficher si plusieurs tickets sont disponibles (nombre de tickets > 1).
 
-### Scénario : Un seul ticket
+### 2. Affichage des Tickets sans Informations de Réservations Externes
 
-- **Condition:** Le nombre de tickets est égal à un.
-- **Comportement attendu:** Les contrôles de navigation de type "swiper" ne sont **pas affichés**.
+Ce scénario concerne l'affichage des tickets lorsqu'il n'y a pas de réservations externes associées.
 
-### Scénario : Plusieurs tickets
+*   **Règle:** Le `TicketSwiper` **doit** afficher un ticket sans aucune information de réservations externes si `externalBookings` est `null`.
+*   **Règle:** Le `TicketSwiper` **doit** afficher un ticket sans aucune information de réservations externes si `externalBookings` est un tableau vide (`[]`).
 
-- **Condition:** Le nombre de tickets est supérieur à un.
-- **Comportement attendu:** Les contrôles de navigation de type "swiper" **sont affichés**, permettant à l'utilisateur de naviguer entre les différents tickets.
+### 3. Affichage des Tickets avec une Réservation Externe
 
-## 🎫 Affichage des Tickets
+Ce scénario concerne l'affichage des tickets lorsqu'il y a une seule réservation externe.
 
-Le composant `<TicketSwiper />` affiche les informations de chaque ticket. Le contenu affiché dépend de la présence d'informations de réservation externe.
+*   **Règle:** Le `TicketSwiper` **doit** afficher un ticket avec les informations de la réservation externe lorsqu'il existe une réservation externe.
 
-### Scénario : Absence de réservations externes (externalBookings est null)
+### 4. Affichage de Plusieurs Tickets
 
-- **Condition:** La variable `externalBookings` est nulle.
-- **Comportement attendu:** Le ticket est affiché **sans** les informations relatives aux réservations externes.
+Ce scénario décrit le comportement du `TicketSwiper` lorsque plusieurs tickets sont disponibles.
 
-### Scénario : Absence de réservations externes (externalBookings est un tableau vide)
-
-- **Condition:** La variable `externalBookings` est un tableau vide (`[]`).
-- **Comportement attendu:** Le ticket est affiché **sans** les informations relatives aux réservations externes.
-
-### Scénario : Une réservation externe
-
-- **Condition:** Il existe une seule réservation externe.
-- **Comportement attendu:** Un seul ticket est affiché, **incluant** les informations relatives à la réservation externe.
-
-### Scénario : Plusieurs tickets à afficher
-
-- **Condition:** Le nombre de tickets est égal au nombre de tickets disponibles.
-- **Comportement attendu:** Le composant affiche **autant de tickets** qu'il y en a en nombre.
+*   **Règle:** Le `TicketSwiper` **doit** afficher autant de tickets qu'il y en a.  Chaque ticket devrait potentiellement afficher des informations de réservations externes si elles sont présentes.

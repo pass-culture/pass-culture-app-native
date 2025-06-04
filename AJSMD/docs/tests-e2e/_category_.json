@@ -1,0 +1,8 @@
+{
+  "label": "Tests E2E",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Documentation des issues des tests e2e du repo natif"
+  }
+}

@@ -3,48 +3,43 @@ title: ticketBodyMessages
 slug: /features/bookings/components/oldbookingdetails/ticketbody/ticketbodymessages.test.ts/ticketbodymessages
 ---
 
----
-title: ticketBodyMessages
-slug: /tests/ticketbodymessages
----
+# ticketBodyMessages
 
-# ticketBodyMessages - Gestion des messages dans le corps du ticket
+Cette documentation décrit le comportement du composant `ticketBodyMessages`, qui est responsable de la génération de messages spécifiques pour un ticket, en fonction de divers paramètres comme le type de retrait, le délai de retrait, et la date de l'offre.
 
-Cette documentation décrit le comportement de la fonctionnalité `ticketBodyMessages`, qui gère l'affichage de messages spécifiques dans le corps d'un ticket en fonction de différents contextes, tels que le type de retrait, la présence d'un délai et la date d'offre.
+## Scénarios et Comportements
 
-## 🚀 Fonctionnalités principales
+Voici les différents scénarios et les comportements attendus du composant :
 
-*   **Affichage des messages de démarrage :** Affichage de messages introductifs spécifiques en fonction du type de retrait.
-*   **Affichage des messages de délai :** Indique la présence d'un délai associé au retrait.
-*   **Affichage des messages d'e-mail :** Messages liés à la date de l'offre.
+### 1. Messages de Démarrage (getStartMessage)
 
-## 🗺️ Scénarios et Comportements
+Ce scénario décrit la génération du message de démarrage du ticket en fonction du type de retrait.
 
-### 1. Affichage des messages de démarrage (`getStartMessage`)
+*   **Contexte : Retrait sur Site**
+    *   Le composant affiche un message spécifique indiquant que le retrait se fera sur place.
 
-Ce composant affiche un message de démarrage adapté en fonction du type de retrait spécifié.
+*   **Contexte : Retrait par Email**
+    *   Le composant affiche un message spécifique indiquant que le retrait se fera par email.
 
-*   **Scénario : Retrait sur place ("on site")**
-    *   Le composant doit afficher le message correct pour un retrait sur place.
-*   **Scénario : Retrait par email ("by email")**
-    *   Le composant doit afficher le message correct pour un retrait par email.
-*   **Scénario : Aucun type de retrait spécifié**
-    *   Le composant ne doit **pas** afficher de message de démarrage.
+*   **Contexte : Pas de Type de Retrait Défini**
+    *   Le composant ne retourne aucun message de démarrage.
 
-### 2. Affichage des messages de délai (`getDelayMessage`)
+### 2. Messages de Délai (getDelayMessage)
 
-Ce composant gère l'affichage des messages liés à un délai éventuel associé au retrait.
+Ce scénario concerne la gestion des messages liés à un éventuel délai de retrait.
 
-*   **Scénario : Délai de retrait présent**
-    *   Le composant doit afficher le message correct indiquant la présence d'un délai.
-*   **Scénario : Aucun délai de retrait**
-    *   Le composant ne doit **pas** afficher de message de délai.
+*   **Contexte : Délai de Retrait Présent**
+    *   Le composant affiche un message spécifique concernant le délai de retrait.
 
-### 3. Affichage des messages d'e-mail (`getEmailMessage`)
+*   **Contexte : Pas de Délai de Retrait**
+    *   Le composant ne retourne aucun message de délai.
 
-Ce composant gère l'affichage des messages liés à la date de l'offre.
+### 3. Messages d'Email (getEmailMessage)
 
-*   **Scénario : Date de l'offre est aujourd'hui**
-    *   Le composant doit afficher le message correct lorsque la date de l'offre est aujourd'hui.
-*   **Scénario : Date de l'offre n'est pas aujourd'hui**
-    *   Le composant doit afficher le message correct lorsque la date de l'offre n'est pas aujourd'hui.
+Ce scénario gère l'affichage de messages liés à la date de l'offre.
+
+*   **Contexte : Date de l'Offre = Aujourd'hui**
+    *   Le composant affiche un message spécifique si la date de l'offre est le jour même.
+
+*   **Contexte : Date de l'Offre != Aujourd'hui**
+    *   Le composant affiche un message spécifique si la date de l'offre n'est pas le jour même.

@@ -3,33 +3,32 @@ title: TicketSwiperControls
 slug: /features/bookings/components/oldbookingdetails/ticket/ticketswipercontrols.native.test.tsx/ticketswipercontrols
 ---
 
----
-title: TicketSwiperControls
-slug: /components/ticketswipercontrols
----
+# TicketSwiperControls
 
-# TicketSwiperControls - Documentation de la Fonctionnalité
+Cette documentation décrit le comportement du composant `TicketSwiperControls` et les règles qui régissent l'affichage de ses boutons de navigation (Précédent et Suivant).
 
-Cette documentation détaille le comportement du composant `TicketSwiperControls`, responsable de la navigation dans un flux de tickets.
+**Contexte général:**  Cette fonctionnalité gère la navigation entre les étapes d'un processus, probablement lié à la gestion des tickets.
 
-## 🧭 Navigation dans le Flux de Tickets
+**Scénarios et Comportements:**
 
-Ce contexte décrit le comportement général des boutons de navigation ("Précédent" et "Suivant") en fonction de l'étape actuelle et du nombre total d'étapes.
+*   **Scénario 1: Navigation dans les étapes (currentStep > 1 & currentStep < numberOfSteps)**
 
-- **Fonctionnalité Principale:** Contrôle de la navigation entre les étapes d'un processus, probablement en lien avec l'affichage de tickets.
+    *   **Description:** L'utilisateur se trouve à une étape autre que la première ou la dernière.
+    *   **Comportements Attendus:**
+        *   Le bouton "Précédent" est visible.
+        *   Le bouton "Suivant" est visible.
 
-### Scénario : Navigation et Étapes
+*   **Scénario 2: Sur la première étape (currentStep === 1)**
 
-*   **currentStep** représente l'étape actuelle (un nombre entier, commençant probablement par 1).
-*   **numberOfSteps** représente le nombre total d'étapes dans le processus.
+    *   **Description:** L'utilisateur est actuellement sur la première étape du processus.
+    *   **Comportements Attendus:**
+        *   Le bouton "Précédent" est caché.
+        *   Le bouton "Suivant" est visible.
 
-#### Comportement des Boutons
+*   **Scénario 3: Sur la dernière étape (currentStep === numberOfSteps)**
 
-*   **Bouton "Précédent":**
-    *   **À l'étape 1 (currentStep === 1):** Le bouton "Précédent" est **masqué**.
-    *   **À toute autre étape (currentStep > 1):** Le bouton "Précédent" est **affiché**.
-
-*   **Bouton "Suivant":**
-    *   **À la dernière étape (currentStep === numberOfSteps):** Le bouton "Suivant" est **masqué**.
-    *   **À toute autre étape (currentStep !== numberOfSteps):** Le bouton "Suivant" est **affiché**.
+    *   **Description:** L'utilisateur est actuellement sur la dernière étape du processus.
+    *   **Comportements Attendus:**
+        *   Le bouton "Précédent" est visible.
+        *   Le bouton "Suivant" est caché.
 

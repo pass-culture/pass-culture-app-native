@@ -3,46 +3,31 @@ title: OnGoingBookingsList
 slug: /features/bookings/components/ongoingbookingslist.native.test.tsx/ongoingbookingslist
 ---
 
----
-title: OnGoingBookingsList
-slug: /tests/ongoingbookingslist
----
+# OnGoingBookingsList
 
-# OnGoingBookingsList - Gestion des réservations en cours
+Ce composant affiche une liste des réservations en cours. Il gère l'actualisation des données, les états de chargement et l'affichage d'erreurs.
 
-## 🔄 Rafraîchissement des données (Pull to Refresh)
+## Scénarios et Comportements
 
-Ce scénario décrit le comportement de la fonctionnalité de rafraîchissement des données dans la liste des réservations en cours.
+### 1. Affichage Initial et Chargement des Données
 
-### Contexte : Connectivité réseau disponible
-- **Pré-requis :** Le composant détecte que l'appareil est connecté à Internet ( `netInfo.isConnected && netInfo.isInternetReachable` est vrai).
-- **Comportement :**
-    - Autorise l'utilisateur à lancer un rafraîchissement des données en tirant vers le bas (pull to refetch).
-    - Lors du pull to refetch, le composant tente de récupérer les données de réservation les plus récentes.
+*   **Comportement:**
+    *   Affiche un placeholder pendant le chargement des réservations.
+    *   Affiche un placeholder pendant le chargement des sous-catégories.
 
-### Contexte : Pas de connectivité réseau
-- **Pré-requis :** Le composant détecte que l'appareil n'est pas connecté à Internet ( `netInfo.isConnected && netInfo.isInternetReachable` est faux).
-- **Comportement :**
-    - **Ne permet pas** le rafraîchissement des données en tirant vers le bas.
-    - Affiche une snack bar (message court en bas de l'écran) avec le message "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer." lorsque l'utilisateur tente de rafraîchir.
+### 2. Actualisation des Données (Pull-to-Refresh)
 
-## ⏳ Affichage des placeholders (chargement)
+*   **Conditions:**
+    *   `netInfo.isConnected` : Le dispositif est connecté à un réseau.
+    *   `netInfo.isInternetReachable` : Le dispositif peut accéder à Internet.
+*   **Comportement:**
+    *   Permet l'actualisation des données via un mécanisme de pull-to-refresh si les conditions sont satisfaites.
+    *   Tente de refetcher les données lorsque l'utilisateur effectue un pull-to-refresh.
+*   **Gestion des Erreurs:**
+    *   Affiche une snackbar d'erreur avec le message "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer." si la tentative de pull-to-refresh échoue en raison d'une absence de connexion internet.
 
-Ce scénario décrit comment le composant gère l'affichage pendant le chargement des données.
+### 3. Suivi du Défilement et Analytics
 
-### Contexte : Chargement des réservations en cours
-- **Comportement :**
-    - Affiche un placeholder visuel pendant que les données de réservation sont en cours de chargement.  Ceci indique à l'utilisateur que les informations sont en train d'être récupérées.
-
-### Contexte : Chargement des sous-catégories en cours (non spécifié, mais déduit)
-- **Comportement :**
-    - Affiche un placeholder visuel pendant que les sous-catégories sont en cours de chargement. Ce comportement est similaire au chargement des réservations.
-
-## 📈 Analytics - Suivi du défilement
-
-Ce scénario décrit le suivi des événements d'analyse liés au défilement de la liste des réservations.
-
-### Contexte : Atteinte du bas de la liste
-- **Comportement :**
-    - Déclenche l'événement d'analyse `BookingsScrolledToBottom` lorsque l'utilisateur atteint le bas de la liste des réservations.  Ceci permet de mesurer le nombre de fois que l'utilisateur arrive à la fin de la liste.
-    - Déclenche l'événement `BookingsScrolledToBottom` **une seule fois** par session de défilement.  Si l'utilisateur continue de faire défiler, l'événement n'est pas répété.  Cela évite les doublons et l'inflation des données d'analyse.
+*   **Comportement:**
+    *   Déclenche un événement `logEvent "BookingsScrolledToBottom"` une seule fois lorsque l'utilisateur atteint le bas de la liste des réservations.
+    *   Cet événement est déclenché uniquement lors du premier "atteinte du bas" de la liste.

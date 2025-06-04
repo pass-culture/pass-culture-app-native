@@ -3,46 +3,67 @@ title: getHideableQrCodeWithSeat
 slug: /features/bookings/components/oldbookingdetails/ticketbody/hideableqrcodewithseat/gethideableqrcodewithseat.native.test.ts/gethideableqrcodewithseat
 ---
 
----
-title: Affichage du QR Code avec Seat et Gestion de l'Affichage Conditionnel
-slug: /tests/getHideableQrCodeWithSeat
----
-
 # getHideableQrCodeWithSeat
 
-Cette fonctionnalité gère l'affichage conditionnel d'un QR Code associé à une réservation, en fonction de divers critères tels que la catégorie de la réservation, l'état d'activation d'une fonctionnalité (Feature Flag) et le moment de l'affichage.
+Ce document décrit le comportement de la fonctionnalité `getHideableQrCodeWithSeat`, une fonction qui gère l'affichage conditionnel d'un code QR et d'autres informations liées à une réservation.
 
-## ⚙️ Comportement de Base
+## Comportements par contexte
 
-*   **Fonctionnement par défaut:**
-    *   La fonction `getHideableQrCodeWithSeat` doit fonctionner correctement avec les paramètres par défaut. (Implique que la fonction accepte des valeurs par défaut pour ses arguments et produit un comportement attendu sans spécification particulière.)
+Voici les différents contextes et les comportements attendus de la fonctionnalité :
 
-## 🎟️ Comportement en fonction de la visibilité et du contexte de la réservation
+### 1. Affichage initial (avant la visibilité du composant)
 
-### 1. Réservation dans une catégorie qui ne doit pas être cachée
+Ce contexte décrit ce qui se passe lors du chargement initial du composant `getHideableQrCodeWithSeat`.
 
-*   **Avant la visibilité :**
-    *   Affiche le QR Code. (Quel que soit le contexte, le QR Code est visible par défaut dans cette catégorie avant l'affichage.)
+*   **Scénario :** Avant que le composant ne soit visible.
+    *   **Comportement :**
+        *   Affiche le code QR.
 
-*   **Au moment de la visibilité :**
-    *   Affiche le QR Code. (L'affichage persistera lorsque l'élément devient visible.)
+### 2. Affichage (après la visibilité du composant)
 
-### 2. Réservation dans une catégorie qui doit être cachée
+Ce contexte décrit ce qui se passe après que le composant `getHideableQrCodeWithSeat` est visible.
 
-*   **Avant la visibilité :**
-    *   Cache le QR Code.
-    *   Affiche le jour correct.
-    *   Affiche l'heure correcte.
+*   **Scénario :** Lorsque le composant est visible.
+    *   **Comportement :**
+        *   Affiche le code QR.
 
-*   **Au moment de la visibilité :**
-    *   Affiche le QR Code. (Le QR Code devient visible au moment de l'affichage.)
+### 3. Réservation dans une catégorie non-masquée
 
-## 🚩 Comportement en fonction du Feature Flag `enableHideTicket`
+Ce contexte décrit le comportement lorsque la réservation appartient à une catégorie qui n'est pas configurée pour être masquée.
 
-### 1. Quand `enableHideTicket` est **activé**
+*   **Scénario :** Réservation dans une catégorie qui ne doit pas être masquée.
+    *   **Comportement :**
+        *   **Avant visibilité :**
+            *   Masque le code QR.
+            *   Affiche le jour correct de la réservation.
+            *   Affiche l'heure correcte de la réservation.
+        *   **Après visibilité :**
+            *   Affiche le code QR.
 
-*   Le QR Code doit être masqué (comportement non spécifié, mais implicite qu'il doit être masqué/rendu invisible dans une condition générale).
+### 4. Contrôle avec Feature Flag `enableHideTicket`
 
-### 2. Quand `enableHideTicket` est **désactivé**
+Ce contexte décrit le comportement en fonction de l'état du Feature Flag `enableHideTicket`.
 
-*   Ne doit pas masquer le QR Code (implique que le QR Code est affiché, quel que soit le contexte spécifique de la réservation).
+*   **Scénario :** Lorsque le Feature Flag `enableHideTicket` est activé.
+    *   **Comportement :**
+        *   [Comportement non spécifié, besoin de plus d'informations pour définir l'action à effectuer en fonction du contexte.]
+
+*   **Scénario :** Lorsque le Feature Flag `enableHideTicket` est désactivé.
+    *   **Comportement :**
+        *   Ne masque pas le code QR.
+
+### 5. Réservation dans une catégorie masquée
+
+Ce contexte décrit le comportement lorsque la réservation appartient à une catégorie configurée pour être masquée.
+
+*   **Scénario :** Réservation dans une catégorie qui doit être masquée.
+    *   [Comportement non spécifié, besoin de plus d'informations pour définir l'action à effectuer en fonction du contexte.]
+
+### 6. Paramètres par défaut
+
+Ce contexte décrit le comportement de la fonction lorsque des paramètres par défaut sont utilisés.
+
+*   **Scénario :** Utilisation avec les paramètres par défaut.
+    *   **Comportement :**
+        *   La fonction doit fonctionner correctement avec les paramètres par défaut.
+

@@ -10,7 +10,7 @@ require('dotenv').config({ path: '.env.local' })
 
 const ai = new GoogleGenAI({ apiKey: process.env.TEST_KEY })
 
-const instructions = `À partir de ces informations, génère une documentation qui\u00a0:
+const instructionsUnitTests = `À partir de ces informations, génère une documentation qui\u00a0:
 1. Identifie le nom de la fonctionnalité principale.
 2. Regroupe les comportements par contextes ou scénarios distincts (par exemple, "utilisateur connecté avec mot de passe", "utilisateur connecté via SSO", "utilisateur déconnecté", "avec paramètres d'URL spécifiques", etc.).
 3. Pour chaque contexte/scénario, résume les règles de gestion ou les comportements attendus du système, en te basant sur les descriptions "should..." ou les actions décrites.
@@ -19,33 +19,8 @@ const instructions = `À partir de ces informations, génère une documentation 
 6. Si possible, ajoute un titre général pour la documentation de la fonctionnalité.
 Ne te contente pas de lister les tests, mais interprète-les pour décrire le fonctionnement de la fonctionnalité.
 
-Le résultat attendu doit ressembler à ca (il s'agit d'un exemple)\u00a0:
----
-title: EmailResendModal
-slug: /tests/emailresendmodal
----
-
-# EmailResendModal
-
-## 🧩 Comportement avec la configuration distante 'shouldLogInfo'
-
-### Quand 'shouldLogInfo' est **désactivé**
-- Ne doit **pas** envoyer de log à Sentry en cas d’erreur.
-
-### Quand 'shouldLogInfo' est **activé**
-- Doit envoyer un log à Sentry en cas d’erreur.
-
-## 💡 Comportement de '<EmailResendModal />'
-
-- Doit s’afficher correctement.
-- Doit fermer la modale lorsque l’icône de fermeture est pressée.
-- Doit enregistrer un événement analytics lors du clic sur le bouton "Renvoyer l’e-mail".
-- Doit effectivement renvoyer l’e-mail lors du clic sur ce bouton.
-- Doit afficher un minuteur après le clic sur "Renvoyer l’e-mail".
-- Doit afficher un message d’erreur si l’envoi de l’e-mail échoue.
-- Doit afficher un message d’erreur si le nombre maximal de renvois est atteint.
-- Doit réinitialiser le message d’erreur lorsqu’une nouvelle tentative est faite.
-- Doit afficher une bannière d’alerte lorsqu’il ne reste plus aucune tentative.
+Le résultat doit être un .md pour pouvoir l’intégrer directement dans un Docusaurus - il ne faut pas ajouter la balise md dans le résultat pour qu'il puisse s'afficher correctement.
+Ne rajoute pas de sous titre comme "Documentation de la fonctionnalité  xxxx" ne nom du composant ou de la fonctionnalité en titre est suffisant.
  `
 
 const INPUT_DIR = 'documentation/outputs'
@@ -81,7 +56,7 @@ async function processFile(file) {
   const rawContent = fs.readFileSync(path.join(INPUT_DIR, file), 'utf8')
 
   // ✨ Appel LLM
-  const llmOutput = await callLLM(rawContent + instructions)
+  const llmOutput = await callLLM(rawContent + instructionsUnitTests)
 
   // 🧾 Génère le fichier final
   const frontmatter = `---\ntitle: ${baseName}\nslug: ${slug}\n---\n\n`

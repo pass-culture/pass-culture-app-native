@@ -3,64 +3,46 @@ title: OnGoingBookingItem
 slug: /features/bookings/components/ongoingbookingitem.native.test.tsx/ongoingbookingitem
 ---
 
-```markdown
-# OnGoingBookingItem - Documentation Fonctionnelle
+# OnGoingBookingItem
 
-## 🎯 Introduction
+Cette documentation décrit le comportement du composant `OnGoingBookingItem` dans l'application. Ce composant affiche des informations sur les réservations en cours et gère les interactions de l'utilisateur.
 
-Cette documentation détaille le comportement de la fonctionnalité `OnGoingBookingItem` qui affiche les informations relatives aux réservations en cours. Elle décrit les règles de gestion et les actions attendues en fonction de différents contextes et scénarios.
+## Contexte: Sur un ticket de retrait sur site (On Site Withdrawal Ticket Event)
 
-## 🗺️ Contexte et Scénarios
+Ce contexte concerne l'affichage de l'élément de réservation lorsqu'il est lié à un événement de retrait sur site.
 
-Les comportements de `OnGoingBookingItem` varient selon :
+*   **Comportement attendu:**
+    *   Affiche un rappel de retrait ("withdrawal reminder").
+    *   Ne doit pas afficher de rappel d'événement ("event reminder").
+    *   Affiche des messages d'expiration.
+        *   Affiche le message d'expiration : "Ta réservation s'archivera dans XX jours".
+        *   Affiche tout autre message d'expiration pertinent.
 
-1.  **Le contexte de l'événement lié au ticket (événement de retrait sur site ou non).**
-2.  **L'échéance de la réservation (proche de l'expiration ou non).**
-3.  **Les interactions de l'utilisateur.**
+## Contexte: Pas sur un ticket de retrait sur site (Not On Site Withdrawal Ticket Event)
 
-## ⚙️ Comportements Détaillés
+Ce contexte concerne l'affichage de l'élément de réservation lorsqu'il n'est pas lié à un événement de retrait sur site.
 
-### 1.  Scénario : Événement de Retrait sur Site
+*   **Comportement attendu:**
+    *   Ne doit pas afficher de rappel de retrait ("withdrawal reminder").
+    *   Affiche un rappel d'événement ("event reminder").
+    *   Affiche des messages d'expiration.
+        *   Affiche le message d'expiration : "Ta réservation s'archivera dans XX jours".
+        *   Affiche tout autre message d'expiration pertinent.
 
-Ce scénario concerne les `OnGoingBookingItem` associés à un événement de retrait sur site.
+## Généralités sur l'affichage des expirations
 
-**Règles de gestion :**
+Indépendamment du contexte, le composant doit toujours afficher les messages d'expiration pertinents pour la réservation.
 
-*   **Affichage des rappels:**
-    *   Doit afficher un rappel de retrait (e.g., un message pour rappeler à l'utilisateur de retirer le ticket).
-    *   Ne doit **pas** afficher un rappel d'événement (e.g., rappel de l'heure et du lieu de l'événement).
+*   **Comportement attendu:**
+    *   Affiche un message d'expiration standard : "Ta réservation s'archivera dans XX jours".
+    *   Affiche tous les autres messages d'expiration spécifiques à la réservation.
 
-### 2.  Scénario : Absence d'Événement de Retrait sur Site
+## Interactions et Actions Utilisateur
 
-Ce scénario concerne les `OnGoingBookingItem` qui ne sont **pas** associés à un événement de retrait sur site.
+Ce contexte décrit les interactions possibles avec le composant `OnGoingBookingItem`.
 
-**Règles de gestion :**
-
-*   **Affichage des rappels:**
-    *   Ne doit **pas** afficher un rappel de retrait.
-    *   Doit afficher un rappel d'événement.
-
-### 3.  Scénario : Messages d'Expiration
-
-Ce scénario concerne l'affichage des messages relatifs à l'expiration des réservations.
-
-**Règles de gestion :**
-
-*   **Affichage des messages d'expiration:**
-    *   Doit afficher des messages indiquant l'approche de l'expiration de la réservation.
-    *   Doit afficher le message spécifique : "Ta réservation s'archivera dans XX jours" (où XX est le nombre de jours restant avant l'expiration).
-    *   Doit afficher d'autres messages pertinents concernant l'expiration (ces messages ne sont pas détaillés, mais la fonctionnalité doit les gérer correctement).
-
-### 4.  Scénario : Interactions avec l'Utilisateur
-
-Ce scénario détaille les actions disponibles pour l'utilisateur lorsqu'il interagit avec le composant.
-
-**Règles de gestion :**
-
-*   **Navigation et interaction:**
-    *   Doit permettre à l'utilisateur de naviguer vers la page de détails de la réservation en cliquant sur l'élément.
-    *   Doit enregistrer un événement analytique "logViewedBookingPage" lorsque l'utilisateur clique sur l'appel à l'action (CTA - Call To Action).
-    *   Doit permettre à l'utilisateur de partager la réservation.
-    *   Doit appeler la fonction de partage (share) lorsqu'il appuie sur l'icône de partage.
-    *   Doit enregistrer des données analytiques (analytics) lorsque l'utilisateur appuie sur l'icône de partage.
-```
+*   **Comportement attendu:**
+    *   **Navigation vers les détails de la réservation:** Cliquer sur le composant `OnGoingBookingItem` doit rediriger l'utilisateur vers la page de détails de la réservation.
+    *   **Journalisation d'analyse (CTA click):** Lorsque l'utilisateur clique sur l'appel à l'action (CTA), le composant doit déclencher l'enregistrement d'un événement d'analyse `logViewedBookingPage`.
+    *   **Fonctionnalité de partage:** Cliquer sur l'icône de partage doit déclencher la fonction de partage (appel à la fonction `share`).
+    *   **Journalisation d'analyse (Share click):** Lorsque l'utilisateur clique sur l'icône de partage, le composant doit déclencher l'enregistrement d'un événement d'analyse.
