@@ -31,23 +31,42 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
     const theme = useTheme()
 
     return (
-      <FlashList
-        estimatedItemSize={LIST_ITEM_HEIGHT}
-        ref={ref}
-        testID="searchResultsFlashlist"
-        data={hits}
-        keyExtractor={keyExtractor}
-        ItemSeparatorComponent={Separator}
-        renderItem={renderItem}
-        refreshing={refreshing}
-        onRefresh={onRefresh}
-        onEndReached={autoScrollEnabled ? onEndReached : undefined}
-        scrollEnabled={nbHits > 0}
-        onScroll={onScroll}
-        contentContainerStyle={{ paddingBottom: theme.tabBar.height + getSpacing(10) }}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-      />
+      <>
+        <FlashList
+          estimatedItemSize={LIST_ITEM_HEIGHT}
+          ref={ref}
+          testID="searchResultsFlashlist"
+          data={hits.slice(0, 5)}
+          keyExtractor={keyExtractor}
+          ItemSeparatorComponent={Separator}
+          renderItem={renderItem}
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          onEndReached={autoScrollEnabled ? onEndReached : undefined}
+          scrollEnabled={nbHits > 0}
+          onScroll={onScroll}
+          contentContainerStyle={{ paddingBottom: theme.tabBar.height + getSpacing(10) }}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+        />
+        <FlashList
+          estimatedItemSize={LIST_ITEM_HEIGHT}
+          ref={ref}
+          testID="searchResultsFlashlist"
+          data={hits.slice(5, 10)}
+          keyExtractor={keyExtractor}
+          ItemSeparatorComponent={Separator}
+          renderItem={renderItem}
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          onEndReached={autoScrollEnabled ? onEndReached : undefined}
+          scrollEnabled={nbHits > 0}
+          onScroll={onScroll}
+          contentContainerStyle={{ paddingBottom: theme.tabBar.height + getSpacing(10) }}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+        />
+      </>
     )
   }
 )

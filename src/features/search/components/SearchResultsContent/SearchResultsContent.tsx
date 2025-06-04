@@ -97,9 +97,13 @@ export const SearchResultsContent: React.FC = () => {
   } = useSearchResults()
 
   const { data: magicApiData } = useMagicAPI()
-  const offerIds = magicApiData?.offerIds ?? []
-  const hits = useAlgoliaSimilarOffers(offerIds) ?? []
   console.log(magicApiData)
+  if (!magicApiData) return null
+  const { best, discover } = magicApiData
+  const bestHits = useAlgoliaSimilarOffers(best.offers.map((item) => item.offerId)) ?? []
+  const discoverHits = useAlgoliaSimilarOffers(discover.offers.map((item) => item.offerId)) ?? []
+
+  const hits = bestHits.slice(0, 5).concat(discoverHits.slice(0, 5))
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()

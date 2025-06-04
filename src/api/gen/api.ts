@@ -1736,12 +1736,16 @@ export interface GetRemindersResponse {
    */
   reminders: Array<ReminderResponse>
 }
+export interface MagicOfferResponse {
+  offerId: string
+}
+export interface MagicPlaylistResponse {
+  summary: string
+  offers: Array<MagicOfferResponse>
+}
 export interface MagicApiResponse {
-  /**
-   * @type {Array<string>}
-   * @memberof MagicApiResponse
-   */
-  offerIds: Array<string>
+  best: MagicPlaylistResponse
+  discover: MagicPlaylistResponse
 }
 /**
  * @export
