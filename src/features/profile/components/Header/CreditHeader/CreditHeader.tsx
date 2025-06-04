@@ -132,11 +132,11 @@ export function CreditHeader({
 }
 
 const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const ViewWithMarginTop = styled.View<{ top: number }>(({ top }) => ({

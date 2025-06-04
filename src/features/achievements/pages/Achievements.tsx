@@ -45,9 +45,8 @@ export const Achievements = () => {
   }, [from, track])
 
   return (
-    <SecondaryPageWithBlurHeader title="">
+    <SecondaryPageWithBlurHeader title="Mes succès">
       <ViewGap gap={4}>
-        <Typo.Title2 {...getHeadingAttrs(1)}>Mes succès</Typo.Title2>
         {categories.map((category) => {
           const isOddAchievements = category.achievements.length % 2 !== 0
           const achievements = isOddAchievements
@@ -112,7 +111,7 @@ const EmptyAchievement = styled.View({
 })
 
 const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const AchievementsGroupeHeader = styled.View({

@@ -27,5 +27,5 @@ export const OnboardingCreditBlockTitle = ({
 const Title = styled(Typo.Title3).attrs(getNoHeadingAttrs)``
 
 const TitleSecondary = styled(Title)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))

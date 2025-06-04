@@ -44,7 +44,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
 // This height will only show 3 rows of the spinner instead of 7
 const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
 const SpinnerDatePicker = styled(DatePicker).attrs(({ theme }) => ({
-  textColor: theme.colors.black,
+  textColor: theme.designSystem.color.text.default,
 }))(({ theme }) => ({
   height: theme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
   width: '100%',

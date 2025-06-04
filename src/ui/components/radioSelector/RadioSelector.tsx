@@ -97,18 +97,18 @@ const LeftContent = styled.View({
 const RightContent = styled.View({})
 
 const Label = styled(Typo.BodyAccent)<{ isHover?: boolean }>(({ theme, disabled, isHover }) => ({
-  color: disabled ? theme.colors.greyDark : undefined,
+  color: disabled ? theme.designSystem.color.text.disabled : undefined,
   textDecoration: isHover ? 'underline' : undefined,
 }))
 
 const Description = styled(Typo.BodyAccentXs)<{ isHover?: boolean }>(
   ({ theme, disabled, isHover }) => ({
     marginTop: getSpacing(1),
-    color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
+    color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.subtle,
     textDecoration: isHover ? 'underline' : undefined,
   })
 )
 
 const RightText = styled(Typo.Body)(({ theme, disabled }) => ({
-  color: disabled ? theme.colors.greyDark : theme.colors.black,
+  color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,
 }))

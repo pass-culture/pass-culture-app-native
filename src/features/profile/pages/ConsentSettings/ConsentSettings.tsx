@@ -96,5 +96,5 @@ export const ConsentSettings = () => {
 }
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

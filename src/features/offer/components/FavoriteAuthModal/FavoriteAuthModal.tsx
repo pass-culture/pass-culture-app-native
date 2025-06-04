@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
@@ -38,14 +38,14 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris'}
-      Illustration={BicolorUserFavorite}
+      Illustration={UserFavorite}
       hideModal={closeModal}>
       <StyledBody>
         Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
       </StyledBody>
       <StyledButtonContainer>
         <InternalTouchableLink
-          as={ButtonWithLinearGradient}
+          as={ButtonPrimary}
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
@@ -64,7 +64,7 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
 }
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
+  linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
 const StyledButtonContainer = styled.View({
@@ -76,3 +76,8 @@ const StyledButtonContainer = styled.View({
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const UserFavorite = styled(BicolorUserFavorite).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  color2: theme.designSystem.color.icon.brandPrimary,
+}))``

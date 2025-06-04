@@ -180,4 +180,5 @@ const StyledAnimatedView = styled(Animated.View)({ overflow: 'hidden' })
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
+  color: theme.designSystem.color.icon.default,
 }))``

@@ -13,6 +13,7 @@ import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Age = 17 | 18
@@ -87,7 +88,10 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
                 <View>
                   <BodySecondary>{`à ${props.creditStep} ans`}</BodySecondary>
                   <Spacer.Column numberOfSpaces={1} />
-                  <TitleSecondary>{`Tu reçois ${depositsByAge.get(props.creditStep) ?? ''}`}</TitleSecondary>
+                  <StyledTitle3>
+                    Tu reçois{SPACE}
+                    <TitleSecondary>{depositsByAge.get(props.creditStep) ?? ''}</TitleSecondary>
+                  </StyledTitle3>
                   {props.children}
                 </View>
               </StyledAnimatedView>
@@ -105,11 +109,11 @@ const BodySecondary = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const GreyCakeOneCandle = styled(CakeOneCandle).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.subtle,
+  color: theme.designSystem.color.icon.default,
 }))``
 
 const GreyCakeTwoCandles = styled(CakeTwoCandles).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.subtle,
+  color: theme.designSystem.color.icon.default,
 }))``
 
 const Container = styled.View({
@@ -118,19 +122,22 @@ const Container = styled.View({
 })
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.subtle,
+  color: theme.designSystem.color.icon.default,
   size: theme.icons.sizes.smaller,
 }))({
   marginHorizontal: getSpacing(1.5),
 })
 
+const StyledTitle3 = styled(Typo.Title3)({
+  marginBottom: getSpacing(2),
+})
+
 const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
-  marginBottom: getSpacing(2),
 }))
 
 const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
-  borderColor: theme.designSystem.color.border.subtle,
+  borderColor: theme.designSystem.color.border.default,
   borderWidth: getSpacing(0.25),
   borderRadius: getSpacing(1),
   padding: getSpacing(4),

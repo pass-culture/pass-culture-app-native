@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
@@ -45,7 +45,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
-      Illustration={BicolorUserIdentification}
+      Illustration={UserIdentification}
       hideModal={closeModal}>
       <Typo.BodyAccent>Tu as 17 ou 18 ans&nbsp;?</Typo.BodyAccent>
       <Spacer.Column numberOfSpaces={2} />
@@ -55,7 +55,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
         <InternalTouchableLink
-          as={ButtonWithLinearGradient}
+          as={ButtonPrimary}
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
@@ -75,12 +75,18 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
 }
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
+  linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
 const StyledButtonContainer = styled.View({
   width: '100%',
 })
+
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const UserIdentification = styled(BicolorUserIdentification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  color2: theme.designSystem.color.icon.brandPrimary,
+}))``

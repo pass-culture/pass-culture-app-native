@@ -71,11 +71,11 @@ const Box = styled.View<IsCheckedProps & { size: number }>(({ isChecked, theme }
   borderRadius: theme.borderRadius.checkbox,
   border: theme.checkbox.border.size,
   borderColor: isChecked
-    ? theme.checkbox.border.color.selected
-    : theme.checkbox.border.color.default,
+    ? theme.designSystem.color.border.brandPrimary
+    : theme.designSystem.color.border.default,
   backgroundColor: isChecked
-    ? theme.checkbox.backgroundColor.selected
-    : theme.checkbox.backgroundColor.default,
+    ? theme.designSystem.color.background.brandPrimary
+    : theme.designSystem.color.background.default,
 }))
 
 const StyledBody = styled(Typo.Body)({

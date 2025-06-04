@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
@@ -38,7 +38,7 @@ export const NotConnectedFavorites = () => {
       <ButtonContainer gap={4}>
         <InternalTouchableLink
           key={1}
-          as={ButtonWithLinearGradient}
+          as={ButtonPrimary}
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
           onBeforeNavigate={onBeforeSignupNavigate}
@@ -79,7 +79,7 @@ const ButtonContainer = styled(ViewGap)(({ theme }) => ({
 }))
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
+  linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
 const TextContainer = styled(ViewGap)({

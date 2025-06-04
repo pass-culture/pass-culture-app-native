@@ -46,6 +46,6 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
 const DescriptionText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
   lineHeight: getSpacingString(3),
-  color: theme.colors.greyDark,
   marginTop: getSpacing(1),
+  color: theme.designSystem.color.text.subtle,
 }))

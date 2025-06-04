@@ -8,6 +8,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { useAnimationToDisplay } from 'libs/styled/useAnimationToDisplay'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
@@ -23,7 +24,13 @@ import { Typo, getSpacing } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
-  const { uniqueColors } = useTheme()
+  // TODO(PC-36293): use TutorialPassLogoDark and TutorialPassLogoLight
+  const animation = useAnimationToDisplay({
+    light: TutorialPassLogo,
+    dark: TutorialPassLogo,
+  })
+
+  const { designSystem } = useTheme()
   const { user, refetchUser } = useAuthContext()
 
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
@@ -60,7 +67,7 @@ export function BeneficiaryAccountCreated() {
 
   return (
     <GenericInfoPage
-      animation={TutorialPassLogo}
+      animation={animation}
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{
@@ -73,7 +80,7 @@ export function BeneficiaryAccountCreated() {
       <ProgressBarContainer>
         <AnimatedProgressBar
           progress={1}
-          color={uniqueColors.brand}
+          color={designSystem.color.text.brandPrimary}
           icon={categoriesIcons.Show}
           isAnimated
         />
@@ -95,5 +102,5 @@ const ProgressBarContainer = styled.View({
 
 const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
   textAlign: 'center',
-  color: theme.uniqueColors.brand,
+  color: theme.designSystem.color.text.brandPrimary,
 }))

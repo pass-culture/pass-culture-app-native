@@ -8,7 +8,7 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
+import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -35,7 +35,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
   return (
     <ViewGap gap={4}>
       <IllustrationContainer>
-        <BicolorEmailSent />
+        <StyledEmailSent />
       </IllustrationContainer>
       <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
       <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
@@ -67,3 +67,8 @@ const IllustrationContainer = styled.View(() => ({
 const StyledView = styled.View<{ marginBottom?: number }>(({ marginBottom }) => ({
   marginBottom,
 }))
+
+const StyledEmailSent = styled(EmailSent).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  size: theme.illustrations.sizes.fullPage,
+}))``

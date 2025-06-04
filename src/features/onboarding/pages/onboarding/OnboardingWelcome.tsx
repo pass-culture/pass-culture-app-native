@@ -9,8 +9,9 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/onboarding/components/welcomeBackground'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Page } from 'ui/pages/Page'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -28,7 +29,7 @@ const onLoginPress = () => {
 
 export const OnboardingWelcome: FunctionComponent = () => {
   return (
-    <Container>
+    <Page>
       <ImageBackground source={WELCOME_BACKGROUND_SOURCE} />
       <Spacer.Flex />
       <Gradient />
@@ -41,7 +42,7 @@ export const OnboardingWelcome: FunctionComponent = () => {
         </StyledBody>
         <Spacer.Column numberOfSpaces={6} />
         <InternalTouchableLink
-          as={ButtonWithLinearGradient}
+          as={ButtonPrimary}
           wording="C’est parti&nbsp;!"
           icon={PlainArrowNext}
           iconAfterWording
@@ -56,13 +57,9 @@ export const OnboardingWelcome: FunctionComponent = () => {
         />
         <Spacer.BottomScreen />
       </Content>
-    </Container>
+    </Page>
   )
 }
-
-const Container = styled.View({
-  flex: 1,
-})
 
 const Content = styled.View(({ theme }) => ({
   width: '100%',
@@ -101,5 +98,5 @@ const StyledBody = styled(Typo.Body)({
 })
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.designSystem.color.text.brandSecondary,
+  linkColor: theme.designSystem.color.text.brandPrimary,
 }))``

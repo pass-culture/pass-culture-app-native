@@ -21,8 +21,8 @@ const DummyComponent: React.FC = () => {
         Icon={Logo}
         testID="icon"
         size={1}
-        initialColor={theme.colors.primary}
-        finalColor={theme.colors.secondary}
+        initialColor={theme.designSystem.color.icon.brandPrimary}
+        finalColor={theme.designSystem.color.icon.brandPrimary}
       />
     </TouchableOpacity>
   )

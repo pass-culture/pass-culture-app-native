@@ -31,5 +31,5 @@ export function CreditInfo({ totalCredit }: PropsWithChildren<CreditInfoProps>) 
 }
 
 const Title = styled(Typo.Title1)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))

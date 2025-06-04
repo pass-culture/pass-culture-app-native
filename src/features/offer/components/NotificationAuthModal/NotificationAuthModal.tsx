@@ -67,7 +67,7 @@ export const NotificationAuthModal: FunctionComponent<Props> = ({
 }
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
+  linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
 const StyledButtonContainer = styled.View({

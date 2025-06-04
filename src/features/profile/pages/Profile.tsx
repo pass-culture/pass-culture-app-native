@@ -41,8 +41,7 @@ import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
 import { ArtMaterial } from 'ui/svg/icons/bicolor/ArtMaterial'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
-import { BicolorTrophy } from 'ui/svg/icons/BicolorTrophy'
+import { Profile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -51,6 +50,7 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
+import { Trophy } from 'ui/svg/icons/Trophy'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
@@ -173,7 +173,7 @@ const OnlineProfile: React.FC = () => {
                         title="Informations personnelles"
                         type="navigable"
                         navigateTo={getProfileNavConfig('PersonalData')}
-                        icon={BicolorProfile}
+                        icon={ProfileIcon}
                       />
                     </Li>
                   ) : null}
@@ -240,7 +240,7 @@ const OnlineProfile: React.FC = () => {
                         title="Mes succès"
                         type="navigable"
                         navigateTo={{ screen: 'Achievements', params: { from: 'profile' } }}
-                        icon={BicolorTrophy}
+                        icon={Trophy}
                       />
                     </Li>
                   ) : null}
@@ -384,11 +384,11 @@ const ShareAppContainer = styled(ViewGap)(({ theme }) => ({
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({

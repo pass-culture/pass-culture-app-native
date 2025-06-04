@@ -1,6 +1,5 @@
 import React from 'react'
 import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
-import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -15,9 +14,6 @@ const BicolorUserIdentificationSvg: React.FunctionComponent<AccessibleIcon> = ({
   testID,
 }) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
-  const {
-    colors: { primary, secondary },
-  } = useTheme()
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
@@ -35,8 +31,8 @@ const BicolorUserIdentificationSvg: React.FunctionComponent<AccessibleIcon> = ({
           y1="0%"
           y2="100%"
           gradientUnits="userSpaceOnUse">
-          <Stop offset="0%" stopColor={color ?? primary} />
-          <Stop offset="100%" stopColor={color2 ?? secondary} />
+          <Stop offset="0%" stopColor={color} />
+          <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
       </Defs>
       <Path
@@ -50,7 +46,9 @@ const BicolorUserIdentificationSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const BicolorUserIdentification = styled(BicolorUserIdentificationSvg).attrs(
-  ({ size, theme }) => ({
+  ({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? color ?? theme.colors.secondary,
     size: size ?? theme.illustrations.sizes.medium,
   })
 )``

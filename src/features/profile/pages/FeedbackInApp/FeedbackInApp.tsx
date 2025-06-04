@@ -103,7 +103,7 @@ export const FeedbackInApp = () => {
             onPress={handleSubmit(onSubmit)}
             disabled={!isValid}
           />
-          <StyledSeparatorWithText label="ou" />
+          <SeparatorWithText label="ou" />
           <StyledBody>Si tu as besoin d’aide, notre support est toujours accessible.</StyledBody>
           <ExternalTouchableLink
             as={ButtonTertiaryBlack}
@@ -125,7 +125,3 @@ const StyledBody = styled(Typo.Body)({
 const InputContainer = styled.View({
   marginVertical: getSpacing(1),
 })
-
-const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
-  backgroundColor: theme.colors.greyMedium,
-}))``

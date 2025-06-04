@@ -1,4 +1,3 @@
-import colorAlpha from 'color-alpha'
 import { DefaultTheme } from 'styled-components/native'
 
 import { CreditStatus } from 'features/onboarding/enums'
@@ -6,11 +5,10 @@ import { CreditStatus } from 'features/onboarding/enums'
 export const getBackgroundColor = (theme: DefaultTheme, status: CreditStatus) => {
   switch (status) {
     case CreditStatus.GONE:
-      return colorAlpha(theme.colors.greyLight, 0.5)
     case CreditStatus.COMING:
-      return theme.colors.greyLight
+      return theme.designSystem.color.background.subtle
     case CreditStatus.ONGOING:
     default:
-      return theme.colors.white
+      return theme.designSystem.color.background.default
   }
 }
