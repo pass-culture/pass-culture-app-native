@@ -6,6 +6,7 @@ const softRules = {
     'react/no-unstable-nested-components': 'warn', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/no-spacer': 'warn',
     'local-rules/no-ts-expect-error': 'warn',
+    'local-rules/no-theme-colors': 'warn',
   },
   archi: {
     'local-rules/no-queries-outside-query-files': 'warn',
