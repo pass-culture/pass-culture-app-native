@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/apostrophe-in-text */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -55,23 +56,22 @@ async function processFile(file) {
 
   const rawContent = fs.readFileSync(path.join(INPUT_DIR, file), 'utf8')
 
-  // ✨ Appel LLM
+  // call Gemini
   const llmOutput = await callLLM(rawContent + instructionsUnitTests)
 
-  // 🧾 Génère le fichier final
   const frontmatter = `---\ntitle: ${baseName}\nslug: ${slug}\n---\n\n`
   const finalContent = frontmatter + llmOutput
 
   fs.mkdirSync(destDir, { recursive: true })
   fs.writeFileSync(destPath, finalContent)
 
+  // eslint-disable-next-line no-console
   console.log(`✅ Documentation écrite\u00a0: ${destPath}`)
 }
 
 async function run() {
   const files = fs.readdirSync(INPUT_DIR).filter((f) => f.endsWith('.md'))
-  const firstFiles = files.slice(100, 110)
-  // await processFile(firstFile)
+  const firstFiles = files.slice(210, 220)
   for (const file of firstFiles) {
     try {
       await processFile(file)

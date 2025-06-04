@@ -89,10 +89,10 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-           sidebarId: 'tutorialSidebar',
+            sidebarId: 'tutorialSidebar',
             // sidebarId: 'introductionSidebar',
             position: 'left',
-            label: 'Introduction',
+            label: 'Documentation',
           },
           // {
           //   type: 'docSidebar',

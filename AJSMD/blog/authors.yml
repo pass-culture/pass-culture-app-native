@@ -1,8 +1,8 @@
-yangshun:
-  name: Yangshun Tay
-  title: Ex-Meta Staff Engineer, Co-founder GreatFrontEnd
-  url: https://linkedin.com/in/yangshun
-  image_url: https://github.com/yangshun.png
+nicolas:
+  name: Nicolas Turchetti
+  title: Lead QA
+  url: https://www.psg.fr/
+  image_url: https://www.leparisien.fr/resizer/IrHPdYpHdov_nhHvSHeoD9pBvTY=/1400x0/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/DWDHTKXWIBGFHAN37RQ7BE2A7M.jpg
   page: true
   socials:
     x: yangshunz
@@ -10,14 +10,12 @@ yangshun:
     github: yangshun
     newsletter: https://www.greatfrontend.com
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
-  page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
+tanguy:
+  name: Tanguy Prache
+  title: Lead dev
+  url: https://www.psg.fr/
+  image_url: https://www.foot-sur7.fr/wp-content/uploads/2025/02/Desire-Doue-e1744611885410.jpeg
+  page: true
   socials:
     x: sebastienlorber
     linkedin: sebastienlorber

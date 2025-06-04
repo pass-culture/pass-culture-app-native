@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/apostrophe-in-text */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -63,7 +64,7 @@ Le contenu complet d'un fichier de test Maestro (format '.yml').
 **Voici le contenu du fichier de test Maestro\u00a0:**
  `
 
-const INPUT_DIR = '.maestro/tests/subFolder/home'
+const INPUT_DIR = '.maestro/tests/subFolder'
 const DOCUSAURUS_DIR = 'AJSMD/docs/tests-e2e'
 
 function formatName(fileName) {
@@ -72,6 +73,7 @@ function formatName(fileName) {
     .replace(/\.native\.test\.tsx\.md$/, '')
     .replace(/\.native\.test\.ts\.md$/, '')
     .replace(/\.test\.ts\.md$/, '')
+    .replace('.yml', '')
     .split('_')
     .pop()
 }
@@ -83,17 +85,25 @@ async function callLLM(input) {
   })
   return response.text
 }
+async function processFolder(folder) {
+  const files = fs.readdirSync(`${INPUT_DIR}/${folder}`)
 
-async function processFile(file) {
-  const parts = file.replace('.md', '').split('_')
-  const [namespace, ...subdirs] = parts
+  for (const file of files) {
+    try {
+      await processFile(file, folder)
+    } catch (err) {
+      console.error(`❌ Erreur sur ${folder}`, err)
+    }
+  }
+}
 
+async function processFile(file, folder) {
   const baseName = formatName(file)
-  const destDir = path.join(DOCUSAURUS_DIR, ...subdirs.slice(0, -1))
+  const destDir = path.join(DOCUSAURUS_DIR, folder)
   const destPath = path.join(destDir, `${baseName}.md`)
-  const slug = `/${namespace}/${subdirs.join('/').toLowerCase()}/${baseName.toLowerCase()}`
+  const slug = `/${baseName.toLowerCase()}`
 
-  const rawContent = fs.readFileSync(path.join(INPUT_DIR, file), 'utf8')
+  const rawContent = fs.readFileSync(path.join(`${INPUT_DIR}/${folder}`, file), 'utf8')
 
   // ✨ Appel LLM
   const llmOutput = await callLLM(rawContent + instructionsE2eTests)
@@ -105,19 +115,17 @@ async function processFile(file) {
   fs.mkdirSync(destDir, { recursive: true })
   fs.writeFileSync(destPath, finalContent)
 
+  // eslint-disable-next-line no-console
   console.log(`✅ Documentation écrite\u00a0: ${destPath}`)
 }
 
 async function run() {
-  const files = fs.readdirSync(INPUT_DIR).filter((f) => f.endsWith('.yml'))
-  // await processFile(firstFile)
-  for (const file of files) {
-    try {
-      await processFile(file)
-    } catch (err) {
-      console.error(`❌ Erreur sur ${file}`, err)
-    }
-  }
+  const folders = fs.readdirSync(INPUT_DIR).filter((f) => f !== 'analytics')
+  processFolder(folders[1])
+
+  // for (const folder of folders) {
+  //   processFolder(folder)
+  // }
 }
 
 run()

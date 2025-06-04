@@ -1,12 +1,12 @@
 ---
 slug: first-blog-post
-title: First Blog Post
-authors: [slorber, yangshun]
-tags: [hola, docusaurus]
+title: Champions
+authors: [nicolas, tanguy]
+tags: [UEFA, hackaton]
 ---
 
-Lorem ipsum dolor sit amet...
+A l'image des parisiens ce weekend l'équipe AJSMD remporte l'édition 2025 du hackaton passCulture
 
 <!-- truncate -->
 
-...consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+... il n'y a rien de plus à voir ici
