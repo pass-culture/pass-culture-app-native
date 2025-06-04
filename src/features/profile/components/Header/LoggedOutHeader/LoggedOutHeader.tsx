@@ -58,6 +58,7 @@ export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
 
 const Container = styled.View(({ theme }) => ({
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
+  alignItems: theme.isDesktopViewport ? undefined : 'center',
 }))
 
 const VerticalSeparator = styled.View(({ theme }) => ({

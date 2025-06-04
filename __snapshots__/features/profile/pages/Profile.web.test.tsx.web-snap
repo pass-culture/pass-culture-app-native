@@ -1399,7 +1399,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-view-175oi2r r-height-z80fyv"
               />
               <div
-                class="css-view-175oi2r r-flexDirection-eqz5dr"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr"
               >
                 <button
                   aria-label="Créer un compte"
