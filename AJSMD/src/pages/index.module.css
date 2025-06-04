@@ -20,4 +20,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;                 /* Ajoute un espace de 20px entre les boutons */
+  margin-top: 30px;   
 }
