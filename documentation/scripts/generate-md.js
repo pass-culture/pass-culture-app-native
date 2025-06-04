@@ -71,7 +71,7 @@ async function processFile(file) {
 
 async function run() {
   const files = fs.readdirSync(INPUT_DIR).filter((f) => f.endsWith('.md'))
-  const firstFiles = files.slice(210, 220)
+  const firstFiles = files.slice(420, 430)
   for (const file of firstFiles) {
     try {
       await processFile(file)

@@ -121,7 +121,7 @@ async function processFile(file, folder) {
 
 async function run() {
   const folders = fs.readdirSync(INPUT_DIR).filter((f) => f !== 'analytics')
-  processFolder(folders[1])
+  processFolder(folders[9])
 
   // for (const folder of folders) {
   //   processFolder(folder)
