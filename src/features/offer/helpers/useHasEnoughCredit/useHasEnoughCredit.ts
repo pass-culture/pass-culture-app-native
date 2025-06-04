@@ -9,11 +9,11 @@ export const hasEnoughCredit = (
   price: number | FavoriteOfferResponse['price'] | FavoriteOfferResponse['startPrice'],
   domainsCredit: UserProfileResponse['domainsCredit']
 ): boolean => {
-  if (!domainsCredit) {
-    return false
-  }
   if (!price) {
     return true
+  }
+  if (!domainsCredit) {
+    return false
   }
   return domains.every((domain) => {
     const credit = domainsCredit[domain]
