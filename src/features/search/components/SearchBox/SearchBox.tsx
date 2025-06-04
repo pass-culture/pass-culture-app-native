@@ -23,7 +23,6 @@ import { useVertexAIMutation } from 'features/search/components/SearchBox/useVer
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
@@ -36,7 +35,8 @@ import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { Text } from 'react-native'
+import { DisabilitiesProperties } from 'features/accessibility/types'
+import { Micro2 } from 'ui/svg/icons/Micro'
 
 const SEARCH_DEBOUNCE_MS = 500
 
@@ -63,7 +63,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   placeholder,
   ...props
 }) => {
-  const { transcript } = useSpeechRecognition()
+  const { transcript, listening } = useSpeechRecognition()
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
@@ -125,6 +125,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   )
   const pushWithVoiceSearch = (
     partialSearchState: Partial<SearchState>,
+    disabilitiesProperties: DisabilitiesProperties = defaultDisabilitiesProperties,
     options: { reset?: boolean } = {},
     hasSearchedForBookKeyword?: boolean,
     hasSearchedForCinemaKeyword?: boolean
@@ -145,7 +146,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     }
 
     if (newSearchState.query !== '') {
-      navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+      navigateToSearchResults(newSearchState, disabilitiesProperties)
     }
   }
   const hasEditableSearchInput =
@@ -348,21 +349,24 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         query: newVariable2.query || '',
         locationFilter: searchState.locationFilter,
         venue: searchState.venue,
-        offerCategories: [newVariable2.category],
+        offerCategories: newVariable2.category ? [newVariable2.category] : [],
         offerNativeCategories: searchState.offerNativeCategories,
         gtls: searchState.gtls,
         priceRange: newVariable2.price ? [0, newVariable2.price] : undefined,
         searchId,
         isAutocomplete: undefined,
         isFromHistory: undefined,
-        date: newVariable2.date
-          ? {
-              option: DATE_FILTER_OPTIONS.USER_PICK,
-              selectedDate: newVariable2.date,
-            }
-          : null,
+        // date: newVariable2.date
+        //   ? {
+        //       option: DATE_FILTER_OPTIONS.USER_PICK,
+        //       selectedDate: newVariable2.date,
+        //     }
+        //   : null,
+        beginningDatetime: newVariable2.beginningDatetime,
+        endingDatetime: newVariable2.endingDatetime,
       }
-      pushWithVoiceSearch(partialSearchState, {})
+      pushWithVoiceSearch(partialSearchState, newVariable2.disabilitiesProperties, {})
+
       hideSuggestions()
     },
   })
@@ -391,12 +395,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           <FlexView>
             <HiddenSuggestionsButton />
             <SearchMainInput
+              isFocus={listening}
               ref={inputRef}
               searchInputID={searchInputID}
               query={displayedQuery}
               setQuery={setQuery}
               isFocusable={isFocusOnSuggestions}
-              onSubmitQuery={onSubmitQuery}
+              // onSubmitQuery={onSubmitQuery}
+              onSubmitQuery={onSubmitVoiceSearchQuery}
               resetQuery={resetQuery}
               onFocus={onFocus}
               showLocationButton={showLocationButton}
@@ -405,7 +411,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               placeholder={placeholder}
             />
             <Dictaphone />
-            <Toto wording="Rechercher" onPress={onSubmitVoiceSearchQuery} />
+            {/* <Toto wording="Rechercher" onPress={onSubmitVoiceSearchQuery} /> */}
           </FlexView>
         </SearchInputA11yContainer>
       </SearchInputContainer>
@@ -449,7 +455,7 @@ const FlexView = styled.View({
 })
 
 const Toto = styledButton(ButtonPrimary)({
-  width: 150
+  width: 150,
 })
 
 const Dictaphone = () => {
@@ -460,26 +466,29 @@ const Dictaphone = () => {
   }
 
   return listening ? (
-    <Tutu onPress={SpeechRecognition.stopListening}>
+    <Tutu onPress={SpeechRecognition.stopListening} listening>
       {/* <Tutu onPress={resetTranscript}> */}
       <StyledLottieView source={RecordingAnimation} autoPlay loop />
     </Tutu>
   ) : (
     <Tutu onPress={SpeechRecognition.startListening}>
-      <Text>🎤</Text>
+      <Micro2 />
     </Tutu>
   )
 }
 
-const Tutu = styled.TouchableHighlight(({ theme }) => ({
-  borderColor: theme.designSystem.color.border.brandPrimary,
-  borderWidth: 1,
+const Tutu = styled.TouchableHighlight<{ listening: boolean }>(({ theme, listening }) => ({
+  borderColor: listening
+    ? theme.designSystem.color.border.brandPrimary
+    : theme.designSystem.color.border.default,
+  borderWidth: listening ? 2 : 1,
   borderStyle: 'solid',
   borderRadius: '50%',
   width: 48,
   height: 48,
   alignItems: 'center',
   justifyContent: 'center',
+  marginLeft: '8px',
 }))
 
 const StyledLottieView = styled(LottieView)({

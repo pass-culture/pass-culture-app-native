@@ -49,11 +49,13 @@ Je voudrais analyser une phrase énoncée par un jeune âgé de 15 à 21 ans for
 Extrais-moi de la demande\u00a0:
 - la category d'offre culturelle
 - le price
-- la date au format YYYY-MM-DD
+- la beginningDatetime au format YYYY-MM-DD,
+- la endingDatetime au format YYYY-MM-DD,
+- le paramètre disabilitiesProperties qui indique les conditions d'accessibilité
 - et toute information que tu juges essentielle dans un paramètre query
 Si c'est un titre d'une oeuvre, ne mets que le titre dans la query.
 
-Donne-moi uniquement un dictionnaire JSON sans markdown avec ces trois paramètres.
+Donne-moi uniquement un dictionnaire JSON sans markdown avec ces six paramètres.
 Si tu ne trouves pas un de ces paramètres, indique null.
 
 Voici la phrase du jeune\u00a0: ${rawQuery}.
@@ -70,9 +72,18 @@ Le paramètre category doit appartenir à un élément de la liste suivante\u00a
 - MEDIA_PRESSE
 - MUSEES_VISITES_CULTURELLES
 - MUSIQUE
-- NONE
 - RENCONTRES_CONFERENCES
 - SPECTACLES
+
+Le paramètre disabilitiesProperties doit être un dictionnaire JSON de ce type là :
+{
+  "isVisualDisabilityCompliant": boolean | undefined,
+  "isMentalDisabilityCompliant": boolean | undefined,
+  "isMotorDisabilityCompliant": boolean | undefined,
+  "isAudioDisabilityCompliant": boolean | undefined,
+}
+
+
 
 Aujourd'hui nous sommes le ${new Date().toDateString()}
 `
