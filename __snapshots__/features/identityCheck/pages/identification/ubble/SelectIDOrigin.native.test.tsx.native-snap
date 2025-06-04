@@ -530,7 +530,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#90949D",
+                        "backgroundColor": "#cbcdd2",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -559,7 +559,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#90949D",
+                        "backgroundColor": "#cbcdd2",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,

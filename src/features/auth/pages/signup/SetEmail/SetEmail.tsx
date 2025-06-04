@@ -38,7 +38,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: previousSignupData.email,
@@ -104,10 +104,9 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         isLoading={false}
         disabled={watch('email').trim() === ''}
       />
-
       {enableGoogleSSO ? (
         <SSOViewGap gap={4}>
-          <StyledSeparatorWithText label="ou" />
+          <SeparatorWithText label="ou" />
           <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
         </SSOViewGap>
       ) : (
@@ -117,17 +116,13 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         <AuthenticationButton
           type="login"
           onAdditionalPress={onLogAnalytics}
-          linkColor={theme.colors.secondary}
+          linkColor={designSystem.color.text.brandSecondary}
           params={{ from: StepperOrigin.SIGNUP, offerId: params?.offerId }}
         />
       </AuthenticationButtonContainer>
     </Form.MaxWidth>
   )
 }
-
-const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
-  backgroundColor: theme.colors.greyMedium,
-}))``
 
 const SSOViewGap = styled(ViewGap)({
   marginTop: getSpacing(4),

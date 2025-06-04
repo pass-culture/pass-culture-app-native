@@ -1,5 +1,3 @@
-import colorAlpha from 'color-alpha'
-
 import { CreditStatus } from 'features/onboarding/enums'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
 import { computedTheme } from 'tests/computedTheme'
@@ -7,9 +5,9 @@ import { computedTheme } from 'tests/computedTheme'
 describe('getBackgroundColor', () => {
   it.each`
     status                  | expectedBackgroundColor
-    ${CreditStatus.GONE}    | ${colorAlpha(computedTheme.colors.greyLight, 0.5)}
-    ${CreditStatus.COMING}  | ${computedTheme.colors.greyLight}
-    ${CreditStatus.ONGOING} | ${computedTheme.colors.white}
+    ${CreditStatus.GONE}    | ${computedTheme.designSystem.color.background.subtle}
+    ${CreditStatus.COMING}  | ${computedTheme.designSystem.color.background.subtle}
+    ${CreditStatus.ONGOING} | ${computedTheme.designSystem.color.background.default}
   `(
     'should return $expectedBackgroundColor for $status status',
     ({ status, expectedBackgroundColor }) => {

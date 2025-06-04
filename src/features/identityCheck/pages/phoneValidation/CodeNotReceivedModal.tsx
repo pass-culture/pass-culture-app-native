@@ -110,10 +110,12 @@ const WarningContainer = styled.View({
 
 const WarningRemainingAttempts = styled(Typo.BodyAccentXs)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({
-    color: isLastAttempt ? theme.colors.error : theme.colors.black,
+    color: isLastAttempt
+      ? theme.designSystem.color.text.error
+      : theme.designSystem.color.text.default,
   })
 )
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

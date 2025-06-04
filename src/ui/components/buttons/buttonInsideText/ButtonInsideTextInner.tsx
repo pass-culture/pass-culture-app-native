@@ -27,7 +27,7 @@ export function ButtonInsideTextInner({
     styled(Icon).attrs(({ theme }) => ({
       size:
         typography === 'BodyAccentXs' ? theme.icons.sizes.extraSmall : theme.icons.sizes.smaller,
-      color: color ?? theme.colors.primary,
+      color: color ?? theme.designSystem.color.icon.brandPrimary,
     }))``
 
   const hasIcon = !!Icon
@@ -65,5 +65,5 @@ const StyledText = styled.Text<{
   ...(typography === 'BodyAccentXs'
     ? theme.designSystem.typography.bodyAccentXs
     : theme.designSystem.typography.button),
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.designSystem.color.icon.brandPrimary,
 }))

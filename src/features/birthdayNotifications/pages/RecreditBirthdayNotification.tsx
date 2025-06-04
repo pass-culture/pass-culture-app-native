@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { storage } from 'libs/storage'
+import { useAnimationToDisplay } from 'libs/styled/useAnimationToDisplay'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -19,8 +20,14 @@ import { getSpacing, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const RecreditBirthdayNotification = () => {
+  // TODO(PC-36293): use TutorialPassLogoDark and TutorialPassLogoLight
+  const animation = useAnimationToDisplay({
+    light: TutorialPassLogo,
+    dark: TutorialPassLogo,
+  })
+
   const { user } = useAuthContext()
-  const { uniqueColors } = useTheme()
+  const { designSystem } = useTheme()
 
   const age = getAge(user?.birthDate)
 
@@ -55,7 +62,7 @@ export const RecreditBirthdayNotification = () => {
 
   return (
     <GenericInfoPage
-      animation={TutorialPassLogo}
+      animation={animation}
       title="Bonne nouvelle&nbsp;!"
       subtitle={recreditMessage}
       buttonPrimary={{
@@ -67,7 +74,7 @@ export const RecreditBirthdayNotification = () => {
         <ProgressBarContainer>
           <AnimatedProgressBar
             progress={1}
-            color={uniqueColors.brand}
+            color={designSystem.color.background.brandPrimary}
             icon={categoriesIcons.Show}
             isAnimated
           />
@@ -92,5 +99,5 @@ const ProgressBarContainer = styled.View({
 
 const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
   textAlign: 'center',
-  color: theme.uniqueColors.brand,
+  color: theme.designSystem.color.text.brandPrimary,
 }))

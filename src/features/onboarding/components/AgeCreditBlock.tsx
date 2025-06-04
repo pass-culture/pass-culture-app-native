@@ -32,9 +32,9 @@ export const AgeCreditBlock: FunctionComponent<Props> = ({
 }
 
 const BodySecondary = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

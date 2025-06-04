@@ -17,15 +17,15 @@ export default meta
 const variantConfig: Variants<typeof AnimatedProgressBar> = [
   {
     label: 'AnimatedProgressBar default',
-    props: { progress: 0.5, color: theme.colors.primary, icon: Email },
+    props: { progress: 0.5, color: theme.designSystem.color.background.brandPrimary, icon: Email },
   },
   {
     label: 'AnimatedProgressBar empty',
-    props: { progress: 0, color: theme.colors.greenLight, icon: Email },
+    props: { progress: 0, color: theme.designSystem.color.background.success, icon: Email },
   },
   {
     label: 'AnimatedProgressBar full',
-    props: { progress: 1, color: theme.colors.error, icon: EditPen },
+    props: { progress: 1, color: theme.designSystem.color.background.error, icon: EditPen },
   },
 ]
 

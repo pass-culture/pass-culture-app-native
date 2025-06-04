@@ -40,7 +40,7 @@ export const ProfileTutorialAgeInformationCredit: FunctionComponent = () => {
           {headerTitle}
         </Typo.Title3>
         <Spacer.Column numberOfSpaces={6} />
-        <Typo.BodyS numberOfLines={3} {...getHeadingAttrs(1)}>
+        <Typo.BodyS numberOfLines={3} {...getHeadingAttrs(2)}>
           De 17 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des
           activités culturelles.
         </Typo.BodyS>
@@ -138,14 +138,17 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
 
 const SmallLock = styled(BicolorLock).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.subtle,
+  color: theme.designSystem.color.icon.default,
+  color2: theme.designSystem.color.icon.default,
 }))``
 
 const SmallClock = styled(BicolorClock).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.subtle,
+  color: theme.designSystem.color.icon.default,
+  color2: theme.designSystem.color.icon.default,
 }))``
 
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.subtle,
+  color: theme.designSystem.color.icon.default,
+  color2: theme.designSystem.color.icon.default,
 }))``

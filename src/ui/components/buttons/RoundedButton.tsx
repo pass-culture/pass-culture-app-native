@@ -3,6 +3,7 @@ import { AccessibilityRole, Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
+import { ColorsType } from 'theme/types'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { IconNames } from 'ui/components/icons/iconFactory'
@@ -16,8 +17,8 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 interface Props {
   iconName?: IconNames
   Icon?: React.FC<AccessibleIcon>
-  initialColor?: ColorsEnum
-  finalColor?: ColorsEnum
+  initialColor?: ColorsType
+  finalColor?: ColorsType
   onPress: () => void
   scaleAnimatedValue?: Animated.Value
   animationState?: {
@@ -34,7 +35,7 @@ interface Props {
 export const RoundedButton = (props: Props) => {
   const iconFactory = useIconFactory()
   const Icon = props.Icon ?? iconFactory.getIcon(props.iconName)
-  const { colors, icons } = useTheme()
+  const { icons, designSystem } = useTheme()
 
   const accessibilityProps = useMemo(() => {
     return props.accessibilityRole
@@ -61,10 +62,10 @@ export const RoundedButton = (props: Props) => {
           }}>
           <AnimatedIcon
             Icon={Icon}
-            initialColor={props.initialColor || colors.black}
+            initialColor={props.initialColor || designSystem.color.icon.default}
             testID={props.iconName ? `animated-icon-${props.iconName}` : undefined}
             transition={props.animationState.transition}
-            finalColor={props.finalColor || colors.black}
+            finalColor={props.finalColor || designSystem.color.icon.default}
             size={icons.sizes.small}
           />
         </IconContainer>
@@ -76,7 +77,7 @@ export const RoundedButton = (props: Props) => {
           <Icon
             size={icons.sizes.small}
             testID={props.iconName ? `icon-${props.iconName}` : undefined}
-            color={props.finalColor || colors.black}
+            color={props.finalColor || designSystem.color.icon.default}
           />
         </IconContainer>
       )}
@@ -86,7 +87,7 @@ export const RoundedButton = (props: Props) => {
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
-  ...customFocusOutline({ color: theme.colors.black }),
+  ...customFocusOutline({ color: theme.designSystem.color.text.default }),
 }))
 
 const IconContainer = styled(Animated.View)(({ theme }) => ({
@@ -94,9 +95,9 @@ const IconContainer = styled(Animated.View)(({ theme }) => ({
   height: theme.buttons.roundedButton.size,
   aspectRatio: '1',
   borderRadius: theme.buttons.roundedButton.size,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   border: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  borderColor: theme.colors.greyLight,
+  borderColor: theme.designSystem.color.border.default,
 }))

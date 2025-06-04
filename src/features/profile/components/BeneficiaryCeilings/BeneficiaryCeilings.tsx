@@ -44,5 +44,5 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
 }
 
 const BodySecondary = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))

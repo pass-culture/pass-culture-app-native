@@ -2,15 +2,14 @@ import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'rea
 import styled from 'styled-components/native'
 
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
+import { ColorsType } from 'theme/types'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { UniqueColors, ColorsEnum } from 'ui/theme/colors'
 
 interface ProgressBarProps {
   progress: number
-  color: ColorsEnum | UniqueColors
+  color: ColorsType
   icon: FunctionComponent<AccessibleIcon>
   isAnimated?: boolean
   children?: never
@@ -26,7 +25,7 @@ const AnimatedProgressBarComponent: React.FC<ProgressBarProps> = ({
   const [barWidth, setBarWidth] = useState(0)
 
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    color: theme.colors.white,
+    color: theme.designSystem.color.icon.inverted,
     size: theme.icons.sizes.smaller,
   }))``
 
@@ -104,7 +103,7 @@ const ProgressBarContainer = styled.View(({ theme }) => ({
   overflow: 'hidden',
   flex: 1,
   borderWidth: 2,
-  borderColor: theme.colors.greyMedium,
+  borderColor: theme.designSystem.color.border.subtle,
   borderRadius: 20,
   height: 20,
   zIndex: theme.zIndex.progressbar,

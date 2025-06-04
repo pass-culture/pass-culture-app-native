@@ -2716,7 +2716,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -2848,7 +2848,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -2980,7 +2980,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {

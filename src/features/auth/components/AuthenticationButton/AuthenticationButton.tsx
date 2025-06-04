@@ -2,6 +2,7 @@ import React, { FC, FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { ColorsType } from 'theme/types'
 import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
 import { ButtonInsideTextInner } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextInner'
 import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
@@ -10,8 +11,6 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Profile } from 'ui/svg/icons/Profile'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type LoginProps = {
   type: 'login'
@@ -24,7 +23,7 @@ type SignupProps = {
 }
 
 type Props = {
-  linkColor?: ColorsEnum
+  linkColor?: ColorsType
   onAdditionalPress?: () => void
   children?: never
 } & (LoginProps | SignupProps)

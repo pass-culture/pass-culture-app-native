@@ -9,7 +9,10 @@ const blurHeaderWebInterpolation = () => ({
 
 const iconBackgroundInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: [theme.colors.white, colorAlpha(theme.colors.white, 0)],
+  outputRange: [
+    theme.designSystem.color.icon.inverted,
+    colorAlpha(theme.designSystem.color.icon.inverted, 0),
+  ],
 })
 
 const strokeBorderInterpolation = () => ({
@@ -19,18 +22,27 @@ const strokeBorderInterpolation = () => ({
 
 const iconBorderInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: [theme.colors.greyLight, colorAlpha(theme.colors.greyLight, 0)],
+  outputRange: [
+    theme.designSystem.color.border.inverted,
+    colorAlpha(theme.designSystem.color.border.inverted, 0),
+  ],
   easing: Easing.bezier(0, 1, 0, 1),
 })
 
 const headerBackgroundInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: [colorAlpha(theme.colors.white, 0), colorAlpha(theme.colors.white, 0.8)],
+  outputRange: [
+    colorAlpha(theme.designSystem.color.icon.inverted, 0),
+    colorAlpha(theme.designSystem.color.icon.inverted, 0.8),
+  ],
 })
 
 const headerBackgroundAndroidInterpolation = (theme: DefaultTheme) => ({
   inputRange: [0, 1],
-  outputRange: [colorAlpha(theme.colors.white, 0), theme.colors.white],
+  outputRange: [
+    colorAlpha(theme.designSystem.color.icon.inverted, 0),
+    theme.designSystem.color.icon.inverted,
+  ],
 })
 
 export const getAnimationState = (

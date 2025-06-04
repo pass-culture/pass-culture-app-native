@@ -93,7 +93,7 @@ const ChoiceContainer = styled.View({
 })
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   flexShrink: 1,
 }))
 
@@ -104,5 +104,5 @@ const AcceptAllContainer = styled(ViewGap)({
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.designSystem.typography.bodyAccentXs,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

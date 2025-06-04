@@ -1143,7 +1143,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "transparent",
+                      "backgroundColor": "#ffffff",
                       "width": "auto",
                     },
                   ],
@@ -1200,7 +1200,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,

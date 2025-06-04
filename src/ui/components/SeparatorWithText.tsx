@@ -37,6 +37,6 @@ const StyledLabel = styled(Typo.BodyAccentXs)({
 const StyledSeparator = styled(Separator.Horizontal)<{ backgroundColor?: ColorsEnum }>(
   ({ theme, backgroundColor }) => ({
     flex: 1,
-    backgroundColor: backgroundColor ?? theme.colors.greySemiDark,
+    backgroundColor: backgroundColor ?? theme.designSystem.separator.color.subtle,
   })
 )

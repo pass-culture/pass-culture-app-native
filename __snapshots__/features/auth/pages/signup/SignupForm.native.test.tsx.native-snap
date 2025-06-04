@@ -207,7 +207,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 6,
             "justifyContent": "flex-start",
             "width": "100%",
@@ -221,6 +221,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           [
             [
               {
+                "backgroundColor": "#eb0055",
                 "borderBottomRightRadius": 3,
                 "borderTopRightRadius": 3,
                 "height": "100%",
@@ -235,16 +236,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           ]
         }
         width={20}
-      >
-        <View
-          height={8}
-          width="100%"
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
+      />
     </View>
   </View>
   <RCTScrollView
@@ -509,7 +501,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderColor": "#696A6F",
+                    "borderColor": "#90949d",
                     "borderRadius": 4,
                     "borderStyle": "solid",
                     "borderWidth": 1,
@@ -1076,7 +1068,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 6,
             "justifyContent": "flex-start",
             "width": "100%",
@@ -1090,6 +1082,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           [
             [
               {
+                "backgroundColor": "#eb0055",
                 "borderBottomRightRadius": 3,
                 "borderTopRightRadius": 3,
                 "height": "100%",
@@ -1104,16 +1097,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           ]
         }
         width={40}
-      >
-        <View
-          height={8}
-          width="100%"
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
+      />
     </View>
   </View>
   <RCTScrollView
@@ -2154,7 +2138,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 6,
             "justifyContent": "flex-start",
             "width": "100%",
@@ -2168,6 +2152,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           [
             [
               {
+                "backgroundColor": "#eb0055",
                 "borderBottomRightRadius": 3,
                 "borderTopRightRadius": 3,
                 "height": "100%",
@@ -2182,16 +2167,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           ]
         }
         width={60}
-      >
-        <View
-          height={8}
-          width="100%"
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
+      />
     </View>
   </View>
   <RCTScrollView
@@ -2877,7 +2853,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 6,
             "justifyContent": "flex-start",
             "width": "100%",
@@ -2891,6 +2867,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           [
             [
               {
+                "backgroundColor": "#eb0055",
                 "borderBottomRightRadius": 3,
                 "borderTopRightRadius": 3,
                 "height": "100%",
@@ -2905,16 +2882,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           ]
         }
         width={80}
-      >
-        <View
-          height={8}
-          width="100%"
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
+      />
     </View>
   </View>
   <RCTScrollView
@@ -3035,7 +3003,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949d",
                   "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 1,
@@ -3133,7 +3101,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949d",
                   "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 1,
@@ -3178,7 +3146,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           style={
             [
               {
-                "color": "#696A6F",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -3252,7 +3220,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                 },
               ],
               {
@@ -3371,7 +3339,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                 },
               ],
               {
@@ -3551,7 +3519,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           style={
             [
               {
-                "color": "#696A6F",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,

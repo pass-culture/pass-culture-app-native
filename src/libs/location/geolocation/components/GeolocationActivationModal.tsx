@@ -41,7 +41,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       testIdSuffix="geoloc-permission-modal">
       <React.Fragment>
         {/** Special case where theme.icons.sizes is not used */}
-        <BicolorLocationPointer size={85} />
+        <LocationPointer />
         <Spacer.Column numberOfSpaces={10} />
         <InformationText>
           Retrouve toutes les offres autour de chez toi en activant les données de localisation.
@@ -68,3 +68,9 @@ export const GeolocationActivationModal: React.FC<Props> = ({
 const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const LocationPointer = styled(BicolorLocationPointer).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  color2: theme.designSystem.color.icon.brandPrimary,
+  size: theme.illustrations.sizes.small,
+}))``

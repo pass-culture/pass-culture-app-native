@@ -475,7 +475,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       style={
                         [
                           {
-                            "color": "#696A6F",
+                            "color": "#696a6f",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 19.2,
@@ -588,11 +588,10 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                 }
               >
                 <View
-                  backgroundColor="#CBCDD2"
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#cbcdd2",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -618,11 +617,10 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                   ou
                 </Text>
                 <View
-                  backgroundColor="#CBCDD2"
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#cbcdd2",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,

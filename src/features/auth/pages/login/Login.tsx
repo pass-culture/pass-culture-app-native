@@ -242,7 +242,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           />
           {enableGoogleSSO ? (
             <StyledViewGap gap={4}>
-              <StyledSeparatorWithText label="ou" />
+              <SeparatorWithText label="ou" />
               <SSOButtonBase type="login" onSuccess={signIn} />
             </StyledViewGap>
           ) : (
@@ -271,10 +271,6 @@ const Container = styled.View({
 const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.designSystem.color.text.brandSecondary,
   type: 'signup',
-}))``
-
-const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
-  backgroundColor: theme.designSystem.separator.color.subtle,
 }))``
 
 const TitleContainer = styled.View({ marginBottom: getSpacing(2) })

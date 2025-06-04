@@ -1,11 +1,8 @@
-import colorAlpha from 'color-alpha'
 import React, { memo } from 'react'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 enum BarHeight {
   'normal' = 4.5,
@@ -15,7 +12,7 @@ enum BarHeight {
 
 interface CreditProgressBarProps {
   progress: number
-  colors: ColorsEnum[]
+  color: ColorsType
   height?: 'normal' | 'small' | 'smaller'
 }
 
@@ -25,22 +22,15 @@ const MINIMUM_PROGRESS_BAR_SIZE_MD = 0.03
 const PROGRESS_BAR_BORDER_RADIUS = getSpacing(12)
 
 const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
-  colors,
+  color,
   progress,
   height = 'normal',
 }) => {
-  const shadowColors = [colorAlpha(colors[0], 0.1), colorAlpha(colors[1], 0.1)]
-
   return (
     <Container>
       <ProgressBarContainer height={height}>
-        {height === 'normal' ? (
-          <React.Fragment>
-            <GradientShadow colors={shadowColors} />
-            <SecondGradientShadow />
-          </React.Fragment>
-        ) : null}
-        <LinearGradientBar progress={progress} colors={colors} testID="progress-bar" />
+        {height === 'normal' ? <BaseShadowGradient /> : null}
+        <LinearGradientBar progress={progress} color={color} testID="progress-bar" />
       </ProgressBarContainer>
     </Container>
   )
@@ -48,17 +38,13 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
 
 export const CreditProgressBar = memo(
   styled(CreditProgressBarComponent).attrs(({ theme }) => ({
-    colors: [theme.colors.primary, theme.colors.secondary],
+    color: theme.designSystem.color.background.brandPrimary,
   }))``
 )
 
-const LinearGradientBar = styled(LinearGradient).attrs<Pick<CreditProgressBarProps, 'colors'>>(
-  ({ colors }) => ({
-    colors,
-    useAngle: true,
-    angle: 90,
-  })
-)<Pick<CreditProgressBarProps, 'progress'>>(({ theme, progress }) => {
+const LinearGradientBar = styled.View.attrs<CreditProgressBarProps>(({ color }) => ({
+  color,
+}))<CreditProgressBarProps>(({ theme, progress, color }) => {
   let flex
   if (progress === 0) {
     flex = progress
@@ -72,40 +58,20 @@ const LinearGradientBar = styled(LinearGradient).attrs<Pick<CreditProgressBarPro
 
   return {
     flex,
+    backgroundColor: color,
     borderRadius: PROGRESS_BAR_BORDER_RADIUS,
   }
 })
 
-const BaseShadowGradient = styled(LinearGradient)({
+const BaseShadowGradient = styled.View(({ theme }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
   width: '100%',
   height: '100%',
   borderRadius: PROGRESS_BAR_BORDER_RADIUS,
-})
-
-const GradientShadow = styled(BaseShadowGradient).attrs<Pick<CreditProgressBarProps, 'colors'>>(
-  ({ colors }) => ({
-    useAngle: true,
-    angle: 180,
-    start: { x: 0, y: 0 },
-    end: { x: 1, y: 1 },
-    colors,
-  })
-)(({ theme }) => ({
-  borderColor: theme.colors.white,
-  borderWidth: getSpacing(0.5),
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
-
-// Used to give an inner shadow illusion
-const SecondGradientShadow = styled(BaseShadowGradient).attrs(({ theme }) => ({
-  colors: [
-    colorAlpha(theme.colors.white, 0.2),
-    colorAlpha(theme.colors.white, 1),
-    colorAlpha(theme.colors.white, 0.2),
-  ],
-}))``
 
 const Container = styled.View({
   flexDirection: 'row',

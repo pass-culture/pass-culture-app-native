@@ -5,7 +5,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -21,7 +21,7 @@ type Props = {
 }
 
 export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
-  const { isDesktopViewport, colors } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
 
   return (
     <HeaderWithGreyContainer
@@ -34,7 +34,7 @@ export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
       <Spacer.Column numberOfSpaces={5} />
       <Container>
         <InternalTouchableLink
-          as={ButtonWithLinearGradient}
+          as={ButtonPrimary}
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
@@ -48,7 +48,7 @@ export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
 
         <AuthenticationButton
           type="login"
-          linkColor={colors.secondary}
+          linkColor={designSystem.color.text.brandSecondary}
           params={{ from: StepperOrigin.PROFILE }}
         />
       </Container>
@@ -58,6 +58,7 @@ export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
 
 const Container = styled.View(({ theme }) => ({
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
+  alignItems: theme.isDesktopViewport ? undefined : 'center',
 }))
 
 const VerticalSeparator = styled.View(({ theme }) => ({

@@ -10,7 +10,6 @@ const TrophySVG: React.FunctionComponent<AccessibleIcon> = ({
   size,
   accessibilityLabel,
   color,
-  color2,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
@@ -31,7 +30,7 @@ const TrophySVG: React.FunctionComponent<AccessibleIcon> = ({
           y2="38.6088"
           gradientUnits="userSpaceOnUse">
           <Stop stopColor={color} />
-          <Stop offset="1" stopColor={color2} />
+          <Stop offset="1" stopColor={color} />
         </LinearGradient>
       </Defs>
       <Path
@@ -44,8 +43,7 @@ const TrophySVG: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const BicolorTrophy = styled(TrophySVG).attrs(({ color, color2, size, theme }) => ({
-  color: color ?? theme.colors.secondary,
-  color2: color2 ?? theme.colors.primary,
+export const Trophy = styled(TrophySVG).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.illustrations.sizes.medium,
 }))``

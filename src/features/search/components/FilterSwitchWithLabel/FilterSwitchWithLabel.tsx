@@ -99,5 +99,5 @@ const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
 }))
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

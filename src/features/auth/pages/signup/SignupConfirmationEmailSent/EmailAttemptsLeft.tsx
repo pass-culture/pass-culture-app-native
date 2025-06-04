@@ -28,9 +28,9 @@ export const EmailAttemptsLeft: FunctionComponent<Props> = ({ attemptsLeft }) =>
 }
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledErrorText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.error,
+  color: theme.designSystem.color.text.error,
 }))

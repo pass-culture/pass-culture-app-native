@@ -75,7 +75,7 @@ const ContentContainer = styled(ViewGap)(({ theme }) => ({
 }))
 
 const CaptionTitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

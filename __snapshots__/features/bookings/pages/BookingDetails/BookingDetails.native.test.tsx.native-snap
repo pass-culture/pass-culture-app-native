@@ -1200,7 +1200,7 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
       {
         "backdropFilter": "blur(0px)",
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "borderBottomColor": "#F1F1F4",
+        "borderBottomColor": "#cbcdd2",
         "borderBottomWidth": 0,
         "height": 80,
         "left": 0,
@@ -1308,7 +1308,7 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderColor": "rgba(255, 255, 255, 1)",
               "borderRadius": 40,
               "borderStyle": "solid",
               "borderWidth": 1,

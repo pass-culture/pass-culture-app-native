@@ -13,8 +13,8 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.quaternaryBlack.iconColor
-          : theme.buttons.quaternaryBlack.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.default,
         size: theme.buttons.quaternaryBlack.iconSize,
       })``
     }
@@ -27,8 +27,8 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
     const Title = styled(Typo.BodyAccentXs)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.quaternaryBlack.textColor
-        : theme.buttons.quaternaryBlack.textColor,
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.default,
     })
 
     return {
@@ -37,9 +37,9 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
       icon: Icon,
       loadingIndicator: LoadingIndicator,
       title: Title,
-      hoverUnderlineColor: theme.buttons.quaternaryBlack.textColor,
+      hoverUnderlineColor: theme.designSystem.color.text.default,
     }
   }
 )(({ theme }) => ({
-  backgroundColor: theme.buttons.quaternaryBlack.backgroundColor,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

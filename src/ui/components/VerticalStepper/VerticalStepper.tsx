@@ -126,7 +126,7 @@ const Wrapper = styled.View({
 })
 
 const FilledLine = styled.View(({ theme }) => ({
-  backgroundColor: theme.designSystem.separator.color.default,
+  backgroundColor: theme.designSystem.color.border.default,
   width: 2,
   borderRadius: 2,
   flex: 1,
