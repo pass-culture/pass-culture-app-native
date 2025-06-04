@@ -4,7 +4,7 @@ import { ViewToken } from 'react-native'
 import { BusinessModule } from 'features/home/components/modules/business/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
-import { OffersModule, OffersModuleProps } from 'features/home/components/modules/OffersModule'
+import { OffersModule } from 'features/home/components/modules/OffersModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
@@ -12,7 +12,12 @@ import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
-import { HomepageModule, HomepageModuleType, ModuleData } from 'features/home/types'
+import {
+  HomepageModule,
+  HomepageModuleType,
+  ModuleData,
+  ModuleViewableItemsChangedHandler,
+} from 'features/home/types'
 
 const modules = {
   [HomepageModuleType.BusinessModule]: BusinessModule,
@@ -41,18 +46,17 @@ const UnmemoizedModule = ({
   homeEntryId: string
   data?: ModuleData
   videoModuleId?: string
-  onModuleViewableItemsChanged?: ({
-    moduleId,
-    index,
-    changedItems,
-    homeEntryId,
-  }: Pick<OffersModuleProps, 'homeEntryId' | 'index' | 'moduleId'> & {
-    changedItems: Pick<ViewToken, 'key' | 'index'>[]
-  }) => void
+  onModuleViewableItemsChanged?: ModuleViewableItemsChangedHandler
 }) => {
   const handleOnViewableItemsChanged = useCallback(
-    (changedItems: Pick<ViewToken, 'key' | 'index'>[]) => {
-      onModuleViewableItemsChanged?.({ index, moduleId: item.id, changedItems, homeEntryId })
+    (viewableItems: Pick<ViewToken, 'key' | 'index'>[]) => {
+      onModuleViewableItemsChanged?.({
+        index,
+        moduleId: item.id,
+        moduleType: item.type,
+        viewableItems,
+        homeEntryId,
+      })
     },
     // Changing onViewableItemsChanged on the fly is not supported
     // eslint-disable-next-line react-hooks/exhaustive-deps

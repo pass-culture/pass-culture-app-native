@@ -1,4 +1,4 @@
-import { Animated } from 'react-native'
+import { Animated, ViewToken } from 'react-native'
 
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { PlaylistOffersParams, VenueHit } from 'libs/algolia/types'
@@ -362,6 +362,20 @@ export type OfferModuleParamsInfo = {
   adaptedPlaylistParameters: OffersPlaylistParameters
   moduleId: string
 }
+
+export type ModuleViewableItemsChangedHandler = ({
+  moduleId,
+  moduleType,
+  index,
+  viewableItems,
+  homeEntryId,
+}: {
+  homeEntryId: string
+  index: number
+  moduleId: string
+  viewableItems: Pick<ViewToken, 'key' | 'index'>[]
+  moduleType: string
+}) => void
 
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
   return module.type === HomepageModuleType.VenuesModule

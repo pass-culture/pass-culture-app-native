@@ -36,17 +36,19 @@ export const setViewOfferTrackingFn = <P>(fn: TrackingFunction<P>) => {
   trackingFn = fn as TrackingFunction
 }
 
-export const logViewOffer = async (trackingInfo: PageTrackingInfo) => {
+export const logViewItem = async (trackingInfo: PageTrackingInfo) => {
   if (!trackingFn) {
     throw new Error('No tracking function set')
   }
   try {
-    const { playlists, pageId, pageLocation } = trackingInfo
+    const { playlists, pageLocation } = trackingInfo
     for (const current of playlists) {
-      const { items, extra, moduleId, index } = current
+      const { items, extra, moduleId, index, viewedAt, itemType } = current
       const data = {
-        origin: `${pageLocation} - ${pageId}`,
+        origin: pageLocation.toLowerCase(),
+        viewedAt: viewedAt.toISOString(),
         moduleId,
+        itemType,
         index,
         ...getItemStringChunks(items.map((item) => `${item.index ?? -1}:${item.key}`)),
         ...extra,

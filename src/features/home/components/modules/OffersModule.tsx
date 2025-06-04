@@ -180,19 +180,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   const listRef = useRef<FlatList>(null)
   const lastViewableItems = useRef<ViewToken[]>([])
 
-  const handleIntersectionObserverChange = (value: boolean) => {
-    isInView.current = value
-    if (value) {
-      if (lastViewableItems.current?.length) {
-        handleViewableItemsChanged({
-          viewableItems: lastViewableItems.current,
-        })
-      } else {
-        listRef.current?.recordInteraction()
-      }
-    }
-  }
-
   const handleViewableItemsChanged = useCallback(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
       if (isInView.current) {
@@ -203,6 +190,22 @@ export const OffersModule = (props: OffersModuleProps) => {
     // We cannot change onViewableItemsChanged on the fly
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
+  )
+
+  const handleIntersectionObserverChange = useCallback(
+    (value: boolean) => {
+      isInView.current = value
+      if (value) {
+        if (lastViewableItems.current?.length) {
+          handleViewableItemsChanged({
+            viewableItems: lastViewableItems.current,
+          })
+        } else {
+          listRef.current?.recordInteraction()
+        }
+      }
+    },
+    [handleViewableItemsChanged]
   )
 
   useFocusEffect(

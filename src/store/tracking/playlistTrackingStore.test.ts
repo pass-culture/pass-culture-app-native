@@ -6,7 +6,7 @@ import {
   setPageTrackingInfo,
   setPlaylistTrackingInfo,
   useOfferPlaylistTrackingStore,
-} from './offerPlaylistTrackingStore'
+} from './playlistTrackingStore'
 
 const PAGE_TRACKING_INFO = {
   pageId: 'abcd',
@@ -46,6 +46,8 @@ describe('offerTileViewTrackingStore', () => {
         { index: 0, key: '777' },
         { index: 1, key: '999' },
       ],
+      itemType: 'offer',
+      viewedAt: new Date(2025, 5, 1),
     }
 
     act(() => {
@@ -68,6 +70,8 @@ describe('offerTileViewTrackingStore', () => {
         { index: 0, key: '777' },
         { index: 1, key: '999' },
       ],
+      itemType: 'offer',
+      viewedAt: new Date(2025, 5, 1, 10, 0),
     }
 
     const SECOND_PLAYLIST: PlaylistTrackingInfo = {
@@ -78,6 +82,8 @@ describe('offerTileViewTrackingStore', () => {
         { index: 0, key: '888' },
         { index: 1, key: '111' },
       ],
+      itemType: 'offer',
+      viewedAt: new Date(2025, 5, 1, 10, 2),
     }
 
     act(() => {
@@ -91,6 +97,7 @@ describe('offerTileViewTrackingStore', () => {
           { index: 2, key: '333' },
           { index: 3, key: '555' },
         ],
+        viewedAt: new Date(2020, 2, 1),
       })
     })
 
