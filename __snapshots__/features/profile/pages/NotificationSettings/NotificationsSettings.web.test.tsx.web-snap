@@ -165,14 +165,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 data-testid="icon-back"
               >
                 <div
-                  class="css-text-146c3p1"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
               </div>
               <div
-                class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Retour
@@ -181,7 +181,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           </div>
           <h1
             aria-level="1"
-            class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
@@ -195,7 +195,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
       </div>
     </header>
     <div
-      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
     >
       <div
         class="css-view-175oi2r"
@@ -217,7 +217,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <div
-                  class="css-text-146c3p1"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
                   undefined-SVG-Mock
@@ -228,7 +228,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
             >
               <div
-                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                 dir="ltr"
               >
                 Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture.
@@ -240,7 +240,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           />
           <h2
             aria-level="2"
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
             dir="ltr"
             role="heading"
           >
@@ -250,7 +250,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
             class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
             dir="ltr"
           >
             Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
@@ -262,7 +262,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
             class="c2"
           >
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -275,7 +275,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="1"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Autoriser l’envoi d’e-mails
@@ -293,7 +293,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -303,7 +303,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="0"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Autoriser l’envoi d’e-mails"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -313,15 +313,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -351,7 +351,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
             />
             <h2
               aria-level="2"
-              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
               dir="ltr"
               role="heading"
             >
@@ -361,7 +361,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               class="css-view-175oi2r r-height-1472mwg"
             />
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -374,7 +374,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="3"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Suivre tous les thèmes
@@ -392,7 +392,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -402,7 +402,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="2"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Suivre tous les thèmes"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -412,15 +412,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -443,7 +443,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               class="css-view-175oi2r r-height-3da1kt"
             />
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -456,7 +456,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="5"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Cinéma
@@ -474,7 +474,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -484,7 +484,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="4"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Cinéma"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -494,15 +494,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -522,7 +522,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -535,7 +535,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="7"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Lecture
@@ -553,7 +553,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -563,7 +563,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="6"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Lecture"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -573,15 +573,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -601,7 +601,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -614,7 +614,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="9"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Musique
@@ -632,7 +632,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -642,7 +642,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="8"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Musique"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -652,15 +652,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -680,7 +680,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -693,7 +693,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="11"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Spectacles
@@ -711,7 +711,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -721,7 +721,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="10"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Spectacles"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -731,15 +731,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -759,7 +759,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -772,7 +772,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="13"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Activités créatives
@@ -790,7 +790,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -800,7 +800,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="12"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Activités créatives"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -810,15 +810,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -838,7 +838,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-paddingBlock-w7s2jr"
+              class="css-view-175oi2r r-paddingVertical-1yzf0co"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -851,7 +851,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     for="15"
                   >
                     <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
                       Visites et sorties
@@ -869,7 +869,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <div
                       aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
                     >
                       Case à cocher - 
@@ -879,7 +879,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       aria-checked="false"
                       aria-disabled="true"
                       aria-labelledby="14"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
                       data-testid="Interrupteur Visites et sorties"
                       role="checkbox"
                       style="transition-duration: 0s;"
@@ -889,15 +889,15 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1c6vf7j r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          class="css-view-175oi2r"
+                          style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; margin-left: 2px;"
                         >
                           <div
                             aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -930,7 +930,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
                 <div
-                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                   dir="ltr"
                 >
                   Enregistrer

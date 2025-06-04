@@ -57,5 +57,5 @@ const VenueThumbnail = styled(Image)<{ height: number; width: number }>(({ heigh
 
 const LocationIcon = styled(LocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``

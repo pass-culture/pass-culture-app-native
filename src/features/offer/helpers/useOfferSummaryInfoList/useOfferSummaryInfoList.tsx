@@ -39,31 +39,37 @@ export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
   const summaryInfoItems: SummaryInfoItem[] = [
     {
       isDisplayed: !!fullAddressOffer && fullAddressOffer !== fullAddressVenue,
-      Icon: <MapPin size={theme.icons.sizes.small} />,
+      Icon: <MapPin color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />,
       title: address?.label ?? 'Adresse',
       subtitle: fullAddressOffer,
     },
     {
       isDisplayed: !!formattedDate && !isCinemaOffer,
-      Icon: <CalendarS size={theme.icons.sizes.small} />,
+      Icon: (
+        <CalendarS color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />
+      ),
       title: 'Dates',
       subtitle: formattedDate,
     },
     {
       isDisplayed: isDigital,
-      Icon: <Digital size={theme.icons.sizes.small} />,
+      Icon: (
+        <Digital color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />
+      ),
       title: 'En ligne',
       subtitle: locationName,
     },
     {
       isDisplayed: !!duration,
-      Icon: <ClockFilled size={theme.icons.sizes.small} />,
+      Icon: (
+        <ClockFilled color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />
+      ),
       title: 'Durée',
       subtitle: duration,
     },
     {
       isDisplayed: isDuo,
-      Icon: <Stock size={theme.icons.sizes.small} />,
+      Icon: <Stock color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />,
       title: 'Duo',
       subtitle: 'Tu peux prendre deux places',
     },

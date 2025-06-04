@@ -1133,7 +1133,7 @@ exports[`PersonalData should render personal data success 1`] = `
                       "width": "auto",
                     },
                     {
-                      "backgroundColor": "transparent",
+                      "backgroundColor": "#ffffff",
                     },
                   ],
                   {

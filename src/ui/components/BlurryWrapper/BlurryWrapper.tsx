@@ -2,7 +2,7 @@ import { BlurView } from '@react-native-community/blur'
 import colorAlpha from 'color-alpha'
 import React from 'react'
 import { Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BlurAmount } from 'ui/components/BlurryWrapper/BlurAmount'
 
@@ -12,14 +12,14 @@ type Props = {
 }
 
 export function BlurryWrapper({ blurAmount = BlurAmount.LIGHT, children }: Props) {
+  const { colorScheme } = useTheme()
+
+  const blurType: 'light' | 'dark' = colorScheme === 'dark' ? 'dark' : 'light'
+
   return Platform.OS === 'android' ? (
     <TransparentBackground>{children}</TransparentBackground>
   ) : (
-    <StyledBlurry
-      blurType="light"
-      blurAmount={blurAmount}
-      reducedTransparencyFallbackColor="white"
-      testID="blurry-wrapper">
+    <StyledBlurry blurType={blurType} blurAmount={blurAmount} testID="blurry-wrapper">
       {children}
     </StyledBlurry>
   )
@@ -28,7 +28,6 @@ export function BlurryWrapper({ blurAmount = BlurAmount.LIGHT, children }: Props
 const StyledBlurry = styled(BlurView)<{
   blurType: string
   blurAmount: BlurAmount
-  reducedTransparencyFallbackColor: string
 }>({
   flex: 1,
 })

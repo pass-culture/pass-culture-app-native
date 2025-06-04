@@ -87,7 +87,7 @@ const CineBlockContainer = styled.View(({ theme }) => ({
 
 const Divider = styled.View(({ theme }) => ({
   height: 1,
-  backgroundColor: theme.colors.greyMedium,
+  backgroundColor: theme.designSystem.color.background.subtle,
   marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
   marginTop: getSpacing(theme.isDesktopViewport ? 6 : 4),
 }))

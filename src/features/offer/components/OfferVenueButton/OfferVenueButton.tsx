@@ -21,7 +21,12 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
       Subtitle={
         venue.city ? <SubtitleText testID="subtitle">{venue.city}</SubtitleText> : undefined
       }
-      Icon={<LocationBuildingFilled color={theme.colors.black} size={theme.icons.sizes.small} />}
+      Icon={
+        <LocationBuildingFilled
+          color={theme.designSystem.color.icon.default}
+          size={theme.icons.sizes.small}
+        />
+      }
       navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
       onBeforeNavigate={() => analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })}
       accessibilityLabel={`Accéder à la page du lieu ${venue.name}`}
@@ -30,5 +35,5 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
 }
 
 const SubtitleText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

@@ -13,6 +13,7 @@ interface Props {
 
 export const AccessibilityFrame: React.FC<Props> = ({ Icon, isAccessible }) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.designSystem.color.icon.default,
     size: theme.icons.sizes.small,
   }))``
 

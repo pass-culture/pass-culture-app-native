@@ -47,6 +47,6 @@ const IconContainer = styled.View({
 })
 
 const Caption = styled(Typo.BodyAccentXs)<{ disabled?: boolean }>(({ disabled, theme }) => ({
-  color: disabled ? theme.colors.greyDark : theme.colors.black,
+  color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,
   textAlign: 'center',
 }))

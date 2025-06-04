@@ -145,14 +145,14 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                 data-testid="icon-back"
               >
                 <div
-                  class="css-text-146c3p1"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
               </div>
               <div
-                class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Retour
@@ -161,7 +161,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           </div>
           <h1
             aria-level="1"
-            class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
@@ -184,7 +184,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
           >
             <div
               class="css-view-175oi2r"
@@ -201,7 +201,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                   class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-146c3p1"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
@@ -209,7 +209,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                 </div>
               </div>
               <div
-                class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                 dir="ltr"
               >
                 Identification
@@ -218,7 +218,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                 class="css-view-175oi2r r-height-10ptun7"
               />
               <div
-                class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                 dir="ltr"
               >
                 Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
@@ -236,7 +236,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                     class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-146c3p1"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -247,7 +247,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 >
                   <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                     dir="ltr"
                   >
                     Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
@@ -260,7 +260,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingInline-u9wvl5 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <button
               aria-label="Ouvrir un onglet ÉduConnect"
@@ -281,7 +281,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                     data-testid="button-icon-left"
                   >
                     <div
-                      class="css-text-146c3p1"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       button-icon-left-SVG-Mock
@@ -292,7 +292,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                   />
                 </div>
                 <div
-                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                   dir="ltr"
                 >
                   Ouvrir un onglet ÉduConnect

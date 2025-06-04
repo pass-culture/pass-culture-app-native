@@ -10,7 +10,7 @@ import { Typo } from 'ui/theme'
 export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, color, ...rest }) => {
     let Icon
-    const defaultColor = color ?? theme.designSystem.color.icon.brandPrimary
+    const defaultColor = color ?? theme.designSystem.color.icon.brandSecondary
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled ? theme.designSystem.color.icon.disabled : defaultColor,
@@ -22,7 +22,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       maxWidth: '100%',
       color: disabled
         ? theme.designSystem.color.text.disabled
-        : (color ?? theme.designSystem.color.text.brandPrimary),
+        : (color ?? theme.designSystem.color.text.brandSecondary),
       fontSize: textSize,
     })
 
@@ -32,12 +32,12 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       title: Title,
       loadingIndicator: LoadingIndicator,
       backgroundColor: theme.designSystem.color.background.default,
-      hoverUnderlineColor: color ?? theme.designSystem.color.text.brandPrimary,
+      hoverUnderlineColor: color ?? theme.designSystem.color.text.brandSecondary,
     }
   }
 )(({ theme, disabled, color }) => {
   const borderWidth = theme.buttons.secondary.borderWidth
-  let borderColor = color ?? theme.designSystem.color.border.brandPrimary
+  let borderColor = color ?? theme.designSystem.color.border.brandSecondary
 
   if (disabled) {
     borderColor = theme.designSystem.color.border.disabled
@@ -61,6 +61,6 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
 })
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
-  color: theme.buttons.secondary.loadingIconColor,
+  color: theme.designSystem.color.icon.brandSecondary,
   size: theme.buttons.secondary.iconSize,
 }))``

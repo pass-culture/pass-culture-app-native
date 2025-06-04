@@ -117,7 +117,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
         class="css-view-175oi2r"
       >
         <div
-          class="css-text-146c3p1"
+          class="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -125,7 +125,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
       </div>
     </button>
     <div
-      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1jwulwa r-paddingBlock-zo2zu6 r-paddingInline-cxgwc0"
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1jwulwa r-paddingHorizontal-1guathk r-paddingVertical-1h4fu65"
     >
       <div
         class="css-view-175oi2r r-height-10ptun7"
@@ -140,7 +140,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
           class="css-view-175oi2r"
         >
           <div
-            class="css-text-146c3p1"
+            class="css-text-1rynq56"
             dir="ltr"
           >
             undefined-SVG-Mock
@@ -152,7 +152,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
       >
         <h1
           aria-level="1"
-          class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
           dir="ltr"
           role="heading"
         >
@@ -160,7 +160,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
         </h1>
         <h2
           aria-level="2"
-          class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
           dir="ltr"
           role="heading"
         >
@@ -181,7 +181,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
             class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
           >
             <div
-              class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
               dir="ltr"
             >
               Réessayer

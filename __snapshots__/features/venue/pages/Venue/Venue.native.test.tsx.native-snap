@@ -137,7 +137,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 6,
                       "flexDirection": "row",
                       "paddingHorizontal": 8,
@@ -2429,7 +2429,7 @@ iMessage
                                   [
                                     {
                                       "alignItems": "center",
-                                      "borderColor": "#CBCDD2",
+                                      "borderColor": "#cbcdd2",
                                       "borderRadius": 24,
                                       "borderWidth": 1,
                                       "height": 48,
@@ -3131,7 +3131,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 6,
                       "flexDirection": "row",
                       "paddingHorizontal": 8,
@@ -5749,7 +5749,7 @@ iMessage
                                   [
                                     {
                                       "alignItems": "center",
-                                      "borderColor": "#CBCDD2",
+                                      "borderColor": "#cbcdd2",
                                       "borderRadius": 24,
                                       "borderWidth": 1,
                                       "height": 48,
@@ -6451,7 +6451,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 6,
                       "flexDirection": "row",
                       "paddingHorizontal": 8,
@@ -9171,7 +9171,7 @@ iMessage
                                   [
                                     {
                                       "alignItems": "center",
-                                      "borderColor": "#CBCDD2",
+                                      "borderColor": "#cbcdd2",
                                       "borderRadius": 24,
                                       "borderWidth": 1,
                                       "height": 48,

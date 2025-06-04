@@ -48,19 +48,18 @@ const Wrapper = styled(View)<{ backgroundColor?: string; paddingHorizontal?: num
     alignItems: 'center',
     alignSelf: 'flex-start',
     borderRadius: 6,
-    backgroundColor: backgroundColor ?? theme.colors.greyLight,
+    backgroundColor: backgroundColor ?? theme.designSystem.color.background.subtle,
     paddingVertical: PADDING_VERTICAL,
     paddingHorizontal: paddingHorizontal ?? getSpacing(2),
   })
 )
 
-const LabelText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.black,
+const LabelText = styled(Typo.BodyAccentXs)({
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
   ...(Platform.OS === 'web' && {
     textWrap: 'nowrap',
   }),
-}))
+})
 
 const IconContainer = styled(View)({
   marginRight: getSpacing(1),

@@ -69,7 +69,7 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress, distance }
             icon={PlainMore}
             wording="Afficher plus de cinémas"
             onPress={showMore}
-            color={theme.colors.black}
+            color={theme.designSystem.color.text.default}
           />
         </SeeMoreContainer>
       )}
@@ -84,5 +84,5 @@ const SeeMoreContainer = styled.View(({ theme }) => ({
 }))
 
 const Text = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

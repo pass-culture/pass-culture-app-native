@@ -91,14 +91,14 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
                 data-testid="icon-back"
               >
                 <div
-                  class="css-text-146c3p1"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
               </div>
               <div
-                class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Retour
@@ -107,7 +107,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           </div>
           <h1
             aria-level="1"
-            class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
@@ -130,7 +130,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
           >
             <div
               class="css-view-175oi2r"
@@ -141,7 +141,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
                 style="height: 65px;"
               />
               <div
-                class="css-text-146c3p1"
+                class="css-text-1rynq56"
                 dir="ltr"
               >
                 scroll children
@@ -149,10 +149,10 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingInline-u9wvl5 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <div
-              class="css-text-146c3p1"
+              class="css-text-1rynq56"
               dir="ltr"
             >
               fixed bottom children

@@ -91,14 +91,14 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                 data-testid="icon-back"
               >
                 <div
-                  class="css-text-146c3p1"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
               </div>
               <div
-                class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Retour
@@ -107,7 +107,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
           </div>
           <h1
             aria-level="1"
-            class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
@@ -130,7 +130,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
           >
             <div
               class="css-view-175oi2r"
@@ -141,13 +141,13 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                 style="height: 65px;"
               />
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginBlock-1xk7izq r-marginInline-1537yvj"
+                class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginHorizontal-4amgru r-marginVertical-764hgp"
               >
                 <div
                   class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-146c3p1"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
@@ -158,7 +158,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                 />
                 <h2
                   aria-level="2"
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
                   dir="ltr"
                   role="heading"
                 >
@@ -168,7 +168,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   class="css-view-175oi2r r-height-10ptun7"
                 />
                 <div
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                   dir="ltr"
                 >
                   Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
@@ -201,7 +201,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                             data-testid="BicolorSmartphone"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               BicolorSmartphone-SVG-Mock
@@ -215,7 +215,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                             class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                           >
                             <div
-                              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                               dir="ltr"
                             >
                               J’ai un smartphone à proximité
@@ -229,7 +229,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -262,7 +262,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock
@@ -276,7 +276,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                             class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                           >
                             <div
-                              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                               dir="ltr"
                             >
                               Je n’ai pas de smartphone à proximité
@@ -290,7 +290,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-text-146c3p1"
+                              class="css-text-1rynq56"
                               dir="ltr"
                             >
                               undefined-SVG-Mock

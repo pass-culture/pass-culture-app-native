@@ -30,7 +30,7 @@ const Icon = () => (
 )
 
 const IconWrapper = styled.View(({ theme }) => ({
-  borderColor: theme.colors.greyMedium,
+  borderColor: theme.designSystem.color.border.subtle,
   borderWidth: 1,
   borderRadius: theme.buttons.buttonHeights.tall / 2,
   width: theme.buttons.buttonHeights.tall,

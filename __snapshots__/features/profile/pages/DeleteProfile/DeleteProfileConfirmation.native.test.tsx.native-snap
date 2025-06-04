@@ -426,7 +426,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                     "width": "auto",
                   },
                   {
-                    "backgroundColor": "transparent",
+                    "backgroundColor": "#ffffff",
                   },
                 ],
                 {

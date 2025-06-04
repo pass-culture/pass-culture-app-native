@@ -232,18 +232,18 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
             class="css-view-175oi2r r-flex-13awgt0 r-top-ipm5af"
           >
             <div
-              class="css-view-175oi2r r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-              style="width: 0px; height: 0px; background-color: rgb(0, 0, 0); opacity: 0.7;"
+              class="css-view-175oi2r"
+              style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; opacity: 0.7; background-color: rgb(0, 0, 0); width: 0px; height: 0px;"
               tabindex="0"
             />
             <div
               aria-labelledby="testUuidV4"
               aria-modal="true"
-              class="css-view-175oi2r r-flex-13awgt0 r-justifyContent-1777fci r-alignItems-1awozwy r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-n0puxl r-pointerEvents-12vffkv"
-              style="margin: auto auto auto auto; transform: translateY(0px);"
+              class="css-view-175oi2r r-pointerEvents-12vffkv"
+              style="margin: auto auto auto auto; transform: translateY(0px); flex: 1; justify-content: center; position: absolute; right: 0px; left: 0px; bottom: 0px; align-items: center;"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderBottomRightRadius-zmljjp r-borderBottomLeftRadius-pm2fo r-borderStartEndRadius-st84sj r-borderStartEndRadius-j3xhw6 r-borderTopLeftRadius-f1w8kp r-borderTopRightRadius-cqzzvf r-flexDirection-eqz5dr r-height-1ln4yuo r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
+                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomRightRadius-zmljjp r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderBottomLeftRadius-pm2fo r-borderTopRightRadius-1qk6wnv r-borderTopLeftRadius-f1w8kp r-borderTopRightRadius-cqzzvf r-borderTopLeftRadius-c67a83 r-flexDirection-eqz5dr r-height-1ln4yuo r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
                 data-testid="modalContainer"
               >
                 <div
@@ -254,11 +254,11 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                     class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-height-h0d30l r-justifyContent-1h0z5md r-width-1iww7jx"
                   />
                   <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingInline-3o4zer r-zIndex-184en5c"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1e081e0 r-zIndex-184en5c"
                   >
                     <h1
                       aria-level="1"
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
                       data-testid="modalHeaderTitle"
                       dir="ltr"
                       id="testUuidV4"
@@ -283,7 +283,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                         data-testid="rightIcon"
                       >
                         <div
-                          class="css-text-146c3p1"
+                          class="css-text-1rynq56"
                           dir="ltr"
                         >
                           rightIcon-SVG-Mock
@@ -300,7 +300,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   class="css-view-175oi2r r-maxHeight-pm9dpa r-maxWidth-iz080l r-paddingBottom-xd6kpl r-width-13qz1uu"
                 >
                   <div
-                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
                     data-testid="modalScrollView"
                   >
                     <div
@@ -343,7 +343,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                     data-testid="button-icon-left"
                                   >
                                     <div
-                                      class="css-text-146c3p1"
+                                      class="css-text-1rynq56"
                                       dir="ltr"
                                     >
                                       button-icon-left-SVG-Mock
@@ -354,7 +354,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                   />
                                 </div>
                                 <div
-                                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                                   dir="ltr"
                                 >
                                   Copier
@@ -384,7 +384,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                     data-testid="button-icon-left"
                                   >
                                     <div
-                                      class="css-text-146c3p1"
+                                      class="css-text-1rynq56"
                                       dir="ltr"
                                     >
                                       button-icon-left-SVG-Mock
@@ -395,7 +395,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                   />
                                 </div>
                                 <div
-                                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                                   dir="ltr"
                                 >
                                   E-mail
@@ -430,14 +430,14 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-146c3p1"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
                                 </div>
                               </div>
                               <div
-                                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
                                 dir="ltr"
                               >
                                 Facebook
@@ -457,14 +457,14 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-146c3p1"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
                                 </div>
                               </div>
                               <div
-                                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
                                 dir="ltr"
                               >
                                 X
@@ -484,14 +484,14 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-146c3p1"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
                                 </div>
                               </div>
                               <div
-                                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
                                 dir="ltr"
                               >
                                 WhatsApp
@@ -511,14 +511,14 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-146c3p1"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
                                 </div>
                               </div>
                               <div
-                                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginTop-knv0ih"
                                 dir="ltr"
                               >
                                 Telegram
@@ -540,7 +540,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                           >
                             <div
-                              class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                               dir="ltr"
                             >
                               Annuler

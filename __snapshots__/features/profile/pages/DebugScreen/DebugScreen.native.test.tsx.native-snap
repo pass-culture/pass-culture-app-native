@@ -614,7 +614,7 @@ exports[`DebugScreen should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#eb0055",
+                  "borderColor": "#320096",
                   "borderRadius": 24,
                   "borderStyle": "solid",
                   "borderWidth": 2,
@@ -679,7 +679,7 @@ exports[`DebugScreen should render correctly 1`] = `
                   style={
                     [
                       {
-                        "color": "#eb0055",
+                        "color": "#320096",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
