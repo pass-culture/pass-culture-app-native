@@ -4,14 +4,17 @@ import { markScreenInteractiveOnHomeLayout } from 'performance/markScreenInterac
 
 jest.mock('react-native-performance')
 
-describe('markScreenInteractiveOnHomeLayout', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
-  })
+jest.useFakeTimers()
 
-  it('should mark performance event when interactions are over', () => {
+Object.defineProperty(global, '__DEV__', {
+  value: false,
+  writable: true,
+})
+
+describe('markScreenInteractiveOnHomeLayout', () => {
+  it('should mark performance event when interactions are over', async () => {
     markScreenInteractiveOnHomeLayout()
-    jest.runAllTimers()
+    await jest.runAllTimers()
 
     expect(performance.mark).toHaveBeenCalledTimes(1)
   })
