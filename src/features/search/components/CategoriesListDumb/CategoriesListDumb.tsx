@@ -7,6 +7,9 @@ import { CategoryButton, CategoryButtonProps } from 'shared/categoryButton/Categ
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
+import { MagicWand } from 'ui/svg/icons/MagicWand'
+import { useSearch } from 'features/search/context/SearchWrapper'
 
 export type ListCategoryButtonProps = CategoryButtonProps[]
 
@@ -33,8 +36,14 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   venueMapLocationModalVisible,
   hideVenueMapLocationModal,
 }) => {
+  const { showSuggestions } = useSearch()
   return (
     <StyledScrollView vertical showsHorizontalScrollIndicator={false} testID="categoriesButtons">
+      <ButtonSecondaryBlack
+        wording={'Trouver de l’inspi'}
+        icon={MagicWand}
+        onPress={showSuggestions}
+      />
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
         <Container>
           <ContainerVenueMapBlock>
@@ -109,3 +118,7 @@ const ContainerVenueMapBlock = styled.View({
   marginTop: getSpacing(4),
   marginBottom: getSpacing(2),
 })
+
+// const StyledMagicWand = styled(MagicWand).attrs(({ theme }) => ({
+//   size: theme.icons.sizes.standard,
+// }))``
