@@ -64,5 +64,6 @@ const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
 }))
 
 const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
+  // TODO(PC-36408): theme.designSystem.separator.default or subtle not visible in light mode because the parent background is grey
   color: theme.designSystem.color.border.default,
 }))``

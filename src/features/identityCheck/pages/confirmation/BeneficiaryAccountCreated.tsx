@@ -80,7 +80,7 @@ export function BeneficiaryAccountCreated() {
       <ProgressBarContainer>
         <AnimatedProgressBar
           progress={1}
-          color={designSystem.color.text.brandPrimary}
+          color={designSystem.color.background.brandPrimary}
           icon={categoriesIcons.Show}
           isAnimated
         />

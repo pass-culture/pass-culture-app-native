@@ -849,7 +849,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             }
           >
             <View
-              backgroundColor="#cbcdd2"
               style={
                 [
                   {
@@ -879,7 +878,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               ou
             </Text>
             <View
-              backgroundColor="#cbcdd2"
               style={
                 [
                   {

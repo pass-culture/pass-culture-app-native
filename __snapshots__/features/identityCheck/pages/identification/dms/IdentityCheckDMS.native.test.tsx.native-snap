@@ -537,7 +537,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "backgroundColor": "#90949d",
+                            "backgroundColor": "#cbcdd2",
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
@@ -566,7 +566,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "backgroundColor": "#90949d",
+                            "backgroundColor": "#cbcdd2",
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,

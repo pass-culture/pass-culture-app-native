@@ -106,7 +106,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
       />
       {enableGoogleSSO ? (
         <SSOViewGap gap={4}>
-          <StyledSeparatorWithText label="ou" />
+          <SeparatorWithText label="ou" />
           <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
         </SSOViewGap>
       ) : (
@@ -123,10 +123,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
     </Form.MaxWidth>
   )
 }
-
-const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
-  backgroundColor: theme.colors.greyMedium,
-}))``
 
 const SSOViewGap = styled(ViewGap)({
   marginTop: getSpacing(4),

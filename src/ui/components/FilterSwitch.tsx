@@ -101,7 +101,7 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
   aspectRatio: '1',
   width: TOGGLE_WIDTH,
   height: getSpacing(7),
-  backgroundColor: theme.designSystem.color.text.lockedInverted,
+  backgroundColor: theme.designSystem.color.background.default,
   borderRadius: getSpacing(7),
   alignItems: 'center',
   justifyContent: 'center',

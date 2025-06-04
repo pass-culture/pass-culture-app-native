@@ -1,9 +1,8 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 enum BarHeight {
   'normal' = 4.5,
@@ -13,7 +12,7 @@ enum BarHeight {
 
 interface CreditProgressBarProps {
   progress: number
-  color: ColorsEnum
+  color: ColorsType
   height?: 'normal' | 'small' | 'smaller'
 }
 
