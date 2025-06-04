@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import type { Meta } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 
