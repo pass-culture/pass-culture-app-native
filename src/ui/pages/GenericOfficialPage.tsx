@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { ReactNode } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
@@ -24,7 +24,6 @@ export function GenericOfficialPage({
   buttons,
 }: Readonly<Props>) {
   const { isTouch } = useTheme()
-  const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
 
   const getButtonSpaces = () => {
     if (buttons) {
@@ -35,6 +34,53 @@ export function GenericOfficialPage({
     return spacingMatrix.bottom
   }
 
+  const pageContent = (
+    <React.Fragment>
+      <Spacer.TopScreen />
+      <HeaderContainer>
+        <IllustrationsContainer>
+          <LogoFrenchRepublicContainer>
+            <LogoFrenchRepublic />
+          </LogoFrenchRepublicContainer>
+          <LogoPassCultureContainer>
+            <ColoredPassCultureLogo />
+          </LogoPassCultureContainer>
+        </IllustrationsContainer>
+        <EmptyContainer />
+      </HeaderContainer>
+      <Content>
+        {isTouch ? (
+          <React.Fragment>
+            <Spacer.Flex />
+            <Spacer.Column numberOfSpaces={spacingMatrix.top} />
+          </React.Fragment>
+        ) : null}
+        <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
+        <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
+        {children}
+        {isTouch ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={getButtonSpaces()} />
+            <Spacer.Flex flex={0.5} />
+          </React.Fragment>
+        ) : null}
+      </Content>
+      <BottomContent>
+        {buttons ? (
+          <BottomContainer>
+            {buttons.map((button, index) => (
+              <React.Fragment key={index}>
+                {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
+                {button}
+              </React.Fragment>
+            ))}
+          </BottomContainer>
+        ) : null}
+        <Spacer.BottomScreen />
+      </BottomContent>
+    </React.Fragment>
+  )
+
   return (
     <React.Fragment>
       {noIndex ? (
@@ -42,52 +88,7 @@ export function GenericOfficialPage({
           <meta name="robots" content="noindex" />
         </Helmet>
       ) : null}
-      <Page>
-        <Wrapper>
-          <Spacer.TopScreen />
-          <HeaderContainer>
-            <IllustrationsContainer>
-              <LogoFrenchRepublicContainer>
-                <LogoFrenchRepublic />
-              </LogoFrenchRepublicContainer>
-              <LogoPassCultureContainer>
-                <ColoredPassCultureLogo />
-              </LogoPassCultureContainer>
-            </IllustrationsContainer>
-            <EmptyContainer />
-          </HeaderContainer>
-          <Content>
-            {isTouch ? (
-              <React.Fragment>
-                <Spacer.Flex />
-                <Spacer.Column numberOfSpaces={spacingMatrix.top} />
-              </React.Fragment>
-            ) : null}
-            <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
-            <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
-            {children}
-            {isTouch ? (
-              <React.Fragment>
-                <Spacer.Column numberOfSpaces={getButtonSpaces()} />
-                <Spacer.Flex flex={0.5} />
-              </React.Fragment>
-            ) : null}
-          </Content>
-          <BottomContent>
-            {buttons ? (
-              <BottomContainer>
-                {buttons.map((button, index) => (
-                  <React.Fragment key={index}>
-                    {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
-                    {button}
-                  </React.Fragment>
-                ))}
-              </BottomContainer>
-            ) : null}
-            <Spacer.BottomScreen />
-          </BottomContent>
-        </Wrapper>
-      </Page>
+      <Page>{flex ? <Container>{pageContent}</Container> : pageContent}</Page>
     </React.Fragment>
   )
 }

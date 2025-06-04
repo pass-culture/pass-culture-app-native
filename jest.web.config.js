@@ -49,6 +49,7 @@ module.exports = {
       '|react-native-intersection-observer' +
       '|react-native-reanimated' +
       '|design-system' +
+      '|search-insights' +
       ')',
   ],
   coverageReporters: ['json'],

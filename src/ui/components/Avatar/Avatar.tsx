@@ -1,4 +1,4 @@
-import React, { Fragment, PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -30,23 +30,24 @@ export const Avatar = ({
   borderRadius,
   children,
 }: PropsWithChildren<AvatarProps>) => {
-  // Fix for iOS wich crop shadows when container has "overflow:hidden"
-  const Wrapper = Platform.OS === 'ios' ? ShadowWrapper : Fragment
-  return (
-    <Wrapper>
-      <Container
-        rounded={rounded}
-        size={size}
-        testID="Avatar"
-        borderWidth={borderWidth}
-        borderColor={borderColor}
-        borderRadius={borderRadius}>
-        <AvatarBody size={size} backgroundColor={backgroundColor} borderWidth={borderWidth}>
-          {children}
-        </AvatarBody>
-      </Container>
-    </Wrapper>
+  const ContainerComponent = (
+    <Container
+      rounded={rounded}
+      size={size}
+      testID="Avatar"
+      borderWidth={borderWidth}
+      borderColor={borderColor}
+      borderRadius={borderRadius}>
+      <AvatarBody size={size} backgroundColor={backgroundColor} borderWidth={borderWidth}>
+        {children}
+      </AvatarBody>
+    </Container>
   )
+  if (Platform.OS === 'ios') {
+    // Fix for iOS wich crop shadows when container has "overflow:hidden"
+    return <ShadowWrapper>{ContainerComponent}</ShadowWrapper>
+  }
+  return ContainerComponent
 }
 
 const ShadowWrapper = styled.View(SHADOW)
