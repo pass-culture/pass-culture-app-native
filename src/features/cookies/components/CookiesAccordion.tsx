@@ -89,7 +89,7 @@ const IconContainer = styled.View({
 
 const StyledInfo = styled(InfoPlain).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const StyledAccordionItem = styled(Accordion).attrs({
@@ -104,5 +104,5 @@ const StyledAccordionItem = styled(Accordion).attrs({
 })``
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

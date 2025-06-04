@@ -20,7 +20,12 @@ export const CreditStatusTag: React.FC<Props> = ({ status }) => {
 }
 
 const StyledText = styled(Typo.BodyAccentXs)<{ status: CreditStatus }>(({ theme, status }) => ({
-  color: status === CreditStatus.GONE ? theme.colors.greyDark : theme.colors.white,
+  color:
+    status === CreditStatus.GONE
+      ? theme.designSystem.color.text.subtle
+      : status === CreditStatus.ONGOING
+        ? theme.designSystem.color.text.default
+        : theme.designSystem.color.text.lockedInverted,
 }))
 
 const Container = styled.View<Props>(({ theme, status }) => ({

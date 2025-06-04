@@ -26,5 +26,5 @@ export const ActionPlanTag = ({
 }
 
 const StyledButtonText = styled(Typo.BodyAccent)<{ done: boolean }>(({ theme, done }) => ({
-  color: done ? theme.colors.greenValid : theme.colors.black,
+  color: done ? theme.designSystem.color.text.success : theme.designSystem.color.text.default,
 }))

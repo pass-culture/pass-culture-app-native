@@ -1,7 +1,5 @@
-import colorAlpha from 'color-alpha'
 import React, { useRef } from 'react'
 import { FlatList, Platform, ViewStyle } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -10,21 +8,16 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics/provider'
-import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
+import { AnimatedViewRefType } from 'libs/react-native-animatable'
 import { getAge } from 'shared/user/getAge'
 import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { BicolorSadFace } from 'ui/svg/icons/BicolorSadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-const GRADIENT_HEIGHT = getSpacing(30)
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 const isWeb = Platform.OS === 'web'
@@ -85,7 +78,6 @@ const reasonButtons = (canDelete: boolean): ReasonButton[] => [
 ]
 
 export function DeleteProfileReason() {
-  const headerHeight = useGetHeaderHeight()
   const gradientRef = useRef<AnimatedViewRefType>(null)
   const { user } = useAuthContext()
   const userIsDefinedAndAbove21 = user?.birthDate && getAge(user?.birthDate) >= 21
@@ -95,14 +87,12 @@ export function DeleteProfileReason() {
   const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   return (
-    <React.Fragment>
-      <PageHeaderWithoutPlaceholder onGoBack={goBack} />
+    <SecondaryPageWithBlurHeader onGoBack={goBack} title="Suppression de compte">
       <FlatList
         onViewableItemsChanged={isWeb ? null : onViewableItemsChanged}
         viewabilityConfig={VIEWABILITY_CONFIG}
         ListHeaderComponent={
           <HeaderContainer>
-            <HeaderHeightSpacer headerHeight={headerHeight} />
             <StyledIcon />
             <TitlesContainer>
               <Typo.Title3 {...getHeadingAttrs(1)}>
@@ -132,21 +122,13 @@ export function DeleteProfileReason() {
           )
         }}
       />
-      <Gradient ref={gradientRef} />
-      <BlurHeader height={headerHeight} />
-    </React.Fragment>
+    </SecondaryPageWithBlurHeader>
   )
 }
 
 const ItemContainer = styled.View({
   paddingBottom: isWeb ? getSpacing(4) : 0,
 })
-
-const HeaderHeightSpacer = styled.View.attrs<{ headerHeight: number }>({})<{
-  headerHeight: number
-}>(({ headerHeight }) => ({
-  paddingTop: headerHeight,
-}))
 
 const HeaderContainer = styled.View({
   alignItems: 'center',
@@ -170,17 +152,6 @@ const flatListStyles: ViewStyle = {
 
 const StyledIcon = styled(BicolorSadFace).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,
+  color: theme.designSystem.color.icon.brandPrimary,
+  color2: theme.designSystem.color.icon.brandPrimary,
 }))({ width: '100%' })
-
-const AnimatedGradient = createAnimatableComponent(LinearGradient)
-const Gradient = styled(AnimatedGradient).attrs(({ theme }) => ({
-  colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
-  locations: [0, 1],
-  pointerEvents: 'none',
-}))({
-  position: 'absolute',
-  height: GRADIENT_HEIGHT,
-  left: 0,
-  right: 0,
-  bottom: 0,
-})

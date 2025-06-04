@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const EmptyHeader = ({ onGoBack }: Props) => {
+  const { designSystem } = useTheme()
   const { top } = useCustomSafeInsets()
   const { goBack } = useGoBack(...homeNavConfig)
   return (
@@ -22,7 +23,7 @@ export const EmptyHeader = ({ onGoBack }: Props) => {
       <HeaderContainer>
         <Spacer.TopScreen />
         <GoBackContainer>
-          <BackButton onGoBack={onGoBack ?? goBack} />
+          <BackButton onGoBack={onGoBack ?? goBack} color={designSystem.color.icon.default} />
         </GoBackContainer>
       </HeaderContainer>
     </React.Fragment>

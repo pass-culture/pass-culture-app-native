@@ -2,6 +2,8 @@ import React from 'react'
 
 import { OnboardingGeolocation } from 'features/onboarding/pages/onboarding/OnboardingGeolocation'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -21,14 +23,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('OnboardingGeolocation', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should render correctly', () => {
-    render(<OnboardingGeolocation />)
+    render(reactQueryProviderHOC(<OnboardingGeolocation />))
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should request geoloc permission when "Continuer" is clicked', async () => {
-    render(<OnboardingGeolocation />)
+    render(reactQueryProviderHOC(<OnboardingGeolocation />))
 
     const loginButton = screen.getByLabelText('Continuer vers l’étape suivante')
     await user.press(loginButton)
@@ -37,7 +41,7 @@ describe('OnboardingGeolocation', () => {
   })
 
   it('should log analytics when "Continuer" is clicked', async () => {
-    render(<OnboardingGeolocation />)
+    render(reactQueryProviderHOC(<OnboardingGeolocation />))
 
     const loginButton = screen.getByLabelText('Continuer vers l’étape suivante')
     await user.press(loginButton)

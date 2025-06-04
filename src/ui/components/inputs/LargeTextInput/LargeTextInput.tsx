@@ -85,5 +85,5 @@ const CountContainer = styled.View({
 })
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

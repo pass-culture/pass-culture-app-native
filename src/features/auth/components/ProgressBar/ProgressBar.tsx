@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing } from 'ui/theme'
 
 const PROGRESS_DURATION_IN_MS = 800
@@ -42,9 +41,8 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
           width={progressionRatio}
           isFull={isComplete}
           duration={PROGRESS_DURATION_IN_MS}
-          ref={barRef}>
-          <BarColor />
-        </BarColorContainer>
+          ref={barRef}
+        />
       </BarBackground>
     </React.Fragment>
   )
@@ -53,20 +51,17 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
 const BarBackground = styled.View(({ theme }) => ({
   width: '100%',
   height: getSpacing(1.5),
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.disabled,
   justifyContent: 'flex-start',
 }))
 
 const BarColorContainer = styled(AnimatedView)<{ width: number; isFull?: boolean }>(
-  ({ width, isFull }) => ({
+  ({ theme, width, isFull }) => ({
     borderBottomRightRadius: isFull ? 0 : 3,
     borderTopRightRadius: isFull ? 0 : 3,
     overflow: 'hidden',
     height: '100%',
     width: `${width}%`,
+    backgroundColor: theme.designSystem.color.background.brandPrimary,
   })
 )
-
-const BarColor = styled(Rectangle).attrs({
-  size: '100%',
-})``

@@ -62,7 +62,7 @@ const ButtonContainer = styled.View({
 })
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
+  linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
 const InformationText = styled(Typo.Body)({

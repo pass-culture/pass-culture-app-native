@@ -58,10 +58,11 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
 const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
   numberOfLines: 2,
   justifyContent: 'flex-start',
-})({
+})(({ theme }) => ({
   textAlign: 'left',
-})
+  backgroundColor: theme.designSystem.color.background.subtle,
+}))
 
 const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.border.default,
 }))``

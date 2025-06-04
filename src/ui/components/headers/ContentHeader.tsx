@@ -57,8 +57,8 @@ export const ContentHeader = ({
           iconName="back"
           onPress={onBackPress}
           accessibilityLabel="Revenir en arrière"
-          finalColor={theme.colors.black}
-          initialColor={theme.colors.black}
+          finalColor={theme.designSystem.color.icon.default}
+          initialColor={theme.designSystem.color.icon.default}
         />
         {LeftElement}
         <TitleContainer>
@@ -97,7 +97,7 @@ const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, heig
   right: 0,
   height,
   zIndex: theme.zIndex.header,
-  borderBottomColor: theme.colors.greyLight,
+  borderBottomColor: theme.designSystem.color.border.subtle,
   borderBottomWidth: 1,
 }))
 
@@ -116,7 +116,7 @@ const Title = styled(Animated.Text).attrs({
 })
 
 const Body = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.black,
+  color: theme.designSystem.color.text.default,
 }))
 
 const Row = styled.View<{ marginRight: number; marginTop: number }>(

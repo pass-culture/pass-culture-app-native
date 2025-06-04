@@ -310,11 +310,11 @@ export const FavoriteButtonsContainer = styled.View(({ theme }) => {
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const Body = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const Separator = styled.View(({ theme }) => ({

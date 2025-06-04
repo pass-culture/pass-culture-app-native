@@ -95,5 +95,5 @@ const FilterSwitchLabelContainer = styled.View({
 
 const ToggleLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.designSystem.typography.bodyAccentXs,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

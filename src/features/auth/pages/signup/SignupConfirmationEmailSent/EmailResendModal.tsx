@@ -132,6 +132,6 @@ const StyledBody = styled(Typo.Body)({
 })
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.error,
+  color: theme.designSystem.color.text.error,
   textAlign: 'center',
 }))

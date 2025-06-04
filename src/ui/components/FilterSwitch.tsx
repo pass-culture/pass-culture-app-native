@@ -83,7 +83,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 }
 
 const getBackgroundColor = (theme: DefaultTheme, active: boolean) => {
-  if (active) return theme.colors.greenValid
+  if (active) return theme.designSystem.color.text.success
   return theme.colors.greySemiDark
 }
 
@@ -101,7 +101,7 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
   aspectRatio: '1',
   width: TOGGLE_WIDTH,
   height: getSpacing(7),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.text.lockedInverted,
   borderRadius: getSpacing(7),
   alignItems: 'center',
   justifyContent: 'center',
@@ -114,20 +114,20 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
             height: getSpacing(0.5),
           },
           shadowRadius: 2.5,
-          shadowColor: theme.colors.black,
+          shadowColor: theme.designSystem.color.background.lockedInverted,
           shadowOpacity: 0.2,
         }),
       }),
 }))
 
 const Lock = styled(LockIcon).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.extraSmall,
   accessibilityLabel: 'Désactivé',
 }))``
 
 const Check = styled(CheckIcon).attrs(({ theme }) => ({
-  color: theme.colors.greenValid,
+  color: theme.designSystem.color.icon.success,
   size: theme.icons.sizes.extraSmall,
   accessibilityLabel: 'Activé',
 }))``

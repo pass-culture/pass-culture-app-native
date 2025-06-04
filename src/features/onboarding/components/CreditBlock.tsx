@@ -52,7 +52,9 @@ const Container = styled.View<{
   status: CreditStatus
 }>(({ theme, status }) => ({
   borderColor:
-    status === CreditStatus.ONGOING ? theme.colors.greySemiDark : getBackgroundColor(theme, status),
+    status === CreditStatus.ONGOING
+      ? theme.designSystem.color.border.subtle
+      : getBackgroundColor(theme, status),
   borderWidth: getSpacing(0.25),
   borderRadius: getSpacing(1),
   backgroundColor: getBackgroundColor(theme, status),

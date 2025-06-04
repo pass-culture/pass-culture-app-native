@@ -4,10 +4,9 @@ import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
+import { ColorsType } from 'theme/types'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { IconNames } from 'ui/components/icons/iconFactory'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type ReactionHeaderButtonProps = Omit<
   ComponentProps<typeof RoundedButton>,
@@ -20,7 +19,7 @@ const getIconAndColorFromReactionType = ({
 }: {
   theme: DefaultTheme
   reactionType?: ReactionTypeEnum | null
-}): { iconName: IconNames; color: ColorsEnum } => {
+}): { iconName: IconNames; color: ColorsType } => {
   switch (reactionType) {
     case ReactionTypeEnum.LIKE:
       return { iconName: 'like-filled', color: theme.colors.primary }
