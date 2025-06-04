@@ -9,7 +9,6 @@ import { AccessibilityFiltersModal } from 'features/accessibility/components/Acc
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { PlaylistType } from 'features/offer/enums'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
@@ -40,7 +39,6 @@ import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
 import {
   removeSelectedVenue,
   setInitialRegion,
-  setOffersPlaylistType,
   setRegion,
   setVenues,
   useVenueMapStore,
@@ -66,6 +64,8 @@ import { Map } from 'ui/svg/icons/Map'
 import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
+import { useMagicAPI } from 'features/search/queries/useMagicAPI'
+import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 
 const ANIMATION_DURATION = 700
 const MAX_VENUE_CHARACTERS = 20
@@ -85,7 +85,7 @@ export const SearchResultsContent: React.FC = () => {
     fetchNextPage,
     refetch,
     data,
-    hits,
+    // hits,
     nbHits,
     isLoading,
     isFetching,
@@ -95,6 +95,11 @@ export const SearchResultsContent: React.FC = () => {
     facets,
     offerVenues,
   } = useSearchResults()
+
+  const { data: magicApiData } = useMagicAPI()
+  const offerIds = magicApiData?.offerIds ?? []
+  const hits = useAlgoliaSimilarOffers(offerIds) ?? []
+  console.log(magicApiData)
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
@@ -138,15 +143,15 @@ export const SearchResultsContent: React.FC = () => {
     }, [geolocPosition, selectedPlace, width, height, initialRegion])
   )
 
-  useFocusEffect(
-    useCallback(() => {
-      const playlistType =
-        hits.venues && hits.venues.length > 0
-          ? PlaylistType.TOP_OFFERS
-          : PlaylistType.SEARCH_RESULTS
-      setOffersPlaylistType(playlistType)
-    }, [hits.venues])
-  )
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const playlistType =
+  //       hits.venues && hits.venues.length > 0
+  //         ? PlaylistType.TOP_OFFERS
+  //         : PlaylistType.SEARCH_RESULTS
+  //     setOffersPlaylistType(playlistType)
+  //   }, [hits.venues])
+  // )
 
   useFocusEffect(
     useCallback(() => {

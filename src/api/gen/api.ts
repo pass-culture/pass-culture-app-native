@@ -1736,6 +1736,13 @@ export interface GetRemindersResponse {
    */
   reminders: Array<ReminderResponse>
 }
+export interface MagicApiResponse {
+  /**
+   * @type {Array<string>}
+   * @memberof MagicApiResponse
+   */
+  offerIds: Array<string>
+}
 /**
  * @export
  * @interface GoogleAccountRequest
@@ -5161,6 +5168,17 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
+    async getNativeV1MagicApi(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/magic-api`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
     /**
      * @summary google_oauth_state <GET>
      * @param {*} [options] Override http request option.
@@ -7121,6 +7139,16 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
       )
       return handleGeneratedApiResponse(response)
     },
+    async getNativeV1MagicApi(options?: any): Promise<MagicApiResponse> {
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1MagicApi(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
     /**
      *
      * @summary google_oauth_state <GET>
@@ -8650,6 +8678,10 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1MeReminders(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeReminders(options)
+  }
+  public async getNativeV1MagicApi(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1MagicApi(options)
   }
   /**
    *

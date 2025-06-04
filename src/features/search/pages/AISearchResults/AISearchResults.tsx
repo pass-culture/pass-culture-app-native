@@ -2,7 +2,6 @@ import { Hit } from '@algolia/client-search'
 import { useNavigationState } from '@react-navigation/native'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
-import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
@@ -30,12 +29,10 @@ const PLAYLIST_ITEM_WIDTH = LENGTH_M * RATIO_HOME_IMAGE
 export const AISearchResults = () => {
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.at(-1)?.name
-  // useSync(currentRoute === 'SearchResults')
+  useSync(currentRoute === 'SearchResults' || currentRoute === 'AISearchResults')
 
   const netInfo = useNetInfoContext()
-  const { isFocusOnSuggestions } = useSearch()
-  const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
-    useSearchHistory()
+  const { setQueryHistory, addToHistory } = useSearchHistory()
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),

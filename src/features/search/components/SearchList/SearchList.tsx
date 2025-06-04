@@ -2,7 +2,6 @@ import { FlashList } from '@shopify/flash-list'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { LIST_ITEM_HEIGHT } from 'features/search/constants'
 import { SearchListProps } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
@@ -36,16 +35,8 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
         estimatedItemSize={LIST_ITEM_HEIGHT}
         ref={ref}
         testID="searchResultsFlashlist"
-        data={hits.offers}
+        data={hits}
         keyExtractor={keyExtractor}
-        ListHeaderComponent={
-          <SearchListHeader
-            nbHits={nbHits}
-            userData={userData}
-            venues={hits.venues}
-            venuesUserData={venuesUserData}
-          />
-        }
         ItemSeparatorComponent={Separator}
         renderItem={renderItem}
         refreshing={refreshing}

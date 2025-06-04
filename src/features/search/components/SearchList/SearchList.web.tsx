@@ -4,7 +4,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import {
   footerPlaceholder,
   headerPlaceholder,
@@ -18,7 +17,7 @@ import {
 } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
-import { SearchListProps, SearchView } from 'features/search/types'
+import { SearchListProps } from 'features/search/types'
 import { useLocation } from 'libs/location'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -109,9 +108,9 @@ export const SearchList = forwardRef<never, SearchListProps>(
     const listRef = useRef<VariableSizeList<RowData>>(null)
     const { hasGeolocPosition } = useLocation()
     const { searchState } = useSearch()
-    const previousRoute = usePreviousRoute()
-    const hasVenuesPlaylist =
-      !searchState.venue && !!hits.venues.length && previousRoute?.name !== SearchView.Thematic
+    // const previousRoute = usePreviousRoute()
+    const hasVenuesPlaylist = false
+    //!searchState.venue && !!hits.venues.length && previousRoute?.name !== SearchView.Thematic
 
     /**
      * This method will compute maximum height to set list height programatically.
@@ -151,12 +150,12 @@ export const SearchList = forwardRef<never, SearchListProps>(
        * This is necessary since the Row component (`SearchListItem.web`) is generic and we need to
        * guess what we want to draw.
        */
-      items: [headerPlaceholder, ...hits.offers, footerPlaceholder],
+      items: [headerPlaceholder, ...hits, footerPlaceholder],
       userData,
       venuesUserData,
       nbHits,
-      offers: hits.offers,
-      venues: hits.venues,
+      offers: hits,
+      venues: [],
       isFetchingNextPage,
       autoScrollEnabled,
       onPress,

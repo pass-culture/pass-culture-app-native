@@ -10,7 +10,6 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { LocationMode } from 'libs/location/types'
@@ -86,7 +85,7 @@ export type VenuesUserData = VenueUserData[] | undefined
 export interface SearchListProps {
   ref?: Ref<FlashList<Offer>>
   nbHits: number
-  hits: SearchOfferHits
+  hits: Offer[]
   venuesUserData: VenuesUserData
   renderItem: ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   autoScrollEnabled: boolean
