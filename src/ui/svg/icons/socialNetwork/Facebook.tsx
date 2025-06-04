@@ -37,7 +37,6 @@ const FacebookSvg: React.FunctionComponent<AccessibleIcon> = ({
   </AccessibleSvg>
 )
 
-export const Facebook = styled(FacebookSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+export const Facebook = styled(FacebookSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

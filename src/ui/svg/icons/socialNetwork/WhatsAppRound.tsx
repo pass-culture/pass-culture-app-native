@@ -41,7 +41,6 @@ const WhatsAppRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: A
   )
 }
 
-export const WhatsAppRound = styled(WhatsAppRoundSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.greyDark,
+export const WhatsAppRound = styled(WhatsAppRoundSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

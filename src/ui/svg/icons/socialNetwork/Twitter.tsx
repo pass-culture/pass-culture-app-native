@@ -26,7 +26,6 @@ const TwitterSvg: React.FunctionComponent<AccessibleIcon> = ({
   </AccessibleSvg>
 )
 
-export const Twitter = styled(TwitterSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+export const Twitter = styled(TwitterSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

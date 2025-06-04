@@ -30,7 +30,6 @@ const ViberRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: Acce
   )
 }
 
-export const ViberRound = styled(ViberRoundSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.greyDark,
+export const ViberRound = styled(ViberRoundSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``

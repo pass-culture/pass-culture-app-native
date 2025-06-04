@@ -63,7 +63,6 @@ const InstagramSvg = ({ color: _color, size, accessibilityLabel, testID }: Acces
   )
 }
 
-export const Instagram = styled(InstagramSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.greyDark,
+export const Instagram = styled(InstagramSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.icons.sizes.standard,
 }))``
