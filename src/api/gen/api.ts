@@ -1747,6 +1747,9 @@ export interface MagicApiResponse {
   best: MagicPlaylistResponse
   discover: MagicPlaylistResponse
 }
+export interface MagicApiRequest {
+  query: string
+}
 /**
  * @export
  * @interface GoogleAccountRequest
@@ -5172,12 +5175,14 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
-    async getNativeV1MagicApi(options: any = {}): Promise<FetchArgs> {
+    async postNativeV1MagicApi(body: MagicApiRequest, options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/magic-api`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      localVarRequestOptions.body = JSON.stringify(body || {})
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -7143,9 +7148,10 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
       )
       return handleGeneratedApiResponse(response)
     },
-    async getNativeV1MagicApi(options?: any): Promise<MagicApiResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1MagicApi(options)
+    async postNativeV1MagicApi(body: MagicApiRequest, options?: any): Promise<MagicApiResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1MagicApi(body, options)
       const response = await safeFetch(
         configuration?.basePath + localVarFetchArgs.url,
         localVarFetchArgs.options,
@@ -8683,9 +8689,9 @@ export class DefaultApi extends BaseAPI {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeReminders(options)
   }
-  public async getNativeV1MagicApi(options?: any) {
+  public async postNativeV1MagicApi(body: MagicApiRequest, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1MagicApi(options)
+    return DefaultApiFp(this, configuration).postNativeV1MagicApi(body, options)
   }
   /**
    *

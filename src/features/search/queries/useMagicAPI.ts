@@ -10,7 +10,9 @@ export const useMagicAPI = <TData = MagicApiResponse>() => {
   return useQuery<MagicApiResponse, Error, TData>(
     [QueryKeys.MAGIC_API],
     () => {
-      const response = api.getNativeV1MagicApi()
+      const response = api.postNativeV1MagicApi({
+        query: 'Concert de Rap pour ce weekend à Marseille',
+      })
       console.log(response)
       return response
     },
