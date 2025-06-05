@@ -1,7 +1,7 @@
 import React from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { CheckboxDeprecated } from 'ui/components/inputs/Checkbox/CheckboxDeprecated'
 
 interface Props<TFieldValues extends FieldValues, TName> {
   name: TName
@@ -23,7 +23,7 @@ export const CheckboxController = <
     control={control}
     name={name}
     render={({ field: { onChange, value } }) => (
-      <Checkbox isChecked={value} label={label} required={required} onPress={onChange} />
+      <CheckboxDeprecated isChecked={value} label={label} required={required} onPress={onChange} />
     )}
   />
 )

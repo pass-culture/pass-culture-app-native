@@ -5,11 +5,11 @@ import React from 'react'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 
-import { CheckboxBlock } from './CheckboxBlock'
+import { CheckboxBlockDeprecated } from './CheckboxBlockDeprecated'
 
-const meta: Meta<typeof CheckboxBlock> = {
-  title: 'ui/CheckboxBlock',
-  component: CheckboxBlock,
+const meta: Meta<typeof CheckboxBlockDeprecated> = {
+  title: 'ui/CheckboxBlockDeprecated',
+  component: CheckboxBlockDeprecated,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -20,23 +20,23 @@ const meta: Meta<typeof CheckboxBlock> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof CheckboxBlock> = [
+const variantConfig: Variants<typeof CheckboxBlockDeprecated> = [
   {
-    label: 'CheckboxBlock unchecked',
+    label: 'CheckboxBlockDeprecated unchecked',
     props: {
       label: 'Label',
       checked: false,
     },
   },
   {
-    label: 'CheckboxBlock checked',
+    label: 'CheckboxBlockDeprecated checked',
     props: {
       label: 'Label',
       checked: true,
     },
   },
   {
-    label: 'CheckboxBlock with sub label',
+    label: 'CheckboxBlockDeprecated with sub label',
     props: {
       label: 'Label',
       checked: false,
@@ -44,7 +44,7 @@ const variantConfig: Variants<typeof CheckboxBlock> = [
     },
   },
   {
-    label: 'CheckboxBlock with left icon',
+    label: 'CheckboxBlockDeprecated with left icon',
     props: {
       label: 'Label',
       checked: false,
@@ -52,7 +52,7 @@ const variantConfig: Variants<typeof CheckboxBlock> = [
     },
   },
   {
-    label: 'CheckboxBlock with sub label and left icon',
+    label: 'CheckboxBlockDeprecated with sub label and left icon',
     props: {
       label: 'Label',
       checked: false,
@@ -62,9 +62,13 @@ const variantConfig: Variants<typeof CheckboxBlock> = [
   },
 ]
 
-export const Template: VariantsStory<typeof CheckboxBlock> = {
-  name: 'CheckboxBlock',
+export const Template: VariantsStory<typeof CheckboxBlockDeprecated> = {
+  name: 'CheckboxBlockDeprecated',
   render: (props) => (
-    <VariantsTemplate variants={variantConfig} Component={CheckboxBlock} defaultProps={props} />
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={CheckboxBlockDeprecated}
+      defaultProps={props}
+    />
   ),
 }

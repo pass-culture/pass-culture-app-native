@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react'
 
 import { env } from 'libs/environment/env'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { CheckboxDeprecated } from 'ui/components/inputs/Checkbox/CheckboxDeprecated'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -15,7 +15,7 @@ type Props = {
 export const CguWithCheckbox: React.FC<Props> = ({ isChecked, setIsChecked }) => {
   return (
     <ViewGap gap={4}>
-      <Checkbox
+      <CheckboxDeprecated
         label="J’ai lu et j’accepte les conditions générales d’utilisation"
         isChecked={isChecked}
         onPress={() => setIsChecked(!isChecked)}

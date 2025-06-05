@@ -12,7 +12,7 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { CheckboxDeprecated } from 'ui/components/inputs/Checkbox/CheckboxDeprecated'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -112,22 +112,22 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
           Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
         </Typo.BodyAccent>
         <StyledCheckBox>
-          <Checkbox
+          <CheckboxDeprecated
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}
             label={capitalizeFirstLetter(HandicapEnum.VISUAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.VISUAL)}
           />
-          <Checkbox
+          <CheckboxDeprecated
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MENTAL]}
             label={capitalizeFirstLetter(HandicapEnum.MENTAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MENTAL)}
           />
-          <Checkbox
+          <CheckboxDeprecated
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MOTOR]}
             label={capitalizeFirstLetter(HandicapEnum.MOTOR)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MOTOR)}
           />
-          <Checkbox
+          <CheckboxDeprecated
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.AUDIO]}
             label={capitalizeFirstLetter(HandicapEnum.AUDIO)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.AUDIO)}
