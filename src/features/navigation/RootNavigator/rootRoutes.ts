@@ -2,11 +2,8 @@ import { Artist } from 'features/artist/pages/Artist'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { Login } from 'features/auth/pages/login/Login'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
-import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
-import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
-import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
@@ -28,7 +25,6 @@ import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
-import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 
 import { RootRoute, RootScreenNames } from './types'
 
@@ -137,12 +133,6 @@ export const rootRoutes: RootRoute[] = [
     path: 'email-confirmation-creation-compte/envoye',
     options: { title: 'Email création de compte envoyé' },
   },
-  {
-    name: 'SignupConfirmationExpiredLink',
-    component: SignupConfirmationExpiredLink,
-    path: 'email-confirmation-creation-compte/expire',
-    options: { title: 'Email création de compte expiré' },
-  },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   // SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen
   {
@@ -156,18 +146,6 @@ export const rootRoutes: RootRoute[] = [
     options: { title: 'Filtres de recherche' },
   },
   {
-    name: 'VerifyEligibility',
-    component: VerifyEligibility,
-    path: 'verification-eligibilite',
-    options: { title: 'Vérification éligibilité' },
-  },
-  {
-    name: 'NotYetUnderageEligibility',
-    component: NotYetUnderageEligibility,
-    path: 'cest-pour-bientot',
-    options: { title: 'C’est pour bientôt' },
-  },
-  {
     name: 'Venue',
     component: Venue,
     pathConfig: {
@@ -177,13 +155,6 @@ export const rootRoutes: RootRoute[] = [
     },
     options: { title: 'Lieu' },
   },
-  {
-    name: 'VenueMap',
-    component: VenueMap,
-    path: 'carte-des-lieux',
-    options: { title: 'Carte des lieux' },
-  },
-
   {
     name: 'VenuePreviewCarousel',
     component: VenuePreviewCarousel,
