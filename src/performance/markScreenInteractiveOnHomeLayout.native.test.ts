@@ -13,7 +13,7 @@ Object.defineProperty(global, '__DEV__', {
 
 describe('markScreenInteractiveOnHomeLayout', () => {
   it('should mark performance event when interactions are over', async () => {
-    markScreenInteractiveOnHomeLayout()
+    markScreenInteractiveOnHomeLayout('TabNavigator')
     await jest.runAllTimers()
 
     expect(performance.mark).toHaveBeenCalledTimes(1)

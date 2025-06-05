@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { initialScreenNameActions } from 'features/home/pages/helpers/useInitialScreenNameStore'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
@@ -33,6 +34,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn, user, shouldShowCulturalSurvey])
 
+  initialScreen && initialScreenNameActions.setInitialScreenName(initialScreen)
   return initialScreen
 }
 
