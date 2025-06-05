@@ -14,6 +14,7 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
+import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
@@ -205,6 +206,7 @@ export const rootRoutes: RootRoute[] = [
 ]
 
 export function isRootStackScreen(screen: string): screen is RootScreenNames {
+  const screensRemovedFromRootRoutes = Object.keys(temporaryRootStackConfig)
   const rootStackRouteNames = rootRoutes.map((route): string => route.name)
-  return rootStackRouteNames.includes(screen)
+  return [...rootStackRouteNames, ...screensRemovedFromRootRoutes].includes(screen)
 }
