@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BannerName, BannerResponse, EligibilityType } from 'api/gen'
+import { BannerName, BannerResponse, DepositType, EligibilityType } from 'api/gen'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
@@ -60,10 +60,28 @@ describe('HomeHeader', () => {
     expect(await screen.findByText('Tu as 56 € sur ton pass')).toBeOnTheScreen()
   })
 
-  it('eligible free offer users should see subtitle: Toute la culture à portée de main', async () => {
+  it('should display "Toute la culture à portée de main" when user is eligible to free offer', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
       eligibility: EligibilityType.free,
+      isEligibleForBeneficiaryUpgrade: false,
+    })
+
+    const credit = { amount: 0, isExpired: false }
+    mockUseAvailableCredit.mockReturnValueOnce(credit)
+    mockGeolocBannerFromBackend()
+
+    renderHomeHeader()
+
+    expect(await screen.findByText('Bonjour Jean')).toBeOnTheScreen()
+    expect(await screen.findByText('Toute la culture à portée de main')).toBeOnTheScreen()
+  })
+
+  it('should display "Toute la culture à portée de main" when user deposit type is GRANT_FREE', async () => {
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      eligibility: EligibilityType['age-17-18'],
+      depositType: DepositType.GRANT_FREE,
       isEligibleForBeneficiaryUpgrade: false,
     })
 

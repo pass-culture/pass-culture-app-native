@@ -5,6 +5,7 @@ import {
   BannerName,
   BannerResponse,
   CurrencyEnum,
+  EligibilityType,
   SubscriptionStepperResponseV2,
   UserProfileResponse,
   YoungStatusType,
@@ -54,12 +55,6 @@ const exBeneficiaryUser: UserProfileResponse = {
 const notBeneficiaryUser = {
   ...user,
   isBeneficiary: false,
-}
-
-const exUnderageBeneficiaryUser: UserProfileResponse = {
-  ...user,
-  depositExpirationDate: '2020-01-01T03:04:05',
-  isEligibleForBeneficiaryUpgrade: true,
 }
 
 jest.mock('libs/jwt/jwt')
@@ -161,18 +156,7 @@ describe('ProfileHeader', () => {
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
-  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is eligible exunderage beneficiary', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {})
-    renderProfileHeader({
-      featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: exUnderageBeneficiaryUser,
-    })
-
-    expect(await screen.findByText('Jean 93 HNMM 2')).toBeOnTheScreen()
-    expect(await screen.findByText('Ton crédit a expiré le')).toBeOnTheScreen()
-  })
-
-  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade', async () => {
+  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade and eligibility is 18 yo', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.activation_banner,
@@ -183,7 +167,11 @@ describe('ProfileHeader', () => {
 
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: { ...beneficiaryUser, isEligibleForBeneficiaryUpgrade: true },
+      user: {
+        ...beneficiaryUser,
+        isEligibleForBeneficiaryUpgrade: true,
+        eligibility: EligibilityType['age-18'],
+      },
     })
 
     expect(await screen.findByText('Jean Dupond')).toBeOnTheScreen()
