@@ -668,29 +668,16 @@ exports[`ThematicHome should render correctly 1`] = `
         ]
       }
     >
-      <Image
-        collapsable={false}
+      <View
+        fill="none"
         height={180}
-        resizeMode="stretch"
-        source={
-          {
-            "testUri": "../../../src/features/home/images/headerGradient/Lilac.png",
-          }
-        }
-        style={
-          [
-            {
-              "height": 180,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-              "width": "100%",
-            },
-            {},
-          ]
-        }
-      />
+        testID="HomeGradient"
+        width="100%"
+      >
+        <Text>
+          HomeGradient-SVG-Mock
+        </Text>
+      </View>
       <View
         style={
           [
@@ -724,22 +711,33 @@ exports[`ThematicHome should render correctly 1`] = `
             ]
           }
         >
-          <Text
-            numberOfLines={1}
+          <View
+            gap={1}
             style={
               [
                 {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "marginBottom": 4,
+                  "gap": 4,
                 },
               ]
             }
           >
-            HeaderSubtitle
-          </Text>
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                    "marginBottom": 4,
+                  },
+                ]
+              }
+            >
+              HeaderSubtitle
+            </Text>
+          </View>
           <Text
             numberOfLines={2}
             style={

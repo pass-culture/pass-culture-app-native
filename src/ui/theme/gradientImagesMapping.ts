@@ -1,15 +1,11 @@
-import Aquamarine from 'features/home/images/headerGradient/Aquamarine.png'
-import Coral from 'features/home/images/headerGradient/Coral.png'
-import DeepPink from 'features/home/images/headerGradient/DeepPink.png'
-import Gold from 'features/home/images/headerGradient/Gold.png'
-import Lilac from 'features/home/images/headerGradient/Lilac.png'
-import SkyBlue from 'features/home/images/headerGradient/SkyBlue.png'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const gradientImagesMapping = {
-  Gold,
-  Aquamarine,
-  SkyBlue,
-  DeepPink,
-  Coral,
-  Lilac,
+  Gold: [ColorsEnum.LILAC_LIGHT, ColorsEnum.GOLD_LIGHT_100],
+  Aquamarine: [ColorsEnum.LILAC_LIGHT, ColorsEnum.AQUAMARINE_LIGHT],
+  SkyBlue: [ColorsEnum.DEEP_PINK_LIGHT, ColorsEnum.SKY_BLUE_LIGHT],
+  DeepPink: [ColorsEnum.AQUAMARINE_LIGHT, ColorsEnum.DEEP_PINK_LIGHT],
+  Coral: [ColorsEnum.SKY_BLUE_LIGHT, ColorsEnum.CORAL_LIGHT],
+  Lilac: [ColorsEnum.DEEP_PINK_LIGHT, ColorsEnum.LILAC_LIGHT],
 }
