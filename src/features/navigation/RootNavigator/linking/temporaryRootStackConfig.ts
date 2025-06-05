@@ -242,9 +242,9 @@ export const temporaryRootStackConfig = {
   //   _DeeplinkOnlySignupForm1: {
   //     path: 'creation-compte/email',
   //   },
-  //   SignupConfirmationEmailSent: {
-  //     path: 'email-confirmation-creation-compte/envoye',
-  //   },
+  SignupConfirmationEmailSent: {
+    path: 'email-confirmation-creation-compte/envoye',
+  },
   SignupConfirmationExpiredLink: {
     path: 'email-confirmation-creation-compte/expire',
   },
