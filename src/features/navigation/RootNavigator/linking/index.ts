@@ -1,5 +1,6 @@
 import { LinkingOptions } from '@react-navigation/native'
 
+import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { onboardingStackNavigatorConfig } from 'features/navigation/OnboardingStackNavigator/onboardingStackNavigatorConfig'
 import { profileStackNavigatorConfig } from 'features/navigation/ProfileStackNavigator/profileStackNavigatorConfig'
@@ -12,7 +13,6 @@ import { getInitialURL } from './getInitialUrl'
 import { customGetPathFromState } from './getPathFromState'
 import { customGetStateFromPath } from './getStateFromPath'
 import { subscribe } from './subscribe'
-import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig'
 
 const PASS_CULTURE_PREFIX_URL = 'passculture://'
 
@@ -30,4 +30,13 @@ export const linking: RequireField<
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
   config: { screens: { ...rootScreensConfig } },
+  config: {
+    screens: {
+      ...rootScreensConfig,
+      ...temporaryRootStackConfig,
+      ...cheatcodesStackNavigatorConfig,
+      ...onboardingStackNavigatorConfig,
+      ...profileStackNavigatorConfig,
+    },
+  },
 }
