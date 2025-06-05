@@ -7,7 +7,7 @@ import { isStyledIcon } from 'shared/typeguards/isStyledIcon'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 
-type TagProps = ViewProps & {
+export type TagProps = ViewProps & {
   label: string
   Icon?: FunctionComponent<AccessibleIcon> | ReactElement
   backgroundColor?: string
