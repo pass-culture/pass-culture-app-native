@@ -1284,6 +1284,7 @@ export interface DepositAmountsByAge {
  */
 export enum DepositType {
   'GRANT_17_18' = 'GRANT_17_18',
+  'GRANT_FREE' = 'GRANT_FREE',
   'GRANT_15_17' = 'GRANT_15_17',
   'GRANT_18' = 'GRANT_18',
 }
@@ -4449,9 +4450,10 @@ export enum UserRole {
   'ADMIN' = 'ADMIN',
   'ANONYMIZED' = 'ANONYMIZED',
   'BENEFICIARY' = 'BENEFICIARY',
+  'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
+  'FREE_BENEFICIARY' = 'FREE_BENEFICIARY',
   'PRO' = 'PRO',
   'NON_ATTACHED_PRO' = 'NON_ATTACHED_PRO',
-  'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
   'TEST' = 'TEST',
 }
 /**
