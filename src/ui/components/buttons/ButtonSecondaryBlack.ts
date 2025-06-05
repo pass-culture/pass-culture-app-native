@@ -33,7 +33,7 @@ export const ButtonSecondaryBlack = styledButton(AppButton).attrs<BaseButtonProp
       icon: Icon,
       title: Title,
       loadingIndicator: LoadingIndicator,
-      backgroundColor: theme.buttons.secondaryBlack.backgroundColor,
+      backgroundColor: 'transparent',
       hoverUnderlineColor: theme.buttons.secondaryBlack.textColor,
     }
   }

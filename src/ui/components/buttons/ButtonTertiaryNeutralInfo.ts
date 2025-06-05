@@ -35,9 +35,9 @@ export const ButtonTertiaryNeutralInfo = styledButton(AppButton).attrs<BaseButto
       hoverUnderlineColor: theme.designSystem.color.text.subtle,
     }
   }
-)(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.background.default,
-}))
+)({
+  backgroundColor: 'transparent',
+})
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
   color: theme.buttons.tertiaryNeutralInfo.loadingIconColor,

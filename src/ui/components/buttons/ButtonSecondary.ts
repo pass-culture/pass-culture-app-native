@@ -10,19 +10,18 @@ import { Typo } from 'ui/theme'
 export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, color, ...rest }) => {
     let Icon
-    const defaultColor = color ?? theme.designSystem.color.icon.brandPrimary
+    const defaultColorIcon = color ?? theme.designSystem.color.icon.brandPrimary
     if (icon) {
       Icon = styled(icon).attrs({
-        color: disabled ? theme.designSystem.color.icon.disabled : defaultColor,
+        color: disabled ? theme.designSystem.color.icon.disabled : defaultColorIcon,
         size: theme.buttons.secondary.iconSize,
       })``
     }
 
+    const defaultColorText = color ?? theme.designSystem.color.text.brandPrimary
     const Title = styled(Typo.Button)({
       maxWidth: '100%',
-      color: disabled
-        ? theme.designSystem.color.text.disabled
-        : (color ?? theme.designSystem.color.text.brandPrimary),
+      color: disabled ? theme.designSystem.color.text.disabled : defaultColorText,
       fontSize: textSize,
     })
 
@@ -31,8 +30,8 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       icon: Icon,
       title: Title,
       loadingIndicator: LoadingIndicator,
-      backgroundColor: theme.designSystem.color.background.default,
-      hoverUnderlineColor: color ?? theme.designSystem.color.text.brandPrimary,
+      backgroundColor: 'transparent',
+      hoverUnderlineColor: defaultColorText,
     }
   }
 )(({ theme, disabled, color }) => {
