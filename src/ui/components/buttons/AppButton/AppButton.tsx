@@ -27,13 +27,13 @@ const _AppButton = <T extends AppButtonProps>({
   buttonHeight = 'small',
   inlineHeight,
   accessibilityLabel,
-  accessibilityDescribedBy,
+  accessibilityDescribedBy: accessibilityHint,
   wording,
   adjustsFontSizeToFit,
   justifyContent,
   numberOfLines,
   style,
-  loadingIndicator: LoadingIndicator,
+  loadingIndicator: LoadingIndicator = DefaultLoadingIndicator,
   center,
   ellipsizeMode,
   backgroundColor,
@@ -45,7 +45,7 @@ const _AppButton = <T extends AppButtonProps>({
   return (
     <TouchableOpacityButton
       accessibilityLabel={accessibilityLabel || wording}
-      accessibilityDescribedBy={accessibilityDescribedBy}
+      accessibilityHint={accessibilityHint}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}
       onPress={pressHandler}
@@ -72,10 +72,6 @@ const _AppButton = <T extends AppButtonProps>({
       />
     </TouchableOpacityButton>
   )
-}
-
-_AppButton.defaultProps = {
-  loadingIndicator: DefaultLoadingIndicator,
 }
 
 // memo is used to avoid useless rendering while props remain unchanged

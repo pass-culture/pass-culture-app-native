@@ -950,7 +950,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1158,7 +1158,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1356,7 +1356,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1554,7 +1554,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1752,7 +1752,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1950,7 +1950,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -2148,7 +2148,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -2848,7 +2848,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3046,7 +3046,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3299,7 +3299,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3507,7 +3507,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3705,7 +3705,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3903,7 +3903,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -4101,7 +4101,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -4299,7 +4299,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -4497,7 +4497,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={true}
+                    focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}

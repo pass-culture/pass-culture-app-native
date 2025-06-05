@@ -1622,7 +1622,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               }
             }
             accessible={false}
-            focusable={true}
+            focusable={false}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
