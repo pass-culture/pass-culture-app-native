@@ -5,11 +5,11 @@ import React from 'react'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Typo } from 'ui/theme'
 
-import { Checkbox } from './Checkbox'
+import { CheckboxDeprecated } from './CheckboxDeprecated'
 
-const meta: Meta<typeof Checkbox> = {
-  title: 'ui/inputs/Checkbox',
-  component: Checkbox,
+const meta: Meta<typeof CheckboxDeprecated> = {
+  title: 'ui/inputs/CheckboxDeprecated',
+  component: CheckboxDeprecated,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -20,21 +20,21 @@ const meta: Meta<typeof Checkbox> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof Checkbox> = [
+const variantConfig: Variants<typeof CheckboxDeprecated> = [
   {
-    label: 'CheckBox not checked',
+    label: 'CheckboxDeprecated not checked',
     props: { label: 'I agree to disagree', isChecked: false },
   },
   {
-    label: 'CheckBox checked',
+    label: 'CheckboxDeprecated checked',
     props: { label: 'I agree to disagree', isChecked: true },
   },
   {
-    label: 'CheckBox required',
+    label: 'CheckboxDeprecated required',
     props: { label: 'I have to agree', isChecked: false, required: true },
   },
   {
-    label: 'CheckBox customised style',
+    label: 'CheckboxDeprecated customised style',
     props: {
       label: 'I have to agree',
       isChecked: true,
@@ -44,9 +44,13 @@ const variantConfig: Variants<typeof Checkbox> = [
   },
 ]
 
-export const Template: VariantsStory<typeof Checkbox> = {
-  name: 'Checkbox',
+export const Template: VariantsStory<typeof CheckboxDeprecated> = {
+  name: 'CheckboxDeprecated',
   render: (props) => (
-    <VariantsTemplate variants={variantConfig} Component={Checkbox} defaultProps={props} />
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={CheckboxDeprecated}
+      defaultProps={props}
+    />
   ),
 }

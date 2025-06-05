@@ -11,7 +11,7 @@ import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFil
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { theme } from 'theme'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { CheckboxDeprecated } from 'ui/components/inputs/Checkbox/CheckboxDeprecated'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -112,7 +112,7 @@ const Container = styled(ViewGap)({
   paddingBottom: getSpacing(26),
 })
 
-const StyledCheckbox = styled(Checkbox)({
+const StyledCheckbox = styled(CheckboxDeprecated)({
   flexDirection: 'row-reverse',
   justifyContent: 'space-between',
 })

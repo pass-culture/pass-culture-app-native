@@ -19,7 +19,7 @@ type CheckboxBlockProps = {
   onPress: () => void
 }
 
-export const CheckboxBlock = ({
+export const CheckboxBlockDeprecated = ({
   checked,
   label,
   sublabel,

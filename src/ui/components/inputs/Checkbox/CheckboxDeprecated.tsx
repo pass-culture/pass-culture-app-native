@@ -21,7 +21,7 @@ type Props = IsCheckedProps & {
   style?: StyleProp<ViewStyle>
 }
 
-export const Checkbox: FunctionComponent<Props> = ({
+export const CheckboxDeprecated: FunctionComponent<Props> = ({
   label,
   isChecked,
   required,

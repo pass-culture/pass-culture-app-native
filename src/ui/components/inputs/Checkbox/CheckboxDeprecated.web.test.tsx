@@ -3,11 +3,11 @@ import React from 'react'
 
 import { act, render, screen } from 'tests/utils/web'
 
-import { Checkbox } from './Checkbox'
+import { CheckboxDeprecated } from './CheckboxDeprecated'
 
-describe('<Checkbox />', () => {
+describe('<CheckboxDeprecated />', () => {
   it('should render an accessible checkbox', () => {
-    render(<Checkbox label="I agree to disagree" isChecked={false} onPress={jest.fn()} />)
+    render(<CheckboxDeprecated label="I agree to disagree" isChecked={false} onPress={jest.fn()} />)
 
     const checkbox = screen.getByRole('checkbox')
 
@@ -16,7 +16,7 @@ describe('<Checkbox />', () => {
 
   it('is linked to his label', () => {
     const label = 'I agree to disagree'
-    render(<Checkbox label={label} isChecked={false} onPress={jest.fn()} />)
+    render(<CheckboxDeprecated label={label} isChecked={false} onPress={jest.fn()} />)
 
     expect(screen.getByLabelText(label)).toEqual(screen.getByRole('checkbox'))
   })
@@ -24,7 +24,7 @@ describe('<Checkbox />', () => {
   it('can be checked with checkbox', async () => {
     const label = 'I agree to disagree'
     const onPressMock = jest.fn()
-    render(<Checkbox label={label} isChecked={false} onPress={onPressMock} />)
+    render(<CheckboxDeprecated label={label} isChecked={false} onPress={onPressMock} />)
 
     await act(async () => {
       await userEvent.click(screen.getByLabelText(label))
@@ -36,7 +36,7 @@ describe('<Checkbox />', () => {
   it('can be checked with label', async () => {
     const label = 'I agree to disagree'
     const onPressMock = jest.fn()
-    render(<Checkbox label={label} isChecked={false} onPress={onPressMock} />)
+    render(<CheckboxDeprecated label={label} isChecked={false} onPress={onPressMock} />)
 
     await act(async () => {
       await userEvent.click(screen.getByText(label))
@@ -48,7 +48,9 @@ describe('<Checkbox />', () => {
   describe('toggle his state', () => {
     it('check the box when is unchecked', async () => {
       const onPressMock = jest.fn()
-      render(<Checkbox label="I agree to disagree" isChecked={false} onPress={onPressMock} />)
+      render(
+        <CheckboxDeprecated label="I agree to disagree" isChecked={false} onPress={onPressMock} />
+      )
 
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox'))
@@ -59,7 +61,7 @@ describe('<Checkbox />', () => {
 
     it('uncheck the box when is checked', async () => {
       const onPressMock = jest.fn()
-      render(<Checkbox label="I agree to disagree" isChecked onPress={onPressMock} />)
+      render(<CheckboxDeprecated label="I agree to disagree" isChecked onPress={onPressMock} />)
 
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox'))
@@ -72,7 +74,9 @@ describe('<Checkbox />', () => {
   describe('when pressing space', () => {
     it("doesn't change the checked state when doesn't having the focus", async () => {
       const onPressMock = jest.fn()
-      render(<Checkbox label="I agree to disagree" isChecked={false} onPress={onPressMock} />)
+      render(
+        <CheckboxDeprecated label="I agree to disagree" isChecked={false} onPress={onPressMock} />
+      )
 
       await userEvent.keyboard('[Space]')
 
@@ -82,7 +86,9 @@ describe('<Checkbox />', () => {
     describe('when it has focus', () => {
       it('check the box when is unchecked', async () => {
         const onPressMock = jest.fn()
-        render(<Checkbox label="I agree to disagree" isChecked={false} onPress={onPressMock} />)
+        render(
+          <CheckboxDeprecated label="I agree to disagree" isChecked={false} onPress={onPressMock} />
+        )
 
         await act(async () => {
           await userEvent.tab()
@@ -97,7 +103,7 @@ describe('<Checkbox />', () => {
 
       it('uncheck the box and is checked', async () => {
         const onPressMock = jest.fn()
-        render(<Checkbox label="I agree to disagree" isChecked onPress={onPressMock} />)
+        render(<CheckboxDeprecated label="I agree to disagree" isChecked onPress={onPressMock} />)
 
         await act(async () => {
           await userEvent.tab()
@@ -114,7 +120,7 @@ describe('<Checkbox />', () => {
 
   describe('have aria-checked attribute', () => {
     it('checked when checkbox is checked', async () => {
-      render(<Checkbox label="I agree to disagree" isChecked onPress={jest.fn()} />)
+      render(<CheckboxDeprecated label="I agree to disagree" isChecked onPress={jest.fn()} />)
 
       const checkbox = screen.getByRole('checkbox')
 
@@ -122,7 +128,9 @@ describe('<Checkbox />', () => {
     })
 
     it('not checked when checkbox is unchecked', async () => {
-      render(<Checkbox label="I agree to disagree" isChecked={false} onPress={jest.fn()} />)
+      render(
+        <CheckboxDeprecated label="I agree to disagree" isChecked={false} onPress={jest.fn()} />
+      )
 
       const checkbox = screen.getByRole('checkbox')
 

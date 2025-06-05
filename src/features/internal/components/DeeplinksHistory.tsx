@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
 import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { CheckboxDeprecated } from 'ui/components/inputs/Checkbox/CheckboxDeprecated'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
@@ -91,7 +91,7 @@ export const DeeplinksHistory = ({
       />
       <BottomContainer>
         <StyledCheckBox>
-          <Checkbox
+          <CheckboxDeprecated
             isChecked={!!keepHistory}
             label="Conserver l’historique"
             onPress={onToggleKeepHistory}
