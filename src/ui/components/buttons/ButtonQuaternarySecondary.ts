@@ -13,14 +13,14 @@ export const ButtonQuaternarySecondary = styledButton(AppButton).attrs<BaseButto
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.quaternarySecondary.iconColor
-          : theme.buttons.quaternarySecondary.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.brandSecondary,
         size: theme.buttons.quaternarySecondary.iconSize,
       })``
     }
 
     const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
-      color: theme.buttons.quaternarySecondary.loadingIconColor,
+      color: theme.designSystem.color.icon.brandSecondary,
       size: theme.buttons.quaternarySecondary.iconSize,
     })``
 
@@ -37,9 +37,9 @@ export const ButtonQuaternarySecondary = styledButton(AppButton).attrs<BaseButto
       icon: Icon,
       loadingIndicator: LoadingIndicator,
       title: Title,
-      hoverUnderlineColor: theme.buttons.quaternarySecondary.textColor,
+      hoverUnderlineColor: theme.designSystem.color.text.brandSecondary,
     }
   }
 )(({ theme }) => ({
-  backgroundColor: theme.buttons.quaternarySecondary.backgroundColor,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

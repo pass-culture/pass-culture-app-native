@@ -61,6 +61,6 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
 })
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
-  color: theme.buttons.secondary.loadingIconColor,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.buttons.secondary.iconSize,
 }))``

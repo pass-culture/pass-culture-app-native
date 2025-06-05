@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -20,6 +20,7 @@ import { useEndedBookingFromOfferIdQuery } from 'queries/bookings/useEndedBookin
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { useModal } from 'ui/components/modals/useModal'
+import { Page } from 'ui/pages/Page'
 
 const ANIMATION_DURATION = 700
 
@@ -72,7 +73,7 @@ export function Offer() {
   if (showSkeleton) return <OfferContentPlaceholder />
 
   return (
-    <Fragment>
+    <Page>
       <ReactionChoiceModal
         dateUsed={booking?.dateUsed ?? ''}
         offer={offer}
@@ -93,6 +94,6 @@ export function Offer() {
         defaultReaction={booking?.userReaction}
         onReactionButtonPress={booking?.canReact ? showModal : undefined}
       />
-    </Fragment>
+    </Page>
   )
 }

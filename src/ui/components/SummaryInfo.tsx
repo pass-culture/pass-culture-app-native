@@ -43,5 +43,5 @@ const TextContainer = styled.View({
 })
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

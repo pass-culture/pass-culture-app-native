@@ -919,7 +919,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                             "width": "auto",
                           },
                           {
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "#ffffff",
                           },
                         ],
                         {

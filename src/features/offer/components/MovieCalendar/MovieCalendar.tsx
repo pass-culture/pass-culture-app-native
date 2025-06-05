@@ -130,18 +130,20 @@ const FadeComponent = styled(LinearGradient)`
   width: ${getSpacing(20)}px;
 `
 
-const FadeLeft = styled(FadeComponent).attrs({
-  colors: ['white', 'transparent'],
+const FadeLeft = styled(FadeComponent).attrs(({ theme }) => ({
+  //TODO(PC-36408): missing tokens transparent ?
+  colors: [theme.designSystem.color.background.default, 'transparent'],
   start: { x: 0.2, y: 0.5 },
   end: { x: 1, y: 0.5 },
-})`
+}))`
   left: -1px;
 `
 
-const FadeRight = styled(FadeComponent).attrs({
-  colors: ['transparent', 'white'],
+const FadeRight = styled(FadeComponent).attrs(({ theme }) => ({
+  //TODO(PC-36408): missing tokens transparent ?
+  colors: ['transparent', theme.designSystem.color.background.default],
   start: { x: 0, y: 0.5 },
   end: { x: 0.8, y: 0.5 },
-})`
+}))`
   right: -1px;
 `

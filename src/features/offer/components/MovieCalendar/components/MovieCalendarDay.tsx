@@ -56,7 +56,9 @@ export const MovieCalendarDay: React.FC<Props> = ({
 
 const SelectedBottomBar = styled(MovieCalendarBottomBar)<{ disabled?: boolean }>(
   ({ theme, disabled }) => ({
-    backgroundColor: disabled ? theme.colors.greyMedium : theme.colors.primary,
+    backgroundColor: disabled
+      ? theme.designSystem.color.background.disabled
+      : theme.designSystem.color.background.brandPrimary,
     borderRadius: getSpacing(1),
   })
 )
@@ -73,15 +75,14 @@ const CalendarCell = styled(TouchableOpacity)({
 })
 
 const DefaultCalendarText = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.black,
   textAlign: 'center',
   width: getSpacing(theme.isDesktopViewport ? 22 : 10),
 }))
 
 const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.text.brandPrimary,
 }))
 
 const DisabledCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.text.disabled,
 }))

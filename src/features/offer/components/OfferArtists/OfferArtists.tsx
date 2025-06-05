@@ -41,15 +41,14 @@ export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistL
   )
 }
 
-const ArtistsText = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.buttons.tertiaryBlack.textColor,
+const ArtistsText = styled(Typo.BodyAccent)({
   flex: 1,
-}))
+})
 
 const ArtistInfoContainer = styled.View({
   flexDirection: 'row',
 })
 
 const StyledPrefix = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
