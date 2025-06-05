@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
+import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
@@ -30,13 +31,6 @@ import { RootStack } from './Stack'
 
 const isWeb = Platform.OS === 'web'
 
-const CheatcodesStackNavigator = lazy(async () => {
-  const module = await import(
-    'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigator'
-  )
-  return { default: module.CheatcodesStackNavigator }
-})
-
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
@@ -46,11 +40,7 @@ const RootStackNavigator = withWebWrapper(
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
           <RootStack.Screen name="CheatcodesStackNavigator">
-            {() => (
-              <Suspense fallback={<LoadingPage />}>
-                <CheatcodesStackNavigator />
-              </Suspense>
-            )}
+            {() => <SuspenseCheatcodesStackNavigator />}
           </RootStack.Screen>
           <RootStack.Screen name="OnboardingStackNavigator">
             {() => <SuspenseOnboardingStackNavigator />}
