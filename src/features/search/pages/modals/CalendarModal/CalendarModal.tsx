@@ -291,6 +291,6 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   )
 }
 
-const StyledCalendarList = styled(CalendarList)({
+const StyledCalendarList = styled(CalendarList).attrs({ calendarStyle: { width: '100%' } })({
   marginTop: getSpacing(4),
 })
