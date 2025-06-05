@@ -2,6 +2,7 @@ import { LinkingOptions } from '@react-navigation/native'
 
 import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import { onboardingStackNavigatorConfig } from 'features/navigation/OnboardingStackNavigator/onboardingStackNavigatorConfig'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
@@ -27,5 +28,11 @@ export const linking: RequireField<
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
-  config: { screens: { ...rootScreensConfig, ...cheatcodesStackNavigatorConfig } },
+  config: {
+    screens: {
+      ...rootScreensConfig,
+      ...cheatcodesStackNavigatorConfig,
+      ...onboardingStackNavigatorConfig,
+    },
+  },
 }
