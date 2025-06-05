@@ -319,7 +319,7 @@ const Body = styled(Typo.Body)(({ theme }) => ({
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
 }))

@@ -85,7 +85,7 @@ const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
     padding: getSpacing(6),
     borderRadius: getSpacing(2),
     border: 1,
-    borderColor: theme.colors.greyMedium,
+    borderColor: theme.designSystem.color.border.subtle,
     ...(width === undefined ? undefined : { width }),
     height: shouldTruncate ? CHRONICLE_CARD_HEIGHT : undefined,
     backgroundColor: theme.designSystem.color.background.default,

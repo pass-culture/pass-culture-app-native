@@ -27,13 +27,13 @@ import { useFavoritesQuery } from 'features/favorites/queries'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useLocation, Position } from 'libs/location'
+import { Position, useLocation } from 'libs/location'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
@@ -160,7 +160,7 @@ const Container = styled.View({ flex: 1 })
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
 }))
