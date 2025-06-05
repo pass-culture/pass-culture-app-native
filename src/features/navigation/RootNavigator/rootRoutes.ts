@@ -1,7 +1,5 @@
 import { Artist } from 'features/artist/pages/Artist'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
-import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
-import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/pages/login/Login'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
@@ -9,7 +7,6 @@ import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/Sign
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
-import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
@@ -29,7 +26,6 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
-import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
@@ -111,13 +107,6 @@ export const rootRoutes: RootRoute[] = [
     path: 'erreur-pays',
   },
   {
-    name: 'AccountReactivationSuccess',
-    component: AccountReactivationSuccess,
-    path: 'compte-reactive',
-    options: { title: 'Compte réactivé' },
-    secure: true,
-  },
-  {
     name: 'Login',
     component: Login,
     pathConfig: {
@@ -127,13 +116,6 @@ export const rootRoutes: RootRoute[] = [
     options: { title: 'Connexion' },
   },
   {
-    name: 'OnboardingSubscription',
-    component: OnboardingSubscription,
-    path: 'choix-abonnement',
-    options: { title: 'Choix des thèmes à suivre' },
-    secure: true,
-  },
-  {
     name: 'ReinitializePassword',
     component: ReinitializePassword,
     pathConfig: {
@@ -141,18 +123,6 @@ export const rootRoutes: RootRoute[] = [
       parse: screenParamsParser['ReinitializePassword'],
     },
     options: { title: 'Réinitialiser le mot de passe' },
-  },
-  {
-    name: 'ResetPasswordEmailSent',
-    component: ResetPasswordEmailSent,
-    path: 'email-modification-mot-de-passe-envoye',
-    options: { title: 'Email modification mot de passe envoyé' },
-  },
-  {
-    name: 'ResetPasswordExpiredLink',
-    component: ResetPasswordExpiredLink,
-    path: 'email-modification-mot-de-passe-expire',
-    options: { title: 'Email modification mot de passe expiré' },
   },
   {
     name: 'SignupForm',

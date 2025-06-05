@@ -216,26 +216,26 @@ export const temporaryRootStackConfig = {
   FraudulentSuspendedAccount: {
     path: 'compte-suspendu-pour-fraude',
   },
-  //   AccountReactivationSuccess: {
-  //     path: 'compte-reactive',
-  //   },
+  AccountReactivationSuccess: {
+    path: 'compte-reactive',
+  },
   //   Login: {
   //     path: 'connexion',
   //     parse: {},
   //   },
-  //   OnboardingSubscription: {
-  //     path: 'choix-abonnement',
-  //   },
+  OnboardingSubscription: {
+    path: 'choix-abonnement',
+  },
   //   ReinitializePassword: {
   //     path: 'mot-de-passe-perdu',
   //     parse: {},
   //   },
-  //   ResetPasswordEmailSent: {
-  //     path: 'email-modification-mot-de-passe-envoye',
-  //   },
-  //   ResetPasswordExpiredLink: {
-  //     path: 'email-modification-mot-de-passe-expire',
-  //   },
+  ResetPasswordEmailSent: {
+    path: 'email-modification-mot-de-passe-envoye',
+  },
+  ResetPasswordExpiredLink: {
+    path: 'email-modification-mot-de-passe-expire',
+  },
   //   SignupForm: {
   //     path: 'creation-compte',
   //   },
