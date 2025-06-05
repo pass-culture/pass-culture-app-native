@@ -40,8 +40,8 @@ export const useLaunchPerformanceObserver = (): void => {
 }
 
 enum CustomTrace {
-  TTI_CONTAINER = 'time_to_interactive_container',
-  TTI_IN_MS = 'time_to_interactive_in_ms',
+  TTI_CONTAINER = 'home_time_to_interactive_container',
+  TTI_IN_MS = 'home_time_to_interactive_in_ms',
 }
 
 async function customTrace(tti_in_ms: number) {

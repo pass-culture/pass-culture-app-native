@@ -23,6 +23,7 @@ import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { getItemTypeFromModuleType } from 'features/home/helpers/getItemTypeFromModuleType'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
+import { useInitialScreenName } from 'features/home/pages/helpers/usePerformanceMonitoringStore'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,
@@ -153,6 +154,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   videoModuleId,
   statusBar,
 }) => {
+  const initialScreenName = useInitialScreenName()
   const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
@@ -335,7 +337,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
-          onLayout={markScreenInteractiveOnHomeLayout}
+          onLayout={() => markScreenInteractiveOnHomeLayout(initialScreenName)}
           accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"
