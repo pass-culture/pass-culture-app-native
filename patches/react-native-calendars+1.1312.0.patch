@@ -29,7 +29,7 @@ index c09389a..60a6bae 100644
                  dayStyle.push(style.current[dayTextAtIndex]);
              }
 -            return (<Text allowFontScaling={false} key={index} style={dayStyle} numberOfLines={1} accessibilityLabel={''} testID={`${testID}.dayName_${day}`}>
-+            return (<Text dir="ltr" allowFontScaling={false} key={index} style={dayStyle} numberOfLines={1} accessibilityLabel={weekDayNames(index)}>
++            return (<Text dir="ltr" allowFontScaling={false} key={index} style={dayStyle} numberOfLines={1} accessibilityLabel={day} testID={`${testID}.dayName_${day}`}>
            {day}
          </Text>);
          });
