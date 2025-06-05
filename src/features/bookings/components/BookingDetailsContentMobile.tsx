@@ -66,7 +66,7 @@ export const BookingDetailsContentMobile = ({
 const MAX_CONTENT_WIDTH = getSpacing(100)
 const HORIZONTAL_PADDING = getSpacing(6)
 const VERTICAL_SPACING = getSpacing(8)
-const MARGIN_TICKET_CUTOUT_TO_COMPENSATE = getSpacing(6) * 2
+const MARGIN_TICKET_CUTOUT_TO_COMPENSATE = getSpacing(4)
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: VERTICAL_SPACING,
@@ -85,6 +85,7 @@ const Container = styled.View({
 })
 
 const TicketCutoutContainer = styled.View({
+  width: '100%',
   maxWidth: MAX_CONTENT_WIDTH + MARGIN_TICKET_CUTOUT_TO_COMPENSATE,
   marginBottom: getSpacing(8),
   alignSelf: 'center',
