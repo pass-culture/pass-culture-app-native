@@ -10,6 +10,7 @@ import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/Re
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
+import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
@@ -159,6 +160,11 @@ const RootStackNavigator = withWebWrapper(
             name="SignupConfirmationExpiredLink"
             component={SignupConfirmationExpiredLink}
             options={{ title: 'Email création de compte expiré' }}
+          />
+          <RootStack.Screen
+            name="SignupConfirmationEmailSent"
+            component={SignupConfirmationEmailSent}
+            options={{ title: 'Email création de compte envoyé' }}
           />
         </RootStack.Navigator>
       </IconFactoryProvider>

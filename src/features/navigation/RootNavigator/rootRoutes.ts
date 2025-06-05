@@ -2,7 +2,6 @@ import { Artist } from 'features/artist/pages/Artist'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { Login } from 'features/auth/pages/login/Login'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
-import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
@@ -126,12 +125,6 @@ export const rootRoutes: RootRoute[] = [
     path: 'creation-compte',
     deeplinkPaths: ['creation-compte/email'],
     options: { title: 'Création de compte' },
-  },
-  {
-    name: 'SignupConfirmationEmailSent',
-    component: SignupConfirmationEmailSentPage,
-    path: 'email-confirmation-creation-compte/envoye',
-    options: { title: 'Email création de compte envoyé' },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   // SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen
