@@ -13,6 +13,7 @@ src/features/culturalSurvey/                         @pass-culture/jeunes-activa
 src/features/deeplinks/                              @pass-culture/jeunes-decouverte
 src/features/favorites/                              @pass-culture/jeunes-decouverte
 src/features/gtlPlaylist/                            @pass-culture/jeunes-conversion
+src/features/headlineOffer/                          @pass-culture/jeunes-decouverte
 src/features/home/                                   @pass-culture/jeunes-decouverte
 src/features/identityCheck/                          @pass-culture/jeunes-activation
 src/features/internal/                               @pass-culture/jeunes-decouverte
