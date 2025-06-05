@@ -2,10 +2,10 @@
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const gradientImagesMapping = {
-  Gold: [ColorsEnum.GOLD_LIGHT_100, ColorsEnum.LILAC_LIGHT],
-  Aquamarine: [ColorsEnum.AQUAMARINE_LIGHT, ColorsEnum.LILAC_LIGHT],
-  SkyBlue: [ColorsEnum.SKY_BLUE_LIGHT, ColorsEnum.DEEP_PINK_LIGHT],
-  DeepPink: [ColorsEnum.DEEP_PINK_LIGHT, ColorsEnum.AQUAMARINE_LIGHT],
-  Coral: [ColorsEnum.CORAL_LIGHT, ColorsEnum.SKY_BLUE_LIGHT],
-  Lilac: [ColorsEnum.LILAC_LIGHT, ColorsEnum.DEEP_PINK_LIGHT],
+  Gold: [ColorsEnum.LILAC_LIGHT, ColorsEnum.GOLD_LIGHT_100],
+  Aquamarine: [ColorsEnum.LILAC_LIGHT, ColorsEnum.AQUAMARINE_LIGHT],
+  SkyBlue: [ColorsEnum.DEEP_PINK_LIGHT, ColorsEnum.SKY_BLUE_LIGHT],
+  DeepPink: [ColorsEnum.AQUAMARINE_LIGHT, ColorsEnum.DEEP_PINK_LIGHT],
+  Coral: [ColorsEnum.SKY_BLUE_LIGHT, ColorsEnum.CORAL_LIGHT],
+  Lilac: [ColorsEnum.DEEP_PINK_LIGHT, ColorsEnum.LILAC_LIGHT],
 }
