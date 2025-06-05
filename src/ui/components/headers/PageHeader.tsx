@@ -17,7 +17,7 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
       <HeaderContainer>
         <TitleContainer gap={1}>
           <TitleText numberOfLines={numberOfLines}>{title}</TitleText>
-          {subtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
+          {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
         </TitleContainer>
         {children}
       </HeaderContainer>
@@ -41,6 +41,6 @@ const TitleText = styled(Typo.Title1)({
   marginBottom: getSpacing(1),
 })
 
-const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

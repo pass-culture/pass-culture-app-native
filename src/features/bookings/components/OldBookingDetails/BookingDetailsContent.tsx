@@ -170,9 +170,9 @@ export const BookingDetailsContent = ({
                 <ViewGap gap={2.5}>
                   <Typo.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</Typo.Title4>
 
-                  <CaptionNeutralInfo>
+                  <StyledBodyAccentXs>
                     Si tu n’as pas reçu tes billets, contacte l’organisateur
-                  </CaptionNeutralInfo>
+                  </StyledBodyAccentXs>
 
                   <SendEmailContainer>
                     <ExternalTouchableLink
@@ -260,7 +260,7 @@ const StyledScrollView = styled.ScrollView.attrs({
 })``
 
 const OfferRules = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   textAlign: 'center',
 }))
 
@@ -281,6 +281,6 @@ const StyledHeaderWithImage = styled(HeaderWithImage)({
   marginBottom: getSpacing(offerImageContainerMarginTop),
 })
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

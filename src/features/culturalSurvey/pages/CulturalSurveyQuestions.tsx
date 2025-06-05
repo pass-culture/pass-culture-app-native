@@ -203,7 +203,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
         testID="cultural-survey-questions-scrollview">
         <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
         <CaptionContainer>
-          <CaptionNeutralInfo>{pageSubtitle}</CaptionNeutralInfo>
+          <StyledBodyAccentXs>{pageSubtitle}</StyledBodyAccentXs>
         </CaptionContainer>
         <VerticalUl>
           {culturalSurveyQuestion?.answers.map((answer) => (
@@ -288,6 +288,6 @@ const FixedBottomChildrenView = styled(View)({
   paddingHorizontal: getSpacing(6),
 })
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

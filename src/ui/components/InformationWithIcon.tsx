@@ -39,7 +39,7 @@ const Info = styled(Typo.Body)({
 })
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   flex: 1,
 }))
 

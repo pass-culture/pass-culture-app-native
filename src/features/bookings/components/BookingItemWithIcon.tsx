@@ -22,7 +22,7 @@ export const Item: React.FC<{
       <Spacer.Row numberOfSpaces={3} />
       {typeof message === 'string' ? <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs> : message}
       <Spacer.Row numberOfSpaces={2} />
-      <CaptionNeutralInfo>{subtext}</CaptionNeutralInfo>
+      <StyledBodyAccentXs>{subtext}</StyledBodyAccentXs>
     </Row>
   )
 }
@@ -38,6 +38,6 @@ const IconWrapper = styled.View({
   flexShrink: 0,
 })
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

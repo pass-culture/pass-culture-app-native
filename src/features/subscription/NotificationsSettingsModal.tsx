@@ -94,7 +94,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
           />
         )}
 
-        <StyledCaption>Tu pourras gérer tes alertes depuis ton profil.</StyledCaption>
+        <StyledBodyAccentXs>Tu pourras gérer tes alertes depuis ton profil.</StyledBodyAccentXs>
 
         <ButtonPrimary
           wording="Valider"
@@ -129,8 +129,8 @@ const ModalContent = styled(ViewGap)({
   width: '100%',
 })
 
-const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledBellFilled = styled(BellFilled).attrs(({ theme }) => ({

@@ -233,7 +233,7 @@ const MinMaxContainer = styled.View({
 })
 
 const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const SliderWrapper = styled(View)<{ shouldShowMinMaxValues?: boolean }>(

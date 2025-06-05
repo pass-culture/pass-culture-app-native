@@ -53,7 +53,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
         ) : null}
         <DescriptionContainer>
           <Typo.BodyAccent>{props.title}</Typo.BodyAccent>
-          {props.subtitle ? <CaptionNeutralInfo>{props.subtitle}</CaptionNeutralInfo> : null}
+          {props.subtitle ? <StyledBodyAccentXs>{props.subtitle}</StyledBodyAccentXs> : null}
         </DescriptionContainer>
         {isSelected ? (
           <ValidateIconContainer>
@@ -104,6 +104,6 @@ const ActivityIconContainer = styled.View({
   marginLeft: getSpacing(4),
 })
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

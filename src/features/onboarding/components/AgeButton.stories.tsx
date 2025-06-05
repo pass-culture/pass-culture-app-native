@@ -20,8 +20,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
@@ -62,9 +62,9 @@ const TextExample = ({ withSubtitle = false }) => (
     {withSubtitle ? (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={1} />
-        <CaptionNeutralInfo numberOfLines={2}>
+        <StyledBodyAccentXs numberOfLines={2}>
           j’ai moins de 15 ans ou plus de 18 ans
-        </CaptionNeutralInfo>
+        </StyledBodyAccentXs>
       </React.Fragment>
     ) : null}
   </React.Fragment>

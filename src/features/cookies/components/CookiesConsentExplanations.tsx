@@ -14,15 +14,15 @@ export const CookiesConsentExplanations = () => (
       Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre
       politique de gestion des cookies.
     </Typo.Body>
-    <CaptionNeutralInfo>
+    <StyledBodyAccentXs>
       Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
       confidentialité de ton profil à tout moment.
-    </CaptionNeutralInfo>
+    </StyledBodyAccentXs>
   </StyledView>
 )
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledView = styled.View({

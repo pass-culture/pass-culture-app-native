@@ -43,7 +43,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <CaptionNeutralInfo>Carte d’identité ou passeport.</CaptionNeutralInfo>
+    <StyledBodyAccentXs>Carte d’identité ou passeport.</StyledBodyAccentXs>
     <Spacer.Column numberOfSpaces={8} />
     <ExternalTouchableLink
       as={ButtonTertiaryBlack}
@@ -53,7 +53,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <CaptionNeutralInfo>Titre de séjour, carte d’identité, ou passeport.</CaptionNeutralInfo>
+    <StyledBodyAccentXs>Titre de séjour, carte d’identité, ou passeport.</StyledBodyAccentXs>
     <Spacer.Column numberOfSpaces={4} />
   </AppModal>
 )
@@ -62,6 +62,6 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

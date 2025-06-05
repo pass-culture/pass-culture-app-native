@@ -161,11 +161,11 @@ export const SetPhoneNumber = () => {
       fixedBottomChildren={
         <BottomContentContainer>
           <RemainingAttemptsContainer>
-            <CaptionNeutralInfo>Il te reste </CaptionNeutralInfo>
+            <StyledBodyAccentXs>Il te reste </StyledBodyAccentXs>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording + ' '}
             </WarningRemainingAttempts>
-            <CaptionNeutralInfo>de code de validation</CaptionNeutralInfo>
+            <StyledBodyAccentXs>de code de validation</StyledBodyAccentXs>
           </RemainingAttemptsContainer>
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
@@ -207,6 +207,6 @@ const WarningRemainingAttempts = styled(Typo.BodyAccentXs)<{ isLastAttempt: bool
   })
 )
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

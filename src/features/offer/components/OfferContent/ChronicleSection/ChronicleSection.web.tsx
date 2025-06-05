@@ -33,7 +33,7 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
             style={{ width: 'auto', borderWidth: 0, paddingLeft: getSpacing(2) }}
           />
         </Row>
-        {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
+        {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
       </Gutter>
       <StyledChronicleCardlist
         data={data}
@@ -67,6 +67,6 @@ const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   paddingRight: getSpacing(2),
 }))
 
-const StyledSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

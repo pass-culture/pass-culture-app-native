@@ -103,5 +103,5 @@ export function AccessibilityEngagement() {
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

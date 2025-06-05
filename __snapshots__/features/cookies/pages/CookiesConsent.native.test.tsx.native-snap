@@ -328,7 +328,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#696A6F",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
