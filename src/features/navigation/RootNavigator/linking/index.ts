@@ -3,6 +3,7 @@ import { LinkingOptions } from '@react-navigation/native'
 import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { onboardingStackNavigatorConfig } from 'features/navigation/OnboardingStackNavigator/onboardingStackNavigatorConfig'
+import { profileStackNavigatorConfig } from 'features/navigation/ProfileStackNavigator/profileStackNavigatorConfig'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
@@ -33,6 +34,7 @@ export const linking: RequireField<
       ...rootScreensConfig,
       ...cheatcodesStackNavigatorConfig,
       ...onboardingStackNavigatorConfig,
+      ...profileStackNavigatorConfig,
     },
   },
 }
