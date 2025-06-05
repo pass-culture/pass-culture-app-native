@@ -6,13 +6,13 @@ import { ColorsEnum } from 'ui/theme/colors'
 const Horizontal = styled.View<{ color?: ColorsEnum }>(({ color, theme }) => ({
   width: '100%',
   height: 1,
-  backgroundColor: color ?? theme.colors.greyLight,
+  backgroundColor: color ?? theme.designSystem.color.background.subtle,
 }))
 
 const Vertical = styled.View<{ color?: ColorsEnum; height?: number }>(
   ({ color, theme, height }) => ({
     width: 1,
-    backgroundColor: color ?? theme.colors.greySemiDark,
+    backgroundColor: color ?? theme.designSystem.color.background.subtle,
     height: height ?? '100%',
   })
 )

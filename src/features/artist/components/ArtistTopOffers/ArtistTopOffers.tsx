@@ -58,7 +58,6 @@ const contentContainerStyle = {
   marginHorizontal: theme.contentPage.marginHorizontal,
 }
 
-const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  backgroundColor: theme.colors.greyLight,
+const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),
-}))
+})
