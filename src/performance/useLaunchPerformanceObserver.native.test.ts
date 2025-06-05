@@ -34,6 +34,6 @@ describe('useLaunchPerformanceObserver', () => {
 
     await jest.runAllTimers()
 
-    expect(mockPutMetric).toHaveBeenCalledWith('time_to_interactive_in_ms', TTI)
+    expect(mockPutMetric).toHaveBeenCalledWith('home_time_to_interactive_in_ms', TTI)
   })
 })
