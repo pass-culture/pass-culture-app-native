@@ -22,8 +22,8 @@ import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholde
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { getItemTypeFromModuleType } from 'features/home/helpers/getItemTypeFromModuleType'
-import { useInitialScreenName } from 'features/home/pages/helpers/useInitialScreenNameStore'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
+import { useInitialScreenName } from 'features/home/pages/helpers/usePerformanceMonitoringStore'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,

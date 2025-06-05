@@ -1,14 +1,14 @@
 import { createStore } from 'libs/store/createStore'
 
-type InitialScreenName = {
+type PerformanceMonitoringStore = {
   initialScreenName: string | undefined
 }
 
-const defaultState: InitialScreenName = {
+const defaultState: PerformanceMonitoringStore = {
   initialScreenName: undefined,
 }
 
-const initialScreenNameStore = createStore({
+const performanceMonitoringStore = createStore({
   name: 'initialScreenName',
   defaultState,
   options: { persist: false },
@@ -20,5 +20,5 @@ const initialScreenNameStore = createStore({
   },
 })
 
-export const initialScreenNameActions = initialScreenNameStore.actions
-export const { useInitialScreenName } = initialScreenNameStore.hooks
+export const performanceMonitoringStoreActions = performanceMonitoringStore.actions
+export const { useInitialScreenName } = performanceMonitoringStore.hooks
