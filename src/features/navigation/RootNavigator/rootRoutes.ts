@@ -4,7 +4,6 @@ import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/Rein
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/pages/login/Login'
-import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
@@ -22,11 +21,9 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
-import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
-import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
@@ -35,7 +32,6 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
-import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -104,18 +100,6 @@ export const rootRoutes: RootRoute[] = [
     options: { title: 'Notification rechargement anniversaire' },
   },
   {
-    name: 'PageNotFound',
-    component: PageNotFound,
-    path: '*',
-    options: { title: 'Page introuvable' },
-  },
-  {
-    name: 'AccountCreated',
-    component: AccountCreated,
-    path: 'creation-compte/confirmation',
-    options: { title: 'Compte créé\u00a0!' },
-  },
-  {
     name: 'AfterSignupEmailValidationBuffer',
     component: AfterSignupEmailValidationBuffer,
     pathConfig: {
@@ -129,19 +113,6 @@ export const rootRoutes: RootRoute[] = [
     component: BannedCountryError,
     hoc: withAsyncErrorBoundary,
     path: 'erreur-pays',
-  },
-  {
-    name: 'ChangeEmailExpiredLink',
-    component: ChangeEmailExpiredLink,
-    path: 'lien-modification-email-expire',
-    options: { title: 'Lien de modification de l’email expiré' },
-  },
-  {
-    name: 'FavoritesSorts',
-    component: FavoritesSorts,
-    path: 'favoris/tri',
-    options: { title: 'Tri des favoris' },
-    secure: true,
   },
   {
     name: 'ForgottenPassword',

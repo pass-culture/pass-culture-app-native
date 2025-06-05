@@ -5,18 +5,23 @@ import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
+import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
+import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
+import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
+import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -63,6 +68,26 @@ const RootStackNavigator = withWebWrapper(
           )}
           {RootScreens}
           <RootStack.Screen name="Achievements">{() => <SuspenseAchievements />}</RootStack.Screen>
+          <RootStack.Screen
+            name="PageNotFound"
+            component={PageNotFound}
+            options={{ title: 'Page introuvable' }}
+          />
+          <RootStack.Screen
+            name="AccountCreated"
+            component={AccountCreated}
+            options={{ title: 'Compte créé\u00a0!' }}
+          />
+          <RootStack.Screen
+            name="FavoritesSorts"
+            component={withAuthProtection(FavoritesSorts)}
+            options={{ title: 'Tri des favoris' }}
+          />
+          <RootStack.Screen
+            name="ChangeEmailExpiredLink"
+            component={ChangeEmailExpiredLink}
+            options={{ title: 'Lien de modification de l’email expiré' }}
+          />
         </RootStack.Navigator>
       </IconFactoryProvider>
     )
