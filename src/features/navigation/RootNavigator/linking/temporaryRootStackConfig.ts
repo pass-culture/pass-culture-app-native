@@ -181,12 +181,12 @@ export const temporaryRootStackConfig = {
   //   _DeeplinkOnlyRecreditBirthdayNotification1: {
   //     path: 'recredit-birthday',
   //   },
-  //   PageNotFound: {
-  //     path: '*',
-  //   },
-  //   AccountCreated: {
-  //     path: 'creation-compte/confirmation',
-  //   },
+  PageNotFound: {
+    path: '*',
+  },
+  AccountCreated: {
+    path: 'creation-compte/confirmation',
+  },
   //   AfterSignupEmailValidationBuffer: {
   //     path: 'signup-confirmation',
   //     parse: {},
@@ -198,12 +198,12 @@ export const temporaryRootStackConfig = {
   //   BannedCountryError: {
   //     path: 'erreur-pays',
   //   },
-  //   ChangeEmailExpiredLink: {
-  //     path: 'lien-modification-email-expire',
-  //   },
-  //   FavoritesSorts: {
-  //     path: 'favoris/tri',
-  //   },
+  ChangeEmailExpiredLink: {
+    path: 'lien-modification-email-expire',
+  },
+  FavoritesSorts: {
+    path: 'favoris/tri',
+  },
   //   ForgottenPassword: {
   //     path: 'mot-de-passe-oublie',
   //   },
