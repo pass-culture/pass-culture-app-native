@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactElement } from 'react'
-import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -34,7 +33,7 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
       isSelected={isSelected}
       onPress={onPress}
       accessibilityLabel={accessibilityLabel}>
-      <Label testID={filterButtonLabel}>{label}</Label>
+      <Typo.BodyAccentXs testID={filterButtonLabel}>{label}</Typo.BodyAccentXs>
       {icon}
     </TouchableContainer>
   )
@@ -55,8 +54,4 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   borderRadius: theme.borderRadius.button,
   ...customFocusOutline({ color: theme.colors.accent }),
   ...getHoverStyle(theme.colors.black),
-}))
-
-const Label = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.black,
 }))

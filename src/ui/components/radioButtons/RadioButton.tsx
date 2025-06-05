@@ -145,7 +145,7 @@ const ComplementLabel = styled(Typo.BodyAccentXs)<{ isSelected: boolean }>(
 )
 
 const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const IconContainer = styled.View(({ theme }) => ({

@@ -49,7 +49,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
           <OfferName title={title} />
           {details
             ? details?.map((detail) => (
-                <CaptionNeutralInfo key={detail}>{detail}</CaptionNeutralInfo>
+                <StyledBodyAccentXs key={detail}>{detail}</StyledBodyAccentXs>
               ))
             : null}
         </CentralColumn>
@@ -133,6 +133,6 @@ const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: stri
   })
 )
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

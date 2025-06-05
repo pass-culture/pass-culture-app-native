@@ -30,7 +30,7 @@ export const LocationModalButton = ({
         <Icon color={theme.designSystem.color.icon[color]} size={theme.icons.sizes.small} />
         <Typo.Button color={color}>{title}</Typo.Button>
       </TopContainer>
-      {subtitle ? <StyledCaption>{subtitle}</StyledCaption> : null}
+      {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
     </TouchableOpacity>
   )
 }
@@ -40,7 +40,7 @@ const TopContainer = styled(ViewGap)({
   alignItems: 'center',
 })
 
-const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
   marginTop: getSpacing(1),
 }))

@@ -24,7 +24,7 @@ export const ChronicleSectionBase = ({
     <View style={style}>
       <Gutter>
         <Typo.Title3 {...getHeadingAttrs(3)}>{title}</Typo.Title3>
-        {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
+        {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
       </Gutter>
       <StyledChronicleCardlist
         data={data}
@@ -58,6 +58,6 @@ const Gutter = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

@@ -85,7 +85,7 @@ const TitleContainer = styled.View({
   width: '100%',
 })
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   marginTop: getSpacing(1),
 }))
 

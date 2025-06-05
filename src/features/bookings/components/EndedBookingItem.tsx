@@ -111,7 +111,7 @@ export const EndedBookingItem = ({
                 booking={booking}
                 isEligibleBookingsForArchiveValue={isEligibleBookingsForArchiveValue}
               />
-              <CaptionNeutralInfo>{endedBookingDateLabel}</CaptionNeutralInfo>
+              <StyledBodyAccentXs>{endedBookingDateLabel}</StyledBodyAccentXs>
             </EndedReasonAndDate>
           </AttributesView>
         </ContentContainerGap>
@@ -152,6 +152,6 @@ const EndedReasonAndDate = styled(ViewGap)({
   flexWrap: 'wrap',
 })
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

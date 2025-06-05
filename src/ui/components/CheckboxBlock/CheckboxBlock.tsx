@@ -41,7 +41,7 @@ export const CheckboxBlock = ({
         {LeftIcon ? <LeftIcon /> : null}
         <View>
           <Typo.BodyAccent>{label}</Typo.BodyAccent>
-          {sublabel ? <CaptionNeutralInfo>{sublabel}</CaptionNeutralInfo> : null}
+          {sublabel ? <StyledBodyAccentXs>{sublabel}</StyledBodyAccentXs> : null}
         </View>
       </InnerContainer>
       <Box checked={checked}>{checked ? <CheckboxMark /> : null}</Box>
@@ -86,6 +86,6 @@ const Box = styled.View<{ checked: boolean }>(({ checked, theme }) => ({
   backgroundColor: checked ? theme.colors.primary : theme.colors.white,
 }))
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

@@ -34,7 +34,7 @@ export const VenueSelectionListHeader: FunctionComponent<Props> = ({
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       )}
-      <HeaderMessageText>{headerMessage}</HeaderMessageText>
+      <StyledBodyAccentXs>{headerMessage}</StyledBodyAccentXs>
       <Spacer.Column numberOfSpaces={2} />
     </ListHeaderContainer>
   )
@@ -44,6 +44,6 @@ const ListHeaderContainer = styled.View({
   width: '100%',
 })
 
-const HeaderMessageText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

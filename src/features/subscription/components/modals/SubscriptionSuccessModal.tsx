@@ -32,7 +32,7 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
       hideModal={dismissModal}>
       <StyledBody>{mapSubscriptionThemeToDescription[theme]}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledCaption>Tu pourras gérer tes alertes depuis ton profil.</StyledCaption>
+      <StyledBodyAccentXs>Tu pourras gérer tes alertes depuis ton profil.</StyledBodyAccentXs>
       <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
         <ButtonPrimary wording="Continuer sur l’app" onPress={dismissModal} />
@@ -57,8 +57,8 @@ const StyledButtonContainer = styled.View({
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
-const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
   textAlign: 'center',
 }))
 

@@ -11,7 +11,7 @@ type Props = {
 export const BookingComplementaryInfo: FunctionComponent<Props> = ({ title, value }) => (
   <Container testID="bookingComplementaryInfo">
     <Typo.BodyAccentXs>{title}&nbsp;</Typo.BodyAccentXs>
-    <CaptionNeutralInfo>{value}</CaptionNeutralInfo>
+    <StyledBodyAccentXs>{value}</StyledBodyAccentXs>
   </Container>
 )
 
@@ -22,6 +22,6 @@ const Container = styled.View({
   justifyContent: 'center',
 })
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

@@ -330,7 +330,7 @@ const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
 })
 
 const VenueAddress = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const VenueContainer = styled.View({
