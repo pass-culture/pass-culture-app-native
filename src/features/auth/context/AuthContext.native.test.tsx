@@ -28,7 +28,7 @@ import { AuthWrapper } from './AuthWrapper'
 
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
-jest.mock('libs/amplitude/amplitude')
+jest.mock('libs/amplitude')
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 const navigateFromRefSpy = jest.spyOn(NavigationRef, 'navigateFromRef')
