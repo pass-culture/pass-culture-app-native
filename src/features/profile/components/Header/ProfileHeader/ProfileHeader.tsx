@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { UserProfileResponse } from 'api/gen'
+import { EligibilityType, UserProfileResponse } from 'api/gen'
 import { CheatMenuButton } from 'cheatcodes/components/CheatMenuButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BeneficiaryAndEligibleForUpgradeHeader } from 'features/profile/components/Header/BeneficiaryAndEligibleForUpgradeHeader/BeneficiaryAndEligibleForUpgradeHeader'
@@ -27,7 +27,11 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       return <LoggedOutHeader featureFlags={{ enablePassForAll: featureFlags.enablePassForAll }} />
     }
 
-    if (user.isBeneficiary && user.isEligibleForBeneficiaryUpgrade) {
+    if (
+      user.isBeneficiary &&
+      user.isEligibleForBeneficiaryUpgrade &&
+      user.eligibility === EligibilityType['age-18']
+    ) {
       return (
         <BeneficiaryAndEligibleForUpgradeHeader
           featureFlags={featureFlags}

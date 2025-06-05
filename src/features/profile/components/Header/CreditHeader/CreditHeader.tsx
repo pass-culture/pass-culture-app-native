@@ -72,6 +72,7 @@ export function CreditHeader({
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
     age >= 18 && (isDepositExpired || isCreditEmpty)
+
   const bannerText =
     depositExpirationDate && !isCreditEmpty
       ? getCreditExpirationText({
