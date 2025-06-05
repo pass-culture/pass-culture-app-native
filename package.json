@@ -126,7 +126,7 @@
     "date-fns": "^2.29.1",
     "date-fns-tz": "^2.0.0",
     "deprecated-react-native-prop-types": "^5.0.0",
-    "design-system": "https://github.com/pass-culture/design-system.git#v0.0.34",
+    "design-system": "https://github.com/pass-culture/design-system.git#v0.0.42",
     "firebase": "^10.9.0",
     "geojson": "^0.5.0",
     "globalthis": "^1.0.2",
