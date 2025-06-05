@@ -7744,7 +7744,7 @@ __metadata:
     react-native: 0.74.7
     react-native-animatable: ^1.3.3
     react-native-appsflyer: ^6.16.2
-    react-native-calendars: 1.1312.1
+    react-native-calendars: 1.1312.0
     react-native-code-push: ^8.3.1
     react-native-date-picker: ^4.3.5
     react-native-detector: ^0.2.3
@@ -19652,9 +19652,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-calendars@npm:1.1312.1":
-  version: 1.1312.1
-  resolution: "react-native-calendars@npm:1.1312.1"
+"react-native-calendars@npm:1.1312.0":
+  version: 1.1312.0
+  resolution: "react-native-calendars@npm:1.1312.0"
   dependencies:
     hoist-non-react-statics: ^3.3.1
     lodash: ^4.17.15
@@ -19668,7 +19668,7 @@ __metadata:
   dependenciesMeta:
     moment:
       optional: true
-  checksum: fd9c1bcbffa5c497e0a6f0b1324a8c29545f2d5aff2cf663934b83090a52fc10d258e06b05aa99bb4086ad26af45b440b499ee0d04e1869f033dea9898e676e5
+  checksum: 64cf6ad7827dbb80fd76df2aaab1b937f23758ee3ccbf78733a2a3a375b38d98ba8429a4e1ac962cd9e395a202cc2daef4a13fd42a5e4d334bfe4eeec6634aa8
   languageName: node
   linkType: hard
 
