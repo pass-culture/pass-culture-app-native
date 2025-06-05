@@ -10,7 +10,7 @@ import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/Re
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
-import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
+import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
@@ -163,7 +163,7 @@ const RootStackNavigator = withWebWrapper(
           />
           <RootStack.Screen
             name="SignupConfirmationEmailSent"
-            component={SignupConfirmationEmailSent}
+            component={SignupConfirmationEmailSentPage}
             options={{ title: 'Email création de compte envoyé' }}
           />
         </RootStack.Navigator>
