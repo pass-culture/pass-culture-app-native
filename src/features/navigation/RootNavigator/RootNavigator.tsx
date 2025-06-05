@@ -9,6 +9,7 @@ import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
+import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
@@ -44,6 +45,9 @@ const RootStackNavigator = withWebWrapper(
           </RootStack.Screen>
           <RootStack.Screen name="OnboardingStackNavigator">
             {() => <SuspenseOnboardingStackNavigator />}
+          </RootStack.Screen>
+          <RootStack.Screen name="ProfileStackNavigator">
+            {() => <SuspenseProfileStackNavigator />}
           </RootStack.Screen>
           {isWeb ? null : (
             <RootStack.Screen

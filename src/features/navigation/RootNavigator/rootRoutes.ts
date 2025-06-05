@@ -27,8 +27,6 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
-import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
-import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
@@ -244,11 +242,6 @@ export const rootRoutes: RootRoute[] = [
       stringify: screenParamsStringifier['SearchFilter'],
     },
     options: { title: 'Filtres de recherche' },
-  },
-  {
-    name: 'ProfileStackNavigator',
-    component: SuspenseProfileStackNavigator,
-    pathConfig: profileNavigatorPathConfig,
   },
   {
     name: 'VerifyEligibility',
