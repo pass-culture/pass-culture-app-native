@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
@@ -50,6 +51,9 @@ const RootStackNavigator = withWebWrapper(
                 <CheatcodesStackNavigator />
               </Suspense>
             )}
+          </RootStack.Screen>
+          <RootStack.Screen name="OnboardingStackNavigator">
+            {() => <SuspenseOnboardingStackNavigator />}
           </RootStack.Screen>
           {isWeb ? null : (
             <RootStack.Screen
