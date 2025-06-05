@@ -26,8 +26,6 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
-import { onboardingNavigatorPathConfig } from 'features/navigation/OnboardingStackNavigator/onboardingNavigatorPathConfig'
-import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseActivationStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -53,11 +51,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'OnboardingStackNavigator',
-    component: SuspenseOnboardingStackNavigator,
-    pathConfig: onboardingNavigatorPathConfig,
-  },
   {
     name: 'Offer',
     component: Offer,
