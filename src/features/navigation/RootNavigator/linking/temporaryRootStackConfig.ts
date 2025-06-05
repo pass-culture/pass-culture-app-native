@@ -204,18 +204,18 @@ export const temporaryRootStackConfig = {
   FavoritesSorts: {
     path: 'favoris/tri',
   },
-  //   ForgottenPassword: {
-  //     path: 'mot-de-passe-oublie',
-  //   },
-  //   AccountStatusScreenHandler: {
-  //     path: 'compte-desactive',
-  //   },
-  //   SuspendedAccountUponUserRequest: {
-  //     path: 'compte-suspendu-a-la-demande',
-  //   },
-  //   FraudulentSuspendedAccount: {
-  //     path: 'compte-suspendu-pour-fraude',
-  //   },
+  ForgottenPassword: {
+    path: 'mot-de-passe-oublie',
+  },
+  AccountStatusScreenHandler: {
+    path: 'compte-desactive',
+  },
+  SuspendedAccountUponUserRequest: {
+    path: 'compte-suspendu-a-la-demande',
+  },
+  FraudulentSuspendedAccount: {
+    path: 'compte-suspendu-pour-fraude',
+  },
   //   AccountReactivationSuccess: {
   //     path: 'compte-reactive',
   //   },

@@ -1,5 +1,4 @@
 import { Artist } from 'features/artist/pages/Artist'
-import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
@@ -11,9 +10,6 @@ import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/Signup
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
-import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
-import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
@@ -113,30 +109,6 @@ export const rootRoutes: RootRoute[] = [
     component: BannedCountryError,
     hoc: withAsyncErrorBoundary,
     path: 'erreur-pays',
-  },
-  {
-    name: 'ForgottenPassword',
-    component: ForgottenPassword,
-    path: 'mot-de-passe-oublie',
-    options: { title: 'Mot de passe oublié' },
-  },
-  {
-    name: 'AccountStatusScreenHandler',
-    component: AccountStatusScreenHandler,
-    path: 'compte-desactive',
-    options: { title: 'Compte désactivé' },
-  },
-  {
-    name: 'SuspendedAccountUponUserRequest',
-    component: SuspendedAccountUponUserRequest,
-    path: 'compte-suspendu-a-la-demande',
-    options: { title: 'Compte désactivé' },
-  },
-  {
-    name: 'FraudulentSuspendedAccount',
-    component: FraudulentSuspendedAccount,
-    path: 'compte-suspendu-pour-fraude',
-    options: { title: 'Compte suspendu' },
   },
   {
     name: 'AccountReactivationSuccess',

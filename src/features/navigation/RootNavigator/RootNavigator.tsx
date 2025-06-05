@@ -5,7 +5,11 @@ import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
+import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
+import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
+import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
@@ -87,6 +91,26 @@ const RootStackNavigator = withWebWrapper(
             name="ChangeEmailExpiredLink"
             component={ChangeEmailExpiredLink}
             options={{ title: 'Lien de modification de l’email expiré' }}
+          />
+          <RootStack.Screen
+            name="ForgottenPassword"
+            component={ForgottenPassword}
+            options={{ title: 'Mot de passe oublié' }}
+          />
+          <RootStack.Screen
+            name="AccountStatusScreenHandler"
+            component={AccountStatusScreenHandler}
+            options={{ title: 'Compte désactivé' }}
+          />
+          <RootStack.Screen
+            name="SuspendedAccountUponUserRequest"
+            component={SuspendedAccountUponUserRequest}
+            options={{ title: 'Compte désactivé' }}
+          />
+          <RootStack.Screen
+            name="FraudulentSuspendedAccount"
+            component={FraudulentSuspendedAccount}
+            options={{ title: 'Compte suspendu' }}
           />
         </RootStack.Navigator>
       </IconFactoryProvider>
