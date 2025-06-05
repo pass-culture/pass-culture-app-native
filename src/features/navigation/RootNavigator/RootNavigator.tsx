@@ -9,6 +9,9 @@ import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/Forgott
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
+import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
+import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
+import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
@@ -30,6 +33,7 @@ import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNaviga
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
+import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -135,6 +139,26 @@ const RootStackNavigator = withWebWrapper(
             name="ResetPasswordExpiredLink"
             component={ResetPasswordExpiredLink}
             options={{ title: 'Email modification mot de passe expiré' }}
+          />
+          <RootStack.Screen
+            name="VerifyEligibility"
+            component={VerifyEligibility}
+            options={{ title: 'Vérification éligibilité' }}
+          />
+          <RootStack.Screen
+            name="NotYetUnderageEligibility"
+            component={NotYetUnderageEligibility}
+            options={{ title: 'C’est pour bientôt' }}
+          />
+          <RootStack.Screen
+            name="VenueMap"
+            component={VenueMap}
+            options={{ title: 'Carte des lieux' }}
+          />
+          <RootStack.Screen
+            name="SignupConfirmationExpiredLink"
+            component={SignupConfirmationExpiredLink}
+            options={{ title: 'Email création de compte expiré' }}
           />
         </RootStack.Navigator>
       </IconFactoryProvider>

@@ -245,9 +245,9 @@ export const temporaryRootStackConfig = {
   //   SignupConfirmationEmailSent: {
   //     path: 'email-confirmation-creation-compte/envoye',
   //   },
-  //   SignupConfirmationExpiredLink: {
-  //     path: 'email-confirmation-creation-compte/expire',
-  //   },
+  SignupConfirmationExpiredLink: {
+    path: 'email-confirmation-creation-compte/expire',
+  },
   //   TabNavigator: {
   //     initialRouteName: 'Home',
   //     screens: {
@@ -298,12 +298,12 @@ export const temporaryRootStackConfig = {
   //     parse: {},
   //     stringify: {},
   //   },
-  //   VerifyEligibility: {
-  //     path: 'verification-eligibilite',
-  //   },
-  //   NotYetUnderageEligibility: {
-  //     path: 'cest-pour-bientot',
-  //   },
+  VerifyEligibility: {
+    path: 'verification-eligibilite',
+  },
+  NotYetUnderageEligibility: {
+    path: 'cest-pour-bientot',
+  },
   //   Venue: {
   //     path: 'lieu/:id',
   //     parse: {},
@@ -312,9 +312,9 @@ export const temporaryRootStackConfig = {
   //     path: 'venue/:id',
   //     parse: {},
   //   },
-  //   VenueMap: {
-  //     path: 'carte-des-lieux',
-  //   },
+  VenueMap: {
+    path: 'carte-des-lieux',
+  },
   //   VenuePreviewCarousel: {
   //     path: 'lieu/:id/apercu',
   //     parse: {},
