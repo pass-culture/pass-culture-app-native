@@ -4,27 +4,25 @@ import styled from 'styled-components/native'
 
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const Sort: FunctionComponent = () => {
   return (
     <Container navigateTo={{ screen: 'FavoritesSorts' }} accessibilityLabel="Trier">
       <StyledLinearGradient>
         <SortIcon />
-        <Spacer.Row numberOfSpaces={1} />
         <StyledButtonText>Trier</StyledButtonText>
-        <Spacer.Row numberOfSpaces={2} />
       </StyledLinearGradient>
     </Container>
   )
 }
 
 const SortIcon = styled(SortIconDefault).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.inverted,
 }))``
 
 const Container = styled(InternalTouchableLink).attrs(({ theme }) => ({
-  hoverUnderlineColor: theme.colors.white,
+  hoverUnderlineColor: theme.designSystem.color.text.inverted,
 }))({
   overflow: 'hidden',
 })
@@ -32,9 +30,12 @@ const Container = styled(InternalTouchableLink).attrs(({ theme }) => ({
 const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-  colors: [theme.colors.primary, theme.colors.secondary],
+  colors: [
+    theme.designSystem.color.background.brandPrimary,
+    theme.designSystem.color.background.brandSecondary,
+  ],
 }))(({ theme }) => ({
-  backgroundColor: theme.colors.primary,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
   borderRadius: theme.borderRadius.button,
   alignItems: 'center',
   flexDirection: 'row',
@@ -44,5 +45,7 @@ const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
 }))
 
 const StyledButtonText = styled(Typo.Button)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.inverted,
+  marginLeft: getSpacing(1),
+  marginRight: getSpacing(2),
 }))

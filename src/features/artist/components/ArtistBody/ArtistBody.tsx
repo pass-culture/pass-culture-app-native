@@ -105,7 +105,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const ContentContainer = styled(IntersectionObserverScrollView).attrs({

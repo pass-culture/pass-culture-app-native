@@ -55,7 +55,9 @@ export const TabBarComponent: React.FC<Props> = ({
 const TabComponentContainer: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(
   ({ theme, accessibilityLabel, selected }) => ({
     accessibilityLabel: theme.tabBar.showLabels && isWeb ? undefined : accessibilityLabel,
-    hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,
+    hoverUnderlineColor: selected
+      ? theme.designSystem.color.text.default
+      : theme.designSystem.color.text.subtle,
   })
 )(({ theme }) => ({
   alignItems: 'center',
