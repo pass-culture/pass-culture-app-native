@@ -36,6 +36,6 @@ const CheckboxMarkSvg: React.FunctionComponent<AccessibleRectangleIcon> = ({
 
 export const CheckboxMark = styled(CheckboxMarkSvg).attrs(({ color, width, height, theme }) => ({
   color: color ?? theme.designSystem.color.icon.inverted,
-  width: width ?? 16,
-  height: height ?? 11,
+  width: width ?? theme.checkbox.size / 1.75,
+  height: height ?? theme.checkbox.size / 1.75,
 }))``

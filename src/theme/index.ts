@@ -35,6 +35,25 @@ export const theme = {
   minScreenHeight: getSpacing(142),
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
+  image: {
+    square: {
+      borderRadius: getSpacing(1),
+      sizes: {
+        small: {
+          width: getSpacing(10),
+          height: getSpacing(10),
+        },
+        medium: {
+          width: getSpacing(20),
+          height: getSpacing(20),
+        },
+        large: {
+          width: getSpacing(30),
+          height: getSpacing(30),
+        },
+      },
+    },
+  },
   inputs: {
     height: {
       small: getSpacing(10),
@@ -498,13 +517,13 @@ export const theme = {
     spaceBetweenModules: getSpacing(6),
   },
   checkbox: {
-    size: getSpacing(6),
+    size: getSpacing(5),
     border: {
       color: {
         default: ColorsEnum.GREY_DARK,
         selected: ColorsEnum.PRIMARY,
       },
-      size: 1,
+      size: 2,
     },
     backgroundColor: {
       default: ColorsEnum.WHITE,
