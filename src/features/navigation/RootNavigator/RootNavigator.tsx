@@ -6,7 +6,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
+import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
+import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
+import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
@@ -26,6 +29,7 @@ import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -111,6 +115,26 @@ const RootStackNavigator = withWebWrapper(
             name="FraudulentSuspendedAccount"
             component={FraudulentSuspendedAccount}
             options={{ title: 'Compte suspendu' }}
+          />
+          <RootStack.Screen
+            name="AccountReactivationSuccess"
+            component={withAuthProtection(AccountReactivationSuccess)}
+            options={{ title: 'Compte réactivé' }}
+          />
+          <RootStack.Screen
+            name="OnboardingSubscription"
+            component={withAuthProtection(OnboardingSubscription)}
+            options={{ title: 'Choix des thèmes à suivre' }}
+          />
+          <RootStack.Screen
+            name="ResetPasswordEmailSent"
+            component={ResetPasswordEmailSent}
+            options={{ title: 'Email modification mot de passe envoyé' }}
+          />
+          <RootStack.Screen
+            name="ResetPasswordExpiredLink"
+            component={ResetPasswordExpiredLink}
+            options={{ title: 'Email modification mot de passe expiré' }}
           />
         </RootStack.Navigator>
       </IconFactoryProvider>
