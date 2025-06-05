@@ -4,6 +4,7 @@ import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesSt
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { onboardingStackNavigatorConfig } from 'features/navigation/OnboardingStackNavigator/onboardingStackNavigatorConfig'
 import { profileStackNavigatorConfig } from 'features/navigation/ProfileStackNavigator/profileStackNavigatorConfig'
+import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
@@ -32,6 +33,7 @@ export const linking: RequireField<
   config: {
     screens: {
       ...rootScreensConfig,
+      ...temporaryRootStackConfig,
       ...cheatcodesStackNavigatorConfig,
       ...onboardingStackNavigatorConfig,
       ...profileStackNavigatorConfig,
