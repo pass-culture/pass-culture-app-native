@@ -228,10 +228,10 @@ export const temporaryRootStackConfig = {
   OnboardingSubscription: {
     path: 'choix-abonnement',
   },
-  //   ReinitializePassword: {
-  //     path: 'mot-de-passe-perdu',
-  //     parse: {},
-  //   },
+  ReinitializePassword: {
+    path: 'mot-de-passe-perdu',
+    parse: screenParamsParser['ReinitializePassword'],
+  },
   ResetPasswordEmailSent: {
     path: 'email-modification-mot-de-passe-envoye',
   },
