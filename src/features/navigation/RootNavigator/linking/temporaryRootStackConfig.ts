@@ -306,14 +306,14 @@ export const temporaryRootStackConfig = {
   NotYetUnderageEligibility: {
     path: 'cest-pour-bientot',
   },
-  //   Venue: {
-  //     path: 'lieu/:id',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyVenue1: {
-  //     path: 'venue/:id',
-  //     parse: {},
-  //   },
+  Venue: {
+    path: 'lieu/:id',
+    parse: screenParamsParser['Venue'],
+  },
+  _DeeplinkOnlyVenue1: {
+    path: 'venue/:id',
+    parse: screenParamsParser['Venue'],
+  },
   VenueMap: {
     path: 'carte-des-lieux',
   },

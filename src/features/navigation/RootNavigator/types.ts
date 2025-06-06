@@ -234,6 +234,13 @@ type SignupFormParams =
     }
   | undefined
 
+type VenueParams = {
+  id: number
+  from?: Referrals
+  searchId?: string
+  fromThematicSearch?: ContentfulLabelCategories
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -319,12 +326,8 @@ export type RootStackParamList = {
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
   ValidateEmailChange: { token: string }
-  Venue: {
-    id: number
-    from?: Referrals
-    searchId?: string
-    fromThematicSearch?: ContentfulLabelCategories
-  }
+  Venue: VenueParams
+  _DeeplinkOnlyVenue1: VenueParams
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }
