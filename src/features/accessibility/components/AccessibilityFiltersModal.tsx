@@ -12,11 +12,15 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
-import { CheckboxDeprecated } from 'ui/components/inputs/Checkbox/CheckboxDeprecated'
+import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
+import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
+import { HandicapMental } from 'ui/svg/icons/HandicapMental'
+import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
+import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { getSpacing, Typo } from 'ui/theme'
 
 const titleId = uuidv4()
@@ -112,22 +116,30 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
           Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
         </Typo.BodyAccent>
         <StyledCheckBox>
-          <CheckboxDeprecated
+          <Checkbox
+            variant="detailed"
+            asset={{ variant: 'icon', Icon: HandicapVisual }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}
             label={capitalizeFirstLetter(HandicapEnum.VISUAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.VISUAL)}
           />
-          <CheckboxDeprecated
+          <Checkbox
+            variant="detailed"
+            asset={{ variant: 'icon', Icon: HandicapMental }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MENTAL]}
             label={capitalizeFirstLetter(HandicapEnum.MENTAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MENTAL)}
           />
-          <CheckboxDeprecated
+          <Checkbox
+            variant="detailed"
+            asset={{ variant: 'icon', Icon: HandicapMotor }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MOTOR]}
             label={capitalizeFirstLetter(HandicapEnum.MOTOR)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MOTOR)}
           />
-          <CheckboxDeprecated
+          <Checkbox
+            variant="detailed"
+            asset={{ variant: 'icon', Icon: HandicapAudio }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.AUDIO]}
             label={capitalizeFirstLetter(HandicapEnum.AUDIO)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.AUDIO)}
@@ -146,5 +158,5 @@ const StyledCheckBox = styled(Ul)({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  gap: getSpacing(6),
+  gap: getSpacing(4),
 })
