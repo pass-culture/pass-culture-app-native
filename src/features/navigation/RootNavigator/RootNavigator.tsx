@@ -31,6 +31,8 @@ import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
+import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
@@ -329,6 +331,16 @@ const RootStackNavigator = withWebWrapper(
             name="_DeeplinkOnlyChronicles1"
             component={Chronicles}
             options={{ title: 'Avis du book club' }}
+          />
+          <RootStack.Screen
+            name="UTMParameters"
+            component={UTMParameters}
+            options={{ title: 'Paramètres UTM' }}
+          />
+          <RootStack.Screen
+            name="DeeplinksGenerator"
+            component={DeeplinksGenerator}
+            options={{ title: 'Générateur de lien' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>

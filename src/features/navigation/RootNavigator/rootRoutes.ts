@@ -1,6 +1,4 @@
 import { ThematicHome } from 'features/home/pages/ThematicHome'
-import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
-import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
@@ -16,22 +14,6 @@ export const rootRoutes: RootRoute[] = [
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  {
-    name: 'DeeplinksGenerator',
-    component: DeeplinksGenerator,
-    pathConfig: {
-      path: 'liens/generateur',
-    },
-    options: { title: 'Générateur de lien' },
-  },
-  {
-    name: 'UTMParameters',
-    component: UTMParameters,
-    pathConfig: {
-      path: 'liens/utm',
-    },
-    options: { title: 'Paramètres UTM' },
-  },
   {
     name: 'ThematicHome',
     component: ThematicHome,
