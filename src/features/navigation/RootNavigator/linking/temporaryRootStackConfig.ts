@@ -14,15 +14,15 @@ export const temporaryRootStackConfig = {
   FAQWebview: {
     path: 'questionnaire-pratiques-initiales/foire-aux-questions',
   },
-  //   Stepper: {
-  //     path: 'verification-identite',
-  //   },
-  //   DisableActivation: {
-  //     path: 'creation-compte/desactivation',
-  //   },
-  //   SetPhoneNumberWithoutValidation: {
-  //     path: 'creation-compte/telephone-sans-validation',
-  //   },
+  Stepper: {
+    path: 'verification-identite',
+  },
+  DisableActivation: {
+    path: 'creation-compte/desactivation',
+  },
+  SetPhoneNumberWithoutValidation: {
+    path: 'creation-compte/telephone-sans-validation',
+  },
   //   SetPhoneNumber: {
   //     path: 'creation-compte/telephone',
   //   },
