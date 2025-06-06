@@ -33,6 +33,7 @@ import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
+import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
@@ -182,6 +183,26 @@ const RootStackNavigator = withWebWrapper(
             name="_DeeplinkOnlyOffer3" // Alias for 'offer'
             component={Offer}
             options={{ title: 'Offre' }}
+          />
+          <RootStack.Screen
+            name="OfferPreview"
+            component={OfferPreview}
+            options={{ title: 'Aperçu de l’offre' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyOfferPreview1" // Alias for 'offer/:id/apercu'
+            component={OfferPreview}
+            options={{ title: 'Aperçu de l’offre' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyOfferPreview2" // Alias for 'offre/apercu'
+            component={OfferPreview}
+            options={{ title: 'Aperçu de l’offre' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyOfferPreview3" // Alias for 'offer/apercu'
+            component={OfferPreview}
+            options={{ title: 'Aperçu de l’offre' }}
           />
         </RootStack.Navigator>
       </IconFactoryProvider>

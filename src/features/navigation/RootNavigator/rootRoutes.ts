@@ -20,7 +20,6 @@ import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDe
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
@@ -31,16 +30,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'OfferPreview',
-    component: OfferPreview,
-    pathConfig: {
-      path: 'offre/:id/apercu',
-      deeplinkPaths: ['offer/:id/apercu', 'offre/apercu', 'offer/apercu'],
-      parse: screenParamsParser['OfferPreview'],
-    },
-    options: { title: 'Aperçu de l’offre' },
-  },
   {
     name: 'BookingDetails',
     component: BookingDetails,
