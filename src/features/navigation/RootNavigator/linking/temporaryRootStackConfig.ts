@@ -345,14 +345,14 @@ export const temporaryRootStackConfig = {
   UTMParameters: {
     path: 'liens/utm',
   },
-  //   ThematicHome: {
-  //     path: 'accueil-thematique',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyThematicHome1: {
-  //     path: 'thematic-home',
-  //     parse: {},
-  //   },
+  ThematicHome: {
+    path: 'accueil-thematique',
+    parse: screenParamsParser['ThematicHome'],
+  },
+  _DeeplinkOnlyThematicHome1: {
+    path: 'thematic-home',
+    parse: screenParamsParser['ThematicHome'],
+  },
   Achievements: {
     path: 'profile/achievements',
   },

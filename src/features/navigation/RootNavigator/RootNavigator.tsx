@@ -31,6 +31,7 @@ import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
@@ -341,6 +342,16 @@ const RootStackNavigator = withWebWrapper(
             name="DeeplinksGenerator"
             component={DeeplinksGenerator}
             options={{ title: 'Générateur de lien' }}
+          />
+          <RootStack.Screen
+            name="ThematicHome"
+            component={ThematicHome}
+            options={{ title: 'Page d’accueil thématique' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyThematicHome1"
+            component={ThematicHome}
+            options={{ title: 'Page d’accueil thématique' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
