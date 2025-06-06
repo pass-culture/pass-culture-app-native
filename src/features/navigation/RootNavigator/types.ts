@@ -238,6 +238,11 @@ type VenueParams = {
   fromThematicSearch?: ContentfulLabelCategories
 }
 
+type VenuePreviewCarouselParams = {
+  id: number
+  defaultIndex?: number
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -324,7 +329,10 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenue1: VenueParams
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined
-  VenuePreviewCarousel: { id: number; defaultIndex?: number }
+  VenuePreviewCarousel: VenuePreviewCarouselParams
+  _DeeplinkOnlyVenuePreviewCarousel1: VenuePreviewCarouselParams
+  _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
+  _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
 } & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
