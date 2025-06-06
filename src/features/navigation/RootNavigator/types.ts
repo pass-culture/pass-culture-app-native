@@ -204,6 +204,11 @@ type OfferParams = {
   playlistType?: PlaylistType
 }
 
+type OfferPreviewParams = {
+  id: number
+  defaultIndex?: number
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -253,7 +258,10 @@ export type RootStackParamList = {
   _DeeplinkOnlyOffer2: OfferParams
   _DeeplinkOnlyOffer3: OfferParams
   OfferDescription: { id: number }
-  OfferPreview: { id: number; defaultIndex?: number }
+  OfferPreview: OfferPreviewParams
+  _DeeplinkOnlyOfferPreview1: OfferPreviewParams
+  _DeeplinkOnlyOfferPreview2: OfferPreviewParams
+  _DeeplinkOnlyOfferPreview3: OfferPreviewParams
   OnboardingSubscription: undefined
   PageNotFound: undefined
   Profile: undefined
