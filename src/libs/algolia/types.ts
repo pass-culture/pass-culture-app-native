@@ -130,6 +130,7 @@ export type SearchQueryParameters = {
   beginningDatetime?: string
   date: SelectedDate | null
   eanList?: string[]
+  artistName?: string
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean

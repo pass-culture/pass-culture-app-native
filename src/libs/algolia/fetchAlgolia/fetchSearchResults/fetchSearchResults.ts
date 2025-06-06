@@ -142,12 +142,18 @@ export const fetchSearchResults = async ({
     },
     // Artists in offers
     {
-      ...offersQuery,
+      indexName: offersIndex,
+      query: '',
       params: {
-        ...offersQuery.params,
+        ...buildOfferSearchParameters(
+          { ...parameters, artistName: parameters.query },
+          buildLocationParameterParams,
+          isUserUnderage,
+          disabilitiesProperties,
+          true
+        ),
         attributesToRetrieve: ['artists'],
         ...buildHitsPerPage(100),
-        ...(aroundPrecision && { aroundPrecision }),
       },
     },
   ]

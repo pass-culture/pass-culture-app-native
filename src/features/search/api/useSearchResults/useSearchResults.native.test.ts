@@ -126,14 +126,11 @@ describe('useSearchResults', () => {
           {
             indexName: 'algoliaOffersIndexName',
             params: {
-              attributesToHighlight: [],
               attributesToRetrieve: ['artists'],
-              clickAnalytics: true,
               facetFilters: [['offer.isEducational:false']],
               hitsPerPage: 100,
               numericFilters: [['offer.prices: 0 TO 300']],
               tagFilters: '["-is_future"]',
-              page: 0,
             },
             query: '',
           },
