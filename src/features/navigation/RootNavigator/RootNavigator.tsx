@@ -17,6 +17,7 @@ import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount
 import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
+import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
@@ -204,6 +205,12 @@ const RootStackNavigator = withWebWrapper(
             component={OfferPreview}
             options={{ title: 'Aperçu de l’offre' }}
           />
+          <RootStack.Screen name="BookingDetails" component={withAuthProtection(BookingDetails)} />
+          <RootStack.Screen
+            name="_DeeplinkOnlyBookingDetails1" // Alias for 'booking/:id/details'
+            component={withAuthProtection(BookingDetails)}
+          />
+          {/* <RootStack.Screen /> */}
         </RootStack.Navigator>
       </IconFactoryProvider>
     )

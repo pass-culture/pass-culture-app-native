@@ -206,6 +206,10 @@ type OfferPreviewParams = {
   defaultIndex?: number
 }
 
+type BookingDetailsParams = {
+  id: number
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -226,7 +230,8 @@ export type RootStackParamList = {
   Artist: { id: string }
   BannedCountryError: undefined
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
-  BookingDetails: { id: number }
+  BookingDetails: BookingDetailsParams
+  _DeeplinkOnlyBookingDetails1: BookingDetailsParams
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator: undefined
