@@ -155,14 +155,14 @@ export const temporaryRootStackConfig = {
     path: 'offer/apercu',
     parse: screenParamsParser['OfferPreview'],
   },
-  //   BookingDetails: {
-  //     path: 'reservation/:id/details',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyBookingDetails1: {
-  //     path: 'booking/:id/details',
-  //     parse: {},
-  //   },
+  BookingDetails: {
+    path: 'reservation/:id/details',
+    parse: screenParamsParser['BookingDetails'],
+  },
+  _DeeplinkOnlyBookingDetails1: {
+    path: 'booking/:id/details',
+    parse: screenParamsParser['BookingDetails'],
+  },
   //   BookingConfirmation: {
   //     path: 'reservation/:offerId/confirmation',
   //     parse: {},

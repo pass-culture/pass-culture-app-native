@@ -5,7 +5,6 @@ import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/Aft
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
-import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -30,16 +29,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'BookingDetails',
-    component: BookingDetails,
-    pathConfig: {
-      path: 'reservation/:id/details',
-      deeplinkPaths: ['booking/:id/details'],
-      parse: screenParamsParser['BookingDetails'],
-    },
-    secure: true,
-  },
   {
     name: 'BookingConfirmation',
     component: BookingConfirmation,
