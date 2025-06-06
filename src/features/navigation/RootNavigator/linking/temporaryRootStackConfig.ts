@@ -163,14 +163,14 @@ export const temporaryRootStackConfig = {
     path: 'booking/:id/details',
     parse: screenParamsParser['BookingDetails'],
   },
-  //   BookingConfirmation: {
-  //     path: 'reservation/:offerId/confirmation',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyBookingConfirmation1: {
-  //     path: 'booking/:offerId/confirmation',
-  //     parse: {},
-  //   },
+  BookingConfirmation: {
+    path: 'reservation/:offerId/confirmation',
+    parse: screenParamsParser['BookingConfirmation'],
+  },
+  _DeeplinkOnlyBookingConfirmation1: {
+    path: 'booking/:offerId/confirmation',
+    parse: screenParamsParser['BookingConfirmation'],
+  },
   //   EighteenBirthday: {
   //     path: 'anniversaire-18-ans',
   //   },
