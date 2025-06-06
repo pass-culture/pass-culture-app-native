@@ -3,7 +3,6 @@ import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/Rein
 import { Login } from 'features/auth/pages/login/Login'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
-import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -28,13 +27,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'EighteenBirthday',
-    component: EighteenBirthday,
-    path: 'anniversaire-18-ans',
-    deeplinkPaths: ['eighteen'],
-    options: { title: 'Anniversaire 18 ans' },
-  },
   {
     name: 'RecreditBirthdayNotification',
     component: RecreditBirthdayNotification,

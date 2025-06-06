@@ -171,12 +171,12 @@ export const temporaryRootStackConfig = {
     path: 'booking/:offerId/confirmation',
     parse: screenParamsParser['BookingConfirmation'],
   },
-  //   EighteenBirthday: {
-  //     path: 'anniversaire-18-ans',
-  //   },
-  //   _DeeplinkOnlyEighteenBirthday1: {
-  //     path: 'eighteen',
-  //   },
+  EighteenBirthday: {
+    path: 'anniversaire-18-ans',
+  },
+  _DeeplinkOnlyEighteenBirthday1: {
+    path: 'eighteen',
+  },
   //   RecreditBirthdayNotification: {
   //     path: 'recharge-credit-anniversaire',
   //   },
