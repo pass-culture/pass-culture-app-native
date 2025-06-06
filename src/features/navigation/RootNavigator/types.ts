@@ -95,7 +95,7 @@ export type CulturalSurveyRootStackParamList = {
   FAQWebview: undefined
 }
 
-export type TrustedDeviceRootStackParamList = {
+type TrustedDeviceRootStackParamList = {
   AccountSecurity: {
     token: string
     email: string
