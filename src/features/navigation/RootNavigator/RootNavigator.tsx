@@ -8,6 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
+import { Login } from 'features/auth/pages/login/Login'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
@@ -252,6 +253,7 @@ const RootStackNavigator = withWebWrapper(
             component={RecreditBirthdayNotification}
             options={{ title: 'Notification rechargement anniversaire' }}
           />
+          <RootStack.Screen name="Login" component={Login} options={{ title: 'Connexion' }} />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
       </IconFactoryProvider>
