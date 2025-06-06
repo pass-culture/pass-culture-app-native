@@ -1,5 +1,5 @@
 import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
-import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
+import { subscriptionRoutes } from 'features/navigation/RootNavigator/SubscriptionScreens'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 
