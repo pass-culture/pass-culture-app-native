@@ -197,9 +197,9 @@ export const temporaryRootStackConfig = {
     path: 'creation-compte/validation-email',
     parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
   },
-  //   BannedCountryError: {
-  //     path: 'erreur-pays',
-  //   },
+  BannedCountryError: {
+    path: 'erreur-pays',
+  },
   ChangeEmailExpiredLink: {
     path: 'lien-modification-email-expire',
   },
