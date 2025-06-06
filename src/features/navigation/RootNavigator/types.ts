@@ -92,7 +92,7 @@ export type CulturalSurveyRootStackParamList = {
   FAQWebview: undefined
 }
 
-export type TrustedDeviceRootStackParamList = {
+type TrustedDeviceRootStackParamList = {
   AccountSecurity: {
     token: string
     email: string
@@ -188,6 +188,71 @@ export type SubscriptionRootStackParamList = {
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
 } & CulturalSurveyRootStackParamList
 
+type OfferParams = {
+  id: number
+  from?: Referrals
+  moduleName?: string
+  moduleId?: string
+  fromOfferId?: number
+  fromMultivenueOfferId?: number
+  openModalOnNavigation?: boolean
+  searchId?: string
+  apiRecoParams?: string
+  playlistType?: PlaylistType
+}
+
+type OfferPreviewParams = {
+  id: number
+  defaultIndex?: number
+}
+
+type BookingDetailsParams = {
+  id: number
+}
+
+type BookingConfirmationParams = {
+  offerId: number
+  bookingId: number
+  apiRecoParams?: string
+}
+
+type AfterSignupEmailValidationBufferParams = {
+  token: string
+  expiration_timestamp: number
+  email: string
+}
+
+type SignupFormParams =
+  | {
+      accountCreationToken?: string
+      email?: string
+      offerId?: number
+      from: StepperOrigin
+    }
+  | undefined
+
+type VenueParams = {
+  id: number
+  from?: Referrals
+  searchId?: string
+  fromThematicSearch?: ContentfulLabelCategories
+}
+
+type VenuePreviewCarouselParams = {
+  id: number
+  defaultIndex?: number
+}
+
+type ArtistParams = {
+  id: string
+}
+
+type ChroniclesParams = {
+  offerId: number
+  chronicleId?: number
+  from?: Referrals
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -204,18 +269,24 @@ export type RootStackParamList = {
   AccountReactivationSuccess: undefined
   AccountStatusScreenHandler: undefined
   Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
-  AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
-  Artist: { id: string }
+  AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
+  _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams
+  Artist: ArtistParams
+  _DeeplinkOnlyArtist1: ArtistParams
   BannedCountryError: undefined
-  BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
-  BookingDetails: { id: number }
+  BookingConfirmation: BookingConfirmationParams
+  _DeeplinkOnlyBookingConfirmation1: BookingConfirmationParams
+  BookingDetails: BookingDetailsParams
+  _DeeplinkOnlyBookingDetails1: BookingDetailsParams
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator: undefined
-  Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
+  Chronicles: ChroniclesParams
+  _DeeplinkOnlyChronicles1: ChroniclesParams
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
+  _DeeplinkOnlyEighteenBirthday1: undefined
   FavoritesSorts: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
@@ -229,20 +300,15 @@ export type RootStackParamList = {
   Maintenance: undefined
   MovieCalendar: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
-  Offer: {
-    id: number
-    from?: Referrals
-    moduleName?: string
-    moduleId?: string
-    fromOfferId?: number
-    fromMultivenueOfferId?: number
-    openModalOnNavigation?: boolean
-    searchId?: string
-    apiRecoParams?: string
-    playlistType?: PlaylistType
-  }
+  Offer: OfferParams
+  _DeeplinkOnlyOffer1: OfferParams
+  _DeeplinkOnlyOffer2: OfferParams
+  _DeeplinkOnlyOffer3: OfferParams
   OfferDescription: { id: number }
-  OfferPreview: { id: number; defaultIndex?: number }
+  OfferPreview: OfferPreviewParams
+  _DeeplinkOnlyOfferPreview1: OfferPreviewParams
+  _DeeplinkOnlyOfferPreview2: OfferPreviewParams
+  _DeeplinkOnlyOfferPreview3: OfferPreviewParams
   OnboardingSubscription: undefined
   PageNotFound: undefined
   Profile: undefined
@@ -251,6 +317,7 @@ export type RootStackParamList = {
     params: ProfileStackParamList[ProfileStackRouteName]
   }
   RecreditBirthdayNotification: undefined
+  _DeeplinkOnlyRecreditBirthdayNotification1: undefined
   ReinitializePassword: {
     email: string
     token: string
@@ -262,24 +329,23 @@ export type RootStackParamList = {
   SearchFilter?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
-  SignupForm:
-    | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
-    | undefined
+  SignupForm: SignupFormParams
+  _DeeplinkOnlySignupForm1: SignupFormParams
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams
+  _DeeplinkOnlyThematicHome1: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
   ValidateEmailChange: { token: string }
-  Venue: {
-    id: number
-    from?: Referrals
-    searchId?: string
-    fromThematicSearch?: ContentfulLabelCategories
-  }
+  Venue: VenueParams
+  _DeeplinkOnlyVenue1: VenueParams
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined
-  VenuePreviewCarousel: { id: number; defaultIndex?: number }
+  VenuePreviewCarousel: VenuePreviewCarouselParams
+  _DeeplinkOnlyVenuePreviewCarousel1: VenuePreviewCarouselParams
+  _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
+  _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
 } & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
