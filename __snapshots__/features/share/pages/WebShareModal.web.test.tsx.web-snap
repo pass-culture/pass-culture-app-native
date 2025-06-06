@@ -161,7 +161,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 }
 
 .c3 {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .c0 {

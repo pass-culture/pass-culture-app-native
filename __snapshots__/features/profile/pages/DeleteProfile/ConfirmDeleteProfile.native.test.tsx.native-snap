@@ -782,7 +782,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

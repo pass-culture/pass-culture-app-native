@@ -367,7 +367,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {
@@ -808,7 +808,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

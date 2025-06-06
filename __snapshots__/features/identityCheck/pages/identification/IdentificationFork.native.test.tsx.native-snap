@@ -516,7 +516,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                           "width": "auto",
                         },
                         {
-                          "backgroundColor": "#ffffff",
+                          "backgroundColor": "transparent",
                         },
                       ],
                       {
@@ -919,7 +919,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                             "width": "auto",
                           },
                           {
-                            "backgroundColor": "#ffffff",
+                            "backgroundColor": "transparent",
                           },
                         ],
                         {

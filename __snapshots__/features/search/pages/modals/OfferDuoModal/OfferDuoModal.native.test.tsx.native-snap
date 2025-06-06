@@ -635,7 +635,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                       "width": "auto",
                     },
                   ],

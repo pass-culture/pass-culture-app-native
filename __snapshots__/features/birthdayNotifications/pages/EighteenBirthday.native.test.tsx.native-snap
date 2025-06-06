@@ -361,7 +361,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

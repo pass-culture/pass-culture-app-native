@@ -135,7 +135,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
                 "borderRadius": 0,
                 "borderWidth": 0,
                 "flexDirection": "row",
@@ -418,7 +418,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "transparent",
             "borderColor": "#eb0055",
             "borderRadius": 24,
             "borderStyle": "solid",

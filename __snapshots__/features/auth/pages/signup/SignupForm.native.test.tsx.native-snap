@@ -3220,7 +3220,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -3339,7 +3339,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {

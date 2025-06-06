@@ -354,7 +354,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -456,7 +456,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

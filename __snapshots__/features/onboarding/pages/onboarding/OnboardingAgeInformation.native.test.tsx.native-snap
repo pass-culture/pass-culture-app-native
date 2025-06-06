@@ -906,7 +906,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               "width": "100%",
             },
             {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "transparent",
             },
           ],
           {
@@ -1883,7 +1883,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               "width": "100%",
             },
             {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "transparent",
             },
           ],
           {

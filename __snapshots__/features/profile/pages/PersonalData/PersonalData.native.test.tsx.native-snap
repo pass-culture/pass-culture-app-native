@@ -362,7 +362,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -587,7 +587,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -761,7 +761,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -936,7 +936,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   "width": "auto",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -1133,7 +1133,7 @@ exports[`PersonalData should render personal data success 1`] = `
                       "width": "auto",
                     },
                     {
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                     },
                   ],
                   {

@@ -922,7 +922,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         "width": "auto",
                       },
                       {
-                        "backgroundColor": "#ffffff",
+                        "backgroundColor": "transparent",
                       },
                     ],
                     {

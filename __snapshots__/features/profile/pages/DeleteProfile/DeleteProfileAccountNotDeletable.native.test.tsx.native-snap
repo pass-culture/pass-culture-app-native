@@ -584,7 +584,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

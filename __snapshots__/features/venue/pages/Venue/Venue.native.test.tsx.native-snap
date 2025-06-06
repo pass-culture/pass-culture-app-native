@@ -307,7 +307,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                       "borderRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "flex-start",
@@ -424,7 +424,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     style={
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#ffffff",
+                        "backgroundColor": "transparent",
                         "borderRadius": 0,
                         "borderWidth": 0,
                         "flexDirection": "row",
@@ -3301,7 +3301,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                       "borderRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "flex-start",
@@ -3418,7 +3418,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     style={
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#ffffff",
+                        "backgroundColor": "transparent",
                         "borderRadius": 0,
                         "borderWidth": 0,
                         "flexDirection": "row",
@@ -6621,7 +6621,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                       "borderRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "flex-start",
@@ -6738,7 +6738,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     style={
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#ffffff",
+                        "backgroundColor": "transparent",
                         "borderRadius": 0,
                         "borderWidth": 0,
                         "flexDirection": "row",
@@ -7292,7 +7292,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       style={
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#ffffff",
+                          "backgroundColor": "transparent",
                           "borderRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "flex-start",
@@ -7400,7 +7400,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       style={
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#ffffff",
+                          "backgroundColor": "transparent",
                           "borderRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "flex-start",
@@ -7508,7 +7508,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       style={
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#ffffff",
+                          "backgroundColor": "transparent",
                           "borderRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "flex-start",

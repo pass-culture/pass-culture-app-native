@@ -509,7 +509,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                       "borderRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",

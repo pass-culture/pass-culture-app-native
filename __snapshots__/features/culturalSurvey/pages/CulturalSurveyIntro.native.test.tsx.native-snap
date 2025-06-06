@@ -267,7 +267,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -496,7 +496,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {
@@ -961,7 +961,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

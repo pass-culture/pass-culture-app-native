@@ -626,7 +626,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
+                    "backgroundColor": "transparent",
                     "borderRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",

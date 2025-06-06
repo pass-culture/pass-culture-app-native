@@ -378,7 +378,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                 },
               ],
               {
@@ -506,7 +506,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                     "width": "100%",
                   },
                   {
-                    "backgroundColor": "#ffffff",
+                    "backgroundColor": "transparent",
                   },
                 ],
                 {
