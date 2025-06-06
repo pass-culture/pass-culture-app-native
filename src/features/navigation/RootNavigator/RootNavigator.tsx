@@ -18,6 +18,7 @@ import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
+import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
@@ -210,7 +211,17 @@ const RootStackNavigator = withWebWrapper(
             name="_DeeplinkOnlyBookingDetails1" // Alias for 'booking/:id/details'
             component={withAuthProtection(BookingDetails)}
           />
-          {/* <RootStack.Screen /> */}
+          <RootStack.Screen
+            name="BookingConfirmation"
+            component={withAuthProtection(BookingConfirmation)}
+            options={{ title: 'Confirmation de réservation' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyBookingConfirmation1"
+            component={withAuthProtection(BookingConfirmation)}
+            options={{ title: 'Confirmation de réservation' }}
+          />
+          {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
       </IconFactoryProvider>
     )

@@ -213,6 +213,12 @@ type BookingDetailsParams = {
   id: number
 }
 
+type BookingConfirmationParams = {
+  offerId: number
+  bookingId: number
+  apiRecoParams?: string
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -232,7 +238,8 @@ export type RootStackParamList = {
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
   Artist: { id: string }
   BannedCountryError: undefined
-  BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
+  BookingConfirmation: BookingConfirmationParams
+  _DeeplinkOnlyBookingConfirmation1: BookingConfirmationParams
   BookingDetails: BookingDetailsParams
   _DeeplinkOnlyBookingDetails1: BookingDetailsParams
   Bookings: { activeTab?: BookingsTab } | undefined

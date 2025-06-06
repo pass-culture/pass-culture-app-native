@@ -5,7 +5,6 @@ import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/Aft
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
-import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
@@ -29,17 +28,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'BookingConfirmation',
-    component: BookingConfirmation,
-    pathConfig: {
-      path: 'reservation/:offerId/confirmation',
-      deeplinkPaths: ['booking/:offerId/confirmation'],
-      parse: screenParamsParser['BookingConfirmation'],
-    },
-    options: { title: 'Confirmation de réservation' },
-    secure: true,
-  },
   {
     name: 'EighteenBirthday',
     component: EighteenBirthday,
