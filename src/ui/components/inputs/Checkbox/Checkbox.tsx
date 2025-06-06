@@ -2,6 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { CheckboxAsset, CheckboxAssetProps } from 'ui/components/inputs/Checkbox/CheckboxAsset'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -9,6 +10,8 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
 import { Typo, getSpacing } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type CheckboxBase = {
   label: string
@@ -59,13 +62,14 @@ export const Checkbox: FunctionComponent<Props> = ({
   hasError,
   disabled,
 }) => {
-  const { onFocus, onBlur, isFocus } = useHandleFocus()
+  const focusProps = useHandleFocus()
+  const hoverProps = useHandleHover()
 
   const onToggle = useCallback(() => {
     onPress(!isChecked)
   }, [isChecked, onPress])
 
-  useSpaceBarAction(isFocus ? onToggle : undefined)
+  useSpaceBarAction(focusProps.isFocus ? onToggle : undefined)
 
   const effectiveDisplay: 'fill' | 'hug' = display ?? (variant === 'detailed' ? 'fill' : 'hug')
 
@@ -80,8 +84,8 @@ export const Checkbox: FunctionComponent<Props> = ({
       disabled={disabled}
       collapsed={collapsed}
       onPress={onToggle}
-      onFocus={onFocus}
-      onBlur={onBlur}>
+      {...focusProps}
+      {...hoverProps}>
       <ContentContainer>
         <Box
           isChecked={isChecked}
@@ -119,11 +123,24 @@ type ContainerProps = {
   display?: 'hug' | 'fill'
   hasError?: boolean
   disabled?: boolean
+  isHover?: boolean
+  isFocus?: boolean
   collapsed?: React.ReactNode
 }
 
 const Container = styled(TouchableOpacity)<ContainerProps>(
-  ({ theme, variant, display, hasError, disabled, isChecked, indeterminate, collapsed }) => ({
+  ({
+    theme,
+    variant,
+    display,
+    hasError,
+    disabled,
+    isFocus,
+    isChecked,
+    isHover,
+    indeterminate,
+    collapsed,
+  }) => ({
     cursor: 'pointer',
     width: display === 'fill' ? '100%' : 'fit-content',
     ...(variant === 'detailed' && {
@@ -143,6 +160,8 @@ const Container = styled(TouchableOpacity)<ContainerProps>(
       borderRadius: getSpacing(2),
       padding: getSpacing(4),
     }),
+    ...customFocusOutline({ isFocus }),
+    ...getHoverStyle(theme.designSystem.color.text.default, isHover),
   })
 )
 
