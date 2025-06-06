@@ -31,6 +31,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
   } = venue
 
   const shouldDisplayDetailedAccessibility =
+    !!isOpenToPublic &&
     enableAccesLibre &&
     !!externalAccessibilityUrl &&
     !!externalAccessibilityData &&
