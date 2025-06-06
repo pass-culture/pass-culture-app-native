@@ -32,6 +32,7 @@ import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialSc
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
+import { Offer } from 'features/offer/pages/Offer/Offer'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
@@ -165,6 +166,22 @@ const RootStackNavigator = withWebWrapper(
             name="SignupConfirmationEmailSent"
             component={SignupConfirmationEmailSentPage}
             options={{ title: 'Email création de compte envoyé' }}
+          />
+          <RootStack.Screen name="Offer" component={Offer} options={{ title: 'Offre' }} />
+          <RootStack.Screen
+            name="_DeeplinkOnlyOffer1" // Alias for 'offer/:id'
+            component={Offer}
+            options={{ title: 'Offre' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyOffer2" // Alias for 'offre'
+            component={Offer}
+            options={{ title: 'Offre' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyOffer3" // Alias for 'offer'
+            component={Offer}
+            options={{ title: 'Offre' }}
           />
         </RootStack.Navigator>
       </IconFactoryProvider>
