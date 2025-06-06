@@ -339,12 +339,12 @@ export const temporaryRootStackConfig = {
   _DeeplinkOnlyArtist1: {
     path: 'artist/:id',
   },
-  //   DeeplinksGenerator: {
-  //     path: 'liens/generateur',
-  //   },
-  //   UTMParameters: {
-  //     path: 'liens/utm',
-  //   },
+  DeeplinksGenerator: {
+    path: 'liens/generateur',
+  },
+  UTMParameters: {
+    path: 'liens/utm',
+  },
   //   ThematicHome: {
   //     path: 'accueil-thematique',
   //     parse: {},
