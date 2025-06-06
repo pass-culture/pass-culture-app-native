@@ -3,6 +3,7 @@ import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   buildAccessibiltyFiltersPredicate,
   buildAllocineIdPredicate,
+  buildArtistNamePredicate,
   buildEanPredicate,
   buildHeadlinePredicate,
   buildObjectIdsPredicate,
@@ -23,6 +24,7 @@ const defaultFilter = [[`${FACETS_FILTERS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
 export const buildFacetFilters = ({
   venue,
   eanList,
+  artistName,
   allocineId,
   isUserUnderage,
   objectIds,
@@ -56,6 +58,7 @@ export const buildFacetFilters = ({
   isUserUnderage: boolean
   objectIds?: string[]
   eanList?: string[]
+  artistName?: string
   allocineId?: number
   disabilitiesProperties: DisabilitiesProperties
 }): null | {
@@ -97,6 +100,11 @@ export const buildFacetFilters = ({
   if (eanList && eanList?.length > 0) {
     const eanIdsPredicate = buildEanPredicate(eanList)
     facetFilters.push(eanIdsPredicate)
+  }
+
+  if (artistName) {
+    const artistNamePredicate = buildArtistNamePredicate(artistName)
+    facetFilters.push([artistNamePredicate])
   }
 
   if (allocineId) {
