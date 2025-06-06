@@ -65,48 +65,48 @@ export const temporaryRootStackConfig = {
   IdentityCheckEnd: {
     path: 'verification-identite/fin',
   },
-  //   IdentityCheckUnavailable: {
-  //     path: 'verification-identite/verification-indisponible',
-  //   },
-  //   IdentityCheckPending: {
-  //     path: 'verification-identite/demande-en-attente',
-  //   },
-  //   IdentityCheckDMS: {
-  //     path: 'verification-identite/demarches-simplifiees',
-  //   },
-  //   IdentificationFork: {
-  //     path: 'identification/fourche',
-  //   },
-  //   IdentityCheckHonor: {
-  //     path: 'confirmation',
-  //   },
-  //   BeneficiaryRequestSent: {
-  //     path: 'demande-beneficiaire-envoyee',
-  //   },
-  //   BeneficiaryAccountCreated: {
-  //     path: 'creation-compte/confirmation-beneficiaire',
-  //   },
-  //   EduConnectErrors: {
-  //     path: 'educonnect/erreur',
-  //   },
-  //   DMSIntroduction: {
-  //     path: 'identification/redirection-demarches-simplifiees',
-  //   },
-  //   ExpiredOrLostID: {
-  //     path: 'identification/document-identite-perdu-ou-expire',
-  //   },
-  //   SelectIDOrigin: {
-  //     path: 'identification/origine-document-identite',
-  //   },
-  //   SelectIDStatus: {
-  //     path: 'identification/statut-document-identite',
-  //   },
-  //   SelectPhoneStatus: {
-  //     path: 'identification/statut-telephone',
-  //   },
-  //   ComeBackLater: {
-  //     path: 'identification/reviens-plus-tard',
-  //   },
+  IdentityCheckUnavailable: {
+    path: 'verification-identite/verification-indisponible',
+  },
+  IdentityCheckPending: {
+    path: 'verification-identite/demande-en-attente',
+  },
+  IdentityCheckDMS: {
+    path: 'verification-identite/demarches-simplifiees',
+  },
+  IdentificationFork: {
+    path: 'identification/fourche',
+  },
+  IdentityCheckHonor: {
+    path: 'confirmation',
+  },
+  BeneficiaryRequestSent: {
+    path: 'demande-beneficiaire-envoyee',
+  },
+  BeneficiaryAccountCreated: {
+    path: 'creation-compte/confirmation-beneficiaire',
+  },
+  EduConnectErrors: {
+    path: 'educonnect/erreur',
+  },
+  DMSIntroduction: {
+    path: 'identification/redirection-demarches-simplifiees',
+  },
+  ExpiredOrLostID: {
+    path: 'identification/document-identite-perdu-ou-expire',
+  },
+  SelectIDOrigin: {
+    path: 'identification/origine-document-identite',
+  },
+  SelectIDStatus: {
+    path: 'identification/statut-document-identite',
+  },
+  SelectPhoneStatus: {
+    path: 'identification/statut-telephone',
+  },
+  ComeBackLater: {
+    path: 'identification/reviens-plus-tard',
+  },
   AccountSecurityBuffer: {
     path: 'securisation-compte',
   },
