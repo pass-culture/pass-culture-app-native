@@ -10,7 +10,7 @@ import { BookingDetailsContentMobile } from 'features/bookings/components/Bookin
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { Ticket } from 'features/bookings/components/Ticket'
+import { Ticket } from 'features/bookings/components/Ticket/Ticket'
 import { computeHeaderImageHeight } from 'features/bookings/helpers/computeHeaderImageHeight'
 import { BookingProperties } from 'features/bookings/types'
 import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
