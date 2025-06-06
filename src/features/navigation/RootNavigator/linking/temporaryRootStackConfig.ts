@@ -1,3 +1,5 @@
+import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+
 // Temporary file: uncommenting path by path as we move routes from rootRoutes, directly to RootStackNavigator
 export const temporaryRootStackConfig = {
   //   CulturalSurveyIntro: {
@@ -121,22 +123,22 @@ export const temporaryRootStackConfig = {
   //   SuspiciousLoginSuspendedAccount: {
   //     path: 'securisation-compte/suspension-confirmee',
   //   },
-  //   Offer: {
-  //     path: 'offre/:id',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyOffer1: {
-  //     path: 'offer/:id',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyOffer2: {
-  //     path: 'offre',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyOffer3: {
-  //     path: 'offer',
-  //     parse: {},
-  //   },
+  Offer: {
+    path: 'offre/:id',
+    parse: screenParamsParser['Offer'],
+  },
+  _DeeplinkOnlyOffer1: {
+    path: 'offer/:id',
+    parse: screenParamsParser['Offer'],
+  },
+  _DeeplinkOnlyOffer2: {
+    path: 'offre',
+    parse: screenParamsParser['Offer'],
+  },
+  _DeeplinkOnlyOffer3: {
+    path: 'offer',
+    parse: screenParamsParser['Offer'],
+  },
   //   OfferPreview: {
   //     path: 'offre/:id/apercu',
   //     parse: {},

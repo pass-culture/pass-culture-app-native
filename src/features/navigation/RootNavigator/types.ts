@@ -191,6 +191,19 @@ export type SubscriptionRootStackParamList = {
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
 } & CulturalSurveyRootStackParamList
 
+type OfferParams = {
+  id: number
+  from?: Referrals
+  moduleName?: string
+  moduleId?: string
+  fromOfferId?: number
+  fromMultivenueOfferId?: number
+  openModalOnNavigation?: boolean
+  searchId?: string
+  apiRecoParams?: string
+  playlistType?: PlaylistType
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -235,18 +248,10 @@ export type RootStackParamList = {
   Maintenance: undefined
   MovieCalendar: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
-  Offer: {
-    id: number
-    from?: Referrals
-    moduleName?: string
-    moduleId?: string
-    fromOfferId?: number
-    fromMultivenueOfferId?: number
-    openModalOnNavigation?: boolean
-    searchId?: string
-    apiRecoParams?: string
-    playlistType?: PlaylistType
-  }
+  Offer: OfferParams
+  _DeeplinkOnlyOffer1: OfferParams
+  _DeeplinkOnlyOffer2: OfferParams
+  _DeeplinkOnlyOffer3: OfferParams
   OfferDescription: { id: number }
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
