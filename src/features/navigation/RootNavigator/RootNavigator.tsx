@@ -17,6 +17,7 @@ import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount
 import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
+import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
@@ -220,6 +221,16 @@ const RootStackNavigator = withWebWrapper(
             name="_DeeplinkOnlyBookingConfirmation1"
             component={withAuthProtection(BookingConfirmation)}
             options={{ title: 'Confirmation de réservation' }}
+          />
+          <RootStack.Screen
+            name="EighteenBirthday"
+            component={EighteenBirthday}
+            options={{ title: 'Anniversaire 18 ans' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyEighteenBirthday1"
+            component={EighteenBirthday}
+            options={{ title: 'Anniversaire 18 ans' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
