@@ -794,7 +794,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

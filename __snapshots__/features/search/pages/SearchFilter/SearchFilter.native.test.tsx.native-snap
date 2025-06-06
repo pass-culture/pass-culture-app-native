@@ -1051,7 +1051,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               "width": "100%",
             },
             {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "transparent",
               "width": "auto",
             },
           ],

@@ -413,7 +413,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",

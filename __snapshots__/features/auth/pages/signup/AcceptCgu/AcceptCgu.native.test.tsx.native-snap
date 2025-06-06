@@ -309,7 +309,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             "width": "100%",
           },
           {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "transparent",
           },
         ],
         {
@@ -428,7 +428,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             "width": "100%",
           },
           {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "transparent",
           },
         ],
         {
@@ -1058,7 +1058,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             "width": "100%",
           },
           {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "transparent",
           },
         ],
         {
@@ -1177,7 +1177,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             "width": "100%",
           },
           {
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "transparent",
           },
         ],
         {

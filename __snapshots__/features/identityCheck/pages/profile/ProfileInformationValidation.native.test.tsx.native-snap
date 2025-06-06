@@ -717,7 +717,7 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "transparent",
                   "borderRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",

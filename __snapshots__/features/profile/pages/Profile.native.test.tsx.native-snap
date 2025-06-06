@@ -101,7 +101,7 @@ exports[`Profile component should render correctly 1`] = `
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                     },
                   ],
                   {
@@ -2769,7 +2769,7 @@ exports[`Profile component should render correctly 1`] = `
                           "width": "auto",
                         },
                         {
-                          "backgroundColor": "#ffffff",
+                          "backgroundColor": "transparent",
                         },
                       ],
                       {

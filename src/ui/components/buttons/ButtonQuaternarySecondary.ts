@@ -40,6 +40,6 @@ export const ButtonQuaternarySecondary = styledButton(AppButton).attrs<BaseButto
       hoverUnderlineColor: theme.designSystem.color.text.brandSecondary,
     }
   }
-)(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.background.default,
-}))
+)({
+  backgroundColor: 'transparent',
+})

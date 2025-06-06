@@ -533,7 +533,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                             "width": "auto",
                           },
                           {
-                            "backgroundColor": "#ffffff",
+                            "backgroundColor": "transparent",
                           },
                         ],
                         {

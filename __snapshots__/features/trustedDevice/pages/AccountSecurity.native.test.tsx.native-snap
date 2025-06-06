@@ -555,7 +555,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -657,7 +657,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {
@@ -1299,7 +1299,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {
@@ -1929,7 +1929,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -2031,7 +2031,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

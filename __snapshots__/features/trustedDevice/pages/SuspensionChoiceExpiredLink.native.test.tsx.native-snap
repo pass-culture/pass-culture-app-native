@@ -398,7 +398,7 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                 "width": "100%",
               },
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "transparent",
               },
             ],
             {

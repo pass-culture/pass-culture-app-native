@@ -839,7 +839,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                       "width": "auto",
                     },
                   ],

@@ -38,9 +38,9 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
       hoverUnderlineColor: theme.buttons.tertiaryBlack.textColor,
     }
   }
-)(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.background.default,
-}))
+)({
+  backgroundColor: 'transparent',
+})
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
   color: theme.buttons.tertiaryBlack.loadingIconColor,

@@ -530,7 +530,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                         "width": "100%",
                       },
                       {
-                        "backgroundColor": "#ffffff",
+                        "backgroundColor": "transparent",
                       },
                     ],
                     {
