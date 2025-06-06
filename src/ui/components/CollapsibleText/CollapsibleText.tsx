@@ -1,24 +1,50 @@
 import React, { PropsWithChildren, useState } from 'react'
+import { NativeSyntheticEvent, TextLayoutEventData } from 'react-native'
+import styled from 'styled-components/native'
 
-import { CollapsibleTextContent } from './CollapsibleTextContent/CollapsibleTextContent'
+import { CollapsibleTextBody } from 'ui/components/CollapsibleText/CollapsibleTextBody/CollapsibleTextBody'
+import { CollapsibleTextButton } from 'ui/components/CollapsibleText/CollapsibleTextButton/CollapsibleTextButton'
 
-type Props = {
+type CollapsibleTextProps = {
   // Minimum number of lines when collapsible is collapsed.
   numberOfLines: number
 } & PropsWithChildren
 
-// TODO(PC-33655): see the possibilities for improving the component
-export function CollapsibleText({ numberOfLines, children }: Readonly<Props>) {
-  const [expanded, setExpanded] = useState(false)
+export function CollapsibleText({ numberOfLines, children }: Readonly<CollapsibleTextProps>) {
+  const [defaultLinesCount, setDefaultLinesCount] = useState<number>()
+  const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
-  const onButtonPress = () => setExpanded((prevExpanded) => !prevExpanded)
+  const handleOnTextLayout = (event: NativeSyntheticEvent<TextLayoutEventData>) => {
+    if (!defaultLinesCount && event.nativeEvent.lines.length) {
+      setDefaultLinesCount(event.nativeEvent.lines.length)
+    }
+  }
+
+  const handleExpandButtonPress = () => {
+    setIsExpanded((prevExpanded) => !prevExpanded)
+  }
+
+  const getNumberOfLines = () => {
+    if (!defaultLinesCount) {
+      return undefined
+    }
+    return isExpanded ? undefined : numberOfLines
+  }
+
+  const isCollapsible = defaultLinesCount && defaultLinesCount > numberOfLines
 
   return (
-    <CollapsibleTextContent
-      expanded={expanded}
-      numberOfLines={numberOfLines}
-      onButtonPress={onButtonPress}>
-      {children}
-    </CollapsibleTextContent>
+    <Container visibility={defaultLinesCount ? 'visible' : 'hidden'}>
+      <CollapsibleTextBody onTextLayout={handleOnTextLayout} numberOfLines={getNumberOfLines()}>
+        {children}
+      </CollapsibleTextBody>
+      {isCollapsible ? (
+        <CollapsibleTextButton expanded={isExpanded} onPress={handleExpandButtonPress} />
+      ) : null}
+    </Container>
   )
 }
+
+const Container = styled.View<{ visibility: 'hidden' | 'visible' }>(({ visibility }) => ({
+  visibility,
+}))
