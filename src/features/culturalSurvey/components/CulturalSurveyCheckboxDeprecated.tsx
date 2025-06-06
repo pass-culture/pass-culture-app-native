@@ -17,7 +17,7 @@ type CulturalSurveyCheckboxProps = {
   selected: boolean
 }
 
-export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
+export const CulturalSurveyCheckboxDeprecated = (props: CulturalSurveyCheckboxProps) => {
   const [isSelected, setIsSelected] = useState(props.selected)
 
   const AnswerIcon = props.icon

@@ -40,6 +40,8 @@ import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { Check } from 'ui/svg/icons/Check'
+import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
+import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { Code } from 'ui/svg/icons/Code'
@@ -261,6 +263,8 @@ export const TertiaryAndSmallerIcons = {
   Parameters,
   PhoneFilled,
   PlainArrowNext,
+  CheckboxMark: CheckboxMarkChecked,
+  CheckboxMarkIndeterminate,
   PlainArrowPrevious,
   Play,
   Profile,

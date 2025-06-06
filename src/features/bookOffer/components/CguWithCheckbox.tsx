@@ -19,6 +19,7 @@ export const CguWithCheckbox: React.FC<Props> = ({ isChecked, setIsChecked }) =>
         label="J’ai lu et j’accepte les conditions générales d’utilisation"
         isChecked={isChecked}
         onPress={() => setIsChecked(!isChecked)}
+        required
       />
       <ExternalTouchableLink
         as={ButtonQuaternaryBlack}

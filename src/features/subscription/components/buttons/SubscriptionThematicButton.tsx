@@ -3,7 +3,7 @@ import React from 'react'
 import { SubscriptionThematicIllustration } from 'features/subscription/components/SubscriptionThematicIllustration'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { CheckboxBlock } from 'ui/components/CheckboxBlock/CheckboxBlock'
+import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 
 interface Props {
   thematic: SubscriptionTheme
@@ -12,12 +12,14 @@ interface Props {
 }
 
 export const SubscriptionThematicButton = ({ thematic, checked, onPress }: Props) => {
+  const Icon = () => <SubscriptionThematicIllustration thematic={thematic} size="small" />
   return (
-    <CheckboxBlock
-      checked={checked}
+    <Checkbox
+      isChecked={checked}
       label={mapSubscriptionThemeToName[thematic]}
       onPress={onPress}
-      LeftIcon={() => <SubscriptionThematicIllustration thematic={thematic} size="small" />}
+      variant="detailed"
+      asset={{ variant: 'icon', Icon }}
     />
   )
 }
