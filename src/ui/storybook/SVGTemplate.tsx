@@ -39,7 +39,10 @@ export const SVGTemplate: StoryFn<
       <Spacer.Column numberOfSpaces={3} />
       <GridContainer>
         {sortedIcons.map(([name, Icon]) => {
-          const IconComponent = styled(Icon)({})
+          const IconComponent = styled(Icon).attrs(({ theme }) => ({
+            color: theme.designSystem.color.icon.default,
+            color2: theme.designSystem.color.icon.default,
+          }))``
           const IconComponentBicolor = styled(Icon).attrs(({ theme }) => ({
             color: theme.colors.primary,
             color2: theme.colors.secondary,

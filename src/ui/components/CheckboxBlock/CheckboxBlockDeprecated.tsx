@@ -6,7 +6,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
+import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
@@ -44,7 +44,7 @@ export const CheckboxBlockDeprecated = ({
           {sublabel ? <StyledBodyAccentXs>{sublabel}</StyledBodyAccentXs> : null}
         </View>
       </InnerContainer>
-      <Box checked={checked}>{checked ? <CheckboxMark /> : null}</Box>
+      <Box checked={checked}>{checked ? <CheckboxMarkChecked /> : null}</Box>
     </StyledContainer>
   )
 }
