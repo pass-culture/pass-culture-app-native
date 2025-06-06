@@ -333,12 +333,12 @@ export const temporaryRootStackConfig = {
     path: 'venue/apercu',
     parse: screenParamsParser['VenuePreviewCarousel'],
   },
-  //   Artist: {
-  //     path: 'artiste/:id',
-  //   },
-  //   _DeeplinkOnlyArtist1: {
-  //     path: 'artist/:id',
-  //   },
+  Artist: {
+    path: 'artiste/:id',
+  },
+  _DeeplinkOnlyArtist1: {
+    path: 'artist/:id',
+  },
   //   DeeplinksGenerator: {
   //     path: 'liens/generateur',
   //   },
@@ -356,12 +356,12 @@ export const temporaryRootStackConfig = {
   Achievements: {
     path: 'profile/achievements',
   },
-  //   Chronicles: {
-  //     path: 'avis-du-book-club/:offerId/:chronicleId',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyChronicles1: {
-  //     path: 'chronicles/:offerId/:chronicleId',
-  //     parse: {},
-  //   },
+  Chronicles: {
+    path: 'avis-du-book-club/:offerId/:chronicleId',
+    parse: screenParamsParser['Chronicles'],
+  },
+  _DeeplinkOnlyChronicles1: {
+    path: 'chronicles/:offerId/:chronicleId',
+    parse: screenParamsParser['Chronicles'],
+  },
 }

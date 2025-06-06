@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { Artist } from 'features/artist/pages/Artist'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -25,6 +26,7 @@ import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenB
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
+import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
@@ -311,6 +313,22 @@ const RootStackNavigator = withWebWrapper(
             name="_DeeplinkOnlyVenuePreviewCarousel3"
             component={VenuePreviewCarousel}
             options={{ title: 'Aperçu du lieu' }}
+          />
+          <RootStack.Screen name="Artist" component={Artist} options={{ title: 'Artiste' }} />
+          <RootStack.Screen
+            name="_DeeplinkOnlyArtist1"
+            component={Artist}
+            options={{ title: 'Artiste' }}
+          />
+          <RootStack.Screen
+            name="Chronicles"
+            component={Chronicles}
+            options={{ title: 'Avis du book club' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyChronicles1"
+            component={Chronicles}
+            options={{ title: 'Avis du book club' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
