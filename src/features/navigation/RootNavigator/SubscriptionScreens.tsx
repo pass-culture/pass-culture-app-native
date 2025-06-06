@@ -34,10 +34,6 @@ import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { RootStack } from 'features/navigation/RootNavigator/Stack'
-import {
-  GenericRoute,
-  SubscriptionRootStackParamList,
-} from 'features/navigation/RootNavigator/types'
 
 export const SubscriptionScreens = (
   <React.Fragment>
@@ -126,94 +122,51 @@ export const SubscriptionScreens = (
       component={withAuthProtection(IdentityCheckEnd)}
       options={{ title: 'Fin du parcours' }}
     />
+    <RootStack.Screen
+      name="IdentityCheckUnavailable"
+      component={withAuthProtection(IdentityCheckUnavailable)}
+      options={{ title: 'Victime de notre succès\u00a0!' }}
+    />
+    <RootStack.Screen
+      name="IdentityCheckPending"
+      component={IdentityCheckPending}
+      options={{ title: 'Demande en attente' }}
+    />
+    <RootStack.Screen
+      name="IdentityCheckDMS"
+      component={IdentityCheckDMS}
+      options={{ title: 'Démarches-Simplifiées' }}
+    />
+    <RootStack.Screen
+      name="IdentificationFork"
+      component={IdentificationFork}
+      options={{ title: 'Identification' }}
+    />
+    <RootStack.Screen
+      name="IdentityCheckHonor"
+      component={withAuthProtection(IdentityCheckHonor)}
+      options={{ title: 'Confirmation' }}
+    />
+    <RootStack.Screen
+      name="BeneficiaryRequestSent"
+      component={withAuthProtection(BeneficiaryRequestSent)}
+      options={{ title: 'Demande bénéficiaire envoyée' }}
+    />
+    <RootStack.Screen
+      name="BeneficiaryAccountCreated"
+      component={withAuthProtection(BeneficiaryAccountCreated)}
+      options={{ title: 'Compte bénéficiaire créé\u00a0!' }}
+    />
+    <RootStack.Screen
+      name="EduConnectErrors"
+      component={EduConnectErrors}
+      options={{ title: 'Erreur' }}
+    />
+    <RootStack.Screen name="DMSIntroduction" component={DMSIntroduction} />
+    <RootStack.Screen name="ExpiredOrLostID" component={ExpiredOrLostID} />
+    <RootStack.Screen name="SelectIDOrigin" component={SelectIDOrigin} />
+    <RootStack.Screen name="SelectIDStatus" component={SelectIDStatus} />
+    <RootStack.Screen name="SelectPhoneStatus" component={SelectPhoneStatus} />
+    <RootStack.Screen name="ComeBackLater" component={ComeBackLater} />
   </React.Fragment>
 )
-
-// Try to keep those routes in the same order as the user flow
-export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
-  {
-    name: 'IdentityCheckUnavailable',
-    component: IdentityCheckUnavailable,
-    path: 'verification-identite/verification-indisponible',
-    options: { title: 'Victime de notre succès\u00a0!' },
-    secure: true,
-  },
-  {
-    name: 'IdentityCheckPending',
-    component: IdentityCheckPending,
-    path: 'verification-identite/demande-en-attente',
-    options: { title: 'Demande en attente' },
-  },
-  {
-    name: 'IdentityCheckDMS',
-    component: IdentityCheckDMS,
-    path: 'verification-identite/demarches-simplifiees',
-    options: { title: 'Démarches-Simplifiées' },
-  },
-  {
-    name: 'IdentificationFork',
-    component: IdentificationFork,
-    path: 'identification/fourche',
-    options: { title: 'Identification' },
-  },
-  // Confirmation
-  {
-    name: 'IdentityCheckHonor',
-    component: IdentityCheckHonor,
-    path: 'confirmation',
-    options: { title: 'Confirmation' },
-    secure: true,
-  },
-  {
-    name: 'BeneficiaryRequestSent',
-    component: BeneficiaryRequestSent,
-    path: 'demande-beneficiaire-envoyee',
-    options: { title: 'Demande bénéficiaire envoyée' },
-    secure: true,
-  },
-  {
-    name: 'BeneficiaryAccountCreated',
-    component: BeneficiaryAccountCreated,
-    path: 'creation-compte/confirmation-beneficiaire',
-    options: { title: 'Compte bénéficiaire créé\u00a0!' },
-    secure: true,
-  },
-  // Errors
-  {
-    name: 'EduConnectErrors',
-    component: EduConnectErrors,
-    path: 'educonnect/erreur',
-    options: { title: 'Erreur' },
-  },
-  // New Identification Flow
-  {
-    name: 'DMSIntroduction',
-    component: DMSIntroduction,
-    path: 'identification/redirection-demarches-simplifiees',
-  },
-  {
-    name: 'ExpiredOrLostID',
-    component: ExpiredOrLostID,
-    path: 'identification/document-identite-perdu-ou-expire',
-  },
-  {
-    name: 'SelectIDOrigin',
-    component: SelectIDOrigin,
-    path: 'identification/origine-document-identite',
-  },
-  {
-    name: 'SelectIDStatus',
-    component: SelectIDStatus,
-    path: 'identification/statut-document-identite',
-  },
-  {
-    name: 'SelectPhoneStatus',
-    component: SelectPhoneStatus,
-    path: 'identification/statut-telephone',
-  },
-  {
-    name: 'ComeBackLater',
-    component: ComeBackLater,
-    path: 'identification/reviens-plus-tard',
-  },
-]
