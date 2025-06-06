@@ -2,18 +2,18 @@ import { screenParamsParser, screenParamsStringifier } from 'features/navigation
 
 // Temporary file: uncommenting path by path as we move routes from rootRoutes, directly to RootStackNavigator
 export const temporaryRootStackConfig = {
-  //   CulturalSurveyIntro: {
-  //     path: 'questionnaire-pratiques-initiales/introduction',
-  //   },
-  //   CulturalSurveyQuestions: {
-  //     path: 'questionnaire-pratiques-initiales/questions',
-  //   },
-  //   CulturalSurveyThanks: {
-  //     path: 'questionnaire-pratiques-initiales/merci',
-  //   },
-  //   FAQWebview: {
-  //     path: 'questionnaire-pratiques-initiales/foire-aux-questions',
-  //   },
+  CulturalSurveyIntro: {
+    path: 'questionnaire-pratiques-initiales/introduction',
+  },
+  CulturalSurveyQuestions: {
+    path: 'questionnaire-pratiques-initiales/questions',
+  },
+  CulturalSurveyThanks: {
+    path: 'questionnaire-pratiques-initiales/merci',
+  },
+  FAQWebview: {
+    path: 'questionnaire-pratiques-initiales/foire-aux-questions',
+  },
   //   Stepper: {
   //     path: 'verification-identite',
   //   },
