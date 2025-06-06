@@ -480,11 +480,8 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "alignItems": "center",
-                    "columnGap": 16,
                     "cursor": "pointer",
-                    "display": "flex",
-                    "flexDirection": "row",
+                    "width": "fit-content",
                   },
                 ],
                 {
@@ -495,41 +492,61 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
           >
             <View
-              isChecked={false}
               style={
                 [
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949d",
-                    "borderRadius": 4,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "height": 24,
-                    "justifyContent": "center",
-                    "width": 24,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                [
-                  {
-                    "alignSelf": "center",
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
-              J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
-            </Text>
+              <View
+                isChecked={false}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
         <View
@@ -2982,11 +2999,8 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "userSelect": "auto",
                 },
                 {
-                  "alignItems": "center",
-                  "columnGap": 16,
                   "cursor": "pointer",
-                  "display": "flex",
-                  "flexDirection": "row",
+                  "width": "fit-content",
                 },
               ],
               {
@@ -2997,42 +3011,62 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           testID="J’ai lu et j’accepte les conditions générales d’utilisation"
         >
           <View
-            isChecked={false}
             style={
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949d",
-                  "borderRadius": 4,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "alignSelf": "center",
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "columnGap": 16,
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            J’ai lu et j’accepte les conditions générales d’utilisation
-            *
-          </Text>
+            <View
+              isChecked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 4,
+                    "borderStyle": "solid",
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    },
+                  ]
+                }
+              >
+                J’ai lu et j’accepte les conditions générales d’utilisation
+                *
+              </Text>
+            </View>
+          </View>
         </View>
         <View
           numberOfSpaces={6}
@@ -3080,11 +3114,8 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "userSelect": "auto",
                 },
                 {
-                  "alignItems": "center",
-                  "columnGap": 16,
                   "cursor": "pointer",
-                  "display": "flex",
-                  "flexDirection": "row",
+                  "width": "fit-content",
                 },
               ],
               {
@@ -3095,42 +3126,62 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           testID="J’ai lu la charte des données personnelles"
         >
           <View
-            isChecked={false}
             style={
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949d",
-                  "borderRadius": 4,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "alignSelf": "center",
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "columnGap": 16,
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            J’ai lu la charte des données personnelles
-            *
-          </Text>
+            <View
+              isChecked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 4,
+                    "borderStyle": "solid",
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    },
+                  ]
+                }
+              >
+                J’ai lu la charte des données personnelles
+                *
+              </Text>
+            </View>
+          </View>
         </View>
         <View
           numberOfSpaces={6}

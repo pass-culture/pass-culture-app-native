@@ -11,7 +11,7 @@ import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFil
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { theme } from 'theme'
-import { CheckboxDeprecated } from 'ui/components/inputs/Checkbox/CheckboxDeprecated'
+import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -78,26 +78,26 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
       handleOnClose={onClose}
       shouldDisplayBackButton
       shouldDisplayCloseButton>
-      <Container gap={6}>
+      <Container gap={4}>
         <ThemeProvider theme={ALTERED_THEME}>
           <Typo.Title1>{title}</Typo.Title1>
-          <SelectAllCheckBox
+          <Checkbox
             label="Tout sélectionner"
             isChecked={hasAllFilters}
             onPress={toggleAll}
-            LabelComponent={hasAllFilters ? Typo.Button : undefined}
+            variant="detailed"
           />
           {venueTypes.map((venueType) => {
             const isChecked = venueFilters.includes(venueType)
             return (
-              <StyledCheckbox
+              <Checkbox
                 key={venueType}
                 label={MAP_VENUE_TYPE_TO_LABEL[venueType]}
                 isChecked={isChecked}
-                LabelComponent={isChecked ? LabelCheckbox : undefined}
                 onPress={() => {
                   handleCheckboxPress(venueType)
                 }}
+                variant="detailed"
               />
             )
           })}
@@ -110,18 +110,4 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
 const Container = styled(ViewGap)({
   paddingTop: getSpacing(6),
   paddingBottom: getSpacing(26),
-})
-
-const StyledCheckbox = styled(CheckboxDeprecated)({
-  flexDirection: 'row-reverse',
-  justifyContent: 'space-between',
-})
-
-const SelectAllCheckBox = styled(StyledCheckbox)({
-  marginBottom: getSpacing(2),
-})
-
-const LabelCheckbox = styled(Typo.Button)({
-  alignSelf: 'center',
-  flex: 1,
 })
