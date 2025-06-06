@@ -1,5 +1,3 @@
-import { Artist } from 'features/artist/pages/Artist'
-import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
@@ -18,14 +16,6 @@ export const rootRoutes: RootRoute[] = [
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  {
-    name: 'Artist',
-    component: Artist,
-    path: 'artiste/:id',
-    deeplinkPaths: ['artist/:id'],
-    options: { title: 'Artiste' },
-  },
-  // Internals
   {
     name: 'DeeplinksGenerator',
     component: DeeplinksGenerator,
@@ -51,16 +41,6 @@ export const rootRoutes: RootRoute[] = [
       parse: screenParamsParser['ThematicHome'],
     },
     options: { title: 'Page d’accueil thématique' },
-  },
-  {
-    name: 'Chronicles',
-    component: Chronicles,
-    pathConfig: {
-      path: 'avis-du-book-club/:offerId/:chronicleId',
-      deeplinkPaths: ['chronicles/:offerId/:chronicleId'],
-      parse: screenParamsParser['Chronicles'],
-    },
-    options: { title: 'Avis du book club' },
   },
 ]
 
