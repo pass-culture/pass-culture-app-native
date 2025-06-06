@@ -24,6 +24,8 @@ import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pag
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
+import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
+import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
@@ -254,6 +256,10 @@ const RootStackNavigator = withWebWrapper(
             options={{ title: 'Notification rechargement anniversaire' }}
           />
           <RootStack.Screen name="Login" component={Login} options={{ title: 'Connexion' }} />
+          <RootStack.Screen
+            name="BannedCountryError"
+            component={withAsyncErrorBoundary(BannedCountryError)}
+          />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
       </IconFactoryProvider>
