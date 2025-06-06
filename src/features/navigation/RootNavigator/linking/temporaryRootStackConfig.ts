@@ -238,12 +238,12 @@ export const temporaryRootStackConfig = {
   ResetPasswordExpiredLink: {
     path: 'email-modification-mot-de-passe-expire',
   },
-  //   SignupForm: {
-  //     path: 'creation-compte',
-  //   },
-  //   _DeeplinkOnlySignupForm1: {
-  //     path: 'creation-compte/email',
-  //   },
+  SignupForm: {
+    path: 'creation-compte',
+  },
+  _DeeplinkOnlySignupForm1: {
+    path: 'creation-compte/email',
+  },
   SignupConfirmationEmailSent: {
     path: 'email-confirmation-creation-compte/envoye',
   },
