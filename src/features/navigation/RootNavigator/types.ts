@@ -340,6 +340,7 @@ export type RootStackParamList = {
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams
+  _DeeplinkOnlyThematicHome1: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
   ValidateEmailChange: { token: string }
