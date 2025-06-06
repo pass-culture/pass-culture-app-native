@@ -6,7 +6,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
+import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { getSpacing, Typo } from 'ui/theme'
 
 type IsCheckedProps = {
@@ -44,7 +44,7 @@ export const CheckboxDeprecated: FunctionComponent<Props> = ({
       onFocus={onFocus}
       style={style}
       onBlur={onBlur}>
-      <Box isChecked={isChecked}>{isChecked ? <CheckboxMark width="80%" /> : null}</Box>
+      <Box isChecked={isChecked}>{isChecked ? <CheckboxMarkChecked width="80%" /> : null}</Box>
       {label ? (
         <LabelComponent>
           {label}

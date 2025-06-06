@@ -6,8 +6,8 @@ import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleChe
 import { CheckboxAsset, CheckboxAssetProps } from 'ui/components/inputs/Checkbox/CheckboxAsset'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
+import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
-import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
 import { Typo, getSpacing } from 'ui/theme'
 
 type CheckboxBase = {
@@ -89,7 +89,7 @@ export const Checkbox: FunctionComponent<Props> = ({
           hasError={hasError}
           variant={variant}
           disabled={disabled}>
-          {isChecked ? <CheckboxMark /> : null}
+          {isChecked ? <CheckboxMarkChecked /> : null}
           {indeterminate ? <CheckboxMarkIndeterminate /> : null}
         </Box>
         <LabelContainer>
