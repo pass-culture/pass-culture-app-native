@@ -1,4 +1,4 @@
-import { getEmailReceivedWithdrawalMessage } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/getEmailReceivedWithdrawalMessage'
+import { getEmailReceivedWithdrawalMessage } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/getEmailReceivedWithdrawalMessage'
 
 const lineBreak = '\n'
 

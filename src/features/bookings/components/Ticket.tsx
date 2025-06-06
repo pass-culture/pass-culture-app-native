@@ -7,8 +7,9 @@ import {
   BookingVenueResponse,
   UserProfileResponse,
 } from 'api/gen'
-import { TicketCutoutBottom } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketCutoutBottom'
-import { TicketCutoutContent } from 'features/bookings/components/TicketCutout/TicketCutoutContent'
+import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
+import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
+import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -24,19 +25,23 @@ import { getSpacing } from 'ui/theme'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 
-export const TicketCutout = ({
+type TicketProps = {
+  properties: BookingProperties
+  booking: BookingReponse
+  mapping: SubcategoriesMapping
+  user: UserProfileResponse
+  display: 'punched' | 'full'
+  setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
+}
+
+export const Ticket = ({
   properties,
   booking,
   mapping,
   setTopBlockHeight,
   user,
-}: {
-  properties: BookingProperties
-  booking: BookingReponse
-  mapping: SubcategoriesMapping
-  user: UserProfileResponse
-  setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
-}) => {
+  display,
+}: TicketProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { address } = booking?.stock.offer ?? {}
 
@@ -54,35 +59,41 @@ export const TicketCutout = ({
     analytics.logConsultVenue({ venueId: offer.venue.id, from: 'bookings' })
     navigate('Venue', { id: offer.venue.id })
   }
+
   return (
-    <TicketCutoutContent
-      hour={hourLabel == '' ? undefined : hourLabel}
-      day={dayLabel == '' ? undefined : dayLabel}
-      isDuo={properties.isDuo}
-      offer={offer}
-      mapping={mapping}
-      venueInfo={
-        <VenueBlockWithItinerary
-          properties={properties}
-          offerFullAddress={offerFullAddress}
-          venue={getVenueBlockVenue(booking.stock.offer.venue)}
-          address={getVenueBlockAddress(booking.stock.offer.address)}
-          offerId={offer.id}
-          thumbnailSize={VENUE_THUMBNAIL_SIZE}
-          addressLabel={venueBlockAddress?.label ?? undefined}
-          onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
+    <TicketDisplay
+      onTopBlockLayout={setTopBlockHeight}
+      display={display}
+      topContent={
+        <TicketTopPart
+          day={dayLabel == '' ? undefined : dayLabel}
+          hour={hourLabel == '' ? undefined : hourLabel}
+          isDuo={properties.isDuo}
+          title={offer.name}
+          offer={offer}
+          mapping={mapping}
+          venueInfo={
+            <VenueBlockWithItinerary
+              properties={properties}
+              offerFullAddress={offerFullAddress}
+              venue={getVenueBlockVenue(booking.stock.offer.venue)}
+              address={getVenueBlockAddress(booking.stock.offer.address)}
+              offerId={offer.id}
+              thumbnailSize={VENUE_THUMBNAIL_SIZE}
+              addressLabel={venueBlockAddress?.label ?? undefined}
+              onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
+            />
+          }
         />
       }
-      title={offer.name}
+      bottomContent={<TicketBottomPart offer={offer} booking={booking} userEmail={user?.email} />}
       infoBanner={
         <InfoBanner
           message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
           icon={IdCard}
         />
       }
-      onTopBlockLayout={setTopBlockHeight}>
-      <TicketCutoutBottom offer={offer} booking={booking} userEmail={user?.email} />
-    </TicketCutoutContent>
+    />
   )
 }
 
