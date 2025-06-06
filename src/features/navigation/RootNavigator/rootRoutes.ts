@@ -1,6 +1,5 @@
 import { Artist } from 'features/artist/pages/Artist'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
-import { Login } from 'features/auth/pages/login/Login'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -30,15 +29,6 @@ export const rootRoutes: RootRoute[] = [
     component: BannedCountryError,
     hoc: withAsyncErrorBoundary,
     path: 'erreur-pays',
-  },
-  {
-    name: 'Login',
-    component: Login,
-    pathConfig: {
-      path: 'connexion',
-      parse: screenParamsParser['Login'],
-    },
-    options: { title: 'Connexion' },
   },
   {
     name: 'ReinitializePassword',

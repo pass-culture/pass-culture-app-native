@@ -221,10 +221,10 @@ export const temporaryRootStackConfig = {
   AccountReactivationSuccess: {
     path: 'compte-reactive',
   },
-  //   Login: {
-  //     path: 'connexion',
-  //     parse: {},
-  //   },
+  Login: {
+    path: 'connexion',
+    parse: screenParamsParser['Login'],
+  },
   OnboardingSubscription: {
     path: 'choix-abonnement',
   },
