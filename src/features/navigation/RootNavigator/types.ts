@@ -284,6 +284,7 @@ export type RootStackParamList = {
     params: ProfileStackParamList[ProfileStackRouteName]
   }
   RecreditBirthdayNotification: undefined
+  _DeeplinkOnlyRecreditBirthdayNotification1: undefined
   ReinitializePassword: {
     email: string
     token: string

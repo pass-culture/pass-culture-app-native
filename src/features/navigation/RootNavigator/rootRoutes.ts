@@ -2,7 +2,6 @@ import { Artist } from 'features/artist/pages/Artist'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { Login } from 'features/auth/pages/login/Login'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
-import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
@@ -26,13 +25,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'RecreditBirthdayNotification',
-    component: RecreditBirthdayNotification,
-    path: 'recharge-credit-anniversaire',
-    deeplinkPaths: ['recredit-birthday'],
-    options: { title: 'Notification rechargement anniversaire' },
-  },
   {
     name: 'BannedCountryError',
     component: BannedCountryError,

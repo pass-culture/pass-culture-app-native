@@ -177,12 +177,12 @@ export const temporaryRootStackConfig = {
   _DeeplinkOnlyEighteenBirthday1: {
     path: 'eighteen',
   },
-  //   RecreditBirthdayNotification: {
-  //     path: 'recharge-credit-anniversaire',
-  //   },
-  //   _DeeplinkOnlyRecreditBirthdayNotification1: {
-  //     path: 'recredit-birthday',
-  //   },
+  RecreditBirthdayNotification: {
+    path: 'recharge-credit-anniversaire',
+  },
+  _DeeplinkOnlyRecreditBirthdayNotification1: {
+    path: 'recredit-birthday',
+  },
   PageNotFound: {
     path: '*',
   },

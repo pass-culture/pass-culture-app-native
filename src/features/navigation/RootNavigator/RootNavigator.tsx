@@ -19,6 +19,7 @@ import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
+import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
@@ -240,6 +241,16 @@ const RootStackNavigator = withWebWrapper(
           <RootStack.Screen
             name="_DeeplinkOnlyAfterSignupEmailValidationBuffer1"
             component={AfterSignupEmailValidationBuffer}
+          />
+          <RootStack.Screen
+            name="RecreditBirthdayNotification"
+            component={RecreditBirthdayNotification}
+            options={{ title: 'Notification rechargement anniversaire' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyRecreditBirthdayNotification1"
+            component={RecreditBirthdayNotification}
+            options={{ title: 'Notification rechargement anniversaire' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
