@@ -45,6 +45,7 @@ import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFilte
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -272,10 +273,16 @@ const RootStackNavigator = withWebWrapper(
             component={SignupForm}
             options={{ title: 'Création de compte' }}
           />
+          {/* SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen */}
           <RootStack.Screen
             name="_DeeplinkOnlySignupForm1"
             component={SignupForm}
             options={{ title: 'Création de compte' }}
+          />
+          <RootStack.Screen
+            name="SearchFilter"
+            component={SearchFilter}
+            options={{ title: 'Filtres de recherche' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
