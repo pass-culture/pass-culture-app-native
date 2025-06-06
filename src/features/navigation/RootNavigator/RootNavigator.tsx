@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
+import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/pages/login/Login'
@@ -259,6 +260,11 @@ const RootStackNavigator = withWebWrapper(
           <RootStack.Screen
             name="BannedCountryError"
             component={withAsyncErrorBoundary(BannedCountryError)}
+          />
+          <RootStack.Screen
+            name="ReinitializePassword"
+            component={ReinitializePassword}
+            options={{ title: 'Réinitialiser le mot de passe' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>

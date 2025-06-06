@@ -1,5 +1,4 @@
 import { Artist } from 'features/artist/pages/Artist'
-import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
@@ -22,15 +21,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'ReinitializePassword',
-    component: ReinitializePassword,
-    pathConfig: {
-      path: 'mot-de-passe-perdu',
-      parse: screenParamsParser['ReinitializePassword'],
-    },
-    options: { title: 'Réinitialiser le mot de passe' },
-  },
   {
     name: 'SignupForm',
     component: SignupForm,
