@@ -28,6 +28,10 @@ import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDe
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
+import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
+import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
+import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
+import { FAQWebview } from 'features/culturalSurvey/pages/FAQWebview'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -353,6 +357,20 @@ const RootStackNavigator = withWebWrapper(
             component={ThematicHome}
             options={{ title: 'Page d’accueil thématique' }}
           />
+          <RootStack.Screen
+            name="CulturalSurveyIntro"
+            component={withAuthProtection(CulturalSurveyIntro)}
+            options={{ title: 'Prenons 1 minute' }}
+          />
+          <RootStack.Screen
+            name="CulturalSurveyQuestions"
+            component={CulturalSurveyQuestions ?? withAuthProtection(CulturalSurveyQuestions)} // Ask reviewers (type of the screen: React.JSX.Element | null)
+          />
+          <RootStack.Screen
+            name="CulturalSurveyThanks"
+            component={withAuthProtection(CulturalSurveyThanks)}
+          />
+          <RootStack.Screen name="FAQWebview" component={FAQWebview} />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
       </IconFactoryProvider>
