@@ -31,6 +31,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
   } = venue
 
   const shouldDisplayDetailedAccessibility =
+    !!isOpenToPublic &&
     enableAccesLibre &&
     !!externalAccessibilityUrl &&
     !!externalAccessibilityData &&
@@ -101,7 +102,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
       {sections.map((section, index) => (
         <React.Fragment key={`${section.title}-${index}`}>
           <SectionComponent title={section.title}>{section.body}</SectionComponent>
-          <Separator.Horizontal />
+          {index < sections.length - 1 ? <Separator.Horizontal /> : null}
         </React.Fragment>
       ))}
     </Container>

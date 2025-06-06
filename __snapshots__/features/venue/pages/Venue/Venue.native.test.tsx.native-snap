@@ -8430,17 +8430,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       </View>
                     </View>
                   </View>
-                  <View
-                    style={
-                      [
-                        {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>

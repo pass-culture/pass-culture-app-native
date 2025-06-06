@@ -195,5 +195,23 @@ describe('PracticalInformation', () => {
 
       expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
     })
+
+    it('should not display accessibility section when AccesLibre used', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE])
+      render(
+        reactQueryProviderHOC(
+          <PracticalInformation
+            venue={{ ...venueOpenToPublic, isOpenToPublic: false }}
+            enableAccesLibre
+          />
+        )
+      )
+
+      expect(
+        screen.queryByText(
+          'Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.'
+        )
+      ).not.toBeOnTheScreen()
+    })
   })
 })
