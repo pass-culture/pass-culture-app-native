@@ -20,7 +20,6 @@ import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDe
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -32,16 +31,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'Offer',
-    component: Offer,
-    pathConfig: {
-      path: 'offre/:id',
-      deeplinkPaths: ['offer/:id', 'offre', 'offer'],
-      parse: screenParamsParser['Offer'],
-    },
-    options: { title: 'Offre' },
-  },
   {
     name: 'OfferPreview',
     component: OfferPreview,
