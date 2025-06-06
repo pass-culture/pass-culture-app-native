@@ -53,6 +53,7 @@ import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
+import { Venue } from 'ui/svg/icons/Venue'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { determineAccessibilityRole } from './determineAccessibilityRole'
@@ -283,6 +284,12 @@ const RootStackNavigator = withWebWrapper(
             name="SearchFilter"
             component={SearchFilter}
             options={{ title: 'Filtres de recherche' }}
+          />
+          <RootStack.Screen name="Venue" component={Venue} options={{ title: 'Lieu' }} />
+          <RootStack.Screen
+            name="_DeeplinkOnlyVenue1"
+            component={Venue}
+            options={{ title: 'Lieu' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
