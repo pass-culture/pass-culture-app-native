@@ -1,7 +1,6 @@
 import { Artist } from 'features/artist/pages/Artist'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { Login } from 'features/auth/pages/login/Login'
-import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
@@ -33,15 +32,6 @@ export const rootRoutes: RootRoute[] = [
     path: 'recharge-credit-anniversaire',
     deeplinkPaths: ['recredit-birthday'],
     options: { title: 'Notification rechargement anniversaire' },
-  },
-  {
-    name: 'AfterSignupEmailValidationBuffer',
-    component: AfterSignupEmailValidationBuffer,
-    pathConfig: {
-      path: 'signup-confirmation',
-      deeplinkPaths: ['creation-compte/validation-email'],
-      parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
-    },
   },
   {
     name: 'BannedCountryError',

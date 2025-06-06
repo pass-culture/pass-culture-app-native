@@ -9,6 +9,7 @@ import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/Forgott
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
+import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
@@ -231,6 +232,14 @@ const RootStackNavigator = withWebWrapper(
             name="_DeeplinkOnlyEighteenBirthday1"
             component={EighteenBirthday}
             options={{ title: 'Anniversaire 18 ans' }}
+          />
+          <RootStack.Screen
+            name="AfterSignupEmailValidationBuffer"
+            component={AfterSignupEmailValidationBuffer}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyAfterSignupEmailValidationBuffer1"
+            component={AfterSignupEmailValidationBuffer}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
