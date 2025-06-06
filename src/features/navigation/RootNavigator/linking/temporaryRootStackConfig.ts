@@ -189,14 +189,14 @@ export const temporaryRootStackConfig = {
   AccountCreated: {
     path: 'creation-compte/confirmation',
   },
-  //   AfterSignupEmailValidationBuffer: {
-  //     path: 'signup-confirmation',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyAfterSignupEmailValidationBuffer1: {
-  //     path: 'creation-compte/validation-email',
-  //     parse: {},
-  //   },
+  AfterSignupEmailValidationBuffer: {
+    path: 'signup-confirmation',
+    parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
+  },
+  _DeeplinkOnlyAfterSignupEmailValidationBuffer1: {
+    path: 'creation-compte/validation-email',
+    parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
+  },
   //   BannedCountryError: {
   //     path: 'erreur-pays',
   //   },

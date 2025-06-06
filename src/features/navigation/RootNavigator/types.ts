@@ -219,6 +219,12 @@ type BookingConfirmationParams = {
   apiRecoParams?: string
 }
 
+type AfterSignupEmailValidationBufferParams = {
+  token: string
+  expiration_timestamp: number
+  email: string
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -235,7 +241,8 @@ export type RootStackParamList = {
   AccountReactivationSuccess: undefined
   AccountStatusScreenHandler: undefined
   Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
-  AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
+  AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
+  _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams
   Artist: { id: string }
   BannedCountryError: undefined
   BookingConfirmation: BookingConfirmationParams
