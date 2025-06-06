@@ -23,48 +23,48 @@ export const temporaryRootStackConfig = {
   SetPhoneNumberWithoutValidation: {
     path: 'creation-compte/telephone-sans-validation',
   },
-  //   SetPhoneNumber: {
-  //     path: 'creation-compte/telephone',
-  //   },
-  //   SetPhoneValidationCode: {
-  //     path: 'creation-compte/code-de-validation-telephone',
-  //   },
-  //   PhoneValidationTooManyAttempts: {
-  //     path: 'creation-compte/code-de-validation-trop-d-essais',
-  //   },
-  //   PhoneValidationTooManySMSSent: {
-  //     path: 'creation-compte/code-de-validation-trop-de-sms',
-  //   },
-  //   SetName: {
-  //     path: 'creation-profil/nom-prenom',
-  //   },
-  //   SetCity: {
-  //     path: 'creation-profil/ville',
-  //   },
-  //   SetAddress: {
-  //     path: 'creation-profil/adresse',
-  //   },
-  //   SetStatus: {
-  //     path: 'verification-identite/profil/statut',
-  //   },
-  //   SetProfileBookingError: {
-  //     path: 'verification-identite/profil/statut/erreur',
-  //   },
-  //   ProfileInformationValidation: {
-  //     path: 'verification-identite/profil/validation-informations',
-  //   },
-  //   UbbleWebview: {
-  //     path: 'identification/verification-manuelle-piece-identite',
-  //   },
-  //   EduConnectForm: {
-  //     path: 'educonnect-formulaire',
-  //   },
-  //   EduConnectValidation: {
-  //     path: 'educonnect/validation',
-  //   },
-  //   IdentityCheckEnd: {
-  //     path: 'verification-identite/fin',
-  //   },
+  SetPhoneNumber: {
+    path: 'creation-compte/telephone',
+  },
+  SetPhoneValidationCode: {
+    path: 'creation-compte/code-de-validation-telephone',
+  },
+  PhoneValidationTooManyAttempts: {
+    path: 'creation-compte/code-de-validation-trop-d-essais',
+  },
+  PhoneValidationTooManySMSSent: {
+    path: 'creation-compte/code-de-validation-trop-de-sms',
+  },
+  SetName: {
+    path: 'creation-profil/nom-prenom',
+  },
+  SetCity: {
+    path: 'creation-profil/ville',
+  },
+  SetAddress: {
+    path: 'creation-profil/adresse',
+  },
+  SetStatus: {
+    path: 'verification-identite/profil/statut',
+  },
+  SetProfileBookingError: {
+    path: 'verification-identite/profil/statut/erreur',
+  },
+  ProfileInformationValidation: {
+    path: 'verification-identite/profil/validation-informations',
+  },
+  UbbleWebview: {
+    path: 'identification/verification-manuelle-piece-identite',
+  },
+  EduConnectForm: {
+    path: 'educonnect-formulaire',
+  },
+  EduConnectValidation: {
+    path: 'educonnect/validation',
+  },
+  IdentityCheckEnd: {
+    path: 'verification-identite/fin',
+  },
   //   IdentityCheckUnavailable: {
   //     path: 'verification-identite/verification-indisponible',
   //   },

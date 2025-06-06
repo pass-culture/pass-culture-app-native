@@ -56,114 +56,81 @@ export const SubscriptionScreens = (
       component={withAuthProtection(SetPhoneNumberWithoutValidation)}
       options={{ title: 'Ton numéro de téléphone' }}
     />
-    {/* <RootStack.Screen
-      name=""
-      component={}
-      options={}
-    /> */}
+    <RootStack.Screen
+      name="SetPhoneNumber"
+      component={withAuthProtection(SetPhoneNumber)}
+      options={{ title: 'Ton numéro de téléphone' }}
+    />
+    <RootStack.Screen
+      name="SetPhoneValidationCode"
+      component={SetPhoneValidationCode}
+      options={{ title: 'Validation du numéro de téléphone' }}
+    />
+    <RootStack.Screen
+      name="PhoneValidationTooManyAttempts"
+      component={PhoneValidationTooManyAttempts}
+      options={{ title: 'Validation téléphone - Trop d’essais' }}
+    />
+    <RootStack.Screen
+      name="PhoneValidationTooManySMSSent"
+      component={PhoneValidationTooManySMSSent}
+      options={{ title: 'Validation téléphone - Trop de SMS envoyés' }}
+    />
+    <RootStack.Screen
+      name="SetName"
+      component={SetName ?? withAuthProtection(SetName)}
+      options={{ title: 'Ton nom/prénom | Profil' }}
+    />
+    <RootStack.Screen
+      name="SetCity"
+      component={SetCity ?? withAuthProtection(SetCity)}
+      options={{ title: 'Ton code postal | Profil' }}
+    />
+    <RootStack.Screen
+      name="SetAddress"
+      component={SetAddress ?? withAuthProtection(SetAddress)}
+      options={{ title: 'Ton adresse | Profil' }}
+    />
+    <RootStack.Screen
+      name="SetStatus"
+      component={SetStatus ?? withAuthProtection(SetStatus)}
+      options={{ title: 'Ton statut | Profil' }}
+    />
+    <RootStack.Screen
+      name="SetProfileBookingError"
+      component={SetProfileBookingError ?? withAuthProtection(SetProfileBookingError)}
+      options={{ title: 'Erreur | Profil' }}
+    />
+    <RootStack.Screen
+      name="ProfileInformationValidation"
+      component={ProfileInformationValidation ?? withAuthProtection(ProfileInformationValidation)}
+      options={{ title: 'Validation informations | Profil' }}
+    />
+    <RootStack.Screen
+      name="UbbleWebview"
+      component={withAuthProtection(UbbleWebview)}
+      options={{ title: 'Identification' }}
+    />
+    <RootStack.Screen
+      name="EduConnectForm"
+      component={EduConnectForm}
+      options={{ title: 'Identification avec EduConnect' }}
+    />
+    <RootStack.Screen
+      name="EduConnectValidation"
+      component={withEduConnectErrorBoundary(EduConnectValidation)}
+      options={{ title: 'Validation de l’identification' }}
+    />
+    <RootStack.Screen
+      name="IdentityCheckEnd"
+      component={withAuthProtection(IdentityCheckEnd)}
+      options={{ title: 'Fin du parcours' }}
+    />
   </React.Fragment>
 )
 
 // Try to keep those routes in the same order as the user flow
 export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
-  // Phone Validation
-
-  {
-    name: 'SetPhoneNumber',
-    component: SetPhoneNumber,
-    path: 'creation-compte/telephone',
-    options: { title: 'Ton numéro de téléphone' },
-    secure: true,
-  },
-  {
-    name: 'SetPhoneValidationCode',
-    component: SetPhoneValidationCode,
-    path: 'creation-compte/code-de-validation-telephone',
-    options: { title: 'Validation du numéro de téléphone' },
-  },
-  {
-    name: 'PhoneValidationTooManyAttempts',
-    component: PhoneValidationTooManyAttempts,
-    path: 'creation-compte/code-de-validation-trop-d-essais',
-    options: { title: 'Validation téléphone - Trop d’essais' },
-  },
-  {
-    name: 'PhoneValidationTooManySMSSent',
-    component: PhoneValidationTooManySMSSent,
-    path: 'creation-compte/code-de-validation-trop-de-sms',
-    options: { title: 'Validation téléphone - Trop de SMS envoyés' },
-  },
-  // Profile
-  {
-    name: 'SetName',
-    component: SetName,
-    path: 'creation-profil/nom-prenom',
-    options: { title: 'Ton nom/prénom | Profil' },
-    secure: true,
-  },
-  {
-    name: 'SetCity',
-    component: SetCity,
-    path: 'creation-profil/ville',
-    options: { title: 'Ton code postal | Profil' },
-    secure: true,
-  },
-  {
-    name: 'SetAddress',
-    component: SetAddress,
-    path: 'creation-profil/adresse',
-    options: { title: 'Ton adresse | Profil' },
-    secure: true,
-  },
-  {
-    name: 'SetStatus',
-    component: SetStatus,
-    path: 'verification-identite/profil/statut',
-    options: { title: 'Ton statut | Profil' },
-    secure: true,
-  },
-  {
-    name: 'SetProfileBookingError',
-    component: SetProfileBookingError,
-    path: 'verification-identite/profil/statut/erreur',
-    options: { title: 'Erreur | Profil' },
-    secure: true,
-  },
-  {
-    name: 'ProfileInformationValidation',
-    component: ProfileInformationValidation,
-    path: 'verification-identite/profil/validation-informations',
-    options: { title: 'Validation informations | Profil' },
-    secure: true,
-  },
-  // Identification
-  {
-    name: 'UbbleWebview',
-    component: UbbleWebview,
-    path: 'identification/verification-manuelle-piece-identite',
-    options: { title: 'Identification' },
-    secure: true,
-  },
-  {
-    name: 'EduConnectForm',
-    component: EduConnectForm,
-    path: 'educonnect-formulaire',
-    options: { title: 'Identification avec EduConnect' },
-  },
-  {
-    name: 'EduConnectValidation',
-    component: EduConnectValidation,
-    path: 'educonnect/validation',
-    hoc: withEduConnectErrorBoundary,
-    options: { title: 'Validation de l’identification' },
-  },
-  {
-    name: 'IdentityCheckEnd',
-    component: IdentityCheckEnd,
-    path: 'verification-identite/fin',
-    options: { title: 'Fin du parcours' },
-    secure: true,
-  },
   {
     name: 'IdentityCheckUnavailable',
     component: IdentityCheckUnavailable,
