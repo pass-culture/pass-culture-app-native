@@ -17,7 +17,7 @@ describe('getIsFreeOffer', () => {
     expect(getIsFreeOffer(offer)).toBe(true)
   })
 
-  it('returns false if there is at least one paying stock', () => {
+  it('returns true if there is at least one free stock', () => {
     const offer = {
       ...baseOffer,
       stocks: [
@@ -28,7 +28,7 @@ describe('getIsFreeOffer', () => {
       ],
     }
 
-    expect(getIsFreeOffer(offer)).toBe(false)
+    expect(getIsFreeOffer(offer)).toBe(true)
   })
 
   it('returns false if there are no stocks', () => {
