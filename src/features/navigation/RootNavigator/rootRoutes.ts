@@ -7,10 +7,9 @@ import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/cultural
 import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
-import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 
@@ -21,17 +20,6 @@ export const rootRoutes: RootRoute[] = [
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  // SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen
-  {
-    name: 'SearchFilter',
-    component: SearchFilter,
-    pathConfig: {
-      path: 'recherche/filtres',
-      parse: screenParamsParser['SearchFilter'],
-      stringify: screenParamsStringifier['SearchFilter'],
-    },
-    options: { title: 'Filtres de recherche' },
-  },
   {
     name: 'Venue',
     component: Venue,

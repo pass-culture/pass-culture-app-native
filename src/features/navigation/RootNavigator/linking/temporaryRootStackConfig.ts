@@ -1,4 +1,4 @@
-import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 
 // Temporary file: uncommenting path by path as we move routes from rootRoutes, directly to RootStackNavigator
 export const temporaryRootStackConfig = {
@@ -295,11 +295,11 @@ export const temporaryRootStackConfig = {
   //       },
   //     },
   //   },
-  //   SearchFilter: {
-  //     path: 'recherche/filtres',
-  //     parse: {},
-  //     stringify: {},
-  //   },
+  SearchFilter: {
+    path: 'recherche/filtres',
+    parse: screenParamsParser['SearchFilter'],
+    stringify: screenParamsStringifier['SearchFilter'],
+  },
   VerifyEligibility: {
     path: 'verification-eligibilite',
   },
