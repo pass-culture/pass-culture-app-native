@@ -252,6 +252,7 @@ export type RootStackParamList = {
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
+  _DeeplinkOnlyEighteenBirthday1: undefined
   FavoritesSorts: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
