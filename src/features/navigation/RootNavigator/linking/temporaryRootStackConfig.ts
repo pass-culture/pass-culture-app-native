@@ -107,22 +107,22 @@ export const temporaryRootStackConfig = {
   //   ComeBackLater: {
   //     path: 'identification/reviens-plus-tard',
   //   },
-  //   AccountSecurityBuffer: {
-  //     path: 'securisation-compte',
-  //   },
-  //   AccountSecurity: {
-  //     path: 'securisation-compte/choix',
-  //     parse: {},
-  //   },
-  //   SuspensionChoice: {
-  //     path: 'securisation-compte/suspension',
-  //   },
-  //   SuspensionChoiceExpiredLink: {
-  //     path: 'securisation-compte/lien-suspension-compte-expire',
-  //   },
-  //   SuspiciousLoginSuspendedAccount: {
-  //     path: 'securisation-compte/suspension-confirmee',
-  //   },
+  AccountSecurityBuffer: {
+    path: 'securisation-compte',
+  },
+  AccountSecurity: {
+    path: 'securisation-compte/choix',
+    parse: screenParamsParser['ReinitializePassword'],
+  },
+  SuspensionChoice: {
+    path: 'securisation-compte/suspension',
+  },
+  SuspensionChoiceExpiredLink: {
+    path: 'securisation-compte/lien-suspension-compte-expire',
+  },
+  SuspiciousLoginSuspendedAccount: {
+    path: 'securisation-compte/suspension-confirmee',
+  },
   Offer: {
     path: 'offre/:id',
     parse: screenParamsParser['Offer'],

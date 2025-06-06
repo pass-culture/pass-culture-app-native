@@ -56,6 +56,11 @@ import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
+import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
+import { AccountSecurityBuffer } from 'features/trustedDevice/pages/AccountSecurityBuffer'
+import { SuspensionChoice } from 'features/trustedDevice/pages/SuspensionChoice'
+import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
+import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -371,6 +376,27 @@ const RootStackNavigator = withWebWrapper(
             component={withAuthProtection(CulturalSurveyThanks)}
           />
           <RootStack.Screen name="FAQWebview" component={FAQWebview} />
+          <RootStack.Screen name="AccountSecurityBuffer" component={AccountSecurityBuffer} />
+          <RootStack.Screen
+            name="AccountSecurity"
+            component={AccountSecurity}
+            options={{ title: 'Demande de sécurisation de compte' }}
+          />
+          <RootStack.Screen
+            name="SuspensionChoice"
+            component={SuspensionChoice}
+            options={{ title: 'Demande de suspension de compte' }}
+          />
+          <RootStack.Screen
+            name="SuspensionChoiceExpiredLink"
+            component={SuspensionChoiceExpiredLink}
+            options={{ title: 'Lien de suspension de compte expiré' }}
+          />
+          <RootStack.Screen
+            name="SuspiciousLoginSuspendedAccount"
+            component={SuspiciousLoginSuspendedAccount}
+            options={{ title: 'Confirmation de suspension de compte' }}
+          />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
       </IconFactoryProvider>
