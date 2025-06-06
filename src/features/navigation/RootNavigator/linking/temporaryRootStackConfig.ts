@@ -317,22 +317,22 @@ export const temporaryRootStackConfig = {
   VenueMap: {
     path: 'carte-des-lieux',
   },
-  //   VenuePreviewCarousel: {
-  //     path: 'lieu/:id/apercu',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyVenuePreviewCarousel1: {
-  //     path: 'venue/:id/apercu',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyVenuePreviewCarousel2: {
-  //     path: 'lieu/apercu',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyVenuePreviewCarousel3: {
-  //     path: 'venue/apercu',
-  //     parse: {},
-  //   },
+  VenuePreviewCarousel: {
+    path: 'lieu/:id/apercu',
+    parse: screenParamsParser['VenuePreviewCarousel'],
+  },
+  _DeeplinkOnlyVenuePreviewCarousel1: {
+    path: 'venue/:id/apercu',
+    parse: screenParamsParser['VenuePreviewCarousel'],
+  },
+  _DeeplinkOnlyVenuePreviewCarousel2: {
+    path: 'lieu/apercu',
+    parse: screenParamsParser['VenuePreviewCarousel'],
+  },
+  _DeeplinkOnlyVenuePreviewCarousel3: {
+    path: 'venue/apercu',
+    parse: screenParamsParser['VenuePreviewCarousel'],
+  },
   //   Artist: {
   //     path: 'artiste/:id',
   //   },

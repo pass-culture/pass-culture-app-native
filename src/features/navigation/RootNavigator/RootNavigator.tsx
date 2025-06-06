@@ -47,6 +47,7 @@ import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
+import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
@@ -290,6 +291,26 @@ const RootStackNavigator = withWebWrapper(
             name="_DeeplinkOnlyVenue1"
             component={Venue}
             options={{ title: 'Lieu' }}
+          />
+          <RootStack.Screen
+            name="VenuePreviewCarousel"
+            component={VenuePreviewCarousel}
+            options={{ title: 'Aperçu du lieu' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyVenuePreviewCarousel1"
+            component={VenuePreviewCarousel}
+            options={{ title: 'Aperçu du lieu' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyVenuePreviewCarousel2"
+            component={VenuePreviewCarousel}
+            options={{ title: 'Aperçu du lieu' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlyVenuePreviewCarousel3"
+            component={VenuePreviewCarousel}
+            options={{ title: 'Aperçu du lieu' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>

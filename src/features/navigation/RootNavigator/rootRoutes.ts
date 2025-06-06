@@ -10,7 +10,6 @@ import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDe
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 
 import { RootRoute, RootScreenNames } from './types'
 
@@ -19,16 +18,6 @@ export const rootRoutes: RootRoute[] = [
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  {
-    name: 'VenuePreviewCarousel',
-    component: VenuePreviewCarousel,
-    pathConfig: {
-      path: 'lieu/:id/apercu',
-      deeplinkPaths: ['venue/:id/apercu', 'lieu/apercu', 'venue/apercu'],
-      parse: screenParamsParser['VenuePreviewCarousel'],
-    },
-    options: { title: 'Aperçu du lieu' },
-  },
   {
     name: 'Artist',
     component: Artist,
