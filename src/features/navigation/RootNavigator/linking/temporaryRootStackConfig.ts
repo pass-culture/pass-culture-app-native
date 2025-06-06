@@ -139,22 +139,22 @@ export const temporaryRootStackConfig = {
     path: 'offer',
     parse: screenParamsParser['Offer'],
   },
-  //   OfferPreview: {
-  //     path: 'offre/:id/apercu',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyOfferPreview1: {
-  //     path: 'offer/:id/apercu',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyOfferPreview2: {
-  //     path: 'offre/apercu',
-  //     parse: {},
-  //   },
-  //   _DeeplinkOnlyOfferPreview3: {
-  //     path: 'offer/apercu',
-  //     parse: {},
-  //   },
+  OfferPreview: {
+    path: 'offre/:id/apercu',
+    parse: screenParamsParser['OfferPreview'],
+  },
+  _DeeplinkOnlyOfferPreview1: {
+    path: 'offer/:id/apercu',
+    parse: screenParamsParser['OfferPreview'],
+  },
+  _DeeplinkOnlyOfferPreview2: {
+    path: 'offre/apercu',
+    parse: screenParamsParser['OfferPreview'],
+  },
+  _DeeplinkOnlyOfferPreview3: {
+    path: 'offer/apercu',
+    parse: screenParamsParser['OfferPreview'],
+  },
   //   BookingDetails: {
   //     path: 'reservation/:id/details',
   //     parse: {},
