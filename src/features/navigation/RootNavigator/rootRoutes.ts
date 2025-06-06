@@ -1,5 +1,4 @@
 import { Artist } from 'features/artist/pages/Artist'
-import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
@@ -21,13 +20,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'SignupForm',
-    component: SignupForm,
-    path: 'creation-compte',
-    deeplinkPaths: ['creation-compte/email'],
-    options: { title: 'Création de compte' },
-  },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   // SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen
   {
