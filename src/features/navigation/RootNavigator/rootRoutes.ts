@@ -1,12 +1,10 @@
 import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
-import { subscriptionRoutes } from 'features/navigation/RootNavigator/SubscriptionScreens'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 
 import { RootRoute, RootScreenNames } from './types'
 
 export const rootRoutes: RootRoute[] = [
-  ...subscriptionRoutes,
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
 ]
 
