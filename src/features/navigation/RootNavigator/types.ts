@@ -225,6 +225,15 @@ type AfterSignupEmailValidationBufferParams = {
   email: string
 }
 
+type SignupFormParams =
+  | {
+      accountCreationToken?: string
+      email?: string
+      offerId?: number
+      from: StepperOrigin
+    }
+  | undefined
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -302,9 +311,8 @@ export type RootStackParamList = {
   SearchFilter?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
-  SignupForm:
-    | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
-    | undefined
+  SignupForm: SignupFormParams
+  _DeeplinkOnlySignupForm1: SignupFormParams
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams

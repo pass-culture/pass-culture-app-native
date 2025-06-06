@@ -15,6 +15,7 @@ import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/Aft
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
+import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
@@ -265,6 +266,16 @@ const RootStackNavigator = withWebWrapper(
             name="ReinitializePassword"
             component={ReinitializePassword}
             options={{ title: 'Réinitialiser le mot de passe' }}
+          />
+          <RootStack.Screen
+            name="SignupForm"
+            component={SignupForm}
+            options={{ title: 'Création de compte' }}
+          />
+          <RootStack.Screen
+            name="_DeeplinkOnlySignupForm1"
+            component={SignupForm}
+            options={{ title: 'Création de compte' }}
           />
           {/* <RootStack.Screen name='' component={} options={} /> */}
         </RootStack.Navigator>
