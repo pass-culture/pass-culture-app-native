@@ -243,6 +243,16 @@ type VenuePreviewCarouselParams = {
   defaultIndex?: number
 }
 
+type ArtistParams = {
+  id: string
+}
+
+type ChroniclesParams = {
+  offerId: number
+  chronicleId?: number
+  from?: Referrals
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -261,7 +271,8 @@ export type RootStackParamList = {
   Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
   AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
   _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams
-  Artist: { id: string }
+  Artist: ArtistParams
+  _DeeplinkOnlyArtist1: ArtistParams
   BannedCountryError: undefined
   BookingConfirmation: BookingConfirmationParams
   _DeeplinkOnlyBookingConfirmation1: BookingConfirmationParams
@@ -270,7 +281,8 @@ export type RootStackParamList = {
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator: undefined
-  Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
+  Chronicles: ChroniclesParams
+  _DeeplinkOnlyChronicles1: ChroniclesParams
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
