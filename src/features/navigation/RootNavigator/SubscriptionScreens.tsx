@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
@@ -30,36 +32,42 @@ import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
+import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
+import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import {
   GenericRoute,
   SubscriptionRootStackParamList,
 } from 'features/navigation/RootNavigator/types'
 
+export const SubscriptionScreens = (
+  <React.Fragment>
+    <RootStack.Screen
+      name="Stepper"
+      component={withAuthProtection(Stepper)}
+      options={{ title: 'Vérification d’identité' }}
+    />
+    <RootStack.Screen
+      name="DisableActivation"
+      component={DisableActivation}
+      options={{ title: 'Création de compte désactivé' }}
+    />
+    <RootStack.Screen
+      name="SetPhoneNumberWithoutValidation"
+      component={withAuthProtection(SetPhoneNumberWithoutValidation)}
+      options={{ title: 'Ton numéro de téléphone' }}
+    />
+    {/* <RootStack.Screen
+      name=""
+      component={}
+      options={}
+    /> */}
+  </React.Fragment>
+)
+
 // Try to keep those routes in the same order as the user flow
 export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
-  // Stepper
-  {
-    name: 'Stepper',
-    component: Stepper,
-    path: 'verification-identite',
-    options: { title: 'Vérification d’identité' },
-    secure: true,
-  },
-  // Other
-  {
-    name: 'DisableActivation',
-    component: DisableActivation,
-    path: 'creation-compte/desactivation',
-    options: { title: 'Création de compte désactivé' },
-  },
   // Phone Validation
-  {
-    name: 'SetPhoneNumberWithoutValidation',
-    component: SetPhoneNumberWithoutValidation,
-    path: 'creation-compte/telephone-sans-validation',
-    options: { title: 'Ton numéro de téléphone' },
-    secure: true,
-  },
+
   {
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,

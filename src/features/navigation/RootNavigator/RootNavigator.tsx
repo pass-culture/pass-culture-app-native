@@ -45,6 +45,7 @@ import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
+import { SubscriptionScreens } from 'features/navigation/RootNavigator/SubscriptionScreens'
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
@@ -397,7 +398,7 @@ const RootStackNavigator = withWebWrapper(
             component={SuspiciousLoginSuspendedAccount}
             options={{ title: 'Confirmation de suspension de compte' }}
           />
-          {/* <RootStack.Screen name='' component={} options={} /> */}
+          {SubscriptionScreens}
         </RootStack.Navigator>
       </IconFactoryProvider>
     )
