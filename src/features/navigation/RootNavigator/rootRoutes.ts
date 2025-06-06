@@ -2,8 +2,6 @@ import { Artist } from 'features/artist/pages/Artist'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
-import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
@@ -24,12 +22,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  {
-    name: 'BannedCountryError',
-    component: BannedCountryError,
-    hoc: withAsyncErrorBoundary,
-    path: 'erreur-pays',
-  },
   {
     name: 'ReinitializePassword',
     component: ReinitializePassword,
