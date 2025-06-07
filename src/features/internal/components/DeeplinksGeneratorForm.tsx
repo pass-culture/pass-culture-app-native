@@ -23,7 +23,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/searchRoutes'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { isTabScreen } from 'features/navigation/TabBar/tabBarRoutes'
+import { isTabScreen } from 'features/navigation/TabBar/TabBarScreens'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment/env'
