@@ -51,6 +51,7 @@ import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
@@ -76,7 +77,6 @@ import { determineAccessibilityRole } from './determineAccessibilityRole'
 import { FILTERS_MODAL_NAV_OPTIONS } from './filtersModalNavOptions'
 import { Header } from './Header/Header'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from './navigationOptions'
-import { RootScreens } from './screens'
 import { RootStack } from './Stack'
 
 const isWeb = Platform.OS === 'web'
@@ -89,6 +89,7 @@ const RootStackNavigator = withWebWrapper(
         <RootStack.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
+          <RootStack.Screen name="TabNavigator" component={TabNavigator} />
           <RootStack.Screen name="CheatcodesStackNavigator">
             {() => <SuspenseCheatcodesStackNavigator />}
           </RootStack.Screen>
@@ -109,7 +110,6 @@ const RootStackNavigator = withWebWrapper(
               }}
             />
           )}
-          {RootScreens}
           <RootStack.Screen name="Achievements">{() => <SuspenseAchievements />}</RootStack.Screen>
           <RootStack.Screen
             name="PageNotFound"
