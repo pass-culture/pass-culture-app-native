@@ -11,13 +11,29 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type TabRouteName = keyof TabParamList
 
+type HomeParams =
+  | {
+      latitude?: number
+      longitude?: number
+      videoModuleId?: string
+    }
+  | undefined
+
+type BookingsParams =
+  | {
+      activeTab?: BookingsTab
+    }
+  | undefined
+
 export type TabParamList = {
-  Home: { latitude?: number; longitude?: number; videoModuleId?: string } | undefined
+  Home: HomeParams
+  _DeeplinkOnlyHome1: HomeParams
   SearchStackNavigator?: {
     screen: SearchStackScreenNames
     params: SearchStackParamList[SearchStackScreenNames]
   }
-  Bookings: { activeTab?: BookingsTab } | undefined
+  Bookings: BookingsParams
+  _DeeplinkOnlyBookings1: BookingsParams
   Favorites: undefined
   Profile: undefined
 }

@@ -1,7 +1,10 @@
+import { PathConfigMap } from '@react-navigation/native'
+
+import { AllNavParamList } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 
 // Temporary file: uncommenting path by path as we move routes from rootRoutes, directly to RootStackNavigator
-export const temporaryRootStackConfig = {
+export const temporaryRootStackConfig: PathConfigMap<AllNavParamList> = {
   CulturalSurveyIntro: {
     path: 'questionnaire-pratiques-initiales/introduction',
   },
