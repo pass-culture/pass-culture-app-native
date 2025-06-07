@@ -1,32 +1,35 @@
+import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { SearchView } from 'features/search/types'
+
 export const tabNavigatorPathConfig = {
   TabNavigator: {
     initialRouteName: 'Home',
     screens: {
       Home: {
         path: 'accueil',
-        parse: {},
+        parse: screenParamsParser['Home'],
       },
       _DeeplinkOnlyHome1: {
         path: 'home',
-        parse: {},
+        parse: screenParamsParser['Home'],
       },
       SearchStackNavigator: {
         initialRouteName: 'SearchLanding',
         screens: {
           SearchLanding: {
             path: 'recherche/accueil',
-            parse: {},
-            stringify: {},
+            parse: screenParamsParser[SearchView.Landing],
+            stringify: screenParamsStringifier[SearchView.Landing],
           },
           SearchResults: {
             path: 'recherche/resultats',
-            parse: {},
-            stringify: {},
+            parse: screenParamsParser[SearchView.Results],
+            stringify: screenParamsStringifier[SearchView.Results],
           },
           ThematicSearch: {
             path: 'recherche/thematique',
-            parse: {},
-            stringify: {},
+            parse: screenParamsParser[SearchView.Thematic],
+            stringify: screenParamsStringifier[SearchView.Thematic],
           },
         },
       },

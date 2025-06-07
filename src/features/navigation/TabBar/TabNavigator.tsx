@@ -2,7 +2,7 @@ import { BottomTabBarProps, BottomTabNavigationOptions } from '@react-navigation
 import React from 'react'
 
 import { TabStack } from 'features/navigation/TabBar/Stack'
-import { initialRouteName, TabScreens } from 'features/navigation/TabBar/tabBarRoutes'
+import { initialRouteName, tabBarRoutesScreens } from 'features/navigation/TabBar/TabBarScreens'
 
 import { TabBar } from './TabBar'
 
@@ -22,7 +22,7 @@ export const TabNavigator: React.FC = () => {
       tabBar={renderTabBar}
       screenOptions={TAB_NAVIGATOR_SCREEN_OPTIONS}
       backBehavior="history">
-      {TabScreens}
+      {tabBarRoutesScreens}
     </TabStack.Navigator>
   )
 }
