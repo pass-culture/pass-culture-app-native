@@ -1,7 +1,6 @@
 import React, { createContext, useContext, memo, useState, useMemo, PropsWithChildren } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 
 import { getShouldDisplayTab } from './helpers'
 import { TabNavigationStateType, TabStateRoute } from './types'
@@ -38,6 +37,11 @@ const TabNavigationContext = createContext<TabNavigationContextType>(DEFAULT_TAB
 
 export function useTabNavigationContext() {
   return useContext(TabNavigationContext)
+}
+
+const PRIVATE_SCREEN_PREFIX = '_DeeplinkOnly'
+function isPrivateScreen(name: string): boolean {
+  return name.startsWith(PRIVATE_SCREEN_PREFIX)
 }
 
 export const TabNavigationStateProvider: React.FC<PropsWithChildren> = memo(
