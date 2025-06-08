@@ -3,8 +3,8 @@ import { StackActions, useNavigation } from '@react-navigation/native'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { SearchState } from 'features/search/types'
 
 export const useNavigateToSearch = (routeName: SearchStackRouteName) => {

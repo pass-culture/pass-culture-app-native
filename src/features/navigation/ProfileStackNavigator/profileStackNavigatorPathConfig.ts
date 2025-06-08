@@ -1,4 +1,4 @@
-export const profileStackNavigatorConfig = {
+export const profileStackNavigatorPathConfig = {
   ProfileStackNavigator: {
     initialRouteName: 'Accessibility',
     screens: {

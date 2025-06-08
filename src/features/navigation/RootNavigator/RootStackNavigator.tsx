@@ -50,8 +50,8 @@ import { SuspenseAchievements } from 'features/navigation/RootNavigator/Suspense
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
-import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
+import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabStackNavigationStateContext'
+import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
@@ -77,7 +77,7 @@ import { determineAccessibilityRole } from './determineAccessibilityRole'
 import { FILTERS_MODAL_NAV_OPTIONS } from './filtersModalNavOptions'
 import { Header } from './Header/Header'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from './navigationOptions'
-import { RootStack } from './Stack'
+import { RootStackNavigatorBase } from './Stack'
 
 const isWeb = Platform.OS === 'web'
 
@@ -86,21 +86,21 @@ const RootStackNavigator = withWebWrapper(
     const { top } = useSafeAreaInsets()
     return (
       <IconFactoryProvider>
-        <RootStack.Navigator
+        <RootStackNavigatorBase.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-          <RootStack.Screen name="TabNavigator" component={TabNavigator} />
-          <RootStack.Screen name="CheatcodesStackNavigator">
+          <RootStackNavigatorBase.Screen name="TabNavigator" component={TabNavigator} />
+          <RootStackNavigatorBase.Screen name="CheatcodesStackNavigator">
             {() => <SuspenseCheatcodesStackNavigator />}
-          </RootStack.Screen>
-          <RootStack.Screen name="OnboardingStackNavigator">
+          </RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen name="OnboardingStackNavigator">
             {() => <SuspenseOnboardingStackNavigator />}
-          </RootStack.Screen>
-          <RootStack.Screen name="ProfileStackNavigator">
+          </RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen name="ProfileStackNavigator">
             {() => <SuspenseProfileStackNavigator />}
-          </RootStack.Screen>
+          </RootStackNavigatorBase.Screen>
           {isWeb ? null : (
-            <RootStack.Screen
+            <RootStackNavigatorBase.Screen
               name="VenueMapFiltersStackNavigator"
               component={VenueMapFiltersStackNavigator}
               options={{
@@ -110,296 +110,320 @@ const RootStackNavigator = withWebWrapper(
               }}
             />
           )}
-          <RootStack.Screen name="Achievements">{() => <SuspenseAchievements />}</RootStack.Screen>
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen name="Achievements">
+            {() => <SuspenseAchievements />}
+          </RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
             name="PageNotFound"
             component={PageNotFound}
             options={{ title: 'Page introuvable' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="AccountCreated"
             component={AccountCreated}
             options={{ title: 'Compte créé\u00a0!' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="FavoritesSorts"
             component={withAuthProtection(FavoritesSorts)}
             options={{ title: 'Tri des favoris' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="ChangeEmailExpiredLink"
             component={ChangeEmailExpiredLink}
             options={{ title: 'Lien de modification de l’email expiré' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="ForgottenPassword"
             component={ForgottenPassword}
             options={{ title: 'Mot de passe oublié' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="AccountStatusScreenHandler"
             component={AccountStatusScreenHandler}
             options={{ title: 'Compte désactivé' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SuspendedAccountUponUserRequest"
             component={SuspendedAccountUponUserRequest}
             options={{ title: 'Compte désactivé' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="FraudulentSuspendedAccount"
             component={FraudulentSuspendedAccount}
             options={{ title: 'Compte suspendu' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="AccountReactivationSuccess"
             component={withAuthProtection(AccountReactivationSuccess)}
             options={{ title: 'Compte réactivé' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="OnboardingSubscription"
             component={withAuthProtection(OnboardingSubscription)}
             options={{ title: 'Choix des thèmes à suivre' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="ResetPasswordEmailSent"
             component={ResetPasswordEmailSent}
             options={{ title: 'Email modification mot de passe envoyé' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="ResetPasswordExpiredLink"
             component={ResetPasswordExpiredLink}
             options={{ title: 'Email modification mot de passe expiré' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="VerifyEligibility"
             component={VerifyEligibility}
             options={{ title: 'Vérification éligibilité' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="NotYetUnderageEligibility"
             component={NotYetUnderageEligibility}
             options={{ title: 'C’est pour bientôt' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="VenueMap"
             component={VenueMap}
             options={{ title: 'Carte des lieux' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SignupConfirmationExpiredLink"
             component={SignupConfirmationExpiredLink}
             options={{ title: 'Email création de compte expiré' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SignupConfirmationEmailSent"
             component={SignupConfirmationEmailSentPage}
             options={{ title: 'Email création de compte envoyé' }}
           />
-          <RootStack.Screen name="Offer" component={Offer} options={{ title: 'Offre' }} />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
+            name="Offer"
+            component={Offer}
+            options={{ title: 'Offre' }}
+          />
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer1" // Alias for 'offer/:id'
             component={Offer}
             options={{ title: 'Offre' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer2" // Alias for 'offre'
             component={Offer}
             options={{ title: 'Offre' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer3" // Alias for 'offer'
             component={Offer}
             options={{ title: 'Offre' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="OfferPreview"
             component={OfferPreview}
             options={{ title: 'Aperçu de l’offre' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOfferPreview1" // Alias for 'offer/:id/apercu'
             component={OfferPreview}
             options={{ title: 'Aperçu de l’offre' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOfferPreview2" // Alias for 'offre/apercu'
             component={OfferPreview}
             options={{ title: 'Aperçu de l’offre' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOfferPreview3" // Alias for 'offer/apercu'
             component={OfferPreview}
             options={{ title: 'Aperçu de l’offre' }}
           />
-          <RootStack.Screen name="BookingDetails" component={withAuthProtection(BookingDetails)} />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
+            name="BookingDetails"
+            component={withAuthProtection(BookingDetails)}
+          />
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyBookingDetails1" // Alias for 'booking/:id/details'
             component={withAuthProtection(BookingDetails)}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="BookingConfirmation"
             component={withAuthProtection(BookingConfirmation)}
             options={{ title: 'Confirmation de réservation' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyBookingConfirmation1"
             component={withAuthProtection(BookingConfirmation)}
             options={{ title: 'Confirmation de réservation' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="EighteenBirthday"
             component={EighteenBirthday}
             options={{ title: 'Anniversaire 18 ans' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyEighteenBirthday1"
             component={EighteenBirthday}
             options={{ title: 'Anniversaire 18 ans' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="AfterSignupEmailValidationBuffer"
             component={AfterSignupEmailValidationBuffer}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyAfterSignupEmailValidationBuffer1"
             component={AfterSignupEmailValidationBuffer}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="RecreditBirthdayNotification"
             component={RecreditBirthdayNotification}
             options={{ title: 'Notification rechargement anniversaire' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyRecreditBirthdayNotification1"
             component={RecreditBirthdayNotification}
             options={{ title: 'Notification rechargement anniversaire' }}
           />
-          <RootStack.Screen name="Login" component={Login} options={{ title: 'Connexion' }} />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
+            name="Login"
+            component={Login}
+            options={{ title: 'Connexion' }}
+          />
+          <RootStackNavigatorBase.Screen
             name="BannedCountryError"
             component={withAsyncErrorBoundary(BannedCountryError)}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="ReinitializePassword"
             component={ReinitializePassword}
             options={{ title: 'Réinitialiser le mot de passe' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SignupForm"
             component={SignupForm}
             options={{ title: 'Création de compte' }}
           />
           {/* SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen */}
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlySignupForm1"
             component={SignupForm}
             options={{ title: 'Création de compte' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SearchFilter"
             component={SearchFilter}
             options={{ title: 'Filtres de recherche' }}
           />
-          <RootStack.Screen name="Venue" component={Venue} options={{ title: 'Lieu' }} />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
+            name="Venue"
+            component={Venue}
+            options={{ title: 'Lieu' }}
+          />
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyVenue1"
             component={Venue}
             options={{ title: 'Lieu' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="VenuePreviewCarousel"
             component={VenuePreviewCarousel}
             options={{ title: 'Aperçu du lieu' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyVenuePreviewCarousel1"
             component={VenuePreviewCarousel}
             options={{ title: 'Aperçu du lieu' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyVenuePreviewCarousel2"
             component={VenuePreviewCarousel}
             options={{ title: 'Aperçu du lieu' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyVenuePreviewCarousel3"
             component={VenuePreviewCarousel}
             options={{ title: 'Aperçu du lieu' }}
           />
-          <RootStack.Screen name="Artist" component={Artist} options={{ title: 'Artiste' }} />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
+            name="Artist"
+            component={Artist}
+            options={{ title: 'Artiste' }}
+          />
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyArtist1"
             component={Artist}
             options={{ title: 'Artiste' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="Chronicles"
             component={Chronicles}
             options={{ title: 'Avis du book club' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyChronicles1"
             component={Chronicles}
             options={{ title: 'Avis du book club' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="UTMParameters"
             component={UTMParameters}
             options={{ title: 'Paramètres UTM' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="DeeplinksGenerator"
             component={DeeplinksGenerator}
             options={{ title: 'Générateur de lien' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="ThematicHome"
             component={ThematicHome}
             options={{ title: 'Page d’accueil thématique' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyThematicHome1"
             component={ThematicHome}
             options={{ title: 'Page d’accueil thématique' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="CulturalSurveyIntro"
             component={withAuthProtection(CulturalSurveyIntro)}
             options={{ title: 'Prenons 1 minute' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="CulturalSurveyQuestions"
             component={CulturalSurveyQuestions ?? withAuthProtection(CulturalSurveyQuestions)} // Ask reviewers (type of the screen: React.JSX.Element | null)
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="CulturalSurveyThanks"
             component={withAuthProtection(CulturalSurveyThanks)}
           />
-          <RootStack.Screen name="FAQWebview" component={FAQWebview} />
-          <RootStack.Screen name="AccountSecurityBuffer" component={AccountSecurityBuffer} />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen name="FAQWebview" component={FAQWebview} />
+          <RootStackNavigatorBase.Screen
+            name="AccountSecurityBuffer"
+            component={AccountSecurityBuffer}
+          />
+          <RootStackNavigatorBase.Screen
             name="AccountSecurity"
             component={AccountSecurity}
             options={{ title: 'Demande de sécurisation de compte' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SuspensionChoice"
             component={SuspensionChoice}
             options={{ title: 'Demande de suspension de compte' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SuspensionChoiceExpiredLink"
             component={SuspensionChoiceExpiredLink}
             options={{ title: 'Lien de suspension de compte expiré' }}
           />
-          <RootStack.Screen
+          <RootStackNavigatorBase.Screen
             name="SuspiciousLoginSuspendedAccount"
             component={SuspiciousLoginSuspendedAccount}
             options={{ title: 'Confirmation de suspension de compte' }}
           />
           {SubscriptionScreens}
-        </RootStack.Navigator>
+        </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )
   }

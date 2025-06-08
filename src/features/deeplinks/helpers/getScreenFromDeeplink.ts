@@ -1,5 +1,5 @@
+import { isRootStackScreen } from 'features/navigation/RootNavigator/isRootStackScreen'
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { isRootStackScreen } from 'features/navigation/RootNavigator/rootRoutes'
 import { NavigationResultState } from 'features/navigation/RootNavigator/types'
 
 import { DeeplinkParts } from '../types'

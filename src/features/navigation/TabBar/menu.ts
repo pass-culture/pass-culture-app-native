@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-import { TabRouteName } from 'features/navigation/TabBar/types'
+import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 
 const isWeb = Platform.OS === 'web'
 export const menu: Record<

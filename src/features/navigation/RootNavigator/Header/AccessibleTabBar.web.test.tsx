@@ -4,11 +4,11 @@ import React from 'react'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
-} from 'features/navigation/TabBar/TabNavigationStateContext'
+} from 'features/navigation/TabBar/TabStackNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

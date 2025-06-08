@@ -1,4 +1,4 @@
-export const cheatcodesStackNavigatorConfig = {
+export const cheatcodesStackNavigatorPathConfig = {
   CheatcodesStackNavigator: {
     initialRouteName: 'cheatcodes',
     screens: {

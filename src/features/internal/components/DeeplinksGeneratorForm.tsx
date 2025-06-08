@@ -20,10 +20,10 @@ import {
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/searchRoutes'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/isSearchStackScreen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { isTabScreen } from 'features/navigation/TabBar/TabBarScreens'
+import { isTabScreen } from 'features/navigation/TabBar/isTabScreen'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment/env'

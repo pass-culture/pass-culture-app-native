@@ -1,7 +1,7 @@
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
+import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { splitArrayIntoStrings } from 'shared/splitArrayIntoStrings/splitArrayIntoStrings'

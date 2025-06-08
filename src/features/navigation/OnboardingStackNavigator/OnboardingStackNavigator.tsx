@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OnboardingNavigatorBase } from 'features/navigation/OnboardingStackNavigator/OnboardingNavigatorBase'
+import { OnboardingStackNavigatorBase } from 'features/navigation/OnboardingStackNavigator/OnboardingStackNavigatorBase'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { OnboardingAgeInformation } from 'features/onboarding/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingAgeSelectionFork } from 'features/onboarding/pages/onboarding/OnboardingAgeSelectionFork'
@@ -10,38 +10,38 @@ import { OnboardingNotEligible } from 'features/onboarding/pages/onboarding/Onbo
 import { OnboardingWelcome } from 'features/onboarding/pages/onboarding/OnboardingWelcome'
 
 export const OnboardingStackNavigator = () => (
-  <OnboardingNavigatorBase.Navigator
+  <OnboardingStackNavigatorBase.Navigator
     initialRouteName="OnboardingWelcome" // This will be used when getInitialScreen resolves to OnboardingStackNavigator
     screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    <OnboardingNavigatorBase.Screen
+    <OnboardingStackNavigatorBase.Screen
       name="OnboardingWelcome"
       component={OnboardingWelcome}
       options={{ title: 'Bienvenue' }}
     />
-    <OnboardingNavigatorBase.Screen
+    <OnboardingStackNavigatorBase.Screen
       name="OnboardingAgeSelectionFork"
       component={OnboardingAgeSelectionFork}
       options={{ title: 'Sélection d’âge' }}
     />
-    <OnboardingNavigatorBase.Screen
+    <OnboardingStackNavigatorBase.Screen
       name="OnboardingAgeInformation"
       component={OnboardingAgeInformation}
       options={{ title: 'Information d’âge' }}
     />
-    <OnboardingNavigatorBase.Screen
+    <OnboardingStackNavigatorBase.Screen
       name="OnboardingGeolocation"
       component={OnboardingGeolocation}
       options={{ title: 'Active ta géolocalisation' }}
     />
-    <OnboardingNavigatorBase.Screen
+    <OnboardingStackNavigatorBase.Screen
       name="OnboardingGeneralPublicWelcome"
       component={OnboardingGeneralPublicWelcome}
       options={{ title: 'Bienvenue' }}
     />
-    <OnboardingNavigatorBase.Screen
+    <OnboardingStackNavigatorBase.Screen
       name="OnboardingNotEligible"
       component={OnboardingNotEligible}
       options={{ title: 'Encore un peu de patience' }}
     />
-  </OnboardingNavigatorBase.Navigator>
+  </OnboardingStackNavigatorBase.Navigator>
 )

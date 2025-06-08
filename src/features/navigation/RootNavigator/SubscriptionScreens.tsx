@@ -33,140 +33,140 @@ import { SetProfileBookingError } from 'features/identityCheck/pages/profile/Set
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
-import { RootStack } from 'features/navigation/RootNavigator/Stack'
+import { RootStackNavigatorBase } from 'features/navigation/RootNavigator/Stack'
 
 export const SubscriptionScreens = (
   <React.Fragment>
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="Stepper"
       component={withAuthProtection(Stepper)}
       options={{ title: 'Vérification d’identité' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="DisableActivation"
       component={DisableActivation}
       options={{ title: 'Création de compte désactivé' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetPhoneNumberWithoutValidation"
       component={withAuthProtection(SetPhoneNumberWithoutValidation)}
       options={{ title: 'Ton numéro de téléphone' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetPhoneNumber"
       component={withAuthProtection(SetPhoneNumber)}
       options={{ title: 'Ton numéro de téléphone' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetPhoneValidationCode"
       component={SetPhoneValidationCode}
       options={{ title: 'Validation du numéro de téléphone' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="PhoneValidationTooManyAttempts"
       component={PhoneValidationTooManyAttempts}
       options={{ title: 'Validation téléphone - Trop d’essais' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="PhoneValidationTooManySMSSent"
       component={PhoneValidationTooManySMSSent}
       options={{ title: 'Validation téléphone - Trop de SMS envoyés' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetName"
       component={SetName ?? withAuthProtection(SetName)}
       options={{ title: 'Ton nom/prénom | Profil' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetCity"
       component={SetCity ?? withAuthProtection(SetCity)}
       options={{ title: 'Ton code postal | Profil' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetAddress"
       component={SetAddress ?? withAuthProtection(SetAddress)}
       options={{ title: 'Ton adresse | Profil' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetStatus"
       component={SetStatus ?? withAuthProtection(SetStatus)}
       options={{ title: 'Ton statut | Profil' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="SetProfileBookingError"
       component={SetProfileBookingError ?? withAuthProtection(SetProfileBookingError)}
       options={{ title: 'Erreur | Profil' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="ProfileInformationValidation"
       component={ProfileInformationValidation ?? withAuthProtection(ProfileInformationValidation)}
       options={{ title: 'Validation informations | Profil' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="UbbleWebview"
       component={withAuthProtection(UbbleWebview)}
       options={{ title: 'Identification' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="EduConnectForm"
       component={EduConnectForm}
       options={{ title: 'Identification avec EduConnect' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="EduConnectValidation"
       component={withEduConnectErrorBoundary(EduConnectValidation)}
       options={{ title: 'Validation de l’identification' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="IdentityCheckEnd"
       component={withAuthProtection(IdentityCheckEnd)}
       options={{ title: 'Fin du parcours' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="IdentityCheckUnavailable"
       component={withAuthProtection(IdentityCheckUnavailable)}
       options={{ title: 'Victime de notre succès\u00a0!' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="IdentityCheckPending"
       component={IdentityCheckPending}
       options={{ title: 'Demande en attente' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="IdentityCheckDMS"
       component={IdentityCheckDMS}
       options={{ title: 'Démarches-Simplifiées' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="IdentificationFork"
       component={IdentificationFork}
       options={{ title: 'Identification' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="IdentityCheckHonor"
       component={withAuthProtection(IdentityCheckHonor)}
       options={{ title: 'Confirmation' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="BeneficiaryRequestSent"
       component={withAuthProtection(BeneficiaryRequestSent)}
       options={{ title: 'Demande bénéficiaire envoyée' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="BeneficiaryAccountCreated"
       component={withAuthProtection(BeneficiaryAccountCreated)}
       options={{ title: 'Compte bénéficiaire créé\u00a0!' }}
     />
-    <RootStack.Screen
+    <RootStackNavigatorBase.Screen
       name="EduConnectErrors"
       component={EduConnectErrors}
       options={{ title: 'Erreur' }}
     />
-    <RootStack.Screen name="DMSIntroduction" component={DMSIntroduction} />
-    <RootStack.Screen name="ExpiredOrLostID" component={ExpiredOrLostID} />
-    <RootStack.Screen name="SelectIDOrigin" component={SelectIDOrigin} />
-    <RootStack.Screen name="SelectIDStatus" component={SelectIDStatus} />
-    <RootStack.Screen name="SelectPhoneStatus" component={SelectPhoneStatus} />
-    <RootStack.Screen name="ComeBackLater" component={ComeBackLater} />
+    <RootStackNavigatorBase.Screen name="DMSIntroduction" component={DMSIntroduction} />
+    <RootStackNavigatorBase.Screen name="ExpiredOrLostID" component={ExpiredOrLostID} />
+    <RootStackNavigatorBase.Screen name="SelectIDOrigin" component={SelectIDOrigin} />
+    <RootStackNavigatorBase.Screen name="SelectIDStatus" component={SelectIDStatus} />
+    <RootStackNavigatorBase.Screen name="SelectPhoneStatus" component={SelectPhoneStatus} />
+    <RootStackNavigatorBase.Screen name="ComeBackLater" component={ComeBackLater} />
   </React.Fragment>
 )
