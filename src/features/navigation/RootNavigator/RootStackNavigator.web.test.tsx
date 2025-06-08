@@ -12,7 +12,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils/web'
 
-import { RootNavigator } from './RootNavigator'
+import { RootNavigator } from './RootStackNavigator'
 
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockUseCurrentRoute = jest.mocked(useCurrentRoute)

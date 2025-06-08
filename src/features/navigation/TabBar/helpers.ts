@@ -1,4 +1,4 @@
-import { TabRouteName, TabParamList } from './types'
+import { TabRouteName, TabParamList } from './TabStackNavigatorTypes'
 
 export function getShouldDisplayTab({
   isLoggedIn,

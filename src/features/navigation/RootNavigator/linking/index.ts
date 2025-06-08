@@ -3,7 +3,7 @@ import { LinkingOptions } from '@react-navigation/native'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
-import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
+import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TabParamList } from 'features/navigation/TabBar/types'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
@@ -35,5 +35,5 @@ export const linking: RequireField<
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
-  config: { screens: { ...rootScreensConfig } },
+  config: { screens: { ...temporaryRootStackConfig } },
 }
