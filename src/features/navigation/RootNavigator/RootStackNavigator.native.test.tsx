@@ -8,7 +8,7 @@ import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
-import { RootNavigator } from './RootNavigator'
+import { RootNavigator } from './RootStackNavigator'
 
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)

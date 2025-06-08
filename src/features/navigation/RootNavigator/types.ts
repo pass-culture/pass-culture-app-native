@@ -8,7 +8,7 @@ import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import {
   CheatcodesStackParamList,
   CheatcodesStackRouteName,
-} from 'features/navigation/CheatcodesStackNavigator/types'
+} from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import {
   OnboardingStackParamList,
   OnboardingStackRouteName,
@@ -16,15 +16,15 @@ import {
 import {
   ProfileStackParamList,
   ProfileStackRouteName,
-} from 'features/navigation/ProfileStackNavigator/ProfileStack'
-import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
+} from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
 
-import { TabParamList, TabRouteName } from '../TabBar/types'
+import { TabParamList, TabRouteName } from '../TabBar/TabStackNavigatorTypes'
 
 export type Referrals =
   | Lowercase<keyof AllNavParamList>

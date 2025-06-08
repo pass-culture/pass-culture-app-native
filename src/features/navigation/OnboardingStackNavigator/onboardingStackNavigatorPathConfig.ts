@@ -1,4 +1,4 @@
-export const onboardingStackNavigatorConfig = {
+export const onboardingStackNavigatorPathConfig = {
   OnboardingStackNavigator: {
     initialRouteName: 'OnboardingWelcome',
     screens: {

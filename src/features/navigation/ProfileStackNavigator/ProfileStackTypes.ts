@@ -1,5 +1,3 @@
-import { createStackNavigator } from '@react-navigation/stack'
-
 import { AccessibilityRootStackParamList } from 'features/navigation/RootNavigator/types'
 
 export type ProfileStackParamList = {
@@ -36,5 +34,3 @@ export type ProfileStackParamList = {
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList
-
-export const ProfileStack = createStackNavigator<ProfileStackParamList>()

@@ -1,7 +1,7 @@
 import {
   ProfileStackParamList,
   ProfileStackRouteName,
-} from 'features/navigation/ProfileStackNavigator/ProfileStack'
+} from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 
 export function getProfileStackConfig<Screen extends ProfileStackRouteName>(
   screen: Screen,

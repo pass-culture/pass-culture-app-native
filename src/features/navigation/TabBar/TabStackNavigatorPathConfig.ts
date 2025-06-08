@@ -1,7 +1,7 @@
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchView } from 'features/search/types'
 
-export const tabNavigatorPathConfig = {
+export const tabStackNavigatorPathConfig = {
   TabNavigator: {
     initialRouteName: 'Home',
     screens: {

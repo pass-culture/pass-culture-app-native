@@ -4,7 +4,7 @@ import { BookingsTab } from 'features/bookings/enum'
 import {
   SearchStackParamList,
   SearchStackScreenNames,
-} from 'features/navigation/SearchStackNavigator/types'
+} from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 

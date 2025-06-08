@@ -1,6 +1,6 @@
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { TabStateRoute } from 'features/navigation/TabBar/types'
+import { TabStateRoute } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
 

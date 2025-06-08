@@ -1,4 +1,3 @@
-import { createStackNavigator } from '@react-navigation/stack'
 import React, { ComponentType } from 'react'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
@@ -42,9 +41,11 @@ import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/Cheatcod
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { CheatcodesScreenSecondaryPageWithBlurHeader } from 'cheatcodes/pages/others/CheatcodesScreenSecondaryPageWithBlurHeader'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { LoadingPage } from 'ui/pages/LoadingPage'
+
+import { CheatcodesStackNavigatorBase } from './CheatcodesStackNavigatorBase'
 
 type GenericRoute<ParamList extends Record<string, unknown>> = {
   name: keyof ParamList
@@ -223,12 +224,10 @@ const routes: CheatcodesStackRoute[] = [
   },
 ]
 
-const CheatcodesStack = createStackNavigator<CheatcodesStackParamList>()
-
 export const CheatcodesStackNavigator = () => (
-  <CheatcodesStack.Navigator screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
+  <CheatcodesStackNavigatorBase.Navigator screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
     {routes.map(({ name, component }) => (
-      <CheatcodesStack.Screen name={name} key={name} component={component} />
+      <CheatcodesStackNavigatorBase.Screen name={name} key={name} component={component} />
     ))}
-  </CheatcodesStack.Navigator>
+  </CheatcodesStackNavigatorBase.Navigator>
 )

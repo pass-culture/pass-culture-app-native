@@ -8,7 +8,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
-} from 'features/navigation/TabBar/TabNavigationStateContext'
+} from 'features/navigation/TabBar/TabStackNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationFilter } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -24,7 +24,7 @@ import { TabBar } from './TabBar'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
+jest.mock('features/navigation/TabBar/TabStackNavigationStateContext', () => {
   const { DEFAULT_TAB_ROUTES } = jest.requireActual(
     'features/navigation/TabBar/TabNavigationStateContext'
   )
@@ -34,25 +34,6 @@ const mockedUseTabNavigationContext = jest.mocked(useTabNavigationContext)
 
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
-}))
-
-jest.mock('features/navigation/RootNavigator/rootRoutes', () => ({
-  routes: [
-    {
-      name: 'TabNavigator',
-      component: () => null,
-      pathConfig: {
-        initialRouteName: 'Home',
-        screens: {
-          Home: undefined,
-          Search: undefined,
-          Bookings: undefined,
-          Favorites: undefined,
-          Profile: undefined,
-        },
-      },
-    },
-  ],
 }))
 
 jest.mock('features/navigation/helpers/useTabBarItemBadges')
