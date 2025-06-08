@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React from 'react'
+import React, { ComponentType } from 'react'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
@@ -44,8 +44,12 @@ import { CheatcodesScreenSecondaryPageWithBlurHeader } from 'cheatcodes/pages/ot
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
-import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import { LoadingPage } from 'ui/pages/LoadingPage'
+
+type GenericRoute<ParamList extends Record<string, unknown>> = {
+  name: keyof ParamList
+  component: ComponentType
+}
 
 type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
 

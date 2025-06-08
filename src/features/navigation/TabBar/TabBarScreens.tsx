@@ -46,5 +46,5 @@ export const tabBarRoutesScreens = (
 
 export function isTabScreen(screen): screen is TabRouteName {
   const tabRouteNames = Object.keys(tabNavigatorPathConfig.TabNavigator.screens)
-  return [...tabRouteNames].includes(screen)
+  return tabRouteNames.includes(screen)
 }

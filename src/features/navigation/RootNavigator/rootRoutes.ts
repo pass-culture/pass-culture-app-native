@@ -1,11 +1,8 @@
 import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
 
-import { RootRoute, RootScreenNames } from './types'
+import { RootScreenNames } from './types'
 
-export const rootRoutes: RootRoute[] = []
-
-export function isRootStackScreen(screen: string): screen is RootScreenNames {
-  const screensRemovedFromRootRoutes = Object.keys(temporaryRootStackConfig)
-  const rootStackRouteNames = rootRoutes.map((route): string => route.name)
-  return [...rootStackRouteNames, ...screensRemovedFromRootRoutes].includes(screen)
+export function isRootStackScreen(screen): screen is RootScreenNames {
+  const rootScreens = Object.keys(temporaryRootStackConfig)
+  return rootScreens.includes(screen)
 }
