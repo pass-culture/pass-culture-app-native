@@ -1,8 +1,10 @@
-import { SearchStackRoute, SearchStackRouteName } from './types'
+import { tabNavigatorPathConfig } from 'features/navigation/TabBar/TabNavigatorPathConfig'
 
-const searchRoutes: SearchStackRoute[] = []
+import { SearchStackRouteName } from './types'
 
-export function isSearchStackScreen(screen: string): screen is SearchStackRouteName {
-  const searchStackRouteNames = searchRoutes.map((route): string => route.name)
+export function isSearchStackScreen(screen): screen is SearchStackRouteName {
+  const searchStackRouteNames = Object.keys(
+    tabNavigatorPathConfig.TabNavigator.screens.SearchStackNavigator.screens
+  )
   return searchStackRouteNames.includes(screen)
 }

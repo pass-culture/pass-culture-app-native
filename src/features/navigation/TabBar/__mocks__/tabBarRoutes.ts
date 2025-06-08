@@ -4,7 +4,7 @@ import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/searchRoutes'
 
-import { TabParamList, TabRoute, TabRouteName } from '../types'
+import { TabParamList, TabRouteName } from '../types'
 
 export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   initialRouteName: 'Home',
@@ -26,7 +26,7 @@ export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   },
 }
 const MockComponent = () => null
-export const tabBarRoutes: Array<TabRoute> = [
+export const tabBarRoutes = [
   {
     name: 'Home',
     component: MockComponent,
@@ -60,6 +60,5 @@ const tabRouteNames = tabBarRoutes.map((route) => route.name)
 
 // Typeguard for screen params
 export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
-  // @ts-expect-error : ScreenNames is not necessarily a screen in tabRouteNames
   return tabRouteNames.includes(screen)
 }

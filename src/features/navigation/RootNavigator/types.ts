@@ -1,6 +1,5 @@
-import { getStateFromPath, ParamListBase, PathConfig, RouteProp } from '@react-navigation/native'
+import { getStateFromPath, ParamListBase, RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
@@ -406,33 +405,6 @@ export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 
 export type NavigationResultState = ReturnType<typeof getStateFromPath>
-
-/**
- * Type helper to declare a route
- */
-type ExtendedPathConfig<ParamList extends Record<string, unknown>> = Omit<
-  PathConfig<ParamList>,
-  'initialRouteName'
-> & {
-  deeplinkPaths?: string[]
-}
-export type GenericRoute<
-  ParamList extends Record<string, unknown>,
-  NestedParamList extends Record<string, unknown> = ParamListBase,
-> = {
-  name: keyof ParamList
-  component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-  hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-  path?: string
-  deeplinkPaths?: string[]
-  pathConfig?: ExtendedPathConfig<ParamList> | ExtendedPathConfig<NestedParamList>
-  options?: { title?: string }
-  secure?: boolean
-}
-export type RootRoute = GenericRoute<
-  RootStackParamList,
-  TabParamList & ProfileStackParamList & OnboardingStackParamList
->
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(
