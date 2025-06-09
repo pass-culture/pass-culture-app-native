@@ -1,15 +1,21 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { CategoryIdEnum } from 'api/gen'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+export type LeftImageComponentProps = {
+  imageUrl?: string
+  categoryId?: CategoryIdEnum | null
+}
 interface AttachedCardDisplayProps {
   title: string
   subtitle?: string
   details?: string[]
-  LeftImageComponent?: React.FunctionComponent
+  LeftImageComponent?: React.ComponentType<LeftImageComponentProps>
+  leftImageProps?: LeftImageComponentProps
   rightTagLabel?: string
   bottomRightElement?: React.ReactNode
   accessibilityLabel?: string
@@ -27,6 +33,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   subtitle,
   details,
   LeftImageComponent,
+  leftImageProps,
   rightTagLabel,
   bottomRightElement,
   accessibilityLabel,
@@ -41,7 +48,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         bottomBannerText={bottomBannerText}>
         {LeftImageComponent ? (
           <ImageContainer>
-            <LeftImageComponent />
+            <LeftImageComponent {...leftImageProps} />
           </ImageContainer>
         ) : null}
         <CentralColumn>
