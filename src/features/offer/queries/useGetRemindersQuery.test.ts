@@ -1,43 +1,122 @@
+import { QueryClient } from '@tanstack/react-query'
+
 import { GetRemindersResponse } from 'api/gen'
-import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
+import { reminder, remindersResponse } from 'features/offer/fixtures/remindersResponse'
+import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
-import { useGetRemindersQuery } from './useGetRemindersQuery'
+import { useAddReminderMutation } from './useAddReminderMutation'
 
 jest.mock('libs/jwt/jwt')
-jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
 
-describe('useGetRemindersQuery', () => {
-  beforeEach(() => mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse))
+const offerId = 30
+const reminderIdMock = 0
 
-  it('should only fetch data if user is loogedIn', async () => {
-    const { result } = renderUseGetRemindersQuery()
+const cancelQueriesMock = jest.fn()
+const invalidateQueriesMock = jest.fn()
 
-    expect(result.current.isFetching).toEqual(true)
+let queryClient: QueryClient
+const setupWithReminders = (client: QueryClient) => {
+  queryClient = client
+  queryClient.setQueryData([QueryKeys.REMINDERS], remindersResponse)
+  queryClient.cancelQueries = cancelQueriesMock
+  queryClient.invalidateQueries = invalidateQueriesMock
+}
 
-    await act(async () => {})
-
-    expect(result.current.data?.reminders.length).toEqual(remindersResponse.reminders.length)
+describe('useAddReminderMutation', () => {
+  beforeEach(() => {
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse)
+    mockServer.postApi(`/v1/me/reminders`, {
+      responseOptions: { statusCode: 201, data: reminder },
+    })
   })
 
-  it('should allow selecting a subset of data', async () => {
-    const { result } = renderUseGetRemindersQuery((data) =>
-      data.reminders.find((r) => r.id === remindersResponse.reminders[0]?.id)
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore()
+    queryClient.getQueryCache().clear()
+    queryClient.getMutationCache().clear()
+  })
+
+  it('should update the query cache optimistically on mutation', async () => {
+    const expectedRemindersInCache = [
+      ...remindersResponse.reminders,
+      {
+        id: reminderIdMock,
+        offer: { id: offerId },
+      },
+    ]
+
+    const { result } = renderUseAddReminderMutation()
+
+    expect(queryClient.getQueryData([QueryKeys.REMINDERS])).toEqual(remindersResponse)
+
+    await act(async () => {
+      result.current.mutate(offerId)
+    })
+
+    expect(cancelQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+
+    const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+
+    expect(updatedCache?.reminders).toEqual(expectedRemindersInCache)
+  })
+
+  it('should revert the cache if mutation fails', async () => {
+    const doRevertCache = jest.fn(() =>
+      queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
     )
 
-    await act(async () => {})
+    mockServer.postApi(`/v1/me/reminders`, {
+      responseOptions: { statusCode: 500, data: { message: 'Server error' } },
+    })
 
-    expect(result.current.data).toEqual(remindersResponse.reminders[0])
+    const { result } = renderUseAddReminderMutation({ onError: doRevertCache })
+
+    expect(queryClient.getQueryData([QueryKeys.REMINDERS])).toEqual(remindersResponse)
+
+    await act(async () => {
+      result.current.mutate(offerId)
+    })
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
+
+    expect(doRevertCache).toHaveBeenCalledTimes(1)
+  })
+
+  it('should invalidate reminders query after successful mutation', async () => {
+    const { result } = renderUseAddReminderMutation()
+
+    await act(async () => {
+      result.current.mutate(offerId)
+    })
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+
+    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+  })
+
+  it('should invalidate reminders query after mutation fails', async () => {
+    mockServer.postApi(`/v1/me/reminders`, {
+      responseOptions: { statusCode: 500, data: { message: 'Server error' } },
+    })
+
+    const { result } = renderUseAddReminderMutation()
+
+    await act(async () => {
+      result.current.mutate(offerId)
+    })
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
+
+    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
 })
 
-const renderUseGetRemindersQuery = <TData = GetRemindersResponse>(
-  select?: (data: GetRemindersResponse) => TData
-) =>
-  renderHook(() => useGetRemindersQuery(select), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
+const renderUseAddReminderMutation = (options?: Parameters<typeof useAddReminderMutation>[0]) =>
+  renderHook(() => useAddReminderMutation(options), {
+    wrapper: ({ children }) => reactQueryProviderHOC(children, setupWithReminders),
   })

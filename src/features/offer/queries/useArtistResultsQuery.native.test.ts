@@ -29,6 +29,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
+jest.useFakeTimers()
+
 describe('useArtistResultsQuery', () => {
   beforeAll(() => {
     useRemoteConfigSpy.mockReturnValue({

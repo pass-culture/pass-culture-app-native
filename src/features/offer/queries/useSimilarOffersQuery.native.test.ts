@@ -27,6 +27,8 @@ const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
+jest.useFakeTimers()
+
 describe('useSimilarOffersQuery', () => {
   describe('When success API response', () => {
     beforeEach(() => {
