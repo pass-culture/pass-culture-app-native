@@ -33,9 +33,9 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
           latitude ?? undefined
         )
       } catch (err) {
-        const shouldApiErrorNotCaptured = Boolean(
-          err instanceof ApiError && isAPIExceptionNotCaptured(err.statusCode)
-        )
+        const shouldApiErrorNotCaptured =
+          Boolean(err instanceof ApiError && isAPIExceptionNotCaptured(err.statusCode)) ||
+          Boolean(err instanceof Error && err.message === 'Network request failed')
 
         if (!shouldApiErrorNotCaptured) {
           logError(err, parameters)

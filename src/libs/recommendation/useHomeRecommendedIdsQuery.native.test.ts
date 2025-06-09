@@ -80,7 +80,7 @@ describe('useHomeRecommendedIdsQuery', () => {
     })
   })
 
-  it('should capture an exception with the error message when fetch call fails', async () => {
+  it('should not capture an exception with the error message "Network request failed" when fetch call fails', async () => {
     jest
       .spyOn(api, 'postNativeV1RecommendationPlaylist')
       .mockRejectedValueOnce(new Error('Network request failed'))
@@ -99,14 +99,37 @@ describe('useHomeRecommendedIdsQuery', () => {
     )
 
     await waitFor(() => {
+      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+    })
+  })
+
+  it('should capture an exception with the error message when fetch call fails', async () => {
+    jest
+      .spyOn(api, 'postNativeV1RecommendationPlaylist')
+      .mockRejectedValueOnce(new Error('This is an error'))
+
+    renderHook(
+      () =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+          shouldFetch: true,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('Error Network request failed with recommendation endpoint'),
+        new Error('Error This is an error with recommendation endpoint'),
         {
           extra: {
             playlistRequestBody: '{}',
             playlistRequestQuery: '{}',
             statusCode: 'unknown',
-            errorMessage: 'Network request failed',
+            errorMessage: 'This is an error',
           },
         }
       )
