@@ -27,7 +27,7 @@ describe('usePersistQuery', () => {
 
   describe('without initial local data', () => {
     it('should save distant data locally', async () => {
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -42,7 +42,7 @@ describe('usePersistQuery', () => {
     it('should fail to save distant data locally and log to sentry', async () => {
       const error = new Error('WRITING_REJECTED')
       jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(error)
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -69,7 +69,7 @@ describe('usePersistQuery', () => {
 
       expect(persistDataStr).toBeTruthy()
 
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -90,7 +90,7 @@ describe('usePersistQuery', () => {
       expect(persistDataStr).toBeTruthy()
 
       jest.spyOn(AsyncStorage, 'getItem').mockRejectedValueOnce(error)
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -107,7 +107,7 @@ describe('usePersistQuery', () => {
 
         renderHook(
           () =>
-            usePersistQuery(queryKey, queryFn, {
+            usePersistQuery([queryKey], queryFn, {
               // @ts-ignore cast for select occur on return
               select(data) {
                 // @ts-expect-error: because of noUncheckedIndexedAccess

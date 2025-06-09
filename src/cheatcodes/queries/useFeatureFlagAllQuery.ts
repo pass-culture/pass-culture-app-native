@@ -29,7 +29,7 @@ export const useFeatureFlagAllQuery = () => {
     data: docSnapshot,
     isLoading,
     error,
-  } = useQuery('FEATURE_FLAGS', getAllFeatureFlags, {
+  } = useQuery(['FEATURE_FLAGS'], getAllFeatureFlags, {
     staleTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
   })

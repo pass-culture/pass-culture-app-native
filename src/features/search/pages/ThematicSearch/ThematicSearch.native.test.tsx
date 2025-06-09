@@ -56,7 +56,6 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   error: null,
   isSuccess: true,
   isError: false,
-  isIdle: false,
   refetch: jest.fn(),
   status: 'success',
   failureCount: 0,
@@ -73,6 +72,10 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   errorUpdatedAt: 0,
   errorUpdateCount: 0,
   isRefetching: false,
+  failureReason: new Error(),
+  isInitialLoading: false,
+  isPaused: false,
+  fetchStatus: 'fetching',
 }
 
 const mockUseGtlPlaylist = jest
