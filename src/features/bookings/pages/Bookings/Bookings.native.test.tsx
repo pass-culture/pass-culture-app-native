@@ -71,8 +71,8 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {}) // Without this act the test is flaky
 
-    //Due to multiple renders useBookingsQuery is called three times
-    expect(useBookingsSpy).toHaveBeenCalledTimes(3)
+    //Due to multiple renders useBookingsQuery is called two times
+    expect(useBookingsSpy).toHaveBeenCalledTimes(2)
   })
 
   it('should display the empty bookings dedicated view', async () => {
