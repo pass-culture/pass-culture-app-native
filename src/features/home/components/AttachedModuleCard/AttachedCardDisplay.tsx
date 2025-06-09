@@ -97,7 +97,7 @@ const BottomBanner = styled.View(({ theme }) => ({
 
 const TagWrapper = styled.View(({ theme }) => ({
   borderRadius: theme.tiles.borderRadius,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   paddingVertical: getSpacing(0.5),
   paddingHorizontal: getSpacing(1),
   alignSelf: 'baseline',
@@ -139,13 +139,13 @@ const ImageContainer = styled.View({
 
 const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: string }>(
   ({ theme, shouldFixHeight, bottomBannerText }) => ({
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     borderTopLeftRadius: BORDER_RADIUS,
     borderTopRightRadius: BORDER_RADIUS,
     borderBottomLeftRadius: bottomBannerText ? 0 : BORDER_RADIUS,
     borderBottomRightRadius: bottomBannerText ? 0 : BORDER_RADIUS,
     borderWidth: BORDER_WIDTH,
-    borderColor: theme.colors.greyMedium,
+    borderColor: theme.designSystem.color.border.subtle,
     gap: getSpacing(2),
     flexDirection: 'row',
     padding: OFFER_CARD_PADDING,
