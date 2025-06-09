@@ -122,7 +122,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         pages[0]?.offerArtists.hits
           .filter((offer) => offer.artists?.length)
           .flatMap((offer) => offer.artists ?? []),
-        'name'
+        (artist) => artist.name.toLowerCase()
       ),
     }
   }, [data, transformHits, userLocation])
