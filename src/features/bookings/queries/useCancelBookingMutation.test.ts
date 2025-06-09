@@ -3,7 +3,7 @@ import * as ReactQueryAPI from '@tanstack/react-query'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useCancelBookingMutation } from './useCancelBookingMutation'
 
@@ -24,9 +24,11 @@ describe('[hook] useCancelBookingMutation', () => {
   it('invalidates me and bookings after successfully cancel a booking', async () => {
     mockServer.postApi(`/v1/bookings/${BOOKING_OFFER_ID}/cancel`, {})
 
-    const mutate = renderUseCancelBookingMutation()
+    const { result } = renderUseCancelBookingMutation()
 
-    await act(async () => mutate(BOOKING_OFFER_ID))
+    await act(async () => result.current.mutate(BOOKING_OFFER_ID))
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(onSuccess).toHaveBeenCalledTimes(1)
     expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.USER_PROFILE])
@@ -38,20 +40,14 @@ describe('[hook] useCancelBookingMutation', () => {
       responseOptions: { statusCode: 400 },
     })
 
-    const mutate = renderUseCancelBookingMutation()
-    await act(async () => mutate(BOOKING_OFFER_ID))
+    const { result } = renderUseCancelBookingMutation()
+    await act(async () => result.current.mutate(BOOKING_OFFER_ID))
 
     expect(onError).toHaveBeenCalledTimes(1)
   })
 })
 
-const renderUseCancelBookingMutation = () => {
-  const {
-    result: {
-      current: { mutate },
-    },
-  } = renderHook(() => useCancelBookingMutation({ onSuccess, onError }), {
+const renderUseCancelBookingMutation = () =>
+  renderHook(() => useCancelBookingMutation({ onSuccess, onError }), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  return mutate
-}
