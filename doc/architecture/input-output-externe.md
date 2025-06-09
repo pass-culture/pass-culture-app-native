@@ -62,33 +62,33 @@ architecture-beta
   service Educonnect(cloud)[EduConnect] in identification %% ?
   service DMS(cloud)[Demarche Simplifiee] in identification %% ?
 
-  App:R -- L:Google_Recaptcha
-  App:R -- L:Ubble
-  App:R -- L:Google
-  App:R -- L:Educonnect
-  App:R -- L:DMS
+  App:R --> L:Google_Recaptcha
+  App:R --> L:Ubble
+  App:R --> L:Google
+  App:R --> L:Educonnect
+  App:R --> L:DMS
 
   service Algolia_Analytics(cloud)[Algolia Analytics] in tracking
   service Amplitude(cloud)[Amplitude traking actions] in tracking
   service AppsFlyer(cloud)[AppsFlyer traking downloads] in tracking
   service Firebase_Analytics(cloud)[Firebase Analytics tracking actions] in tracking
 
-  App:B -- T:Algolia_Analytics
-  App:B -- T:Amplitude
-  App:B -- T:AppsFlyer
-  App:B -- T:Firebase_Analytics
+  App:B --> T:Algolia_Analytics
+  App:B --> T:Amplitude
+  App:B --> T:AppsFlyer
+  App:B --> T:Firebase_Analytics
 
   service Sentry(cloud)[Sentry erreurs tracking] in technique
   service Codepush(cloud)[Codepush Update Over The Air] in technique
 
-  App:R -- L:Sentry
-  App:R -- L:Codepush
+  App:R --> L:Sentry
+  App:R --> L:Codepush
 
   service Apple_TestFlight(cloud)[Apple test flight] in distribution
   service Firebase_App_Distribution(cloud)[Firebase App Distribution] in distribution
 
-  App:L -- R:Apple_TestFlight
-  App:L -- R:Firebase_App_Distribution
+  App:L --> R:Apple_TestFlight
+  App:L --> R:Firebase_App_Distribution
 
   service Firebase_Firestore(cloud)[Firebase Firestore Feature Flags] in others
   service Firebase_Remote_Config(cloud)[Firebase Remote Config AB test] in others
@@ -100,24 +100,24 @@ architecture-beta
   service Google_Maps(cloud)[Google Maps] in others
   service Contentful(cloud)[Contentful gestion de contenu home et home thematique et playlists] in others
 
-  App:T -- B:Firebase_Firestore
-  App:T -- B:Firebase_Remote_Config
-  App:T -- B:Google_Analytics
-  App:T -- B:GCP
-  App:T -- B:Algolia
-  App:T -- B:typeform
-  App:T -- B:batch
-  App:T -- B:Google_Maps
-  App:T -- B:Contentful
+  App:T --> B:Firebase_Firestore
+  App:T --> B:Firebase_Remote_Config
+  App:T --> B:Google_Analytics
+  App:T --> B:GCP
+  App:T --> B:Algolia
+  App:T --> B:typeform
+  App:T --> B:batch
+  App:T --> B:Google_Maps
+  App:T --> B:Contentful
 
   service image_resize(server)[Google App Engine redimentionnement d image] in hosted_on_GCP
   service bucket_image(disk)[Bucket GCP stockage d image] in hosted_on_GCP
-  App:R -- L:image_resize
-  image_resize:R -- L:bucket_image
+  App:R --> L:image_resize
+  image_resize:R --> L:bucket_image
 
   service backend(server)[Backend] in hosted_on_GCP
   service Postgresql(database)[PostgreSQL stockage des donnees] in hosted_on_GCP
 
-  App:R -- L:backend
-  backend:R -- L:Postgresql
+  App:R --> L:backend
+  backend:R --> L:Postgresql
 ```
