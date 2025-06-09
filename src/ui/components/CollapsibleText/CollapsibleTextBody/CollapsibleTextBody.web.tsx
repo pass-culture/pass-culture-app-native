@@ -30,6 +30,7 @@ export const CollapsibleTextBody: FunctionComponent<Props> = ({
       nativeEvent: {
         lines: Array.from({ length: numberOfLines }).map(() => ({ height: lineHeight })),
       },
+      // We dont want all the properties of the event, just the lines, so we cast it to the specific type
     } as NativeSyntheticEvent<TextLayoutEventData>)
   }
 

@@ -54,7 +54,7 @@ describe('CollapsibleTextContent', () => {
   })
 
   it('should not display all text when text is not expanded', async () => {
-    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{[TEXT]}</CollapsibleText>)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     const text = screen.getByText(TEXT)
     await act(async () => {
@@ -78,7 +78,7 @@ describe('CollapsibleTextContent', () => {
   })
 
   it('should not display Voir plus button', async () => {
-    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{[TEXT]}</CollapsibleText>)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     const text = screen.getByText(TEXT)
     await act(async () => {

@@ -47,4 +47,6 @@ export function CollapsibleText({ numberOfLines, children }: Readonly<Collapsibl
 
 const Container = styled.View<{ visibility: 'hidden' | 'visible' }>(({ visibility }) => ({
   visibility,
+  position: visibility === 'hidden' ? 'absolute' : 'relative',
+  transform: visibility === 'hidden' ? 'translateX(-9999px)' : undefined,
 }))
