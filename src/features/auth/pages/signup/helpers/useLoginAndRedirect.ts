@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useCallback } from 'react'
 
 import { api } from 'api/api'
-import { AccountState } from 'api/gen'
+import { AccountState, EligibilityType } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
@@ -55,7 +55,10 @@ export const useLoginAndRedirect = () => {
           return
         }
 
-        if (user.isEligibleForBeneficiaryUpgrade) {
+        if (
+          user.isEligibleForBeneficiaryUpgrade &&
+          user.eligibility === EligibilityType['age-17-18']
+        ) {
           delayedReplace('VerifyEligibility')
           return
         }

@@ -76,12 +76,29 @@ describe('useLoginAndRedirect', () => {
     expect(replace).toHaveBeenCalledWith('AccountCreated')
   })
 
-  it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
+  it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade and user is 15 or 16 yo', async () => {
     mockServer.getApi<UserProfileResponse>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
-      eligibility: EligibilityType['age-18'],
+      eligibility: EligibilityType['free'],
+      isEligibleForBeneficiaryUpgrade: true,
+    })
+
+    await loginAndRedirect()
+
+    jest.advanceTimersByTime(2000)
+
+    expect(replace).toHaveBeenCalledTimes(1)
+    expect(replace).toHaveBeenCalledWith('AccountCreated')
+  })
+
+  it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 17 or 18 yo', async () => {
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
+      ...nonBeneficiaryUser,
+      email: 'email@domain.ext',
+      firstName: 'Jean',
+      eligibility: EligibilityType['age-17-18'],
       isEligibleForBeneficiaryUpgrade: true,
     })
 
