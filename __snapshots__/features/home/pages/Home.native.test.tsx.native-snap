@@ -95,8 +95,9 @@ exports[`Home page should render correctly 1`] = `
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      initialNumToRender={10}
+      initialNumToRender={4}
       keyExtractor={[Function]}
+      maxToRenderPerBatch={6}
       onContentSizeChange={[Function]}
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
@@ -116,7 +117,9 @@ exports[`Home page should render correctly 1`] = `
         ]
       }
       testID="homeBodyScrollView"
+      updateCellsBatchingPeriod={200}
       viewabilityConfigCallbackPairs={[]}
+      windowSize={5}
     >
       <View>
         <View

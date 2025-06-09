@@ -2496,10 +2496,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 estimatedItemSize={280}
                 getItem={[Function]}
                 getItemCount={[Function]}
+                getItemLayout={[Function]}
                 handlerTag={2}
                 handlerType="NativeViewGestureHandler"
                 horizontal={true}
+                initialNumToRender={4}
                 keyExtractor={[Function]}
+                maxToRenderPerBatch={6}
                 onContentSizeChange={[Function]}
                 onEndReached={[Function]}
                 onEndReachedThreshold={0.2}
@@ -2511,7 +2514,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 onScroll={[Function]}
                 onScrollBeginDrag={[Function]}
                 onScrollEndDrag={[Function]}
-                removeClippedSubviews={false}
+                removeClippedSubviews={true}
                 renderItem={[Function]}
                 renderScrollComponent={[Function]}
                 scrollEnabled={true}
@@ -2519,6 +2522,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 showsHorizontalScrollIndicator={false}
                 stickyHeaderIndices={[]}
                 testID="offersModuleList"
+                updateCellsBatchingPeriod={100}
                 viewabilityConfig={
                   {
                     "minimumViewTime": 300,
@@ -2537,6 +2541,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     },
                   ]
                 }
+                windowSize={7}
               >
                 <View>
                   <View
@@ -2556,7 +2561,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   </View>
                   <View
                     onFocusCapture={[Function]}
-                    onLayout={[Function]}
                     style={
                       [
                         {
@@ -2567,6 +2571,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      renderToHardwareTextureAndroid={true}
+                      shouldRasterizeIOS={true}
                       testID="OfferTile"
                     >
                       <View
@@ -2861,7 +2867,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   </View>
                   <View
                     onFocusCapture={[Function]}
-                    onLayout={[Function]}
                     style={
                       [
                         {
@@ -2872,6 +2877,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      renderToHardwareTextureAndroid={true}
+                      shouldRasterizeIOS={true}
                       testID="OfferTile"
                     >
                       <View
@@ -3166,7 +3173,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   </View>
                   <View
                     onFocusCapture={[Function]}
-                    onLayout={[Function]}
                     style={
                       [
                         {
@@ -3177,6 +3183,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      renderToHardwareTextureAndroid={true}
+                      shouldRasterizeIOS={true}
                       testID="OfferTile"
                     >
                       <View
@@ -3471,7 +3479,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   </View>
                   <View
                     onFocusCapture={[Function]}
-                    onLayout={[Function]}
                     style={
                       [
                         {
@@ -3482,6 +3489,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      renderToHardwareTextureAndroid={true}
+                      shouldRasterizeIOS={true}
                       testID="OfferTile"
                     >
                       <View
@@ -3775,488 +3784,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     />
                   </View>
                   <View
-                    onFocusCapture={[Function]}
-                    onLayout={[Function]}
                     style={
-                      [
-                        {
-                          "flexDirection": "row",
-                        },
-                        null,
-                      ]
-                    }
-                  >
-                    <View
-                      testID="OfferTile"
-                    >
-                      <View
-                        accessibilityLabel="Offre Mon abonnement concert de la catégorie Concert,   prix . "
-                        accessibilityRole="link"
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            {
-                              "textDecorationColor": "black",
-                              "textDecorationLine": "none",
-                              "textDecorationStyle": "solid",
-                            },
-                            {
-                              "borderRadius": 8,
-                              "marginVertical": 4,
-                            },
-                          ]
-                        }
-                        testID="Offre Mon abonnement concert de la catégorie Concert,   prix . "
-                      >
-                        <View
-                          gap={2}
-                          maxWidth={280}
-                          style={
-                            [
-                              {
-                                "gap": 8,
-                                "maxWidth": 280,
-                              },
-                            ]
-                          }
-                          testID="playlistCardOffer"
-                        >
-                          <View
-                            height={420}
-                            style={
-                              [
-                                {
-                                  "height": 420,
-                                  "width": 280,
-                                },
-                              ]
-                            }
-                            width={280}
-                          >
-                            <BVLinearGradient
-                              borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
-                              onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
-                                    "borderRadius": 8,
-                                    "height": "100%",
-                                    "justifyContent": "center",
-                                    "width": "100%",
-                                  },
-                                  {
-                                    "borderRadius": 8,
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                  },
-                                ]
-                              }
-                              testID="imagePlaceholder"
-                            >
-                              <View
-                                height={64}
-                                testID="categoryIcon"
-                                width={64}
-                              >
-                                <Text>
-                                  categoryIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </BVLinearGradient>
-                          </View>
-                          <View>
-                            <Text
-                              numberOfLines={1}
-                              style={
-                                [
-                                  {
-                                    "color": "#696a6f",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
-                              }
-                            >
-                              Concert
-                            </Text>
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
-                              }
-                            >
-                              Mon abonnement concert
-                            </Text>
-                          </View>
-                          <View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
-                              }
-                              testID="priceIsDuo"
-                            />
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      highlighted={false}
-                      leadingItem={
-                        {
-                          "_geoloc": {
-                            "lat": 2,
-                            "lng": 2,
-                          },
-                          "objectID": "16",
-                          "offer": {
-                            "name": "Mon abonnement concert",
-                            "subcategoryId": "ABO_CONCERT",
-                          },
-                          "venue": {
-                            "accessibility": {
-                              "audioDisability": false,
-                              "mentalDisability": false,
-                              "motorDisability": false,
-                              "visualDisability": true,
-                            },
-                            "address": "1 boulevard Poissonnière",
-                            "city": "Paris",
-                            "contact": {
-                              "email": "contact@venue.com",
-                              "phoneNumber": "+33102030405",
-                              "website": "https://my@website.com",
-                            },
-                            "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
-                            "externalAccessibilityData": {
-                              "audioDisability": {
-                                "deafAndHardOfHearing": [
-                                  "Boucle à induction magnétique portative",
-                                  "Autre système non renseigné",
-                                ],
-                              },
-                              "isAccessibleAudioDisability": false,
-                              "isAccessibleMentalDisability": true,
-                              "isAccessibleMotorDisability": false,
-                              "isAccessibleVisualDisability": false,
-                              "mentalDisability": {
-                                "trainedPersonnel": "Personnel formé",
-                              },
-                              "motorDisability": {
-                                "entrance": "Non renseigné",
-                                "exterior": "Non renseigné",
-                                "facilities": "Sanitaire non adapté",
-                                "parking": "Pas de stationnement adapté à proximité",
-                              },
-                              "visualDisability": {
-                                "audioDescription": [
-                                  "Non renseigné",
-                                ],
-                                "soundBeacon": "Non renseigné",
-                              },
-                            },
-                            "externalAccessibilityId": "slug-d-accessibilite-1",
-                            "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
-                            "id": 5543,
-                            "isOpenToPublic": true,
-                            "isPermanent": true,
-                            "isVirtual": false,
-                            "latitude": 48.87004,
-                            "longitude": 2.3785,
-                            "name": "Le Petit Rintintin 1",
-                            "openingHours": {
-                              "FRIDAY": [
-                                {
-                                  "close": "19:00",
-                                  "open": "09:00",
-                                },
-                              ],
-                              "MONDAY": [
-                                {
-                                  "close": "19:00",
-                                  "open": "09:00",
-                                },
-                              ],
-                              "SATURDAY": undefined,
-                              "SUNDAY": undefined,
-                              "THURSDAY": [
-                                {
-                                  "close": "12:00",
-                                  "open": "09:00",
-                                },
-                                {
-                                  "close": "19:00",
-                                  "open": "14:00",
-                                },
-                              ],
-                              "TUESDAY": [
-                                {
-                                  "close": "12:00",
-                                  "open": "09:00",
-                                },
-                                {
-                                  "close": "19:00",
-                                  "open": "14:00",
-                                },
-                              ],
-                              "WEDNESDAY": [
-                                {
-                                  "close": "12:00",
-                                  "open": "09:00",
-                                },
-                                {
-                                  "close": "19:00",
-                                  "open": "14:00",
-                                },
-                              ],
-                            },
-                            "postalCode": "75000",
-                            "publicName": "Le Petit Rintintin 1",
-                            "timezone": "UTC",
-                            "venueTypeCode": "BOOKSTORE",
-                            "withdrawalDetails": "How to withdraw, https://test.com",
-                          },
-                        }
+                      {
+                        "width": 576,
                       }
-                      style={
-                        [
-                          {
-                            "width": 16,
-                          },
-                        ]
-                      }
-                      width={16}
-                    />
-                  </View>
-                  <View
-                    onFocusCapture={[Function]}
-                    onLayout={[Function]}
-                    style={
-                      [
-                        {
-                          "flexDirection": "row",
-                        },
-                        null,
-                      ]
                     }
-                  >
-                    <View
-                      testID="OfferTile"
-                    >
-                      <View
-                        accessibilityLabel="Offre Mon abonnement jeu vidéo de la catégorie Jeux,   prix . "
-                        accessibilityRole="link"
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            {
-                              "textDecorationColor": "black",
-                              "textDecorationLine": "none",
-                              "textDecorationStyle": "solid",
-                            },
-                            {
-                              "borderRadius": 8,
-                              "marginVertical": 4,
-                            },
-                          ]
-                        }
-                        testID="Offre Mon abonnement jeu vidéo de la catégorie Jeux,   prix . "
-                      >
-                        <View
-                          gap={2}
-                          maxWidth={280}
-                          style={
-                            [
-                              {
-                                "gap": 8,
-                                "maxWidth": 280,
-                              },
-                            ]
-                          }
-                          testID="playlistCardOffer"
-                        >
-                          <View
-                            height={420}
-                            style={
-                              [
-                                {
-                                  "height": 420,
-                                  "width": 280,
-                                },
-                              ]
-                            }
-                            width={280}
-                          >
-                            <BVLinearGradient
-                              borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
-                              onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
-                                    "borderRadius": 8,
-                                    "height": "100%",
-                                    "justifyContent": "center",
-                                    "width": "100%",
-                                  },
-                                  {
-                                    "borderRadius": 8,
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                  },
-                                ]
-                              }
-                              testID="imagePlaceholder"
-                            >
-                              <View
-                                height={64}
-                                testID="categoryIcon"
-                                width={64}
-                              >
-                                <Text>
-                                  categoryIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </BVLinearGradient>
-                          </View>
-                          <View>
-                            <Text
-                              numberOfLines={1}
-                              style={
-                                [
-                                  {
-                                    "color": "#696a6f",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
-                              }
-                            >
-                              Jeux
-                            </Text>
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
-                              }
-                            >
-                              Mon abonnement jeu vidéo
-                            </Text>
-                          </View>
-                          <View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
-                              }
-                              testID="priceIsDuo"
-                            />
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                  />
                   <View
                     onLayout={[Function]}
                   >

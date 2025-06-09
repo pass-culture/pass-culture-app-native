@@ -93,8 +93,9 @@ exports[`GenericHome With not displayed skeleton by default should display real 
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      initialNumToRender={10}
+      initialNumToRender={4}
       keyExtractor={[Function]}
+      maxToRenderPerBatch={6}
       onContentSizeChange={[Function]}
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
@@ -114,7 +115,9 @@ exports[`GenericHome With not displayed skeleton by default should display real 
         ]
       }
       testID="homeBodyScrollView"
+      updateCellsBatchingPeriod={200}
       viewabilityConfigCallbackPairs={[]}
+      windowSize={5}
     >
       <View>
         <View
@@ -283,8 +286,9 @@ exports[`GenericHome With not displayed skeleton by default should display skele
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      initialNumToRender={10}
+      initialNumToRender={4}
       keyExtractor={[Function]}
+      maxToRenderPerBatch={6}
       onContentSizeChange={[Function]}
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
@@ -304,7 +308,9 @@ exports[`GenericHome With not displayed skeleton by default should display skele
         ]
       }
       testID="homeBodyScrollView"
+      updateCellsBatchingPeriod={200}
       viewabilityConfigCallbackPairs={[]}
+      windowSize={5}
     >
       <View>
         <View
