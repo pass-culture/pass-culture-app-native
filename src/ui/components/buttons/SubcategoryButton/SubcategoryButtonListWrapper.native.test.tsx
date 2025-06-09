@@ -17,7 +17,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 const user = userEvent.setup()
 jest.useFakeTimers()

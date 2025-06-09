@@ -26,9 +26,6 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
 }))
-jest.mock('features/navigation/TabBar/TabNavigator', () => ({
-  TabNavigator: () => null,
-}))
 jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',
 }))

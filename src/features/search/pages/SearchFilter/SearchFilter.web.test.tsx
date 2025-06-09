@@ -45,8 +45,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/navigation/TabBar/tabBarRoutes')
-
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
