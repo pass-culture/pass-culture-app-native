@@ -6,7 +6,7 @@ import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
 
-import { queryCache } from './reactQueryProviderHOC'
+import { queryCache, mutationCache } from './reactQueryProviderHOC'
 
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })
@@ -27,6 +27,7 @@ consoleFailTestModule.cft({
 
 global.afterEach(async () => {
   queryCache.clear()
+  mutationCache.clear()
 })
 
 // AbortController needs to be mocked because it is not supported in our current version of Jest
