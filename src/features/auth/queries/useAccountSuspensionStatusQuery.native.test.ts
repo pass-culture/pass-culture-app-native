@@ -2,7 +2,7 @@ import { AccountState, UserSuspensionStatusResponse } from 'api/gen'
 import { useAccountSuspensionStatusQuery } from 'features/auth/queries/useAccountSuspensionStatusQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -23,18 +23,18 @@ describe('useAccountSuspensionStatus', () => {
     simulateSuspensionStatus200()
     const { result } = renderSuspensionDateHook()
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.status).toBe(expectedResponse.status)
   })
 
-  it('should return null if error', async () => {
+  it('should return undefined if error', async () => {
     simulateSuspensionStatusError()
     const { result } = renderSuspensionDateHook()
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
 
-    expect(result.current.data).toBeNull()
+    expect(result.current.data).toBeUndefined()
   })
 })
 

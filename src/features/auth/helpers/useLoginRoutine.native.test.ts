@@ -12,7 +12,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import * as Keychain from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const method = 'fromLogin'
 const accessToken = 'access_token'
@@ -57,19 +57,21 @@ describe('useLoginRoutine', () => {
     const mockSaveRefreshToken = jest.spyOn(Keychain, 'saveRefreshToken')
     await renderUseLoginRoutine()
 
-    expect(mockSaveRefreshToken).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(mockSaveRefreshToken).toHaveBeenCalledTimes(1))
   })
 
   it('should log login analytics', async () => {
     await renderUseLoginRoutine()
 
-    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
+    await waitFor(() => expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method }))
   })
 
   it('should log login analytics with sso type when defined', async () => {
     await renderUseLoginRoutine('SSO_login')
 
-    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method, type: 'SSO_login' })
+    await waitFor(() =>
+      expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method, type: 'SSO_login' })
+    )
   })
 
   it('should save access token to storage', async () => {
@@ -77,26 +79,28 @@ describe('useLoginRoutine', () => {
 
     const accessTokenStorage = await storage.readString('access_token')
 
-    expect(accessTokenStorage).toEqual(accessToken)
+    await waitFor(() => expect(accessTokenStorage).toEqual(accessToken))
   })
 
   it('should schedule access removal when it expires', async () => {
     await renderUseLoginRoutine()
 
-    expect(scheduleAccessTokenRemovalSpy).toHaveBeenCalledWith(accessToken)
+    await waitFor(() => expect(scheduleAccessTokenRemovalSpy).toHaveBeenCalledWith(accessToken))
   })
 
   describe('connectServicesRequiringUserId', () => {
     it('should set batch identifier', async () => {
       await renderUseLoginRoutine()
 
-      expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
+      await waitFor(() =>
+        expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
+      )
     })
 
     it('should log set user id analytics', async () => {
       await renderUseLoginRoutine()
 
-      expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
+      await waitFor(() => expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID))
     })
 
     it('should set user id in cookies consent storage', async () => {
@@ -104,10 +108,12 @@ describe('useLoginRoutine', () => {
 
       const cookiesConsentStorage = await storage.readObject(COOKIES_CONSENT_KEY)
 
-      expect(cookiesConsentStorage).toEqual({
-        ...cookiesChoice,
-        userId: FAKE_USER_ID,
-      })
+      await waitFor(() =>
+        expect(cookiesConsentStorage).toEqual({
+          ...cookiesChoice,
+          userId: FAKE_USER_ID,
+        })
+      )
     })
   })
 
@@ -115,13 +121,15 @@ describe('useLoginRoutine', () => {
     it('should reset search context because search results can be different for connected user (example: video games are hidden for underage beneficiaries)', async () => {
       await renderUseLoginRoutine()
 
-      expect(mockResetSearch).toHaveBeenCalledTimes(1)
+      await waitFor(() => expect(mockResetSearch).toHaveBeenCalledTimes(1))
     })
 
     it('should reset identity check context because user logged in can be different than previous user', async () => {
       await renderUseLoginRoutine()
 
-      expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      await waitFor(() =>
+        expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      )
     })
   })
 })

@@ -497,7 +497,7 @@ describe('Signup Form', () => {
       renderSignupForm()
       await screen.findByText('Inscription')
 
-      await pressSSOButton()
+      await waitFor(() => pressSSOButton())
 
       expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
         authorizationCode: 'mockServerAuthCode',
@@ -524,7 +524,7 @@ describe('Signup Form', () => {
       renderSignupForm()
       await screen.findByText('Inscription')
 
-      await pressSSOButton()
+      await waitFor(() => pressSSOButton())
 
       expect(screen.getByText('Renseigne ta date de naissance')).toBeOnTheScreen()
     })
@@ -556,7 +556,7 @@ describe('Signup Form', () => {
       renderSignupForm()
       await screen.findByText('Inscription')
 
-      await pressSSOButton()
+      await waitFor(() => pressSSOButton())
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
@@ -614,7 +614,7 @@ describe('Signup Form', () => {
       renderSignupForm()
       await screen.findByText('Inscription')
 
-      await pressSSOButton()
+      await waitFor(() => pressSSOButton())
 
       let datePicker: ReactTestInstance
       await waitFor(async () => {
@@ -839,7 +839,7 @@ describe('Signup Form', () => {
           undefined
         )
 
-        await pressSSOButton()
+        await waitFor(() => pressSSOButton())
 
         expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
           2,
@@ -914,11 +914,7 @@ const simulateSignupSuccess = () => mockServer.postApi('/v1/account', {})
 const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))
 
 const pressSSOButton = async () => {
-  let SSOButton: ReactTestInstance
-  await waitFor(async () => {
-    SSOButton = await screen.findByTestId('S’inscrire avec Google')
-  })
-  // userEvent.press is not working correctly with SSOButton :'(
-  // eslint-disable-next-line local-rules/no-fireEvent
-  await act(async () => fireEvent.press(SSOButton))
+  const SSOButton: ReactTestInstance = await screen.findByTestId('S’inscrire avec Google')
+
+  await user.press(SSOButton)
 }
