@@ -6,7 +6,7 @@ import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, Position } from 'libs/location/types'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const TODAY = dateBuilder().withDay(2).withHours(6)
 const TODAY_LATER = dateBuilder().withDay(2).withHours(10)
@@ -37,6 +37,8 @@ const mockedGetStocksByOfferIds = jest.spyOn(getStocksByOfferIdsModule, 'getStoc
 const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
 
 mockdate.set(TODAY.toDate())
+
+jest.useFakeTimers()
 
 describe('useOffersStocksFromOfferQuery', () => {
   it('should call fetchOffers with allocineId when provided', async () => {
@@ -71,7 +73,7 @@ describe('useOffersStocksFromOfferQuery', () => {
 
       const { result } = renderUseOffersStocksFromOfferQuery(OFFER_WITH_STOCKS_TODAY)
 
-      await act(async () => {})
+      await waitFor(async () => expect(result.current.isFetched).toEqual(false))
 
       expect(result.current.isLoading).toBe(true)
     })
@@ -81,7 +83,7 @@ describe('useOffersStocksFromOfferQuery', () => {
 
       const { result } = renderUseOffersStocksFromOfferQuery(OFFER_WITH_STOCKS_TODAY)
 
-      await act(async () => {})
+      await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
       expect(result.current.isLoading).toBe(false)
     })
