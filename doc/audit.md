@@ -1,6 +1,6 @@
 # Audit Technique du Code
 
-Cet audit ce concentre uniquement sur les points d'améliorations
+⚠️ Cet audit ce concentre uniquement sur les points d'améliorations ⚠️
 
 ## Audit de différents parcours
 
@@ -159,7 +159,7 @@ Cet audit ce concentre uniquement sur les points d'améliorations
 
 Nos tests vérifient souvent des détails d'implémentations
 
-Un refactoring avec aucun changement de comportement casse souvent les tests
+Un refactoring sans aucun changement de comportement casse souvent les tests
 
 Nous vérifions peu les comportements métier
 
@@ -200,246 +200,12 @@ Il faudrait :
     - cache de react-query utilisés pour éviter de refaire des requetes inutiles tout en limitant le cache en mémoire
     - utilisation de Zustand pour centraliser les états locaux de l'app
 
-#### Architecture
-
-##### Grossomodo maintenant
-
-Aujourd'hui, nos pages ressemblent +/- à ça
-
-```mermaid
-flowchart TB
-  OfferPage
-  -->|get offer id from URL| OfferDetails["OfferDetails ({ offerId?: number })"]
-  -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
-
-  useGetOfferQuery
-  -->|loading| null["rien : la plupart du temps, on return null"]
-
-  useGetOfferQuery
-  -->|has no offer or error| ErrorNotFound
-
-  useGetOfferQuery
-  -->|has offer| OfferDetail["Display offer details"]
-
-  OfferDetails
-  -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
-
-  useRecommandedOffersQuery
-  -->|loading| PlaceholderPlaylists
-
-  useRecommandedOffersQuery
-  -->|has no recommanded offers or error| DisplayNothing
-
-  useRecommandedOffersQuery
-  -->|has recommanded offers| RecommandedOffers
-```
-
-##### Intermédiaire
-
-Découpage en
-
-- Page
-- Container
-- Dumb Component
-
-Parfois une information détermine si on doit en charger une autre
-
--> découpage en sous container pour avoir un bon typage et éviter les `offer?.id` partout
-
-```mermaid
-flowchart TB
-  OfferPage
-  --> parseOfferIdFromURL{{"parseOfferIdFromURL ({ offerId?: number })"}}
-  -->|has no offer or error| ErrorNotFound
-
-  parseOfferIdFromURL
-  -->|get offer id from URL| MaybeOfferContainer["MaybeOfferContainer ({ offerId: number })"]
-  -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
-
-  useGetOfferQuery
-  -->|loading| LoadingPage
-
-  useGetOfferQuery
-  -->|has no offer or error| ErrorNotFound
-
-  useGetOfferQuery
-  -->|has offer| OfferContainer["OfferContainer ({ offer: Offer })"]
-  --> OfferDetail
-
-  OfferContainer
-  -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
-
-  useRecommandedOffersQuery
-  -->|loading| PlaceholderPlaylists
-
-  useRecommandedOffersQuery
-  -->|has no recommanded offers or error| DisplayNothing
-
-  useRecommandedOffersQuery
-  -->|has recommanded offers| RecommandedOffers
-```
-
-##### Archi cible
-
-Avec `ErrorBoundary` et `Suspense`
-
-Cold start
-
-```mermaid
-flowchart TB
-  subgraph errorboundaryWrapper
-  direction TB
-  ErrorBoundary
-  --> OfferPage
-  --> parseOfferIdFromURL{{"parseOfferIdFromURL ({ offerId?: number })"}}
-
-  ErrorBoundary
-  -->|invalid offer id| ErrorNotFound
-
-  parseOfferIdFromURL
-  -->|get offer id from URL| MaybeOfferContainer
-
-  MaybeOfferContainer["MaybeOfferContainer ({ offerId: number })"]
-  --> Suspense
-  -->|loading| LoadingPage
-
-  Suspense
-  -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
-  -->|has offer| OfferContainer
-
-  OfferContainer["OfferContainer ({ offer: Offer })"]
-  --> OfferDetail
-
-  OfferContainer
-  --> ErrorBoundary2[ErrorBoundary]
-  subgraph ErrorBoundary2Wrapper
-  ErrorBoundary2
-  -->|has no recommanded offers or error| DisplayNothingAndIgnoreSilently["Display nothing and ignore silently"]
-
-  ErrorBoundary2
-  --> Suspense2[Suspense]
-  -->|loading| PlaceholderPlaylists
-
-  Suspense2
-  -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
-
-  useRecommandedOffersQuery
-  -->|has recommanded offers| RecommandedOffers
-
-  end
-  MaybeOfferContainer -..->|"prefetch (si on veut améliorer les perfs)"| useRecommandedOffersQuery
-  end
-```
-
-##### Macro
-
-```mermaid
-flowchart LR
-  subgraph AppState["AppState (Zustand)"]
-    selectors@{ shape: das }
-    actions
-    store@{ shape: bow-rect }
-
-    selectors -->|read| store
-    actions -->|write| store
-  end
-
-  subgraph ServerState["ServerState (react-query)"]
-    query@{ shape: lean-l }
-    mutation@{ shape: lean-r }
-
-    query -->|get| QueryCache@{ shape: win-pane }
-  end
-
-  subgraph Navigation["Navigation (react-navigation)"]
-    queryParams@{ shape: win-pane }
-    Modals@{ shape: processes }
-    OthersPages@{ shape: processes }
-  end
-
-  Page@{ shape: doc }
-  -->|render| Container@{ shape: processes }
-  -->|render| Dumb@{ shape: processes }
-
-  Page -->|parse| queryParams
-  Container -->|read| selectors
-  Container -->|write| actions
-  Container -->|get| query
-  Container -->|post| mutation
-  Container -->|display| Modals@{ shape: docs }
-  Container -->|navigate to| OthersPages@{ shape: docs }
-```
-
-```mermaid
-flowchart LR
-  App["App"]
-  App --> Firebase_Firestore["Firebase Firestore : Feature Flags"]
-  App --> Firebase_Remote_Config["Firebase Remote Config : A/B test"]
-  App --> Backend["Backend"] --> Postgresql["PostgreSQL : stockage des données"]
-  App --> Google["Google Analytics : firebase traking"]
-  App --> image_resize["Google App Engine : redimentionnement d'image"] --> bucket_image["Bucket GCP : stockage d'image"]
-  App --> GCP["GCP ? Bff SEO social"]
-  App --> Algolia["Algolia : recherche"]
-  App --> Typeform["Typeform ?"]
-  App --> Batch["Batch : notification et modal in app"]
-  App --> Google_Maps["Google Maps"]
-  App --> Contentful["Contentful : gestion de contenu : home, home thématique, playlists"]
-  subgraph identificiation
-    App --> Google_Recaptcha["Google Recaptcha"]
-    App --> Ubble["Ubble"]
-    App --> Google["Google SSO"]
-    App --> Educonnect["EduConnect ?"]
-    App --> DMS["Démarche Simplifiée ?"]
-  end
-  subgraph tracking
-    App --> AppsFlyer["AppsFlyer : traking downloads"]
-    App --> Amplitude["Amplitude : traking actions"]
-    App --> Firebase_Analytics["Firebase Analytics : tracking actions"]
-  end
-  subgraph technique
-    App --> Sentry["Sentry : erreurs tracking"]
-    App --> Codepush["Codepush : Update Over The Air"]
-  end
-  subgraph distribution
-    Apple["Apple test flight"] --> App
-    Firebase_App_Distribution["Firebase App Distribution"] --> App
-  end
-```
-
-```mermaid
-flowchart LR
-  App --> Localisation["Localisation"]
-  App --> local["Local Storage"]
-  App --> Secret["Secret Storage : Refresh token / Access token"]
-  App --> Caméra["Caméra : identification"]
-  App --> Orientation["Orientation"]
-```
-
-```mermaid
-architecture-beta
-  group api(cloud)[API]
-
-  service db(database)[Database] in api
-  service disk1(disk)[Storage] in api
-  service disk2(disk)[Storage] in api
-  service server(server)[Server] in api
-
-  db:L -- R:server
-  disk1:T -- B:server
-  disk2:T -- B:db
-  service localisation(cloud)[Localisation]
-  service local(cloud)[Local Storage]
-  service secret(cloud)['Secret StorageRefresh Refresh token Access token']
-  %% service caméra(cloud)["Caméra : identification"]
-  %% service orientation(cloud)["Orientation"]
-```
+## TODO
 
 Android iOS permission
 Audit greenspector
 .env
 libs/
-
-## TODO
 
 <details>
 
@@ -497,28 +263,6 @@ pourquoi lorsqu'on passe de `retry: 3` (config par défaut de react-query) à `r
 est-ce qu'on accepte ces perfs en tant que nouvelles base de performance ?
 
 </details>
-
-```mermaid
-graph TD;
-    subgraph "Composants"
-        A[Page] -->|get data from URL/api| B(Container)
-        B -->|data processing| C[Dumb Component]
-        C -->|display or fetch more| D[Recommandations]
-        D -->|interaction| E[Navigation]
-    end
-
-    subgraph "Gestion des Etats"
-        B -->|read/write state| F[Zustand]
-        F -->|query management| G[React Query]
-        G -->|cache & queries| H[React Query Client]
-    end
-
-    subgraph "Services"
-        A -->|API calls| I[Axios / Firebase]
-        I -->|error handling| J[Safe Fetch / Axios Auth Refresh]
-        J -->|global error boundary| K[ErrorBoundary]
-    end
-```
 
 data format pas adatpé, calcul coté frontend
 
