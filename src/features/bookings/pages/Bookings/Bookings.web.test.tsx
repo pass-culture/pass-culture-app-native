@@ -8,7 +8,7 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/index'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'

@@ -1,0 +1,5 @@
+export { useBookingsQueryV1 as useBookingsQuery } from './useBookingsQuery'
+export { useBookingsQuery as useBookingsQueryV2 } from './useBookingsQuery'
+export { useEndedBookingFromOfferIdQueryV1 as useEndedBookingFromOfferIdQuery } from './useEndedBookingFromOfferIdQuery'
+export { useEndedBookingFromOfferIdQuery as useEndedBookingFromOfferIdQueryV2 } from './useEndedBookingFromOfferIdQuery'
+export { useUserHasBookingsQueryV1 as useUserHasBookingsQuery } from './useUserHasBookingsQuery'

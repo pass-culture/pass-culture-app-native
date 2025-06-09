@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookingsResponse, SubcategoriesResponseModelv2, UserProfileResponse } from 'api/gen'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/index'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

@@ -3,7 +3,7 @@ import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
-import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/index'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

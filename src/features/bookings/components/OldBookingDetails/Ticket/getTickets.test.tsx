@@ -1,6 +1,6 @@
 import { BookingsResponse } from 'api/gen'
 import { getTickets } from 'features/bookings/components/OldBookingDetails/Ticket/getTickets'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/index'
 
 const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[1]
 

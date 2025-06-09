@@ -4,7 +4,7 @@ import {
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/index'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'

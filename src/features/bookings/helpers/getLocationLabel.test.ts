@@ -1,4 +1,4 @@
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/index'
 import { getLocationLabel } from 'features/bookings/helpers'
 
 describe('getLocationLabel', () => {

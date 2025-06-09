@@ -9,7 +9,7 @@ import {
 } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/index'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

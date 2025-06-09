@@ -9,7 +9,7 @@ import {
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/index'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'

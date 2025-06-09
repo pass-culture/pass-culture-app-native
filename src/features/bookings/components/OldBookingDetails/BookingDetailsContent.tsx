@@ -26,7 +26,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
-import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/index'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
