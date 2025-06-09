@@ -49,12 +49,31 @@ const variantConfig: Variants<typeof Checkbox> = [
     },
   },
   {
+    label: 'Checkbox Default Checked Disabled',
+    props: {
+      label: 'Checkbox label',
+      variant: 'default',
+      isChecked: true,
+      disabled: true,
+    },
+  },
+  {
     label: 'Checkbox Default Indeterminate',
     props: {
       label: 'Checkbox label',
       variant: 'default',
       isChecked: false,
       indeterminate: true,
+    },
+  },
+  {
+    label: 'Checkbox Default Indeterminate Disabled',
+    props: {
+      label: 'Checkbox label',
+      variant: 'default',
+      isChecked: false,
+      indeterminate: true,
+      disabled: true,
     },
   },
   {
@@ -112,6 +131,16 @@ const variantConfig: Variants<typeof Checkbox> = [
     },
   },
   {
+    label: 'Checkbox Detailed Checked Disabled',
+    props: {
+      label: 'Checkbox label',
+      variant: 'detailed',
+      isChecked: true,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      disabled: true,
+    },
+  },
+  {
     label: 'Checkbox Detailed Indeterminate',
     props: {
       label: 'Checkbox label',
@@ -119,6 +148,17 @@ const variantConfig: Variants<typeof Checkbox> = [
       isChecked: false,
       indeterminate: true,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },
+  },
+  {
+    label: 'Checkbox Detailed Indeterminate Disabled',
+    props: {
+      label: 'Checkbox label',
+      variant: 'detailed',
+      isChecked: false,
+      indeterminate: true,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      disabled: true,
     },
   },
   {

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -21,38 +21,46 @@ import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
+type CheckboxBaseCheckedOnly = {
+  isChecked: boolean
+  indeterminate?: false
+}
+
+type CheckboxBaseIndeterminateOnly = {
+  isChecked: false
+  indeterminate: true
+}
+
 type CheckboxBase = {
   label: string
   onPress: (isChecked: boolean) => void
-  isChecked: boolean
-  indeterminate?: boolean
   required?: boolean
   hasError?: boolean
   disabled?: boolean
-}
+} & (CheckboxBaseCheckedOnly | CheckboxBaseIndeterminateOnly)
 
 type Props = CheckboxBase &
   (
     | {
-        variant?: 'default'
-        description?: never
         asset?: never
         collapsed?: never
+        description?: never
         display?: CheckboxDisplay
+        variant?: 'default'
       }
     | {
-        variant?: 'detailed'
-        description?: string
         asset?: CheckboxAssetProps
         collapsed?: never
+        description?: string
         display?: CheckboxDisplay
+        variant?: 'detailed'
       }
     | {
-        variant?: 'detailed'
+        asset?: CheckboxAssetProps
         collapsed: React.ReactNode
         description?: string
-        asset?: CheckboxAssetProps
         display?: Extract<CheckboxDisplay, 'fill'>
+        variant?: 'detailed'
       }
   )
 
@@ -61,7 +69,7 @@ export const Checkbox: FunctionComponent<Props> = ({
   collapsed,
   description,
   disabled,
-  display = 'hug',
+  display,
   hasError,
   indeterminate,
   isChecked,
@@ -73,6 +81,8 @@ export const Checkbox: FunctionComponent<Props> = ({
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
 
+  const { designSystem, checkbox } = useTheme()
+
   const onToggle = useCallback(() => {
     onPress(!isChecked)
   }, [isChecked, onPress])
@@ -82,6 +92,12 @@ export const Checkbox: FunctionComponent<Props> = ({
   const effectiveDisplay: CheckboxDisplay = display ?? (variant === 'detailed' ? 'fill' : 'hug')
 
   const state = getCheckboxState(isChecked, indeterminate, hasError, disabled)
+  const isDisabled = state.includes('disabled')
+  const isCheckedState = state.includes('checked')
+  const isIndeterminate = state.includes('indeterminate')
+
+  const colorMark = disabled ? designSystem.color.icon.disabled : designSystem.color.icon.inverted
+  const checkboxMarkSize = checkbox.size / 1.5 // Parent padding doesn't have effect on CheckboxMarkIndeterminate
 
   return (
     <CheckboxContainer
@@ -95,21 +111,32 @@ export const Checkbox: FunctionComponent<Props> = ({
       {...hoverProps}>
       <ContentContainer>
         <LeftBox state={state} variant={variant}>
-          {isChecked ? <CheckboxMarkChecked /> : null}
-          {indeterminate ? <CheckboxMarkIndeterminate /> : null}
+          {isIndeterminate ? (
+            <CheckboxMarkIndeterminate
+              color={colorMark}
+              width={checkboxMarkSize}
+              height={checkboxMarkSize}
+            />
+          ) : isCheckedState ? (
+            <CheckboxMarkChecked
+              color={colorMark}
+              width={checkboxMarkSize}
+              height={checkboxMarkSize}
+            />
+          ) : null}
         </LeftBox>
         <RightBox>
-          <StyledBody disabled={disabled}>
+          <StyledBody disabled={isDisabled}>
             {label}
             {required ? '*' : null}
           </StyledBody>
           {description ? (
-            <StyledBodyAccentXs disabled={disabled}>{description}</StyledBodyAccentXs>
+            <StyledBodyAccentXs disabled={isDisabled}>{description}</StyledBodyAccentXs>
           ) : null}
         </RightBox>
         {asset ? (
           <BottomBox>
-            <CheckboxAsset {...asset} disable={disabled} />
+            <CheckboxAsset {...asset} disable={isDisabled} />
           </BottomBox>
         ) : null}
       </ContentContainer>
@@ -119,7 +146,7 @@ export const Checkbox: FunctionComponent<Props> = ({
 }
 
 type ContainerProps = {
-  state: CheckboxState
+  state: CheckboxState[]
   variant: CheckboxVariant
   collapsed?: React.ReactNode
   display?: CheckboxDisplay
@@ -136,17 +163,19 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
   isHover,
   collapsed,
 }) => {
-  const { borderColor, backgroundColor } = getCheckboxColors(
+  const { borderColor, backgroundColor } = getCheckboxColors({
     state,
     variant,
-    !!collapsed,
+    collapsed: !!collapsed,
     theme,
-    'container'
-  )
+    componentType: 'container',
+  })
   const isDetailed = variant === 'detailed'
   const isFilled = display === 'fill'
+  const isDisabled = state.includes('disabled')
+
   return {
-    cursor: 'pointer',
+    cursor: isDisabled ? 'default' : 'pointer',
     width: isFilled ? '100%' : 'fit-content',
     ...(isDetailed && {
       backgroundColor,
@@ -156,7 +185,7 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
       padding: getSpacing(4),
     }),
     ...customFocusOutline({ isFocus }),
-    ...getHoverStyle(theme.designSystem.color.text.default, isHover),
+    ...(isDisabled ? {} : getHoverStyle(theme.designSystem.color.text.default, isHover)),
   }
 })
 
@@ -168,11 +197,18 @@ const ContentContainer = styled.View({
 
 type LeftBoxProps = {
   variant: CheckboxVariant
-  state: CheckboxState
+  state: CheckboxState[]
 }
 
 const LeftBox = styled.View<LeftBoxProps>(({ theme, variant, state }) => {
-  const { borderColor, backgroundColor } = getCheckboxColors(state, variant, false, theme, 'mark')
+  const { borderColor, backgroundColor } = getCheckboxColors({
+    state,
+    variant,
+    collapsed: false,
+    theme,
+    componentType: 'mark',
+  })
+
   return {
     width: theme.checkbox.size,
     height: theme.checkbox.size,

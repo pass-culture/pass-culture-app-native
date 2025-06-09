@@ -263,7 +263,7 @@ export const TertiaryAndSmallerIcons = {
   Parameters,
   PhoneFilled,
   PlainArrowNext,
-  CheckboxMark: CheckboxMarkChecked,
+  CheckboxMarkChecked,
   CheckboxMarkIndeterminate,
   PlainArrowPrevious,
   Play,

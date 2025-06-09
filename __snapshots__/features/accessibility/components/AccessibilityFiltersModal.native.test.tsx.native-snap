@@ -524,7 +524,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     }
                   >
                     <View
-                      isChecked={false}
+                      state={
+                        [
+                          "default",
+                        ]
+                      }
                       style={
                         [
                           {
@@ -554,6 +558,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
+                        disabled={false}
                         style={
                           [
                             {
@@ -657,7 +662,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     }
                   >
                     <View
-                      isChecked={false}
+                      state={
+                        [
+                          "default",
+                        ]
+                      }
                       style={
                         [
                           {
@@ -687,6 +696,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
+                        disabled={false}
                         style={
                           [
                             {
@@ -790,7 +800,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     }
                   >
                     <View
-                      isChecked={false}
+                      state={
+                        [
+                          "default",
+                        ]
+                      }
                       style={
                         [
                           {
@@ -820,6 +834,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
+                        disabled={false}
                         style={
                           [
                             {
@@ -923,7 +938,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     }
                   >
                     <View
-                      isChecked={false}
+                      state={
+                        [
+                          "default",
+                        ]
+                      }
                       style={
                         [
                           {
@@ -953,6 +972,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
+                        disabled={false}
                         style={
                           [
                             {

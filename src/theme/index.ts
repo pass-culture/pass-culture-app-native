@@ -37,19 +37,21 @@ export const theme = {
   navTopHeight: getSpacing(20),
   image: {
     square: {
-      borderRadius: getSpacing(1),
       sizes: {
         small: {
           width: getSpacing(10),
           height: getSpacing(10),
+          borderRadius: getSpacing(1),
         },
         medium: {
           width: getSpacing(20),
           height: getSpacing(20),
+          borderRadius: getSpacing(1),
         },
         large: {
           width: getSpacing(30),
           height: getSpacing(30),
+          borderRadius: getSpacing(2),
         },
       },
     },

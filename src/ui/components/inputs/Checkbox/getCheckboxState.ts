@@ -5,10 +5,13 @@ export const getCheckboxState = (
   indeterminate?: boolean,
   hasError?: boolean,
   disabled?: boolean
-): CheckboxState => {
-  if (disabled) return 'disabled'
-  if (hasError) return 'error'
-  if (indeterminate) return 'indeterminate'
-  if (isChecked) return 'checked'
-  return 'default'
+): CheckboxState[] => {
+  const states: CheckboxState[] = []
+
+  if (disabled) states.push('disabled')
+  if (hasError) states.push('error')
+  if (indeterminate) states.push('indeterminate')
+  else if (isChecked) states.push('checked')
+  if (states.length === 0) states.push('default')
+  return states
 }

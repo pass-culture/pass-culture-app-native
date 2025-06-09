@@ -3514,7 +3514,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <View
-                    isChecked={false}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
                     style={
                       [
                         {
@@ -3530,6 +3534,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         },
                       ]
                     }
+                    variant="default"
                   />
                   <View
                     style={
@@ -3543,6 +3548,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      disabled={false}
                       style={
                         [
                           {

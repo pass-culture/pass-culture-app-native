@@ -503,7 +503,11 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
               }
             >
               <View
-                isChecked={false}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -519,6 +523,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                     },
                   ]
                 }
+                variant="default"
               />
               <View
                 style={
@@ -532,6 +537,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 }
               >
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
@@ -3022,7 +3028,11 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
             }
           >
             <View
-              isChecked={false}
+              state={
+                [
+                  "default",
+                ]
+              }
               style={
                 [
                   {
@@ -3038,6 +3048,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                 ]
               }
+              variant="default"
             />
             <View
               style={
@@ -3051,6 +3062,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               }
             >
               <Text
+                disabled={false}
                 style={
                   [
                     {
@@ -3137,7 +3149,11 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
             }
           >
             <View
-              isChecked={false}
+              state={
+                [
+                  "default",
+                ]
+              }
               style={
                 [
                   {
@@ -3153,6 +3169,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                 ]
               }
+              variant="default"
             />
             <View
               style={
@@ -3166,6 +3183,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               }
             >
               <Text
+                disabled={false}
                 style={
                   [
                     {

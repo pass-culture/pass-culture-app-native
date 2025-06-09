@@ -322,7 +322,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             >
               <View
-                isChecked={false}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -352,6 +356,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
@@ -528,7 +533,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             >
               <View
-                isChecked={false}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -558,6 +567,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
@@ -734,7 +744,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             >
               <View
-                isChecked={false}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -764,6 +778,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
@@ -940,7 +955,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             >
               <View
-                isChecked={false}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -970,6 +989,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
@@ -1146,7 +1166,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             >
               <View
-                isChecked={false}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -1176,6 +1200,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
@@ -1352,7 +1377,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             >
               <View
-                isChecked={false}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -1382,6 +1411,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
+                  disabled={false}
                   style={
                     [
                       {

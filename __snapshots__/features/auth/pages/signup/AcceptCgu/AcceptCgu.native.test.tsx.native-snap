@@ -94,7 +94,11 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     >
       <View
-        isChecked={false}
+        state={
+          [
+            "default",
+          ]
+        }
         style={
           [
             {
@@ -110,6 +114,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             },
           ]
         }
+        variant="default"
       />
       <View
         style={
@@ -123,6 +128,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         }
       >
         <Text
+          disabled={false}
           style={
             [
               {
@@ -209,7 +215,11 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     >
       <View
-        isChecked={false}
+        state={
+          [
+            "default",
+          ]
+        }
         style={
           [
             {
@@ -225,6 +235,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             },
           ]
         }
+        variant="default"
       />
       <View
         style={
@@ -238,6 +249,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         }
       >
         <Text
+          disabled={false}
           style={
             [
               {
@@ -759,7 +771,11 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     >
       <View
-        isChecked={false}
+        state={
+          [
+            "default",
+          ]
+        }
         style={
           [
             {
@@ -775,6 +791,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             },
           ]
         }
+        variant="default"
       />
       <View
         style={
@@ -788,6 +805,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         }
       >
         <Text
+          disabled={false}
           style={
             [
               {
@@ -894,7 +912,11 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     >
       <View
-        isChecked={false}
+        state={
+          [
+            "default",
+          ]
+        }
         style={
           [
             {
@@ -910,6 +932,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             },
           ]
         }
+        variant="default"
       />
       <View
         style={
@@ -923,6 +946,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         }
       >
         <Text
+          disabled={false}
           style={
             [
               {
@@ -1009,7 +1033,11 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     >
       <View
-        isChecked={false}
+        state={
+          [
+            "default",
+          ]
+        }
         style={
           [
             {
@@ -1025,6 +1053,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             },
           ]
         }
+        variant="default"
       />
       <View
         style={
@@ -1038,6 +1067,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         }
       >
         <Text
+          disabled={false}
           style={
             [
               {

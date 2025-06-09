@@ -46,10 +46,9 @@ export function CheckboxAsset({
   return <Tag {...tag} />
 }
 
-const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, size }) => ({
-  ...theme.image.square.sizes[size],
-}))<StyleProps>(({ theme, size }) => ({
-  backgroundColor: theme.designSystem.color.background.subtle,
-  borderRadius: theme.image.square.borderRadius,
-  ...theme.image.square.sizes[size],
-}))
+const StyledFastImage = styled(ResizedFastImage)<StyleProps>(({ theme, size }) => {
+  return {
+    backgroundColor: theme.designSystem.color.background.subtle,
+    ...theme.image.square.sizes[size],
+  }
+})
