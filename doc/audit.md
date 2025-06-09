@@ -185,6 +185,61 @@ Il faudrait :
   - dans les cas simples, tester directement l'UI via le container
   - dans les cas complexes, tester un peu la glue et tester la combinatoire dans une fonction pure isolée
 
+## Boutons et liens
+
+### Observations
+
+Nous avons beaucoup de composants de boutons et de liens
+
+Ceci est un aperçu non exhaustif
+
+```mermaid
+flowchart LR
+  ButtonPrimary & ButtonSecondary & ButtonSecondaryBlack & ButtonTertiaryPrimary & ButtonTertiaryNeutralInfo & ButtonTertiaryBlack & ButtonQuaternaryPrimary & ButtonQuaternarySecondary & ButtonQuaternaryGrey & ButtonQuaternaryBlack --> AppButton --> TouchableOpacity
+
+  TouchableOpacity --> ReactNativeTouchableOpacity["react-native TouchableOpacity"] & ReactNativeGestureHandlerTouchableOpacity["react-native-gesture-handler TouchableOpacity"]
+
+  InternalTouchableLink & ExternalTouchableLink --> TouchableLink --> TouchableOpacity
+
+  HeroButtonList --> InternalTouchableLink
+
+  ButtonWithLinearGradient --> TouchableOpacity
+
+  OfferCTAButton --> StickyBookingButton --> CTAButton --> ButtonWithLinearGradient & ExternalTouchableLink & InternalTouchableLink
+  OfferCTAButton --> BookingButton --> CTAButton
+
+  FavoriteButton --> RoundedButton --> Touchable --> TouchableOpacity
+
+  ToggleButton --> TouchableOpacity
+```
+
+La propriété `as` permet d'avoir des composants avec un comportement de lien et une apparence d'un autre composant (généralement un bouton)
+
+#### Points de Friction
+
+L'arborescence des composants est complexes, avec beaucoup de duplication
+
+La propriété `as` rend le code complexe et oblige a mal typer
+
+`ButtonQuaternaryPrimary` & `ButtonQuaternarySecondary` 🤔
+
+#### Recommandations
+
+- Avoir moins de types de boutons
+- Renommer les composants sémantiquement pas en les décrivant (`Black`, `Grey`)
+- Réduire la complexité
+- Réduire la duplication
+- Remplacer la propriété `as`
+  - peut etre par [le pattern `asChild`](https://grafikart.fr/tutoriels/aschild-props-react-2287)
+
+## Autre
+
+### Observations
+
+### Points de Friction
+
+### Recommandations
+
 ## Conclusion
 
 ### Recommandations
@@ -204,7 +259,6 @@ Il faudrait :
 
 Android iOS permission
 Audit greenspector
-libs/
 
 <details>
 
@@ -265,9 +319,6 @@ est-ce qu'on accepte ces perfs en tant que nouvelles base de performance ?
 
 data format pas adatpé, calcul coté frontend
 
-internal touchable link
-et button
-useSync
 sonar / CodeScene
 
 "quels sont les principes qui vont devoir être mis en place" il nous faut clairement "comment ils vont être mis en place"
