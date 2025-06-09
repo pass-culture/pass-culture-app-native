@@ -1,5 +1,5 @@
+import { QueryObserverResult } from '@tanstack/react-query'
 import React from 'react'
-import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures'

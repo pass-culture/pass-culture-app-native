@@ -1,4 +1,4 @@
-import { QueryClient } from 'react-query'
+import { QueryClient } from '@tanstack/react-query'
 
 import { BookingsResponse, BookOfferResponse } from 'api/gen'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'

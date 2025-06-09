@@ -1,4 +1,4 @@
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 
 import { BannerName, CurrencyEnum, SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'

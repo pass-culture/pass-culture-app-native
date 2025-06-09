@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import { SearchResponse } from 'instantsearch.js'
-import { useQuery } from 'react-query'
 
 import { getGtlPlaylistsParams } from 'features/gtlPlaylist/gtlPlaylistHelpers'
 import { UseGetOffersByGtlQueryArgs } from 'features/gtlPlaylist/types'

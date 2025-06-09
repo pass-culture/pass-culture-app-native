@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
+import * as ReactQueryAPI from '@tanstack/react-query'
 import React from 'react'
-import * as ReactQueryAPI from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
