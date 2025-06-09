@@ -1,18 +1,9 @@
 # Input / Output Externe
 
 ```mermaid
-flowchart LR
+flowchart TB
   App["App"]
-  Firebase_Firestore["Firebase Firestore : Feature Flags"]
-  Firebase_Remote_Config["Firebase Remote Config : A/B test"]
-  Google["Google Analytics : firebase traking"]
-  GCP["GCP ? Bff SEO social"]
-  Algolia["Algolia : recherche"]
-  Typeform["Typeform ?"]
-  Batch["Batch : notification et modal in app"]
-  Google_Maps["Google Maps"]
-  Contentful["Contentful : gestion de contenu : home, home thématique, playlists"]
-  subgraph identificiation
+  subgraph identification
     Google_Recaptcha["Google Recaptcha"]
     Ubble["Ubble"]
     Google["Google SSO"]
@@ -20,11 +11,14 @@ flowchart LR
     DMS["Démarche Simplifiée ?"]
   end
   subgraph tracking
-    AppsFlyer["AppsFlyer : traking downloads"]
+    Algolia_Analytics["Algolia Analytics : tracking actions"]
     Amplitude["Amplitude : traking actions"]
+    AppsFlyer["AppsFlyer : traking downloads"]
     Firebase_Analytics["Firebase Analytics : tracking actions"]
   end
   subgraph hosted_on_GCP
+    direction TB
+
     Backend["Backend"] --> Postgresql["PostgreSQL : stockage des données"]
     image_resize["Google App Engine : redimentionnement d'image"] --> bucket_image["Bucket GCP : stockage d'image"]
   end
@@ -36,29 +30,19 @@ flowchart LR
     Apple["Apple test flight"]
     Firebase_App_Distribution["Firebase App Distribution"]
   end
-  Apple --> App
-  Firebase_App_Distribution --> App
-  App --> Firebase_Firestore
-  App --> Firebase_Remote_Config
-  App --> Backend
-  App --> Google
-  App --> image_resize
-  App --> GCP
-  App --> Algolia
-  App --> Typeform
-  App --> Batch
-  App --> Google_Maps
-  App --> Contentful
-  App --> Google_Recaptcha
-  App --> Ubble
-  App --> Google
-  App --> Educonnect
-  App --> DMS
-  App --> AppsFlyer
-  App --> Amplitude
-  App --> Firebase_Analytics
-  App --> Sentry
-  App --> Codepush
+  subgraph others
+    Firebase_Firestore["Firebase Firestore : Feature Flags"]
+    Firebase_Remote_Config["Firebase Remote Config : A/B test"]
+    Google["Google Analytics : firebase traking"]
+    GCP["GCP ? Bff SEO social"]
+    Algolia["Algolia : recherche"]
+    Typeform["Typeform ?"]
+    Batch["Batch : notification et modal in app"]
+    Google_Maps["Google Maps"]
+    Contentful["Contentful : gestion de contenu : home, home thématique, playlists"]
+  end
+  distribution --> App
+  App --> identification & tracking & hosted_on_GCP & technique & others
 ```
 
 ```mermaid
@@ -84,12 +68,14 @@ architecture-beta
   App:R -- L:Educonnect
   App:R -- L:DMS
 
-  service AppsFlyer(cloud)[AppsFlyer traking downloads] in tracking
+  service Algolia_Analytics(cloud)[Algolia Analytics] in tracking
   service Amplitude(cloud)[Amplitude traking actions] in tracking
+  service AppsFlyer(cloud)[AppsFlyer traking downloads] in tracking
   service Firebase_Analytics(cloud)[Firebase Analytics tracking actions] in tracking
 
-  App:B -- T:AppsFlyer
+  App:B -- T:Algolia_Analytics
   App:B -- T:Amplitude
+  App:B -- T:AppsFlyer
   App:B -- T:Firebase_Analytics
 
   service Sentry(cloud)[Sentry erreurs tracking] in technique
