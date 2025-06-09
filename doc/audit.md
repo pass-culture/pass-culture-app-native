@@ -204,7 +204,6 @@ Il faudrait :
 
 Android iOS permission
 Audit greenspector
-.env
 libs/
 
 <details>
