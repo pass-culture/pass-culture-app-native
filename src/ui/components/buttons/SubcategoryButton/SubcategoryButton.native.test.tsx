@@ -10,7 +10,6 @@ import { theme } from 'theme'
 import { SubcategoryButton } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()

@@ -7,7 +7,7 @@ import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBa
 import { getTabNavigatorConfig } from 'features/navigation/RootNavigator/Header/getTabNavigatorConfig'
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
-import { useTabNavigationContext } from 'features/navigation/TabBar/TabStackNavigationStateContext'
+import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'

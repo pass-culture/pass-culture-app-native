@@ -8,7 +8,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
-} from 'features/navigation/TabBar/TabStackNavigationStateContext'
+} from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationFilter } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -24,7 +24,7 @@ import { TabBar } from './TabBar'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('features/navigation/TabBar/TabStackNavigationStateContext', () => {
+jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
   const { DEFAULT_TAB_ROUTES } = jest.requireActual(
     'features/navigation/TabBar/TabNavigationStateContext'
   )

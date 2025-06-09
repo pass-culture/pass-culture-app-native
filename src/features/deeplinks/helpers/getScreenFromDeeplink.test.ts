@@ -6,9 +6,6 @@ import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-// TODO(PC-34456): remove the global mock
-jest.unmock('features/navigation/RootNavigator/rootRoutes')
-
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {
     const url = getFullUrl('unknown-path')

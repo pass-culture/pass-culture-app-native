@@ -8,7 +8,7 @@ import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/g
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
-} from 'features/navigation/TabBar/TabStackNavigationStateContext'
+} from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

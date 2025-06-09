@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { getTabNavigatorConfig } from 'features/navigation/RootNavigator/Header/getTabNavigatorConfig'
 import { mapTabRouteToIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
-import { useTabNavigationContext } from 'features/navigation/TabBar/TabStackNavigationStateContext'
+import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabParamList } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'

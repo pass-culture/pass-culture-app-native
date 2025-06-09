@@ -1,10 +1,7 @@
-import { PathConfigMap } from '@react-navigation/native'
-
-import { AllNavParamList } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 
-// Temporary file: uncommenting path by path as we move routes from rootRoutes, directly to RootStackNavigator
-export const temporaryRootStackConfig: PathConfigMap<AllNavParamList> = {
+export const rootStackNavigatorPathConfig = {
+  // ...tabStackNavigatorPathConfig,
   CulturalSurveyIntro: {
     path: 'questionnaire-pratiques-initiales/introduction',
   },
@@ -253,51 +250,6 @@ export const temporaryRootStackConfig: PathConfigMap<AllNavParamList> = {
   SignupConfirmationExpiredLink: {
     path: 'email-confirmation-creation-compte/expire',
   },
-  //   TabNavigator: {
-  //     initialRouteName: 'Home',
-  //     screens: {
-  //       Home: {
-  //         path: 'accueil',
-  //         parse: {},
-  //       },
-  //       _DeeplinkOnlyHome1: {
-  //         path: 'home',
-  //         parse: {},
-  //       },
-  //       SearchStackNavigator: {
-  //         initialRouteName: 'SearchLanding',
-  //         screens: {
-  //           SearchLanding: {
-  //             path: 'recherche/accueil',
-  //             parse: {},
-  //             stringify: {},
-  //           },
-  //           SearchResults: {
-  //             path: 'recherche/resultats',
-  //             parse: {},
-  //             stringify: {},
-  //           },
-  //           ThematicSearch: {
-  //             path: 'recherche/thematique',
-  //             parse: {},
-  //             stringify: {},
-  //           },
-  //         },
-  //       },
-  //       Bookings: {
-  //         path: 'reservations',
-  //       },
-  //       _DeeplinkOnlyBookings1: {
-  //         path: 'bookings',
-  //       },
-  //       Favorites: {
-  //         path: 'favoris',
-  //       },
-  //       Profile: {
-  //         path: 'profil',
-  //       },
-  //     },
-  //   },
   SearchFilter: {
     path: 'recherche/filtres',
     parse: screenParamsParser['SearchFilter'],
@@ -367,4 +319,4 @@ export const temporaryRootStackConfig: PathConfigMap<AllNavParamList> = {
     path: 'chronicles/:offerId/:chronicleId',
     parse: screenParamsParser['Chronicles'],
   },
-}
+} as const
