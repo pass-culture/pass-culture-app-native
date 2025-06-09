@@ -8,7 +8,7 @@ export const useMinimalBuildNumber = () => {
     data: minimalBuildNumber,
     isLoading,
     error,
-  } = useQuery(QueryKeys.MINIMAL_BUILD_NUMBER, getMinimalBuildNumber, {
+  } = useQuery([QueryKeys.MINIMAL_BUILD_NUMBER], getMinimalBuildNumber, {
     staleTime: 1000 * 30,
     cacheTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
