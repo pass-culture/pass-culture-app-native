@@ -10,7 +10,7 @@ import { LocationMode, Position } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -58,41 +58,41 @@ describe('useGTLPlaylistsQuery', () => {
 
       renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
-      await act(async () => {})
-
-      expect(mockFetchOffersByGTL).toHaveBeenCalledWith({
-        parameters: expect.arrayContaining([
-          expect.objectContaining({
-            locationParams: {
-              aroundMeRadius: 'all',
-              aroundPlaceRadius: 'all',
-              selectedLocationMode: 'EVERYWHERE',
-              userLocation: null,
-            },
-            offerParams: expect.objectContaining({
-              offerGtlLabel: 'Romance',
-              offerGtlLevel: 3,
-              venue: {
-                info: 'Jest',
-                isOpenToPublic: true,
-                label: 'Une librairie',
-                venueId: 123,
+      await waitFor(() =>
+        expect(mockFetchOffersByGTL).toHaveBeenCalledWith({
+          parameters: expect.arrayContaining([
+            expect.objectContaining({
+              locationParams: {
+                aroundMeRadius: 'all',
+                aroundPlaceRadius: 'all',
+                selectedLocationMode: 'EVERYWHERE',
+                userLocation: null,
               },
+              offerParams: expect.objectContaining({
+                offerGtlLabel: 'Romance',
+                offerGtlLevel: 3,
+                venue: {
+                  info: 'Jest',
+                  isOpenToPublic: true,
+                  label: 'Une librairie',
+                  venueId: 123,
+                },
+              }),
             }),
-          }),
-        ]),
-        buildLocationParameterParams: {
-          aroundMeRadius: 'all',
-          aroundPlaceRadius: 'all',
-          selectedLocationMode: 'AROUND_ME',
-          userLocation: {
-            latitude: 48,
-            longitude: -1,
+          ]),
+          buildLocationParameterParams: {
+            aroundMeRadius: 'all',
+            aroundPlaceRadius: 'all',
+            selectedLocationMode: 'AROUND_ME',
+            userLocation: {
+              latitude: 48,
+              longitude: -1,
+            },
           },
-        },
-        isUserUnderage: false,
-        searchIndex: undefined,
-      })
+          isUserUnderage: false,
+          searchIndex: undefined,
+        })
+      )
     })
 
     it('should not return playlist that contains no offer', async () => {
@@ -105,7 +105,7 @@ describe('useGTLPlaylistsQuery', () => {
 
       const { result } = renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
-      await act(async () => {})
+      await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
       expect(result.current).toMatchObject({ data: [], isLoading: false, isSuccess: true })
     })
@@ -136,7 +136,7 @@ describe('useGTLPlaylistsQuery', () => {
 
       const { result } = renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
-      await act(async () => {})
+      await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
       expect(result.current).toMatchObject({ data: [] })
     })
@@ -151,32 +151,32 @@ describe('useGTLPlaylistsQuery', () => {
 
       renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
-      await act(async () => {})
-
-      expect(mockFetchOffersByGTL).toHaveBeenCalledWith({
-        buildLocationParameterParams: {
-          aroundMeRadius: 'all',
-          aroundPlaceRadius: 'all',
-          selectedLocationMode: 'AROUND_ME',
-          userLocation: { latitude: 48, longitude: -1 },
-        },
-        isUserUnderage: false,
-        parameters: expect.arrayContaining([
-          expect.objectContaining({
-            offerParams: expect.objectContaining({
-              offerGtlLabel: 'Romance',
-              offerGtlLevel: 3,
+      await waitFor(() =>
+        expect(mockFetchOffersByGTL).toHaveBeenCalledWith({
+          buildLocationParameterParams: {
+            aroundMeRadius: 'all',
+            aroundPlaceRadius: 'all',
+            selectedLocationMode: 'AROUND_ME',
+            userLocation: { latitude: 48, longitude: -1 },
+          },
+          isUserUnderage: false,
+          parameters: expect.arrayContaining([
+            expect.objectContaining({
+              offerParams: expect.objectContaining({
+                offerGtlLabel: 'Romance',
+                offerGtlLevel: 3,
+              }),
             }),
-          }),
-          expect.objectContaining({
-            offerParams: expect.objectContaining({
-              offerGtlLabel: 'Romance',
-              offerGtlLevel: 3,
+            expect.objectContaining({
+              offerParams: expect.objectContaining({
+                offerGtlLabel: 'Romance',
+                offerGtlLevel: 3,
+              }),
             }),
-          }),
-        ]),
-        searchIndex: undefined,
-      })
+          ]),
+          searchIndex: undefined,
+        })
+      )
     })
   })
 })
