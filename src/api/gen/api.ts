@@ -186,6 +186,22 @@ export interface AchievementResponse {
  */
 export interface AchievementsResponse extends Array<AchievementResponse> {}
 /**
+ * @export
+ * @interface ActivationCodeResponse
+ */
+export interface ActivationCodeResponse {
+  /**
+   * @type {string}
+   * @memberof ActivationCodeResponse
+   */
+  code: string
+  /**
+   * @type {string}
+   * @memberof ActivationCodeResponse
+   */
+  expirationDate?: string | null
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -513,6 +529,17 @@ export interface BookingOfferExtraData {
 }
 /**
  * @export
+ * @interface BookingOfferExtraDataV2
+ */
+export interface BookingOfferExtraDataV2 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV2
+   */
+  ean?: string | null
+}
+/**
+ * @export
  * @interface BookingOfferResponse
  */
 export interface BookingOfferResponse {
@@ -625,6 +652,103 @@ export interface BookingOfferResponseAddress {
 }
 /**
  * @export
+ * @interface BookingOfferResponseAddressV2
+ */
+export interface BookingOfferResponseAddressV2 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  city: string
+  /**
+   * @type {Coordinates}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  coordinates: Coordinates
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  timezone: string
+}
+/**
+ * @export
+ * @interface BookingOfferResponseV2
+ */
+export interface BookingOfferResponseV2 {
+  /**
+   * @type {BookingOfferResponseAddressV2}
+   * @memberof BookingOfferResponseV2
+   */
+  address?: BookingOfferResponseAddressV2 | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV2
+   */
+  bookingContact?: string | null
+  /**
+   * @type {BookingOfferExtraDataV2}
+   * @memberof BookingOfferResponseV2
+   */
+  extraData?: BookingOfferExtraDataV2 | null
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseV2
+   */
+  id: number
+  /**
+   * @type {OfferImageResponse}
+   * @memberof BookingOfferResponseV2
+   */
+  image?: OfferImageResponse | null
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV2
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV2
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV2
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingOfferResponseV2
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV2
+   */
+  url?: string | null
+  /**
+   * @type {BookingVenueResponseV2}
+   * @memberof BookingOfferResponseV2
+   */
+  venue: BookingVenueResponseV2
+}
+/**
+ * @export
  * @interface BookingReponse
  */
 export interface BookingReponse {
@@ -721,6 +845,87 @@ export interface BookingReponse {
 }
 /**
  * @export
+ * @interface BookingResponse
+ */
+export interface BookingResponse {
+  /**
+   * @type {boolean}
+   * @memberof BookingResponse
+   */
+  canReact: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  cancellationDate?: string | null
+  /**
+   * @type {BookingCancellationReasons}
+   * @memberof BookingResponse
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  completedUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  confirmationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  dateUsed?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponse
+   */
+  enablePopUpReaction: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  expirationDate?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingResponse
+   */
+  id: number
+  /**
+   * @type {number}
+   * @memberof BookingResponse
+   */
+  quantity: number
+  /**
+   * @type {BookingStockResponseV2}
+   * @memberof BookingResponse
+   */
+  stock: BookingStockResponseV2
+  /**
+   * @type {TicketResponse}
+   * @memberof BookingResponse
+   */
+  ticket?: TicketResponse | null
+  /**
+   * @type {number}
+   * @memberof BookingResponse
+   */
+  totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingResponse
+   */
+  userReaction?: ReactionTypeEnum | null
+}
+/**
+ * @export
  * @interface BookingStockResponse
  */
 export interface BookingStockResponse {
@@ -757,6 +962,42 @@ export interface BookingStockResponse {
 }
 /**
  * @export
+ * @interface BookingStockResponseV2
+ */
+export interface BookingStockResponseV2 {
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV2
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {Array<string>}
+   * @memberof BookingStockResponseV2
+   */
+  features: Array<string>
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV2
+   */
+  id: number
+  /**
+   * @type {BookingOfferResponseV2}
+   * @memberof BookingStockResponseV2
+   */
+  offer: BookingOfferResponseV2
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV2
+   */
+  price: number
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV2
+   */
+  priceCategoryLabel?: string | null
+}
+/**
+ * @export
  * @interface BookingVenueResponse
  */
 export interface BookingVenueResponse {
@@ -764,22 +1005,7 @@ export interface BookingVenueResponse {
    * @type {string}
    * @memberof BookingVenueResponse
    */
-  address?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingVenueResponse
-   */
   bannerUrl?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingVenueResponse
-   */
-  city?: string | null
-  /**
-   * @type {Coordinates}
-   * @memberof BookingVenueResponse
-   */
-  coordinates: Coordinates
   /**
    * @type {number}
    * @memberof BookingVenueResponse
@@ -799,15 +1025,47 @@ export interface BookingVenueResponse {
    * @type {string}
    * @memberof BookingVenueResponse
    */
-  postalCode?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingVenueResponse
-   */
   publicName?: string | null
   /**
    * @type {string}
    * @memberof BookingVenueResponse
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingVenueResponseV2
+ */
+export interface BookingVenueResponseV2 {
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingVenueResponseV2
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponseV2
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
+   */
+  publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
    */
   timezone: string
 }
@@ -831,6 +1089,27 @@ export interface BookingsResponse {
    * @memberof BookingsResponse
    */
   ongoing_bookings: Array<BookingReponse>
+}
+/**
+ * @export
+ * @interface BookingsResponseV2
+ */
+export interface BookingsResponseV2 {
+  /**
+   * @type {Array<BookingResponse>}
+   * @memberof BookingsResponseV2
+   */
+  endedBookings: Array<BookingResponse>
+  /**
+   * @type {boolean}
+   * @memberof BookingsResponseV2
+   */
+  hasBookingsAfter18: boolean
+  /**
+   * @type {Array<BookingResponse>}
+   * @memberof BookingsResponseV2
+   */
+  ongoingBookings: Array<BookingResponse>
 }
 /**
  * An enumeration.
@@ -1373,6 +1652,17 @@ export enum EmailHistoryEventTypeEnum {
 }
 /**
  * @export
+ * @interface EmailResponse
+ */
+export interface EmailResponse {
+  /**
+   * @type {boolean}
+   * @memberof EmailResponse
+   */
+  hasTicketEmailBeenSent: boolean
+}
+/**
+ * @export
  * @interface EmailUpdateStatus
  */
 export interface EmailUpdateStatus {
@@ -1502,6 +1792,22 @@ export interface ExternalAccessibilityDataModel {
 }
 /**
  * @export
+ * @interface ExternalBookingDataResponseV2
+ */
+export interface ExternalBookingDataResponseV2 {
+  /**
+   * @type {string}
+   * @memberof ExternalBookingDataResponseV2
+   */
+  barcode: string
+  /**
+   * @type {string}
+   * @memberof ExternalBookingDataResponseV2
+   */
+  seat?: string | null
+}
+/**
+ * @export
  * @interface ExternalBookingResponse
  */
 export interface ExternalBookingResponse {
@@ -1515,6 +1821,17 @@ export interface ExternalBookingResponse {
    * @memberof ExternalBookingResponse
    */
   seat?: string | null
+}
+/**
+ * @export
+ * @interface ExternalBookingResponseV2
+ */
+export interface ExternalBookingResponseV2 {
+  /**
+   * @type {Array<ExternalBookingDataResponseV2>}
+   * @memberof ExternalBookingResponseV2
+   */
+  data?: Array<ExternalBookingDataResponseV2> | null
 }
 /**
  * @export
@@ -4197,6 +4514,58 @@ export interface SuspendAccountForSuspiciousLoginRequest {
 }
 /**
  * @export
+ * @interface TicketResponse
+ */
+export interface TicketResponse {
+  /**
+   * @type {ActivationCodeResponse}
+   * @memberof TicketResponse
+   */
+  activationCode?: ActivationCodeResponse | null
+  /**
+   * @type {EmailResponse}
+   * @memberof TicketResponse
+   */
+  email?: EmailResponse | null
+  /**
+   * @type {ExternalBookingResponseV2}
+   * @memberof TicketResponse
+   */
+  externalBooking?: ExternalBookingResponseV2 | null
+  /**
+   * @type {boolean}
+   * @memberof TicketResponse
+   */
+  noTicket: boolean
+  /**
+   * @type {TokenResponse}
+   * @memberof TicketResponse
+   */
+  token?: TokenResponse | null
+  /**
+   * @type {VoucherResponse}
+   * @memberof TicketResponse
+   */
+  voucher?: VoucherResponse | null
+  /**
+   * @type {WithdrawalResponse}
+   * @memberof TicketResponse
+   */
+  withdrawal: WithdrawalResponse
+}
+/**
+ * @export
+ * @interface TokenResponse
+ */
+export interface TokenResponse {
+  /**
+   * @type {string}
+   * @memberof TokenResponse
+   */
+  data?: string | null
+}
+/**
+ * @export
  * @interface TrustedDevice
  */
 export interface TrustedDevice {
@@ -4783,6 +5152,38 @@ export interface VisualDisabilityModel {
    * @memberof VisualDisabilityModel
    */
   soundBeacon?: string
+}
+/**
+ * @export
+ * @interface VoucherResponse
+ */
+export interface VoucherResponse {
+  /**
+   * @type {string}
+   * @memberof VoucherResponse
+   */
+  data?: string | null
+}
+/**
+ * @export
+ * @interface WithdrawalResponse
+ */
+export interface WithdrawalResponse {
+  /**
+   * @type {number}
+   * @memberof WithdrawalResponse
+   */
+  delay?: number | null
+  /**
+   * @type {string}
+   * @memberof WithdrawalResponse
+   */
+  details?: string | null
+  /**
+   * @type {WithdrawalTypeEnum}
+   * @memberof WithdrawalResponse
+   */
+  type?: WithdrawalTypeEnum | null
 }
 /**
  * An enumeration.
@@ -5575,6 +5976,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(venue_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_bookings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2Bookings(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/bookings`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -7462,7 +7881,23 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
+     * @summary get_bookings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2Bookings(options?: any): Promise<BookingsResponseV2> {
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV2Bookings(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary get_offer_v2 <GET>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -8886,6 +9321,7 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
   }
   /**
+<<<<<<< HEAD
     * 
     * @summary get_offer_v2 <GET>
     * @param {number} offer_id 
@@ -8893,6 +9329,26 @@ export class DefaultApi extends BaseAPI {
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
+=======
+   *
+   * @summary get_bookings <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async getNativeV2Bookings(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2Bookings(options)
+  }
+  /**
+   *
+   * @summary get_offer_v2 <GET>
+   * @param {number} offer_id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+>>>>>>> d616eef1c60 ((PC-36437) feat(api): update api contract with /v2/bookings route)
   public async getNativeV2OfferofferId(offer_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2OfferofferId(offer_id, options)
