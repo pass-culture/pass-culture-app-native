@@ -142,6 +142,17 @@ const variantConfig: Variants<typeof Checkbox> = [
     },
   },
   {
+    label: 'Checkbox Detailed With Icon Disabled',
+    props: {
+      label: 'Checkbox label',
+      variant: 'detailed',
+      isChecked: false,
+      disabled: true,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      asset: { variant: 'icon', Icon: Calendar },
+    },
+  },
+  {
     label: 'Checkbox Detailed Has Error',
     props: {
       label: 'Checkbox label',
@@ -217,7 +228,28 @@ const variantConfig: Variants<typeof Checkbox> = [
     props: {
       label: 'Checkbox label',
       variant: 'detailed',
+      isChecked: false,
+      asset: { variant: 'icon', Icon: Calendar },
+      collapsed: <Typo.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typo.Body>,
+    },
+  },
+  {
+    label: 'Checkbox Detailed With Collapsed Content Checked',
+    props: {
+      label: 'Checkbox label',
+      variant: 'detailed',
       isChecked: true,
+      asset: { variant: 'icon', Icon: Calendar },
+      collapsed: <Typo.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typo.Body>,
+    },
+  },
+  {
+    label: 'Checkbox Detailed With Collapsed Content Disabled',
+    props: {
+      label: 'Checkbox label',
+      variant: 'detailed',
+      isChecked: false,
+      disabled: true,
       asset: { variant: 'icon', Icon: Calendar },
       collapsed: <Typo.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typo.Body>,
     },

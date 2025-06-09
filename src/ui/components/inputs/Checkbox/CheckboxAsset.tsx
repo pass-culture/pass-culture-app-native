@@ -5,12 +5,10 @@ import FastImage from 'react-native-fast-image'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { AppThemeType } from 'theme'
-import { Tag, TagProps } from 'ui/components/Tag/Tag'
-import { AccessibleIcon } from 'ui/svg/icons/types'
+import { CheckboxAssetProps, SizeProp } from 'ui/components/inputs/Checkbox/types'
+import { Tag } from 'ui/components/Tag/Tag'
 import { Typo } from 'ui/theme'
 
-type SizeProp = keyof AppThemeType['image']['square']['sizes']
 type StyleProps = {
   size: SizeProp
   borderRadius?: number
@@ -18,42 +16,9 @@ type StyleProps = {
   withShadow?: boolean
 }
 
-export type CheckboxAssetProps =
-  | {
-      variant: 'icon'
-      Icon: React.FC<AccessibleIcon>
-      src?: never
-      size?: never
-      text?: never
-      tag?: never
-    }
-  | {
-      variant: 'tag'
-      tag: TagProps
-      src?: never
-      size?: never
-      text?: never
-      Icon?: never
-    }
-  | {
-      variant: 'text'
-      text: string
-      src?: never
-      size?: never
-      Icon?: never
-      tag?: never
-    }
-  | {
-      variant: 'image'
-      src: string
-      size?: SizeProp
-      Icon?: never
-      text?: never
-      tag?: never
-    }
-
 export function CheckboxAsset({
   variant,
+  disable = false,
   Icon,
   src,
   size = 'small',
@@ -62,14 +27,12 @@ export function CheckboxAsset({
 }: CheckboxAssetProps) {
   const { designSystem, icons } = useTheme()
 
+  const iconColor = disable
+    ? designSystem.color.icon.disabled
+    : designSystem.color.icon.brandPrimary
+
   if (variant === 'icon') {
-    return (
-      <Icon
-        color={designSystem.color.icon.brandPrimary}
-        color2={designSystem.color.icon.brandPrimary}
-        size={icons.sizes.standard}
-      />
-    )
+    return <Icon color={iconColor} color2={iconColor} size={icons.sizes.standard} />
   }
 
   if (variant === 'image') {
