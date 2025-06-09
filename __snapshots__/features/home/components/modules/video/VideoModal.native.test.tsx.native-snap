@@ -666,10 +666,13 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   </Text>
                 </View>
                 <View
+                  hasBottomRightElement={false}
+                  hasRightTagLabel={false}
                   style={
                     [
                       {
                         "alignItems": "flex-end",
+                        "justifyContent": "flex-end",
                         "marginVertical": 1,
                       },
                     ]
