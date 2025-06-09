@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { fetchCities } from 'libs/place/fetchCities'
 import { SuggestedCity } from 'libs/place/types'

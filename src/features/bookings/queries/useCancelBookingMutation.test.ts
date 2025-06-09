@@ -1,4 +1,4 @@
-import * as ReactQueryAPI from 'react-query'
+import * as ReactQueryAPI from '@tanstack/react-query'
 
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'

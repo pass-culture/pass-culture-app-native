@@ -1,4 +1,4 @@
-import { UseQueryResult, useQuery } from 'react-query'
+import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'

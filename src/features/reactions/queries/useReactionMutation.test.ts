@@ -1,4 +1,4 @@
-import { QueryClient } from 'react-query'
+import { QueryClient } from '@tanstack/react-query'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures'

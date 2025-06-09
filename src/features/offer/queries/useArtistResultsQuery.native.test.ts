@@ -10,7 +10,7 @@ import { renderHook, waitFor } from 'tests/utils'
 import * as fetchOffersByArtist from '../api/fetchOffersByArtist/fetchOffersByArtist'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
+  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
 }))
 
 const fetchOffersByArtistSpy = jest

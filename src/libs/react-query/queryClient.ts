@@ -1,4 +1,4 @@
-import { QueryCache, QueryClient } from 'react-query'
+import { QueryCache, QueryClient } from '@tanstack/react-query'
 
 const queryCache = new QueryCache()
 // Read https://tkdodo.eu/blog/placeholder-and-initial-data-in-react-query
