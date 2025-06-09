@@ -32,7 +32,7 @@ flowchart TB
   -->|has recommanded offers| RecommandedOffers
 ```
 
-##### Intermédiaire
+## Intermédiaire
 
 Découpage en
 
@@ -77,7 +77,7 @@ flowchart TB
   -->|has recommanded offers| RecommandedOffers
 ```
 
-##### Archi cible
+## Archi cible
 
 Avec `ErrorBoundary` et `Suspense`
 
