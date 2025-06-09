@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { FavoritesCountResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabStackNavigationStateContext'
+import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -25,21 +25,6 @@ const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
-
-jest.mock('features/navigation/RootNavigator/rootRoutes', () => ({
-  routes: [
-    {
-      name: 'TabNavigator',
-      component: () => null,
-      pathConfig: {
-        initialRouteName: 'Home',
-        screens: {
-          Home: undefined,
-        },
-      },
-    },
-  ],
-}))
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({

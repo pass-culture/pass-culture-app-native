@@ -13,7 +13,6 @@ const mockOffer = mockedAlgoliaResponse.hits[0]
 const hideModalMock = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 describe('VideoPlayer', () => {
   describe('analytics', () => {

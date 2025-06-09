@@ -21,7 +21,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
