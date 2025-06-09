@@ -1,7 +1,5 @@
 # Input / Output Externe
 
-## Macro
-
 ```mermaid
 flowchart LR
   App["App"]
@@ -62,8 +60,6 @@ flowchart LR
   App --> Sentry
   App --> Codepush
 ```
-
-TODO refaire le diagram du dessus avec architecture-beta
 
 ```mermaid
 architecture-beta
