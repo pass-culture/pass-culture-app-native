@@ -7,7 +7,8 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 export const cheatcodesNavigationCulturalSurveyButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'CulturalSurvey 🎨',
-    screen: 'CheatcodesNavigationCulturalSurvey',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationCulturalSurvey' },
     subscreens: [
       { screen: 'CulturalSurveyIntro' },
       { screen: 'CulturalSurveyQuestions' },

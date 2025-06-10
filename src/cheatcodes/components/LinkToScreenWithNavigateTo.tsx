@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const LinkToScreenWithNavigateTo = ({
-  screen = 'CheatcodesMenu',
+  screen,
   onPress,
   title,
   navigateTo,
@@ -28,11 +28,12 @@ export const LinkToScreenWithNavigateTo = ({
   isSubscreen = false,
 }: Props) => {
   const Button = isSubscreen ? ButtonSecondary : ButtonPrimary
+  const LinkName = title ?? screen ?? 'No Name Defined'
   return (
     <Row>
       {onPress || !navigateTo ? (
         <Button
-          wording={title ?? screen}
+          wording={LinkName}
           onPress={onPress}
           disabled={disabled}
           buttonHeight={buttonHeight}
@@ -40,7 +41,7 @@ export const LinkToScreenWithNavigateTo = ({
       ) : (
         <InternalTouchableLink
           as={Button}
-          wording={title ?? screen}
+          wording={LinkName}
           navigateTo={navigateTo}
           disabled={disabled}
           buttonHeight={buttonHeight}

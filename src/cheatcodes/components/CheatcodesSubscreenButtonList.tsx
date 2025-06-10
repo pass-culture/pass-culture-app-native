@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { LinkToScreenWithNavigateTo } from 'cheatcodes/components/LinkToScreenWithNavigateTo'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -27,7 +27,7 @@ export const CheatcodesSubscreensButtonList: React.FC<Props> = ({ buttons }) => 
             )
 
           return (
-            <LinkToScreen
+            <LinkToCheatcodesScreen
               key={`${index}-${subIndex}`}
               title={subscreen.title ?? subscreen.screen ?? '[sans titre]'}
               screen={subscreen.screen}

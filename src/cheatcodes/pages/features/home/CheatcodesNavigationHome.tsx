@@ -7,14 +7,24 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 export const cheatcodesNavigationHomeButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Home 🏠',
-    screen: 'CheatcodesNavigationHome',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationHome' },
     subscreens: [
       {
         title: 'HighlightThematicHomeHeader',
-        screen: 'CheatcodesScreenHighlightThematicHomeHeader',
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenHighlightThematicHomeHeader' },
       },
-      { title: 'DefaultThematicHomeHeader', screen: 'CheatcodesScreenDefaultThematicHomeHeader' },
-      { title: 'CategoryThematicHomeHeader', screen: 'CheatcodesScreenCategoryThematicHomeHeader' },
+      {
+        title: 'DefaultThematicHomeHeader',
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenDefaultThematicHomeHeader' },
+      },
+      {
+        title: 'CategoryThematicHomeHeader',
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenCategoryThematicHomeHeader' },
+      },
     ],
   },
 ]

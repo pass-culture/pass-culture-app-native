@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 
 export function CheatcodesNavigationNewIdentificationFlow(): React.JSX.Element {
@@ -10,21 +10,21 @@ export function CheatcodesNavigationNewIdentificationFlow(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="NewIdentificationFlow 🎨">
-      <LinkToScreen screen="SelectIDOrigin" />
-      <LinkToScreen screen="SelectIDStatus" />
-      <LinkToScreen screen="SelectPhoneStatus" />
-      <LinkToScreen
+      <LinkToCheatcodesScreen screen="SelectIDOrigin" />
+      <LinkToCheatcodesScreen screen="SelectIDStatus" />
+      <LinkToCheatcodesScreen screen="SelectPhoneStatus" />
+      <LinkToCheatcodesScreen
         screen="DMSIntroduction"
         title="DMS français"
         onPress={() => navigate('DMSIntroduction', { isForeignDMSInformation: false })}
       />
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         screen="DMSIntroduction"
         title="DMS étranger"
         onPress={() => navigate('DMSIntroduction', { isForeignDMSInformation: true })}
       />
-      <LinkToScreen screen="ExpiredOrLostID" />
-      <LinkToScreen screen="ComeBackLater" />
+      <LinkToCheatcodesScreen screen="ExpiredOrLostID" />
+      <LinkToCheatcodesScreen screen="ComeBackLater" />
     </CheatcodesTemplateScreen>
   )
 }

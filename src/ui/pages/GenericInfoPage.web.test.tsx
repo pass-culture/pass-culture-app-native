@@ -23,7 +23,10 @@ describe('<GenericInfoPage />', () => {
           subtitle="Subtitle"
           buttonPrimary={{
             wording: 'ButtonPrimary',
-            navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+            navigateTo: {
+              screen: 'CheatcodesStackNavigator',
+              params: { screen: 'CheatcodesNavigationGenericPages' },
+            },
           }}
           buttonSecondary={{
             wording: 'ButtonSecondary',
@@ -31,7 +34,10 @@ describe('<GenericInfoPage />', () => {
           }}
           buttonTertiary={{
             wording: 'ButtonTertiary',
-            navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+            navigateTo: {
+              screen: 'CheatcodesStackNavigator',
+              params: { screen: 'CheatcodesNavigationGenericPages' },
+            },
             icon: PlainArrowPrevious,
           }}>
           <Typo.Body>Children...</Typo.Body>

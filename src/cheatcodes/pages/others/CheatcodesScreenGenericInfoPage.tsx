@@ -10,7 +10,7 @@ import { Typo } from 'ui/theme'
 export const CheatcodesScreenGenericInfoPage = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToCheatcodesNavigationGenericPages = () => {
-    navigate('CheatcodesNavigationGenericPages')
+    navigate('CheatcodesStackNavigator', { screen: 'CheatcodesNavigationGenericPages' })
   }
   return (
     <GenericInfoPage
@@ -21,7 +21,10 @@ export const CheatcodesScreenGenericInfoPage = () => {
       subtitle="Subtitle"
       buttonPrimary={{
         wording: 'ButtonPrimary',
-        navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+        navigateTo: {
+          screen: 'CheatcodesStackNavigator',
+          params: { screen: screen },
+        },
         icon: PlainArrowPrevious,
       }}
       buttonSecondary={{
@@ -31,7 +34,10 @@ export const CheatcodesScreenGenericInfoPage = () => {
       }}
       buttonTertiary={{
         wording: 'ButtonTertiary',
-        navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+        navigateTo: {
+          screen: 'CheatcodesStackNavigator',
+          params: { screen: screen },
+        },
         icon: PlainArrowPrevious,
       }}>
       <Typo.Body>Children...</Typo.Body>

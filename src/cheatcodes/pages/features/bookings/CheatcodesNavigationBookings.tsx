@@ -8,9 +8,14 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 export const cheatcodesNavigationBookingsButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Bookings 🛍️',
-    screen: 'CheatcodesNavigationBookings',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationBookings' },
     subscreens: [
-      { screen: 'CheatcodesScreenBookingNotFound', title: 'BookingNotFound' },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesNavigationBookings' },
+        title: 'BookingNotFound',
+      },
       { screen: 'SetName', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
       { screen: 'SetCity', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
       { screen: 'SetAddress', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },

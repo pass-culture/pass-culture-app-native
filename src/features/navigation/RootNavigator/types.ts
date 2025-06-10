@@ -216,7 +216,7 @@ export type RootStackParamList = {
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator?: {
     screen: CheatcodesStackRouteName
-    params: CheatcodesStackParamList[CheatcodesStackRouteName]
+    params?: CheatcodesStackParamList[CheatcodesStackRouteName]
   }
   Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
@@ -335,6 +335,7 @@ type NavigateParams<RouteName extends keyof ParamListBase> =
     ? [RouteName] | [RouteName, ParamListBase[RouteName]]
     : [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
+export type CheatcodesNavigateParams = NavigateParams<keyof RootStackParamList>
 export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 

@@ -1,6 +1,5 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -27,5 +26,5 @@ export const linking: RequireField<
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
-  config: { screens: { ...rootScreensConfig, ...cheatcodesStackNavigatorConfig } },
+  config: { screens: { ...rootScreensConfig } },
 }

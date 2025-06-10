@@ -7,7 +7,8 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 export const cheatcodesNavigationInternalButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Internal (Maketing) 🎯',
-    screen: 'CheatcodesNavigationInternal',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationInternal' },
     subscreens: [{ screen: 'DeeplinksGenerator' }, { screen: 'UTMParameters' }],
   },
 ]

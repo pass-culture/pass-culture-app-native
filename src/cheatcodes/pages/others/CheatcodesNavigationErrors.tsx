@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
@@ -18,7 +18,8 @@ import { Typo } from 'ui/theme'
 export const cheatcodesNavigationErrorsButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Errors 👾',
-    screen: 'CheatcodesNavigationErrors',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationErrors' },
     subscreens: [
       { screen: 'BannedCountryError' },
       { title: 'Contentful KO error', showOnlyInSearch: true },
@@ -63,7 +64,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
     <CheatcodesTemplateScreen title={cheatcodesNavigationErrorsButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationErrorsButtons} />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title={
           asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
             ? `${MAX_ASYNC_TEST_REQ_COUNT} erreurs asynchrones`
@@ -73,7 +74,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
         onPress={() => errorAsyncQuery()}
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="Contentful KO error"
         onPress={() =>
           setScreenError(
@@ -85,12 +86,12 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
         }
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="Offre inexistante"
         onPress={() => navigate('Offer', { id: 0, from: 'searchresults' })}
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="Maintenance"
         onPress={() =>
           setScreenError(
@@ -104,7 +105,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
         }
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="Error rendering"
         onPress={() => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
