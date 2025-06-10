@@ -49,7 +49,7 @@ const OfferImage = styled(FastImage)({
 })
 
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const TextWrapper = styled.View({

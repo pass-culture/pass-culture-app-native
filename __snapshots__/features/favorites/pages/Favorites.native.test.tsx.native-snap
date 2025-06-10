@@ -167,16 +167,6 @@ exports[`<Favorites/> should render correctly 1`] = `
             undefined-SVG-Mock
           </Text>
         </View>
-        <View
-          numberOfSpaces={1}
-          style={
-            [
-              {
-                "width": 4,
-              },
-            ]
-          }
-        />
         <Text
           style={
             [
@@ -185,22 +175,14 @@ exports[`<Favorites/> should render correctly 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
+                "marginLeft": 4,
+                "marginRight": 8,
               },
             ]
           }
         >
           Trier
         </Text>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "width": 8,
-              },
-            ]
-          }
-        />
       </BVLinearGradient>
     </View>
     <View
@@ -879,7 +861,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -1387,7 +1369,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -1895,7 +1877,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -2403,7 +2385,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -2911,7 +2893,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -3419,7 +3401,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -3927,7 +3909,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -4435,7 +4417,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
@@ -4943,7 +4925,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 2,
                   "marginHorizontal": 24,
                   "marginVertical": 16,
