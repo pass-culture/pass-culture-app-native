@@ -69,8 +69,8 @@ architecture-beta
   App:R --> L:DMS
 
   service Algolia_Analytics(cloud)[Algolia Analytics] in tracking
-  service Amplitude(cloud)[Amplitude traking actions] in tracking
-  service AppsFlyer(cloud)[AppsFlyer traking downloads] in tracking
+  service Amplitude(cloud)[Amplitude tracking actions] in tracking
+  service AppsFlyer(cloud)[AppsFlyer tracking downloads] in tracking
   service Firebase_Analytics(cloud)[Firebase Analytics tracking actions] in tracking
 
   App:B --> T:Algolia_Analytics
@@ -92,7 +92,7 @@ architecture-beta
 
   service Firebase_Firestore(cloud)[Firebase Firestore Feature Flags] in others
   service Firebase_Remote_Config(cloud)[Firebase Remote Config AB test] in others
-  service Google_Analytics(cloud)[Google Analytics firebase traking] in others
+  service Google_Analytics(cloud)[Google Analytics firebase tracking] in others
   service GCP(cloud)[GCP Bff SEO social] in others %% ?
   service Algolia(cloud)[Algolia recherche] in others
   service typeform(cloud)[Typeform] in others %% ?
@@ -110,7 +110,7 @@ architecture-beta
   App:T --> B:Google_Maps
   App:T --> B:Contentful
 
-  service image_resize(server)[Google App Engine redimentionnement d image] in hosted_on_GCP
+  service image_resize(server)[Google App Engine redimensionnement d image] in hosted_on_GCP
   service bucket_image(disk)[Bucket GCP stockage d image] in hosted_on_GCP
   App:R --> L:image_resize
   image_resize:R --> L:bucket_image
