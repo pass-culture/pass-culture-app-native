@@ -19,6 +19,8 @@ export const useLaunchPerformanceObserver = (): void => {
           CustomMarks.SCREEN_INTERACTIVE
         )
 
+        console.log(JSON.stringify(measure, null, 2))
+
         if (__DEV__ || !measure.duration) {
           return
         } else {

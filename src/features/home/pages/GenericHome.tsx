@@ -23,7 +23,11 @@ import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { getItemTypeFromModuleType } from 'features/home/helpers/getItemTypeFromModuleType'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
-import { useInitialScreenName } from 'features/home/pages/helpers/usePerformanceMonitoringStore'
+import {
+  performanceMonitoringStoreActions,
+  useInitialScreenName,
+  useWasPerformanceMarkedThisSession,
+} from 'features/home/pages/helpers/usePerformanceMonitoringStore'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,
@@ -155,6 +159,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   statusBar,
 }) => {
   const initialScreenName = useInitialScreenName()
+  const wasPerformanceMarkedThisSession = useWasPerformanceMarkedThisSession()
   const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
@@ -337,7 +342,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
-          onLayout={() => markScreenInteractiveOnHomeLayout(initialScreenName)}
+          onLayout={() => {
+            if (!wasPerformanceMarkedThisSession) {
+              markScreenInteractiveOnHomeLayout(initialScreenName)
+              performanceMonitoringStoreActions.setWasPerformanceMarkedThisSession(true)
+            }
+          }}
           accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"
