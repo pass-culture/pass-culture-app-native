@@ -373,6 +373,4 @@ Audit greenspector
 
 useSafeState
 
-sonar / CodeScene
-
 "quels sont les principes qui vont devoir être mis en place" il nous faut clairement "comment ils vont être mis en place"
