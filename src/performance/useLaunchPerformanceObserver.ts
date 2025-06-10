@@ -13,16 +13,16 @@ export const useLaunchPerformanceObserver = (): void => {
         .find((entry) => entry.name === CustomMarks.SCREEN_INTERACTIVE)
 
       if (isScreenInteractiveReady) {
-        const measure = performance.measure(
+        const tti = performance.measure(
           CustomMarks.TIME_TO_INTERACTIVE,
           'nativeLaunchStart',
           CustomMarks.SCREEN_INTERACTIVE
         )
 
-        if (__DEV__ || !measure.duration) {
+        if (__DEV__ || !tti.duration) {
           return
         } else {
-          customTrace(measure.duration)
+          customTrace(tti.duration)
         }
       }
     })
