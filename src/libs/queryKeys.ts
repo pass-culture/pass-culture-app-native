@@ -5,6 +5,7 @@ export enum QueryKeys {
   ACTIVITY_TYPES = 'activityTypes',
   ADDRESSES = 'addresses',
   ALGOLIA_SIMILAR_OFFERS = 'algoliaSimilarOffers',
+  ARTIST = 'artist',
   ARTIST_PLAYLIST = 'artistPlaylist',
   AVAILABLE_REACTION = 'availableReaction',
   BOOKINGS = 'bookings',

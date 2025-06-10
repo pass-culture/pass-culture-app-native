@@ -4,11 +4,11 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ArtistResponse } from 'api/gen'
 import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHeader'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
-import { ArtistType } from 'features/artist/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
@@ -25,7 +25,7 @@ const isWeb = Platform.OS === 'web'
 const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
 type Props = {
-  artist: ArtistType
+  artist: ArtistResponse
   artistPlaylist: AlgoliaOfferWithArtistAndEan[]
   artistTopOffers: AlgoliaOfferWithArtistAndEan[]
 }
@@ -42,7 +42,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
-  const { name, bio, image } = artist
+  const { name, description, image } = artist
 
   const avatarImage = useMemo(() => {
     if (!image) {
@@ -77,11 +77,11 @@ export const ArtistBody: FunctionComponent<Props> = ({
         <ViewGap gap={8}>
           <ViewGap gap={6}>
             <ArtistHeader name={name} avatarImage={avatarImage} />
-            {bio ? (
+            {description ? (
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
                 <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-                  {highlightLinks(bio)}
+                  {highlightLinks(description)}
                 </CollapsibleText>
               </Description>
             ) : null}
