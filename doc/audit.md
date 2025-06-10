@@ -141,7 +141,7 @@
 
 #### Points de friction
 
-- le hook `src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts` est trop complexe, le rendant difficile à maintenir et difficile de dire avec assurance quel bouton sera affiché dans telle situation
+- le hook `src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts` est [trop complexe](https://codescene.io/projects/45999/jobs/4034898/results/files/hotspots?file-name=pass-culture-app-native%2Fsrc%2Ffeatures%2Foffer%2Fhelpers%2FuseCtaWordingAndAction%2FuseCtaWordingAndAction.ts#hotspots), le rendant [difficile à maintenir](https://codescene.io/projects/45999/jobs/4034898/results/code/hotspots/biomarkers?name=pass-culture-app-native%2Fsrc%2Ffeatures%2Foffer%2Fhelpers%2FuseCtaWordingAndAction%2FuseCtaWordingAndAction.ts) et difficile de dire avec assurance quel bouton sera affiché dans telle situation
 
 #### Recommandations
 
