@@ -42,7 +42,7 @@
 
 #### Points de Friction
 
-- Utiliser des contextes peut engendrer des problèmes de performance en causant des re-render d'une grande partie de l'arborecanse de composants
+- Utiliser des contextes peut engendrer des problèmes de performance en causant des re-render d'une grande partie de l'arborescence de composants
 
 #### Recommandations
 
@@ -77,7 +77,7 @@
       - supprimer ces contexts au passage
         - `PushNotificationsWrapper`
         - `ShareAppWrapper`
-    - `NetInfoWrapper` centraliser les requetes
+    - `NetInfoWrapper` centraliser les requêtes
   - TBD lorsqu'on s'en occupera
     - `Suspense` à supprimer ? à bouger top level ?
     - `ScreenErrorProvider` je ne sais pas encore mais pas de cette manière
@@ -89,7 +89,7 @@
         - aligner le reste du projet
           - `src/cheatcodes/pages/others/CheatcodesNavigationNotScreensPages.tsx`
           - la [config `browserslist`](https://browsersl.ist/) utilisée par vite
-    - `GoogleOAuthProvider` est-ce qu'il ne pourrait pas etre bougé au moins dans le bundle qui contient l'inscription et la connexion ?
+    - `GoogleOAuthProvider` est-ce qu'il ne pourrait pas être bougé au moins dans le bundle qui contient l'inscription et la connexion ?
 
 ### Accueil
 
@@ -115,7 +115,7 @@
 #### Observations
 
 - `src/features/search/helpers/useSync/useSync.ts` hook permettant de synchroniser la navigation avec les états des contextes de recherche et de localisation
-- sur la page thématique search `src/features/gtlPlaylist/hooks/useGTLPlaylists.ts` il y a une cascade de requetes
+- sur la page thématique search `src/features/gtlPlaylist/hooks/useGTLPlaylists.ts` il y a une cascade de requêtes
 
 #### Points de friction
 
@@ -125,9 +125,9 @@
 
 #### Recommandations
 
-- l'URL devrait etre la source de véritée
-- pour les états locaux (ex : localisation), le stata manager (Zustand) devrait etre la source de vérité
-- les requetes devraient etre gérées au niveau de la page
+- l'URL devrait être la source de vérité
+- pour les états locaux (ex : localisation), le stata manager (Zustand) devrait être la source de vérité
+- les requêtes devraient être gérées au niveau de la page
 
 ### Réserve d’une Offre
 
@@ -136,8 +136,8 @@
 - sur une page offre, pour déterminer quel bouton afficher (ex : "Réserver") le comportement que le bouton doit avoir, on utilise le hook `src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts`
   - ce hook est décomposé en 2 parties
     - un hook qui montre le hook hell dans lequel nous sommes : un hook qui appelle plein de hooks pour récupérer toutes les informations nécessaires et les passer à la fonction suivante
-    - une fonction pure avec niveau de compléxité cognitive de 58
-- [des problèmes de performances ont été identifié sur les modales avec les boutons primary](https://github.com/pass-culture/pass-culture-app-native/pull/8064#discussion_r2065954706), obligeant les tests end to end à faire certains click 2 fois pour etre certains que ça passe
+    - une fonction pure avec niveau de complexité cognitive de 58
+- [des problèmes de performances ont été identifié sur les modales avec les boutons primary](https://github.com/pass-culture/pass-culture-app-native/pull/8064#discussion_r2065954706), obligeant les tests end to end à faire certains click 2 fois pour être certains que ça passe
 
 #### Points de friction
 
@@ -230,7 +230,7 @@ La propriété `as` rend le code complexe et oblige a mal typer
 - Réduire la complexité
 - Réduire la duplication
 - Remplacer la propriété `as`
-  - peut etre par [le pattern `asChild`](https://grafikart.fr/tutoriels/aschild-props-react-2287)
+  - peut être par [le pattern `asChild`](https://grafikart.fr/tutoriels/aschild-props-react-2287)
 
 ## Restructuration des données
 
@@ -288,19 +288,19 @@ On a [une config de prod de react-query](https://github.com/pass-culture/pass-cu
 
 En mettant en place le refresh token, [on a supprimé les retries](https://github.com/pass-culture/pass-culture-app-native/pull/234/commits/64e9c2a0227c061df857b366d352718fd26718b5#diff-26ad4b834941d9b19ebf9db8082bd202aaf72ea0ddea85f5a8a0cb3c729cc6f2R53)
 
-@bpeyrou-pass a émis l'hypothèse que c'est pour éviter de faire des requetes plusieurs fois lorsque le token est expiré
+@bpeyrou-pass a émis l'hypothèse que c'est pour éviter de faire des requêtes plusieurs fois lorsque le token est expiré
 
-Si une requete échoue (ex : mauvais réseau, je suis dans le train, je passe sous un tunnel), l'app ne réessaie pas de faire la requete
+Si une requête échoue (ex : mauvais réseau, je suis dans le train, je passe sous un tunnel), l'app ne réessaie pas de faire la requête
 
-Par défaut, react-query [réessaie chaque requete 3 fois](https://tanstack.com/query/latest/docs/framework/react/guides/query-retries), ce qui pourrait faire diminuer nos erreurs liés aux réseaux ([top 1 🥇 erreurs sur Sentry](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=&referrer=issue-list&sort=freq&statsPeriod=30d) en nombre d'occurrences d'erreurs)
+Par défaut, react-query [réessaie chaque requête 3 fois](https://tanstack.com/query/latest/docs/framework/react/guides/query-retries), ce qui pourrait faire diminuer nos erreurs liés aux réseaux ([top 1 🥇 erreurs sur Sentry](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=&referrer=issue-list&sort=freq&statsPeriod=30d) en nombre d'occurrences d'erreurs)
 
 #### `useErrorBoundary: true`
 
-Pour [une raison encore plus historique](https://github.com/pass-culture/pass-culture-app-native/pull/125/files#diff-26ad4b834941d9b19ebf9db8082bd202aaf72ea0ddea85f5a8a0cb3c729cc6f2R30), lorsqu'une requete échoue, on affiche une page d'erreur
+Pour [une raison encore plus historique](https://github.com/pass-culture/pass-culture-app-native/pull/125/files#diff-26ad4b834941d9b19ebf9db8082bd202aaf72ea0ddea85f5a8a0cb3c729cc6f2R30), lorsqu'une requête échoue, on affiche une page d'erreur
 
 On n'essaie pas de la gérer localement
 
-Pour [certaines requetes définissent des valeurs par défaut](https://github.com/pass-culture/pass-culture-app-native/blob/e235c64aae55b08c1e29f695ed63f68486de6895/src/libs/subcategories/useSubcategories.ts#L17), qui sont utilisées lors du premier render (avant que la requete soit finie) et en cas d'erreurs
+Pour [certaines requêtes définissent des valeurs par défaut](https://github.com/pass-culture/pass-culture-app-native/blob/e235c64aae55b08c1e29f695ed63f68486de6895/src/libs/subcategories/useSubcategories.ts#L17), qui sont utilisées lors du premier render (avant que la requête soit finie) et en cas d'erreurs
 
 Meme si on fourni une valeur par défaut qui non-idéale mais suffisante, lorsqu'il y a une erreur, on affiche la page d'erreur
 
@@ -332,13 +332,13 @@ Si on veut utiliser la valeur par défaut en cas d'erreur, avec notre config act
 
 - Suivre les préconisations de la guilde architecture
   - découper :
-    - composant Page : qui fait les requetes
+    - composant Page : qui fait les requêtes
     - composant Container : qui centralise les logiques en appelant des fonctions pures
     - composant débile pure : qui ne font que de l'affichage
   - gestion des états
     - URL comme source de vérité
-    - utilisation de react-query pour toutes les requetes
-    - cache de react-query utilisés pour éviter de refaire des requetes inutiles tout en limitant le cache en mémoire
+    - utilisation de react-query pour toutes les requêtes
+    - cache de react-query utilisés pour éviter de refaire des requêtes inutiles tout en limitant le cache en mémoire
     - utilisation de Zustand pour centraliser les états locaux de l'app
 
 ## TODO
