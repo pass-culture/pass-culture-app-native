@@ -78,3 +78,69 @@ jobs:
         with:
           name: maestro-artifacts
           path: /home/runner/.maestro/tests/
+
+  slack_notify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    if: always()
+    needs: run_e2e_web
+    steps:
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for Slack
+        id: 'slack_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          # channel #equipe-e2e-jeunes
+          channel-id: 'C05MH81G9LY'
+          payload: |
+            {
+              "attachments": [
+                {
+                  "color": "${{ needs.run_e2e_web.result == 'failure' && '#A30002' || '#36a64f' }}",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "<https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|*PCAPPNATIVE E2E*>"
+                      }
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image_url": "https://github.com/${{ github.actor }}.png",
+                          "alt_text": "Profile picture"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "<https://github.com/${{ github.actor }}|${{ github.actor }}>\n*Environnement*: `staging`\n*Branche*: `${{ github.ref_name }}`"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Statut*: ${{ needs.run_e2e_web.result == 'failure' && '❌ Échec' || '✅ Réussite' }}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
