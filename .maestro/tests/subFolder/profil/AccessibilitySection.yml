@@ -20,24 +20,14 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn:
-    text: "Déclaration d’accessibilité des\_applications\_iOS\_et\_Android"
-    index: 1
+- tapOn: 'Déclaration d’accessibilité des applications iOS et Android'
 - assertVisible: 'Déclaration d’accessibilité mobile'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn:
-    text: "Déclaration d’accessibilité de\_la\_version\_web"
-    index: 1
-- assertVisible: 'Déclaration d’accessibilité web'
-- runFlow:
-    file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- tapOn:
-    text: "Parcours recommandés de\_la\_version\_web"
-    index: 1
+- tapOn: "Parcours recommandés de la version web"
 - assertVisible: "Parcours recommandés web"
+
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
