@@ -50,6 +50,8 @@ export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate, timez
 
   useAppStateChange(() => setDate(new Date()), undefined)
 
+  if (!text || state === 'not-applicable') return null
+
   return (
     <Container>
       <StyledClock state={state} />
@@ -58,25 +60,36 @@ export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate, timez
   )
 }
 
-const getColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatusState) => {
+const getIconColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatusState) => {
   return {
-    open: theme.colors.greenValid,
-    close: theme.colors.error,
-    'open-soon': theme.colors.goldDark,
-    'close-soon': theme.colors.goldDark,
+    open: theme.designSystem.color.icon.success,
+    close: theme.designSystem.color.icon.error,
+    'open-soon': theme.designSystem.color.icon.warning,
+    'close-soon': theme.designSystem.color.icon.warning,
+    'not-applicable': theme.designSystem.color.icon.default,
   }[state]
 }
 
 const StyledClock = styled(ClockFilled).attrs<{ state: OpeningHoursStatusState }>(
   ({ theme, state }) => ({
-    color: getColorFromState(theme)(state),
+    color: getIconColorFromState(theme)(state),
     size: theme.icons.sizes.extraSmall,
   })
 )<{ state: OpeningHoursStatusState }>``
 
+const getTextColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatusState) => {
+  return {
+    open: theme.designSystem.color.text.success,
+    close: theme.designSystem.color.text.error,
+    'open-soon': theme.colors.goldDark,
+    'close-soon': theme.colors.goldDark,
+    'not-applicable': theme.designSystem.color.text.default,
+  }[state]
+}
+
 const StyledText = styled(Typo.BodyAccentXs)<{ state: OpeningHoursStatusState }>(
   ({ state, theme }) => ({
-    color: getColorFromState(theme)(state),
+    color: getTextColorFromState(theme)(state),
   })
 )
 

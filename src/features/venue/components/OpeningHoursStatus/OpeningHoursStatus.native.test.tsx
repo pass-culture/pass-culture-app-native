@@ -13,11 +13,9 @@ const TIMEZONE = 'UTC'
 jest.useFakeTimers().setSystemTime(CURRENT_DATE)
 
 describe('<OpeningHoursStatus />', () => {
-  it('should update state automatically when state change is in less than 30 minutes', async () => {
-    const openingHours = {
-      FRIDAY: [{ open: '09:00', close: '19:00' }],
-    }
-    render(
+  it('should render nothing if text is falsy (empty string)', () => {
+    const openingHours = { FRIDAY: undefined }
+    const { toJSON } = render(
       <OpeningHoursStatus
         openingHours={openingHours}
         currentDate={CURRENT_DATE}
@@ -25,11 +23,28 @@ describe('<OpeningHoursStatus />', () => {
       />
     )
 
-    expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
+    expect(toJSON()).toBeNull()
+  })
 
-    await act(async () => jest.advanceTimersByTime(30 * 60 * 1000))
+  it('should render nothing if state is "not-applicable"', () => {
+    const openingHours = { SUNDAY: undefined }
+    jest.mock('./getOpeningHoursStatus', () => ({
+      getOpeningHoursStatus: jest.fn(() => ({
+        openingState: 'not-applicable',
+        openingLabel: 'Label',
+        nextChangeTime: null,
+      })),
+    }))
 
-    expect(await screen.findByText('Ouvert jusqu’à 19h')).toBeOnTheScreen()
+    const { toJSON } = render(
+      <OpeningHoursStatus
+        openingHours={openingHours}
+        currentDate={CURRENT_DATE}
+        timezone={TIMEZONE}
+      />
+    )
+
+    expect(toJSON()).toBeNull()
   })
 
   it('should not update state automatically when state change is in more than 30 minutes', async () => {
