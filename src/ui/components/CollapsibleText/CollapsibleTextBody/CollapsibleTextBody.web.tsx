@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren } from 'react'
+import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
 import { LayoutChangeEvent, NativeSyntheticEvent, TextLayoutEventData } from 'react-native'
 
 import { Typo } from 'ui/theme'
@@ -13,18 +13,20 @@ export const CollapsibleTextBody: FunctionComponent<Props> = ({
   onTextLayout,
   numberOfLines,
 }) => {
-  const textRef = React.useRef(null)
+  const textRef = useRef(null)
+  const numLines = useRef(0)
 
   const handleOnLayout = (event: LayoutChangeEvent) => {
     const elmt = textRef.current
-    if (!elmt) {
+
+    if (!elmt || numLines.current) {
       return
     }
 
     // Since we are on web side we have to force the type of the ref to HTMLElement
     const textElement = elmt as unknown as HTMLElement
     const lineHeight = parseFloat(getComputedStyle(textElement).lineHeight)
-    const numberOfLines = Math.floor(event.nativeEvent.layout.height / lineHeight)
+    const numberOfLines = Math.round(event.nativeEvent.layout.height / lineHeight)
 
     onTextLayout?.({
       nativeEvent: {
@@ -32,6 +34,8 @@ export const CollapsibleTextBody: FunctionComponent<Props> = ({
       },
       // We dont want all the properties of the event, just the lines, so we cast it to the specific type
     } as NativeSyntheticEvent<TextLayoutEventData>)
+
+    numLines.current = numberOfLines
   }
 
   return (
