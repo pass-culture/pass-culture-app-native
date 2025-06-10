@@ -7,8 +7,8 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
+import { EmailSent as InitialEmailSent } from 'ui/svg/icons/EmailSent'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
 
@@ -27,7 +27,7 @@ export const DeleteProfileContactSupport: FC = () => {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorEmailSent}
+      illustration={EmailSent}
       title="Contacte le support"
       buttonPrimary={{
         wording: 'Contacter le support',
@@ -54,3 +54,7 @@ export const DeleteProfileContactSupport: FC = () => {
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const EmailSent = styled(InitialEmailSent).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``

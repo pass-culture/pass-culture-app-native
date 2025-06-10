@@ -11,7 +11,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
-import { BicolorError } from 'ui/svg/icons/BicolorError'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -25,7 +25,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorError}
+      illustration={ErrorIllustration}
       title="Nous ne pouvons pas encore supprimer ton compte"
       buttonPrimary={{ wording: 'Retourner sur mon profil', onPress: navigateToProfile }}
       buttonTertiary={{

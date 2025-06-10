@@ -5,19 +5,19 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
-import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
+import { IconStepCurrent } from 'features/identityCheck/components/IconStepCurrent'
+import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisabled'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
+import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { theme } from 'theme'
 import { StepButtonState } from 'ui/components/StepButton/types'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
-import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
-import { AccessibleIcon } from 'ui/svg/icons/types'
+import { IdCard } from 'ui/svg/icons/IdCard'
+import { Profile } from 'ui/svg/icons/Profile'
+import { Smartphone } from 'ui/svg/icons/Smartphone'
 
 type StepperInfo = {
   stepsDetails: StepExtendedDetails[]
@@ -75,30 +75,20 @@ export const useStepperInfo = (): StepperInfo => {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
       icon: {
-        disabled: DisabledProfileIcon,
-        current: () => (
-          <BicolorProfile
-            color={theme.designSystem.color.icon.brandPrimary}
-            color2={theme.designSystem.color.icon.brandPrimary}
-          />
-        ),
-        completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
-        retry: () => <IconRetryStep Icon={BicolorProfile} testID="profile-retry-step" />,
+        disabled: () => <IconStepDisabled Icon={Profile} testID="profile-step-disabled" />,
+        current: () => <IconStepCurrent Icon={Profile} testID="profile-step-current" />,
+        completed: () => <IconStepDone Icon={Profile} testID="profile-step-done" />,
+        retry: () => <IconStepRetry Icon={Profile} testID="profile-retry-step" />,
       },
       firstScreen: 'SetName',
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,
       icon: {
-        disabled: DisabledIdCardIcon,
-        current: () => (
-          <BicolorIdCard
-            color={theme.designSystem.color.icon.brandPrimary}
-            color2={theme.designSystem.color.icon.brandPrimary}
-          />
-        ),
-        completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
-        retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
+        disabled: () => <IconStepDisabled Icon={Profile} testID="identification-step-disabled" />,
+        current: () => <IconStepCurrent Icon={Profile} testID="identification-step-current" />,
+        completed: () => <IconStepDone Icon={IdCard} testID="identification-step-done" />,
+        retry: () => <IconStepRetry Icon={IdCard} testID="identification-retry-step" />,
       },
       firstScreen: computeIdentificationMethod(
         isUserRegisteredInPacificFrancRegion,
@@ -108,34 +98,24 @@ export const useStepperInfo = (): StepperInfo => {
     [IdentityCheckStep.CONFIRMATION]: {
       name: IdentityCheckStep.CONFIRMATION,
       icon: {
-        disabled: DisabledConfirmationIcon,
-        current: () => (
-          <BicolorLegal
-            color={theme.designSystem.color.icon.brandPrimary}
-            color2={theme.designSystem.color.icon.brandPrimary}
-          />
+        disabled: () => (
+          <IconStepDisabled Icon={BicolorLegal} testID="confirmation-step-disabled" />
         ),
+        current: () => <IconStepCurrent Icon={BicolorLegal} testID="confirmation-step-current" />,
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
-        retry: () => <IconRetryStep Icon={BicolorLegal} testID="confirmation-retry-step" />,
+        retry: () => <IconStepRetry Icon={BicolorLegal} testID="confirmation-retry-step" />,
       },
       firstScreen: getConfirmationFirstScreen(),
     },
     [IdentityCheckStep.PHONE_VALIDATION]: {
       name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
-        disabled: DisabledSmartphoneIcon,
-        current: () => (
-          <BicolorSmartphone
-            color={theme.designSystem.color.icon.brandPrimary}
-            color2={theme.designSystem.color.icon.brandPrimary}
-          />
+        disabled: () => (
+          <IconStepDisabled Icon={Smartphone} testID="phone-validation-step-disabled" />
         ),
-        completed: () => (
-          <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
-        ),
-        retry: () => (
-          <IconRetryStep Icon={BicolorSmartphone} testID="phone-validation-retry-step" />
-        ),
+        current: () => <IconStepCurrent Icon={Smartphone} testID="phone-validation-step-current" />,
+        completed: () => <IconStepDone Icon={Smartphone} testID="phone-validation-step-done" />,
+        retry: () => <IconStepRetry Icon={Smartphone} testID="phone-validation-retry-step" />,
       },
       firstScreen: getPhoneValidationFirstScreen(),
     },
@@ -186,36 +166,3 @@ const mapCompletionState = (state: SubscriptionStepCompletionState) => {
       return StepButtonState.RETRY
   }
 }
-
-const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (
-  <BicolorSmartphone
-    size={24}
-    color={theme.designSystem.color.icon.disabled}
-    color2={theme.designSystem.color.icon.disabled}
-    testID="DisabledSmartphoneIcon"
-  />
-)
-const DisabledProfileIcon: React.FC<AccessibleIcon> = () => (
-  <BicolorProfile
-    size={24}
-    color={theme.designSystem.color.icon.disabled}
-    color2={theme.designSystem.color.icon.disabled}
-    testID="DisabledProfileIcon"
-  />
-)
-const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
-  <BicolorIdCard
-    size={24}
-    color={theme.designSystem.color.icon.disabled}
-    color2={theme.designSystem.color.icon.disabled}
-    testID="DisabledIdCardIcon"
-  />
-)
-const DisabledConfirmationIcon: React.FC<AccessibleIcon> = () => (
-  <BicolorLegal
-    size={24}
-    color={theme.designSystem.color.icon.disabled}
-    color2={theme.designSystem.color.icon.disabled}
-    testID="DisabledConfirmationIcon"
-  />
-)

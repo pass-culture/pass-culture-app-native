@@ -7,9 +7,9 @@ import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
-import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { Earth } from 'ui/svg/icons/Earth'
+import { France as FranceIcon } from 'ui/svg/icons/France'
+import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -26,7 +26,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
   return (
     <Container>
       <StyledIconContainer>
-        <StyledBicolorIdCardWithMagnifyingGlass />
+        <IdCardWithMagnifyingGlass />
       </StyledIconContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledTitle4>Munis-toi de ta pièce d’identité et débloque ton crédit&nbsp;!</StyledTitle4>
@@ -40,7 +40,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
             <Typo.BodyAccent>français</Typo.BodyAccent>
           </Text>
         }
-        Icon={<BicolorFrance />}
+        Icon={<France />}
         navigateTo={{ screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus' }}
         key={1}
         accessibilityLabel="J’ai une carte d’identité ou un passeport français"
@@ -51,7 +51,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={7} />
       <SecondButtonList
         label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
-        leftIcon={StyledBicolorEarth}
+        leftIcon={Earth}
         navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } }}
         onBeforeNavigate={() => analytics.logSetIdOriginClicked(IDOrigin.FOREIGN)}
       />
@@ -59,27 +59,28 @@ const SelectIDOriginContent: FunctionComponent = () => {
   )
 }
 
-const StyledBicolorEarth = styled(BicolorEarth).attrs(({ theme }) => ({
-  color: theme.colors.black,
-  color2: theme.colors.black,
-}))``
-
 const Container = styled.View({
   marginHorizontal: getSpacing(1),
   marginVertical: getSpacing(8),
 })
+
 const StyledIconContainer = styled.View({
   alignItems: 'center',
 })
-const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
-  ({ theme }) => ({
-    size: theme.illustrations.sizes.fullPage,
-  })
-)``
+
+const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``
 
 const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
+
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const France = styled(FranceIcon).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``

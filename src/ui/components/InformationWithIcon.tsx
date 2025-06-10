@@ -1,16 +1,17 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 export const InformationWithIcon: FunctionComponent<{
-  Icon: React.FC<AccessibleBicolorIcon>
+  Icon: React.FC<AccessibleIcon>
   text: string
   subtitle?: string
 }> = ({ Icon, text, subtitle }) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.small,
+    color: theme.designSystem.color.icon.brandPrimary,
   }))``
 
   return (

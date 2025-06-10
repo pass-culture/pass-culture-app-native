@@ -9,7 +9,7 @@ import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/use
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
+import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 

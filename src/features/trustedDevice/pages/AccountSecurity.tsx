@@ -10,7 +10,7 @@ import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { analytics } from 'libs/analytics/provider'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
+import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
 
 export const AccountSecurity = () => {
@@ -27,7 +27,7 @@ export const AccountSecurity = () => {
 
   return (
     <GenericInfoPage
-      illustration={BicolorUserBlocked}
+      illustration={UserBlocked}
       title="Sécurise ton compte"
       buttonPrimary={
         isLoggedOutOrHasPassword

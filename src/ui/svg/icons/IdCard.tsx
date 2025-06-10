@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
@@ -34,7 +34,7 @@ const IdCardSvg: React.FunctionComponent<AccessibleIcon & { transform?: string }
 }
 
 export const IdCard = styled(IdCardSvg).attrs(({ color, size, opacity, theme }) => ({
-  color: color ?? theme.colors.greyDark,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
   opacity: opacity ?? 1,
 }))``

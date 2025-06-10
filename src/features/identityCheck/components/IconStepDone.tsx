@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { theme } from 'theme'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -15,18 +14,12 @@ interface IconStepDoneProps {
 
 export const IconStepDone: FunctionComponent<IconStepDoneProps> = ({ Icon, testID }) => {
   return (
-    <Container testID={testID}>
-      <Icon
-        color={theme.designSystem.color.icon.disabled}
-        color2={theme.designSystem.color.icon.disabled}
-        size={32}
-        transform="translate(0 6) rotate(-8) scale(0.97)"
-      />
-    </Container>
+    <Icon
+      testID={testID}
+      color={theme.designSystem.color.icon.disabled}
+      color2={theme.designSystem.color.icon.disabled}
+      size={theme.icons.sizes.standard}
+      transform="translate(0 6) rotate(-8) scale(0.97)"
+    />
   )
 }
-
-const Container = styled.View({
-  width: 34,
-  height: 34,
-})

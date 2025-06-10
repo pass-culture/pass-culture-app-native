@@ -9,7 +9,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Info } from 'ui/svg/icons/Info'
-import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
+import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
 export const DeleteProfileAccountHacked: FC = () => {
@@ -24,7 +24,7 @@ export const DeleteProfileAccountHacked: FC = () => {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorUserBlocked}
+      illustration={UserBlocked}
       title="Sécurise ton compte"
       buttonPrimary={{ wording: 'Suspendre mon compte', onPress: navigateToSuspendAccount }}
       buttonTertiary={{

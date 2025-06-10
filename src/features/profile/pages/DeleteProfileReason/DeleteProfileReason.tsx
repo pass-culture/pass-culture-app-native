@@ -14,7 +14,7 @@ import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { BicolorSadFace } from 'ui/svg/icons/BicolorSadFace'
+import { SadFace } from 'ui/svg/icons/SadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -150,8 +150,7 @@ const flatListStyles: ViewStyle = {
   gap: getSpacing(4), //works only on mobile
 }
 
-const StyledIcon = styled(BicolorSadFace).attrs(({ theme }) => ({
+const StyledIcon = styled(SadFace).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,
   color: theme.designSystem.color.icon.brandPrimary,
-  color2: theme.designSystem.color.icon.brandPrimary,
 }))({ width: '100%' })

@@ -12,7 +12,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorError } from 'ui/svg/icons/BicolorError'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -51,7 +51,7 @@ export function ConfirmDeleteProfile() {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorError}
+      illustration={ErrorIllustration}
       title="Veux-tu vraiment supprimer ton compte&nbsp;?"
       buttonPrimary={{
         wording: 'Supprimer mon compte',

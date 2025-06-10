@@ -8,7 +8,7 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { LogTypeEnum, ScreenError, AsyncError, MonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
-import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
+import { BrokenConnection } from 'ui/svg/BrokenConnection'
 
 interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void
@@ -74,7 +74,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       header={header}
       title="Oups&nbsp;!"
       subtitle="Une erreur s’est produite pendant le chargement."
-      illustration={BicolorBrokenConnection}
+      illustration={BrokenConnection}
       buttonPrimary={{ wording: 'Réessayer', onPress: handleRetry }}
     />
   )

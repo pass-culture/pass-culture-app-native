@@ -355,11 +355,10 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "color": "#696A6F",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
-                    "textAlign": "center",
                   },
                 ]
               }

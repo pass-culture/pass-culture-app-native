@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorBookingHold } from 'ui/svg/BicolorBookingHold'
+import { BookingHold } from 'ui/svg/BookingHold'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
@@ -40,7 +40,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       hideModal={hideModal}
       visible={visible}
-      Illustration={BicolorBookingHold}
+      Illustration={BookingHold}
       title="C’est pour bientôt&nbsp;!">
       <StyledBody>
         Nous avons reçu ton dossier et son analyse est en cours. Tu pourras réserver cette offre dès

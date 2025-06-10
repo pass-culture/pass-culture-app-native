@@ -15,8 +15,8 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { getSpacing, Typo } from 'ui/theme'
 
 type ValidateEmailChangeProps = NativeStackScreenProps<
@@ -87,7 +87,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
 
   return (
     <GenericInfoPage
-      illustration={BicolorPhonePending}
+      illustration={PhonePending}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
       buttonPrimary={{
         wording: 'Valider l’adresse e-mail',

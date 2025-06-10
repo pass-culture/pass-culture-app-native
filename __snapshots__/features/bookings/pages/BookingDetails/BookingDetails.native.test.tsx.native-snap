@@ -578,7 +578,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                 }
               >
                 <View
-                  fill="url(#gradienttestUuid)"
                   height={20}
                   testID="BicolorProfile"
                   width={20}

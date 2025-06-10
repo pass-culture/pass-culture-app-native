@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
-import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
+import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const ERROR_TITLE = 'Oups\u00a0!'
@@ -19,9 +19,8 @@ export const VerticalVideoErrorView: React.FC<{
       <Spacer.TopScreen />
       <BackgroundWithDefaultStatusBar />
       <BrokenConnectionContainer>
-        <BicolorBrokenConnection
-          color={theme.colors.white}
-          color2={theme.colors.white}
+        <BrokenConnection
+          color={theme.designSystem.color.icon.lockedInverted}
           size={theme.illustrations.sizes.fullPage}
         />
       </BrokenConnectionContainer>

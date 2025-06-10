@@ -229,7 +229,6 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
       }
     >
       <View
-        fill="none"
         height={156}
         width={200}
       >

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render, screen } from 'tests/utils'
-import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { Typo } from 'ui/theme'
 
 import { GenericErrorPage } from './GenericErrorPage'
@@ -20,7 +20,7 @@ describe('<GenericErrorPage />', () => {
     render(
       <GenericErrorPage
         helmetTitle="HelmetTitle"
-        illustration={BicolorPhonePending}
+        illustration={PhonePending}
         title="GenericErrorPage"
         subtitle="Subtitle"
         buttonPrimary={{ wording: 'Primary button', onPress: jest.fn() }}

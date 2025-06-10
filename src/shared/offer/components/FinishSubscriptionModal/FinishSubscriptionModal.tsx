@@ -7,7 +7,7 @@ import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNaviga
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 
@@ -41,7 +41,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
     <AppModalWithIllustration
       visible={visible}
       title={'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'}
-      Illustration={BicolorIdCardWithMagnifyingGlass}
+      Illustration={IdCardWithMagnifyingGlass}
       hideModal={hideModal}>
       {user?.requiresIdCheck ? (
         <StyledBody>
@@ -74,3 +74,8 @@ const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``

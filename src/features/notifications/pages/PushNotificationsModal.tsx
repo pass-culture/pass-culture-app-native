@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
+import { RingingBell } from 'ui/svg/RingingBell'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -50,8 +50,7 @@ const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const BicolorLocationPointer = styled(BicolorRingingBell).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
-  color2: theme.colors.greyDark,
+const BicolorLocationPointer = styled(RingingBell).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.fullPage,
 }))``

@@ -19,7 +19,7 @@ import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorClock as DefaultClock } from 'ui/svg/icons/BicolorClock'
+import { Clock as InitialClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -159,8 +159,8 @@ const OnSiteWithdrawalCaption = styled(WithdrawCaption)(({ theme }) => ({
   marginTop: getSpacing(1),
 }))
 
-const Clock = styled(DefaultClock).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+const Clock = styled(InitialClock).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.extraSmall,
 }))``
 

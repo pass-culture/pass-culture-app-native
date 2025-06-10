@@ -8,13 +8,13 @@ describe('<TicketWithdrawal/>', () => {
   it('should display by email withdrawal icon when withdrawal type by email is specified', async () => {
     render(<TicketWithdrawal withdrawalType={WithdrawalTypeEnum.by_email} withdrawalDelay={0} />)
 
-    expect(screen.getByTestId('bicolor-email-sent')).toBeOnTheScreen()
+    expect(screen.getByTestId('email-sent')).toBeOnTheScreen()
   })
 
   it('should not display by email withdrawal icon when withdrawal type on site is specified', () => {
     render(<TicketWithdrawal withdrawalType={WithdrawalTypeEnum.on_site} withdrawalDelay={0} />)
 
-    expect(screen.queryByTestId('bicolor-email-sent')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('email-sent')).not.toBeOnTheScreen()
   })
 
   it('should display on site withdrawal delay when delay is specified', () => {

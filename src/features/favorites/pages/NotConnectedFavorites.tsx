@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
-import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
+import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -69,8 +69,9 @@ const IllustrationContainer = styled.View({
   marginBottom: getSpacing(6),
 })
 
-const Illustration = styled(BicolorUserFavorite).attrs(({ theme }) => ({
+const Illustration = styled(UserFavorite).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const ButtonContainer = styled(ViewGap)(({ theme }) => ({

@@ -9,8 +9,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
 import { Parameters } from 'ui/svg/icons/Parameters'
+import { RingingBell } from 'ui/svg/RingingBell'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -62,6 +62,7 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-const StyledIcon = styled(BicolorRingingBell).attrs(({ theme }) => ({
+const StyledIcon = styled(RingingBell).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.fullPage,
 }))``

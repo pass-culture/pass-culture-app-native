@@ -8,8 +8,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckDMS = () => {
@@ -29,7 +29,7 @@ export const IdentityCheckDMS = () => {
       scrollChildren={
         <Container>
           <Spacer.Column numberOfSpaces={5} />
-          <StyledBicolorIdCardWithMagnifyingGlass />
+          <IdCardWithMagnifyingGlass />
           <Spacer.Column numberOfSpaces={5} />
           <CenteredTitle title="Créer un dossier sur le site des Démarches Simplifiées" />
           <Spacer.Column numberOfSpaces={5} />
@@ -66,17 +66,16 @@ export const IdentityCheckDMS = () => {
   )
 }
 
-const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
-  ({ theme }) => ({
-    size: theme.illustrations.sizes.fullPage,
-  })
-)``
+const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  size: theme.illustrations.sizes.fullPage,
+}))``
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const ButtonContainer = styled.View({ padding: getSpacing(10) })
@@ -87,5 +86,5 @@ const StyledSeparatorWithText = styled.View({
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

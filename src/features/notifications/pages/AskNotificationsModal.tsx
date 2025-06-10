@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
+import { RingingBell as InitialRingingBell } from 'ui/svg/RingingBell'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
@@ -69,6 +69,7 @@ const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const RingingBell = styled(BicolorRingingBell).attrs(({ theme }) => ({
+const RingingBell = styled(InitialRingingBell).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.fullPage,
 }))``

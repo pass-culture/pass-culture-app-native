@@ -4,13 +4,13 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
+import { IdCardError } from 'ui/svg/icons/IdCardError'
 import { Typo } from 'ui/theme'
 
 export function IdentityCheckPending() {
   return (
     <GenericInfoPage
-      illustration={BicolorIdCardError}
+      illustration={IdCardError}
       title="Oups&nbsp;!"
       buttonPrimary={{
         wording: 'Retourner à l’accueil',

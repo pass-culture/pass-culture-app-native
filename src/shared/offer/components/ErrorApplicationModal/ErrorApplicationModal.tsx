@@ -8,7 +8,7 @@ import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesBu
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
-import { BicolorUserError } from 'ui/svg/BicolorUserError'
+import { UserError } from 'ui/svg/UserError'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
@@ -43,7 +43,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       visible={visible}
       title={'Tu n’as pas encore obtenu' + LINE_BREAK + 'ton crédit'}
-      Illustration={BicolorUserError}
+      Illustration={UserError}
       hideModal={hideModal}>
       <StyledBody>
         Ton dossier n’a pas pu être validé. Sans crédit, tu ne peux pas réserver cette offre.
