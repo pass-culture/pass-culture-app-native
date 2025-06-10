@@ -8,9 +8,9 @@ import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleU
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
-import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
+import { IdCard as InitialIdCard } from 'ui/svg/icons/IdCard'
+import { LostId as InitialLostId } from 'ui/svg/icons/LostId'
+import { NoId as InitialNoId } from 'ui/svg/icons/NoId'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -28,29 +28,41 @@ export const SelectIDStatus: FunctionComponent = () => (
   <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
 )
 
+const IdCard = styled(InitialIdCard).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``
+
 const MainOptionButton = (
   <HeroButtonList
     Title={<Typo.BodyAccent>J’ai ma pièce d’identité en cours de validité</Typo.BodyAccent>}
     Subtitle={<Typo.BodyAccentXs>Les copies ne sont pas acceptées</Typo.BodyAccentXs>}
-    Icon={<BicolorIdCard />}
+    Icon={<IdCard />}
     navigateTo={{ screen: 'UbbleWebview' }}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.ID_OK)}
   />
 )
 
+const NoId = styled(InitialNoId).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``
+
 const FirstOtherOption = (
   <SecondButtonList
     label="Je n’ai pas ma pièce d’identité originale avec moi"
-    leftIcon={BicolorNoId}
+    leftIcon={NoId}
     navigateTo={{ screen: 'ComeBackLater' }}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.NO_ID)}
   />
 )
 
+const LostId = styled(InitialLostId).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``
+
 const SecondOtherOption = (
   <SecondButtonList
     label="Ma pièce d’identité est expirée ou perdue"
-    leftIcon={BicolorLostId}
+    leftIcon={LostId}
     navigateTo={{ screen: 'ExpiredOrLostID' }}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.EXPIRED_OR_LOST)}
   />
@@ -92,6 +104,7 @@ const Container = styled.View({
 const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
+
 const StyledText = styled(Text)({
   textAlign: 'center',
 })

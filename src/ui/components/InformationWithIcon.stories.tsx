@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { BicolorClock } from 'ui/svg/icons/BicolorClock'
+import { Clock } from 'ui/svg/icons/Clock'
 
 import { InformationWithIcon } from './InformationWithIcon'
 
@@ -13,7 +13,7 @@ const meta: Meta<typeof InformationWithIcon> = {
 export default meta
 
 const baseProps = {
-  Icon: BicolorClock,
+  Icon: Clock,
   text: 'Information title',
 }
 

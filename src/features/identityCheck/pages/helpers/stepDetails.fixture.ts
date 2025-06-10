@@ -1,8 +1,8 @@
 import { StepExtendedDetails, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepButtonState } from 'ui/components/StepButton/types'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
+import { IdCard } from 'ui/svg/icons/IdCard'
+import { Profile } from 'ui/svg/icons/Profile'
 
 export const stepsDetailsFixture: StepExtendedDetails[] = [
   {
@@ -20,10 +20,10 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
   {
     name: IdentityCheckStep.IDENTIFICATION,
     icon: {
-      disabled: BicolorIdCard,
-      current: BicolorIdCard,
-      completed: BicolorIdCard,
-      retry: BicolorIdCard,
+      disabled: IdCard,
+      current: IdCard,
+      completed: IdCard,
+      retry: IdCard,
     },
     firstScreen: 'BeneficiaryRequestSent',
     title: 'Identification',
@@ -34,10 +34,10 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
     name: IdentityCheckStep.PROFILE,
     title: 'Profil',
     icon: {
-      disabled: BicolorProfile,
-      current: BicolorProfile,
-      completed: BicolorProfile,
-      retry: BicolorProfile,
+      disabled: Profile,
+      current: Profile,
+      completed: Profile,
+      retry: Profile,
     },
     firstScreen: 'SetName',
     stepState: StepButtonState.DISABLED,
@@ -46,10 +46,10 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
     name: IdentityCheckStep.CONFIRMATION,
     title: 'Confirmation',
     icon: {
-      disabled: BicolorProfile,
-      current: BicolorProfile,
-      completed: BicolorProfile,
-      retry: BicolorProfile,
+      disabled: Profile,
+      current: Profile,
+      completed: Profile,
+      retry: Profile,
     },
     firstScreen: 'IdentityCheckEnd',
     stepState: StepButtonState.DISABLED,

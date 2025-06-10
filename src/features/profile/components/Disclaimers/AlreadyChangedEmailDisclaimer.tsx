@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics/provider'
-import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-import { getSpacingString, Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Clock } from 'ui/svg/icons/Clock'
+import { getSpacingString, Typo } from 'ui/theme'
 
 export const AlreadyChangedEmailDisclaimer = () => {
   useEffect(() => {
@@ -11,9 +12,8 @@ export const AlreadyChangedEmailDisclaimer = () => {
   }, [])
 
   return (
-    <Container>
+    <Container gap={4}>
       <StyledClock />
-      <Spacer.Row numberOfSpaces={4}></Spacer.Row>
       <BodyText>
         Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier
         tes spams.
@@ -22,17 +22,16 @@ export const AlreadyChangedEmailDisclaimer = () => {
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   padding: getSpacingString(4),
-  background: theme.colors.greyLight,
+  background: theme.designSystem.color.background.subtle,
   borderRadius: theme.borderRadius.radius,
 }))
 
-const StyledClock = styled(BicolorClock).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
-  color2: theme.colors.greyDark,
+const StyledClock = styled(Clock).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const BodyText = styled(Typo.BodyAccentXs)({
