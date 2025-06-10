@@ -40,6 +40,7 @@ flowchart TB
     Batch["Batch : notification et modal in app"]
     Google_Maps["Google Maps"]
     Contentful["Contentful : gestion de contenu : home, home thématique, playlists"]
+    geo_api_gouv["geo.api.gouv.fr recherche par ville"]
   end
   distribution --> App
   App --> identification & tracking & hosted_on_GCP & technique & others
@@ -99,6 +100,7 @@ architecture-beta
   service batch(cloud)[Batch notification et modal in app] in others
   service Google_Maps(cloud)[Google Maps] in others
   service Contentful(cloud)[Contentful gestion de contenu home et home thematique et playlists] in others
+  service geo_api_gouv(cloud)[geo api gouv fr recherche par ville] in others
 
   App:T --> B:Firebase_Firestore
   App:T --> B:Firebase_Remote_Config
@@ -109,6 +111,7 @@ architecture-beta
   App:T --> B:batch
   App:T --> B:Google_Maps
   App:T --> B:Contentful
+  App:T --> B:geo_api_gouv
 
   service image_resize(server)[Google App Engine redimensionnement d image] in hosted_on_GCP
   service bucket_image(disk)[Bucket GCP stockage d image] in hosted_on_GCP
