@@ -185,9 +185,11 @@ Il faudrait :
   - dans les cas simples, tester directement l'UI via le container
   - dans les cas complexes, tester un peu la glue et tester la combinatoire dans une fonction pure isolée
 
-## Boutons et liens
+## Autres
 
-### Observations
+### Boutons et liens
+
+#### Observations
 
 Nous avons beaucoup de composants de boutons et de liens
 
@@ -232,15 +234,15 @@ La propriété `as` rend le code complexe et oblige a mal typer
 - Remplacer la propriété `as`
   - peut être par [le pattern `asChild`](https://grafikart.fr/tutoriels/aschild-props-react-2287)
 
-## Restructuration des données
+### Restructuration des données
 
-### Observations
+#### Observations
 
 Nous avons fréquemment des calculs fait coté frontend pour formatter les données dans une structure directement utilisable par nos composants
 
 Exemple la restructuration des catégories en arborescences : `src/libs/subcategories/mappings.ts`
 
-### Points de Friction
+#### Points de Friction
 
 On fait des calculs sur les end devices qui sont majoritairement moins performant que nos serveurs
 
@@ -248,14 +250,14 @@ On fait les calculs à chaque requête
 
 On a tendance à utiliser le backend comme si on ne pouvait pas le changer, comme si cette API était utilisée par des tiers, ce qui n'est pas le cas, l'API est uniquement utilisée par notre code frontend
 
-### Recommandations
+#### Recommandations
 
 - Notre API devraient retourner les datas au format le plus proche des besoins frontend
 - On pourrait mettre en cache les restructurations des données pour éviter de le faire à chaque appel
 
-## Requêtes
+### Requêtes
 
-### Observations
+#### Observations
 
 On pour chaque route exposée par le backend via le schema OpenAPI on génère du code 🤖 qui s'occupe de faire les appels
 
@@ -270,21 +272,23 @@ Exemple avec `/native/v1/settings`
       - 🧑‍💻 `src/api/apiHelpers.ts` `safeFetch`
       - 🧑‍💻 `src/api/apiHelpers.ts` `handleGeneratedApiResponse`
 
-### Points de Friction
+#### Points de Friction
 
 L'organisation du code est complexe faisant des allers-retours avec le code généré 🤖 et le code écrit par des humains 🧑‍💻
 
 La maintenance est difficile
 
-### Recommandations
+#### Recommandations
 
 - Faire un PoC avec [Orval](https://orval.dev) pour générer ce code
 
-## Requêtes config react query
+### Requêtes config react query
+
+#### Observations
 
 On a [une config de prod de react-query](https://github.com/pass-culture/pass-culture-app-native/blob/25d03eaf31efb53cd50d71a973c8561f419d18b1/src/libs/react-query/queryClient.ts#L9) qui n'est pas bonne pour des raisons historiques :
 
-#### `retry: 0`
+##### `retry: 0`
 
 En mettant en place le refresh token, [on a supprimé les retries](https://github.com/pass-culture/pass-culture-app-native/pull/234/commits/64e9c2a0227c061df857b366d352718fd26718b5#diff-26ad4b834941d9b19ebf9db8082bd202aaf72ea0ddea85f5a8a0cb3c729cc6f2R53)
 
@@ -294,7 +298,7 @@ Si une requête échoue (ex : mauvais réseau, je suis dans le train, je passe s
 
 Par défaut, react-query [réessaie chaque requête 3 fois](https://tanstack.com/query/latest/docs/framework/react/guides/query-retries), ce qui pourrait faire diminuer nos erreurs liés aux réseaux ([top 1 🥇 erreurs sur Sentry](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=&referrer=issue-list&sort=freq&statsPeriod=30d) en nombre d'occurrences d'erreurs)
 
-#### `useErrorBoundary: true`
+##### `useErrorBoundary: true`
 
 Pour [une raison encore plus historique](https://github.com/pass-culture/pass-culture-app-native/pull/125/files#diff-26ad4b834941d9b19ebf9db8082bd202aaf72ea0ddea85f5a8a0cb3c729cc6f2R30), lorsqu'une requête échoue, on affiche une page d'erreur
 
@@ -306,9 +310,9 @@ Meme si on fourni une valeur par défaut qui non-idéale mais suffisante, lorsqu
 
 Si on veut utiliser la valeur par défaut en cas d'erreur, avec notre config actuelle, [il faut le demander explicitement](https://github.com/pass-culture/pass-culture-app-native/blob/4401026df896c9b97a823a01712ebcb3469cabd7/src/libs/firebase/remoteConfig/queries/useRemoteConfigQuery.ts#L32)
 
-### Points de Friction
+#### Points de Friction
 
-### Recommandations
+#### Recommandations
 
 @mmeissonnier-pass a créé [un ticket](https://passculture.atlassian.net/browse/PC-36132) pour profiter du retry par défaut sans spammer pour rien lorsque le refresh token expire
 
@@ -318,13 +322,13 @@ Si on veut utiliser la valeur par défaut en cas d'erreur, avec notre config act
 - Supprimer de [`safeFetch`](https://github.com/pass-culture/pass-culture-app-native/blob/be07b683df6bb2364bfcdd16841b7ed5ab350ec2/src/api/apiHelpers.ts#L59)
 - Supprimer le `retries: 0`
 
-## Autre
+### Autre
 
-### Observations
+#### Observations
 
-### Points de Friction
+#### Points de Friction
 
-### Recommandations
+#### Recommandations
 
 ## Conclusion
 
