@@ -1,6 +1,11 @@
 # Audit Technique du Code
 
-⚠️ Cet audit ce concentre uniquement sur les points d'améliorations ⚠️
+⚠️ Cet audit ⚠️ :
+
+- ce concentre uniquement sur les points d'améliorations
+- ce concentre uniquement sur le repo `pass-culture-app-native`
+- n'est pas exhaustif et ce concentre uniquement sur un sous ensemble
+- n'analyse pas le BFF
 
 ## Audit de différents parcours
 
@@ -156,6 +161,22 @@
 ### Test
 
 #### Observations
+
+Pour rappel :
+
+- un taux de coverage élevé n'assure aucune garantie
+- un taux de coverage faible assure d'un manque de tests
+- notre taux de coverage est calculé sur les tests unitaires
+
+Nous avons [un taux de coverage de 90%](https://sonarcloud.io/component_measures?id=pass-culture_pass-culture-app-native&metric=coverage&view=list)
+
+[Le nombre de lignes non couvertes décroît](https://sonarcloud.io/project/activity?graph=coverage&id=pass-culture_pass-culture-app-native) (ce qui est positif)
+
+Une analyse rapide mets en évidence que c'est [le code le plus ancien qui n'est pas testé](https://sonarcloud.io/component_measures?metric=Coverage&id=pass-culture_pass-culture-app-native) :
+
+- souvent pas conçu pour être testé, il est difficilement testable
+- souvent des briques fondamentales transverses très techniques difficilement testables
+- parfois un manque de connaissance des règles métiers
 
 Nos tests vérifient souvent des détails d'implémentations
 
