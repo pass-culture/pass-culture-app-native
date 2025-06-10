@@ -290,15 +290,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
+                    "borderColor": "#90949d",
                     "borderRadius": 8,
+                    "borderStyle": "solid",
                     "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 72,
-                    "paddingHorizontal": 16,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
                   },
                 ],
                 {
@@ -313,85 +315,53 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
+                    "columnGap": 16,
                     "flexDirection": "row",
-                    "gap": 16,
                   },
                 ]
               }
             >
               <View
-                size="small"
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    },
+                  ]
+                }
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4280337897,
-                      4279138487,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="small"
-                    style={
-                      [
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="none"
-                      height={92}
-                      width={54}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </BVLinearGradient>
-              </View>
-              <View>
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
                       },
@@ -401,28 +371,83 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   Cinéma
                 </Text>
               </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  size="small"
+                  style={
+                    [
+                      {
+                        "borderRadius": 4,
+                        "height": 32,
+                        "overflow": "hidden",
+                        "width": 32,
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4280337897,
+                        4279138487,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        [
+                          {
+                            "position": "absolute",
+                            "top": -28,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={54}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+              </View>
             </View>
-            <View
-              checked={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "height": 16,
-                    "justifyContent": "center",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "width": 16,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
@@ -476,15 +501,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
+                    "borderColor": "#90949d",
                     "borderRadius": 8,
+                    "borderStyle": "solid",
                     "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 72,
-                    "paddingHorizontal": 16,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
                   },
                 ],
                 {
@@ -499,85 +526,53 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
+                    "columnGap": 16,
                     "flexDirection": "row",
-                    "gap": 16,
                   },
                 ]
               }
             >
               <View
-                size="small"
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    },
+                  ]
+                }
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="small"
-                    style={
-                      [
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="none"
-                      height={92}
-                      width={54}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </BVLinearGradient>
-              </View>
-              <View>
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
                       },
@@ -587,28 +582,83 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   Lecture
                 </Text>
               </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  size="small"
+                  style={
+                    [
+                      {
+                        "borderRadius": 4,
+                        "height": 32,
+                        "overflow": "hidden",
+                        "width": 32,
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4294614806,
+                        4290271489,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        [
+                          {
+                            "position": "absolute",
+                            "top": -28,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={54}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+              </View>
             </View>
-            <View
-              checked={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "height": 16,
-                    "justifyContent": "center",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "width": 16,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
@@ -662,15 +712,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
+                    "borderColor": "#90949d",
                     "borderRadius": 8,
+                    "borderStyle": "solid",
                     "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 72,
-                    "paddingHorizontal": 16,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
                   },
                 ],
                 {
@@ -685,85 +737,53 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
+                    "columnGap": 16,
                     "flexDirection": "row",
-                    "gap": 16,
                   },
                 ]
               }
             >
               <View
-                size="small"
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    },
+                  ]
+                }
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="small"
-                    style={
-                      [
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="none"
-                      height={92}
-                      width={54}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </BVLinearGradient>
-              </View>
-              <View>
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
                       },
@@ -773,28 +793,83 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   Musique
                 </Text>
               </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  size="small"
+                  style={
+                    [
+                      {
+                        "borderRadius": 4,
+                        "height": 32,
+                        "overflow": "hidden",
+                        "width": 32,
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4294614806,
+                        4290271489,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        [
+                          {
+                            "position": "absolute",
+                            "top": -28,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={54}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+              </View>
             </View>
-            <View
-              checked={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "height": 16,
-                    "justifyContent": "center",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "width": 16,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
@@ -848,15 +923,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
+                    "borderColor": "#90949d",
                     "borderRadius": 8,
+                    "borderStyle": "solid",
                     "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 72,
-                    "paddingHorizontal": 16,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
                   },
                 ],
                 {
@@ -871,85 +948,53 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
+                    "columnGap": 16,
                     "flexDirection": "row",
-                    "gap": 16,
                   },
                 ]
               }
             >
               <View
-                size="small"
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    },
+                  ]
+                }
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4280802472,
-                      4279141492,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="small"
-                    style={
-                      [
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="none"
-                      height={92}
-                      width={54}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </BVLinearGradient>
-              </View>
-              <View>
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
                       },
@@ -959,28 +1004,83 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   Spectacles
                 </Text>
               </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  size="small"
+                  style={
+                    [
+                      {
+                        "borderRadius": 4,
+                        "height": 32,
+                        "overflow": "hidden",
+                        "width": 32,
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4280802472,
+                        4279141492,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        [
+                          {
+                            "position": "absolute",
+                            "top": -28,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={54}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+              </View>
             </View>
-            <View
-              checked={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "height": 16,
-                    "justifyContent": "center",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "width": 16,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
@@ -1034,15 +1134,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
+                    "borderColor": "#90949d",
                     "borderRadius": 8,
+                    "borderStyle": "solid",
                     "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 72,
-                    "paddingHorizontal": 16,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
                   },
                 ],
                 {
@@ -1057,85 +1159,53 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
+                    "columnGap": 16,
                     "flexDirection": "row",
-                    "gap": 16,
                   },
                 ]
               }
             >
               <View
-                size="small"
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    },
+                  ]
+                }
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4293670008,
-                      4290777969,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="small"
-                    style={
-                      [
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="none"
-                      height={92}
-                      width={54}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </BVLinearGradient>
-              </View>
-              <View>
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
                       },
@@ -1145,28 +1215,83 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   Activités créatives
                 </Text>
               </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  size="small"
+                  style={
+                    [
+                      {
+                        "borderRadius": 4,
+                        "height": 32,
+                        "overflow": "hidden",
+                        "width": 32,
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4293670008,
+                        4290777969,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        [
+                          {
+                            "position": "absolute",
+                            "top": -28,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={54}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+              </View>
             </View>
-            <View
-              checked={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "height": 16,
-                    "justifyContent": "center",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "width": 16,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
@@ -1220,15 +1345,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     "userSelect": "auto",
                   },
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
+                    "borderColor": "#90949d",
                     "borderRadius": 8,
+                    "borderStyle": "solid",
                     "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 72,
-                    "paddingHorizontal": 16,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
                   },
                 ],
                 {
@@ -1243,85 +1370,53 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
+                    "columnGap": 16,
                     "flexDirection": "row",
-                    "gap": 16,
                   },
                 ]
               }
             >
               <View
-                size="small"
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
                       "borderRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    },
+                  ]
+                }
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4280337897,
-                      4279138487,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="small"
-                    style={
-                      [
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="none"
-                      height={92}
-                      width={54}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </BVLinearGradient>
-              </View>
-              <View>
                 <Text
+                  disabled={false}
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
+                        "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
                       },
@@ -1331,28 +1426,83 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   Visites et sorties
                 </Text>
               </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  size="small"
+                  style={
+                    [
+                      {
+                        "borderRadius": 4,
+                        "height": 32,
+                        "overflow": "hidden",
+                        "width": 32,
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4280337897,
+                        4279138487,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        [
+                          {
+                            "position": "absolute",
+                            "top": -28,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={54}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+              </View>
             </View>
-            <View
-              checked={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "height": 16,
-                    "justifyContent": "center",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "width": 16,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>

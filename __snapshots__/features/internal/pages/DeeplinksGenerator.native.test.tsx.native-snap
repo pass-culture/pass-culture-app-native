@@ -3491,11 +3491,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         "userSelect": "auto",
                       },
                       {
-                        "alignItems": "center",
-                        "columnGap": 16,
                         "cursor": "pointer",
-                        "display": "flex",
-                        "flexDirection": "row",
+                        "width": "fit-content",
                       },
                     ],
                     {
@@ -3506,41 +3503,67 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="Conserver l’historique"
               >
                 <View
-                  isChecked={false}
                   style={
                     [
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#90949d",
-                        "borderRadius": 4,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "height": 24,
-                        "justifyContent": "center",
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "alignSelf": "center",
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "columnGap": 16,
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Conserver l’historique
-                </Text>
+                  <View
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949d",
+                          "borderRadius": 4,
+                          "borderStyle": "solid",
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        },
+                      ]
+                    }
+                    variant="default"
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      disabled={false}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          },
+                        ]
+                      }
+                    >
+                      Conserver l’historique
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
