@@ -4,8 +4,8 @@ import React from 'react'
 import { theme } from 'theme'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
+import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { Typo } from 'ui/theme'
 import {
   AVATAR_LARGE,
@@ -37,7 +37,7 @@ const variantConfig: Variants<typeof Avatar> = [
     label: 'Avatar medium',
     props: {
       size: AVATAR_MEDIUM,
-      backgroundColor: theme.colors.attentionLight,
+      backgroundColor: theme.designSystem.color.background.brandPrimary,
       children: <Typo.Title3>M</Typo.Title3>,
     },
   },
@@ -45,7 +45,7 @@ const variantConfig: Variants<typeof Avatar> = [
     label: 'Avatar large',
     props: {
       size: AVATAR_LARGE,
-      children: <Profile size={40} />,
+      children: <ProfileFilled size={40} />,
     },
   },
   {
@@ -53,8 +53,8 @@ const variantConfig: Variants<typeof Avatar> = [
     props: {
       size: AVATAR_LARGE,
       borderWidth: 6,
-      backgroundColor: theme.colors.aquamarineDark,
-      children: <Profile size={48} color={theme.colors.white} />,
+      backgroundColor: theme.designSystem.color.background.brandPrimary,
+      children: <ProfileFilled size={48} color={theme.designSystem.color.icon.lockedInverted} />,
     },
   },
   {
@@ -64,7 +64,7 @@ const variantConfig: Variants<typeof Avatar> = [
       borderWidth: 6,
       children: (
         <DefaultAvatar>
-          <BicolorProfile size={35} color={theme.colors.white} color2={theme.colors.white} />
+          <Profile size={35} color={theme.designSystem.color.icon.lockedInverted} />
         </DefaultAvatar>
       ),
     },
@@ -75,7 +75,7 @@ const variantConfig: Variants<typeof Avatar> = [
       size: AVATAR_LARGE,
       rounded: false,
       borderWidth: 6,
-      backgroundColor: theme.colors.coralLight,
+      backgroundColor: theme.designSystem.color.background.brandPrimary,
       children: <Typo.Title1>M.M</Typo.Title1>,
     },
   },
@@ -84,7 +84,7 @@ const variantConfig: Variants<typeof Avatar> = [
     props: {
       size: AVATAR_LARGE,
       rounded: false,
-      backgroundColor: theme.colors.coralLight,
+      backgroundColor: theme.designSystem.color.background.brandPrimary,
       borderRadius: AVATAR_BORDER_RADIUS_SMALL,
       children: <Typo.Title1>M.M</Typo.Title1>,
     },

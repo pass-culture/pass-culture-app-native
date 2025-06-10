@@ -34,12 +34,14 @@ export const InfoBanner: FunctionComponent<Props> = ({
   const Icon =
     icon &&
     styled(icon).attrs(({ theme }) => ({
-      color: theme.colors.greyDark,
-      color2: theme.colors.greyDark,
+      color: theme.designSystem.color.icon.subtle,
+      color2: theme.designSystem.color.icon.subtle,
       size: theme.icons.sizes.small,
     }))``
 
-  const textColor = withLightColorMessage ? theme.colors.greyDark : theme.colors.black
+  const textColor = withLightColorMessage
+    ? theme.designSystem.color.text.subtle
+    : theme.designSystem.color.text.default
   return (
     <GenericColoredBanner
       messageContainerStyle={messageContainerStyle}

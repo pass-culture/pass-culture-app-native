@@ -1,7 +1,7 @@
 import { CallToActionIcon, PopOverIcon } from 'api/gen'
 import { Again } from 'ui/svg/icons/Again'
-import { Clock } from 'ui/svg/icons/BicolorClock'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
+import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error as ErrorIcon } from 'ui/svg/icons/Error'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'

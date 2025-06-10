@@ -9,10 +9,10 @@ import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { Clock } from 'ui/svg/icons/Clock'
+import { Confirmation } from 'ui/svg/icons/Confirmation'
+import { IdCard } from 'ui/svg/icons/IdCard'
+import { Profile } from 'ui/svg/icons/Profile'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -30,15 +30,15 @@ export const DMSIntroduction = (): React.JSX.Element => {
   const informationListItem: { icon: FC<AccessibleBicolorIcon>; label: string }[] =
     params?.isForeignDMSInformation
       ? [
-          { icon: BicolorClock, label: timeLabel },
-          { icon: BicolorIdCard, label: IDLabel },
-          { icon: BicolorConfirmation, label: homeProofLabel },
-          { icon: BicolorProfile, label: selfieLabel },
+          { icon: Clock, label: timeLabel },
+          { icon: IdCard, label: IDLabel },
+          { icon: Confirmation, label: homeProofLabel },
+          { icon: Profile, label: selfieLabel },
         ]
       : [
-          { icon: BicolorClock, label: timeLabel },
-          { icon: BicolorIdCard, label: IDLabel },
-          { icon: BicolorProfile, label: selfieLabel },
+          { icon: Clock, label: timeLabel },
+          { icon: IdCard, label: IDLabel },
+          { icon: Profile, label: selfieLabel },
         ]
 
   const toDMSWebsiteButtonProps = params?.isForeignDMSInformation

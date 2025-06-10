@@ -112,6 +112,18 @@ describe('OpeningHoursStatusViewModel', () => {
         },
         expected: 'Ouvert jusqu’à 19h30',
       },
+      {
+        openingHours: {
+          SUNDAY: undefined,
+          MONDAY: undefined,
+          TUESDAY: undefined,
+          WEDNESDAY: undefined,
+          THURSDAY: undefined,
+          FRIDAY: undefined,
+          SATURDAY: undefined,
+        },
+        expected: null,
+      },
     ])('should have correct text $expected', ({ openingHours, expected }) => {
       const viewModel = getOpeningHoursStatus({
         openingHours,
@@ -322,12 +334,6 @@ describe('OpeningHoursStatusViewModel', () => {
       },
       {
         openingHours: {
-          MONDAY: undefined,
-        },
-        currentDate: paris.monday('20:00:00'),
-      },
-      {
-        openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
         currentDate: paris.monday('07:00:00'),
@@ -343,11 +349,6 @@ describe('OpeningHoursStatusViewModel', () => {
     })
 
     it.each([
-      {
-        openingHours: { MONDAY: undefined },
-        currentDate: paris.monday('20:00:00'),
-        expectText: 'Fermé',
-      },
       {
         openingHours: { MONDAY: [{ open: '09:00', close: '19:00' }] },
         currentDate: paris.monday('20:00:00'),
@@ -479,6 +480,32 @@ describe('OpeningHoursStatusViewModel', () => {
         expect(viewModel.nextChangeTime).toEqual(expectedNextChange)
       }
     )
+  })
+
+  describe('Venue is not-applicable hours', () => {
+    it('should return not-applicable state', () => {
+      const openingHours = { MONDAY: undefined }
+      const currentDate = paris.monday('20:00:00')
+      const viewModel = getOpeningHoursStatus({
+        openingHours,
+        currentDate,
+        timezone: PARIS_TIMEZONE,
+      })
+
+      expect(viewModel.openingState).toEqual('not-applicable')
+    })
+
+    it('should not return text', () => {
+      const openingHours = { MONDAY: undefined }
+      const currentDate = paris.monday('20:00:00')
+      const viewModel = getOpeningHoursStatus({
+        openingHours,
+        currentDate,
+        timezone: PARIS_TIMEZONE,
+      })
+
+      expect(viewModel.openingLabel).toEqual(null)
+    })
   })
 
   describe('Venue is not on same timezone', () => {

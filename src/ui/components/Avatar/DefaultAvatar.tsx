@@ -2,11 +2,11 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { Profile } from 'ui/svg/icons/Profile'
 
 export const DefaultAvatar = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [theme.colors.secondary, theme.colors.primary],
+  colors: [theme.designSystem.color.icon.brandPrimary, theme.designSystem.color.icon.brandPrimary],
   useAngle: true,
   angle: -30,
-  children: <BicolorProfile color={theme.colors.white} color2={theme.colors.white} size={50} />,
+  children: <Profile color={theme.designSystem.color.icon.lockedInverted} size={50} />,
 }))({ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' })

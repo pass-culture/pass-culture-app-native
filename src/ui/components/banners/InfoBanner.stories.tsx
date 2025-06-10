@@ -4,7 +4,7 @@ import React from 'react'
 
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { BicolorClock } from 'ui/svg/icons/BicolorClock'
+import { Clock } from 'ui/svg/icons/Clock'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { InfoBanner } from './InfoBanner'
@@ -35,7 +35,7 @@ const variantConfig: Variants<typeof InfoBanner> = [
   },
   {
     label: 'InfoBanner with icon',
-    props: { message, icon: BicolorClock },
+    props: { message, icon: Clock },
   },
   {
     label: 'InfoBanner with children',

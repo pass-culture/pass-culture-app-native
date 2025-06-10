@@ -7,7 +7,7 @@ import { theme } from 'theme'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { IdCard } from 'ui/svg/icons/IdCard'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 describe('StepButton', () => {
@@ -67,12 +67,7 @@ describe('StepButton', () => {
 })
 
 const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
-  <BicolorIdCard
-    size={24}
-    color={theme.colors.greyMedium}
-    color2={theme.colors.greyMedium}
-    testID="DisabledIdCardIcon"
-  />
+  <IdCard size={24} color={theme.designSystem.color.icon.subtle} testID="DisabledIdCardIcon" />
 )
 
 function renderStepButton(
@@ -86,9 +81,9 @@ function renderStepButton(
     title: 'Identification',
     icon: {
       disabled: DisabledIdCardIcon,
-      current: BicolorIdCard,
-      completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
-      retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
+      current: IdCard,
+      completed: () => <IconStepDone Icon={IdCard} testID="identification-step-done" />,
+      retry: () => <IconRetryStep Icon={IdCard} testID="identification-retry-step" />,
     },
   }
   render(<StepButton step={identificationStep} {...additionalProps} />)

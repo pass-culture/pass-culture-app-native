@@ -20,7 +20,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { IdCard } from 'ui/svg/icons/IdCard'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -85,7 +85,7 @@ export const SetName: FunctionComponent<Props> = ({ route }: Props) => {
         <Form.MaxWidth>
           <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <InfoBanner icon={BicolorIdCard} message={pageInfos.bannerMessage} />
+          <InfoBanner icon={IdCard} message={pageInfos.bannerMessage} />
           <Spacer.Column numberOfSpaces={4} />
           <Controller
             control={control}

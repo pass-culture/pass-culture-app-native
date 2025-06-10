@@ -16,7 +16,7 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { IdCard } from 'ui/svg/icons/IdCard'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -100,7 +100,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
-        <InfoBanner message={bannerMessage} icon={BicolorIdCard} />
+        <InfoBanner message={bannerMessage} icon={IdCard} />
         <Spacer.Column numberOfSpaces={10} />
         <Controller
           control={control}

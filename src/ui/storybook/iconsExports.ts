@@ -10,22 +10,16 @@ import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
-import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
-import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorShare, Share } from 'ui/svg/icons/BicolorShare'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
@@ -42,10 +36,12 @@ import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { Check } from 'ui/svg/icons/Check'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
+import { Clock } from 'ui/svg/icons/Clock'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { Code } from 'ui/svg/icons/Code'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Connect } from 'ui/svg/icons/Connect'
 import { DarkThemeIllustration } from 'ui/svg/icons/darkTheme/DarkThemeIllustration'
 import { DefaultThemeIllustration } from 'ui/svg/icons/darkTheme/DefaultThemeIllustration'
@@ -84,11 +80,13 @@ import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorde
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
+import { LostId } from 'ui/svg/icons/LostId'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Map } from 'ui/svg/icons/Map'
 import { MapPin } from 'ui/svg/icons/MapPin'
 import { More } from 'ui/svg/icons/More'
+import { NoId } from 'ui/svg/icons/NoId'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Offers } from 'ui/svg/icons/Offers'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
@@ -98,6 +96,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Play } from 'ui/svg/icons/Play'
 import { Profile } from 'ui/svg/icons/Profile'
+import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { Question } from 'ui/svg/icons/Question'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
@@ -146,13 +145,13 @@ export const SocialNetworkIcons = {
   MessengerRound,
   Snapchat,
   SnapchatRound,
+  Telegram,
   TikTok,
   Twitter,
   TwitterRound,
   ViberRound,
   WhatsApp,
   WhatsAppRound,
-  Telegram,
 }
 
 export const SecondaryAndBiggerIcons = {
@@ -165,22 +164,16 @@ export const SecondaryAndBiggerIcons = {
   Bell,
   BellFilled,
   BicolorBookings,
-  BicolorClock,
-  BicolorConfirmation,
   BicolorEarth,
   BicolorEmailIcon,
   BicolorEverywhere,
   BicolorFavorite,
   BicolorFrance,
-  BicolorIdCard,
   BicolorLocationPointer,
   BicolorLock,
   BicolorLogo,
-  BicolorLostId,
-  BicolorNoId,
   BicolorNoPhone,
   BicolorOffers,
-  BicolorProfile,
   BicolorSearch,
   BicolorShare,
   BicolorSignal,
@@ -195,9 +188,11 @@ export const SecondaryAndBiggerIcons = {
   Calendar,
   CalendarS,
   Check,
+  Clock,
   Close,
   Code,
   Confidentiality,
+  Confirmation,
   Duo,
   Email,
   Error,
@@ -219,13 +214,16 @@ export const SecondaryAndBiggerIcons = {
   LocationBuildingFilled,
   LocationPointerNotFilled,
   Logo,
+  LostId,
   MagnifyingGlass,
   MagnifyingGlassFilled,
   MapPin,
   More,
+  NoId,
   OfferEvent,
   Offers,
   OrderPrice,
+  Profile,
   ScrollToTop,
   Share,
   SignOut,
@@ -244,6 +242,8 @@ export const SecondaryAndBiggerIcons = {
 export const TertiaryAndSmallerIcons = {
   Again,
   Bulb,
+  CheckboxMarkChecked,
+  CheckboxMarkIndeterminate,
   ClockFilled,
   Connect,
   Digital,
@@ -263,11 +263,9 @@ export const TertiaryAndSmallerIcons = {
   Parameters,
   PhoneFilled,
   PlainArrowNext,
-  CheckboxMarkChecked,
-  CheckboxMarkIndeterminate,
   PlainArrowPrevious,
   Play,
-  Profile,
+  ProfileFilled,
   Question,
   RightFilled,
   Show,
@@ -281,7 +279,7 @@ export const TertiaryAndSmallerIcons = {
 const LogoPassCulture = styled(PassCultureIcon).attrs(({ theme }) => ({
   width: theme.icons.sizes.standard * 2,
   height: theme.icons.sizes.standard,
-  color: theme.colors.black,
+  color: theme.designSystem.color.icon.default,
 }))``
 
 export const UnconventionalIcons = {
