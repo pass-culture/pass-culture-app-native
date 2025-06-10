@@ -7,6 +7,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
+import { GridListDisplayToggle } from 'features/search/components/GridListDisplayToggle/GridListDisplayToggle'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -14,6 +15,8 @@ import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVe
 import { SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
@@ -37,6 +40,8 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venuesUserData,
   artistSection,
 }) => {
+  const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
+
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const {
@@ -106,8 +111,15 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           isLocated={isLocated}
         />
       ) : null}
-      <Title>{offerTitle}</Title>
-      <NumberOfResults nbHits={nbHits} />
+      <StyledView>
+        <TitleContainer>
+          <Title>{offerTitle}</Title>
+          <NumberOfResults nbHits={nbHits} />
+        </TitleContainer>
+        {!enableGridList ? (
+          <GridListDisplayToggle display="list" onPress={() => console.log('hello')} />
+        ) : null}
+      </StyledView>
     </View>
   )
 }
@@ -125,9 +137,19 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
 
 const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(4),
 })
 
 const StyledVenuePlaylist = styled(VenuePlaylist)({
   marginTop: getSpacing(4),
 })
+
+const StyledView = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  marginTop: getSpacing(4),
+  borderColor: 'red',
+  borderWidth: 2,
+})
+
+const TitleContainer = styled.View({})
