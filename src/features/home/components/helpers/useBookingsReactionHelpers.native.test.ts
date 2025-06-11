@@ -1,5 +1,5 @@
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import {
   ModalDisplayState,
   useBookingsReactionHelpers,

@@ -1,5 +1,5 @@
 import { BookingsResponseV2 } from 'api/gen'
-import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings/index'
+import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 
 export const useUserHasBookingsQueryV1 = () => {
   const { data: bookings } = useBookingsQuery()

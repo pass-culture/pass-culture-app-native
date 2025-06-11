@@ -1,5 +1,5 @@
 import { BookingsResponse } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'

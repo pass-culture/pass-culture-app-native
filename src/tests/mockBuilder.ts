@@ -10,7 +10,7 @@ import {
   OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { mockedBookingOfferResponse } from 'fixtures/booking'
 import { Offer } from 'shared/offer/types'

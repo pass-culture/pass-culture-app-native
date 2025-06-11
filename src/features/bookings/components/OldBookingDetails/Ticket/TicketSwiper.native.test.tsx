@@ -2,7 +2,7 @@ import React from 'react'
 
 import type { BookingsResponse } from 'api/gen'
 import { TicketSwiper } from 'features/bookings/components/OldBookingDetails/Ticket/TicketSwiper'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 

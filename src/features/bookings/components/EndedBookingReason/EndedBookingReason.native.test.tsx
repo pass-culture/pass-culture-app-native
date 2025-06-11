@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookingCancellationReasons } from 'api/gen'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { render, screen } from 'tests/utils'
 
 describe('EndedBookingReason', () => {

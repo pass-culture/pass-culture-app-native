@@ -8,7 +8,7 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -83,7 +83,7 @@ describe('Bookings', () => {
 
 const renderBookings = (bookings: BookingsResponse) => {
   jest
-    .spyOn(bookingsAPI, 'useBookingsQuery')
+    .spyOn(bookingsAPI, 'useBookingsQueryV1')
     .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
       BookingsResponse,
       unknown

@@ -11,7 +11,7 @@ import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useUserHasBookingsQuery, useBookingsQuery } from 'queries/bookings/index'
+import { useUserHasBookingsQuery, useBookingsQuery } from 'queries/bookings'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const scoreHomepageByTags = (

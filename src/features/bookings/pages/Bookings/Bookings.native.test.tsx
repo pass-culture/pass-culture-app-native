@@ -17,7 +17,7 @@ import { Bookings } from './Bookings'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookingsQuery')
+const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookingsQueryV1')
 
 useBookingsSpy.mockReturnValue({
   data: bookingsSnap,

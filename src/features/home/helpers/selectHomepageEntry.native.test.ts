@@ -2,7 +2,7 @@ import { shuffle } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { Homepage, HomepageTag } from 'features/home/types'

@@ -1,4 +1,4 @@
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { getBookingLabelForActivationCode } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 

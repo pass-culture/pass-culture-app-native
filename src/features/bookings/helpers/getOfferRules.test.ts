@@ -1,5 +1,5 @@
 import { BookingsResponse, WithdrawalTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { getOfferRules } from 'features/bookings/helpers'
 
 describe('getOfferRules', () => {

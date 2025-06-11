@@ -1,5 +1,5 @@
 import { AchievementEnum, AchievementResponse, BookingsResponse, ReactionTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { beneficiaryUser } from 'fixtures/user'

@@ -1,7 +1,7 @@
 import { UseQueryOptions, UseQueryResult } from 'react-query'
 
-import { BookingReponse, BookingsResponse, BookingsResponseV2 } from 'api/gen'
-import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings/index'
+import { BookingReponse, BookingResponse, BookingsResponse, BookingsResponseV2 } from 'api/gen'
+import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 
 export const useEndedBookingFromOfferIdQueryV1 = (
   offerId: number,
@@ -27,7 +27,7 @@ export const useEndedBookingFromOfferIdQueryV1 = (
 }
 
 const findEndedBookingFromOfferId = (bookings: BookingsResponseV2 | null, offerId: number) =>
-  bookings?.endedBookings?.find((item: BookingReponse) => item.stock.offer.id === offerId) || null
+  bookings?.endedBookings?.find((item: BookingResponse) => item.stock.offer.id === offerId) || null
 
 export const useEndedBookingFromOfferIdQuery = (offerId: number, enabled: boolean) =>
   useBookingsQueryV2(enabled, (data) => findEndedBookingFromOfferId(data, offerId))

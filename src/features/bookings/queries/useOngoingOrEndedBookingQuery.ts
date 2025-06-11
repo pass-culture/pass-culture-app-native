@@ -1,7 +1,7 @@
 import { UseQueryResult } from 'react-query'
 
-import { BookingReponse, BookingsResponse, BookingsResponseV2 } from 'api/gen'
-import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings/index'
+import { BookingReponse, BookingResponse, BookingsResponse, BookingsResponseV2 } from 'api/gen'
+import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 
 export const useOngoingOrEndedBookingQueryV1 = (
   id: number
@@ -26,8 +26,8 @@ export const useOngoingOrEndedBookingQueryV1 = (
 }
 
 const findOngoingOrEndedBooking = (bookings: BookingsResponseV2 | null, id: number) => {
-  const onGoingBooking = bookings?.ongoingBookings?.find((item: BookingReponse) => item.id === id)
-  const endedBooking = bookings?.endedBookings?.find((item: BookingReponse) => item.id === id)
+  const onGoingBooking = bookings?.ongoingBookings?.find((item: BookingResponse) => item.id === id)
+  const endedBooking = bookings?.endedBookings?.find((item: BookingResponse) => item.id === id)
 
   return onGoingBooking ?? (endedBooking || null)
 }

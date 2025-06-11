@@ -1,5 +1,5 @@
 import { BookingReponse, PostOneReactionRequest, ReactionTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { addReactionsToBookings } from 'features/reactions/helpers/addReactionsToBookings/addReactionsToBookings'
 
 const mockBookings: BookingReponse[] = [bookingsSnap.ended_bookings[0]]

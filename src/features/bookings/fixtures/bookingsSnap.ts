@@ -361,14 +361,7 @@ export const bookingsSnap = toMutable({
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
             id: 2185,
-            city: 'Drancy',
             name: 'Maison de la Brique',
-            coordinates: {
-              latitude: 48.91683,
-              longitude: 2.43884,
-            },
-            address: '1 boulevard de la brique',
-            postalCode: '93700',
             publicName: 'Maison de la Brique en mousse',
             timezone: 'Europe/Paris',
             isOpenToPublic: true,
@@ -390,7 +383,7 @@ export const bookingsSnap = toMutable({
         },
         noTicket: false,
         activationCode: null,
-        externalBookings: [],
+        externalBooking: null,
       },
     },
     {
@@ -431,14 +424,7 @@ export const bookingsSnap = toMutable({
           subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
           venue: {
             id: 2185,
-            city: 'Drancy',
             name: 'Maison de la Brique',
-            coordinates: {
-              latitude: 48.91683,
-              longitude: 2.43884,
-            },
-            address: '1 boulevard de la brique',
-            postalCode: '93700',
             publicName: 'Maison de la Brique en mousse',
             timezone: 'Europe/Paris',
             isOpenToPublic: true,
@@ -460,7 +446,7 @@ export const bookingsSnap = toMutable({
         },
         noTicket: false,
         activationCode: null,
-        externalBookings: [],
+        externalBooking: null,
       },
     },
   ],
@@ -505,14 +491,7 @@ export const bookingsSnap = toMutable({
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
             id: 2185,
-            city: 'Drancy',
             name: 'Maison de la Brique',
-            coordinates: {
-              latitude: 48.91683,
-              longitude: 2.43884,
-            },
-            address: '1 boulevard de la brique',
-            postalCode: '93700',
             timezone: 'Europe/Paris',
             isOpenToPublic: true,
           },
@@ -533,7 +512,7 @@ export const bookingsSnap = toMutable({
         },
         noTicket: false,
         activationCode: null,
-        externalBookings: [],
+        externalBooking: null,
       },
     },
     {
@@ -577,14 +556,7 @@ export const bookingsSnap = toMutable({
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
             id: 2185,
-            city: 'Drancy',
             name: 'Maison de la Brique',
-            coordinates: {
-              latitude: 48.91683,
-              longitude: 2.43884,
-            },
-            address: '1 boulevard de la brique',
-            postalCode: '93700',
             timezone: 'Europe/Paris',
             isOpenToPublic: true,
           },
@@ -601,10 +573,12 @@ export const bookingsSnap = toMutable({
         },
         noTicket: false,
         activationCode: null,
-        externalBookings: [
-          { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
-          { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
-        ],
+        externalBooking: {
+          data: [
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+          ],
+        },
       },
     },
     {
@@ -648,14 +622,7 @@ export const bookingsSnap = toMutable({
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
           venue: {
             id: 2185,
-            city: 'Valenciennes',
             name: 'Libraire du Petit Prince',
-            coordinates: {
-              latitude: 50.3588,
-              longitude: 3.5217,
-            },
-            address: '45 rue de Paris',
-            postalCode: '59300',
             timezone: 'Europe/Paris',
             isOpenToPublic: true,
           },
@@ -672,10 +639,12 @@ export const bookingsSnap = toMutable({
         },
         noTicket: false,
         activationCode: null,
-        externalBookings: [
-          { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
-          { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
-        ],
+        externalBooking: {
+          data: [
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+          ],
+        },
       },
     },
   ],

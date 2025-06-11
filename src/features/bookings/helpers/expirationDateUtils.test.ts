@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { BookingsResponse, SubcategoryIdEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/index'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import {
   daysCountdown,
   displayExpirationMessage,
