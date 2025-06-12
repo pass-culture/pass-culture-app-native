@@ -84,9 +84,24 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationOnboardingButtons,
-    { title: 'RemoteBanners 🆒', screen: 'CheatcodesScreenRemoteBanners', subscreens: [] },
-    { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
-    { title: 'Maintenance 🔗', screen: 'CheatcodesScreenMaintenance', subscreens: [] },
+    {
+      title: 'RemoteBanners 🆒',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenRemoteBanners' },
+      subscreens: [],
+    },
+    {
+      title: 'Share 🔗',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesNavigationShare' },
+      subscreens: [],
+    },
+    {
+      title: 'Maintenance 🔗',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenMaintenance' },
+      subscreens: [],
+    },
   ]
 
   const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
@@ -94,15 +109,55 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationErrorsButtons,
     ...cheatcodesNavigationGenericPagesButtons,
     ...cheatcodesNavigationSignUpButtons,
-    { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre', subscreens: [] },
-    { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations', subscreens: [] },
+    {
+      title: 'AccesLibre 🌈',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenAccesLibre' },
+      subscreens: [],
+    },
+    {
+      title: 'Debug informations 🪲',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenDebugInformations' },
+      subscreens: [],
+    },
     { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry, subscreens: [] },
-    { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags', subscreens: [] },
-    { title: 'Loading page ⌛', screen: 'CheatcodeScreenLoadingPage', subscreens: [] },
-    { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia', subscreens: [] },
-    { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages', subscreens: [] },
-    { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig', subscreens: [] },
-    { title: 'LayoutExpiredLink 🔗', screen: 'CheatcodesScreenLayoutExpiredLink', subscreens: [] },
+    {
+      title: 'Features flags 🏳️',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenFeatureFlags' },
+      subscreens: [],
+    },
+    {
+      title: 'Loading page ⌛',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodeScreenLoadingPage' },
+      subscreens: [],
+    },
+    {
+      title: 'Nouvelle-Calédonie 🇳🇨',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenNewCaledonia' },
+      subscreens: [],
+    },
+    {
+      title: 'Pages non écrans ❌',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesNavigationNotScreensPages' },
+      subscreens: [],
+    },
+    {
+      title: 'Remote config 📊',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenRemoteConfig' },
+      subscreens: [],
+    },
+    {
+      title: 'LayoutExpiredLink 🔗',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesScreenLayoutExpiredLink' },
+      subscreens: [],
+    },
   ]
 
   const filteredFeaturesButtons = filterAndSortCheatcodesButtons(searchValue, featuresButtons)

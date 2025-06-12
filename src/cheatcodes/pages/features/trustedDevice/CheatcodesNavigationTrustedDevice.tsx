@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
@@ -16,9 +16,13 @@ import { getSpacing } from 'ui/theme'
 export const cheatcodesNavigationTrustedDeviceButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Trusted device 📱',
-    screen: 'CheatcodesNavigationTrustedDevice',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationTrustedDevice' },
     subscreens: [
-      { screen: 'CheatcodesScreenTrustedDeviceInfos' },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenTrustedDeviceInfos' },
+      },
       { screen: 'SuspensionChoice' },
       { screen: 'SuspensionChoiceExpiredLink' },
       { screen: 'SuspiciousLoginSuspendedAccount' },
@@ -40,7 +44,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
     <CheatcodesTemplateScreen title={cheatcodesNavigationTrustedDeviceButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationTrustedDeviceButtons} />
 
-      <LinkToScreen screen="AccountSecurity" navigationParams={ROUTE_PARAMS} />
+      <LinkToCheatcodesScreen screen="AccountSecurity" navigationParams={ROUTE_PARAMS} />
 
       <BufferContainer gap={2}>
         <ButtonPrimary

@@ -9,7 +9,7 @@ import { Typo } from 'ui/theme'
 export const CheatcodesScreenPageWithHeader = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToCheatcodesNavigationGenericPages = () => {
-    navigate('CheatcodesNavigationGenericPages')
+    navigate('CheatcodesStackNavigator', { screen: 'CheatcodesNavigationGenericPages' })
   }
 
   return (

@@ -7,7 +7,8 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 export const cheatcodesNavigationBookOfferButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'BookOffer 🎫',
-    screen: 'CheatcodesNavigationBookOffer',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationBookOffer' },
     subscreens: [
       { screen: 'BookingConfirmation', navigationParams: { offerId: 11224, bookingId: 1240 } },
     ],

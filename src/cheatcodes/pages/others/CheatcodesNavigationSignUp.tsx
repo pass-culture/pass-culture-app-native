@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { useSomeOfferIdQuery } from 'cheatcodes/queries/useSomeOfferIdQuery'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
@@ -15,7 +15,8 @@ import { useModal } from 'ui/components/modals/useModal'
 export const cheatcodesNavigationSignUpButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'SignUp 🎨',
-    screen: 'CheatcodesNavigationSignUp',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationSignUp' },
     subscreens: [
       { title: 'FinishSubscriptionModal', showOnlyInSearch: true },
       { title: 'AuthenticationModal', showOnlyInSearch: true },
@@ -73,14 +74,17 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
     <CheatcodesTemplateScreen title={cheatcodesNavigationSignUpButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationSignUpButtons} />
 
-      <LinkToScreen title="FinishSubscriptionModal" onPress={showFinishSubscriptionModal} />
+      <LinkToCheatcodesScreen
+        title="FinishSubscriptionModal"
+        onPress={showFinishSubscriptionModal}
+      />
       <FinishSubscriptionModal
         visible={finishSubscriptionModalVisible}
         hideModal={hideFinishSubscriptionModal}
         from={StepperOrigin.OFFER}
       />
 
-      <LinkToScreen title="AuthenticationModal" onPress={showAuthenticationModal} />
+      <LinkToCheatcodesScreen title="AuthenticationModal" onPress={showAuthenticationModal} />
       <AuthenticationModal
         visible={authenticationModalVisible}
         hideModal={hideAuthenticationModal}
@@ -88,14 +92,17 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
         from={StepperOrigin.FAVORITE}
       />
 
-      <LinkToScreen title="ApplicationProcessingModal" onPress={showApplicationProcessingModal} />
+      <LinkToCheatcodesScreen
+        title="ApplicationProcessingModal"
+        onPress={showApplicationProcessingModal}
+      />
       <ApplicationProcessingModal
         visible={applicationProcessingModalVisible}
         hideModal={hideApplicationProcessingModal}
         offerId={offerId}
       />
 
-      <LinkToScreen title="ErrorApplicationModal" onPress={showErrorApplicationModal} />
+      <LinkToCheatcodesScreen title="ErrorApplicationModal" onPress={showErrorApplicationModal} />
       <ErrorApplicationModal
         visible={errorApplicationModalVisible}
         hideModal={hideErrorApplicationModal}

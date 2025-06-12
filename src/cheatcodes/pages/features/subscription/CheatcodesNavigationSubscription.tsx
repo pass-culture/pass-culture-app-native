@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
@@ -13,7 +13,8 @@ import { useModal } from 'ui/components/modals/useModal'
 export const cheatcodesNavigationSubscriptionButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Subscription 🔔',
-    screen: 'CheatcodesNavigationSubscription',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationSubscription' },
     subscreens: [
       { screen: 'OnboardingSubscription' },
       { title: 'SubscriptionSuccessModal Cinéma', showOnlyInSearch: true },
@@ -74,49 +75,58 @@ export function CheatcodesNavigationSubscription(): React.JSX.Element {
     <CheatcodesTemplateScreen title={cheatcodesNavigationSubscriptionButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationSubscriptionButtons} />
 
-      <LinkToScreen title="SubscriptionSuccessModal Cinéma" onPress={showCinemaModal} />
+      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Cinéma" onPress={showCinemaModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.CINEMA}
         visible={cinemaModalVisible}
         dismissModal={hideCinemaModal}
       />
 
-      <LinkToScreen title="SubscriptionSuccessModal Lecture" onPress={showLectureModal} />
+      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Lecture" onPress={showLectureModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.LECTURE}
         visible={lectureModalVisible}
         dismissModal={hideLectureModal}
       />
 
-      <LinkToScreen title="SubscriptionSuccessModal Musique" onPress={showMusiqueModal} />
+      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Musique" onPress={showMusiqueModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.MUSIQUE}
         visible={musiqueModalVisible}
         dismissModal={hideMusiqueModal}
       />
 
-      <LinkToScreen title="SubscriptionSuccessModal Spectacles" onPress={showSpectaclesModal} />
+      <LinkToCheatcodesScreen
+        title="SubscriptionSuccessModal Spectacles"
+        onPress={showSpectaclesModal}
+      />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.SPECTACLES}
         visible={spectaclesModalVisible}
         dismissModal={hideSpectaclesModal}
       />
 
-      <LinkToScreen title="SubscriptionSuccessModal Visites" onPress={showVisitesModal} />
+      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Visites" onPress={showVisitesModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.VISITES}
         visible={visitesModalVisible}
         dismissModal={hideVisitesModal}
       />
 
-      <LinkToScreen title="SubscriptionSuccessModal Activités" onPress={showActivitesModal} />
+      <LinkToCheatcodesScreen
+        title="SubscriptionSuccessModal Activités"
+        onPress={showActivitesModal}
+      />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.ACTIVITES}
         visible={activitesModalVisible}
         dismissModal={hideActivitesModal}
       />
 
-      <LinkToScreen title="UnsubscribingConfirmationModal" onPress={showUnsubscribingModal} />
+      <LinkToCheatcodesScreen
+        title="UnsubscribingConfirmationModal"
+        onPress={showUnsubscribingModal}
+      />
       <UnsubscribingConfirmationModal
         theme={SubscriptionTheme.VISITES}
         visible={unsubscribingModalVisible}
@@ -124,7 +134,10 @@ export function CheatcodesNavigationSubscription(): React.JSX.Element {
         onUnsubscribePress={hideUnsubscribingModal}
       />
 
-      <LinkToScreen title="OnboardingSubscriptionModal" onPress={showOnboardingSubModal} />
+      <LinkToCheatcodesScreen
+        title="OnboardingSubscriptionModal"
+        onPress={showOnboardingSubModal}
+      />
       <OnboardingSubscriptionModal
         visible={onboardingSubModalVisible}
         dismissModal={hideOnboardingSubModal}

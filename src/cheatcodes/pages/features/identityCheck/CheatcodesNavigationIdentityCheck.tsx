@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
@@ -16,10 +16,15 @@ import { ScreenError } from 'libs/monitoring/errors'
 export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'IdentityCheck 🎨',
-    screen: 'CheatcodesNavigationIdentityCheck',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationIdentityCheck' },
     subscreens: [
       { screen: 'BeneficiaryRequestSent' },
-      { screen: 'CheatcodesScreenNotEligibleEduConnect', title: 'NotEligibleEduConnect' },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenNotEligibleEduConnect' },
+        title: 'NotEligibleEduConnect',
+      },
       { screen: 'ComeBackLater' },
       { screen: 'DisableActivation' },
       { screen: 'DMSIntroduction' },
@@ -48,7 +53,11 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'VerifyEligibility' },
       { title: 'DuplicateUser Error', showOnlyInSearch: true },
       { title: 'Generic Error', showOnlyInSearch: true },
-      { title: 'NewIdentificationFlow 🎨', screen: 'CheatcodesNavigationNewIdentificationFlow' },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesNavigationNewIdentificationFlow' },
+        title: 'NewIdentificationFlow 🎨',
+      },
       { title: 'PhoneValidationTipsModal', showOnlyInSearch: true },
       { title: 'UserAgeNotValid Educonnect Error', showOnlyInSearch: true },
       { title: 'UserAgeNotValid18YearsOld Error', showOnlyInSearch: true },
@@ -96,37 +105,39 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
     <CheatcodesTemplateScreen title={cheatcodesNavigationIdentityCheckButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationIdentityCheckButtons} />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="PhoneValidation tips Modal"
         onPress={() => setPhoneValidationTipsModalVisible(true)}
       />
       <PhoneValidationTipsModal
         isVisible={phoneValidationTipsModalVisible}
         dismissModal={() => setPhoneValidationTipsModalVisible(false)}
-        onGoBack={() => navigate('CheatcodesNavigationIdentityCheck')}
+        onGoBack={() =>
+          navigate('CheatcodesStackNavigator', { screen: 'CheatcodesNavigationIdentityCheck' })
+        }
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="UserAgeNotValid Educonnect Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid)}
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="UserAgeNotValid18YearsOld Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)}
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="UserTypeNotStudent Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="DuplicateUser Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.DuplicateUser)}
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="Generic Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
       />

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import {
   userCompletedBookBooking,
@@ -14,7 +14,8 @@ import { useModal } from 'ui/components/modals/useModal'
 export const cheatcodesNavigationAchievementsButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Achievements 🏆',
-    screen: 'CheatcodesNavigationAchievements',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationAchievements' },
     subscreens: [
       { screen: 'Achievements', navigationParams: { from: 'cheatcodes' } },
       { title: 'AchievementSuccessModal (1 unlocked)', showOnlyInSearch: true },
@@ -40,7 +41,7 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
     <CheatcodesTemplateScreen title={cheatcodesNavigationAchievementsButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationAchievementsButtons} />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="AchievementSuccessModal (1 unlocked)"
         onPress={showModalOneAchievement}
       />
@@ -50,7 +51,7 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
         hideModal={hideModalOneAchievement}
       />
 
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="AchievementSuccessModal (2+ unlocked)"
         onPress={showModalSeveralAchievements}
       />

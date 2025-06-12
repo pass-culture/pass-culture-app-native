@@ -9,7 +9,8 @@ export const cheatcodesNavigationBirthdayNotificationsButtons: [
 ] = [
   {
     title: 'BirthdayNotifications 🎂',
-    screen: 'CheatcodesNavigationBirthdayNotifications',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationBirthdayNotifications' },
     subscreens: [{ screen: 'EighteenBirthday' }, { screen: 'RecreditBirthdayNotification' }],
   },
 ]

@@ -6,7 +6,10 @@ import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
-import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import {
+  CheatcodesStackParamList,
+  CheatcodesStackRouteName,
+} from 'features/navigation/CheatcodesStackNavigator/types'
 import {
   OnboardingStackParamList,
   OnboardingStackRouteName,
@@ -211,7 +214,10 @@ export type RootStackParamList = {
   BookingDetails: { id: number }
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
-  CheatcodesStackNavigator: undefined
+  CheatcodesStackNavigator?: {
+    screen: CheatcodesStackRouteName
+    params?: CheatcodesStackParamList[CheatcodesStackRouteName]
+  }
   Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
@@ -281,8 +287,7 @@ export type RootStackParamList = {
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }
   VerifyEligibility: undefined
-} & CheatcodesStackParamList &
-  CulturalSurveyRootStackParamList &
+} & CulturalSurveyRootStackParamList &
   SubscriptionRootStackParamList &
   TrustedDeviceRootStackParamList
 
@@ -330,6 +335,7 @@ type NavigateParams<RouteName extends keyof ParamListBase> =
     ? [RouteName] | [RouteName, ParamListBase[RouteName]]
     : [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
+export type CheatcodesNavigateParams = NavigateParams<keyof RootStackParamList>
 export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 

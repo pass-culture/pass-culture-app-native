@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import * as DeviceDetect from 'react-device-detect'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
+import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { BrowserNotSupportedPage, supportedBrowsers } from 'web/SupportedBrowsersGate.web'
 
 enum Page {
@@ -33,7 +33,7 @@ export function CheatcodesNavigationNotScreensPages(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Pages qui ne sont pas des écrans ❌">
-      <LinkToScreen
+      <LinkToCheatcodesScreen
         title="BrowserNotSupportedPage"
         onPress={() => setPage(Page.BrowserNotSupportedPage)}
       />

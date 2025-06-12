@@ -7,14 +7,37 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 export const cheatcodesNavigationGenericPagesButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Pages génériques 📄',
-    screen: 'CheatcodesNavigationGenericPages',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationGenericPages' },
     subscreens: [
-      { screen: 'CheatcodesScreenPageWithHeader', title: 'PageWithHeader' },
-      { screen: 'CheatcodesScreenGenericInfoPage', title: 'GenericInfoPage' },
-      { screen: 'CheatcodesScreenGenericErrorPage', title: 'GenericErrorPage' },
-      { screen: 'CheatcodesScreenGenericOfficialPage', title: 'GenericOfficialPage' },
       {
-        screen: 'CheatcodesScreenSecondaryPageWithBlurHeader',
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenPageWithHeader' },
+        title: 'PageWithHeader',
+      },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenPageWithHeader' },
+        title: 'PageWithHeader',
+      },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenGenericInfoPage' },
+        title: 'GenericInfoPage',
+      },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenGenericErrorPage' },
+        title: 'GenericErrorPage',
+      },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenGenericOfficialPage' },
+        title: 'GenericOfficialPage',
+      },
+      {
+        screen: 'CheatcodesStackNavigator',
+        navigationParams: { screen: 'CheatcodesScreenSecondaryPageWithBlurHeader' },
         title: 'SecondaryPageWithBlurHeader',
       },
     ],

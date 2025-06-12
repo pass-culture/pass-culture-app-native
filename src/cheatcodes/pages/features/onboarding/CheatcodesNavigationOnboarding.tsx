@@ -10,7 +10,8 @@ import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavig
 export const cheatcodesNavigationOnboardingButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Onboarding 🚸',
-    screen: 'CheatcodesNavigationOnboarding',
+    screen: 'CheatcodesStackNavigator',
+    navigationParams: { screen: 'CheatcodesNavigationOnboarding' },
     subscreens: [
       getOnboardingNavConfig('OnboardingNotEligible'),
       getOnboardingNavConfig('OnboardingGeneralPublicWelcome'),

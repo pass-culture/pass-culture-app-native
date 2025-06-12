@@ -9,7 +9,8 @@ export const cheatcodesNavigationAccountManagementButtons: [CheatcodesButtonsWit
   [
     {
       title: 'Account Management ⚙️',
-      screen: 'CheatcodesNavigationAccountManagement',
+      screen: 'CheatcodesStackNavigator',
+      navigationParams: { screen: 'CheatcodesNavigationAccountManagement' },
       subscreens: [
         { screen: 'FraudulentSuspendedAccount' },
         { screen: 'SuspendedAccountUponUserRequest' },
