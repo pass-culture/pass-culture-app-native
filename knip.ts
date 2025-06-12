@@ -15,6 +15,8 @@ const defaultConfig: KnipConfig = {
     'src/api/gen/**',
     'src/**/fixtures/**',
     'src/**/__mocks__/**',
+    'src/features/bookings/components/BookingListItem.tsx', // TODO(PC-35897): remove
+    'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
