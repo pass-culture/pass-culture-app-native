@@ -42,8 +42,6 @@ Duplicate Sources / Packages - Duplicates found! ⚠️
     PassCulture@1.199.0 -> @lingui/react@^3.13.2 -> @lingui/core@^3.13.2 -> @babel/runtime@^7.11.2
   7.14.8 ~/@lingui/react/~/@babel/runtime
     PassCulture@1.199.0 -> @lingui/react@^3.13.2 -> @babel/runtime@^7.11.2
-  7.14.8 ~/amplitude-js/~/@babel/runtime
-    PassCulture@1.199.0 -> amplitude-js@^8.16.1 -> @babel/runtime@^7.3.4
   7.14.8 ~/babel-preset-react-app/~/@babel/runtime
     PassCulture@1.199.0 -> babel-preset-react-app@^10.0.1 -> @babel/runtime@^7.16.3
   7.14.8 ~/react-instantsearch-hooks/~/@babel/runtime
