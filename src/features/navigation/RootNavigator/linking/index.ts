@@ -1,11 +1,7 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
-import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
-import { temporaryRootStackConfig } from 'features/navigation/RootNavigator/linking/temporaryRootStackConfig'
+import { rootStackNavigatorPathConfig } from 'features/navigation/RootNavigator/linking/rootStackNavigatorPathConfig'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { TabParamList } from 'features/navigation/TabBar/types'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { RequireField } from 'libs/typesUtils/typeHelpers'
 
@@ -17,13 +13,7 @@ import { subscribe } from './subscribe'
 const PASS_CULTURE_PREFIX_URL = 'passculture://'
 
 export const linking: RequireField<
-  LinkingOptions<
-    | RootStackParamList
-    | CheatcodesStackParamList
-    | OnboardingStackParamList
-    | ProfileStackParamList
-    | TabParamList
-  >,
+  LinkingOptions<RootStackParamList>,
   'getStateFromPath' | 'getPathFromState'
 > = {
   prefixes: [
@@ -35,5 +25,5 @@ export const linking: RequireField<
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
-  config: { screens: { ...temporaryRootStackConfig } },
+  config: { screens: { ...rootStackNavigatorPathConfig } },
 }
