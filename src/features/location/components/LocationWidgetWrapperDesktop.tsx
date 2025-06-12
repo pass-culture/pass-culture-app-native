@@ -11,7 +11,7 @@ import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 const TOOLTIP_WIDTH = getSpacing(58)
 const WIDGET_HEIGHT = getSpacing(5 + 1) // textSize + padding
@@ -87,9 +87,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
         testID={testId}
         accessibilityLabel={testId}>
         <NotShrunk>{locationIcon}</NotShrunk>
-        <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
-        <Spacer.Row numberOfSpaces={2} />
         <NotShrunk>
           <ArrowDown size={icons.sizes.extraSmall} />
         </NotShrunk>
@@ -133,4 +131,6 @@ const LocationTitle = styled(Typo.BodyAccent).attrs({
   numberOfLines: 1,
 })({
   flexShrink: 1,
+  marginLeft: getSpacing(1),
+  marginRight: getSpacing(2),
 })
