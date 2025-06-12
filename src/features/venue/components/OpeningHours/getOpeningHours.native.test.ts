@@ -1,23 +1,19 @@
 import { getOpeningHours } from './getOpeningHours'
 
 describe('getOpeningHours', () => {
-  it('should return all days', () => {
-    const openingHoursViewModel = getOpeningHours({})
+  it('should return null if day is hours is not provided', () => {
+    const openingHoursViewModel = getOpeningHours({ MONDAY: undefined })
 
-    expect(openingHoursViewModel.days).toEqual([
-      expect.objectContaining({ label: 'Lundi' }),
-      expect.objectContaining({ label: 'Mardi' }),
-      expect.objectContaining({ label: 'Mercredi' }),
-      expect.objectContaining({ label: 'Jeudi' }),
-      expect.objectContaining({ label: 'Vendredi' }),
-      expect.objectContaining({ label: 'Samedi' }),
-      expect.objectContaining({ label: 'Dimanche' }),
-    ])
+    expect(openingHoursViewModel.days).toEqual(null)
   })
 
   it('should return "Fermer" when day has no information', () => {
     const openingHoursViewModel = getOpeningHours({
       MONDAY: undefined,
+      TUESDAY: [
+        { open: '10:00', close: '12:00' },
+        { open: '14:00', close: '20:00' },
+      ],
     })
 
     expect(openingHoursViewModel).toEqual({

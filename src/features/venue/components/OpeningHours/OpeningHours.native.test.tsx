@@ -23,4 +23,19 @@ describe('OpeningHours', () => {
 
     expect(tuesdayOpeningHoursAccessibilityLabel).toBeOnTheScreen()
   })
+
+  it('should return null if no opening hours are provided', () => {
+    const openingHours = {
+      SUNDAY: undefined,
+      MONDAY: undefined,
+      TUESDAY: undefined,
+      WEDNESDAY: undefined,
+      THURSDAY: undefined,
+      FRIDAY: undefined,
+      SATURDAY: undefined,
+    }
+    render(<OpeningHours openingHours={openingHours} />)
+
+    expect(screen.toJSON()).toBeNull()
+  })
 })

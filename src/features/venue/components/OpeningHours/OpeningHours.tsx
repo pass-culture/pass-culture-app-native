@@ -11,6 +11,7 @@ type Props = { openingHours: OpeningHoursType }
 
 export const OpeningHours: FC<Props> = ({ openingHours }) => {
   const { days } = getOpeningHours(openingHours)
+  if (!days) return null
   return (
     <StyledVerticalUl>
       {days.map((day) => (
