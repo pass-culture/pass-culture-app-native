@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   children: React.ReactNode
@@ -31,15 +31,20 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
       rightIcon={Close}
       onRightIconPress={hideModal}
       onModalHide={onModalHide}>
-      <Container gap={6}>
+      <Container>
         <Illustration />
-        {children}
+        <ChildrenWrapper>{children}</ChildrenWrapper>
       </Container>
     </AppModal>
   )
 }
 
-const Container = styled(ViewGap)({
+const Container = styled.View({
   alignItems: 'center',
   width: '100%',
+})
+
+const ChildrenWrapper = styled.View({
+  marginTop: getSpacing(6),
+  alignItems: 'center',
 })
