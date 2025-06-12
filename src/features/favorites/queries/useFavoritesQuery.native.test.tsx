@@ -6,7 +6,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import { simulateBackend } from 'features/favorites/tests/simulateBackend'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useFavoritesQuery } from './useFavoritesQuery'
 
@@ -25,9 +25,7 @@ describe('useFavoritesQuery hook', () => {
         ),
     })
 
-    expect(result.current.isFetching).toEqual(true)
-
-    await act(async () => {})
+    await waitFor(() => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.favorites.length).toEqual(
       paginatedFavoritesResponseSnap.favorites.length
