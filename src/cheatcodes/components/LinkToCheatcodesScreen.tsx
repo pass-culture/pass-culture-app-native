@@ -43,7 +43,7 @@ export const LinkToCheatcodesScreen = ({
           wording={LinkName}
           navigateTo={{
             screen: 'CheatcodesStackNavigator',
-            params: { screen: screen, params: navigationParams },
+            params: { ...navigationParams },
           }}
           disabled={disabled}
           buttonHeight={buttonHeight}
