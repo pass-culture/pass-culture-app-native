@@ -2265,12 +2265,12 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           }
         >
           <View
-            backgroundColor="#f3ecff"
+            backgroundColor="#f3edff"
             style={
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#f3ecff",
+                  "backgroundColor": "#f3edff",
                   "borderRadius": 8,
                   "flexDirection": "row",
                   "justifyContent": "space-between",

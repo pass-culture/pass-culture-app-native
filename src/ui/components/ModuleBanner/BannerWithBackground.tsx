@@ -44,15 +44,18 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   const StyledLeftIcon =
     leftIcon &&
     styled(leftIcon).attrs(({ theme }) => ({
-      color: theme.colors.white,
+      color: theme.designSystem.color.icon.lockedInverted,
+      color2: theme.designSystem.color.icon.lockedInverted,
     }))``
   const StyledRightIcon = rightIcon
     ? styled(rightIcon).attrs(({ theme }) => ({
-        color: theme.colors.white,
+        color: theme.designSystem.color.icon.lockedInverted,
+        color2: theme.designSystem.color.icon.lockedInverted,
         size: theme.icons.sizes.small,
       }))``
     : styled(ArrowNext).attrs(({ theme }) => ({
-        color: theme.colors.white,
+        color: theme.designSystem.color.icon.lockedInverted,
+        color2: theme.designSystem.color.icon.lockedInverted,
         size: theme.icons.sizes.small,
       }))``
 
@@ -93,7 +96,7 @@ const ImageContainer = styled.View(({ theme }) => ({
 const ImageBackground = styled.ImageBackground(({ theme }) => ({
   width: '100%',
   justifyContent: 'center',
-  backgroundColor: theme.colors.primary,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
 const GenericBannerWithoutBorder = styled(GenericBanner)({

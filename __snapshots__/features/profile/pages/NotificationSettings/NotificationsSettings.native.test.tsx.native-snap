@@ -750,12 +750,12 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           />
           <View
-            backgroundColor="#f3ecff"
+            backgroundColor="#f3edff"
             style={
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#f3ecff",
+                  "backgroundColor": "#f3edff",
                   "borderRadius": 8,
                   "flexDirection": "row",
                   "justifyContent": "space-between",
@@ -2589,12 +2589,12 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         }
       >
         <View
-          backgroundColor="#f3ecff"
+          backgroundColor="#f3edff"
           style={
             [
               {
                 "alignItems": "center",
-                "backgroundColor": "#f3ecff",
+                "backgroundColor": "#f3edff",
                 "borderRadius": 8,
                 "flexDirection": "row",
                 "justifyContent": "space-between",
