@@ -22,7 +22,6 @@ import {
   ValidStoredProfileInfos,
   useStoredProfileInfos,
 } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
-import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
@@ -32,6 +31,12 @@ import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getB
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getIsFreeOffer } from 'features/offer/helpers/getIsFreeOffer/getIsFreeOffer'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
+import {
+  getFreeOfferBookableCTA,
+  getIsProfileIncompleteAndFreeOffer,
+  getLoggedOutCTA,
+  getNotFreeOfferCTA,
+} from 'features/offer/helpers/useCtaWordingAndAction/useCTANewGen'
 import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics/provider'
@@ -135,49 +140,15 @@ export const getCtaWordingAndAction = ({
   const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
   if (!isLoggedIn) {
-    return {
-      modalToDisplay: OfferModal.AUTHENTICATION,
-      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
-      isDisabled: false,
-      onPress: () => analytics.logConsultAuthenticationModal(offer.id),
-      movieScreeningUserData: { isUserLoggedIn: isLoggedIn },
-    }
+    return getLoggedOutCTA(offer)
   }
 
   if (isEligibleFreeOffer15To16) {
-    if (isProfileIncomplete) {
-      if (isFreeOffer) {
-        setFreeOfferId(offer.id)
-        return {
-          wording: 'Réserver l’offre',
-          isDisabled: false,
-          navigateTo: {
-            screen: storedProfileInfos ? 'ProfileInformationValidation' : 'SetName',
-            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-          },
-        }
-      }
+    if (isNotFreeOffer) return getNotFreeOfferCTA()
 
-      return {
-        wording: 'Réserver l’offre',
-        isDisabled: true,
-        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
-      }
-    }
+    if (!isProfileIncomplete) return getFreeOfferBookableCTA()
 
-    if (isNotFreeOffer) {
-      return {
-        wording: 'Réserver l’offre',
-        isDisabled: true,
-        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
-      }
-    }
-
-    return {
-      wording: 'Réserver l’offre',
-      modalToDisplay: OfferModal.BOOKING,
-      isDisabled: false,
-    }
+    return getIsProfileIncompleteAndFreeOffer(storedProfileInfos, () => setFreeOfferId(offer.id))
   }
 
   if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
