@@ -25,5 +25,3 @@ export type SearchStackParamList = {
     }
   >
 }
-
-export type SearchStackScreenNames = keyof SearchStackParamList

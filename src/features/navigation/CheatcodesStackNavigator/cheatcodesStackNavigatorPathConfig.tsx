@@ -1,6 +1,6 @@
 export const cheatcodesStackNavigatorPathConfig = {
   CheatcodesStackNavigator: {
-    initialRouteName: 'cheatcodes',
+    // initialRouteName: 'cheatcodes',
     screens: {
       CheatcodesMenu: 'cheatcodes',
       CheatcodesNavigationAccountManagement: 'cheatcodes/other/account-management',

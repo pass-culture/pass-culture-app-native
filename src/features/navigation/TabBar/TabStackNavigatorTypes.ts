@@ -1,10 +1,7 @@
-import { TabNavigationState } from '@react-navigation/native'
+import { NavigatorScreenParams, TabNavigationState } from '@react-navigation/native'
 
 import { BookingsTab } from 'features/bookings/enum'
-import {
-  SearchStackParamList,
-  SearchStackScreenNames,
-} from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -27,10 +24,7 @@ type BookingsParams =
 export type TabParamList = {
   Home: HomeParams
   _DeeplinkOnlyHome1: HomeParams
-  SearchStackNavigator?: {
-    screen: SearchStackScreenNames
-    params: SearchStackParamList[SearchStackScreenNames]
-  }
+  SearchStackNavigator?: NavigatorScreenParams<SearchStackParamList>
   Bookings: BookingsParams
   _DeeplinkOnlyBookings1: BookingsParams
   Favorites: undefined

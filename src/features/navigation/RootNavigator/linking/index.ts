@@ -25,5 +25,5 @@ export const linking: RequireField<
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
-  config: { screens: { ...rootStackNavigatorPathConfig } },
+  config: { screens: rootStackNavigatorPathConfig },
 }

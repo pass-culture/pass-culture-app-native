@@ -1,7 +1,7 @@
-import { tabStackNavigatorPathConfig } from 'features/navigation/TabBar/TabStackNavigatorPathConfig'
+import { rootStackNavigatorPathConfig } from 'features/navigation/RootNavigator/linking/rootStackNavigatorPathConfig'
 import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 
 export function isTabScreen(screen): screen is TabRouteName {
-  const tabRouteNames = Object.keys(tabStackNavigatorPathConfig.TabNavigator.screens)
+  const tabRouteNames = Object.keys(rootStackNavigatorPathConfig.TabNavigator.screens)
   return tabRouteNames.includes(screen)
 }

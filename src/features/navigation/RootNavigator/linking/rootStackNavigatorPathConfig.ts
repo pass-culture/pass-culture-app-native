@@ -1,7 +1,58 @@
+import { cheatcodesStackNavigatorPathConfig } from 'features/navigation/CheatcodesStackNavigator/cheatcodesStackNavigatorPathConfig'
+import { onboardingStackNavigatorPathConfig } from 'features/navigation/OnboardingStackNavigator/onboardingStackNavigatorPathConfig'
+import { profileStackNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileStackNavigatorPathConfig'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { SearchView } from 'features/search/types'
 
 export const rootStackNavigatorPathConfig = {
-  // ...tabStackNavigatorPathConfig,
+  ...cheatcodesStackNavigatorPathConfig,
+  ...profileStackNavigatorPathConfig,
+  ...onboardingStackNavigatorPathConfig,
+  TabNavigator: {
+    // initialRouteName: 'Home', // this causes TS error on linking index.ts
+    screens: {
+      Home: {
+        path: 'accueil',
+        parse: screenParamsParser['Home'],
+      },
+      _DeeplinkOnlyHome1: {
+        path: 'home',
+        parse: screenParamsParser['Home'],
+      },
+      Bookings: {
+        path: 'reservations',
+      },
+      _DeeplinkOnlyBookings1: {
+        path: 'bookings',
+      },
+      Favorites: {
+        path: 'favoris',
+      },
+      Profile: {
+        path: 'profil',
+      },
+      SearchStackNavigator: {
+        // initialRouteName: 'SearchLanding',
+        screens: {
+          SearchLanding: {
+            path: 'recherche/accueil',
+            parse: screenParamsParser[SearchView.Landing],
+            stringify: screenParamsStringifier[SearchView.Landing],
+          },
+          SearchResults: {
+            path: 'recherche/resultats',
+            parse: screenParamsParser[SearchView.Results],
+            stringify: screenParamsStringifier[SearchView.Results],
+          },
+          ThematicSearch: {
+            path: 'recherche/thematique',
+            parse: screenParamsParser[SearchView.Thematic],
+            stringify: screenParamsStringifier[SearchView.Thematic],
+          },
+        },
+      },
+    },
+  },
   CulturalSurveyIntro: {
     path: 'questionnaire-pratiques-initiales/introduction',
   },
@@ -319,4 +370,4 @@ export const rootStackNavigatorPathConfig = {
     path: 'chronicles/:offerId/:chronicleId',
     parse: screenParamsParser['Chronicles'],
   },
-} as const
+}
