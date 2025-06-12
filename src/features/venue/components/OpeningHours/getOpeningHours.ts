@@ -13,11 +13,16 @@ type OpeningHour = {
   close: string
 }[]
 
-export const getOpeningHours = (openingHours: OpeningHours) => {
+type OpeningDaysAndHours = { days: { label: string; hours: string }[] } | { days: null }
+
+export const getOpeningHours = (openingHours: OpeningHours): OpeningDaysAndHours => {
+  const hasOpenDay = Object.values(openingHours).some((value) => !!value && value.length > 0)
+  if (!hasOpenDay) return { days: null }
+
   const getHours = (day: keyof OpeningHours) => {
     const hours = openingHours[day]
     if (!hours) return 'Fermé'
-    return hours.map((hour) => hour.open + ' - ' + hour.close).join(' / ')
+    return hours.map((hour) => `${hour.open} - ${hour.close}`).join(' / ')
   }
 
   return {
