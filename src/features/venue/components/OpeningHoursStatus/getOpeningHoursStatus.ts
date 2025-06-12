@@ -21,7 +21,7 @@ type OpeningHoursStatusParams = {
 
 type OpeningHoursStatus = {
   openingState: OpeningHoursStatusState
-  openingLabel: string
+  openingLabel: string | null
   nextChangeTime?: Date
 }
 
@@ -31,6 +31,10 @@ export const getOpeningHoursStatus = ({
   timezone,
 }: OpeningHoursStatusParams): OpeningHoursStatus => {
   const currentDateAtVenueTimezone = utcToZonedTime(currentDate, timezone)
+
+  const hasOpenDay = Object.values(openingHours).some((value) => !!value && value.length > 0)
+  if (!hasOpenDay) return { openingState: 'not-applicable', openingLabel: null }
+
   const currentOpeningPeriod = getCurrentOpeningPeriod(openingHours, currentDateAtVenueTimezone)
   const nextOpeningPeriod = getNextOpeningPeriod(openingHours, currentDateAtVenueTimezone)
   const { openingState, openingLabel } = computeOpeningState(
