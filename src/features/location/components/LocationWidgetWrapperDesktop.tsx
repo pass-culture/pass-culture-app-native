@@ -118,7 +118,7 @@ const NotShrunk = styled.View({
 })
 
 const LocationPointerFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
 }))({})
 
