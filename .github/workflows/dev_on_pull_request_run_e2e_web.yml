@@ -105,42 +105,19 @@ jobs:
           payload: |
             {
               "attachments": [
-                {
-                  "color": "${{ needs.run_e2e_web.result == 'failure' && '#A30002' || '#36a64f' }}",
-                  "blocks": [
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "<https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|*PCAPPNATIVE E2E*>"
-                      }
-                    },
-                    {
-                      "type": "context",
-                      "elements": [
-                        {
-                          "type": "image",
-                          "image_url": "https://github.com/${{ github.actor }}.png",
-                          "alt_text": "Profile picture"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "<https://github.com/${{ github.actor }}|${{ github.actor }}>\n*Environnement*: `staging`\n*Branche*: `${{ github.ref_name }}`"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "section",
-                      "fields": [
-                        {
-                          "type": "mrkdwn",
-                          "text": "*Statut*: ${{ needs.run_e2e_web.result == 'failure' && '❌ Échec' || '✅ Réussite' }}"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.run_e2e_web.result == 'failure'] }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "SMOKETEST E2E-WEB",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Le smoke test Web sur la branche `${{ github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.run_e2e_web.result == 'failure'] }}"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
             }
         env:
           SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
