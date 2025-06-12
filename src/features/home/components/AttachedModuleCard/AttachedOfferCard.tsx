@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
+import { AttachedCardImage } from 'features/home/components/AttachedModuleCard/AttachedCardImage'
 import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
@@ -15,7 +16,6 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
-import { OfferImage } from 'ui/components/tiles/OfferImage'
 
 type Props = {
   offer: Offer
@@ -68,15 +68,9 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
       rightTagLabel={distanceLabel}
       accessibilityLabel={accessibilityLabel}
       bottomBannerText={comingSoon}
-      LeftImageComponent={() => (
-        <OfferImage
-          imageUrl={attachedOffer?.thumbUrl}
-          categoryId={categoryId}
-          borderRadius={5}
-          withStroke
-        />
-      )}
+      LeftImageComponent={AttachedCardImage}
       shouldFixHeight={shouldFixHeight}
+      leftImageProps={{ imageUrl: attachedOffer?.thumbUrl, categoryId }}
     />
   )
 }

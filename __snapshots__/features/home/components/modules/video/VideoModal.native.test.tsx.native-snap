@@ -520,7 +520,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                       "backgroundColor": "#ffffff",
                       "borderBottomLeftRadius": 12,
                       "borderBottomRightRadius": 12,
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#cbcdd2",
                       "borderTopLeftRadius": 12,
                       "borderTopRightRadius": 12,
                       "borderWidth": 1,
@@ -540,6 +540,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   style={
                     [
                       {
+                        "flexDirection": "column",
                         "justifyContent": "center",
                       },
                     ]
@@ -666,27 +667,18 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   </Text>
                 </View>
                 <View
+                  hasBottomRightElement={false}
+                  hasRightTagLabel={false}
                   style={
                     [
                       {
                         "alignItems": "flex-end",
+                        "justifyContent": "flex-end",
                         "marginVertical": 1,
                       },
                     ]
                   }
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
-                </View>
+                />
               </View>
             </View>
             <View

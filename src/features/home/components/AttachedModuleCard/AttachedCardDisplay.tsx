@@ -1,15 +1,21 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { CategoryIdEnum } from 'api/gen'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
+export type LeftImageComponentProps = {
+  imageUrl?: string
+  categoryId?: CategoryIdEnum | null
+}
 interface AttachedCardDisplayProps {
   title: string
   subtitle?: string
   details?: string[]
-  LeftImageComponent?: React.FunctionComponent
+  LeftImageComponent?: React.ComponentType<LeftImageComponentProps>
+  leftImageProps?: LeftImageComponentProps
   rightTagLabel?: string
   bottomRightElement?: React.ReactNode
   accessibilityLabel?: string
@@ -27,6 +33,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   subtitle,
   details,
   LeftImageComponent,
+  leftImageProps,
   rightTagLabel,
   bottomRightElement,
   accessibilityLabel,
@@ -41,7 +48,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         bottomBannerText={bottomBannerText}>
         {LeftImageComponent ? (
           <ImageContainer>
-            <LeftImageComponent />
+            <LeftImageComponent {...leftImageProps} />
           </ImageContainer>
         ) : null}
         <CentralColumn>
@@ -53,18 +60,16 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
               ))
             : null}
         </CentralColumn>
-        <RightColumn>
+        <RightColumn
+          hasRightTagLabel={!!rightTagLabel}
+          hasBottomRightElement={!!bottomRightElement}>
           {rightTagLabel ? (
             <TagWrapper label={rightTagLabel}>
               <Typo.BodyAccentXs>{rightTagLabel}</Typo.BodyAccentXs>
             </TagWrapper>
           ) : null}
-          <Spacer.Flex />
           {bottomRightElement ? (
-            <React.Fragment>
-              <Spacer.Row numberOfSpaces={1} />
-              {bottomRightElement}
-            </React.Fragment>
+            <BottomRightElementContainer>{bottomRightElement}</BottomRightElementContainer>
           ) : null}
         </RightColumn>
       </Container>
@@ -92,7 +97,7 @@ const BottomBanner = styled.View(({ theme }) => ({
 
 const TagWrapper = styled.View(({ theme }) => ({
   borderRadius: theme.tiles.borderRadius,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   paddingVertical: getSpacing(0.5),
   paddingHorizontal: getSpacing(1),
   alignSelf: 'baseline',
@@ -107,24 +112,40 @@ const CentralColumn = styled.View({
   justifyContent: 'center',
 })
 
-const RightColumn = styled.View({
-  alignItems: 'flex-end',
-  marginVertical: getSpacing(0.25),
-})
+const RightColumn = styled.View<{ hasRightTagLabel: boolean; hasBottomRightElement: boolean }>(
+  ({ hasRightTagLabel, hasBottomRightElement }) => {
+    let justifyContent: 'space-between' | 'flex-start' | 'flex-end'
+
+    if (hasRightTagLabel && hasBottomRightElement) {
+      justifyContent = 'space-between'
+    } else if (hasRightTagLabel) {
+      justifyContent = 'flex-start'
+    } else {
+      justifyContent = 'flex-end'
+    }
+
+    return {
+      alignItems: 'flex-end',
+      marginVertical: getSpacing(0.25),
+      justifyContent,
+    }
+  }
+)
 
 const ImageContainer = styled.View({
   justifyContent: 'center',
+  flexDirection: 'column',
 })
 
 const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: string }>(
   ({ theme, shouldFixHeight, bottomBannerText }) => ({
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     borderTopLeftRadius: BORDER_RADIUS,
     borderTopRightRadius: BORDER_RADIUS,
     borderBottomLeftRadius: bottomBannerText ? 0 : BORDER_RADIUS,
     borderBottomRightRadius: bottomBannerText ? 0 : BORDER_RADIUS,
     borderWidth: BORDER_WIDTH,
-    borderColor: theme.colors.greyMedium,
+    borderColor: theme.designSystem.color.border.subtle,
     gap: getSpacing(2),
     flexDirection: 'row',
     padding: OFFER_CARD_PADDING,
@@ -136,3 +157,7 @@ const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: stri
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
+
+const BottomRightElementContainer = styled.View({
+  marginTop: getSpacing(1),
+})

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
+import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { theme } from 'theme'
-import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { AttachedCardImage } from 'features/home/components/AttachedModuleCard/AttachedCardImage'
 import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
@@ -20,6 +20,11 @@ const baseProps: ComponentProps<typeof AttachedCardDisplay> = {
   details: ['Du 12/06 au 24/06'],
   rightTagLabel: 'Gratuit',
 }
+const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))({
+  flexShrink: 0,
+})
 
 const variantConfig: Variants<typeof AttachedCardDisplay> = [
   {
@@ -28,37 +33,30 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
   {
     label: 'AttachedCardDisplay with image',
     props: {
-      LeftImageComponent: () => (
-        <OfferImage
-          imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
-          categoryId={CategoryIdEnum.BEAUX_ARTS}
-          borderRadius={5}
-          withStroke
-        />
-      ),
+      LeftImageComponent: AttachedCardImage,
+      leftImageProps: {
+        imageUrl:
+          'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
+        categoryId: CategoryIdEnum.BEAUX_ARTS,
+      },
     },
   },
   {
     label: 'AttachedCardDisplay with multiple details',
     props: {
       details: ['Du 12/06 au 24/06', 'Duo'],
-      LeftImageComponent: () => (
-        <OfferImage
-          imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
-          categoryId={CategoryIdEnum.BEAUX_ARTS}
-          borderRadius={5}
-          withStroke
-        />
-      ),
+      LeftImageComponent: AttachedCardImage,
+      leftImageProps: {
+        imageUrl:
+          'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
+        categoryId: CategoryIdEnum.BEAUX_ARTS,
+      },
     },
   },
   {
     label: 'AttachedCardDisplay with right element',
     props: {
-      bottomRightElement: (
-        // eslint-disable-next-line react-native/no-inline-styles
-        <ArrowRight style={{ flexShrink: 0 }} size={theme.icons.sizes.extraSmall} />
-      ),
+      bottomRightElement: <StyledArrowRight />,
     },
   },
   {
@@ -66,14 +64,12 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
     props: {
       bottomBannerText: 'Disponible le 17 février',
       details: ['Du 12/06 au 24/06', 'Duo'],
-      LeftImageComponent: () => (
-        <OfferImage
-          imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
-          categoryId={CategoryIdEnum.BEAUX_ARTS}
-          borderRadius={5}
-          withStroke
-        />
-      ),
+      LeftImageComponent: AttachedCardImage,
+      leftImageProps: {
+        imageUrl:
+          'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
+        categoryId: CategoryIdEnum.BEAUX_ARTS,
+      },
     },
   },
 ]
