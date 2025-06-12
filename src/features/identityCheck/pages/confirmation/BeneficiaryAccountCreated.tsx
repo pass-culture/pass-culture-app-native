@@ -2,7 +2,6 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
@@ -59,7 +58,6 @@ export function BeneficiaryAccountCreated() {
   const onBeforeNavigate = useCallback(() => {
     BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
     if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
-    creditActions.setActivationDate(new Date())
     resetRecreditAmountToShow()
   }, [resetRecreditAmountToShow, showShareAppModal, user?.needsToFillCulturalSurvey])
 
