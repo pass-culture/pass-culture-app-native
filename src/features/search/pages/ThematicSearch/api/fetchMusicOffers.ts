@@ -6,9 +6,17 @@ import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSear
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 
-export const fetchMusicOffers = async (userLocation?: Position) => {
+export const fetchMusicOffers = async ({
+  userLocation,
+  isReplicaAlgoliaIndexActive,
+}: {
+  userLocation?: Position
+  isReplicaAlgoliaIndexActive?: boolean
+}) => {
   const commonQueryParams = {
-    indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+    indexName: isReplicaAlgoliaIndexActive
+      ? env.ALGOLIA_OFFERS_INDEX_NAME_B
+      : env.ALGOLIA_OFFERS_INDEX_NAME,
     userLocation,
   }
 

@@ -3,15 +3,20 @@ import React from 'react'
 import { fetchCinemaOffers } from 'features/search/pages/ThematicSearch/api/fetchCinemaOffers'
 import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 const CINEMA_PLAYLISTS_TITLES = ['Films à l’affiche', 'Films de la semaine', 'Cartes ciné']
 
 export const CinemaPlaylists: React.FC = () => {
+  const isReplicaAlgoliaIndexActive = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
+  )
   const { playlists: cinemaPlaylists, isLoading: areCinemaPlaylistsLoading } =
     useThematicSearchPlaylists({
       playlistTitles: CINEMA_PLAYLISTS_TITLES,
-      fetchMethod: fetchCinemaOffers,
+      fetchMethod: () => fetchCinemaOffers({ isReplicaAlgoliaIndexActive }),
       queryKey: QueryKeys.FILMS_OFFERS,
     })
 

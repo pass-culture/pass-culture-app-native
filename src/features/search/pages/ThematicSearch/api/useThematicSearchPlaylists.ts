@@ -12,7 +12,10 @@ import { Offer } from 'shared/offer/types'
 
 type ThematicSearchPlaylists = {
   playlistTitles: string[]
-  fetchMethod: (userLocation: Position) => Promise<SearchResponse<Offer>[]>
+  fetchMethod: (
+    userLocation: Position,
+    isReplicaAlgoliaIndexActive?: boolean
+  ) => Promise<SearchResponse<Offer>[]>
   queryKey: string
 }
 
