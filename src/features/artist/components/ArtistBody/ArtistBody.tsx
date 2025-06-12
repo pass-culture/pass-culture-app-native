@@ -83,7 +83,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
                 <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-                  {highlightLinks(capitalizeFirstLetter(description) ?? '')}
+                  {highlightLinks(capitalizeFirstLetter(description))}
                 </CollapsibleText>
               </Description>
             ) : null}

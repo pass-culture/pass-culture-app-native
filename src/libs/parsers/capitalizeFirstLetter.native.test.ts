@@ -14,14 +14,6 @@ describe('capitalizeFirstLetter', () => {
     expect(capitalizeFirstLetter('#hashtag')).toEqual('#hashtag')
   })
 
-  it('should convert a number to a string', () => {
-    expect(capitalizeFirstLetter(123)).toEqual('123')
-  })
-
-  it('should return undefined if input is undefined', () => {
-    expect(capitalizeFirstLetter(undefined)).toBeUndefined()
-  })
-
   it('should handle an empty string', () => {
     expect(capitalizeFirstLetter('')).toEqual('')
   })
