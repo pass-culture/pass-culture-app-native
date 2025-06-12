@@ -30,7 +30,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     <Image
       source={
         {
-          "testUri": "../../../public/images/WelcomeBackground.jpg",
+          "testUri": "../../../public/images/WelcomeBackgroundTransparent.png",
         }
       }
       style={
