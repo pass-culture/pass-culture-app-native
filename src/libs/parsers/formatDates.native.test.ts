@@ -1,9 +1,9 @@
 import mockdate from 'mockdate'
 import timezoneMock from 'timezone-mock'
 
+import { capitalizeFirstLetter } from './capitalizeFirstLetter'
 import {
   GroupResult,
-  capitalizeFirstLetter,
   decomposeDate,
   formatDatePeriod,
   formatDateToISOStringWithoutTime,

@@ -43,7 +43,7 @@ describe('<Artist />', () => {
     it('should render null when there is no artist', async () => {
       mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
         responseOptions: {
-          statusCode: 400,
+          statusCode: 404,
           data: {},
         },
       })

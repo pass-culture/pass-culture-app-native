@@ -12,12 +12,14 @@ import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHea
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
@@ -58,7 +60,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   }, [image])
 
   return (
-    <Container>
+    <Page>
       <ArtistWebMetaHeader artist={name} />
       {/* On web header is called before Body for accessibility navigate order */}
       {isWeb ? (
@@ -81,7 +83,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
                 <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-                  {highlightLinks(description)}
+                  {highlightLinks(capitalizeFirstLetter(description) ?? '')}
                 </CollapsibleText>
               </Description>
             ) : null}
@@ -99,14 +101,9 @@ export const ArtistBody: FunctionComponent<Props> = ({
           headerTransition={headerTransition}
         />
       )}
-    </Container>
+    </Page>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
 
 const ContentContainer = styled(IntersectionObserverScrollView).attrs({
   scrollIndicatorInsets: { right: 1 },
