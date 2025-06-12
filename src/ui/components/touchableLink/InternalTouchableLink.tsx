@@ -1,4 +1,4 @@
-import { useIsFocused, useLinkProps, useNavigation } from '@react-navigation/native'
+import { useLinkProps, useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
@@ -15,11 +15,9 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
 }) => {
   // We use nullish operator here because TabBar uses InternalTouchableLink but navigateTo is undefined during launch
   const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
-  const isFocused = useIsFocused()
   const { navigate, push, reset } = useNavigation<UseNavigationType>()
   const { screen, params, fromRef, withPush, withReset } = navigateTo
 
-  // To avoid double tap issue, we define navigation functions only when component is focused
   const handleNavigation = useCallback(() => {
     if (withReset) {
       fromRef
@@ -33,9 +31,9 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   }, [navigate, push, reset, fromRef, withPush, withReset, params, screen])
   return (
     <TouchableLink
-      handleNavigation={enableNavigate && isFocused ? handleNavigation : undefined}
-      onBeforeNavigate={isFocused ? onBeforeNavigate : undefined}
-      onAfterNavigate={isFocused ? onAfterNavigate : undefined}
+      handleNavigation={enableNavigate ? handleNavigation : undefined}
+      onBeforeNavigate={onBeforeNavigate}
+      onAfterNavigate={onAfterNavigate}
       linkProps={internalLinkProps}
       {...rest}
     />

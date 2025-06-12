@@ -40,7 +40,7 @@ describe('ArtistPlaylist', () => {
     await screen.findByText('Toutes ses offres disponibles')
 
     expect(screen.getByText('Toutes ses offres disponibles')).toBeOnTheScreen()
-    expect(screen.getByText('Manga Série "One piece" - Tome 5')).toBeOnTheScreen()
+    expect(screen.getByText('Manga Série "One piece" - Tome 3')).toBeOnTheScreen()
   })
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {

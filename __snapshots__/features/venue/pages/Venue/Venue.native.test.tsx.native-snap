@@ -1053,10 +1053,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                         estimatedItemSize={160}
                         getItem={[Function]}
                         getItemCount={[Function]}
+                        getItemLayout={[Function]}
                         handlerTag={1}
                         handlerType="NativeViewGestureHandler"
                         horizontal={true}
+                        initialNumToRender={4}
                         keyExtractor={[Function]}
+                        maxToRenderPerBatch={6}
                         onContentSizeChange={[Function]}
                         onEndReachedThreshold={0.2}
                         onGestureHandlerEvent={[Function]}
@@ -1067,7 +1070,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         onScroll={[Function]}
                         onScrollBeginDrag={[Function]}
                         onScrollEndDrag={[Function]}
-                        removeClippedSubviews={false}
+                        removeClippedSubviews={true}
                         renderItem={[Function]}
                         renderScrollComponent={[Function]}
                         scrollEnabled={true}
@@ -1075,6 +1078,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         showsHorizontalScrollIndicator={false}
                         stickyHeaderIndices={[]}
                         testID="offersModuleList"
+                        updateCellsBatchingPeriod={100}
                         viewabilityConfig={
                           {
                             "minimumViewTime": 300,
@@ -1093,6 +1097,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             },
                           ]
                         }
+                        windowSize={7}
                       >
                         <View>
                           <View
@@ -1112,7 +1117,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           </View>
                           <View
                             onFocusCapture={[Function]}
-                            onLayout={[Function]}
                             style={
                               [
                                 {
@@ -1123,6 +1127,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           >
                             <View
+                              renderToHardwareTextureAndroid={true}
+                              shouldRasterizeIOS={true}
                               testID="OfferTile"
                             >
                               <View
@@ -1315,7 +1321,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           </View>
                           <View
                             onFocusCapture={[Function]}
-                            onLayout={[Function]}
                             style={
                               [
                                 {
@@ -1326,6 +1331,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           >
                             <View
+                              renderToHardwareTextureAndroid={true}
+                              shouldRasterizeIOS={true}
                               testID="OfferTile"
                             >
                               <View
@@ -1518,7 +1525,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           </View>
                           <View
                             onFocusCapture={[Function]}
-                            onLayout={[Function]}
                             style={
                               [
                                 {
@@ -1529,6 +1535,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           >
                             <View
+                              renderToHardwareTextureAndroid={true}
+                              shouldRasterizeIOS={true}
                               testID="OfferTile"
                             >
                               <View
@@ -4373,10 +4381,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         estimatedItemSize={160}
                         getItem={[Function]}
                         getItemCount={[Function]}
+                        getItemLayout={[Function]}
                         handlerTag={3}
                         handlerType="NativeViewGestureHandler"
                         horizontal={true}
+                        initialNumToRender={4}
                         keyExtractor={[Function]}
+                        maxToRenderPerBatch={6}
                         onContentSizeChange={[Function]}
                         onEndReachedThreshold={0.2}
                         onGestureHandlerEvent={[Function]}
@@ -4387,7 +4398,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         onScroll={[Function]}
                         onScrollBeginDrag={[Function]}
                         onScrollEndDrag={[Function]}
-                        removeClippedSubviews={false}
+                        removeClippedSubviews={true}
                         renderItem={[Function]}
                         renderScrollComponent={[Function]}
                         scrollEnabled={true}
@@ -4395,6 +4406,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         showsHorizontalScrollIndicator={false}
                         stickyHeaderIndices={[]}
                         testID="offersModuleList"
+                        updateCellsBatchingPeriod={100}
                         viewabilityConfig={
                           {
                             "minimumViewTime": 300,
@@ -4413,6 +4425,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             },
                           ]
                         }
+                        windowSize={7}
                       >
                         <View>
                           <View
@@ -4432,7 +4445,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           </View>
                           <View
                             onFocusCapture={[Function]}
-                            onLayout={[Function]}
                             style={
                               [
                                 {
@@ -4443,6 +4455,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           >
                             <View
+                              renderToHardwareTextureAndroid={true}
+                              shouldRasterizeIOS={true}
                               testID="OfferTile"
                             >
                               <View
@@ -4635,7 +4649,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           </View>
                           <View
                             onFocusCapture={[Function]}
-                            onLayout={[Function]}
                             style={
                               [
                                 {
@@ -4646,6 +4659,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           >
                             <View
+                              renderToHardwareTextureAndroid={true}
+                              shouldRasterizeIOS={true}
                               testID="OfferTile"
                             >
                               <View
@@ -4838,7 +4853,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           </View>
                           <View
                             onFocusCapture={[Function]}
-                            onLayout={[Function]}
                             style={
                               [
                                 {
@@ -4849,6 +4863,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           >
                             <View
+                              renderToHardwareTextureAndroid={true}
+                              shouldRasterizeIOS={true}
                               testID="OfferTile"
                             >
                               <View
