@@ -85,6 +85,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
 const TitleContainer = styled.View({
   width: '100%',
 })
+
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
   marginTop: getSpacing(1),
@@ -94,10 +95,11 @@ const TitleLabel = styled(Typo.Title1)({
   maxWidth: '70%',
 })
 
-const Title = styled.View({
+const Title = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-})
+  zIndex: theme.zIndex.locationWidget,
+}))
 
 const StyledSeparator = styled(Separator.Vertical)({
   marginLeft: getSpacing(6),
