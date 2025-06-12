@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { screen, render } from 'tests/utils'
+import { screen, render, act } from 'tests/utils'
 
 jest.mock('queries/profile/usePatchProfileMutation')
 
@@ -30,6 +30,8 @@ describe('<CookiesDetails/>', () => {
     )
 
     await screen.findByText('À quoi servent tes cookies et tes données ?')
+
+    await act(async () => {})
 
     expect(screen).toMatchSnapshot()
   })
