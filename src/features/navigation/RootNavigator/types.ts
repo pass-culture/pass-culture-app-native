@@ -1,22 +1,18 @@
-import { getStateFromPath, ParamListBase, RouteProp } from '@react-navigation/native'
+import {
+  getStateFromPath,
+  NavigatorScreenParams,
+  ParamListBase,
+  RouteProp,
+} from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
-import {
-  CheatcodesStackParamList,
-  CheatcodesStackRouteName,
-} from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
-import {
-  OnboardingStackParamList,
-  OnboardingStackRouteName,
-} from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
-import {
-  ProfileStackParamList,
-  ProfileStackRouteName,
-} from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
@@ -24,7 +20,7 @@ import { Venue } from 'features/venue/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
 
-import { TabParamList, TabRouteName } from '../TabBar/TabStackNavigatorTypes'
+import { TabParamList } from '../TabBar/TabStackNavigatorTypes'
 
 export type Referrals =
   | Lowercase<keyof AllNavParamList>
@@ -262,10 +258,7 @@ type ChroniclesParams = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
-  OnboardingStackNavigator?: {
-    screen: OnboardingStackRouteName
-    params: OnboardingStackParamList[OnboardingStackRouteName]
-  }
+  OnboardingStackNavigator?: NavigatorScreenParams<OnboardingStackParamList>
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
@@ -282,10 +275,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyBookingDetails1: BookingDetailsParams
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
-  CheatcodesStackNavigator?: {
-    screen: CheatcodesStackRouteName
-    params?: CheatcodesStackParamList[CheatcodesStackRouteName]
-  }
+  CheatcodesStackNavigator?: NavigatorScreenParams<CheatcodesStackParamList>
   Chronicles: ChroniclesParams
   _DeeplinkOnlyChronicles1: ChroniclesParams
   CulturalSurvey: undefined
@@ -317,10 +307,7 @@ export type RootStackParamList = {
   OnboardingSubscription: undefined
   PageNotFound: undefined
   Profile: undefined
-  ProfileStackNavigator?: {
-    screen: ProfileStackRouteName
-    params: ProfileStackParamList[ProfileStackRouteName]
-  }
+  ProfileStackNavigator?: NavigatorScreenParams<ProfileStackParamList>
   RecreditBirthdayNotification: undefined
   _DeeplinkOnlyRecreditBirthdayNotification1: undefined
   ReinitializePassword: {
@@ -337,7 +324,7 @@ export type RootStackParamList = {
   SignupForm: SignupFormParams
   _DeeplinkOnlySignupForm1: SignupFormParams
   SuspendedAccountUponUserRequest: undefined
-  TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
+  TabNavigator: NavigatorScreenParams<TabParamList>
   ThematicHome: ThematicHomeParams
   _DeeplinkOnlyThematicHome1: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
@@ -400,7 +387,6 @@ type NavigateParams<RouteName extends keyof ParamListBase> =
     ? [RouteName] | [RouteName, ParamListBase[RouteName]]
     : [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
-export type CheatcodesNavigateParams = NavigateParams<keyof RootStackParamList>
 export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 
