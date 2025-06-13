@@ -1,7 +1,7 @@
 import { getPathFromState } from '@react-navigation/native'
 
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
-import { isTabScreen } from 'features/navigation/TabBar/isTabScreen'
+import { isTabScreen } from 'features/navigation/TabBar/IsTabScreen'
 
 type Params = Parameters<typeof getPathFromState>
 type State = Params[0]
