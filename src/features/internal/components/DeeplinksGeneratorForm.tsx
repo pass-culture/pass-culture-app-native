@@ -407,7 +407,7 @@ function extractParams(params: Record<string, unknown>) {
 
 const Container = styled.ScrollView(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   flexDirection: 'column',
 }))
 
@@ -418,7 +418,7 @@ const ErrorContainer = styled.View({
 
 const ErrorText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   paddingVertical: getSpacing(1.5),
-  color: theme.colors.error,
+  color: theme.designSystem.color.text.error,
 }))
 
 const StyledTitle4 = styled(Typo.Title4)({
@@ -436,10 +436,10 @@ const PaddingContainer = styled.View({
 })
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const Warning = styled(WarningDefault).attrs(({ theme }) => ({
-  color: theme.colors.error,
+  color: theme.designSystem.color.icon.error,
   size: theme.icons.sizes.extraSmall,
 }))``

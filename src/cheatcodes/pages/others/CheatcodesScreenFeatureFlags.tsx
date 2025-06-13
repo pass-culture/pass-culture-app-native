@@ -111,7 +111,7 @@ const StyledFeatureFlag = styled.View<{ isLastItem: boolean }>(({ isLastItem }) 
 }))
 
 const StyledTitle4 = styled(Typo.Title4)<{ active: boolean }>(({ theme, active }) => ({
-  color: active ? theme.colors.greenValid : theme.colors.error,
+  color: active ? theme.designSystem.color.text.success : theme.designSystem.color.text.error,
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)({
@@ -119,7 +119,7 @@ const StyledSeparator = styled(Separator.Horizontal)({
 })
 
 const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.colors.black,
+  buttonColor: theme.designSystem.color.text.default,
 }))``
 
 const ItemSeparator = () => <StyledSeparator />
