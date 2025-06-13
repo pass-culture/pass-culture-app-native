@@ -6,24 +6,38 @@ import { Position } from 'libs/location'
 describe('fetchFilmsOffers', () => {
   const { multipleQueries } = algoliasearch()
 
+  it('should execute `multipleQueries` to fetch films offers with productionB index when FF EnableReplicaAlgolia is on', async () => {
+    const userLocation = { latitude: 1, longitude: 2 }
+    const queries = buildQueries({ userLocation, isReplicaAlgoliaIndexActive: true })
+    await fetchFilmsOffers({ userLocation, isReplicaAlgoliaIndexActive: true })
+
+    expect(multipleQueries).toHaveBeenNthCalledWith(1, queries)
+  })
+
   it('should execute `multipleQueries` to fetch films offers', async () => {
     const userLocation = { latitude: 1, longitude: 2 }
-    const queries = buildQueries(userLocation)
+    const queries = buildQueries({ userLocation, isReplicaAlgoliaIndexActive: false })
 
-    fetchFilmsOffers(userLocation)
+    fetchFilmsOffers({ userLocation, isReplicaAlgoliaIndexActive: false })
 
     expect(multipleQueries).toHaveBeenNthCalledWith(1, queries)
   })
 })
 
-function buildQueries(userLocation: Position) {
+function buildQueries({
+  userLocation,
+  isReplicaAlgoliaIndexActive,
+}: {
+  userLocation: Position
+  isReplicaAlgoliaIndexActive?: boolean
+}) {
   return [
     buildQueryHelper({
-      indexName: 'algoliaOffersIndexNameB',
+      indexName: isReplicaAlgoliaIndexActive ? 'algoliaOffersIndexNameB' : 'algoliaOffersIndexName',
       filters: 'offer.subcategoryId:"ABO_PLATEFORME_VIDEO"',
     }),
     buildQueryHelper({
-      indexName: 'algoliaOffersIndexNameB',
+      indexName: isReplicaAlgoliaIndexActive ? 'algoliaOffersIndexNameB' : 'algoliaOffersIndexName',
       filters: 'offer.subcategoryId:"VOD"',
     }),
     buildQueryHelper({

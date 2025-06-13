@@ -9,14 +9,24 @@ import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 
-export const fetchFilmsOffers = async (userLocation?: Position) => {
+export const fetchFilmsOffers = async ({
+  userLocation,
+  isReplicaAlgoliaIndexActive,
+}: {
+  userLocation?: Position
+  isReplicaAlgoliaIndexActive?: boolean
+}) => {
   const queries: MultipleQueriesQuery[] = [
     buildQueryHelper({
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      indexName: isReplicaAlgoliaIndexActive
+        ? env.ALGOLIA_OFFERS_INDEX_NAME_B
+        : env.ALGOLIA_OFFERS_INDEX_NAME,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}"`,
     }),
     buildQueryHelper({
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      indexName: isReplicaAlgoliaIndexActive
+        ? env.ALGOLIA_OFFERS_INDEX_NAME_B
+        : env.ALGOLIA_OFFERS_INDEX_NAME,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.VOD}"`,
     }),
     buildQueryHelper({
