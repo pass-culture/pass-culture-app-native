@@ -15,7 +15,7 @@ type Props = {
   enableReactionFeature: boolean
 }
 
-export function mapTabRouteToBicolorIcon({
+export function mapTabRouteToIcon({
   route,
   enableReactionFeature,
 }: Props): React.FC<AccessibleBicolorIcon> {
