@@ -387,12 +387,12 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               >
                 <View
-                  backgroundColor="#f3ecff"
+                  backgroundColor="#f3edff"
                   style={
                     [
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#f3ecff",
+                        "backgroundColor": "#f3edff",
                         "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "space-between",

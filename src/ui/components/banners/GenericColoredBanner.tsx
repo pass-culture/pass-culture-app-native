@@ -46,7 +46,7 @@ const Container = styled.View<{ backgroundColor?: string }>(({ theme, background
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  backgroundColor: backgroundColor || theme.colors.secondaryLight100,
+  backgroundColor: backgroundColor || theme.designSystem.color.background.info,
   borderRadius: getSpacing(2),
   padding: getSpacing(4),
 }))
@@ -60,5 +60,5 @@ const TextContainer = styled.View({
 })
 
 const Caption = styled(Typo.BodyAccentXs)<ColorMessageProps>(({ theme, textColor }) => ({
-  color: textColor || theme.colors.black,
+  color: textColor || theme.designSystem.color.text.default,
 }))

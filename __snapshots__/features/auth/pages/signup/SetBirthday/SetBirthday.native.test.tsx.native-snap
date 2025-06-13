@@ -46,12 +46,12 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     }
   >
     <View
-      backgroundColor="#f3ecff"
+      backgroundColor="#f3edff"
       style={
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#f3ecff",
+            "backgroundColor": "#f3edff",
             "borderRadius": 8,
             "flexDirection": "row",
             "justifyContent": "space-between",
@@ -422,12 +422,12 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     }
   >
     <View
-      backgroundColor="#f3ecff"
+      backgroundColor="#f3edff"
       style={
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#f3ecff",
+            "backgroundColor": "#f3edff",
             "borderRadius": 8,
             "flexDirection": "row",
             "justifyContent": "space-between",

@@ -22,11 +22,11 @@ const variantConfig: Variants<typeof GenericColoredBanner> = [
   },
   {
     label: 'GenericColoredBanner with custom text color',
-    props: { message, textColor: theme.colors.error },
+    props: { message, textColor: theme.designSystem.color.text.error },
   },
   {
     label: 'GenericColoredBanner with custom background color',
-    props: { message, backgroundColor: theme.colors.attention },
+    props: { message, backgroundColor: theme.designSystem.color.background.warning },
   },
 ]
 

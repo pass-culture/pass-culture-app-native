@@ -323,12 +323,12 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         }
       />
       <View
-        backgroundColor="#f3ecff"
+        backgroundColor="#f3edff"
         style={
           [
             {
               "alignItems": "center",
-              "backgroundColor": "#f3ecff",
+              "backgroundColor": "#f3edff",
               "borderRadius": 8,
               "flexDirection": "row",
               "justifyContent": "space-between",

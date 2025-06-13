@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
-import { AlertBanner } from './AlertBanner'
+import { WarningBanner } from './WarningBanner'
 
-const meta: Meta<typeof AlertBanner> = {
-  title: 'ui/banners/AlertBanner',
-  component: AlertBanner,
+const meta: Meta<typeof WarningBanner> = {
+  title: 'ui/banners/WarningBanner',
+  component: WarningBanner,
 }
 export default meta
 
-type Story = StoryObj<typeof AlertBanner>
+type Story = StoryObj<typeof WarningBanner>
 
 export const Default: Story = {
-  render: (props) => <AlertBanner {...props} />,
-  name: 'AlertBanner',
+  render: (props) => <WarningBanner {...props} />,
+  name: 'WarningBanner',
   args: {
     message:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',

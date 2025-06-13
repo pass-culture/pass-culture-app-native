@@ -208,7 +208,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           class="css-view-175oi2r r-alignSelf-1kihuf0 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
           >
             <div
               class="css-view-175oi2r r-paddingRight-i023vh"
