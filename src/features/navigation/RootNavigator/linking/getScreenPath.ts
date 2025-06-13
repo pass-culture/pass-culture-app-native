@@ -9,26 +9,36 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
   params: AllNavParamList[RouteName]
 ) {
   let state: NavigationState = { routes: [{ name: screen, params }] }
-  if (isScreen('TabNavigator', screen, params)) {
-    const { screen: nestedScreen, params: nestedParams } = params
-    const nestedRoutes = [{ name: nestedScreen, params: nestedParams }]
-    state = { routes: [{ name: screen, state: { routes: nestedRoutes } }] }
-    // console.log(JSON.stringify(state, null, 2))
+  if (isScreen('TabNavigator', screen, params) && params?.screen) {
+    state = {
+      routes: [
+        { name: screen, state: { routes: [{ name: params?.screen, params: params?.params }] } },
+      ],
+    }
 
-    if (isScreen('SearchStackNavigator', nestedScreen, nestedParams) && nestedParams) {
-      const { screen: searchStackScreen, params: searchStackParams } = nestedParams
-      const nestedRoutes = [{ name: searchStackScreen, params: searchStackParams }]
+    if (
+      isScreen('SearchStackNavigator', params?.screen, params?.params) &&
+      params?.params &&
+      params.params.screen
+    ) {
       state = {
         routes: [
           {
             name: screen,
-            state: { routes: [{ name: params.screen, state: { routes: nestedRoutes } }] },
+            state: {
+              routes: [
+                {
+                  name: params.screen,
+                  state: { routes: [{ name: params.params.screen, params: params.params.params }] },
+                },
+              ],
+            },
           },
         ],
       }
     }
   }
-  if (isScreen('ProfileStackNavigator', screen, params)) {
+  if (isScreen('ProfileStackNavigator', screen, params) && params?.screen) {
     state = {
       routes: [
         {
@@ -36,7 +46,7 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
           state: {
             routes: [
               {
-                name: params?.screen ?? '',
+                name: params?.screen,
               },
             ],
           },
@@ -44,7 +54,7 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
       ],
     }
   }
-  if (isScreen('OnboardingStackNavigator', screen, params)) {
+  if (isScreen('OnboardingStackNavigator', screen, params) && params?.screen) {
     state = {
       routes: [
         {
@@ -52,7 +62,7 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
           state: {
             routes: [
               {
-                name: params?.screen ?? '',
+                name: params?.screen,
               },
             ],
           },
