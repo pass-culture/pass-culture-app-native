@@ -17,6 +17,8 @@ const defaultConfig: KnipConfig = {
     'src/**/__mocks__/**',
     'src/features/bookings/components/BookingListItem.tsx', // TODO(PC-35897): remove
     'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
+    'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
+    'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
     'src/features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig.tsx', // PC-35664
     'src/features/navigation/RootNavigator/types.ts', // PC-35664
   ],
