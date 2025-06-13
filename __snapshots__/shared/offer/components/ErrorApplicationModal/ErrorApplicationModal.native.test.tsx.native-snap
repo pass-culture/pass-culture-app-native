@@ -343,12 +343,10 @@ ton crédit
         >
           <View>
             <View
-              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
-                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -362,246 +360,257 @@ ton crédit
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <Text
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "textAlign": "center",
+                      "alignItems": "center",
+                      "marginTop": 24,
                     },
                   ]
                 }
               >
-                Ton dossier n’a pas pu être validé. Sans crédit, tu ne peux pas réserver cette offre.
-                
-
-
-                Pour terminer ton inscription et obtenir ton crédit, va sur ton profil.
-              </Text>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Aller vers la section profil"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "minHeight": 40,
-                        "paddingBottom": 2,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      },
-                      {},
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Aller vers la section profil"
-              >
-                <View
+                <Text
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "textAlign": "center",
                       },
                     ]
                   }
                 >
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    Aller sur mon profil
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Mettre en favori"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "borderRadius": 24,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "minHeight": 40,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      },
-                      {
-                        "backgroundColor": "transparent",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Mettre en favori"
-              >
+                  Ton dossier n’a pas pu être validé. Sans crédit, tu ne peux pas réserver cette offre.
+                  
+
+
+                  Pour terminer ton inscription et obtenir ton crédit, va sur ton profil.
+                </Text>
                 <View
+                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
+                        "height": 24,
                       },
                     ]
                   }
+                />
+                <View
+                  accessibilityLabel="Aller vers la section profil"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#eb0055",
+                          "borderRadius": 24,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "maxWidth": 500,
+                          "minHeight": 40,
+                          "paddingBottom": 2,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 2,
+                          "width": "100%",
+                        },
+                        {},
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Aller vers la section profil"
                 >
                   <View
                     style={
                       [
                         {
+                          "alignItems": "center",
                           "flexDirection": "row",
-                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
-                    <View
-                      height={20}
-                      testID="button-icon-left"
-                      width={20}
-                    >
-                      <Text>
-                        button-icon-left-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={2}
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
                       style={
                         [
                           {
-                            "width": 8,
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
                           },
                         ]
                       }
-                    />
+                    >
+                      Aller sur mon profil
+                    </Text>
                   </View>
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
+                </View>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    [
+                      {
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityLabel="Mettre en favori"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "borderRadius": 24,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "maxWidth": 500,
+                          "minHeight": 40,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "100%",
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Mettre en favori"
+                >
+                  <View
                     style={
                       [
                         {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
+                          "alignItems": "center",
+                          "flexDirection": "row",
                         },
                       ]
                     }
                   >
-                    Mettre en favori
-                  </Text>
+                    <View
+                      style={
+                        [
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={20}
+                        testID="button-icon-left"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-left-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "width": 8,
+                            },
+                          ]
+                        }
+                      />
+                    </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#eb0055",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      Mettre en favori
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>

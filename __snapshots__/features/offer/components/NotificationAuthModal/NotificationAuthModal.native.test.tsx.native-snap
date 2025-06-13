@@ -343,12 +343,10 @@ activer un rappel
         >
           <View>
             <View
-              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
-                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -362,154 +360,12 @@ activer un rappel
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
-              </Text>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Créer un compte"
-                  accessibilityRole="link"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "alignItems": "center",
-                          "borderRadius": 24,
-                          "justifyContent": "center",
-                          "overflow": "hidden",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Créer un compte"
-                >
-                  <View
-                    height={48}
-                    width="100%"
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "position": "absolute",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      adjustsFontSizeToFit={true}
-                      isDisabled={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "paddingBottom": 8,
-                            "paddingLeft": 8,
-                            "paddingRight": 8,
-                            "paddingTop": 8,
-                          },
-                        ]
-                      }
-                    >
-                      Créer un compte
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   [
                     {
                       "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 4,
-                      "justifyContent": "center",
+                      "marginTop": 24,
                     },
                   ]
                 }
@@ -527,99 +383,252 @@ activer un rappel
                     ]
                   }
                 >
-                  Déjà un compte ?
+                  Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
                 </Text>
                 <View
-                  accessibilityLabel="Se connecter"
-                  accessibilityRole="link"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                  numberOfSpaces={6}
                   style={
                     [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                      ],
                       {
-                        "opacity": 1,
+                        "height": 24,
                       },
                     ]
                   }
-                  testID="Se connecter"
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "width": "100%",
+                      },
+                    ]
+                  }
                 >
                   <View
-                    paddingForIcon={0}
+                    accessibilityLabel="Créer un compte"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "borderRadius": 24,
+                            "justifyContent": "center",
+                            "overflow": "hidden",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Créer un compte"
+                  >
+                    <View
+                      height={48}
+                      width="100%"
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        adjustsFontSizeToFit={true}
+                        isDisabled={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "paddingBottom": 8,
+                              "paddingLeft": 8,
+                              "paddingRight": 8,
+                              "paddingTop": 8,
+                            },
+                          ]
+                        }
+                      >
+                        Créer un compte
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    [
+                      {
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 4,
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <Text
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "top": 0,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "textAlign": "center",
                         },
                       ]
                     }
                   >
+                    Déjà un compte ?
+                  </Text>
+                  <View
+                    accessibilityLabel="Se connecter"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Se connecter"
+                  >
                     <View
-                      fill="#320096"
-                      height={20}
-                      testID="button-icon"
-                      width={20}
+                      paddingForIcon={0}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "top": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        button-icon-SVG-Mock
+                      <View
+                        fill="#320096"
+                        height={20}
+                        testID="button-icon"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "width": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        color="#320096"
+                        style={
+                          [
+                            {
+                              "color": "#320096",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                        typography="Button"
+                      >
+                        Se connecter
                       </Text>
                     </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      color="#320096"
-                      style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                      typography="Button"
-                    >
-                      Se connecter
-                    </Text>
                   </View>
                 </View>
               </View>
