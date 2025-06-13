@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { DomainsCredit, EligibilityType } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
@@ -17,7 +17,7 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
+import { Offers } from 'ui/svg/icons/Offers'
 import { getSpacing, Typo } from 'ui/theme'
 
 export type CreditHeaderProps = {
@@ -37,6 +37,7 @@ export function CreditHeader({
   depositExpirationDate,
   eligibility,
 }: CreditHeaderProps) {
+  const { designSystem } = useTheme()
   const { homeEntryIdFreeOffers } = useRemoteConfigQuery()
   const depositAmount = useDepositAmountsByAge()
 
@@ -93,7 +94,7 @@ export function CreditHeader({
             screen: 'ThematicHome',
             params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
           }}>
-          <GenericBanner LeftIcon={<BicolorOffers />}>
+          <GenericBanner LeftIcon={<Offers color={designSystem.color.icon.brandPrimary} />}>
             <ViewGap gap={1}>
               <Typo.BodyAccent>L’aventure continue&nbsp;!</Typo.BodyAccent>
               <StyledBody numberOfLines={3}>

@@ -35,7 +35,6 @@ export const InfoBanner: FunctionComponent<Props> = ({
     icon &&
     styled(icon).attrs(({ theme }) => ({
       color: theme.designSystem.color.icon.info,
-      color2: theme.designSystem.color.icon.info,
       size: theme.icons.sizes.small,
     }))``
 

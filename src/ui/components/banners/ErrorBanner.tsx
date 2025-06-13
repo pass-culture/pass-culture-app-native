@@ -29,6 +29,5 @@ export const ErrorBanner: FunctionComponent<Props> = ({ message, testID, childre
 
 const StyledErrorIcon = styled(Error).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
-  color2: theme.designSystem.color.icon.error,
   size: theme.icons.sizes.small,
 }))``

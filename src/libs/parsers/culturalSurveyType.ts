@@ -1,5 +1,5 @@
 import { CulturalSurveyAnswerEnum } from 'api/gen'
-import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
+import { culturalSurveyIcons } from 'ui/svg/icons/exports/culturalSurveyIcons'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // Map the facetFilter (in search backend) to the category Icon

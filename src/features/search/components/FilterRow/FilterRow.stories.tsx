@@ -2,11 +2,11 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { All } from 'ui/svg/icons/bicolor/All'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
+import { All } from 'ui/svg/icons/venueAndCategories/All'
 
 import { FilterRow } from './FilterRow'
 

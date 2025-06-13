@@ -41,11 +41,9 @@ export const SVGTemplate: StoryFn<
         {sortedIcons.map(([name, Icon]) => {
           const IconComponent = styled(Icon).attrs(({ theme }) => ({
             color: theme.designSystem.color.icon.default,
-            color2: theme.designSystem.color.icon.default,
           }))``
           const IconComponentBicolor = styled(Icon).attrs(({ theme }) => ({
-            color: theme.colors.primary,
-            color2: theme.colors.secondary,
+            color: theme.designSystem.color.icon.brandPrimary,
           }))``
           const isCopied = copiedIconName === name
           return (

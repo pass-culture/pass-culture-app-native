@@ -7,7 +7,6 @@ export const getPrimaryIllustration = (illustration?: React.FC<AccessibleIcon>) 
     return styled(illustration).attrs(({ theme }) => ({
       size: theme.illustrations.sizes.fullPage,
       color: theme.designSystem.color.icon.brandPrimary,
-      color2: theme.designSystem.color.icon.brandPrimary,
     }))``
   }
   return null

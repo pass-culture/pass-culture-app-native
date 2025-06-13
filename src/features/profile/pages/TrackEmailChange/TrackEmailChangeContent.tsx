@@ -15,9 +15,9 @@ import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { PencilTip } from 'ui/svg/icons/bicolor/PencilTip'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { EmailIcon } from 'ui/svg/icons/EmailIcon'
+import { PencilTip } from 'ui/svg/icons/venueAndCategories/PencilTip'
 import { Spacer } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
@@ -159,32 +159,26 @@ const CompletedEmailIcon = styled(EmailIcon).attrs(({ theme }) => ({
 
 const BicolorPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  color2: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const DisabledPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
-  color2: theme.designSystem.color.icon.disabled,
 }))``
 
 const CompletedPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
-  color2: theme.designSystem.color.icon.subtle,
 }))({ transform: 'rotate(-8deg)' })
 
 const BicolorConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  color2: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const DisabledConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
-  color2: theme.designSystem.color.icon.disabled,
 }))``
 
 const CompletedConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
-  color2: theme.designSystem.color.icon.subtle,
 }))({ transform: 'rotate(-8deg)' })
 
 const StyledListContainer = styled.View({

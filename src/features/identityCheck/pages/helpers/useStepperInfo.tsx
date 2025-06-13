@@ -14,8 +14,8 @@ import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/ide
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { StepButtonState } from 'ui/components/StepButton/types'
-import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
 import { IdCard } from 'ui/svg/icons/IdCard'
+import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { Profile } from 'ui/svg/icons/Profile'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
 
@@ -99,11 +99,11 @@ export const useStepperInfo = (): StepperInfo => {
       name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: () => (
-          <IconStepDisabled Icon={BicolorLegal} testID="confirmation-step-disabled" />
+          <IconStepDisabled Icon={LegalNotices} testID="confirmation-step-disabled" />
         ),
-        current: () => <IconStepCurrent Icon={BicolorLegal} testID="confirmation-step-current" />,
-        completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
-        retry: () => <IconStepRetry Icon={BicolorLegal} testID="confirmation-retry-step" />,
+        current: () => <IconStepCurrent Icon={LegalNotices} testID="confirmation-step-current" />,
+        completed: () => <IconStepDone Icon={LegalNotices} testID="confirmation-step-done" />,
+        retry: () => <IconStepRetry Icon={LegalNotices} testID="confirmation-retry-step" />,
       },
       firstScreen: getConfirmationFirstScreen(),
     },

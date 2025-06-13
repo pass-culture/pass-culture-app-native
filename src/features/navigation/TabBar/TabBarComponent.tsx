@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
+import { mapTabRouteToIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarInnerComponent } from 'features/navigation/TabBar/TabBarInnerComponent'
 import { TabRouteName } from 'features/navigation/TabBar/types'
@@ -31,7 +31,7 @@ export const TabBarComponent: React.FC<Props> = ({
   badgeValue,
 }) => {
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const BicolorIcon = mapTabRouteToBicolorIcon({ route: tabName, enableReactionFeature })
+  const BicolorIcon = mapTabRouteToIcon({ route: tabName, enableReactionFeature })
 
   return (
     <TabComponentContainer

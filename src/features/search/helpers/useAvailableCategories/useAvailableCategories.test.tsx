@@ -2,7 +2,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 let mockData = PLACEHOLDER_DATA

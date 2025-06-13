@@ -1,5 +1,5 @@
 import { CategoryIdEnum } from 'api/gen'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 const MAP_CATEGORY_ID_TO_ICON: {

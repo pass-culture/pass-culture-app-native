@@ -3,7 +3,7 @@ import React from 'react'
 
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Bag } from 'ui/svg/icons/bicolor/Bag'
+import { Bag } from 'ui/svg/icons/venueAndCategories/Bag'
 
 import { VenueTypeLocationIcon } from './VenueTypeLocationIcon'
 
@@ -18,8 +18,8 @@ const variantConfig: Variants<typeof VenueTypeLocationIcon> = [
     label: 'VenueTypeLocationIcon with color',
     props: {
       VenueTypeIcon: Bag,
-      iconColor: theme.colors.greySemiDark,
-      backgroundColor: theme.colors.greyLight,
+      iconColor: theme.designSystem.color.icon.subtle,
+      backgroundColor: theme.designSystem.color.background.subtle,
     },
   },
   {

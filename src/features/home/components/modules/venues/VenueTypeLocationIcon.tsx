@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
@@ -13,17 +14,17 @@ export const VenueTypeLocationIcon = ({
   backgroundColor,
 }: {
   VenueTypeIcon: React.FC<AccessibleIcon>
-  iconColor?: ColorsEnum
-  backgroundColor?: ColorsEnum
+  iconColor?: ColorsType
+  backgroundColor?: ColorsType
 }) => {
-  const StyledVenueTypeIcon = styled(VenueTypeIcon).attrs(({ theme }) => ({
-    color: iconColor ?? theme.colors.black,
+  const StyledVenueTypeIcon = styled(VenueTypeIcon).attrs({
+    color: iconColor,
     size: getSpacing(20),
-  }))``
+  })``
 
   const StyledLocationPointerWithBorder = styled(LocationPointerWithBorder).attrs(({ theme }) => ({
-    color: iconColor ?? theme.colors.black,
-    color2: backgroundColor ?? theme.colors.white,
+    color: iconColor ?? theme.designSystem.color.icon.default,
+    color2: backgroundColor ?? theme.designSystem.color.icon.inverted,
     size: getSpacing(10),
   }))``
 
@@ -38,7 +39,7 @@ export const VenueTypeLocationIcon = ({
 }
 
 const Container = styled.View<{ backgroundColor?: ColorsEnum }>(({ theme, backgroundColor }) => ({
-  background: backgroundColor ?? theme.colors.white,
+  background: backgroundColor ?? theme.designSystem.color.background.default,
   position: 'relative',
   width: getSpacing(20),
 }))

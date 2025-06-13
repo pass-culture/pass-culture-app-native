@@ -15,7 +15,7 @@ import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { getSpacing, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 

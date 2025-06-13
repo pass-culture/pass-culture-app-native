@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getTabNavigatorConfig } from 'features/navigation/RootNavigator/Header/getTabNavigatorConfig'
-import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
+import { mapTabRouteToIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabParamList } from 'features/navigation/TabBar/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -43,7 +43,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
               <NavItem
                 tabName={route.name}
                 isSelected={route.isSelected}
-                BicolorIcon={mapTabRouteToBicolorIcon({ route: route.name, enableReactionFeature })}
+                BicolorIcon={mapTabRouteToIcon({ route: route.name, enableReactionFeature })}
                 onBeforeNavigate={
                   route.name === 'SearchStackNavigator' ? hideSuggestions : undefined
                 }

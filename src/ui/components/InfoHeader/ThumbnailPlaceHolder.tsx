@@ -3,7 +3,7 @@ import { ViewProps } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { All } from 'ui/svg/icons/bicolor/All'
+import { All } from 'ui/svg/icons/venueAndCategories/All'
 
 const ThumbnailPlaceholderContainer = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [theme.colors.greyLight, theme.colors.greyMedium],

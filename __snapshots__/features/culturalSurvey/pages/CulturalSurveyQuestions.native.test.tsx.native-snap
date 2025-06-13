@@ -369,8 +369,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -461,7 +460,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 >
                   <View
-                    fill="#696A6F"
+                    fill="#696a6f"
                     height={32}
                     width={32}
                   >
@@ -537,8 +536,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -704,8 +702,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -871,8 +868,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -1038,8 +1034,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -1191,8 +1186,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -1344,8 +1338,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -1511,8 +1504,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -1678,8 +1670,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={
@@ -1845,8 +1836,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               angle={175}
               colors={
                 [
-                  4291546578,
-                  4291546578,
+                  4285098607,
                 ]
               }
               endPoint={

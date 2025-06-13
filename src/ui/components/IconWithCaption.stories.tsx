@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { getSpacing } from 'ui/theme'
 
 import { IconWithCaption } from './IconWithCaption'

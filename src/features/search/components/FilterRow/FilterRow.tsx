@@ -28,8 +28,9 @@ export const FilterRow = ({
 }: Props) => {
   const StyledIcon = Icon
     ? styled(Icon).attrs(({ theme }) => ({
-        color: shouldColorIcon ? theme.colors.primary : theme.colors.black,
-        color2: shouldColorIcon ? theme.colors.secondary : theme.colors.black,
+        color: shouldColorIcon
+          ? theme.designSystem.color.icon.brandPrimary
+          : theme.designSystem.color.icon.default,
         size: theme.icons.sizes.small,
       }))``
     : undefined

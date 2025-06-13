@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
-import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
+import { Unlock } from 'ui/svg/icons/Unlock'
 
 const onBeforeNavigate = () => analytics.logSignUpClicked({ from: 'home' })
 
@@ -22,7 +22,7 @@ export const SignupBanner: FunctionComponent = () => {
 
   return (
     <SystemBanner
-      leftIcon={StyledSystemBannerBicolorUnlock}
+      leftIcon={SytledUnlock}
       title={title}
       subtitle={subtitle}
       onPress={onSystemBannerPress}
@@ -32,6 +32,6 @@ export const SignupBanner: FunctionComponent = () => {
   )
 }
 
-const StyledSystemBannerBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
+const SytledUnlock = styled(Unlock).attrs(({ theme }) => ({
   color: theme.colors.secondaryLight200,
 }))``

@@ -1,12 +1,12 @@
 import { CallToActionIcon, PopOverIcon } from 'api/gen'
 import { Again } from 'ui/svg/icons/Again'
-import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error as ErrorIcon } from 'ui/svg/icons/Error'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Info } from 'ui/svg/icons/Info'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { Warning } from 'ui/svg/icons/Warning'
 
 import { matchSubscriptionMessageIconToSvg } from './matchSubscriptionMessageIconToSvg'
 

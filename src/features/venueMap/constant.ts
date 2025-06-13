@@ -2,9 +2,9 @@ import { VenueTypeCodeKey } from 'api/gen'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
 import { FilterGroupData } from 'features/venueMap/types'
 import { theme } from 'theme'
-import { Store } from 'ui/svg/icons/bicolor/Store'
 import { Show } from 'ui/svg/icons/Show'
 import { Sort } from 'ui/svg/icons/Sort'
+import { Store } from 'ui/svg/icons/venueAndCategories/Store'
 import { getSpacing } from 'ui/theme'
 
 export const FILTER_BANNER_HEIGHT = getSpacing(12)

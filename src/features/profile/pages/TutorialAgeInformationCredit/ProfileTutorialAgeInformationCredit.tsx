@@ -17,9 +17,9 @@ import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Page } from 'ui/pages/Page'
-import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { Lock } from 'ui/svg/icons/Lock'
 import { Offers } from 'ui/svg/icons/Offers'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -136,10 +136,8 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
 
-const SmallLock = styled(BicolorLock).attrs(({ theme }) => ({
+const SmallLock = styled(Lock).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.default,
-  color2: theme.designSystem.color.icon.default,
 }))``
 
 const SmallClock = styled(Clock).attrs(({ theme }) => ({
@@ -148,5 +146,4 @@ const SmallClock = styled(Clock).attrs(({ theme }) => ({
 
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
-  color2: theme.designSystem.color.icon.default,
 }))``

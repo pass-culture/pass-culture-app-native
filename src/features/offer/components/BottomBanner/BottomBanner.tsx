@@ -2,8 +2,9 @@ import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Warning as InitialWarning } from 'ui/svg/icons/Warning'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   text: string
@@ -16,11 +17,10 @@ export const BottomBanner = ({ text, ...props }: Props) => {
   const paddingBottom = bottom === 0 ? PADDING_VERTICAL : bottom
 
   return (
-    <Container paddingBottom={paddingBottom} {...props}>
+    <Container gap={4} paddingBottom={paddingBottom} {...props}>
       <IconContainer>
-        <BicolorWarning />
+        <Warning />
       </IconContainer>
-      <Spacer.Row numberOfSpaces={4} />
       <TextContainer>
         <Typo.BodyAccentXs>{text}</Typo.BodyAccentXs>
       </TextContainer>
@@ -28,9 +28,8 @@ export const BottomBanner = ({ text, ...props }: Props) => {
   )
 }
 
-const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
-  backgroundColor: theme.colors.white,
-  borderTopColor: theme.colors.greyMedium,
+const Container = styled(ViewGap)<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
+  borderTopColor: theme.designSystem.color.border.subtle,
   borderTopWidth: getSpacing(0.25),
   paddingVertical: PADDING_VERTICAL,
   paddingHorizontal: getSpacing(6),
@@ -46,3 +45,7 @@ const IconContainer = styled.View({
 const TextContainer = styled.View({
   flex: 1,
 })
+
+const Warning = styled(InitialWarning).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``

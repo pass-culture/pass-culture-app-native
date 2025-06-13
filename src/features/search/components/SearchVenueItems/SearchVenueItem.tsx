@@ -47,7 +47,7 @@ const UnmemoizedSearchVenueItem = ({
 }: SearchVenueItemProps) => {
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
-  const { colors } = useTheme()
+  const { designSystem } = useTheme()
   const { lat, lng } = venue._geoloc
   const distance = getDistance({ lat, lng }, { userLocation, selectedPlace, selectedLocationMode })
 
@@ -96,8 +96,8 @@ const UnmemoizedSearchVenueItem = ({
             <SearchVenueTypeTile width={width} height={height} testID="venue-type-tile">
               <VenueTypeLocationIcon
                 VenueTypeIcon={mapVenueTypeToIcon(venue.venue_type as VenueTypeCode)}
-                iconColor={colors.greySemiDark}
-                backgroundColor={colors.greyLight}
+                iconColor={designSystem.color.icon.subtle}
+                backgroundColor={designSystem.color.background.subtle}
               />
             </SearchVenueTypeTile>
           )}
