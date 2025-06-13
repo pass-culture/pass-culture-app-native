@@ -353,8 +353,8 @@ activer un rappel
               }
             >
               <View
-                height={109.2}
-                width={140}
+                height={156}
+                width={200}
               >
                 <Text>
                   undefined-SVG-Mock

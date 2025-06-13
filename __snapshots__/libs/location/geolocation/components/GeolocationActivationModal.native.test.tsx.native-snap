@@ -239,11 +239,10 @@ exports[`GeolocationActivationModal should render properly 1`] = `
     >
       <View
         height={100}
-        testID="BicolorLocationPointer"
         width={100}
       >
         <Text>
-          BicolorLocationPointer-SVG-Mock
+          undefined-SVG-Mock
         </Text>
       </View>
       <View

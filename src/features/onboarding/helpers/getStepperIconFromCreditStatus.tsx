@@ -4,34 +4,35 @@ import styled from 'styled-components/native'
 import { CreditStatus } from 'features/onboarding/enums'
 import LottieView from 'libs/lottie'
 import OnboardingUnlock from 'ui/animations/onboarding_unlock.json'
-import { Lock } from 'ui/svg/icons/Lock'
+import { LockFilled } from 'ui/svg/icons/LockFilled'
 import { getSpacing } from 'ui/theme'
 
 export const getStepperIconFromCreditStatus = (creditStatus: CreditStatus): React.ReactElement => {
   switch (creditStatus) {
     case CreditStatus.GONE:
-      return <MediumGreyLock />
+      return <GoneLock />
     case CreditStatus.ONGOING:
-      return <AnimatedBicolorUnlock />
+      return <AnimatedOngoingLock />
     case CreditStatus.COMING:
-      return <GreyLock />
+      return <ComingLock />
   }
 }
-const AnimatedBicolorUnlock = () => (
+const AnimatedOngoingLock = () => (
   <StyledLottieView source={OnboardingUnlock} autoPlay loop={false} />
 )
 
-const GreyLock = styled(Lock).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+const ComingLock = styled(LockFilled).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.default,
 }))({
   marginHorizontal: getSpacing(1.5),
 })
 
-const MediumGreyLock = styled(Lock).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
+const GoneLock = styled(LockFilled).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.disabled,
 }))({
   marginHorizontal: getSpacing(1.5),
 })
+
 const StyledLottieView = styled(LottieView).attrs({
   rendererSettings: { accessibilityHidden: true },
 })(({ theme }) => ({

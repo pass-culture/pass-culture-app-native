@@ -5,7 +5,7 @@ import { LocationFilter } from 'features/search/types'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
+import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { Spacer } from 'ui/theme'
 
 interface Props {

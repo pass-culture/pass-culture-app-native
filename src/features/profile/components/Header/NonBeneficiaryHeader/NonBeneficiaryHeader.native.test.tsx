@@ -83,7 +83,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     expect(await screen.findByTestId('eligibility-system-banner-container')).toBeOnTheScreen()
 
     expect(screen.getByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
-    expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
+    expect(screen.getByTestId('Unlock')).toBeOnTheScreen()
     expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
   })
 

@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { TabInnerComponentProps } from 'features/navigation/TabBar/types'
-import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
+import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
@@ -44,7 +44,7 @@ const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   end: { x: 1, y: 0 },
 }))({ height: GRADIENT_HEIGHT, width: '100%' })
 
-const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
+const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected
     ? theme.designSystem.color.icon.brandPrimary
     : theme.designSystem.color.icon.subtle,

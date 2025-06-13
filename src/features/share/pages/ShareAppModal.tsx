@@ -6,8 +6,8 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { MarketingModal } from 'ui/components/modals/MarketingModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Share } from 'ui/svg/icons/BicolorShare'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Share } from 'ui/svg/icons/Share'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 

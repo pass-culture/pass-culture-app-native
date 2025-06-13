@@ -12,7 +12,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
-import { Warning } from 'ui/svg/icons/BicolorWarning'
+import { Warning } from 'ui/svg/icons/Warning'
 import { Spacer, getSpacing } from 'ui/theme'
 
 type Age = 15 | 16 | 17 | 18

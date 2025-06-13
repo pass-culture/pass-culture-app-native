@@ -2,7 +2,6 @@ import { FunctionComponent } from 'react'
 
 import { CallToActionIcon, PopOverIcon } from 'api/gen'
 import { Again } from 'ui/svg/icons/Again'
-import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
@@ -11,6 +10,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { Warning } from 'ui/svg/icons/Warning'
 
 export const matchSubscriptionMessageIconToSvg = (
   iconName: PopOverIcon | CallToActionIcon | undefined | null,

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { Share as DefaultShare } from 'ui/svg/icons/BicolorShare'
+import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {

@@ -9,9 +9,9 @@ import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
-import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
+import { Warning } from 'ui/svg/icons/Warning'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -122,7 +122,6 @@ const Container = styled.View({
 })
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.default,
   size: theme.icons.sizes.smaller,
 }))({
   marginHorizontal: getSpacing(1.5),

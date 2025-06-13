@@ -8,7 +8,7 @@ import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { Check as CheckIcon } from 'ui/svg/icons/Check'
-import { Lock as LockIcon } from 'ui/svg/icons/Lock'
+import { LockFilled } from 'ui/svg/icons/LockFilled'
 import { getShadow, getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
@@ -120,7 +120,7 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
       }),
 }))
 
-const Lock = styled(LockIcon).attrs(({ theme }) => ({
+const Lock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.extraSmall,
   accessibilityLabel: 'Désactivé',
