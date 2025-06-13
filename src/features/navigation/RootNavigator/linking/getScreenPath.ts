@@ -1,13 +1,10 @@
-import { AllNavParamList, isScreen } from 'features/navigation/RootNavigator/types'
+import { isScreen } from 'features/navigation/RootNavigator/types'
 
 import { linking } from './index'
 
 type NavigationState = Parameters<typeof linking.getPathFromState>[0]
 
-export function getScreenPath<RouteName extends keyof AllNavParamList>(
-  screen: RouteName,
-  params: AllNavParamList[RouteName]
-) {
+export function getScreenPath(screen, params) {
   let state: NavigationState = { routes: [{ name: screen, params }] }
   if (isScreen('TabNavigator', screen, params) && params?.screen) {
     state = {
