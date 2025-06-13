@@ -131,14 +131,18 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
 }))
 
 const Label = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
+  color: isSelected
+    ? theme.designSystem.color.text.brandPrimary
+    : theme.designSystem.color.text.default,
   flexGrow: 1,
   flexShrink: 1,
 }))
 
 const ComplementLabel = styled(Typo.BodyAccentXs)<{ isSelected: boolean }>(
   ({ isSelected, theme }) => ({
-    color: isSelected ? theme.colors.primary : theme.colors.greyDark,
+    color: isSelected
+      ? theme.designSystem.color.text.brandPrimary
+      : theme.designSystem.color.text.default,
     marginLeft: getSpacing(2),
     flexShrink: 0,
   })
@@ -160,12 +164,12 @@ const IconContainer = styled.View(({ theme }) => ({
 }))
 
 const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.smaller,
 }))``
 
 const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.smaller,
 }))``
 

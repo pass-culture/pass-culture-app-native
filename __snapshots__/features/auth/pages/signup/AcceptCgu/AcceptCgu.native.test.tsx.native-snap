@@ -303,6 +303,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     >
       *obligatoires pour créer ton compte.
+       
     </Text>
     En cochant ces 2 cases tu assures avoir lu :
   </Text>
@@ -1131,6 +1132,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     >
       *obligatoires pour créer ton compte.
+       
     </Text>
     En cochant ces 2 cases tu assures avoir lu :
   </Text>
