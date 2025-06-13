@@ -25,7 +25,21 @@ export const CheatcodesSubscreensButtonList: React.FC<Props> = ({ buttons }) => 
                 disabled={subscreen.showOnlyInSearch ?? false}
               />
             )
-
+          if (
+            subscreen.screen === 'OnboardingStackNavigator' ||
+            subscreen.screen === 'ProfileStackNavigator'
+          ) {
+            return (
+              <LinkToScreenWithNavigateTo
+                key={`${index}-${subIndex}`}
+                title={subscreen?.params.screen ?? '[sans titre]'}
+                screen={subscreen.screen}
+                onPress={subscreen.onPress}
+                navigateTo={subscreen as InternalNavigationProps['navigateTo']}
+                disabled={subscreen.showOnlyInSearch ?? false}
+              />
+            )
+          }
           return (
             <LinkToCheatcodesScreen
               key={`${index}-${subIndex}`}
