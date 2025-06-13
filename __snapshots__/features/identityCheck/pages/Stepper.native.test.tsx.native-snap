@@ -865,7 +865,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                     }
                   >
                     <View
-                      fill="url(#gradienttestUuid)"
                       height={32}
                       testID="BicolorProfile"
                       width={32}
@@ -1120,7 +1119,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                     }
                   >
                     <View
-                      fill="url(#gradienttestUuid)"
                       height={32}
                       testID="BicolorProfile"
                       width={32}

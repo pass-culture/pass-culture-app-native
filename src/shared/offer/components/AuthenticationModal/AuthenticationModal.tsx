@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
+import { UserIdentification as InitialUserIdentification } from 'ui/svg/UserIdentification'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -86,7 +86,6 @@ const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const UserIdentification = styled(BicolorUserIdentification).attrs(({ theme }) => ({
+const UserIdentification = styled(InitialUserIdentification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  color2: theme.designSystem.color.icon.brandPrimary,
 }))``

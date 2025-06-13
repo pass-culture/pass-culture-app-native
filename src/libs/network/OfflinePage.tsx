@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Page } from 'ui/pages/Page'
-import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
+import { BrokenConnection as InitialBrokenConnection } from 'ui/svg/BrokenConnection'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -12,7 +12,7 @@ export const OfflinePage = () => {
       <Content>
         <Spacer.TopScreen />
         <Spacer.Flex />
-        <BicolorBrokenConnection size={getSpacing(46)} />
+        <BrokenConnection />
         <Spacer.Column numberOfSpaces={5} />
         <StyledTitle2>Pas de réseau internet</StyledTitle2>
         <Spacer.Column numberOfSpaces={4} />
@@ -24,6 +24,11 @@ export const OfflinePage = () => {
     </Container>
   )
 }
+
+const BrokenConnection = styled(InitialBrokenConnection).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  size: theme.illustrations.sizes.fullPage,
+}))``
 
 const Container = styled(Page)({
   alignItems: 'center',

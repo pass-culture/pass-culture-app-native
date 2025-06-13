@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
+import { Smartphone } from 'ui/svg/icons/Smartphone'
 
 const meta: Meta<typeof SecondButtonList> = {
   title: 'ui/SecondButtonList',
@@ -26,5 +26,5 @@ export const Default = () =>
   Template({
     label: 'test',
     navigateTo: { screen: 'Login' },
-    leftIcon: BicolorSmartphone,
+    leftIcon: Smartphone,
   })

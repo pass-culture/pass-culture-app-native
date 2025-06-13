@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
+import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -38,7 +38,7 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris'}
-      Illustration={UserFavorite}
+      Illustration={Illustration}
       hideModal={closeModal}>
       <StyledBody>
         Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
@@ -77,7 +77,6 @@ const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const UserFavorite = styled(BicolorUserFavorite).attrs(({ theme }) => ({
+const Illustration = styled(UserFavorite).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  color2: theme.designSystem.color.icon.brandPrimary,
 }))``

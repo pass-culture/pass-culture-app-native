@@ -6,7 +6,7 @@ import {
   getDelayMessage,
   getStartMessage,
 } from 'features/bookings/components/OldBookingDetails/TicketBody/ticketBodyMessages'
-import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
+import { EmailSent as InitialEmailSent } from 'ui/svg/icons/EmailSent'
 import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
@@ -23,7 +23,7 @@ export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, wit
     <React.Fragment>
       {withdrawalType === WithdrawalTypeEnum.by_email ? (
         <IconContainer>
-          <BicolorEmailSent testID="bicolor-email-sent" />
+          <StyledEmailSent testID="email-sent" />
         </IconContainer>
       ) : null}
       <WithDrawalContainer testID="withdrawal-info">
@@ -46,10 +46,8 @@ const IconContainer = styled.View({
   marginBottom: getSpacing(3),
 })
 
-const BicolorEmailSent = styled(InitialBicolorEmailSent).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.medium,
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
+const StyledEmailSent = styled(InitialEmailSent).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const WithDrawalContainer = styled(Typo.Body)({

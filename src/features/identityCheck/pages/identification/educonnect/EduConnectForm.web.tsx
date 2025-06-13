@@ -8,8 +8,8 @@ import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identifica
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -32,7 +32,7 @@ export const EduConnectForm = () => {
         scrollChildren={
           <React.Fragment>
             <Center>
-              <StyledBicolorIdCardWithMagnifyingGlass />
+              <IdCardWithMagnifyingGlass />
             </Center>
 
             <StyledButtonText>Identification</StyledButtonText>
@@ -68,11 +68,10 @@ export const EduConnectForm = () => {
   )
 }
 
-const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
-  ({ theme }) => ({
-    size: theme.illustrations.sizes.fullPage,
-  })
-)``
+const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``
 
 const Center = styled.View({
   alignSelf: 'center',

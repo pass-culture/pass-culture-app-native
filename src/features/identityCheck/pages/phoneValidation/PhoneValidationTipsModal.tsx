@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
-import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
+import { Signal } from 'ui/svg/icons/Signal'
+import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -24,18 +23,18 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
       leftIcon={ArrowPrevious}
       leftIconAccessibilityLabel="Revenir à l’étape précédente">
       <React.Fragment>
-        <StyledBody>
+        <Typo.Body>
           Pour que la validation de ton numéro de téléphone se passe au mieux&nbsp;:
-        </StyledBody>
+        </Typo.Body>
         <Spacer.Column numberOfSpaces={8} />
         <InformationWithIcon
-          Icon={BicolorSignal}
+          Icon={Signal}
           text="Vérifie que tu as un bon réseau"
           subtitle="Tu vas recevoir un code de validation par SMS"
         />
         <Spacer.Column numberOfSpaces={8} />
         <InformationWithIcon
-          Icon={BicolorSmartphone}
+          Icon={Smartphone}
           text="Assure-toi d’indiquer ton numéro de téléphone personnel"
           subtitle="Il ne peut être associé qu’à un seul compte"
         />
@@ -45,8 +44,3 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
     </AppModal>
   )
 }
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-  textAlign: 'center',
-}))

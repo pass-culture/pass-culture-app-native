@@ -13,8 +13,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
+import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { Typo } from 'ui/theme'
 
 const FAQTouchableLinkProps = {
@@ -48,7 +48,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
 
   return (
     <GenericInfoPage
-      illustration={BicolorPhonePending}
+      illustration={PhonePending}
       title={intro.title}
       subtitle={intro.customSubtitle}
       buttonPrimary={{

@@ -1,9 +1,5 @@
-import { BicolorBookingHold } from 'ui/svg/BicolorBookingHold'
-import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
-import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
-import { BicolorRingingBellOff } from 'ui/svg/BicolorRingingBellOff'
-import { BicolorUserError } from 'ui/svg/BicolorUserError'
-import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
+import { BookingHold } from 'ui/svg/BookingHold'
+import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { FirstArtLessonBookingLockedDetailed } from 'ui/svg/icons/achievements/Detailed/FirstArtLessonBookingLockedDetailed'
 import { FirstArtLessonBookingUnlockedDetailed } from 'ui/svg/icons/achievements/Detailed/FirstArtLessonBookingUnlockedDetailed'
 import { FirstBookBookingLockedDetailed } from 'ui/svg/icons/achievements/Detailed/FirstBookBookingLockedDetailed'
@@ -41,61 +37,51 @@ import { FirstRecordedMusicBookingUnlocked } from 'ui/svg/icons/achievements/Sim
 import { FirstShowBookingLocked } from 'ui/svg/icons/achievements/Simple/FirstShowBookingLocked'
 import { FirstShowBookingUnlocked } from 'ui/svg/icons/achievements/Simple/FirstShowBookingUnlocked'
 import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
-import { BicolorBirthdayCake } from 'ui/svg/icons/BicolorBirthdayCake'
-import { BicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
-import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
-import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
-import { BicolorError } from 'ui/svg/icons/BicolorError'
-import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
-import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
-import { BicolorProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
-import { BicolorSadFace } from 'ui/svg/icons/BicolorSadFace'
-import { BicolorShareChat } from 'ui/svg/icons/BicolorShareChat'
-import { BicolorSharePhones } from 'ui/svg/icons/BicolorSharePhones'
-import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
-import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
+import { CircledCheck } from 'ui/svg/icons/CircledCheck'
+import { CircledClock } from 'ui/svg/icons/CircledClock'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
+import { IdCardError } from 'ui/svg/icons/IdCardError'
+import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
+import { IdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
+import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
+import { ShareChat } from 'ui/svg/icons/ShareChat'
+import { SharePhones } from 'ui/svg/icons/SharePhones'
+import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { Trophy } from 'ui/svg/icons/Trophy'
-import { BicolorUserBlocked, UserBlocked } from 'ui/svg/icons/UserBlocked'
+import { UserBlocked } from 'ui/svg/icons/UserBlocked'
+import { UserFavorite } from 'ui/svg/icons/UserFavorite'
+import { RingingBell } from 'ui/svg/RingingBell'
+import { RingingBellOff } from 'ui/svg/RingingBellOff'
+import { UserError } from 'ui/svg/UserError'
+import { UserIdentification } from 'ui/svg/UserIdentification'
 
-export const BicolorIllustrations = {
-  BicolorBirthdayCake,
-  BicolorBookingHold,
-  BicolorBrokenConnection,
-  BicolorCircledCheck,
-  BicolorCircledClock,
-  BicolorEmailSent,
-  BicolorError,
-  BicolorIdCardError,
-  BicolorIdCardInvalid,
-  BicolorIdCardWithMagnifyingGlass,
-  BicolorPhonePending,
-  BicolorProfileDeletion,
-  BicolorRingingBell,
-  BicolorRingingBellOff,
-  BicolorSadFace,
-  BicolorShareChat,
-  BicolorSharePhones,
-  BicolorTicketBooked,
-  BicolorUserBlocked,
-  BicolorUserError,
-  BicolorUserFavorite,
-  BicolorUserIdentification,
-}
-
-export const UniqueColorIllustrations = {
+export const BasicsIllustrations = {
+  UserError,
+  ErrorIllustration,
+  ShareChat,
+  SharePhones,
+  SadFace,
+  IdCardWithMagnifyingGlass,
+  RingingBellOff,
+  TicketBooked,
+  UserIdentification,
+  IdCardInvalid,
+  BookingHold,
+  IdCardError,
+  BrokenConnection,
+  RingingBell,
+  PhonePending,
   AgainIllustration,
   CalendarIllustration,
   EmailSent,
@@ -107,9 +93,11 @@ export const UniqueColorIllustrations = {
   PageNotFound,
   ProfileDeletion,
   RequestSent,
-  SadFace,
   UserBlocked,
   Trophy,
+  UserFavorite,
+  CircledCheck,
+  CircledClock,
 }
 
 export const SimpleAchievementIllustrations = {

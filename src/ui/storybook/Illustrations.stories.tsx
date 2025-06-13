@@ -3,10 +3,9 @@ import React from 'react'
 
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import {
-  BicolorIllustrations,
   DetailedAchievementIllustrations,
   SimpleAchievementIllustrations,
-  UniqueColorIllustrations,
+  BasicsIllustrations,
 } from 'ui/storybook/illustrationsExports'
 import { SVGTemplate as Illustrations } from 'ui/storybook/SVGTemplate'
 
@@ -22,12 +21,8 @@ export default {
 
 const illustrationSets = [
   {
-    title: 'BicolorIllustrations',
-    icons: BicolorIllustrations,
-  },
-  {
-    title: 'UniqueColorIllustrations',
-    icons: UniqueColorIllustrations,
+    title: 'BasicsIllustrations',
+    icons: BasicsIllustrations,
   },
   {
     title: 'SearchCategoriesIllustrations',
@@ -43,7 +38,7 @@ const illustrationSets = [
   },
 ]
 
-const Template: StoryFn<typeof Illustrations> = () => (
+const Template: StoryFn<typeof BasicsIllustrations> = () => (
   <React.Fragment>
     {illustrationSets.map((illustration) => (
       <Illustrations

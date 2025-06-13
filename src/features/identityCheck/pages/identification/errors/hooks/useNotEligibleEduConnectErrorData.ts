@@ -5,10 +5,10 @@ import { TextStyle } from 'react-native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { UserErrorWhite } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { UserError } from 'ui/svg/UserError'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 export enum EduConnectErrorMessageEnum {
@@ -45,7 +45,7 @@ type NotEligibleEduConnectErrorData = {
 }
 
 const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
-  Illustration: UserErrorWhite,
+  Illustration: UserError,
   title: 'Oh non\u00a0!',
   description:
     'La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n’as pas l’âge requis pour obtenir l’aide de l’État.' +
@@ -56,7 +56,7 @@ const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
 }
 
 const InvalidInformationErrorData: NotEligibleEduConnectErrorData = {
-  Illustration: UserErrorWhite,
+  Illustration: UserError,
   title: 'Oh non\u00a0!',
   description:
     'Il semblerait que les informations que tu nous as communiquées ne soient pas correctes.' +
@@ -74,7 +74,7 @@ const getUserTypeNotStudentErrorData = (
   onPrimaryButtonPress: () => void,
   navigateTo: InternalNavigationProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
-  Illustration: UserErrorWhite,
+  Illustration: UserError,
   title: 'Qui est-ce\u00a0?',
   description:
     'Les informations provenant d’ÉduConnect indiquent que vous êtes le représentant légal d’un jeune scolarisé.' +
@@ -98,7 +98,7 @@ const GenericErrorData: NotEligibleEduConnectErrorData = {
 }
 
 const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
-  Illustration: UserErrorWhite,
+  Illustration: UserError,
   title: 'As-tu déja un compte\u00a0?',
   description:
     'Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n’as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d’informations.',

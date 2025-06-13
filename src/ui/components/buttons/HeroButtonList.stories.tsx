@@ -6,8 +6,8 @@ import { Text } from 'react-native'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -50,14 +50,14 @@ const caption = (
 const variantConfig: Variants<typeof HeroButtonList> = [
   {
     label: 'HeroButtonList default',
-    props: { Title: description, Icon: <BicolorSmartphone />, navigateTo: { screen: 'Login' } },
+    props: { Title: description, Icon: <Smartphone />, navigateTo: { screen: 'Login' } },
   },
   {
     label: 'HeroButtonList with caption',
     props: {
       Title: description2,
       Subtitle: caption,
-      Icon: <BicolorSmartphone />,
+      Icon: <Smartphone />,
       navigateTo: { screen: 'Login' },
     },
   },

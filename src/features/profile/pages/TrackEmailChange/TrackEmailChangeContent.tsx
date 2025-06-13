@@ -16,8 +16,8 @@ import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { PencilTip } from 'ui/svg/icons/bicolor/PencilTip'
-import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { EmailIcon } from 'ui/svg/icons/EmailIcon'
 import { Spacer } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
@@ -61,7 +61,7 @@ export const TrackEmailChangeContent = () => {
       defaultTitle: 'Confirmation de ta demande',
       subtitle: `Depuis l’e-mail envoyé à "${currentEmail}"`,
       icon: {
-        current: BicolorEmailIcon,
+        current: EmailIcon,
         completed: CompletedEmailIcon,
         disabled: DisabledEmailIcon,
         retry: DisabledEmailIcon,
@@ -100,7 +100,7 @@ export const TrackEmailChangeContent = () => {
       defaultTitle: 'Validation de ta nouvelle adresse e-mail',
       subtitle: `Depuis l’email envoyé à "${newEmail}"`,
       icon: {
-        current: BicolorEmailIcon,
+        current: EmailIcon,
         completed: CompletedEmailIcon,
         disabled: DisabledEmailIcon,
         retry: DisabledEmailIcon,
@@ -149,44 +149,42 @@ export const TrackEmailChangeContent = () => {
   )
 }
 
-const DisabledEmailIcon = styled(BicolorEmailIcon).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
-  color2: theme.colors.greyMedium,
+const DisabledEmailIcon = styled(EmailIcon).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.disabled,
 }))``
 
-const CompletedEmailIcon = styled(BicolorEmailIcon).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
-  color2: theme.colors.greyDark,
+const CompletedEmailIcon = styled(EmailIcon).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.subtle,
 }))({ transform: 'rotate(-8deg)' })
 
 const BicolorPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
+  color: theme.designSystem.color.icon.brandPrimary,
+  color2: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const DisabledPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
-  color2: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.disabled,
+  color2: theme.designSystem.color.icon.disabled,
 }))``
 
 const CompletedPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
-  color2: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
+  color2: theme.designSystem.color.icon.subtle,
 }))({ transform: 'rotate(-8deg)' })
 
 const BicolorConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
+  color: theme.designSystem.color.icon.brandPrimary,
+  color2: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const DisabledConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
-  color2: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.disabled,
+  color2: theme.designSystem.color.icon.disabled,
 }))``
 
 const CompletedConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
-  color2: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
+  color2: theme.designSystem.color.icon.subtle,
 }))({ transform: 'rotate(-8deg)' })
 
 const StyledListContainer = styled.View({

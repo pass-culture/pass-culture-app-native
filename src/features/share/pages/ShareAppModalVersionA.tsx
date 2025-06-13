@@ -6,9 +6,9 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Share } from 'ui/svg/icons/BicolorShare'
-import { BicolorShareChat } from 'ui/svg/icons/BicolorShareChat'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { ShareChat } from 'ui/svg/icons/ShareChat'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -55,6 +55,7 @@ const ImageContainer = styled.View({
   alignItems: 'center',
 })
 
-const Icon = styled(BicolorShareChat).attrs(({ theme }) => ({
+const Icon = styled(ShareChat).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.medium,
 }))({})

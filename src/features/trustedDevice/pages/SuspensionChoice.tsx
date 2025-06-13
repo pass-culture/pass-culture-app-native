@@ -16,9 +16,9 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { UserError } from 'ui/svg/UserError'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -60,7 +60,7 @@ export const SuspensionChoice = () => {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorUserError}
+      illustration={UserError}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',

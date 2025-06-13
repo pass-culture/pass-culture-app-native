@@ -354,8 +354,8 @@ pour réserver cette offre
             >
               <View
                 fill="none"
-                height={109.2}
-                width={140}
+                height={156}
+                width={200}
               >
                 <Text>
                   undefined-SVG-Mock
@@ -878,8 +878,8 @@ pour réserver cette offre
             >
               <View
                 fill="none"
-                height={109.2}
-                width={140}
+                height={156}
+                width={200}
               >
                 <Text>
                   undefined-SVG-Mock
@@ -1402,8 +1402,8 @@ pour réserver cette offre
             >
               <View
                 fill="none"
-                height={109.2}
-                width={140}
+                height={156}
+                width={200}
               >
                 <Text>
                   undefined-SVG-Mock

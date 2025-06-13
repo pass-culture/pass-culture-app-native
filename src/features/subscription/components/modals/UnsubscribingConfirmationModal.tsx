@@ -6,8 +6,8 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
-import { BicolorRingingBellOff } from 'ui/svg/BicolorRingingBellOff'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { RingingBellOff } from 'ui/svg/RingingBellOff'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -51,6 +51,7 @@ const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const StyledIcon = styled(BicolorRingingBellOff).attrs(({ theme }) => ({
+const StyledIcon = styled(RingingBellOff).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``

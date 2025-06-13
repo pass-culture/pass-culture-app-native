@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
+import { CircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/CircledCheck'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const NoTicket: FunctionComponent = () => (
@@ -33,6 +33,5 @@ const IconContainer = styled.View({
 
 const BicolorCircledCheck = styled(InitialBicolorCircledCheck).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``

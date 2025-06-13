@@ -5,8 +5,8 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Clear } from 'ui/svg/icons/Clear'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 
 interface Props {
   visible: boolean
@@ -38,7 +38,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
       testIdSuffix={testIdSuffix}
       onRequestClose={continueIdentityCheck}>
       <GenericInfoPage
-        illustration={BicolorError}
+        illustration={ErrorIllustration}
         title="Veux-tu abandonner la vérification d’identité&nbsp;?"
         subtitle="Les informations que tu as renseignées ne seront pas enregistrées."
         buttonPrimary={{

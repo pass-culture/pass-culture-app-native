@@ -11,8 +11,8 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { Clear } from 'ui/svg/icons/Clear'
+import { UserError } from 'ui/svg/UserError'
 import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
@@ -74,7 +74,7 @@ export function SuspendAccountConfirmation({
 
   return (
     <GenericInfoPage
-      illustration={StyledBicolorUserError}
+      illustration={StyledUserError}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',
@@ -97,10 +97,9 @@ export function SuspendAccountConfirmation({
   )
 }
 
-const StyledBicolorUserError = styled(BicolorUserError).attrs(({ theme }) => ({
+const StyledUserError = styled(UserError).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const StyledBody = styled(Typo.Body)({

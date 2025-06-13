@@ -11,9 +11,9 @@ import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternar
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
 
 export const DeleteProfileConfirmation = () => {
@@ -40,7 +40,7 @@ export const DeleteProfileConfirmation = () => {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorProfileDeletion}
+      illustration={ProfileDeletion}
       title="Ta demande de suppression de compte"
       buttonPrimary={{
         wording: 'Supprimer mon compte',

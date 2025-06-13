@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
+import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const ComeBackLater: FunctionComponent = () => {
@@ -16,7 +16,7 @@ export const ComeBackLater: FunctionComponent = () => {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorIdCardInvalid}
+      illustration={IdCardInvalid}
       title="Reviens plus tard"
       buttonPrimary={{
         wording: 'M’identifier plus tard',

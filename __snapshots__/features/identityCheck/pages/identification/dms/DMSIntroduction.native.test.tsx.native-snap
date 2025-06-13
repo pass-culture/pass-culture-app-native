@@ -524,7 +524,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             }
           >
             <View
-              fill="url(#gradienttestUuid)"
               height={24}
               testID="BicolorProfile"
               width={24}
@@ -1190,7 +1189,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             }
           >
             <View
-              fill="url(#gradienttestUuid)"
               height={24}
               testID="BicolorProfile"
               width={24}

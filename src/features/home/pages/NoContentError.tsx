@@ -4,7 +4,7 @@ import React from 'react'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
-import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
+import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 export const NoContentError = () => {
@@ -19,7 +19,7 @@ export const NoContentError = () => {
       helmetTitle={helmetTitle}
       title="Oups&nbsp;!"
       subtitle="Une erreur s’est produite pendant le chargement de nos recommandations."
-      illustration={BicolorBrokenConnection}
+      illustration={BrokenConnection}
       buttonPrimary={{
         wording: 'Rechercher une offre',
         icon: MagnifyingGlass,

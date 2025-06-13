@@ -5,7 +5,7 @@ import { env } from 'libs/environment/env'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
+import { IdCardError } from 'ui/svg/icons/IdCardError'
 import { Typo } from 'ui/theme'
 
 export const ExpiredOrLostID = (): React.JSX.Element => {
@@ -16,7 +16,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
   return (
     <GenericInfoPage
       withGoBack
-      illustration={BicolorIdCardError}
+      illustration={IdCardError}
       title="Ta pièce d’identité expirée ou perdue"
       buttonPrimary={{
         wording: 'Aller sur demarches-simplifiees.fr',

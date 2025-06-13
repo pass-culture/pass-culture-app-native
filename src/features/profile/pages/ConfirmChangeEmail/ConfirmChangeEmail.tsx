@@ -12,8 +12,8 @@ import { isTimestampExpired } from 'libs/dates'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { PhonePending } from 'ui/svg/icons/PhonePending'
 
 export function ConfirmChangeEmail() {
   const { replace, reset } = useNavigation<UseNavigationType>()
@@ -73,7 +73,7 @@ export function ConfirmChangeEmail() {
 
   return (
     <GenericInfoPage
-      illustration={BicolorPhonePending}
+      illustration={PhonePending}
       title="Confirmes-tu la demande de changement d’e-mail&nbsp;?"
       buttonPrimary={{
         wording: 'Confirmer la demande',

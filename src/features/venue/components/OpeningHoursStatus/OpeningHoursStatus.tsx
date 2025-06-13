@@ -81,8 +81,8 @@ const getTextColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatu
   return {
     open: theme.designSystem.color.text.success,
     close: theme.designSystem.color.text.error,
-    'open-soon': theme.colors.goldDark,
-    'close-soon': theme.colors.goldDark,
+    'open-soon': theme.designSystem.color.text.warning,
+    'close-soon': theme.designSystem.color.text.warning,
     'not-applicable': theme.designSystem.color.text.default,
   }[state]
 }

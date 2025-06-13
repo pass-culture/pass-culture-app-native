@@ -9,7 +9,7 @@ import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/t
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Connect } from 'ui/svg/icons/Connect'
-import { Profile } from 'ui/svg/icons/Profile'
+import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
 type LoginProps = {
@@ -42,7 +42,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const wording = isLogin ? 'Se connecter' : 'Créer un compte'
-  const icon = isLogin ? Connect : Profile
+  const icon = isLogin ? Connect : ProfileFilled
 
   return (
     <AuthenticationContainer>

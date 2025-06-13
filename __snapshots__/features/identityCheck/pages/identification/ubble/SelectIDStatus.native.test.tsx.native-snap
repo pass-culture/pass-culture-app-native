@@ -715,7 +715,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       }
                     >
                       <View
-                        fill="url(#gradienttestUuid)"
                         height={24}
                         width={24}
                       >
