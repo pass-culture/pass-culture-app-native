@@ -8,6 +8,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 import { iconSizes } from 'ui/theme/iconSizes'
 
 const meta: Meta<typeof HeroButtonList> = {
@@ -25,14 +26,14 @@ export default meta
 
 const description = (
   <Typo.Body>
-    J’ai une carte d’identité, un passeport
+    J’ai une carte d’identité, un passeport{SPACE}
     <Typo.BodyAccent>étranger</Typo.BodyAccent>
-    ou un titre séjour français
+    {SPACE}ou un titre séjour français
   </Typo.Body>
 )
 const description2 = (
   <Typo.Body>
-    J’ai ma pièce d’identité
+    J’ai ma pièce d’identité{SPACE}
     <Typo.BodyAccent>en cours de validité avec moi</Typo.BodyAccent>
   </Typo.Body>
 )

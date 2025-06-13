@@ -141,7 +141,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
                 style="height: 65px;"
               />
               <div
-                class="css-text-146c3p1"
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
                 scroll children
@@ -152,7 +152,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingInline-u9wvl5 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <div
-              class="css-text-146c3p1"
+              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
               dir="ltr"
             >
               fixed bottom children
