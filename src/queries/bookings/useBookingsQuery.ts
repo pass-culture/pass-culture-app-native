@@ -1,5 +1,7 @@
+import { useQuery } from 'react-query'
+
 import { api } from 'api/api'
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponse, BookingsResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -8,7 +10,7 @@ import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 // Arbitrary. Make sure the cache is invalidated after each booking
 const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
-export function useBookingsQuery(options = {}) {
+export const useBookingsQueryV1 = (options = {}) => {
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
   return usePersistQuery<BookingsResponse>([QueryKeys.BOOKINGS], () => api.getNativeV1Bookings(), {
@@ -17,3 +19,15 @@ export function useBookingsQuery(options = {}) {
     ...options,
   })
 }
+
+export const useBookingsQuery = <TData = BookingsResponseV2>(
+  enabledQuery: boolean,
+  select?: (data: BookingsResponseV2) => TData
+) =>
+  useQuery<BookingsResponseV2, Error, TData>({
+    queryKey: [QueryKeys.BOOKINGS],
+    queryFn: () => api.getNativeV2Bookings(),
+    select,
+    enabled: enabledQuery,
+    staleTime: STALE_TIME_BOOKINGS,
+  })

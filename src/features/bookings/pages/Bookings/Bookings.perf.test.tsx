@@ -8,8 +8,8 @@ import {
   UserProfileResponse,
 } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

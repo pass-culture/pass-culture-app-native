@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
@@ -12,7 +12,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const mockBookings = { ...bookingsSnap }
 jest.mock('queries/bookings/useBookingsQuery', () => ({
-  useBookingsQuery: jest.fn(() => ({ data: mockBookings })),
+  useBookingsQueryV1: jest.fn(() => ({ data: mockBookings })),
 }))
 
 const mockUseSubcategoriesMapping = jest.fn()

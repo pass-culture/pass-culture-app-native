@@ -10,7 +10,7 @@ import {
   OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { mockedBookingOfferResponse } from 'fixtures/booking'
 import { Offer } from 'shared/offer/types'
@@ -84,7 +84,7 @@ export const mockBuilder = {
   searchResponseOffer: createMockBuilder<SearchResponse<Offer>>(searchResponseOffer),
   bookingVenueResponse: createMockBuilder<BookingVenueResponse>(mockedBookingOfferResponse.venue),
   bookingOfferResponse: createMockBuilder<BookingOfferResponse>(mockedBookingOfferResponse),
-  bookingResponse: createMockBuilder<BookingReponse>(bookingsSnap.ongoing_bookings[0]),
+  bookingResponseV1: createMockBuilder<BookingReponse>(bookingsSnap.ongoing_bookings[0]),
 }
 
 export const dateBuilder = createDateBuilder()

@@ -8,6 +8,9 @@ const defaultConfig: KnipConfig = {
   ignore: [
     // PC-35376 - should delete this line
     'src/**/*.stories.old.tsx',
+    // PC-36439 - should delete those lines
+    'src/features/bookings/queries/useOngoingOrEndedBookingQuery.ts',
+    'src/queries/bookings/useUserHasBookingsQuery.ts',
     'src/**/*.ios.*',
     '.storybook/**/*',
     'src/**/*.android.*',

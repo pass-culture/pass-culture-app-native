@@ -12,7 +12,7 @@ import { useReactionMutation } from 'features/reactions/queries/useReactionMutat
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'

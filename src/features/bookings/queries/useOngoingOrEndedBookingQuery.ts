@@ -1,9 +1,11 @@
 import { UseQueryResult } from 'react-query'
 
-import { BookingReponse, BookingsResponse } from 'api/gen'
-import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { BookingReponse, BookingResponse, BookingsResponse, BookingsResponseV2 } from 'api/gen'
+import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 
-export function useOngoingOrEndedBookingQuery(id: number): UseQueryResult<BookingReponse | null> {
+export const useOngoingOrEndedBookingQueryV1 = (
+  id: number
+): UseQueryResult<BookingReponse | null> => {
   return useBookingsQuery({
     select(bookings: BookingsResponse | null) {
       if (!bookings) {
@@ -22,3 +24,13 @@ export function useOngoingOrEndedBookingQuery(id: number): UseQueryResult<Bookin
     },
   }) as UseQueryResult<BookingReponse | null>
 }
+
+const findOngoingOrEndedBooking = (bookings: BookingsResponseV2 | null, id: number) => {
+  const onGoingBooking = bookings?.ongoingBookings?.find((item: BookingResponse) => item.id === id)
+  const endedBooking = bookings?.endedBookings?.find((item: BookingResponse) => item.id === id)
+
+  return onGoingBooking ?? (endedBooking || null)
+}
+
+export const useOngoingOrEndedBookingQuery = (id: number, enabled: boolean) =>
+  useBookingsQueryV2(enabled, (data) => findOngoingOrEndedBooking(data, id))

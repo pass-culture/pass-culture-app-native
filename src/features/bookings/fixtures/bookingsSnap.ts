@@ -3,12 +3,13 @@ import type { ReadonlyDeep } from 'type-fest'
 import {
   BookingCancellationReasons,
   BookingsResponse,
+  BookingsResponseV2,
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
-export const bookingsSnap = toMutable({
+export const bookingsSnapV1 = toMutable({
   ended_bookings: [
     {
       id: 321,
@@ -312,8 +313,346 @@ export const bookingsSnap = toMutable({
   hasBookingsAfter18: true,
 } as const satisfies ReadonlyDeep<BookingsResponse>)
 
-export const emptyBookingsSnap = toMutable({
+export const emptyBookingsSnapV1 = toMutable({
   ended_bookings: [],
   ongoing_bookings: [],
   hasBookingsAfter18: true,
 } as const satisfies ReadonlyDeep<BookingsResponse>)
+
+export const bookingsSnap = toMutable({
+  endedBookings: [
+    {
+      id: 321,
+      cancellationDate: '2021-03-15T23:01:37.925926',
+      cancellationReason: BookingCancellationReasons.BENEFICIARY,
+      confirmationDate: '2021-02-15T23:01:37.925926',
+      dateCreated: '2021-02-15T23:01:37.925926',
+      dateUsed: null,
+      expirationDate: null,
+      totalAmount: 1900,
+      quantity: 10,
+      userReaction: null,
+      canReact: true,
+      enablePopUpReaction: true,
+      stock: {
+        id: 150230,
+        price: 400,
+        priceCategoryLabel: 'Cat 4',
+        beginningDatetime: '2021-03-14T20:00:00',
+        features: ['VOSTFR', '3D', 'IMAX'],
+        offer: {
+          id: 147874,
+          bookingContact: null,
+          name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            label: null,
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
+          extraData: null,
+          isPermanent: false,
+          isDigital: true,
+          subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
+          venue: {
+            id: 2185,
+            name: 'Maison de la Brique',
+            publicName: 'Maison de la Brique en mousse',
+            timezone: 'Europe/Paris',
+            isOpenToPublic: true,
+          },
+        },
+      },
+      ticket: {
+        voucher: {
+          data: 'PASSCULTURE:v3;TOKEN:352UW5',
+        },
+        email: null,
+        token: {
+          data: '352UW5',
+        },
+        withdrawal: {
+          details: null,
+          type: WithdrawalTypeEnum.on_site,
+          delay: null,
+        },
+        noTicket: false,
+        activationCode: null,
+        externalBooking: null,
+      },
+    },
+    {
+      id: 322,
+      confirmationDate: '2021-02-15T23:01:37.925926',
+      dateCreated: '2021-02-15T23:01:37.925926',
+      dateUsed: '2021-03-15T23:01:37.925926',
+      expirationDate: null,
+      totalAmount: 1900,
+      quantity: 10,
+      userReaction: null,
+      canReact: false,
+      enablePopUpReaction: false,
+      stock: {
+        id: 150230,
+        price: 400,
+        priceCategoryLabel: 'Cat 4',
+        beginningDatetime: '2021-03-14T20:00:00',
+        features: ['VOSTFR', '3D', 'IMAX'],
+        offer: {
+          id: 147875,
+          bookingContact: null,
+          name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            label: null,
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
+          extraData: null,
+          isPermanent: false,
+          isDigital: true,
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+          venue: {
+            id: 2185,
+            name: 'Maison de la Brique',
+            publicName: 'Maison de la Brique en mousse',
+            timezone: 'Europe/Paris',
+            isOpenToPublic: true,
+          },
+        },
+      },
+      ticket: {
+        voucher: {
+          data: 'PASSCULTURE:v3;TOKEN:352UW5',
+        },
+        email: null,
+        token: {
+          data: '352UW5',
+        },
+        withdrawal: {
+          details: null,
+          type: WithdrawalTypeEnum.on_site,
+          delay: null,
+        },
+        noTicket: false,
+        activationCode: null,
+        externalBooking: null,
+      },
+    },
+  ],
+  ongoingBookings: [
+    {
+      id: 123,
+      cancellationDate: null,
+      cancellationReason: null,
+      confirmationDate: '2021-03-15T23:01:37.925926',
+      dateCreated: '2021-02-15T23:01:37.925926',
+      dateUsed: null,
+      expirationDate: null,
+      totalAmount: 1900,
+      quantity: 10,
+      canReact: false,
+      enablePopUpReaction: false,
+      stock: {
+        id: 150230,
+        beginningDatetime: '2021-03-15T20:00:00',
+        price: 400,
+        priceCategoryLabel: 'Cat 4',
+        features: ['VOSTFR', '3D', 'IMAX'],
+        offer: {
+          id: 147874,
+          bookingContact: null,
+          name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
+          extraData: {
+            ean: '123456789',
+          },
+          isPermanent: false,
+          isDigital: true,
+          subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
+          venue: {
+            id: 2185,
+            name: 'Maison de la Brique',
+            timezone: 'Europe/Paris',
+            isOpenToPublic: true,
+          },
+        },
+      },
+      ticket: {
+        voucher: {
+          data: 'PASSCULTURE:v3;TOKEN:352UW4',
+        },
+        email: null,
+        token: {
+          data: '352UW4',
+        },
+        withdrawal: {
+          details: null,
+          type: WithdrawalTypeEnum.on_site,
+          delay: null,
+        },
+        noTicket: false,
+        activationCode: null,
+        externalBooking: null,
+      },
+    },
+    {
+      id: 124,
+      cancellationDate: null,
+      cancellationReason: null,
+      confirmationDate: '2021-03-15T23:01:37.925926',
+      dateCreated: '2021-02-15T23:01:37.925926',
+      dateUsed: null,
+      expirationDate: null,
+      totalAmount: 1900,
+      quantity: 10,
+      canReact: false,
+      enablePopUpReaction: false,
+      stock: {
+        id: 150230,
+        beginningDatetime: '2021-03-15T20:00:00',
+        price: 400,
+        priceCategoryLabel: 'Cat 4',
+        features: ['VOSTFR', '3D', 'IMAX'],
+        offer: {
+          id: 147874,
+          bookingContact: null,
+          name: 'Avez-vous déjà vu\u00a0?',
+          address: {
+            street: '1 boulevard de la brique',
+            postalCode: '93700',
+            city: 'Drancy',
+            label: null,
+            coordinates: {
+              latitude: 48.91683,
+              longitude: 2.43884,
+            },
+            timezone: 'Europe/Paris',
+          },
+          extraData: {
+            ean: '123456789',
+          },
+          isPermanent: false,
+          isDigital: false,
+          subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
+          venue: {
+            id: 2185,
+            name: 'Maison de la Brique',
+            timezone: 'Europe/Paris',
+            isOpenToPublic: true,
+          },
+        },
+      },
+      ticket: {
+        voucher: null,
+        email: null,
+        token: null,
+        withdrawal: {
+          details: null,
+          type: WithdrawalTypeEnum.on_site,
+          delay: null,
+        },
+        noTicket: false,
+        activationCode: null,
+        externalBooking: {
+          data: [
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+          ],
+        },
+      },
+    },
+    {
+      id: 125,
+      cancellationDate: null,
+      cancellationReason: null,
+      confirmationDate: '2024-03-15T23:01:37.925926',
+      dateCreated: '2024-02-15T23:01:37.925926',
+      dateUsed: null,
+      expirationDate: null,
+      totalAmount: 1900,
+      quantity: 100,
+      canReact: false,
+      enablePopUpReaction: false,
+      stock: {
+        id: 150230,
+        beginningDatetime: '2021-03-15T20:00:00',
+        price: 100,
+        priceCategoryLabel: 'Cat 4',
+        features: [],
+        offer: {
+          id: 147874,
+          bookingContact: null,
+          name: 'Un titre de livre',
+          address: {
+            street: '45 rue de Paris',
+            postalCode: '59300',
+            city: 'Valenciennes',
+            label: null,
+            coordinates: {
+              latitude: 50.3588,
+              longitude: 3.5217,
+            },
+            timezone: 'Europe/Paris',
+          },
+          extraData: {
+            ean: '123456789',
+          },
+          isPermanent: false,
+          isDigital: false,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          venue: {
+            id: 2185,
+            name: 'Libraire du Petit Prince',
+            timezone: 'Europe/Paris',
+            isOpenToPublic: true,
+          },
+        },
+      },
+      ticket: {
+        voucher: null,
+        email: null,
+        token: null,
+        withdrawal: {
+          details: 'How to withdraw, https://test.com',
+          type: WithdrawalTypeEnum.on_site,
+          delay: null,
+        },
+        noTicket: false,
+        activationCode: null,
+        externalBooking: {
+          data: [
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+            { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+          ],
+        },
+      },
+    },
+  ],
+  hasBookingsAfter18: true,
+} as const satisfies ReadonlyDeep<BookingsResponseV2>)
+
+export const emptyBookingsSnap = toMutable({
+  endedBookings: [],
+  ongoingBookings: [],
+  hasBookingsAfter18: true,
+} as const satisfies ReadonlyDeep<BookingsResponseV2>)

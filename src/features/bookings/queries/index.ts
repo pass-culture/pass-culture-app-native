@@ -1,3 +1,3 @@
 export { useArchiveBookingMutation } from './useArchiveBookingMutation'
-export { useOngoingOrEndedBookingQuery } from './useOngoingOrEndedBookingQuery'
+export { useOngoingOrEndedBookingQueryV1 as useOngoingOrEndedBookingQuery } from './useOngoingOrEndedBookingQuery'
 export { useCancelBookingMutation } from './useCancelBookingMutation'

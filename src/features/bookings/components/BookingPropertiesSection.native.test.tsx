@@ -2,7 +2,7 @@ import React from 'react'
 
 import type { BookingsResponse } from 'api/gen'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { Booking } from 'features/bookings/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 

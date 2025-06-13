@@ -1,12 +1,12 @@
 import { UseQueryOptions, UseQueryResult } from 'react-query'
 
-import { BookingReponse, BookingsResponse } from 'api/gen'
-import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { BookingReponse, BookingResponse, BookingsResponse, BookingsResponseV2 } from 'api/gen'
+import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 
-export function useEndedBookingFromOfferIdQuery(
+export const useEndedBookingFromOfferIdQueryV1 = (
   offerId: number,
   options?: UseQueryOptions<BookingsResponse>
-): UseQueryResult<BookingReponse | null> {
+): UseQueryResult<BookingReponse | null> => {
   return useBookingsQuery({
     ...options,
     select(bookings: BookingsResponse | null) {
@@ -25,3 +25,9 @@ export function useEndedBookingFromOfferIdQuery(
     },
   }) as UseQueryResult<BookingReponse | null>
 }
+
+const findEndedBookingFromOfferId = (bookings: BookingsResponseV2 | null, offerId: number) =>
+  bookings?.endedBookings?.find((item: BookingResponse) => item.stock.offer.id === offerId) || null
+
+export const useEndedBookingFromOfferIdQuery = (offerId: number, enabled: boolean) =>
+  useBookingsQueryV2(enabled, (data) => findEndedBookingFromOfferId(data, offerId))

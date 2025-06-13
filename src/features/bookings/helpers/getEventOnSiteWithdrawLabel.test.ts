@@ -2,7 +2,7 @@ import { addDays, formatISO } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { getEventOnSiteWithdrawLabel } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 
