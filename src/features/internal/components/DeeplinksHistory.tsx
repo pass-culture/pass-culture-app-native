@@ -129,7 +129,7 @@ const StyledTitle4 = styled(Typo.Title4)({
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   marginVertical: getSpacing(4),
 }))
 
@@ -137,5 +137,5 @@ const BottomContainer = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'flex-end',
   ...padding(2),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

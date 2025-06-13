@@ -103,7 +103,7 @@ const StyledSeparator = styled(Separator.Horizontal)({
 })
 
 const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.colors.black,
+  buttonColor: theme.designSystem.color.text.default,
 }))``
 
 const ItemSeparator = () => <StyledSeparator />

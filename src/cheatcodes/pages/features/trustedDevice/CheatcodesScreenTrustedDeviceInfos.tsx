@@ -43,9 +43,9 @@ const DataContainer = styled.View({
 })
 
 const ButtonTextPrimary = styled(Typo.Button)(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.text.brandPrimary,
 }))
 
 const ButtonTextSecondary = styled(Typo.Button)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
