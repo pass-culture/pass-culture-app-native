@@ -175,6 +175,29 @@ describe('PracticalInformation', () => {
     expect(screen.queryByText('Horaires d’ouverture')).not.toBeOnTheScreen()
   })
 
+  it('should not display opening hours section when hours not provided', async () => {
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation
+          venue={{
+            ...venueOpenToPublic,
+            openingHours: {
+              SUNDAY: null,
+              MONDAY: null,
+              TUESDAY: null,
+              WEDNESDAY: null,
+              THURSDAY: null,
+              FRIDAY: null,
+              SATURDAY: null,
+            },
+          }}
+        />
+      )
+    )
+
+    expect(screen.queryByText('Horaires d’ouverture')).not.toBeOnTheScreen()
+  })
+
   describe('venue is not open to public', () => {
     it('should not display opening hours section', async () => {
       render(
