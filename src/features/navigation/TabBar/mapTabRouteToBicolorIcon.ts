@@ -6,7 +6,7 @@ import { Favorite } from 'ui/svg/icons/Favorite'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { Search } from 'ui/svg/icons/Search'
 import { TabBarProfile } from 'ui/svg/icons/TabBarProfile'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 import { TabRouteName } from './types'
 
@@ -18,7 +18,7 @@ type Props = {
 export function mapTabRouteToIcon({
   route,
   enableReactionFeature,
-}: Props): React.FC<AccessibleBicolorIcon> {
+}: Props): React.FC<AccessibleIcon> {
   const BicolorBookingsIcon = enableReactionFeature ? BookingsCountV2 : Bookings
   switch (route) {
     case 'Home':

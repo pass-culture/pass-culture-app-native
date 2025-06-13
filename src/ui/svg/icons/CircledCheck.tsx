@@ -4,14 +4,9 @@ import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-import { AccessibleBicolorIcon } from './types'
+import { AccessibleIcon } from './types'
 
-const CircledCheckSvg: React.FC<AccessibleBicolorIcon> = ({
-  size,
-  color,
-  accessibilityLabel,
-  testID,
-}) => {
+const CircledCheckSvg: React.FC<AccessibleIcon> = ({ size, color, accessibilityLabel, testID }) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
     <AccessibleSvg

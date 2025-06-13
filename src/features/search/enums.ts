@@ -16,7 +16,7 @@ import { OnlineEvents } from 'ui/svg/icons/categories/OnlineEvents'
 import { Shows } from 'ui/svg/icons/categories/Shows'
 import { YouthCards } from 'ui/svg/icons/categories/YouthCards'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
-import { AccessibleIcon, AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
@@ -52,7 +52,7 @@ export const SearchCategoriesIllustrations = {
 }
 
 export type CategoryCriteria = {
-  icon: React.FC<AccessibleBicolorIcon>
+  icon: React.FC<AccessibleIcon>
   illustration: React.FC<AccessibleIcon>
   facetFilter: SearchGroupNameEnumv2
   gradients: Array<ColorsEnum>
@@ -64,7 +64,7 @@ export type CategoryCriteria = {
 type CategoryCriteriaWithNone = {
   [category in SearchGroupNameEnumv2]: category extends SearchGroupNameEnumv2.NONE
     ? {
-        icon: React.FC<AccessibleBicolorIcon>
+        icon: React.FC<AccessibleIcon>
         illustration: undefined
         facetFilter: SearchGroupNameEnumv2
         gradients: undefined

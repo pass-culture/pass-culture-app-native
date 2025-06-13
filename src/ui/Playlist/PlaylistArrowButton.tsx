@@ -8,9 +8,9 @@ import {
 } from 'ui/Playlist/playlistArrowButtonUtils'
 import { ArrowLeft } from 'ui/svg/icons/ArrowLeft'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-type Props = AccessibleBicolorIcon & {
+type Props = AccessibleIcon & {
   direction: 'left' | 'right'
   onPress: () => void
   top?: number

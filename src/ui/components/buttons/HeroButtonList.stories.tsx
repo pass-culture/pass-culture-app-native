@@ -65,13 +65,7 @@ const variantConfig: Variants<typeof HeroButtonList> = [
     label: 'HeroButtonList with custom icon',
     props: {
       Title: description2,
-      Icon: (
-        <LocationPointer
-          color={ColorsEnum.BLACK}
-          color2={ColorsEnum.BLACK}
-          size={iconSizes.small}
-        />
-      ),
+      Icon: <LocationPointer color={ColorsEnum.BLACK} size={iconSizes.small} />,
       navigateTo: { screen: 'Login' },
     },
   },

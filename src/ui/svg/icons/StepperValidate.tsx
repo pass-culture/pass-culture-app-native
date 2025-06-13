@@ -8,7 +8,6 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 const StepperValidateSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
-  color2,
   accessibilityLabel,
   testID,
 }) => {
@@ -25,15 +24,13 @@ const StepperValidateSvg: React.FunctionComponent<AccessibleIcon> = ({
         fillRule="evenodd"
         clipRule="evenodd"
         d="M14.3815 6.95729C14.6515 7.24789 14.6495 7.7169 14.377 8.00484L9.59931 13.0544L9.59919 13.0545C9.15737 13.5213 8.4426 13.5213 8.00077 13.0545L5.62179 10.5413C5.34929 10.2535 5.34716 9.78445 5.61705 9.49378C5.88693 9.20311 6.32663 9.20084 6.59913 9.48872L8.79994 11.8137L13.3995 6.95247C13.6719 6.66453 14.1116 6.66668 14.3815 6.95729Z"
-        fill={color2}
+        fill={color}
       />
     </AccessibleSvg>
   )
 }
 
-export const StepperValidate = styled(StepperValidateSvg).attrs(
-  ({ theme, size = theme.icons.sizes.smaller, color = theme.colors.black }) => ({
-    color,
-    size,
-  })
-)``
+export const StepperValidate = styled(StepperValidateSvg).attrs(({ theme, size, color }) => ({
+  color: color ?? theme.designSystem.color.icon.default,
+  size: size ?? theme.icons.sizes.smaller,
+}))``

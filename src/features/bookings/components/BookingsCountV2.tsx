@@ -5,15 +5,10 @@ import styled from 'styled-components/native'
 import { useScaleAnimation } from 'features/favorites/hooks/useScaleFavoritesAnimation'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { Bookings } from 'ui/svg/icons/Bookings'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
-export const BookingsCountV2: React.FC<AccessibleBicolorIcon> = ({
-  size,
-  color,
-  testID,
-  badgeValue,
-}) => {
+export const BookingsCountV2: React.FC<AccessibleIcon> = ({ size, color, testID, badgeValue }) => {
   const scale = useScaleAnimation(badgeValue)
 
   if (!badgeValue || badgeValue === 0) {

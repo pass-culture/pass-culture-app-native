@@ -121,15 +121,12 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
+const MyPictogramSvg: React.FunctionComponent<IconInterface> = ({
   size,
   color,
-  color2,
   accessibilityLabel,
   testID,
 }) => {
-  const { id: gradientId, fill: gradientFill } = svgIdentifier()
-
   return (
     <AccessibleSvg
       width={size}
@@ -137,26 +134,19 @@ const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
       viewBox="0 0 48 48"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <Defs>
-        <LinearGradient id={gradientId} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
-          <Stop offset="0%" stopColor={color} />
-          <Stop offset="100%" stopColor={color2} />
-        </LinearGradient>
-      </Defs>
       <Path
-        fill={gradientFill}
-        clipRule={'evenodd'}
-        fillRule={'evenodd'}
+        fill={color}
+        clipRule='evenodd'
+        fillRule='evenodd'
         d="M24 6.5C22.8923 6.5 22 74 38 29.74H34ZM35 35.5V31.74H37V35.5H35Z"
       />
     </AccessibleSvg>
   )
 }
 
-export const MyBicolorPictogram = styled(MyBicolorPictogramSvg).attrs(
-  ({ color, color2, size, theme }) => ({
-    color: color ?? theme.colors.primary,
-    color2: color2 ?? theme.colors.secondary,
+export const MyPictogram = styled(MyPictogramSvg).attrs(
+  ({ color, size, theme }) => ({
+    color: color ?? theme.designSystem.color.icon.default,
     size: size ?? theme.icons.sizes.standard,
   })
 )``

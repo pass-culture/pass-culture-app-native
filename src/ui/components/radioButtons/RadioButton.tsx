@@ -52,8 +52,7 @@ export function RadioButton(props: RadioButtonProps) {
   const StyledIcon =
     !!props.icon &&
     styled(props.icon).attrs(({ theme }) => ({
-      color: theme.colors.primary,
-      color2: props.isSelected ? theme.colors.primary : theme.colors.secondary,
+      color: theme.designSystem.color.icon.brandPrimary,
       size: theme.icons.sizes.small,
     }))``
 
@@ -131,14 +130,18 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
 }))
 
 const Label = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
+  color: isSelected
+    ? theme.designSystem.color.icon.brandPrimary
+    : theme.designSystem.color.icon.default,
   flexGrow: 1,
   flexShrink: 1,
 }))
 
 const ComplementLabel = styled(Typo.BodyAccentXs)<{ isSelected: boolean }>(
   ({ isSelected, theme }) => ({
-    color: isSelected ? theme.colors.primary : theme.colors.greyDark,
+    color: isSelected
+      ? theme.designSystem.color.icon.brandPrimary
+      : theme.designSystem.color.icon.default,
     marginLeft: getSpacing(2),
     flexShrink: 0,
   })
@@ -160,12 +163,12 @@ const IconContainer = styled.View(({ theme }) => ({
 }))
 
 const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.smaller,
 }))``
 
 const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.smaller,
 }))``
 

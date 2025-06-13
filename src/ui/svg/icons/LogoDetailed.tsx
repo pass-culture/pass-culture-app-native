@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-import { AccessibleBicolorIcon } from './types'
+import { AccessibleIcon } from './types'
 
-const NotMemoizedLogoDetailed: React.FC<AccessibleBicolorIcon> = ({
+const NotMemoizedLogoDetailed: React.FC<AccessibleIcon> = ({
   size,
   color,
   thin,

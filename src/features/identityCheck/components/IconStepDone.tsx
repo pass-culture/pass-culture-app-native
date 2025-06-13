@@ -17,7 +17,6 @@ export const IconStepDone: FunctionComponent<IconStepDoneProps> = ({ Icon, testI
     <Icon
       testID={testID}
       color={theme.designSystem.color.icon.disabled}
-      color2={theme.designSystem.color.icon.disabled}
       size={theme.icons.sizes.standard}
       transform="translate(0 6) rotate(-8) scale(0.97)"
     />

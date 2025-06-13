@@ -11,13 +11,12 @@ import { Spacer, Typo } from 'ui/theme'
 import { AgeButton } from './AgeButton'
 
 const BicolorAll = styled(All).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
 }))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
@@ -25,7 +24,7 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const meta: Meta<typeof AgeButton> = {

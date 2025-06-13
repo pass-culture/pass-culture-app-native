@@ -7,9 +7,8 @@ On peut décider de modifier directement le style, mais dans certains cas on veu
 Un exemple simple d'utilisation de `.attrs()` est notre façon d'utiliser les icons. Attention à bien fermer la définition du styled component avec \`\` pour que celui-ci fonctionne.
 
 ```tsx
-const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }) => ({
+const LocationPointerNotFilled = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.colors.black,
-  color2: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
 ```

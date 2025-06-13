@@ -29,7 +29,6 @@ export const DuoChoice: React.FC<Props> = ({
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.small,
     color: getTextColor(theme, selected, disabled),
-    color2: getTextColor(theme, selected, disabled),
   }))``
 
   const accessibilityLabel = `${title} ${price}`

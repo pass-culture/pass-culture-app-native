@@ -6,12 +6,12 @@ import { TabRouteName } from 'features/navigation/TabBar/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface NavItemInterface {
   isSelected?: boolean
-  BicolorIcon: React.FC<AccessibleBicolorIcon>
+  BicolorIcon: React.FC<AccessibleIcon>
   navigateTo: InternalNavigationProps['navigateTo']
   tabName: TabRouteName
   badgeValue?: number

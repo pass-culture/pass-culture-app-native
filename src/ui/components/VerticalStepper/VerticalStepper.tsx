@@ -47,19 +47,14 @@ export const VerticalStepper = memo(function VerticalStepper({
 
       if (variant === StepVariant.complete)
         return (
-          <StepperValidate
-            color={theme.colors.greenValid}
-            color2={theme.colors.white}
-            size={20}
-            {...props}
-          />
+          <StepperValidate color={theme.designSystem.color.icon.success} size={20} {...props} />
         )
 
       if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
 
       return <FutureIcon {...props} />
     },
-    [iconComponent, theme.colors.greenValid, theme.colors.white, variant]
+    [iconComponent, theme.designSystem.color.icon.success, variant]
   )
 
   const TopLine = useCallback(

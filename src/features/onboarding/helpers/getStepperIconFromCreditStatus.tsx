@@ -22,7 +22,7 @@ const AnimatedOngoingLock = () => (
 )
 
 const ComingLock = styled(LockFilled).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.default,
+  color: theme.designSystem.color.icon.subtle,
 }))({
   marginHorizontal: getSpacing(1.5),
 })

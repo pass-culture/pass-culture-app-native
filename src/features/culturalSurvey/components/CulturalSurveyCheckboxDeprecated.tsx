@@ -22,8 +22,9 @@ export const CulturalSurveyCheckboxDeprecated = (props: CulturalSurveyCheckboxPr
 
   const AnswerIcon = props.icon
     ? styled(props.icon).attrs(({ theme }) => ({
-        color: isSelected ? theme.colors.secondary : theme.colors.greyDark,
-        color2: isSelected ? theme.colors.primary : theme.colors.greyDark,
+        color: isSelected
+          ? theme.designSystem.color.icon.brandPrimary
+          : theme.designSystem.color.icon.subtle,
       }))``
     : null
 
@@ -37,8 +38,8 @@ export const CulturalSurveyCheckboxDeprecated = (props: CulturalSurveyCheckboxPr
   }, [props.selected])
 
   const colors = isSelected
-    ? [theme.colors.secondary, theme.colors.primary]
-    : [theme.colors.greyMedium, theme.colors.greyMedium]
+    ? [theme.designSystem.color.icon.brandPrimary, theme.designSystem.color.icon.brandPrimary]
+    : [theme.designSystem.color.icon.subtle]
 
   const accessibilityLabel = props.subtitle ? `${props.title} ${props.subtitle}` : props.title
   return (
@@ -72,7 +73,7 @@ const StyledLinearGradient = styled(LinearGradient).attrs(({ colors }) => ({
 }))({ borderRadius: getSpacing(2) })
 
 const RedValidate = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.smaller,
 }))``
 
@@ -80,7 +81,7 @@ const AnswerContainer = styled(TouchableOpacity).attrs({
   activeOpacity: 0.95,
 })(({ theme }) => ({
   flexDirection: 'row',
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   justifyContent: 'flex-start',
   alignItems: 'center',
   margin: getSpacing(0.25),
