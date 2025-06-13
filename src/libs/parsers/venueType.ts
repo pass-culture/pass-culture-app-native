@@ -1,5 +1,5 @@
 import { VenueTypeCodeKey } from 'api/gen'
-import { venueTypesIcons } from 'ui/svg/icons/bicolor/exports/venueTypesIcons'
+import { venueTypesIcons } from 'ui/svg/icons/exports/venueTypesIcons'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type VenueTypeCode = Exclude<VenueTypeCodeKey, VenueTypeCodeKey.ADMINISTRATIVE>

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { CulturalSurveyCheckboxDeprecated } from 'features/culturalSurvey/components/CulturalSurveyCheckboxDeprecated'
-import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
+import { culturalSurveyIcons } from 'ui/svg/icons/exports/culturalSurveyIcons'
 
 const meta: Meta<typeof CulturalSurveyCheckboxDeprecated> = {
   title: 'Features/culturalSurvey/CulturalSurveyCheckboxDeprecated',
