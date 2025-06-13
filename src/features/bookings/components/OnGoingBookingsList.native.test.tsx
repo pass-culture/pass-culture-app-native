@@ -2,7 +2,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/index'
+import { bookingsSnap as mockBookings } from 'features/bookings/fixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
