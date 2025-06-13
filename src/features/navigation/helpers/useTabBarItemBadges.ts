@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { TabParamList } from 'features/navigation/TabBar/types'
+import { TabParamList } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 
 export const useTabBarItemBadges = (): Partial<Record<keyof TabParamList, number>> => {

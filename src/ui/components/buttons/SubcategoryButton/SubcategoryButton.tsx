@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'

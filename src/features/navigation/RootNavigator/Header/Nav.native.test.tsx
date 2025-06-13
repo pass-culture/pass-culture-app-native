@@ -5,7 +5,7 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { Nav } from 'features/navigation/RootNavigator/Header/Nav'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,

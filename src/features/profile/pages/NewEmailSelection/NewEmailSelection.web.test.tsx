@@ -12,7 +12,6 @@ jest.mock('uuid', () => {
     v4: jest.fn(() => value++),
   }
 })
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 describe('<NewEmailSelection />', () => {
   describe('Accessibility', () => {

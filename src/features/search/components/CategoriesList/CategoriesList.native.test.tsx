@@ -51,7 +51,6 @@ jest.mock('libs/location', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 const user = userEvent.setup()
 

@@ -3,7 +3,7 @@ import {
   NavigationResultState,
   RootScreenNames,
 } from 'features/navigation/RootNavigator/types'
-import { TabRouteName } from 'features/navigation/TabBar/types'
+import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 
 type TestRoute = {
   name: RootScreenNames | TabRouteName

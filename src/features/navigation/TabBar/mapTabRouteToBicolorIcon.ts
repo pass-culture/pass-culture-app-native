@@ -8,7 +8,7 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 
-import { TabRouteName } from './types'
+import { TabRouteName } from './TabStackNavigatorTypes'
 
 type Props = {
   route: TabRouteName

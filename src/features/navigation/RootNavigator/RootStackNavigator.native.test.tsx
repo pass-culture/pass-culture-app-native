@@ -8,7 +8,7 @@ import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
-import { RootNavigator } from './RootNavigator'
+import { RootNavigator } from './RootStackNavigator'
 
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
@@ -25,7 +25,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
 }))
-jest.mock('features/navigation/TabBar/TabNavigator', () => ({
+jest.mock('features/navigation/TabBar/TabStackNavigator', () => ({
   TabNavigator: () => null,
 }))
 jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({

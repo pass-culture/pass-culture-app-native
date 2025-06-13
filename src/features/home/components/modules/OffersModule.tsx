@@ -10,7 +10,7 @@ import {
   OffersModule as OffersModuleType,
   RecommendedOffersModule,
 } from 'features/home/types'
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
