@@ -171,19 +171,13 @@ export function groupByYearAndMonth(decomposedDates: ReturnType<typeof decompose
   return grouped
 }
 
-export function joinArrayElement(array: (string | number)[] | MonthDays) {
-  if (!array.length) {
-    return
-  }
-  if (array.length === 1) {
-    return array[0]
-  } else if (array.length === 2) {
-    return array.join(' et ')
-  } else {
-    const first = array.slice(0, -1).join(', ')
-    const last = array.at(-1) ?? ''
-    return `${first} et ${last}`
-  }
+export function joinArrayElement(array: (string | number)[]): string {
+  if (!array.length) return ''
+  if (array.length === 1) return String(array[0])
+  if (array.length === 2) return array.map(String).join(' et ')
+  const first = array.slice(0, -1).map(String).join(', ')
+  const last = String(array.at(-1) ?? '')
+  return `${first} et ${last}`
 }
 
 export function formatGroupedDates(grouped: GroupResult) {
@@ -201,12 +195,14 @@ export function formatGroupedDates(grouped: GroupResult) {
   return { formatDates, arrayDays }
 }
 
-export const getFormattedDates = (dates: string[] | undefined) => {
-  if (!dates || dates.length === 0) return
+export const getFormattedDates = (dates: string[] | undefined): string => {
+  if (!dates || dates.length === 0) return ''
 
   const timestamps = getUniqueSortedTimestamps(dates?.map((date) => new Date(date).getTime()))
-  if (timestamps.length === 0) return
-  if (timestamps.length === 1 && timestamps[0]) return formatToFrenchDate(new Date(timestamps[0]))
+  if (timestamps.length === 0) return ''
+  if (timestamps.length === 1 && timestamps[0]) {
+    return formatToFrenchDate(new Date(timestamps[0]))
+  }
 
   const decomposedDates = timestamps.map(decomposeDate)
 
@@ -221,7 +217,7 @@ export const getFormattedDates = (dates: string[] | undefined) => {
 
   const flatArrayDays = arrayDays.flat()
   if (flatArrayDays.length >= 5) {
-    return formatDatePeriod(timestamps)
+    return String(formatDatePeriod(timestamps))
   }
 
   return joinArrayElement(formatDates)
@@ -279,16 +275,6 @@ export const localizeUTCDate = (someDate: Date | string) => {
 export function getTimeZonedDate(date: Date | string, timezone: string) {
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
-}
-
-export function capitalizeFirstLetter(formattedDate: string | number | undefined) {
-  if (formattedDate === undefined) {
-    return undefined
-  }
-
-  return typeof formattedDate === 'string'
-    ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
-    : String(formattedDate)
 }
 
 export const formatDateTimezone = (

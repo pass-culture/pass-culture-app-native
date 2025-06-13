@@ -1,9 +1,9 @@
 import mockdate from 'mockdate'
 import timezoneMock from 'timezone-mock'
 
+import { capitalizeFirstLetter } from './capitalizeFirstLetter'
 import {
   GroupResult,
-  capitalizeFirstLetter,
   decomposeDate,
   formatDatePeriod,
   formatDateToISOStringWithoutTime,
@@ -92,7 +92,7 @@ describe('groupByYearAndMonth', () => {
 
 describe('joinArrayElement', () => {
   it('should return the single element when given an array with only one element', () => {
-    expect(joinArrayElement([1])).toEqual(1)
+    expect(joinArrayElement([1])).toEqual('1')
   })
 
   it('should return two elements joined with "et"', () => {
@@ -105,7 +105,7 @@ describe('joinArrayElement', () => {
   })
 
   it('should return undefined when the array is empty', () => {
-    expect(joinArrayElement([])).toEqual(undefined)
+    expect(joinArrayElement([])).toEqual('')
   })
 })
 
@@ -172,9 +172,9 @@ describe('getFormattedDates', () => {
     mockdate.set(NOVEMBER_1_2020)
   })
 
-  it('should return undefined when undefined or empty array is given', () => {
-    expect(getFormattedDates(undefined)).toEqual(undefined)
-    expect(getFormattedDates([])).toEqual(undefined)
+  it('should return empty string when undefined or empty array is given', () => {
+    expect(getFormattedDates(undefined)).toEqual('')
+    expect(getFormattedDates([])).toEqual('')
   })
 
   it('should return only future dates', () => {
@@ -183,11 +183,11 @@ describe('getFormattedDates', () => {
     ).toEqual(formatToFrenchDate(NOVEMBER_12_2020))
   })
 
-  it('should return undefined when the array dates are invalid', () => {
+  it('should return empty string when the array dates are invalid', () => {
     const dates = ['invalid date']
     const result = getFormattedDates(dates)
 
-    expect(result).toEqual(undefined)
+    expect(result).toEqual('')
   })
 
   it('should return a formatted date when array contains only one unique date', () => {
@@ -496,12 +496,6 @@ describe('capitalizeFirstLetter', () => {
     const result = capitalizeFirstLetter('')
 
     expect(result).toEqual('')
-  })
-
-  it('should handle a non-string input', () => {
-    const result = capitalizeFirstLetter(undefined)
-
-    expect(result).toEqual(undefined)
   })
 
   it('should handle a single-character string', () => {

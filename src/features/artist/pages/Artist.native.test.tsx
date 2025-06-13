@@ -1,21 +1,20 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { Artist } from 'features/artist/pages/Artist'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
-import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
   canGoBack: jest.fn(() => true),
 })
-
-const spyUseArtistResults = jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
@@ -24,7 +23,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<Artist />', () => {
   useRoute.mockReturnValue({
     params: {
-      id: '1',
+      id: 'cb22d035-f081-4ccb-99d8-8f5725a8ac9c',
     },
   })
 
@@ -34,21 +33,23 @@ describe('<Artist />', () => {
     })
 
     it('should display artist page content', async () => {
-      spyUseArtistResults.mockReturnValueOnce({
-        artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
-        artistPlaylist: [],
-      })
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
+      mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
       render(reactQueryProviderHOC(<Artist />))
 
-      expect((await screen.findAllByText('Eiichiro Oda'))[0]).toBeOnTheScreen()
+      expect((await screen.findAllByText('Avril Lavigne'))[0]).toBeOnTheScreen()
     })
 
-    it('should render null when there is no artist', () => {
-      spyUseArtistResults.mockReturnValueOnce({
-        artistTopOffers: [],
-        artistPlaylist: [],
+    it('should render null when there is no artist', async () => {
+      mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
+        responseOptions: {
+          statusCode: 404,
+          data: {},
+        },
       })
       render(reactQueryProviderHOC(<Artist />))
+
+      await act(async () => {})
 
       expect(screen.toJSON()).toBeNull()
     })
@@ -57,14 +58,13 @@ describe('<Artist />', () => {
   describe('When enablePageArtist feature flag deactivated', () => {
     beforeAll(() => {
       setFeatureFlags()
+      mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
     })
 
-    it('should render null', () => {
-      spyUseArtistResults.mockReturnValueOnce({
-        artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
-        artistPlaylist: [],
-      })
+    it('should render null', async () => {
       render(reactQueryProviderHOC(<Artist />))
+
+      await act(async () => {})
 
       expect(screen.toJSON()).toBeNull()
     })

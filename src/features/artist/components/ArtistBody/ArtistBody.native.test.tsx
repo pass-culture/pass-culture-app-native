@@ -3,10 +3,9 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
+import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
-import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -41,23 +40,11 @@ useRoute.mockReturnValue({
   },
 })
 
-const spyUseArtistResults = jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
-
-const mockArtist = {
-  id: '1',
-  name: 'Céline Dion',
-  bio: 'chanteuse',
-}
-
 jest.useFakeTimers()
 
 describe('<ArtistBody />', () => {
   beforeEach(() => {
     setFeatureFlags()
-    spyUseArtistResults.mockReturnValue({
-      artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
-      artistPlaylist: [],
-    })
   })
 
   it('should display only the main artist when there are several artists on header title', async () => {
@@ -67,9 +54,9 @@ describe('<ArtistBody />', () => {
       )
     )
 
-    await screen.findAllByText('Céline Dion')
+    await screen.findAllByText('Avril Lavigne')
 
-    expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
+    expect(screen.getAllByText('Avril Lavigne')[0]).toBeOnTheScreen()
   })
 
   it('should call goBack when pressing the back button', async () => {
@@ -103,14 +90,12 @@ describe('<ArtistBody />', () => {
   })
 
   it('should display default artist avatar when artist has not image', async () => {
-    spyUseArtistResults.mockReturnValueOnce({
-      artistTopOffers: [],
-      artistPlaylist: [],
-    })
+    const artist = {
+      ...mockArtist,
+      image: undefined,
+    }
     render(
-      reactQueryProviderHOC(
-        <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
-      )
+      reactQueryProviderHOC(<ArtistBody artist={artist} artistPlaylist={[]} artistTopOffers={[]} />)
     )
 
     expect(await screen.findByTestId('BicolorProfile')).toBeOnTheScreen()
@@ -126,6 +111,6 @@ describe('<ArtistBody />', () => {
     await screen.findAllByText('Quelques infos à son sujet')
 
     expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()
-    expect(screen.getByText('chanteuse')).toBeOnTheScreen()
+    expect(screen.getByText('Chanteuse canadienne')).toBeOnTheScreen()
   })
 })
