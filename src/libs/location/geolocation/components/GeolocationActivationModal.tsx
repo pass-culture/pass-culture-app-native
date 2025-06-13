@@ -7,7 +7,7 @@ import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -69,8 +69,7 @@ const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const LocationPointer = styled(BicolorLocationPointer).attrs(({ theme }) => ({
+const LocationPointer = styled(InitialLocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
-  color2: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.small,
 }))``

@@ -3,7 +3,7 @@ import React from 'react'
 import { analytics } from 'libs/analytics/provider'
 import { render } from 'tests/utils'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
-import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
+import { Everywhere } from 'ui/svg/icons/Everywhere'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -16,7 +16,7 @@ describe('SystemBanner', () => {
         accessibilityLabel="label"
         analyticsParams={{ type: 'credit', from: 'home' }}
         onPress={jest.fn()}
-        leftIcon={BicolorEverywhere}
+        leftIcon={Everywhere}
       />
     )
 

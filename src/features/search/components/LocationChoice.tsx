@@ -97,11 +97,13 @@ const SecondPart = styled.View({
 })
 
 const ButtonText = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
+  color: isSelected
+    ? theme.designSystem.color.text.brandPrimary
+    : theme.designSystem.color.text.default,
 }))
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
 }))``
 

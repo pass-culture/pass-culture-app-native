@@ -4,7 +4,7 @@ import React, { type ComponentProps } from 'react'
 
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
-import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
+import { Everywhere } from 'ui/svg/icons/Everywhere'
 
 const meta: Meta<typeof SystemBanner> = {
   title: 'ui/banners/SystemBanner',
@@ -14,7 +14,7 @@ const meta: Meta<typeof SystemBanner> = {
 export default meta
 
 const baseProps: ComponentProps<typeof SystemBanner> = {
-  leftIcon: BicolorEverywhere,
+  leftIcon: Everywhere,
   title: 'Géolocalise-toi',
   subtitle: 'Pour trouver des offres autour de toi.',
   onPress: action('pressed!'),

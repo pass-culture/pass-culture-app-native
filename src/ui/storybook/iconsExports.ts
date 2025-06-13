@@ -9,19 +9,8 @@ import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
-import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
-import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
-import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { BicolorLock } from 'ui/svg/icons/BicolorLock'
-import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
-import { BicolorShare, Share } from 'ui/svg/icons/BicolorShare'
-import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
-import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
-import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
+import { Bookings } from 'ui/svg/icons/Bookings'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
@@ -49,6 +38,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { EmailIcon } from 'ui/svg/icons/EmailIcon'
 import { Error } from 'ui/svg/icons/Error'
+import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Eye } from 'ui/svg/icons/Eye'
@@ -75,7 +65,9 @@ import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
 import { Lock } from 'ui/svg/icons/Lock'
+import { LockFilled } from 'ui/svg/icons/LockFilled'
 import { Logo } from 'ui/svg/icons/Logo'
+import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
 import { LostId } from 'ui/svg/icons/LostId'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -98,6 +90,8 @@ import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { Question } from 'ui/svg/icons/Question'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
+import { Search } from 'ui/svg/icons/Search'
+import { Share } from 'ui/svg/icons/Share'
 import { Show } from 'ui/svg/icons/Show'
 import { Signal } from 'ui/svg/icons/Signal'
 import { SignOut } from 'ui/svg/icons/SignOut'
@@ -120,6 +114,7 @@ import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
 import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { Stock } from 'ui/svg/icons/Stock'
+import { TabBarProfile } from 'ui/svg/icons/TabBarProfile'
 import { ThumbDown } from 'ui/svg/icons/ThumbDown'
 import { ThumbDownFilled } from 'ui/svg/icons/ThumbDownFilled'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
@@ -127,10 +122,12 @@ import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Trash } from 'ui/svg/icons/Trash'
 import { TryAgain } from 'ui/svg/icons/TryAgain'
 import { Ubble } from 'ui/svg/icons/Ubble'
+import { Unlock } from 'ui/svg/icons/Unlock'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { Venue } from 'ui/svg/icons/Venue'
+import { Warning } from 'ui/svg/icons/Warning'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { LogoDMS } from 'ui/svg/LogoDMS'
@@ -163,25 +160,13 @@ export const SecondaryAndBiggerIcons = {
   ArrowRightNew,
   Bell,
   BellFilled,
-  BicolorBookings,
-  Earth,
-  EmailIcon,
-  BicolorEverywhere,
-  BicolorFavorite,
-  France,
-  BicolorLocationPointer,
-  BicolorLock,
-  BicolorLogo,
-  NoPhone,
-  BicolorOffers,
-  BicolorSearch,
-  BicolorShare,
-  Signal,
-  Smartphone,
-  BicolorTabBarProfile,
-  BicolorUnlock,
-  BicolorWarning,
+  LogoDetailed,
+  Search,
+  TabBarProfile,
+  Unlock,
+  Warning,
   Booking,
+  Bookings,
   Bulb,
   CakeOneCandle,
   CakeTwoCandles,
@@ -194,13 +179,17 @@ export const SecondaryAndBiggerIcons = {
   Confidentiality,
   Confirmation,
   Duo,
+  Earth,
   Email,
+  EmailIcon,
   Error,
+  Everywhere,
   ExternalSite,
   Eye,
   EyeSlash,
   Favorite,
   FavoriteFilled,
+  France,
   HandicapAudio,
   HandicapMental,
   HandicapMotor,
@@ -213,6 +202,7 @@ export const SecondaryAndBiggerIcons = {
   LocationBuilding,
   LocationBuildingFilled,
   LocationPointerNotFilled,
+  Lock,
   Logo,
   LostId,
   MagnifyingGlass,
@@ -220,13 +210,16 @@ export const SecondaryAndBiggerIcons = {
   MapPin,
   More,
   NoId,
+  NoPhone,
   OfferEvent,
   Offers,
   OrderPrice,
   Profile,
   ScrollToTop,
   Share,
+  Signal,
   SignOut,
+  Smartphone,
   ThumbDown,
   ThumbDownFilled,
   ThumbUp,
@@ -254,10 +247,10 @@ export const TertiaryAndSmallerIcons = {
   InfoPlain,
   Invalidate,
   Key,
-  Location: LocationPointerAppV2,
   LocationPointer,
+  LocationPointerAppV2,
   LocationPointerWithBorder,
-  Lock,
+  LockFilled,
   MagnifyingGlass,
   Map,
   Parameters,
@@ -283,11 +276,11 @@ const LogoPassCulture = styled(PassCultureIcon).attrs(({ theme }) => ({
 }))``
 
 export const UnconventionalIcons = {
-  LogoPassCulture,
-  LogoFrenchRepublic,
-  LogoDMS,
-  Ubble,
   DarkThemeIllustration,
   DefaultThemeIllustration,
+  LogoDMS,
+  LogoFrenchRepublic,
+  LogoPassCulture,
   SystemThemeIllustration,
+  Ubble,
 }

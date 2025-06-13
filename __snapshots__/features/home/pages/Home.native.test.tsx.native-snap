@@ -413,11 +413,11 @@ exports[`Home page should render correctly 1`] = `
                     >
                       <View
                         height={32}
-                        testID="BicolorUnlock"
+                        testID="Unlock"
                         width={32}
                       >
                         <Text>
-                          BicolorUnlock-SVG-Mock
+                          Unlock-SVG-Mock
                         </Text>
                       </View>
                     </View>

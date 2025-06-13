@@ -5,7 +5,7 @@ import { menu } from 'features/navigation/TabBar/menu'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
+import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -39,7 +39,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
   </StyledTouchableLink>
 )
 
-const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
+const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected
     ? theme.designSystem.color.icon.brandPrimary
     : theme.designSystem.color.icon.disabled,

@@ -91,7 +91,7 @@ describe('<HomeBanner/>', () => {
   })
 
   describe('user is logged in', () => {
-    it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
+    it('should display activation banner with Unlock icon when banner api call return activation banner', async () => {
       mockSubscriptionStepper()
       mockBannerFromBackend({
         banner: {
@@ -104,7 +104,7 @@ describe('<HomeBanner/>', () => {
       renderHomeBanner({})
       await screen.findByText('Débloque tes 1000\u00a0€')
 
-      expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
+      expect(screen.getByTestId('Unlock')).toBeOnTheScreen()
     })
 
     it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {

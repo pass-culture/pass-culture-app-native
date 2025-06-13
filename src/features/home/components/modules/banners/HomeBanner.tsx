@@ -13,16 +13,16 @@ import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
-import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { Unlock } from 'ui/svg/icons/Unlock'
 import { getSpacing } from 'ui/theme'
 
 type HomeBannerProps = {
   isLoggedIn: boolean
 }
 
-const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
+const StyledUnlock = styled(Unlock).attrs(({ theme }) => ({
   color: theme.colors.secondaryLight200,
 }))``
 
@@ -37,7 +37,7 @@ const StyledBirthdayCake = styled(BirthdayCake).attrs(({ theme }) => ({
 const systemBannerIcons: {
   [key in Exclude<BannerName, 'geolocation_banner'>]: React.FunctionComponent<AccessibleIcon>
 } = {
-  [BannerName.activation_banner]: StyledBicolorUnlock,
+  [BannerName.activation_banner]: StyledUnlock,
   [BannerName.retry_identity_check_banner]: StyledArrowAgain,
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
 }
