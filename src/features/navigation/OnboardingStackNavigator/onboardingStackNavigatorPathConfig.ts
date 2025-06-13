@@ -1,6 +1,5 @@
 export const onboardingStackNavigatorPathConfig = {
   OnboardingStackNavigator: {
-    // initialRouteName: 'OnboardingWelcome',
     screens: {
       OnboardingAgeSelectionFork: {
         path: 'selection-age/generique',

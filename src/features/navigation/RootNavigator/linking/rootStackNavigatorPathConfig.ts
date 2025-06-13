@@ -9,7 +9,6 @@ export const rootStackNavigatorPathConfig = {
   ...profileStackNavigatorPathConfig,
   ...onboardingStackNavigatorPathConfig,
   TabNavigator: {
-    // initialRouteName: 'Home', // this causes TS error on linking index.ts
     screens: {
       Home: {
         path: 'accueil',
@@ -32,7 +31,6 @@ export const rootStackNavigatorPathConfig = {
         path: 'profil',
       },
       SearchStackNavigator: {
-        // initialRouteName: 'SearchLanding',
         screens: {
           SearchLanding: {
             path: 'recherche/accueil',
