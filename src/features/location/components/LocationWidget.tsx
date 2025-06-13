@@ -81,11 +81,10 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   )
 }
 
-const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ theme, widgetWidth }) => ({
+const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ widgetWidth }) => ({
   position: 'absolute',
   top: WIDGET_HEIGHT + getSpacing(2),
   right: (widgetWidth ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
-  zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,
 }))
 
@@ -107,7 +106,7 @@ const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isA
   justifyContent: 'center',
   alignItems: 'center',
   borderColor: isActive ? theme.colors.black : theme.colors.greyDark,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const LocationPointerFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
