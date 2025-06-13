@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useCallback, useMemo, useState } from 'react'
 import { NativeSyntheticEvent, TextLayoutEventData } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -14,28 +14,31 @@ export function CollapsibleText({ numberOfLines, children }: Readonly<Collapsibl
   const [defaultLinesCount, setDefaultLinesCount] = useState<number>()
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
-  const handleOnTextLayout = (event: NativeSyntheticEvent<TextLayoutEventData>) => {
-    if (!defaultLinesCount && event.nativeEvent.lines.length) {
-      setDefaultLinesCount(event.nativeEvent.lines.length)
-    }
-  }
+  const handleOnTextLayout = useCallback(
+    (event: NativeSyntheticEvent<TextLayoutEventData>) => {
+      if (!defaultLinesCount && event.nativeEvent.lines.length) {
+        setDefaultLinesCount(event.nativeEvent.lines.length)
+      }
+    },
+    [defaultLinesCount]
+  )
 
   const handleExpandButtonPress = () => {
     setIsExpanded((prevExpanded) => !prevExpanded)
   }
 
-  const getNumberOfLines = () => {
+  const _numberOfLines = useMemo(() => {
     if (!defaultLinesCount) {
       return undefined
     }
     return isExpanded ? undefined : numberOfLines
-  }
+  }, [isExpanded, defaultLinesCount, numberOfLines])
 
   const isCollapsible = defaultLinesCount && defaultLinesCount > numberOfLines
 
   return (
     <Container visibility={defaultLinesCount ? 'visible' : 'hidden'}>
-      <CollapsibleTextBody onTextLayout={handleOnTextLayout} numberOfLines={getNumberOfLines()}>
+      <CollapsibleTextBody onTextLayout={handleOnTextLayout} numberOfLines={_numberOfLines}>
         {children}
       </CollapsibleTextBody>
       {isCollapsible ? (
@@ -47,6 +50,5 @@ export function CollapsibleText({ numberOfLines, children }: Readonly<Collapsibl
 
 const Container = styled.View<{ visibility: 'hidden' | 'visible' }>(({ visibility }) => ({
   visibility,
-  position: visibility === 'hidden' ? 'absolute' : 'relative',
-  transform: visibility === 'hidden' ? 'translateX(-9999px)' : undefined,
+  opacity: visibility === 'hidden' ? 0 : 1,
 }))
