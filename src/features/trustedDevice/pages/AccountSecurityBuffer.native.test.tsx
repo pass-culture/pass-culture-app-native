@@ -1,6 +1,5 @@
 import React from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import { Text } from 'react-native'
 
 import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
@@ -9,6 +8,7 @@ import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
+import { Typo } from 'ui/theme'
 
 import { AccountSecurityBuffer } from './AccountSecurityBuffer'
 
@@ -99,7 +99,7 @@ describe('<AccountSecurityBuffer/>', () => {
     const spy = jest.fn()
 
     const Component = withErrorBoundary(AccountSecurityBuffer, {
-      fallback: <Text>Error</Text>,
+      fallback: <Typo.Body>Error</Typo.Body>,
       onError: spy,
     })
     await catchErrorSilently(async () => {

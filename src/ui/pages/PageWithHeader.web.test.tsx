@@ -1,9 +1,9 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import * as useGoBack from 'features/navigation/useGoBack'
 import { render } from 'tests/utils/web'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { Typo } from 'ui/theme'
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -16,8 +16,8 @@ describe('<PageWithHeader/>', () => {
     const { container } = render(
       <PageWithHeader
         title="Page with header title"
-        scrollChildren={<Text>scroll children</Text>}
-        fixedBottomChildren={<Text>fixed bottom children</Text>}
+        scrollChildren={<Typo.Body>scroll children</Typo.Body>}
+        fixedBottomChildren={<Typo.Body>fixed bottom children</Typo.Body>}
         onGoBack={mockGoBack}
       />
     )

@@ -1,16 +1,16 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Typo } from 'ui/theme'
 
 import { TouchableLink } from './TouchableLink'
 
 const handleNavigationMock = jest.fn()
 
 const linkText = 'linkText'
-const TouchableLinkContent = () => <Text>{linkText}</Text>
+const TouchableLinkContent = () => <Typo.Body>{linkText}</Typo.Body>
 
 describe('<TouchableLink />', () => {
   const user = userEvent.setup()

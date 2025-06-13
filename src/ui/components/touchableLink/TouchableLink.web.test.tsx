@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import { render, fireEvent, screen } from 'tests/utils/web'
+import { Typo } from 'ui/theme'
 
 import { TouchableLink } from './TouchableLink'
 
@@ -11,7 +11,7 @@ describe('<TouchableLink />', () => {
   it('should handleNavigation when no metaKey', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
-        <Text>linkText</Text>
+        <Typo.Body>linkText</Typo.Body>
       </TouchableLink>
     )
 

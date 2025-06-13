@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react'
 import React from 'react'
-import { Text } from 'react-native'
 
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
@@ -25,24 +24,24 @@ const meta: Meta<typeof HeroButtonList> = {
 export default meta
 
 const description = (
-  <Text>
-    <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
+  <Typo.Body>
+    J’ai une carte d’identité, un passeport
     <Typo.BodyAccent>étranger</Typo.BodyAccent>
-    <Typo.Body> ou un titre séjour français</Typo.Body>
-  </Text>
+    ou un titre séjour français
+  </Typo.Body>
 )
 const description2 = (
-  <Text>
-    <Typo.Body>J’ai ma pièce d’identité </Typo.Body>
+  <Typo.Body>
+    J’ai ma pièce d’identité
     <Typo.BodyAccent>en cours de validité avec moi</Typo.BodyAccent>
-  </Text>
+  </Typo.Body>
 )
 
 const caption = (
-  <Text>
+  <Typo.Body>
     <Emoji.Warning withSpaceAfter />
     <Typo.BodyAccentXs>Les copies ne sont pas acceptées </Typo.BodyAccentXs>
-  </Text>
+  </Typo.Body>
 )
 
 const variantConfig: Variants<typeof HeroButtonList> = [

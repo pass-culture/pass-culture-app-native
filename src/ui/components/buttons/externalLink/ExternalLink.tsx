@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -25,22 +24,24 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
       onPress={() => openUrl(url)}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       <Spacer.Row numberOfSpaces={1} />
-      <Text>
+      <Typo.Body>
         <ExternalSite primary={primary} testID="externalSiteIcon" />
         {firstWord}
-      </Text>
+      </Typo.Body>
       {remainingWords}
     </ButtonText>
   )
 }
 
 const ButtonText = styled(Typo.BodyAccent)<{ primary?: boolean }>(({ primary, theme }) => ({
-  color: primary ? theme.colors.primary : undefined,
+  color: primary ? theme.designSystem.color.text.brandPrimary : undefined,
 }))
 
 const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
   ({ primary, theme }) => ({
-    color: primary ? theme.colors.primary : theme.colors.black,
+    color: primary
+      ? theme.designSystem.color.icon.brandPrimary
+      : theme.designSystem.color.icon.default,
     size: theme.icons.sizes.extraSmall,
   })
 )<{ primary?: boolean }>``

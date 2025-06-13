@@ -1,9 +1,8 @@
 import { StoryFn } from '@storybook/react'
 import React, { useMemo } from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 import { Emoji } from './Emoji'
 
@@ -26,7 +25,7 @@ export const Emojis: StoryFn<React.FC> = () => {
         return (
           <AlignedText key={name}>
             <Emoji />
-            <Text> - {name}</Text>
+            <Typo.Body> - {name}</Typo.Body>
           </AlignedText>
         )
       })}

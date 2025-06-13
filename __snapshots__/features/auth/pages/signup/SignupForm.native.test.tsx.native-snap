@@ -3225,8 +3225,18 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         >
           <Text
             accessibilityHidden={true}
+            style={
+              [
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                },
+              ]
+            }
           >
-            *obligatoires pour créer ton compte. 
+            *obligatoires pour créer ton compte.
           </Text>
           En cochant ces 2 cases tu assures avoir lu :
         </Text>

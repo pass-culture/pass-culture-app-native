@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -48,9 +47,9 @@ const AutocompleteItemTouchable = styled.TouchableOpacity({
 
 const LocationBuildingFilledIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
-const StyledText = styled(Text)({
+const StyledText = styled(Typo.Body)({
   marginLeft: getSpacing(2),
 })
