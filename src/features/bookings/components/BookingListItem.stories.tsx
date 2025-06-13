@@ -48,8 +48,8 @@ const variantConfig: Variants<typeof BookingListItem> = [
     props: {
       imageUrl:
         'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
-      title: 'Parasites',
-      subtitle: 'Librairie La Brèche',
+      title: 'Un titre quand même pas mal long pour tester',
+      subtitle: 'Un cinéma qui lui aussi a un nom pas mal long',
       display: 'punched',
       children: <BookingListItemLabel text="À retirer avant le 8 mai 2025" icon="clock" />,
     },
