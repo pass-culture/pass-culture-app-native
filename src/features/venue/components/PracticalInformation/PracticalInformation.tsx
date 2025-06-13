@@ -65,6 +65,11 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
     accessibility,
   ])
 
+  const shouldDisplayOpeningHours =
+    !!isOpenToPublic &&
+    !!openingHours &&
+    Object.values(openingHours).some((value) => value !== null)
+
   const sections = [
     {
       title: 'Modalités de retrait',
@@ -89,7 +94,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
     {
       title: 'Horaires d’ouverture',
       body: <OpeningHours openingHours={openingHours} />,
-      shouldBeDisplayed: !!isOpenToPublic && !!openingHours,
+      shouldBeDisplayed: shouldDisplayOpeningHours,
     },
   ].filter(isSectionWithBody)
 
