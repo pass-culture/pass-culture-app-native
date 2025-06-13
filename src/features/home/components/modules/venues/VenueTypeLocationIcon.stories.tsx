@@ -18,8 +18,8 @@ const variantConfig: Variants<typeof VenueTypeLocationIcon> = [
     label: 'VenueTypeLocationIcon with color',
     props: {
       VenueTypeIcon: Bag,
-      iconColor: theme.colors.greySemiDark,
-      backgroundColor: theme.colors.greyLight,
+      iconColor: theme.designSystem.color.icon.subtle,
+      backgroundColor: theme.designSystem.color.background.subtle,
     },
   },
   {

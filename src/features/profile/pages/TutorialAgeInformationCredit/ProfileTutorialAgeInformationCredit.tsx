@@ -146,5 +146,4 @@ const SmallClock = styled(Clock).attrs(({ theme }) => ({
 
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
-  color2: theme.designSystem.color.icon.default,
 }))``

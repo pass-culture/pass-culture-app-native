@@ -79,7 +79,6 @@ export const SystemBanner: FunctionComponent<Props> = ({
   const StyledIcon = LeftIcon
     ? styled(LeftIcon).attrs(({ theme }) => ({
         color: iconColor,
-        color2: iconColor,
         size: theme.icons.sizes.standard,
       }))``
     : undefined

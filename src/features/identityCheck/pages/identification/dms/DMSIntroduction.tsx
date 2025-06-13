@@ -13,7 +13,7 @@ import { Clock } from 'ui/svg/icons/Clock'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -27,7 +27,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
   const selfieLabel = 'Un selfie avec ta pièce d’identité'
   const homeProofLabel = 'Un justificatif de domicile'
 
-  const informationListItem: { icon: FC<AccessibleBicolorIcon>; label: string }[] =
+  const informationListItem: { icon: FC<AccessibleIcon>; label: string }[] =
     params?.isForeignDMSInformation
       ? [
           { icon: Clock, label: timeLabel },

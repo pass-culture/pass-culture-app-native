@@ -12,12 +12,7 @@ interface AccessibleIconSharedProperties {
 export interface AccessibleIcon extends AccessibleIconSharedProperties {
   size?: number | string
   opacity?: number
-  color2?: ColorsTypeLegacy
   backgroundColor?: ColorsTypeLegacy
-}
-
-export interface AccessibleBicolorIcon extends AccessibleIcon {
-  color2?: ColorsTypeLegacy
   thin?: boolean
   badgeValue?: number
 }

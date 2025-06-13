@@ -44,7 +44,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { venue, width, height } = props
   const queryClient = useQueryClient()
-  const { colors } = useTheme()
+  const { designSystem } = useTheme()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
   const distance = getDistance(
@@ -85,8 +85,8 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
             <VenueTypeTile width={width} height={height} testID="venue-type-tile">
               <VenueTypeLocationIcon
                 VenueTypeIcon={mapVenueTypeToIcon(venue.venueTypeCode)}
-                iconColor={colors.greySemiDark}
-                backgroundColor={colors.greyLight}
+                iconColor={designSystem.color.icon.subtle}
+                backgroundColor={designSystem.color.background.subtle}
               />
             </VenueTypeTile>
           )}
@@ -117,16 +117,16 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus }),
 }))
 
 const VenueTypeTile = styled.View<{ width: number; height: number }>(
   ({ theme, width, height }) => ({
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
     width: width,
     height: height,
     borderRadius: theme.borderRadius.radius,
-    border: `1px solid ${theme.colors.greySemiDark}`,
+    border: `1px solid ${theme.designSystem.color.border.default}`,
     alignItems: 'center',
     justifyContent: 'center',
   })

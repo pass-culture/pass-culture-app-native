@@ -84,6 +84,7 @@ import { Parameters } from 'ui/svg/icons/Parameters'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
+import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Play } from 'ui/svg/icons/Play'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
@@ -157,6 +158,7 @@ export const SecondaryAndBiggerIcons = {
   ArrowNext,
   ArrowPrevious,
   ArrowRight,
+  PlainMore,
   ArrowRightNew,
   Bell,
   BellFilled,

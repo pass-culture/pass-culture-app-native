@@ -40,11 +40,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
       <TitleContainer toggleLabel={!!toggleLabel}>
         {Icon ? (
           <React.Fragment>
-            <Icon
-              size={iconSize}
-              color={designSystem.color.icon.default}
-              color2={designSystem.color.icon.default}
-            />
+            <Icon size={iconSize} color={designSystem.color.icon.default} />
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         ) : null}

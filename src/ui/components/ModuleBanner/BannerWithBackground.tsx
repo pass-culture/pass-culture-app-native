@@ -45,17 +45,14 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
     leftIcon &&
     styled(leftIcon).attrs(({ theme }) => ({
       color: theme.designSystem.color.icon.lockedInverted,
-      color2: theme.designSystem.color.icon.lockedInverted,
     }))``
   const StyledRightIcon = rightIcon
     ? styled(rightIcon).attrs(({ theme }) => ({
         color: theme.designSystem.color.icon.lockedInverted,
-        color2: theme.designSystem.color.icon.lockedInverted,
         size: theme.icons.sizes.small,
       }))``
     : styled(ArrowNext).attrs(({ theme }) => ({
         color: theme.designSystem.color.icon.lockedInverted,
-        color2: theme.designSystem.color.icon.lockedInverted,
         size: theme.icons.sizes.small,
       }))``
 
