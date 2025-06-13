@@ -3,7 +3,7 @@ import React from 'react'
 
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Bag } from 'ui/svg/icons/bicolor/Bag'
+import { Bag } from 'ui/svg/icons/venueAndCategories/Bag'
 
 import { VenueTypeLocationIcon } from './VenueTypeLocationIcon'
 

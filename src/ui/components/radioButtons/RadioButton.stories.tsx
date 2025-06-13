@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
+import { VideoGame } from 'ui/svg/icons/venueAndCategories/VideoGame'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 

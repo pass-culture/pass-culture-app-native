@@ -8,9 +8,9 @@ import {
   UnconventionalIcons,
 } from 'ui/storybook/iconsExports'
 import { SVGTemplate as Icons } from 'ui/storybook/SVGTemplate'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
-import { venueTypesIcons } from 'ui/svg/icons/bicolor/exports/venueTypesIcons'
+import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
+import { culturalSurveyIcons } from 'ui/svg/icons/exports/culturalSurveyIcons'
+import { venueTypesIcons } from 'ui/svg/icons/exports/venueTypesIcons'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export default {
@@ -33,6 +33,11 @@ const iconSets = [
     isBicolor: true,
   },
   {
+    title: 'culturalSurveyIcons',
+    icons: culturalSurveyIcons,
+    isBicolor: true,
+  },
+  {
     title: `SecondaryAndBiggerIcons ( > 20x20 ) should have a standard size of ${STANDARD_ICON_SIZE}`,
     icons: SecondaryAndBiggerIcons,
   },
@@ -43,11 +48,6 @@ const iconSets = [
   {
     title: 'UnconventionalIcons (to be standardized)',
     icons: UnconventionalIcons,
-  },
-  {
-    title: 'culturalSurveyIcons',
-    icons: culturalSurveyIcons,
-    isBicolor: true,
   },
 ]
 

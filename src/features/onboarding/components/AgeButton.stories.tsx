@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { All } from 'ui/svg/icons/bicolor/All'
+import { All } from 'ui/svg/icons/venueAndCategories/All'
 import { Spacer, Typo } from 'ui/theme'
 
 import { AgeButton } from './AgeButton'
