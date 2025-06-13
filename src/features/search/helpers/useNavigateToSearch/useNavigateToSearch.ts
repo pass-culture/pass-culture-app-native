@@ -11,18 +11,6 @@ export const useNavigateToSearch = (routeName) => {
     newSearchState: SearchState,
     newAccessibilityFilter?: DisabilitiesProperties
   ): void => {
-    // navigate(
-    //   ...getSearchStackConfig(routeName, {
-    //     ...newSearchState,
-    //     accessibilityFilter: newAccessibilityFilter ?? defaultDisabilitiesProperties,
-    //   })
-    // )
-    // navigate(
-    //   'TabNavigator', { screen: routeName, params: {
-    //     ...newSearchState,
-    //     accessibilityFilter: newAccessibilityFilter ?? defaultDisabilitiesProperties,
-    //   } }
-    // )
     navigate('TabNavigator', {
       screen: 'SearchStackNavigator',
       params: {
