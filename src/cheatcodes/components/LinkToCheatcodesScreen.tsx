@@ -41,10 +41,14 @@ export const LinkToCheatcodesScreen = ({
         <InternalTouchableLink
           as={Button}
           wording={LinkName}
-          navigateTo={{
-            screen: 'CheatcodesStackNavigator',
-            params: navigationParams,
-          }}
+          navigateTo={
+            screen
+              ? { screen, params: navigationParams }
+              : {
+                  screen: 'CheatcodesStackNavigator',
+                  params: navigationParams,
+                }
+          }
           disabled={disabled}
           buttonHeight={buttonHeight}
         />
