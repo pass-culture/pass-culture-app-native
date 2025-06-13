@@ -1,8 +1,8 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import { MarketingBlockProps } from 'features/home/components/modules/marketing/types'
 import { render, screen } from 'tests/utils'
+import { Typo } from 'ui/theme'
 
 import { MarketingBlock } from './MarketingBlock'
 
@@ -10,7 +10,7 @@ const props: MarketingBlockProps = {
   accessibilityLabel: 'Accessibility label',
   navigateTo: { screen: 'Venue' as const },
   backgroundImageUrl: 'url',
-  AttachedCardComponent: <Text>AttachedCardComponent</Text>,
+  AttachedCardComponent: <Typo.Body>AttachedCardComponent</Typo.Body>,
 }
 
 describe('MarketingBlock', () => {
