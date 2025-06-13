@@ -60,7 +60,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
 
 const BufferContainer = styled(ViewGap)(({ theme }) => ({
   borderWidth: getSpacing(0.5),
-  borderColor: theme.colors.greyMedium,
+  borderColor: theme.designSystem.color.border.default,
   borderRadius: getSpacing(5),
   width: theme.appContentWidth > theme.breakpoints.sm ? '50%' : '100%',
   padding: getSpacing(2),

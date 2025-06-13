@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HistoryItemHighlight } from 'features/search/components/Highlight/Highlight'
@@ -57,7 +56,7 @@ const HistoryItemTouchable = styled.TouchableOpacity({
   alignItems: 'center',
 })
 
-const StyledText = styled(Text)({
+const StyledText = styled(Typo.Body)({
   marginLeft: getSpacing(2),
   flex: 1,
 })
@@ -66,5 +65,5 @@ const ClockIconContainer = styled.View({ flexShrink: 0 })
 
 const ClockFilledIcon = styled(ClockFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``

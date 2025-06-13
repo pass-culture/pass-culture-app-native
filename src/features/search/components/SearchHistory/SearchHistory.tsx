@@ -56,7 +56,7 @@ const StyledVerticalUl = styled(VerticalUl)({
 })
 
 const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const Container = styled.View<{ isEmptyQuery: boolean }>(({ isEmptyQuery }) => ({

@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -22,6 +21,7 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -151,7 +151,9 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       />
       <Spacer.Column numberOfSpaces={6} />
       <CaptionNeutralInfo>
-        <Text accessibilityHidden>*obligatoires pour créer ton compte. </Text>
+        <CaptionNeutralInfo accessibilityHidden>
+          *obligatoires pour créer ton compte.{SPACE}
+        </CaptionNeutralInfo>
         En cochant ces 2 cases tu assures avoir lu&nbsp;:
       </CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />

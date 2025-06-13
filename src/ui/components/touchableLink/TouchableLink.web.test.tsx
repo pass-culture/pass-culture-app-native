@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import { render, fireEvent, screen } from 'tests/utils/web'
+import { Typo } from 'ui/theme'
 
 import { TouchableLink } from './TouchableLink'
 
@@ -11,7 +11,7 @@ describe('<TouchableLink />', () => {
   it('should handleNavigation when no metaKey', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
-        <Text>linkText</Text>
+        <Typo.Body>linkText</Typo.Body>
       </TouchableLink>
     )
 
@@ -23,7 +23,7 @@ describe('<TouchableLink />', () => {
   it('should not call handleNavigation when disabled', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock} disabled>
-        <Text>linkText</Text>
+        <Typo.Body>linkText</Typo.Body>
       </TouchableLink>
     )
 
@@ -35,7 +35,7 @@ describe('<TouchableLink />', () => {
   it('should not handleNavigation when metaKey', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
-        <Text>linkText</Text>
+        <Typo.Body>linkText</Typo.Body>
       </TouchableLink>
     )
 
@@ -47,7 +47,7 @@ describe('<TouchableLink />', () => {
   it('should not handleNavigation when shiftKey', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
-        <Text>linkText</Text>
+        <Typo.Body>linkText</Typo.Body>
       </TouchableLink>
     )
 
@@ -59,7 +59,7 @@ describe('<TouchableLink />', () => {
   it('should not handleNavigation when altKey', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
-        <Text>linkText</Text>
+        <Typo.Body>linkText</Typo.Body>
       </TouchableLink>
     )
 
@@ -71,7 +71,7 @@ describe('<TouchableLink />', () => {
   it('should not handleNavigation when ctrlKey', async () => {
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
-        <Text>linkText</Text>
+        <Typo.Body>linkText</Typo.Body>
       </TouchableLink>
     )
 

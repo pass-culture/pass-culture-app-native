@@ -1,44 +1,23 @@
 import React from 'react'
-import { Text } from 'react-native'
-import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useUtmParams } from 'libs/utm'
-import { Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 
 export const UTMParameters = () => {
   const { gen, campaign, content, source, medium, campaignDate } = useUtmParams()
 
   return (
     <CheatcodesTemplateScreen title="UTM parameters" flexDirection="column">
-      <AlignedText>
-        <Text>traffic_gen: {gen}</Text>
-      </AlignedText>
-      <Spacer.Column numberOfSpaces={2} />
-      <AlignedText>
-        <Text>traffic_campaign: {campaign}</Text>
-      </AlignedText>
-      <Spacer.Column numberOfSpaces={2} />
-      <AlignedText>
-        <Text>traffic_content: {content}</Text>
-      </AlignedText>
-      <Spacer.Column numberOfSpaces={2} />
-      <AlignedText>
-        <Text>traffic_medium: {medium}</Text>
-      </AlignedText>
-      <Spacer.Column numberOfSpaces={2} />
-      <AlignedText>
-        <Text>traffic_source: {source}</Text>
-      </AlignedText>
-      <Spacer.Column numberOfSpaces={2} />
-      <AlignedText>
-        <Text>campaign_date: {campaignDate?.toLocaleString()}</Text>
-      </AlignedText>
+      <ViewGap gap={2}>
+        <Typo.Body>traffic_gen: {gen}</Typo.Body>
+        <Typo.Body>traffic_campaign&nbsp;: {campaign}</Typo.Body>
+        <Typo.Body>traffic_content&nbsp;: {content}</Typo.Body>
+        <Typo.Body>traffic_medium&nbsp;: {medium}</Typo.Body>
+        <Typo.Body>traffic_source&nbsp;: {source}</Typo.Body>
+        <Typo.Body>campaign_date&nbsp;: {campaignDate?.toLocaleString()}</Typo.Body>
+      </ViewGap>
     </CheatcodesTemplateScreen>
   )
 }
-
-const AlignedText = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-})

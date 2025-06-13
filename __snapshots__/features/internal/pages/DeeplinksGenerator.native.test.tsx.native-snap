@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     height={65}
     style={
@@ -189,7 +200,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
     style={
       [
@@ -1985,7 +1996,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
-                          "color": "#CBCDD2",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -2258,7 +2269,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
-                          "color": "#CBCDD2",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -2380,7 +2391,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
-                          "color": "#CBCDD2",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -2502,7 +2513,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
-                          "color": "#CBCDD2",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -2624,7 +2635,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
-                          "color": "#CBCDD2",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -2747,7 +2758,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
-                          "color": "#CBCDD2",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -3020,7 +3031,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
-                          "color": "#CBCDD2",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -3089,7 +3100,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               style={
                 [
                   {
-                    "color": "#b60025",
+                    "color": "#a20121",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -3299,7 +3310,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           style={
             [
               {
-                "backgroundColor": "#F1F1F4",
+                "backgroundColor": "#f1f1f4",
                 "height": 8,
               },
             ]
@@ -3570,7 +3581,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         </View>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     height={65}
     style={
@@ -3605,6 +3616,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

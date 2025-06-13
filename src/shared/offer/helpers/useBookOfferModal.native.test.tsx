@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { Text } from 'react-native'
 
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -8,9 +7,10 @@ import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, renderHook, screen } from 'tests/utils'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
-const mockBookingOfferModal = <Text>BookingOfferModal</Text>
+const mockBookingOfferModal = <Typo.Body>BookingOfferModal</Typo.Body>
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal: () => mockBookingOfferModal,
 }))

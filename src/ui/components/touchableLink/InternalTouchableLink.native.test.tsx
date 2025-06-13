@@ -1,10 +1,10 @@
 import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
-import { Text } from 'react-native'
 
 import { navigateFromRef, pushFromRef } from 'features/navigation/navigationRef'
 import { render, screen, userEvent } from 'tests/utils'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Typo } from 'ui/theme'
 
 jest.mock('features/navigation/navigationRef')
 
@@ -24,7 +24,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 }))
 
 const linkText = 'linkText'
-const InternalTouchableLinkContent = () => <Text>{linkText}</Text>
+const InternalTouchableLinkContent = () => <Typo.Body>{linkText}</Typo.Body>
 
 describe('<InternalTouchableLink />', () => {
   const user = userEvent.setup()
