@@ -341,6 +341,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           [
             {
               "flexDirection": "column",
+              "gap": 12,
               "paddingLeft": 0,
             },
           ]
@@ -357,160 +358,157 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Participé à un festival,"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Participé à un festival,"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Participé à un festival, à une avant-première"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Participé à un festival, à une avant-première"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Participé à un festival,
+                </Text>
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  à une avant-première
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  fill="#eb0055"
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    fill="#696a6f"
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Participé à un festival,
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    à une avant-première
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -524,159 +522,156 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Assisté à un spectacle"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Assisté à un spectacle"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Assisté à un spectacle Pièce de théâtre, cirque, danse..."
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Assisté à un spectacle Pièce de théâtre, cirque, danse..."
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Assisté à un spectacle
+                </Text>
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Pièce de théâtre, cirque, danse...
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Assisté à un spectacle
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    Pièce de théâtre, cirque, danse...
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -690,159 +685,156 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Allé à la bibliothèque"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Allé à la bibliothèque"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Allé à la bibliothèque ou à la médiathèque"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Allé à la bibliothèque ou à la médiathèque"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Allé à la bibliothèque
+                </Text>
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  ou à la médiathèque
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Allé à la bibliothèque
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    ou à la médiathèque
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -856,159 +848,156 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Participé à un jeu"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Participé à un jeu"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Participé à un jeu escape game, jeu concours"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Participé à un jeu escape game, jeu concours"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Participé à un jeu
+                </Text>
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  escape game, jeu concours
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Participé à un jeu
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    escape game, jeu concours
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -1022,145 +1011,141 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Allé à un concert"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Allé à un concert"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Allé à un concert"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Allé à un concert"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Allé à un concert
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Allé à un concert
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -1174,145 +1159,141 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Allé au cinéma"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Allé au cinéma"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Allé au cinéma"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Allé au cinéma"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Allé au cinéma
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Allé au cinéma
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -1326,159 +1307,156 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Visité un musée,"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Visité un musée,"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Visité un musée, un monument, une exposition..."
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Visité un musée, un monument, une exposition..."
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Visité un musée,
+                </Text>
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  un monument, une exposition...
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Visité un musée,
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    un monument, une exposition...
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -1492,159 +1470,156 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Participé à une conférence,"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Participé à une conférence,"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Participé à une conférence, rencontre ou découverte des métiers de la culture"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Participé à une conférence, rencontre ou découverte des métiers de la culture"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Participé à une conférence,
+                </Text>
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  rencontre ou découverte des métiers de la culture
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Participé à une conférence,
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    rencontre ou découverte des métiers de la culture
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -1658,159 +1633,156 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Pris un cours"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Pris un cours"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Pris un cours danse, théâtre, musique, dessin"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Pris un cours danse, théâtre, musique, dessin"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Pris un cours
+                </Text>
+                <Text
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  danse, théâtre, musique, dessin
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
                 <View
-                  style={
-                    [
-                      {
-                        "alignContent": "center",
-                        "marginLeft": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Pris un cours
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    danse, théâtre, musique, dessin
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
         <View
@@ -1824,126 +1796,141 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           }
         >
           <View
+            accessibilityLabel="Aucune de ces sorties culturelles"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  },
+                ],
                 {
-                  "paddingBottom": 12,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Aucune de ces sorties culturelles"
           >
-            <BVLinearGradient
-              angle={175}
-              colors={
-                [
-                  4285098607,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
+            <View
               style={
                 [
                   {
-                    "borderRadius": 8,
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "flexDirection": "row",
                   },
                 ]
               }
-              useAngle={true}
             >
               <View
-                accessibilityLabel="Aucune de ces sorties culturelles"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+                state={
+                  [
+                    "default",
+                  ]
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 7,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginBottom": 1,
-                        "marginLeft": 1,
-                        "marginRight": 1,
-                        "marginTop": 1,
-                        "minHeight": 72,
-                      },
-                    ],
                     {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
                     },
                   ]
                 }
-                testID="Aucune de ces sorties culturelles"
+                variant="detailed"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
               >
-                <View
+                <Text
+                  disabled={false}
                   style={
                     [
                       {
-                        "flexShrink": 1,
-                        "marginLeft": 16,
-                        "marginRight": 40,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
                 >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Aucune de ces sorties culturelles
+                  Aucune de ces sorties culturelles
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={32}
+                  width={32}
+                >
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-            </BVLinearGradient>
+            </View>
           </View>
         </View>
       </View>

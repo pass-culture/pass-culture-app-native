@@ -4,7 +4,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // Map the facetFilter (in search backend) to the category Icon
 const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
-  [k in CulturalSurveyAnswerEnum]: React.FC<AccessibleIcon> | null
+  [k in CulturalSurveyAnswerEnum]: React.FC<AccessibleIcon>
 } = {
   [CulturalSurveyAnswerEnum.BIBLIOTHEQUE]: culturalSurveyIcons.Museum,
   [CulturalSurveyAnswerEnum.MUSEE]: culturalSurveyIcons.Museum,
@@ -35,8 +35,8 @@ const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
   [CulturalSurveyAnswerEnum.SPECTACLE_OPERA]: culturalSurveyIcons.Opera,
   [CulturalSurveyAnswerEnum.SPECTACLE_RUE]: culturalSurveyIcons.Accordion,
   [CulturalSurveyAnswerEnum.SPECTACLE_THEATRE]: culturalSurveyIcons.Theater,
-  [CulturalSurveyAnswerEnum.SANS_ACTIVITES]: null,
-  [CulturalSurveyAnswerEnum.SANS_SORTIES]: null,
+  [CulturalSurveyAnswerEnum.SANS_ACTIVITES]: culturalSurveyIcons.All,
+  [CulturalSurveyAnswerEnum.SANS_SORTIES]: culturalSurveyIcons.All,
   [CulturalSurveyAnswerEnum.PROJECTION_FESTIVAL]: culturalSurveyIcons.Festival,
   [CulturalSurveyAnswerEnum.PROJECTION_CINEMA]: culturalSurveyIcons.Cinema,
   [CulturalSurveyAnswerEnum.PROJECTION_VISITE]: culturalSurveyIcons.Museum,
@@ -47,13 +47,13 @@ const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
   [CulturalSurveyAnswerEnum.PROJECTION_LIVRE]: culturalSurveyIcons.Book,
   [CulturalSurveyAnswerEnum.PROJECTION_CONFERENCE]: culturalSurveyIcons.Micro,
   [CulturalSurveyAnswerEnum.PROJECTION_JEU]: culturalSurveyIcons.VideoGame,
-  [CulturalSurveyAnswerEnum.PROJECTION_AUTRE]: null,
+  [CulturalSurveyAnswerEnum.PROJECTION_AUTRE]: culturalSurveyIcons.All,
 }
 
 export const mapCulturalSurveyTypeToIcon = (
   types: CulturalSurveyAnswerEnum
-): React.FC<AccessibleIcon> | null => {
+): React.FC<AccessibleIcon> => {
   if (types && types in MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON)
     return MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON[types]
-  return culturalSurveyIcons.Festival
+  return culturalSurveyIcons.All
 }
