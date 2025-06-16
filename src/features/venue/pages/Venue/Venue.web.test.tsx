@@ -85,7 +85,7 @@ describe('<Venue />', () => {
   })
 
   it('should not have basic accessibility issues', async () => {
-    const { container } = render(reactQueryProviderHOC(<Venue />))
+    const { container } = await renderVenue()
 
     await screen.findAllByText('Gratuit')
 
@@ -98,7 +98,7 @@ describe('<Venue />', () => {
   })
 
   it('should show offers section', async () => {
-    render(reactQueryProviderHOC(<Venue />))
+    await renderVenue()
 
     await screen.findAllByText('Gratuit')
 
@@ -108,7 +108,7 @@ describe('<Venue />', () => {
   })
 
   it('should show practical information when switching tabs', async () => {
-    render(reactQueryProviderHOC(<Venue />))
+    await renderVenue()
 
     await screen.findAllByText('Gratuit')
 
@@ -119,3 +119,8 @@ describe('<Venue />', () => {
     expect(sectionTitle).toBeTruthy()
   })
 })
+
+const renderVenue = async () =>
+  act(async () => {
+    return render(reactQueryProviderHOC(<Venue />))
+  })
