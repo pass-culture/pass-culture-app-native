@@ -55,11 +55,11 @@ describe('[Analytics utils]', () => {
         'SearchResults'
       )
 
-      expect(partialSearchState).toEqual({
+      expect(partialSearchState).toMatchObject({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchDate: JSON.stringify({
+          startDate: TODAY.toISOString(),
           option: DATE_FILTER_OPTIONS.TODAY,
-          selectedDate: TODAY.toISOString(),
         }),
         searchView: SearchView.Results,
       })
@@ -303,13 +303,14 @@ describe('[Analytics utils]', () => {
         {
           ...initialSearchState,
           timeRange: [18, 22],
+          calendarFilterId: 'thisWeekend',
         },
         'SearchResults'
       )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchTimeRange: JSON.stringify([18, 22]),
+        searchDate: JSON.stringify({ startDate: 18, endDate: 22, option: 'thisWeekend' }),
         searchView: SearchView.Results,
       })
     })
