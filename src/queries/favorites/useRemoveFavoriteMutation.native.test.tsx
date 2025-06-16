@@ -36,9 +36,8 @@ describe('useRemoveFavoriteMutation', () => {
 
     expect(result.current.isLoading).toBeFalsy()
 
-    result.current.mutate(favoriteId)
-
-    await act(async () => {})
+    await act(async () => result.current.mutate(favoriteId))
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(onError).not.toHaveBeenCalled()
   })
