@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const BicolorUserNotificationSvg: React.FunctionComponent<AccessibleIcon> = ({
+const UserNotificationSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   accessibilityLabel,
@@ -44,9 +44,7 @@ const BicolorUserNotificationSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const BicolorUserNotification = styled(BicolorUserNotificationSvg).attrs(
-  ({ size, color, theme }) => ({
-    color: color ?? theme.designSystem.color.icon.default,
-    size: size ?? theme.illustrations.sizes.medium,
-  })
-)``
+export const UserNotification = styled(UserNotificationSvg).attrs(({ size, color, theme }) => ({
+  color: color ?? theme.designSystem.color.icon.default,
+  size: size ?? theme.illustrations.sizes.medium,
+}))``

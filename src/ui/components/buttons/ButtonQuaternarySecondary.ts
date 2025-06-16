@@ -27,8 +27,8 @@ export const ButtonQuaternarySecondary = styledButton(AppButton).attrs<BaseButto
     const Title = styled(Typo.BodyAccentXs)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.quaternarySecondary.textColor
-        : theme.buttons.quaternarySecondary.textColor,
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.brandSecondary,
     })
 
     return {

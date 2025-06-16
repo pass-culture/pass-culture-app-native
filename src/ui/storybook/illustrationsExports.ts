@@ -65,11 +65,11 @@ import { RingingBell } from 'ui/svg/RingingBell'
 import { RingingBellOff } from 'ui/svg/RingingBellOff'
 import { UserError } from 'ui/svg/UserError'
 import { UserIdentification } from 'ui/svg/UserIdentification'
-import { BicolorUserNotification } from 'ui/svg/UserNotification'
+import { UserNotification } from 'ui/svg/UserNotification'
 
 export const BasicsIllustrations = {
   AgainIllustration,
-  BicolorUserNotification,
+  UserNotification,
   BookingHold,
   BrokenConnection,
   CalendarIllustration,
