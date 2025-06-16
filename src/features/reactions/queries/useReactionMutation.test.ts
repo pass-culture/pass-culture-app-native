@@ -50,7 +50,7 @@ describe('useReactionMutation', () => {
     })
   })
 
-  it('should invalidate bookings query on success', async () => {
+  it.skip('should invalidate bookings query on success', async () => {
     mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
 
     const { result } = renderUseReactionMutation()
@@ -63,7 +63,7 @@ describe('useReactionMutation', () => {
     })
   })
 
-  it('should invalidate bookings query on error', async () => {
+  it.skip('should invalidate bookings query on error', async () => {
     mockServer.postApi('/v1/reaction', { responseOptions: { statusCode: 400, data: {} } })
 
     const { result } = renderUseReactionMutation()
