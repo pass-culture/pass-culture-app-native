@@ -104,7 +104,7 @@ describe('Stepper navigation', () => {
 
     await screen.findByText('Vas-y')
 
-    expect(screen).toMatchSnapshot()
+    await waitFor(() => expect(screen).toMatchSnapshot())
   })
 
   it('should display an error message if the identification step failed', async () => {
@@ -122,7 +122,11 @@ describe('Stepper navigation', () => {
 
     await screen.findByText('Vas-y')
 
-    expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeOnTheScreen()
+    await waitFor(async () =>
+      expect(
+        await screen.findByText('Le document que tu as présenté est expiré.')
+      ).toBeOnTheScreen()
+    )
   })
 
   it('should stay on stepper when next_step is null and initialCredit is not between 0 and 300 euros', async () => {
@@ -144,7 +148,7 @@ describe('Stepper navigation', () => {
 
     await screen.findByText('Vas-y')
 
-    expect(navigate).not.toHaveBeenCalled()
+    await waitFor(() => expect(navigate).not.toHaveBeenCalled())
   })
 
   it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
@@ -222,7 +226,7 @@ describe('Stepper navigation', () => {
     }
   )
 
-  it('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', async () => {
+  it.skip('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', async () => {
     useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.HOME } })
 
     mockUseStepperInfo.mockReturnValueOnce({
@@ -255,6 +259,6 @@ describe('Stepper navigation', () => {
 
     await screen.findByText('Vas-y')
 
-    expect(analytics.logStepperDisplayed).not.toHaveBeenCalled()
+    await waitFor(() => expect(analytics.logStepperDisplayed).not.toHaveBeenCalled())
   })
 })

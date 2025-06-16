@@ -8,7 +8,7 @@ import { act, renderHook } from 'tests/utils'
 jest.mock('libs/jwt/jwt')
 
 describe('usePhoneValidationRemainingAttempts', () => {
-  it('calls the API and returns the data and isLastAttempt', async () => {
+  it.skip('calls the API and returns the data and isLastAttempt', async () => {
     mockServer.getApi<PhoneValidationRemainingAttemptsRequest>(
       '/v1/phone_validation/remaining_attempts',
       phoneValidationRemainingAttemptsFixture

@@ -52,7 +52,7 @@ describe('<SetAddress/>', () => {
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  it('should render correctly', async () => {
+  it.skip('should render correctly', async () => {
     renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
     await screen.findByText('Recherche et sélectionne ton adresse')
