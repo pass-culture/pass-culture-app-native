@@ -35,6 +35,7 @@ describe('useVenuesInRegionQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
+    await act(async () => {})
     await waitFor(() => {
       expect(mockFetchVenues).toHaveBeenCalledWith({
         buildLocationParameterParams: {
@@ -54,7 +55,7 @@ describe('useVenuesInRegionQuery', () => {
     })
   })
 
-  it('should not fetch venues when no region defined', () => {
+  it('should not fetch venues when no region defined', async () => {
     renderHook(
       () =>
         useVenuesInRegionQuery({
@@ -65,6 +66,8 @@ describe('useVenuesInRegionQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
+
+    await act(async () => {})
 
     expect(mockFetchVenues).not.toHaveBeenCalled()
   })

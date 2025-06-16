@@ -7,7 +7,7 @@ import {
 } from 'queries/bookings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
@@ -33,7 +33,7 @@ describe('useEndedBookingFromOfferIdQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current?.data?.id).toEqual(booking.id)
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
@@ -44,7 +44,7 @@ describe('useEndedBookingFromOfferIdQuery', () => {
     const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(unknownOfferId), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current?.data).toEqual(null)
   })

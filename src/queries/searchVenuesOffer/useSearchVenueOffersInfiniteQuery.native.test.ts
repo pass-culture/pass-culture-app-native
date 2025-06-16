@@ -22,6 +22,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+jest.useFakeTimers()
+
 describe('useSearchVenueOffersInfiniteQuery', () => {
   describe('getVenueList', () => {
     it('should return an offer venues list', () => {

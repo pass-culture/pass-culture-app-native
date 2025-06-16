@@ -2,7 +2,7 @@ import { OfferResponseV2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useOfferQuery } from './useOfferQuery'
 
@@ -19,7 +19,7 @@ describe('useOfferQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerResponseSnap))
   })
@@ -32,7 +32,7 @@ describe('useOfferQuery', () => {
       }
     )
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current.data).toBe(offerResponseSnap.name)
   })
