@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { browserName } from 'react-device-detect'
-import { useWindowDimensions, PixelRatio } from 'react-native'
+import { useWindowDimensions, PixelRatio, Platform } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 
 import { TrustedDevice } from 'api/gen'
@@ -10,7 +10,10 @@ import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 export type DeviceInformation = TrustedDevice & {
   resolution?: string
   screenZoomLevel?: number
+  fontScale?: number
 }
+
+const isWeb = Platform.OS === 'web'
 
 export const useDeviceInfo = (): DeviceInformation | undefined => {
   const [deviceInfo, setDeviceInfo] = useState<DeviceInformation | undefined>()
@@ -25,7 +28,9 @@ export const useDeviceInfo = (): DeviceInformation | undefined => {
       const source = modelNative === 'unknown' ? browserName : modelNative
 
       const resolution = `${width}x${height}`
-      const screenZoomLevel = PixelRatio.get()
+      const screenZoomLevel = isWeb ? PixelRatio.get() : undefined
+      const fontScaleRaw = isWeb ? PixelRatio.getFontScale() : await DeviceInfo.getFontScale()
+      const fontScale = parseFloat(fontScaleRaw.toFixed(3))
 
       setDeviceInfo({
         deviceId,
@@ -33,11 +38,12 @@ export const useDeviceInfo = (): DeviceInformation | undefined => {
         source,
         resolution,
         screenZoomLevel,
+        fontScale,
       })
     }
 
     getDeviceInfo()
-  }, [width, height])
+  }, [width, height, deviceInfo?.screenZoomLevel])
 
   return deviceInfo
 }

@@ -426,7 +426,8 @@ describe('Signup Form', () => {
             os: 'iOS',
             source: 'iPhone 13',
             resolution: '750x1334',
-            screenZoomLevel: 2,
+            screenZoomLevel: undefined,
+            fontScale: -1,
           },
         },
         { credentials: 'omit' }
@@ -506,7 +507,8 @@ describe('Signup Form', () => {
           os: 'iOS',
           source: 'iPhone 13',
           resolution: '750x1334',
-          screenZoomLevel: 2,
+          screenZoomLevel: undefined,
+          fontScale: -1,
         },
       })
     })
@@ -644,7 +646,8 @@ describe('Signup Form', () => {
             os: 'iOS',
             source: 'iPhone 13',
             resolution: '750x1334',
-            screenZoomLevel: 2,
+            screenZoomLevel: undefined,
+            fontScale: -1,
           },
         },
         { credentials: 'omit' }
@@ -810,7 +813,8 @@ describe('Signup Form', () => {
             os: 'iOS',
             source: 'iPhone 13',
             resolution: '750x1334',
-            screenZoomLevel: 2,
+            screenZoomLevel: undefined,
+            fontScale: -1,
           },
         },
         { credentials: 'omit' }

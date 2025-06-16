@@ -19,7 +19,8 @@ jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
     os: 'iOS',
     resolution: '1080x1920',
     source: 'iPhone 13',
-    screenZoomLevel: 1.2,
+    screenZoomLevel: undefined,
+    fontScale: 1.5,
   }),
 }))
 
@@ -69,7 +70,8 @@ describe('DebugScreen', () => {
     expect(decodedUrl).toContain('Device model : iPhone 13')
     expect(decodedUrl).toContain('Device OS : iOS')
     expect(decodedUrl).toContain('Device resolution : 1080x1920')
-    expect(decodedUrl).toContain('Device zoom : 120%')
     expect(decodedUrl).toContain('User ID : 1234')
+    expect(decodedUrl).toContain('Device font scale : 1.5')
+    expect(decodedUrl).not.toContain('Device zoom :')
   })
 })
