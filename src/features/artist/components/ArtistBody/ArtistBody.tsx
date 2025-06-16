@@ -83,7 +83,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
         <ViewGap gap={8}>
           <ViewGap gap={6}>
             <ArtistHeader name={name} avatarImage={avatarImage} />
-            {description ? (
+            {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
                 <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
