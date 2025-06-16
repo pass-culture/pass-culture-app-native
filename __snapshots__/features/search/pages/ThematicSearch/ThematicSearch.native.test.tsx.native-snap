@@ -357,7 +357,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
+                          "backgroundColor": "#f1f1f4",
                           "height": "100%",
                           "width": 1,
                         },

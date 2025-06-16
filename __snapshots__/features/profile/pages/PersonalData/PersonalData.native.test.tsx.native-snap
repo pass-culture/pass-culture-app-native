@@ -263,7 +263,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "height": 1,
               "marginVertical": 16,
               "width": "100%",
@@ -437,7 +437,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "height": 1,
               "marginVertical": 16,
               "width": "100%",
@@ -488,7 +488,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "height": 1,
               "marginVertical": 16,
               "width": "100%",
@@ -662,7 +662,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "height": 1,
               "marginVertical": 16,
               "width": "100%",
@@ -836,7 +836,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "height": 1,
               "marginVertical": 16,
               "width": "100%",
@@ -1011,7 +1011,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "height": 1,
               "marginVertical": 16,
               "width": "100%",

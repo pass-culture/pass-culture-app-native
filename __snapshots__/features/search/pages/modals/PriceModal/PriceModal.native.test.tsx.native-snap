@@ -624,7 +624,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginVertical": 24,
                       "width": "100%",
@@ -804,7 +804,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginVertical": 24,
                       "width": "100%",

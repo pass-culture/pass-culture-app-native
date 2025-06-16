@@ -847,7 +847,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     style={
       [
         {
-          "backgroundColor": "#F1F1F4",
+          "backgroundColor": "#f1f1f4",
           "height": 1,
           "width": "100%",
         },

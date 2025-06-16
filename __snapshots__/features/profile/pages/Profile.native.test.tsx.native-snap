@@ -241,7 +241,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginTop": 8,
                       "width": "100%",
@@ -791,7 +791,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginTop": 8,
                       "width": "100%",
@@ -1097,7 +1097,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginTop": 8,
                       "width": "100%",
@@ -1836,7 +1836,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginTop": 8,
                       "width": "100%",
@@ -2066,7 +2066,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginTop": 8,
                       "width": "100%",
@@ -2551,7 +2551,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginTop": 8,
                       "width": "100%",
@@ -2686,7 +2686,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginTop": 8,
                       "width": "100%",

@@ -124,26 +124,7 @@ exports[`<Favorites/> should render correctly 1`] = `
       }
       testID="Trier"
     >
-      <BVLinearGradient
-        colors={
-          [
-            4293591125,
-            4281467030,
-          ]
-        }
-        endPoint={
-          {
-            "x": 1,
-            "y": 0,
-          }
-        }
-        locations={null}
-        startPoint={
-          {
-            "x": 0,
-            "y": 0,
-          }
-        }
+      <View
         style={
           [
             {
@@ -183,7 +164,7 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           Trier
         </Text>
-      </BVLinearGradient>
+      </View>
     </View>
     <View
       customHeight={8}

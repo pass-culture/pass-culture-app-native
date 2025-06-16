@@ -550,7 +550,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -682,7 +682,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -814,7 +814,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -946,7 +946,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1078,7 +1078,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1210,7 +1210,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1342,7 +1342,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1474,7 +1474,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1606,7 +1606,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1738,7 +1738,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2011,7 +2011,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2284,7 +2284,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2406,7 +2406,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2528,7 +2528,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2650,7 +2650,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2773,7 +2773,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -3046,7 +3046,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
