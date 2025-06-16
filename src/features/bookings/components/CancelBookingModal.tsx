@@ -9,8 +9,6 @@ import { useCancelBookingMutation } from 'features/bookings/queries'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { analytics } from 'libs/analytics/provider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
@@ -129,11 +127,14 @@ function getRefundRule(
 ) {
   const price = convertCentsToEuros(booking.totalAmount)
   if (price > 0 && user) {
+    const isExBeneficiary = !user.isBeneficiary
     const price = formatCurrencyFromCents(booking.totalAmount, currency, euroToPacificFrancRate)
-    if (isUserExBeneficiary(user)) {
+    if (isExBeneficiary) {
       return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }
-    if (isUserBeneficiary(user)) {
+
+    const isBeneficiary = user.isBeneficiary
+    if (isBeneficiary) {
       return `${price} seront recrédités sur ton pass Culture.`
     }
   }
