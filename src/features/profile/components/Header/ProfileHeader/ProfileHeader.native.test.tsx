@@ -99,7 +99,7 @@ describe('ProfileHeader', () => {
     await screen.findByText('Cheatcodes')
 
     expect(
-      screen.getByText(
+      await screen.findByText(
         'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?'
       )
     ).toBeOnTheScreen()
@@ -113,7 +113,7 @@ describe('ProfileHeader', () => {
 
     await screen.findByText('Cheatcodes')
 
-    expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
+    expect(await screen.findByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is underage beneficiary', async () => {
@@ -125,7 +125,7 @@ describe('ProfileHeader', () => {
 
     await screen.findByText('Cheatcodes')
 
-    expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
+    expect(await screen.findByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', async () => {
@@ -136,7 +136,7 @@ describe('ProfileHeader', () => {
 
     await screen.findByText('Cheatcodes')
 
-    expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
+    expect(await screen.findByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', async () => {
