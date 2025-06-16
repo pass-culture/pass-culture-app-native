@@ -2789,10 +2789,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo/config-plugins@npm:^5.0.4":
+  version: 5.0.4
+  resolution: "@expo/config-plugins@npm:5.0.4"
+  dependencies:
+    "@expo/config-types": ^47.0.0
+    "@expo/json-file": 8.2.36
+    "@expo/plist": 0.0.18
+    "@expo/sdk-runtime-versions": ^1.0.0
+    "@react-native/normalize-color": ^2.0.0
+    chalk: ^4.1.2
+    debug: ^4.3.1
+    find-up: ~5.0.0
+    getenv: ^1.0.0
+    glob: 7.1.6
+    resolve-from: ^5.0.0
+    semver: ^7.3.5
+    slash: ^3.0.0
+    xcode: ^3.0.1
+    xml2js: 0.4.23
+  checksum: 9fc5e19a92e105d200aeb7ed28607c2e4e8dcf2b7256c8bae32b2f30ccb5139fbe4854df8c6d6db0bb80e254ddb48a82665043582e7044b4ba1888448909c818
+  languageName: node
+  linkType: hard
+
 "@expo/config-types@npm:^45.0.0":
   version: 45.0.0
   resolution: "@expo/config-types@npm:45.0.0"
   checksum: 9b4866540654da61af0985ebfc975b3cb690625acf7742443a7e56263bf134b261e22719720982223407f8957d08a3646178c79f482861218882f0956d804021
+  languageName: node
+  linkType: hard
+
+"@expo/config-types@npm:^47.0.0":
+  version: 47.0.0
+  resolution: "@expo/config-types@npm:47.0.0"
+  checksum: bb26456bed60bedb7a2482cb475ab539d34da177d9eb49384f599ea85ad0d0c8bb35f97c181e01454a925320021607472f83c8f456f239a6b329c8bf82044d9c
   languageName: node
   linkType: hard
 
@@ -4791,14 +4821,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-firebase/perf@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "@react-native-firebase/perf@npm:14.9.0"
+"@react-native-firebase/perf@npm:^16.7.0":
+  version: 16.7.0
+  resolution: "@react-native-firebase/perf@npm:16.7.0"
   dependencies:
-    "@expo/config-plugins": ^4.1.1
+    "@expo/config-plugins": ^5.0.4
   peerDependencies:
-    "@react-native-firebase/app": 14.9.0
-  checksum: eb4ba0fa98649c79fd737c788d1e09f30a960b59aadf9612edd0e1291ebcaa9b15179a32e103d46275ed33c1f5d735bba86524a8037663af144d33b3ae56653b
+    "@react-native-firebase/app": 16.7.0
+  checksum: b579d090b4736ed540eaef9ca27ef24531ffa8bfac03afee58d8652327f71ff64a4db992b6f30b78c95c268a85629b431d702e66b749be0dc358665f875c5ddc
   languageName: node
   linkType: hard
 
@@ -7593,7 +7623,7 @@ __metadata:
     "@react-native-firebase/app": ^14.9.0
     "@react-native-firebase/dynamic-links": ^14.9.0
     "@react-native-firebase/firestore": ^14.9.0
-    "@react-native-firebase/perf": ^14.9.0
+    "@react-native-firebase/perf": ^16.7.0
     "@react-native-firebase/remote-config": ^14.9.0
     "@react-native-google-signin/google-signin": ^10.1.0
     "@react-native/babel-preset": 0.74.89
