@@ -13,6 +13,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -59,6 +60,9 @@ export const ArtistBody: FunctionComponent<Props> = ({
     )
   }, [image])
 
+  const descriptionWithDot = ensureEndingDot(description ?? '')
+  const capitalizedDescriptionWithDot = capitalizeFirstLetter(descriptionWithDot)
+
   return (
     <Page>
       <ArtistWebMetaHeader artist={name} />
@@ -79,11 +83,11 @@ export const ArtistBody: FunctionComponent<Props> = ({
         <ViewGap gap={8}>
           <ViewGap gap={6}>
             <ArtistHeader name={name} avatarImage={avatarImage} />
-            {description ? (
+            {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
                 <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-                  {highlightLinks(capitalizeFirstLetter(description))}
+                  {highlightLinks(capitalizedDescriptionWithDot)}
                 </CollapsibleText>
               </Description>
             ) : null}
