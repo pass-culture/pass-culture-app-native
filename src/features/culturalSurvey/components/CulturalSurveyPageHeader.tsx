@@ -68,7 +68,6 @@ const BarContainer = styled.View({
 })
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  color: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
 

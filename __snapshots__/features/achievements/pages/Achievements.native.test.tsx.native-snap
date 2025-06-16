@@ -332,31 +332,11 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       ]
                     }
                   >
-                    <BVLinearGradient
-                      angle={90}
-                      colors={
-                        [
-                          4287037575,
-                          4287037575,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
+                    <View
                       style={
                         [
                           {
-                            "borderRadius": 48,
+                            "backgroundColor": "#eb0055",
                             "flexBasis": 0,
                             "flexGrow": 0.3333333333333333,
                             "flexShrink": 1,
@@ -364,7 +344,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                         ]
                       }
                       testID="progress-bar"
-                      useAngle={true}
                     />
                   </View>
                 </View>

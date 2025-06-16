@@ -36,6 +36,7 @@ import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
+import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CulturalSurveyQuestionsProps = StackScreenProps<
@@ -190,7 +191,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
   }
 
   return (
-    <Container>
+    <Page>
       <Spacer.TopScreen />
       <CulturalSurveyPageHeader
         progress={culturalSurveyProgress}
@@ -235,18 +236,9 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
         />
         <Spacer.BottomScreen />
       </FixedBottomChildrenView>
-    </Container>
+    </Page>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  display: 'flex',
-  alignSelf: 'center',
-  maxWidth: theme.forms.maxWidth,
-  width: '100%',
-  flexDirection: 'column',
-}))
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
 const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>(

@@ -5,14 +5,10 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
   style={
     [
       {
-        "alignSelf": "center",
-        "display": "flex",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
-        "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
-        "maxWidth": 500,
-        "width": "100%",
       },
     ]
   }
@@ -185,39 +181,18 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                 >
-                  <BVLinearGradient
-                    angle={90}
-                    colors={
-                      [
-                        4281467030,
-                        4293591125,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
+                  <View
                     style={
                       [
                         {
-                          "borderRadius": 48,
+                          "backgroundColor": "#eb0055",
                           "flexBasis": 0,
-                          "flexGrow": 0.01,
+                          "flexGrow": 0,
                           "flexShrink": 1,
                         },
                       ]
                     }
                     testID="progress-bar"
-                    useAngle={true}
                   />
                 </View>
               </View>
