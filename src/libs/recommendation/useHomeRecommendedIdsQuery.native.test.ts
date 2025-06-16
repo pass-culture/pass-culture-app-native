@@ -14,13 +14,15 @@ jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/network/NetInfoWrapper')
 
+jest.useFakeTimers()
+
 describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an exception when fetch call fails', async () => {
     mockServer.postApi<EmptyResponse>('/v1/recommendation/playlist', {
       responseOptions: { statusCode: 400, data: {} },
     })
 
-    renderHook(
+    const { result } = renderHook(
       () =>
         useHomeRecommendedIdsQuery({
           playlistRequestBody: {},
@@ -32,6 +34,8 @@ describe('useHomeRecommendedIdsQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
+
+    await waitFor(async () => expect(result.current.isFetched).toEqual(false))
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
@@ -52,7 +56,7 @@ describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an unknown exception when fetch call fails for unknown reasons', async () => {
     jest.spyOn(api, 'postNativeV1RecommendationPlaylist').mockRejectedValueOnce('some error')
 
-    renderHook(
+    const { result } = renderHook(
       () =>
         useHomeRecommendedIdsQuery({
           playlistRequestBody: {},
@@ -64,6 +68,8 @@ describe('useHomeRecommendedIdsQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
@@ -85,7 +91,7 @@ describe('useHomeRecommendedIdsQuery', () => {
       .spyOn(api, 'postNativeV1RecommendationPlaylist')
       .mockRejectedValueOnce(new Error('Network request failed'))
 
-    renderHook(
+    const { result } = renderHook(
       () =>
         useHomeRecommendedIdsQuery({
           playlistRequestBody: {},
@@ -97,6 +103,8 @@ describe('useHomeRecommendedIdsQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
+
+    await waitFor(async () => expect(result.current.isFetched).toEqual(false))
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).not.toHaveBeenCalled()
@@ -108,7 +116,7 @@ describe('useHomeRecommendedIdsQuery', () => {
       .spyOn(api, 'postNativeV1RecommendationPlaylist')
       .mockRejectedValueOnce(new Error('This is an error'))
 
-    renderHook(
+    const { result } = renderHook(
       () =>
         useHomeRecommendedIdsQuery({
           playlistRequestBody: {},
@@ -120,6 +128,8 @@ describe('useHomeRecommendedIdsQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
+
+    await waitFor(async () => expect(result.current.isFetched).toEqual(false))
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
@@ -148,7 +158,7 @@ describe('useHomeRecommendedIdsQuery', () => {
         responseOptions: { statusCode, data: {} },
       })
 
-      renderHook(
+      const { result } = renderHook(
         () =>
           useHomeRecommendedIdsQuery({
             playlistRequestBody: {},
@@ -160,6 +170,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
+      await waitFor(async () => expect(result.current.isFetched).toEqual(false))
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).not.toHaveBeenCalled()
@@ -189,6 +200,8 @@ describe('useHomeRecommendedIdsQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
+
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     await waitFor(() => {
       expect(result.current.data?.playlistRecommendedOffers).toEqual([
