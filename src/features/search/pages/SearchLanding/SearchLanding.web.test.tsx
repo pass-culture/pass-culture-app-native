@@ -11,7 +11,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.setTimeout(20000) // to avoid exceeded timeout
 
@@ -92,7 +92,7 @@ describe('<SearchLanding />', () => {
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
 
-      const { container } = render(reactQueryProviderHOC(<SearchLanding />))
+      const { container } = await renderSearchLanding()
 
       await screen.findByText('Rechercher')
 
@@ -104,7 +104,7 @@ describe('<SearchLanding />', () => {
     it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
-      const { container } = render(reactQueryProviderHOC(<SearchLanding />))
+      const { container } = await renderSearchLanding()
 
       await screen.findByText('Rechercher')
 
@@ -114,3 +114,8 @@ describe('<SearchLanding />', () => {
     })
   })
 })
+
+const renderSearchLanding = async () =>
+  act(async () => {
+    return render(reactQueryProviderHOC(<SearchLanding />))
+  })
