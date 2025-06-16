@@ -5,6 +5,7 @@ import { BookingReponse } from 'api/gen'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { beneficiaryUser, nonBeneficiaryUser as exBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -17,11 +18,10 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 const mockDismissModal = jest.fn()
 
 jest.mock('libs/jwt/jwt')
-jest.mock('features/auth/context/AuthContext')
 
-let mockIsCreditExpired = false
-jest.mock('shared/user/useAvailableCredit', () => ({
-  getAvailableCredit: jest.fn(() => ({ isExpired: mockIsCreditExpired, amount: 2000 })),
+const mockUseAuthContext = jest.fn().mockReturnValue({ user: beneficiaryUser })
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
 }))
 
 const mockShowErrorSnackBar = jest.fn()
@@ -113,15 +113,14 @@ describe('<CancelBookingModal />', () => {
     expect(screen.getByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
   })
 
-  it('should display refund rule if user is beneficiary and offer is not free', () => {
+  it('should display refund rule if user is beneficiary', () => {
     renderCancelBookingModal(booking)
 
     expect(screen.getByText('19\u00a0€ seront recrédités sur ton pass Culture.')).toBeOnTheScreen()
   })
 
-  it('should display refund rule if user is ex beneficiary and offer is not free', () => {
-    mockIsCreditExpired = true
-
+  it('should display refund rule if user is ex beneficiary', () => {
+    mockUseAuthContext.mockReturnValueOnce({ user: exBeneficiaryUser })
     renderCancelBookingModal(booking)
 
     expect(
