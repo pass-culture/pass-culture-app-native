@@ -73,7 +73,7 @@ const SubtitleContainer = styled(ViewGap)({
 })
 
 const UsedText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greenValid,
+  color: theme.designSystem.color.text.success,
 }))
 
 const DateUsedText = styled(Typo.BodyAccentXs)(({ theme }) => ({

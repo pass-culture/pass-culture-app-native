@@ -9,5 +9,5 @@ export const MovieCalendarBottomBar = styled.View(({ theme }) => ({
   height: getSpacing(1),
   borderRadius: getSpacing(1),
   width: '100%',
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))

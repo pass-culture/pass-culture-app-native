@@ -581,10 +581,12 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <View
                 accessibilityRole="tablist"
+                gap={6}
                 style={
                   [
                     {
                       "flexDirection": "row",
+                      "gap": 24,
                     },
                   ]
                 }
@@ -593,21 +595,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "bottom": 0,
                         "height": 4,
                         "position": "absolute",
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
                       },
                     ]
                   }
@@ -763,7 +755,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       style={
                         [
                           {
-                            "color": "#696A6F",
+                            "color": "#696a6f",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -790,16 +782,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 accessibilityRole="none"
@@ -3583,10 +3565,12 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             >
               <View
                 accessibilityRole="tablist"
+                gap={6}
                 style={
                   [
                     {
                       "flexDirection": "row",
+                      "gap": 24,
                     },
                   ]
                 }
@@ -3595,21 +3579,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "bottom": 0,
                         "height": 4,
                         "position": "absolute",
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
                       },
                     ]
                   }
@@ -3765,7 +3739,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       style={
                         [
                           {
-                            "color": "#696A6F",
+                            "color": "#696a6f",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -3792,16 +3766,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 accessibilityRole="none"
@@ -6911,10 +6875,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             >
               <View
                 accessibilityRole="tablist"
+                gap={6}
                 style={
                   [
                     {
                       "flexDirection": "row",
+                      "gap": 24,
                     },
                   ]
                 }
@@ -6923,21 +6889,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "bottom": 0,
                         "height": 4,
                         "position": "absolute",
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
                       },
                     ]
                   }
@@ -7004,7 +6960,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       style={
                         [
                           {
-                            "color": "#696A6F",
+                            "color": "#696a6f",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -7120,16 +7076,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 accessibilityRole="none"

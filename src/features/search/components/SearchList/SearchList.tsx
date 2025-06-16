@@ -1,11 +1,12 @@
 import { FlashList } from '@shopify/flash-list'
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { LIST_ITEM_HEIGHT } from 'features/search/constants'
 import { SearchListProps } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
+import { LineSeparator } from 'ui/components/LineSeparator'
 import { getSpacing } from 'ui/theme'
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -48,7 +49,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
             venuesUserData={venuesUserData}
           />
         }
-        ItemSeparatorComponent={Separator}
+        ItemSeparatorComponent={LineSeparator}
         renderItem={renderItem}
         refreshing={refreshing}
         onRefresh={onRefresh}
@@ -63,10 +64,3 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
   }
 )
 SearchList.displayName = 'SearchList'
-
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
-}))

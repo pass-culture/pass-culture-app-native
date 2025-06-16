@@ -7,6 +7,7 @@ import { SearchListProps, SearchState } from 'features/search/types'
 import { Artist } from 'features/venue/types'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
+import { LineSeparator } from 'ui/components/LineSeparator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { getSpacing } from 'ui/theme'
 
@@ -78,17 +79,10 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
           from: 'searchresults',
         }}
       />
-      <Separator />
+      <LineSeparator />
     </li>
   )
 }
-
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
-}))
 
 const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
   marginHorizontal: getSpacing(6),

@@ -98,7 +98,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
 }
 
 const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.text.subtle,
   width: 0,
   flexGrow: 1,
   textAlign: 'right',

@@ -66,7 +66,7 @@ export function OfferHeader({
               iconName="share"
               onPress={pressShareOffer}
               accessibilityLabel="Partager"
-              finalColor={theme.colors.black}
+              finalColor={theme.designSystem.color.icon.default}
             />
             {children}
           </ButtonsWrapper>

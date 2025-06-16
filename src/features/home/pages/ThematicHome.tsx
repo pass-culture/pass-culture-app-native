@@ -27,6 +27,7 @@ import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
@@ -164,7 +165,7 @@ export const ThematicHome: FunctionComponent = () => {
   }
 
   return (
-    <Container>
+    <Page>
       <GenericHome
         modules={modules}
         homeId={id}
@@ -204,7 +205,7 @@ export const ThematicHome: FunctionComponent = () => {
           ) : null}
         </React.Fragment>
       ) : null}
-    </Container>
+    </Page>
   )
 }
 
@@ -216,11 +217,6 @@ const AnimatedHeaderContainer = styled.View({
 })
 
 const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
 
 const ListHeaderContainer = styled.View({
   flexGrow: 1,

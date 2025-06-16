@@ -18,7 +18,7 @@ const Container = styled(ViewGap)({
 })
 
 const NoOfferIllustration = styled(NoOffer).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.disabled,
 }))``
 
 const Text = styled(Typo.Title4)({

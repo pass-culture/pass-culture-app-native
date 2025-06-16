@@ -61,6 +61,7 @@ import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { FilterButtonList, FilterButtonListItem } from 'ui/components/FilterButtonList'
 import { Li } from 'ui/components/Li'
+import { LineSeparator } from 'ui/components/LineSeparator'
 import { useModal } from 'ui/components/modals/useModal'
 import {
   HeaderSearchResultsPlaceholder,
@@ -594,13 +595,6 @@ const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
   marginHorizontal: getSpacing(6),
 })
 
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
-}))
-
 const StyledLi = styled(Li)({
   marginLeft: getSpacing(1),
   marginTop: getSpacing(1),
@@ -633,7 +627,7 @@ const SearchResultsPlaceHolder = () => {
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
-        ItemSeparatorComponent={Separator}
+        ItemSeparatorComponent={LineSeparator}
         ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />
