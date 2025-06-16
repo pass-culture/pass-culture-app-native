@@ -50,6 +50,7 @@ describe('useVideoOffersQuery', () => {
     )
 
     await act(async () => {})
+    await act(async () => {})
 
     expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
   })

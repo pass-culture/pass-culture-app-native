@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockReplay = jest.fn()
 const mockHideModal = jest.fn()
@@ -26,7 +26,7 @@ describe('VideoEndView', () => {
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(replayButton)
 
-    expect(mockReplay).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(mockReplay).toHaveBeenCalledTimes(1))
   })
 
   it('should hide modal page when pressing "Voir l’offre" button', async () => {
@@ -37,7 +37,7 @@ describe('VideoEndView', () => {
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(seeOfferButton)
 
-    expect(mockHideModal).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(mockHideModal).toHaveBeenCalledTimes(1))
   })
 
   it('should log ConsultOffer when pressing "Voir l’offre" button', async () => {
@@ -48,13 +48,15 @@ describe('VideoEndView', () => {
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(seeOfferButton)
 
-    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      from: 'video',
-      offerId: +mockOffer.objectID,
-      moduleId: 'abcd',
-      moduleName: 'salut à tous c’est lujipeka',
-      homeEntryId: 'xyz',
-    })
+    await waitFor(() =>
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+        from: 'video',
+        offerId: +mockOffer.objectID,
+        moduleId: 'abcd',
+        moduleName: 'salut à tous c’est lujipeka',
+        homeEntryId: 'xyz',
+      })
+    )
   })
 })
 
