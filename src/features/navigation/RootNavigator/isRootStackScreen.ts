@@ -2,7 +2,7 @@ import { rootStackNavigatorPathConfig } from 'features/navigation/RootNavigator/
 
 import { RootScreenNames } from './types'
 
-export function isRootStackScreen(screen): screen is RootScreenNames {
+export function isRootStackScreen(screen: string): screen is RootScreenNames {
   const rootScreens = Object.keys(rootStackNavigatorPathConfig)
-  return rootScreens.includes(screen)
+  return screen in rootScreens
 }
