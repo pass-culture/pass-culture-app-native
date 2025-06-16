@@ -21,7 +21,7 @@ describe('computeHeaderImageHeight', () => {
   const expectedScrollHeight = params.windowHeight - blurImageHeight
 
   it('should compute right height for punched Ticket on web', () => {
-    const ticketSeparationOffset = TICKET_SEPARATION_HEIGHT / 2
+    const ticketSeparationOffset = TICKET_SEPARATION_HEIGHT / 4
     const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight(params)
 
     expect(headerImageHeight).toEqual(params.topBlockHeight + extra + ticketSeparationOffset)
