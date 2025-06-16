@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-import { AccessibleBicolorIcon } from './types'
+import { AccessibleIcon } from './types'
 
-const IdCardWithMagnifyingGlassSvg: React.FC<AccessibleBicolorIcon> = ({
+const IdCardWithMagnifyingGlassSvg: React.FC<AccessibleIcon> = ({
   size,
   color,
   accessibilityLabel,

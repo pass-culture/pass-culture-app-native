@@ -3,8 +3,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Bulb } from 'ui/svg/icons/Bulb'
+import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { Typo, getSpacing } from 'ui/theme'
 
 import { GenericBanner } from './GenericBanner'
@@ -36,7 +36,7 @@ const variantConfig: Variants<typeof GenericBanner> = [
   },
   {
     label: 'GenericBanner with left icon',
-    props: { children: textExample({}), LeftIcon: <BicolorEverywhere /> },
+    props: { children: textExample({}), LeftIcon: <Everywhere /> },
   },
   {
     label: 'GenericBanner with custom right icon',

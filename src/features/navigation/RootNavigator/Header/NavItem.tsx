@@ -5,13 +5,13 @@ import { menu } from 'features/navigation/TabBar/menu'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
+import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface NavItemInterface {
   isSelected?: boolean
-  BicolorIcon: React.FC<AccessibleBicolorIcon>
+  BicolorIcon: React.FC<AccessibleIcon>
   navigateTo: InternalNavigationProps['navigateTo']
   tabName: TabRouteName
   badgeValue?: number
@@ -39,7 +39,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
   </StyledTouchableLink>
 )
 
-const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
+const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected
     ? theme.designSystem.color.icon.brandPrimary
     : theme.designSystem.color.icon.disabled,

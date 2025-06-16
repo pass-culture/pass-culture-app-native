@@ -6,7 +6,11 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-const LocationPointerWithBorderSvg: React.FunctionComponent<AccessibleIcon> = ({
+type LocationPointerProps = AccessibleIcon & {
+  color2?: string
+}
+
+const LocationPointerWithBorderSvg: React.FunctionComponent<LocationPointerProps> = ({
   size,
   color, // pointer color
   color2, // border color

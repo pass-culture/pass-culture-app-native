@@ -9,8 +9,6 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { iconSizes } from 'ui/theme/iconSizes'
 
 const meta: Meta<typeof HeroButtonList> = {
@@ -65,13 +63,7 @@ const variantConfig: Variants<typeof HeroButtonList> = [
     label: 'HeroButtonList with custom icon',
     props: {
       Title: description2,
-      Icon: (
-        <LocationPointer
-          color={ColorsEnum.BLACK}
-          color2={ColorsEnum.BLACK}
-          size={iconSizes.small}
-        />
-      ),
+      Icon: <LocationPointer size={iconSizes.small} />,
       navigateTo: { screen: 'Login' },
     },
   },

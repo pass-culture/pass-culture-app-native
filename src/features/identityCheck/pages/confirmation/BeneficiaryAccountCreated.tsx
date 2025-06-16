@@ -19,7 +19,7 @@ import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo, getSpacing } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 

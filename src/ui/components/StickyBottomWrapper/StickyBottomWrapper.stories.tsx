@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
-import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
+import { Warning } from 'ui/svg/icons/Warning'
 
 import { StickyBottomWrapper } from './StickyBottomWrapper'
 
@@ -20,7 +20,7 @@ type Story = StoryObj<typeof StickyBottomWrapper>
 const StoryComponent = (props: React.ComponentProps<typeof StickyBottomWrapper>) => (
   <React.Fragment>
     <InformationWithIcon
-      Icon={BicolorWarning}
+      Icon={Warning}
       text="To have a correct layout, the parent of StickyBottomWrapper must be in `position: relative;`"
     />
     <ImageBackground source={SHARE_APP_IMAGE_SOURCE}>

@@ -7,7 +7,7 @@ import { MarketingBlockProps } from 'features/home/components/modules/marketing/
 import { BlurAmount } from 'ui/components/BlurryWrapper/BlurAmount'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { All } from 'ui/svg/icons/bicolor/All'
+import { All } from 'ui/svg/icons/venueAndCategories/All'
 import { getSpacing } from 'ui/theme'
 
 export const MarketingBlockContentDesktop = ({

@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { All } from 'ui/svg/icons/bicolor/All'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
+import { All } from 'ui/svg/icons/venueAndCategories/All'
 
 import { InfoHeader } from './InfoHeader'
 

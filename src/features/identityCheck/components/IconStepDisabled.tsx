@@ -13,7 +13,6 @@ export const IconStepDisabled: FunctionComponent<IconStepDoneProps> = ({ Icon, t
     <Icon
       testID={testID}
       color={theme.designSystem.color.icon.disabled}
-      color2={theme.designSystem.color.icon.disabled}
       size={theme.icons.sizes.small}
     />
   )

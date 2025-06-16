@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
-import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
+import { Everywhere } from 'ui/svg/icons/Everywhere'
 
 type Props = {
   title: string

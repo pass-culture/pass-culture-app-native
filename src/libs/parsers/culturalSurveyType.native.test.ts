@@ -1,6 +1,6 @@
 import { CulturalSurveyAnswerEnum } from 'api/gen'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
-import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
+import { culturalSurveyIcons } from 'ui/svg/icons/exports/culturalSurveyIcons'
 
 describe('culturalSurveyType', () => {
   it('should have default icon as Festival', () => {

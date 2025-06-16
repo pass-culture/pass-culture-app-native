@@ -7,12 +7,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - tapOn: "Débloque ton crédit"
+      - tapOn: 'Débloque ton crédit'
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn:
-        id: "BicolorUnlock"
+      - tapOn:
+          id: 'Unlock'
 - assertVisible: 'Inscription'
 - assertVisible: 'Crée-toi un compte'

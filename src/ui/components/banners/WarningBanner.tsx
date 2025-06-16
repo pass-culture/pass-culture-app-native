@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
-import { Warning } from 'ui/svg/icons/BicolorWarning'
+import { Warning } from 'ui/svg/icons/Warning'
 
 type Props = {
   message: string
@@ -28,6 +28,5 @@ export const WarningBanner: FunctionComponent<Props> = ({ message, testID, child
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.warning,
-  color2: theme.designSystem.color.icon.warning,
   size: theme.icons.sizes.small,
 }))``

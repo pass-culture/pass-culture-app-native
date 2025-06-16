@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorUserNotification } from 'ui/svg/icons/BicolorUserNotification'
+import { UserNotification } from 'ui/svg/UserNotification'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -39,7 +39,7 @@ export const NotificationAuthModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi pour' + LINE_BREAK + 'activer un rappel'}
-      Illustration={BicolorUserNotification}
+      Illustration={StyledIcon}
       hideModal={closeModal}>
       <StyledBody>
         Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
@@ -77,3 +77,8 @@ const StyledButtonContainer = styled.View({
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const StyledIcon = styled(UserNotification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  size: theme.illustrations.sizes.fullPage,
+}))``

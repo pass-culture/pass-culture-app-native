@@ -5,19 +5,18 @@ import styled from 'styled-components/native'
 
 import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { All } from 'ui/svg/icons/bicolor/All'
+import { All as InitialAll } from 'ui/svg/icons/venueAndCategories/All'
 import { Spacer, Typo } from 'ui/theme'
 
 import { AgeButton } from './AgeButton'
 
-const BicolorAll = styled(All).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
+const All = styled(InitialAll).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
 }))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
@@ -25,7 +24,7 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const meta: Meta<typeof AgeButton> = {
@@ -33,9 +32,9 @@ const meta: Meta<typeof AgeButton> = {
   component: AgeButton,
   argTypes: {
     Icon: {
-      options: ['BicolorAll', 'NoIcon'],
+      options: ['All', 'NoIcon'],
       mapping: {
-        BicolorAll: <BicolorAll />,
+        All: <All />,
         NoIcon: undefined,
       },
       control: {
@@ -106,7 +105,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({}),
       navigateTo: getOnboardingNavConfig('OnboardingAgeSelectionFork'),
-      Icon: <BicolorAll />,
+      Icon: <All />,
     },
   },
   {
@@ -114,7 +113,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({ withSubtitle: true }),
       navigateTo: getOnboardingNavConfig('OnboardingAgeSelectionFork'),
-      Icon: <BicolorAll />,
+      Icon: <All />,
     },
   },
   {
@@ -123,7 +122,7 @@ const variantConfig: Variants<typeof AgeButton> = [
       children: TextExample({ withSubtitle: true }),
       navigateTo: getOnboardingNavConfig('OnboardingAgeSelectionFork'),
       dense: true,
-      Icon: <BicolorAll />,
+      Icon: <All />,
     },
   },
 ]

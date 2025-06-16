@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorUserNotification } from 'ui/svg/icons/BicolorUserNotification'
+import { UserNotification } from 'ui/svg/UserNotification'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -69,6 +69,7 @@ const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const StyledIcon = styled(BicolorUserNotification).attrs(({ theme }) => ({
+const StyledIcon = styled(UserNotification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.fullPage,
 }))``

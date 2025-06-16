@@ -32,7 +32,7 @@ export function CheckboxAsset({
     : designSystem.color.icon.brandPrimary
 
   if (variant === 'icon') {
-    return <Icon color={iconColor} color2={iconColor} size={icons.sizes.standard} />
+    return <Icon color={iconColor} size={icons.sizes.standard} />
   }
 
   if (variant === 'image') {
