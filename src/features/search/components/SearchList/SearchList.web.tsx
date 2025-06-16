@@ -1,6 +1,5 @@
 import React, { forwardRef, useCallback, useMemo, useRef, useState } from 'react'
 import { Animated, LayoutChangeEvent, useWindowDimensions, View } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
 import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
@@ -11,11 +10,7 @@ import {
   RowData,
   SearchListItem,
 } from 'features/search/components/SearchListItem.web'
-import {
-  LIST_ITEM_HEIGHT,
-  SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_END,
-  SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_START,
-} from 'features/search/constants'
+import { LIST_ITEM_HEIGHT } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
 import { SearchListProps, SearchView } from 'features/search/types'
@@ -247,11 +242,9 @@ export const SearchList = forwardRef<never, SearchListProps>(
 
           <ScrollToTopContainer style={{ opacity }}>
             <Container onPress={handleScrollToTopPress}>
-              <StyledLinearGradient
-                start={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_START}
-                end={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_END}>
+              <StyledView>
                 <ScrollToTopIcon />
-              </StyledLinearGradient>
+              </StyledView>
             </Container>
           </ScrollToTopContainer>
         </React.Fragment>
@@ -278,10 +271,8 @@ const ScrollToTopContainer = styled(Animated.View)(({ theme }) => ({
 
 const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
-const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [theme.colors.primary, theme.colors.secondary],
-}))(({ theme }) => ({
-  backgroundColor: theme.colors.primary,
+const StyledView = styled.View(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
   borderRadius: theme.borderRadius.button,
   alignItems: 'center',
   justifyContent: 'center',
@@ -291,6 +282,6 @@ const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
 }))
 
 const ScrollToTopIcon = styled(ScrollToTop).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.lockedInverted,
   size: theme.icons.sizes.small,
 }))``
