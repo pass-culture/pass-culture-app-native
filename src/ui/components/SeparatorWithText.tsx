@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -8,7 +9,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 interface SeparatorWithTextProps {
   label: string
-  backgroundColor?: ColorsEnum
+  backgroundColor?: ColorsType
 }
 
 export const SeparatorWithText: FunctionComponent<SeparatorWithTextProps> = ({

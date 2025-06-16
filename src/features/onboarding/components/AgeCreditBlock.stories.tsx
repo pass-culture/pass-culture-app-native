@@ -20,7 +20,7 @@ const meta: Meta<typeof AgeCreditBlock> = {
 export default meta
 
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const variantConfig: Variants<typeof AgeCreditBlock> = [

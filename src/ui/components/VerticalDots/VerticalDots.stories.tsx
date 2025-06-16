@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
+import styled from 'styled-components/native'
 
-import { theme } from 'theme'
 import { AutomaticVerticalDots } from 'ui/components/VerticalDots/AutomaticVerticalDots'
 
 import { VerticalDots } from './VerticalDots'
@@ -30,9 +30,9 @@ const MultipleRenderer = (props: React.ComponentProps<typeof VerticalDots>) => (
 )
 
 const AutomaticRenderer = (props: React.ComponentProps<typeof AutomaticVerticalDots>) => (
-  <View style={styles.automaticWrapper}>
+  <Wrapper>
     <AutomaticVerticalDots {...props} />
-  </View>
+  </Wrapper>
 )
 
 export const Default: Story = {
@@ -109,11 +109,9 @@ export const AutomaticDots: AutoStory = {
   },
 }
 
-const styles = StyleSheet.create({
-  automaticWrapper: {
-    backgroundColor: theme.colors.greyLight,
-    alignItems: 'center',
-    width: 30,
-    height: 100,
-  },
-})
+const Wrapper = styled.View(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.subtle,
+  alignItems: 'center',
+  width: 30,
+  height: 100,
+}))

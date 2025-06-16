@@ -19,7 +19,7 @@ const InactiveBell = styled(Bell).attrs(({ theme }) => ({
 }))``
 
 const ActiveBell = styled(BellFilled).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
 }))``
 
