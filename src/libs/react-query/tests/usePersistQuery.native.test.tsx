@@ -51,7 +51,7 @@ describe('usePersistQuery', () => {
 
         expect(persistDataStr).toBeFalsy()
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
-          extra: { queryKey, data: onlineData },
+          extra: { queryKey: [queryKey], data: onlineData },
         })
       })
     })
@@ -96,7 +96,7 @@ describe('usePersistQuery', () => {
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
-          extra: { queryKey },
+          extra: { queryKey: [queryKey] },
         })
       })
     })
@@ -110,8 +110,7 @@ describe('usePersistQuery', () => {
             usePersistQuery([queryKey], queryFn, {
               // @ts-ignore cast for select occur on return
               select(data) {
-                // @ts-expect-error: because of noUncheckedIndexedAccess
-                cursor = data.find((item) => item.id === offlineData[1].id) as TestData
+                cursor = data.find((item) => item.id === offlineData[1]?.id) as TestData
                 return cursor
               },
             }),

@@ -1,10 +1,8 @@
-import { act } from 'react-dom/test-utils'
-
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const mockGetConfigValues = jest.fn()
 const mockRefresh = jest.fn()
@@ -16,6 +14,8 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
   },
 }))
 
+jest.useFakeTimers()
+
 describe('useRemoteConfigQuery', () => {
   it('should return default remote config values when there is an error', async () => {
     mockRefresh.mockRejectedValueOnce(new Error('Network error'))
@@ -24,9 +24,7 @@ describe('useRemoteConfigQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
-
-    expect(result.current).toEqual(DEFAULT_REMOTE_CONFIG)
+    await waitFor(() => expect(result.current).toEqual(DEFAULT_REMOTE_CONFIG))
   })
 
   it('should capture Sentry exception when there is an error', async () => {
@@ -37,8 +35,6 @@ describe('useRemoteConfigQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+    await waitFor(async () => expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1))
   })
 })
