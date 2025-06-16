@@ -116,7 +116,7 @@ const UnmemoizedSearchVenueItem = ({
 export const SearchVenueItem = memo(UnmemoizedSearchVenueItem)
 
 const SearchVenueTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
-  underlayColor: theme.colors.white,
+  underlayColor: theme.designSystem.color.background.default,
 }))<{
   height: number
   width: number
@@ -126,7 +126,7 @@ const SearchVenueTouchableLink = styled(InternalTouchableLink).attrs(({ theme })
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus, color: theme.designSystem.color.outline.default }),
 }))
 
 const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(
@@ -134,10 +134,10 @@ const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(
     width: width,
     height: height,
     borderRadius: theme.borderRadius.radius,
-    border: `1px solid ${theme.colors.greySemiDark}`,
+    border: `1px solid ${theme.designSystem.color.border.subtle}`,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
   })
 )
 

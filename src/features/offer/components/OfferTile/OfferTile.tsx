@@ -126,9 +126,9 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
 export const OfferTile = memo(UnmemoizedOfferTile)
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
-  underlayColor: theme.colors.white,
+  underlayColor: theme.designSystem.color.background.default,
 }))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus, color: theme.designSystem.color.outline.default }),
 }))

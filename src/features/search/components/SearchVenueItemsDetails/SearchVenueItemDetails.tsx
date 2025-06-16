@@ -39,4 +39,4 @@ const VenueName = styled(Typo.BodyAccent).attrs({
 
 const ShortAddressLabel = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
-})(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))
+})(({ theme }) => ({ flexShrink: 1, color: theme.designSystem.color.text.subtle }))

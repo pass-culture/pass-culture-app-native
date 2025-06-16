@@ -32,7 +32,9 @@ export const InfoTab = <TabKeyType extends string>({
   const StyledIcon = useMemo(() => {
     return Icon
       ? styled(Icon).attrs(({ theme }) => ({
-          color: isSelected ? theme.colors.primary : theme.colors.greyDark,
+          color: isSelected
+            ? theme.designSystem.color.icon.brandPrimary
+            : theme.designSystem.color.icon.disabled,
           size: theme.icons.sizes.extraSmall,
         }))``
       : null
@@ -72,7 +74,10 @@ const TabTitleContainer = styled(ViewGap)({
 const TabTitle = styled(Typo.BodyAccent)<{ isSelected: boolean; isHover: boolean }>(
   ({ isSelected, isHover, theme }) => ({
     textAlign: 'center',
-    color: isSelected || isHover ? theme.colors.primary : theme.colors.greyDark,
+    color:
+      isSelected || isHover
+        ? theme.designSystem.color.text.brandPrimary
+        : theme.designSystem.color.text.disabled,
   })
 )
 
@@ -80,16 +85,16 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
   bottom: 0,
   height: getSpacing(1),
   width: '100%',
-  backgroundColor: isSelected ? theme.colors.primary : 'transparent',
+  backgroundColor: isSelected ? theme.designSystem.color.background.brandPrimary : 'transparent',
   borderRadius: getSpacing(1),
 }))
 
 const PastilleContainer = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.primary,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
   borderRadius: getSpacing(3.25),
   paddingHorizontal: getSpacing(1),
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))

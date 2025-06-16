@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
 import { TabType } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getSpacing, Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing } from 'ui/theme'
 
 import { InfoTab } from './InfoTab'
 
@@ -46,9 +47,8 @@ export const TabLayout = <TabKeyType extends string>({
 
   return (
     <Container>
-      <TabContainer accessibilityRole={AccessibilityRole.TABLIST} ref={tabListRef}>
+      <TabContainer accessibilityRole={AccessibilityRole.TABLIST} ref={tabListRef} gap={6}>
         <GreyBar />
-        <Spacer.Row numberOfSpaces={6} />
         {tabs.map((tab) => (
           <InfoTab
             key={tab.key}
@@ -59,7 +59,6 @@ export const TabLayout = <TabKeyType extends string>({
             pastille={tab.pastille}
           />
         ))}
-        <Spacer.Row numberOfSpaces={6} />
       </TabContainer>
       <ContentContainer accessibilityRole={AccessibilityRole.TABPANEL}>
         {tabPanels[selectedTab]}
@@ -74,7 +73,7 @@ const Container = styled.View({
   width: '100%',
 })
 
-const TabContainer = styled.View({
+const TabContainer = styled(ViewGap)({
   flexDirection: 'row',
 })
 
@@ -83,7 +82,7 @@ const GreyBar = styled.View(({ theme }) => ({
   bottom: 0,
   height: getSpacing(1),
   width: '100%',
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const ContentContainer = styled.View({
