@@ -13,11 +13,11 @@ jest.mock('features/auth/context/AuthContext', () => ({
 jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
   useDeviceInfo: () => ({
     deviceId: 'device-id',
-    model: 'model-x',
     os: 'iOS',
     resolution: '1080x1920',
     source: 'app-store',
     screenZoomLevel: 1.2,
+    fontScale: 1.5,
   }),
 }))
 

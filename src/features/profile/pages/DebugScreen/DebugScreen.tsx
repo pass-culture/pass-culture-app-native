@@ -35,14 +35,15 @@ export const DebugScreen = () => {
     { label: 'Device resolution', value: deviceInfo?.resolution },
     { label: 'Device zoom', value: zoomInPercent },
     { label: 'User ID', value: user?.id },
+    { label: 'Device font scale', value: deviceInfo?.fontScale },
   ]
 
   const sortedDebugData = [...debugData].sort((a, b) => a.label.localeCompare(b.label))
 
   const debugText = sortedDebugData
-    .map((item) => `${item.label}\u00a0: ${item.value ?? 'undefined'}`)
+    .filter((item) => item.value !== undefined && item.value !== null)
+    .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
-    .toString()
 
   const copyToClipboard = useCopyToClipboard({
     textToCopy: debugText,
@@ -60,11 +61,13 @@ export const DebugScreen = () => {
       title="Débuggage"
       scrollChildren={
         <ViewGap gap={2}>
-          {sortedDebugData.map((item) => (
-            <Typo.Button key={item.label}>
-              {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
-            </Typo.Button>
-          ))}
+          {sortedDebugData
+            .filter((item) => item.value !== undefined)
+            .map((item) => (
+              <Typo.Button key={item.label}>
+                {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
+              </Typo.Button>
+            ))}
         </ViewGap>
       }
       fixedBottomChildren={

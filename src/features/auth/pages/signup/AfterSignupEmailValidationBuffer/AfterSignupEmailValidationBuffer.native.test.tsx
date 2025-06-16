@@ -161,7 +161,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           os: 'iOS',
           source: 'iPhone 13',
           resolution: '750x1334',
-          screenZoomLevel: 2,
+          screenZoomLevel: undefined,
+          fontScale: -1,
         },
         emailValidationToken: 'reerereskjlmkdlsf',
       })
