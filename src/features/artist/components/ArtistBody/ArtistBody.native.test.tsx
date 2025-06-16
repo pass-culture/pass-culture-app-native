@@ -111,6 +111,6 @@ describe('<ArtistBody />', () => {
     await screen.findAllByText('Quelques infos à son sujet')
 
     expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()
-    expect(screen.getByText('Chanteuse canadienne')).toBeOnTheScreen()
+    expect(screen.getByText('Chanteuse canadienne.')).toBeOnTheScreen()
   })
 })
