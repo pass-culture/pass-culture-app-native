@@ -35,7 +35,7 @@ import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { RootStackNavigatorBase } from 'features/navigation/RootNavigator/Stack'
 
-export const SubscriptionScreens = () => (
+export const SubscriptionScreens = (
   <React.Fragment>
     <RootStackNavigatorBase.Screen
       name="Stepper"

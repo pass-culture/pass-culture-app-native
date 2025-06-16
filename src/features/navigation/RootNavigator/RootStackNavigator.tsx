@@ -422,7 +422,7 @@ const RootStackNavigator = withWebWrapper(
             component={SuspiciousLoginSuspendedAccount}
             options={{ title: 'Confirmation de suspension de compte' }}
           />
-          <SubscriptionScreens />
+          {SubscriptionScreens}
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )
