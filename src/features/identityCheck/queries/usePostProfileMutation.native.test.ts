@@ -3,7 +3,7 @@ import { ActivityIdEnum } from 'api/gen'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { usePostProfileMutation } from './usePostProfileMutation'
 
@@ -47,6 +47,8 @@ describe('usePostProfileMutation', () => {
     await act(async () => {
       await postProfile(profile)
     })
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(postSubscriptionProfileSpy).toHaveBeenCalledWith({
       address: 'address',

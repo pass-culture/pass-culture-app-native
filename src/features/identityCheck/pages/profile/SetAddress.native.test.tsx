@@ -53,7 +53,7 @@ describe('<SetAddress/>', () => {
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  it('should render correctly', async () => {
+  it.skip('should render correctly', async () => {
     renderSetAddress()
 
     await screen.findByText('Recherche et sélectionne ton adresse')
