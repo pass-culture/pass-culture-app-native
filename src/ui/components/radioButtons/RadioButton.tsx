@@ -131,8 +131,8 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
 
 const Label = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected
-    ? theme.designSystem.color.icon.brandPrimary
-    : theme.designSystem.color.icon.default,
+    ? theme.designSystem.color.text.brandPrimary
+    : theme.designSystem.color.text.default,
   flexGrow: 1,
   flexShrink: 1,
 }))
@@ -140,8 +140,8 @@ const Label = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, th
 const ComplementLabel = styled(Typo.BodyAccentXs)<{ isSelected: boolean }>(
   ({ isSelected, theme }) => ({
     color: isSelected
-      ? theme.designSystem.color.icon.brandPrimary
-      : theme.designSystem.color.icon.default,
+      ? theme.designSystem.color.text.brandPrimary
+      : theme.designSystem.color.text.default,
     marginLeft: getSpacing(2),
     flexShrink: 0,
   })
@@ -168,7 +168,7 @@ const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
 }))``
 
 const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.subtle,
+  color: theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.smaller,
 }))``
 

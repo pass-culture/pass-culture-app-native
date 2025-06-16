@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
@@ -105,6 +104,6 @@ const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
 
-const StyledText = styled(Text)({
+const StyledText = styled(Typo.Body)({
   textAlign: 'center',
 })

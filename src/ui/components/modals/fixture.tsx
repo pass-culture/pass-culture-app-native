@@ -1,8 +1,8 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
+import { Typo } from 'ui/theme'
 
 import { AppModal } from './AppModal'
 
@@ -10,7 +10,7 @@ export type AppModalProps = Parameters<typeof AppModal>[0]
 
 export const defaultProps: AppModalProps = {
   title: 'Some title',
-  children: <Text>Hello World</Text>,
+  children: <Typo.Body>Hello World</Typo.Body>,
 
   visible: true,
 

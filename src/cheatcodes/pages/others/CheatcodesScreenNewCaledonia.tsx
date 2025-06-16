@@ -83,7 +83,7 @@ export const CheatcodesScreenNewCaledonia = () => {
 }
 
 const StyledTitle3 = styled(Typo.Title3)<{ active: boolean }>(({ theme, active }) => ({
-  color: active ? theme.colors.greenValid : theme.colors.error,
+  color: active ? theme.designSystem.color.text.success : theme.designSystem.color.text.error,
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)({

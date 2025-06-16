@@ -14,6 +14,7 @@ import {
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'
 
 const linksInitialState: Array<GeneratedDeeplink> = []
@@ -57,7 +58,7 @@ export const DeeplinksGenerator = () => {
   }, [])
 
   return (
-    <React.Fragment>
+    <Page>
       <PageHeaderWithoutPlaceholder
         title="Envie de tout envie de lien&nbsp;?"
         shouldDisplayBackButton
@@ -81,13 +82,13 @@ export const DeeplinksGenerator = () => {
         </Row>
       </Container>
       <BlurHeader height={headerHeight} />
-    </React.Fragment>
+    </Page>
   )
 }
 
 const Divider = styled.View(({ theme }) => ({
   height: getSpacing(2),
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const Row = styled.View(({ theme }) => ({

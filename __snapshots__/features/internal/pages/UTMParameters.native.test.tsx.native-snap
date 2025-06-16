@@ -217,137 +217,98 @@ exports[`<UTMParameters /> should render correctly 1`] = `
         }
       >
         <View
+          gap={2}
           style={
             [
               {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "gap": 8,
               },
             ]
           }
         >
-          <Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
             traffic_gen: 
           </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text>
-            traffic_campaign: 
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            traffic_campaign : 
           </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text>
-            traffic_content: 
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            traffic_content : 
           </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text>
-            traffic_medium: 
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            traffic_medium : 
           </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text>
-            traffic_source: 
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            traffic_source : 
           </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text>
-            campaign_date: 
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            campaign_date : 
           </Text>
         </View>
       </View>

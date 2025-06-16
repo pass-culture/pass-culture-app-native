@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import { fireEvent, render, screen } from 'tests/utils/web'
+import { Typo } from 'ui/theme'
 
 import { Touchable } from './Touchable'
 
@@ -10,7 +10,7 @@ describe('<Touchable />', () => {
     const handleClick = jest.fn()
     render(
       <Touchable onPress={handleClick}>
-        <Text>Touchable content</Text>
+        <Typo.Body>Touchable content</Typo.Body>
       </Touchable>
     )
 

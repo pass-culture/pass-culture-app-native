@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -10,6 +9,7 @@ import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerar
 import { render, screen, waitFor, userEvent } from 'tests/utils'
 import { SocialNetworkIconsMap } from 'ui/components/socials/types'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Typo } from 'ui/theme'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 jest.mock('features/navigation/navigationRef')
@@ -24,7 +24,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 const linkText = 'linkText'
 
-const ExternalTouchableLinkContent = () => <Text>{linkText}</Text>
+const ExternalTouchableLinkContent = () => <Typo.Body>{linkText}</Typo.Body>
 
 const socialNetwork = 'facebook'
 const externalNav = {
