@@ -35,7 +35,7 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
       icon: Icon,
       title: Title,
       inlineHeight: getSpacing(5),
-      hoverUnderlineColor: theme.buttons.tertiaryBlack.textColor,
+      hoverUnderlineColor: theme.designSystem.color.text.default,
     }
   }
 )({
@@ -43,6 +43,6 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
 })
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
-  color: theme.buttons.tertiaryBlack.loadingIconColor,
+  color: theme.designSystem.color.icon.default,
   size: theme.buttons.tertiaryBlack.iconSize,
 }))``

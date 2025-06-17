@@ -34,7 +34,7 @@ export const ButtonSecondaryBlack = styledButton(AppButton).attrs<BaseButtonProp
       title: Title,
       loadingIndicator: LoadingIndicator,
       backgroundColor: 'transparent',
-      hoverUnderlineColor: theme.buttons.secondaryBlack.textColor,
+      hoverUnderlineColor: theme.designSystem.color.text.default,
     }
   }
 )(({ theme, isLoading, disabled }) => {
@@ -65,6 +65,6 @@ export const ButtonSecondaryBlack = styledButton(AppButton).attrs<BaseButtonProp
 })
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
-  color: theme.buttons.secondaryBlack.loadingIconColor,
+  color: theme.designSystem.color.icon.default,
   size: theme.buttons.secondaryBlack.iconSize,
 }))``

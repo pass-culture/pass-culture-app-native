@@ -13,22 +13,22 @@ export const ButtonTertiaryPrimary = styledButton(AppButton).attrs<BaseButtonPro
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.tertiary.iconColor
-          : theme.buttons.tertiary.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.brandPrimary,
         size: theme.buttons.tertiary.iconSize,
       })``
     }
 
     const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
-      color: theme.buttons.tertiary.loadingIconColor,
+      color: theme.designSystem.color.icon.brandPrimary,
       size: theme.buttons.tertiary.iconSize,
     })``
 
     const Title = styled(Typo.Button)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.tertiary.textColor
-        : theme.buttons.tertiary.textColor,
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.brandPrimary,
       fontSize: textSize,
     })
 
@@ -37,9 +37,9 @@ export const ButtonTertiaryPrimary = styledButton(AppButton).attrs<BaseButtonPro
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
-      hoverUnderlineColor: theme.buttons.tertiary.textColor,
+      hoverUnderlineColor: theme.designSystem.color.text.brandPrimary,
     }
   }
-)(({ theme }) => ({
-  backgroundColor: theme.buttons.tertiary.backgroundColor,
-}))
+)({
+  backgroundColor: 'transparent',
+})

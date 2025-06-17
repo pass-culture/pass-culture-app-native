@@ -20,7 +20,7 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
     }
 
     const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
-      color: theme.buttons.quaternaryBlack.loadingIconColor,
+      color: theme.designSystem.color.icon.default,
       size: theme.buttons.quaternaryBlack.iconSize,
     })``
 

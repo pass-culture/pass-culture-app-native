@@ -39,7 +39,7 @@ exports[`Profile component should render correctly 1`] = `
             style={
               [
                 {
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949d",
                   "borderRadius": 8,
                   "borderStyle": "solid",
                   "borderWidth": 2,

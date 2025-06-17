@@ -13,22 +13,22 @@ export const ButtonQuaternaryGrey = styledButton(AppButton).attrs<BaseButtonProp
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.quaternaryGrey.iconColor
-          : theme.buttons.quaternaryGrey.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.subtle,
         size: theme.buttons.quaternaryGrey.iconSize,
       })``
     }
 
     const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
-      color: theme.buttons.quaternaryGrey.loadingIconColor,
+      color: theme.designSystem.color.icon.subtle,
       size: theme.buttons.quaternaryGrey.iconSize,
     })``
 
     const Title = styled(Typo.BodyAccentXs)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.quaternaryGrey.textColor
-        : theme.buttons.quaternaryGrey.textColor,
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.subtle,
     })
 
     return {
@@ -37,9 +37,9 @@ export const ButtonQuaternaryGrey = styledButton(AppButton).attrs<BaseButtonProp
       icon: Icon,
       loadingIndicator: LoadingIndicator,
       title: Title,
-      hoverUnderlineColor: theme.buttons.quaternaryGrey.textColor,
+      hoverUnderlineColor: theme.designSystem.color.text.subtle,
     }
   }
-)(({ theme }) => ({
-  backgroundColor: theme.buttons.quaternaryGrey.backgroundColor,
-}))
+)({
+  backgroundColor: 'transparent',
+})
