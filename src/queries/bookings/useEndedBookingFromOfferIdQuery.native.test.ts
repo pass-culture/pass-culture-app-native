@@ -63,7 +63,7 @@ describe('useEndedBookingFromOfferIdQueryV2', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current?.data?.id).toEqual(booking.id)
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
@@ -74,7 +74,7 @@ describe('useEndedBookingFromOfferIdQueryV2', () => {
     const { result } = renderHook(() => useEndedBookingFromOfferIdQueryV2(unknownOfferId, true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current?.data).toEqual(null)
   })

@@ -3,7 +3,7 @@ import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { useUserHasBookingsQueryV2 } from 'queries/bookings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 
@@ -14,7 +14,7 @@ describe('useUserHasBookingsQueryV2', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current?.data).toEqual(false)
   })
@@ -25,7 +25,7 @@ describe('useUserHasBookingsQueryV2', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current?.data).toEqual(true)
   })
