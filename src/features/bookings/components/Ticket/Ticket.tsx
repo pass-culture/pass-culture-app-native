@@ -91,8 +91,11 @@ export const Ticket = ({
       bottomContent={
         <TicketBottomPart
           isDuo={properties.isDuo ?? false}
-          ticket={ticket}
+          ticket={ticket ?? null}
           userEmail={user?.email}
+          isDigital={properties.isDigital ?? false}
+          isEvent={properties.isEvent ?? false}
+          ean={booking.stock.offer.extraData?.ean ?? null}
         />
       }
       infoBanner={
