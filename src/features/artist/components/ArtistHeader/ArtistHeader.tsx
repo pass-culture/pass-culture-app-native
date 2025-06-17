@@ -22,7 +22,7 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
           <StyledImage
             url={avatarImage}
             accessibilityRole={AccessibilityRole.IMAGE}
-            accessibilityLabel="artist avatar"
+            accessibilityLabel="artist avatar" // pourquoi en anglais ?
           />
         ) : (
           <DefaultAvatar />
