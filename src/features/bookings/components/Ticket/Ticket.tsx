@@ -91,7 +91,6 @@ export const Ticket = ({
       bottomContent={
         <TicketBottomPart
           isDuo={properties.isDuo ?? false}
-          beginningDatetime={booking.stock.beginningDatetime}
           ticket={ticket}
           userEmail={user?.email}
         />
