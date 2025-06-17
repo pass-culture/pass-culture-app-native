@@ -14,6 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
 ##############################################################################
@@ -68,7 +69,7 @@ app_path=$0
 
 # Need this for daisy-chained symlinks.
 while
-    APP_HOME=${app_path%"${app_path##*/}"} # leaves a trailing /; empty if no leading path
+    APP_HOME=$(cd -P "${APP_HOME:-./}" >/dev/null && printf '%s' "$PWD") || exit
     [ -h "$app_path" ]
 do
     ls=$(ls -ld "$app_path")

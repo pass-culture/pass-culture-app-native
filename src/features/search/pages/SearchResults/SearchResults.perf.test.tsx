@@ -16,7 +16,7 @@ import { act, measurePerformance } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/tabBarRoutes')
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('react-native/src/private/animated/NativeAnimatedHelper')
 
 jest.mock('react-instantsearch-core', () => ({
   ...jest.requireActual('react-instantsearch-core'),
