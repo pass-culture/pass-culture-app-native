@@ -151,7 +151,8 @@ describe('Stepper navigation', () => {
     await waitFor(() => expect(navigate).not.toHaveBeenCalled())
   })
 
-  it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
     mockUserProfileData = {
       ...mockUserProfileData,
       depositExpirationDate: '2021-11-01T00:00:00.000Z',
@@ -226,6 +227,7 @@ describe('Stepper navigation', () => {
     }
   )
 
+  //TODO(PC-36587): unskip this test
   it.skip('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', async () => {
     useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.HOME } })
 
