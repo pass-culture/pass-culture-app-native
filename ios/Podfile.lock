@@ -1813,7 +1813,30 @@ PODS:
     - React
   - RNPermissions (3.8.0):
     - React-Core
-  - RNReanimated (3.9.0):
+  - RNReanimated (3.15.4):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNReanimated/reanimated (= 3.15.4)
+    - RNReanimated/worklets (= 3.15.4)
+    - Yoga
+  - RNReanimated/reanimated (3.15.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1834,7 +1857,28 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.32.0):
+  - RNReanimated/worklets (3.15.4):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - RNScreens (4.11.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2394,8 +2438,8 @@ SPEC CHECKSUMS:
   RNKeychain: 3194f1c9d8599f39e570b4b5ecbcdd8cd610e771
   RNLaunchNavigator: 2011701d73aba8517d17cc82a8c98131c7a580c6
   RNPermissions: 9c398ee6c48ae73c3f8bc48f199e3bf0463ac7f7
-  RNReanimated: 4505e9a5677ce4b7db3230b1b5cac2f3503eb889
-  RNScreens: 82e43e281b496d7db30818244ed13d09d3817601
+  RNReanimated: 68f3721e3a560c478a441ad1f0a4c44d15249e3b
+  RNScreens: 59f41edb265c2d29006d0939ad2ffe061fb91eee
   RNSentry: da3f40cafc2f30fa36a91aa8b0a1c0115876dde0
   RNShare: 128220f40b8d6bcd7217fa19ede9eeb273f1d5d8
   RNSVG: 38b927ba26d717c85522fbf9a04b87dcd2d8227a

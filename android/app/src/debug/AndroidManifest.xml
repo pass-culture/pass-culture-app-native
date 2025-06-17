@@ -9,5 +9,6 @@
         tools:targetApi="28"
         tools:ignore="GoogleAppIndexingWarning"
         android:allowBackup="false"
-        tools:replace="android:allowBackup"/>
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        tools:replace="android:allowBackup,android:appComponentFactory"/>
 </manifest>
