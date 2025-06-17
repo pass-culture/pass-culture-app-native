@@ -18,7 +18,7 @@ export function computeHeaderImageHeight({ topBlockHeight, windowHeight, display
   const extra = getSpacing(offerImageContainerMarginTop)
 
   const ticketSeparationOffset = isPunched
-    ? TICKET_SEPARATION_HEIGHT / 2
+    ? TICKET_SEPARATION_HEIGHT / 4
     : TICKET_FULL_SEPARATION_HEIGHT + COMPENSATE_FULL
 
   const headerImageHeight = topBlockHeight + extra + ticketSeparationOffset

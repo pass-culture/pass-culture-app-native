@@ -2,13 +2,14 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { theme } from 'theme'
+import { CutoutHorizontal } from 'ui/svg/CutoutHorizontal'
 import { Stroke } from 'ui/svg/Stroke'
-import { TicketCutoutLeft } from 'ui/svg/TicketCutoutLeft'
-import { TicketCutoutRight } from 'ui/svg/TicketCutoutRight'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export const TICKET_SEPARATION_HEIGHT = getSpacing(21.5)
 const TICKET_FULL_MIDDLE_HEIGHT = getSpacing(8)
+const TICKET_PUNCHED_MIDDLE_HEIGHT = getSpacing(10)
 
 type TicketContentProps = {
   bottomContent: React.JSX.Element
@@ -25,6 +26,9 @@ export const TicketDisplay = ({
   display,
   onTopBlockLayout,
 }: TicketContentProps) => {
+  const backgroundColor = theme.designSystem.color.background.default
+  const borderColor = theme.designSystem.color.border.subtle
+
   return display === 'punched' ? (
     <View testID="ticket-punched">
       <TopBlock
@@ -35,12 +39,21 @@ export const TicketDisplay = ({
         {topContent}
       </TopBlock>
       <MiddleBlock>
-        <TicketCutoutLeft />
+        <CutoutHorizontal
+          orientation="left"
+          backgroundColor={backgroundColor}
+          color={borderColor}
+        />
         <ContainerStrokedLine>
-          <StyledStrokedLine />
+          <Stroke color={borderColor} size="100%" />
         </ContainerStrokedLine>
-        <TicketCutoutRight />
+        <CutoutHorizontal
+          orientation="right"
+          backgroundColor={backgroundColor}
+          color={borderColor}
+        />
       </MiddleBlock>
+
       <BottomBlock>
         {infoBanner}
         {bottomContent}
@@ -56,7 +69,7 @@ export const TicketDisplay = ({
         {topContent}
       </View>
       <FullContainerStrokedLine>
-        <StyledStrokedLine />
+        <Stroke color={borderColor} />
       </FullContainerStrokedLine>
       {infoBanner}
       {bottomContent}
@@ -67,54 +80,45 @@ export const TicketDisplay = ({
 const FullContainerStrokedLine = styled.View(({ theme }) => ({
   height: TICKET_FULL_MIDDLE_HEIGHT,
   backgroundColor: theme.designSystem.color.background.default,
+  justifyContent: 'center',
 }))
 
 const ContainerStrokedLine = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.designSystem.color.background.default,
+  justifyContent: 'center',
+  alignContent: 'center',
+  paddingHorizontal: getSpacing(3.5),
 }))
 
-const StyledStrokedLine = styled(Stroke).attrs(({ theme }) => ({
-  size: '100%',
-  color: theme.colors.greyMedium,
-}))({})
-
-const MiddleBlock = styled.View({
-  flexDirection: 'row',
-  width: '100%',
-  height: TICKET_SEPARATION_HEIGHT,
-  zIndex: 1,
-})
-
 const ContentBlock = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(6),
   backgroundColor: theme.designSystem.color.background.default,
   gap: getSpacing(6),
   paddingHorizontal: getSpacing(7.5),
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(0.5),
-    },
-    shadowRadius: getSpacing(4),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.15,
-  }),
+  borderColor: theme.designSystem.color.border.subtle,
+  borderLeftWidth: 1,
+  borderRightWidth: 1,
+  paddingVertical: getSpacing(6),
 }))
 
 const FullBlock = styled(ContentBlock)({
   borderRadius: getSpacing(6),
-  paddingVertical: getSpacing(6),
+  borderWidth: 1,
 })
 
 const BottomBlock = styled(ContentBlock)({
+  justifyContent: 'center',
+  borderBottomWidth: 1,
   borderBottomLeftRadius: getSpacing(6),
   borderBottomRightRadius: getSpacing(6),
-  justifyContent: 'center',
-  paddingBottom: getSpacing(6),
 })
 const TopBlock = styled(ContentBlock)({
+  borderTopWidth: 1,
   borderTopLeftRadius: getSpacing(6),
   borderTopRightRadius: getSpacing(6),
-  paddingTop: getSpacing(6),
+})
+
+const MiddleBlock = styled.View({
+  flexDirection: 'row',
+  height: TICKET_PUNCHED_MIDDLE_HEIGHT,
 })

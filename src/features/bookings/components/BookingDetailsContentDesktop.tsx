@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 
-const MARGIN_TICKET_CUTOUT = getSpacing(6)
 const MAX_WIDTH_BLOCKS = getSpacing(100)
 
 export const BookingDetailsContentDesktop = ({
@@ -24,15 +23,15 @@ export const BookingDetailsContentDesktop = ({
 }
 
 const LeftBlock = styled.View({
-  maxWidth: getSpacing(112),
+  maxWidth: MAX_WIDTH_BLOCKS,
   marginBottom: getSpacing(10),
 })
 
 const StyledContainer = styled.View({
   flexDirection: 'row',
-  marginLeft: getSpacing(18) - MARGIN_TICKET_CUTOUT,
+  marginLeft: getSpacing(18),
   marginRight: getSpacing(22),
-  gap: getSpacing(16) - MARGIN_TICKET_CUTOUT,
+  gap: getSpacing(16),
   marginBottom: getSpacing(14),
 })
 

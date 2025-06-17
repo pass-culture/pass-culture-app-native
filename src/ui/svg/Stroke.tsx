@@ -9,25 +9,26 @@ const StrokeSvg: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
   color,
-  size,
+  size = 4,
 }) => (
   <AccessibleSvg
-    width={size}
+    width="100%"
     height={size}
-    testID={testID}
     viewBox="0 0 257 4"
+    preserveAspectRatio="xMidYMid meet"
+    testID={testID}
     accessibilityLabel={accessibilityLabel}>
     <Path
       stroke={color}
       strokeWidth="4"
       strokeLinecap="round"
       vectorEffect="non-scaling-stroke"
-      d="M254 2L2 1.99998"
+      d="M254 2L2 2"
       strokeDasharray="2,16"
     />
   </AccessibleSvg>
 )
 
 export const Stroke = styled(StrokeSvg).attrs(({ color, theme }) => ({
-  color: color ?? theme.designSystem.color.icon.default,
+  color: color ?? theme.designSystem.color.border.subtle,
 }))``
