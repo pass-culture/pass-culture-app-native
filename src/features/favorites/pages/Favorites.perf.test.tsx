@@ -19,7 +19,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('react-native/src/private/animated/NativeAnimatedHelper')
 
 // Performance measuring is run multiple times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 30000
