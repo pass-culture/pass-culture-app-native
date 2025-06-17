@@ -131,7 +131,7 @@
 #### Recommandations
 
 - l'URL devrait être la source de vérité
-- pour les états locaux (ex : localisation), le stata manager (Zustand) devrait être la source de vérité
+- pour les états locaux (ex : localisation), le state manager (Zustand) devrait être la source de vérité
 - les requêtes devraient être gérées au niveau de la page
 
 ### Réserve d’une Offre
