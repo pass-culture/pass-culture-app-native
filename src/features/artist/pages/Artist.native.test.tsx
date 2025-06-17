@@ -61,12 +61,10 @@ describe('<Artist />', () => {
       mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
     })
 
-    it('should render null', async () => {
+    it('should display page not found', async () => {
       render(reactQueryProviderHOC(<Artist />))
 
-      await act(async () => {})
-
-      expect(screen.toJSON()).toBeNull()
+      expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
     })
   })
 })
