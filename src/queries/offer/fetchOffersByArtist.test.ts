@@ -1,13 +1,11 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import {
-  buildAlgoliaFilter,
-  fetchOffersByArtist,
-} from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Position } from 'libs/location'
+
+import { buildAlgoliaFilter, fetchOffersByArtist } from './fetchOffersByArtist'
 
 const mockMultipleQueries = jest.spyOn(multipleQueriesAPI, 'multipleQueries')
 

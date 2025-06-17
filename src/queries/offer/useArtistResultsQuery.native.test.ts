@@ -1,5 +1,4 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { useArtistResultsQuery } from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useRemoteConfigQueryAPI from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -7,7 +6,8 @@ import { Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import * as fetchOffersByArtist from '../api/fetchOffersByArtist/fetchOffersByArtist'
+import * as fetchOffersByArtist from './fetchOffersByArtist'
+import { useArtistResultsQuery } from './useArtistResultsQuery'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,

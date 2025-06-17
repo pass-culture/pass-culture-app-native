@@ -3,13 +3,14 @@ import { useCallback, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { fetchOffersByArtist } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
+
+import { fetchOffersByArtist } from './fetchOffersByArtist'
 
 type UseArtistResultsProps = {
   subcategoryId?: SubcategoryIdEnum
