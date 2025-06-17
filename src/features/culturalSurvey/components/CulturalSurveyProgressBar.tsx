@@ -15,7 +15,7 @@ export const CulturalSurveyProgressBar = (props: CulturalSurveyProgressBarProps)
     <VerticalContainer>
       <Container>
         <ProgressBarContainer>
-          <StyledProgressBar progress={props.progress} />
+          <ProgressBar progress={props.progress} />
         </ProgressBarContainer>
         <PercentageContainer>
           <SurveyProgressPercentage>{progressPercent}</SurveyProgressPercentage>
@@ -28,10 +28,6 @@ export const CulturalSurveyProgressBar = (props: CulturalSurveyProgressBarProps)
 const VerticalContainer = styled.View({
   flexGrow: 1,
 })
-
-const StyledProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
-  colors: [theme.colors.secondary, theme.colors.primary],
-}))``
 
 const Container = styled.View({
   flexDirection: 'row',

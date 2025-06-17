@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { CulturalSurveyAnswer, CulturalSurveyAnswerEnum, CulturalSurveyQuestionEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { CulturalSurveyCheckboxDeprecated } from 'features/culturalSurvey/components/CulturalSurveyCheckboxDeprecated'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/CulturalSurveyPageHeader'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/mapQuestionIdToPageTitle'
@@ -33,9 +32,11 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
+import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CulturalSurveyQuestionsProps = StackScreenProps<
@@ -190,7 +191,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
   }
 
   return (
-    <Container>
+    <Page>
       <Spacer.TopScreen />
       <CulturalSurveyPageHeader
         progress={culturalSurveyProgress}
@@ -205,21 +206,20 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
         <CaptionContainer>
           <StyledBodyAccentXs>{pageSubtitle}</StyledBodyAccentXs>
         </CaptionContainer>
-        <VerticalUl>
+        <StyledVerticalUl>
           {culturalSurveyQuestion?.answers.map((answer) => (
             <Li key={answer.id}>
-              <CheckboxContainer>
-                <CulturalSurveyCheckboxDeprecated
-                  selected={isAnswerAlreadySelected(answer)}
-                  onPress={handleToggleAnswer(answer)}
-                  title={answer.title}
-                  subtitle={answer?.subtitle}
-                  icon={mapCulturalSurveyTypeToIcon(answer?.id)}
-                />
-              </CheckboxContainer>
+              <Checkbox
+                label={answer.title}
+                variant="detailed"
+                description={answer?.subtitle ?? ''}
+                onPress={handleToggleAnswer(answer)}
+                isChecked={isAnswerAlreadySelected(answer)}
+                asset={{ variant: 'icon', Icon: mapCulturalSurveyTypeToIcon(answer?.id) }}
+              />
             </Li>
           ))}
-        </VerticalUl>
+        </StyledVerticalUl>
       </ChildrenScrollView>
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
         <ButtonPrimary
@@ -236,22 +236,13 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
         />
         <Spacer.BottomScreen />
       </FixedBottomChildrenView>
-    </Container>
+    </Page>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  display: 'flex',
-  alignSelf: 'center',
-  maxWidth: theme.forms.maxWidth,
-  width: '100%',
-  flexDirection: 'column',
-}))
-
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
 const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>(
-  ({ bottomChildrenViewHeight }) => ({
+  ({ bottomChildrenViewHeight, theme }) => ({
     keyboardShouldPersistTaps: 'handled',
     keyboardDismissMode: 'on-drag',
     contentContainerStyle: {
@@ -261,13 +252,13 @@ const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>(
       marginTop: getSpacing(5),
       paddingBottom: bottomChildrenViewHeight,
       width: '100%',
-      paddingHorizontal: getSpacing(6),
+      paddingHorizontal: theme.contentPage.marginHorizontal,
     },
   })
 )<ChildrenScrollViewProps>({})
 
-const CheckboxContainer = styled.View({
-  paddingBottom: getSpacing(3),
+const StyledVerticalUl = styled(VerticalUl)({
+  gap: getSpacing(3),
 })
 
 const CaptionContainer = styled.View({

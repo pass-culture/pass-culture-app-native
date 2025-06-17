@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native'
 import React, { FC, useEffect } from 'react'
 import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AchievementEnum } from 'api/gen'
@@ -34,7 +33,6 @@ export const Achievements = () => {
     params: { from },
   } = useRoute<UseRouteType<'Achievements'>>()
   const { user } = useAuthContext()
-  const { uniqueColors } = useTheme()
   const { categories, track } = getAchievements({
     achievements: achievementData,
     completedAchievements: user?.achievements || [],
@@ -64,11 +62,7 @@ export const Achievements = () => {
                 </View>
                 <CompletionContainer>
                   <ProgressBarContainer>
-                    <ProgressBar
-                      progress={category.progress}
-                      colors={[uniqueColors.brand]}
-                      height={2.5}
-                    />
+                    <ProgressBar progress={category.progress} height={2.5} />
                   </ProgressBarContainer>
                   <Typo.BodyS>{category.progressText}</Typo.BodyS>
                 </CompletionContainer>

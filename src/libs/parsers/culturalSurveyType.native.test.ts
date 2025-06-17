@@ -3,10 +3,10 @@ import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { culturalSurveyIcons } from 'ui/svg/icons/exports/culturalSurveyIcons'
 
 describe('culturalSurveyType', () => {
-  it('should have default icon as Festival', () => {
+  it('should have default icon as All', () => {
     const result = mapCulturalSurveyTypeToIcon('__unknown_key__' as CulturalSurveyAnswerEnum)
 
-    expect(result).toBe(culturalSurveyIcons.Festival)
+    expect(result).toBe(culturalSurveyIcons.All)
   })
 
   it('should have icon Book icon for books', () => {

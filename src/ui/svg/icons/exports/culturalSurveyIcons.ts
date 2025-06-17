@@ -1,4 +1,5 @@
 import { Accordion } from 'ui/svg/icons/venueAndCategories/Accordion'
+import { All } from 'ui/svg/icons/venueAndCategories/All'
 import { Book } from 'ui/svg/icons/venueAndCategories/Book'
 import { Bookstore } from 'ui/svg/icons/venueAndCategories/Bookstore'
 import { Brush } from 'ui/svg/icons/venueAndCategories/Brush'
@@ -22,6 +23,7 @@ import { Video } from 'ui/svg/icons/venueAndCategories/Video'
 import { VideoGame } from 'ui/svg/icons/venueAndCategories/VideoGame'
 
 export const culturalSurveyIcons = {
+  All,
   Accordion,
   Book,
   Bookstore,
