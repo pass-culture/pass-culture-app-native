@@ -9,7 +9,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
@@ -40,7 +40,7 @@ describe('<Artist />', () => {
       expect((await screen.findAllByText('Avril Lavigne'))[0]).toBeOnTheScreen()
     })
 
-    it('should render null when there is no artist', async () => {
+    it('should display page not found when there is no artist', async () => {
       mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
         responseOptions: {
           statusCode: 404,
@@ -49,9 +49,7 @@ describe('<Artist />', () => {
       })
       render(reactQueryProviderHOC(<Artist />))
 
-      await act(async () => {})
-
-      expect(screen.toJSON()).toBeNull()
+      expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
     })
   })
 
