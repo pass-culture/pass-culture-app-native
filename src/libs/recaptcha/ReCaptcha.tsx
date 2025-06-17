@@ -124,6 +124,6 @@ export const ReCaptcha: React.FC<Props> = (props) => {
 
 const StyledWebview = styled(WebView)<{ marginTop: number }>(({ marginTop, theme }) => ({
   flex: 1,
-  backgroundColor: colorAlpha(theme.colors.black, 0),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.default, 0),
   marginTop: Platform.OS === 'ios' ? marginTop : 0,
 }))

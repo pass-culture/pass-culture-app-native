@@ -90,7 +90,9 @@ describe('SetPhoneNumber', () => {
     renderSetPhoneNumber()
     const remainingAttemptsText = screen.getByText('1 demande')
     await waitFor(() => {
-      expect(remainingAttemptsText.props.style[0].color).toEqual(theme.colors.error)
+      expect(remainingAttemptsText.props.style[0].color).toEqual(
+        theme.designSystem.color.text.error
+      )
     })
   })
 

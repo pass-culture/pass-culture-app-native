@@ -17,14 +17,14 @@ type AchievementProps = {
 
 export const Achievement: FC<AchievementProps> = ({ Illustration, name, title, isCompleted }) => {
   const { visible, showModal, hideModal } = useModal(false)
-  const theme = useTheme()
+  const { illustrations } = useTheme()
 
   return (
     <React.Fragment>
       <StyledTouchableOpacity onPress={showModal}>
         <AchievementContainer isCompleted={isCompleted}>
           <IllustrationContainer>
-            <Illustration size={theme.illustrations.sizes.small} />
+            <Illustration size={illustrations.sizes.small} />
           </IllustrationContainer>
           <TypoAchievementName numberOfLines={2} isCompleted={!!isCompleted}>
             {title}
@@ -44,17 +44,21 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
 const AchievementContainer = styled.View<{ isCompleted: boolean }>(({ theme, isCompleted }) => ({
   paddingVertical: getSpacing(6),
   paddingHorizontal: getSpacing(2),
-  border: `1px solid ${theme.colors.greyDark}`,
+  border: `1px solid ${theme.designSystem.color.border.default}`,
   borderRadius: getSpacing(2),
   alignItems: 'center',
-  backgroundColor: isCompleted ? theme.colors.white : theme.colors.greyLight,
+  backgroundColor: isCompleted
+    ? theme.designSystem.color.background.default
+    : theme.designSystem.color.background.disabled,
   flex: 1,
   justifyContent: 'center',
 }))
 
 const TypoAchievementName = styled(Typo.Button)<{ isCompleted: boolean }>(
   ({ theme, isCompleted }) => ({
-    color: isCompleted ? theme.colors.black : theme.colors.greySemiDark,
+    color: isCompleted
+      ? theme.designSystem.color.text.default
+      : theme.designSystem.color.text.disabled,
     textAlign: 'center',
   })
 )

@@ -115,5 +115,5 @@ export const EduConnectForm = () => {
 
 const StyledWebView = styled(WebView)(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

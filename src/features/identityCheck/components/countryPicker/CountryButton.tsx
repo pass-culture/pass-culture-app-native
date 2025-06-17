@@ -58,11 +58,11 @@ const CountryCallingCode = styled(Typo.BodyAccent)(({ theme }) => ({
 }))
 
 const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.smaller,
 }))``
 
 const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.smaller,
 }))``

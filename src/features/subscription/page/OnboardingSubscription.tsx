@@ -24,6 +24,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Page } from 'ui/pages/Page'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -144,7 +145,7 @@ export const OnboardingSubscription = () => {
   const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, SUSBCRIPTION_THEMES)
 
   return (
-    <React.Fragment>
+    <Page>
       <EmptyHeader />
       <FlatList
         data={SUSBCRIPTION_THEMES}
@@ -186,17 +187,18 @@ export const OnboardingSubscription = () => {
         dismissModal={hideNotificationsModal}
         onPressSaveChanges={updateSubscription}
       />
-    </React.Fragment>
+    </Page>
   )
 }
 
 const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
-const StyledView = styled.View.attrs({})(({ theme }) => ({
-  backgroundColor: theme.colors.white,
+const StyledView = styled.View(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.default,
   alignItems: 'center',
   padding: getSpacing(4),
-  gap: getSpacing(6),
+  gap: getSpacing(5),
+  paddingBottom: getSpacing(6),
 }))
 
 const SubscriptionThematicButtonContainer = styled.View({
@@ -205,7 +207,10 @@ const SubscriptionThematicButtonContainer = styled.View({
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)
 const Gradient = styled(AnimatedGradient).attrs(({ theme }) => ({
-  colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
+  colors: [
+    colorAlpha(theme.designSystem.color.background.default, 0),
+    theme.designSystem.color.background.default,
+  ],
   locations: [0, 1],
   pointerEvents: 'none',
 }))({

@@ -708,7 +708,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 1,
                   "width": "100%",
                 },
@@ -3131,7 +3131,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 1,
                   "width": "100%",
                 },

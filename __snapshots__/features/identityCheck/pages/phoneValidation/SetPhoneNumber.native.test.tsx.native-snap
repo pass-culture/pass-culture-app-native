@@ -306,7 +306,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -504,7 +504,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             style={
                               [
                                 {
-                                  "borderRightColor": "#696A6F",
+                                  "borderRightColor": "#90949d",
                                   "borderRightWidth": 1,
                                   "paddingVertical": 10,
                                 },
@@ -527,7 +527,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         onFocus={[Function]}
                         onSubmitEditing={[Function]}
                         placeholder=""
-                        placeholderTextColor="#696A6F"
+                        placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
                           [

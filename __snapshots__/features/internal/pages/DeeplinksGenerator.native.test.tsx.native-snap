@@ -550,7 +550,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -682,7 +682,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -814,7 +814,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -946,7 +946,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1078,7 +1078,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1210,7 +1210,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1342,7 +1342,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1474,7 +1474,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1606,7 +1606,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1738,7 +1738,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -1956,7 +1956,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="videoModuleId"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -2011,7 +2011,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2229,7 +2229,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="utm_campaign"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -2284,7 +2284,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2351,7 +2351,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="utm_source"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -2406,7 +2406,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2473,7 +2473,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="utm_medium"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -2528,7 +2528,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2595,7 +2595,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="utm_content"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -2650,7 +2650,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2718,7 +2718,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="utm_gen (*)"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -2773,7 +2773,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },
@@ -2991,7 +2991,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="amv"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -3046,7 +3046,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },

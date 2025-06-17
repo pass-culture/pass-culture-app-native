@@ -343,7 +343,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
               onChangeText={[Function]}
               onFocus={[Function]}
               placeholder=""
-              placeholderTextColor="#696A6F"
+              placeholderTextColor="#696a6f"
               returnKeyType="next"
               style={
                 [

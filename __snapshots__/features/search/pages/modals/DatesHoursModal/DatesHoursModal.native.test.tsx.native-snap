@@ -563,7 +563,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginVertical": 24,
                       "width": "100%",

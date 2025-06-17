@@ -73,7 +73,9 @@ export type VariantsStory<
 
 const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: number }>(
   ({ withBackground, minHeight, theme }) => ({
-    backgroundColor: withBackground ? theme.colors.secondaryLight200 : theme.colors.transparent,
+    backgroundColor: withBackground
+      ? theme.designSystem.color.background.brandSecondary
+      : theme.colors.transparent,
     padding: getSpacing(2),
     borderRadius: getSpacing(2),
     minHeight,
@@ -82,6 +84,6 @@ const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: nu
 
 const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(3),
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   fontStyle: 'italic',
 }))

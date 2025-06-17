@@ -82,5 +82,5 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
 }
 
 const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.colors.black,
+  buttonColor: theme.designSystem.color.text.default,
 }))``

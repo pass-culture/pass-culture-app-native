@@ -295,7 +295,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 8,
                       "paddingHorizontal": 24,
                       "paddingVertical": 32,

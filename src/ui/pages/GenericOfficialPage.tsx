@@ -153,12 +153,12 @@ const LogoPassCultureContainer = styled.View({
 
 const EmptyContainer = styled.View(({ theme }) => ({
   paddingVertical: getSpacing(3),
-  borderBottomColor: theme.colors.greyMedium,
+  borderBottomColor: theme.designSystem.color.border.default,
   borderBottomWidth: getSpacing(0.25),
 }))
 
 const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
-  color: theme.uniqueColors.brand,
+  color: theme.designSystem.color.icon.default,
   width: getSpacing(39.25),
   height: getSpacing(13.25),
 }))``

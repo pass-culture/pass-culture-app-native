@@ -317,7 +317,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   onFocus={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder="Livres..."
-                  placeholderTextColor="#696A6F"
+                  placeholderTextColor="#696a6f"
                   returnKeyType="search"
                   selectionColor="#696A6F"
                   style={
@@ -357,7 +357,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
+                          "backgroundColor": "#f1f1f4",
                           "height": "100%",
                           "width": 1,
                         },

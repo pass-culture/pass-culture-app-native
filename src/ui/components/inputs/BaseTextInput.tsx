@@ -70,7 +70,7 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
 })
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
-  placeholderTextColor: theme.colors.greyDark,
+  placeholderTextColor: theme.designSystem.color.text.subtle,
 }))<{ isEmpty: boolean; textStyle?: Typography; multiline: boolean }>(
   ({ theme, isEmpty, textStyle, editable, multiline }) => {
     let inputStyle: Typography = theme.designSystem.typography.body

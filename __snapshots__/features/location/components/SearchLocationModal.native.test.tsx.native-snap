@@ -453,7 +453,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginVertical": 24,
                       "width": "100%",
@@ -564,7 +564,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "height": 1,
                         "width": "100%",
                       },

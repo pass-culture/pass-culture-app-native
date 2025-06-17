@@ -33,7 +33,7 @@ const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, theme 
   height,
   overflow: 'hidden',
   zIndex: theme.zIndex.background,
-  backgroundColor: theme.colors.primary,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
 const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {

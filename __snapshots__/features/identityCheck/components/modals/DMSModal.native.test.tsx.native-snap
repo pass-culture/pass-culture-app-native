@@ -345,7 +345,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#696A6F",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,

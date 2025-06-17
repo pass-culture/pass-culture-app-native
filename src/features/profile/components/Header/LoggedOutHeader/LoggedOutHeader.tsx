@@ -64,5 +64,5 @@ const Container = styled.View(({ theme }) => ({
 const VerticalSeparator = styled.View(({ theme }) => ({
   borderRightWidth: getSpacing(0.25),
   marginHorizontal: getSpacing(6),
-  borderRightColor: theme.colors.greyMedium,
+  borderRightColor: theme.designSystem.color.border.default,
 }))

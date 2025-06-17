@@ -59,7 +59,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
 )
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({

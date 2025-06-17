@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Earth } from 'ui/svg/icons/Earth'
+import { Earth as InitialEarth } from 'ui/svg/icons/Earth'
 import { France as FranceIcon } from 'ui/svg/icons/France'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -82,5 +82,9 @@ const StyledBody = styled(Typo.Body)({
 })
 
 const France = styled(FranceIcon).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+}))``
+
+const Earth = styled(InitialEarth).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``

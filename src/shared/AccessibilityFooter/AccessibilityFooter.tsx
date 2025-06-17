@@ -82,10 +82,9 @@ const LinksContainer = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: getSpacing(theme.isDesktopViewport ? 25 : 0),
 }))
 
-const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
-  color: theme.uniqueColors.brand,
+const ColoredPassCultureLogo = styled(LogoPassCulture).attrs({
   width: getSpacing(20),
-}))``
+})``
 
 const LogoContainer = styled.View({
   width: getSpacing(20),

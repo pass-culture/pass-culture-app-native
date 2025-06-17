@@ -187,7 +187,7 @@ const RemainingAttemptsContainer = styled.View({
 })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const BottomContentContainer = styled.View({
@@ -203,7 +203,9 @@ const InputContainer = styled.View(({ theme }) => ({
 
 const WarningRemainingAttempts = styled(Typo.BodyAccentXs)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({
-    color: isLastAttempt ? theme.colors.error : theme.colors.black,
+    color: isLastAttempt
+      ? theme.designSystem.color.text.error
+      : theme.designSystem.color.text.default,
   })
 )
 

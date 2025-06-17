@@ -118,7 +118,7 @@ const Container = styled.View({
 })
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.smaller,
 }))({
   marginHorizontal: getSpacing(1.5),

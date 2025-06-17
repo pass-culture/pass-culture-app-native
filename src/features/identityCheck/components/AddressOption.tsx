@@ -37,7 +37,7 @@ export const AddressOption = ({
 }
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
 }))``
 

@@ -59,6 +59,6 @@ export const VerifyEligibility: FunctionComponent = () => {
 }
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   marginBottom: getSpacing(4),
 }))

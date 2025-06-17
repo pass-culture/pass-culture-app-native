@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { analytics } from 'libs/analytics/provider'
@@ -13,8 +13,6 @@ import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'u
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckDMS = () => {
-  const theme = useTheme()
-
   const onDMSFrenchCitizenPress = () => {
     analytics.logOpenDMSFrenchCitizenURL()
   }
@@ -37,7 +35,7 @@ export const IdentityCheckDMS = () => {
             La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site
             des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
           </StyledBody>
-          {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={5} />}
+
           <ButtonContainer>
             <ExternalTouchableLink
               as={ButtonTertiaryBlack}

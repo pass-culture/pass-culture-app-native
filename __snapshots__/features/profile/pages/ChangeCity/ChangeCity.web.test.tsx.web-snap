@@ -274,7 +274,7 @@ exports[`ChangeCity should render correctly 1`] = `
                       placeholder=""
                       rows="1"
                       spellcheck="false"
-                      style="--placeholderTextColor: #696A6F;"
+                      style="--placeholderTextColor: #696a6f;"
                       value=""
                       virtualkeyboardpolicy="auto"
                     />

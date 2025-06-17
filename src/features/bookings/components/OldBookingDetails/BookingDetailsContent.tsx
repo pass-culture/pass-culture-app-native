@@ -40,6 +40,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Page } from 'ui/pages/Page'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -146,7 +147,7 @@ export const BookingDetailsContent = ({
   const bookingContactEmail = booking.stock.offer.bookingContact
 
   return (
-    <Container>
+    <Page>
       <Helmet title={helmetTitle} />
       <StyledScrollView
         onScroll={onScroll}
@@ -244,14 +245,9 @@ export const BookingDetailsContent = ({
         bookingTitle={offer.name}
         onDismiss={hideArchiveModal}
       />
-    </Container>
+    </Page>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
 
 const StyledScrollView = styled.ScrollView.attrs({
   contentContainerStyle: {
