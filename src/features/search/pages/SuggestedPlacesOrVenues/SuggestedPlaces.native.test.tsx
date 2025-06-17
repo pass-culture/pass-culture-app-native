@@ -7,6 +7,11 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
 
 const mockSetSelectedPlace = jest.fn()
 
