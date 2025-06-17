@@ -2,7 +2,7 @@ import { shuffle } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { Homepage, HomepageTag } from 'features/home/types'
@@ -11,8 +11,7 @@ import * as OnboardingRoleAPI from 'features/onboarding/helpers/useUserRoleFromO
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
-import { useUserHasBookingsQuery } from 'queries/bookings/useUserHasBookingsQuery'
+import { useUserHasBookingsQuery, useBookingsQuery } from 'queries/bookings'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   mockAuthContextWithoutUser,

@@ -1,6 +1,9 @@
-import { BookingsResponse } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
+import { BookingsResponse, BookingsResponseV2 } from 'api/gen'
+import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
+import {
+  useOngoingOrEndedBookingQuery,
+  useOngoingOrEndedBookingQueryV1,
+} from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -35,7 +38,7 @@ describe('useOngoingOrEndedBookingQuery', () => {
 
   it('should return ongoing_bookings when there is one', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(booking.id), {
+    const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -47,7 +50,7 @@ describe('useOngoingOrEndedBookingQuery', () => {
 
   it('should return ended_bookings when there is one', async () => {
     const booking = bookingsSnap.ended_bookings[0]
-    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(booking.id), {
+    const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -59,7 +62,48 @@ describe('useOngoingOrEndedBookingQuery', () => {
 
   it('should return null if no ongoing nor ended booking can be found', async () => {
     const bookingId = 1230912039
-    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(bookingId), {
+    const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(bookingId), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(() => {
+      expect(result.current.data).toBeNull()
+    })
+  })
+})
+
+describe('useOngoingOrEndedBookingQueryV2', () => {
+  beforeEach(() => {
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
+  })
+
+  it('should return ongoingBookings when there is one', async () => {
+    const booking = bookingsSnapV2.ongoingBookings[0]
+    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(booking.id, true), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(() => {
+      expect(result.current?.data?.id).toEqual(booking.id)
+      expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
+    })
+  })
+
+  it('should return endedBookings when there is one', async () => {
+    const booking = bookingsSnapV2.endedBookings[0]
+    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(booking.id, true), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(() => {
+      expect(result.current?.data?.id).toEqual(booking.id)
+      expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
+    })
+  })
+
+  it('should return null if no ongoing nor ended booking can be found', async () => {
+    const bookingId = 1230912039
+    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(bookingId, true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

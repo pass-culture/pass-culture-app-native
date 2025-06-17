@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ReactionTypeEnum, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'

@@ -9,7 +9,7 @@ import {
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'
@@ -53,7 +53,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 let mockBookings: BookingsResponse = { ...bookingsSnap }
 
 jest.mock('queries/bookings/useBookingsQuery', () => ({
-  useBookingsQuery: jest.fn(() => ({
+  useBookingsQueryV1: jest.fn(() => ({
     data: mockBookings,
   })),
 }))
@@ -96,7 +96,7 @@ describe('BookingDetails', () => {
     it('should call useOngoingOrEndedBooking with the right parameters', async () => {
       const useOngoingOrEndedBooking = jest.spyOn(
         ongoingOrEndedBookingAPI,
-        'useOngoingOrEndedBookingQuery'
+        'useOngoingOrEndedBookingQueryV1'
       )
 
       renderBookingDetails(ongoingBookings)
@@ -788,8 +788,8 @@ describe('BookingDetails', () => {
   })
 })
 
-function renderBookingDetails(booking?: Booking, options = {}) {
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
+const renderBookingDetails = (booking?: Booking, options = {}) => {
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
     data: booking,
     isLoading: false,
     isSuccess: true,

@@ -10,7 +10,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings'
 import {
   BookingHitPlaceholder,
   NumberOfBookingsPlaceholder,
