@@ -5,11 +5,11 @@ import {
   fetchOffersByArtist,
 } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
+import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
-const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')
+const mockMultipleQueries = jest.spyOn(multipleQueriesAPI, 'multipleQueries')
 
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 

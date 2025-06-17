@@ -1,7 +1,7 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import { useArtistResultsQuery } from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQueryAPI from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -27,7 +27,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQueryAPI, 'useRemoteConfigQuery')
 
 describe('useArtistResultsQuery', () => {
   beforeAll(() => {
