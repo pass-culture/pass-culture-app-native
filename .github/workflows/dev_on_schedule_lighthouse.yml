@@ -1,6 +1,8 @@
 name: '4 [on_pr] Lighthouse Web Performance test'
 
-on: push
+on:
+  schedule:
+    - cron: '0 22 * * 0' # At 10PM every Sunday
 
 env:
   CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
@@ -32,9 +34,13 @@ jobs:
       - name: Run Lighthouse CI 🚀
         run: |
           yarn dlx @lhci/cli@0.14.0 autorun --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
+      - name: List files to verify report path
+        run: ls -laR ./.lighthouseci
+        if: always()
       - name: Upload lighthouse report to artifacts 🔎
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lighthouse-report
-          path: ./.lighthouseci/*.html
+          path: ./.lighthouseci
+          include-hidden-files: true
