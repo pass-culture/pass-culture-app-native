@@ -1515,7 +1515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-modules-commonjs@npm:^7.0.0, @babel/plugin-transform-modules-commonjs@npm:^7.13.8, @babel/plugin-transform-modules-commonjs@npm:^7.24.1, @babel/plugin-transform-modules-commonjs@npm:^7.25.9, @babel/plugin-transform-modules-commonjs@npm:^7.26.3":
+"@babel/plugin-transform-modules-commonjs@npm:^7.0.0, @babel/plugin-transform-modules-commonjs@npm:^7.13.8, @babel/plugin-transform-modules-commonjs@npm:^7.24.1, @babel/plugin-transform-modules-commonjs@npm:^7.25.9":
   version: 7.26.3
   resolution: "@babel/plugin-transform-modules-commonjs@npm:7.26.3"
   dependencies:
@@ -2042,7 +2042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-react@npm:^7.16.0, @babel/preset-react@npm:^7.24.1, @babel/preset-react@npm:^7.26.3":
+"@babel/preset-react@npm:^7.16.0, @babel/preset-react@npm:^7.24.1":
   version: 7.26.3
   resolution: "@babel/preset-react@npm:7.26.3"
   dependencies:
@@ -2190,16 +2190,6 @@ __metadata:
   version: 0.2.3
   resolution: "@bcoe/v8-coverage@npm:0.2.3"
   checksum: 850f9305536d0f2bd13e9e0881cb5f02e4f93fad1189f7b2d4bebf694e3206924eadee1068130d43c11b750efcc9405f88a8e42ef098b6d75239c0f047de1a27
-  languageName: node
-  linkType: hard
-
-"@bunchtogether/vite-plugin-flow@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@bunchtogether/vite-plugin-flow@npm:1.0.2"
-  dependencies:
-    flow-remove-types: ^2.158.0
-    rollup-pluginutils: ^2.8.2
-  checksum: 5a43e66fa65ffcc9f1c0909d4084c3d934fb1367b9a53dcbe208c35a34d8c61868775f8eccd0ccf6af70f1f496313512a8a7962eb0d813c3bd8ca6f7d0d890db
   languageName: node
   linkType: hard
 
@@ -6143,33 +6133,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-native-web-vite@npm:8.6.4":
-  version: 8.6.4
-  resolution: "@storybook/react-native-web-vite@npm:8.6.4"
-  dependencies:
-    "@babel/plugin-transform-modules-commonjs": ^7.26.3
-    "@babel/preset-react": ^7.26.3
-    "@bunchtogether/vite-plugin-flow": ^1.0.2
-    "@joshwooding/vite-plugin-react-docgen-typescript": 0.5.0
-    "@storybook/builder-vite": 8.6.4
-    "@storybook/react": 8.6.4
-    "@storybook/react-vite": 8.6.4
-    "@vitejs/plugin-react": ^4.3.2
-    vite-plugin-babel: ^1.3.0
-    vite-plugin-commonjs: ^0.10.4
-    vite-tsconfig-paths: ^5.1.4
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    react-native: ">=0.74.5"
-    react-native-web: ^0.19.12
-    storybook: ^8.6.4
-    vite: ^5.0.0 || ^6.0.0
-  checksum: 34d7be58180cc8ee945bfa226eb1e4798848a18024535bbd66c719e7959ec7ae9aa7944fa0ca83c7e67885db743273ee0c23430eb00b0fb031fe3974c5e13fe0
-  languageName: node
-  linkType: hard
-
-"@storybook/react-vite@npm:8.6.4, @storybook/react-vite@npm:^8.6.4":
+"@storybook/react-vite@npm:^8.6.4":
   version: 8.6.4
   resolution: "@storybook/react-vite@npm:8.6.4"
   dependencies:
@@ -7408,7 +7372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^4.3.1, @vitejs/plugin-react@npm:^4.3.2":
+"@vitejs/plugin-react@npm:^4.3.1":
   version: 4.3.4
   resolution: "@vitejs/plugin-react@npm:4.3.4"
   dependencies:
@@ -7618,7 +7582,6 @@ __metadata:
     "@storybook/addon-interactions": ^8.6.4
     "@storybook/addon-links": ^8.6.4
     "@storybook/react": ^8.6.4
-    "@storybook/react-native-web-vite": 8.6.4
     "@storybook/react-vite": ^8.6.4
     "@storybook/testing-library": ^0.2.2
     "@testing-library/jest-dom": ^6.4.2
@@ -7806,6 +7769,7 @@ __metadata:
     uuid: ^8.3.2
     vite: ^5.4.19
     vite-bundle-analyzer: ^0.16.2
+    vite-plugin-babel: ^1.3.1
     vite-plugin-commonjs: ^0.10.4
     vite-plugin-html: ^3.2.2
     yup: ^0.32.11
@@ -12357,13 +12321,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"estree-walker@npm:^0.6.1":
-  version: 0.6.1
-  resolution: "estree-walker@npm:0.6.1"
-  checksum: 9d6f82a4921f11eec18f8089fb3cce6e53bcf45a8e545c42a2674d02d055fb30f25f90495f8be60803df6c39680c80dcee7f944526867eb7aa1fc9254883b23d
-  languageName: node
-  linkType: hard
-
 "estree-walker@npm:^2.0.1, estree-walker@npm:^2.0.2":
   version: 2.0.2
   resolution: "estree-walker@npm:2.0.2"
@@ -13010,20 +12967,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-remove-types@npm:^2.158.0":
-  version: 2.263.0
-  resolution: "flow-remove-types@npm:2.263.0"
-  dependencies:
-    hermes-parser: 0.25.1
-    pirates: ^3.0.2
-    vlq: ^0.2.1
-  bin:
-    flow-node: flow-node
-    flow-remove-types: flow-remove-types
-  checksum: 8099c25f8d9cd8b4a15d38a11ebf850a32eb638d72344578bcce662baed770cdd682ed22ae930db639b3dfa0678bb39be830f2b2224f122e114daa399091a4f4
-  languageName: node
-  linkType: hard
-
 "follow-redirects@npm:^1.0.0":
   version: 1.15.6
   resolution: "follow-redirects@npm:1.15.6"
@@ -13654,13 +13597,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globrex@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "globrex@npm:0.1.2"
-  checksum: adca162494a176ce9ecf4dd232f7b802956bb1966b37f60c15e49d2e7d961b66c60826366dc2649093cad5a0d69970cfa8875bd1695b5a1a2f33dcd2aa88da3c
-  languageName: node
-  linkType: hard
-
 "google-auth-library@npm:^8.0.2":
   version: 8.7.0
   resolution: "google-auth-library@npm:8.7.0"
@@ -13983,13 +13919,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hermes-estree@npm:0.25.1":
-  version: 0.25.1
-  resolution: "hermes-estree@npm:0.25.1"
-  checksum: 97f42e9178dff61db017810b4f79f5a2cdbb3cde94b7d99ba84ed632ee2adfcae2244555587951b3151fc036676c68f48f57fbe2b49e253eb1f3f904d284a8b0
-  languageName: node
-  linkType: hard
-
 "hermes-parser@npm:0.19.1":
   version: 0.19.1
   resolution: "hermes-parser@npm:0.19.1"
@@ -14005,15 +13934,6 @@ __metadata:
   dependencies:
     hermes-estree: 0.23.1
   checksum: a08008928aea9ea9a2cab2c0fac3cffa21f7869ab3fabb68e5add0fe057737a0c352d7a446426f7956172ccc8f2d4a215b4fc20d1d08354fc8dc16772c248fce
-  languageName: node
-  linkType: hard
-
-"hermes-parser@npm:0.25.1":
-  version: 0.25.1
-  resolution: "hermes-parser@npm:0.25.1"
-  dependencies:
-    hermes-estree: 0.25.1
-  checksum: 4edcfaa3030931343b540182b83c432aba4cdcb1925952521ab4cfb7ab90c2c1543dfcb042ccd51d5e81e4bfe2809420e85902c2ff95ef7c6c64644ce17138ea
   languageName: node
   linkType: hard
 
@@ -17965,13 +17885,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-modules-regexp@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "node-modules-regexp@npm:1.0.0"
-  checksum: 99541903536c5ce552786f0fca7f06b88df595e62e423c21fa86a1674ee2363dad1f7482d1bec20b4bd9fa5f262f88e6e5cb788fc56411113f2fe2e97783a3a7
-  languageName: node
-  linkType: hard
-
 "node-releases@npm:^2.0.19":
   version: 2.0.19
   resolution: "node-releases@npm:2.0.19"
@@ -18769,15 +18682,6 @@ __metadata:
   version: 1.1.0
   resolution: "pinpoint@npm:1.1.0"
   checksum: 6199e13269796fea5b0da39df86dc815e14adc20081b533150be8cabaabc64f0581506288c379b96df2095c015fe28d012e2386a14759e1372a1bafcc05a1746
-  languageName: node
-  linkType: hard
-
-"pirates@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "pirates@npm:3.0.2"
-  dependencies:
-    node-modules-regexp: ^1.0.0
-  checksum: 73bc9d8a1859c0854740541d1afd0c87b62d3d63fdaec38c3ac7f57d9d70b9f6f325f5ffcac11b8935c8d9249ead41c9c59632ed098b225a96219274ca6248c8
   languageName: node
   linkType: hard
 
@@ -20898,15 +20802,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-pluginutils@npm:^2.8.2":
-  version: 2.8.2
-  resolution: "rollup-pluginutils@npm:2.8.2"
-  dependencies:
-    estree-walker: ^0.6.1
-  checksum: 339fdf866d8f4ff6e408fa274c0525412f7edb01dc46b5ccda51f575b7e0d20ad72965773376fb5db95a77a7fcfcab97bf841ec08dbadf5d6b08af02b7a2cf5e
-  languageName: node
-  linkType: hard
-
 "rollup@npm:^4.20.0":
   version: 4.22.4
   resolution: "rollup@npm:4.22.4"
@@ -22596,20 +22491,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfck@npm:^3.0.3":
-  version: 3.1.5
-  resolution: "tsconfck@npm:3.1.5"
-  peerDependencies:
-    typescript: ^5.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  bin:
-    tsconfck: bin/tsconfck.js
-  checksum: 9a85b707cf9a99caec4ec312783a903bf9d4bea52036786df40f8c50beb903a49a5895a0a8144f5862175ee202af80d28406dd2d5c4664cbc17260a193c84dba
-  languageName: node
-  linkType: hard
-
 "tsconfig-paths@npm:^3.11.0":
   version: 3.12.0
   resolution: "tsconfig-paths@npm:3.12.0"
@@ -23274,13 +23155,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-babel@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "vite-plugin-babel@npm:1.3.0"
+"vite-plugin-babel@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "vite-plugin-babel@npm:1.3.1"
   peerDependencies:
     "@babel/core": ^7.0.0
     vite: ^2.7.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
-  checksum: a53458184f7eee46205f0eb526d0b6be90d2ace7849d1ed412a7c98441b834167bc478ee98f14a23c0504f3daff521e7fbc5d78917ad3263e59d042fbe6dd9f2
+  checksum: 38972eebc56e025cdc956dcebf4ddf9fe14718e29e77ad10bef5c282945ac5ecf15509e9c84790892ee21245623d0a9c5fcdfd4a0b2705fbf1de95eec2ee2ac3
   languageName: node
   linkType: hard
 
@@ -23329,22 +23210,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-tsconfig-paths@npm:^5.1.4":
-  version: 5.1.4
-  resolution: "vite-tsconfig-paths@npm:5.1.4"
-  dependencies:
-    debug: ^4.1.1
-    globrex: ^0.1.2
-    tsconfck: ^3.0.3
-  peerDependencies:
-    vite: "*"
-  peerDependenciesMeta:
-    vite:
-      optional: true
-  checksum: 9d868fcad7ac59049c08ce60f65a0e1b1caebb3d849c60ebe6ed47645255007fd8275c22a42155666fd76ee947bc36481d83c0527b2d9fa45ccafac4dbf99722
-  languageName: node
-  linkType: hard
-
 "vite@npm:^5.4.19":
   version: 5.4.19
   resolution: "vite@npm:5.4.19"
@@ -23385,13 +23250,6 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: c15af65f2370b59e674c5fab22d8e05ec5c7f8f0345ed99ffec155c77feb5636b4e0680dbd096a6f06d7c386b259dc0b9c67c4f1ec08486a2f2a677c9ea6971b
-  languageName: node
-  linkType: hard
-
-"vlq@npm:^0.2.1":
-  version: 0.2.3
-  resolution: "vlq@npm:0.2.3"
-  checksum: 2231d8caeb5b2c1a438677ab029e9a94aa6fb61ab05819c72691b792aea0456dab29576aff5ae29309ee45bad0a309e832dc45173119bca1393f3b87709d8f8d
   languageName: node
   linkType: hard
 

@@ -230,7 +230,6 @@
     "@storybook/addon-interactions": "^8.6.4",
     "@storybook/addon-links": "^8.6.4",
     "@storybook/react": "^8.6.4",
-    "@storybook/react-native-web-vite": "8.6.4",
     "@storybook/react-vite": "^8.6.4",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/jest-native": "^5.4.3",
@@ -335,6 +334,7 @@
     "url-loader": "^4.1.1",
     "vite": "^5.4.19",
     "vite-bundle-analyzer": "^0.16.2",
+    "vite-plugin-babel": "^1.3.1",
     "vite-plugin-commonjs": "^0.10.4",
     "vite-plugin-html": "^3.2.2"
   },

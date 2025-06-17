@@ -26,6 +26,7 @@ const Template: Story = {
       <Typo.BodyAccentXs>BodyAccentXs</Typo.BodyAccentXs>
       <Typo.BodyItalic>BodyItalic</Typo.BodyItalic>
       <Typo.BodyItalicAccent>BodyAccentItalic</Typo.BodyItalicAccent>
+      <Typo.BodyItalicAccent>BodyAccentItalic</Typo.BodyItalicAccent>
       <Typo.Button>Button</Typo.Button>
     </ViewGap>
   ),
