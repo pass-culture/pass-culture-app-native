@@ -8,19 +8,28 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 
-export const Artist: FunctionComponent = () => {
-  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+const ArtistContainer: FunctionComponent<{ artistId: string }> = ({ artistId }) => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
 
   const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({
-    artistId: params.id,
+    artistId,
   })
   const { data: artist } = useArtistQuery(params.id)
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
-  if (!artist || !enableArtistPage) return null
+  if (!artist) return null
 
   return (
     <ArtistBody artist={artist} artistPlaylist={artistPlaylist} artistTopOffers={artistTopOffers} />
   )
+}
+
+export const Artist: FunctionComponent = () => {
+  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const { params } = useRoute<UseRouteType<'Artist'>>()
+
+  // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
+  if (!enableArtistPage) return null
+
+  return <ArtistContainer artistId={params.id} />
 }
