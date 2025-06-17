@@ -25,6 +25,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { ScreenPerformance, useScreenRenderOnFocus } from 'performance/useScreenRenderOnFocus'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Page } from 'ui/pages/Page'
@@ -33,6 +34,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 const MARGIN_TOP_HEADER = 6
 
 const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
+  useScreenRenderOnFocus(ScreenPerformance.THEMATIC_HOME)
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
       return (

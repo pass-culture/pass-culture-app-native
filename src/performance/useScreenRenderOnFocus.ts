@@ -5,6 +5,14 @@ import { Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 
+export enum ScreenPerformance {
+  HOME = 'HomeOnlineScreen',
+  PROFILE = 'ProfileOnlineScreen',
+  SEARCH = 'SearchOnlineScreen',
+  THEMATIC_HOME = 'ThematicHomeScreen',
+  LOGIN = 'LoginScreen',
+}
+
 export const useScreenRenderOnFocus = (screenName: string) => {
   const screenTrace = useRef<FirebasePerformanceTypes.ScreenTrace | null>(null)
   useFocusEffect(
