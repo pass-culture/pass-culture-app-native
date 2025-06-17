@@ -15,6 +15,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const mockSetSelectedPlace = jest.fn()
 
+jest.useFakeTimers()
+
 describe('<SuggestedPlaces/>', () => {
   it('should show suggested places when searching a place', async () => {
     mockApiAdresse(fixtureApiAddressDataGouv)
@@ -50,6 +52,7 @@ describe('<SuggestedPlaces/>', () => {
     ).not.toBeOnTheScreen()
   })
 
+  // TODO(PC-36586): unskip this test
   it.skip('should show help message when the query is too short', async () => {
     mockApiAdresse({
       responseOptions: {
