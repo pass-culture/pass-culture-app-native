@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { UserProfileResponse } from 'api/gen'
+import { UserProfileResponse, BookingResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useCancelBookingMutation } from 'features/bookings/queries'
 import { Booking } from 'features/bookings/types'
@@ -28,7 +28,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
   visible: boolean
   dismissModal: () => void
-  booking: Booking
+  booking: BookingResponse | Booking
 }
 
 export const CancelBookingModal: FunctionComponent<Props> = ({
@@ -40,7 +40,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const refundRule = getRefundRule(booking, currency, euroToPacificFrancRate, user)
+  const refundRule = getRefundRule(booking.totalAmount, currency, euroToPacificFrancRate, user)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
@@ -121,15 +121,16 @@ const Refund = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-function getRefundRule(
-  booking: Booking,
+// FIXME(PC-36440) move function to file
+const getRefundRule = (
+  totalAmount: number,
   currency: Currency,
   euroToPacificFrancRate: number,
   user?: UserProfileResponse
-) {
-  const price = convertCentsToEuros(booking.totalAmount)
+) => {
+  const price = convertCentsToEuros(totalAmount)
   if (price > 0 && user) {
-    const price = formatCurrencyFromCents(booking.totalAmount, currency, euroToPacificFrancRate)
+    const price = formatCurrencyFromCents(totalAmount, currency, euroToPacificFrancRate)
     if (isUserExBeneficiary(user)) {
       return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }

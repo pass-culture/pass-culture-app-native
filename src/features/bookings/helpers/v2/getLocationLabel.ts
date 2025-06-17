@@ -1,8 +1,8 @@
-import { BookingStockResponse } from 'api/gen'
+import { BookingStockResponseV2 } from 'api/gen'
 import { BookingProperties } from 'features/bookings/types'
 
 export const getLocationLabel = (
-  stock: BookingStockResponse,
+  stock: BookingStockResponseV2,
   properties: BookingProperties
 ): string => {
   if (properties.isPermanent || properties.isDigital) {
@@ -11,5 +11,5 @@ export const getLocationLabel = (
   const { venue, address } = stock.offer
 
   const displayNameVenue = address?.label || venue.name
-  return [displayNameVenue, address?.city || venue.city].filter(Boolean).join(', ')
+  return [displayNameVenue, address?.city].filter(Boolean).join(', ')
 }
