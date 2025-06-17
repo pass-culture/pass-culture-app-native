@@ -70,9 +70,8 @@ jobs:
         run: |
           echo "Running Maestro tests against on web Staging"
           export PATH=$HOME/.maestro/bin:$PATH
-          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
           maestro test .maestro/tests/SmokeTestWeb.yaml --headless
-
+          
       - name: Upload Maestro artifacts (logs & screenshots)
         if: failure()
         uses: actions/upload-artifact@v4
