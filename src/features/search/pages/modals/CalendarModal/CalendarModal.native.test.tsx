@@ -1,5 +1,4 @@
 import { addMonths } from 'date-fns'
-import mockdate from 'mockdate'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
@@ -13,6 +12,8 @@ import { act, render, screen, userEvent } from 'tests/utils'
 
 const mockDispatch = jest.fn()
 
+const TODAY = new Date(2025, 3, 28)
+
 const initialMockUseSearch = {
   searchState: initialSearchState,
   dispatch: mockDispatch,
@@ -22,9 +23,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
-const TODAY = new Date(2025, 3, 28)
-
-const nextMonth = addMonths(new Date(), 1)
+const nextMonth = addMonths(TODAY, 1)
 const nextMonthName = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(nextMonth)
 const capitalizedMonth = nextMonthName.charAt(0).toUpperCase() + nextMonthName.slice(1)
 
@@ -33,11 +32,13 @@ const mockOnClose = jest.fn()
 
 const user = userEvent.setup()
 
-jest.useFakeTimers()
-
 describe('CalendarModal', () => {
   beforeAll(() => {
-    mockdate.set(TODAY)
+    jest.useFakeTimers().setSystemTime(TODAY)
+  })
+
+  afterAll(() => {
+    jest.useRealTimers()
   })
 
   describe('In initial state', () => {
@@ -69,25 +70,27 @@ describe('CalendarModal', () => {
       expect(mockHideModal).toHaveBeenCalledWith()
     })
 
-    // TODO(PC-36558): Fix this test
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should execute search with selected dates and close the modal when pressing search button', async () => {
+    it('should execute search with selected dates and close the modal when pressing search button', async () => {
       renderCalendarModal()
 
-      await user.press(screen.getByLabelText(' Samedi 14 Juin 2025 '))
-      await user.press(screen.getByLabelText(' Mardi 17 Juin 2025 '))
+      const firstDateButton = screen.getByLabelText(/ 1 Juin 2025/)
+      const lastDateButton = screen.getByLabelText(/ 10 Juin 2025/)
 
-      await user.press(screen.getByText('Rechercher'))
+      await user.press(firstDateButton)
+      await user.press(lastDateButton)
+
+      await user.press(screen.getByLabelText('Rechercher'))
 
       expect(mockDispatch).toHaveBeenCalledWith(
         expect.objectContaining({
           type: 'SET_STATE',
           payload: expect.objectContaining({
-            beginningDatetime: '2025-06-14T00:00:00.000Z',
-            endingDatetime: '2025-06-17T00:00:00.000Z',
+            beginningDatetime: '2025-06-01T00:00:00.000Z',
+            endingDatetime: '2025-06-10T00:00:00.000Z',
           }),
         })
       )
+
       expect(mockHideModal).toHaveBeenCalledWith()
     })
 

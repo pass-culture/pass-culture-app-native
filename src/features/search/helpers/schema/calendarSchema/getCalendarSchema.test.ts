@@ -1,8 +1,8 @@
 import { startOfDay } from 'date-fns'
 
-import { calendarSchema } from 'features/search/helpers/schema/calendarSchema/calendarSchema'
+import { getCalendarSchema } from './getCalendarSchema'
 
-describe('calendarSchema', () => {
+describe('getCalendarSchema', () => {
   const now = new Date()
 
   it('should pass when selectedStartDate is today and selectedEndDate is after start', async () => {
@@ -11,7 +11,7 @@ describe('calendarSchema', () => {
       selectedEndDate: new Date(now.getTime() + 24 * 60 * 60 * 1000),
     }
 
-    await expect(calendarSchema.validate(validData)).resolves.toEqual(validData)
+    await expect(getCalendarSchema().validate(validData)).resolves.toEqual(validData)
   })
 
   it('should pass when selectedStartDate is in the future and selectedEndDate is after start', async () => {
@@ -20,7 +20,7 @@ describe('calendarSchema', () => {
       selectedEndDate: new Date(now.getTime() + 48 * 60 * 60 * 1000),
     }
 
-    await expect(calendarSchema.validate(validData)).resolves.toEqual(validData)
+    await expect(getCalendarSchema().validate(validData)).resolves.toEqual(validData)
   })
 
   it('should fail when selectedStartDate is in the past', async () => {
@@ -31,7 +31,7 @@ describe('calendarSchema', () => {
       selectedEndDate: new Date(now),
     }
 
-    await expect(calendarSchema.validate(invalidData)).rejects.toThrow(
+    await expect(getCalendarSchema().validate(invalidData)).rejects.toThrow(
       'La date de début ne peut pas être dans le passé'
     )
   })
@@ -41,7 +41,7 @@ describe('calendarSchema', () => {
       selectedStartDate: new Date(now),
     }
 
-    await expect(calendarSchema.validate(validData)).resolves.toEqual({
+    await expect(getCalendarSchema().validate(validData)).resolves.toEqual({
       ...validData,
       selectedEndDate: undefined,
     })
@@ -52,7 +52,7 @@ describe('calendarSchema', () => {
       selectedStartDate: startOfDay(new Date()),
     }
 
-    await expect(calendarSchema.validate(validData)).resolves.toEqual({
+    await expect(getCalendarSchema().validate(validData)).resolves.toEqual({
       ...validData,
       selectedEndDate: undefined,
     })
@@ -63,7 +63,7 @@ describe('calendarSchema', () => {
       selectedStartDate: new Date(now.getTime() + 24 * 60 * 60 * 1000),
     }
 
-    await expect(calendarSchema.validate(validData)).resolves.toEqual({
+    await expect(getCalendarSchema().validate(validData)).resolves.toEqual({
       ...validData,
       selectedEndDate: undefined,
     })
@@ -78,7 +78,7 @@ describe('calendarSchema', () => {
       selectedEndDate: today,
     }
 
-    await expect(calendarSchema.validate(invalidData)).rejects.toThrow(
+    await expect(getCalendarSchema().validate(invalidData)).rejects.toThrow(
       'La date de fin ne peut pas être avant la date de début'
     )
   })

@@ -100,8 +100,11 @@ export const buildPerformSearchState = (
     searchView: currentView,
   }
 
-  if (searchState.date !== null) {
-    state.searchDate = JSON.stringify(searchState.date)
+  if (searchState.date || searchState.timeRange) {
+    const startDate = searchState.date?.selectedDate ?? searchState?.timeRange?.[0]
+    const endDate = searchState.timeRange?.[1]
+    const option = searchState.date?.option ?? searchState.calendarFilterId
+    state.searchDate = JSON.stringify({ startDate, endDate, option })
   }
 
   if (searchState.isAutocomplete) {
@@ -138,10 +141,6 @@ export const buildPerformSearchState = (
 
   if (searchState.query !== '') {
     state.searchQuery = searchState.query
-  }
-
-  if (searchState.timeRange !== null) {
-    state.searchTimeRange = JSON.stringify(searchState.timeRange)
   }
 
   if (searchState.isFromHistory) {

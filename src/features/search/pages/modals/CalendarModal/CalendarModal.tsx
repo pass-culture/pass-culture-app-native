@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { addMonths, addYears, format } from 'date-fns'
-import React, { FunctionComponent, useCallback, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
 import { View } from 'react-native'
 import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars'
@@ -14,7 +14,7 @@ import { FilterBehaviour } from 'features/search/enums'
 import { getCalendarFormData } from 'features/search/helpers/getCalendarFormData/getCalendarFormData'
 import { getMarkedDates } from 'features/search/helpers/getMarkedDates/getMarkedDates'
 import { getPastScrollRange } from 'features/search/helpers/getPastScrollRange/getPastScrollRange'
-import { calendarSchema } from 'features/search/helpers/schema/calendarSchema/calendarSchema'
+import { getCalendarSchema } from 'features/search/helpers/schema/calendarSchema/getCalendarSchema'
 import { CalendarFilterId, CalendarModalFormData, SearchState } from 'features/search/types'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
@@ -41,11 +41,6 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr'
 
 const titleId = uuidv4()
-const today = new Date()
-const twoYearsLater = addYears(today, 2)
-const nextMonth = addMonths(today, 1)
-const nextMonthName = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(nextMonth)
-const capitalizedMonth = nextMonthName.charAt(0).toUpperCase() + nextMonthName.slice(1)
 
 export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   title,
@@ -55,6 +50,12 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
+  const today = useRef(new Date()).current
+  const twoYearsLater = addYears(today, 2)
+  const nextMonth = addMonths(today, 1)
+  const nextMonthName = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(nextMonth)
+  const capitalizedMonth = nextMonthName.charAt(0).toUpperCase() + nextMonthName.slice(1)
+
   const { modal, designSystem, isMobileViewport, isDesktopViewport } = useTheme()
   const { searchState, dispatch } = useSearch()
 
@@ -79,7 +80,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     getValues,
   } = useForm<CalendarModalFormData>({
     mode: 'onChange',
-    resolver: yupResolver(calendarSchema),
+    resolver: yupResolver(getCalendarSchema()),
     defaultValues,
   })
   const { selectedStartDate, selectedEndDate, selectedFilterMode } = watch()
