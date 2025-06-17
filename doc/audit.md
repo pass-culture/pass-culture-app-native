@@ -263,13 +263,13 @@ Nous avons fréquemment des calculs fait coté frontend pour formatter les donn�
 
 Exemple la restructuration des catégories en arborescences : `src/libs/subcategories/mappings.ts`
 
+On a tendance à utiliser le backend comme si on ne pouvait pas le changer, comme si cette API était utilisée par des tiers, ce qui n'est pas le cas, l'API est uniquement utilisée par notre code frontend
+
 #### Points de Friction
 
 On fait des calculs sur les end devices qui sont majoritairement moins performant que nos serveurs
 
 On fait les calculs à chaque requête
-
-On a tendance à utiliser le backend comme si on ne pouvait pas le changer, comme si cette API était utilisée par des tiers, ce qui n'est pas le cas, l'API est uniquement utilisée par notre code frontend
 
 #### Recommandations
 
