@@ -4040,7 +4040,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 style={
                                   [
                                     {
-                                      "color": "#696a6f",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 19.2,
@@ -4069,7 +4069,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 style={
                                   [
                                     {
-                                      "color": "#696a6f",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 19.2,

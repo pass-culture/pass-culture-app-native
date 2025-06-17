@@ -4,7 +4,7 @@ import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { Typo } from 'ui/theme'
 
 export const LightGreyText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
+  color: theme.designSystem.color.text.default,
 }))
 
 export const Title = styled(Typo.BodyAccent)(({ theme }) => ({
