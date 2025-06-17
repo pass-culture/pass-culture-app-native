@@ -36,7 +36,7 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
 
 const LocationIcon = styled(LocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const variantConfig: Variants<typeof InfoHeader> = [

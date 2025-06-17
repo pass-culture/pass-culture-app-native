@@ -22,7 +22,7 @@ const Container = styled.View({
 })
 
 const Body = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const OfferNameContainer = styled.View({

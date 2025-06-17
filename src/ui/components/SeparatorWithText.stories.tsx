@@ -22,7 +22,7 @@ const variantConfig: Variants<typeof SeparatorWithText> = [
   },
   {
     label: 'SeparatorWithText with custom background color',
-    props: { ...baseProps, backgroundColor: theme.colors.greyMedium },
+    props: { ...baseProps, backgroundColor: theme.designSystem.color.background.brandPrimary },
   },
 ]
 

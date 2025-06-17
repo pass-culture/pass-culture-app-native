@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import type { Meta } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components/native'
 
-import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 import { SelectableListItem } from './SelectableListItem'
 
@@ -38,21 +38,17 @@ const variantConfig: Variants<typeof SelectableListItem> = [
   {
     label: 'SelectableListItem funky content based on state',
     props: {
-      render: () => (
-        <Typo.Body
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            color: theme.colors.primary,
-            fontSize: 24,
-          }}>
-          Hello World
-        </Typo.Body>
-      ),
+      render: () => <StyledBody>Hello World</StyledBody>,
       isSelected: true,
       onSelect: action('select'),
     },
   },
 ]
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.designSystem.color.text.brandPrimary,
+  fontSize: getSpacing(5),
+}))
 
 export const Template: VariantsStory<typeof SelectableListItem> = {
   name: 'SelectableListItem',

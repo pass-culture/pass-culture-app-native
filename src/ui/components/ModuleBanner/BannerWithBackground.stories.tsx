@@ -17,7 +17,7 @@ export default meta
 
 const TextComponent = () => <StyledBody>Banner text</StyledBody>
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const variantConfig: Variants<typeof BannerWithBackground> = [

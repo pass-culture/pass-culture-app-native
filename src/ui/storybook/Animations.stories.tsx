@@ -147,14 +147,16 @@ const AnimationContainer = styled.View<{ hasBackground: boolean }>(({ theme, has
   alignItems: 'center',
   justifyContent: 'center',
   width: getSpacing(65),
-  border: `2px solid ${theme.colors.greyLight}`,
+  border: `2px solid ${theme.designSystem.color.border.subtle}`,
   borderRadius: getSpacing(2),
   backgroundColor: hasBackground ? theme.uniqueColors.brand : 'transparent',
   cursor: 'pointer',
 }))
 
 const Name = styled(Typo.Button)<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
-  color: hasBackground ? theme.colors.white : theme.colors.black,
+  color: hasBackground
+    ? theme.designSystem.color.text.inverted
+    : theme.designSystem.color.text.default,
 }))
 
 const GridContainer = styled.View({
@@ -172,11 +174,12 @@ const Cover = styled.View<{ isHovered: boolean }>(({ theme, isHovered }) => ({
   position: 'absolute',
   width: '100%',
   height: '100%',
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   opacity: isHovered ? 0 : 1,
   transition: 'opacity 0.3s ease-in-out',
   zIndex: 1,
   alignItems: 'center',
   justifyContent: 'center',
   padding: getSpacing(2),
+  borderRadius: getSpacing(2),
 }))

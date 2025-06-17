@@ -90,21 +90,21 @@ export const WithCustomComponent: Story = {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
     padding: 12,
     width: 50,
     height: 200,
   },
 
   wrapperBig: {
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
     padding: 12,
     width: 50,
     height: 500,
   },
 
   wrapperSmall: {
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
     padding: 12,
     width: 50,
     height: 100,
