@@ -80,10 +80,10 @@ const Center = styled.View({
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

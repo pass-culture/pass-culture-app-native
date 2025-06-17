@@ -40,7 +40,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
           {achievement.completed ? (
             <StyledBody>Fait le {achievement.completedAt}</StyledBody>
           ) : (
-            <Typo.Body>Non débloqué</Typo.Body>
+            <StyledBody>Non débloqué</StyledBody>
           )}
         </BodyWrapper>
         <Spacer.Column numberOfSpaces={4} />
@@ -67,14 +67,16 @@ const IconsWrapper = styled.View({
 })
 
 const BodyWrapper = styled.View<{ isCompleted: boolean }>(({ isCompleted, theme }) => ({
-  backgroundColor: isCompleted ? theme.colors.primaryDark : theme.colors.greyLight,
+  backgroundColor: isCompleted
+    ? theme.designSystem.color.background.brandPrimary
+    : theme.designSystem.color.background.disabled,
   paddingHorizontal: getSpacing(2),
   paddingVertical: getSpacing(1),
   borderRadius: getSpacing(1),
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.inverted,
 }))
 
 const StyledDescrption = styled(Typo.Body)({

@@ -417,7 +417,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   placeholder=""
-                  placeholderTextColor="#696A6F"
+                  placeholderTextColor="#696a6f"
                   returnKeyType="next"
                   style={
                     [
@@ -1268,7 +1268,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               onChangeText={[Function]}
               onFocus={[Function]}
               placeholder="Ton mot de passe"
-              placeholderTextColor="#696A6F"
+              placeholderTextColor="#696a6f"
               returnKeyType="next"
               secureTextEntry={true}
               style={

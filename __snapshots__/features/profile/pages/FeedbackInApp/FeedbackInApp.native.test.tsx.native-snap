@@ -414,7 +414,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="Ma suggestion..."
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [

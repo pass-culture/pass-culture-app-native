@@ -57,11 +57,11 @@ const ACCORDION_BORDER_RADIUS = getSpacing(2)
 const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
   title: <Typo.BodyAccent>Qu’est-ce que les cookies&nbsp;?</Typo.BodyAccent>,
   titleStyle: {
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
     paddingVertical: getSpacing(4),
   },
   bodyStyle: {
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
     paddingBottom: getSpacing(4),
   },
 }))``

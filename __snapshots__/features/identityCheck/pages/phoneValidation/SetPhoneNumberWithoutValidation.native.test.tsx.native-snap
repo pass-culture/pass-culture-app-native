@@ -563,7 +563,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                             style={
                               [
                                 {
-                                  "borderRightColor": "#696A6F",
+                                  "borderRightColor": "#90949d",
                                   "borderRightWidth": 1,
                                   "paddingVertical": 10,
                                 },
@@ -586,7 +586,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         onFocus={[Function]}
                         onSubmitEditing={[Function]}
                         placeholder=""
-                        placeholderTextColor="#696A6F"
+                        placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
                           [

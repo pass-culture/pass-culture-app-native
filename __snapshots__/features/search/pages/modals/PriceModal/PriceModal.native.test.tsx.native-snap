@@ -624,7 +624,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginVertical": 24,
                       "width": "100%",
@@ -804,7 +804,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 style={
                   [
                     {
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "height": 1,
                       "marginVertical": 24,
                       "width": "100%",
@@ -906,7 +906,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       onChangeText={[Function]}
                       onFocus={[Function]}
                       placeholder="0"
-                      placeholderTextColor="#696A6F"
+                      placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
                         [
@@ -1032,7 +1032,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     onChangeText={[Function]}
                     onFocus={[Function]}
                     placeholder="80"
-                    placeholderTextColor="#696A6F"
+                    placeholderTextColor="#696a6f"
                     returnKeyType="next"
                     style={
                       [

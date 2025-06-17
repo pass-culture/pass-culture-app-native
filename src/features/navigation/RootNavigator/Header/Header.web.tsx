@@ -36,7 +36,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
               fromRef: true,
               withPush: true,
             }}>
-            <LogoPassCulture color={theme.designSystem.color.icon.default} />
+            <LogoPassCulture />
           </LogoContainer>
         </LeftContainer>
       ) : null}

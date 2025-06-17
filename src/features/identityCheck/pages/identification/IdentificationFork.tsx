@@ -97,5 +97,5 @@ const StyledExternalTouchableLinkContainer = styled.View({
 })
 
 const StyledCaption = styled(Typo.BodyAccentXs)({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 })

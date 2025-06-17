@@ -306,7 +306,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -436,7 +436,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         onFocus={[Function]}
                         onSubmitEditing={[Function]}
                         placeholder="012345"
-                        placeholderTextColor="#696A6F"
+                        placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
                           [

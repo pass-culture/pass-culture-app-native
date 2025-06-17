@@ -52,16 +52,12 @@ export const EmptyCredit = ({
           screen: 'ThematicHome',
           params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
         }}
-        icon={WhiteOffers}
+        icon={Offers}
       />
     </ViewGap>
   )
 }
 
 const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
-
-const WhiteOffers = styled(Offers).attrs(({ theme }) => ({
-  color: theme.colors.white,
-}))``

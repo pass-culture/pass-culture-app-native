@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OnboardingSubscription should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -11,7 +22,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -118,7 +129,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     ListHeaderComponent={
       <React.Fragment>
@@ -1507,7 +1518,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <BVLinearGradient
     colors={
       [
@@ -1549,15 +1560,15 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         {},
       ]
     }
-  />,
+  />
   <View
     style={
       [
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "gap": 24,
-          "paddingBottom": 16,
+          "gap": 20,
+          "paddingBottom": 24,
           "paddingLeft": 16,
           "paddingRight": 16,
           "paddingTop": 16,
@@ -1769,6 +1780,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         </Text>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

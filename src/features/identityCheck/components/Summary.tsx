@@ -43,7 +43,7 @@ const SummaryItem: FC<InfoListItemProps> = ({ testID, title, value }) => {
 const AccessibleTitle3 = styled(Typo.Title3).attrs(getNoHeadingAttrs())``
 
 const BodyContainer = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   paddingHorizontal: getSpacing(6),
   paddingVertical: getSpacing(8),
   borderRadius: theme.borderRadius.radius,

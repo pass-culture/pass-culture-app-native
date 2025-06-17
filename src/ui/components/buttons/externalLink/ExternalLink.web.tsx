@@ -45,18 +45,18 @@ const Text = webStyled.span(({ theme }) => ({
 const StyledTouchableLink = styled(ExternalTouchableLink).attrs<{
   primary?: boolean
 }>(({ theme, primary }) => ({
-  hoverUnderlineColor: primary ? theme.colors.primary : undefined,
+  hoverUnderlineColor: primary ? theme.designSystem.color.text.brandPrimary : undefined,
 }))({
   display: 'inline',
 })
 
 const ButtonText = styled(Typo.Button)<{ primary?: boolean }>(({ primary, theme }) => ({
-  color: primary ? theme.colors.primary : undefined,
+  color: primary ? theme.designSystem.color.text.brandPrimary : undefined,
 }))
 
 const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
   ({ primary, theme }) => ({
-    color: primary ? theme.colors.primary : undefined,
+    color: primary ? theme.designSystem.color.icon.brandPrimary : undefined,
     size: theme.icons.sizes.extraSmall,
   })
 )<{ primary?: boolean }>``

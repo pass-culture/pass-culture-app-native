@@ -51,7 +51,7 @@ const Container = styled.View({
 })
 
 const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.extraSmall,
 }))({})
 

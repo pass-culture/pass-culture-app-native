@@ -49,6 +49,6 @@ const StyledIcon = styled(RingingBell).attrs(({ theme }) => ({
 }))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   textAlign: 'center',
 }))

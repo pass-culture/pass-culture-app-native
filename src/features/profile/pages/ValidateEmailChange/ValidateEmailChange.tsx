@@ -120,7 +120,7 @@ const Wrapper = styled.View({
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)({

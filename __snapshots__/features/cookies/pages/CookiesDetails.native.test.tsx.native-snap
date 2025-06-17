@@ -89,7 +89,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "paddingVertical": 20,
               },
               {
-                "backgroundColor": "#F1F1F4",
+                "backgroundColor": "#f1f1f4",
                 "paddingVertical": 16,
               },
             ]
@@ -182,7 +182,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               "width": "100%",
             },
             {
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "paddingBottom": 16,
             },
           ]
@@ -773,7 +773,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 1,
             "width": "100%",
           },
@@ -1159,7 +1159,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 1,
             "width": "100%",
           },
@@ -1545,7 +1545,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 1,
             "width": "100%",
           },
@@ -1934,7 +1934,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       style={
         [
           {
-            "backgroundColor": "#F1F1F4",
+            "backgroundColor": "#f1f1f4",
             "height": 1,
             "width": "100%",
           },

@@ -178,7 +178,7 @@ export const hasCodeCorrectFormat = (code: string) => {
 }
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const InputContainer = styled.View(({ theme }) => ({
