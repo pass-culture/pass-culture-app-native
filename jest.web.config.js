@@ -50,6 +50,7 @@ module.exports = {
       '|react-native-reanimated' +
       '|@pass-culture/design-system' +
       '|search-insights' +
+      '|react-native-gesture-handler' +
       ')',
   ],
   coverageReporters: ['json'],

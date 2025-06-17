@@ -575,7 +575,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
             }
             getItem={[Function]}
             getItemCount={[Function]}
-            handlerTag={1}
+            handlerTag={-1}
             handlerType="NativeViewGestureHandler"
             keyExtractor={[Function]}
             onContentSizeChange={[Function]}
@@ -593,16 +593,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
             scrollEventThrottle={0.0001}
             stickyHeaderIndices={[]}
             viewabilityConfigCallbackPairs={[]}
-            waitFor={
-              [
-                {
-                  "current": null,
-                },
-                {
-                  "current": null,
-                },
-              ]
-            }
           >
             <View>
               <View

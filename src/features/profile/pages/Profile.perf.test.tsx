@@ -14,7 +14,7 @@ import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('react-native/src/private/animated/NativeAnimatedHelper')
 
 // We mock server instead of hooks to test the real behavior of the component.
 mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
