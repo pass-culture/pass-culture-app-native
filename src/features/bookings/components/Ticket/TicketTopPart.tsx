@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponse } from 'api/gen'
+import { BookingOfferResponseV2 } from 'api/gen'
 import { LinkToOffer } from 'features/bookings/components/LinkToOffer'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -16,7 +16,7 @@ type TicketTopPartProps = {
   day?: string
   isDuo?: boolean
   venueInfo?: React.JSX.Element
-  offer: BookingOfferResponse
+  offer: BookingOfferResponseV2
   mapping: SubcategoriesMapping
 }
 

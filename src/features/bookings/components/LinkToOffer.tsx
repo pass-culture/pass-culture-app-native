@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BookingOfferResponse } from 'api/gen'
+import { BookingOfferResponseV2 } from 'api/gen'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
@@ -14,7 +14,7 @@ export const LinkToOffer = ({
   offer,
   mapping,
 }: {
-  offer: BookingOfferResponse
+  offer: BookingOfferResponseV2
   mapping: SubcategoriesMapping
 }) => {
   const netInfo = useNetInfoContext()

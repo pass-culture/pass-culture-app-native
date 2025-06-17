@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingReponse, UserProfileResponse } from 'api/gen'
+import { BookingResponse, UserProfileResponse } from 'api/gen'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsContentDesktop } from 'features/bookings/components/BookingDetailsContentDesktop'
@@ -33,7 +33,7 @@ export const BookingDetailsContent = ({
   user,
 }: {
   properties: BookingProperties
-  booking: BookingReponse
+  booking: BookingResponse
   mapping: SubcategoriesMapping
   user: UserProfileResponse
 }) => {
@@ -56,6 +56,7 @@ export const BookingDetailsContent = ({
   } = useModal(false)
 
   const { offer } = booking.stock
+  const { ticket } = booking
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offer.id && analytics.logBookingDetailsScrolledToBottom(offer.id)
@@ -78,7 +79,7 @@ export const BookingDetailsContent = ({
 
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
 
-  const ticket = (
+  const ticketDisplay = (
     <Ticket
       properties={properties}
       booking={booking}
@@ -86,6 +87,7 @@ export const BookingDetailsContent = ({
       user={user}
       display={display}
       setTopBlockHeight={setTopBlockHeight}
+      ticket={booking.ticket}
     />
   )
 
@@ -106,14 +108,14 @@ export const BookingDetailsContent = ({
         {isDesktopViewport ? (
           <BookingDetailsContentDesktop
             headerImageHeight={headerImageHeight}
-            leftBlock={ticket}
+            leftBlock={ticketDisplay}
             rightBlock={
               <React.Fragment>
                 <ErrorBanner message={errorBannerMessage} />
-                {booking.stock.offer.bookingContact || offer.withdrawalDetails ? (
+                {booking.stock.offer.bookingContact || ticket?.withdrawal.details ? (
                   <BookingPrecisions
                     bookingContactEmail={booking.stock.offer.bookingContact}
-                    withdrawalDetails={offer.withdrawalDetails}
+                    withdrawalDetails={ticket?.withdrawal.details}
                     onEmailPress={onEmailPress}
                   />
                 ) : null}
@@ -128,7 +130,7 @@ export const BookingDetailsContent = ({
           />
         ) : (
           <BookingDetailsContentMobile
-            topBlock={ticket}
+            topBlock={ticketDisplay}
             onEmailPress={onEmailPress}
             booking={booking}
             errorBannerMessage={errorBannerMessage}

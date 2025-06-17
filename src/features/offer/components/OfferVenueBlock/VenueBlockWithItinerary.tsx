@@ -1,7 +1,8 @@
 import React from 'react'
 
+import { BookingVenueResponseV2 } from 'api/gen'
 import { BookingProperties } from 'features/bookings/types'
-import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { analytics } from 'libs/analytics/provider'
@@ -12,7 +13,7 @@ type Props = {
   offerId: number
   properties: BookingProperties
   offerFullAddress?: string
-  venue: VenueBlockVenue
+  venue: BookingVenueResponseV2
   address?: VenueBlockAddress
   thumbnailSize: number
   onSeeVenuePress?: VoidFunction

@@ -36,6 +36,7 @@ export const useOfferCTAButton = (
     bookingDataMovieScreening: bookingData,
   })
 
+  // Deplacer ce focusEffect dans le composant en question
   const { resetFreeOfferId } = freeOfferIdActions
   const storedFreeOfferId = useFreeOfferId()
 
@@ -46,23 +47,19 @@ export const useOfferCTAButton = (
     }
   })
 
-  const onPress = () => {
-    onPressCTA?.()
-    showOfferModal()
-  }
-
-  const ctaWordingAndAction = {
-    wording,
-    onPress,
-    navigateTo,
-    externalNav,
-    isDisabled,
-    bottomBannerText,
-  }
-
   return {
-    ctaWordingAndAction,
-    onPress,
+    ctaWordingAndAction: {
+      wording,
+      onPress,
+      navigateTo,
+      externalNav,
+      isDisabled,
+      bottomBannerText,
+    },
+    onPress: () => {
+      onPressCTA?.()
+      showOfferModal()
+    },
     showOfferModal,
     CTAOfferModal,
     openModalOnNavigation,
