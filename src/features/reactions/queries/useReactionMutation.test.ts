@@ -50,6 +50,7 @@ describe('useReactionMutation', () => {
     })
   })
 
+  //TODO(PC-36585): unskip this test
   it.skip('should invalidate bookings query on success', async () => {
     mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
 
@@ -63,6 +64,7 @@ describe('useReactionMutation', () => {
     })
   })
 
+  //TODO(PC-36585): unskip this test
   it.skip('should invalidate bookings query on error', async () => {
     mockServer.postApi('/v1/reaction', { responseOptions: { statusCode: 400, data: {} } })
 
