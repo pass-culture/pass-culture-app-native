@@ -40,6 +40,6 @@ export const ButtonTertiaryNeutralInfo = styledButton(AppButton).attrs<BaseButto
 })
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
-  color: theme.buttons.tertiaryNeutralInfo.loadingIconColor,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.buttons.tertiaryNeutralInfo.iconSize,
 }))``

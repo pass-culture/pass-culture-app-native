@@ -143,8 +143,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 .c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696A6F;
-  text-decoration-color: #696A6F;
+  -webkit-text-decoration-color: #696a6f;
+  text-decoration-color: #696a6f;
 }
 
 .c5:hover:disabled {
@@ -190,7 +190,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-borderColor-w7parf r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
@@ -1289,8 +1289,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 .c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696A6F;
-  text-decoration-color: #696A6F;
+  -webkit-text-decoration-color: #696a6f;
+  text-decoration-color: #696a6f;
 }
 
 .c5:hover:disabled {
@@ -1336,7 +1336,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderColor-uj9wiw r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-borderColor-w7parf r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
