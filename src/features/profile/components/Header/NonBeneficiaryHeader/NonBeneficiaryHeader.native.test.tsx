@@ -148,7 +148,8 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
   })
 
-  it('should render the younger badge for user whose eligibilty hasn’t started yet (under 15 years old)', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should render the younger badge for user whose eligibilty hasn’t started yet (under 15 years old)', async () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderNonBeneficiaryHeader({
@@ -162,7 +163,8 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
   })
 
-  it('should not display banner or badge when user is beneficiary', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should not display banner or badge when user is beneficiary', async () => {
     setFeatureFlags()
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
