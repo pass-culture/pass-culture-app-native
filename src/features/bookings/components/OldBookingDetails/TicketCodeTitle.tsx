@@ -20,11 +20,11 @@ export const TicketCodeTitle = ({
 )
 
 const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.text.brandPrimary,
 }))
 
 const StyledTouchable = styledButton(Touchable).attrs(({ theme }) => ({
-  hoverUnderlineColor: theme.colors.primary,
+  hoverUnderlineColor: theme.designSystem.color.text.brandPrimary,
 }))({
   marginBottom: getSpacing(4),
   alignSelf: 'center',

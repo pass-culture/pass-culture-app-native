@@ -255,5 +255,5 @@ const StyledText = styled(Text)({
 })
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.text.brandPrimary,
 }))

@@ -44,7 +44,7 @@ describe('ButtonInsideText Component', () => {
       render(<ButtonInsideText wording={wording} />)
       const buttonColor = screen.getByText(wording).props.style[0].color
 
-      expect(buttonColor).toBe(theme.colors.primary)
+      expect(buttonColor).toBe(theme.designSystem.color.background.brandPrimary)
     })
 
     it('should display custom color when color provided', () => {

@@ -64,7 +64,7 @@ describe('ButtonInsideText Component', () => {
       render(<ButtonInsideText wording={wording} />)
       const button = screen.getByText(wording)
 
-      expect(button).toHaveStyle({ color: theme.colors.primary })
+      expect(button).toHaveStyle({ color: theme.designSystem.color.background.brandPrimary })
     })
 
     it('should display custom color when color provided', () => {

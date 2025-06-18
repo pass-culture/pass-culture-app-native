@@ -253,7 +253,10 @@ const ProgressBarWrapper = styled.View({
 })
 
 const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
-  colors: [theme.colors.primary, theme.colors.secondary],
+  colors: [
+    theme.designSystem.color.background.brandPrimary,
+    theme.designSystem.color.background.brandPrimary,
+  ],
   angle: 90,
   useAngle: true,
 }))({

@@ -6,9 +6,9 @@ import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boolean) => {
-  if (selected) return theme.colors.primary
-  if (disabled) return theme.colors.greyMedium
-  return theme.colors.greyDark
+  if (selected) return theme.designSystem.color.border.brandPrimary
+  if (disabled) return theme.designSystem.color.border.disabled
+  return theme.designSystem.color.border.default
 }
 
 export const getTextColor = (theme: DefaultTheme, selected: boolean, disabled: boolean) => {
@@ -80,7 +80,9 @@ const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
     border: `solid 1px`,
     borderColor: getBorderColor(theme, selected, disabled),
     overflow: 'hidden',
-    backgroundColor: selected ? theme.colors.primary : theme.colors.white,
+    backgroundColor: selected
+      ? theme.designSystem.color.background.brandPrimary
+      : theme.colors.white,
     paddingHorizontal: getSpacing(3.25),
     alignItems: 'center',
     justifyContent: 'center',

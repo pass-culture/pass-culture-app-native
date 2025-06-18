@@ -110,7 +110,7 @@ const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isA
 }))
 
 const LocationPointerFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
 }))({})
 

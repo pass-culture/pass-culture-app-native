@@ -38,6 +38,5 @@ const StyledView = styled.View(({ theme }) => ({
 
 const StyledButtonText = styled(Typo.Button)(({ theme }) => ({
   color: theme.designSystem.color.text.inverted,
-  marginLeft: getSpacing(1),
-  marginRight: getSpacing(2),
+  paddingHorizontal: getSpacing(2),
 }))

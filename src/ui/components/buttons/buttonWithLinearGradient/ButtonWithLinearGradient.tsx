@@ -19,7 +19,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   const Icon = icon
     ? styled(icon).attrs(({ theme }) => ({
         size: theme.buttons.linearGradient.iconSize,
-        color: theme.buttons.linearGradient.iconColor,
+        color: theme.designSystem.color.icon.inverted,
       }))``
     : undefined
 
@@ -61,8 +61,8 @@ const Container = styled(TouchableOpacity)<{ fitContentWidth: boolean }>(({
 
 const Title = styled(Typo.Button)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled
-    ? theme.buttons.disabled.linearGradient.textColor
-    : theme.buttons.linearGradient.textColor,
+    ? theme.designSystem.color.text.disabled
+    : theme.designSystem.color.text.inverted,
   padding: getSpacing(2),
 }))
 

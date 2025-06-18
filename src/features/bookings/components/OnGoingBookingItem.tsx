@@ -138,24 +138,24 @@ const AttributesView = styled.View({
   paddingRight: getSpacing(1),
 })
 
-const WithdrawContainer = styled.View(({ theme }) => ({
+const WithdrawContainer = styled.View({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
-  color: theme.colors.primary,
-}))
-
-const DateLabel = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
-
-const WithdrawCaption = styled(Typo.BodyAccentXs)({
-  marginTop: getSpacing(1),
-  marginRight: getSpacing(4),
 })
 
+const DateLabel = styled(Typo.Body)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
+}))
+
+const WithdrawCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginTop: getSpacing(1),
+  marginRight: getSpacing(4),
+  color: theme.designSystem.color.text.brandPrimary,
+}))
+
 const OnSiteWithdrawalCaption = styled(WithdrawCaption)(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.text.brandPrimary,
   marginTop: getSpacing(1),
 }))
 
@@ -165,21 +165,21 @@ const Clock = styled(InitialClock).attrs(({ theme }) => ({
 }))``
 
 const OfferEvent = styled(DefaultOfferEvent).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const ExpirationBookingContainer = styled.View(({ theme }) => ({
+const ExpirationBookingContainer = styled.View({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
-  color: theme.colors.primary,
-}))
+})
 
-const ExpirationBookingLabel = styled(Typo.BodyAccentXs)({
+const ExpirationBookingLabel = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.brandPrimary,
   marginTop: getSpacing(1),
   marginRight: getSpacing(4),
-})
+}))
 
 const ShareContainer = styled.View(({ theme }) => ({
   position: 'absolute',

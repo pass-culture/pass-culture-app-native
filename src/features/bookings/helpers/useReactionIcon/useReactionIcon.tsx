@@ -11,7 +11,7 @@ export const useReactionIcon = (reaction?: ReactionTypeEnum | null) => {
   const ReactionLikeIcon = useMemo(
     () =>
       styled(iconFactory.getIcon('like-filled')).attrs(({ theme }) => ({
-        color: theme.colors.primary,
+        color: theme.designSystem.color.icon.brandPrimary,
       }))``,
     [iconFactory]
   )

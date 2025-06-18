@@ -52,14 +52,19 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
     alignItems: 'center',
     borderRadius: getSpacing(10),
     borderWidth: 2,
-    borderColor: selected ? theme.colors.primary : theme.colors.greySemiDark,
+    borderColor: selected
+      ? theme.designSystem.color.border.brandPrimary
+      : theme.designSystem.color.border.default,
     marginBottom: getSpacing(3),
     marginRight: getSpacing(3),
-    backgroundColor: selected ? theme.colors.primary : theme.colors.white,
+    backgroundColor: selected
+      ? theme.designSystem.color.background.brandPrimary
+      : theme.designSystem.color.background.default,
     maxWidth: theme.buttons.maxWidth,
     alignSelf: 'flex-start',
   })
 )
+
 const Label = styled(Typo.BodyAccent)<{ selected: boolean }>(({ theme, selected }) => ({
   marginVertical: getSpacing(2.5),
   color: selected ? theme.colors.white : theme.colors.black,

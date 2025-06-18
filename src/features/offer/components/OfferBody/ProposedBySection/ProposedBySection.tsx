@@ -1,5 +1,4 @@
 import React, { Fragment, FunctionComponent } from 'react'
-import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
@@ -44,7 +43,9 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
             {imageUrl ? (
               <FullSizeImage url={imageUrl} testID="VenueImage" />
             ) : (
-              <DefaultVenueAvatar testID="DefaultImage" />
+              <DefaultVenueAvatar testID="DefaultImage">
+                <Venue color={theme.designSystem.color.icon.inverted} size={29} />
+              </DefaultVenueAvatar>
             )}
           </Avatar>
         }
@@ -78,9 +79,10 @@ const FullSizeImage = styled(FastImage)({
   height: '100%',
 })
 
-const DefaultVenueAvatar = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [theme.colors.secondary, theme.colors.primary],
-  useAngle: true,
-  angle: -30,
-  children: <Venue color={theme.colors.white} size={29} />,
-}))({ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' })
+const DefaultVenueAvatar = styled.View(({ theme }) => ({
+  width: '100%',
+  height: '100%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
+}))

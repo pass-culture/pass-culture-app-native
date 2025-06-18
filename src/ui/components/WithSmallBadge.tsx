@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { Pastille } from 'ui/svg/icons/Pastille'
 
 const SmallBadge = styled(Pastille).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   width: 8,
   height: 8,
   testID: 'smallBadge',

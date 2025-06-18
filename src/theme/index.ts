@@ -423,8 +423,6 @@ export const theme = {
     },
     linearGradient: {
       iconSize: iconSizes.small,
-      iconColor: ColorsEnum.WHITE,
-      textColor: ColorsEnum.WHITE,
     },
     scrollButton: {
       size: getSpacing(10),

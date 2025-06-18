@@ -16,7 +16,7 @@ describe('<StepDots />', () => {
 
       const firstDot = dots[0]
 
-      expect(firstDot?.props.borderColor).toEqual(theme.colors.primary)
+      expect(firstDot?.props.borderColor).toEqual(theme.designSystem.color.border.brandPrimary)
       expect(firstDot?.props.width).toEqual(12)
     })
 
@@ -43,7 +43,7 @@ describe('<StepDots />', () => {
       renderThreeStepsSecondIsCurrent()
       const secondDot = screen.getAllByTestId('dot-icon')[1]
 
-      expect(secondDot?.props.borderColor).toEqual(theme.colors.primary)
+      expect(secondDot?.props.borderColor).toEqual(theme.designSystem.color.border.brandPrimary)
       expect(secondDot?.props.width).toEqual(12)
     })
 
@@ -70,7 +70,7 @@ describe('<StepDots />', () => {
       renderThreeStepsLastIsCurrent()
       const thirdDot = screen.getAllByTestId('dot-icon')[2]
 
-      expect(thirdDot?.props.borderColor).toEqual(theme.colors.primary)
+      expect(thirdDot?.props.borderColor).toEqual(theme.designSystem.color.border.brandPrimary)
       expect(thirdDot?.props.width).toEqual(12)
     })
   })
