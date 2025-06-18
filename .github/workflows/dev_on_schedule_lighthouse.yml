@@ -1,8 +1,6 @@
 name: '4 [on_pr] Lighthouse Web Performance test'
 
-on:
-  schedule:
-    - cron: '0 22 * * 0' # At 10PM every Sunday
+on: push
 
 env:
   CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
@@ -31,6 +29,10 @@ jobs:
           bucket: ${{ env.CACHE_BUCKET_NAME }}
           workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Log app version
+        run: |
+          APP_VERSION=$(jq -r .version package.json)
+          echo "App version is: $APP_VERSION"
       - name: Run Lighthouse CI 🚀
         run: |
           yarn dlx @lhci/cli@0.14.0 autorun --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
