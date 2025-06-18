@@ -90,7 +90,7 @@ const getWithdrawLabel = (booking: BookingResponse, properties: BookingPropertie
   return ''
 }
 
-export const getPhysicalWithdrawLabel = (expiration: string | null | undefined): string => {
+const getPhysicalWithdrawLabel = (expiration: string | null | undefined): string => {
   if (!expiration) return ''
   if (isToday(new Date(expiration))) return 'Dernier jour pour retirer'
   if (isTomorrow(new Date(expiration))) return 'Avant dernier jour pour retirer'

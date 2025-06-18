@@ -52,7 +52,7 @@ const initGetEventOnSiteWithdrawLabelProperties = (
   }
 }
 
-export const getWithoutWithdrawaDelayLabel = (
+const getWithoutWithdrawaDelayLabel = (
   properties: GetEventOnSiteWithdrawLabelProperties
 ): string => {
   if (
@@ -71,7 +71,7 @@ export const getWithoutWithdrawaDelayLabel = (
   return ''
 }
 
-export const getWithLessOneDayWithdrawaDelayLabel = (
+const getWithLessOneDayWithdrawaDelayLabel = (
   properties: GetEventOnSiteWithdrawLabelProperties
 ): string => {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
@@ -94,7 +94,7 @@ export const getWithLessOneDayWithdrawaDelayLabel = (
   return ''
 }
 
-export const getWithOneDayWithdrawaDelayLabel = (
+const getWithOneDayWithdrawaDelayLabel = (
   properties: GetEventOnSiteWithdrawLabelProperties
 ): string => {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
@@ -113,7 +113,7 @@ export const getWithOneDayWithdrawaDelayLabel = (
   return ''
 }
 
-export const getWithTwoDaysWithdrawaDelayLabel = (
+const getWithTwoDaysWithdrawaDelayLabel = (
   properties: GetEventOnSiteWithdrawLabelProperties
 ): string => {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
