@@ -14,8 +14,8 @@ export const useScreenRenderOnFocus = (screenName: string) => {
           const trace = await perf().startScreenTrace(screenName)
           screenTrace.current = trace
         } catch (e) {
-          // startScreenTrace Throws if hardware acceleration is disabled (by default active on AndroidManifest) or if Android is 9.0 or 9.1.
-          if (Platform.OS === 'android' && Platform.Version !== 28)
+          // startScreenTrace Throws if hardware acceleration is disabled or if Android is 8.0 or 8.1 as specified in doc: https://rnfirebase.io/perf/usage#custom-screen-traces
+          if (Platform.OS === 'android' && ![26, 27].includes(Platform.Version))
             eventMonitoring.captureException(e)
         }
       }

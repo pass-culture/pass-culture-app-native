@@ -22,9 +22,9 @@ describe('useScreenRenderOnFocus', () => {
     expect(mockStart).toHaveBeenCalledTimes(1)
   })
 
-  it('should log error if there is an issue and user is on Android (other than 28)', async () => {
+  it('should log error if there is an issue and user is on Android (other than 26 and 27)', async () => {
     Platform.OS = 'android'
-    Platform.Version = 29
+    Platform.Version = 28
 
     const error = new Error('some error')
     mockStart.mockRejectedValueOnce(error)
