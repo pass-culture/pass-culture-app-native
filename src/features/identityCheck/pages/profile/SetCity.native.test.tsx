@@ -29,8 +29,7 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SetCity/>', () => {
-  //TODO(PC-36587): unskip this test
-  it.skip('should render correctly', () => {
+  it('should render correctly', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(screen).toMatchSnapshot()

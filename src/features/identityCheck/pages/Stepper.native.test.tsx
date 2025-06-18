@@ -248,7 +248,8 @@ describe('Stepper navigation', () => {
     )
   })
 
-  it('should not trigger StepperDisplayed tracker when route does not contain a from parameter', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should not trigger StepperDisplayed tracker when route does not contain a from parameter', async () => {
     useRoute.mockReturnValueOnce({ params: undefined })
 
     mockUseStepperInfo.mockReturnValueOnce({

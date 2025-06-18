@@ -55,8 +55,7 @@ describe('GenericHome', () => {
   })
 
   describe('With not displayed skeleton by default', () => {
-    //TODO(PC-36585): unskip this test
-    it.skip('should display skeleton', async () => {
+    it('should display skeleton', async () => {
       useShowSkeletonSpy.mockReturnValueOnce(true)
       renderGenericHome({})
       await act(async () => {})
@@ -64,8 +63,7 @@ describe('GenericHome', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    //TODO(PC-36585): unskip this test
-    it.skip('should display real content', async () => {
+    it('should display real content', async () => {
       renderGenericHome({})
       await act(async () => {})
 
