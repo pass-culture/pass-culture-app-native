@@ -15,3 +15,6 @@ ci:
       largest-contentful-paint:
         - error
         - maxNumericValue: 20_500
+  upload:
+    target: 'filesystem'
+    outputDir: './.lighthouseci'
