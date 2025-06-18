@@ -55,7 +55,8 @@ case "$target" in
     run_cloud_commands=true
     api_key=$(parse_env_variable ROBIN_API_KEY .maestro/.env.secret)
     project_id=$(parse_env_variable ROBIN_PROJECT_ID .maestro/.env.secret)
-    cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/tests/ --device-locale fr_FR --android-api-level 34 --timeout 120"
+    maestro_cloud_api_key=$(parse_env_variable MAESTRO_CLOUD_API_KEY .maestro/.env.secret)
+    cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/tests/ --device-locale fr_FR --android-api-level 34 --timeout 120 --ios-version 17"
     ;;
 esac
 
@@ -131,6 +132,7 @@ maestro "$target" \
   --env MAESTRO_RUN_TRACKING_TESTS="$run_tracking_tests" \
   --env MAESTRO_RUN_CLOUD_COMMANDS="$run_cloud_commands" \
   --env MAESTRO_APP_INSTALLED="$app_installed" \
+  --env MAESTRO_CLOUD_API_KEY="$maestro_cloud_api_key" \
   $TAGS \
   $cloud_arguments \
   $rest_of_arguments

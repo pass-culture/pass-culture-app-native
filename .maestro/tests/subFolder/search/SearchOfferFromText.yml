@@ -45,4 +45,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: '.*Livre.*'
+    - assertWithAI:
+        assertion: Offers results are corresponding to the search
+    - tapOn:
+        point: "50%,53%"
