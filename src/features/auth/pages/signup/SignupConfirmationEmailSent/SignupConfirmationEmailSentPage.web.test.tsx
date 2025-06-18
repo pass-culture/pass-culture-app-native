@@ -17,6 +17,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SignupConfirmationEmailSentPage/>', () => {
   describe('Accessibility', () => {
+    //TODO(PC-36587): unskip this test
     it.skip('should not have basic accessibility issues', async () => {
       mockServer.getApi<EmailValidationRemainingResendsResponse>(
         '/v1/email_validation_remaining_resends/john.doe%40gmail.com',

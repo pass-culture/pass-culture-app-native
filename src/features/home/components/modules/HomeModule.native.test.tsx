@@ -220,6 +220,7 @@ describe('<HomeModule />', () => {
     expect(await screen.findByText('Cette semaine sur le pass')).toBeOnTheScreen()
   })
 
+  //TODO(PC-36585): unskip this test
   it.skip('should display RecommendationModule', async () => {
     const recommendedOffers: SimilarOffersResponse = {
       params: {

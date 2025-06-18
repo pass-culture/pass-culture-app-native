@@ -9,6 +9,8 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { SiteMapScreen } from './SiteMapScreen'
 
+jest.mock('libs/jwt/jwt')
+
 jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('features/auth/context/AuthContext', () => ({

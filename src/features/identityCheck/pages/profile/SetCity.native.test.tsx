@@ -31,6 +31,7 @@ useRoute.mockReturnValue({
 })
 
 describe('<SetCity/>', () => {
+  //TODO(PC-36587): unskip this test
   it.skip('should render correctly', () => {
     renderSetCity()
 

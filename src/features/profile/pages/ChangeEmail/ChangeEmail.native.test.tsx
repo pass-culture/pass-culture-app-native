@@ -6,6 +6,8 @@ import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { ChangeEmail } from './ChangeEmail'
 
+jest.mock('libs/subcategories/useSubcategories')
+
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -13,7 +15,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
 const user = userEvent.setup()
 jest.useFakeTimers()
 

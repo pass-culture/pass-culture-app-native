@@ -12,6 +12,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, act, userEvent } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
+jest.mock('libs/subcategories/useSubcategories')
+
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 useRoute.mockReturnValue({ params: { token: 'token' } })
 

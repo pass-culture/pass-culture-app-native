@@ -16,6 +16,7 @@ const setup = (queryClient: QueryClient) => {
 jest.mock('libs/jwt/jwt')
 
 describe('useBookOfferMutation', () => {
+  //TODO(PC-36586): unskip this test
   it.skip('invalidates userProfile after successfully booking an offer', async () => {
     mockServer.postApi<BookOfferResponse>('/v1/bookings', {})
     mockServer.getApi<BookingsResponse>('/v1/bookings', {})
@@ -34,6 +35,7 @@ describe('useBookOfferMutation', () => {
     })
   })
 
+  //TODO(PC-36586): unskip this test
   it.skip('does not invalidates userProfile if error on booking an offer', async () => {
     mockServer.postApi('/v1/bookings', { responseOptions: { statusCode: 400, data: {} } })
 

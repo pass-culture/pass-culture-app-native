@@ -160,4 +160,27 @@ describe('PersonalData', () => {
 
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
   })
+
+  //TODO(PC-36587): unskip this test
+  it.skip('should not show password field when user has no password', async () => {
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          hasPassword: false,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          hasPassword: false,
+        },
+      })
+    render(reactQueryProviderHOC(<PersonalData />))
+    await screen.findByText('Adresse e-mail')
+
+    expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
+  })
 })
