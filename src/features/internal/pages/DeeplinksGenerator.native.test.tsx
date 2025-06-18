@@ -13,6 +13,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('libs/subcategories/useSubcategories')
+
 describe('<DeeplinksGenerator />', () => {
   it('should render DeeplinksGenerator', () => {
     expect(render(<DeeplinksGenerator />)).toMatchSnapshot()

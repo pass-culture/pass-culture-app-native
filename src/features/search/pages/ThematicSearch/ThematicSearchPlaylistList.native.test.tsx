@@ -7,6 +7,8 @@ import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, cleanup } from 'tests/utils'
 
+jest.mock('libs/jwt/jwt')
+
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
   class MockFlashList extends ActualFlashList {

@@ -12,6 +12,8 @@ import { render, screen } from 'tests/utils'
 
 import { Favorites } from './Favorites'
 
+jest.mock('libs/subcategories/useSubcategories')
+
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 jest.mock('libs/jwt/jwt')
 
@@ -35,6 +37,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
+  //TODO(PC-36585): unskip this test
   it.skip('should render correctly', async () => {
     mockServer.getApi<PaginatedFavoritesResponse>(
       '/v1/me/favorites',

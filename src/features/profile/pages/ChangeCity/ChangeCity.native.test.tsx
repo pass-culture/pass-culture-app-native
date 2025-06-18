@@ -46,6 +46,7 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ChangeCity', () => {
+  //TODO(PC-36585): unskip this test
   it.skip('should render correctly', async () => {
     render(reactQueryProviderHOC(<ChangeCity />))
 

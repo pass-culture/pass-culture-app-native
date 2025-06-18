@@ -44,6 +44,7 @@ describe('<IdentityCheckEnd/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  //TODO(PC-36587): unskip this test
   it.skip('should navigate to stepper after timeout if nextSubscriptionStep is not null', async () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
