@@ -6,21 +6,21 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
-import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
+import { ButtonWithLinearGradientDeprecated } from './ButtonWithLinearGradientDeprecated'
 
-const meta: Meta<typeof ButtonWithLinearGradient> = {
+const meta: Meta<typeof ButtonWithLinearGradientDeprecated> = {
   title: 'ui/buttons/ButtonWithLinearGradient',
-  component: ButtonWithLinearGradient,
+  component: ButtonWithLinearGradientDeprecated,
 }
 export default meta
 
-const variantConfig: Variants<typeof ButtonWithLinearGradient> = [
+const variantConfig: Variants<typeof ButtonWithLinearGradientDeprecated> = [
   {
-    label: 'ButtonWithLinearGradient default',
+    label: 'ButtonWithLinearGradientDeprecated default',
     props: { onPress: action('press'), wording: 'Confirmer' },
   },
   {
-    label: 'ButtonWithLinearGradient disabled',
+    label: 'ButtonWithLinearGradientDeprecated disabled',
     props: {
       onPress: action('press'),
       wording: 'Confirmer',
@@ -28,15 +28,15 @@ const variantConfig: Variants<typeof ButtonWithLinearGradient> = [
     },
   },
   {
-    label: 'ButtonWithLinearGradient with fit content width',
+    label: 'ButtonWithLinearGradientDeprecated with fit content width',
     props: { onPress: action('press'), wording: 'Confirmer', fitContentWidth: true },
   },
   {
-    label: 'ButtonWithLinearGradient with icon',
+    label: 'ButtonWithLinearGradientDeprecated with icon',
     props: { onPress: action('press'), wording: 'Consulter mes e-mails', icon: Email },
   },
   {
-    label: 'ButtonWithLinearGradient with icon after wording',
+    label: 'ButtonWithLinearGradientDeprecated with icon after wording',
     props: {
       onPress: action('press'),
       wording: 'C’est parti\u00a0!',
@@ -46,12 +46,12 @@ const variantConfig: Variants<typeof ButtonWithLinearGradient> = [
   },
 ]
 
-export const Template: VariantsStory<typeof ButtonWithLinearGradient> = {
-  name: 'ButtonWithLinearGradient',
+export const Template: VariantsStory<typeof ButtonWithLinearGradientDeprecated> = {
+  name: 'ButtonWithLinearGradientDeprecated',
   render: (props) => (
     <VariantsTemplate
       variants={variantConfig}
-      Component={ButtonWithLinearGradient}
+      Component={ButtonWithLinearGradientDeprecated}
       defaultProps={{ ...props }}
     />
   ),

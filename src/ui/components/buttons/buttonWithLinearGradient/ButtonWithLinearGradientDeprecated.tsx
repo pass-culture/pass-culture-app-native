@@ -3,19 +3,14 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
-import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
+import { ButtonWithLinearGradientDeprecatedPropsProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Typo } from 'ui/theme'
 
-export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
-  wording,
-  onPress,
-  isDisabled = false,
-  icon,
-  fitContentWidth = false,
-  iconAfterWording,
-}) => {
+export const ButtonWithLinearGradientDeprecated: React.FC<
+  ButtonWithLinearGradientDeprecatedPropsProps
+> = ({ wording, onPress, isDisabled = false, icon, fitContentWidth = false, iconAfterWording }) => {
   const Icon = icon
     ? styled(icon).attrs(({ theme }) => ({
         size: theme.buttons.linearGradient.iconSize,

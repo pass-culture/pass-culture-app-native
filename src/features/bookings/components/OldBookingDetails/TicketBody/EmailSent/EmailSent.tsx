@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
 import { getEmailMessage } from 'features/bookings/components/OldBookingDetails/TicketBody/ticketBodyMessages'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -20,7 +20,7 @@ export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
     <TicketContainer testID="withdrawal-info-email">
       <WithDrawalContainer testID="withdrawal-info-email-msg">{emailMessage}</WithDrawalContainer>
       {isMailAppAvailable ? (
-        <ButtonWithLinearGradient
+        <ButtonWithLinearGradientDeprecated
           wording="Consulter mes e-mails"
           onPress={(_event) => {
             openInbox()
