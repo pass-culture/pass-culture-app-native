@@ -33,6 +33,8 @@ jobs:
         run: |
           APP_VERSION=$(jq -r .version package.json)
           echo "App version is: $APP_VERSION"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
       - name: Run Lighthouse CI 🚀
         run: |
           yarn dlx @lhci/cli@0.14.0 autorun --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
