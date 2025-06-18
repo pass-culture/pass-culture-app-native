@@ -12,7 +12,6 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
-import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -62,7 +61,6 @@ export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
 
   const onSubmit = ({ city }: CityForm) => {
     setStoreCity(city)
-    analytics.logSetPostalCodeClicked()
     navigate('SetAddress', { type: pageInfos.navigateParamsType })
   }
 

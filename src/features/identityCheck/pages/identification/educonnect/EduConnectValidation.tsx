@@ -6,7 +6,6 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { EduconnectValidationPage } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { analytics } from 'libs/analytics/provider'
 
 export function EduConnectValidation() {
   const { identification } = useSubscriptionContext()
@@ -18,7 +17,6 @@ export function EduConnectValidation() {
     : ''
 
   const onValidateInformation = async () => {
-    analytics.logCheckEduconnectDataClicked()
     await saveStep(IdentityCheckStep.IDENTIFICATION)
     navigateForwardToStepper()
   }

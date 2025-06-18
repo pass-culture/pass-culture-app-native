@@ -9,7 +9,7 @@ import {
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 
@@ -167,20 +167,6 @@ describe('SetPhoneValidationCode', () => {
     await user.press(screen.getByText('Code non reçu ?'))
 
     expect(analytics.logHasClickedMissingCode).toHaveBeenCalledTimes(1)
-  })
-
-  it('should log analytics on press continue', async () => {
-    renderSetPhoneValidationCode()
-
-    const input = screen.getByPlaceholderText('012345')
-
-    await act(async () => {
-      fireEvent.changeText(input, '000000')
-    })
-
-    await user.press(screen.getByTestId('Continuer'))
-
-    expect(analytics.logPhoneValidationCodeClicked).toHaveBeenCalledTimes(1)
   })
 })
 

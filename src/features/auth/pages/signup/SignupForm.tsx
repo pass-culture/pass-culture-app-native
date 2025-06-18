@@ -103,9 +103,6 @@ export const SignupForm: FunctionComponent = () => {
   } = useModal(false)
 
   function showQuitSignupModal() {
-    if (stepConfig?.Component.name) {
-      analytics.logQuitSignup(stepConfig.Component.name)
-    }
     Keyboard.dismiss()
     showFullPageModal()
   }

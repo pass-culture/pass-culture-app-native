@@ -104,8 +104,6 @@ export const SetPhoneNumber = () => {
       const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, country.callingCode)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
-
-    analytics.logPhoneNumberClicked()
   }
 
   return (

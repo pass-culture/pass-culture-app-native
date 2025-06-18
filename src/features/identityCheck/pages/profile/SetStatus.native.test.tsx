@@ -15,7 +15,6 @@ import * as resetStores from 'features/identityCheck/pages/profile/store/resetPr
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
-import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
@@ -156,15 +155,6 @@ describe('<SetStatus/>', () => {
       payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
       type: 'RESET',
     })
-  })
-
-  it('should log analytics on press Continuer', async () => {
-    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
-
-    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
-    await user.press(screen.getByText('Continuer'))
-
-    expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
   })
 
   it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {

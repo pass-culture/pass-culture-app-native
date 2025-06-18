@@ -1,5 +1,4 @@
 // eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
 import { logEventAnalytics } from 'libs/analytics/logEventAnalytics'
 import { AnalyticsProvider } from 'libs/analytics/types'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
@@ -10,11 +9,9 @@ import { storage } from 'libs/storage'
 export const analytics: AnalyticsProvider = {
   enableCollection: async () => {
     firebaseAnalytics.enableCollection()
-    amplitude.enableCollection()
   },
   disableCollection: async () => {
     firebaseAnalytics.disableCollection()
-    amplitude.disableCollection()
   },
 
   logScreenView: async (screenName) => {
@@ -25,9 +22,6 @@ export const analytics: AnalyticsProvider = {
     if (eventName.firebase) {
       const locationType = (await storage.readString('location_type')) ?? 'undefined'
       firebaseAnalytics.logEvent(eventName.firebase, { ...params, locationType })
-    }
-    if (eventName.amplitude) {
-      amplitude.logEvent(eventName.amplitude, params)
     }
     if (await getIsMaestro()) {
       const MOCK_ANALYTICS_SERVER_URL = 'http://localhost:4001' // NOSONAR(typescript:S5332) maestro is run locally, we don't use HTTPS

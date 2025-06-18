@@ -9,7 +9,6 @@ import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics/provider'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { Properties } from 'libs/place/types'
@@ -115,17 +114,6 @@ describe('<SetAddress/>', () => {
         address: mockedSuggestedPlaces.features[1].properties.label,
       },
     })
-  })
-
-  it('should log analytics on press Continuer', async () => {
-    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
-
-    const input = screen.getByTestId('Entrée pour l’adresse')
-    fireEvent.changeText(input, QUERY_ADDRESS)
-
-    await user.press(screen.getByText('Continuer'))
-
-    expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1)
   })
 })
 

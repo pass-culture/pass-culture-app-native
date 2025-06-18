@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CITIES_API_URL, CitiesResponse } from 'libs/place/useCities'
 import { storage } from 'libs/storage'
@@ -106,23 +105,6 @@ describe('<SetCity/>', () => {
         city: { name: city.nom, code: city.code, postalCode: POSTAL_CODE },
       },
     })
-  })
-
-  it('should log analytics on press Continuer', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
-
-    await act(async () => {
-      const input = screen.getByTestId('Entrée pour la ville')
-      fireEvent.changeText(input, POSTAL_CODE)
-    })
-
-    await user.press(screen.getByText(city.nom))
-
-    await user.press(screen.getByText('Continuer'))
-
-    expect(analytics.logSetPostalCodeClicked).toHaveBeenCalledTimes(1)
   })
 })
 
