@@ -1,12 +1,4 @@
-import { addDays } from 'date-fns'
-
-import { BookingStockResponseV2 } from 'api/gen'
-import {
-  getWithoutWithdrawaDelayLabel,
-  getWithLessOneDayWithdrawaDelayLabel,
-  getWithOneDayWithdrawaDelayLabel,
-  getWithTwoDaysWithdrawaDelayLabel,
-} from 'features/bookings/helpers/getEventOnSiteWithdrawLabel'
+import { addDays, isSameDay, addHours, format } from 'date-fns'
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 const TWO_DAYS_IN_SECONDS = 60 * 60 * 48
@@ -21,18 +13,13 @@ type GetEventOnSiteWithdrawLabelProperties = {
 }
 
 export const getEventOnSiteWithdrawLabel = (
-  stock: BookingStockResponseV2,
+  beginningDatetime: string | null | undefined,
   withdrawalDelay: number | null | undefined
 ): string => {
-  if (!stock.beginningDatetime) return ''
+  if (!beginningDatetime) return ''
 
-  const properties = initGetEventOnSiteWithdrawLabelProperties(
-    stock.beginningDatetime,
-    withdrawalDelay
-  )
-  if (!properties) return ''
-
-  if (properties.now > properties.eventDate) return ''
+  const properties = initGetEventOnSiteWithdrawLabelProperties(beginningDatetime, withdrawalDelay)
+  if (!properties || properties.now > properties.eventDate) return ''
 
   if (properties.withdrawalDelay === 0) return getWithoutWithdrawaDelayLabel(properties)
 
@@ -63,4 +50,84 @@ const initGetEventOnSiteWithdrawLabelProperties = (
     eventDateMinus2Days: addDays(eventDate, -2),
     eventDateMinus1Day: addDays(eventDate, -1),
   }
+}
+
+export const getWithoutWithdrawaDelayLabel = (
+  properties: GetEventOnSiteWithdrawLabelProperties
+): string => {
+  if (
+    isSameDay(properties.now, properties.eventDateMinus3Days) ||
+    isSameDay(properties.now, properties.eventDateMinus2Days)
+  ) {
+    return 'Billet à retirer sur place'
+  }
+
+  if (isSameDay(properties.now, properties.eventDateMinus1Day))
+    return 'Billet à retirer sur place d’ici demain'
+
+  if (isSameDay(properties.now, properties.eventDate))
+    return 'Billet à retirer sur place aujourd’hui'
+
+  return ''
+}
+
+export const getWithLessOneDayWithdrawaDelayLabel = (
+  properties: GetEventOnSiteWithdrawLabelProperties
+): string => {
+  if (isSameDay(properties.now, properties.eventDateMinus3Days))
+    return 'Billet à retirer sur place dans 3 jours'
+
+  if (isSameDay(properties.now, properties.eventDateMinus2Days))
+    return 'Billet à retirer sur place dans 2 jours'
+
+  if (isSameDay(properties.now, properties.eventDateMinus1Day))
+    return 'Billet à retirer sur place demain'
+
+  if (isSameDay(properties.now, properties.eventDate)) {
+    const withdrawalDelayInHours = properties.withdrawalDelay / 60 / 60
+    const possibleWithdrawalDate = addHours(properties.eventDate, -withdrawalDelayInHours)
+    const hours = format(possibleWithdrawalDate, 'HH')
+    const minutes = format(possibleWithdrawalDate, 'mm')
+    return `Billet à retirer sur place dès ${hours}h${minutes}`
+  }
+
+  return ''
+}
+
+export const getWithOneDayWithdrawaDelayLabel = (
+  properties: GetEventOnSiteWithdrawLabelProperties
+): string => {
+  if (isSameDay(properties.now, properties.eventDateMinus3Days))
+    return 'Billet à retirer sur place dans 2 jours'
+
+  if (isSameDay(properties.now, properties.eventDateMinus2Days))
+    return 'Billet à retirer sur place dès demain'
+
+  if (isSameDay(properties.now, properties.eventDateMinus1Day))
+    return 'Billet à retirer sur place dès aujourd’hui'
+
+  if (isSameDay(properties.now, properties.eventDate)) {
+    return 'Billet à retirer sur place aujourd’hui'
+  }
+
+  return ''
+}
+
+export const getWithTwoDaysWithdrawaDelayLabel = (
+  properties: GetEventOnSiteWithdrawLabelProperties
+): string => {
+  if (isSameDay(properties.now, properties.eventDateMinus3Days))
+    return 'Billet à retirer sur place dès demain'
+
+  if (
+    isSameDay(properties.now, properties.eventDateMinus2Days) ||
+    isSameDay(properties.now, properties.eventDateMinus1Day)
+  )
+    return 'Billet à retirer sur place dès aujourd’hui'
+
+  if (isSameDay(properties.now, properties.eventDate)) {
+    return 'Billet à retirer sur place aujourd’hui'
+  }
+
+  return ''
 }

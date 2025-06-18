@@ -507,7 +507,7 @@ export const bookingsSnap = toMutable({
         },
         withdrawal: {
           details: null,
-          type: WithdrawalTypeEnum.on_site,
+          type: WithdrawalTypeEnum.in_app,
           delay: null,
         },
         noTicket: false,

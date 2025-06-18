@@ -4,7 +4,6 @@ import {
   getEventOnSiteWithdrawLabelV2,
   getBookingLabelForActivationCodeV2,
 } from 'features/bookings/helpers'
-import { getPhysicalWithdrawLabel } from 'features/bookings/helpers/getBookingLabels'
 import { BookingProperties } from 'features/bookings/types'
 import {
   formatToCompleteFrenchDate,
@@ -30,7 +29,7 @@ const getDateLabel = (booking: BookingResponse, properties: BookingProperties): 
 
   if (properties.hasActivationCode) {
     return getBookingLabelForActivationCodeV2.getBookingLabelForActivationCode(
-      booking.ticket?.activationCode?.expirationDate
+      booking.ticket?.activationCode?.expirationDate ?? null
     )
   }
 
@@ -81,13 +80,20 @@ const getWithdrawLabel = (booking: BookingResponse, properties: BookingPropertie
   if (properties.isEvent)
     return booking.ticket?.withdrawal.type === WithdrawalTypeEnum.on_site
       ? getEventOnSiteWithdrawLabelV2.getEventOnSiteWithdrawLabel(
-          booking.stock,
+          booking.stock.beginningDatetime,
           booking.ticket?.withdrawal.delay
         )
       : getEventWithdrawLabel(booking.stock)
 
   if (properties.isPhysical) return getPhysicalWithdrawLabel(booking.expirationDate)
 
+  return ''
+}
+
+export const getPhysicalWithdrawLabel = (expiration: string | null | undefined): string => {
+  if (!expiration) return ''
+  if (isToday(new Date(expiration))) return 'Dernier jour pour retirer'
+  if (isTomorrow(new Date(expiration))) return 'Avant dernier jour pour retirer'
   return ''
 }
 
@@ -104,6 +110,11 @@ export const getBookingLabels = (booking: BookingResponse, properties: BookingPr
     dayLabel: getDayLabel(booking, properties),
     hourLabel: getHourLabel(booking, properties),
     withdrawLabel: getWithdrawLabel(booking, properties),
-    locationLabel: getLocationLabelV2.getLocationLabel(booking.stock, properties),
+    locationLabel: getLocationLabelV2.getLocationLabel(
+      properties,
+      booking.stock.offer.address?.label ?? undefined,
+      booking.stock.offer.address?.city,
+      booking.stock.offer.venue.name
+    ),
   }
 }

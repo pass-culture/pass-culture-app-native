@@ -1,7 +1,7 @@
 import { BookingResponse } from 'api/gen'
 import { BookingProperties } from 'features/bookings/types'
 
-const isDuoBooking = (booking: BookingResponse) => booking.quantity === 2
+const isDuoBooking = (quantity: number) => quantity === 2
 
 export const getBookingProperties = (
   booking: BookingResponse,
@@ -15,7 +15,7 @@ export const getBookingProperties = (
   const { offer } = stock
 
   return {
-    isDuo: isDuoBooking(booking),
+    isDuo: isDuoBooking(booking.quantity),
     isEvent,
     isPhysical: !isEvent,
     isDigital: offer.isDigital,
