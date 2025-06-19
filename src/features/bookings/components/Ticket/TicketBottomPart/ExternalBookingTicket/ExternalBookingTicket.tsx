@@ -8,6 +8,6 @@ type props = {
 }
 
 export const ExternalBookingTicket = ({ data }: props) => {
-  if (data) return <View />
+  if (data.length) return <View testID="external-booking-ticket-container" />
   return null
 }

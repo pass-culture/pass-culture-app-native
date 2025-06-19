@@ -9,6 +9,6 @@ type props = {
   ean: string | null
 }
 export const PhysicalGoodBookingTicket = ({ voucher, token, ean }: props) => {
-  if (voucher && token && ean) return <View />
+  if (voucher && token && ean) return <View testID="physical-good-booking-ticket-container" />
   return null
 }
