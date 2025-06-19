@@ -95,14 +95,21 @@ image_for_sdk() {
 
 install_platforms_and_image() {
 	local SDK_VERSION="$1"
-    local IMAGE_NAME
-    IMAGE_NAME=$(image_for_sdk "$SDK_VERSION")
+    local PLATFORM_PACKAGE="platforms;android-$SDK_VERSION"
+    local IMAGE_PACKAGE
+    IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
 
-	log_and_run "Downloading Android SDK platform $SDK_VERSION and system image" \
-        sdkmanager_install_accepting_licence \
-		--install \
-		"platforms;android-$SDK_VERSION" \
-		"$IMAGE_NAME"
+	log_and_run "Attempting to install Android SDK platform '$PLATFORM_PACKAGE'" \
+        sdkmanager_install_accepting_licence --install "$PLATFORM_PACKAGE"
+    
+    # Verify the platform was installed
+    verify_package_installed "$PLATFORM_PACKAGE"
+
+    log_and_run "Attempting to install system image '$IMAGE_PACKAGE'" \
+        sdkmanager_install_accepting_licence --install "$IMAGE_PACKAGE"
+
+    # Verify the system image was installed
+    verify_package_installed "$IMAGE_PACKAGE"
 }
 
 kill_all_emulators() {
@@ -118,23 +125,26 @@ kill_all_emulators() {
 recreate_emulator() {
 	local EMULATOR_NAME="$1"
 	local SDK_VERSION="$2"
-	local DEVICE="$3"
+	local DEVICE_NAME="$3" # Renamed for clarity
     local IMAGE_PACKAGE
 
+    # This function now calls the more robust install function
 	install_platforms_and_image "$SDK_VERSION"
     IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
 
-	log_and_run "Creating AVD '$EMULATOR_NAME' for SDK $SDK_VERSION" \
+    # List available devices for debugging, in case "Galaxy Nexus" is invalid
+    echo -e "${C_BLUE}[INFO] ==> Listing available device definitions...${C_RESET}"
+    avdmanager list device
+    echo -e "${C_BLUE}----------------------------------${C_RESET}"
+
+	log_and_run "Creating AVD '$EMULATOR_NAME' using package '$IMAGE_PACKAGE' and device '$DEVICE_NAME'" \
         avdmanager create avd \
 		--name "$EMULATOR_NAME" \
 		--package "$IMAGE_PACKAGE" \
-		--device "$DEVICE" \
+		--device "$DEVICE_NAME" \
 		--force
 
-    # --- MODIFICATION FOR DEBUGGING ---
-    # 1. Define a log file to capture emulator output.
-    # 2. Add flags for CI: -no-accel, -no-boot-anim.
-    # 3. Launch and store the Process ID (PID).
+    # ... (the rest of the emulator launch logic remains the same) ...
     local EMULATOR_LOG_FILE="emulator-boot.log"
     echo -e "${C_BLUE}[INFO] ==> Starting emulator '$EMULATOR_NAME' in the background.${C_RESET}"
     echo -e "${C_BLUE}[INFO] ==> Emulator output will be logged to: ${EMULATOR_LOG_FILE}${C_RESET}"
@@ -148,14 +158,10 @@ recreate_emulator() {
         -no-accel \
         > "$EMULATOR_LOG_FILE" 2>&1 &
 
-    # Store the PID of the emulator process
     EMULATOR_PID=$!
-    
-    # Give the emulator process a moment to initialize or fail
     echo -e "${C_BLUE}[INFO] ==> Waiting 15 seconds for the emulator process to initialize...${C_RESET}"
     sleep 15
 
-    # Check if the emulator process is still running. If not, it likely crashed on startup.
     if ! ps -p $EMULATOR_PID > /dev/null; then
         echo -e "${C_RED}[ERROR] ==> Emulator process with PID $EMULATOR_PID is not running. It likely crashed on startup.${C_RESET}"
         echo -e "${C_RED}[ERROR] ==> Displaying contents of ${EMULATOR_LOG_FILE}:${C_RESET}"
@@ -166,7 +172,25 @@ recreate_emulator() {
     fi
 }
 
-# ... (keep the sdkmanager install calls) ...
+verify_package_installed() {
+    local package_name="$1"
+    echo -e "${C_BLUE}[INFO] ==> Verifying that package '$package_name' is installed...${C_RESET}"
+    
+    # Use sdkmanager to list installed packages and grep for our specific package.
+    # The grep must match the exact package name at the start of a line (^).
+    if sdkmanager --list_installed | grep -q "^${package_name}"; then
+        echo -e "${C_GREEN}[SUCCESS] ==> Package '$package_name' is confirmed to be installed.${C_RESET}"
+        return 0
+    else
+        echo -e "${C_RED}[ERROR] ==> Verification failed. Package '$package_name' was NOT found after installation attempt.${C_RESET}"
+        echo -e "${C_RED}[ERROR] ==> This usually means the 'sdkmanager --install' command failed silently. Check network or license issues.${C_RESET}"
+        # Optional: List all installed packages for debugging
+        echo -e "${C_BLUE}--- Currently Installed Packages ---${C_RESET}"
+        sdkmanager --list_installed || echo "Could not list installed packages."
+        echo -e "${C_BLUE}----------------------------------${C_RESET}"
+        exit 1
+    fi
+}
 
 recreate_emulator \
 	"SDK_minimum_supporte" \
