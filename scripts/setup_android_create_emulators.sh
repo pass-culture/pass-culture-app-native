@@ -49,6 +49,15 @@ log_and_run "Verifying Flashlight installation" \
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 
+# Force all tools to use the same directories to avoid inconsistencies.
+# ANDROID_SDK_ROOT is the modern name for ANDROID_HOME.
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+# ANDROID_AVD_HOME forces a specific location for AVDs. This is the key fix.
+export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
+
+log_and_run "Ensuring AVD storage directory exists" \
+    mkdir -p "$ANDROID_AVD_HOME"
+
 log_and_run "Creating Android SDK directory if it doesn't exist" \
     mkdir --parents "$(dirname "$ANDROID_HOME")"
 
