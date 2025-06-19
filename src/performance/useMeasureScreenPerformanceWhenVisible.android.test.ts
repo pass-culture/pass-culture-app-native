@@ -2,7 +2,7 @@ import * as perf from '@react-native-firebase/perf'
 import { Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useScreenRenderOnFocus } from 'performance/useScreenRenderOnFocus.android'
+import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
@@ -15,9 +15,9 @@ jest.spyOn(Platform, 'select').mockImplementation((spec) => spec)
 Object.defineProperty(Platform, 'OS', { writable: true })
 Object.defineProperty(Platform, 'Version', { writable: true })
 
-describe('useScreenRenderOnFocus', () => {
+describe('useMeasureScreenPerformanceWhenVisible', () => {
   it('should start a screen trace', () => {
-    renderHook(() => useScreenRenderOnFocus('Test'))
+    renderHook(() => useMeasureScreenPerformanceWhenVisible('Test'))
 
     expect(mockStart).toHaveBeenCalledTimes(1)
   })
@@ -28,7 +28,7 @@ describe('useScreenRenderOnFocus', () => {
 
     const error = new Error('some error')
     mockStart.mockRejectedValueOnce(error)
-    renderHook(() => useScreenRenderOnFocus('Test'))
+    renderHook(() => useMeasureScreenPerformanceWhenVisible('Test'))
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
@@ -41,7 +41,7 @@ describe('useScreenRenderOnFocus', () => {
 
     const error = new Error('some error')
     mockStart.mockRejectedValueOnce(error)
-    renderHook(() => useScreenRenderOnFocus('Test'))
+    renderHook(() => useMeasureScreenPerformanceWhenVisible('Test'))
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
