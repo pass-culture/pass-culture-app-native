@@ -173,6 +173,9 @@ recreate_emulator() {
 }
 
 # --- Main Execution Logic ---
+log_and_run "Installing Node.js dependencies" \
+    yarn install
+
 log_and_run "Installing Android command-line tools v${ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION}" \
     sdkmanager_install_accepting_licence --install "cmdline-tools;$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION"
 
@@ -185,7 +188,7 @@ log_and_run "Installing Android emulator package" \
 verify_package_installed "emulator"
 
 log_and_run "Building the Android debug APK" \
-    cd android && ./gradlew assembleDebug
+    (cd android && ./gradlew assembleDebug)
 
 readonly APK_PATH="android/app/build/outputs/apk/debug/app-debug.apk"
 log_and_run "Verifying that APK exists at $APK_PATH" \
