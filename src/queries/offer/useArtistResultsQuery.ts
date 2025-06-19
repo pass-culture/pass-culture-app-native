@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { AlgoliaOffer, AlgoliaOfferWithArtistAndEan, HitOffer } from 'libs/algolia/types'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { Position, useLocation } from 'libs/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
@@ -58,10 +58,10 @@ const getSortedHits = ({
   userLocation,
   hits,
 }: {
-  transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
+  transformHits: (hit: AlgoliaOfferWithArtistAndEan) => AlgoliaOfferWithArtistAndEan
   userLocation: Position
   hits: Hit<AlgoliaOfferWithArtistAndEan>[]
-}) => {
+}): AlgoliaOfferWithArtistAndEan[] => {
   if (hits.length === 0) return []
 
   const transformedHitsWithDistance = hits.map((hit) => {
@@ -73,9 +73,7 @@ const getSortedHits = ({
 
   const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
 
-  return sortedHits.map(
-    ({ distance: _distance, ...rest }) => rest
-  ) as AlgoliaOfferWithArtistAndEan[]
+  return sortedHits.map(({ distance: _distance, ...rest }): AlgoliaOfferWithArtistAndEan => rest)
 }
 
 const parseDistance = (distance: string) => {
