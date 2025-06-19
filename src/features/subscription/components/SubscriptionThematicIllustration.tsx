@@ -1,9 +1,9 @@
 import React from 'react'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { mapSubscriptionThemeToIllustration } from 'features/subscription/helpers/mapSubscriptionThemeToIllustration'
 import { SubscriptionTheme } from 'features/subscription/types'
+import { BackgroundColorKey } from 'theme/types'
 import { getSpacing } from 'ui/theme'
 
 interface Props {
@@ -12,15 +12,15 @@ interface Props {
 }
 
 export const SubscriptionThematicIllustration = ({ thematic, size = 'medium' }: Props) => {
-  const { illustration: Illustration, gradients } = mapSubscriptionThemeToIllustration(thematic)
+  const { illustration: Illustration, fillColor } = mapSubscriptionThemeToIllustration(thematic)
 
   return (
     <IllustrationContainer size={size}>
-      <StyledLinearGradient colors={[gradients[0] as string, gradients[1] as string]}>
+      <StyledView fillColor={fillColor}>
         <IllustrationWrapper size={size}>
           <Illustration width={size === 'medium' ? 82 : 54} />
         </IllustrationWrapper>
-      </StyledLinearGradient>
+      </StyledView>
     </IllustrationContainer>
   )
 }
@@ -37,6 +37,7 @@ const IllustrationWrapper = styled.View<{ size: 'medium' | 'small' }>(({ size })
   top: size === 'medium' ? -getSpacing(5) : -getSpacing(7),
 }))
 
-const StyledLinearGradient = styled(LinearGradient)({
+const StyledView = styled.View<{ fillColor: BackgroundColorKey }>(({ fillColor, theme }) => ({
+  backgroundColor: theme.designSystem.color.background[fillColor],
   flex: 1,
-})
+}))
