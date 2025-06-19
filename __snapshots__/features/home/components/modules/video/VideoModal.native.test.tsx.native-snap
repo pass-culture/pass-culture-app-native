@@ -230,71 +230,45 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
           }
         >
           <View
+            height={421.875}
             style={
-              {
-                "height": 421.875,
-                "width": 750,
-              }
+              [
+                {
+                  "backgroundColor": "#161617",
+                  "height": 421.875,
+                },
+              ]
             }
           >
             <View
-              style={
-                [
-                  {
-                    "flex": 1,
-                    "overflow": "hidden",
-                  },
-                  undefined,
-                ]
+              height={421.875}
+              initialPlayerParams={
+                {
+                  "modestbranding": true,
+                  "rel": false,
+                }
               }
-            >
-              <RNCWebView
-                allowsFullscreenVideo={true}
-                allowsInlineMediaPlayback={true}
-                bounces={false}
-                cacheEnabled={true}
-                injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
-                injectedJavaScriptForMainFrameOnly={true}
-                javaScriptEnabled={true}
-                mediaPlaybackRequiresUserAction={false}
-                messagingEnabled={true}
-                onContentProcessDidTerminate={[Function]}
-                onHttpError={[Function]}
-                onLoadingError={[Function]}
-                onLoadingFinish={[Function]}
-                onLoadingProgress={[Function]}
-                onLoadingStart={[Function]}
-                onMessage={[Function]}
-                onShouldStartLoadWithRequest={[Function]}
-                overScrollMode="never"
-                scrollEnabled={false}
-                source={
-                  {
-                    "uri": "https://lonelycpp.github.io/react-native-youtube-iframe/iframe.html?data=%7B%22rel_s%22:0,%22loop_s%22:0,%22videoId_s%22:%22qE7xwEZnFP0%22,%22controls_s%22:1,%22contentScale_s%22:1,%22cc_lang_pref_s%22:%22%22,%22allowWebViewZoom%22:false,%22modestbranding_s%22:1,%22preventFullScreen_s%22:1,%22showClosedCaptions_s%22:0%7D",
-                  }
+              onChangeState={[Function]}
+              onError={[Function]}
+              onReady={[Function]}
+              play={true}
+              testID="mock-webview"
+              videoId="qE7xwEZnFP0"
+              webViewProps={
+                {
+                  "bounces": false,
+                  "injectedJavaScript": "
+            document.querySelector("body").style.backgroundColor="#161617";
+            var element = document.getElementsByClassName("container")[0];
+            element.style.position = "unset";
+            true;
+          ",
+                  "overScrollMode": "never",
+                  "scrollEnabled": false,
                 }
-                style={
-                  [
-                    {
-                      "flex": 1,
-                      "overflow": "hidden",
-                    },
-                    {
-                      "backgroundColor": "#ffffff",
-                    },
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                      },
-                      undefined,
-                    ],
-                  ]
-                }
-                textInteractionEnabled={true}
-                useSharedProcessPool={true}
-                userAgent=""
-              />
-            </View>
+              }
+              width={750}
+            />
           </View>
         </View>
         <RCTScrollView

@@ -1,5 +1,6 @@
-import React, { ForwardedRef } from 'react'
-import YouTubePlayer, { PLAYER_STATES, YoutubeIframeRef } from 'react-native-youtube-iframe'
+import React from 'react'
+import WebView from 'react-native-webview'
+import { PLAYER_STATES } from 'react-native-youtube-iframe'
 
 export { PLAYER_STATES } from 'react-native-youtube-iframe'
 
@@ -12,7 +13,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
     onChangeState?: (state: string) => void
     onError?: () => void
   },
-  ref: ForwardedRef<YoutubeIframeRef>
+  ref
 ) {
   React.useEffect(() => {
     if (props.onReady) props.onReady()
@@ -33,8 +34,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
     }
   }
 
-  // @ts-ignore avoid internal typing complexity
-  return React.createElement(YouTubePlayer, props)
+  return <WebView {...props} />
 })
 
 const setPlayerState = (playerState: PLAYER_STATES) => {

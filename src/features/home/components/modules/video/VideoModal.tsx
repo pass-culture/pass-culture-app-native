@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import { Platform } from 'react-native'
-import { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled from 'styled-components/native'
 
 import { VideoModalProps } from 'features/home/components/modules/video/types'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
+import { YoutubePlayerRef } from 'features/home/components/modules/video/YoutubePlayer'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
@@ -21,7 +21,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
-  const playerRef = useRef<YoutubeIframeRef>(null)
+  const playerRef = useRef<YoutubePlayerRef>(null)
 
   const analyticsParams: OfferAnalyticsParams = {
     moduleId: props.id,
