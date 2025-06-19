@@ -2,7 +2,7 @@ import { UserSuspensionDateResponse } from 'api/gen'
 import { useAccountSuspensionDateQuery } from 'features/auth/queries/useAccountSuspensionDateQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/jwt/jwt')
@@ -23,7 +23,7 @@ describe('useAccountSuspensionDate', () => {
     simulateSuspensionDate200()
     const { result } = renderSuspensionDateHook()
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.date).toBe(expectedResponse.date)
   })

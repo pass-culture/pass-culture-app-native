@@ -31,6 +31,8 @@ const mockUseLocation = jest.mocked(useLocation)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.useFakeTimers()
+
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
     mockFetchOffersByIds.mockResolvedValueOnce([mockOffers[0]])

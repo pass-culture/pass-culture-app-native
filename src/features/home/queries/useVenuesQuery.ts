@@ -1,4 +1,4 @@
-import { UseQueryResult, useQuery } from 'react-query'
+import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
 import { Venue, VenuesModuleParameters } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'

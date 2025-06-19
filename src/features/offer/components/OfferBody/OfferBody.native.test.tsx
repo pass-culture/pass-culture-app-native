@@ -25,6 +25,8 @@ import { Subcategory } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/subcategories/useSubcategories')
+
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',

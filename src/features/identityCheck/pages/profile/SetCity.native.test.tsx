@@ -53,14 +53,14 @@ describe('<SetCity/>', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
-      const input = screen.getByTestId('Entrée pour la ville')
+      const input = await screen.findByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
     await screen.findByText(city.nom)
-    await user.press(screen.getByText(city.nom))
+    await user.press(await screen.findByText(city.nom))
 
-    await user.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText('Continuer'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
       type: ProfileTypes.IDENTITY_CHECK,
@@ -78,9 +78,9 @@ describe('<SetCity/>', () => {
     })
 
     await screen.findByText(city.nom)
-    await user.press(screen.getByText(city.nom))
+    await user.press(await screen.findByText(city.nom))
 
-    await user.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText('Continuer'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
       type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
@@ -93,13 +93,13 @@ describe('<SetCity/>', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
-      const input = screen.getByTestId('Entrée pour la ville')
+      const input = await screen.findByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await user.press(screen.getByText(city.nom))
+    await user.press(await screen.findByText(city.nom))
 
-    await user.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText('Continuer'))
 
     expect(await storage.readObject('profile-city')).toMatchObject({
       state: {
@@ -114,13 +114,13 @@ describe('<SetCity/>', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
-      const input = screen.getByTestId('Entrée pour la ville')
+      const input = await screen.findByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await user.press(screen.getByText(city.nom))
+    await user.press(await screen.findByText(city.nom))
 
-    await user.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText('Continuer'))
 
     expect(analytics.logSetPostalCodeClicked).toHaveBeenCalledTimes(1)
   })

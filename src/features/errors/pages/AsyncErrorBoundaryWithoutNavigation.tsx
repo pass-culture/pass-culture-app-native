@@ -1,6 +1,6 @@
+import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 import React, { ReactNode, useEffect } from 'react'
 import { FallbackProps } from 'react-error-boundary'
-import { useQueryErrorResetBoundary } from 'react-query'
 
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo, isAPIExceptionNotCaptured } from 'api/apiHelpers'

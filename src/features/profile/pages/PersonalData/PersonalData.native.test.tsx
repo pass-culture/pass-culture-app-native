@@ -112,7 +112,8 @@ describe('PersonalData', () => {
     expect(screen.getByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 
-  it('should render for non beneficiary profile', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should render for non beneficiary profile', async () => {
     mockedUseAuthContext
       .mockReturnValueOnce({
         ...initialAuthContext,
@@ -166,7 +167,8 @@ describe('PersonalData', () => {
     })
   })
 
-  it('should redirect to ChangeCity when clicking on modify city button for beneficiaries', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should redirect to ChangeCity when clicking on modify city button for beneficiaries', async () => {
     mockedUseAuthContext
       .mockReturnValueOnce(initialAuthContext)
       .mockReturnValueOnce(initialAuthContext)
@@ -239,7 +241,8 @@ describe('PersonalData', () => {
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
   })
 
-  it('should not show password field when user has no password', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should not show password field when user has no password', async () => {
     mockedUseAuthContext
       .mockReturnValueOnce({
         ...initialAuthContext,

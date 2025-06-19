@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { QueryFunction } from 'react-query/types/core/types'
+import { QueryFunction } from '@tanstack/react-query'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -27,7 +27,7 @@ describe('usePersistQuery', () => {
 
   describe('without initial local data', () => {
     it('should save distant data locally', async () => {
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -42,7 +42,7 @@ describe('usePersistQuery', () => {
     it('should fail to save distant data locally and log to sentry', async () => {
       const error = new Error('WRITING_REJECTED')
       jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(error)
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -51,7 +51,7 @@ describe('usePersistQuery', () => {
 
         expect(persistDataStr).toBeFalsy()
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
-          extra: { queryKey, data: onlineData },
+          extra: { queryKey: [queryKey], data: onlineData },
         })
       })
     })
@@ -69,7 +69,7 @@ describe('usePersistQuery', () => {
 
       expect(persistDataStr).toBeTruthy()
 
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -90,13 +90,13 @@ describe('usePersistQuery', () => {
       expect(persistDataStr).toBeTruthy()
 
       jest.spyOn(AsyncStorage, 'getItem').mockRejectedValueOnce(error)
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
+      renderHook(() => usePersistQuery([queryKey], queryFn), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
-          extra: { queryKey },
+          extra: { queryKey: [queryKey] },
         })
       })
     })
@@ -107,11 +107,10 @@ describe('usePersistQuery', () => {
 
         renderHook(
           () =>
-            usePersistQuery(queryKey, queryFn, {
+            usePersistQuery([queryKey], queryFn, {
               // @ts-ignore cast for select occur on return
               select(data) {
-                // @ts-expect-error: because of noUncheckedIndexedAccess
-                cursor = data.find((item) => item.id === offlineData[1].id) as TestData
+                cursor = data.find((item) => item.id === offlineData[1]?.id) as TestData
                 return cursor
               },
             }),

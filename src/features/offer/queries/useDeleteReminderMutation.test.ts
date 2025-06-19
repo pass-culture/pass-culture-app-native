@@ -1,27 +1,24 @@
-import { QueryClient } from 'react-query'
+import { QueryClient } from '@tanstack/react-query'
 
 import { GetRemindersResponse } from 'api/gen'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useDeleteReminderMutation } from './useDeleteReminderMutation'
 
 jest.mock('libs/jwt/jwt')
 
 const reminderId = 1
-
-const cancelQueriesMock = jest.fn()
-const invalidateQueriesMock = jest.fn()
-
 let queryClient: QueryClient
+
 const setupWithReminders = (client: QueryClient) => {
   queryClient = client
   queryClient.setQueryData([QueryKeys.REMINDERS], remindersResponse)
-  queryClient.cancelQueries = cancelQueriesMock
-  queryClient.invalidateQueries = invalidateQueriesMock
+  jest.spyOn(queryClient, 'cancelQueries')
+  jest.spyOn(queryClient, 'invalidateQueries')
 }
 
 describe('useDeleteReminderMutation', () => {
@@ -50,9 +47,11 @@ describe('useDeleteReminderMutation', () => {
       result.current.mutate(reminderId)
     })
 
-    expect(cancelQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.cancelQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
 
     const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(updatedCache?.reminders).toEqual(expectedRemindersInCache)
   })
@@ -74,6 +73,8 @@ describe('useDeleteReminderMutation', () => {
       result.current.mutate(reminderId)
     })
 
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
+
     expect(doRevertCache).toHaveBeenCalledTimes(1)
   })
 
@@ -84,9 +85,9 @@ describe('useDeleteReminderMutation', () => {
       result.current.mutate(reminderId)
     })
 
-    await act(async () => expect(result.current.isSuccess).toBe(true))
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
-    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
 
   it('should invalidate reminders query after mutation fails', async () => {
@@ -100,9 +101,9 @@ describe('useDeleteReminderMutation', () => {
       result.current.mutate(reminderId)
     })
 
-    await act(async () => expect(result.current.isSuccess).toBe(false))
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
 
-    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
 })
 

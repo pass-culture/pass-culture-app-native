@@ -35,6 +35,8 @@ jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.useFakeTimers()
+
 describe('RecommendationModule', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])

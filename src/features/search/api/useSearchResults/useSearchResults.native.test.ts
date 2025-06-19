@@ -63,6 +63,8 @@ jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () 
   }),
 }))
 
+jest.useFakeTimers()
+
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
     it('should fetch offers, venues and all facets', async () => {

@@ -13,8 +13,6 @@ import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
 
-jest.useFakeTimers()
-
 jest.mock('libs/monitoring/services')
 
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
@@ -94,17 +92,20 @@ describe('<EmailResendModal />', () => {
 
   it('should display error message when email resend fails', async () => {
     renderEmailResendModal({ emailResendErrorCode: 500 })
+
     await waitFor(() => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
     user.press(screen.getByText('Demander un nouveau lien'))
 
-    expect(
-      await screen.findByText(
-        'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
-      )
-    ).toBeOnTheScreen()
+    await waitFor(async () =>
+      expect(
+        await screen.findByText(
+          'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
+        )
+      ).toBeOnTheScreen()
+    )
   })
 
   it('should display error message when maximum number of resends is reached', async () => {

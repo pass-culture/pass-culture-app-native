@@ -7,7 +7,7 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
 
@@ -68,7 +68,7 @@ describe('<BookingImpossible />', () => {
 
       await screen.findByText(generalConditionText)
 
-      expect(screen.queryByText(favoriteButtonText)).not.toBeOnTheScreen()
+      await waitFor(() => expect(screen.queryByText(favoriteButtonText)).not.toBeOnTheScreen())
     })
 
     it("should log 'BookingImpossibleiOS' on mount", async () => {

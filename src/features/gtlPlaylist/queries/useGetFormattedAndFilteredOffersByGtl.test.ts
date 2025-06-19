@@ -10,7 +10,7 @@ import { AlgoliaOffer, HitOffer, LocationMode, PlaylistOffersParams } from 'libs
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -29,7 +29,7 @@ describe('useGetFormattedAndFilteredOffersByGtl', () => {
   it('should return formatted playlists', async () => {
     const { result } = renderUseGetFormattedAndFilteredOffersByGtl()
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.[0]).toEqual({
       entryId: '5fThoWkm590x6drqnHe0Jl',
@@ -62,7 +62,7 @@ describe('useGetFormattedAndFilteredOffersByGtl', () => {
     ] as GtlPlaylistRequest[]
     const { result } = renderUseGetFormattedAndFilteredOffersByGtl(filteredGtlPlaylistsConfig)
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data).toEqual([])
   })
