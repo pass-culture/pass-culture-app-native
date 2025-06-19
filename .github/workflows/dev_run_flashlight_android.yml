@@ -1,12 +1,6 @@
 name: 'Run Flashlight'
 
-on:
-  workflow_call:
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
+on: workflow_call
 
 jobs:
   Start:
