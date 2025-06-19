@@ -85,7 +85,9 @@ const DescriptionErrorTextContainer = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
+}))
 
 const BuildingIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

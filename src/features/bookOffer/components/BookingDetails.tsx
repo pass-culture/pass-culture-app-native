@@ -317,7 +317,7 @@ const Separator = styled.View(({ theme }) => ({
 const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(1),
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const VenueTitleContainer = styled.View({

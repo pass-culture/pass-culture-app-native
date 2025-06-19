@@ -154,7 +154,7 @@ const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const StyledScrollView = styled.ScrollView({
