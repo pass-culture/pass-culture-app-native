@@ -134,13 +134,33 @@ recreate_emulator() {
     avdmanager list device
     echo -e "${C_BLUE}----------------------------------${C_RESET}"
 
-	log_and_run "Creating AVD '$EMULATOR_NAME' using package '$IMAGE_PACKAGE' and device '$DEVICE_NAME'" \
-        avdmanager create avd \
+    # --- MODIFICATION: Run avdmanager directly and capture all output ---
+    # We are no longer wrapping this in log_and_run because avdmanager can exit with 0 even on failure.
+    # We need to see its full output and then verify its action manually.
+    echo -e "\n${C_BLUE}[INFO] ==> Attempting to create AVD '$EMULATOR_NAME'...${C_RESET}"
+    if ! avdmanager create avd \
 		--name "$EMULATOR_NAME" \
 		--package "$IMAGE_PACKAGE" \
 		--device "$DEVICE_NAME" \
-		--force
+		--force; then
+        echo -e "${C_RED}[ERROR] ==> avdmanager create command failed with a non-zero exit code.${C_RESET}"
+        exit 1
+    fi
+    echo -e "${C_GREEN}[INFO] ==> avdmanager command finished. Now verifying creation...${C_RESET}"
 
+    # --- NEW: Explicitly verify that the AVD was created ---
+    echo -e "\n${C_BLUE}[INFO] ==> Verifying AVD was created by listing all AVDs...${C_RESET}"
+    avdmanager list avd
+    
+    if avdmanager list avd | grep -q "Name: ${EMULATOR_NAME}"; then
+        echo -e "${C_GREEN}[SUCCESS] ==> AVD '$EMULATOR_NAME' was successfully created and verified.${C_RESET}"
+    else
+        echo -e "${C_RED}[ERROR] ==> VERIFICATION FAILED: AVD '$EMULATOR_NAME' was not found after creation.${C_RESET}"
+        echo -e "${C_RED}[ERROR] ==> Check the output from the 'avdmanager create' command above for the root cause.${C_RESET}"
+        exit 1
+    fi
+
+    # --- Emulator launch logic remains the same ---
     local EMULATOR_LOG_FILE="emulator-boot.log"
     echo -e "${C_BLUE}[INFO] ==> Starting emulator '$EMULATOR_NAME' in the background.${C_RESET}"
     echo -e "${C_BLUE}[INFO] ==> Emulator output will be logged to: ${EMULATOR_LOG_FILE}${C_RESET}"
