@@ -120,9 +120,6 @@ recreate_emulator \
 	"SDK_minimum_supporte" \
 	"$(get_version 'minSdkVersion')" \
 	"Galaxy Nexus" \
-	&
-
-wait
 
 echo "Waiting ${ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED}s while devices are booting"
 sleep "$ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED"
