@@ -52,9 +52,7 @@ export function CategoriesSection<
 
   const handleSelect = (key: N) => {
     onSelect(key)
-    if (onSubmit) {
-      onSubmit()
-    }
+    onSubmit?.()
   }
 
   const entries = itemsMapping ? Object.entries(itemsMapping) : []
