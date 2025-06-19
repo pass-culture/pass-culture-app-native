@@ -1,11 +1,23 @@
 name: 'Run Flashlight'
 
-on: workflow_call
+on:
+  workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 jobs:
   Start:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
+      - name: 'Checkout repository code'
+        uses: actions/checkout@v4
       - name: 'test'
         run: echo "Hello World"
+      - name: 'log available files'
+        run: ls ./scripts
+      - name: 'run android script'
+        run: ./scripts/setup_android_create_emulators.sh
