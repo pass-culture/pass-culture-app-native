@@ -1,0 +1,296 @@
+Execution failed for task ':app:checkApptestingDebug
+
+DuplicateClasses'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.Check
+
+DuplicatesRunnable > 
+
+Duplicate class com.google.android.gms.internal.measurement.zzu found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.internal.measurement.zzv found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.internal.measurement.zzw found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.AppMeasurement found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.AppMeasurement$ConditionalUserProperty found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.AppMeasurement$EventInterceptor found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.AppMeasurement$OnEventListener found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.AppMeasurementContentProvider found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zza found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzaa found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzab found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzac found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzad found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzae found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzaf found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzag found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzah found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzai found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzaj found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzak found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzal found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzam found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzan found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzao found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzap found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzaq found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzar found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzas found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzb found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzba found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbb found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbc found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbd found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbe found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbf found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbg found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbh found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbi found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbj found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbk found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbl found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbm found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbo found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbp found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbq found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbr found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbs found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbt found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzbu found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzc found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzco found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcp found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcq found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcr found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcs found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzct found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcu found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcv found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcw found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcx found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcy found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzcz found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzd found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzda found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdb found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdc found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdd found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzde found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdf found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdg found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdh found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdi found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdj found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdk found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdl found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdm found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdn found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdo found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdp found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdq found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdr found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzds found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdt found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdu found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdv found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdw found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdx found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdy found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzdz found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zze found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzea found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzeb found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzec found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzed found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzee found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzef found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzeg found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzeh found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzei found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzej found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzek found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzeq found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzer found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzes found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzet found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzeu found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzev found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzf found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzfh found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzfi found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzfj found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-base-21.2.0.aar -> jetified-play-services-measurement-base-21.2.0-runtime (com.google.android.gms:play-services-measurement-base:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzfk found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzfl found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzfm found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-impl-21.2.0.aar -> jetified-play-services-measurement-impl-21.2.0-runtime (com.google.android.gms:play-services-measurement-impl:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzg found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzh found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzi found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-sdk-21.2.0.aar -> jetified-play-services-measurement-sdk-21.2.0-runtime (com.google.android.gms:play-services-measurement-sdk:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzk found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-sdk-21.2.0.aar -> jetified-play-services-measurement-sdk-21.2.0-runtime (com.google.android.gms:play-services-measurement-sdk:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzl found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-sdk-21.2.0.aar -> jetified-play-services-measurement-sdk-21.2.0-runtime (com.google.android.gms:play-services-measurement-sdk:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzm found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-sdk-21.2.0.aar -> jetified-play-services-measurement-sdk-21.2.0-runtime (com.google.android.gms:play-services-measurement-sdk:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzn found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-sdk-21.2.0.aar -> jetified-play-services-measurement-sdk-21.2.0-runtime (com.google.android.gms:play-services-measurement-sdk:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzo found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-sdk-21.2.0.aar -> jetified-play-services-measurement-sdk-21.2.0-runtime (com.google.android.gms:play-services-measurement-sdk:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzp found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-sdk-21.2.0.aar -> jetified-play-services-measurement-sdk-21.2.0-runtime (com.google.android.gms:play-services-measurement-sdk:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzu found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzv found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzw found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzx found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzy found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.android.gms.measurement.internal.zzz found in modules firebase-analytics-impl-16.2.2.aar -> jetified-firebase-analytics-impl-16.2.2-runtime (com.google.firebase:firebase-analytics-impl:16.2.2) and play-services-measurement-21.2.0.aar -> jetified-play-services-measurement-21.2.0-runtime (com.google.android.gms:play-services-measurement:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.AnalyticsConnectorImpl found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.AnalyticsConnectorImpl$1 found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.zza found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.zzb found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.zzc found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.zzd found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.zze found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.zzf found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.internal.zzg found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.zza found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.analytics.connector.zzb found in modules firebase-measurement-connector-impl-17.0.2.aar -> jetified-firebase-measurement-connector-impl-17.0.2-runtime (com.google.firebase:firebase-measurement-connector-impl:17.0.2) and play-services-measurement-api-21.2.0.aar -> jetified-play-services-measurement-api-21.2.0-runtime (com.google.android.gms:play-services-measurement-api:21.2.0) 
+
+Duplicate class com.google.firebase.iid.FirebaseInstanceIdReceiver found in modules firebase-iid-19.0.1.aar -> jetified-firebase-iid-19.0.1-runtime (com.google.firebase:firebase-iid:19.0.1) and firebase-messaging-23.1.1.aar -> jetified-firebase-messaging-23.1.1-runtime (com.google.firebase:firebase-messaging:23.1.1) 
+
+Go to the documentation to learn how to <a href="d.android.com/r/tools/classpath-sync-errors">Fix dependency resolution errors</a>. * Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org. BUILD FAILED in 1m 32s.
