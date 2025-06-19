@@ -1,0 +1,11 @@
+name: 'Run Flashlight'
+
+on: workflow_call
+
+jobs:
+  Start:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: 'test'
+        run: echo "Hello World"
