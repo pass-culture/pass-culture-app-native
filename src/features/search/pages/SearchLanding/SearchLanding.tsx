@@ -16,6 +16,8 @@ import { useSync } from 'features/search/helpers/useSync/useSync'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { ScreenPerformance } from 'performance/ScreenPerformance'
+import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'
@@ -24,6 +26,7 @@ const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchLanding = () => {
+  useMeasureScreenPerformanceWhenVisible(ScreenPerformance.SEARCH)
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
   useSync(currentRoute === 'SearchLanding')

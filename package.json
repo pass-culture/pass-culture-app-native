@@ -103,7 +103,7 @@
     "@react-native-firebase/app": "^14.9.0",
     "@react-native-firebase/dynamic-links": "^14.9.0",
     "@react-native-firebase/firestore": "^14.9.0",
-    "@react-native-firebase/perf": "^14.9.0",
+    "@react-native-firebase/perf": "^16.7.0",
     "@react-native-firebase/remote-config": "^14.9.0",
     "@react-native-google-signin/google-signin": "^10.1.0",
     "@react-navigation/bottom-tabs": "^6.6.1",
