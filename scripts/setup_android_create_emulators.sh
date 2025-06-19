@@ -90,10 +90,15 @@ recreate_emulator() {
 		--device "$DEVICE" \
 		--force
 
-	emulator \
-		-avd "$EMULATOR_NAME" \
-		>/dev/null \
-		&
+	# emulator \
+	# 	-avd "$EMULATOR_NAME" \
+	# 	>/dev/null \
+	# 	&
+    emulator \
+        -avd "$EMULATOR_NAME" -no-window -no-audio -no-snapshot-save \
+        >/dev/null 2>&1 \
+        &
+
 }
 
 mkdir --parents "$(dirname "$ANDROID_HOME")"
@@ -124,7 +129,7 @@ sleep "$ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED"
 
 # Ensure emulator is fully booted
 echo "Waiting for emulator to be ready..."
-timeout 120 bash -c 'until adb shell getprop sys.boot_completed | grep -m 1 "1"; do sleep 2; done'
+timeout 240 bash -c 'until adb shell getprop sys.boot_completed | grep -m 1 "1"; do sleep 10; done' # During 4 minutes, check every 10 seconds.
 
 adb devices
 adb shell getprop sys.boot_completed
