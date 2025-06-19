@@ -89,7 +89,7 @@ const Day = styled(Typo.Button)<{ status: OfferStatus }>(({ theme, status }) => 
 }))
 
 const SelectedDay = styled(View)(({ theme }) => ({
-  backgroundColor: theme.colors.primary,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
   borderRadius: getSpacing(3),
   width: getSpacing(6),
   height: getSpacing(6),

@@ -211,7 +211,7 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     markerStyle,
     pressedMarkerStyle: markerStyle,
     trackStyle,
-    selectedStyle: { backgroundColor: theme.colors.primary },
+    selectedStyle: { backgroundColor: theme.designSystem.color.background.brandPrimary },
     unselectedStyle: {
       backgroundColor: theme.colors.white,
       borderColor: theme.colors.greySemiDark,

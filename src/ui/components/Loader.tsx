@@ -31,5 +31,5 @@ const Center = styled.View({
 
 const LoaderIndicator = styled(ActivityIndicator).attrs(({ theme }) => ({
   size: 'large',
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``

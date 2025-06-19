@@ -176,7 +176,10 @@ export const Calendar: React.FC<Props> = ({
 const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
 
 const Caption = styled(Typo.BodyAccentXs)<{ status: OfferStatus }>(({ status, theme }) => ({
-  color: status === OfferStatus.BOOKABLE ? theme.colors.primary : theme.colors.greyDark,
+  color:
+    status === OfferStatus.BOOKABLE
+      ? theme.designSystem.color.text.brandPrimary
+      : theme.designSystem.color.text.subtle,
   textAlign: 'center',
 }))
 

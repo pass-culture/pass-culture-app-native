@@ -101,10 +101,10 @@ const RoundContainer = styled.View(({ theme }) => ({
 }))
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.standard,
 }))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.text.brandPrimary,
 }))

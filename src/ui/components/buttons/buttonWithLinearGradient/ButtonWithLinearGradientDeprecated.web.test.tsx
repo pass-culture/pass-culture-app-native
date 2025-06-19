@@ -2,13 +2,13 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils/web'
 
-import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
+import { ButtonWithLinearGradientDeprecated } from './ButtonWithLinearGradientDeprecated'
 
 const onPress = jest.fn()
 
-describe('<ButtonWithLinearGradient />', () => {
+describe('<ButtonWithLinearGradientDeprecated />', () => {
   it('should render not disabled', () => {
-    render(<ButtonWithLinearGradient wording="Wording to display" onPress={onPress} />)
+    render(<ButtonWithLinearGradientDeprecated wording="Wording to display" onPress={onPress} />)
     const text = screen.queryByText('Wording to display')
 
     expect(text?.closest('button')?.disabled).toBe(false)
@@ -17,7 +17,13 @@ describe('<ButtonWithLinearGradient />', () => {
   })
 
   it('should render disabled', () => {
-    render(<ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled />)
+    render(
+      <ButtonWithLinearGradientDeprecated
+        wording="Wording to display"
+        onPress={onPress}
+        isDisabled
+      />
+    )
     const text = screen.queryByText('Wording to display')
 
     expect(text?.closest('button')?.disabled).toBe(true)
@@ -26,7 +32,13 @@ describe('<ButtonWithLinearGradient />', () => {
 
   it('should render anchor tag without type if component is an anchor', () => {
     const href = 'https://example.link/'
-    render(<ButtonWithLinearGradient wording="Wording to display" href={href} onPress={onPress} />)
+    render(
+      <ButtonWithLinearGradientDeprecated
+        wording="Wording to display"
+        href={href}
+        onPress={onPress}
+      />
+    )
     const text = screen.queryByText('Wording to display')
 
     expect(text?.closest('a')?.href).toBe(href)

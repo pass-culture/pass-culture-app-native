@@ -33,7 +33,7 @@ const ComingSoonTag = styled(Tag).attrs(({ theme }) => ({
 }))``
 
 const LikeTag = styled(Tag).attrs(({ theme }) => ({
-  Icon: <ThumbUpFilled color={theme.colors.primary} size={16} />,
+  Icon: <ThumbUpFilled color={theme.designSystem.color.icon.brandPrimary} size={16} />,
   backgroundColor: theme.designSystem.color.background.subtle,
   paddingHorizontal: getSpacing(1),
 }))``

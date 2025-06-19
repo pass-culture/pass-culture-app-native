@@ -4,12 +4,14 @@ import styledNative, { DefaultTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
-import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
+import { ButtonWithLinearGradientDeprecatedPropsProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
+export const ButtonWithLinearGradientDeprecated: React.FC<
+  ButtonWithLinearGradientDeprecatedPropsProps
+> = ({
   wording,
   onPress,
   isDisabled = false,
@@ -30,7 +32,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   const Icon = icon
     ? styledNative(icon).attrs(({ theme }) => ({
         size: theme.buttons.linearGradient.iconSize,
-        color: theme.buttons.linearGradient.iconColor,
+        color: theme.designSystem.color.icon.inverted,
       }))``
     : undefined
 
@@ -65,8 +67,8 @@ const genericStyle = ({ theme, fitContentWidth }: GenericStyleProps) => {
     cursor: 'pointer',
     height: theme.buttons.buttonHeights.tall,
     borderRadius: theme.borderRadius.button,
-    backgroundColor: theme.colors.primary,
-    backgroundImage: `linear-gradient(0.25turn, ${theme.colors.primary}, ${theme.colors.secondary})`,
+    backgroundColor: theme.designSystem.color.background.brandPrimary,
+    backgroundImage: `linear-gradient(0.25turn, ${theme.designSystem.color.background.brandPrimary}, ${theme.designSystem.color.background.brandPrimary})`,
     padding: 0,
     display: 'flex',
     justifyContent: 'center',
@@ -79,7 +81,7 @@ const genericStyle = ({ theme, fitContentWidth }: GenericStyleProps) => {
       backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
     },
     ...customFocusOutline({ color: theme.buttons.outlineColor }),
-    ...getHoverStyle(theme.buttons.linearGradient.textColor),
+    ...getHoverStyle(theme.designSystem.color.text.inverted),
     ...buttonWidthStyle({ fitContentWidth }),
   }
 }
@@ -96,8 +98,8 @@ const Link = styled.a<{ fitContentWidth: boolean }>(({ theme, fitContentWidth })
 
 const Title = styledNative(Typo.Button)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled
-    ? theme.buttons.disabled.linearGradient.textColor
-    : theme.buttons.linearGradient.textColor,
+    ? theme.designSystem.color.text.disabled
+    : theme.designSystem.color.text.inverted,
   padding: getSpacing(2),
 }))
 

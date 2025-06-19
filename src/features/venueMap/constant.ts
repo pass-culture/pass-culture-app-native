@@ -52,6 +52,11 @@ export const FILTERS_VENUE_TYPE_MAPPING = {
 
 export const filterGroups: FilterGroupData[] = [
   { id: 'OUTINGS', label: 'Sorties', color: theme.colors.coral, icon: Show },
-  { id: 'SHOPS', label: 'Boutiques', color: theme.colors.primary, icon: Store },
+  {
+    id: 'SHOPS',
+    label: 'Boutiques',
+    color: theme.designSystem.color.icon.brandPrimary,
+    icon: Store,
+  },
   { id: 'OTHERS', label: 'Autres', color: theme.colors.skyBlue, icon: Sort },
 ]
