@@ -72,6 +72,7 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
             ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
+            MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
 
       - name: Create a directory for keystores
         run: mkdir --parents android/keystores/
@@ -129,3 +130,4 @@ jobs:
             MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
             MAESTRO_RUN_TRACKING_TESTS=false
             MAESTRO_RUN_CLOUD_COMMANDS=true
+            MAESTRO_CLOUD_API_KEY=${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}

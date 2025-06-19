@@ -74,6 +74,7 @@ jobs:
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
             ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
+            MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
@@ -134,3 +135,4 @@ jobs:
             MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
             MAESTRO_RUN_TRACKING_TESTS=false
             MAESTRO_RUN_CLOUD_COMMANDS=true
+            MAESTRO_CLOUD_API_KEY=${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
