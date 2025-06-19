@@ -205,13 +205,15 @@ log_and_run "Installing Android emulator package" \
     sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
 
-MIN_SDK_VERSION=$(get_version 'minSdkVersion')
+# MIN_SDK_VERSION=$(get_version 'minSdkVersion')
+MIN_SDK_VERSION="30"
+
 log_and_run "Determined minimum SDK version to be: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
 
 recreate_emulator \
 	"SDK_minimum_supporte" \
 	"$MIN_SDK_VERSION" \
-	"4.65in 720p (Galaxy Nexus)"
+	"pixel_6"
 
 log_and_run "Waiting up to 4 minutes for emulator to fully boot" \
     timeout 240 bash -c '
