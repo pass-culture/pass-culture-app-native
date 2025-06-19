@@ -6,7 +6,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
-import { getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -40,7 +40,9 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
             <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />
           ) : null}
         </ButtonContainer>
-        <Title nativeID={titleId}>{title}</Title>
+        <StyledTitle4 numberOfLines={1} nativeID={titleId} {...getHeadingAttrs(1)}>
+          {title}
+        </StyledTitle4>
         <ButtonContainer positionInHeader="right" testID="close-button-container">
           {shouldDisplayCloseButton ? (
             <StyledCloseButton onClose={onClose} color={ColorsEnum.BLACK} />
@@ -77,14 +79,9 @@ const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   })
 )
 
-const Title = styled.Text.attrs(() => ({
-  numberOfLines: 1,
-  ...getHeadingAttrs(1),
-}))(({ theme }) => ({
-  ...theme.designSystem.typography.title4,
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
-  color: theme.colors.black,
-}))
+})
 
 const StyledCloseButton = styledButton(CloseButton)({
   width: getSpacing(10),

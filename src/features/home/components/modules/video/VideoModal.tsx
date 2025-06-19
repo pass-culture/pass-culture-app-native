@@ -152,7 +152,7 @@ const StyledCaptionTag = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

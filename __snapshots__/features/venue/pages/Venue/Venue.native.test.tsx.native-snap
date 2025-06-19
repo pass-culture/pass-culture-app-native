@@ -62,7 +62,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "justifyContent": "center",
                 },
                 {
@@ -3029,7 +3029,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "justifyContent": "center",
                 },
                 {
@@ -6322,7 +6322,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "justifyContent": "center",
                 },
                 {

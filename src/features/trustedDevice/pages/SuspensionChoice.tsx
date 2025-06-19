@@ -100,5 +100,5 @@ export const SuspensionChoice = () => {
 }
 
 const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.colors.black,
+  buttonColor: theme.designSystem.color.text.default,
 }))``

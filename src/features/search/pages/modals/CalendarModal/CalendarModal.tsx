@@ -89,11 +89,11 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     () =>
       getMarkedDates(selectedStartDate, selectedEndDate, {
         backgroundColor: designSystem.color.background.brandPrimary,
-        textColor: designSystem.color.text.lockedInverted,
+        textColor: designSystem.color.text.inverted,
       }),
     [
       designSystem.color.background.brandPrimary,
-      designSystem.color.text.lockedInverted,
+      designSystem.color.text.inverted,
       selectedEndDate,
       selectedStartDate,
     ]
@@ -292,6 +292,10 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   )
 }
 
-const StyledCalendarList = styled(CalendarList).attrs({ calendarStyle: { width: '100%' } })({
+const StyledCalendarList = styled(CalendarList).attrs({
+  calendarStyle: {
+    width: '100%',
+  },
+})({
   marginTop: getSpacing(4),
 })

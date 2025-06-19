@@ -102,7 +102,7 @@ const GoogleLogo = styled.Image({
 })
 
 const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.text.subtle,
   textAlign: 'right',
   marginRight: theme.isMobileViewport ? getSpacing(4) : 0,
 }))
@@ -110,10 +110,10 @@ const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
 const EmptyVenueBackground = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const VenueIcon = styled(Venue).attrs(({ theme }) => ({
   size: getSpacing(30),
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``

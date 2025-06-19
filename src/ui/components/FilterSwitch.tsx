@@ -83,8 +83,8 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 }
 
 const getBackgroundColor = (theme: DefaultTheme, active: boolean) => {
-  if (active) return theme.designSystem.color.text.success
-  return theme.colors.greySemiDark
+  if (active) return theme.designSystem.color.background.success
+  return theme.designSystem.color.background.subtle
 }
 
 const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active }) => ({

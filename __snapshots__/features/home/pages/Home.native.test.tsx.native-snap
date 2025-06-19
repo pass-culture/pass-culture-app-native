@@ -265,7 +265,7 @@ exports[`Home page should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderColor": "#161617",
+                          "borderColor": "#90949d",
                           "borderRadius": 40,
                           "borderStyle": "solid",
                           "borderWidth": 2,
