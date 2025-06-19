@@ -800,6 +800,81 @@ describe('BookingDetails', () => {
         screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
       ).toBeOnTheScreen()
     })
+
+    describe('Ticket', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
+      })
+
+      it('should render External Booking Component when externalbooking data is present', async () => {
+        renderBookingDetailsV2({
+          ...ongoingBookingV2,
+          stock: {
+            ...ongoingBookingV2.stock,
+            offer: {
+              ...ongoingBookingV2.stock.offer,
+              isDigital: false,
+            },
+          },
+          ticket: {
+            ...ongoingBookingV2.ticket,
+            noTicket: false,
+            withdrawal: {},
+            externalBooking: {
+              data: [{ barcode: '1234', seat: 'B1' }],
+            },
+          },
+        })
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        expect(screen.getByTestId('external-booking-ticket-container')).toBeOnTheScreen()
+      })
+
+      it('should render Hidden External Booking Component when no externalbooking data', async () => {
+        renderBookingDetailsV2({
+          ...ongoingBookingV2,
+          stock: {
+            ...ongoingBookingV2.stock,
+            offer: {
+              ...ongoingBookingV2.stock.offer,
+              isDigital: false,
+            },
+          },
+          ticket: {
+            ...ongoingBookingV2.ticket,
+            noTicket: false,
+            withdrawal: {},
+            externalBooking: {},
+          },
+        })
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        expect(screen.getByTestId('hidden-external-booking-ticket-container')).toBeOnTheScreen()
+      })
+
+      it('should render cinema booking ticket if voucher is present', async () => {
+        renderBookingDetailsV2({
+          ...ongoingBookingV2,
+          stock: {
+            ...ongoingBookingV2.stock,
+            offer: {
+              ...ongoingBookingV2.stock.offer,
+              isDigital: false,
+            },
+          },
+          ticket: {
+            ...ongoingBookingV2.ticket,
+            noTicket: false,
+            withdrawal: {},
+            voucher: { data: 'test-voucher' },
+            token: { data: 'test-token' },
+          },
+        })
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        expect(screen.getByTestId('cinema-booking-ticket-container')).toBeOnTheScreen()
+      })
+    })
   })
 })
 

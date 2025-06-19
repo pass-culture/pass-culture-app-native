@@ -51,7 +51,7 @@ export const TicketBottomPart = ({
 
   if (ticket?.voucher) {
     return isEvent ? (
-      <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token} />
+      <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token ?? null} />
     ) : (
       <PhysicalGoodBookingTicket voucher={ticket.voucher} token={ticket.token} ean={ean} />
     )
@@ -59,7 +59,7 @@ export const TicketBottomPart = ({
 
   if (ticket?.token?.data) {
     return isDigital ? (
-      <DigitalTokenTicket token={ticket.token} />
+      <DigitalTokenTicket token={ticket.token ?? null} />
     ) : (
       <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
     )
