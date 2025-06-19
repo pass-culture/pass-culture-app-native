@@ -122,6 +122,13 @@ wait
 echo "Waiting ${ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED}s while devices are booting"
 sleep "$ANDROID_EMULATOR_WAIT_FIRST_BOOT_COMPLETED"
 
+# Ensure emulator is fully booted
+echo "Waiting for emulator to be ready..."
+timeout 120 bash -c 'until adb shell getprop sys.boot_completed | grep -m 1 "1"; do sleep 2; done'
+
+adb devices
+adb shell getprop sys.boot_completed
+
 flashlight test --bundleId app.passculture.testing \
     --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test .maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
