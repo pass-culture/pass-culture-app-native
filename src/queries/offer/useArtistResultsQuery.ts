@@ -22,23 +22,21 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
   const { userLocation } = useLocation()
   const { artistPageSubcategories } = useRemoteConfigQuery()
 
-  const { data } = useQuery(
-    [QueryKeys.ARTIST_PLAYLIST, artistId],
-    async () => {
+  const { data } = useQuery({
+    queryKey: [QueryKeys.ARTIST_PLAYLIST, artistId],
+    queryFn: async () => {
       const { playlistHits, topOffersHits } = await fetchOffersByArtist({
         artistId,
         userLocation,
       })
       return { playlistHits, topOffersHits }
     },
-    {
-      initialData: { playlistHits: [], topOffersHits: [] },
-      enabled: !!(
-        artistId &&
-        (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
-      ),
-    }
-  )
+    initialData: { playlistHits: [], topOffersHits: [] },
+    enabled: !!(
+      artistId &&
+      (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
+    ),
+  })
 
   const getSortedHits = useCallback(
     (hits: Hit<AlgoliaOfferWithArtistAndEan>[]) => {
