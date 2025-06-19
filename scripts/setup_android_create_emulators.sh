@@ -87,11 +87,6 @@ verify_package_installed() {
     fi
 }
 
-get_version() {
-	local FIELD="$1"
-	grep "$FIELD" './android/build.gradle' | grep -Eo '[0-9]+(\.[0-9]+)*'
-}
-
 image_for_sdk() {
 	local SDK_VERSION="$1"
 	local ARCHITECTURE_SUFFIX
@@ -116,16 +111,6 @@ install_platforms_and_image() {
     log_and_run "Attempting to install system image '$IMAGE_PACKAGE'" \
         sdkmanager_install_accepting_licence --install "$IMAGE_PACKAGE"
     verify_package_installed "$IMAGE_PACKAGE"
-}
-
-kill_all_emulators() {
-    log_and_run "Attempting to kill all running emulators" \
-        adb devices |
-		grep emulator |
-		cut -f1 |
-		while read -r EMULATOR_ID; do
-			adb -s "$EMULATOR_ID" emu kill
-		done
 }
 
 recreate_emulator() {
@@ -199,6 +184,13 @@ log_and_run "Installing Android emulator package" \
     sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
 
+log_and_run "Building the Android debug APK" \
+    cd android && ./gradlew assembleDebug
+
+readonly APK_PATH="android/app/build/outputs/apk/debug/app-debug.apk"
+log_and_run "Verifying that APK exists at $APK_PATH" \
+    test -f "$APK_PATH"
+
 # Using a modern, stable API level and device for CI reliability.
 MIN_SDK_VERSION="30"
 log_and_run "Using SDK version: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
@@ -229,6 +221,9 @@ log_and_run "Waiting up to 10 minutes for emulator to fully boot with diagnostic
 
 echo -e "${C_GREEN}[SUCCESS] ==> Emulator is fully booted!${C_RESET}"
 
+log_and_run "Performing final health check of the package manager" \
+    adb shell pm list packages
+
 log_and_run "Verifying final boot status" \
     adb shell getprop sys.boot_completed
 
@@ -236,12 +231,11 @@ log_and_run "Listing connected devices" \
     adb devices
 
 log_and_run "Running Flashlight test with Maestro" \
-    flashlight test --bundleId app.passculture.testing \
+    flashlight test \
+    --apkPath "$APK_PATH" \
+    --bundleId app.passculture.testing \
     --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test .maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
     --resultsFilePath resultsLaunchApp.json
-
-# Uncomment the line below if you want to kill the emulator after the test
-# kill_all_emulators
 
 echo -e "\n${C_GREEN}Script finished successfully!${C_RESET}"
