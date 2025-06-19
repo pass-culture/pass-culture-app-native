@@ -71,7 +71,7 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
     return getSortedHits(data.topOffersHits)
   }, [data?.topOffersHits, getSortedHits])
 
-  return { artistPlaylist, artistTopOffers }
+  return { data: { artistPlaylist, artistTopOffers } }
 }
 
 const parseDistance = (distance: string) => {
