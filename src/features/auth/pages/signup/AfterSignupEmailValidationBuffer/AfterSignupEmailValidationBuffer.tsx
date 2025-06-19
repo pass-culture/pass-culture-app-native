@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { ValidateEmailResponse } from 'api/gen'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
@@ -16,8 +16,9 @@ export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
   const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
   const delayedReplace: typeof replace = (...args) => {
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       replace(...args)
     }, 2000)
   }
@@ -26,9 +27,15 @@ export function AfterSignupEmailValidationBuffer() {
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
   useEffect(() => {
-    if (!deviceInfo) return
+    if (!params?.token || !deviceInfo || !params?.email || !params?.expiration_timestamp) {
+      return
+    }
 
     beforeEmailValidation()
+
+    return () => {
+      clearTimeout(timeoutRef.current)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deviceInfo])
 

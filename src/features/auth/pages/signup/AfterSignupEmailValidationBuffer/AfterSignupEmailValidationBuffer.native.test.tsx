@@ -45,7 +45,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     useRoute.mockImplementation(() => ({
       params: {
         token: 'reerereskjlmkdlsf',
-        expirationTimestamp: 45465546445,
+        expiration_timestamp: 45465546445,
         email: 'john@wick.com',
       },
     }))
@@ -150,6 +150,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should validate email with device info', async () => {
+      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValueOnce(false)
+
       renderPage()
 
       await act(() => {})
