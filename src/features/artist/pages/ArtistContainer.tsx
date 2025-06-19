@@ -3,13 +3,8 @@ import React, { FunctionComponent } from 'react'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
-import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
+import { defaultArtistResults, useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { LoadingPage } from 'ui/pages/LoadingPage'
-
-const defaultArtistResults = {
-  artistPlaylist: [],
-  artistTopOffers: [],
-}
 
 export const ArtistContainer: FunctionComponent<{ artistId: string }> = ({ artistId }) => {
   const { data: { artistPlaylist, artistTopOffers } = defaultArtistResults } =
