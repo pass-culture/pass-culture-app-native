@@ -5,7 +5,7 @@ import { Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 
-export const useScreenRenderOnFocus = (screenName: string) => {
+export const useMeasureScreenPerformanceWhenVisible = (screenName: string) => {
   const screenTrace = useRef<FirebasePerformanceTypes.ScreenTrace | null>(null)
   useFocusEffect(
     useCallback(() => {

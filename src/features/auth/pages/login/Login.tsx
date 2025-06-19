@@ -24,7 +24,7 @@ import { captureMonitoringError } from 'libs/monitoring/errors'
 import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
-import { useScreenRenderOnFocus } from 'performance/useScreenRenderOnFocus'
+import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -50,7 +50,7 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
-  useScreenRenderOnFocus(ScreenPerformance.LOGIN)
+  useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { data: settings } = useSettingsContext()
   const { params } = useRoute<UseRouteType<'Login'>>()
