@@ -487,7 +487,7 @@ export const bookingsSnap = toMutable({
             ean: '123456789',
           },
           isPermanent: false,
-          isDigital: true,
+          isDigital: false,
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
             id: 2185,

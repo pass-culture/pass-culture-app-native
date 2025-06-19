@@ -144,7 +144,8 @@ const BookingDetailsContainer = ({
     mapping[booking.stock.offer.subcategoryId].isEvent
   )
 
-  return properties.isEvent && properties.isPhysical && user ? (
+  // FIXME(PC-36440): To remove when no need for Old/new container
+  return properties.isEvent && !properties.isDigital && user ? (
     <BookingDetailsContent
       user={user}
       properties={properties}
