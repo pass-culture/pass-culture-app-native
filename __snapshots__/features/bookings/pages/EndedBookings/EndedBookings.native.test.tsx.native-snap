@@ -314,7 +314,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   [
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 4,
                       "height": "100%",
                       "justifyContent": "center",
@@ -769,7 +769,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   [
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 4,
                       "height": "100%",
                       "justifyContent": "center",

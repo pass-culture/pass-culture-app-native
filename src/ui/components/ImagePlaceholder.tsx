@@ -1,10 +1,8 @@
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { ImagePlaceholderVenue } from 'ui/svg/ImagePlaceholderVenue'
-import { LENGTH_M } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -16,42 +14,22 @@ interface ImagePlaceholderProps {
   iconColor?: ColorsEnum
 }
 
-const ImagePlaceholderComponent: React.FC<ImagePlaceholderProps> = ({
-  backgroundColors,
-  Icon,
-  size: iconSize,
-  borderRadius,
-  iconColor,
-  ...props
-}) => {
-  if (backgroundColors) {
+export const ImagePlaceholder = styled(
+  ({ Icon, size, iconColor, ...props }: ImagePlaceholderProps) => {
+    const { colors } = useTheme()
     return (
       <StyledLinearGradient
-        colors={backgroundColors}
-        borderRadius={borderRadius as number}
+        colors={[colors.greyLight, colors.greyMedium]}
+        borderRadius={props.borderRadius as number}
         {...props}
         testID="imagePlaceholder">
-        <Icon testID="categoryIcon" size={iconSize} color={iconColor} />
+        <Icon testID="categoryIcon" size={size} color={iconColor} />
       </StyledLinearGradient>
     )
   }
-
-  // Not too sure why but `LENGTH_M` is not enough and doesn't look good
-  const size = LENGTH_M + (borderRadius as number)
-
-  return (
-    <HeaderBackgroundWrapper borderRadius={borderRadius as number} testID="imagePlaceholder">
-      <ImagePlaceholderVenue width={size} height={size} />
-      <IconContainer>
-        <Icon testID="categoryIcon" size={iconSize} color={iconColor} />
-      </IconContainer>
-    </HeaderBackgroundWrapper>
-  )
-}
-
-export const ImagePlaceholder = styled(ImagePlaceholderComponent).attrs(({ theme }) => ({
+).attrs(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
-  iconColor: theme.colors.greyMedium,
+  iconColor: theme.designSystem.color.icon.subtle,
 }))``
 
 const StyledLinearGradient = styled(LinearGradient)<{ borderRadius: number }>(
@@ -61,17 +39,6 @@ const StyledLinearGradient = styled(LinearGradient)<{ borderRadius: number }>(
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
   })
 )
-
-const HeaderBackgroundWrapper = styled.View<{ borderRadius: number }>(({ borderRadius }) => ({
-  borderRadius,
-  height: '100%',
-  width: '100%',
-  alignItems: 'center',
-  justifyContent: 'center',
-  overflow: 'hidden',
-}))
-
-const IconContainer = styled.View({ position: 'absolute' })

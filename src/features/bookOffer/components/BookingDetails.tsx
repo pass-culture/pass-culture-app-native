@@ -311,7 +311,7 @@ const Container = styled.View({ width: '100%' })
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({

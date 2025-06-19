@@ -44,7 +44,7 @@ export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative 
   bottom: top ? 'auto' : 0,
   borderWidth: theme.buttons.scrollButton.borderWidth,
   borderRadius: theme.buttons.scrollButton.size / 2,
-  borderColor: theme.buttons.scrollButton.borderColor,
-  backgroundColor: theme.buttons.scrollButton.backgroundColor,
+  borderColor: theme.designSystem.color.border.default,
+  backgroundColor: theme.designSystem.color.background.default,
   zIndex: theme.zIndex.playlistsButton,
 })

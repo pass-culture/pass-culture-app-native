@@ -9,6 +9,7 @@ import {
   CalendarModalProps,
 } from 'features/search/pages/modals/CalendarModal/CalendarModal'
 import { act, render, screen, userEvent } from 'tests/utils'
+import { theme } from 'theme'
 
 const mockDispatch = jest.fn()
 
@@ -221,7 +222,7 @@ describe('CalendarModal', () => {
 
     expect(filterButton).toHaveStyle({
       borderWidth: 2,
-      backgroundColor: '#F1F1F4',
+      backgroundColor: theme.designSystem.color.background.subtle,
     })
   })
 

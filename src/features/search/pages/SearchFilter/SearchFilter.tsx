@@ -176,7 +176,7 @@ const SectionWrapper: React.FunctionComponent<{
 const Separator = styled.View(({ theme }) => ({
   width: '100%',
   height: 2,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   marginBottom: getSpacing(6),
 }))
 

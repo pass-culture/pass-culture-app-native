@@ -17,7 +17,6 @@ export const OfferBodyImagePlaceholder: FunctionComponent<Props> = ({ categoryId
   const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(
     ({ theme }): ComponentProps<typeof DefaultImagePlaceholder> => ({
       Icon: mapCategoryToIcon(categoryId),
-      backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
       borderRadius: theme.borderRadius.radius,
       size: PLACEHOLDER_ICON_SIZE,
     })

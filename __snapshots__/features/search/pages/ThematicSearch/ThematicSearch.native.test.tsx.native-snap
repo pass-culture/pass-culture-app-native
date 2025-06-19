@@ -2661,7 +2661,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
@@ -2967,7 +2967,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
@@ -3273,7 +3273,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
@@ -3579,7 +3579,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",

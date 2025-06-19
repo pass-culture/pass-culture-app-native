@@ -268,11 +268,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 onShouldStartLoadWithRequest={[Function]}
                 overScrollMode="never"
                 scrollEnabled={false}
-                source={
-                  {
-                    "uri": "https://lonelycpp.github.io/react-native-youtube-iframe/iframe.html?data=%7B%22rel_s%22:0,%22loop_s%22:0,%22videoId_s%22:%22qE7xwEZnFP0%22,%22controls_s%22:1,%22contentScale_s%22:1,%22cc_lang_pref_s%22:%22%22,%22allowWebViewZoom%22:false,%22modestbranding_s%22:1,%22preventFullScreen_s%22:1,%22showClosedCaptions_s%22:0%7D",
-                  }
-                }
                 style={
                   [
                     {
@@ -395,7 +390,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               style={
                 [
                   {
-                    "color": "#90949D",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -597,11 +592,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                         defaultSource={null}
                         resizeMode="cover"
                         size="small"
-                        source={
-                          {
-                            "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
-                          }
-                        }
                         style={
                           {
                             "bottom": 0,

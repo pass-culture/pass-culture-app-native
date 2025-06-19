@@ -80,7 +80,7 @@ const Container = styled.View({
 const BackgroundImageContainer = styled.View(({ theme }) => ({
   height: getSpacing(118.75),
   width: getSpacing(93.75),
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   overflow: 'hidden',
   borderRadius: getSpacing(2),
 }))
@@ -102,7 +102,7 @@ const SmallImageBackground = styled(BigImageBackground)({
 })
 
 const BackgroundImagePlaceholder = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   flex: 1,
 }))
 
@@ -126,5 +126,5 @@ const BackgroundContainer = styled.View({
 
 const StyledAll = styled(All).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.small,
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``

@@ -217,5 +217,5 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
 })
 
 const DistanceTag = styled(Tag)(({ theme }) => ({
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))

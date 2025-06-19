@@ -53,7 +53,7 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
   size: theme.isDesktopViewport
     ? theme.illustrations.sizes.fullPage
     : theme.illustrations.sizes.medium,
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const Container = styled.View(({ theme }) => ({

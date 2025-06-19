@@ -580,7 +580,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         style={
                           [
                             {
-                              "backgroundColor": "#90949D",
+                              "backgroundColor": "#696a6f",
                               "borderRadius": 16,
                               "height": 32,
                               "justifyContent": "center",
@@ -760,7 +760,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         style={
                           [
                             {
-                              "backgroundColor": "#90949D",
+                              "backgroundColor": "#696a6f",
                               "borderRadius": 16,
                               "height": 32,
                               "justifyContent": "center",

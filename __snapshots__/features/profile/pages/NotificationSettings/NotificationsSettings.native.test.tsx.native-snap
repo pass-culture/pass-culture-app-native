@@ -444,7 +444,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -653,7 +653,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -950,7 +950,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -977,7 +977,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -1158,7 +1158,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1185,7 +1185,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -1356,7 +1356,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1383,7 +1383,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -1554,7 +1554,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1581,7 +1581,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -1752,7 +1752,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1779,7 +1779,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -1950,7 +1950,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1977,7 +1977,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -2148,7 +2148,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -2175,7 +2175,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -2848,7 +2848,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -2875,7 +2875,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -3046,7 +3046,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3073,7 +3073,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -3299,7 +3299,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3326,7 +3326,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -3507,7 +3507,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3534,7 +3534,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -3705,7 +3705,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3732,7 +3732,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -3903,7 +3903,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -3930,7 +3930,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -4101,7 +4101,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -4128,7 +4128,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -4299,7 +4299,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -4326,7 +4326,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
@@ -4497,7 +4497,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       }
                     }
                     accessible={false}
-                    focusable={false}
+                    focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -4524,7 +4524,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",
