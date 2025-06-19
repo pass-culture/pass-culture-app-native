@@ -17,9 +17,6 @@ import { Shows } from 'ui/svg/icons/categories/Shows'
 import { YouthCards } from 'ui/svg/icons/categories/YouthCards'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 export enum DATE_FILTER_OPTIONS {
   TODAY = 'today',
@@ -55,7 +52,6 @@ export type CategoryCriteria = {
   icon: React.FC<AccessibleIcon>
   illustration: React.FC<AccessibleIcon>
   facetFilter: SearchGroupNameEnumv2
-  gradients: Array<ColorsEnum>
   position: number
   fillColor: BackgroundColorKey
   borderColor: BorderColorKey
@@ -67,7 +63,6 @@ type CategoryCriteriaWithNone = {
         icon: React.FC<AccessibleIcon>
         illustration: undefined
         facetFilter: SearchGroupNameEnumv2
-        gradients: undefined
         position: undefined
         fillColor: undefined
         borderColor: undefined
@@ -80,7 +75,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     icon: categoriesIcons.All,
     illustration: undefined,
     facetFilter: SearchGroupNameEnumv2.NONE,
-    gradients: undefined,
     position: undefined,
     borderColor: undefined,
     fillColor: undefined,
@@ -90,7 +84,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.ConcertsFestivals,
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     position: 1,
-    gradients: gradientColorsMapping.Gold,
     borderColor: 'decorative03',
     fillColor: 'decorative03',
   },
@@ -99,7 +92,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.CINEMA,
     position: 2,
-    gradients: gradientColorsMapping.SkyBlue,
     borderColor: 'decorative01',
     fillColor: 'decorative01',
   },
@@ -108,7 +100,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
     position: 3,
-    gradients: gradientColorsMapping.Lilac,
     borderColor: 'decorative02',
     fillColor: 'decorative02',
   },
@@ -117,7 +108,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.Books,
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     position: 4,
-    gradients: gradientColorsMapping.Gold,
     borderColor: 'decorative05',
     fillColor: 'decorative05',
   },
@@ -126,7 +116,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
     facetFilter: SearchGroupNameEnumv2.MUSIQUE,
     position: 5,
-    gradients: gradientColorsMapping.Coral,
     borderColor: 'decorative04',
     fillColor: 'decorative04',
   },
@@ -135,7 +124,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.ArtsCrafts,
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     position: 6,
-    gradients: gradientColorsMapping.DeepPink,
     borderColor: 'decorative03',
     fillColor: 'decorative03',
   },
@@ -144,7 +132,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.Shows,
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     position: 7,
-    gradients: gradientColorsMapping.Aquamarine,
     borderColor: 'decorative01',
     fillColor: 'decorative01',
   },
@@ -153,7 +140,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.MuseumCulturalVisits,
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     position: 8,
-    gradients: gradientColorsMapping.SkyBlue,
     borderColor: 'decorative02',
     fillColor: 'decorative02',
   },
@@ -162,7 +148,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.GamesVideoGames,
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     position: 9,
-    gradients: gradientColorsMapping.Lilac,
     borderColor: 'decorative05',
     fillColor: 'decorative05',
   },
@@ -171,7 +156,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.MediaPress,
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     position: 10,
-    gradients: gradientColorsMapping.Gold,
     borderColor: 'decorative04',
     fillColor: 'decorative04',
   },
@@ -180,7 +164,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.YouthCards,
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     position: 11,
-    gradients: gradientColorsMapping.Gold,
     borderColor: 'decorative03',
     fillColor: 'decorative03',
   },
@@ -189,7 +172,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.ConferencesMeetings,
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     position: 12,
-    gradients: gradientColorsMapping.DeepPink,
     borderColor: 'decorative01',
     fillColor: 'decorative01',
   },
@@ -198,7 +180,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     illustration: SearchCategoriesIllustrations.OnlineEvents,
     position: 13,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
-    gradients: gradientColorsMapping.Gold,
     borderColor: 'decorative02',
     fillColor: 'decorative02',
   },

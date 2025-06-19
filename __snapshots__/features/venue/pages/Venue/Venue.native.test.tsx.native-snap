@@ -1738,29 +1738,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
+                <View
+                  fillColor="decorative05"
                   style={
                     [
                       {
+                        "backgroundColor": "#ffa5c0",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1789,7 +1772,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
@@ -5048,29 +5031,12 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
+                <View
+                  fillColor="decorative05"
                   style={
                     [
                       {
+                        "backgroundColor": "#ffa5c0",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -5099,7 +5065,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       </Text>
                     </View>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
@@ -8441,29 +8407,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
+                <View
+                  fillColor="decorative05"
                   style={
                     [
                       {
+                        "backgroundColor": "#ffa5c0",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -8492,7 +8441,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       </Text>
                     </View>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
