@@ -50,9 +50,7 @@ ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 
 # Force all tools to use the same directories to avoid inconsistencies.
-# ANDROID_SDK_ROOT is the modern name for ANDROID_HOME.
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
-# ANDROID_AVD_HOME forces a specific location for AVDs. This is the key fix.
 export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
 
 log_and_run "Ensuring AVD storage directory exists" \
@@ -143,9 +141,6 @@ recreate_emulator() {
     avdmanager list device
     echo -e "${C_BLUE}----------------------------------${C_RESET}"
 
-    # --- MODIFICATION: Run avdmanager directly and capture all output ---
-    # We are no longer wrapping this in log_and_run because avdmanager can exit with 0 even on failure.
-    # We need to see its full output and then verify its action manually.
     echo -e "\n${C_BLUE}[INFO] ==> Attempting to create AVD '$EMULATOR_NAME'...${C_RESET}"
     if ! avdmanager create avd \
 		--name "$EMULATOR_NAME" \
@@ -157,7 +152,6 @@ recreate_emulator() {
     fi
     echo -e "${C_GREEN}[INFO] ==> avdmanager command finished. Now verifying creation...${C_RESET}"
 
-    # --- NEW: Explicitly verify that the AVD was created ---
     echo -e "\n${C_BLUE}[INFO] ==> Verifying AVD was created by listing all AVDs...${C_RESET}"
     avdmanager list avd
     
@@ -169,7 +163,6 @@ recreate_emulator() {
         exit 1
     fi
 
-    # --- Emulator launch logic remains the same ---
     local EMULATOR_LOG_FILE="emulator-boot.log"
     echo -e "${C_BLUE}[INFO] ==> Starting emulator '$EMULATOR_NAME' in the background.${C_RESET}"
     echo -e "${C_BLUE}[INFO] ==> Emulator output will be logged to: ${EMULATOR_LOG_FILE}${C_RESET}"
@@ -177,6 +170,7 @@ recreate_emulator() {
     emulator \
         -avd "$EMULATOR_NAME" \
         -no-window -no-audio -no-snapshot -no-boot-anim -no-accel \
+        -partition-size 1024 \
         > "$EMULATOR_LOG_FILE" 2>&1 &
 
     local EMULATOR_PID=$!
@@ -205,22 +199,31 @@ log_and_run "Installing Android emulator package" \
     sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
 
-# MIN_SDK_VERSION=$(get_version 'minSdkVersion')
+# Using a modern, stable API level and device for CI reliability.
 MIN_SDK_VERSION="30"
-
-log_and_run "Determined minimum SDK version to be: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
+log_and_run "Using SDK version: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
 
 recreate_emulator \
-	"SDK_minimum_supporte" \
+	"SDK_modern_test" \
 	"$MIN_SDK_VERSION" \
 	"pixel_6"
 
-log_and_run "Waiting up to 4 minutes for emulator to fully boot" \
-    timeout 240 bash -c '
-        until adb shell getprop sys.boot_completed | grep -q "1"; do
-            echo "Waiting for boot... Current device status:"
-            adb devices || echo "ADB server not ready yet."
-            sleep 10
+# --- UPGRADED WAITING LOGIC ---
+log_and_run "Waiting up to 10 minutes for emulator to fully boot with diagnostics" \
+    timeout 600 bash -c '
+        while true; do
+            adb wait-for-device
+            boot_completed=$(adb shell getprop sys.boot_completed | tr -d "\r")
+            if [ "$boot_completed" = "1" ]; then
+                echo -e "\nSuccess: sys.boot_completed is 1."
+                break
+            fi
+            boot_anim_status=$(adb shell getprop init.svc.bootanim | tr -d "\r")
+            echo "Waiting for boot... (sys.boot_completed=$boot_completed, init.svc.bootanim=$boot_anim_status)"
+            echo "--- Last 10 lines of logcat ---"
+            adb logcat -t 10 || echo "Logcat not yet available."
+            echo "-------------------------------"
+            sleep 15
         done
     '
 
