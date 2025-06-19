@@ -47,7 +47,7 @@ export const MarketingBlockContent = ({
 const BackgroundImageContainer = styled.View(({ theme }) => ({
   maxHeight: getSpacing(118.75),
   height: PixelRatio.roundToNearestPixel(theme.appContentWidth * RATIO_MARKETING_BLOCK),
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   overflow: 'hidden',
 }))
 
@@ -66,7 +66,7 @@ const ImagePlaceholder = styled.View({
 
 const StyledAll = styled(All).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.small,
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const AttachedOfferCardContainer = styled.View({

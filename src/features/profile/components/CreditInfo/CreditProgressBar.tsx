@@ -87,6 +87,9 @@ const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>
     height: getSpacing(height ? BarHeight[height] : BarHeight.normal),
     width: '100%',
     zIndex: theme.zIndex.progressbar,
-    backgroundColor: height === 'small' ? theme.colors.greyMedium : theme.colors.white,
+    backgroundColor:
+      height === 'small'
+        ? theme.designSystem.color.background.subtle
+        : theme.designSystem.color.background.default,
   })
 )

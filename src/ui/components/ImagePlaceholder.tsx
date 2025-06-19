@@ -51,7 +51,7 @@ const ImagePlaceholderComponent: React.FC<ImagePlaceholderProps> = ({
 
 export const ImagePlaceholder = styled(ImagePlaceholderComponent).attrs(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
-  iconColor: theme.colors.greyMedium,
+  iconColor: theme.designSystem.color.icon.subtle,
 }))``
 
 const StyledLinearGradient = styled(LinearGradient)<{ borderRadius: number }>(
@@ -61,7 +61,7 @@ const StyledLinearGradient = styled(LinearGradient)<{ borderRadius: number }>(
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
   })
 )
 

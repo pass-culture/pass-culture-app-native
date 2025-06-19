@@ -711,7 +711,7 @@ exports[`Profile component should render correctly 1`] = `
                             style={
                               [
                                 {
-                                  "backgroundColor": "#15884f",
+                                  "backgroundColor": "#91e1b5",
                                   "borderRadius": 16,
                                   "height": 32,
                                   "justifyContent": "center",

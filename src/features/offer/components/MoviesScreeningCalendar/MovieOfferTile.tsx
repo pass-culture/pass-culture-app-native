@@ -115,5 +115,5 @@ const getSubtitles = (offer: OfferPreviewResponse): string[] => {
 
 const Divider = styled.View(({ theme }) => ({
   height: 1,
-  backgroundColor: theme.colors.greyMedium,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))

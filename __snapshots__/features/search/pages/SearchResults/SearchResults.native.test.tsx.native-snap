@@ -386,7 +386,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#161617",
+                        "borderColor": "#90949d",
                         "borderRadius": 16,
                         "borderWidth": 1,
                         "height": 32,
@@ -508,7 +508,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
+                        "borderColor": "#90949d",
                         "borderRadius": 24,
                         "borderWidth": 1,
                         "boxSizing": "border-box",
@@ -594,8 +594,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
-                        "borderColor": "#161617",
+                        "backgroundColor": "#f1f1f4",
+                        "borderColor": "#90949d",
                         "borderRadius": 24,
                         "borderWidth": 2,
                         "boxSizing": "border-box",
@@ -690,8 +690,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
-                        "borderColor": "#161617",
+                        "backgroundColor": "#f1f1f4",
+                        "borderColor": "#90949d",
                         "borderRadius": 24,
                         "borderWidth": 2,
                         "boxSizing": "border-box",
@@ -786,8 +786,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
-                        "borderColor": "#161617",
+                        "backgroundColor": "#f1f1f4",
+                        "borderColor": "#90949d",
                         "borderRadius": 24,
                         "borderWidth": 2,
                         "boxSizing": "border-box",
@@ -883,7 +883,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
+                        "borderColor": "#90949d",
                         "borderRadius": 24,
                         "borderWidth": 1,
                         "boxSizing": "border-box",

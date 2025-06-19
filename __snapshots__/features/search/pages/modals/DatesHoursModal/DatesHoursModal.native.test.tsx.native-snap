@@ -519,7 +519,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                         style={
                           [
                             {
-                              "backgroundColor": "#90949D",
+                              "backgroundColor": "#f1f1f4",
                               "borderRadius": 16,
                               "height": 32,
                               "justifyContent": "center",
@@ -714,7 +714,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                         style={
                           [
                             {
-                              "backgroundColor": "#90949D",
+                              "backgroundColor": "#f1f1f4",
                               "borderRadius": 16,
                               "height": 32,
                               "justifyContent": "center",

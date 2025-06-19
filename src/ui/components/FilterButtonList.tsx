@@ -64,7 +64,7 @@ const StyledLi = styled(Li)({
 
 const FilterSelectedIcon = styled(Check).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.black,
+  color: theme.designSystem.color.icon.default,
 }))``
 
 const StyledSingleFilterButton = styled(SingleFilterButton).attrs((props) => ({

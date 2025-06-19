@@ -91,7 +91,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 
 const BuildingIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const StyledView = styled.View({ marginTop: getSpacing(4) })

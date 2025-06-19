@@ -427,8 +427,6 @@ export const theme = {
     scrollButton: {
       size: getSpacing(10),
       borderWidth: getSpacing(0.25),
-      borderColor: ColorsEnum.GREY_MEDIUM,
-      backgroundColor: ColorsEnum.WHITE,
     },
     roundedButton: {
       size: getSpacing(10),
