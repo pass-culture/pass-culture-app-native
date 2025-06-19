@@ -131,34 +131,61 @@ recreate_emulator() {
 		--device "$DEVICE" \
 		--force
 
-    log_and_run "Starting emulator '$EMULATOR_NAME' in the background" \
-        emulator -avd "$EMULATOR_NAME" -no-window -no-audio -no-snapshot-save >/dev/null 2>&1 &
+    # --- MODIFICATION FOR DEBUGGING ---
+    # 1. Define a log file to capture emulator output.
+    # 2. Add flags for CI: -no-accel, -no-boot-anim.
+    # 3. Launch and store the Process ID (PID).
+    local EMULATOR_LOG_FILE="emulator-boot.log"
+    echo -e "${C_BLUE}[INFO] ==> Starting emulator '$EMULATOR_NAME' in the background.${C_RESET}"
+    echo -e "${C_BLUE}[INFO] ==> Emulator output will be logged to: ${EMULATOR_LOG_FILE}${C_RESET}"
+    
+    emulator \
+        -avd "$EMULATOR_NAME" \
+        -no-window \
+        -no-audio \
+        -no-snapshot \
+        -no-boot-anim \
+        -no-accel \
+        > "$EMULATOR_LOG_FILE" 2>&1 &
+
+    # Store the PID of the emulator process
+    EMULATOR_PID=$!
+    
+    # Give the emulator process a moment to initialize or fail
+    echo -e "${C_BLUE}[INFO] ==> Waiting 15 seconds for the emulator process to initialize...${C_RESET}"
+    sleep 15
+
+    # Check if the emulator process is still running. If not, it likely crashed on startup.
+    if ! ps -p $EMULATOR_PID > /dev/null; then
+        echo -e "${C_RED}[ERROR] ==> Emulator process with PID $EMULATOR_PID is not running. It likely crashed on startup.${C_RESET}"
+        echo -e "${C_RED}[ERROR] ==> Displaying contents of ${EMULATOR_LOG_FILE}:${C_RESET}"
+        cat "$EMULATOR_LOG_FILE"
+        exit 1
+    else
+        echo -e "${C_GREEN}[SUCCESS] ==> Emulator process is running with PID $EMULATOR_PID.${C_RESET}"
+    fi
 }
 
-# --- Main Execution Logic ---
-log_and_run "Installing Android command-line tools v${ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION}" \
-    sdkmanager_install_accepting_licence \
-	--install \
-	"cmdline-tools;$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION"
-
-log_and_run "Installing Android emulator and platform-tools" \
-    sdkmanager_install_accepting_licence \
-	--install \
-	"emulator" \
-	"platform-tools"
-
-MIN_SDK_VERSION=$(get_version 'minSdkVersion')
-log_and_run "Determined minimum SDK version to be: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
+# ... (keep the sdkmanager install calls) ...
 
 recreate_emulator \
 	"SDK_minimum_supporte" \
-	"$MIN_SDK_VERSION" \
+	"$(get_version 'minSdkVersion')" \
 	"Galaxy Nexus"
 
+# --- MODIFIED WAITING LOGIC ---
 log_and_run "Waiting up to 4 minutes for emulator to fully boot" \
-    timeout 240 bash -c 'until adb shell getprop sys.boot_completed | grep -m 1 "1"; do echo -n "."; sleep 10; done'
+    timeout 240 bash -c '
+        until adb shell getprop sys.boot_completed | grep -q "1"; do
+            echo "Waiting for boot... Current device status:"
+            adb devices || echo "ADB server not ready yet."
+            sleep 10
+        done
+    '
 
-log_and_run "Verifying emulator boot status" \
+echo -e "${C_GREEN}[SUCCESS] ==> Emulator is fully booted!${C_RESET}"
+
+log_and_run "Verifying final boot status" \
     adb shell getprop sys.boot_completed
 
 log_and_run "Listing connected devices" \
