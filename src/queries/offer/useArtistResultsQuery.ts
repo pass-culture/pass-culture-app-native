@@ -62,13 +62,11 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
   )
 
   const artistPlaylist = useMemo(() => {
-    if (!data?.playlistHits) return []
-    return getSortedHits(data.playlistHits)
+    return data?.playlistHits ? getSortedHits(data.playlistHits) : [];
   }, [data?.playlistHits, getSortedHits])
 
   const artistTopOffers = useMemo(() => {
-    if (!data?.topOffersHits) return []
-    return getSortedHits(data.topOffersHits)
+    return data?.topOffersHits ? getSortedHits(data.topOffersHits) : []
   }, [data?.topOffersHits, getSortedHits])
 
   return { data: { artistPlaylist, artistTopOffers } }
