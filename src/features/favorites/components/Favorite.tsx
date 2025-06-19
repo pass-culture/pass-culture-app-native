@@ -23,6 +23,7 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { LineSeparator } from 'ui/components/LineSeparator'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -241,7 +242,7 @@ export const Favorite: React.FC<Props> = (props) => {
           <Spacer.Row numberOfSpaces={5} />
           <ButtonContainer>{BookingButton}</ButtonContainer>
         </FavoriteButtonsContainer>
-        <Separator />
+        <LineSeparator />
       </Animated.View>
       {shareContent ? (
         <WebShareModal
@@ -315,11 +316,4 @@ const Distance = styled(Typo.Body)(({ theme }) => ({
 
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-}))
-
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
 }))

@@ -25,5 +25,5 @@ const Container = styled.View({
 })
 
 const Caption = styled(Typo.BodyAccentXs).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

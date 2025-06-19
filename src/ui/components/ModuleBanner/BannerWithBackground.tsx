@@ -81,7 +81,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
 }
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
-  hoverUnderlineColor: theme.colors.white,
+  hoverUnderlineColor: theme.designSystem.color.text.inverted,
   hightlight: true,
 }))({})
 

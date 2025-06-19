@@ -4,7 +4,7 @@ import { GestureResponderEvent, TouchableOpacityProps } from 'react-native'
 import { UrlParamsProps } from 'features/navigation/helpers/openUrl'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsType } from 'theme/types'
 
 export type InternalNavigationProps = {
   enableNavigate?: boolean // It is used by offline mode to prevent navigation
@@ -41,7 +41,7 @@ type TouchableLinkGenericProps = {
   onBeforeNavigate?: (event: GestureResponderEvent | MouseEvent) => void | Promise<void>
   onAfterNavigate?: (event: GestureResponderEvent | MouseEvent) => void | Promise<void>
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
-  hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified
+  hoverUnderlineColor?: ColorsType // Color to be used for underline effect on hover. Black if not specified
 } & Omit<TouchableOpacityProps, 'onPress'> &
   AsProps
 

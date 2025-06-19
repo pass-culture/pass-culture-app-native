@@ -121,9 +121,9 @@ const ArrowWrapper = styled.View.attrs({
 
 const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
-    theme.colors.white,
-    colorAlpha(theme.colors.white, 0.7),
-    colorAlpha(theme.colors.white, 0),
+    theme.designSystem.color.background.default,
+    colorAlpha(theme.designSystem.color.background.default, 0.7),
+    colorAlpha(theme.designSystem.color.background.default, 0),
   ],
 
   start: { x: 0, y: 0 },

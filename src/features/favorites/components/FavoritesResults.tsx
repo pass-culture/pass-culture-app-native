@@ -27,13 +27,14 @@ import { useFavoritesQuery } from 'features/favorites/queries'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useLocation, Position } from 'libs/location'
+import { Position, useLocation } from 'libs/location'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
+import { LineSeparator } from 'ui/components/LineSeparator'
 import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
@@ -158,13 +159,6 @@ export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
 const Container = styled.View({ flex: 1 })
 
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
-}))
-
 const SortContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
@@ -191,7 +185,7 @@ const FavoritesResultsPlaceHolder = () => {
           data={FAVORITE_LIST_PLACEHOLDER}
           renderItem={renderItem}
           ListHeaderComponent={ListHeaderComponent}
-          ItemSeparatorComponent={Separator}
+          ItemSeparatorComponent={LineSeparator}
           scrollEnabled={false}
         />
       </Container>
