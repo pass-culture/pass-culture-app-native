@@ -3987,7 +3987,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   },
                                   [
                                     {
-                                      "backgroundColor": "#F1F1F4",
+                                      "backgroundColor": "#f1f1f4",
                                       "borderRadius": 4,
                                       "height": 96,
                                       "width": 64,

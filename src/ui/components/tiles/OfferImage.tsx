@@ -65,7 +65,7 @@ export const OfferImage: React.FC<Props> = ({
 const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, size }) => ({
   ...theme.tiles.sizes[size],
 }))<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   ...theme.tiles.sizes[size],
   borderRadius: borderRadius || theme.tiles.borderRadius,
   ...(withStroke

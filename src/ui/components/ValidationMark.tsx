@@ -21,7 +21,7 @@ export const ValidationMark: React.FC<Props> = ({ isValid, size }) => {
 }
 
 const ValidateGreenValid = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.greenValid,
+  color: theme.designSystem.color.icon.success,
   accessibilityLabel: 'Accessible',
 }))``
 

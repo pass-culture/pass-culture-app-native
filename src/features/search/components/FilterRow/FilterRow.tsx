@@ -77,7 +77,7 @@ const Title = styled(Typo.BodyAccent)({
 
 const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
   flexShrink: 1,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({

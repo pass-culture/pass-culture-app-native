@@ -506,7 +506,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,

@@ -79,7 +79,7 @@ function getStatusColor({ colors }: DefaultTheme, status: OfferStatus) {
 }
 
 const Body = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const Day = styled(Typo.Button)<{ status: OfferStatus }>(({ theme, status }) => ({
