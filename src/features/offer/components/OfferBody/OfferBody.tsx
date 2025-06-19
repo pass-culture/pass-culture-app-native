@@ -27,7 +27,7 @@ import {
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
-import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
+import { defaultArtistResults, useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -81,7 +81,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     { fractionDigits: 2 }
   )
 
-  const { artistPlaylist: artistOffers } = useArtistResultsQuery({
+  const { data: { artistPlaylist: artistOffers } = defaultArtistResults } = useArtistResultsQuery({
     artistId: artists.length > 0 ? artists[0]?.id : undefined,
     subcategoryId: offer.subcategoryId,
   })
