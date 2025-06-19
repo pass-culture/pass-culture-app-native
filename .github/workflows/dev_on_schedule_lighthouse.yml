@@ -39,7 +39,7 @@ jobs:
         if: always()
       - name: Log app version
         run: |
-          APP_VERSION=$(jq -r .version package.json)
+          APP_VERSION=$(jq --raw-output '.version' ./package.json)
           echo "App version is: $APP_VERSION"
           echo "Branch: ${{ github.ref_name }}"
           echo "Commit SHA: ${{ github.sha }}"
@@ -56,10 +56,10 @@ jobs:
           PERF_SCORE=$(printf "%.0f" $(echo "$PERF_SCORE_DECIMAL * 100" | bc))
 
           # Extract key metric values (the 'displayValue' is human-readable)
-          FCP=$(jq -r '.audits["first-contentful-paint"].displayValue' $REPORT_PATH)
-          LCP=$(jq -r '.audits["largest-contentful-paint"].displayValue' $REPORT_PATH)
-          TBT=$(jq -r '.audits["total-blocking-time"].displayValue' $REPORT_PATH)
-          CLS=$(jq -r '.audits["cumulative-layout-shift"].displayValue' $REPORT_PATH)
+          FCP=$(jq --raw-output '.audits["first-contentful-paint"].displayValue' $REPORT_PATH)
+          LCP=$(jq --raw-output '.audits["largest-contentful-paint"].displayValue' $REPORT_PATH)
+          TBT=$(jq --raw-output '.audits["total-blocking-time"].displayValue' $REPORT_PATH)
+          CLS=$(jq --raw-output '.audits["cumulative-layout-shift"].displayValue' $REPORT_PATH)
 
           # Log the results in a nicely formatted way
           echo "--- Lighthouse Performance Summary ---"
