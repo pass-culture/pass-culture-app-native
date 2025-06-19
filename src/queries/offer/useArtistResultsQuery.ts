@@ -36,13 +36,17 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
       (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
     ),
     select(data) {
-      const artistPlaylist = data.playlistHits
-        ? getSortedHits({ transformHits, userLocation, hits: data.playlistHits })
-        : []
+      const artistPlaylist = getSortedHits({
+        transformHits,
+        userLocation,
+        hits: data.playlistHits,
+      })
 
-      const artistTopOffers = data.topOffersHits
-        ? getSortedHits({ transformHits, userLocation, hits: data.topOffersHits })
-        : []
+      const artistTopOffers = getSortedHits({
+        transformHits,
+        userLocation,
+        hits: data.topOffersHits,
+      })
 
       return { artistPlaylist, artistTopOffers }
     },
