@@ -7,16 +7,27 @@ import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const ArtistContainer: FunctionComponent<{ artistId: string }> = ({ artistId }) => {
-  const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({
-    artistId,
-  })
-  const { data: artist, isLoading } = useArtistQuery(artistId)
+  const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({ artistId })
+  const { data: artist, status } = useArtistQuery(artistId)
 
-  if (isLoading) return <LoadingPage />
+  switch (status) {
+    case 'loading':
+      return <LoadingPage />
 
-  if (!artist) return <PageNotFound />
+    case 'idle': {
+      throw new Error('Not implemented yet: "idle" case')
+    }
 
-  return (
-    <ArtistBody artist={artist} artistPlaylist={artistPlaylist} artistTopOffers={artistTopOffers} />
-  )
+    case 'success':
+      return (
+        <ArtistBody
+          artist={artist}
+          artistPlaylist={artistPlaylist}
+          artistTopOffers={artistTopOffers}
+        />
+      )
+
+    case 'error':
+      return <PageNotFound />
+  }
 }
