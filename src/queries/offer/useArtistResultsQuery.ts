@@ -1,5 +1,4 @@
 import { Hit } from '@algolia/client-search'
-import { useCallback, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
@@ -38,36 +37,26 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
     ),
   })
 
-  const getSortedHits = useCallback(
-    (hits: Hit<AlgoliaOfferWithArtistAndEan>[]) => {
-      if (hits.length === 0) return []
+  const getSortedHits = (hits: Hit<AlgoliaOfferWithArtistAndEan>[]) => {
+    if (hits.length === 0) return []
 
-      const transformedHitsWithDistance = hits.map((hit) => {
-        const transformedHit = transformHits(hit)
-        const distance = formatDistance(
-          { lat: hit._geoloc.lat, lng: hit._geoloc.lng },
-          userLocation
-        )
+    const transformedHitsWithDistance = hits.map((hit) => {
+      const transformedHit = transformHits(hit)
+      const distance = formatDistance({ lat: hit._geoloc.lat, lng: hit._geoloc.lng }, userLocation)
 
-        return { ...transformedHit, distance: parseDistance(distance || '0') }
-      })
+      return { ...transformedHit, distance: parseDistance(distance || '0') }
+    })
 
-      const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
+    const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
 
-      return sortedHits.map(
-        ({ distance: _distance, ...rest }) => rest
-      ) as AlgoliaOfferWithArtistAndEan[]
-    },
-    [transformHits, userLocation]
-  )
+    return sortedHits.map(
+      ({ distance: _distance, ...rest }) => rest
+    ) as AlgoliaOfferWithArtistAndEan[]
+  }
 
-  const artistPlaylist = useMemo(() => {
-    return data?.playlistHits ? getSortedHits(data.playlistHits) : [];
-  }, [data?.playlistHits, getSortedHits])
+  const artistPlaylist = data?.playlistHits ? getSortedHits(data.playlistHits) : []
 
-  const artistTopOffers = useMemo(() => {
-    return data?.topOffersHits ? getSortedHits(data.topOffersHits) : []
-  }, [data?.topOffersHits, getSortedHits])
+  const artistTopOffers = data?.topOffersHits ? getSortedHits(data.topOffersHits) : []
 
   return { data: { artistPlaylist, artistTopOffers } }
 }
