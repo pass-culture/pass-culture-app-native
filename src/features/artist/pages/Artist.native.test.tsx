@@ -9,7 +9,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
@@ -38,6 +38,22 @@ describe('<Artist />', () => {
       render(reactQueryProviderHOC(<Artist />))
 
       expect((await screen.findAllByText('Avril Lavigne'))[0]).toBeOnTheScreen()
+    })
+
+    it('should display loading page when loading', async () => {
+      mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
+        responseOptions: {
+          delay: 'infinite',
+          statusCode: 200,
+          data: {},
+        },
+      })
+
+      render(reactQueryProviderHOC(<Artist />))
+
+      expect(screen.getByText('Chargement en cours...')).toBeOnTheScreen()
+
+      await act(() => {}) // the components re-render at the end of loading, this test focus on the loading part, ignore the others re-renders
     })
 
     it('should display page not found when there is no artist', async () => {
