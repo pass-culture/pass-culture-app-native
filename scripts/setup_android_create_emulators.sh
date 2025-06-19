@@ -172,13 +172,15 @@ recreate_emulator() {
     fi
 }
 
+# --- CORRECTED HELPER FUNCTION ---
+# Verifies that a specific SDK package is installed, ignoring leading whitespace.
 verify_package_installed() {
     local package_name="$1"
     echo -e "${C_BLUE}[INFO] ==> Verifying that package '$package_name' is installed...${C_RESET}"
     
-    # Use sdkmanager to list installed packages and grep for our specific package.
-    # The grep must match the exact package name at the start of a line (^).
-    if sdkmanager --list_installed | grep -q "^${package_name}"; then
+    # MODIFICATION: The grep pattern now allows for optional leading spaces ' *'
+    # before the package name. This makes it robust to sdkmanager's output formatting.
+    if sdkmanager --list_installed | grep -q -E "^\s*${package_name}"; then
         echo -e "${C_GREEN}[SUCCESS] ==> Package '$package_name' is confirmed to be installed.${C_RESET}"
         return 0
     else
@@ -191,7 +193,6 @@ verify_package_installed() {
         exit 1
     fi
 }
-
 recreate_emulator \
 	"SDK_minimum_supporte" \
 	"$(get_version 'minSdkVersion')" \
