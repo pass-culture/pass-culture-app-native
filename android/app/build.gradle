@@ -216,9 +216,12 @@ dependencies {
     } else {
       implementation jscFlavor
     }
-    implementation platform('com.google.firebase:firebase-bom:28.0.0') // firebase
+    implementation platform('com.google.firebase:firebase-bom:30.1.0') // firebase
     implementation "com.google.firebase:firebase-messaging:22.0.0" // firebase - batch
-    implementation 'com.batch.android:firebase-dispatcher:2.0.0'
+    implementation('com.batch.android:firebase-dispatcher:2.0.0') { 
+        exclude group: 'com.google.firebase', module: 'firebase-core' 
+        } // This line stops the Batch library from including its own outdated firebase-core dependency, which conflicts with the modern Firebase libraries required by the rest of the app.
+
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0' // for google-signin
     implementation 'com.google.android.gms:play-services-location:21.0.1' // for google map android
     implementation("com.google.android.gms:play-services-maps:19.0.0") // Maps SDK for Android
