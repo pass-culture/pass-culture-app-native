@@ -195,7 +195,13 @@ log_and_run "Installing Android emulator package" \
 verify_package_installed "emulator"
 
 log_and_run "Building the Android debug APK" \
-    cd android && ./gradlew assembleDebug
+    cd android && ./gradlew assembleApptestingRelease
+
+log_and_run "Finding the generated APK file" \
+    APK_PATH="$(find android/app/build/outputs/apk -type f -name "*.apk" | head -n 1)"
+
+log_and_run "Verifying that APK was found at: $APK_PATH" \
+    test -f "$APK_PATH"
 
 readonly APK_PATH="android/app/build/outputs/apk/debug/app-debug.apk"
 log_and_run "Verifying that APK exists at $APK_PATH" \
