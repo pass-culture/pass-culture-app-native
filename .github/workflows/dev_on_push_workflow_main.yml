@@ -16,13 +16,13 @@ permissions:
 jobs:
   flashlight:
     uses: ./.github/workflows/dev_run_flashlight_android.yml
-    # secrets:
-    #   GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-    #   GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  # yarn-install:
-  #   uses: ./.github/workflows/dev_on_workflow_install.yml
-  #   with:
-  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+    # yarn-install:
+    #   uses: ./.github/workflows/dev_on_workflow_install.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
   # check-proxy-version-staging:
   #   name: Check staging proxy tag
   #   if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')

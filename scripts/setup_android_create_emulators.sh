@@ -64,11 +64,11 @@ log_and_run "Updating PATH with Android SDK tool locations" \
 
 # --- Helper Functions ---
 accept_licence() {
-	echo "y"
+    echo "y"
 }
 
 sdkmanager_install_accepting_licence() {
-	accept_licence | sdkmanager "$@" >/dev/null
+    accept_licence | sdkmanager "$@" >/dev/null
 }
 
 verify_package_installed() {
@@ -88,23 +88,23 @@ verify_package_installed() {
 }
 
 image_for_sdk() {
-	local SDK_VERSION="$1"
-	local ARCHITECTURE_SUFFIX
-	if [ "$(uname -m)" == "arm64" ]; then
-		ARCHITECTURE_SUFFIX="arm64-v8a"
-	else
-		ARCHITECTURE_SUFFIX="x86_64"
-	fi
-	echo "system-images;android-$SDK_VERSION;google_apis;$ARCHITECTURE_SUFFIX"
+    local SDK_VERSION="$1"
+    local ARCHITECTURE_SUFFIX
+    if [ "$(uname -m)" == "arm64" ]; then
+        ARCHITECTURE_SUFFIX="arm64-v8a"
+    else
+        ARCHITECTURE_SUFFIX="x86_64"
+    fi
+    echo "system-images;android-$SDK_VERSION;google_apis;$ARCHITECTURE_SUFFIX"
 }
 
 install_platforms_and_image() {
-	local SDK_VERSION="$1"
+    local SDK_VERSION="$1"
     local PLATFORM_PACKAGE="platforms;android-$SDK_VERSION"
     local IMAGE_PACKAGE
     IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
 
-	log_and_run "Attempting to install Android SDK platform '$PLATFORM_PACKAGE'" \
+    log_and_run "Attempting to install Android SDK platform '$PLATFORM_PACKAGE'" \
         sdkmanager_install_accepting_licence --install "$PLATFORM_PACKAGE"
     verify_package_installed "$PLATFORM_PACKAGE"
 
@@ -114,12 +114,12 @@ install_platforms_and_image() {
 }
 
 recreate_emulator() {
-	local EMULATOR_NAME="$1"
-	local SDK_VERSION="$2"
-	local DEVICE_NAME="$3"
+    local EMULATOR_NAME="$1"
+    local SDK_VERSION="$2"
+    local DEVICE_NAME="$3"
     local IMAGE_PACKAGE
 
-	install_platforms_and_image "$SDK_VERSION"
+    install_platforms_and_image "$SDK_VERSION"
     IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
 
     echo -e "${C_BLUE}[INFO] ==> Listing available device definitions...${C_RESET}"
@@ -128,10 +128,10 @@ recreate_emulator() {
 
     echo -e "\n${C_BLUE}[INFO] ==> Attempting to create AVD '$EMULATOR_NAME'...${C_RESET}"
     if ! avdmanager create avd \
-		--name "$EMULATOR_NAME" \
-		--package "$IMAGE_PACKAGE" \
-		--device "$DEVICE_NAME" \
-		--force; then
+        --name "$EMULATOR_NAME" \
+        --package "$IMAGE_PACKAGE" \
+        --device "$DEVICE_NAME" \
+        --force; then
         echo -e "${C_RED}[ERROR] ==> avdmanager create command failed with a non-zero exit code.${C_RESET}"
         exit 1
     fi
@@ -173,6 +173,25 @@ recreate_emulator() {
 }
 
 # --- Main Execution Logic ---
+log_and_run "Recreating Android keystore from CI secrets" \
+    bash -c '
+        if [ -z "${ENV:-}" ] || [ -z "${ANDROID_KEYSTORE:-}" ] || [ -z "${ANDROID_KEYSTORE_STORE_PASSWORD:-}" ] || [ -z "${ANDROID_KEYSTORE_KEY_PASSWORD:-}" ]; then
+            echo "Required keystore environment variables (ENV, ANDROID_KEYSTORE, etc.) are not set." >&2
+            echo "This build will likely fail. Please check your CI configuration." >&2
+            exit 1
+        fi
+        mkdir -p android/keystores
+        echo "Recreating keystore file: android/keystores/$ENV.keystore"
+        echo "$ANDROID_KEYSTORE" | base64 --decode > "android/keystores/$ENV.keystore"
+        echo "Recreating properties file: android/keystores/$ENV.keystore.properties"
+        cat <<EOF > "android/keystores/$ENV.keystore.properties"
+storeFile=$ENV.keystore
+storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD
+keyAlias=$ENV
+keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD
+EOF
+    '
+
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \
     corepack enable
 
@@ -202,9 +221,9 @@ MIN_SDK_VERSION="30"
 log_and_run "Using SDK version: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
 
 recreate_emulator \
-	"SDK_modern_test" \
-	"$MIN_SDK_VERSION" \
-	"pixel_6"
+    "SDK_modern_test" \
+    "$MIN_SDK_VERSION" \
+    "pixel_6"
 
 # --- UPGRADED WAITING LOGIC ---
 log_and_run "Waiting up to 10 minutes for emulator to fully boot with diagnostics" \

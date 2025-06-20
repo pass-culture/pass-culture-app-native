@@ -1,17 +1,61 @@
-name: 'Run Flashlight'
+name: 'E2E Tests'
 
-on: workflow_call
+on:
+  workflow_dispatch: # Or push, pull_request, etc.
+  workflow_call:
+    inputs:
+      # Define any inputs your job needs, like the cache bucket
+      CACHE_BUCKET_NAME:
+        type: string
+        required: true
+    secrets:
+      # These must be passed from the calling workflow or configured in the repo
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 jobs:
-  Start:
+  run-e2e-tests:
+    name: 'Run Android E2E Tests'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: 'Checkout repository code'
-        uses: actions/checkout@v4
-      - name: 'test'
-        run: echo "Hello World"
-      - name: 'log available files'
-        run: ls ./scripts
-      - name: 'run android script'
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      # --- SECRET FETCHING (Copied from your deploy job) ---
+      - name: Authenticate to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Keystore Secrets
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-key-password
+            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-testing-keystore
+
+      # --- RUN THE SCRIPT ---
+      - name: Run the full test script
+        # This is where our bash script is executed
         run: ./scripts/setup_android_create_emulators.sh
+        env:
+          # Pass the fetched secrets into the script as environment variables
+          ENV: testing
+          ANDROID_KEYSTORE: ${{ steps.secrets.outputs.ANDROID_KEYSTORE }}
+          ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
+          ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
