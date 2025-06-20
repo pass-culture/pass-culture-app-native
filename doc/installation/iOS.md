@@ -53,16 +53,17 @@ In order to launch the app in the Simulator or on your external Apple device, yo
 4. Download the iOS certificates to your computer:
 
    1. Connect to the Apple Developer account with Xcode.
-   2. Get invited to the Apple Developer group by an Admin.
-   3. Download the private key via fastlane:
+   1. Get invited to the Apple Developer group by an Admin.
+   1. Download the private key via fastlane:
 
-   ```sh
-   bundle exec fastlane ios download_certificates --env testing
-   ```
+      ```sh
+      bundle exec fastlane ios download_certificates --env testing
+      ```
 
-   4. When required (multiple times), use the git ssh URL of the [private certificates repository](https://github.com/pass-culture/pass-culture-app-native-certificates)
-   5. Get the `match repo passphrase` on Keeper in the "Tech" vault.
-   6. It might ask your session password twice to continue.
+   1. When required (multiple times), use the git ssh URL of the [private certificates repository](https://github.com/pass-culture/pass-culture-app-native-certificates)
+   1. Get the `match repo passphrase` on [Keeper in the "Tech" vault](https://keepersecurity.eu/vault/#detail/saH6X4El4qtxQQIDI4AzcQ).
+
+   1. It might ask your session password twice to continue, it might also ask you to do the previous step twice.
 
 ### 🚀 Run the app with yarn
 
@@ -124,20 +125,18 @@ This error means that the ~/.sentryclirc file has not been added correctly. Plea
 </details>
 
 <details>
-  <summary>sentry reported an error: Invalid Token (http status: 401)</summary>
+  <summary><strong>After the `bundle exec fastlane ios download_certificates --env testing` command, you gave the SSH [git repository](https://github.com/pass-culture/pass-culture-app-native-certificates) and it's not doing anything.</strong></summary>
+It might be an issue with your ssh (for example if you only cloned the repository through http)
+  
+1. Try to clone the repository elsewhere using ssh to see if your ssh key is working if it does try again the command.
 
-This error means that the sentry token you generated is invalid. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/sentry.md#-configure-sentry-cli) and be careful with the scope permissions 😉
+1. If it's still failing, save your ssh key password in the ssh agent :
 
-</details>
+   ```sh
+   ssh-add ~/.ssh/id_ed25519
+   ```
 
-<details>
-  <summary>The application's Info.plist does not contain a valid CFBundleVersion</summary>
-
-Make sure you installed jq so the CFBundleVersion can be automatically filled.
-
-If it is installed but you still have the error, maybe Xcode doesn't find it: run `which jq`. If it does NOT print `/usr/local/bin/jq`, run `ln -s (which jq) /usr/local/bin/jq` to create a sym-link that Xcode will find.
-
-Drawback ❌: This sym-link will be obsolete as soon as the path of your jq instance changes.
+   then try again.
 
 </details>
 
