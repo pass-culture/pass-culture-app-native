@@ -1,6 +1,6 @@
 ## Error Monitoring with sentry
 
-Sentry helps us monitor crash and errors in the application. See our project [here](https://pass-culture.sentry.io/issues/?project=4508839229718608)
+[Sentry](https://pass-culture.sentry.io/issues/?project=4508839229718608) helps us monitor crash and errors in the application.
 
 ### Source maps
 
@@ -102,4 +102,4 @@ You can test like this:
 UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:testing
 ```
 
-You should be able to see the generated source maps [here](https://pass-culture.sentry.io/settings/projects/jeunes/source-maps/)
+You should be able to [see the generated source maps](https://pass-culture.sentry.io/settings/projects/jeunes/source-maps/)
