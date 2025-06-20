@@ -146,7 +146,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(highlightOfferModuleFixture)
 
     await act(async () => {
-      expect(screen.getByText('L’offre du moment')).toBeOnTheScreen()
+      expect(screen.getByText(' L’offre du moment 💥')).toBeOnTheScreen()
     })
   })
 

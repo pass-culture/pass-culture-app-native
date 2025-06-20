@@ -1686,12 +1686,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 }
               >
                 <View
-                  numberOfLines={2}
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
                         "marginHorizontal": 24,
                       },
                     ]
@@ -1699,6 +1696,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   testID="playlistTitle"
                 >
                   <Text
+                    accessibilityHidden={true}
+                    accessibilityLabel="GTL playlist"
+                    numberOfLines={2}
                     style={
                       [
                         {
@@ -1712,19 +1712,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   >
                     GTL playlist
                   </Text>
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 19,
-                          "lineHeight": 30.4,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
