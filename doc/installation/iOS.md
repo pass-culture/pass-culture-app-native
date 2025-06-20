@@ -140,15 +140,13 @@ It might be an issue with your ssh (for example if you only cloned the repositor
 #### Pods may need to be installed again
 
 ```bash
-$ (cd ios && bundle exec pod install)
+cd ios && bundle exec pod install && cd ..
 ```
-
----
 
 #### Cache may need to be cleared and rebuilt
 
 ```bash
-$ cd ios && rm -rf ./build && rm -rf ~/Library/Developer/Xcode/DerivedData/*
+cd ios && rm -rf ./build && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ..
 ```
 
 </details>
