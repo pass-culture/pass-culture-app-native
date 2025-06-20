@@ -222,7 +222,7 @@ export const CategoriesModal = ({
         />
       )
     }
-    return (
+    return nativeCategories ? (
       <CategoriesSection
         itemsMapping={nativeCategories}
         onSelect={handleNativeCategorySelect}
@@ -231,7 +231,7 @@ export const CategoriesModal = ({
         value={nativeCategory}
         descriptionContext={descriptionContext}
       />
-    )
+    ) : null
   }
 
   const hasDefaultValue = category === SearchGroupNameEnumv2.NONE
@@ -282,7 +282,7 @@ export const CategoriesModal = ({
           />
         ) : null}
         {currentView === CategoriesModalView.NATIVE_CATEGORIES && getNativeCategoriesSection()}
-        {currentView === CategoriesModalView.GENRES ? (
+        {currentView === CategoriesModalView.GENRES && genreTypes ? (
           <CategoriesSection
             itemsMapping={genreTypes}
             onSelect={handleGenreTypeSelect}
