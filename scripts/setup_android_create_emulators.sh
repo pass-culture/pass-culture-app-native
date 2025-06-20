@@ -190,6 +190,10 @@ storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD
 keyAlias=$ENV
 keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD
 EOF
+
+        # --- NEW: Google Services JSON Logic ---
+        echo "Recreating google-services.json"
+        echo "$ANDROID_GOOGLE_SERVICES_JSON" > android/app/google-services.json
     '
 
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \

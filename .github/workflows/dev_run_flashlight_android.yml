@@ -48,12 +48,14 @@ jobs:
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-testing-keystore
-
+      - name: Setup android Google services config
+        run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
       # --- RUN THE SCRIPT ---
       - name: Run the full test script
         # This is where our bash script is executed
         run: ./scripts/setup_android_create_emulators.sh
         env:
+          ANDROID_GOOGLE_SERVICES_JSON: ${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}
           # Pass the fetched secrets into the script as environment variables
           ENV: testing
           ANDROID_KEYSTORE: ${{ steps.secrets.outputs.ANDROID_KEYSTORE }}
