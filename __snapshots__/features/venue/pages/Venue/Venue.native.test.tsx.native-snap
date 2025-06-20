@@ -826,12 +826,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                         }
                       >
                         <View
-                          numberOfLines={2}
+                          accessibilityLabel="Toutes les offres"
+                          accessiblityRole="text"
                           style={
                             [
                               {
-                                "alignItems": "center",
-                                "flexDirection": "row",
                                 "marginHorizontal": 24,
                               },
                             ]
@@ -839,6 +838,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                           testID="playlistTitle"
                         >
                           <Text
+                            accessibilityHidden={true}
+                            accessibilityLabel="Toutes les offres"
+                            accessiblityRole="text"
+                            numberOfLines={2}
                             style={
                               [
                                 {
@@ -852,19 +855,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           >
                             Toutes les offres
                           </Text>
-                          <Text
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                       </View>
                     </View>
@@ -4136,12 +4126,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         }
                       >
                         <View
-                          numberOfLines={2}
+                          accessibilityLabel="Toutes les offres"
+                          accessiblityRole="text"
                           style={
                             [
                               {
-                                "alignItems": "center",
-                                "flexDirection": "row",
                                 "marginHorizontal": 24,
                               },
                             ]
@@ -4149,6 +4138,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           testID="playlistTitle"
                         >
                           <Text
+                            accessibilityHidden={true}
+                            accessibilityLabel="Toutes les offres"
+                            accessiblityRole="text"
+                            numberOfLines={2}
                             style={
                               [
                                 {
@@ -4162,19 +4155,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           >
                             Toutes les offres
                           </Text>
-                          <Text
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                       </View>
                     </View>
