@@ -16,6 +16,7 @@ const libsThatHaveJSFilesContainingJSX = [
   'node_modules/react-native-calendars',
   'node_modules/react-native-swipe-gestures',
   'node_modules/@react-native/assets-registry',
+  'node_modules/react-native-reanimated',
 ]
 
 const packageJson = require('./package.json')
