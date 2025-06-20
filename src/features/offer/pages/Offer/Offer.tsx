@@ -65,7 +65,7 @@ export function Offer() {
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
-  if (!offer || !subcategories) return null
+  if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
 
   const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
   const headlineOffersCount = shouldFetchSearchVenueOffers ? data?.headlineOffersCount : undefined
