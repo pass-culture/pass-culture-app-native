@@ -26,6 +26,7 @@ const mockRef = {
     getPlaybackRate: jest.fn(),
     getAvailablePlaybackRates: jest.fn(),
     seekTo: jest.fn(),
+    unload: jest.fn(),
   },
 }
 
