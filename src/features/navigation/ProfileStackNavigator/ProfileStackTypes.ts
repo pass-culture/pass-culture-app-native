@@ -1,9 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack'
-
-import {
-  AccessibilityRootStackParamList,
-  GenericRoute,
-} from 'features/navigation/RootNavigator/types'
+import { AccessibilityRootStackParamList } from 'features/navigation/RootNavigator/types'
 
 export type ProfileStackParamList = {
   NotificationsSettings: undefined
@@ -39,7 +34,3 @@ export type ProfileStackParamList = {
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList
-
-export type ProfileStackRoute = GenericRoute<ProfileStackParamList>
-
-export const ProfileStack = createStackNavigator<ProfileStackParamList>()

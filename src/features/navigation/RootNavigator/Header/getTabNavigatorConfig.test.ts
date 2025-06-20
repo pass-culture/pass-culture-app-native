@@ -5,7 +5,7 @@ jest.mock('features/navigation/TabBar/helpers', () => ({
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { getTabNavigatorConfig } from 'features/navigation/RootNavigator/Header/getTabNavigatorConfig'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { TabStateRoute } from 'features/navigation/TabBar/types'
+import { TabStateRoute } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'

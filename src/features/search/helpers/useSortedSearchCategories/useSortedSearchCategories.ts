@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'

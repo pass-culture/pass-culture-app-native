@@ -1,1 +1,1 @@
-export { RootNavigator } from './RootNavigator'
+export { RootNavigator } from './RootStackNavigator'

@@ -1,44 +1,68 @@
-import { AllNavParamList, isScreen } from 'features/navigation/RootNavigator/types'
+import { isScreen } from 'features/navigation/RootNavigator/types'
 
 import { linking } from './index'
 
 type NavigationState = Parameters<typeof linking.getPathFromState>[0]
 
-export function getScreenPath<RouteName extends keyof AllNavParamList>(
-  screen: RouteName,
-  params: AllNavParamList[RouteName]
-) {
+export function getScreenPath(screen, params) {
   let state: NavigationState = { routes: [{ name: screen, params }] }
-  if (isScreen('TabNavigator', screen, params)) {
-    const { screen: nestedScreen, params: nestedParams } = params
-    const nestedRoutes = [{ name: nestedScreen, params: nestedParams }]
-    state = { routes: [{ name: screen, state: { routes: nestedRoutes } }] }
+  if (isScreen('TabNavigator', screen, params) && params?.screen) {
+    state = {
+      routes: [
+        { name: screen, state: { routes: [{ name: params?.screen, params: params?.params }] } },
+      ],
+    }
 
-    if (isScreen('SearchStackNavigator', nestedScreen, nestedParams) && nestedParams) {
-      const { screen: searchStackScreen, params: searchStackParams } = nestedParams
-      const nestedRoutes = [{ name: searchStackScreen, params: searchStackParams }]
+    if (
+      isScreen('SearchStackNavigator', params?.screen, params?.params) &&
+      params?.params &&
+      params.params.screen
+    ) {
       state = {
         routes: [
           {
             name: screen,
-            state: { routes: [{ name: params.screen, state: { routes: nestedRoutes } }] },
+            state: {
+              routes: [
+                {
+                  name: params.screen,
+                  state: { routes: [{ name: params.params.screen, params: params.params.params }] },
+                },
+              ],
+            },
           },
         ],
       }
     }
   }
-  if (isScreen('ProfileStackNavigator', screen, params)) {
-    const nestedRoutes = [
-      {
-        name: screen,
-        params: params,
-      },
-    ]
+  if (isScreen('ProfileStackNavigator', screen, params) && params?.screen) {
     state = {
       routes: [
         {
-          name: screen,
-          state: { routes: nestedRoutes },
+          name: 'ProfileStackNavigator',
+          state: {
+            routes: [
+              {
+                name: params?.screen,
+              },
+            ],
+          },
+        },
+      ],
+    }
+  }
+  if (isScreen('OnboardingStackNavigator', screen, params) && params?.screen) {
+    state = {
+      routes: [
+        {
+          name: 'OnboardingStackNavigator',
+          state: {
+            routes: [
+              {
+                name: params?.screen,
+              },
+            ],
+          },
         },
       ],
     }

@@ -1,13 +1,10 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
 import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-// TODO(PC-34456): remove the global mock
-jest.unmock('features/navigation/RootNavigator/rootRoutes')
 
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {

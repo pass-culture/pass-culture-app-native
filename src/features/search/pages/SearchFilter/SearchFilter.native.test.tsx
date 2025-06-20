@@ -59,7 +59,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

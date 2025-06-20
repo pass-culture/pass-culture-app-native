@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
-import { TabInnerComponentProps } from 'features/navigation/TabBar/types'
+import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { getSpacing, Spacer } from 'ui/theme'
 

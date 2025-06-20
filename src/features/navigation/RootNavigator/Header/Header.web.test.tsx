@@ -26,21 +26,6 @@ const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/navigation/RootNavigator/rootRoutes', () => ({
-  routes: [
-    {
-      name: 'TabNavigator',
-      component: () => null,
-      pathConfig: {
-        initialRouteName: 'Home',
-        screens: {
-          Home: undefined,
-        },
-      },
-    },
-  ],
-}))
-
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({

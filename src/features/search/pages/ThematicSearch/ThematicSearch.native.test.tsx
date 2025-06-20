@@ -18,7 +18,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
   class MockFlashList extends ActualFlashList {
