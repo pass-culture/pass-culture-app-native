@@ -173,28 +173,9 @@ recreate_emulator() {
 }
 
 # --- Main Execution Logic ---
-log_and_run "Recreating Android keystore from CI secrets" \
-    bash -c '
-        if [ -z "${ENV:-}" ] || [ -z "${ANDROID_KEYSTORE:-}" ] || [ -z "${ANDROID_KEYSTORE_STORE_PASSWORD:-}" ] || [ -z "${ANDROID_KEYSTORE_KEY_PASSWORD:-}" ]; then
-            echo "Required keystore environment variables (ENV, ANDROID_KEYSTORE, etc.) are not set." >&2
-            echo "This build will likely fail. Please check your CI configuration." >&2
-            exit 1
-        fi
-        mkdir -p android/keystores
-        echo "Recreating keystore file: android/keystores/$ENV.keystore"
-        echo "$ANDROID_KEYSTORE" | base64 --decode > "android/keystores/$ENV.keystore"
-        echo "Recreating properties file: android/keystores/$ENV.keystore.properties"
-        cat <<EOF > "android/keystores/$ENV.keystore.properties"
-storeFile=$ENV.keystore
-storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD
-keyAlias=$ENV
-keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD
-EOF
-
-        # --- NEW: Google Services JSON Logic ---
-        echo "Recreating google-services.json"
-        echo "$ANDROID_GOOGLE_SERVICES_JSON" > android/app/google-services.json
-    '
+# The secret files (keystore, properties, google-services.json) are now created
+# by the GitHub Actions workflow before this script is run.
+# This script now starts directly with the application setup.
 
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \
     corepack enable

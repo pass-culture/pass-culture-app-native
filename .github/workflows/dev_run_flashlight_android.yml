@@ -33,31 +33,42 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      # --- SECRET FETCHING (Copied from your deploy job) ---
       - name: Authenticate to Google
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
-      - name: Get Keystore Secrets
+      - name: Get CI Secrets
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
         with:
           secrets: |-
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-testing
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-testing-keystore
+
+      # This step is correct and should be kept
+      - name: Setup android keystore properties for testing environment
+        uses: chuhlomin/render-template@v1.10
+        with:
+          template: templates_github_ci/testing.keystore.properties
+          vars: |
+            ENVIRONMENT: testing
+            ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
+            ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
+          result_path: android/keystores/testing.keystore.properties
+
+      # This step is also correct and should be kept
       - name: Setup android Google services config
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
-      # --- RUN THE SCRIPT ---
+
+      # This step is also correct and should be kept
+      - name: Setup android keystore file
+        run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/testing.keystore
+
+      # --- FIX 2: SIMPLIFY THE SCRIPT EXECUTION ---
+      # The script no longer needs the secrets passed via `env`
       - name: Run the full test script
-        # This is where our bash script is executed
         run: ./scripts/setup_android_create_emulators.sh
-        env:
-          ANDROID_GOOGLE_SERVICES_JSON: ${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}
-          # Pass the fetched secrets into the script as environment variables
-          ENV: testing
-          ANDROID_KEYSTORE: ${{ steps.secrets.outputs.ANDROID_KEYSTORE }}
-          ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
-          ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
