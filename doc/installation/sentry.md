@@ -53,7 +53,7 @@ For Web:
 Create a new `.env.local` at the root of the repo containing your `SENTRY_AUTH_TOKEN`
 
 ```sh
-SENTRY_AUTH_TOKEN=your_super_secret_token
+SENTRY_AUTH_TOKEN=<token>
 ```
 
 ### 📦 Create the source maps locally (mobile) // if needed
