@@ -56,7 +56,7 @@ Create a new `.env.local` at the root of the repo containing your `SENTRY_AUTH_T
 SENTRY_AUTH_TOKEN=your_super_secret_token
 ```
 
-### 📦 Create the source maps locally (mobile)
+### 📦 Create the source maps locally (mobile) // if needed
 
 #### Android
 
@@ -80,7 +80,7 @@ SENTRY_AUTH_TOKEN=your_super_secret_token
     --sourcemap-output sourcemaps/main.jsbundle.map
 ```
 
-### 🚢 Upload the local source maps
+### 🚢 Upload the local source maps // if needed
 
 - ⚠️ Make sure to change the version and release:
 
@@ -92,7 +92,7 @@ node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 \
   --no-rewrite
 ```
 
-### 📦 Create the source maps locally (web)
+### 📦 Create the source maps locally (web) // if needed
 
 Source maps for the web app are generated during the build if `UPLOAD_SOURCEMAPS_TO_SENTRY` is true.
 
