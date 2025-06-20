@@ -57,7 +57,7 @@ export const useSubcategoryOfferLabelMapping = (): SubcategoryOfferLabelMapping 
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
-    const mapping = {} as SubcategoryOfferLabelMapping
+    const mapping = <SubcategoryOfferLabelMapping>{}
     subcategories.forEach((curr) => {
       mapping[curr.id] = curr.appLabel
     })
