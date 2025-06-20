@@ -521,6 +521,11 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
           jestAnimatedStyle={
             {
               "value": {},
@@ -529,22 +534,9 @@ exports[`<Venue /> should match snapshot 1`] = `
           layout={
             LinearTransition {
               "build": [Function],
-              "callbackV": undefined,
-              "dampingRatioV": undefined,
-              "dampingV": undefined,
-              "delayV": undefined,
               "durationV": 200,
-              "easingV": undefined,
-              "initialValues": undefined,
-              "massV": undefined,
-              "overshootClampingV": undefined,
               "randomizeDelay": false,
               "reduceMotionV": "system",
-              "restDisplacementThresholdV": undefined,
-              "restSpeedThresholdV": undefined,
-              "rotateV": undefined,
-              "stiffnessV": undefined,
-              "type": undefined,
             }
           }
         >
@@ -1183,6 +1175,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1387,6 +1384,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1591,6 +1593,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -3488,6 +3495,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
       >
         <View
           collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
           jestAnimatedStyle={
             {
               "value": {},
@@ -3496,22 +3508,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
           layout={
             LinearTransition {
               "build": [Function],
-              "callbackV": undefined,
-              "dampingRatioV": undefined,
-              "dampingV": undefined,
-              "delayV": undefined,
               "durationV": 200,
-              "easingV": undefined,
-              "initialValues": undefined,
-              "massV": undefined,
-              "overshootClampingV": undefined,
               "randomizeDelay": false,
               "reduceMotionV": "system",
-              "restDisplacementThresholdV": undefined,
-              "restSpeedThresholdV": undefined,
-              "rotateV": undefined,
-              "stiffnessV": undefined,
-              "type": undefined,
             }
           }
         >
@@ -3850,6 +3849,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       <FastImageView
                         defaultSource={null}
                         resizeMode="cover"
+                        source={
+                          {
+                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                          }
+                        }
                         style={
                           {
                             "bottom": 0,
@@ -3983,6 +3987,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 defaultSource={null}
                                 resizeMode="cover"
                                 size="small"
+                                source={
+                                  {
+                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  }
+                                }
                                 style={
                                   {
                                     "bottom": 0,
@@ -4476,6 +4485,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -4680,6 +4694,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -4884,6 +4903,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -6781,6 +6805,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
       >
         <View
           collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
           jestAnimatedStyle={
             {
               "value": {},
@@ -6789,22 +6818,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           layout={
             LinearTransition {
               "build": [Function],
-              "callbackV": undefined,
-              "dampingRatioV": undefined,
-              "dampingV": undefined,
-              "delayV": undefined,
               "durationV": 200,
-              "easingV": undefined,
-              "initialValues": undefined,
-              "massV": undefined,
-              "overshootClampingV": undefined,
               "randomizeDelay": false,
               "reduceMotionV": "system",
-              "restDisplacementThresholdV": undefined,
-              "restSpeedThresholdV": undefined,
-              "rotateV": undefined,
-              "stiffnessV": undefined,
-              "type": undefined,
             }
           }
         >
