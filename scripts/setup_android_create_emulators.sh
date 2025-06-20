@@ -4,6 +4,14 @@
 # Pipelines return the exit status of the last command to exit with a non-zero status.
 set -o errexit -o nounset -o pipefail
 
+# --- Determine Absolute Paths ---
+# Get the directory where this script is located.
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+# Assume the repository root is one level up from the 'scripts' directory.
+REPO_ROOT=$(dirname "$SCRIPT_DIR")
+echo "Repository root detected at: $REPO_ROOT"
+# --- End of Absolute Paths ---
+
 # --- Logging Helper ---
 readonly C_BLUE='\e[1;34m'
 readonly C_GREEN='\e[1;32m'
@@ -173,15 +181,13 @@ recreate_emulator() {
 }
 
 # --- Main Execution Logic ---
-# The secret files (keystore, properties, google-services.json) are now created
-# by the GitHub Actions workflow before this script is run.
-# This script now starts directly with the application setup.
+# The secret files are created by the GitHub Actions workflow.
 
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \
     corepack enable
 
-log_and_run "Installing Node.js dependencies" \
-    yarn install
+log_and_run "Installing Node.js dependencies from the repository root" \
+    cd "$REPO_ROOT" && yarn install
 
 log_and_run "Installing Android command-line tools v${ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION}" \
     sdkmanager_install_accepting_licence --install "cmdline-tools;$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION"
@@ -194,26 +200,23 @@ log_and_run "Installing Android emulator package" \
     sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
 
-log_and_run "Building the Android debug APK" \
-    cd android && ./gradlew assembleApptestingRelease
+log_and_run "Building the Android testing debug APK" \
 
-log_and_run "Finding the generated APK file" \
-    APK_PATH="$(find android -type f -name "*.apk" | head -n 1)"
+    cd "$REPO_ROOT/android" && ./gradlew assembleApptestingRelease
 
-log_and_run "Verifying that APK was found at: $APK_PATH" \
-    test -f "$APK_PATH"
+log_and_run "Finding the generated APK file within the 'android' directory" \
+    APK_PATH=$(find "$REPO_ROOT/android" -type f -name "*.apk" | head -n 1)
 
 if [ -z "$APK_PATH" ]; then
     echo -e "${C_RED}[ERROR] ==> Build was successful, but no .apk file was found anywhere inside the 'android' directory.${C_RESET}"
-    echo -e "${C_BLUE}[INFO] ==> Listing contents of 'android/app/build/outputs' for debugging...${C_RESET}"
-    ls -R android/app/build/outputs || echo "Could not list android/app/build/outputs directory."
+    echo -e "${C_BLUE}[INFO] ==> Listing contents of '$REPO_ROOT/android/app/build/outputs' for debugging...${C_RESET}"
+    ls -R "$REPO_ROOT/android/app/build/outputs" || echo "Could not list android/app/build/outputs directory."
     exit 1
 fi
 
 log_and_run "Verifying that APK was found at: $APK_PATH" \
     test -f "$APK_PATH"
 
-# Using a modern, stable API level and device for CI reliability.
 MIN_SDK_VERSION="30"
 log_and_run "Using SDK version: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
 
@@ -222,7 +225,6 @@ recreate_emulator \
     "$MIN_SDK_VERSION" \
     "pixel_6"
 
-# --- UPGRADED WAITING LOGIC ---
 log_and_run "Waiting up to 10 minutes for emulator to fully boot with diagnostics" \
     timeout 600 bash -c '
         while true; do
