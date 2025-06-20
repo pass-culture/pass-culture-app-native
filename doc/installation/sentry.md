@@ -8,15 +8,9 @@ To have a better understanding of the potential crashes and errors, we have to p
 
 The build is configured to upload the source maps automatically, on every new release (or new version), but you may want to do it manually. If so, follow along.
 
-### Generate your auth token
+### Generate your auth token for Sentry SaaS
 
-For Sentry self-hosted 23.6.1, follow these instructions:
-
-> Click [here](https://sentry.passculture.team/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
-
-For Sentry SaaS, follow these instructions:
-
-> Click [here](https://pass-culture.sentry.io/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions:
+> Generate your [own auth `<token>`](https://pass-culture.sentry.io/settings/account/api/auth-tokens/) using the following scope permissions:
 
 - Project: Read & Write
 - Team: Read
@@ -43,18 +37,6 @@ alerts:read
 For iOS/Android:
 
 - add a file at the root of your machine `~/.sentryclirc`:
-
-For Sentry self-hosted 23.6.1:
-
-```
-[defaults]
-url = https://sentry.passculture.team/
-org = sentry
-project = application-native
-
-[auth]
-token=<token>
-```
 
 For Sentry SaaS (`url` is no longer needed):
 
