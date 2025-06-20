@@ -48,6 +48,16 @@ jobs:
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-testing-keystore
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+
+      - name: 'Render Sentry Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.10
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
 
       # This step is correct and should be kept
       - name: Setup android keystore properties for testing environment
