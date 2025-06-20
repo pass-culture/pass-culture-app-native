@@ -76,6 +76,11 @@ In order to launch the app in the Simulator or on your external Apple device, yo
   ```
 
   or use the Xcode interface. Choose a scheme (like testing), then a device and click the `Run` button in the toolbar.
+  This will also start the metro server. If not, run in another tab:
+
+```sh
+yarn start
+```
 
 - For Xcode Simulator
 
@@ -85,12 +90,16 @@ In order to launch the app in the Simulator or on your external Apple device, yo
   yarn ios:testing
   ```
 
-  or use the Xcode interface.
+- Optionnaly for a specific Xcode Simulator
 
-  This will also start the metro server. If not, run in another tab:
+  Run:
 
   ```sh
-  yarn start
+  xcrun xctrace list devices
+  ```
+
+  ```sh
+  yarn ios:testing --udid='the udid of the device you want in the list you got from the previous command'
   ```
 
 ### 😤 Troubleshooting
