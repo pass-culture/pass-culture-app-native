@@ -1,4 +1,3 @@
-import { addDays, isSameDay } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -10,46 +9,23 @@ import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
-  beginningDatetime?: string | null
+  hasEmailBeenSent: boolean
   withdrawalDelay?: number | null
   isDuo: boolean
   userEmail: UserProfileResponse['email']
 }
 
-export const EmailWithdrawal = ({
-  beginningDatetime,
-  withdrawalDelay,
-  isDuo,
-  userEmail,
-}: Props) => {
-  if (beginningDatetime && withdrawalDelay) {
-    // Calculation approximate date send e-mail
-    const nbDays = withdrawalDelay / 60 / 60 / 24
-    const dateSendEmail = addDays(new Date(beginningDatetime), -nbDays)
-    const today = new Date()
-    const startOfferDate = new Date(beginningDatetime)
-    const isEventDay = isSameDay(startOfferDate, today)
-    if (isEventDay || today > dateSendEmail)
-      return (
-        <EmailWithdrawalContainer>
-          <EmailReceived isEventDay={isEventDay} isDuo={isDuo} userEmail={userEmail} />
-        </EmailWithdrawalContainer>
-      )
-  }
-  return (
-    <EmailWithdrawalContainer>
-      <EmailWillBeSend isDuo={isDuo} userEmail={userEmail} withdrawalDelay={withdrawalDelay} />
-    </EmailWithdrawalContainer>
-  )
-}
-
-const EmailWithdrawalContainer = ({ children }: { children: React.JSX.Element }) => {
+export const EmailWithdrawal = ({ hasEmailBeenSent, withdrawalDelay, isDuo, userEmail }: Props) => {
   return (
     <TicketContainer>
       <TicketVisual>
         <StyledEmailSent />
       </TicketVisual>
-      {children}
+      {hasEmailBeenSent ? (
+        <EmailReceived isEventDay={false} isDuo={isDuo} userEmail={userEmail} />
+      ) : (
+        <EmailWillBeSend isDuo={isDuo} userEmail={userEmail} withdrawalDelay={withdrawalDelay} />
+      )}
     </TicketContainer>
   )
 }

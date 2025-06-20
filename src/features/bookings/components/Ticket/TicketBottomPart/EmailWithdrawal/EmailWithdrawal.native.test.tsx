@@ -5,8 +5,6 @@ import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBotto
 import { render, screen } from 'tests/utils'
 
 const today = '2025-03-29T09:00:00Z'
-const yesterday = '2025-03-28T09:00:00Z'
-const later = '2025-04-04T09:00:00Z'
 mockdate.set(new Date(today))
 const oneDayWithdrawalDelay = 86400
 
@@ -14,7 +12,6 @@ let mockIsMailAppAvailable = true
 jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
   useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
 }))
-const lineBreak = '\n'
 
 describe('<EmailWithdrawal/>', () => {
   describe('EmailWillBeSend', () => {
@@ -28,7 +25,7 @@ describe('<EmailWithdrawal/>', () => {
       `should return $expectedMessage when withdrawalDelay is $withdrawalDelay and isDuo is $isDuo`,
       async ({ withdrawalDelay, isDuo, expectedMessage }) => {
         renderEmailWithdrawal({
-          beginningDatetime: later,
+          hasEmailBeenSent: false,
           withdrawalDelay,
           isDuo,
         })
@@ -45,7 +42,7 @@ describe('<EmailWithdrawal/>', () => {
 
     it('should display the button "Consulter mes e-mails"', () => {
       renderEmailWithdrawal({
-        beginningDatetime: today,
+        hasEmailBeenSent: true,
         withdrawalDelay: oneDayWithdrawalDelay,
         isDuo: false,
       })
@@ -56,7 +53,7 @@ describe('<EmailWithdrawal/>', () => {
     it('should not show the button to open mail when no mail app is available', async () => {
       mockIsMailAppAvailable = false
       renderEmailWithdrawal({
-        beginningDatetime: today,
+        hasEmailBeenSent: true,
         withdrawalDelay: oneDayWithdrawalDelay,
         isDuo: false,
       })
@@ -67,16 +64,14 @@ describe('<EmailWithdrawal/>', () => {
     })
 
     it.each`
-      beginningDatetime | isDuo    | expectedMessage
-      ${today}          | ${true}  | ${`C’est aujourd’hui\u00a0!${lineBreak}Tu as dû recevoir tes billets par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.`}
-      ${today}          | ${false} | ${`C’est aujourd’hui\u00a0!${lineBreak}Tu as dû recevoir ton billet par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.`}
-      ${yesterday}      | ${true}  | ${'Tes billets t’ont été envoyés par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.'}
-      ${yesterday}      | ${false} | ${'Ton billet t’a été envoyé par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.'}
+      hasEmailBeenSent | isDuo    | expectedMessage
+      ${true}          | ${true}  | ${'Tes billets t’ont été envoyés par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.'}
+      ${true}          | ${false} | ${'Ton billet t’a été envoyé par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.'}
     `(
       `should return $expectedMessage when beginningDatetime is $beginningDatetime and isDuo is $isDuo`,
-      async ({ beginningDatetime, isDuo, expectedMessage }) => {
+      async ({ hasEmailBeenSent, isDuo, expectedMessage }) => {
         renderEmailWithdrawal({
-          beginningDatetime,
+          hasEmailBeenSent,
           withdrawalDelay: oneDayWithdrawalDelay,
           isDuo,
         })
@@ -88,17 +83,17 @@ describe('<EmailWithdrawal/>', () => {
 })
 
 const renderEmailWithdrawal = ({
-  beginningDatetime,
+  hasEmailBeenSent,
   withdrawalDelay,
   isDuo,
 }: {
-  beginningDatetime?: string | null
+  hasEmailBeenSent: boolean
   withdrawalDelay?: number | null
   isDuo: boolean
 }) => {
   render(
     <EmailWithdrawal
-      beginningDatetime={beginningDatetime}
+      hasEmailBeenSent={hasEmailBeenSent}
       withdrawalDelay={withdrawalDelay}
       isDuo={isDuo}
       userEmail="toto@email.com"

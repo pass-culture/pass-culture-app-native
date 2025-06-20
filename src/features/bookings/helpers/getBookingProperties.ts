@@ -1,10 +1,8 @@
 import { Booking, BookingProperties } from 'features/bookings/types'
 
-function isDuoBooking(booking: Booking) {
-  return booking.quantity === 2
-}
+const isDuoBooking = (booking: Booking) => booking.quantity === 2
 
-export function getBookingProperties(booking: Booking, isEvent: boolean): BookingProperties {
+export const getBookingProperties = (booking: Booking, isEvent: boolean): BookingProperties => {
   if (!booking) {
     return {}
   }

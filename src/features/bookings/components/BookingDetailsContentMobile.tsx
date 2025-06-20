@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingReponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
@@ -18,7 +18,7 @@ export const BookingDetailsContentMobile = ({
   showArchiveModal,
 }: {
   topBlock: React.JSX.Element
-  booking: BookingReponse
+  booking: BookingResponse
   onEmailPress: () => void
   errorBannerMessage: string
   cancelBooking: () => void
@@ -34,14 +34,14 @@ export const BookingDetailsContentMobile = ({
         </Container>
       </SectionContainer>
 
-      {booking.stock.offer.bookingContact || booking.stock.offer.withdrawalDetails ? (
+      {booking.stock.offer.bookingContact || booking.ticket?.withdrawal.details ? (
         <React.Fragment>
           <StyledSeparator />
           <SectionContainer>
             <Container>
               <BookingPrecisions
                 bookingContactEmail={booking.stock.offer.bookingContact}
-                withdrawalDetails={booking.stock.offer.withdrawalDetails}
+                withdrawalDetails={booking.ticket?.withdrawal.details}
                 onEmailPress={onEmailPress}
               />
             </Container>
