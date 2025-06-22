@@ -1,15 +1,8 @@
 import React, { ReactElement } from 'react'
-import styled from 'styled-components/native'
 
 import { theme } from 'theme'
-import { ColorsTypeLegacy } from 'theme/types'
 import { Tag } from 'ui/components/Tag/Tag'
-import { BookClubCertification } from 'ui/svg/BookClubCertification'
-import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
-import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Star } from 'ui/svg/Star'
-import { getSpacing } from 'ui/theme'
+import { TagVariant } from 'ui/components/Tag/types'
 
 type InteractionTagParams = {
   theme: typeof theme
@@ -22,72 +15,50 @@ type InteractionTagParams = {
 
 type TagProps = {
   label: string
-  backgroundColor?: ColorsTypeLegacy
-  Icon?: React.FunctionComponent<AccessibleIcon>
+  variant: TagVariant
 }
 
 export const renderInteractionTag = (params: InteractionTagParams): ReactElement | undefined => {
   const tagProps = getTagProps(params)
   if (!tagProps) return undefined
 
-  return <Tag testID="interaction-tag" paddingHorizontal={getSpacing(1)} {...tagProps} />
+  return <Tag testID="interaction-tag" {...tagProps} />
 }
 
 export const getTagProps = ({
-  theme,
   likesCount = 0,
   chroniclesCount = 0,
   headlinesCount = 0,
   hasSmallLayout,
   isComingSoonOffer,
 }: InteractionTagParams): TagProps | null => {
-  if (isComingSoonOffer)
+  if (isComingSoonOffer) {
     return {
       label: hasSmallLayout ? 'Bientôt' : 'Bientôt dispo',
-      backgroundColor: theme.designSystem.color.background.warning,
-      Icon: CustomWait,
+      variant: TagVariant.WARNING,
     }
+  }
 
-  if (chroniclesCount > 0)
+  if (chroniclesCount > 0) {
     return {
       label: hasSmallLayout ? 'Reco Club' : 'Reco du Club',
-      backgroundColor: theme.designSystem.color.background.bookclub,
-      Icon: CustomBookClub,
+      variant: TagVariant.BOOKCLUB,
     }
+  }
 
-  if (headlinesCount > 0)
+  if (headlinesCount > 0) {
     return {
       label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
-      backgroundColor: theme.designSystem.color.background.headline,
-      Icon: CustomStar,
+      variant: TagVariant.HEADLINE,
     }
+  }
 
-  if (likesCount > 0)
+  if (likesCount > 0) {
     return {
       label: `${likesCount} j’aime`,
-      backgroundColor: theme.designSystem.color.background.subtle,
-      Icon: CustomThumbUp,
+      variant: TagVariant.LIKE,
     }
+  }
 
   return null
 }
-
-const CustomThumbUp = styled(ThumbUpFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.brandPrimary,
-}))``
-
-const CustomBookClub = styled(BookClubCertification).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.bookclub,
-}))``
-
-const CustomStar = styled(Star).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.headline,
-}))``
-
-const CustomWait = styled(ClockFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.warning,
-}))``
