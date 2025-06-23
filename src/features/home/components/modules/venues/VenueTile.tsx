@@ -107,7 +107,7 @@ export const VenueTile = memo(UnmemoizedVenueTile)
 const MAX_VENUE_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.venue
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
-  underlayColor: theme.colors.white,
+  underlayColor: theme.designSystem.color.background.default,
 }))<{
   height: number
   width: number

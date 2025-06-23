@@ -55,6 +55,6 @@ describe('getTagColor', () => {
 
     const color = getTagColor(input)
 
-    expect(color).toEqual(theme.colors.black)
+    expect(color).toEqual(theme.designSystem.color.background.inverted)
   })
 })

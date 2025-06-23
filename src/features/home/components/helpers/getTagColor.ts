@@ -15,6 +15,6 @@ export const getTagColor = (color: string) => {
     case 'Lilac':
       return theme.colors.lilacDark
     default:
-      return theme.colors.black
+      return theme.designSystem.color.background.inverted
   }
 }

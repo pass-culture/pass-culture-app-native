@@ -88,7 +88,7 @@ const BottomBanner = styled.View(({ theme }) => ({
   paddingVertical: getSpacing(2),
   height: getSpacing(10),
   gap: getSpacing(2),
-  backgroundColor: theme.colors.goldLight200,
+  backgroundColor: theme.designSystem.color.background.warning,
   borderBottomLeftRadius: BORDER_RADIUS,
   borderBottomRightRadius: BORDER_RADIUS,
   flexDirection: 'row',

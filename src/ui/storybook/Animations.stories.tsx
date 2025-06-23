@@ -149,7 +149,7 @@ const AnimationContainer = styled.View<{ hasBackground: boolean }>(({ theme, has
   width: getSpacing(65),
   border: `2px solid ${theme.designSystem.color.border.subtle}`,
   borderRadius: getSpacing(2),
-  backgroundColor: hasBackground ? theme.uniqueColors.brand : 'transparent',
+  backgroundColor: hasBackground ? theme.designSystem.color.background.brandPrimary : 'transparent',
   cursor: 'pointer',
 }))
 

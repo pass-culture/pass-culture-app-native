@@ -23,8 +23,8 @@ const parseHeight = (height?: number | string): number | string => {
 
 export const BlackGradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
-    colorAlpha(theme.colors.black, 0),
-    colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, TEXT_BACKGROUND_OPACITY),
   ],
 }))<{ height?: number | string }>(({ height }) => ({
   height: parseHeight(height),
