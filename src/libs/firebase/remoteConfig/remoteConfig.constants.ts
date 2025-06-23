@@ -1,3 +1,4 @@
+import { SubcategoryIdEnum } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 import { CustomRemoteConfig } from './remoteConfig.types'
@@ -6,7 +7,21 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   test_param: 'A',
   aroundPrecision: 0,
   artistPageSubcategories: {
-    subcategories: [],
+    subcategories: [
+      SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE,
+      SubcategoryIdEnum.CAPTATION_MUSIQUE,
+      SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
+      SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+      SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE,
+      SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+      SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE,
+      SubcategoryIdEnum.ABO_MEDIATHEQUE,
+      SubcategoryIdEnum.FESTIVAL_LIVRE,
+      SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+      SubcategoryIdEnum.LIVRE_NUMERIQUE,
+      SubcategoryIdEnum.LIVRE_PAPIER,
+      SubcategoryIdEnum.TELECHARGEMENT_LIVRE_AUDIO,
+    ],
   },
   homeEntryIdFreeOffers: '',
   homeEntryIdNotConnected: '',
