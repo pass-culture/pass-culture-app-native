@@ -4,7 +4,7 @@ import { variantIcons } from 'ui/components/Tag/Tag.variants'
 import { TagVariant } from 'ui/components/Tag/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export function getFinalTagIcon(
+export function getTagIcon(
   variant: TagVariant,
   icon?: FunctionComponent<AccessibleIcon> | ReactElement
 ): FunctionComponent<AccessibleIcon> | ReactElement {

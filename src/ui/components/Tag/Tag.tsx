@@ -3,7 +3,7 @@ import { View, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getTagColors } from 'ui/components/Tag/helper/getTagColors'
-import { getFinalTagIcon } from 'ui/components/Tag/helper/getTagIcon'
+import { getTagIcon } from 'ui/components/Tag/helper/getTagIcon'
 import { renderTagIcon } from 'ui/components/Tag/helper/renderTagIcon'
 import { TagProps, TagVariant } from 'ui/components/Tag/types'
 import { Typo, getSpacing, getSpacingString } from 'ui/theme'
@@ -23,7 +23,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   const theme = useTheme()
   const { background, icon } = theme.designSystem.color
 
-  const FinalIcon = getFinalTagIcon(variant, Icon)
+  const FinalIcon = getTagIcon(variant, Icon)
 
   const { backgroundColor, iconColor, labelColor, iconSize } = getTagColors({
     variant,
@@ -47,7 +47,7 @@ const Wrapper = styled(View)<{ backgroundColor: string }>(({ backgroundColor }) 
   alignItems: 'center',
   alignSelf: 'flex-start',
   borderRadius: 6,
-  backgroundColor: backgroundColor,
+  backgroundColor,
   paddingVertical: PADDING_VERTICAL,
   paddingHorizontal: getSpacing(2),
 }))
