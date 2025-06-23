@@ -34,10 +34,6 @@ export const useArtistResultsQuery = ({
   const { userLocation } = useLocation()
   const { artistPageSubcategories } = useRemoteConfigQuery()
 
-  const enabled = !!(
-    artistId &&
-    (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
-  );
   return useQuery({
     queryKey: [QueryKeys.ARTIST_PLAYLIST, artistId],
     queryFn: async () => {
@@ -48,7 +44,10 @@ export const useArtistResultsQuery = ({
       return { playlistHits, topOffersHits }
     },
     initialData: { playlistHits: [], topOffersHits: [] },
-    enabled: enabled,
+    enabled: !!(
+      artistId &&
+      (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
+    ),
     select(data) {
       const artistPlaylist = getSortedHits({
         transformHits,

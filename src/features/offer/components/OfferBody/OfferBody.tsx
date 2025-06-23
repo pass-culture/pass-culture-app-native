@@ -86,7 +86,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     subcategoryId: offer.subcategoryId,
   })
 
-  const hasAccessToArtistPage = hasArtistPage && artists.length === 1 && artistOffers?.length > 1 // je pense que le test échoue parce que useArtistResultsQuery n'est pas mocké et que par défaut c'est vide
+  const hasAccessToArtistPage = hasArtistPage && artists.length === 1 && artistOffers?.length > 1
 
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 

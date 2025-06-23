@@ -21,9 +21,9 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
-import * as fetchOffersByArtistAPI from 'queries/offer/fetchOffersByArtist'
+import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -60,11 +60,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const fetchOffersByArtistSpy = jest
-  .spyOn(fetchOffersByArtistAPI, 'fetchOffersByArtist')
-  .mockResolvedValue({
-    playlistHits: mockedAlgoliaOffersWithSameArtistResponse,
-    topOffersHits: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+const useArtistResultsSpy = jest
+  .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
+  .mockImplementation()
+  .mockReturnValue({
+    artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
   })
 
 const user = userEvent.setup()
@@ -140,7 +141,7 @@ describe('<OfferBody />', () => {
     expect(await screen.findByText('Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
   })
 
-  it('should not display artists when array is empty', async () => {
+  it('should not display artists when array is empty', () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
@@ -149,8 +150,6 @@ describe('<OfferBody />', () => {
     renderOfferBody({
       offer,
     })
-
-    await act(async () => {})
 
     expect(screen.queryByText('de')).not.toBeOnTheScreen()
   })
@@ -514,9 +513,9 @@ describe('<OfferBody />', () => {
       artists: [{ id: '3', name: 'J.K Rowling' }],
     }
 
-    fetchOffersByArtistSpy.mockResolvedValueOnce({
-      playlistHits: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
-      topOffersHits: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+    useArtistResultsSpy.mockReturnValueOnce({
+      artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
+      artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
     })
 
     renderOfferBody({
