@@ -12,9 +12,9 @@ const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boole
 }
 
 export const getTextColor = (theme: DefaultTheme, selected: boolean, disabled: boolean) => {
-  if (selected) return theme.colors.white
-  if (disabled) return theme.colors.greyDark
-  return theme.colors.black
+  if (selected) return theme.designSystem.color.text.inverted
+  if (disabled) return theme.designSystem.color.text.disabled
+  return theme.designSystem.color.text.default
 }
 
 interface Props {
@@ -95,7 +95,7 @@ const StrikeLine = styled.View<{ parentWidth: number }>(({ parentWidth, theme })
     transform: `rotate(-${strikeLineAngle}deg)`,
     height: `${LINE_THICKNESS}px`,
     width: `${parentWidth + getSpacing(6)}px`,
-    backgroundColor: theme.colors.greyMedium,
+    backgroundColor: theme.designSystem.color.background.subtle,
     borderRadius: `${LINE_THICKNESS / 2}px`,
     position: 'absolute',
   }

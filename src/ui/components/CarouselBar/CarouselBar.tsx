@@ -33,7 +33,7 @@ const Bar = styled(Animated.View)(({ theme }) => ({
   width: getSpacing(5),
   height: 3,
   borderRadius: getSpacing(12.5),
-  backgroundColor: theme.colors.greyDark,
+  backgroundColor: theme.designSystem.color.background.subtle,
   overflow: 'hidden',
   margin: getSpacing(1),
 }))

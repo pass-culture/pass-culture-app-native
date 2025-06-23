@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers/category'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
+import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -20,7 +20,6 @@ interface Props {
 const PLACEHOLDER_ICON_SIZE = getSpacing(16)
 
 export const ImageTile: React.FC<Props> = (props) => {
-  const theme = useTheme()
   const style = useMemo(
     () => ({
       height: props.height,
@@ -45,10 +44,9 @@ export const ImageTile: React.FC<Props> = (props) => {
     />
   ) : (
     <DefaultImageContainer height={props.height} width={props.width}>
-      <StyledDefaultImagePlaceholder
+      <StyledImagePlaceholder
         onlyTopBorderRadius={props.onlyTopBorderRadius ?? false}
         Icon={mapCategoryToIcon(props.categoryId ?? null)}
-        backgroundColors={[theme.colors.greyLight, theme.colors.greyMedium]}
         size={PLACEHOLDER_ICON_SIZE}
       />
     </DefaultImageContainer>
@@ -56,7 +54,7 @@ export const ImageTile: React.FC<Props> = (props) => {
 }
 
 const StyledFastImage = styled(FastImage)(({ theme }) => ({
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const DefaultImageContainer = styled.View<{ height: number; width: number }>(
@@ -66,7 +64,7 @@ const DefaultImageContainer = styled.View<{ height: number; width: number }>(
   })
 )
 
-const StyledDefaultImagePlaceholder = styled(DefaultImagePlaceholder)<{
+const StyledImagePlaceholder = styled(ImagePlaceholder)<{
   onlyTopBorderRadius: boolean
 }>(({ theme, onlyTopBorderRadius }) => ({
   borderRadius: onlyTopBorderRadius ? 0 : theme.borderRadius.radius,

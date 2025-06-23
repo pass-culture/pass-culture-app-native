@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -10,14 +10,11 @@ export const Item: React.FC<{
   subtext?: string
   testID?: string
 }> = ({ Icon, message, subtext = '', testID }) => {
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    color: theme.colors.greyDark,
-    size: theme.icons.sizes.small,
-  }))``
+  const { designSystem, icons } = useTheme()
   return (
     <Row testID={testID}>
       <IconWrapper>
-        <StyledIcon />
+        <Icon color={designSystem.color.icon.subtle} size={icons.sizes.small} />
       </IconWrapper>
       <Spacer.Row numberOfSpaces={3} />
       {typeof message === 'string' ? <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs> : message}

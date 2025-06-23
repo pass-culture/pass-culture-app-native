@@ -7,6 +7,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 
 type Props = {
   label: string
@@ -33,11 +34,11 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
       <RefContainer ref={containerRef}>
         <Icon />
         <Spacer.Row numberOfSpaces={1} />
-        <Text>
+        <Typo.Body numberOfLines={2}>
           <Typo.BodyAccent>{label}</Typo.BodyAccent>
-          <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body>{info}</Typo.Body>
-        </Text>
+          {SPACE}
+          {info}
+        </Typo.Body>
       </RefContainer>
     </TouchableOpacity>
   )
@@ -47,10 +48,3 @@ const RefContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
-
-const Text = styled.Text.attrs({
-  numberOfLines: 2,
-})(({ theme }) => ({
-  color: theme.colors.black,
-  flex: 1,
-}))

@@ -395,7 +395,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               style={
                 [
                   {
-                    "color": "#90949D",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -582,7 +582,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           [
                             {
                               "backgroundColor": "#f1f1f4",
-                              "borderColor": "#696A6F",
+                              "borderColor": "#90949d",
                               "borderRadius": 5,
                               "borderWidth": 1,
                               "height": 96,

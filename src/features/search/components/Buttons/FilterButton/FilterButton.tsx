@@ -51,7 +51,7 @@ const RoundContainer = styled.View(({ theme }) => ({
   height: getSpacing(8),
   borderRadius: getSpacing(4),
   borderWidth: 1,
-  borderColor: theme.colors.black,
+  borderColor: theme.designSystem.color.border.default,
 }))
 
 const StyledFilterIcon = styled(FilterIcon).attrs(({ theme }) => ({
@@ -62,5 +62,5 @@ const FloatingBadge = styled(Badge)(({ theme }) => ({
   position: 'absolute',
   right: 0,
   bottom: 0,
-  backgroundColor: theme.colors.black,
+  backgroundColor: theme.designSystem.color.background.inverted,
 }))

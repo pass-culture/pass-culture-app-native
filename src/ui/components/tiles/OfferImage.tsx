@@ -71,13 +71,12 @@ const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, siz
   ...(withStroke
     ? {
         borderWidth: 1,
-        borderColor: theme.colors.greyDark,
+        borderColor: theme.designSystem.color.border.default,
       }
     : {}),
 }))
 
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
-  backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
   size: theme.icons.sizes.standard,
   borderRadius: theme.tiles.borderRadius,
 }))``

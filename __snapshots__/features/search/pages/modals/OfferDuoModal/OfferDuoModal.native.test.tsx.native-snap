@@ -511,7 +511,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       style={
                         [
                           {
-                            "backgroundColor": "#90949D",
+                            "backgroundColor": "#696a6f",
                             "borderRadius": 16,
                             "height": 32,
                             "justifyContent": "center",

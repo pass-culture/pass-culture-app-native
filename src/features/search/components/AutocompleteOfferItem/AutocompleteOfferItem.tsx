@@ -247,7 +247,7 @@ const AutocompleteItemTouchable = styled.TouchableOpacity({
 
 const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const StyledText = styled(Text)({
