@@ -173,7 +173,7 @@ const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(
   justifyContent: 'center',
   flexDirection: 'row',
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus }),
 }))
 
 const StyledTouchableOpacity = styledButton(Touchable)(({ theme }) => ({
@@ -181,7 +181,7 @@ const StyledTouchableOpacity = styledButton(Touchable)(({ theme }) => ({
   justifyContent: 'center',
   flexDirection: 'row',
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ color: theme.colors.black }),
+  ...customFocusOutline({ color: theme.designSystem.color.outline.default }),
 }))
 
 const StyledButtonText = styled(Typo.BodyAccent)<{ stepState: StepButtonState }>(

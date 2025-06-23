@@ -75,7 +75,7 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
     <Svg width="12" height="6" viewBox="0 0 12 6" style={style}>
       <Path
         d="M12 6H0L5.293 0.293188C5.684 -0.0978099 6.317 -0.0978098 6.707 0.293189Z"
-        fill={theme.uniqueColors.backgroundSurface}
+        fill={theme.designSystem.color.background.inverted}
       />
     </Svg>
   )
@@ -101,12 +101,12 @@ const Background = styled.View(({ theme }) => ({
   padding: getSpacing(2),
   paddingLeft: getSpacing(4),
   borderRadius: getSpacing(2),
-  backgroundColor: theme.uniqueColors.backgroundSurface,
+  backgroundColor: theme.designSystem.color.background.inverted,
 }))
 
 const StyledText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   flexShrink: 1,
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.inverted,
 }))
 
 const StyledClearContainer = styledButton(Touchable)({
@@ -115,6 +115,6 @@ const StyledClearContainer = styledButton(Touchable)({
 })
 
 const StyledClearIcon = styled(Clear).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.smaller,
 }))({})

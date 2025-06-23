@@ -39,4 +39,5 @@ const Container = styled.View({
 
 const StyledTryAgain = styled(TryAgain).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.error,
 }))``

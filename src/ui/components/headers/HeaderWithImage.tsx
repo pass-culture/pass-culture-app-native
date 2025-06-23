@@ -59,7 +59,7 @@ const ImageContainer = styled.View({
 
 const DefaultImagePlaceholderOfferV2 = styled.View<{ width: number; height: number }>(
   ({ theme, width, height }) => ({
-    backgroundColor: theme.colors.greyLight,
+    backgroundColor: theme.designSystem.color.background.subtle,
     width,
     height,
   })

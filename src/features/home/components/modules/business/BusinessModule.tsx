@@ -198,7 +198,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   flexWrap: 'wrap',
   overflow: 'hidden',
   marginHorizontal: MAIN_MARGIN,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus }),
   marginBottom: theme.home.spaceBetweenModules,
 }))
 

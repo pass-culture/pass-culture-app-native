@@ -93,11 +93,11 @@ const Container = styled.View<StyleProps>(
           shadowColor: theme.colors.greyDark,
           shadowOpacity: 0.2,
         })),
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     ...(withStroke
       ? {
           borderWidth: 1,
-          borderColor: theme.colors.greySemiDark,
+          borderColor: theme.designSystem.color.border.default,
         }
       : {}),
   })

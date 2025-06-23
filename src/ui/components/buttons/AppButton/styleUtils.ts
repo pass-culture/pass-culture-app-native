@@ -114,7 +114,7 @@ export const appButtonWebStyles: ElementStylesWeb = ({
       background: 'none',
     },
     ...customFocusOutline({ color: focusOutlineColor ?? theme.buttons.outlineColor }),
-    ...getHoverStyle(hoverUnderlineColor ?? theme.colors.black),
+    ...getHoverStyle(hoverUnderlineColor ?? theme.designSystem.color.text.default),
   }
 }
 
@@ -124,7 +124,7 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
   activeOpacity,
 }: ButtonStylesArgs) => {
   const underlineColor =
-    hoverUnderlineColor === undefined ? theme.colors.black : hoverUnderlineColor
+    hoverUnderlineColor === undefined ? theme.designSystem.color.text.default : hoverUnderlineColor
   return {
     flexDirection: 'column',
     cursor: 'pointer',

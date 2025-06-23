@@ -29,7 +29,7 @@ const DotSvg: React.FC<Props> = ({ size, borderColor, fillColor, accessibilityLa
 )
 
 export const Dot = styled(DotSvg).attrs(({ borderColor, fillColor, size, theme }) => ({
-  borderColor: borderColor ?? theme.colors.black,
-  fillColor: fillColor ?? theme.colors.black,
+  borderColor: borderColor ?? theme.designSystem.color.icon.default,
+  fillColor: fillColor ?? theme.designSystem.color.icon.default,
   size: size ?? 8,
 }))``

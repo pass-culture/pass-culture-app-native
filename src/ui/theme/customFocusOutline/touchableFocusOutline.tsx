@@ -20,4 +20,6 @@ const focusStyle = () => {
 }
 
 export const touchableFocusOutline = (theme: DefaultTheme, isFocus?: boolean) =>
-  Platform.OS === 'web' && isFocus ? { ...focusStyle(), outlineColor: theme.colors.accent } : {}
+  Platform.OS === 'web' && isFocus
+    ? { ...focusStyle(), outlineColor: theme.designSystem.color.outline.default }
+    : {}
