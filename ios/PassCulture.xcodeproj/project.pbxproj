@@ -13,7 +13,6 @@
 		1BB62F9328DDAB680045698F /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB62F9228DDAB680045698F /* Dynamic.swift */; };
 		1BD7D11A28A67CE400283479 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */; };
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
-		45655B756927DB57C395794D /* libPods-PassCulture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4072C1765209CA98478B6944 /* libPods-PassCulture.a */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
 		82A443CD2AC3693F004BD838 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82A443CC2AC3693F004BD838 /* Montserrat-BoldItalic.ttf */; };
@@ -22,6 +21,7 @@
 		A9E70FF6B9AF4FA29848CE0D /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC167AD6C0654FD79B464AFF /* Montserrat-Black.ttf */; };
 		C34C4A962C9AFC8A00A354D3 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C34C4A942C9AF9BF00A354D3 /* Montserrat-SemiBoldItalic.ttf */; };
 		C34C4A972C9AFC9100A354D3 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C34C4A952C9AF9CC00A354D3 /* Montserrat-MediumItalic.ttf */; };
+		CD95697B42714C8F9240F42B /* Pods_PassCulture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE57B8BA1CEF3971782EE203 /* Pods_PassCulture.framework */; };
 		CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8881E10DAB84DAA99A29F65 /* Images.xcassets */; };
 		D554C848268F69C300C16018 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C847268F69C300C16018 /* File.swift */; };
 		DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */; };
@@ -38,7 +38,6 @@
 		22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		3746B404099846C48BD4E3A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PassCulture/Info.plist; sourceTree = "<group>"; };
 		39A88C70253F4B6000BACBFA /* PassCulture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PassCulture.entitlements; path = PassCulture/PassCulture.entitlements; sourceTree = "<group>"; };
-		4072C1765209CA98478B6944 /* libPods-PassCulture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PassCulture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7D886722584EDD87A2BB44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PassCulture/main.m; sourceTree = "<group>"; };
 		4CAEF50B8632400B8EEB6469 /* PassCulture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassCulture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F350A4B89F548B599D643BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PassCulture/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "react-native-config.xcconfig"; sourceTree = "<group>"; };
 		A8881E10DAB84DAA99A29F65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PassCulture/Images.xcassets; sourceTree = "<group>"; };
+		AE57B8BA1CEF3971782EE203 /* Pods_PassCulture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PassCulture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC167AD6C0654FD79B464AFF /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		C34C4A942C9AF9BF00A354D3 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBoldItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		C34C4A952C9AF9CC00A354D3 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-MediumItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45655B756927DB57C395794D /* libPods-PassCulture.a in Frameworks */,
+				CD95697B42714C8F9240F42B /* Pods_PassCulture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +143,7 @@
 			children = (
 				C3EB4C7EF21447BFA7F60E12 /* JavaScriptCore.framework */,
 				22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */,
-				4072C1765209CA98478B6944 /* libPods-PassCulture.a */,
+				AE57B8BA1CEF3971782EE203 /* Pods_PassCulture.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
