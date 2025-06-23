@@ -4,9 +4,9 @@ import React, { FunctionComponent } from 'react'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useArtistResultsQuery } from 'features/offer/queries/useArtistResultsQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 
 export const Artist: FunctionComponent = () => {
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)

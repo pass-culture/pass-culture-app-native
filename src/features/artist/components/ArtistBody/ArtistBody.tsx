@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -10,12 +10,10 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -47,19 +45,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   const { name, description, image } = artist
 
-  const avatarImage = useMemo(() => {
-    if (!image) {
-      return undefined
-    }
-    return (
-      <StyledImage
-        url={image}
-        accessibilityRole={AccessibilityRole.IMAGE}
-        accessibilityLabel="artist avatar"
-      />
-    )
-  }, [image])
-
   const descriptionWithDot = ensureEndingDot(description ?? '')
   const capitalizedDescriptionWithDot = capitalizeFirstLetter(descriptionWithDot)
 
@@ -82,7 +67,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
           <ViewGap gap={6}>
-            <ArtistHeader name={name} avatarImage={avatarImage} />
+            <ArtistHeader name={name} avatarImage={image} />
             {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
@@ -118,8 +103,3 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
 const Description = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
-
-const StyledImage = styled(FastImage)({
-  width: '100%',
-  height: '100%',
-})
