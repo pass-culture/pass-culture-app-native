@@ -37,7 +37,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
       <StyledTitleContainer>
         <AccessibleTitle testID="playlistTitle" title={props.title} />
       </StyledTitleContainer>
-
       <View testID="mobile-video-module">
         <StyledTouchableHighlight
           onPress={props.showVideoModal}
@@ -96,7 +95,11 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const StyledTitleContainer = styled.View({ marginBottom: getSpacing(5), alignItems: 'center' })
+const StyledTitleContainer = styled.View({
+  marginBottom: getSpacing(5),
+  alignItems: 'center',
+  flexDirection: 'row',
+})
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
