@@ -71,7 +71,7 @@ const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, siz
   ...(withStroke
     ? {
         borderWidth: 1,
-        borderColor: theme.colors.greyDark,
+        borderColor: theme.designSystem.color.border.default,
       }
     : {}),
 }))

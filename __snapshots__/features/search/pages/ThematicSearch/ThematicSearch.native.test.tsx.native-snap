@@ -2635,28 +2635,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
@@ -2685,7 +2666,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text
@@ -2941,28 +2922,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
@@ -2991,7 +2953,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text
@@ -3247,28 +3209,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
@@ -3297,7 +3240,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text
@@ -3553,28 +3496,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
@@ -3603,7 +3527,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text
