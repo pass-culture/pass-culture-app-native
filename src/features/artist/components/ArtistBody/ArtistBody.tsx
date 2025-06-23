@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -47,19 +47,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   const { name, description, image } = artist
 
-  const avatarImage = useMemo(() => {
-    if (!image) {
-      return undefined
-    }
-    return (
-      <StyledImage
-        url={image}
-        accessibilityRole={AccessibilityRole.IMAGE}
-        accessibilityLabel="artist avatar"
-      />
-    )
-  }, [image])
-
   const descriptionWithDot = ensureEndingDot(description ?? '')
   const capitalizedDescriptionWithDot = capitalizeFirstLetter(descriptionWithDot)
 
@@ -82,7 +69,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
           <ViewGap gap={6}>
-            <ArtistHeader name={name} avatarImage={avatarImage} />
+            <ArtistHeader name={name} avatarImage={image ? <AvatarImage image={image} /> : null} />
             {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
@@ -123,3 +110,13 @@ const StyledImage = styled(FastImage)({
   width: '100%',
   height: '100%',
 })
+
+const AvatarImage: FunctionComponent<{
+  image: string
+}> = ({ image }) => (
+  <StyledImage
+    url={image}
+    accessibilityRole={AccessibilityRole.IMAGE}
+    accessibilityLabel="artist avatar" // pourquoi en anglais ?
+  />
+)
