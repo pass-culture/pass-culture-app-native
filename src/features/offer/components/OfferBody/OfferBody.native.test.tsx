@@ -62,10 +62,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const useArtistResultsSpy = jest
   .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
-  .mockImplementation()
   .mockReturnValue({
-    artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-    artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+    data: {
+      artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+      artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+    },
   })
 
 const user = userEvent.setup()
@@ -514,8 +515,10 @@ describe('<OfferBody />', () => {
     }
 
     useArtistResultsSpy.mockReturnValueOnce({
-      artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
-      artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+      data: {
+        artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
+        artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
+      },
     })
 
     renderOfferBody({
