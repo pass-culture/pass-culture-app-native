@@ -22,8 +22,6 @@ const defaultConfig: KnipConfig = {
     'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
     'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
     'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
-    'src/features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigatorConfig.tsx', // PC-35664
-    'src/features/navigation/RootNavigator/types.ts', // PC-35664
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {

@@ -35,6 +35,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
           }
           switch (route.name) {
             case 'Home':
+            case '_DeeplinkOnlyHome1':
               if (route.isSelected) {
                 // make the screen scroll to top (mobile only - Home only)
                 navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true })
@@ -64,6 +65,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
               }
               break
             case 'Bookings':
+            case '_DeeplinkOnlyBookings1':
             case 'Favorites':
             case 'Profile':
               break

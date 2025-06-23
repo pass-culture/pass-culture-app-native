@@ -1,6 +1,6 @@
 import { VenueResponse } from 'api/gen'
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
-import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 
 export const useNavigateToSearchWithVenueOffers = (venue: VenueResponse) => {

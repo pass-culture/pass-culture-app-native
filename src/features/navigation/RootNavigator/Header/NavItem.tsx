@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/menu'
-import { TabRouteName } from 'features/navigation/TabBar/types'
+import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'

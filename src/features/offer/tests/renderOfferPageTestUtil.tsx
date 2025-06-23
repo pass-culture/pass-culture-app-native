@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
-import { RootStack } from 'features/navigation/RootNavigator/Stack'
+import { RootStackNavigatorBase } from 'features/navigation/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -63,13 +63,13 @@ export function renderOfferPage({
   render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Offer">
-          <RootStack.Screen
+        <RootStackNavigatorBase.Navigator initialRouteName="Offer">
+          <RootStackNavigatorBase.Screen
             name="Offer"
             component={Offer}
             initialParams={{ id: offerId, fromOfferId, openModalOnNavigation }}
           />
-        </RootStack.Navigator>
+        </RootStackNavigatorBase.Navigator>
       </NavigationContainer>
     )
   )

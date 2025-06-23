@@ -12,7 +12,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils/web'
 
-import { RootNavigator } from './RootNavigator'
+import { RootNavigator } from './RootStackNavigator'
 
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
@@ -25,9 +25,6 @@ jest.unmock('@react-navigation/native')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
-}))
-jest.mock('features/navigation/TabBar/TabNavigator', () => ({
-  TabNavigator: () => null,
 }))
 jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',

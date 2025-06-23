@@ -16,7 +16,6 @@ import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 const mockDispatch = jest.fn()

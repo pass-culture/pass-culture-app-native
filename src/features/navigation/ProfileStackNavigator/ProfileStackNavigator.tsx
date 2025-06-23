@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ProfileStack } from 'features/navigation/ProfileStackNavigator/ProfileStack'
+import { ProfileStackNavigatorBase } from 'features/navigation/ProfileStackNavigator/ProfileStackNavigatorBase'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
@@ -39,178 +39,178 @@ import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/Tuto
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 
 export const ProfileStackNavigator = () => (
-  <ProfileStack.Navigator
+  <ProfileStackNavigatorBase.Navigator
     initialRouteName="Accessibility"
     screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="Accessibility"
       component={Accessibility}
       options={{ title: 'Accessibilité' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="AccessibilityEngagement"
       component={AccessibilityEngagement}
       options={{ title: 'Engagement' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="AccessibilityActionPlan"
       component={AccessibilityActionPlan}
       options={{ title: 'Plan d’actions' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="AccessibilityDeclarationMobile"
       component={AccessibilityDeclarationMobile}
       options={{ title: 'Déclaration d’accessibilité des applications iOS et Android' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="AccessibilityDeclarationWeb"
       component={AccessibilityDeclarationWeb}
       options={{ title: 'Déclaration d’accessibilité de la version web' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="RecommendedPaths"
       component={RecommendedPaths}
       options={{ title: 'Parcours recommandés' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="SiteMapScreen"
       component={SiteMapScreen}
       options={{ title: 'Plan du site' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="NotificationsSettings"
       component={NotificationsSettings}
       options={{ title: 'Réglages de notifications' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DeleteProfileReason"
       component={withAuthProtection(DeleteProfileReason)}
       options={{ title: 'Raison de suppression de compte' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DeleteProfileContactSupport"
       component={withAuthProtection(DeleteProfileContactSupport)}
       options={{ title: 'Contact support' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DeleteProfileEmailHacked"
       component={withAuthProtection(DeleteProfileEmailHacked)}
       options={{ title: 'Sécurise ton compte' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DeleteProfileAccountHacked"
       component={withAuthProtection(DeleteProfileAccountHacked)}
       options={{ title: 'Sécurise ton compte' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DeleteProfileAccountNotDeletable"
       component={withAuthProtection(DeleteProfileAccountNotDeletable)}
       options={{ title: 'Compte non supprimable' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DebugScreen"
       component={withAuthProtection(DebugScreen)}
       options={{ title: 'Débuggage' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ConfirmDeleteProfile"
       component={withAuthProtection(ConfirmDeleteProfile)}
       options={{ title: 'Suppression de compte' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DeleteProfileConfirmation"
       component={DeleteProfileConfirmation}
       options={{ title: 'Réglages de notifications' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DeactivateProfileSuccess"
       component={withAuthProtection(DeactivateProfileSuccess)}
       options={{ title: 'Désactivation profil confirmée' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="SuspendAccountConfirmationWithoutAuthentication"
       component={withAuthProtection(SuspendAccountConfirmationWithoutAuthentication)}
       options={{ title: 'Suppression profil confirmation' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ChangeStatus"
       component={withAuthProtection(ChangeStatus)}
       options={{ title: 'Ton statut | Profil' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ChangeCity"
       component={withAuthProtection(ChangeCity)}
       options={{ title: 'Ton code postal | Profil' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ChangeEmail"
       component={ChangeEmail}
       options={{ title: 'Modification de l’e-mail' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="TrackEmailChange"
       component={withAuthProtection(TrackEmailChange)}
       options={{ title: 'Suivi de ton changement d’e-mail' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="LegalNotices"
       component={LegalNotices}
       options={{ title: 'Informations légales' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="PersonalData"
       component={withAuthProtection(PersonalData)}
       options={{ title: 'Mes informations personnelles' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ValidateEmailChange"
       component={ValidateEmailChange}
       options={{ title: 'Confirmation de changement d’email ' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ChangePassword"
       component={ChangePassword}
       options={{ title: 'Modification du mot de passe' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="SuspendAccountConfirmation"
       component={SuspendAccountConfirmation}
       options={{ title: 'Suspension de compte' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ConsentSettings"
       component={ConsentSettings}
       options={{ title: 'Paramètres de confidentialité' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ConfirmChangeEmail"
       component={ConfirmChangeEmail}
       options={{ title: 'Confirmation de changement d’email ' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ChangeEmailSetPassword"
       component={withAuthProtection(ChangeEmailSetPassword)}
       options={{ title: 'Création du mot de passe' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="NewEmailSelection"
       component={withAuthProtection(NewEmailSelection)}
       options={{ title: 'Nouvelle adresse e-mail' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="FeedbackInApp"
       component={withAuthProtection(FeedbackInApp)}
       options={{ title: 'Formulaire de suggestion' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="DisplayPreference"
       component={DisplayPreference}
       options={{ title: 'Préférence d’affichage' }}
     />
-    <ProfileStack.Screen
+    <ProfileStackNavigatorBase.Screen
       name="ProfileTutorialAgeInformationCredit"
       component={ProfileTutorialAgeInformationCredit}
       options={{ title: 'Préférence d’affichage' }}
     />
-  </ProfileStack.Navigator>
+  </ProfileStackNavigatorBase.Navigator>
 )

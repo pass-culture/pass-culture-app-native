@@ -36,25 +36,6 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))
 
-jest.mock('features/navigation/RootNavigator/rootRoutes', () => ({
-  routes: [
-    {
-      name: 'TabNavigator',
-      component: () => null,
-      pathConfig: {
-        initialRouteName: 'Home',
-        screens: {
-          Home: undefined,
-          Search: undefined,
-          Bookings: undefined,
-          Favorites: undefined,
-          Profile: undefined,
-        },
-      },
-    },
-  ],
-}))
-
 jest.mock('features/navigation/helpers/useTabBarItemBadges')
 const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 

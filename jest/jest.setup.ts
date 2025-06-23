@@ -26,9 +26,6 @@ jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 jest.unmock('react-native-modal')
 
-// TODO(PC-34456): remove this global mock
-jest.mock('features/navigation/RootNavigator/rootRoutes')
-
 // Error: SyntaxError: Cannot use import statement outside a module
 // The issue comes from Jest trying to parse a module (react-native-orientation-locker) that uses ESModule syntax (import/export) without being processed by Babel
 // A common problem with some React Native libraries not properly packaged for Node.
