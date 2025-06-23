@@ -20647,12 +20647,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-performance@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "react-native-performance@npm:5.1.2"
-  peerDependencies:
-    react-native: "*"
-  checksum: e0ea6616ba75a13028271c8c5cd29a9eecb35c806db2b412baa160d6ce428c0ba8e9bc0c762856b4c8bebd92b5aea925532731a4dc19591ad15af575163cccd8
 "react-native-performance-stats@npm:^0.2.3":
   version: 0.2.3
   resolution: "react-native-performance-stats@npm:0.2.3"
@@ -20660,6 +20654,15 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: dbe2fed4b2e62581abf78e169aaf89a6a786a34d333390c48d3f8aee4250fa6b8a25a7344de9ed3ee6b161c19dade93b1ea7280d5c6abd6a6b5f69926cface9c
+  languageName: node
+  linkType: hard
+
+"react-native-performance@npm:^5.1.2":
+  version: 5.1.2
+  resolution: "react-native-performance@npm:5.1.2"
+  peerDependencies:
+    react-native: "*"
+  checksum: e0ea6616ba75a13028271c8c5cd29a9eecb35c806db2b412baa160d6ce428c0ba8e9bc0c762856b4c8bebd92b5aea925532731a4dc19591ad15af575163cccd8
   languageName: node
   linkType: hard
 
