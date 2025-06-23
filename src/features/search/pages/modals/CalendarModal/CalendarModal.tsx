@@ -16,6 +16,7 @@ import { getMarkedDates } from 'features/search/helpers/getMarkedDates/getMarked
 import { getPastScrollRange } from 'features/search/helpers/getPastScrollRange/getPastScrollRange'
 import { getCalendarSchema } from 'features/search/helpers/schema/calendarSchema/getCalendarSchema'
 import { CalendarFilterId, CalendarModalFormData, SearchState } from 'features/search/types'
+import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { FilterButtonList, FilterButtonListItem } from 'ui/components/FilterButtonList'
@@ -54,7 +55,6 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   const twoYearsLater = addYears(today, 2)
   const nextMonth = addMonths(today, 1)
   const nextMonthName = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(nextMonth)
-  const capitalizedMonth = nextMonthName.charAt(0).toUpperCase() + nextMonthName.slice(1)
 
   const { modal, designSystem, isMobileViewport, isDesktopViewport } = useTheme()
   const { searchState, dispatch } = useSearch()
@@ -207,7 +207,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       testID: 'thisMonth',
     },
     {
-      label: capitalizedMonth,
+      label: capitalizeFirstLetter(nextMonthName),
       onPress: () => onFilterButtonPress('nextMonth'),
       isApplied: selectedFilterMode === 'nextMonth',
       testID: 'nextMonth',

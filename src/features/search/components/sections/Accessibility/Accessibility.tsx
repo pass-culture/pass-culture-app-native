@@ -5,6 +5,7 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { HandicapEnum, DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { FilterBehaviour } from 'features/search/enums'
+import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
 import { useModal } from 'ui/components/modals/useModal'
 import { VenueAccessibility } from 'ui/svg/icons/VenueAccessibility'
 
@@ -29,16 +30,12 @@ export const Accessibility = ({ onClose }: Props) => {
     .map((disability) => disability.label)
     .join(', ')
 
-  const descriptionWithFirstLetterCapitalized =
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    description === '' ? description : description[0].toUpperCase() + description.slice?.(1)
-
   return (
     <React.Fragment>
       <FilterRow
         icon={VenueAccessibility}
         title="Accessibilité"
-        description={descriptionWithFirstLetterCapitalized}
+        description={capitalizeFirstLetter(description)}
         onPress={showModal}
       />
       <AccessibilityFiltersModal

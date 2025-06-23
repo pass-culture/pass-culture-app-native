@@ -12,6 +12,7 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
+import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
@@ -63,10 +64,6 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   const handleFilterReset = () => {
     setDisplayedDisabilities(defaultDisabilitiesProperties)
     setDisabilities(defaultDisabilitiesProperties)
-  }
-
-  const capitalizeFirstLetter = (word: string) => {
-    return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
   const handleOnPress = (disability: DisplayedDisabilitiesEnum) => {

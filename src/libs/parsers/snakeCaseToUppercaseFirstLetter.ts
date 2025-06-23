@@ -1,5 +1,6 @@
+import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+
 export const snakeCaseToUppercaseFirstLetter = (snakeCase: string): string => {
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const capitalizedString = snakeCase[0].toUpperCase() + snakeCase.slice(1)
+  const capitalizedString = capitalizeFirstLetter(snakeCase)
   return capitalizedString.replace(/_/g, ' ')
 }
