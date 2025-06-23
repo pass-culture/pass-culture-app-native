@@ -1,10 +1,10 @@
-import { BookingStockResponse, WithdrawalTypeEnum } from 'api/gen'
+import { BookingResponse, BookingStockResponseV2, WithdrawalTypeEnum } from 'api/gen'
 import {
-  getEventOnSiteWithdrawLabel,
-  getLocationLabel,
-  getBookingLabelForActivationCode,
+  getLocationLabelV2,
+  getEventOnSiteWithdrawLabelV2,
+  getBookingLabelForActivationCodeV2,
 } from 'features/bookings/helpers'
-import { Booking, BookingProperties } from 'features/bookings/types'
+import { BookingProperties } from 'features/bookings/types'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -24,11 +24,13 @@ const formatEventDateLabel = (
   return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime(getTimeZonedDate(date, timezone), shouldDisplayWeekDay) : formatToCompleteFrenchDate(getTimeZonedDate(date, timezone), shouldDisplayWeekDay)}`
 }
 
-const getDateLabel = (booking: Booking, properties: BookingProperties): string => {
+const getDateLabel = (booking: BookingResponse, properties: BookingProperties): string => {
   if (properties.isPermanent) return 'Permanent'
 
   if (properties.hasActivationCode) {
-    return getBookingLabelForActivationCode(booking)
+    return getBookingLabelForActivationCodeV2.getBookingLabelForActivationCode(
+      booking.ticket?.activationCode?.expirationDate ?? null
+    )
   }
 
   const {
@@ -57,7 +59,7 @@ const getDateLabel = (booking: Booking, properties: BookingProperties): string =
   return ''
 }
 
-const getDayLabel = (booking: Booking, properties: BookingProperties): string => {
+const getDayLabel = (booking: BookingResponse, properties: BookingProperties): string => {
   if (!properties.isEvent || !booking.stock.beginningDatetime) return ''
   return formatEventDateLabel(
     new Date(booking.stock.beginningDatetime),
@@ -67,17 +69,20 @@ const getDayLabel = (booking: Booking, properties: BookingProperties): string =>
   )
 }
 
-const getHourLabel = (booking: Booking, properties: BookingProperties): string => {
+const getHourLabel = (booking: BookingResponse, properties: BookingProperties): string => {
   if (!properties.isEvent || !booking.stock.beginningDatetime) return ''
   return formatToHour(
     getTimeZonedDate(new Date(booking.stock.beginningDatetime), booking.stock.offer.venue.timezone)
   )
 }
 
-const getWithdrawLabel = (booking: Booking, properties: BookingProperties): string => {
+const getWithdrawLabel = (booking: BookingResponse, properties: BookingProperties): string => {
   if (properties.isEvent)
-    return booking.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site
-      ? getEventOnSiteWithdrawLabel(booking.stock)
+    return booking.ticket?.withdrawal.type === WithdrawalTypeEnum.on_site
+      ? getEventOnSiteWithdrawLabelV2.getEventOnSiteWithdrawLabel(
+          booking.stock.beginningDatetime,
+          booking.ticket?.withdrawal.delay
+        )
       : getEventWithdrawLabel(booking.stock)
 
   if (properties.isPhysical) return getPhysicalWithdrawLabel(booking.expirationDate)
@@ -92,19 +97,24 @@ const getPhysicalWithdrawLabel = (expiration: string | null | undefined): string
   return ''
 }
 
-const getEventWithdrawLabel = (stock: BookingStockResponse): string => {
+const getEventWithdrawLabel = (stock: BookingStockResponseV2): string => {
   if (!stock.beginningDatetime) return ''
   if (isToday(new Date(stock.beginningDatetime))) return 'Aujourd’hui'
   if (isTomorrow(new Date(stock.beginningDatetime))) return 'Demain'
   return ''
 }
 
-export const getBookingLabels = (booking: Booking, properties: BookingProperties) => {
+export const getBookingLabels = (booking: BookingResponse, properties: BookingProperties) => {
   return {
     dateLabel: getDateLabel(booking, properties),
     dayLabel: getDayLabel(booking, properties),
     hourLabel: getHourLabel(booking, properties),
     withdrawLabel: getWithdrawLabel(booking, properties),
-    locationLabel: getLocationLabel(booking.stock, properties),
+    locationLabel: getLocationLabelV2.getLocationLabel(
+      properties,
+      booking.stock.offer.address?.label ?? undefined,
+      booking.stock.offer.address?.city,
+      booking.stock.offer.venue.name
+    ),
   }
 }

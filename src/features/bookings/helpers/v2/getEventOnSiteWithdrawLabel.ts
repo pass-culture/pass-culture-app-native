@@ -1,6 +1,4 @@
-import { isSameDay, addDays, addHours, format } from 'date-fns'
-
-import { BookingStockResponse } from 'api/gen'
+import { addDays, isSameDay, addHours, format } from 'date-fns'
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 const TWO_DAYS_IN_SECONDS = 60 * 60 * 48
@@ -14,13 +12,14 @@ type GetEventOnSiteWithdrawLabelProperties = {
   eventDateMinus1Day: Date
 }
 
-export function getEventOnSiteWithdrawLabel(stock: BookingStockResponse): string {
-  if (!stock.beginningDatetime) return ''
+export const getEventOnSiteWithdrawLabel = (
+  beginningDatetime: string | null | undefined,
+  withdrawalDelay: number | null | undefined
+): string => {
+  if (!beginningDatetime) return ''
 
-  const properties = initGetEventOnSiteWithdrawLabelProperties(stock)
-  if (!properties) return ''
-
-  if (properties.now > properties.eventDate) return ''
+  const properties = initGetEventOnSiteWithdrawLabelProperties(beginningDatetime, withdrawalDelay)
+  if (!properties || properties.now > properties.eventDate) return ''
 
   if (properties.withdrawalDelay === 0) return getWithoutWithdrawaDelayLabel(properties)
 
@@ -36,16 +35,17 @@ export function getEventOnSiteWithdrawLabel(stock: BookingStockResponse): string
   return ''
 }
 
-function initGetEventOnSiteWithdrawLabelProperties(
-  stock: BookingStockResponse
-): GetEventOnSiteWithdrawLabelProperties | undefined {
-  if (!stock.beginningDatetime) return undefined
+const initGetEventOnSiteWithdrawLabelProperties = (
+  beginningDatetime: string | null,
+  withdrawalDelay: number | null | undefined
+): GetEventOnSiteWithdrawLabelProperties | undefined => {
+  if (!beginningDatetime) return undefined
 
-  const eventDate = new Date(stock.beginningDatetime)
+  const eventDate = new Date(beginningDatetime)
   return {
     now: new Date(),
     eventDate,
-    withdrawalDelay: stock.offer.withdrawalDelay ?? 0,
+    withdrawalDelay: withdrawalDelay ?? 0,
     eventDateMinus3Days: addDays(eventDate, -3),
     eventDateMinus2Days: addDays(eventDate, -2),
     eventDateMinus1Day: addDays(eventDate, -1),
