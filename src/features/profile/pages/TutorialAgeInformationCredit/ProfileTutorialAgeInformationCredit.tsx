@@ -1,8 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { CreditTimelineV3 } from 'features/onboarding/components/CreditTimelineV3'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { BlockDescriptionItem } from 'features/profile/components/Tutorial/BlockDescriptionItem'
@@ -26,7 +26,8 @@ import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCredit: FunctionComponent = () => {
-  const { goBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
   const headerTitle = 'Comment ça marche\u00a0?'
