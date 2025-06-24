@@ -130,6 +130,6 @@ describe('TabLayout', () => {
       await userEvent.unhover(secondTabTitle)
     })
 
-    expect(secondTabTitle).toHaveStyle({ color: theme.colors.greyDark })
+    expect(secondTabTitle).toHaveStyle({ color: theme.designSystem.color.icon.disabled })
   })
 })

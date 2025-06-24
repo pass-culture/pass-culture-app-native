@@ -30,5 +30,5 @@ const Container = styled.View({
 })
 
 const StyledHeader = styled(PageHeaderWithoutPlaceholder)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

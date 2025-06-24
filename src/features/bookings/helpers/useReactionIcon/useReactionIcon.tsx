@@ -19,7 +19,7 @@ export const useReactionIcon = (reaction?: ReactionTypeEnum | null) => {
   const ReactionDislikeIcon = useMemo(
     () =>
       styled(iconFactory.getIcon('dislike-filled')).attrs(({ theme }) => ({
-        color: theme.colors.black,
+        color: theme.designSystem.color.icon.default,
       }))``,
     [iconFactory]
   )

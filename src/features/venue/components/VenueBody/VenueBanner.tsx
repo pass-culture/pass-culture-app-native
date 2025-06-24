@@ -83,7 +83,10 @@ const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   useAngle: true,
   angle: 180,
   locations: [0.45, 1],
-  colors: [colorAlpha(theme.colors.black, 0), colorAlpha(theme.colors.black, 0.5)],
+  colors: [
+    colorAlpha(theme.designSystem.color.background.inverted, 0),
+    colorAlpha(theme.designSystem.color.background.inverted, 0.5),
+  ],
 }))(({ theme }) => ({
   height: '100%',
   width: '100%',
