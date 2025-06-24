@@ -8,7 +8,6 @@ require Pod::Executable.execute_command('node', ['-p',
 
 platform :ios, '13.4'
 prepare_react_native_project!
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 # Convert all permission pods into static libraries
 # https://github.com/zoontek/react-native-permissions/issues/469#issuecomment-666223083
