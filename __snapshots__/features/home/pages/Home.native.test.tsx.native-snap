@@ -95,7 +95,7 @@ exports[`Home page should render correctly 1`] = `
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      initialNumToRender={4}
+      initialNumToRender={10}
       keyExtractor={[Function]}
       maxToRenderPerBatch={6}
       onContentSizeChange={[Function]}
