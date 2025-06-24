@@ -48,6 +48,8 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
 import { markScreenInteractiveOnHomeLayout } from 'performance/markScreenInteractiveOnHomeLayout'
+import { ScreenPerformance } from 'performance/ScreenPerformance'
+import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
 import {
@@ -159,6 +161,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   videoModuleId,
   statusBar,
 }) {
+  useMeasureScreenPerformanceWhenVisible(ScreenPerformance.HOME)
   const initialScreenName = useInitialScreenName()
   const wasPerformanceMarkedThisSession = useWasPerformanceMarkedThisSession()
   const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
