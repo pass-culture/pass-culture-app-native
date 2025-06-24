@@ -19,7 +19,7 @@ const TryAgainSvg: React.FunctionComponent<AccessibleIcon> = ({
     viewBox="0 0 16 16"
     accessibilityLabel={accessibilityLabel}
     testID={testID}>
-    <Rect width="16" height="16" rx="8" fill={theme.colors.white} />
+    <Rect width="16" height="16" rx="8" fill={theme.designSystem.color.icon.inverted} />
     <Path
       fill={color}
       fillRule="evenodd"
@@ -30,6 +30,6 @@ const TryAgainSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const TryAgain = styled(TryAgainSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.error,
+  color: color ?? theme.designSystem.color.icon.default,
   size: size ?? theme.icons.sizes.standard,
 }))``

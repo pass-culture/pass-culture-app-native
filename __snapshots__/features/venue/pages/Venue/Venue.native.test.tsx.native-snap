@@ -1843,7 +1843,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "alignItems": "center",
                       "alignSelf": "flex-start",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -3859,8 +3859,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     <BVLinearGradient
                       colors={
                         [
-                          2894894,
-                          4281084974,
+                          1447447,
+                          4279637527,
                         ]
                       }
                       endPoint={
@@ -5142,7 +5142,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "alignItems": "center",
                       "alignSelf": "flex-start",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -8512,7 +8512,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "alignItems": "center",
                       "alignSelf": "flex-start",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",

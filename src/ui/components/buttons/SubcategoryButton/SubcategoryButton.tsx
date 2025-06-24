@@ -84,7 +84,7 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
     shadowColor: theme.colors.greyDark,
     shadowOpacity: 0.2,
   }),
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus }),
   textAlign: 'left',
   alignItems: 'center',
   padding: getSpacing(2),
@@ -95,5 +95,5 @@ const StyledText = styledButton(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
   ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
-  ...getHoverStyle(theme.colors.black, isHover),
+  ...getHoverStyle(theme.designSystem.color.text.default, isHover),
 }))

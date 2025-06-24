@@ -103,7 +103,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
 }
 
 const Container = styled(View)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   borderRadius: getSpacing(2),
 }))
 

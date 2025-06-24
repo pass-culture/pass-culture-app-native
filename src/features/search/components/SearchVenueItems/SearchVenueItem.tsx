@@ -126,7 +126,7 @@ const SearchVenueTouchableLink = styled(InternalTouchableLink).attrs(({ theme })
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.designSystem.color.outline.default }),
+  ...customFocusOutline({ isFocus }),
 }))
 
 const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(

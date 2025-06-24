@@ -572,7 +572,7 @@ exports[`ThematicHome should render correctly 1`] = `
                 "alignItems": "center",
                 "alignSelf": "flex-start",
                 "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
+                "borderColor": "#90949d",
                 "borderRadius": 24,
                 "borderWidth": 1,
                 "flexDirection": "row",

@@ -2,7 +2,7 @@ import { renderHook } from 'tests/utils/web'
 import { theme } from 'theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-const underlineColor = theme.colors.black
+const underlineColor = theme.designSystem.color.text.default
 let isHover = true
 
 describe('getHoverStyle', () => {

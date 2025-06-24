@@ -75,7 +75,7 @@ const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: nu
   ({ withBackground, minHeight, theme }) => ({
     backgroundColor: withBackground
       ? theme.designSystem.color.background.brandSecondary
-      : theme.colors.transparent,
+      : 'transparent',
     padding: getSpacing(2),
     borderRadius: getSpacing(2),
     minHeight,

@@ -60,7 +60,9 @@ const BaseTouchableOpacity = styled(TouchableOpacity)<{ size: ToggleButtonSize }
   const isMedium = size === ToggleButtonSize.MEDIUM
 
   return {
-    borderColor: isMedium ? theme.colors.greySemiDark : theme.colors.transparent,
+    borderColor: isMedium
+      ? theme.designSystem.color.border.default
+      : theme.designSystem.color.border.inverted,
     borderWidth: getSpacing(0.25),
     borderRadius: isMedium ? getSpacing(6) : theme.buttons.roundedButton.size / 2,
     paddingHorizontal: isMedium ? getSpacing(3) : 0,
@@ -69,7 +71,9 @@ const BaseTouchableOpacity = styled(TouchableOpacity)<{ size: ToggleButtonSize }
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'flex-start',
-    backgroundColor: isMedium ? theme.colors.white : theme.colors.transparent,
+    backgroundColor: isMedium
+      ? theme.designSystem.color.background.default
+      : theme.colors.transparent,
     width: isMedium ? 'auto' : theme.buttons.roundedButton.size,
     height: isMedium ? 'auto' : theme.buttons.roundedButton.size,
   }

@@ -132,7 +132,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   right: getSpacing(4),
   borderRadius: theme.buttons.roundedButton.size,
   padding: getSpacing(2.5),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const StyledTagContainer = styled.View({
@@ -146,11 +146,11 @@ const StyledTagBackground = styled(View)<{ color: string }>(({ color }) => ({
 }))
 
 const StyledCaptionTag = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.inverted,
 }))
 
 const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

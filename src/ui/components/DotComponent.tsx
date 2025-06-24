@@ -20,7 +20,10 @@ function getDotColors(
     }
   if (stepIndex < currentStepIndex && !withNeutralPreviousStepsColor)
     return { borderColor: theme.colors.greenValid, fillColor: theme.colors.greenValid }
-  return { borderColor: theme.colors.greyDark, fillColor: theme.colors.transparent }
+  return {
+    borderColor: theme.designSystem.color.border.default,
+    fillColor: theme.designSystem.color.background.default,
+  }
 }
 
 function getStyledDot(

@@ -79,7 +79,7 @@ const SubscribeButtonContainer = styled.View({
 })
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   marginBottom: getSpacing(1),
 }))
 
@@ -88,5 +88,5 @@ const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground
 const AnimatedBackgroundSubscribeButton = Animated.createAnimatedComponent(SubscribeButtonContainer)
 
 const AnimatedBackground = styled(AnimatedBlackBackground)(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.black, 0),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
 }))

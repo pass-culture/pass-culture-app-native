@@ -24,7 +24,6 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
   const { width } = useWindowDimensions()
 
   const alpha = 0.5
-
   const gradientWithAlpha = gradientImagesMapping[color].map((color: ColorsEnum) =>
     colorAlpha(color, alpha)
   )
@@ -88,10 +87,10 @@ const TextContainer = styled.View({
 })
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   marginBottom: getSpacing(1),
 }))
 
 const Background = styled(BlackBackground)(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.black, 0),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
 }))

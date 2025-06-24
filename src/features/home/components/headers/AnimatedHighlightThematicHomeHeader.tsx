@@ -69,7 +69,7 @@ const StyledImage = styled.Image<{
 
 const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
   ({ theme, statusBarHeight }) => ({
-    backgroundColor: theme.colors.black,
+    backgroundColor: theme.designSystem.color.background.lockedInverted,
     position: 'absolute',
     top: statusBarHeight + getSpacing(6),
     right: getSpacing(6),
@@ -80,18 +80,23 @@ const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
 )
 
 const DateRangeCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
-const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
+const TextContainer = styled.View({
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+})
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   marginBottom: getSpacing(1),
 }))
 
 const Title = styled(Typo.Title1)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
