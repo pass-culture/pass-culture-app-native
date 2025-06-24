@@ -12,7 +12,7 @@ import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHea
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
@@ -61,7 +61,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   }, [image])
 
   const descriptionWithDot = ensureEndingDot(description ?? '')
-  const capitalizedDescriptionWithDot = capitalizeFirstLetter(descriptionWithDot)
+  const capitalizedDescriptionWithDot = capitalize(descriptionWithDot)
 
   return (
     <Page>

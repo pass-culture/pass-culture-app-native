@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components/native'
 import { OfferResponseV2 } from 'api/gen'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
-import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { capitalize } from 'libs/formatter/capitalize'
 import { getFormattedDates } from 'libs/parsers/formatDates'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { getOfferLocationName } from 'shared/offer/helpers/getOfferLocationName'
@@ -28,7 +28,7 @@ export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
   const theme = useTheme()
   const { venue, isDigital, isDuo, extraData, address } = offer
   const dates = extractStockDates(offer)
-  const formattedDate = capitalizeFirstLetter(getFormattedDates(dates))
+  const formattedDate = capitalize(getFormattedDates(dates))
   const locationName = getOfferLocationName(venue, isDigital)
   const duration = extraData?.durationMinutes
     ? formatDuration(extraData.durationMinutes)

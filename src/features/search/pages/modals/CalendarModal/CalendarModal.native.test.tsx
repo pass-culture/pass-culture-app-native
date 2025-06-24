@@ -8,7 +8,7 @@ import {
   CalendarModal,
   CalendarModalProps,
 } from 'features/search/pages/modals/CalendarModal/CalendarModal'
-import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { capitalize } from 'libs/formatter/capitalize'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 const mockDispatch = jest.fn()
@@ -166,7 +166,7 @@ describe('CalendarModal', () => {
       it('With this next month filter', async () => {
         renderCalendarModal()
 
-        await user.press(screen.getByText(capitalizeFirstLetter(nextMonthName)))
+        await user.press(screen.getByText(capitalize(nextMonthName)))
 
         await user.press(screen.getByText('Rechercher'))
 

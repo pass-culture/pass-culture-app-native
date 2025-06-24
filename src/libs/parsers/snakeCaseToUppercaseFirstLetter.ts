@@ -1,6 +1,6 @@
-import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { capitalize } from 'libs/formatter/capitalize'
 
 export const snakeCaseToUppercaseFirstLetter = (snakeCase: string): string => {
-  const capitalizedString = capitalizeFirstLetter(snakeCase)
+  const capitalizedString = capitalize(snakeCase)
   return capitalizedString.replace(/_/g, ' ')
 }

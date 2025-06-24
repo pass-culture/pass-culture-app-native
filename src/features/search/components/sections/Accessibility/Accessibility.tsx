@@ -5,7 +5,7 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { HandicapEnum, DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { FilterBehaviour } from 'features/search/enums'
-import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { capitalize } from 'libs/formatter/capitalize'
 import { useModal } from 'ui/components/modals/useModal'
 import { VenueAccessibility } from 'ui/svg/icons/VenueAccessibility'
 
@@ -35,7 +35,7 @@ export const Accessibility = ({ onClose }: Props) => {
       <FilterRow
         icon={VenueAccessibility}
         title="Accessibilité"
-        description={capitalizeFirstLetter(description)}
+        description={capitalize(description)}
         onPress={showModal}
       />
       <AccessibilityFiltersModal

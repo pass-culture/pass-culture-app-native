@@ -12,7 +12,7 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
-import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { capitalize } from 'libs/formatter/capitalize'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
@@ -117,28 +117,28 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
             variant="detailed"
             asset={{ variant: 'icon', Icon: HandicapVisual }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}
-            label={capitalizeFirstLetter(HandicapEnum.VISUAL)}
+            label={capitalize(HandicapEnum.VISUAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.VISUAL)}
           />
           <Checkbox
             variant="detailed"
             asset={{ variant: 'icon', Icon: HandicapMental }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MENTAL]}
-            label={capitalizeFirstLetter(HandicapEnum.MENTAL)}
+            label={capitalize(HandicapEnum.MENTAL)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MENTAL)}
           />
           <Checkbox
             variant="detailed"
             asset={{ variant: 'icon', Icon: HandicapMotor }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MOTOR]}
-            label={capitalizeFirstLetter(HandicapEnum.MOTOR)}
+            label={capitalize(HandicapEnum.MOTOR)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MOTOR)}
           />
           <Checkbox
             variant="detailed"
             asset={{ variant: 'icon', Icon: HandicapAudio }}
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.AUDIO]}
-            label={capitalizeFirstLetter(HandicapEnum.AUDIO)}
+            label={capitalize(HandicapEnum.AUDIO)}
             onPress={() => handleOnPress(DisplayedDisabilitiesEnum.AUDIO)}
           />
         </StyledCheckBox>
