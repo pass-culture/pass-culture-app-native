@@ -3859,8 +3859,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     <BVLinearGradient
                       colors={
                         [
-                          2894894,
-                          4281084974,
+                          1447447,
+                          4279637527,
                         ]
                       }
                       endPoint={

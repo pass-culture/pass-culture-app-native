@@ -7,10 +7,11 @@ import styled from 'styled-components/native'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
 import { theme } from 'theme'
-import { BackgroundColorKey } from 'theme/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 const HEADER_HEIGHT = getSpacing(45)
@@ -23,21 +24,17 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
   const { width } = useWindowDimensions()
 
   const alpha = 0.5
-  const gradientColorsWithAlpha = gradientImagesMapping[color].map((key: BackgroundColorKey) =>
-    colorAlpha(theme.designSystem.color.background[key], alpha)
-  )
-
-  const gradienColors = gradientImagesMapping[color].map(
-    (key: BackgroundColorKey) => theme.designSystem.color.background[key]
+  const gradientWithAlpha = gradientImagesMapping[color].map((color: ColorsEnum) =>
+    colorAlpha(color, alpha)
   )
 
   return (
     <Container testID="CategoryThematicHomeHeaderV2">
       {Platform.OS === 'android' ? (
-        <Gradient colors={gradientColorsWithAlpha} />
+        <Gradient colors={gradientWithAlpha} />
       ) : (
         <HomeGradient
-          colors={gradienColors}
+          colors={gradientImagesMapping[color]}
           testID="HomeGradient"
           width={Math.min(width, theme.breakpoints.lg)}
         />

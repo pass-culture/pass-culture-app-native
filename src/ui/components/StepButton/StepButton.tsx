@@ -181,7 +181,7 @@ const StyledTouchableOpacity = styledButton(Touchable)(({ theme }) => ({
   justifyContent: 'center',
   flexDirection: 'row',
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ color: theme.designSystem.color.outline.default }),
+  ...customFocusOutline({}),
 }))
 
 const StyledButtonText = styled(Typo.BodyAccent)<{ stepState: StepButtonState }>(

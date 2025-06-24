@@ -1,13 +1,11 @@
-import { BackgroundColorKey } from 'theme/types'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
-export const gradientImagesMapping: Record<
-  'Gold' | 'Aquamarine' | 'SkyBlue' | 'DeepPink' | 'Coral' | 'Lilac',
-  [BackgroundColorKey, BackgroundColorKey]
-> = {
-  Gold: ['decorative04', 'decorative01'],
-  Aquamarine: ['decorative04', 'decorative02'],
-  SkyBlue: ['decorative03', 'decorative02'],
-  DeepPink: ['decorative04', 'decorative05'],
-  Coral: ['decorative02', 'decorative01'],
-  Lilac: ['decorative05', 'decorative04'],
+export const gradientImagesMapping = {
+  Gold: [ColorsEnum.LILAC_LIGHT, ColorsEnum.GOLD_LIGHT_100],
+  Aquamarine: [ColorsEnum.LILAC_LIGHT, ColorsEnum.AQUAMARINE_LIGHT],
+  SkyBlue: [ColorsEnum.DEEP_PINK_LIGHT, ColorsEnum.SKY_BLUE_LIGHT],
+  DeepPink: [ColorsEnum.AQUAMARINE_LIGHT, ColorsEnum.DEEP_PINK_LIGHT],
+  Coral: [ColorsEnum.SKY_BLUE_LIGHT, ColorsEnum.CORAL_LIGHT],
+  Lilac: [ColorsEnum.DEEP_PINK_LIGHT, ColorsEnum.LILAC_LIGHT],
 }

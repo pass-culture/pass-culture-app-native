@@ -47,7 +47,10 @@ const Container = styled(InternalTouchableLink)(({ theme }) => ({
 }))
 
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [colorAlpha(theme.uniqueColors.specificGrey, 0), theme.uniqueColors.specificGrey],
+  colors: [
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
+    theme.designSystem.color.background.lockedInverted,
+  ],
   locations: [0, 0.6],
   start: { x: 0, y: 0 },
   end: { x: 0, y: 1 },
