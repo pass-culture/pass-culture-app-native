@@ -3,7 +3,7 @@ appId: app.passculture.webapp
 - runFlow: ./../commons/Close.yml
 
 - openLink:
-    link: https://passculture.app/lieu/29732?from=deeplink&utm_campaign=test&utm_source=test&utm_medium=test
+    link: ${output.links.production.venue}
     autoVerify: true
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
 - assertVisible: '.*OLYMPIA'

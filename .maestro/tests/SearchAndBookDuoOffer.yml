@@ -4,6 +4,8 @@ tags:
   - local
   - nightlyAndroid
   - squad-conversion
+onFlowStart:
+  - runScript: subFolder/links/DeepLinks.js
 ---
 - runFlow:
     when:
@@ -17,6 +19,7 @@ tags:
     commands:
       - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 
+- runFlow: subFolder/commons/StopApp.yml
 - runFlow: subFolder/links/DeepLinksToProfile.yml
 - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
 

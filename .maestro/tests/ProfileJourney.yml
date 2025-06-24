@@ -1,9 +1,12 @@
 appId: ${MAESTRO_APP_ID}
+jsengine: graaljs
 tags:
   - nightlyAndroid
   - local
   - squad-activation
   - refacto
+onFlowStart:
+  - runScript: subFolder/links/DeepLinks.js
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/commons/StopApp.yml

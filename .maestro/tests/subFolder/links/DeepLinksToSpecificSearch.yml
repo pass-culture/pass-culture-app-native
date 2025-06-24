@@ -3,7 +3,7 @@ appId: app.passculture.webapp
 - runFlow: ./../commons/Close.yml
 
 - openLink:
-    link: https://passculture.app/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&from=deeplink&tags=%5B%22optinlecture_focusjapon%22%5D&utm_campaign=test&utm_source=test&utm_medium=test
+    link: ${output.links.production.searchResult}
     autoVerify: true
     label: 'Vérification du lien vers une recherche spécifique'
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml

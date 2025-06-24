@@ -3,7 +3,7 @@ appId: app.passculture.webapp
 - runFlow: ./../commons/Close.yml
 
 - openLink:
-    link: https://passcultureappstaging.page.link/?link=https%3A%2F%2Fapp.staging.passculture.team%2Faccueil%3Ffrom%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.passculture.staging&isi=1557887412&ibi=app.passculture.staging&efr=1
+    link: ${output.links.staging.home}
     autoVerify: true
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
 - assertVisible: "Bienvenue\_!"

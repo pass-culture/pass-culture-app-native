@@ -14,10 +14,4 @@ tags:
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/SelectThreeCookies.yml
 
-# - runFlow: subFolder/tutorial/onboarding/Onboard16AndLocalization.yml
-# - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
-# - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
-# - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
-# - runFlow: subFolder/profil/CheckCreditAmount.yml
-
 - runFlow: subFolder/commons/StopApp.yml
