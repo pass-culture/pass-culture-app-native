@@ -114,7 +114,9 @@ export const appButtonWebStyles: ElementStylesWeb = ({
       background: 'none',
     },
     ...customFocusOutline({ color: focusOutlineColor }),
-    ...getHoverStyle(hoverUnderlineColor ?? theme.designSystem.color.text.default),
+    ...getHoverStyle({
+      underlineColor: hoverUnderlineColor ?? theme.designSystem.color.text.default,
+    }),
   }
 }
 
@@ -142,6 +144,6 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
     ['&:disabled']: {
       cursor: 'initial',
     },
-    ...getHoverStyle(underlineColor),
+    ...getHoverStyle({ underlineColor: underlineColor ?? theme.designSystem.color.text.default }),
   }
 }

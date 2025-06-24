@@ -66,7 +66,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   padding: getSpacing(1),
-  ...getHoverStyle(theme.designSystem.color.text.default),
+  ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default }),
 }))
 
 const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
