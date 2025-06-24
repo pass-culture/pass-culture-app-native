@@ -21,11 +21,6 @@ type ArtistResults = {
   artistTopOffers: AlgoliaOfferWithArtistAndEan[]
 }
 
-export const defaultArtistResults: ArtistResults = {
-  artistPlaylist: [],
-  artistTopOffers: [],
-}
-
 export const useArtistResultsQuery = ({
   artistId,
   subcategoryId,
