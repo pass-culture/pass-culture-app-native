@@ -16,12 +16,14 @@ const CheckboxMarkSvg: React.FunctionComponent<AccessibleRectangleIcon> = ({
   <AccessibleSvg
     width={width}
     height={height}
-    viewBox="0 0 17 11"
+    viewBox="0 0 12 12"
     accessibilityLabel={accessibilityLabel}
     testID={testID}>
     <Path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M11.7367 2.28718C12.0901 2.66761 12.0874 3.28158 11.7308 3.65852L5.47631 10.2689C4.89792 10.8799 3.96207 10.88 3.38368 10.269L0.269379 6.97902C-0.0873538 6.60216 -0.0901338 5.98819 0.263169 5.60768C0.616473 5.22716 1.19207 5.2242 1.5488 5.60105L4.42987 8.64464L10.451 2.28087C10.8077 1.90393 11.3833 1.90675 11.7367 2.28718Z"
       fill={color}
-      d="M6 6.728L2.049 2.776c-.47-.468-1.229-.468-1.698 0-.468.47-.468 1.229 0 1.697l4.8 4.8c.47.47 1.229.47 1.698 0l7.224-7.224c.47-.47.47-1.229 0-1.698-.468-.468-1.228-.468-1.697 0L6 6.728z"
     />
   </AccessibleSvg>
 )
