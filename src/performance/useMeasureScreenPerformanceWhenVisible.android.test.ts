@@ -2,7 +2,7 @@ import * as perf from '@react-native-firebase/perf'
 import { Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
+import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible.android'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
