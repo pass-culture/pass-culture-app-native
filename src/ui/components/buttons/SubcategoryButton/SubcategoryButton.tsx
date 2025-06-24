@@ -95,5 +95,5 @@ const StyledText = styledButton(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
   ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
-  ...getHoverStyle(theme.designSystem.color.text.default, isHover),
+  ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
 }))

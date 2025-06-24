@@ -95,7 +95,7 @@ const webStyle = ({
       color: buttonColor ?? theme.designSystem.color.outline.default,
       noOffset: true,
     }),
-    ...getHoverStyle(buttonColor ?? theme.designSystem.color.text.brandPrimary),
+    ...getHoverStyle({ underlineColor: buttonColor ?? theme.designSystem.color.text.brandPrimary }),
   }) as CSSObject
 
 const Button = styled.button<

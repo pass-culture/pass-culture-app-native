@@ -54,7 +54,7 @@ const Title = styled(Typo.BodyAccent).attrs({
   numberOfLines: 1,
   ellipsizeMode: 'tail',
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
-  ...getHoverStyle(theme.designSystem.color.text.default, isHover),
+  ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
 }))
 
 const VenueAddress = styled(Typo.BodyAccentXs).attrs({
@@ -62,7 +62,7 @@ const VenueAddress = styled(Typo.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
   color: theme.designSystem.color.text.subtle,
-  ...getHoverStyle(theme.designSystem.color.text.subtle, isHover),
+  ...getHoverStyle({ underlineColor: theme.designSystem.color.text.subtle, isHover }),
 }))
 
 const StyledTag = styled(Tag)({

@@ -143,7 +143,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{
 }>(({ theme, color }) => ({
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline({ color }),
-  ...getHoverStyle(color),
+  ...getHoverStyle({ underlineColor: color }),
 }))
 
 const Container = styled.View<{ backgroundColor: ColorsType; borderColor: ColorsType }>(
