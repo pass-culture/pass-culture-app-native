@@ -3,9 +3,9 @@ import { useQuery } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { AlgoliaOffer, AlgoliaOfferWithArtistAndEan, HitOffer } from 'libs/algolia/types'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { Position, useLocation } from 'libs/location'
+import { useLocation } from 'libs/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -36,42 +36,33 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
       (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
     ),
     select(data) {
-      const artistPlaylist = data.playlistHits
-        ? getSortedHits({ transformHits, userLocation, hits: data.playlistHits })
-        : []
+      const getSortedHits = (hits: Hit<AlgoliaOfferWithArtistAndEan>[]) => {
+        if (hits.length === 0) return []
 
-      const artistTopOffers = data.topOffersHits
-        ? getSortedHits({ transformHits, userLocation, hits: data.topOffersHits })
-        : []
+        const transformedHitsWithDistance = hits.map((hit) => {
+          const transformedHit = transformHits(hit)
+          const distance = formatDistance(
+            { lat: hit._geoloc.lat, lng: hit._geoloc.lng },
+            userLocation
+          )
+
+          return { ...transformedHit, distance: parseDistance(distance || '0') }
+        })
+
+        const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
+
+        return sortedHits.map(
+          ({ distance: _distance, ...rest }) => rest
+        ) as AlgoliaOfferWithArtistAndEan[]
+      }
+
+      const artistPlaylist = data.playlistHits ? getSortedHits(data.playlistHits) : []
+
+      const artistTopOffers = data.topOffersHits ? getSortedHits(data.topOffersHits) : []
 
       return { artistPlaylist, artistTopOffers }
     },
   })
-}
-
-const getSortedHits = ({
-  transformHits,
-  userLocation,
-  hits,
-}: {
-  transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
-  userLocation: Position
-  hits: Hit<AlgoliaOfferWithArtistAndEan>[]
-}) => {
-  if (hits.length === 0) return []
-
-  const transformedHitsWithDistance = hits.map((hit) => {
-    const transformedHit = transformHits(hit)
-    const distance = formatDistance({ lat: hit._geoloc.lat, lng: hit._geoloc.lng }, userLocation)
-
-    return { ...transformedHit, distance: parseDistance(distance || '0') }
-  })
-
-  const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
-
-  return sortedHits.map(
-    ({ distance: _distance, ...rest }) => rest
-  ) as AlgoliaOfferWithArtistAndEan[]
 }
 
 const parseDistance = (distance: string) => {
