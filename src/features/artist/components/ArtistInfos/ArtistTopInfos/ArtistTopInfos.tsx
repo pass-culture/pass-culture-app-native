@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ArtistHeaderWrapper } from 'features/artist/components/ArtistHeader/ArtistHeaderWrapper'
+import { ArtistTopInfosWrapper } from 'features/artist/components/ArtistInfos/ArtistTopInfos/ArtistHeaderWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar } from 'ui/components/Avatar/Avatar'
@@ -14,9 +14,9 @@ type ArtistHeaderProps = {
   name: string
 }
 
-export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
+export const ArtistTopInfos = ({ avatarImage, name }: ArtistHeaderProps) => {
   return (
-    <ArtistHeaderWrapper gap={4}>
+    <ArtistTopInfosWrapper gap={4}>
       <Avatar borderWidth={6} size={AVATAR_LARGE}>
         {avatarImage ? (
           <StyledImage
@@ -29,7 +29,7 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
         )}
       </Avatar>
       <Typo.Title1>{name}</Typo.Title1>
-    </ArtistHeaderWrapper>
+    </ArtistTopInfosWrapper>
   )
 }
 
