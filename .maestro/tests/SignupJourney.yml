@@ -4,13 +4,12 @@ tags:
   - nightlyIOS
   - local
   - squad-activation
+  - refacto
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/commons/StopApp.yml
 
-- runFlow: subFolder/cookies/AcceptCookies.yml
-- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
-
-- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
+- runFlow: subFolder/links/DeepLinksToProfile.yml
 - runFlow: subFolder/auth/AgeStepInfoLoss.yml
 
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
@@ -22,9 +21,9 @@ tags:
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/LoginFromProfileAfterSignup.yml
 
-# - runFlow: subFolder/features/auth/GoToActivationFromProfile.yml
-# - runFlow: subFolder/features/auth/ActivationPhoneNumberStep.yml
-# - runFlow: subFolder/features/auth/ActivationProfileStep.yml
-# TODO: Trouver un moyen d'utiliser le mock ubble, bypass pattern ou récupérer jdd educonnect pour l'activation
+- runFlow: subFolder/commons/StopApp.yml
+
+- runFlow: subFolder/links/DeepLinksToHome.yml
+- runFlow: subFolder/home/OpenActivationModuleFromHome.yml
 
 - runFlow: subFolder/commons/StopApp.yml

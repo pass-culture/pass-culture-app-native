@@ -4,6 +4,7 @@ tags:
   - nightlyIOS
   - local
   - squad-decouverte
+  - refacto
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 

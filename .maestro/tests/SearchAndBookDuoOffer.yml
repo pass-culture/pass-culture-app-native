@@ -17,10 +17,7 @@ tags:
     commands:
       - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 
-- runFlow: subFolder/cookies/AcceptCookies.yml
-
-- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
-- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
+- runFlow: subFolder/links/DeepLinksToProfile.yml
 - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml

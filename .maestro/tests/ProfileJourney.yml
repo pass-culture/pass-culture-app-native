@@ -3,12 +3,11 @@ tags:
   - nightlyAndroid
   - local
   - squad-activation
+  - refacto
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
-
-- runFlow: subFolder/cookies/AcceptCookies.yml
-- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
-- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/links/DeepLinksToProfile.yml
 - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 
@@ -20,3 +19,5 @@ tags:
 
 - runFlow: subFolder/profil/DeletionReactivation.yml
 - runFlow: subFolder/auth/LogoutFromProfile.yml
+
+- runFlow: subFolder/commons/StopApp.yml
