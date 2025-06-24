@@ -4,7 +4,7 @@ import React from 'react'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { Favorites } from 'features/favorites/pages/Favorites'
-import { Home as HomeComponent } from 'features/home/pages/Home'
+import { Home } from 'features/home/pages/Home'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
 import { TabStackNavigatorBase } from 'features/navigation/TabBar/TabStackNavigatorBase'
@@ -13,8 +13,6 @@ import { Profile } from 'features/profile/pages/Profile'
 import { TabBar } from './TabBar'
 
 const initialRouteName = 'Home'
-
-const Home = withAsyncErrorBoundary(HomeComponent)
 
 const TAB_NAVIGATOR_SCREEN_OPTIONS: BottomTabNavigationOptions = {
   headerShown: false,
@@ -34,12 +32,12 @@ export const TabNavigator: React.FC = () => {
       backBehavior="history">
       <TabStackNavigatorBase.Screen
         name="Home"
-        component={Home}
+        component={withAsyncErrorBoundary(Home)}
         options={{ title: 'Page d’accueil' }}
       />
       <TabStackNavigatorBase.Screen
         name="_DeeplinkOnlyHome1"
-        component={Home}
+        component={withAsyncErrorBoundary(Home)}
         options={{ title: 'Page d’accueil' }}
       />
       <TabStackNavigatorBase.Screen
@@ -49,22 +47,22 @@ export const TabNavigator: React.FC = () => {
       />
       <TabStackNavigatorBase.Screen
         name="Bookings"
-        component={withAuthProtection(Bookings)}
+        component={withAsyncErrorBoundary(withAuthProtection(Bookings))}
         options={{ title: 'Mes réservations' }}
       />
       <TabStackNavigatorBase.Screen
         name="_DeeplinkOnlyBookings1"
-        component={withAuthProtection(Bookings)}
+        component={withAsyncErrorBoundary(withAuthProtection(Bookings))}
         options={{ title: 'Mes réservations' }}
       />
       <TabStackNavigatorBase.Screen
         name="Favorites"
-        component={Favorites}
+        component={withAsyncErrorBoundary(Favorites)}
         options={{ title: 'Mes favoris' }}
       />
       <TabStackNavigatorBase.Screen
         name="Profile"
-        component={Profile}
+        component={withAsyncErrorBoundary(Profile)}
         options={{ title: 'Mon profil' }}
       />
     </TabStackNavigatorBase.Navigator>

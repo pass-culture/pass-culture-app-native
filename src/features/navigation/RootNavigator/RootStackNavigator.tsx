@@ -1,3 +1,4 @@
+import { StackNavigationOptions } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -81,6 +82,272 @@ import { RootStackNavigatorBase } from './Stack'
 
 const isWeb = Platform.OS === 'web'
 
+// By defining routes as a configuration array, we can easily apply universal HOCs.
+type RouteConfig = {
+  name: RootScreenNames
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: React.ComponentType<any>
+  options?: StackNavigationOptions
+}
+
+const rootScreens: RouteConfig[] = [
+  {
+    name: 'PageNotFound',
+    component: PageNotFound,
+    options: { title: 'Page introuvable' },
+  },
+  {
+    name: 'AccountCreated',
+    component: AccountCreated,
+    options: { title: 'Compte créé\u00a0!' },
+  },
+  {
+    name: 'FavoritesSorts',
+    component: withAuthProtection(FavoritesSorts),
+    options: { title: 'Tri des favoris' },
+  },
+  {
+    name: 'ChangeEmailExpiredLink',
+    component: ChangeEmailExpiredLink,
+    options: { title: 'Lien de modification de l’email expiré' },
+  },
+  {
+    name: 'ForgottenPassword',
+    component: ForgottenPassword,
+    options: { title: 'Mot de passe oublié' },
+  },
+  {
+    name: 'AccountStatusScreenHandler',
+    component: AccountStatusScreenHandler,
+    options: { title: 'Compte désactivé' },
+  },
+  {
+    name: 'SuspendedAccountUponUserRequest',
+    component: SuspendedAccountUponUserRequest,
+    options: { title: 'Compte désactivé' },
+  },
+  {
+    name: 'FraudulentSuspendedAccount',
+    component: FraudulentSuspendedAccount,
+    options: { title: 'Compte suspendu' },
+  },
+  {
+    name: 'AccountReactivationSuccess',
+    component: withAuthProtection(AccountReactivationSuccess),
+    options: { title: 'Compte réactivé' },
+  },
+  {
+    name: 'OnboardingSubscription',
+    component: withAuthProtection(OnboardingSubscription),
+    options: { title: 'Choix des thèmes à suivre' },
+  },
+  {
+    name: 'ResetPasswordEmailSent',
+    component: ResetPasswordEmailSent,
+    options: { title: 'Email modification mot de passe envoyé' },
+  },
+  {
+    name: 'ResetPasswordExpiredLink',
+    component: ResetPasswordExpiredLink,
+    options: { title: 'Email modification mot de passe expiré' },
+  },
+  {
+    name: 'VerifyEligibility',
+    component: VerifyEligibility,
+    options: { title: 'Vérification éligibilité' },
+  },
+  {
+    name: 'NotYetUnderageEligibility',
+    component: NotYetUnderageEligibility,
+    options: { title: 'C’est pour bientôt' },
+  },
+  { name: 'VenueMap', component: VenueMap, options: { title: 'Carte des lieux' } },
+  {
+    name: 'SignupConfirmationExpiredLink',
+    component: SignupConfirmationExpiredLink,
+    options: { title: 'Email création de compte expiré' },
+  },
+  {
+    name: 'SignupConfirmationEmailSent',
+    component: SignupConfirmationEmailSentPage,
+    options: { title: 'Email création de compte envoyé' },
+  },
+  { name: 'Offer', component: Offer, options: { title: 'Offre' } },
+  { name: '_DeeplinkOnlyOffer1', component: Offer, options: { title: 'Offre' } },
+  { name: '_DeeplinkOnlyOffer2', component: Offer, options: { title: 'Offre' } },
+  { name: '_DeeplinkOnlyOffer3', component: Offer, options: { title: 'Offre' } },
+  {
+    name: 'OfferPreview',
+    component: OfferPreview,
+    options: { title: 'Aperçu de l’offre' },
+  },
+  {
+    name: '_DeeplinkOnlyOfferPreview1',
+    component: OfferPreview,
+    options: { title: 'Aperçu de l’offre' },
+  },
+  {
+    name: '_DeeplinkOnlyOfferPreview2',
+    component: OfferPreview,
+    options: { title: 'Aperçu de l’offre' },
+  },
+  {
+    name: '_DeeplinkOnlyOfferPreview3',
+    component: OfferPreview,
+    options: { title: 'Aperçu de l’offre' },
+  },
+  { name: 'BookingDetails', component: withAuthProtection(BookingDetails) },
+  {
+    name: '_DeeplinkOnlyBookingDetails1',
+    component: withAuthProtection(BookingDetails),
+  },
+  {
+    name: 'BookingConfirmation',
+    component: withAuthProtection(BookingConfirmation),
+    options: { title: 'Confirmation de réservation' },
+  },
+  {
+    name: '_DeeplinkOnlyBookingConfirmation1',
+    component: withAuthProtection(BookingConfirmation),
+    options: { title: 'Confirmation de réservation' },
+  },
+  {
+    name: 'EighteenBirthday',
+    component: EighteenBirthday,
+    options: { title: 'Anniversaire 18 ans' },
+  },
+  {
+    name: '_DeeplinkOnlyEighteenBirthday1',
+    component: EighteenBirthday,
+    options: { title: 'Anniversaire 18 ans' },
+  },
+  {
+    name: 'AfterSignupEmailValidationBuffer',
+    component: AfterSignupEmailValidationBuffer,
+  },
+  {
+    name: '_DeeplinkOnlyAfterSignupEmailValidationBuffer1',
+    component: AfterSignupEmailValidationBuffer,
+  },
+  {
+    name: 'RecreditBirthdayNotification',
+    component: RecreditBirthdayNotification,
+    options: { title: 'Notification rechargement anniversaire' },
+  },
+  {
+    name: '_DeeplinkOnlyRecreditBirthdayNotification1',
+    component: RecreditBirthdayNotification,
+    options: { title: 'Notification rechargement anniversaire' },
+  },
+  { name: 'Login', component: Login, options: { title: 'Connexion' } },
+  { name: 'BannedCountryError', component: BannedCountryError },
+  {
+    name: 'ReinitializePassword',
+    component: ReinitializePassword,
+    options: { title: 'Réinitialiser le mot de passe' },
+  },
+  { name: 'SignupForm', component: SignupForm, options: { title: 'Création de compte' } },
+  {
+    name: '_DeeplinkOnlySignupForm1',
+    component: SignupForm,
+    options: { title: 'Création de compte' },
+  },
+  {
+    name: 'SearchFilter',
+    component: SearchFilter,
+    options: { title: 'Filtres de recherche' },
+  },
+  { name: 'Venue', component: Venue, options: { title: 'Lieu' } },
+  { name: '_DeeplinkOnlyVenue1', component: Venue, options: { title: 'Lieu' } },
+  {
+    name: 'VenuePreviewCarousel',
+    component: VenuePreviewCarousel,
+    options: { title: 'Aperçu du lieu' },
+  },
+  {
+    name: '_DeeplinkOnlyVenuePreviewCarousel1',
+    component: VenuePreviewCarousel,
+    options: { title: 'Aperçu du lieu' },
+  },
+  {
+    name: '_DeeplinkOnlyVenuePreviewCarousel2',
+    component: VenuePreviewCarousel,
+    options: { title: 'Aperçu du lieu' },
+  },
+  {
+    name: '_DeeplinkOnlyVenuePreviewCarousel3',
+    component: VenuePreviewCarousel,
+    options: { title: 'Aperçu du lieu' },
+  },
+  { name: 'Artist', component: Artist, options: { title: 'Artiste' } },
+  { name: '_DeeplinkOnlyArtist1', component: Artist, options: { title: 'Artiste' } },
+  {
+    name: 'Chronicles',
+    component: Chronicles,
+    options: { title: 'Avis du book club' },
+  },
+  {
+    name: '_DeeplinkOnlyChronicles1',
+    component: Chronicles,
+    options: { title: 'Avis du book club' },
+  },
+  {
+    name: 'UTMParameters',
+    component: UTMParameters,
+    options: { title: 'Paramètres UTM' },
+  },
+  {
+    name: 'DeeplinksGenerator',
+    component: DeeplinksGenerator,
+    options: { title: 'Générateur de lien' },
+  },
+  {
+    name: 'ThematicHome',
+    component: ThematicHome,
+    options: { title: 'Page d’accueil thématique' },
+  },
+  {
+    name: '_DeeplinkOnlyThematicHome1',
+    component: ThematicHome,
+    options: { title: 'Page d’accueil thématique' },
+  },
+  {
+    name: 'CulturalSurveyIntro',
+    component: withAuthProtection(CulturalSurveyIntro),
+    options: { title: 'Prenons 1 minute' },
+  },
+  {
+    name: 'CulturalSurveyQuestions',
+    component: CulturalSurveyQuestions ?? withAuthProtection(CulturalSurveyQuestions),
+  },
+  {
+    name: 'CulturalSurveyThanks',
+    component: withAuthProtection(CulturalSurveyThanks),
+  },
+  { name: 'FAQWebview', component: FAQWebview },
+  { name: 'AccountSecurityBuffer', component: AccountSecurityBuffer },
+  {
+    name: 'AccountSecurity',
+    component: AccountSecurity,
+    options: { title: 'Demande de sécurisation de compte' },
+  },
+  {
+    name: 'SuspensionChoice',
+    component: SuspensionChoice,
+    options: { title: 'Demande de suspension de compte' },
+  },
+  {
+    name: 'SuspensionChoiceExpiredLink',
+    component: SuspensionChoiceExpiredLink,
+    options: { title: 'Lien de suspension de compte expiré' },
+  },
+  {
+    name: 'SuspiciousLoginSuspendedAccount',
+    component: SuspiciousLoginSuspendedAccount,
+    options: { title: 'Confirmation de suspension de compte' },
+  },
+]
+
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
@@ -113,315 +380,16 @@ const RootStackNavigator = withWebWrapper(
           <RootStackNavigatorBase.Screen name="Achievements">
             {() => <SuspenseAchievements />}
           </RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="PageNotFound"
-            component={PageNotFound}
-            options={{ title: 'Page introuvable' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="AccountCreated"
-            component={AccountCreated}
-            options={{ title: 'Compte créé\u00a0!' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="FavoritesSorts"
-            component={withAuthProtection(FavoritesSorts)}
-            options={{ title: 'Tri des favoris' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="ChangeEmailExpiredLink"
-            component={ChangeEmailExpiredLink}
-            options={{ title: 'Lien de modification de l’email expiré' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="ForgottenPassword"
-            component={ForgottenPassword}
-            options={{ title: 'Mot de passe oublié' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="AccountStatusScreenHandler"
-            component={AccountStatusScreenHandler}
-            options={{ title: 'Compte désactivé' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SuspendedAccountUponUserRequest"
-            component={SuspendedAccountUponUserRequest}
-            options={{ title: 'Compte désactivé' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="FraudulentSuspendedAccount"
-            component={FraudulentSuspendedAccount}
-            options={{ title: 'Compte suspendu' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="AccountReactivationSuccess"
-            component={withAuthProtection(AccountReactivationSuccess)}
-            options={{ title: 'Compte réactivé' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="OnboardingSubscription"
-            component={withAuthProtection(OnboardingSubscription)}
-            options={{ title: 'Choix des thèmes à suivre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="ResetPasswordEmailSent"
-            component={ResetPasswordEmailSent}
-            options={{ title: 'Email modification mot de passe envoyé' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="ResetPasswordExpiredLink"
-            component={ResetPasswordExpiredLink}
-            options={{ title: 'Email modification mot de passe expiré' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="VerifyEligibility"
-            component={VerifyEligibility}
-            options={{ title: 'Vérification éligibilité' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="NotYetUnderageEligibility"
-            component={NotYetUnderageEligibility}
-            options={{ title: 'C’est pour bientôt' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="VenueMap"
-            component={VenueMap}
-            options={{ title: 'Carte des lieux' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SignupConfirmationExpiredLink"
-            component={SignupConfirmationExpiredLink}
-            options={{ title: 'Email création de compte expiré' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SignupConfirmationEmailSent"
-            component={SignupConfirmationEmailSentPage}
-            options={{ title: 'Email création de compte envoyé' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="Offer"
-            component={Offer}
-            options={{ title: 'Offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer1" // Alias for 'offer/:id'
-            component={Offer}
-            options={{ title: 'Offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer2" // Alias for 'offre'
-            component={Offer}
-            options={{ title: 'Offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer3" // Alias for 'offer'
-            component={Offer}
-            options={{ title: 'Offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="OfferPreview"
-            component={OfferPreview}
-            options={{ title: 'Aperçu de l’offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOfferPreview1" // Alias for 'offer/:id/apercu'
-            component={OfferPreview}
-            options={{ title: 'Aperçu de l’offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOfferPreview2" // Alias for 'offre/apercu'
-            component={OfferPreview}
-            options={{ title: 'Aperçu de l’offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOfferPreview3" // Alias for 'offer/apercu'
-            component={OfferPreview}
-            options={{ title: 'Aperçu de l’offre' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="BookingDetails"
-            component={withAuthProtection(BookingDetails)}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyBookingDetails1" // Alias for 'booking/:id/details'
-            component={withAuthProtection(BookingDetails)}
-          />
-          <RootStackNavigatorBase.Screen
-            name="BookingConfirmation"
-            component={withAuthProtection(BookingConfirmation)}
-            options={{ title: 'Confirmation de réservation' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyBookingConfirmation1"
-            component={withAuthProtection(BookingConfirmation)}
-            options={{ title: 'Confirmation de réservation' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="EighteenBirthday"
-            component={EighteenBirthday}
-            options={{ title: 'Anniversaire 18 ans' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyEighteenBirthday1"
-            component={EighteenBirthday}
-            options={{ title: 'Anniversaire 18 ans' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="AfterSignupEmailValidationBuffer"
-            component={AfterSignupEmailValidationBuffer}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyAfterSignupEmailValidationBuffer1"
-            component={AfterSignupEmailValidationBuffer}
-          />
-          <RootStackNavigatorBase.Screen
-            name="RecreditBirthdayNotification"
-            component={RecreditBirthdayNotification}
-            options={{ title: 'Notification rechargement anniversaire' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyRecreditBirthdayNotification1"
-            component={RecreditBirthdayNotification}
-            options={{ title: 'Notification rechargement anniversaire' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="Login"
-            component={Login}
-            options={{ title: 'Connexion' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="BannedCountryError"
-            component={withAsyncErrorBoundary(BannedCountryError)}
-          />
-          <RootStackNavigatorBase.Screen
-            name="ReinitializePassword"
-            component={ReinitializePassword}
-            options={{ title: 'Réinitialiser le mot de passe' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SignupForm"
-            component={SignupForm}
-            options={{ title: 'Création de compte' }}
-          />
-          {/* SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen */}
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlySignupForm1"
-            component={SignupForm}
-            options={{ title: 'Création de compte' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SearchFilter"
-            component={SearchFilter}
-            options={{ title: 'Filtres de recherche' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="Venue"
-            component={Venue}
-            options={{ title: 'Lieu' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyVenue1"
-            component={Venue}
-            options={{ title: 'Lieu' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="VenuePreviewCarousel"
-            component={VenuePreviewCarousel}
-            options={{ title: 'Aperçu du lieu' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyVenuePreviewCarousel1"
-            component={VenuePreviewCarousel}
-            options={{ title: 'Aperçu du lieu' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyVenuePreviewCarousel2"
-            component={VenuePreviewCarousel}
-            options={{ title: 'Aperçu du lieu' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyVenuePreviewCarousel3"
-            component={VenuePreviewCarousel}
-            options={{ title: 'Aperçu du lieu' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="Artist"
-            component={Artist}
-            options={{ title: 'Artiste' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyArtist1"
-            component={Artist}
-            options={{ title: 'Artiste' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="Chronicles"
-            component={Chronicles}
-            options={{ title: 'Avis du book club' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyChronicles1"
-            component={Chronicles}
-            options={{ title: 'Avis du book club' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="UTMParameters"
-            component={UTMParameters}
-            options={{ title: 'Paramètres UTM' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="DeeplinksGenerator"
-            component={DeeplinksGenerator}
-            options={{ title: 'Générateur de lien' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="ThematicHome"
-            component={ThematicHome}
-            options={{ title: 'Page d’accueil thématique' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyThematicHome1"
-            component={ThematicHome}
-            options={{ title: 'Page d’accueil thématique' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="CulturalSurveyIntro"
-            component={withAuthProtection(CulturalSurveyIntro)}
-            options={{ title: 'Prenons 1 minute' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="CulturalSurveyQuestions"
-            component={CulturalSurveyQuestions ?? withAuthProtection(CulturalSurveyQuestions)} // Ask reviewers (type of the screen: React.JSX.Element | null)
-          />
-          <RootStackNavigatorBase.Screen
-            name="CulturalSurveyThanks"
-            component={withAuthProtection(CulturalSurveyThanks)}
-          />
-          <RootStackNavigatorBase.Screen name="FAQWebview" component={FAQWebview} />
-          <RootStackNavigatorBase.Screen
-            name="AccountSecurityBuffer"
-            component={AccountSecurityBuffer}
-          />
-          <RootStackNavigatorBase.Screen
-            name="AccountSecurity"
-            component={AccountSecurity}
-            options={{ title: 'Demande de sécurisation de compte' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SuspensionChoice"
-            component={SuspensionChoice}
-            options={{ title: 'Demande de suspension de compte' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SuspensionChoiceExpiredLink"
-            component={SuspensionChoiceExpiredLink}
-            options={{ title: 'Lien de suspension de compte expiré' }}
-          />
-          <RootStackNavigatorBase.Screen
-            name="SuspiciousLoginSuspendedAccount"
-            component={SuspiciousLoginSuspendedAccount}
-            options={{ title: 'Confirmation de suspension de compte' }}
-          />
+
+          {rootScreens.map(({ name, component, options }) => (
+            <RootStackNavigatorBase.Screen
+              key={name}
+              name={name}
+              component={withAsyncErrorBoundary(component)}
+              options={options}
+            />
+          ))}
+
           {SubscriptionScreens}
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
