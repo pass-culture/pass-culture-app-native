@@ -49,7 +49,23 @@ const setFreeOfferIdSpy = jest.spyOn(freeOfferIdActions, 'setFreeOfferId')
 
 describe('getCtaWordingAndAction', () => {
   describe('Logged out user', () => {
-    it('should display "Réserver l’offre" wording and modal "authentication"', () => {
+    it('should display "Accéder au site partenaire" wording and redirect to external link when offer has external url', () => {
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        isLoggedIn: false,
+        user: undefined,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+      })
+
+      expect(result).toEqual({
+        wording: 'Accéder au site partenaire',
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
+      })
+    })
+
+    it('should display "Réserver l’offre" wording and modal "authentication" when offer has no external url', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
         isLoggedIn: false,
@@ -304,6 +320,23 @@ describe('getCtaWordingAndAction', () => {
         expect(result?.modalToDisplay).toEqual(modalToDisplay)
       }
     )
+
+    describe('ex-beneficiary', () => {
+      it('should display "Accéder au site partenaire" wording and redirect to external link when offer has external url', () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          user: { ...beneficiaryUser, depositExpirationDate: '2021-01-01T11:00:00Z' },
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+          subcategory: buildSubcategory({}),
+        })
+
+        expect(result).toEqual({
+          wording: 'Accéder au site partenaire',
+          externalNav: { url: 'https://url-externe' },
+          isDisabled: false,
+        })
+      })
+    })
   })
 
   // same as non beneficiary use cases, beneficiary users should not be able to book educational offers
@@ -439,6 +472,22 @@ describe('getCtaWordingAndAction', () => {
         modalToDisplay: OfferModal.BOOKING,
         isDisabled: false,
         ...result,
+      })
+    })
+
+    it('CTA="Accéder au site partenaire" when user does not have enough credit and offer has external url', () => {
+      const result = getCta(
+        { isDigital: true },
+        {
+          hasEnoughCredit: false,
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        }
+      )
+
+      expect(result).toEqual({
+        wording: 'Accéder au site partenaire',
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
       })
     })
 
@@ -612,7 +661,7 @@ describe('getCtaWordingAndAction', () => {
       const { onPress } =
         getCtaWordingAndAction({
           ...defaultParameters,
-          user: { ...beneficiaryUser },
+          user: { ...beneficiaryUser, depositExpirationDate: '2023-11-19T11:00:00Z' },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
@@ -720,7 +769,7 @@ describe('getCtaWordingAndAction', () => {
         getCtaWordingAndAction({
           ...defaultParameters,
           isLoggedIn: true,
-          user: { ...beneficiaryUser },
+          user: { ...beneficiaryUser, depositExpirationDate: '2023-11-19T11:00:00Z' },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
