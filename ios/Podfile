@@ -8,6 +8,19 @@ require Pod::Executable.execute_command('node', ['-p',
 
 platform :ios, '13.4'
 prepare_react_native_project!
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+# Convert all permission pods into static libraries
+# https://github.com/zoontek/react-native-permissions/issues/469#issuecomment-666223083
+pre_install do |installer|
+  installer.pod_targets.each do |pod|
+    if pod.name.eql?('RNPermissions') || pod.name.start_with?('Permission-')
+      def pod.build_type;
+        Pod::BuildType.static_library # >= 1.9
+      end
+    end
+  end
+end
 
 target 'PassCulture' do
   config = use_native_modules!
