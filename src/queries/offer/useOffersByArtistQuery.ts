@@ -9,8 +9,6 @@ import { Prettify } from 'types/Prettify'
 
 import { fetchOffersByArtist } from './fetchOffersByArtist'
 
-// yarn test:unit src/features/artist/ src/queries/offer/ src/features/offer/components/OfferBody/ src/features/offer/pages/
-
 type FetchOfferByArtistResult = {
   playlistHits: Hit<AlgoliaOfferWithArtistAndEan>[]
   topOffersHits: Hit<AlgoliaOfferWithArtistAndEan>[]
@@ -46,13 +44,7 @@ const useOffersByArtistQuery = ({
 }: UseOffersByArtistSelectParams) =>
   useQuery({
     queryKey: [QueryKeys.ARTIST_PLAYLIST, artistId],
-    queryFn: async () => {
-      const { playlistHits, topOffersHits } = await fetchOffersByArtist({
-        artistId,
-        userLocation,
-      })
-      return { playlistHits, topOffersHits }
-    },
+    queryFn: () => fetchOffersByArtist({ artistId, userLocation }),
     initialData: { playlistHits: [], topOffersHits: [] },
     enabled: enabled && !!artistId,
     select,
