@@ -27,9 +27,15 @@ type TabRouteConfig = {
   options: BottomTabNavigationOptions
 }
 
+// the order of declaration determines the order of the tabs
 const tabScreens: TabRouteConfig[] = [
   { name: 'Home', component: Home, options: { title: 'Page d’accueil' } },
   { name: '_DeeplinkOnlyHome1', component: Home, options: { title: 'Page d’accueil' } },
+  {
+    name: 'SearchStackNavigator',
+    component: SuspenseSearchStackNavigator,
+    options: { title: 'Recherche' }, // This component is now part of the array
+  },
   {
     name: 'Bookings',
     component: withAuthProtection(Bookings),
@@ -55,6 +61,7 @@ export const TabNavigator: React.FC = () => {
       tabBar={renderTabBar}
       screenOptions={TAB_NAVIGATOR_SCREEN_OPTIONS}
       backBehavior="history">
+      {/* The .map() function now renders all screens in the correct order */}
       {tabScreens.map(({ name, component, options }) => (
         <TabStackNavigatorBase.Screen
           key={name}
@@ -63,11 +70,6 @@ export const TabNavigator: React.FC = () => {
           options={options}
         />
       ))}
-      <TabStackNavigatorBase.Screen
-        name="SearchStackNavigator"
-        component={SuspenseSearchStackNavigator}
-        options={{ title: 'Mes réservations' }}
-      />
     </TabStackNavigatorBase.Navigator>
   )
 }
