@@ -1,8 +1,8 @@
+import { StackNavigationOptions } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
-import { type ScreenOptions } from 'ui/theme/navigation'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Artist } from 'features/artist/pages/Artist'
@@ -87,7 +87,7 @@ type RouteConfig = {
   name: RootScreenNames
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
-  options?: ScreenOptions
+  options?: StackNavigationOptions
 }
 
 const rootScreens: RouteConfig[] = [
