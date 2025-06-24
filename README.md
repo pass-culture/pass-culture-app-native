@@ -154,3 +154,16 @@ See doc about deployment process [here](./doc/ci-cd/deployment.md) for the mobil
 [4]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
 [5]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
 [6]: https://developer.apple.com/account/resources/devices/list
+
+## Performances
+
+Starting in the version v344, to measure performances, we have decided to measure the time to interactive of the home (see [adr](./doc/decision-records/DR007%20-%20mesure-performances.md))
+
+You can find this measure on firebase performance monitor for the different environments:
+
+- [testing iOS](https://console.firebase.google.com/project/pc-native-testing/performance/app/ios:app.passculture.test/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr)
+- [testing Android](https://console.firebase.google.com/project/pc-native-testing/performance/app/android:app.passculture.testing/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr)
+- [staging iOS](https://console.firebase.google.com/project/pc-native-staging/performance/app/ios:app.passculture.staging/trends?hl=fr)
+- [staging Android](https://console.firebase.google.com/project/pc-native-staging/performance/app/android:app.passculture.staging/trends?hl=fr)
+- [production iOS](https://console.firebase.google.com/project/pc-native-production/performance/app/ios:app.passculture/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr&time=24h)
+- [production Android](https://console.firebase.google.com/project/pc-native-production/performance/app/android:app.passculture.webapp/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr&time=24h)
