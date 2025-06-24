@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { Artist } from 'features/artist/pages/Artist'
+import { ArtistPage } from 'features/artist/pages/ArtistPage'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -346,12 +346,12 @@ const RootStackNavigator = withWebWrapper(
           />
           <RootStackNavigatorBase.Screen
             name="Artist"
-            component={Artist}
+            component={ArtistPage}
             options={{ title: 'Artiste' }}
           />
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyArtist1"
-            component={Artist}
+            component={ArtistPage}
             options={{ title: 'Artiste' }}
           />
           <RootStackNavigatorBase.Screen

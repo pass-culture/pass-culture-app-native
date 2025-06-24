@@ -51,7 +51,7 @@ export const ArtistPlaylistContainer: FunctionComponent<ArtistPlaylistProps> = (
       return <OfferPlaylistSkeleton size={TileSize.LARGE} numberOfTiles={4} />
 
     case 'success': {
-      return artistTopOffers.length > 0 ? (
+      return artistTopOffers?.length ? (
         <PassPlaylist
           playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
           title="Toutes ses offres disponibles"

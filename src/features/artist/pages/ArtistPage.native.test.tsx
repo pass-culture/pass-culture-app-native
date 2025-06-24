@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
-import { Artist } from 'features/artist/pages/Artist'
+import { ArtistPage } from 'features/artist/pages/ArtistPage'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -20,7 +20,7 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('<Artist />', () => {
+describe('<ArtistPage />', () => {
   useRoute.mockReturnValue({
     params: {
       id: 'cb22d035-f081-4ccb-99d8-8f5725a8ac9c',
@@ -35,7 +35,7 @@ describe('<Artist />', () => {
 
     it('should display artist page content', async () => {
       mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
-      render(reactQueryProviderHOC(<Artist />))
+      render(reactQueryProviderHOC(<ArtistPage />))
 
       expect((await screen.findAllByText('Avril Lavigne'))[0]).toBeOnTheScreen()
     })
@@ -47,7 +47,7 @@ describe('<Artist />', () => {
           data: {},
         },
       })
-      render(reactQueryProviderHOC(<Artist />))
+      render(reactQueryProviderHOC(<ArtistPage />))
 
       await act(async () => {})
 
@@ -62,7 +62,7 @@ describe('<Artist />', () => {
     })
 
     it('should render null', async () => {
-      render(reactQueryProviderHOC(<Artist />))
+      render(reactQueryProviderHOC(<ArtistPage />))
 
       await act(async () => {})
 

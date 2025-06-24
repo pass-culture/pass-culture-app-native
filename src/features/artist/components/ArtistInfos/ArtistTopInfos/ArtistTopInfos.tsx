@@ -10,7 +10,7 @@ import { Typo } from 'ui/theme'
 import { AVATAR_LARGE } from 'ui/theme/constants'
 
 type ArtistHeaderProps = {
-  avatarImage?: string | null
+  avatarImage?: string
   name: string
 }
 
@@ -22,7 +22,7 @@ export const ArtistTopInfos = ({ avatarImage, name }: ArtistHeaderProps) => {
           <StyledImage
             url={avatarImage}
             accessibilityRole={AccessibilityRole.IMAGE}
-            accessibilityLabel="artist avatar"
+            accessibilityLabel={`image de ${name}`} // @lbeneston-pass que devrait-on faire pour la meilleure accessibilité : pas de role et pas de label ? un label vide ? un label très générique comme ça ? autre ?
           />
         ) : (
           <DefaultAvatar />
