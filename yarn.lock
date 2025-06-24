@@ -3516,13 +3516,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/config-types@npm:^47.0.0":
-  version: 47.0.0
-  resolution: "@expo/config-types@npm:47.0.0"
-  checksum: bb26456bed60bedb7a2482cb475ab539d34da177d9eb49384f599ea85ad0d0c8bb35f97c181e01454a925320021607472f83c8f456f239a6b329c8bf82044d9c
-  languageName: node
-  linkType: hard
-
 "@expo/json-file@npm:8.2.36":
   version: 8.2.36
   resolution: "@expo/json-file@npm:8.2.36"
