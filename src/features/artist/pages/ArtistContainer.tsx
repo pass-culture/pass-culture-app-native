@@ -6,14 +6,10 @@ import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
-const defaultArtistResults = {
-  artistPlaylist: [],
-  artistTopOffers: [],
-}
-
 export const ArtistContainer: FunctionComponent<{ artistId: string }> = ({ artistId }) => {
-  const { data: { artistPlaylist, artistTopOffers } = defaultArtistResults } =
-    useArtistResultsQuery({ artistId })
+  const {
+    data: { artistPlaylist, artistTopOffers },
+  } = useArtistResultsQuery({ artistId })
   const { data: artist, status } = useArtistQuery(artistId)
 
   switch (status) {

@@ -21,7 +21,7 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
   const { userLocation } = useLocation()
   const { artistPageSubcategories } = useRemoteConfigQuery()
 
-  return useQuery({
+  const { data } = useQuery({
     queryKey: [QueryKeys.ARTIST_PLAYLIST, artistId],
     queryFn: async () => {
       const { playlistHits, topOffersHits } = await fetchOffersByArtist({
@@ -35,34 +35,30 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
       artistId &&
       (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
     ),
-    select(data) {
-      const getSortedHits = (hits: Hit<AlgoliaOfferWithArtistAndEan>[]) => {
-        if (hits.length === 0) return []
-
-        const transformedHitsWithDistance = hits.map((hit) => {
-          const transformedHit = transformHits(hit)
-          const distance = formatDistance(
-            { lat: hit._geoloc.lat, lng: hit._geoloc.lng },
-            userLocation
-          )
-
-          return { ...transformedHit, distance: parseDistance(distance || '0') }
-        })
-
-        const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
-
-        return sortedHits.map(
-          ({ distance: _distance, ...rest }) => rest
-        ) as AlgoliaOfferWithArtistAndEan[]
-      }
-
-      const artistPlaylist = data?.playlistHits ? getSortedHits(data.playlistHits) : []
-
-      const artistTopOffers = data?.topOffersHits ? getSortedHits(data.topOffersHits) : []
-
-      return { artistPlaylist, artistTopOffers }
-    },
   })
+
+  const getSortedHits = (hits: Hit<AlgoliaOfferWithArtistAndEan>[]) => {
+    if (hits.length === 0) return []
+
+    const transformedHitsWithDistance = hits.map((hit) => {
+      const transformedHit = transformHits(hit)
+      const distance = formatDistance({ lat: hit._geoloc.lat, lng: hit._geoloc.lng }, userLocation)
+
+      return { ...transformedHit, distance: parseDistance(distance || '0') }
+    })
+
+    const sortedHits = [...transformedHitsWithDistance].sort((a, b) => a.distance - b.distance)
+
+    return sortedHits.map(
+      ({ distance: _distance, ...rest }) => rest
+    ) as AlgoliaOfferWithArtistAndEan[]
+  }
+
+  const artistPlaylist = data?.playlistHits ? getSortedHits(data.playlistHits) : []
+
+  const artistTopOffers = data?.topOffersHits ? getSortedHits(data.topOffersHits) : []
+
+  return { data: { artistPlaylist, artistTopOffers } }
 }
 
 const parseDistance = (distance: string) => {

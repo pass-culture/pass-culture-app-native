@@ -113,7 +113,7 @@ describe('useArtistResultsQuery', () => {
     )
 
     await waitFor(() => {
-      expect(result.current.data?.artistPlaylist).toEqual([])
+      expect(result.current.data.artistPlaylist).toEqual([])
     })
   })
 
@@ -132,7 +132,7 @@ describe('useArtistResultsQuery', () => {
     )
 
     await waitFor(() => {
-      expect(result.current.data?.artistTopOffers).toEqual([])
+      expect(result.current.data.artistTopOffers).toEqual([])
     })
   })
 })
