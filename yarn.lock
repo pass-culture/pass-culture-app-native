@@ -3486,11 +3486,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/config-plugins@npm:^4.1.1":
-  version: 4.1.4
-  resolution: "@expo/config-plugins@npm:4.1.4"
+"@expo/config-plugins@npm:^5.0.4":
+  version: 5.0.4
+  resolution: "@expo/config-plugins@npm:5.0.4"
   dependencies:
-    "@expo/config-types": ^45.0.0
+    "@expo/config-types": ^47.0.0
     "@expo/json-file": 8.2.36
     "@expo/plist": 0.0.18
     "@expo/sdk-runtime-versions": ^1.0.0
@@ -3505,14 +3505,14 @@ __metadata:
     slash: ^3.0.0
     xcode: ^3.0.1
     xml2js: 0.4.23
-  checksum: f5f46c49bc6e534ff3a200ccabca9a41e5bb23fbffbf0f5577ea1d09196940de479098fd607503399bb703245a75d1045325a69baf1e9b940fe3c46e9db79da4
+  checksum: 9fc5e19a92e105d200aeb7ed28607c2e4e8dcf2b7256c8bae32b2f30ccb5139fbe4854df8c6d6db0bb80e254ddb48a82665043582e7044b4ba1888448909c818
   languageName: node
   linkType: hard
 
-"@expo/config-types@npm:^45.0.0":
-  version: 45.0.0
-  resolution: "@expo/config-types@npm:45.0.0"
-  checksum: 9b4866540654da61af0985ebfc975b3cb690625acf7742443a7e56263bf134b261e22719720982223407f8957d08a3646178c79f482861218882f0956d804021
+"@expo/config-types@npm:^47.0.0":
+  version: 47.0.0
+  resolution: "@expo/config-types@npm:47.0.0"
+  checksum: bb26456bed60bedb7a2482cb475ab539d34da177d9eb49384f599ea85ad0d0c8bb35f97c181e01454a925320021607472f83c8f456f239a6b329c8bf82044d9c
   languageName: node
   linkType: hard
 
@@ -5466,65 +5466,67 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-firebase/analytics@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "@react-native-firebase/analytics@npm:14.9.0"
+"@react-native-firebase/analytics@npm:^16.7.0":
+  version: 16.7.0
+  resolution: "@react-native-firebase/analytics@npm:16.7.0"
   peerDependencies:
-    "@react-native-firebase/app": 14.9.0
-  checksum: 85bedd7a4366fb6be9ea207179205929b3ef6fa66d099973fb5f1e1413f181c54d5c6789efce015f3e6e75b1451879a8e0822dbe740ed819847db2a412e2a49f
+    "@react-native-firebase/app": 16.7.0
+  checksum: 20c69cdfda6b92beabcfbf612d65d9cdbc95155d6f70c7fd886358b4215934781fd16b950314ac5183756ca79c5e37b4f4e6a2ba68c102af8e60a09550f74b8e
   languageName: node
   linkType: hard
 
-"@react-native-firebase/app@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "@react-native-firebase/app@npm:14.9.0"
+"@react-native-firebase/app@npm:^16.7.0":
+  version: 16.7.0
+  resolution: "@react-native-firebase/app@npm:16.7.0"
   dependencies:
-    "@expo/config-plugins": ^4.1.1
+    "@expo/config-plugins": ^5.0.4
     opencollective-postinstall: ^2.0.1
     superstruct: ^0.6.2
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 9e1e2aa5ea2f8504d4df530f4f96b922c25a016b00189012baa906697f6c4f8c0c4064a3f00a3ff82b8690ec22b64777593e0e54d8a966131cd44bdb7d86f01a
+  checksum: d3274ac0461e7524849c544bd00bd628b7a305f1798c33c28367dff4a8c3e55ae2d8428f8ae2d2cb3ed99760054a7cf6cceaca43052015497cd7ae162272b3e7
   languageName: node
   linkType: hard
 
-"@react-native-firebase/dynamic-links@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "@react-native-firebase/dynamic-links@npm:14.9.0"
-  peerDependencies:
-    "@react-native-firebase/app": 14.9.0
-  checksum: 56d01842872399457f45444b32d64cb1f4f4cfb38eea6bc61597f4110be3f189ec368d8192f0930d532daf51ce00be27bb582b36c3818b7c02101be3b5f2dd85
-  languageName: node
-  linkType: hard
-
-"@react-native-firebase/firestore@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "@react-native-firebase/firestore@npm:14.9.0"
-  peerDependencies:
-    "@react-native-firebase/app": 14.9.0
-  checksum: dc604eac56cc3fcd3c606f48fd74191a9416311ba5a6138161fdd090f62153b35f2d9de57908b0206b4ddc1f5a1d37ae86ef708ae419b35aea7a01d04265693b
-  languageName: node
-  linkType: hard
-
-"@react-native-firebase/perf@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "@react-native-firebase/perf@npm:14.9.0"
+"@react-native-firebase/dynamic-links@npm:^16.7.0":
+  version: 16.7.0
+  resolution: "@react-native-firebase/dynamic-links@npm:16.7.0"
   dependencies:
-    "@expo/config-plugins": ^4.1.1
+    "@expo/config-plugins": ^5.0.4
   peerDependencies:
-    "@react-native-firebase/app": 14.9.0
-  checksum: eb4ba0fa98649c79fd737c788d1e09f30a960b59aadf9612edd0e1291ebcaa9b15179a32e103d46275ed33c1f5d735bba86524a8037663af144d33b3ae56653b
+    "@react-native-firebase/app": 16.7.0
+  checksum: 9f11291b784e580428f1bf153dbb6f87578a3e3df90c5cee3db3acd60ff8e942ecd5a37cbe7bad2e3a4e09d12991170275f03af6652a92878403e28423f145fa
   languageName: node
   linkType: hard
 
-"@react-native-firebase/remote-config@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "@react-native-firebase/remote-config@npm:14.9.0"
+"@react-native-firebase/firestore@npm:^16.7.0":
+  version: 16.7.0
+  resolution: "@react-native-firebase/firestore@npm:16.7.0"
   peerDependencies:
-    "@react-native-firebase/analytics": 14.9.0
-    "@react-native-firebase/app": 14.9.0
-  checksum: ccb066e297ec53d23b33caac55a19eb5e9ff4b32ca883720ef3036eed67e5abf30e92ed42250c15628bcee6084bcd628aa3295d03b207f90f1617bbf0092f47b
+    "@react-native-firebase/app": 16.7.0
+  checksum: 792f7970d777302084a85ca1d92b09a8b8315fc267b998f5e5265715fc6eb4aec92b7b2abcfddb96acf086767fd8e2b1c76aceb05b0f214c5edb80b0786afc1b
+  languageName: node
+  linkType: hard
+
+"@react-native-firebase/perf@npm:^16.7.0":
+  version: 16.7.0
+  resolution: "@react-native-firebase/perf@npm:16.7.0"
+  dependencies:
+    "@expo/config-plugins": ^5.0.4
+  peerDependencies:
+    "@react-native-firebase/app": 16.7.0
+  checksum: b579d090b4736ed540eaef9ca27ef24531ffa8bfac03afee58d8652327f71ff64a4db992b6f30b78c95c268a85629b431d702e66b749be0dc358665f875c5ddc
+  languageName: node
+  linkType: hard
+
+"@react-native-firebase/remote-config@npm:^16.7.0":
+  version: 16.7.0
+  resolution: "@react-native-firebase/remote-config@npm:16.7.0"
+  peerDependencies:
+    "@react-native-firebase/analytics": 16.7.0
+    "@react-native-firebase/app": 16.7.0
+  checksum: c5b064a675342b705f8e7bfe2559d3de314e1ad8915dad0a254b1783a63855cdb632f9ed7dbfa013aad0549706729dc703213239fb9f3a4eb29ea92ce05c229a
   languageName: node
   linkType: hard
 
@@ -8311,12 +8313,12 @@ __metadata:
     "@react-native-clipboard/clipboard": ^1.12.1
     "@react-native-community/blur": ^4.4.1
     "@react-native-community/netinfo": ^9.0.0
-    "@react-native-firebase/analytics": ^14.9.0
-    "@react-native-firebase/app": ^14.9.0
-    "@react-native-firebase/dynamic-links": ^14.9.0
-    "@react-native-firebase/firestore": ^14.9.0
-    "@react-native-firebase/perf": ^14.9.0
-    "@react-native-firebase/remote-config": ^14.9.0
+    "@react-native-firebase/analytics": ^16.7.0
+    "@react-native-firebase/app": ^16.7.0
+    "@react-native-firebase/dynamic-links": ^16.7.0
+    "@react-native-firebase/firestore": ^16.7.0
+    "@react-native-firebase/perf": ^16.7.0
+    "@react-native-firebase/remote-config": ^16.7.0
     "@react-native-google-signin/google-signin": ^10.1.0
     "@react-native/babel-preset": 0.75.5
     "@react-native/eslint-config": 0.75.5
