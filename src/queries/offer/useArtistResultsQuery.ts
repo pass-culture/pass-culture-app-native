@@ -56,9 +56,9 @@ export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResu
         ) as AlgoliaOfferWithArtistAndEan[]
       }
 
-      const artistPlaylist = data.playlistHits ? getSortedHits(data.playlistHits) : []
+      const artistPlaylist = data?.playlistHits ? getSortedHits(data.playlistHits) : []
 
-      const artistTopOffers = data.topOffersHits ? getSortedHits(data.topOffersHits) : []
+      const artistTopOffers = data?.topOffersHits ? getSortedHits(data.topOffersHits) : []
 
       return { artistPlaylist, artistTopOffers }
     },
