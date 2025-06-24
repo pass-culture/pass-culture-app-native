@@ -132,6 +132,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               testID="tagsContainer"
             >
               <View
+                backgroundColor="#f1f1f4"
                 style={
                   [
                     {
@@ -145,6 +146,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     },
                   ]
                 }
+                testID="tagWrapper"
               >
                 <Text
                   style={
@@ -3106,6 +3108,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               testID="tagsContainer"
             >
               <View
+                backgroundColor="#f1f1f4"
                 style={
                   [
                     {
@@ -3119,6 +3122,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     },
                   ]
                 }
+                testID="tagWrapper"
               >
                 <Text
                   style={
@@ -4032,7 +4036,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 style={
                                   [
                                     {
-                                      "color": "#161617",
+                                      "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 19.2,
@@ -4061,7 +4065,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 style={
                                   [
                                     {
-                                      "color": "#161617",
+                                      "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 19.2,
@@ -6416,6 +6420,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               testID="tagsContainer"
             >
               <View
+                backgroundColor="#f1f1f4"
                 style={
                   [
                     {
@@ -6429,6 +6434,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     },
                   ]
                 }
+                testID="tagWrapper"
               >
                 <Text
                   style={
