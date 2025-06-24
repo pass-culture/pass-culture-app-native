@@ -7,9 +7,7 @@ import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const ArtistContainer: FunctionComponent<{ artistId: string }> = ({ artistId }) => {
-  const {
-    data: { artistPlaylist, artistTopOffers },
-  } = useArtistResultsQuery({ artistId })
+  const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({ artistId })
   const { data: artist, status } = useArtistQuery(artistId)
 
   switch (status) {
