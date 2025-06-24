@@ -3518,13 +3518,17 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     [
                       {
                         "alignItems": "center",
-                        "columnGap": 16,
+                        "columnGap": 12,
                         "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
+                    disabled={false}
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                     state={
                       [
                         "default",
@@ -3559,7 +3563,14 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
-                      disabled={false}
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      state={
+                        [
+                          "default",
+                        ]
+                      }
                       style={
                         [
                           {

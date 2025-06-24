@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -97,7 +97,9 @@ export const Checkbox: FunctionComponent<Props> = ({
   const isIndeterminate = state.includes('indeterminate')
 
   const colorMark = disabled ? designSystem.color.icon.disabled : designSystem.color.icon.inverted
-  const checkboxMarkSize = checkbox.size / 1.5 // Parent padding doesn't have effect on CheckboxMarkIndeterminate
+  const checkboxMarkSize = checkbox.size / 1.75 // Parent padding doesn't have effect on CheckboxMarkIndeterminate
+
+  const Label = isCheckedState || isIndeterminate ? StyledBodyAccent : StyledBody
 
   return (
     <CheckboxContainer
@@ -110,7 +112,7 @@ export const Checkbox: FunctionComponent<Props> = ({
       {...focusProps}
       {...hoverProps}>
       <ContentContainer>
-        <LeftBox state={state} variant={variant}>
+        <LeftBox state={state} variant={variant} disabled={isDisabled} {...hoverProps}>
           {isIndeterminate ? (
             <CheckboxMarkIndeterminate
               color={colorMark}
@@ -126,12 +128,14 @@ export const Checkbox: FunctionComponent<Props> = ({
           ) : null}
         </LeftBox>
         <RightBox>
-          <StyledBody disabled={isDisabled}>
+          <Label state={state} {...hoverProps}>
             {label}
             {required ? '*' : null}
-          </StyledBody>
+          </Label>
           {description ? (
-            <StyledBodyAccentXs disabled={isDisabled}>{description}</StyledBodyAccentXs>
+            <StyledBodyAccentXs state={state} {...hoverProps}>
+              {description}
+            </StyledBodyAccentXs>
           ) : null}
         </RightBox>
         {asset ? (
@@ -152,6 +156,13 @@ type ContainerProps = {
   display?: CheckboxDisplay
   isHover?: boolean
   isFocus?: boolean
+}
+
+const getBoderHoverStyle = ({ theme, state, isHover }: LabelHoverStyleParams) => {
+  const disabled = state.includes('disabled')
+  const error = state.includes('error')
+  if (disabled || error) return {}
+  return getHoverStyle({ borderColor: theme.designSystem.color.border.brandPrimary, isHover })
 }
 
 const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
@@ -185,22 +196,24 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
       padding: getSpacing(4),
     }),
     ...customFocusOutline({ isFocus }),
-    ...(isDisabled ? {} : getHoverStyle(theme.designSystem.color.text.default, isHover)),
+    ...getBoderHoverStyle({ state, theme, isHover }),
   }
 })
 
 const ContentContainer = styled.View({
   alignItems: 'center',
   flexDirection: 'row',
-  columnGap: getSpacing(4),
+  columnGap: getSpacing(3),
 })
 
 type LeftBoxProps = {
   variant: CheckboxVariant
   state: CheckboxState[]
+  isHover?: boolean
+  disabled?: boolean
 }
 
-const LeftBox = styled.View<LeftBoxProps>(({ theme, variant, state }) => {
+const LeftBox = styled.View<LeftBoxProps>(({ theme, variant, isHover, state }) => {
   const { borderColor, backgroundColor } = getCheckboxColors({
     state,
     variant,
@@ -208,7 +221,6 @@ const LeftBox = styled.View<LeftBoxProps>(({ theme, variant, state }) => {
     theme,
     componentType: 'mark',
   })
-
   return {
     width: theme.checkbox.size,
     height: theme.checkbox.size,
@@ -218,20 +230,57 @@ const LeftBox = styled.View<LeftBoxProps>(({ theme, variant, state }) => {
     border: theme.checkbox.border.size,
     borderColor,
     backgroundColor,
+    ...getBoderHoverStyle({ state, theme, isHover }),
   }
 })
 
-const StyledBody = styled(Typo.Body)<{ disabled?: boolean }>(({ disabled, theme }) => ({
-  color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,
-}))
+type LabelColorParams = {
+  theme: DefaultTheme
+  state: CheckboxState[]
+}
 
-const StyledBodyAccentXs = styled(Typo.BodyAccentXs)<{ disabled?: boolean }>(
-  ({ disabled, theme }) => ({
-    color: disabled
-      ? theme.designSystem.color.text.disabled
-      : theme.designSystem.color.text.default,
+const getLabelColor = ({ state, theme }: LabelColorParams) => {
+  const isDisabled = state.includes('disabled')
+  return isDisabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default
+}
+
+type LabelHoverStyleParams = LabelColorParams & {
+  isHover?: boolean
+}
+
+const getTextHoverStyle = ({ theme, state, isHover }: LabelHoverStyleParams) => {
+  const isDisabled = state.includes('disabled')
+  const error = state.includes('error')
+  if (isDisabled || error) return {}
+  return getHoverStyle({ textColor: theme.designSystem.color.text.brandPrimary, isHover })
+}
+
+const StyledBody = styled(Typo.Body)<{ state: CheckboxState[]; isHover?: boolean }>(
+  ({ state, theme, isHover }) => ({
+    color: getLabelColor({ state, theme }),
+    ...getTextHoverStyle({ state, theme, isHover }),
   })
 )
+
+const StyledBodyAccent = styled(Typo.BodyAccent)<{ state: CheckboxState[]; isHover?: boolean }>(
+  ({ state, theme, isHover }) => ({
+    color: getLabelColor({ state, theme }),
+    ...getTextHoverStyle({ state, theme, isHover }),
+  })
+)
+
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)<{
+  state: CheckboxState[]
+  isHover?: boolean
+}>(({ state, isHover, theme }) => {
+  const isDisable = state.includes('disabled')
+  return {
+    color: isDisable
+      ? theme.designSystem.color.text.disabled
+      : theme.designSystem.color.text.default,
+    ...getTextHoverStyle({ state, theme, isHover }),
+  }
+})
 
 const RightBox = styled.View({
   flex: 1,

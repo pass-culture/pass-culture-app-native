@@ -517,13 +517,17 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       [
                         {
                           "alignItems": "center",
-                          "columnGap": 16,
+                          "columnGap": 12,
                           "flexDirection": "row",
                         },
                       ]
                     }
                   >
                     <View
+                      disabled={false}
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
                       state={
                         [
                           "default",
@@ -558,7 +562,14 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
-                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
                         style={
                           [
                             {
@@ -655,13 +666,17 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       [
                         {
                           "alignItems": "center",
-                          "columnGap": 16,
+                          "columnGap": 12,
                           "flexDirection": "row",
                         },
                       ]
                     }
                   >
                     <View
+                      disabled={false}
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
                       state={
                         [
                           "default",
@@ -696,7 +711,14 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
-                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
                         style={
                           [
                             {
@@ -793,13 +815,17 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       [
                         {
                           "alignItems": "center",
-                          "columnGap": 16,
+                          "columnGap": 12,
                           "flexDirection": "row",
                         },
                       ]
                     }
                   >
                     <View
+                      disabled={false}
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
                       state={
                         [
                           "default",
@@ -834,7 +860,14 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
-                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
                         style={
                           [
                             {
@@ -931,13 +964,17 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       [
                         {
                           "alignItems": "center",
-                          "columnGap": 16,
+                          "columnGap": 12,
                           "flexDirection": "row",
                         },
                       ]
                     }
                   >
                     <View
+                      disabled={false}
+                      isHover={false}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
                       state={
                         [
                           "default",
@@ -972,7 +1009,14 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
-                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
                         style={
                           [
                             {
