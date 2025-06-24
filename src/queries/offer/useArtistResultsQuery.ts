@@ -1,5 +1,5 @@
 import { Hit } from '@algolia/client-search'
-import { UseQueryResult, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -16,15 +16,7 @@ type UseArtistResultsProps = {
   artistId?: string
 }
 
-type ArtistResults = {
-  artistPlaylist: AlgoliaOfferWithArtistAndEan[]
-  artistTopOffers: AlgoliaOfferWithArtistAndEan[]
-}
-
-export const useArtistResultsQuery = ({
-  artistId,
-  subcategoryId,
-}: UseArtistResultsProps): UseQueryResult<ArtistResults> => {
+export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResultsProps) => {
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
   const { artistPageSubcategories } = useRemoteConfigQuery()
