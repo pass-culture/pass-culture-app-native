@@ -1,9 +1,7 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   buttons: CheatcodeCategory[]
@@ -21,18 +19,13 @@ export const CheatcodesButtonList: React.FC<Props> = ({ buttons }) => (
         <LinkToCheatcodesScreen button={category} variant="primary" />
 
         {category.subscreens.map((subscreen) => (
-          <SubscreenContainer key={subscreen.id}>
-            <LinkToCheatcodesScreen
-              button={{ ...subscreen, title: `↳ ${subscreen.title}` }}
-              variant="secondary"
-            />
-          </SubscreenContainer>
+          <LinkToCheatcodesScreen
+            key={subscreen.id}
+            button={{ ...subscreen, title: `↳ ${subscreen.title}` }}
+            variant="primary"
+          />
         ))}
       </React.Fragment>
     ))}
   </React.Fragment>
 )
-
-const SubscreenContainer = styled.View({
-  paddingLeft: getSpacing(4),
-})
