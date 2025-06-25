@@ -1,50 +1,133 @@
+// cheatcodes/pages/features/profile/CheatcodesNavigationProfile.tsx (Refactored - Final Version)
+
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+// --- Import our new types ---
+import { CheatcodeCategory } from 'cheatcodes/types'
+// --- Import the custom navigation hooks ---
+import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
+// --- Import the actual getProfileNavConfig and its types ---
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'Profile 🎨',
+// --- We define a single, well-typed category object ---
+export const profileCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'Profile 🎨',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationProfile' },
-    subscreens: [
-      { screen: 'ChangeEmailExpiredLink' },
-      { screen: 'Login' },
-      { title: 'ExpiredCreditModal', showOnlyInSearch: true },
-      getProfileNavConfig('ChangeCity'),
-      getProfileNavConfig('ChangeEmail'),
-      getProfileNavConfig('ChangeStatus'),
-      getProfileNavConfig('ConsentSettings'),
-      getProfileNavConfig('DeactivateProfileSuccess'),
-      getProfileNavConfig('DeleteProfileReason'),
-      getProfileNavConfig('FeedbackInApp'),
-      getProfileNavConfig('NotificationsSettings'),
-      getProfileNavConfig('SuspendAccountConfirmation'),
-      getProfileNavConfig('ProfileTutorialAgeInformationCredit'),
-      getProfileNavConfig('SuspendAccountConfirmationWithoutAuthentication'),
-      { ...getProfileNavConfig('ChangeEmailSetPassword'), navigationParams: { token: 'token' } },
-    ],
+    params: { screen: 'CheatcodesNavigationProfile' },
   },
-]
+  subscreens: [
+    {
+      id: uuidv4(),
+      title: 'ChangeEmailExpiredLink',
+      navigationTarget: { screen: 'ChangeEmailExpiredLink' },
+    },
+    { id: uuidv4(), title: 'Login', navigationTarget: { screen: 'Login' } },
+    // --- Direct integration of getProfileNavConfig with hardcoded titles ---
+    {
+      id: uuidv4(),
+      title: 'Profile: Change City',
+      navigationTarget: getProfileNavConfig('ChangeCity'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Change E-mail',
+      navigationTarget: getProfileNavConfig('ChangeEmail'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Change Status',
+      navigationTarget: getProfileNavConfig('ChangeStatus'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Consent Settings',
+      navigationTarget: getProfileNavConfig('ConsentSettings'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Deactivate Success',
+      navigationTarget: getProfileNavConfig('DeactivateProfileSuccess'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Delete Reason',
+      navigationTarget: getProfileNavConfig('DeleteProfileReason'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Feedback In-App',
+      navigationTarget: getProfileNavConfig('FeedbackInApp'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Notifications Settings',
+      navigationTarget: getProfileNavConfig('NotificationsSettings'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Suspend Account',
+      navigationTarget: getProfileNavConfig('SuspendAccountConfirmation'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Tutorial',
+      navigationTarget: getProfileNavConfig('ProfileTutorialAgeInformationCredit'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Suspend Account (No Auth)',
+      navigationTarget: getProfileNavConfig('SuspendAccountConfirmationWithoutAuthentication'),
+    },
+    {
+      id: uuidv4(),
+      title: 'Profile: Change E-mail (with token)',
+      navigationTarget: getProfileNavConfig('ChangeEmailSetPassword', {
+        token: 'token',
+        emailSelectionToken: 'token',
+      }),
+    },
+    // Search-only item
+    { id: uuidv4(), title: 'ExpiredCreditModal', showOnlyInSearch: true },
+  ],
+}
+
+// We export it as an array to be used in the main CheatcodesMenu
+export const cheatcodesNavigationProfileButtons: CheatcodeCategory[] = [profileCheatcodeCategory]
 
 export function CheatcodesNavigationProfile(): React.JSX.Element {
+  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
   const {
     visible: expiredCreditModalVisible,
     showModal: showExpiredCreditModal,
     hideModal: hideExpiredCreditModal,
   } = useModal(false)
 
-  return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationProfileButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationProfileButtons} />
+  const visibleSubscreens = profileCheatcodeCategory.subscreens.filter(
+    (subscreen) => !subscreen.showOnlyInSearch
+  )
 
-      <LinkToCheatcodesScreen title="ExpiredCreditModal" onPress={showExpiredCreditModal} />
+  return (
+    <CheatcodesTemplateScreen title={profileCheatcodeCategory.title} onGoBack={goBack}>
+      <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
+
+      <LinkToCheatcodesScreen
+        key="expired-credit-modal"
+        button={{
+          id: 'expired-credit-action',
+          title: 'ExpiredCreditModal',
+          onPress: showExpiredCreditModal,
+        }}
+        variant="secondary"
+      />
       <ExpiredCreditModal visible={expiredCreditModalVisible} hideModal={hideExpiredCreditModal} />
     </CheatcodesTemplateScreen>
   )

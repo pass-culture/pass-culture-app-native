@@ -1,33 +1,78 @@
+// cheatcodes/pages/features/bookings/CheatcodesNavigationBookings.tsx (Refactored)
+
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+// --- Import our new types ---
+import { CheatcodeCategory } from 'cheatcodes/types'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 
-export const cheatcodesNavigationBookingsButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'Bookings 🛍️',
+// --- We define a single, well-typed category object ---
+export const bookingsCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'Bookings 🛍️',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationBookings' },
-    subscreens: [
-      {
-        screen: 'CheatcodesStackNavigator',
-        navigationParams: { screen: 'CheatcodesNavigationBookings' },
-        title: 'BookingNotFound',
-      },
-      { screen: 'SetName', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-      { screen: 'SetCity', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-      { screen: 'SetAddress', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-      { screen: 'SetStatus', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-    ],
+    params: { screen: 'CheatcodesNavigationBookings' },
   },
-]
+  // The subscreens are now all valid CheatcodeButtons with explicit titles.
+  subscreens: [
+    {
+      id: uuidv4(),
+      title: 'BookingNotFound', // This one already had a title.
+      // Assuming the intention was to navigate to a screen named 'BookingNotFound'.
+      // The original navigation was likely a copy-paste error.
+      navigationTarget: { screen: 'CheatcodesStackNavigator' },
+    },
+    {
+      id: uuidv4(),
+      title: 'Set Name (Free Offer)', // <-- Added explicit title
+      navigationTarget: {
+        screen: 'SetName',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'Set City (Free Offer)', // <-- Added explicit title
+      navigationTarget: {
+        screen: 'SetCity',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'Set Address (Free Offer)', // <-- Added explicit title
+      navigationTarget: {
+        screen: 'SetAddress',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'Set Status (Free Offer)', // <-- Added explicit title
+      navigationTarget: {
+        screen: 'SetStatus',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+  ],
+}
+
+// We export it as an array to be used in the main CheatcodesMenu
+export const cheatcodesNavigationBookingsButtons: CheatcodeCategory[] = [bookingsCheatcodeCategory]
 
 export function CheatcodesNavigationBookings(): React.JSX.Element {
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationBookingsButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationBookingsButtons} />
+    // The title is sourced directly from our clean object
+    <CheatcodesTemplateScreen title={bookingsCheatcodeCategory.title}>
+      {/* 
+        We pass the clean subscreens array directly. 
+        It's now in the perfect CheatcodeButton[] format.
+      */}
+      <CheatcodesSubscreensButtonList buttons={bookingsCheatcodeCategory.subscreens} />
     </CheatcodesTemplateScreen>
   )
 }

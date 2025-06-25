@@ -1,146 +1,173 @@
-import React from 'react'
+// cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription.tsx (Refactored)
+
+import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+// --- Import our new types ---
+import { CheatcodeCategory } from 'cheatcodes/types'
+// --- Import the custom navigation hooks ---
+import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { useModal } from 'ui/components/modals/useModal'
 
-export const cheatcodesNavigationSubscriptionButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'Subscription 🔔',
+// Define which modals can be shown
+type VisibleModal = SubscriptionTheme | 'unsubscribing' | 'onboarding' | null
+
+// --- We define a single, well-typed category object ---
+export const subscriptionCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'Subscription 🔔',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationSubscription' },
-    subscreens: [
-      { screen: 'OnboardingSubscription' },
-      { title: 'SubscriptionSuccessModal Cinéma', showOnlyInSearch: true },
-      { title: 'SubscriptionSuccessModal Lecture', showOnlyInSearch: true },
-      { title: 'SubscriptionSuccessModal Musique', showOnlyInSearch: true },
-      { title: 'SubscriptionSuccessModal Spectacles', showOnlyInSearch: true },
-      { title: 'SubscriptionSuccessModal Visites', showOnlyInSearch: true },
-      { title: 'SubscriptionSuccessModal Activités', showOnlyInSearch: true },
-      { title: 'UnsubscribingConfirmationModal', showOnlyInSearch: true },
-      { title: 'OnboardingSubscriptionModal', showOnlyInSearch: true },
-    ],
+    params: { screen: 'CheatcodesNavigationSubscription' },
   },
+  subscreens: [
+    {
+      id: uuidv4(),
+      title: 'Page d’inscription aux notifications',
+      navigationTarget: { screen: 'OnboardingSubscription' },
+    },
+    // All other items are manual actions, so they are marked for search-only discovery
+    { id: uuidv4(), title: 'SubscriptionSuccessModal Cinéma', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'SubscriptionSuccessModal Lecture', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'SubscriptionSuccessModal Musique', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'SubscriptionSuccessModal Spectacles', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'SubscriptionSuccessModal Visites', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'SubscriptionSuccessModal Activités', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'UnsubscribingConfirmationModal', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'OnboardingSubscriptionModal', showOnlyInSearch: true },
+  ],
+}
+
+export const cheatcodesNavigationSubscriptionButtons: CheatcodeCategory[] = [
+  subscriptionCheatcodeCategory,
 ]
 
 export function CheatcodesNavigationSubscription(): React.JSX.Element {
-  const {
-    visible: cinemaModalVisible,
-    showModal: showCinemaModal,
-    hideModal: hideCinemaModal,
-  } = useModal(false)
-  const {
-    visible: lectureModalVisible,
-    showModal: showLectureModal,
-    hideModal: hideLectureModal,
-  } = useModal(false)
-  const {
-    visible: musiqueModalVisible,
-    showModal: showMusiqueModal,
-    hideModal: hideMusiqueModal,
-  } = useModal(false)
-  const {
-    visible: spectaclesModalVisible,
-    showModal: showSpectaclesModal,
-    hideModal: hideSpectaclesModal,
-  } = useModal(false)
-  const {
-    visible: visitesModalVisible,
-    showModal: showVisitesModal,
-    hideModal: hideVisitesModal,
-  } = useModal(false)
-  const {
-    visible: activitesModalVisible,
-    showModal: showActivitesModal,
-    hideModal: hideActivitesModal,
-  } = useModal(false)
-  const {
-    visible: unsubscribingModalVisible,
-    showModal: showUnsubscribingModal,
-    hideModal: hideUnsubscribingModal,
-  } = useModal(false)
-  const {
-    visible: onboardingSubModalVisible,
-    showModal: showOnboardingSubModal,
-    hideModal: hideOnboardingSubModal,
-  } = useModal(false)
+  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const [visibleModal, setVisibleModal] = useState<VisibleModal>(null)
+
+  const visibleSubscreens = subscriptionCheatcodeCategory.subscreens.filter(
+    (subscreen) => !subscreen.showOnlyInSearch
+  )
 
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationSubscriptionButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationSubscriptionButtons} />
+    <CheatcodesTemplateScreen title={subscriptionCheatcodeCategory.title} onGoBack={goBack}>
+      <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
-      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Cinéma" onPress={showCinemaModal} />
+      {/* --- REFACTORED: Explicit links using the new component API --- */}
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'cinema-modal',
+          title: 'SubscriptionSuccessModal Cinéma',
+          onPress: () => setVisibleModal(SubscriptionTheme.CINEMA),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'lecture-modal',
+          title: 'SubscriptionSuccessModal Lecture',
+          onPress: () => setVisibleModal(SubscriptionTheme.LECTURE),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'musique-modal',
+          title: 'SubscriptionSuccessModal Musique',
+          onPress: () => setVisibleModal(SubscriptionTheme.MUSIQUE),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'spectacles-modal',
+          title: 'SubscriptionSuccessModal Spectacles',
+          onPress: () => setVisibleModal(SubscriptionTheme.SPECTACLES),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'visites-modal',
+          title: 'SubscriptionSuccessModal Visites',
+          onPress: () => setVisibleModal(SubscriptionTheme.VISITES),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'activites-modal',
+          title: 'SubscriptionSuccessModal Activités',
+          onPress: () => setVisibleModal(SubscriptionTheme.ACTIVITES),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'unsubscribing-modal',
+          title: 'UnsubscribingConfirmationModal',
+          onPress: () => setVisibleModal('unsubscribing'),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'onboarding-modal',
+          title: 'OnboardingSubscriptionModal',
+          onPress: () => setVisibleModal('onboarding'),
+        }}
+        variant="secondary"
+      />
+
+      {/* --- REFACTORED: Modals driven by the single state variable --- */}
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.CINEMA}
-        visible={cinemaModalVisible}
-        dismissModal={hideCinemaModal}
+        visible={visibleModal === SubscriptionTheme.CINEMA}
+        dismissModal={() => setVisibleModal(null)}
       />
-
-      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Lecture" onPress={showLectureModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.LECTURE}
-        visible={lectureModalVisible}
-        dismissModal={hideLectureModal}
+        visible={visibleModal === SubscriptionTheme.LECTURE}
+        dismissModal={() => setVisibleModal(null)}
       />
-
-      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Musique" onPress={showMusiqueModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.MUSIQUE}
-        visible={musiqueModalVisible}
-        dismissModal={hideMusiqueModal}
-      />
-
-      <LinkToCheatcodesScreen
-        title="SubscriptionSuccessModal Spectacles"
-        onPress={showSpectaclesModal}
+        visible={visibleModal === SubscriptionTheme.MUSIQUE}
+        dismissModal={() => setVisibleModal(null)}
       />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.SPECTACLES}
-        visible={spectaclesModalVisible}
-        dismissModal={hideSpectaclesModal}
+        visible={visibleModal === SubscriptionTheme.SPECTACLES}
+        dismissModal={() => setVisibleModal(null)}
       />
-
-      <LinkToCheatcodesScreen title="SubscriptionSuccessModal Visites" onPress={showVisitesModal} />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.VISITES}
-        visible={visitesModalVisible}
-        dismissModal={hideVisitesModal}
-      />
-
-      <LinkToCheatcodesScreen
-        title="SubscriptionSuccessModal Activités"
-        onPress={showActivitesModal}
+        visible={visibleModal === SubscriptionTheme.VISITES}
+        dismissModal={() => setVisibleModal(null)}
       />
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.ACTIVITES}
-        visible={activitesModalVisible}
-        dismissModal={hideActivitesModal}
+        visible={visibleModal === SubscriptionTheme.ACTIVITES}
+        dismissModal={() => setVisibleModal(null)}
       />
 
-      <LinkToCheatcodesScreen
-        title="UnsubscribingConfirmationModal"
-        onPress={showUnsubscribingModal}
-      />
       <UnsubscribingConfirmationModal
-        theme={SubscriptionTheme.VISITES}
-        visible={unsubscribingModalVisible}
-        dismissModal={hideUnsubscribingModal}
-        onUnsubscribePress={hideUnsubscribingModal}
-      />
-
-      <LinkToCheatcodesScreen
-        title="OnboardingSubscriptionModal"
-        onPress={showOnboardingSubModal}
+        theme={SubscriptionTheme.VISITES} // Example theme
+        visible={visibleModal === 'unsubscribing'}
+        dismissModal={() => setVisibleModal(null)}
+        onUnsubscribePress={() => setVisibleModal(null)}
       />
       <OnboardingSubscriptionModal
-        visible={onboardingSubModalVisible}
-        dismissModal={hideOnboardingSubModal}
+        visible={visibleModal === 'onboarding'}
+        dismissModal={() => setVisibleModal(null)}
       />
     </CheatcodesTemplateScreen>
   )

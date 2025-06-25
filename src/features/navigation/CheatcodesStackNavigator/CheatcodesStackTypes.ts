@@ -46,3 +46,5 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenNewCaledonia: undefined
   CheatcodesScreenRemoteConfig: undefined
 }
+
+export type CheatcodesStackRouteName = keyof CheatcodesStackParamList

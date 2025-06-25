@@ -1,39 +1,51 @@
-import { useNavigation } from '@react-navigation/native'
+// cheatcodes/pages/others/CheatcodesNavigationErrors.tsx (Complete and Corrected)
+
 import React, { createElement, FunctionComponent, useState } from 'react'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { AsyncError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
+import { AsyncError, LogTypeEnum, ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { Typo } from 'ui/theme'
 
-export const cheatcodesNavigationErrorsButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'Errors 👾',
+export const errorsCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'Errors 👾',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationErrors' },
-    subscreens: [
-      { screen: 'BannedCountryError' },
-      { title: 'Contentful KO error', showOnlyInSearch: true },
-      { title: 'Offre inexistante', showOnlyInSearch: true },
-      { title: 'Maintenance', showOnlyInSearch: true },
-      { title: 'Error rendering', showOnlyInSearch: true },
-    ],
+    params: { screen: 'CheatcodesNavigationErrors' },
   },
-]
+  subscreens: [
+    { id: uuidv4(), title: 'Pays banni', navigationTarget: { screen: 'BannedCountryError' } },
+    { id: uuidv4(), title: 'Contentful KO error', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'Offre inexistante', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'Maintenance', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'Error rendering', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'Async error', showOnlyInSearch: true },
+  ],
+}
+
+export const cheatcodesNavigationErrorsButtons: CheatcodeCategory[] = [errorsCheatcodeCategory]
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 
+// Define the component outside the render path to make it stable.
+const MaintenanceScreenForCheatcode = () => (
+  <Maintenance message="Some maintenance message that is set in Firestore" />
+)
+
 export const CheatcodesNavigationErrors: FunctionComponent = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
@@ -47,7 +59,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
 
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
-    if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
+    if (asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', {
         retry: errorAsyncQuery,
         logType: LogTypeEnum.ERROR,
@@ -60,58 +72,77 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
     throw screenError
   }
 
+  const visibleSubscreens = errorsCheatcodeCategory.subscreens.filter(
+    (subscreen) => !subscreen.showOnlyInSearch
+  )
+
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationErrorsButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationErrorsButtons} />
+    <CheatcodesTemplateScreen title={errorsCheatcodeCategory.title} onGoBack={goBack}>
+      <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen
-        title={
-          asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
-            ? `${MAX_ASYNC_TEST_REQ_COUNT} erreurs asynchrones`
-            : 'OK'
-        }
-        disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
-        onPress={() => errorAsyncQuery()}
-      />
-
-      <LinkToCheatcodesScreen
-        title="Contentful KO error"
-        onPress={() =>
-          setScreenError(
-            new ScreenError(
-              'Échec de la requête https://cdn.contentful.com/spaces/2bg01iqy0isv/environments/testing/entries?include=2&content_type=homepageNatif&access_token=<TOKEN>, code: 400',
-              { Screen: NoContentError, logType }
-            )
-          )
-        }
-      />
-
-      <LinkToCheatcodesScreen
-        title="Offre inexistante"
-        onPress={() => navigate('Offer', { id: 0, from: 'searchresults' })}
-      />
-
-      <LinkToCheatcodesScreen
-        title="Maintenance"
-        onPress={() =>
-          setScreenError(
-            new ScreenError('Test maintenance page', {
-              Screen: () => (
-                <Maintenance message="Some maintenance message that is set in Firestore" />
-              ),
-              logType,
-            })
-          )
-        }
-      />
-
-      <LinkToCheatcodesScreen
-        title="Error rendering"
-        onPress={() => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-          setRenderedError(createElement(CenteredText, { children: CenteredText })) // eslint-disable-line react/no-children-prop
+        button={{
+          id: 'async-error-action',
+          title:
+            asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
+              ? `${MAX_ASYNC_TEST_REQ_COUNT - asyncTestReqCount} erreurs asynchrones restantes`
+              : 'OK',
+          onPress: () => errorAsyncQuery(),
+          disabled: isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT,
         }}
+        variant="secondary"
+      />
+
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'contentful-error-action',
+          title: 'Contentful KO error',
+          onPress: () =>
+            setScreenError(
+              new ScreenError('Contentful error', {
+                Screen: NoContentError,
+                logType,
+              })
+            ),
+        }}
+        variant="secondary"
+      />
+
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'non-existent-offer-action',
+          title: 'Offre inexistante',
+          navigationTarget: { screen: 'Offer', params: { id: 0, from: 'searchresults' } },
+        }}
+        variant="secondary"
+      />
+
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'maintenance-error-action',
+          title: 'Maintenance',
+          onPress: () =>
+            setScreenError(
+              new ScreenError('Test maintenance page', {
+                Screen: MaintenanceScreenForCheatcode,
+                logType,
+              })
+            ),
+        }}
+        variant="secondary"
+      />
+
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'rendering-error-action',
+          title: 'Error rendering',
+          onPress: () => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            setRenderedError(createElement(CenteredText, { children: CenteredText })) // eslint-disable-line react/no-children-prop
+          },
+        }}
+        variant="secondary"
       />
       {renderedError}
     </CheatcodesTemplateScreen>
