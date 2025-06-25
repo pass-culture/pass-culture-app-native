@@ -275,14 +275,52 @@ Nous devons déployer sur les stores, ce qui peut etre long et contraignant
 
 ### Besoins
 
-Accessibilité
-Accès aux droits
-Pass pour tous
+#### Accès aux droits
+
+React Native nous impose de plus supporter les anciennes versions d'Android et iOS
+
+Nous avons besoin de conserver le site web pour un meilleur accès aux droits
+
+#### Accessibilité
+
+Un site web est par défaut accessible (les balises HTML sont conçus de manière accessible)
+
+#### pass pour tous
+
+Pour étendre nos publics avec le projet du pass pour tous, nous pourrions vouloir mettre plus d'effort sur la partie web
+
+#### Découvrabilité
+
+Nous avons besoin d'une présence sur les stores (Google Play, Apple Store) pour pouvoir etre découvert par nos jeunes
 
 ### Proposition
 
-WebView
-Une plateforme principale à maintenir
+Il serait possible de se concentrer sur le développement sur la partie web (Progressive Web App)
 
-moins de dépendances
-Continuous Déploiement
+Le site serait adapté à l'affichage mobile (Responsive Design)
+
+Le site serait affiché dans l'application (WebView) de manière relativement transparente pour l'utilisateur
+
+Nous pourrions transitionner lentement de manière transparente
+
+### Conséquences
+
+#### Une plateforme principale à maintenir
+
+La maintenance et l'évolution serait facilitée : il y aura que le web à vérifier
+
+Android et iOS pourraient etre vérifié d'une manière moins fréquente
+
+#### Moins de dépendances
+
+À terme, nous aurions moins de dépendances, car il resterait principalement les dépendances web
+
+Seul React Native et une petite sélection de dépendances liées à cet écosystème resterait
+
+Les mises à jour de dépendance seraient plus facile, nous passerons moins de temps à les faire, et on pourrait utiliser ce temps pour travailler sur d'autres sujets techniques de fond
+
+#### Déploiement Continue
+
+Avec un site web, il serait possible de déployer plusieurs fois par jours très facilement
+
+Nous continuerons de déployer sur les stores de manières moins fréquentes
