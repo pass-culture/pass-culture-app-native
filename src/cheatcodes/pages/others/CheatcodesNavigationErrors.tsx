@@ -24,7 +24,11 @@ const errorsCheatcodeCategory: CheatcodeCategory = {
     params: { screen: 'CheatcodesNavigationErrors' },
   },
   subscreens: [
-    { id: uuidv4(), title: 'Pays banni', navigationTarget: { screen: 'BannedCountryError' } },
+    {
+      id: uuidv4(),
+      title: 'BannedCountryError',
+      navigationTarget: { screen: 'BannedCountryError' },
+    },
     { id: uuidv4(), title: 'Contentful KO error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Offre inexistante', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Maintenance', showOnlyInSearch: true },

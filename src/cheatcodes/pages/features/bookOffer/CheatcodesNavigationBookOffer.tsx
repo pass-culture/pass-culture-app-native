@@ -15,7 +15,7 @@ const bookOfferCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Confirmation de réservation',
+      title: 'BookingConfirmation',
       navigationTarget: {
         screen: 'BookingConfirmation',
         params: { offerId: 11224, bookingId: 1240 },

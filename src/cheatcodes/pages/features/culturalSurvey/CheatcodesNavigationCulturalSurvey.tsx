@@ -17,17 +17,17 @@ const culturalSurveyCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Introduction au questionnaire',
+      title: 'CulturalSurveyIntro',
       navigationTarget: { screen: 'CulturalSurveyIntro' },
     },
     {
       id: uuidv4(),
-      title: 'Questions du questionnaire',
+      title: 'CulturalSurveyQuestions',
       navigationTarget: { screen: 'CulturalSurveyQuestions' },
     },
     {
       id: uuidv4(),
-      title: 'Page de remerciement',
+      title: 'CulturalSurveyThanks',
       navigationTarget: { screen: 'CulturalSurveyThanks' },
     },
   ],

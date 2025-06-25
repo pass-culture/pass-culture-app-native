@@ -18,27 +18,27 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Compte suspendu (fraude)',
+      title: 'FraudulentSuspendedAccount',
       navigationTarget: { screen: 'FraudulentSuspendedAccount' },
     },
     {
       id: uuidv4(),
-      title: 'Compte suspendu (demande)',
+      title: 'SuspendedAccountUponUserRequest',
       navigationTarget: { screen: 'SuspendedAccountUponUserRequest' },
     },
     {
       id: uuidv4(),
-      title: 'Compte réactivé avec succès',
+      title: 'AccountReactivationSuccess',
       navigationTarget: { screen: 'AccountReactivationSuccess' },
     },
     {
       id: uuidv4(),
-      title: 'Lien de réinitialisation expiré',
+      title: 'ResetPasswordExpiredLink',
       navigationTarget: { screen: 'ResetPasswordExpiredLink' },
     },
     {
       id: uuidv4(),
-      title: 'E-mail de réinitialisation envoyé',
+      title: 'ResetPasswordEmailSent (email: jean.dupont@gmail.com)',
       navigationTarget: {
         screen: 'ResetPasswordEmailSent',
         params: { email: 'jean.dupont@gmail.com' },
@@ -46,42 +46,42 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Profile: Delete Reason',
+      title: 'DeleteProfileReason',
       navigationTarget: getProfileNavConfig('DeleteProfileReason'),
     },
     {
       id: uuidv4(),
-      title: 'Profile: Debug Screen',
+      title: 'DebugScreen',
       navigationTarget: getProfileNavConfig('DebugScreen'),
     },
     {
       id: uuidv4(),
-      title: 'Profile: Confirm Delete',
+      title: 'ConfirmDeleteProfile',
       navigationTarget: getProfileNavConfig('ConfirmDeleteProfile'),
     },
     {
       id: uuidv4(),
-      title: 'Profile: Deactivate Success',
+      title: 'DeactivateProfileSuccess',
       navigationTarget: getProfileNavConfig('DeactivateProfileSuccess'),
     },
     {
       id: uuidv4(),
-      title: 'Profile: Delete Success',
+      title: 'DeleteProfileSuccess',
       navigationTarget: getProfileNavConfig('DeleteProfileSuccess'),
     },
     {
       id: uuidv4(),
-      title: 'Profile: Delete Confirmation',
+      title: 'DeleteProfileConfirmation',
       navigationTarget: getProfileNavConfig('DeleteProfileConfirmation'),
     },
     {
       id: uuidv4(),
-      title: 'Profile: Account Not Deletable',
+      title: 'DeleteProfileAccountNotDeletable',
       navigationTarget: getProfileNavConfig('DeleteProfileAccountNotDeletable'),
     },
     {
       id: uuidv4(),
-      title: 'Profile: Account Hacked',
+      title: 'DeleteProfileAccountHacked',
       navigationTarget: getProfileNavConfig('DeleteProfileAccountHacked'),
     },
   ],

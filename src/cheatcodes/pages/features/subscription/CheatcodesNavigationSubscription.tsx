@@ -24,7 +24,7 @@ const subscriptionCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Page d’inscription aux notifications',
+      title: 'OnboardingSubscription',
       navigationTarget: { screen: 'OnboardingSubscription' },
     },
     { id: uuidv4(), title: 'SubscriptionSuccessModal Cinéma', showOnlyInSearch: true },

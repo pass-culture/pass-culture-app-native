@@ -15,12 +15,12 @@ const birthdayNotificationsCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Écran 18 ans',
+      title: 'EighteenBirthday',
       navigationTarget: { screen: 'EighteenBirthday' },
     },
     {
       id: uuidv4(),
-      title: 'Notification re-crédit anniversaire',
+      title: 'RecreditBirthdayNotification',
       navigationTarget: { screen: 'RecreditBirthdayNotification' },
     },
   ],

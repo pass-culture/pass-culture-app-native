@@ -12,7 +12,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 
 const onboardingCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
-  title: 'Onboarding 🚸',
+  title: 'Onboarding 🚸 (mobile only)',
   navigationTarget: {
     screen: 'CheatcodesStackNavigator',
     params: { screen: 'CheatcodesNavigationOnboarding' },
@@ -20,37 +20,37 @@ const onboardingCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Onboarding: Non éligible',
+      title: 'OnboardingNotEligible',
       navigationTarget: getOnboardingNavConfig('OnboardingNotEligible'),
     },
     {
       id: uuidv4(),
-      title: 'Onboarding: Bienvenue (grand public)',
+      title: 'OnboardingGeneralPublicWelcome',
       navigationTarget: getOnboardingNavConfig('OnboardingGeneralPublicWelcome'),
     },
     {
       id: uuidv4(),
-      title: 'Onboarding: Bienvenue',
+      title: 'OnboardingWelcome',
       navigationTarget: getOnboardingNavConfig('OnboardingWelcome'),
     },
     {
       id: uuidv4(),
-      title: 'Onboarding: Géolocalisation',
+      title: 'OnboardingGeolocation',
       navigationTarget: getOnboardingNavConfig('OnboardingGeolocation'),
     },
     {
       id: uuidv4(),
-      title: 'Onboarding: Choix de l’âge',
+      title: 'OnboardingAgeSelectionFork',
       navigationTarget: getOnboardingNavConfig('OnboardingAgeSelectionFork'),
     },
     {
       id: uuidv4(),
-      title: 'Onboarding: Info âge (17 ans)',
+      title: 'OnboardingAgeInformation (age: 17)',
       navigationTarget: getOnboardingNavConfig('OnboardingAgeInformation', { age: 17 }),
     },
     {
       id: uuidv4(),
-      title: 'Onboarding: Info âge (18 ans)',
+      title: 'OnboardingAgeInformation (age: 18)',
       navigationTarget: getOnboardingNavConfig('OnboardingAgeInformation', { age: 18 }),
     },
   ],

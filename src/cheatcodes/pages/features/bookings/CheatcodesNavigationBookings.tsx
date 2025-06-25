@@ -21,7 +21,7 @@ const bookingsCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Set Name (Free Offer)',
+      title: 'SetName',
       navigationTarget: {
         screen: 'SetName',
         params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
@@ -29,7 +29,7 @@ const bookingsCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Set City (Free Offer)',
+      title: 'SetCity',
       navigationTarget: {
         screen: 'SetCity',
         params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
@@ -37,7 +37,7 @@ const bookingsCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Set Address (Free Offer)',
+      title: 'SetAddress',
       navigationTarget: {
         screen: 'SetAddress',
         params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
@@ -45,7 +45,7 @@ const bookingsCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Set Status (Free Offer)',
+      title: 'SetStatus',
       navigationTarget: {
         screen: 'SetStatus',
         params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },

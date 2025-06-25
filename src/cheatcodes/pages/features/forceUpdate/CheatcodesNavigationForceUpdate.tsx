@@ -18,7 +18,6 @@ const forceUpdateCheatcodeCategory: CheatcodeCategory = {
     screen: 'CheatcodesStackNavigator',
     params: { screen: 'CheatcodesNavigationForceUpdate' },
   },
-  // This subscreen exists only for search discovery.
   subscreens: [
     {
       id: uuidv4(),
@@ -48,7 +47,6 @@ export function CheatcodesNavigationForceUpdate(): React.JSX.Element {
 
   if (screenError) throw screenError
 
-  // Since all subscreens are showOnlyInSearch, this will be an empty array, which is correct.
   const visibleSubscreens = forceUpdateCheatcodeCategory.subscreens.filter(
     (subscreen) => !subscreen.showOnlyInSearch
   )

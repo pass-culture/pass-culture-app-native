@@ -29,15 +29,15 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
     params: { screen: 'CheatcodesNavigationSignUp' },
   },
   subscreens: [
-    { id: uuidv4(), title: 'Compte créé', navigationTarget: { screen: 'AccountCreated' } },
+    { id: uuidv4(), title: 'AccountCreated', navigationTarget: { screen: 'AccountCreated' } },
     {
       id: uuidv4(),
-      title: 'Compte bénéficiaire créé',
+      title: 'BeneficiaryAccountCreated',
       navigationTarget: { screen: 'BeneficiaryAccountCreated' },
     },
     {
       id: uuidv4(),
-      title: 'Lien de confirmation expiré',
+      title: 'SignupConfirmationExpiredLink',
       navigationTarget: {
         screen: 'SignupConfirmationExpiredLink',
         params: { email: 'john@wick.com' },
@@ -45,7 +45,7 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Éligibilité (pas encore mineur)',
+      title: 'NotYetUnderageEligibility',
       navigationTarget: {
         screen: 'NotYetUnderageEligibility',
         params: { eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString() },
@@ -53,7 +53,7 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Buffer de validation E-mail',
+      title: 'AfterSignupEmailValidationBuffer',
       navigationTarget: {
         screen: 'AfterSignupEmailValidationBuffer',
         params: {
