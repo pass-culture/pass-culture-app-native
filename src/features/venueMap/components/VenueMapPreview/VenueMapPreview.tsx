@@ -52,7 +52,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
 
 const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
-  borderColor: theme.colors.greyDark,
+  borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
   padding: getSpacing(4),
   ...getShadow({

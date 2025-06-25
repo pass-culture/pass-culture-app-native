@@ -123,7 +123,7 @@ const LocationPointerFilled = styled(LocationPointerAppV2).attrs(({ theme }) => 
 }))({})
 
 const LocationPointerNotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.small,
 }))({})
 

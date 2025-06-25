@@ -99,7 +99,7 @@ const SelectedDay = styled(View)(({ theme }) => ({
 
 const SelectedDayNumber = styled(Typo.Button)(({ theme }) => ({
   alignSelf: 'center',
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.inverted,
 }))
 
 const DayContainer = styled(View)({

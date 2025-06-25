@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { useTheme, DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
@@ -65,7 +65,7 @@ const IconContainer = styled.View({
 })
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.extraSmall,
 }))``
 
@@ -82,7 +82,7 @@ const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
     overflow: 'hidden',
     backgroundColor: selected
       ? theme.designSystem.color.background.brandPrimary
-      : theme.colors.white,
+      : theme.designSystem.color.background.default,
     paddingHorizontal: getSpacing(3.25),
     alignItems: 'center',
     justifyContent: 'center',

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
@@ -24,20 +24,17 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
         <IconContainer>
           <ValidateWhite />
         </IconContainer>
-      ) : (
-        <Spacer.Row numberOfSpaces={5} />
-      )}
+      ) : undefined}
       <Label numberOfLines={1} selected={selected}>
         {label}
       </Label>
-      <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
       <HiddenCheckbox name={label} checked={selected} accessibilityLabel={label} />
     </StyledTouchableOpacity>
   )
 }
 
 const ValidateWhite = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.lockedInverted,
   size: theme.icons.sizes.smaller,
 }))``
 
@@ -66,6 +63,8 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
 )
 
 const Label = styled(Typo.BodyAccent)<{ selected: boolean }>(({ theme, selected }) => ({
+  marginLeft: selected ? undefined : getSpacing(5),
+  marginRight: selected ? getSpacing(2) : getSpacing(5),
   marginVertical: getSpacing(2.5),
-  color: selected ? theme.colors.white : theme.colors.black,
+  color: selected ? theme.designSystem.color.text.inverted : theme.designSystem.color.text.default,
 }))
