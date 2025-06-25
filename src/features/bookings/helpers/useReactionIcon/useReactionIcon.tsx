@@ -16,26 +16,18 @@ export const useReactionIcon = (reaction?: ReactionTypeEnum | null) => {
     [iconFactory]
   )
 
-  const ReactionDislikeIcon = useMemo(
-    () =>
-      styled(iconFactory.getIcon('dislike-filled')).attrs(({ theme }) => ({
-        color: theme.designSystem.color.icon.default,
-      }))``,
-    [iconFactory]
-  )
-
   const getCustomReactionIcon = useCallback(
     (reaction?: ReactionTypeEnum | null): React.FC<AccessibleIcon> => {
       switch (reaction) {
         case ReactionTypeEnum.LIKE:
           return ReactionLikeIcon
         case ReactionTypeEnum.DISLIKE:
-          return ReactionDislikeIcon
+          return iconFactory.getIcon('dislike-filled')
         default:
           return iconFactory.getIcon('like')
       }
     },
-    [ReactionLikeIcon, ReactionDislikeIcon, iconFactory]
+    [ReactionLikeIcon, iconFactory]
   )
 
   return getCustomReactionIcon(reaction)

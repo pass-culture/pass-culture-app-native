@@ -34,7 +34,7 @@ const Container = styled.View(({ theme }) => {
         height: 2,
       },
       shadowRadius: 3,
-      shadowColor: theme.colors.black,
+      shadowColor: theme.designSystem.color.background.lockedInverted,
       shadowOpacity: 0.1,
     })
   }

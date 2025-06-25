@@ -1,5 +1,7 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import { Platform, ViewStyle } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
@@ -39,7 +41,9 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
             {...blurImageTransform}
           />
         ) : (
-          <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight} />
+          <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight}>
+            <BlackGradient />
+          </DefaultImagePlaceholderOfferV2>
         )}
       </ImageContainer>
       {children}
@@ -64,3 +68,10 @@ const DefaultImagePlaceholderOfferV2 = styled.View<{ width: number; height: numb
     height,
   })
 )
+
+const BlackGradient = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0.1),
+  ],
+}))({ height: '100%' })

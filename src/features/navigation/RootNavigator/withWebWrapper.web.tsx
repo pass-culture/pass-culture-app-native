@@ -18,7 +18,7 @@ const SiteWrapper = styled.View(({ theme }) => ({
   flex: 1,
   margin: 'auto',
   width: '100%',
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const SiteContainer = styled.View(({ theme }) => ({

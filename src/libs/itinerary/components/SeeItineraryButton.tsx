@@ -26,10 +26,9 @@ export function SeeItineraryButton(props: Props) {
   )
 }
 
-const Icon = styled(LocationPointer).attrs(({ theme }) => ({
-  color: theme.colors.black,
+const Icon = styled(LocationPointer).attrs({
   accessibilityLabel: 'Nouvelle fenêtre',
-}))``
+})``
 
 const Container = styled.View({
   alignItems: 'flex-start',

@@ -206,10 +206,11 @@ exports[`<FraudulentSuspendedAccount /> should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#ffffff",
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "textAlign": "center",
             },
           ]
         }
@@ -230,10 +231,11 @@ exports[`<FraudulentSuspendedAccount /> should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#ffffff",
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "textAlign": "center",
             },
           ]
         }

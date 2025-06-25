@@ -58,11 +58,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
   return (
     <Wrapper>
       {navigateTo ? (
-        <InternalTouchableLink
-          navigateTo={navigateTo}
-          hoverUnderlineColor={theme.designSystem.color.text.inverted}>
-          {content}
-        </InternalTouchableLink>
+        <InternalTouchableLink navigateTo={navigateTo}>{content}</InternalTouchableLink>
       ) : (
         content
       )}

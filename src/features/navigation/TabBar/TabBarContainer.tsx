@@ -31,7 +31,7 @@ const MainContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   borderTopStyle: 'solid',
   borderTopWidth: getSpacing(1 / 4),
-  borderTopColor: theme.colors.greyMedium,
+  borderTopColor: theme.designSystem.color.border.default,
   width: '100%',
   position: 'absolute',
   bottom: 0,
@@ -39,6 +39,6 @@ const MainContainer = styled.View(({ theme }) => ({
     shadowOffset: { width: 0, height: getSpacing(1 / 4) },
     shadowRadius: getSpacing(1),
     shadowColor: theme.colors.black,
-    shadowOpacity: 0.2,
+    shadowOpacity: 1,
   }),
 }))
