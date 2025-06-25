@@ -2,6 +2,7 @@ import { onlineManager, useQuery } from 'react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getAppBuildVersion } from 'libs/packageJson'
 
 const isFeatureFlagActive = (
@@ -19,7 +20,7 @@ const isFeatureFlagActive = (
 
 export type FeatureFlagAll = {
   featureFlag: string
-  isFeatureFlagActive: boolean // We don't use RemoteStoreFeatureFlags as we want FFs that are deleted from code
+  isFeatureFlagActive: boolean
 }
 
 export const useCheatcodesFeatureFlagQuery = () => {
@@ -43,19 +44,29 @@ export const useCheatcodesFeatureFlagQuery = () => {
     return {}
   }
 
+  const knownFlags = new Set(Object.values(RemoteStoreFeatureFlags))
+
   const featureFlags = Object.entries(allFlagsData).reduce(
     (flags, [key, config]) => {
-      const owner = (config?.owner?.toLowerCase() as squads) ?? 'squad non-definie'
+      const isKnownFlag = knownFlags.has(key as RemoteStoreFeatureFlags)
+
+      // Determine the owner. If the flag is not known, assign it to the special category 'not used in code'.
+      // Otherwise, use its real owner from the config.
+      const owner = isKnownFlag
+        ? ((config?.owner?.toLowerCase() as squads) ?? 'squad non-definie')
+        : 'not used in code'
+
       if (!flags[owner]) {
         flags[owner] = []
       }
+
       flags[owner].push({
         featureFlag: key,
         isFeatureFlagActive: isFeatureFlagActive(config, appBuildVersion),
       })
       return flags
     },
-    {} as Record<squads | 'squad non-definie', FeatureFlagAll[]>
+    {} as Record<squads | 'squad non-definie' | 'removed from code', FeatureFlagAll[]>
   )
 
   return featureFlags
