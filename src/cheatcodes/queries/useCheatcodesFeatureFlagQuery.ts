@@ -49,9 +49,6 @@ export const useCheatcodesFeatureFlagQuery = () => {
   const featureFlags = Object.entries(allFlagsData).reduce(
     (flags, [key, config]) => {
       const isKnownFlag = knownFlags.has(key as RemoteStoreFeatureFlags)
-
-      // Determine the owner. If the flag is not known, assign it to the special category 'not used in code'.
-      // Otherwise, use its real owner from the config.
       const owner = isKnownFlag
         ? ((config?.owner?.toLowerCase() as squads) ?? 'squad non-definie')
         : 'not used in code'
