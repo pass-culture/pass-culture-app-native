@@ -45,7 +45,7 @@ Quand tel est le cas, il est possible de tester l'application à des niveaux plu
 
 ## Les principes
 
-### React Query
+### La gestion d'état réseau avec React Query
 
 React Query est au coeur de notre application et pas utilisé à sa pleine puissance.
 
@@ -117,7 +117,52 @@ const useArtists = () => const { data, isLoading } = useMutation({ queryFn: fetc
 const useArtistsMutation = () => const { data, isLoading } = useMutation({ queryFn: fetchArtists, queryKeys: ['artists']})
 ```
 
-### Le layout
+#### State des queries
+
+La gestion des états des queries (RQ) dans l'app est primordiale pour s'assurer d'avoir un rendu cohérent.
+Une fois la version de RQ ≥ 4 nous pouvons utiliser:
+
+- Suspense: pour gérer le loading des composants -> Suspense se charge d'afficher un composant de chargement tant que la data n'est pas présente et le composant désiré le cas échéant.
+
+```jsx
+// au niveau de la navigation
+const navigation = () => (
+  <ErrorBoundary onReset={reset} FallbackComponent={ErrorView}>
+    <React.Suspense fallback={<LoadingPage />}>
+      <SomePage />
+    </React.Suspense>
+  </ErrorBoundary>
+)
+
+// au niveau de la page
+const SomePage = () => {
+  const { data } = useSuspenseQuery({ queryKey, queryFn })
+  return <SomeComponent data={data} />
+}
+```
+
+- Error Boundary:
+  - au niveau page les erreurs sont gérées de façon dure: si une erreur arrive lors du chargement de la donnée principale pour la page, la page doit afficher un `not found`
+
+```js
+<ErrorBoundary onReset={reset} FallbackComponent={<PageNotFound>}>
+    <React.Suspense fallback={<LoadingContainer />}>
+        <SomeContainer/>
+    </React.Suspense>
+</ErrorBoundary>
+```
+
+- au niveau container, les erreurs seront généralement (mais pas systématiquement) gérées de façon souple, par exemple si une playlist de recommandation ne se charge pas dans une page, on ne doit pas empêcher l'affichage de la page mais plutôt échouer de façon silencieuse et ne pas afficher la playlist
+
+```js
+<ErrorBoundary onReset={reset} FallbackComponent={null}>
+  <React.Suspense fallback={<LoadingContainer />}>
+    <SomeContainer />
+  </React.Suspense>
+</ErrorBoundary>
+```
+
+### L'organisation des composants
 
 Notre architecture de composant est constituée de `pages`, de `containers` et de `presentational` composants
 
@@ -154,7 +199,7 @@ const ArtistsPage: FunctionComponent = () => {
 }
 ```
 
-### Les `presentational` components
+#### Les `presentational` components
 
 Ce sont des composants contenant uniquement des logiques de présentation (pas de logique métier), ils ne doivent afficher que ce qui est passé en `props`
 
@@ -257,7 +302,7 @@ const Container: FC<{ subtitle: string }> = ({ subtitle }) => {
 }
 ```
 
-### Zustand
+### La gestion d'états locaux avec Zustand
 
 Zustand est le state global de l'app, il permet de partager et modifier des variables entre plusieurs vues.
 Il évite le props drilling et l'utilisation de contextes qui sont néfastes à l'app (en terme de maintenance et d'optimisation de rendus)
@@ -277,51 +322,6 @@ Nous nous efforcerons dans le futur de déplacer un maximum de logiques métiers
 Cette logique est possible car nous maintenons le code de l'API, et que les routes natives ne sont utilisées que par l'app react native.
 Nous pouvons introduire des breakings changes grâce au versionning des routes (/v1, /v2, ...).
 
-### State des queries
-
-La gestion des états des queries (RQ) dans l'app est primordiale pour s'assurer d'avoir un rendu cohérent.
-Une fois la version de RQ ≥ 4 nous pouvons utiliser:
-
-- Suspense: pour gérer le loading des composants -> Suspense se charge d'afficher un composant de chargement tant que la data n'est pas présente et le composant désiré le cas échéant.
-
-```jsx
-// au niveau de la navigation
-const navigation = () => (
-  <ErrorBoundary onReset={reset} FallbackComponent={ErrorView}>
-    <React.Suspense fallback={<LoadingPage />}>
-      <SomePage />
-    </React.Suspense>
-  </ErrorBoundary>
-)
-
-// au niveau de la page
-const SomePage = () => {
-  const { data } = useSuspenseQuery({ queryKey, queryFn })
-  return <SomeComponent data={data} />
-}
-```
-
-- Error Boundary:
-  - au niveau page les erreurs sont gérées de façon dure: si une erreur arrive lors du chargement de la donnée principale pour la page, la page doit afficher un `not found`
-
-```js
-<ErrorBoundary onReset={reset} FallbackComponent={<PageNotFound>}>
-    <React.Suspense fallback={<LoadingContainer />}>
-        <SomeContainer/>
-    </React.Suspense>
-</ErrorBoundary>
-```
-
-- au niveau container, les erreurs seront généralement (mais pas systématiquement) gérées de façon souple, par exemple si une playlist de recommandation ne se charge pas dans une page, on ne doit pas empêcher l'affichage de la page mais plutôt échouer de façon silencieuse et ne pas afficher la playlist
-
-```js
-<ErrorBoundary onReset={reset} FallbackComponent={null}>
-  <React.Suspense fallback={<LoadingContainer />}>
-    <SomeContainer />
-  </React.Suspense>
-</ErrorBoundary>
-```
-
 ### Séparation of concern, page, containers et components
 
 Une page est un container qui a accès à la navigation.
@@ -335,3 +335,16 @@ Le découpage de la page en container peut venir de plusieurs contraintes:
 - chaque container peut être lié à un contexte (SOC)
 - si les tests sont simplifiés par la mise en place de containers multiples: la séparation en container peut diminuer la combinatoire des tests en isolant les logiques et en ne les combinant pas
 - les containers seront testés dans la page pour leur cas nominal et dans leurs propres fichiers de tests pour les cas complexes
+
+TODO:
+
+- ne pas mocker les hoks faire du msw
+
+  - à creuser plus loin
+
+  - navigation
+  - analytics
+  - zustand
+  - suspense / react query v5
+
+  - faire des règles ESLint pour enforce nos principes
