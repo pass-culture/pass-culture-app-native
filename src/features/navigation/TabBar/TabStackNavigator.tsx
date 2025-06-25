@@ -14,6 +14,9 @@ import { TabBar } from './TabBar'
 
 const initialRouteName = 'Home'
 
+// For some reason, inlining "withAsyncErrorBoundary(Home)" directly in the Screen's component prop causes unexpected behavior on the home (when pressing the home tab, the whole page refreshes instead of scrolling to the top of the home)
+const HomeWithAsyncErrorBoundry = withAsyncErrorBoundary(Home)
+
 const TAB_NAVIGATOR_SCREEN_OPTIONS: BottomTabNavigationOptions = {
   headerShown: false,
   freezeOnBlur: true,
@@ -32,12 +35,12 @@ export const TabNavigator: React.FC = () => {
       backBehavior="history">
       <TabStackNavigatorBase.Screen
         name="Home"
-        component={withAsyncErrorBoundary(Home)}
+        component={HomeWithAsyncErrorBoundry}
         options={{ title: 'Page d’accueil' }}
       />
       <TabStackNavigatorBase.Screen
         name="_DeeplinkOnlyHome1"
-        component={withAsyncErrorBoundary(Home)}
+        component={HomeWithAsyncErrorBoundry}
         options={{ title: 'Page d’accueil' }}
       />
       <TabStackNavigatorBase.Screen
