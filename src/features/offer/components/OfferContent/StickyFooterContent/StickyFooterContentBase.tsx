@@ -81,7 +81,6 @@ const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   }),
 }))
 
-const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)({
   textAlign: 'center',
-  color: theme.designSystem.color.text.default,
-}))
+})

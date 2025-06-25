@@ -68,14 +68,14 @@ export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
   )
 }
 
-function getStatusColor({ colors }: DefaultTheme, status: OfferStatus) {
+function getStatusColor({ designSystem }: DefaultTheme, status: OfferStatus) {
   if (status === OfferStatus.BOOKABLE) {
-    return colors.primary
+    return designSystem.color.text.brandPrimary
   }
   if (status === OfferStatus.NOT_BOOKABLE) {
-    return colors.greyDark
+    return designSystem.color.text.disabled
   }
-  return colors.greyDark
+  return designSystem.color.text.subtle
 }
 
 const Body = styled(Typo.Body)(({ theme }) => ({

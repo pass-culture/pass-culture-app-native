@@ -19,6 +19,6 @@ const onBeforeNavigateContactFraudTeam = () => {
   analytics.logContactFraudTeam({ from: 'fraudulentsuspendedaccount' })
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-}))
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})

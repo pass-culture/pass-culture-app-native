@@ -34,7 +34,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
 }
 
 const ValidateWhite = styled(Validate).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.lockedInverted,
+  color: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.smaller,
 }))``
 
