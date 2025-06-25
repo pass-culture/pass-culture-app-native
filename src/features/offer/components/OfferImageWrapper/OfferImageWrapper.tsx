@@ -70,9 +70,9 @@ const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   angle: 180,
   locations: [0.362, 0.6356, 1],
   colors: [
-    colorAlpha(theme.designSystem.color.background.inverted, 0),
-    colorAlpha(theme.designSystem.color.background.inverted, 0.12),
-    colorAlpha(theme.designSystem.color.background.inverted, 0.32),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0.12),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0.32),
   ],
 }))<{ isInCarousel?: boolean }>(({ theme, isInCarousel }) => ({
   height: '100%',

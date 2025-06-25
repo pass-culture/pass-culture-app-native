@@ -70,12 +70,12 @@ const ImagesContainer = styled(ViewGap)({
 
 const ImagesContainerGradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
-    theme.designSystem.color.background.default,
-    colorAlpha(theme.designSystem.color.background.default, 0.75),
-    colorAlpha(theme.designSystem.color.background.default, 0.0),
-    colorAlpha(theme.designSystem.color.background.default, 0.0),
-    colorAlpha(theme.designSystem.color.background.default, 0.75),
-    theme.designSystem.color.background.default,
+    theme.designSystem.color.background.locked,
+    colorAlpha(theme.designSystem.color.background.locked, 0.75),
+    colorAlpha(theme.designSystem.color.background.locked, 0.0),
+    colorAlpha(theme.designSystem.color.background.locked, 0.0),
+    colorAlpha(theme.designSystem.color.background.locked, 0.75),
+    theme.designSystem.color.background.locked,
   ],
   locations: [0, 0.12, 0.25, 0.75, 0.87, 1],
   start: { x: 0, y: 0 },
