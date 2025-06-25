@@ -7,7 +7,7 @@ import { CheatcodesNavigationBookings } from 'cheatcodes/pages/features/bookings
 import { CheatcodesScreenBookingNotFound } from 'cheatcodes/pages/features/bookings/CheatcodesScreenBookingNotFound'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
-import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/CheatcodesNavigationForceUpdate'
+import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/CheatcodesNavigationForceUpdateTemp'
 import { CheatcodesNavigationHome } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
 import { CheatcodesScreenCategoryThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenCategoryThematicHomeHeader'
 import { CheatcodesScreenDefaultThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenDefaultThematicHomeHeader'
