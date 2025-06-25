@@ -12,7 +12,7 @@ import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNav
 import { useGoBack } from 'features/navigation/useGoBack'
 
 // --- We define a single, well-typed category object ---
-export const homeCheatcodeCategory: CheatcodeCategory = {
+const homeCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Home 🏠',
   navigationTarget: {

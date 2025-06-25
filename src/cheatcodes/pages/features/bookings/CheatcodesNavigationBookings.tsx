@@ -10,7 +10,7 @@ import { CheatcodeCategory } from 'cheatcodes/types'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 
 // --- We define a single, well-typed category object ---
-export const bookingsCheatcodeCategory: CheatcodeCategory = {
+const bookingsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Bookings 🛍️',
   navigationTarget: {

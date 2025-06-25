@@ -9,7 +9,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { CheatcodeCategory } from 'cheatcodes/types'
 
 // --- We define a single, well-typed category object ---
-export const birthdayNotificationsCheatcodeCategory: CheatcodeCategory = {
+const birthdayNotificationsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'BirthdayNotifications 🎂',
   navigationTarget: {

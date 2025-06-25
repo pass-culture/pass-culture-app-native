@@ -19,7 +19,7 @@ import { useModal } from 'ui/components/modals/useModal'
 
 // --- We define a single, well-typed category object ---
 // This represents the "Achievements" section in the main cheatcodes menu.
-export const achievementCheatcodeCategory: CheatcodeCategory = {
+const achievementCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Achievements 🏆',
   navigationTarget: {

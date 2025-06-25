@@ -27,7 +27,7 @@ type VisibleModal =
   | null
 
 // --- We define a single, well-typed category object ---
-export const signUpCheatcodeCategory: CheatcodeCategory = {
+const signUpCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'SignUp 🎨',
   navigationTarget: {

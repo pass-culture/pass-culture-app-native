@@ -21,7 +21,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
 // --- We define a single, well-typed category object ---
-export const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
+const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Trusted device 📱',
   navigationTarget: {

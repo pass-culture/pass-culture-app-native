@@ -17,7 +17,7 @@ import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCr
 import { useModal } from 'ui/components/modals/useModal'
 
 // --- We define a single, well-typed category object ---
-export const profileCheatcodeCategory: CheatcodeCategory = {
+const profileCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Profile 🎨',
   navigationTarget: {

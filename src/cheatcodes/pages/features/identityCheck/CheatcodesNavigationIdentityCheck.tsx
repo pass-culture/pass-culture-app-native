@@ -21,7 +21,7 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { ScreenError } from 'libs/monitoring/errors'
 
 // --- We define a single, well-typed category object ---
-export const identityCheckCheatcodeCategory: CheatcodeCategory = {
+const identityCheckCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'IdentityCheck 🎨',
   navigationTarget: {

@@ -13,7 +13,7 @@ import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/g
 import { useGoBack } from 'features/navigation/useGoBack'
 
 // --- We define a single, well-typed category object ---
-export const accountManagementCheatcodeCategory: CheatcodeCategory = {
+const accountManagementCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Account Management ⚙️',
   navigationTarget: {

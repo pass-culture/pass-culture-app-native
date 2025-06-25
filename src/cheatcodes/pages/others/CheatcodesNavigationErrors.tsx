@@ -18,7 +18,7 @@ import { AsyncError, LogTypeEnum, ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { Typo } from 'ui/theme'
 
-export const errorsCheatcodeCategory: CheatcodeCategory = {
+const errorsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Errors 👾',
   navigationTarget: {

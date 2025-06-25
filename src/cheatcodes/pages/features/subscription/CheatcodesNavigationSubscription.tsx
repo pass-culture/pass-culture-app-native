@@ -20,7 +20,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 type VisibleModal = SubscriptionTheme | 'unsubscribing' | 'onboarding' | null
 
 // --- We define a single, well-typed category object ---
-export const subscriptionCheatcodeCategory: CheatcodeCategory = {
+const subscriptionCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Subscription 🔔',
   navigationTarget: {

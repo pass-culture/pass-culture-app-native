@@ -15,7 +15,7 @@ import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavig
 import { useGoBack } from 'features/navigation/useGoBack'
 
 // --- We define a single, well-typed category object ---
-export const onboardingCheatcodeCategory: CheatcodeCategory = {
+const onboardingCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Onboarding 🚸',
   navigationTarget: {

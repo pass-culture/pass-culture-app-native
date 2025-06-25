@@ -9,7 +9,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { CheatcodeCategory } from 'cheatcodes/types'
 
 // --- We define a single, well-typed category object ---
-export const bookOfferCheatcodeCategory: CheatcodeCategory = {
+const bookOfferCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'BookOffer 🎫',
   navigationTarget: {
