@@ -174,14 +174,22 @@ export function CheatcodesMenu(): React.JSX.Element {
         onChangeText={setSearchValue}
         onPressRightIcon={resetSearch}
       />
-      <StyledView>
-        <SeparatorWithText label="FEATURES" />
-      </StyledView>
-      <CheatcodesButtonList buttons={filteredFeaturesButtons} />
-      <StyledView>
-        <SeparatorWithText label="AUTRES" />
-      </StyledView>
-      <CheatcodesButtonList buttons={filteredOtherButtons} />
+      {filteredFeaturesButtons.length ? (
+        <React.Fragment>
+          <StyledView>
+            <SeparatorWithText label="FEATURES" />
+          </StyledView>
+          <CheatcodesButtonList buttons={filteredFeaturesButtons} />
+        </React.Fragment>
+      ) : null}
+      {filteredOtherButtons.length ? (
+        <React.Fragment>
+          <StyledView>
+            <SeparatorWithText label="AUTRES" />
+          </StyledView>
+          <CheatcodesButtonList buttons={filteredOtherButtons} />
+        </React.Fragment>
+      ) : null}
     </CheatcodesTemplateScreen>
   )
 }
