@@ -1,12 +1,9 @@
-// cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements.tsx (Refactored)
-
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-// --- Import the new types ---
 import { CheatcodeCategory } from 'cheatcodes/types'
 import {
   userCompletedBookBooking,
