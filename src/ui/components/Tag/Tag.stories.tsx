@@ -13,7 +13,7 @@ import { Star } from 'ui/svg/Star'
 import { Tag } from './Tag'
 
 const meta: Meta<typeof Tag> = {
-  title: 'ui/Tag',
+  title: 'design system/Tag',
   component: Tag,
 }
 export default meta
