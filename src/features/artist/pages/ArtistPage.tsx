@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { Component, FunctionComponent, PropsWithChildren } from 'react'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'

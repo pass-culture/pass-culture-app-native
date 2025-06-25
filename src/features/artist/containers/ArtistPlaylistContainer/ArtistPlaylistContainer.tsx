@@ -39,7 +39,7 @@ export const ArtistPlaylistContainer: FunctionComponent<ArtistPlaylistProps> = (
   const { userLocation } = useLocation()
   const transformHits = useTransformOfferHits()
   const { data: artist } = useArtistQuery(artistId)
-  const { data: artistTopOffers, status } = useArtistOffersPlaylistQuery({
+  const { data: playlistOffers, status } = useArtistOffersPlaylistQuery({
     artistId,
     userLocation,
     transformHits,
@@ -51,11 +51,12 @@ export const ArtistPlaylistContainer: FunctionComponent<ArtistPlaylistProps> = (
       return <OfferPlaylistSkeleton size={TileSize.LARGE} numberOfTiles={4} />
 
     case 'success': {
-      return artistTopOffers?.length ? (
+      console.log(playlistOffers[0])
+      return playlistOffers?.length ? (
         <PassPlaylist
           playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
           title="Toutes ses offres disponibles"
-          data={artistTopOffers}
+          data={playlistOffers}
           FlatListComponent={FlatList}
           renderItem={OfferPlaylistItem({
             categoryMapping,
