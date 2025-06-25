@@ -140,6 +140,7 @@ const ArtistsPage: FunctionComponent = () => {
 #### Les `containers`
 
 Contiennent les `hooks` et les `queries`, ainsi ils sont modulaires
+Les containers sont des composants React chargés de gérer les données et la logique. Ils sont généralement utilisés pour récupérer des données depuis une source externe, gérer l’état, et transmettre les données aux composants de présentation
 
 ```ts
 const ArtistsPage: FunctionComponent = () => {
@@ -284,7 +285,7 @@ Une fois la version de RQ ≥ 4 nous pouvons utiliser:
 - Suspense: pour gérer le loading des composants -> Suspense se charge d'afficher un composant de chargement tant que la data n'est pas présente et le composant désiré le cas échéant.
 
 ```jsx
-/* au niveau de la navigation */
+// au niveau de la navigation
 const navigation = () => (
   <ErrorBoundary onReset={reset} FallbackComponent={ErrorView}>
     <React.Suspense fallback={<LoadingPage />}>
@@ -327,23 +328,10 @@ Une page est un container qui a accès à la navigation.
 Une page ne contient pas forcément de containers et peut n'appeler que des composants `presentational`.
 La page doit appeler la requête principale conditionnant l'affichage de la page (ex: l'objet artist dans la page Artiste).
 Si la page appelle une seule requête, il n'est pas nécessaire d'avoir des containers.
+
 Le découpage de la page en container peut venir de plusieurs contraintes:
 
 - plusieurs requêtes entrainant plusieurs containers
 - chaque container peut être lié à un contexte (SOC)
 - si les tests sont simplifiés par la mise en place de containers multiples: la séparation en container peut diminuer la combinatoire des tests en isolant les logiques et en ne les combinant pas
-- les containers seront testés dans la page pour leur cas nominal et dans leurs propres fichiers de tests po
-
-TODO:
-
-- page peut etre un container si c'est simple
-
-  - heuristique si une seule requete -> page
-  - heuristique si plusieurs requetes -> containers
-  - tests et séparation of concern
-
-- React query respecte le [pattern CQRS](https://en.wikipedia.org/wiki/Command_Query_Responsibility_Segregation) avec `useQuery`, `useMutation`
-
-- expliquer ce qu'est un container
-
-  Les container sont des composants React chargés de gérer les données et la logique. Ils sont généralement utilisés pour récupérer des données depuis une source externe, gérer l’état, et transmettre les données aux composants de présentation
+- les containers seront testés dans la page pour leur cas nominal et dans leurs propres fichiers de tests pour les cas complexes
