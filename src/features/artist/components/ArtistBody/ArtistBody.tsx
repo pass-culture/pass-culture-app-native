@@ -11,7 +11,7 @@ import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/Arti
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { capitalizeFirstLetter } from 'libs/parsers/capitalizeFirstLetter'
+import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -46,7 +46,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { name, description, image } = artist
 
   const descriptionWithDot = ensureEndingDot(description ?? '')
-  const capitalizedDescriptionWithDot = capitalizeFirstLetter(descriptionWithDot)
+  const capitalizedDescriptionWithDot = capitalize(descriptionWithDot)
 
   return (
     <Page>
