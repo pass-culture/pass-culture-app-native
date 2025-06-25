@@ -7,6 +7,7 @@ import { MARGIN_DP, getSpacing } from 'ui/theme'
 
 export const MARGIN_TOP_TICKET = getSpacing(MARGIN_DP)
 export const EXTRA_ANDROID_MARGIN = getSpacing(8)
+const EXTRA_FULL = getSpacing(24)
 
 interface ComputeParams {
   topBlockHeight: number
@@ -23,7 +24,7 @@ export function computeHeaderImageHeight({
 }: ComputeParams) {
   const isPunched = display === 'punched'
   const halfOfMiddleBlockHeight =
-    (isPunched ? TICKET_PUNCHED_MIDDLE_HEIGHT : TICKET_FULL_MIDDLE_HEIGHT) / 2
+    (isPunched ? TICKET_PUNCHED_MIDDLE_HEIGHT : TICKET_FULL_MIDDLE_HEIGHT + EXTRA_FULL) / 2
 
   const headerImageHeight =
     topBlockHeight +

@@ -68,7 +68,7 @@ export const TicketDisplay = ({
         {topContent}
       </View>
       <FullContainerStrokedLine>
-        <Stroke color={borderColor} />
+        <Stroke color={borderColor} size="100%" />
       </FullContainerStrokedLine>
       {infoBanner}
       {bottomContent}

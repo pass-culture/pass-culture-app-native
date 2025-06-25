@@ -6,9 +6,9 @@ describe('computeHeaderImageHeight', () => {
   it.each`
     topBlockHeight | windowHeight | display      | isAndroid | expectedHeaderImageHeight | expectedScrollContentHeight
     ${120}         | ${780}       | ${'punched'} | ${false}  | ${236}                    | ${484}
-    ${120}         | ${780}       | ${'full'}    | ${false}  | ${232}                    | ${484}
+    ${120}         | ${780}       | ${'full'}    | ${false}  | ${280}                    | ${484}
     ${120}         | ${780}       | ${'punched'} | ${true}   | ${268}                    | ${484}
-    ${120}         | ${780}       | ${'full'}    | ${true}   | ${264}                    | ${484}
+    ${120}         | ${780}       | ${'full'}    | ${true}   | ${312}                    | ${484}
   `(
     'should return headerImageHeight:$expectedHeaderImageHeight and scrollContentHeight:$expectedScrollContentHeight for computeHeaderImageHeight({topBlockHeight:$topBlockHeight, windowHeight:$windowHeight, display:$display, isAndroid:$isAndroid})',
     ({
