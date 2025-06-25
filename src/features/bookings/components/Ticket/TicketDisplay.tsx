@@ -7,9 +7,8 @@ import { CutoutHorizontal } from 'ui/svg/CutoutHorizontal'
 import { Stroke } from 'ui/svg/Stroke'
 import { getSpacing } from 'ui/theme'
 
-export const TICKET_SEPARATION_HEIGHT = getSpacing(21.5)
-const TICKET_FULL_MIDDLE_HEIGHT = getSpacing(8)
-const TICKET_PUNCHED_MIDDLE_HEIGHT = getSpacing(10)
+export const TICKET_FULL_MIDDLE_HEIGHT = getSpacing(8)
+export const TICKET_PUNCHED_MIDDLE_HEIGHT = getSpacing(10)
 
 type TicketContentProps = {
   bottomContent: React.JSX.Element
