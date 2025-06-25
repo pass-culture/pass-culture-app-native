@@ -1,111 +1,142 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { useSomeOfferIdQuery } from 'cheatcodes/queries/useSomeOfferIdQuery'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
+import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
-import { useModal } from 'ui/components/modals/useModal'
 
-export const cheatcodesNavigationSignUpButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'SignUp 🎨',
+type VisibleModal =
+  | 'finishSubscription'
+  | 'authentication'
+  | 'applicationProcessing'
+  | 'errorApplication'
+  | null
+
+const signUpCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'SignUp 🎨',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationSignUp' },
-    subscreens: [
-      { title: 'FinishSubscriptionModal', showOnlyInSearch: true },
-      { title: 'AuthenticationModal', showOnlyInSearch: true },
-      { title: 'ApplicationProcessingModal', showOnlyInSearch: true },
-      { title: 'ErrorApplicationModal', showOnlyInSearch: true },
-      { screen: 'AccountCreated' },
-      { screen: 'BeneficiaryAccountCreated' },
-      { screen: 'SignupConfirmationExpiredLink', navigationParams: { email: 'john@wick.com' } },
-      {
-        screen: 'NotYetUnderageEligibility',
-        navigationParams: {
-          eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
-        },
+    params: { screen: 'CheatcodesNavigationSignUp' },
+  },
+  subscreens: [
+    { id: uuidv4(), title: 'AccountCreated', navigationTarget: { screen: 'AccountCreated' } },
+    {
+      id: uuidv4(),
+      title: 'BeneficiaryAccountCreated',
+      navigationTarget: { screen: 'BeneficiaryAccountCreated' },
+    },
+    {
+      id: uuidv4(),
+      title: 'SignupConfirmationExpiredLink',
+      navigationTarget: {
+        screen: 'SignupConfirmationExpiredLink',
+        params: { email: 'john@wick.com' },
       },
-      {
+    },
+    {
+      id: uuidv4(),
+      title: 'NotYetUnderageEligibility',
+      navigationTarget: {
+        screen: 'NotYetUnderageEligibility',
+        params: { eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString() },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'AfterSignupEmailValidationBuffer',
+      navigationTarget: {
         screen: 'AfterSignupEmailValidationBuffer',
-        navigationParams: {
+        params: {
           token: 'whichTokenDoYouWantReally',
           expiration_timestamp: 456789123,
           email: 'john@wick.com',
         },
       },
-    ],
-  },
-]
+    },
+    { id: uuidv4(), title: 'FinishSubscriptionModal', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'AuthenticationModal', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'ApplicationProcessingModal', showOnlyInSearch: true },
+    { id: uuidv4(), title: 'ErrorApplicationModal', showOnlyInSearch: true },
+  ],
+}
+
+export const cheatcodesNavigationSignUpButtons: CheatcodeCategory[] = [signUpCheatcodeCategory]
 
 export function CheatcodesNavigationSignUp(): React.JSX.Element {
+  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
   const offerId = useSomeOfferIdQuery()
+  const [visibleModal, setVisibleModal] = useState<VisibleModal>(null)
 
-  const {
-    visible: finishSubscriptionModalVisible,
-    showModal: showFinishSubscriptionModal,
-    hideModal: hideFinishSubscriptionModal,
-  } = useModal(false)
-
-  const {
-    visible: authenticationModalVisible,
-    showModal: showAuthenticationModal,
-    hideModal: hideAuthenticationModal,
-  } = useModal(false)
-
-  const {
-    visible: applicationProcessingModalVisible,
-    showModal: showApplicationProcessingModal,
-    hideModal: hideApplicationProcessingModal,
-  } = useModal(false)
-
-  const {
-    visible: errorApplicationModalVisible,
-    showModal: showErrorApplicationModal,
-    hideModal: hideErrorApplicationModal,
-  } = useModal(false)
+  const visibleSubscreens = signUpCheatcodeCategory.subscreens.filter(
+    (subscreen) => !subscreen.showOnlyInSearch
+  )
 
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationSignUpButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationSignUpButtons} />
+    <CheatcodesTemplateScreen title={signUpCheatcodeCategory.title} onGoBack={goBack}>
+      <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
       <LinkToCheatcodesScreen
-        title="FinishSubscriptionModal"
-        onPress={showFinishSubscriptionModal}
+        button={{
+          id: 'finish-sub-action',
+          title: 'FinishSubscriptionModal',
+          onPress: () => setVisibleModal('finishSubscription'),
+        }}
+        variant="secondary"
       />
-      <FinishSubscriptionModal
-        visible={finishSubscriptionModalVisible}
-        hideModal={hideFinishSubscriptionModal}
-        from={StepperOrigin.OFFER}
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'auth-action',
+          title: 'AuthenticationModal',
+          onPress: () => setVisibleModal('authentication'),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'app-processing-action',
+          title: 'ApplicationProcessingModal',
+          onPress: () => setVisibleModal('applicationProcessing'),
+        }}
+        variant="secondary"
+      />
+      <LinkToCheatcodesScreen
+        button={{
+          id: 'error-app-action',
+          title: 'ErrorApplicationModal',
+          onPress: () => setVisibleModal('errorApplication'),
+        }}
+        variant="secondary"
       />
 
-      <LinkToCheatcodesScreen title="AuthenticationModal" onPress={showAuthenticationModal} />
+      <FinishSubscriptionModal
+        visible={visibleModal === 'finishSubscription'}
+        hideModal={() => setVisibleModal(null)}
+        from={StepperOrigin.OFFER}
+      />
       <AuthenticationModal
-        visible={authenticationModalVisible}
-        hideModal={hideAuthenticationModal}
+        visible={visibleModal === 'authentication'}
+        hideModal={() => setVisibleModal(null)}
         offerId={offerId}
         from={StepperOrigin.FAVORITE}
       />
-
-      <LinkToCheatcodesScreen
-        title="ApplicationProcessingModal"
-        onPress={showApplicationProcessingModal}
-      />
       <ApplicationProcessingModal
-        visible={applicationProcessingModalVisible}
-        hideModal={hideApplicationProcessingModal}
+        visible={visibleModal === 'applicationProcessing'}
+        hideModal={() => setVisibleModal(null)}
         offerId={offerId}
       />
-
-      <LinkToCheatcodesScreen title="ErrorApplicationModal" onPress={showErrorApplicationModal} />
       <ErrorApplicationModal
-        visible={errorApplicationModalVisible}
-        hideModal={hideErrorApplicationModal}
+        visible={visibleModal === 'errorApplication'}
+        hideModal={() => setVisibleModal(null)}
         offerId={offerId}
       />
     </CheatcodesTemplateScreen>

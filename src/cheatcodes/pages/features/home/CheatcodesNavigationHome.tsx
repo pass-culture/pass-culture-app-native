@@ -1,38 +1,55 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
+import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 
-export const cheatcodesNavigationHomeButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'Home 🏠',
+const homeCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'Home 🏠',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationHome' },
-    subscreens: [
-      {
-        title: 'HighlightThematicHomeHeader',
-        screen: 'CheatcodesStackNavigator',
-        navigationParams: { screen: 'CheatcodesScreenHighlightThematicHomeHeader' },
-      },
-      {
-        title: 'DefaultThematicHomeHeader',
-        screen: 'CheatcodesStackNavigator',
-        navigationParams: { screen: 'CheatcodesScreenDefaultThematicHomeHeader' },
-      },
-      {
-        title: 'CategoryThematicHomeHeader',
-        screen: 'CheatcodesStackNavigator',
-        navigationParams: { screen: 'CheatcodesScreenCategoryThematicHomeHeader' },
-      },
-    ],
+    params: { screen: 'CheatcodesNavigationHome' },
   },
-]
+  subscreens: [
+    {
+      id: uuidv4(),
+      title: 'HighlightThematicHomeHeader',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenHighlightThematicHomeHeader' },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'DefaultThematicHomeHeader',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenDefaultThematicHomeHeader' },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'CategoryThematicHomeHeader',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenCategoryThematicHomeHeader' },
+      },
+    },
+  ],
+}
 
-export const CheatcodesNavigationHome = () => {
+export const cheatcodesNavigationHomeButtons: CheatcodeCategory[] = [homeCheatcodeCategory]
+
+export function CheatcodesNavigationHome(): React.JSX.Element {
+  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationHomeButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationHomeButtons} />
+    <CheatcodesTemplateScreen title={homeCheatcodeCategory.title} onGoBack={goBack}>
+      <CheatcodesSubscreensButtonList buttons={homeCheatcodeCategory.subscreens} />
     </CheatcodesTemplateScreen>
   )
 }

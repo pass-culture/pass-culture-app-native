@@ -1,24 +1,39 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
 
-export const cheatcodesNavigationBirthdayNotificationsButtons: [
-  CheatcodesButtonsWithSubscreensProps,
-] = [
-  {
-    title: 'BirthdayNotifications 🎂',
+const birthdayNotificationsCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'BirthdayNotifications 🎂',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationBirthdayNotifications' },
-    subscreens: [{ screen: 'EighteenBirthday' }, { screen: 'RecreditBirthdayNotification' }],
+    params: { screen: 'CheatcodesNavigationBirthdayNotifications' },
   },
+  subscreens: [
+    {
+      id: uuidv4(),
+      title: 'EighteenBirthday',
+      navigationTarget: { screen: 'EighteenBirthday' },
+    },
+    {
+      id: uuidv4(),
+      title: 'RecreditBirthdayNotification',
+      navigationTarget: { screen: 'RecreditBirthdayNotification' },
+    },
+  ],
+}
+
+export const cheatcodesNavigationBirthdayNotificationsButtons: CheatcodeCategory[] = [
+  birthdayNotificationsCheatcodeCategory,
 ]
 
 export function CheatcodesNavigationBirthdayNotifications(): React.JSX.Element {
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationBirthdayNotificationsButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationBirthdayNotificationsButtons} />
+    <CheatcodesTemplateScreen title={birthdayNotificationsCheatcodeCategory.title}>
+      <CheatcodesSubscreensButtonList buttons={birthdayNotificationsCheatcodeCategory.subscreens} />
     </CheatcodesTemplateScreen>
   )
 }

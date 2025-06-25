@@ -1,33 +1,65 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 
-export const cheatcodesNavigationBookingsButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'Bookings 🛍️',
+const bookingsCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'Bookings 🛍️',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationBookings' },
-    subscreens: [
-      {
-        screen: 'CheatcodesStackNavigator',
-        navigationParams: { screen: 'CheatcodesNavigationBookings' },
-        title: 'BookingNotFound',
-      },
-      { screen: 'SetName', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-      { screen: 'SetCity', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-      { screen: 'SetAddress', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-      { screen: 'SetStatus', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-    ],
+    params: { screen: 'CheatcodesNavigationBookings' },
   },
-]
+  subscreens: [
+    {
+      id: uuidv4(),
+      title: 'BookingNotFound',
+      navigationTarget: { screen: 'CheatcodesStackNavigator' },
+    },
+    {
+      id: uuidv4(),
+      title: 'SetName',
+      navigationTarget: {
+        screen: 'SetName',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'SetCity',
+      navigationTarget: {
+        screen: 'SetCity',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'SetAddress',
+      navigationTarget: {
+        screen: 'SetAddress',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+    {
+      id: uuidv4(),
+      title: 'SetStatus',
+      navigationTarget: {
+        screen: 'SetStatus',
+        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+      },
+    },
+  ],
+}
+
+export const cheatcodesNavigationBookingsButtons: CheatcodeCategory[] = [bookingsCheatcodeCategory]
 
 export function CheatcodesNavigationBookings(): React.JSX.Element {
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationBookingsButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationBookingsButtons} />
+    <CheatcodesTemplateScreen title={bookingsCheatcodeCategory.title}>
+      <CheatcodesSubscreensButtonList buttons={bookingsCheatcodeCategory.subscreens} />
     </CheatcodesTemplateScreen>
   )
 }
