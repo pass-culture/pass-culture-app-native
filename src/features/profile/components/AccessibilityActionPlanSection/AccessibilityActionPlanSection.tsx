@@ -23,7 +23,8 @@ export function AccessibilityActionPlanSection({
       <Typo.Title4 {...getHeadingAttrs(2)}>{title}</Typo.Title4>
       <VerticalUl>
         {items.map((item) => (
-          <BulletListItem key={item.id} text={item.text}>
+          <BulletListItem key={item.text} text={item.text}>
+            {item.customContent ? SPACE : null}
             {item.customContent}
             {SPACE}
             <Tag label={item.tag.label} variant={item.tag.variant} />
