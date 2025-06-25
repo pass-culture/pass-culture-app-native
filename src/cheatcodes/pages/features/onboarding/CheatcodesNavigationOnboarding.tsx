@@ -61,7 +61,6 @@ export const cheatcodesNavigationOnboardingButtons: CheatcodeCategory[] = [
 ]
 
 export function CheatcodesNavigationOnboarding(): React.JSX.Element {
-  // --- PRESERVED: This effect is specific to this screen's behavior ---
   useFocusEffect(
     React.useCallback(() => {
       StatusBar.setBarStyle('dark-content', true)

@@ -1,5 +1,3 @@
-// cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate.tsx (Refactored)
-
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -57,11 +55,8 @@ export function CheatcodesNavigationForceUpdate(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title={forceUpdateCheatcodeCategory.title} onGoBack={goBack}>
-      {/* This will render nothing, which is correct. */}
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
-      {/* --- REFACTORED: Use the new LinkToCheatcodesScreen API --- */}
-      {/* We create a CheatcodeButton object on the fly for this manual action. */}
       <LinkToCheatcodesScreen
         key="force-update-button"
         button={{
