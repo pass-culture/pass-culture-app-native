@@ -210,3 +210,79 @@ Isolation des logiques métiers:
 - réécriture de l’arbre de navigation, listant toutes les pages et les paramètres nécessaires pour y arriver
 - validation que toutes les pages de l’app sont accessibles en deeplink (si ce n’est pas le cas, devra être justifié)
 - création d’un système de modales uniformisé qui centralise tous les affichages de modales
+
+## TODO rename
+
+### Définition
+
+Pour éviter de devoir redévelopper tout depuis zéro, nous utilisons du code écrit par des tiers
+
+Ces portions de code se concentrent sur la réalisation de tache précise et générique (ex : afficher une date, afficher un calendrier...)
+
+Pour fonctionnner, notre application a besoin de ces portions de code, nous en sommes dépendant, on appelle ça des **dépendances** (aussi parfois appelé `bibliothèque`, `library`, `framework`)
+
+### Constat
+
+#### Mise à jour de dépendances
+
+Nous passons actuellement beaucoup de temps à mettre à jour des dépendances (React Native, React Native Web...)
+
+La mise à jour des dépendances est difficile car il y a des problèmes en cascade qui implique de mettre à jour d'autres dépendances
+
+Chaque mise à jour de chaque dépendance entraine des problèmes spécifiques, très difficilement anticipables, ce qui rend l'estimation du temps passé à faire une montée de version presque impossible
+
+Les mises à jour sont fastidieuses
+
+#### Écosystème
+
+##### Écosystème de niche
+
+Pour pouvoir partager le code entre Android et iOS nous utilisons React Native
+
+Pour pouvoir partager le code entre Android, iOS **et le web**, nous utilisons React Native **Web**
+
+Ce qui implique de choisir des dépendances qui soient compatibles avec React Native Web, ou de gérer des particularité au cas par cas pour faire des choses dédiées à Android et iOS et des choses dédidées au web
+
+Cet écosystème est très de niche
+
+```mermaid
+flowchart LR
+  subgraph "Écosystème JavaScript"
+    subgraph "Écosystème React"
+      subgraph "Écosystème React Native"
+        subgraph "Écosystème React Native Web"
+        end
+      end
+    end
+  end
+```
+
+###### Choix
+
+Les choix les plus populaires nous sont parfois inaccessibles car incompatible avec React Native Web
+
+Il a peu de choix
+
+Nous sommes contraints de :
+
+1. Utiliser des dépendances peu éprouvées par la communauté
+1. Utiliser des dépendances souvent mal maintenues
+1. Réinventer la roue
+
+#### Déploimement
+
+Nous devons déployer sur les stores, ce qui peut etre long et contraignant
+
+### Besoins
+
+Accessibilité
+Accès aux droits
+Pass pour tous
+
+### Proposition
+
+WebView
+Une plateforme principale à maintenir
+
+moins de dépendances
+Continuous Déploiement
