@@ -88,7 +88,6 @@ const profileCheatcodeCategory: CheatcodeCategory = {
         emailSelectionToken: 'token',
       }),
     },
-    // Search-only item
     { id: uuidv4(), title: 'ExpiredCreditModal', showOnlyInSearch: true },
   ],
 }

@@ -63,7 +63,6 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
         },
       },
     },
-    // Search-only items corresponding to the manual modal actions
     { id: uuidv4(), title: 'FinishSubscriptionModal', showOnlyInSearch: true },
     { id: uuidv4(), title: 'AuthenticationModal', showOnlyInSearch: true },
     { id: uuidv4(), title: 'ApplicationProcessingModal', showOnlyInSearch: true },

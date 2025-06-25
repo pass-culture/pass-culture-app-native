@@ -141,7 +141,6 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
         params: { firstName: 'firstName', lastName: 'lastName', dateOfBirth: '2021-12-01' },
       },
     },
-    // Search-only items
     { id: uuidv4(), title: 'DuplicateUser Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Generic Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'PhoneValidationTipsModal', showOnlyInSearch: true },
@@ -179,7 +178,7 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="phone-tips-modal"
         button={{
-          id: 'phone-tips-action',
+          id: uuidv4(),
           title: 'PhoneValidation tips Modal',
           onPress: () => setPhoneValidationTipsModalVisible(true),
         }}
@@ -196,7 +195,7 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="age-not-valid-error"
         button={{
-          id: 'age-not-valid-action',
+          id: uuidv4(),
           title: 'UserAgeNotValid Educonnect Error',
           onPress: () => trigger(EduConnectErrorMessageEnum.UserAgeNotValid),
         }}
@@ -206,7 +205,7 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="age-not-valid-18-error"
         button={{
-          id: 'age-not-valid-18-action',
+          id: uuidv4(),
           title: 'UserAgeNotValid18YearsOld Error',
           onPress: () => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld),
         }}
@@ -216,7 +215,7 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="not-student-error"
         button={{
-          id: 'not-student-action',
+          id: uuidv4(),
           title: 'UserTypeNotStudent Error',
           onPress: () => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent),
         }}
@@ -226,7 +225,7 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="duplicate-user-error"
         button={{
-          id: 'duplicate-user-action',
+          id: uuidv4(),
           title: 'DuplicateUser Error',
           onPress: () => trigger(EduConnectErrorMessageEnum.DuplicateUser),
         }}
@@ -236,7 +235,7 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="generic-error"
         button={{
-          id: 'generic-error-action',
+          id: uuidv4(),
           title: 'Generic Error',
           onPress: () => trigger(EduConnectErrorMessageEnum.GenericError),
         }}

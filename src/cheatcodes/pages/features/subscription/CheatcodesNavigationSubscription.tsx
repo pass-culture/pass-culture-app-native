@@ -27,7 +27,6 @@ const subscriptionCheatcodeCategory: CheatcodeCategory = {
       title: 'Page d’inscription aux notifications',
       navigationTarget: { screen: 'OnboardingSubscription' },
     },
-    // All other items are manual actions, so they are marked for search-only discovery
     { id: uuidv4(), title: 'SubscriptionSuccessModal Cinéma', showOnlyInSearch: true },
     { id: uuidv4(), title: 'SubscriptionSuccessModal Lecture', showOnlyInSearch: true },
     { id: uuidv4(), title: 'SubscriptionSuccessModal Musique', showOnlyInSearch: true },

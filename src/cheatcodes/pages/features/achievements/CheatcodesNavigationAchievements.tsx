@@ -74,7 +74,7 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="modal-1"
         button={{
-          id: 'modal-1-button',
+          id: uuidv4(),
           title: 'AchievementSuccessModal (1 unlocked)',
           onPress: showModalOneAchievement,
         }}
@@ -89,7 +89,7 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="modal-2"
         button={{
-          id: 'modal-2-button',
+          id: uuidv4(),
           title: 'AchievementSuccessModal (2+ unlocked)',
           onPress: showModalSeveralAchievements,
         }}

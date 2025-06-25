@@ -47,7 +47,6 @@ const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
       title: 'Compte suspendu (connexion suspecte)',
       navigationTarget: { screen: 'SuspiciousLoginSuspendedAccount' },
     },
-    // Search-only items that correspond to manual actions on this page
     { id: uuidv4(), title: 'AccountSecurity', showOnlyInSearch: true },
     { id: uuidv4(), title: 'AccountSecurityBuffer', showOnlyInSearch: true },
   ],
@@ -77,7 +76,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
       <LinkToCheatcodesScreen
         key="account-security-link"
         button={{
-          id: 'account-security-action',
+          id: uuidv4(),
           title: 'AccountSecurity',
           navigationTarget: { screen: 'AccountSecurity', params: ROUTE_PARAMS },
         }}

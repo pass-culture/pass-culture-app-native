@@ -11,7 +11,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 
-const forceUpdateCheatcodeCategory: CheatcodeCategoryo = {
+const forceUpdateCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'ForceUpdate 🆙',
   navigationTarget: {
