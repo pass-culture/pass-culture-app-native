@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, useWindowDimensions } from 'react-native'
+import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { BookingResponse, UserProfileResponse } from 'api/gen'
@@ -11,9 +11,12 @@ import { BookingDetailsHeader } from 'features/bookings/components/BookingDetail
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { Ticket } from 'features/bookings/components/Ticket/Ticket'
-import { computeHeaderImageHeight } from 'features/bookings/helpers/computeHeaderImageHeight'
+import {
+  EXTRA_ANDROID_MARGIN,
+  MARGIN_TOP_TICKET,
+  computeHeaderImageHeight,
+} from 'features/bookings/helpers/computeHeaderImageHeight'
 import { BookingProperties } from 'features/bookings/types'
-import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -22,7 +25,6 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { useModal } from 'ui/components/modals/useModal'
-import { getSpacing } from 'ui/theme'
 
 const scrollIndicatorInsets = { right: 1 }
 
@@ -41,11 +43,11 @@ export const BookingDetailsContent = ({
   const { height: windowHeight } = useWindowDimensions()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
   const display = properties.isEvent === true ? 'punched' : 'full'
-
   const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight({
     topBlockHeight,
     windowHeight,
     display,
+    isAndroid: Platform.OS === 'android',
   })
 
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
@@ -163,5 +165,5 @@ const MainContainer = styled.View(({ theme }) => ({
 }))
 
 const StyledHeaderWithImage = styled(HeaderWithImage)({
-  marginBottom: getSpacing(offerImageContainerMarginTop),
+  marginBottom: MARGIN_TOP_TICKET + (Platform.OS === 'android' ? EXTRA_ANDROID_MARGIN : 0),
 })
