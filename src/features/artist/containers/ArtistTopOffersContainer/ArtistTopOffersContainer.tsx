@@ -53,6 +53,7 @@ export const ArtistTopOffersContainer: FunctionComponent<Props> = ({ artistId })
   switch (status) {
     case 'idle':
     case 'loading':
+    case 'success':
       return <OfferPlaylistSkeleton size={TileSize.LARGE} numberOfTiles={4} />
 
     case 'success': {
