@@ -145,25 +145,21 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
-      title: 'Feature Flags & Remote Config',
-      subscreens: [
-        {
-          id: uuidv4(),
-          title: 'Features flags 🏳️',
-          navigationTarget: {
-            screen: 'CheatcodesStackNavigator',
-            params: { screen: 'CheatcodesScreenFeatureFlags' },
-          },
-        },
-        {
-          id: uuidv4(),
-          title: 'Remote config 📊',
-          navigationTarget: {
-            screen: 'CheatcodesStackNavigator',
-            params: { screen: 'CheatcodesScreenRemoteConfig' },
-          },
-        },
-      ],
+      title: 'Remote config 📊',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenRemoteConfig' },
+      },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
+      title: 'Features flags 🏳️',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenFeatureFlags' },
+      },
+      subscreens: [],
     },
   ]
 
