@@ -9,16 +9,18 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
+const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: jest.fn(),
+  goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
-
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.useFakeTimers()
 
 describe('<ArtistPage />', () => {
   useRoute.mockReturnValue({
@@ -31,27 +33,83 @@ describe('<ArtistPage />', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
       mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
+
+      mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
     })
 
     it('should display artist page content', async () => {
-      mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
       render(reactQueryProviderHOC(<ArtistPage />))
 
       expect((await screen.findAllByText('Avril Lavigne'))[0]).toBeOnTheScreen()
     })
 
-    it('should render null when there is no artist', async () => {
-      mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
-        responseOptions: {
-          statusCode: 404,
-          data: {},
-        },
-      })
+    it('should display artist description', async () => {
       render(reactQueryProviderHOC(<ArtistPage />))
 
-      await act(async () => {})
+      expect(await screen.findByText('Chanteuse canadienne.')).toBeOnTheScreen()
+    })
 
-      expect(screen.toJSON()).toBeNull()
+    it('should display default artist avatar when artist has no image', async () => {
+      mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
+        ...mockArtist,
+        image: undefined,
+      })
+
+      render(reactQueryProviderHOC(<ArtistPage />))
+
+      expect(await screen.findByTestId('BicolorProfile')).toBeOnTheScreen()
+    })
+
+    it('should call goBack when pressing the back button', async () => {
+      render(reactQueryProviderHOC(<ArtistPage />))
+
+      const backButton = await screen.findByLabelText('Revenir en arrière')
+      const user = userEvent.setup()
+      await user.press(backButton)
+
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
+    })
+
+    it('should display correct artist avatar', async () => {
+      mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
+        ...mockArtist,
+        image: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/998Q',
+      })
+
+      render(reactQueryProviderHOC(<ArtistPage />))
+      await waitFor(() => {
+        expect(screen.getByLabelText('image de Avril Lavigne')).toBeOnTheScreen()
+      })
+    })
+
+    describe('Request status', () => {
+      it('should render null when there is and error', async () => {
+        mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
+          responseOptions: {
+            statusCode: 404,
+            data: {},
+          },
+        })
+        render(reactQueryProviderHOC(<ArtistPage />))
+
+        expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
+      })
+
+      it('should display loading page when loading', async () => {
+        mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
+          responseOptions: {
+            delay: 'infinite',
+            statusCode: 200,
+            data: {},
+          },
+        })
+
+        render(reactQueryProviderHOC(<ArtistPage />))
+
+        expect(screen.getByText('Chargement en cours...')).toBeOnTheScreen()
+
+        await act(() => {}) // the components re-render at the end of loading, this test focus on the loading part, ignore the others re-renders
+      })
     })
   })
 
@@ -61,12 +119,10 @@ describe('<ArtistPage />', () => {
       mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
     })
 
-    it('should render null', async () => {
+    it('should display page not found', async () => {
       render(reactQueryProviderHOC(<ArtistPage />))
 
-      await act(async () => {})
-
-      expect(screen.toJSON()).toBeNull()
+      expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
     })
   })
 })

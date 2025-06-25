@@ -41,7 +41,7 @@ export const ArtistPage: FunctionComponent = () => {
     case 'loading':
       return <LoadingPage />
 
-    case 'success': {
+    case 'success':
       return (
         <Page>
           <ArtistWebMetaHeader artist={artist.name} />
@@ -62,7 +62,7 @@ export const ArtistPage: FunctionComponent = () => {
                 <ArtistInfos
                   name={artist.name}
                   description={artist.description || undefined}
-                  avatarURL={artist.image || undefined}
+                  imageURL={artist.image || undefined}
                 />
                 <ArtistTopOffersContainer artistId={params.id} />
                 <ArtistPlaylistContainer artistId={params.id} />
@@ -71,7 +71,6 @@ export const ArtistPage: FunctionComponent = () => {
           </ArtistHeaderWrapper>
         </Page>
       )
-    }
 
     case 'error':
       return <PageNotFound />
