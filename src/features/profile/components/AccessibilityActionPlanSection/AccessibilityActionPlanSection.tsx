@@ -9,7 +9,7 @@ import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type AccessibilityActionPlanSectionProps = {
+export type AccessibilityActionPlanSectionProps = {
   title: string
   items: AccessibilityActionItem[]
 }

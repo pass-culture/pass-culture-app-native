@@ -1,21 +1,22 @@
 import React from 'react'
 
-import { AccessibilityActionPlanSection } from 'features/profile/components/AccessibilityActionPlanSection/AccessibilityActionPlanSection'
+import {
+  AccessibilityActionPlanSection,
+  AccessibilityActionPlanSectionProps,
+} from 'features/profile/components/AccessibilityActionPlanSection/AccessibilityActionPlanSection'
 import { render, screen } from 'tests/utils'
 import { TagVariant } from 'ui/components/Tag/types'
 import { Typo } from 'ui/theme'
 
 describe('<AccessibilityActionPlanSection />', () => {
-  const defaultProps = {
+  const defaultProps: AccessibilityActionPlanSectionProps = {
     title: 'Plan d’accessibilité',
     items: [
       {
-        id: 'test-toto',
         text: 'Toto',
         tag: { label: 'Réalisé', variant: TagVariant.SUCCESS },
       },
       {
-        id: 'test-tutu',
         text: 'Tutu',
         tag: { label: 'En cours', variant: TagVariant.WARNING },
         customContent: <Typo.Body testID="custom-content">Lien externe</Typo.Body>,
