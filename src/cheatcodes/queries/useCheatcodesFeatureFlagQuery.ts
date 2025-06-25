@@ -2,7 +2,6 @@ import { onlineManager, useQuery } from 'react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getAppBuildVersion } from 'libs/packageJson'
 
 const isFeatureFlagActive = (
@@ -19,11 +18,11 @@ const isFeatureFlagActive = (
 }
 
 export type FeatureFlagAll = {
-  featureFlag: RemoteStoreFeatureFlags
-  isFeatureFlagActive: boolean
+  featureFlag: string
+  isFeatureFlagActive: boolean // We don't use RemoteStoreFeatureFlags as we want FFs that are deleted from code
 }
 
-export const useFeatureFlagAllQuery = () => {
+export const useCheatcodesFeatureFlagQuery = () => {
   const appBuildVersion = getAppBuildVersion()
   const {
     data: docSnapshot,
@@ -38,9 +37,14 @@ export const useFeatureFlagAllQuery = () => {
     return {}
   }
 
-  const featureFlags = Object.values(RemoteStoreFeatureFlags).reduce(
-    (flags, key) => {
-      const config = docSnapshot.get<FeatureFlagConfig>(key)
+  const allFlagsData = docSnapshot.data()
+
+  if (!allFlagsData) {
+    return {}
+  }
+
+  const featureFlags = Object.entries(allFlagsData).reduce(
+    (flags, [key, config]) => {
       const owner = (config?.owner?.toLowerCase() as squads) ?? 'squad non-definie'
       if (!flags[owner]) {
         flags[owner] = []
