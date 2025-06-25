@@ -91,6 +91,7 @@ const AuthenticationContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'center',
   gap: getSpacing(1),
+  flexWrap: 'wrap',
 })
 
 const StyledBody = styled(Typo.Body)({

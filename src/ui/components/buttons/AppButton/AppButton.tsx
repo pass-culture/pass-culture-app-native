@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGetFontScale } from 'shared/accessibility/useGetFontScale'
 import { AppButtonInner } from 'ui/components/buttons/AppButton/AppButtonInner'
 import { DefaultLoadingIndicator } from 'ui/components/buttons/AppButton/DefaultLoadingIndicator'
 import { appButtonStyles } from 'ui/components/buttons/AppButton/styleUtils'
@@ -38,10 +39,15 @@ const _AppButton = <T extends AppButtonProps>({
   ellipsizeMode,
   backgroundColor,
 }: OnlyBaseButtonProps<T>) => {
+  const { fontScale } = useGetFontScale()
+  const numberOfLinesComparedToFontScale = fontScale > 1 ? 2 : 1
+
   const pressHandler: AppButtonEventNative =
     disabled || isLoading ? undefined : (onPress as AppButtonEventNative)
+
   const longPressHandler: AppButtonEventNative =
     disabled || isLoading ? undefined : (onLongPress as AppButtonEventNative)
+
   return (
     <TouchableOpacityButton
       accessibilityLabel={accessibilityLabel || wording}
@@ -54,7 +60,7 @@ const _AppButton = <T extends AppButtonProps>({
       inline={inline}
       inlineHeight={inlineHeight}
       justifyContent={justifyContent}
-      numberOfLines={numberOfLines}
+      numberOfLines={numberOfLines ?? numberOfLinesComparedToFontScale}
       style={style as StyleProp<ViewStyle>}
       center={center}
       backgroundColor={backgroundColor}
@@ -66,7 +72,7 @@ const _AppButton = <T extends AppButtonProps>({
         iconPosition={iconPosition}
         title={Title}
         adjustsFontSizeToFit={adjustsFontSizeToFit}
-        numberOfLines={numberOfLines}
+        numberOfLines={numberOfLines ?? numberOfLinesComparedToFontScale}
         wording={wording}
         ellipsizeMode={ellipsizeMode}
       />

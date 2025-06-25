@@ -676,6 +676,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "flexWrap": "wrap",
                   "gap": 4,
                   "justifyContent": "center",
                 },

@@ -277,7 +277,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-borderRightColor-q65h00 r-borderRightWidth-13l2t4g r-marginInline-14mg64r"
                 />
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
                 >
                   <div
                     class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
@@ -1423,7 +1423,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-height-z80fyv"
                 />
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
                 >
                   <div
                     class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"

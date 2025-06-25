@@ -30,3 +30,8 @@ jest.unmock('react-native-modal')
 // The issue comes from Jest trying to parse a module (react-native-orientation-locker) that uses ESModule syntax (import/export) without being processed by Babel
 // A common problem with some React Native libraries not properly packaged for Node.
 jest.mock('react-native-orientation-locker')
+
+// useGetFontScale is used in AppButton, so it impacts all buttons like ButtonPrimary, ButtonSecondary, etc.
+jest.mock('shared/accessibility/useGetFontScale', () => ({
+  useGetFontScale: () => ({ fontScale: 1 }),
+}))

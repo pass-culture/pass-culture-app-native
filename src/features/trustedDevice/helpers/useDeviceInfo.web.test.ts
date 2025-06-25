@@ -10,8 +10,12 @@ jest.spyOn(DeviceInfo, 'getModel')
 jest.spyOn(DeviceInfo, 'getBaseOs')
 jest.spyOn(DeviceInfo, 'getSystemName')
 
-jest.mock('react-device-detect', () => ({ browserName: undefined }))
-jest.requireMock('react-device-detect').browserName = 'Chrome'
+jest.mock('react-device-detect', () => ({ browserName: 'Chrome' }))
+
+jest.mock('react-native', () => {
+  const RN = jest.requireActual('react-native')
+  return { ...RN, useWindowDimensions: jest.fn(() => ({ width: 700, height: 1000 })) }
+})
 
 describe('useDeviceInfo', () => {
   it('returns informations about the device for web', async () => {
@@ -23,6 +27,7 @@ describe('useDeviceInfo', () => {
       os: 'unknown',
       fontScale: 1,
       screenZoomLevel: 1,
+      resolution: '700x1000',
     }
     await act(async () => {})
 

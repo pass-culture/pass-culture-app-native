@@ -1,5 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
+import { ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -31,35 +32,41 @@ export const OnboardingWelcome: FunctionComponent = () => {
   return (
     <Page>
       <ImageBackground source={WELCOME_BACKGROUND_SOURCE} />
-      <Spacer.Flex />
-      <Gradient />
-      <Content>
-        <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
-        <Spacer.Column numberOfSpaces={4} />
-        <StyledBody>
-          Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as
-          17 ou 18 ans.
-        </StyledBody>
-        <Spacer.Column numberOfSpaces={6} />
-        <InternalTouchableLink
-          as={ButtonPrimary}
-          wording="C’est parti&nbsp;!"
-          icon={PlainArrowNext}
-          iconAfterWording
-          navigateTo={getOnboardingNavConfig('OnboardingGeolocation')}
-          onBeforeNavigate={onStartPress}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <StyledAuthenticationButton
-          type="login"
-          onAdditionalPress={onLoginPress}
-          params={{ from: StepperOrigin.ONBOARDING_WELCOME }}
-        />
-        <Spacer.BottomScreen />
-      </Content>
+      <StyledScrollView>
+        <Spacer.Flex />
+        <Gradient />
+        <Content>
+          <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledBody>
+            Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu
+            as 17 ou 18 ans.
+          </StyledBody>
+          <Spacer.Column numberOfSpaces={6} />
+          <InternalTouchableLink
+            as={ButtonPrimary}
+            wording="C’est parti&nbsp;!"
+            icon={PlainArrowNext}
+            iconAfterWording
+            navigateTo={getOnboardingNavConfig('OnboardingGeolocation')}
+            onBeforeNavigate={onStartPress}
+          />
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledAuthenticationButton
+            type="login"
+            onAdditionalPress={onLoginPress}
+            params={{ from: StepperOrigin.ONBOARDING_WELCOME }}
+          />
+          <Spacer.BottomScreen />
+        </Content>
+      </StyledScrollView>
     </Page>
   )
 }
+
+const StyledScrollView = styled(ScrollView).attrs({
+  contentContainerStyle: { flexGrow: 1 },
+})``
 
 const Content = styled.View(({ theme }) => ({
   width: '100%',
