@@ -17,8 +17,6 @@ import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNav
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useModal } from 'ui/components/modals/useModal'
 
-// --- We define a single, well-typed category object ---
-// This represents the "Achievements" section in the main cheatcodes menu.
 const achievementCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Achievements 🏆',
@@ -26,11 +24,10 @@ const achievementCheatcodeCategory: CheatcodeCategory = {
     screen: 'CheatcodesStackNavigator',
     params: { screen: 'CheatcodesNavigationAchievements' },
   },
-  // The subscreens are now clearly defined CheatcodeButtons
   subscreens: [
     {
       id: uuidv4(),
-      title: 'Liste des achievements', // Title is now mandatory and descriptive
+      title: 'Liste des achievements',
       navigationTarget: {
         screen: 'Achievements',
         params: { from: 'cheatcodes' },
@@ -51,7 +48,6 @@ const achievementCheatcodeCategory: CheatcodeCategory = {
   ],
 }
 
-// We wrap it in an array for consistency with the main menu's expectations.
 export const cheatcodesNavigationAchievementsButtons: CheatcodeCategory[] = [
   achievementCheatcodeCategory,
 ]
@@ -78,8 +74,6 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
     <CheatcodesTemplateScreen title={achievementCheatcodeCategory.title} onGoBack={goBack}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
-      {/* --- THE FIX IS HERE --- */}
-      {/* We now construct a CheatcodeButton object and pass it to the 'button' prop. */}
       <LinkToCheatcodesScreen
         key="modal-1"
         button={{
@@ -95,7 +89,6 @@ export function CheatcodesNavigationAchievements(): React.JSX.Element {
         hideModal={hideModalOneAchievement}
       />
 
-      {/* --- AND THE FIX IS HERE TOO --- */}
       <LinkToCheatcodesScreen
         key="modal-2"
         button={{

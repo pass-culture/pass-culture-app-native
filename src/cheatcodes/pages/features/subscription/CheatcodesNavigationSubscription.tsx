@@ -1,14 +1,10 @@
-// cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription.tsx (Refactored)
-
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-// --- Import our new types ---
 import { CheatcodeCategory } from 'cheatcodes/types'
-// --- Import the custom navigation hooks ---
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
@@ -16,10 +12,8 @@ import { SubscriptionSuccessModal } from 'features/subscription/components/modal
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 
-// Define which modals can be shown
 type VisibleModal = SubscriptionTheme | 'unsubscribing' | 'onboarding' | null
 
-// --- We define a single, well-typed category object ---
 const subscriptionCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Subscription 🔔',
@@ -61,7 +55,6 @@ export function CheatcodesNavigationSubscription(): React.JSX.Element {
     <CheatcodesTemplateScreen title={subscriptionCheatcodeCategory.title} onGoBack={goBack}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
-      {/* --- REFACTORED: Explicit links using the new component API --- */}
       <LinkToCheatcodesScreen
         button={{
           id: 'cinema-modal',
@@ -127,7 +120,6 @@ export function CheatcodesNavigationSubscription(): React.JSX.Element {
         variant="secondary"
       />
 
-      {/* --- REFACTORED: Modals driven by the single state variable --- */}
       <SubscriptionSuccessModal
         theme={SubscriptionTheme.CINEMA}
         visible={visibleModal === SubscriptionTheme.CINEMA}
@@ -160,7 +152,7 @@ export function CheatcodesNavigationSubscription(): React.JSX.Element {
       />
 
       <UnsubscribingConfirmationModal
-        theme={SubscriptionTheme.VISITES} // Example theme
+        theme={SubscriptionTheme.VISITES}
         visible={visibleModal === 'unsubscribing'}
         dismissModal={() => setVisibleModal(null)}
         onUnsubscribePress={() => setVisibleModal(null)}

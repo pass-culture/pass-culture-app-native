@@ -1,5 +1,3 @@
-// cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice.tsx (Refactored)
-
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
@@ -8,9 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-// --- Import our new types ---
 import { CheatcodeCategory } from 'cheatcodes/types'
-// --- Import the custom navigation hooks and types ---
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -20,7 +16,6 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
-// --- We define a single, well-typed category object ---
 const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Trusted device 📱',
@@ -79,7 +74,6 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
     <CheatcodesTemplateScreen title={trustedDeviceCheatcodeCategory.title} onGoBack={goBack}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
-      {/* --- REFACTORED: Manual link using the new component API --- */}
       <LinkToCheatcodesScreen
         key="account-security-link"
         button={{
@@ -90,7 +84,6 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
         variant="secondary"
       />
 
-      {/* --- PRESERVED: This is a custom UI element and its logic is kept as is --- */}
       <BufferContainer gap={2}>
         <ButtonPrimary
           wording="AccountSecurityBuffer"

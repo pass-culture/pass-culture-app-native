@@ -1,5 +1,3 @@
-// CheatcodesMenu.tsx (Refactored)
-
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -31,7 +29,6 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 
-// --- The filtering and sorting function becomes much simpler ---
 const isMatching = (searchValue: string, str: string): boolean =>
   str.toLowerCase().includes(searchValue.toLowerCase())
 
@@ -41,12 +38,10 @@ const filterAndSortCheatcodes = (
 ): CheatcodeCategory[] =>
   categories
     .map((category): CheatcodeCategory | null => {
-      // Filter the subscreens first
       const filteredSubscreens = category.subscreens.filter(
         (subscreen) => !subscreen.showOnlyInSearch && isMatching(searchValue, subscreen.title)
       )
 
-      // The category is a match if its title matches, OR if it has matching subscreens
       const isCategoryMatching =
         isMatching(searchValue, category.title) || filteredSubscreens.length > 0
 
@@ -54,8 +49,6 @@ const filterAndSortCheatcodes = (
         return null
       }
 
-      // If searching, show only the matching subscreens. If not searching, show none.
-      // The parent button will handle navigation. Subscreens are for search discovery.
       return {
         ...category,
         subscreens: searchValue ? filteredSubscreens : [],
@@ -78,8 +71,6 @@ export function CheatcodesMenu(): React.JSX.Element {
     })
   }
 
-  // --- Button definitions are now strongly typed and clearer ---
-  // NOTE: You'll need to refactor the imported button arrays to follow this new structure.
   const featuresButtons: CheatcodeCategory[] = [
     ...cheatcodesNavigationAchievementsButtons,
     ...cheatcodesNavigationBirthdayNotificationsButtons,
@@ -152,12 +143,9 @@ export function CheatcodesMenu(): React.JSX.Element {
       onPress: onPressSentry,
       subscreens: [],
     },
-    // Example of a category with a subscreen
     {
       id: uuidv4(),
       title: 'Feature Flags & Remote Config',
-      // This parent button could navigate somewhere itself, or do nothing.
-      // Here, it's just a container.
       subscreens: [
         {
           id: uuidv4(),

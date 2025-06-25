@@ -6,16 +6,13 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-// --- Import our new types ---
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
-// --- Import the custom navigation hooks ---
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 
-// --- We define a single, well-typed category object ---
 const forceUpdateCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'ForceUpdate 🆙',
@@ -33,13 +30,11 @@ const forceUpdateCheatcodeCategory: CheatcodeCategory = {
   ],
 }
 
-// We export it as an array to be used in the main CheatcodesMenu
 export const cheatcodesNavigationForceUpdateButtons: CheatcodeCategory[] = [
   forceUpdateCheatcodeCategory,
 ]
 
 export function CheatcodesNavigationForceUpdate(): React.JSX.Element {
-  // --- NEW: Use the custom goBack hook for consistent navigation ---
   const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
 
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
@@ -61,7 +56,6 @@ export function CheatcodesNavigationForceUpdate(): React.JSX.Element {
   )
 
   return (
-    // The title is from our clean object, and we pass the goBack handler
     <CheatcodesTemplateScreen title={forceUpdateCheatcodeCategory.title} onGoBack={goBack}>
       {/* This will render nothing, which is correct. */}
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />

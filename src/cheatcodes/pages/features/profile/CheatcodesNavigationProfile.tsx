@@ -1,22 +1,16 @@
-// cheatcodes/pages/features/profile/CheatcodesNavigationProfile.tsx (Refactored - Final Version)
-
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-// --- Import our new types ---
 import { CheatcodeCategory } from 'cheatcodes/types'
-// --- Import the custom navigation hooks ---
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-// --- Import the actual getProfileNavConfig and its types ---
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { useModal } from 'ui/components/modals/useModal'
 
-// --- We define a single, well-typed category object ---
 const profileCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Profile 🎨',
@@ -31,7 +25,6 @@ const profileCheatcodeCategory: CheatcodeCategory = {
       navigationTarget: { screen: 'ChangeEmailExpiredLink' },
     },
     { id: uuidv4(), title: 'Login', navigationTarget: { screen: 'Login' } },
-    // --- Direct integration of getProfileNavConfig with hardcoded titles ---
     {
       id: uuidv4(),
       title: 'Profile: Change City',
@@ -100,7 +93,6 @@ const profileCheatcodeCategory: CheatcodeCategory = {
   ],
 }
 
-// We export it as an array to be used in the main CheatcodesMenu
 export const cheatcodesNavigationProfileButtons: CheatcodeCategory[] = [profileCheatcodeCategory]
 
 export function CheatcodesNavigationProfile(): React.JSX.Element {

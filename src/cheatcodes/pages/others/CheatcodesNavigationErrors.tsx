@@ -1,5 +1,3 @@
-// cheatcodes/pages/others/CheatcodesNavigationErrors.tsx (Complete and Corrected)
-
 import React, { createElement, FunctionComponent, useState } from 'react'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'

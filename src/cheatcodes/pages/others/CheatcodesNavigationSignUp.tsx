@@ -1,5 +1,3 @@
-// cheatcodes/pages/others/CheatcodesNavigationSignUp.tsx (Refactored)
-
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -7,9 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { useSomeOfferIdQuery } from 'cheatcodes/queries/useSomeOfferIdQuery'
-// --- Import our new types ---
 import { CheatcodeCategory } from 'cheatcodes/types'
-// --- Import the custom navigation hooks ---
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -18,7 +14,6 @@ import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 
-// A type to manage which modal is currently visible
 type VisibleModal =
   | 'finishSubscription'
   | 'authentication'
@@ -26,7 +21,6 @@ type VisibleModal =
   | 'errorApplication'
   | null
 
-// --- We define a single, well-typed category object ---
 const signUpCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'SignUp 🎨',
@@ -92,7 +86,6 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
     <CheatcodesTemplateScreen title={signUpCheatcodeCategory.title} onGoBack={goBack}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
 
-      {/* --- REFACTORED: Manual links using the new component API and single state --- */}
       <LinkToCheatcodesScreen
         button={{
           id: 'finish-sub-action',
@@ -126,7 +119,6 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
         variant="secondary"
       />
 
-      {/* --- REFACTORED: Modals are now driven by the single state variable --- */}
       <FinishSubscriptionModal
         visible={visibleModal === 'finishSubscription'}
         hideModal={() => setVisibleModal(null)}

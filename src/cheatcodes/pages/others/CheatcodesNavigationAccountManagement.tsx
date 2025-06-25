@@ -5,14 +5,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-// --- Import our new types ---
 import { CheatcodeCategory } from 'cheatcodes/types'
-// --- Import the custom navigation hooks ---
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
-// --- We define a single, well-typed category object ---
 const accountManagementCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Account Management ⚙️',
@@ -21,7 +18,6 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
     params: { screen: 'CheatcodesNavigationAccountManagement' },
   },
   subscreens: [
-    // Direct navigation targets with explicit titles
     {
       id: uuidv4(),
       title: 'Compte suspendu (fraude)',
@@ -50,7 +46,6 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
         params: { email: 'jean.dupont@gmail.com' },
       },
     },
-    // Using getProfileNavConfig with hardcoded titles
     {
       id: uuidv4(),
       title: 'Profile: Delete Reason',
@@ -94,19 +89,15 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
   ],
 }
 
-// We export it as an array to be used in the main CheatcodesMenu
 export const cheatcodesNavigationAccountManagementButtons: CheatcodeCategory[] = [
   accountManagementCheatcodeCategory,
 ]
 
 export function CheatcodesNavigationAccountManagement(): React.JSX.Element {
-  // --- NEW: Use the custom goBack hook for consistent navigation ---
   const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
 
   return (
-    // The title is from our clean object, and we pass the goBack handler
     <CheatcodesTemplateScreen title={accountManagementCheatcodeCategory.title} onGoBack={goBack}>
-      {/* We pass the clean subscreens array directly. */}
       <CheatcodesSubscreensButtonList buttons={accountManagementCheatcodeCategory.subscreens} />
     </CheatcodesTemplateScreen>
   )

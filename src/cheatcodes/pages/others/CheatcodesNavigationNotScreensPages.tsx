@@ -1,5 +1,3 @@
-// cheatcodes/pages/others/CheatcodesNavigationNotScreensPages.tsx (Refactored)
-
 import React, { useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import * as DeviceDetect from 'react-device-detect'
@@ -7,9 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-// --- Import our new types ---
 import { CheatcodeButton } from 'cheatcodes/types'
-// --- Import the custom navigation hooks ---
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BrowserNotSupportedPage, supportedBrowsers } from 'web/SupportedBrowsersGate.web'
@@ -40,13 +36,11 @@ export function CheatcodesNavigationNotScreensPages(): React.JSX.Element {
   const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
   const [page, setPage] = useState<Page | null>(null)
 
-  // --- PRESERVED and IMPROVED: The core state-swapping logic ---
   // If a page is selected, render it and provide a way to get back.
   if (page) {
     return getPageComponent(page, () => setPage(null))
   }
 
-  // --- REFACTORED: The list of actions is now a declarative array ---
   const actionButtons: CheatcodeButton[] = [
     {
       id: uuidv4(),
