@@ -62,8 +62,8 @@ export const MarketingModal: FunctionComponent<Props> = ({
 const GRADIENT_SIZE = getSpacing(18)
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
-    colorAlpha(theme.designSystem.color.background.locked, 0),
-    theme.designSystem.color.background.locked,
+    colorAlpha(theme.designSystem.color.background.default, 0),
+    theme.designSystem.color.background.default,
   ],
   locations: [0, 0.85],
 }))({
