@@ -556,7 +556,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -1703,7 +1703,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -1903,7 +1903,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -2458,7 +2458,7 @@ d’options
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -3519,7 +3519,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -5002,7 +5002,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -5202,7 +5202,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -5757,7 +5757,7 @@ d’options
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -6818,7 +6818,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -7755,7 +7755,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             >
                               <View
                                 accessibilityLabel="Non accessible"
-                                fill="#696A6F"
+                                fill="#696a6f"
                                 height={16}
                                 testID="invalid-icon"
                                 width={16}
@@ -7867,7 +7867,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             >
                               <View
                                 accessibilityLabel="Non accessible"
-                                fill="#696A6F"
+                                fill="#696a6f"
                                 height={16}
                                 testID="invalid-icon"
                                 width={16}
@@ -7979,7 +7979,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             >
                               <View
                                 accessibilityLabel="Non accessible"
-                                fill="#696A6F"
+                                fill="#696a6f"
                                 height={16}
                                 testID="invalid-icon"
                                 width={16}
@@ -8372,7 +8372,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -8572,7 +8572,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]
@@ -9127,7 +9127,7 @@ d’options
               style={
                 [
                   {
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "height": 8,
                   },
                 ]

@@ -118,7 +118,7 @@ const Invalidate = styled(DefaultInvalidate).attrs(({ theme }) => ({
 }))``
 
 const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
-  selectionColor: theme.colors.greyDark,
+  selectionColor: theme.designSystem.color.text.subtle,
 }))``
 
 const StyledInputContainer = styled(InputContainer)({

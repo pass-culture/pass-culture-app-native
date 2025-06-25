@@ -61,7 +61,10 @@ export const MarketingModal: FunctionComponent<Props> = ({
 
 const GRADIENT_SIZE = getSpacing(18)
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
+  colors: [
+    colorAlpha(theme.designSystem.color.background.locked, 0),
+    theme.designSystem.color.background.locked,
+  ],
   locations: [0, 0.85],
 }))({
   height: GRADIENT_SIZE,
@@ -108,7 +111,7 @@ const Container = styled.View(({ theme }) => {
       ? theme.appContentWidth - getSpacing(8)
       : theme.breakpoints.sm - getSpacing(3)
   return {
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     alignItems: 'center',
     alignSelf: 'center',
     borderRadius: getSpacing(4),

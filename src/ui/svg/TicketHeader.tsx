@@ -27,18 +27,18 @@ const TicketHeaderComponent: React.FC<Props> = (props) => {
       <Path
         d="M186.5,2c0,17.67-14.33,32-32,32s-32-14.33-32-32H26C12.75,2,2,12.75,2,26v24h305V26c0-13.25-10.75-24-24-24
 		H186.5z"
-        fill={theme.colors.white}
+        fill={theme.designSystem.color.background.default}
       />
       <Path
         d="M283,2c13.25,0,24,10.75,24,24v24H2V26C2,12.75,12.75,2,26,2h96.5c0,17.67,14.33,32,32,32s32-14.33,32-32H283
 		 M283,0h-96.5h-2v2c0,16.54-13.46,30-30,30s-30-13.46-30-30V0h-2H26C11.66,0,0,11.66,0,26v24l0,0h2h305h2l0,0V26
 		C309,11.66,297.34,0,283,0L283,0z"
-        fill={theme.colors.greyLight}
+        fill={theme.designSystem.color.background.locked}
       />
     </AccessibleSvg>
   )
 }
 
 export const TicketHeader = styled(TicketHeaderComponent).attrs(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+  color: color ?? theme.designSystem.color.background.locked,
 }))``

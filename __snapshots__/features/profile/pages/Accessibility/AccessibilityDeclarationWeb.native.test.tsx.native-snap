@@ -1486,7 +1486,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   >
                     <View
                       borderColor="#161617"
-                      fillColor="transparent"
+                      fillColor="#ffffff"
                       height={3}
                       width={3}
                     >
@@ -1623,7 +1623,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   >
                     <View
                       borderColor="#161617"
-                      fillColor="transparent"
+                      fillColor="#ffffff"
                       height={3}
                       width={3}
                     >

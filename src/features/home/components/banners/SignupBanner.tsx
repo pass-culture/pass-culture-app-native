@@ -22,7 +22,7 @@ export const SignupBanner: FunctionComponent = () => {
 
   return (
     <SystemBanner
-      leftIcon={SytledUnlock}
+      leftIcon={StyledUnlock}
       title={title}
       subtitle={subtitle}
       onPress={onSystemBannerPress}
@@ -32,6 +32,6 @@ export const SignupBanner: FunctionComponent = () => {
   )
 }
 
-const SytledUnlock = styled(Unlock).attrs(({ theme }) => ({
+const StyledUnlock = styled(Unlock).attrs(({ theme }) => ({
   color: theme.colors.secondaryLight200,
 }))``

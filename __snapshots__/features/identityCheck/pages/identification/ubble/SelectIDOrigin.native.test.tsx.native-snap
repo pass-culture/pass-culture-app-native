@@ -408,7 +408,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,

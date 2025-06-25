@@ -19,7 +19,7 @@ describe('<CarouselDot/>', () => {
     render(<CarouselDot index={0} animValue={ANIM_VALUE} />)
 
     expect(screen.getByTestId('carousel-dot')).toHaveStyle({
-      backgroundColor: 'rgba(105, 106, 111, 1)',
+      backgroundColor: 'rgba(241, 241, 244, 1)',
     })
     expect(screen.getByTestId('carousel-dot')).toHaveStyle({
       width: 6,

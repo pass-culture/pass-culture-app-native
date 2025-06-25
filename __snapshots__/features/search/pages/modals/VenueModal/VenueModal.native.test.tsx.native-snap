@@ -466,7 +466,7 @@ exports[`VenueModal should render correctly 1`] = `
                   placeholder="Cinéma, librairie, magasin…"
                   placeholderTextColor="#696a6f"
                   returnKeyType="search"
-                  selectionColor="#696A6F"
+                  selectionColor="#696a6f"
                   style={
                     [
                       {

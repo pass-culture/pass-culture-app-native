@@ -32,5 +32,5 @@ const StatusBarContainer = styled.View<{ height: number }>(({ height }) => ({
 
 const AndroidWhiteStatusBar = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

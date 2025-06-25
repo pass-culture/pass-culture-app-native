@@ -34,7 +34,7 @@ export const SectionWithDivider = ({
 
 const Divider = styled.View(({ theme }) => ({
   height: getSpacing(2),
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const Wrapper = styled.View({

@@ -35,7 +35,7 @@ const StyledTouchable = styledButton(Touchable)({
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color: ColorsTypeLegacy }>(
   ({ theme, color }) => ({
-    color: color ?? theme.colors.white,
+    color: color ?? theme.designSystem.color.icon.default,
     size: theme.icons.sizes.small,
   })
 )``

@@ -411,7 +411,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                     placeholder=""
                     placeholderTextColor="#696a6f"
                     returnKeyType="next"
-                    selectionColor="#696A6F"
+                    selectionColor="#696a6f"
                     style={
                       [
                         {

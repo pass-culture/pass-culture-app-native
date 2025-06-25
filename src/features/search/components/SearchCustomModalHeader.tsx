@@ -8,7 +8,6 @@ import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { Typo, getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 interface Props {
@@ -29,7 +28,7 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
   onClose,
 }) => {
   const { top } = useCustomSafeInsets()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const headerHeight = getSpacing(18) + (isDesktopViewport ? top : 0)
 
   return (
@@ -37,7 +36,7 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
       <HeaderContent testID="pageHeader" height={headerHeight}>
         <ButtonContainer positionInHeader="left" testID="back-button-container">
           {shouldDisplayBackButton ? (
-            <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />
+            <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
           ) : null}
         </ButtonContainer>
         <StyledTitle4 numberOfLines={1} nativeID={titleId} {...getHeadingAttrs(1)}>
@@ -45,7 +44,7 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
         </StyledTitle4>
         <ButtonContainer positionInHeader="right" testID="close-button-container">
           {shouldDisplayCloseButton ? (
-            <StyledCloseButton onClose={onClose} color={ColorsEnum.BLACK} />
+            <StyledCloseButton onClose={onClose} color={designSystem.color.icon.default} />
           ) : null}
         </ButtonContainer>
       </HeaderContent>

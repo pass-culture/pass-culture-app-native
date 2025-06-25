@@ -253,7 +253,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       placeholder="Offre, artiste, lieu culturel..."
                       placeholderTextColor="#696a6f"
                       returnKeyType="search"
-                      selectionColor="#696A6F"
+                      selectionColor="#696a6f"
                       style={
                         [
                           {

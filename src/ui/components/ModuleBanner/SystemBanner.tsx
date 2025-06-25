@@ -71,9 +71,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
   }, [type, from])
 
   const color = withBackground ? 'inverted' : 'default'
-  const iconColor = withBackground ? theme.colors.white : theme.colors.secondaryLight200
+  const iconColor = withBackground
+    ? theme.designSystem.color.icon.lockedInverted
+    : theme.designSystem.color.icon.brandSecondary
   const backgroundColor = withBackground ? theme.uniqueColors.brand : theme.colors.transparent
-  const borderColor = withBackground ? theme.uniqueColors.brand : theme.colors.secondaryLight200
+  const borderColor = withBackground
+    ? theme.uniqueColors.brand
+    : theme.designSystem.color.border.brandSecondary
 
   const StyledIcon = LeftIcon
     ? styled(LeftIcon).attrs(({ theme }) => ({
@@ -96,7 +100,11 @@ export const SystemBanner: FunctionComponent<Props> = ({
       {...focusProps}
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      color={withBackground ? theme.colors.white : theme.colors.black}
+      color={
+        withBackground
+          ? theme.designSystem.color.text.lockedInverted
+          : theme.designSystem.color.text.default
+      }
       style={style}>
       <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">
         {StyledIcon ? (
