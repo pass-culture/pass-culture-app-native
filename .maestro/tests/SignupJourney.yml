@@ -25,6 +25,7 @@ onFlowStart:
 - runFlow: subFolder/auth/LoginFromProfileAfterSignup.yml
 
 - runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow: subFolder/links/DeepLinksToHome.yml
 - runFlow: subFolder/home/OpenActivationModuleFromHome.yml
