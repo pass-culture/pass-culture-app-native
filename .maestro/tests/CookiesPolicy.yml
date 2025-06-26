@@ -3,7 +3,6 @@ tags:
   - nightlyAndroid
   - local
   - squad-activation
-  - refacto
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/SelectOneCookie.yml

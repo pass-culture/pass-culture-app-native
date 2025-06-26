@@ -5,7 +5,6 @@ tags:
   - nightlyIOS
   - local
   - squad-decouverte
-  - refacto
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
 ---

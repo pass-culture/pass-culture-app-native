@@ -3,7 +3,6 @@ jsengine: graaljs
 tags:
   - nightlyAndroid
   - nightlyIOS
-  - refacto
   - squad-activation
   - local
 onFlowStart:

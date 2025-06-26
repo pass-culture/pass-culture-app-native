@@ -4,7 +4,6 @@ tags:
   - nightlyAndroid
   - local
   - squad-conversion
-  - refacto
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
 ---
