@@ -357,6 +357,18 @@ const Container: FunctionComponent<{ subtitle: string }> = ({ subtitle }) => {
 }
 ```
 
+### Les tests unitaires
+
+Pour nos tests unitaires, nous devons isoler le SUT ([System Under Test](https://en.wikipedia.org/wiki/System_under_test)) du code que l'ont n'édite pas dans ce repo et qui pourrait faire des effets de bords
+
+Exemple :
+
+- mocker la lib `algoliasearch`
+  - pas le hook qui l'appel
+  - pas l'appel réseau qui est fait par la lib
+- mocker notre backend en simulant une réponse réseau via MSW
+  - pas le hook qui l'appel
+
 ### La gestion d'états locaux avec Zustand
 
 Zustand est le state global de l'app, il permet de partager et modifier des variables entre plusieurs vues.
@@ -377,22 +389,17 @@ Nous nous efforcerons dans le futur de déplacer un maximum de logiques métiers
 Cette logique est possible car nous maintenons le code de l'API, et que les routes natives ne sont utilisées que par notre app.
 Nous pouvons introduire des breakings changes grâce au versionning des routes (`/v1`, `/v2`, ...).
 
-TODO:
+## TODO
 
-- ne pas mocker les hoks faire du msw
-
-  - mocker le code que l'on édite pas dans ce repo
-    - lib (algolia)
-    - API HTTP backend à nous
-
-- à creuser plus loin
+- à creuser plus tard
 
   - navigation
   - analytics
-  - zustand
-  - suspense / react query v5
-  - API null undefined
-  - URL/API/User -> Parsing
-    - Type Primitif -> Value object (Price)
+  - API `null` `undefined`
+  - les données provenantURL/API/User -> Parsing
+
+    > never trust user input
+
+    - Type Primitif -> Value object (ex : Price)
 
 - faire des règles ESLint pour enforce nos principes
