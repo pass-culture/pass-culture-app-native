@@ -2,11 +2,11 @@
 
 ## Constat
 
-L’app jeunes a été construite sur la base d’hypothèses qui ne permettent pas toujours la scalabilité: garantie de la performance/stabilité/maintenabilité.
+L’app jeunes a été construite sur la base d’hypothèses qui ne permettent pas toujours la scalabilité : garantie de la performance/stabilité/maintenabilité.
 
 ## Hypothèses historiques
 
-Les hypothèses historiques (implicites ou explicites) sont les suivantes:
+Les hypothèses historiques (implicites ou explicites) sont les suivantes :
 
 - gestion de l’état faite de plusieurs manières (sans séparation de l’app/server state):
   - component states -> état locaux très proches des composants, s’utilise via useState et permet de stocker des états éphémères (en théorie)
