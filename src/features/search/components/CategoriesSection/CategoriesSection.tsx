@@ -48,22 +48,14 @@ export function CategoriesSection<
   shouldSortItems = true,
   value,
 }: Readonly<CategoriesSectionProps<T, N>>) {
-  const handleGetIcon = (category: SearchGroupNameEnumv2) => {
-    if (getIcon) {
-      return getIcon(category)
-    }
-
-    return undefined
-  }
+  const handleGetIcon = (category: SearchGroupNameEnumv2) => getIcon?.(category)
 
   const handleSelect = (key: N) => {
     onSelect(key)
-    if (onSubmit) {
-      onSubmit()
-    }
+    onSubmit?.()
   }
 
-  const entries = Object.entries(itemsMapping)
+  const entries = itemsMapping ? Object.entries(itemsMapping) : []
   if (shouldSortItems) entries.sort(([, a], [, b]) => sortCategoriesPredicate(a, b))
 
   return (

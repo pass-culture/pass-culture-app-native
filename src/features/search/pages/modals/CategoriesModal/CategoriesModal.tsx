@@ -282,7 +282,7 @@ export const CategoriesModal = ({
           />
         ) : null}
         {currentView === CategoriesModalView.NATIVE_CATEGORIES && getNativeCategoriesSection()}
-        {currentView === CategoriesModalView.GENRES ? (
+        {currentView === CategoriesModalView.GENRES && genreTypes ? (
           <CategoriesSection
             itemsMapping={genreTypes}
             onSelect={handleGenreTypeSelect}
