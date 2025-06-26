@@ -367,11 +367,13 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 Pour recevoir toute l’actu de ce thème, tu dois, au choix :
               </Text>
               <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                       "justifyContent": "flex-start",
                     },
                   ]
@@ -379,6 +381,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 toggleLabel={false}
               >
                 <View
+                  gap={2}
                   style={
                     [
                       {
@@ -387,6 +390,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "gap": 8,
                       },
                     ]
                   }
@@ -400,16 +404,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       undefined-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     htmlFor="testUuidV4"
                     style={
@@ -440,21 +434,13 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   </Text>
                 </View>
                 <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
+                  gap={4}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row",
+                        "gap": 16,
                       },
                     ]
                   }
@@ -570,11 +556,13 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                       "justifyContent": "flex-start",
                     },
                   ]
@@ -582,6 +570,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 toggleLabel={false}
               >
                 <View
+                  gap={2}
                   style={
                     [
                       {
@@ -590,6 +579,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "gap": 8,
                       },
                     ]
                   }
@@ -603,16 +593,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       undefined-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     htmlFor="testUuidV4"
                     style={
@@ -643,21 +623,13 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   </Text>
                 </View>
                 <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
+                  gap={4}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row",
+                        "gap": 16,
                       },
                     ]
                   }
@@ -948,6 +920,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         {
                           "flexDirection": "row",
                           "flexShrink": 0,
+                          "marginRight": 8,
                         },
                       ]
                     }
@@ -962,16 +935,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "width": 8,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}

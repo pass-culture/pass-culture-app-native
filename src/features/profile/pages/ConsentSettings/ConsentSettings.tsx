@@ -15,11 +15,12 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
@@ -59,24 +60,18 @@ export const ConsentSettings = () => {
         L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton
         expérience de navigation.
       </Typo.Body>
-      <Spacer.Column numberOfSpaces={4} />
       <StyledBodyAccentXs>
         Tu peux choisir d’accepter ou non l’activation de leur suivi.
       </StyledBodyAccentXs>
-      <Spacer.Column numberOfSpaces={8} />
       <CookiesSettings
         settingsCookiesChoice={settingsCookiesChoice}
         setSettingsCookiesChoice={setSettingsCookiesChoice}
       />
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
+      <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
+      <StyledBody>
         Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={4} />
+      </StyledBody>
       <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
-      <Spacer.Column numberOfSpaces={4} />
       <StyledBodyAccentXs>
         Pour plus d’informations, nous t’invitons à consulter notre
         <Spacer.Row numberOfSpaces={1} />
@@ -88,13 +83,25 @@ export const ConsentSettings = () => {
           typography="BodyAccentXs"
         />
       </StyledBodyAccentXs>
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimary wording="Enregistrer mes choix" onPress={saveChoice} center />
-      <Spacer.Column numberOfSpaces={4} />
+      <SaveButton wording="Enregistrer mes choix" onPress={saveChoice} center />
     </SecondaryPageWithBlurHeader>
   )
 }
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+  marginTop: getSpacing(4),
+  marginBottom: getSpacing(8),
 }))
+
+const StyledTitle4 = styled(Typo.Title4)({
+  marginVertical: getSpacing(4),
+})
+
+const StyledBody = styled(Typo.Body)({
+  marginBottom: getSpacing(4),
+})
+
+const SaveButton = styledButton(ButtonPrimary)({
+  marginBottom: getSpacing(4),
+})

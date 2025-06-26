@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { CAPITALIZED_MONTHS } from 'shared/date/months'
@@ -6,7 +6,7 @@ import { DatePickerDropDownProps } from 'ui/components/inputs/DateInput/DatePick
 import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
-import { Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
   date: initialDate,
@@ -38,7 +38,10 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
   }, [date])
 
   return (
-    <Container testID="date-picker-dropdown" accessibilityDescribedBy={accessibilityDescribedBy}>
+    <Container
+      testID="date-picker-dropdown"
+      accessibilityDescribedBy={accessibilityDescribedBy}
+      gap={2}>
       <DropDownContainer>
         <DropDown
           value={date.day}
@@ -50,7 +53,6 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
           isError={!!errorMessage}
         />
       </DropDownContainer>
-      <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
           value={date.month}
@@ -63,7 +65,6 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
           isError={!!errorMessage}
         />
       </DropDownContainer>
-      <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
           value={date.year}
@@ -102,7 +103,7 @@ const getValidDate = (date: PartialDate<'long'>) => {
   return maybeValidDate.getDate() == Number(date.day) ? maybeValidDate : undefined
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
   width: '100%',
   maxWidth: theme.forms.maxWidth,

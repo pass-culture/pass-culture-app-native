@@ -293,6 +293,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                   {
                     "flexDirection": "row",
                     "flexShrink": 0,
+                    "marginRight": 8,
                   },
                 ]
               }
@@ -307,16 +308,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -522,6 +513,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -535,16 +527,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -987,6 +969,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -1000,16 +983,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

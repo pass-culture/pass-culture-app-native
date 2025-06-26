@@ -741,12 +741,14 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
               testID="Se connecter"
             >
               <View
+                gap={1}
                 paddingForIcon={0}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 4,
                       "top": 0,
                     },
                   ]
@@ -762,16 +764,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                     button-icon-SVG-Mock
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   color="#320096"
                   style={
@@ -1388,11 +1380,13 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         <View
           accessibilityAtomic={false}
           accessibilityRole="none"
+          gap={1}
           isVisible={true}
           style={
             [
               {
                 "alignItems": "flex-start",
+                "gap": 4,
                 "maxWidth": 500,
                 "paddingTop": 8,
                 "width": "100%",
@@ -1401,12 +1395,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           }
         >
           <View
+            gap={1}
             noFullWidth={false}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row-reverse",
+                  "gap": 4,
                   "justifyContent": "flex-end",
                   "maxWidth": 500,
                   "width": "100%",
@@ -1433,16 +1429,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               12 caractères
             </Text>
             <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <View
               style={
                 [
                   {
@@ -1464,22 +1450,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <View
+            gap={1}
             noFullWidth={false}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row-reverse",
+                  "gap": 4,
                   "justifyContent": "flex-end",
                   "maxWidth": 500,
                   "width": "100%",
@@ -1506,16 +1484,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               1 majuscule
             </Text>
             <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <View
               style={
                 [
                   {
@@ -1537,22 +1505,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <View
+            gap={1}
             noFullWidth={false}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row-reverse",
+                  "gap": 4,
                   "justifyContent": "flex-end",
                   "maxWidth": 500,
                   "width": "100%",
@@ -1579,16 +1539,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               1 minuscule
             </Text>
             <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <View
               style={
                 [
                   {
@@ -1610,22 +1560,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <View
+            gap={1}
             noFullWidth={false}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row-reverse",
+                  "gap": 4,
                   "justifyContent": "flex-end",
                   "maxWidth": 500,
                   "width": "100%",
@@ -1652,16 +1594,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               1 chiffre
             </Text>
             <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <View
               style={
                 [
                   {
@@ -1683,22 +1615,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <View
+            gap={1}
             noFullWidth={false}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row-reverse",
+                  "gap": 4,
                   "justifyContent": "flex-end",
                   "maxWidth": 500,
                   "width": "100%",
@@ -1724,16 +1648,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             >
               1 caractère spécial (!@#$%^&*...)
             </Text>
-            <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -3359,6 +3273,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   {
                     "flexDirection": "row",
                     "flexShrink": 0,
+                    "marginRight": 8,
                   },
                 ]
               }
@@ -3373,16 +3288,6 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -3478,6 +3383,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   {
                     "flexDirection": "row",
                     "flexShrink": 0,
+                    "marginRight": 8,
                   },
                 ]
               }
@@ -3492,16 +3398,6 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <Text
               adjustsFontSizeToFit={false}

@@ -10,7 +10,7 @@ import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationFor
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   country: Country
@@ -37,9 +37,7 @@ export const CountryButton = ({ country, selectedCountry, onCountrySelect }: Pro
       onPress={onPress}>
       <CountryContainer ref={containerRef}>
         {selected ? <ValidateIcon /> : <ValidateOffIcon />}
-        <Spacer.Row numberOfSpaces={2} />
-        <Typo.BodyAccent>{country.name}</Typo.BodyAccent>
-        <Spacer.Row numberOfSpaces={1} />
+        <CountryName>{country.name}</CountryName>
         <CountryCallingCode>{countryCallingCode}</CountryCallingCode>
       </CountryContainer>
     </TouchableOpacity>
@@ -51,6 +49,11 @@ const CountryContainer = styled.View({
   alignItems: 'center',
   paddingVertical: getSpacing(3),
   paddingHorizontal: getSpacing(1),
+})
+
+const CountryName = styled(Typo.BodyAccent)({
+  marginLeft: getSpacing(2),
+  marginRight: getSpacing(1),
 })
 
 const CountryCallingCode = styled(Typo.BodyAccent)(({ theme }) => ({

@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { useSubcategory } from 'libs/subcategories'
-import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -29,9 +29,10 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   favorite: FavoriteResponse
@@ -198,23 +199,15 @@ export const Favorite: React.FC<Props> = (props) => {
             }
             onBeforeNavigate={handlePressOffer}
             accessibilityLabel={accessibilityLabel}>
-            <Row>
+            <Row gap={SPACER_BETWEEN_IMAGE_AND_CONTENT}>
               <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-              <Spacer.Row numberOfSpaces={SPACER_BETWEEN_IMAGE_AND_CONTENT} />
-              <ContentContainer>
+              <ContentContainer gap={2}>
                 <LeftContent>
-                  <Typo.BodyAccent numberOfLines={2}>{offer.name}</Typo.BodyAccent>
-                  <Spacer.Column numberOfSpaces={1} />
+                  <OfferName numberOfLines={2}>{offer.name}</OfferName>
                   <Body>{appLabel}</Body>
                   {formattedDate ? <Body>{formattedDate}</Body> : null}
-                  {displayPrice ? (
-                    <React.Fragment>
-                      <Spacer.Column numberOfSpaces={1} />
-                      <Typo.BodyAccentXs>{displayPrice}</Typo.BodyAccentXs>
-                    </React.Fragment>
-                  ) : null}
+                  {displayPrice ? <Price>{displayPrice}</Price> : null}
                 </LeftContent>
-                <Spacer.Row numberOfSpaces={2} />
                 <RightContent>
                   {distanceToOffer ? <Distance>{distanceToOffer}</Distance> : null}
                 </RightContent>
@@ -229,7 +222,7 @@ export const Favorite: React.FC<Props> = (props) => {
             />
           </ShareContainer>
         </Container>
-        <FavoriteButtonsContainer>
+        <FavoriteButtonsContainer gap={5}>
           <ButtonContainer>
             <ButtonSecondary
               wording="Supprimer"
@@ -239,7 +232,6 @@ export const Favorite: React.FC<Props> = (props) => {
               disabled={isLoading}
             />
           </ButtonContainer>
-          <Spacer.Row numberOfSpaces={5} />
           <ButtonContainer>{BookingButton}</ButtonContainer>
         </FavoriteButtonsContainer>
         <LineSeparator />
@@ -282,12 +274,12 @@ const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const Row = styled.View({
+const Row = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
 })
 
-const ContentContainer = styled.View({
+const ContentContainer = styled(ViewGap)({
   flexDirection: 'row',
   flex: 1,
 })
@@ -298,7 +290,7 @@ const ButtonContainer = styled.View({
 })
 
 const DEFAULT_MARGIN = getSpacing(6)
-export const FavoriteButtonsContainer = styled.View(({ theme }) => {
+export const FavoriteButtonsContainer = styled(ViewGap)(({ theme }) => {
   const WEB_MARGIN_LEFT =
     DEFAULT_MARGIN + theme.tiles.sizes.small.width + getSpacing(SPACER_BETWEEN_IMAGE_AND_CONTENT)
   return {
@@ -309,6 +301,10 @@ export const FavoriteButtonsContainer = styled.View(({ theme }) => {
   }
 })
 
+const OfferName = styled(Typo.BodyAccent)({
+  marginBottom: getSpacing(1),
+})
+
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
   color: theme.designSystem.color.text.subtle,
@@ -317,3 +313,7 @@ const Distance = styled(Typo.Body)(({ theme }) => ({
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
+
+const Price = styled(Typo.BodyAccentXs)({
+  marginTop: getSpacing(1),
+})

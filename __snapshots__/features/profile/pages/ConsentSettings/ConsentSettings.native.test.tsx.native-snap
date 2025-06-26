@@ -234,16 +234,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       >
         L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation.
       </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -252,22 +242,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
+              "marginBottom": 32,
+              "marginTop": 16,
             },
           ]
         }
       >
         Tu peux choisir d’accepter ou non l’activation de leur suivi.
       </Text>
-      <View
-        numberOfSpaces={8}
-        style={
-          [
-            {
-              "height": 32,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -1994,16 +1976,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           ]
         }
       />
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2012,22 +1984,13 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "fontFamily": "Montserrat-Bold",
               "fontSize": 17,
               "lineHeight": 27.2,
+              "marginVertical": 16,
             },
           ]
         }
       >
         Tu as la main dessus
       </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2036,22 +1999,13 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 16,
             },
           ]
         }
       >
         Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
       </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2066,16 +2020,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       >
         On te redemandera bien sûr ton consentement si notre politique évolue.
       </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2084,6 +2028,8 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
+              "marginBottom": 32,
+              "marginTop": 16,
             },
           ]
         }
@@ -2147,12 +2093,14 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             testID="Politique de gestion des cookies"
           >
             <View
+              gap={1}
               paddingForIcon={0}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 4,
                     "top": 0,
                   },
                 ]
@@ -2168,16 +2116,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   button-icon-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -2197,16 +2135,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </View>
         </View>
       </Text>
-      <View
-        numberOfSpaces={8}
-        style={
-          [
-            {
-              "height": 32,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Enregistrer mes choix"
         accessibilityState={
@@ -2256,7 +2184,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 "paddingTop": 2,
                 "width": "100%",
               },
-              {},
+              {
+                "marginBottom": 16,
+              },
             ],
             {
               "opacity": 1,
@@ -2294,16 +2224,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
     </View>
   </RCTScrollView>
   <View

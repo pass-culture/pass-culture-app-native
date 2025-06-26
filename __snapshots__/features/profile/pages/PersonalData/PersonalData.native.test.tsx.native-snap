@@ -388,6 +388,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   {
                     "flexDirection": "row",
                     "flexShrink": 0,
+                    "marginRight": 8,
                   },
                 ]
               }
@@ -402,16 +403,6 @@ exports[`PersonalData should render personal data success 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -613,6 +604,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   {
                     "flexDirection": "row",
                     "flexShrink": 0,
+                    "marginRight": 8,
                   },
                 ]
               }
@@ -627,16 +619,6 @@ exports[`PersonalData should render personal data success 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -787,6 +769,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   {
                     "flexDirection": "row",
                     "flexShrink": 0,
+                    "marginRight": 8,
                   },
                 ]
               }
@@ -801,16 +784,6 @@ exports[`PersonalData should render personal data success 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -962,6 +935,7 @@ exports[`PersonalData should render personal data success 1`] = `
                   {
                     "flexDirection": "row",
                     "flexShrink": 0,
+                    "marginRight": 8,
                   },
                 ]
               }
@@ -976,16 +950,6 @@ exports[`PersonalData should render personal data success 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -1159,6 +1123,7 @@ exports[`PersonalData should render personal data success 1`] = `
                       {
                         "flexDirection": "row",
                         "flexShrink": 0,
+                        "marginRight": 8,
                       },
                     ]
                   }
@@ -1173,16 +1138,6 @@ exports[`PersonalData should render personal data success 1`] = `
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}

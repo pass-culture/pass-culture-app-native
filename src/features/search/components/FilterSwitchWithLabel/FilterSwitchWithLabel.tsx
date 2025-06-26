@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from 'uuid'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { Typo, getSpacing } from 'ui/theme'
+import { HeadingLevel, getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   isActive: boolean
@@ -52,12 +52,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
 
   return (
     <Container inverseLayout={!!isDesktopViewport}>
-      {isDesktopViewport ? null : (
-        <React.Fragment>
-          <TitleWrapper>{TitleWithSubtitle}</TitleWrapper>
-          <Spacer.Row numberOfSpaces={6} />
-        </React.Fragment>
-      )}
+      {isDesktopViewport ? null : <TitleWrapper>{TitleWithSubtitle}</TitleWrapper>}
       <SwitchWrapper>
         <FilterSwitch
           checkboxID={checkboxID}
@@ -69,12 +64,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           disabled={disabled}
         />
       </SwitchWrapper>
-      {isDesktopViewport ? (
-        <React.Fragment>
-          <Spacer.Row numberOfSpaces={2} />
-          <TitleWrapper>{TitleWithSubtitle}</TitleWrapper>
-        </React.Fragment>
-      ) : null}
+      {isDesktopViewport ? <TitleWrapper>{TitleWithSubtitle}</TitleWrapper> : null}
     </Container>
   )
 }
@@ -87,6 +77,8 @@ const Container = styled.View<{ inverseLayout?: boolean }>(({ inverseLayout }) =
 
 const TitleWrapper = styled.View({
   flexShrink: 1,
+  marginRight: getSpacing(6),
+  marginLeft: getSpacing(2),
 })
 
 const SwitchWrapper = styled.View({

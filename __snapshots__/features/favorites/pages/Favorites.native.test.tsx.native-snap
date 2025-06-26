@@ -682,10 +682,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -1190,10 +1192,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -1698,10 +1702,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -2206,10 +2212,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -2714,10 +2722,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -3222,10 +3232,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -3730,10 +3742,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -4238,10 +4252,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -4746,10 +4762,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,
@@ -5254,10 +5272,12 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
           </View>
           <View
+            gap={0}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 0,
                   "marginLeft": 24,
                   "marginRight": 24,
                   "marginTop": 24,

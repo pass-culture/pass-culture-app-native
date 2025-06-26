@@ -376,11 +376,13 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               }
             />
             <View
+              gap={3.75}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 15,
                   },
                 ]
               }
@@ -394,16 +396,6 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   BicolorSignal-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={3.75}
-                style={
-                  [
-                    {
-                      "width": 15,
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   [
@@ -461,11 +453,13 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               }
             />
             <View
+              gap={3.75}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 15,
                   },
                 ]
               }
@@ -479,16 +473,6 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   BicolorSmartphone-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={3.75}
-                style={
-                  [
-                    {
-                      "width": 15,
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   [

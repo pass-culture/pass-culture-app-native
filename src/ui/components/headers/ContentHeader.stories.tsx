@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 import { ContentHeader } from './ContentHeader'
 
@@ -36,13 +36,9 @@ const StoryComponent = (props: React.ComponentProps<typeof ContentHeader>) => {
           <View style={{ height: headerHeight }} />
           <Typo.Title3>{props.headerTitle}</Typo.Title3>
           <Content />
-          <Spacer.Column numberOfSpaces={10} />
           <Content />
-          <Spacer.Column numberOfSpaces={10} />
           <Content />
-          <Spacer.Column numberOfSpaces={10} />
           <Content />
-          <Spacer.Column numberOfSpaces={10} />
         </ScrollView>
         <ContentHeader {...props} headerTransition={headerTransition} />
       </Container>
@@ -59,4 +55,4 @@ export const Default: Story = {
 }
 
 const Container = styled.View({ height: 400 })
-const Content = styled.View({ height: 200, backgroundColor: 'blue' })
+const Content = styled.View({ height: 200, backgroundColor: 'blue', marginBottom: getSpacing(10) })

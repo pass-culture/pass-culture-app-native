@@ -3,7 +3,7 @@ import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boolean) => {
   if (selected) return theme.designSystem.color.border.brandPrimary
@@ -49,9 +49,7 @@ export const ChoiceBloc: React.FC<Props> = ({
           <IconContainer>
             <Validate />
           </IconContainer>
-        ) : (
-          <Spacer.Row numberOfSpaces={5} />
-        )}
+        ) : null}
         {children}
         {disabled ? <StrikeLine parentWidth={buttonWidth} /> : null}
       </ChoiceContent>
@@ -86,6 +84,7 @@ const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
     paddingHorizontal: getSpacing(3.25),
     alignItems: 'center',
     justifyContent: 'center',
+    paddingLeft: selected ? undefined : getSpacing(5),
   })
 )
 
