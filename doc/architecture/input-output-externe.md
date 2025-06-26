@@ -20,6 +20,7 @@ flowchart TB
 
     Backend["Backend"] --> Postgresql["PostgreSQL : stockage des données"]
     image_resize["Google App Engine : redimentionnement d'image"] --> bucket_image["Bucket GCP : stockage d'image"]
+    Backend_for_Frontend["Backend for Frontend SEO social media"]
   end
   subgraph technique
     Sentry["Sentry : erreurs tracking"]
@@ -33,7 +34,6 @@ flowchart TB
     Firebase_Firestore["Firebase Firestore : Feature Flags"]
     Firebase_Remote_Config["Firebase Remote Config : A/B test"]
     Google["Google Analytics : firebase traking"]
-    GCP["GCP ? Bff SEO social"]
     Algolia["Algolia : recherche"]
     Typeform["Typeform"]
     Batch["Batch : notification et modal in app"]
@@ -91,7 +91,6 @@ architecture-beta
   service Firebase_Firestore(cloud)[Firebase Firestore Feature Flags] in others
   service Firebase_Remote_Config(cloud)[Firebase Remote Config AB test] in others
   service Google_Analytics(cloud)[Google Analytics firebase tracking] in others
-  service GCP(cloud)[GCP Bff SEO social] in others %% ?
   service Algolia(cloud)[Algolia recherche] in others
   service typeform(cloud)[Typeform] in others
   service batch(cloud)[Batch notification et modal in app] in others
@@ -102,7 +101,6 @@ architecture-beta
   App:T --> B:Firebase_Firestore
   App:T --> B:Firebase_Remote_Config
   App:T --> B:Google_Analytics
-  App:T --> B:GCP
   App:T --> B:Algolia
   App:T --> B:typeform
   App:T --> B:batch
@@ -120,4 +118,7 @@ architecture-beta
 
   App:R --> L:backend
   backend:R --> L:Postgresql
+
+  service bff(cloud)[Backend for Frontend SEO social media] in hosted_on_GCP
+  App:R --> L:bff
 ```
