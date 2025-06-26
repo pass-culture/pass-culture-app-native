@@ -58,13 +58,48 @@ describe('<SearchList />', () => {
     venuesUserData: [],
   }
 
-  it('should renders correctly', async () => {
+  it('should renders correctly and calls renderItem', () => {
     render(<SearchList {...props} />)
 
     expect(renderItem).toHaveBeenCalledWith({
-      item: mockedAlgoliaResponse.hits[0],
+      item: mockHits[0],
       index: 0,
       target: 'Cell',
     })
+  })
+
+  it('should sets ItemSeparatorComponent when enableGrisList is false', () => {
+    const screen = render(<SearchList {...props} enableGrisList={false} />)
+    const searchList = screen.getByTestId('searchResultsFlashlist')
+
+    expect(searchList.props.ItemSeparatorComponent).toBeDefined()
+  })
+
+  it('should not set ItemSeparatorComponent when enableGrisList is true', () => {
+    const screen = render(<SearchList {...props} enableGrisList />)
+    const searchList = screen.getByTestId('searchResultsFlashlist')
+
+    expect(searchList.props.ItemSeparatorComponent).toBeUndefined()
+  })
+
+  it('sets numColumns when enableGrisList is true', () => {
+    const screen = render(<SearchList {...props} enableGrisList numColumns={2} />)
+    const searchList = screen.getByTestId('searchResultsFlashlist')
+
+    expect(searchList.props.numColumns).toEqual(2)
+  })
+
+  it('should disable scrolling when nbHits is 0', () => {
+    const screen = render(<SearchList {...props} nbHits={0} />)
+    const searchList = screen.getByTestId('searchResultsFlashlist')
+
+    expect(searchList.props.scrollEnabled).toBe(false)
+  })
+
+  it('should enable scrolling when nbHits is greater than 0', () => {
+    const screen = render(<SearchList {...props} nbHits={2} />)
+    const searchList = screen.getByTestId('searchResultsFlashlist')
+
+    expect(searchList.props.scrollEnabled).toBe(true)
   })
 })
