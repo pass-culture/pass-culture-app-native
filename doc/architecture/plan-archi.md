@@ -112,6 +112,8 @@ Le but est d’uniformiser, isoler et identifier l’app state dans l’app.
 Une grande partie des contextes React sera supprimée, au profit de l’utilisation de stores zustands pour l’app state et de queries pour le server state.
 Cf. partie précédente
 
+Cette étape sera vue plus précisément plus tard.
+
 ### Logiques métiers
 
 Toutes les logiques métiers doivent être isolées dans des fonctions.
