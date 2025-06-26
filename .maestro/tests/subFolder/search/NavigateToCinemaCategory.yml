@@ -10,5 +10,15 @@ appId: team.passculture.app.staging
 - tapOn: "CINÉMA"
 - assertVisible: 'Cinéma'
 - tapOn: "Films à l'affiche"
-- assertVisible: 'Les offres'
-- assertVisible: '.*résultats'
+
+- runFlow:
+    when:
+      visible: "Les offres"
+    commands:
+    - assertVisible: ".*résultats"
+
+- runFlow:
+    when:
+      notVisible: "Les offres"
+    commands:
+    - assertVisible: "Pas de résultat"
