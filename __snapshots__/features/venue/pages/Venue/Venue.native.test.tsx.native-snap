@@ -62,7 +62,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "justifyContent": "center",
                 },
                 {
@@ -132,6 +132,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               testID="tagsContainer"
             >
               <View
+                backgroundColor="#f1f1f4"
                 style={
                   [
                     {
@@ -145,6 +146,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     },
                   ]
                 }
+                testID="tagWrapper"
               >
                 <Text
                   style={
@@ -521,6 +523,11 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
           jestAnimatedStyle={
             {
               "value": {},
@@ -529,22 +536,9 @@ exports[`<Venue /> should match snapshot 1`] = `
           layout={
             LinearTransition {
               "build": [Function],
-              "callbackV": undefined,
-              "dampingRatioV": undefined,
-              "dampingV": undefined,
-              "delayV": undefined,
               "durationV": 200,
-              "easingV": undefined,
-              "initialValues": undefined,
-              "massV": undefined,
-              "overshootClampingV": undefined,
               "randomizeDelay": false,
               "reduceMotionV": "system",
-              "restDisplacementThresholdV": undefined,
-              "restSpeedThresholdV": undefined,
-              "rotateV": undefined,
-              "stiffnessV": undefined,
-              "type": undefined,
             }
           }
         >
@@ -834,12 +828,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                         }
                       >
                         <View
-                          numberOfLines={2}
                           style={
                             [
                               {
-                                "alignItems": "center",
-                                "flexDirection": "row",
                                 "marginHorizontal": 24,
                               },
                             ]
@@ -847,6 +838,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                           testID="playlistTitle"
                         >
                           <Text
+                            accessibilityHidden={true}
+                            accessibilityLabel="Toutes les offres"
+                            numberOfLines={2}
                             style={
                               [
                                 {
@@ -860,19 +854,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           >
                             Toutes les offres
                           </Text>
-                          <Text
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                       </View>
                     </View>
@@ -1169,7 +1150,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         },
                                         [
                                           {
-                                            "backgroundColor": "#F1F1F4",
+                                            "backgroundColor": "#f1f1f4",
                                           },
                                           {
                                             "borderRadius": 8,
@@ -1183,6 +1164,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1373,7 +1359,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         },
                                         [
                                           {
-                                            "backgroundColor": "#F1F1F4",
+                                            "backgroundColor": "#f1f1f4",
                                           },
                                           {
                                             "borderRadius": 8,
@@ -1387,6 +1373,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1577,7 +1568,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         },
                                         [
                                           {
-                                            "backgroundColor": "#F1F1F4",
+                                            "backgroundColor": "#f1f1f4",
                                           },
                                           {
                                             "borderRadius": 8,
@@ -1591,6 +1582,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1738,29 +1734,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
+                <View
+                  fillColor="decorative05"
                   style={
                     [
                       {
+                        "backgroundColor": "#ffa5c0",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1789,7 +1768,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
@@ -1864,7 +1843,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "alignItems": "center",
                       "alignSelf": "flex-start",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -3046,7 +3025,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "justifyContent": "center",
                 },
                 {
@@ -3116,6 +3095,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               testID="tagsContainer"
             >
               <View
+                backgroundColor="#f1f1f4"
                 style={
                   [
                     {
@@ -3129,6 +3109,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     },
                   ]
                 }
+                testID="tagWrapper"
               >
                 <Text
                   style={
@@ -3505,6 +3486,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
       >
         <View
           collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
           jestAnimatedStyle={
             {
               "value": {},
@@ -3513,22 +3499,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
           layout={
             LinearTransition {
               "build": [Function],
-              "callbackV": undefined,
-              "dampingRatioV": undefined,
-              "dampingV": undefined,
-              "delayV": undefined,
               "durationV": 200,
-              "easingV": undefined,
-              "initialValues": undefined,
-              "massV": undefined,
-              "overshootClampingV": undefined,
               "randomizeDelay": false,
               "reduceMotionV": "system",
-              "restDisplacementThresholdV": undefined,
-              "restSpeedThresholdV": undefined,
-              "rotateV": undefined,
-              "stiffnessV": undefined,
-              "type": undefined,
             }
           }
         >
@@ -3867,6 +3840,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       <FastImageView
                         defaultSource={null}
                         resizeMode="cover"
+                        source={
+                          {
+                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                          }
+                        }
                         style={
                           {
                             "bottom": 0,
@@ -3881,8 +3859,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     <BVLinearGradient
                       colors={
                         [
-                          2894894,
-                          4281084974,
+                          1447447,
+                          4279637527,
                         ]
                       }
                       endPoint={
@@ -3987,7 +3965,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   },
                                   [
                                     {
-                                      "backgroundColor": "#F1F1F4",
+                                      "backgroundColor": "#f1f1f4",
                                       "borderRadius": 4,
                                       "height": 96,
                                       "width": 64,
@@ -4000,6 +3978,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 defaultSource={null}
                                 resizeMode="cover"
                                 size="small"
+                                source={
+                                  {
+                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  }
+                                }
                                 style={
                                   {
                                     "bottom": 0,
@@ -4040,7 +4023,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 style={
                                   [
                                     {
-                                      "color": "#161617",
+                                      "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 19.2,
@@ -4069,7 +4052,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 style={
                                   [
                                     {
-                                      "color": "#161617",
+                                      "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 19.2,
@@ -4144,12 +4127,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         }
                       >
                         <View
-                          numberOfLines={2}
                           style={
                             [
                               {
-                                "alignItems": "center",
-                                "flexDirection": "row",
                                 "marginHorizontal": 24,
                               },
                             ]
@@ -4157,6 +4137,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           testID="playlistTitle"
                         >
                           <Text
+                            accessibilityHidden={true}
+                            accessibilityLabel="Toutes les offres"
+                            numberOfLines={2}
                             style={
                               [
                                 {
@@ -4170,19 +4153,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           >
                             Toutes les offres
                           </Text>
-                          <Text
-                            accessibilityHidden={true}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                       </View>
                     </View>
@@ -4479,7 +4449,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         },
                                         [
                                           {
-                                            "backgroundColor": "#F1F1F4",
+                                            "backgroundColor": "#f1f1f4",
                                           },
                                           {
                                             "borderRadius": 8,
@@ -4493,6 +4463,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -4683,7 +4658,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         },
                                         [
                                           {
-                                            "backgroundColor": "#F1F1F4",
+                                            "backgroundColor": "#f1f1f4",
                                           },
                                           {
                                             "borderRadius": 8,
@@ -4697,6 +4672,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -4887,7 +4867,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         },
                                         [
                                           {
-                                            "backgroundColor": "#F1F1F4",
+                                            "backgroundColor": "#f1f1f4",
                                           },
                                           {
                                             "borderRadius": 8,
@@ -4901,6 +4881,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -5048,29 +5033,12 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
+                <View
+                  fillColor="decorative05"
                   style={
                     [
                       {
+                        "backgroundColor": "#ffa5c0",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -5099,7 +5067,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       </Text>
                     </View>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
@@ -5174,7 +5142,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "alignItems": "center",
                       "alignSelf": "flex-start",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -6356,7 +6324,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "justifyContent": "center",
                 },
                 {
@@ -6426,6 +6394,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               testID="tagsContainer"
             >
               <View
+                backgroundColor="#f1f1f4"
                 style={
                   [
                     {
@@ -6439,6 +6408,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     },
                   ]
                 }
+                testID="tagWrapper"
               >
                 <Text
                   style={
@@ -6815,6 +6785,11 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
       >
         <View
           collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
           jestAnimatedStyle={
             {
               "value": {},
@@ -6823,22 +6798,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           layout={
             LinearTransition {
               "build": [Function],
-              "callbackV": undefined,
-              "dampingRatioV": undefined,
-              "dampingV": undefined,
-              "delayV": undefined,
               "durationV": 200,
-              "easingV": undefined,
-              "initialValues": undefined,
-              "massV": undefined,
-              "overshootClampingV": undefined,
               "randomizeDelay": false,
               "reduceMotionV": "system",
-              "restDisplacementThresholdV": undefined,
-              "restSpeedThresholdV": undefined,
-              "rotateV": undefined,
-              "stiffnessV": undefined,
-              "type": undefined,
             }
           }
         >
@@ -8441,29 +8403,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
+                <View
+                  fillColor="decorative05"
                   style={
                     [
                       {
+                        "backgroundColor": "#ffa5c0",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -8492,7 +8437,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       </Text>
                     </View>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
@@ -8567,7 +8512,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "alignItems": "center",
                       "alignSelf": "flex-start",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",

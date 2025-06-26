@@ -1,22 +1,66 @@
 import { Platform } from 'react-native'
 
-import { ColorsTypeLegacy } from 'theme/types'
+type HoverStyleOptions = {
+  isHover?: boolean
+  textColor?: string
+  underlineColor?: string
+  borderColor?: string
+  backgroundColor?: string
+}
 
-export const getHoverStyle = (underlineColor: ColorsTypeLegacy | null, isHover?: boolean) => {
-  if (Platform.OS === 'web' && underlineColor) {
-    const hoverStyle = {
-      textDecoration: 'underline',
-      textDecorationColor: underlineColor,
-      ['&:disabled']: {
-        textDecoration: 'none',
+type HoverCSSProperties = {
+  color?: string
+  textDecoration?: 'underline' | 'none'
+  textDecorationColor?: string
+  borderColor?: string
+  backgroundColor?: string
+}
+
+export const getHoverStyle = ({
+  isHover,
+  textColor,
+  underlineColor,
+  borderColor,
+  backgroundColor,
+}: HoverStyleOptions) => {
+  if (Platform.OS !== 'web') return {}
+
+  const hasAtLeastOne = textColor || underlineColor || borderColor || backgroundColor
+
+  if (!hasAtLeastOne) return {}
+
+  const hoverStyle: HoverCSSProperties = {}
+
+  if (textColor) {
+    hoverStyle.color = textColor
+  }
+
+  if (underlineColor) {
+    hoverStyle.textDecoration = 'underline'
+    hoverStyle.textDecorationColor = underlineColor
+  }
+
+  if (borderColor) {
+    hoverStyle.borderColor = borderColor
+  }
+
+  if (backgroundColor) {
+    hoverStyle.backgroundColor = backgroundColor
+  }
+
+  if (isHover === undefined) {
+    return {
+      ['&:hover']: {
+        ...hoverStyle,
+        ['&:disabled']: {
+          textDecoration: 'none',
+          color: undefined,
+          borderColor: undefined,
+          backgroundColor: undefined,
+        },
       },
     }
-    if (isHover === undefined) {
-      return {
-        ['&:hover']: hoverStyle,
-      }
-    }
-    return isHover ? hoverStyle : {}
   }
-  return {}
+
+  return isHover ? hoverStyle : {}
 }

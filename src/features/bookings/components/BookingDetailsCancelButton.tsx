@@ -1,28 +1,28 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { BookingResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   BookingDetailsButton,
   BookingDetailsButtonProps,
 } from 'features/bookings/components/BookingDetailsButton'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
-import { getBookingProperties } from 'features/bookings/helpers'
+import { getBookingPropertiesV2 } from 'features/bookings/helpers'
 import { formattedExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { getCancelMessage } from 'features/bookings/helpers/getCancelMessage'
-import { Booking } from 'features/bookings/types'
 import { useSubcategory } from 'libs/subcategories'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
 export type BookingDetailsCancelButtonProps = BookingDetailsButtonProps & {
-  booking: Booking
+  booking: BookingResponse
 }
 
 export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProps) => {
   const { booking } = props
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
-  const { hasActivationCode } = getBookingProperties(booking, isEvent)
+  const { hasActivationCode } = getBookingPropertiesV2.getBookingProperties(booking, isEvent)
   const { user } = useAuthContext()
 
   const expirationDate = formattedExpirationDate(booking.dateCreated)
@@ -68,5 +68,5 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

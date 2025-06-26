@@ -91,7 +91,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
 )
 
 const Title = styled(Typo.Button)<{ disabled: boolean }>(({ theme, disabled }) => ({
-  color: disabled ? theme.colors.greyDark : theme.colors.black,
+  color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,
   textAlign: 'left',
 }))
 

@@ -82,9 +82,10 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   )
 }
 
+// TODO(PC-36607): background.succes or background.subtle are too light for switch
 const getBackgroundColor = (theme: DefaultTheme, active: boolean) => {
-  if (active) return theme.designSystem.color.text.success
-  return theme.colors.greySemiDark
+  if (active) return theme.designSystem.color.icon.success
+  return theme.designSystem.color.icon.subtle
 }
 
 const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active }) => ({

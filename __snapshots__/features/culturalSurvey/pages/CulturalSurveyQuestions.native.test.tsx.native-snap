@@ -393,13 +393,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -434,7 +438,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -449,7 +460,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   Participé à un festival,
                 </Text>
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -557,13 +575,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -598,7 +620,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -613,7 +642,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   Assisté à un spectacle
                 </Text>
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -720,13 +756,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -761,7 +801,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -776,7 +823,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   Allé à la bibliothèque
                 </Text>
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -883,13 +937,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -924,7 +982,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -939,7 +1004,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   Participé à un jeu
                 </Text>
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1046,13 +1118,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1087,7 +1163,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1194,13 +1277,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1235,7 +1322,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1342,13 +1436,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1383,7 +1481,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1398,7 +1503,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   Visité un musée,
                 </Text>
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1505,13 +1617,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1546,7 +1662,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1561,7 +1684,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   Participé à une conférence,
                 </Text>
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1668,13 +1798,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1709,7 +1843,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1724,7 +1865,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   Pris un cours
                 </Text>
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1831,13 +1979,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1872,7 +2024,14 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {

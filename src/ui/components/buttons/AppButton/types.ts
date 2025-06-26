@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import { ColorsTypeLegacy } from 'theme/types'
+import { ColorsType, ColorsTypeLegacy } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export interface TouchableOpacityButtonProps {
@@ -20,7 +20,7 @@ export interface TouchableOpacityButtonProps {
   numberOfLines?: number
   center?: boolean
   focusOutlineColor?: ColorsTypeLegacy
-  hoverUnderlineColor?: ColorsTypeLegacy | null
+  hoverUnderlineColor?: ColorsType | null
   backgroundColor?: string
 }
 

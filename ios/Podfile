@@ -9,20 +9,28 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, '13.4'
 prepare_react_native_project!
 
-linkage = ENV['USE_FRAMEWORKS']
-if linkage != nil
-  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
-  use_frameworks! :linkage => linkage.to_sym
+# Convert all permission pods into static libraries
+# https://github.com/zoontek/react-native-permissions/issues/469#issuecomment-666223083
+pre_install do |installer|
+  installer.pod_targets.each do |pod|
+    if pod.name.eql?('RNPermissions') || pod.name.start_with?('Permission-')
+      def pod.build_type;
+        Pod::BuildType.static_library # >= 1.9
+      end
+    end
+  end
 end
 
 target 'PassCulture' do
   config = use_native_modules!
-
+  use_frameworks! :linkage => :static # Required by react-native-firebase v15+
+  $RNFirebaseAsStaticFramework = true # https://rnfirebase.io/#altering-cocoapods-to-use-frameworks
+  
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
-   )
+  )
 
   # Third party deps podspec link, to include if 0.60 autolinking not supported
 
@@ -30,7 +38,9 @@ target 'PassCulture' do
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
-  pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '8.15.0'
+  pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.3.0'
+  pod 'FirebaseCore', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
   pod 'Batch', '~> 2.0.0'
   pod 'BatchFirebaseDispatcher'
 

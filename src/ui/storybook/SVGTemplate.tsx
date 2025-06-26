@@ -79,17 +79,19 @@ const IconWrapper = styled.TouchableOpacity<{
   padding: getSpacing(2),
   width: isIllustration ? getSpacing(60) : getSpacing(40),
   minHeight: isIllustration ? getSpacing(40) : getSpacing(25),
-  border: `2px solid ${isCopied ? theme.colors.greenValid : theme.colors.greyLight}`,
+  border: `2px solid ${isCopied ? theme.colors.greenValid : theme.designSystem.color.border.subtle}`,
   borderRadius: getSpacing(2),
   justifyContent: 'center',
-  backgroundColor: isCopied ? theme.colors.greyLight : theme.colors.transparent,
+  backgroundColor: isCopied
+    ? theme.designSystem.color.background.success
+    : theme.designSystem.color.background.default,
   position: 'relative',
 }))
 
 const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   position: 'absolute',
-  color: theme.colors.greenValid,
-  backgroundColor: theme.colors.white,
+  color: theme.designSystem.color.text.success,
+  backgroundColor: theme.designSystem.color.background.default,
   padding: getSpacing(2),
   borderRadius: getSpacing(1),
   zIndex: 1,

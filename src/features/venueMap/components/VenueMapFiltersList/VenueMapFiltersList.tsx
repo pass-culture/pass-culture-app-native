@@ -66,6 +66,6 @@ const StyledLi = styled(Li)({
 const Separator = styled.View(({ theme }) => ({
   width: '100%',
   height: 2,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   marginVertical: getSpacing(6),
 }))

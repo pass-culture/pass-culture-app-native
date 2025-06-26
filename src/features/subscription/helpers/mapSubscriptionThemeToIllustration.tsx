@@ -1,10 +1,11 @@
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { SubscriptionTheme } from 'features/subscription/types'
+import { BackgroundColorKey } from 'theme/types'
 import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 
 interface IllustrationFeatures {
   illustration: React.FC<AccessibleRectangleIcon>
-  gradients: string[]
+  fillColor: BackgroundColorKey
 }
 
 export const mapSubscriptionThemeToIllustration = (

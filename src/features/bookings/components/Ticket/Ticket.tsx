@@ -3,17 +3,17 @@ import React from 'react'
 
 import {
   BookingOfferResponseAddress,
-  BookingReponse,
-  BookingVenueResponse,
+  BookingResponse,
+  TicketResponse,
   UserProfileResponse,
 } from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
-import { getBookingLabels } from 'features/bookings/helpers'
+import { getBookingLabelsV2 } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
 import { analytics } from 'libs/analytics/provider'
@@ -27,11 +27,12 @@ const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 
 type TicketProps = {
   properties: BookingProperties
-  booking: BookingReponse
+  booking: BookingResponse
   mapping: SubcategoriesMapping
   user: UserProfileResponse
   display: 'punched' | 'full'
   setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
+  ticket: TicketResponse | null | undefined
 }
 
 export const Ticket = ({
@@ -41,6 +42,7 @@ export const Ticket = ({
   setTopBlockHeight,
   user,
   display,
+  ticket,
 }: TicketProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { address } = booking?.stock.offer ?? {}
@@ -51,7 +53,7 @@ export const Ticket = ({
 
   const { offer } = booking.stock
 
-  const { hourLabel, dayLabel } = getBookingLabels(booking, properties)
+  const { hourLabel, dayLabel } = getBookingLabelsV2.getBookingLabels(booking, properties)
 
   const venueBlockAddress = getAddress(offer.address)
 
@@ -76,7 +78,7 @@ export const Ticket = ({
             <VenueBlockWithItinerary
               properties={properties}
               offerFullAddress={offerFullAddress}
-              venue={getVenueBlockVenue(booking.stock.offer.venue)}
+              venue={booking.stock.offer.venue}
               address={getVenueBlockAddress(booking.stock.offer.address)}
               offerId={offer.id}
               thumbnailSize={VENUE_THUMBNAIL_SIZE}
@@ -86,7 +88,16 @@ export const Ticket = ({
           }
         />
       }
-      bottomContent={<TicketBottomPart offer={offer} booking={booking} userEmail={user?.email} />}
+      bottomContent={
+        <TicketBottomPart
+          isDuo={properties.isDuo ?? false}
+          ticket={ticket ?? null}
+          userEmail={user?.email}
+          isDigital={properties.isDigital ?? false}
+          isEvent={properties.isEvent ?? false}
+          ean={booking.stock.offer.extraData?.ean ?? null}
+        />
+      }
       infoBanner={
         <InfoBanner
           message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
@@ -97,12 +108,8 @@ export const Ticket = ({
   )
 }
 
-function getVenueBlockVenue(venue: BookingVenueResponse): VenueBlockVenue {
-  return venue
-}
-
-function getVenueBlockAddress(
+const getVenueBlockAddress = (
   address: BookingOfferResponseAddress | null | undefined
-): VenueBlockAddress | undefined {
+): VenueBlockAddress | undefined => {
   return address ?? undefined
 }

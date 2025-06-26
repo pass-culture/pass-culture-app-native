@@ -17,7 +17,6 @@ const ThumbnailPlaceholderContainer = styled(LinearGradient).attrs(({ theme }) =
 
 const ThumbnailPlaceholderIcon = styled(All).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
-  color: theme.colors.greyMedium,
 }))``
 
 type ThumbnailPlaceholderProps = ViewProps & {

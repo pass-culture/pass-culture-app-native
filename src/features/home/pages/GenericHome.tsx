@@ -21,6 +21,7 @@ import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
+import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData'
 import { getItemTypeFromModuleType } from 'features/home/helpers/getItemTypeFromModuleType'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import {
@@ -47,6 +48,8 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
 import { markScreenInteractiveOnHomeLayout } from 'performance/markScreenInteractiveOnHomeLayout'
+import { ScreenPerformance } from 'performance/ScreenPerformance'
+import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
 import {
@@ -158,6 +161,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   videoModuleId,
   statusBar,
 }) {
+  useMeasureScreenPerformanceWhenVisible(ScreenPerformance.HOME)
   const initialScreenName = useInitialScreenName()
   const wasPerformanceMarkedThisSession = useWasPerformanceMarkedThisSession()
   const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
@@ -177,7 +181,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   })
 
   const showSkeleton = useShowSkeleton()
-  const initialNumToRender = 4
+  const initialNumToRender = 10
   const maxToRenderPerBatch = 6
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
@@ -187,16 +191,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
 
-  const modulesToDisplay = modules.slice(0, maxIndex)
-
-  modulesToDisplay.forEach((module) => {
-    if (isOffersModule(module)) {
-      module.data = offersModulesData.find((mod) => mod.moduleId === module.id)
-    }
-    if (isVenuesModule(module)) {
-      module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
-    }
-  })
+  const enrichedModules = useMemo(
+    () => enrichModulesWithData(modules, offersModulesData, venuesModulesData).slice(0, maxIndex),
+    [modules, offersModulesData, venuesModulesData, maxIndex]
+  )
 
   const scrollRef = useRef<IOFlatListController>(null)
   useScrollToTop(scrollRef)
@@ -211,13 +209,13 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
           setMaxIndex(maxIndex + maxToRenderPerBatch)
         }
       }
-      if (isCloseToBottom(nativeEvent) && modulesToDisplay.length === modules.length) {
+      if (isCloseToBottom(nativeEvent) && enrichedModules.length === modules.length) {
         trackEventHasSeenAllModules()
         logHasSeenAllModules()
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [modules.length, modulesToDisplay.length]
+    [modules.length, enrichedModules.length]
   )
   const { height } = useWindowDimensions()
   const { isLoggedIn } = useAuthContext()
@@ -307,11 +305,11 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   )
 
   const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =
-    buildModulesHandlingVideoCarouselPosition(modulesToDisplay, thematicHeader)
-  const videoCarouselModules = modulesToDisplay.filter(isVideoCarouselModule)
+    buildModulesHandlingVideoCarouselPosition(enrichedModules, thematicHeader)
+  const videoCarouselModules = enrichedModules.filter(isVideoCarouselModule)
 
   const shouldDisplayVideoInHeader =
-    !thematicHeader && modulesToDisplay[0]?.type === HomepageModuleType.VideoCarouselModule
+    !thematicHeader && enrichedModules[0]?.type === HomepageModuleType.VideoCarouselModule
 
   const ListHeader = useMemo(
     () => (
@@ -359,7 +357,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
           windowSize={5}
           maxToRenderPerBatch={maxToRenderPerBatch}
           ListFooterComponent={
-            <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
+            <FooterComponent hasShownAll={enrichedModules.length >= modules.length} />
           }
           ListHeaderComponent={ListHeader}
           ListHeaderComponentStyle={flatListHeaderStyle}

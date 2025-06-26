@@ -97,7 +97,7 @@ export const BookingImpossible: React.FC = () => {
 }
 
 const GreySadFace = styled(SadFace).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.illustrations.sizes.medium,
 }))``
 

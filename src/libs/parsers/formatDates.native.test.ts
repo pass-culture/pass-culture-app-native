@@ -1,7 +1,8 @@
 import mockdate from 'mockdate'
 import timezoneMock from 'timezone-mock'
 
-import { capitalizeFirstLetter } from './capitalizeFirstLetter'
+import { capitalize } from '../formatter/capitalize'
+
 import {
   GroupResult,
   decomposeDate,
@@ -487,19 +488,19 @@ describe('formatToCompleteFrenchDate()', () => {
 
 describe('capitalizeFirstLetter', () => {
   it('should capitalize the first letter of a string', () => {
-    const result = capitalizeFirstLetter('hello')
+    const result = capitalize('hello')
 
     expect(result).toEqual('Hello')
   })
 
   it('should handle an empty string', () => {
-    const result = capitalizeFirstLetter('')
+    const result = capitalize('')
 
     expect(result).toEqual('')
   })
 
   it('should handle a single-character string', () => {
-    const result = capitalizeFirstLetter('x')
+    const result = capitalize('x')
 
     expect(result).toEqual('X')
   })

@@ -1,5 +1,5 @@
 import { AppThemeType } from 'theme'
-import { TagProps } from 'ui/components/Tag/Tag'
+import { TagProps } from 'ui/components/Tag/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type SizeProp = keyof AppThemeType['image']['square']['sizes']

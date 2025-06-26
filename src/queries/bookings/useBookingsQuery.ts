@@ -25,7 +25,7 @@ export const useBookingsQuery = <TData = BookingsResponseV2>(
   select?: (data: BookingsResponseV2) => TData
 ) =>
   useQuery<BookingsResponseV2, Error, TData>({
-    queryKey: [QueryKeys.BOOKINGS],
+    queryKey: [QueryKeys.BOOKINGSV2],
     queryFn: () => api.getNativeV2Bookings(),
     select,
     enabled: enabledQuery,

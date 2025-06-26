@@ -15,28 +15,26 @@ type Props = {
   children?: React.ReactNode
 }
 
-const defaultProps: Props = {
-  isError: false,
-  isFocus: false,
-  inputHeight: 'small',
-  isDisabled: false,
-}
-
 const BORDER_FOCUS_INCREASE = 0.25
 
-export const InputContainer: React.FC<Props> = (props) => (
+export const InputContainer: React.FC<Props> = ({
+  children,
+  inputHeight = 'small',
+  isDisabled = false,
+  isError = false,
+  isFocus = false,
+  style,
+}) => (
   <StyledView
     testID="styled-input-container"
-    height={props.inputHeight}
-    isFocus={props.isFocus}
-    isError={props.isError}
-    isDisabled={props.isDisabled}
-    style={props.style}>
-    {props.children}
+    height={inputHeight}
+    isFocus={isFocus}
+    isError={isError}
+    isDisabled={isDisabled}
+    style={style}>
+    {children}
   </StyledView>
 )
-
-InputContainer.defaultProps = defaultProps
 
 const getBorderColor = (
   theme: DefaultTheme,

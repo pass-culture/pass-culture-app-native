@@ -1,7 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterCategoriesBannerContainer } from 'features/venueMap/components/FilterBannerContainer/FilterCategoriesBannerContainer'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
@@ -30,5 +30,5 @@ const Container = styled.View({
 })
 
 const StyledHeader = styled(PageHeaderWithoutPlaceholder)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

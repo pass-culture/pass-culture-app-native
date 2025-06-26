@@ -52,7 +52,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus }),
 }))
 
 const TextWrapper = styled.View({

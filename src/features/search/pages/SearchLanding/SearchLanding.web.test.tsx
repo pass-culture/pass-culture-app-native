@@ -79,7 +79,6 @@ jest.mock('uuid', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/navigation/TabBar/tabBarRoutes')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<SearchLanding />', () => {

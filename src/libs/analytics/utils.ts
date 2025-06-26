@@ -1,7 +1,7 @@
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
+import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { splitArrayIntoStrings } from 'shared/splitArrayIntoStrings/splitArrayIntoStrings'
@@ -90,6 +90,18 @@ export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperti
   return JSON.stringify(formattedDisability, null, 2)
 }
 
+const buildSearchDate = (searchState: SearchState) => {
+  const startDate =
+    searchState.date?.selectedDate ?? searchState.timeRange?.[0] ?? searchState.beginningDatetime
+  const endDate = searchState.timeRange?.[1] ?? searchState.endingDatetime
+  const option = searchState.date?.option ?? searchState.calendarFilterId
+
+  if (startDate) {
+    return JSON.stringify({ startDate, endDate, option })
+  }
+  return undefined
+}
+
 export const buildPerformSearchState = (
   searchState: SearchState,
   currentView: SearchStackRouteName
@@ -100,12 +112,7 @@ export const buildPerformSearchState = (
     searchView: currentView,
   }
 
-  if (searchState.date || searchState.timeRange) {
-    const startDate = searchState.date?.selectedDate ?? searchState?.timeRange?.[0]
-    const endDate = searchState.timeRange?.[1]
-    const option = searchState.date?.option ?? searchState.calendarFilterId
-    state.searchDate = JSON.stringify({ startDate, endDate, option })
-  }
+  state.searchDate = buildSearchDate(searchState)
 
   if (searchState.isAutocomplete) {
     state.searchIsAutocomplete = searchState.isAutocomplete

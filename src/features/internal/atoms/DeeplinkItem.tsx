@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
@@ -12,7 +12,7 @@ interface Props {
   before?: React.JSX.Element | React.JSX.Element[]
 }
 
-export const DeeplinkItem = ({ deeplink, before }: Props) => {
+export const DeeplinkItem: FC<Props> = ({ deeplink, before }) => {
   const copyToClipboardUniversalLink = useCopyToClipboard({ textToCopy: deeplink.universalLink })
   const copyToClipboardFirebaseLink = useCopyToClipboard({ textToCopy: deeplink.firebaseLink })
 
@@ -59,11 +59,6 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       </Container>
     </React.Fragment>
   )
-}
-
-DeeplinkItem.defaultProps = {
-  size: getSpacing(3.75),
-  iconSize: 32,
 }
 
 const StyledTouchableOpacity = styled.TouchableOpacity({

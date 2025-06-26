@@ -24,7 +24,7 @@ const formatEventDateLabel = (
   return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime(getTimeZonedDate(date, timezone), shouldDisplayWeekDay) : formatToCompleteFrenchDate(getTimeZonedDate(date, timezone), shouldDisplayWeekDay)}`
 }
 
-function getDateLabel(booking: Booking, properties: BookingProperties): string {
+const getDateLabel = (booking: Booking, properties: BookingProperties): string => {
   if (properties.isPermanent) return 'Permanent'
 
   if (properties.hasActivationCode) {
@@ -74,7 +74,7 @@ const getHourLabel = (booking: Booking, properties: BookingProperties): string =
   )
 }
 
-function getWithdrawLabel(booking: Booking, properties: BookingProperties): string {
+const getWithdrawLabel = (booking: Booking, properties: BookingProperties): string => {
   if (properties.isEvent)
     return booking.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site
       ? getEventOnSiteWithdrawLabel(booking.stock)
@@ -85,21 +85,21 @@ function getWithdrawLabel(booking: Booking, properties: BookingProperties): stri
   return ''
 }
 
-function getPhysicalWithdrawLabel(expiration: string | null | undefined): string {
+const getPhysicalWithdrawLabel = (expiration: string | null | undefined): string => {
   if (!expiration) return ''
   if (isToday(new Date(expiration))) return 'Dernier jour pour retirer'
   if (isTomorrow(new Date(expiration))) return 'Avant dernier jour pour retirer'
   return ''
 }
 
-function getEventWithdrawLabel(stock: BookingStockResponse): string {
+const getEventWithdrawLabel = (stock: BookingStockResponse): string => {
   if (!stock.beginningDatetime) return ''
   if (isToday(new Date(stock.beginningDatetime))) return 'Aujourd’hui'
   if (isTomorrow(new Date(stock.beginningDatetime))) return 'Demain'
   return ''
 }
 
-export function getBookingLabels(booking: Booking, properties: BookingProperties) {
+export const getBookingLabels = (booking: Booking, properties: BookingProperties) => {
   return {
     dateLabel: getDateLabel(booking, properties),
     dayLabel: getDayLabel(booking, properties),

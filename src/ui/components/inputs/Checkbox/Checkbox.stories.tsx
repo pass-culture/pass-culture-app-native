@@ -10,7 +10,7 @@ import { Typo } from 'ui/theme'
 import { Checkbox } from './Checkbox'
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'ui/inputs/Checkbox',
+  title: 'design system/inputs/Checkbox',
   component: Checkbox,
   decorators: [
     (Story) => (

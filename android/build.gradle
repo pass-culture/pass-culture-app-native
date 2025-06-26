@@ -7,9 +7,8 @@ buildscript {
         compileSdkVersion = 34
         targetSdkVersion = 34
         ndkVersion = "26.1.10909125"
-        kotlinVersion = "1.9.22"
+        kotlinVersion = "1.9.25"
 
-        firebaseIidVersion = "19.0.1"
         supportLibVersion = "28.0.0"
         googlePlayServicesVersion = "17.0.0"
         googlePlayServicesAuthVersion = "19.2.0"
@@ -25,7 +24,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
         classpath("com.google.gms:google-services:4.3.4") // google service for batch notifications
         classpath("com.google.gms:google-services:4.3.14") // google service for google-signin
-        classpath("com.google.firebase:perf-plugin:1.4.1")
+        classpath("com.google.firebase:perf-plugin:1.4.2")
     }
 }
 

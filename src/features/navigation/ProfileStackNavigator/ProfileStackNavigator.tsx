@@ -1,6 +1,9 @@
+import { StackNavigationOptions } from '@react-navigation/stack'
 import React from 'react'
 
-import { ProfileStack } from 'features/navigation/ProfileStackNavigator/ProfileStack'
+import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
+import { ProfileStackNavigatorBase } from 'features/navigation/ProfileStackNavigator/ProfileStackNavigatorBase'
+import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
@@ -38,179 +41,189 @@ import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackE
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 
+type ProfileRouteConfig = {
+  name: ProfileStackRouteName
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: React.ComponentType<any>
+  options: StackNavigationOptions
+}
+
+const profileScreens: ProfileRouteConfig[] = [
+  { name: 'Accessibility', component: Accessibility, options: { title: 'Accessibilité' } },
+  {
+    name: 'AccessibilityEngagement',
+    component: AccessibilityEngagement,
+    options: { title: 'Engagement' },
+  },
+  {
+    name: 'AccessibilityActionPlan',
+    component: AccessibilityActionPlan,
+    options: { title: 'Plan d’actions' },
+  },
+  {
+    name: 'AccessibilityDeclarationMobile',
+    component: AccessibilityDeclarationMobile,
+    options: { title: 'Déclaration d’accessibilité des applications iOS et Android' },
+  },
+  {
+    name: 'AccessibilityDeclarationWeb',
+    component: AccessibilityDeclarationWeb,
+    options: { title: 'Déclaration d’accessibilité de la version web' },
+  },
+  {
+    name: 'RecommendedPaths',
+    component: RecommendedPaths,
+    options: { title: 'Parcours recommandés' },
+  },
+  { name: 'SiteMapScreen', component: SiteMapScreen, options: { title: 'Plan du site' } },
+  {
+    name: 'NotificationsSettings',
+    component: NotificationsSettings,
+    options: { title: 'Réglages de notifications' },
+  },
+  {
+    name: 'DeleteProfileReason',
+    component: withAuthProtection(DeleteProfileReason),
+    options: { title: 'Raison de suppression de compte' },
+  },
+  {
+    name: 'DeleteProfileContactSupport',
+    component: withAuthProtection(DeleteProfileContactSupport),
+    options: { title: 'Contact support' },
+  },
+  {
+    name: 'DeleteProfileEmailHacked',
+    component: withAuthProtection(DeleteProfileEmailHacked),
+    options: { title: 'Sécurise ton compte' },
+  },
+  {
+    name: 'DeleteProfileAccountHacked',
+    component: withAuthProtection(DeleteProfileAccountHacked),
+    options: { title: 'Sécurise ton compte' },
+  },
+  {
+    name: 'DeleteProfileAccountNotDeletable',
+    component: withAuthProtection(DeleteProfileAccountNotDeletable),
+    options: { title: 'Compte non supprimable' },
+  },
+  {
+    name: 'DebugScreen',
+    component: withAuthProtection(DebugScreen),
+    options: { title: 'Débuggage' },
+  },
+  {
+    name: 'ConfirmDeleteProfile',
+    component: withAuthProtection(ConfirmDeleteProfile),
+    options: { title: 'Suppression de compte' },
+  },
+  {
+    name: 'DeleteProfileConfirmation',
+    component: DeleteProfileConfirmation,
+    options: { title: 'Réglages de notifications' },
+  },
+  {
+    name: 'DeactivateProfileSuccess',
+    component: withAuthProtection(DeactivateProfileSuccess),
+    options: { title: 'Désactivation profil confirmée' },
+  },
+  {
+    name: 'SuspendAccountConfirmationWithoutAuthentication',
+    component: withAuthProtection(SuspendAccountConfirmationWithoutAuthentication),
+    options: { title: 'Suppression profil confirmation' },
+  },
+  {
+    name: 'ChangeStatus',
+    component: withAuthProtection(ChangeStatus),
+    options: { title: 'Ton statut | Profil' },
+  },
+  {
+    name: 'ChangeCity',
+    component: withAuthProtection(ChangeCity),
+    options: { title: 'Ton code postal | Profil' },
+  },
+  {
+    name: 'ChangeEmail',
+    component: ChangeEmail,
+    options: { title: 'Modification de l’e-mail' },
+  },
+  {
+    name: 'TrackEmailChange',
+    component: withAuthProtection(TrackEmailChange),
+    options: { title: 'Suivi de ton changement d’e-mail' },
+  },
+  {
+    name: 'LegalNotices',
+    component: LegalNotices,
+    options: { title: 'Informations légales' },
+  },
+  {
+    name: 'PersonalData',
+    component: withAuthProtection(PersonalData),
+    options: { title: 'Mes informations personnelles' },
+  },
+  {
+    name: 'ValidateEmailChange',
+    component: ValidateEmailChange,
+    options: { title: 'Confirmation de changement d’email ' },
+  },
+  {
+    name: 'ChangePassword',
+    component: ChangePassword,
+    options: { title: 'Modification du mot de passe' },
+  },
+  {
+    name: 'SuspendAccountConfirmation',
+    component: SuspendAccountConfirmation,
+    options: { title: 'Suspension de compte' },
+  },
+  {
+    name: 'ConsentSettings',
+    component: ConsentSettings,
+    options: { title: 'Paramètres de confidentialité' },
+  },
+  {
+    name: 'ConfirmChangeEmail',
+    component: ConfirmChangeEmail,
+    options: { title: 'Confirmation de changement d’email ' },
+  },
+  {
+    name: 'ChangeEmailSetPassword',
+    component: withAuthProtection(ChangeEmailSetPassword),
+    options: { title: 'Création du mot de passe' },
+  },
+  {
+    name: 'NewEmailSelection',
+    component: withAuthProtection(NewEmailSelection),
+    options: { title: 'Nouvelle adresse e-mail' },
+  },
+  {
+    name: 'FeedbackInApp',
+    component: withAuthProtection(FeedbackInApp),
+    options: { title: 'Formulaire de suggestion' },
+  },
+  {
+    name: 'DisplayPreference',
+    component: DisplayPreference,
+    options: { title: 'Préférence d’affichage' },
+  },
+  {
+    name: 'ProfileTutorialAgeInformationCredit',
+    component: ProfileTutorialAgeInformationCredit,
+    options: { title: 'Préférence d’affichage' },
+  },
+]
+
 export const ProfileStackNavigator = () => (
-  <ProfileStack.Navigator
+  <ProfileStackNavigatorBase.Navigator
     initialRouteName="Accessibility"
     screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    <ProfileStack.Screen
-      name="Accessibility"
-      component={Accessibility}
-      options={{ title: 'Accessibilité' }}
-    />
-    <ProfileStack.Screen
-      name="AccessibilityEngagement"
-      component={AccessibilityEngagement}
-      options={{ title: 'Engagement' }}
-    />
-    <ProfileStack.Screen
-      name="AccessibilityActionPlan"
-      component={AccessibilityActionPlan}
-      options={{ title: 'Plan d’actions' }}
-    />
-    <ProfileStack.Screen
-      name="AccessibilityDeclarationMobile"
-      component={AccessibilityDeclarationMobile}
-      options={{ title: 'Déclaration d’accessibilité des applications iOS et Android' }}
-    />
-    <ProfileStack.Screen
-      name="AccessibilityDeclarationWeb"
-      component={AccessibilityDeclarationWeb}
-      options={{ title: 'Déclaration d’accessibilité de la version web' }}
-    />
-    <ProfileStack.Screen
-      name="RecommendedPaths"
-      component={RecommendedPaths}
-      options={{ title: 'Parcours recommandés' }}
-    />
-    <ProfileStack.Screen
-      name="SiteMapScreen"
-      component={SiteMapScreen}
-      options={{ title: 'Plan du site' }}
-    />
-    <ProfileStack.Screen
-      name="NotificationsSettings"
-      component={NotificationsSettings}
-      options={{ title: 'Réglages de notifications' }}
-    />
-    <ProfileStack.Screen
-      name="DeleteProfileReason"
-      component={withAuthProtection(DeleteProfileReason)}
-      options={{ title: 'Raison de suppression de compte' }}
-    />
-    <ProfileStack.Screen
-      name="DeleteProfileContactSupport"
-      component={withAuthProtection(DeleteProfileContactSupport)}
-      options={{ title: 'Contact support' }}
-    />
-    <ProfileStack.Screen
-      name="DeleteProfileEmailHacked"
-      component={withAuthProtection(DeleteProfileEmailHacked)}
-      options={{ title: 'Sécurise ton compte' }}
-    />
-    <ProfileStack.Screen
-      name="DeleteProfileAccountHacked"
-      component={withAuthProtection(DeleteProfileAccountHacked)}
-      options={{ title: 'Sécurise ton compte' }}
-    />
-    <ProfileStack.Screen
-      name="DeleteProfileAccountNotDeletable"
-      component={withAuthProtection(DeleteProfileAccountNotDeletable)}
-      options={{ title: 'Compte non supprimable' }}
-    />
-    <ProfileStack.Screen
-      name="DebugScreen"
-      component={withAuthProtection(DebugScreen)}
-      options={{ title: 'Débuggage' }}
-    />
-    <ProfileStack.Screen
-      name="ConfirmDeleteProfile"
-      component={withAuthProtection(ConfirmDeleteProfile)}
-      options={{ title: 'Suppression de compte' }}
-    />
-    <ProfileStack.Screen
-      name="DeleteProfileConfirmation"
-      component={DeleteProfileConfirmation}
-      options={{ title: 'Réglages de notifications' }}
-    />
-    <ProfileStack.Screen
-      name="DeactivateProfileSuccess"
-      component={withAuthProtection(DeactivateProfileSuccess)}
-      options={{ title: 'Désactivation profil confirmée' }}
-    />
-    <ProfileStack.Screen
-      name="SuspendAccountConfirmationWithoutAuthentication"
-      component={withAuthProtection(SuspendAccountConfirmationWithoutAuthentication)}
-      options={{ title: 'Suppression profil confirmation' }}
-    />
-    <ProfileStack.Screen
-      name="ChangeStatus"
-      component={withAuthProtection(ChangeStatus)}
-      options={{ title: 'Ton statut | Profil' }}
-    />
-    <ProfileStack.Screen
-      name="ChangeCity"
-      component={withAuthProtection(ChangeCity)}
-      options={{ title: 'Ton code postal | Profil' }}
-    />
-    <ProfileStack.Screen
-      name="ChangeEmail"
-      component={ChangeEmail}
-      options={{ title: 'Modification de l’e-mail' }}
-    />
-    <ProfileStack.Screen
-      name="TrackEmailChange"
-      component={withAuthProtection(TrackEmailChange)}
-      options={{ title: 'Suivi de ton changement d’e-mail' }}
-    />
-    <ProfileStack.Screen
-      name="LegalNotices"
-      component={LegalNotices}
-      options={{ title: 'Informations légales' }}
-    />
-    <ProfileStack.Screen
-      name="PersonalData"
-      component={withAuthProtection(PersonalData)}
-      options={{ title: 'Mes informations personnelles' }}
-    />
-    <ProfileStack.Screen
-      name="ValidateEmailChange"
-      component={ValidateEmailChange}
-      options={{ title: 'Confirmation de changement d’email ' }}
-    />
-    <ProfileStack.Screen
-      name="ChangePassword"
-      component={ChangePassword}
-      options={{ title: 'Modification du mot de passe' }}
-    />
-    <ProfileStack.Screen
-      name="SuspendAccountConfirmation"
-      component={SuspendAccountConfirmation}
-      options={{ title: 'Suspension de compte' }}
-    />
-    <ProfileStack.Screen
-      name="ConsentSettings"
-      component={ConsentSettings}
-      options={{ title: 'Paramètres de confidentialité' }}
-    />
-    <ProfileStack.Screen
-      name="ConfirmChangeEmail"
-      component={ConfirmChangeEmail}
-      options={{ title: 'Confirmation de changement d’email ' }}
-    />
-    <ProfileStack.Screen
-      name="ChangeEmailSetPassword"
-      component={withAuthProtection(ChangeEmailSetPassword)}
-      options={{ title: 'Création du mot de passe' }}
-    />
-    <ProfileStack.Screen
-      name="NewEmailSelection"
-      component={withAuthProtection(NewEmailSelection)}
-      options={{ title: 'Nouvelle adresse e-mail' }}
-    />
-    <ProfileStack.Screen
-      name="FeedbackInApp"
-      component={withAuthProtection(FeedbackInApp)}
-      options={{ title: 'Formulaire de suggestion' }}
-    />
-    <ProfileStack.Screen
-      name="DisplayPreference"
-      component={DisplayPreference}
-      options={{ title: 'Préférence d’affichage' }}
-    />
-    <ProfileStack.Screen
-      name="ProfileTutorialAgeInformationCredit"
-      component={ProfileTutorialAgeInformationCredit}
-      options={{ title: 'Préférence d’affichage' }}
-    />
-  </ProfileStack.Navigator>
+    {profileScreens.map(({ name, component, options }) => (
+      <ProfileStackNavigatorBase.Screen
+        key={name}
+        name={name}
+        component={withAsyncErrorBoundary(component)}
+        options={options}
+      />
+    ))}
+  </ProfileStackNavigatorBase.Navigator>
 )

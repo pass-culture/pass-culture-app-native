@@ -3,7 +3,10 @@ import { SectionList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { FeatureFlagAll, useFeatureFlagAllQuery } from 'cheatcodes/queries/useFeatureFlagAllQuery'
+import {
+  FeatureFlagAll,
+  useCheatcodesFeatureFlagQuery,
+} from 'cheatcodes/queries/useCheatcodesFeatureFlagQuery'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { Separator } from 'ui/components/Separator'
@@ -12,7 +15,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const CheatcodesScreenFeatureFlags = () => {
-  const featureFlags = useFeatureFlagAllQuery()
+  const featureFlags = useCheatcodesFeatureFlagQuery()
 
   type Section = {
     title: string

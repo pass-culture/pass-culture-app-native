@@ -187,7 +187,7 @@ const Container = styled(InternalTouchableLink)({
 })
 
 const Body = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const Flex = styled.View<FlexStyle>(({ flex, justifyContent, alignItems, gap, flexDirection }) => ({
@@ -217,5 +217,5 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
 })
 
 const DistanceTag = styled(Tag)(({ theme }) => ({
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))

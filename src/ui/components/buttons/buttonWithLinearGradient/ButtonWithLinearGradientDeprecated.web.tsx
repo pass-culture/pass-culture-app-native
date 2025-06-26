@@ -80,8 +80,8 @@ const genericStyle = ({ theme, fitContentWidth }: GenericStyleProps) => {
       color: theme.buttons.disabled.linearGradient.textColor,
       backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
     },
-    ...customFocusOutline({ color: theme.buttons.outlineColor }),
-    ...getHoverStyle(theme.designSystem.color.text.inverted),
+    ...customFocusOutline({}),
+    ...getHoverStyle({ underlineColor: theme.designSystem.color.text.inverted }),
     ...buttonWidthStyle({ fitContentWidth }),
   }
 }

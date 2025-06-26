@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { render, screen, userEvent } from 'tests/utils'
+import { theme } from 'theme'
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -38,7 +39,7 @@ describe('SingleFilterButton', () => {
 
     expect(button).toHaveStyle({
       borderWidth: 2,
-      backgroundColor: '#F1F1F4',
+      backgroundColor: theme.designSystem.color.background.subtle,
     })
   })
 })

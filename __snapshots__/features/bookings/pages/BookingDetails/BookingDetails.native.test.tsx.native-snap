@@ -64,14 +64,43 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
             style={
               [
                 {
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "height": 296,
                   "width": 960,
                 },
               ]
             }
             width={960}
-          />
+          >
+            <BVLinearGradient
+              colors={
+                [
+                  1447447,
+                  437655063,
+                ]
+              }
+              endPoint={
+                {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
+              style={
+                [
+                  {
+                    "height": "100%",
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
       </View>
       <RCTScrollView
@@ -1174,7 +1203,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
               style={
                 [
                   {
-                    "color": "#696A6F",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,

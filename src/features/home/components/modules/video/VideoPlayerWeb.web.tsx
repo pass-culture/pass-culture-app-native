@@ -116,7 +116,7 @@ export const VideoPlayerWeb: React.FC<VideoPlayerWebProps> = ({
 }
 
 const StyledVideoPlayerContainer = styled.View({
-  backgroundColor: theme.colors.black,
+  backgroundColor: theme.designSystem.color.background.lockedInverted,
   borderTopLeftRadius: getSpacing(4),
   borderTopRightRadius: getSpacing(4),
   overflow: 'hidden',

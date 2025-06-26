@@ -9,7 +9,7 @@ import { cheatcodesNavigationBirthdayNotificationsButtons } from 'cheatcodes/pag
 import { cheatcodesNavigationBookingsButtons } from 'cheatcodes/pages/features/bookings/CheatcodesNavigationBookings'
 import { cheatcodesNavigationBookOfferButtons } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { cheatcodesNavigationCulturalSurveyButtons } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
-import { cheatcodesNavigationForceUpdateButtons } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
+import { cheatcodesNavigationForceUpdateButtons } from 'cheatcodes/pages/features/forceUpdate/CheatcodesNavigationForceUpdate'
 import { cheatcodesNavigationHomeButtons } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
 import { cheatcodesNavigationIdentityCheckButtons } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationIdentityCheck'
 import { cheatcodesNavigationInternalButtons } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
@@ -21,7 +21,7 @@ import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/o
 import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { cheatcodesNavigationGenericPagesButtons } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
 import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
 import { env } from 'libs/environment/env'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -29,32 +29,33 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 
-const isMatching = (searchValue: string, str?: string): boolean =>
-  (str ?? '').toLowerCase().includes(searchValue.toLowerCase())
+const isMatching = (searchValue: string, str: string): boolean =>
+  str.toLowerCase().includes(searchValue.toLowerCase())
 
-const filterAndSortCheatcodesButtons = (
+const filterAndSortCheatcodes = (
   searchValue: string,
-  buttons: CheatcodesButtonsWithSubscreensProps[]
-): CheatcodesButtonsWithSubscreensProps[] =>
-  buttons
-    .filter((button) => button.title || button.screen)
-    .map((button): CheatcodesButtonsWithSubscreensProps | null => {
-      const filteredSubscreens = button.subscreens?.filter(
-        (subscreen) =>
-          isMatching(searchValue, subscreen.title) || isMatching(searchValue, subscreen.screen)
+  categories: CheatcodeCategory[]
+): CheatcodeCategory[] =>
+  categories
+    .map((category): CheatcodeCategory | null => {
+      const filteredSubscreens = category.subscreens.filter(
+        (subscreen) => !subscreen.showOnlyInSearch && isMatching(searchValue, subscreen.title)
       )
-      const isButtonMatching =
-        isMatching(searchValue, button.title) ||
-        isMatching(searchValue, button.screen) ||
-        (filteredSubscreens && filteredSubscreens.length > 0)
-      return isButtonMatching
-        ? { ...button, subscreens: searchValue ? filteredSubscreens : [] }
-        : null
+
+      const isCategoryMatching =
+        isMatching(searchValue, category.title) || filteredSubscreens.length > 0
+
+      if (!isCategoryMatching) {
+        return null
+      }
+
+      return {
+        ...category,
+        subscreens: searchValue ? filteredSubscreens : [],
+      }
     })
-    .filter((button): button is CheatcodesButtonsWithSubscreensProps => button !== null)
-    .sort((a, b) =>
-      (a.title || a.screen || 'sans titre').localeCompare(b.title || b.screen || 'sans titre')
-    )
+    .filter((category): category is CheatcodeCategory => category !== null)
+    .sort((a, b) => a.title.localeCompare(b.title))
 
 export function CheatcodesMenu(): React.JSX.Element {
   const [searchValue, setSearchValue] = useState('')
@@ -70,7 +71,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     })
   }
 
-  const featuresButtons: CheatcodesButtonsWithSubscreensProps[] = [
+  const featuresButtons: CheatcodeCategory[] = [
     ...cheatcodesNavigationAchievementsButtons,
     ...cheatcodesNavigationBirthdayNotificationsButtons,
     ...cheatcodesNavigationBookOfferButtons,
@@ -85,83 +86,85 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationOnboardingButtons,
     {
+      id: uuidv4(),
       title: 'RemoteBanners 🆒',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenRemoteBanners' },
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenRemoteBanners' },
+      },
       subscreens: [],
     },
     {
+      id: uuidv4(),
       title: 'Share 🔗',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesNavigationShare' },
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesNavigationShare' },
+      },
       subscreens: [],
     },
     {
+      id: uuidv4(),
       title: 'Maintenance 🔗',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenMaintenance' },
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenMaintenance' },
+      },
       subscreens: [],
     },
   ]
 
-  const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
+  const otherButtons: CheatcodeCategory[] = [
     ...cheatcodesNavigationAccountManagementButtons,
     ...cheatcodesNavigationErrorsButtons,
     ...cheatcodesNavigationGenericPagesButtons,
     ...cheatcodesNavigationSignUpButtons,
     {
+      id: uuidv4(),
       title: 'AccesLibre 🌈',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenAccesLibre' },
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenAccesLibre' },
+      },
       subscreens: [],
     },
     {
+      id: uuidv4(),
       title: 'Debug informations 🪲',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenDebugInformations' },
-      subscreens: [],
-    },
-    { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry, subscreens: [] },
-    {
-      title: 'Features flags 🏳️',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenFeatureFlags' },
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenDebugInformations' },
+      },
       subscreens: [],
     },
     {
-      title: 'Loading page ⌛',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodeScreenLoadingPage' },
+      id: uuidv4(),
+      title: 'Envoyer une erreur Sentry 📤',
+      onPress: onPressSentry,
       subscreens: [],
     },
     {
-      title: 'Nouvelle-Calédonie 🇳🇨',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenNewCaledonia' },
-      subscreens: [],
-    },
-    {
-      title: 'Pages non écrans ❌',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesNavigationNotScreensPages' },
-      subscreens: [],
-    },
-    {
+      id: uuidv4(),
       title: 'Remote config 📊',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenRemoteConfig' },
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenRemoteConfig' },
+      },
       subscreens: [],
     },
     {
-      title: 'LayoutExpiredLink 🔗',
-      screen: 'CheatcodesStackNavigator',
-      navigationParams: { screen: 'CheatcodesScreenLayoutExpiredLink' },
+      id: uuidv4(),
+      title: 'Features flags 🏳️',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenFeatureFlags' },
+      },
       subscreens: [],
     },
   ]
 
-  const filteredFeaturesButtons = filterAndSortCheatcodesButtons(searchValue, featuresButtons)
-  const filteredOtherButtons = filterAndSortCheatcodesButtons(searchValue, otherButtons)
+  const filteredFeaturesButtons = filterAndSortCheatcodes(searchValue, featuresButtons)
+  const filteredOtherButtons = filterAndSortCheatcodes(searchValue, otherButtons)
 
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
@@ -171,14 +174,22 @@ export function CheatcodesMenu(): React.JSX.Element {
         onChangeText={setSearchValue}
         onPressRightIcon={resetSearch}
       />
-      <StyledView>
-        <SeparatorWithText label="FEATURES" />
-      </StyledView>
-      <CheatcodesButtonList buttons={filteredFeaturesButtons} />
-      <StyledView>
-        <SeparatorWithText label="AUTRES" />
-      </StyledView>
-      <CheatcodesButtonList buttons={filteredOtherButtons} />
+      {filteredFeaturesButtons.length ? (
+        <React.Fragment>
+          <StyledView>
+            <SeparatorWithText label="FEATURES" />
+          </StyledView>
+          <CheatcodesButtonList buttons={filteredFeaturesButtons} />
+        </React.Fragment>
+      ) : null}
+      {filteredOtherButtons.length ? (
+        <React.Fragment>
+          <StyledView>
+            <SeparatorWithText label="AUTRES" />
+          </StyledView>
+          <CheatcodesButtonList buttons={filteredOtherButtons} />
+        </React.Fragment>
+      ) : null}
     </CheatcodesTemplateScreen>
   )
 }

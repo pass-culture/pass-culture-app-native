@@ -87,7 +87,7 @@ const StyledOffersIcon = styled(Offers).attrs(({ theme }) => ({
 }))``
 
 const BlackView = styled.View(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.black, 0.7),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0.7),
   height: '100%',
   justifyContent: 'center',
   borderTopLeftRadius: getSpacing(4),

@@ -159,7 +159,10 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
           start={{ x: 0, y: 0.9 }}
           end={{ x: 0, y: 1 }}
-          colors={[colorAlpha(theme.colors.black, 0.9), colorAlpha(theme.colors.black, 0.9)]}>
+          colors={[
+            colorAlpha(theme.designSystem.color.background.lockedInverted, 0.9),
+            colorAlpha(theme.designSystem.color.background.lockedInverted, 0.9),
+          ]}>
           <ButtonsContainer>
             <IconContainer>
               <StyledPlayIcon />
@@ -249,7 +252,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
 const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient)
 
 const ProgressBarWrapper = styled.View({
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.locked,
 })
 
 const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
@@ -265,7 +268,7 @@ const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
 })
 
 const StyledVideoPlayerContainer = styled.View({
-  backgroundColor: theme.colors.black,
+  backgroundColor: theme.designSystem.color.background.lockedInverted,
   alignSelf: 'stretch',
 })
 
@@ -332,12 +335,12 @@ const StyledYoutubePlayer = styled(YouTubePlayer).attrs({
 })``
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
   padding: getSpacing(2.5),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.locked,
 }))

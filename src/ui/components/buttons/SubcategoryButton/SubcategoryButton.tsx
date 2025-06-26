@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -84,7 +84,7 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
     shadowColor: theme.colors.greyDark,
     shadowOpacity: 0.2,
   }),
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus }),
   textAlign: 'left',
   alignItems: 'center',
   padding: getSpacing(2),
@@ -95,5 +95,5 @@ const StyledText = styledButton(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
   ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
-  ...getHoverStyle(theme.colors.black, isHover),
+  ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
 }))

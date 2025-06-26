@@ -30,7 +30,7 @@ const BorderedScrollButtonForNotTouchDevice = styled(
   // @ts-ignore this should work since styled(TouchableOpacity)(scrollButtonStyles) works
   ...scrollButtonStyles(props),
   borderWidth: 1,
-  borderColor: props.theme.colors.greySemiDark,
+  borderColor: props.theme.designSystem.color.border.default,
 }))
 
 export const PlaylistArrowButton = styled(RawPlaylistArrowButton).attrs(({ theme, size }) => ({

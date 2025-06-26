@@ -71,7 +71,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) =>
       height: getSpacing(3),
     },
     shadowRadius: getSpacing(12),
-    shadowColor: theme.colors.black,
+    shadowColor: theme.designSystem.color.background.lockedInverted,
     shadowOpacity: 0.15,
   }),
 }))

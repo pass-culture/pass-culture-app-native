@@ -3,7 +3,7 @@ import React from 'react'
 import { HomepageLabelNameEnumv2 } from 'api/gen'
 import { render, screen } from 'tests/utils'
 import { Tag } from 'ui/components/Tag/Tag'
-import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
+import { TagVariant } from 'ui/components/Tag/types'
 
 import { PlaylistCardOffer } from './PlaylistCardOffer'
 
@@ -22,7 +22,10 @@ const props = {
 describe('PlaylistCardOffer component', () => {
   it('should display interaction tag when specified', () => {
     render(
-      <PlaylistCardOffer {...props} interactionTag={<Tag label="100" Icon={ThumbUpFilled} />} />
+      <PlaylistCardOffer
+        {...props}
+        interactionTag={<Tag label="100" variant={TagVariant.LIKE} />}
+      />
     )
 
     expect(screen.getByTestId('tagIcon')).toBeOnTheScreen()

@@ -48,18 +48,18 @@ const ButtonWithCaptionContainer = styled(ViewGap)({
 })
 
 const ButtonCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
 }))
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
   padding: getSpacing(2.5),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.locked,
 }))
 
 const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
   padding: getSpacing(2.5),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.locked,
 }))

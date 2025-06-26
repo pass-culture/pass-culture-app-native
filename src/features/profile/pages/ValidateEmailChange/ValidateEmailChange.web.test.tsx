@@ -2,7 +2,7 @@ import { RouteProp } from '@react-navigation/native'
 import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

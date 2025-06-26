@@ -83,7 +83,10 @@ const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   useAngle: true,
   angle: 180,
   locations: [0.45, 1],
-  colors: [colorAlpha(theme.colors.black, 0), colorAlpha(theme.colors.black, 0.5)],
+  colors: [
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0.5),
+  ],
 }))(({ theme }) => ({
   height: '100%',
   width: '100%',
@@ -102,7 +105,7 @@ const GoogleLogo = styled.Image({
 })
 
 const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.text.subtle,
   textAlign: 'right',
   marginRight: theme.isMobileViewport ? getSpacing(4) : 0,
 }))
@@ -110,10 +113,10 @@ const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
 const EmptyVenueBackground = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const VenueIcon = styled(Venue).attrs(({ theme }) => ({
   size: getSpacing(30),
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``

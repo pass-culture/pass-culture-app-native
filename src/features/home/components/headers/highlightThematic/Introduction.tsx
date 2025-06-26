@@ -27,5 +27,5 @@ const IntroductionContainer = styled.View({
 
 const Divider = styled.View(({ theme }) => ({
   height: getSpacing(1),
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
