@@ -1,15 +1,15 @@
 appId: ${MAESTRO_APP_ID}
+jsengine: graaljs
 tags:
   - nightlyAndroid
   - local
   - squad-conversion
+onFlowStart:
+  - runScript: subFolder/links/DeepLinks.js
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
-- runFlow: subFolder/cookies/AcceptCookies.yml
-- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
-
-- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
-- assertNotVisible: 'Informations personnelles'
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/links/DeepLinksToHome.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml

@@ -1,0 +1,27 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - nightlyAndroid
+  - nightlyIOS
+  - local
+  - squad-activation
+---
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard16AndLocalization.yml
+
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard17.yml
+
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard19.yml
+
+- runFlow: subFolder/commons/StopApp.yml

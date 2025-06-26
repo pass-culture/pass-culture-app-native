@@ -13,9 +13,9 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: "Lorsque vous utilisez l'appli"
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
-- tapOn: "J’ai 16 ans ou moins"
+- tapOn: "J’ai 19 ans ou plus"
 
-- assertVisible: "Encore un peu de patience\_!"
+- assertVisible: "Explore, découvre, profite"
 - assertVisible: "Créer un compte"
 - tapOn: 'Accéder au catalogue'
 
