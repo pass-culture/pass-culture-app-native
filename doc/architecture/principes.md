@@ -348,3 +348,8 @@ TODO:
   - suspense / react query v5
 
   - faire des règles ESLint pour enforce nos principes
+
+API Response -> custom props
+type primitif -> parser
+API null undefined
+URL/API/User -> Parsing -> Type Primitif -> Value object (Price)
