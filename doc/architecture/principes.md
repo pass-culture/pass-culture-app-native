@@ -238,6 +238,33 @@ const Component: FunctionComponent<{ title: string; onPress: () => void }> = () 
 
 Ainsi le `onPress` et le `title` sont utilisés au niveau du container rendant `Component` réutilisable
 
+### Type spécifique pour les composants
+
+Les `props` des composants devrait éviter d'etre couplée à l'API
+
+```tsx
+// ❌
+type Props = {
+  artist: ArtistResponse | null | undefined
+}
+
+const ArtistImage: FunctionComponent<Props> = ({ artist }) => {
+  if (!artist) return null
+  return <Image url={artist.image} />
+}
+```
+
+```tsx
+// ✅
+type Props = {
+  artistImageURL: string
+}
+
+const ArtistImage: FunctionComponent<Props> = ({ artistImageURL }) => {
+  return <Image url={artistImageURL} />
+}
+```
+
 ### La composition
 
 La composition évite principalement le props drilling (passage de props en cascade) et donne plus de visibilité sur le composant
@@ -340,16 +367,14 @@ TODO:
 
 - ne pas mocker les hoks faire du msw
 
-  - à creuser plus loin
+- à creuser plus loin
 
   - navigation
   - analytics
   - zustand
   - suspense / react query v5
+  - API null undefined
+  - URL/API/User -> Parsing
+    - Type Primitif -> Value object (Price)
 
-  - faire des règles ESLint pour enforce nos principes
-
-API Response -> custom props
-type primitif -> parser
-API null undefined
-URL/API/User -> Parsing -> Type Primitif -> Value object (Price)
+- faire des règles ESLint pour enforce nos principes

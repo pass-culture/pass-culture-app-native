@@ -211,7 +211,7 @@ Isolation des logiques métiers:
 - validation que toutes les pages de l’app sont accessibles en deeplink (si ce n’est pas le cas, devra être justifié)
 - création d’un système de modales uniformisé qui centralise tous les affichages de modales
 
-## TODO rename
+## Vision macro
 
 ### Définition
 
@@ -235,13 +235,13 @@ Les mises à jour sont fastidieuses
 
 #### Écosystème
 
-##### Écosystème de niche
-
 Pour pouvoir partager le code entre Android et iOS nous utilisons React Native
 
 Pour pouvoir partager le code entre Android, iOS **et le web**, nous utilisons React Native **Web**
 
 Ce qui implique de choisir des dépendances qui soient compatibles avec React Native Web, ou de gérer des particularité au cas par cas pour faire des choses dédiées à Android et iOS et des choses dédidées au web
+
+##### Écosystème de niche
 
 Cet écosystème est très de niche
 
@@ -259,15 +259,24 @@ flowchart LR
 
 ###### Choix
 
-Les choix les plus populaires nous sont parfois inaccessibles car incompatible avec React Native Web
+Les choix les plus populaires nous sont parfois inaccessibles car incompatible avec React Native Web et/ou React Native
 
-Il a peu de choix
+Il y a peu de choix
 
 Nous sommes contraints de :
 
 1. Utiliser des dépendances peu éprouvées par la communauté
 1. Utiliser des dépendances souvent mal maintenues
 1. Réinventer la roue
+
+##### Développement
+
+L'écosystème React Native évolue vite, l'écosystème web évolue encore plus vite
+
+Pour faire certains développment :
+
+- il est parfois très difficile de le faire en restant compatible avec React Native
+- il est parfois nécessaire de developper nous meme des logiques complexes
 
 #### Déploimement
 
@@ -299,7 +308,7 @@ Il serait possible de se concentrer sur le développement sur la partie web (Pro
 
 Le site serait adapté à l'affichage mobile (Responsive Design)
 
-Le site serait affiché dans l'application (WebView) de manière relativement transparente pour l'utilisateur
+Le site serait affiché dans l'application (`WebView`) de manière relativement transparente pour l'utilisateur
 
 Nous pourrions transitionner lentement de manière transparente
 
@@ -318,6 +327,27 @@ Android et iOS pourraient etre vérifié d'une manière moins fréquente
 Seul React Native et une petite sélection de dépendances liées à cet écosystème resterait
 
 Les mises à jour de dépendance seraient plus facile, nous passerons moins de temps à les faire, et on pourrait utiliser ce temps pour travailler sur d'autres sujets techniques de fond
+
+#### Développment simplifié
+
+Les possibilités de développement sur le web évoluent rapidement, il y a des choses qui deviennent facile à faire car les navigateurs font de plus en plus de travail tout seul
+
+Exemple : `grid-template-areas` qui permettent de positionner les éléments graphiques de manière extrèment simple ;
+[exemple minimaliste](https://codepen.io/seyedi/full/bGoZjzX) : la disposition des différents éléments dans la page se fait simplement avec les lignes suivantes
+
+```css
+grid-template-areas:
+  'header header header'
+  'left-sidebar main right-sidebar'
+  'footer footer footer';
+```
+
+##### De nouvelles possibilités
+
+Dans ces nombreuses évolutions, le web permet de faire des choses facilement qui aurait été extrèmement difficile à faire en React Native seul
+
+Exemple : les `ViewTransition` qui permettent très facilement de faire une animation en passant d'une page à une autre ;
+[exemple minimaliste](https://http203-playlist.netlify.app/) : quand on clique sur le lien, on change d'URL, on change de page, et il y a une animation pendant le changement de page
 
 #### Déploiement Continue
 
