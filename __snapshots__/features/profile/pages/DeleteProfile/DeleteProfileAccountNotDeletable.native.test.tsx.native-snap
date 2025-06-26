@@ -360,12 +360,14 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
               testID="consultant cette page."
             >
               <View
+                gap={1}
                 paddingForIcon={0}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 4,
                       "top": 0,
                     },
                   ]
@@ -381,16 +383,6 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                     button-icon-SVG-Mock
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   color="#161617"
                   style={
@@ -610,6 +602,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -623,16 +616,6 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

@@ -313,11 +313,13 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           }
         >
           <View
+            gap={3.75}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "gap": 15,
                 },
               ]
             }
@@ -330,16 +332,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 undefined-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={3.75}
-              style={
-                [
-                  {
-                    "width": 15,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -380,11 +372,13 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           }
         >
           <View
+            gap={3.75}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "gap": 15,
                 },
               ]
             }
@@ -397,16 +391,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 undefined-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={3.75}
-              style={
-                [
-                  {
-                    "width": 15,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -447,11 +431,13 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           }
         >
           <View
+            gap={3.75}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "gap": 15,
                 },
               ]
             }
@@ -464,16 +450,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 undefined-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={3.75}
-              style={
-                [
-                  {
-                    "width": 15,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -514,11 +490,13 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           }
         >
           <View
+            gap={3.75}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "gap": 15,
                 },
               ]
             }
@@ -532,16 +510,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 BicolorProfile-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={3.75}
-              style={
-                [
-                  {
-                    "width": 15,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -683,6 +651,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -697,16 +666,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -1045,11 +1004,13 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           }
         >
           <View
+            gap={3.75}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "gap": 15,
                 },
               ]
             }
@@ -1062,16 +1023,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 undefined-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={3.75}
-              style={
-                [
-                  {
-                    "width": 15,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -1112,11 +1063,13 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           }
         >
           <View
+            gap={3.75}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "gap": 15,
                 },
               ]
             }
@@ -1129,16 +1082,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 undefined-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={3.75}
-              style={
-                [
-                  {
-                    "width": 15,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -1179,11 +1122,13 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           }
         >
           <View
+            gap={3.75}
             style={
               [
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "gap": 15,
                 },
               ]
             }
@@ -1197,16 +1142,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 BicolorProfile-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={3.75}
-              style={
-                [
-                  {
-                    "width": 15,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -1348,6 +1283,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -1362,16 +1298,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

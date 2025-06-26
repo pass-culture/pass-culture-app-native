@@ -373,12 +373,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Schéma pluriannuel d’accessibilité 2022 - 2025"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -393,16 +395,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -543,12 +535,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Actions réalisées depuis 2022"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -563,16 +557,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -713,12 +697,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Plan d’actions 2024"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -733,16 +719,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -829,12 +805,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             testID="https://passculture.app/"
           >
             <View
+              gap={1}
               paddingForIcon={0}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 4,
                     "top": 0,
                   },
                 ]
@@ -850,16 +828,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   button-icon-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -3240,12 +3208,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Accueil"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3261,16 +3231,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -3411,12 +3371,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Connexion"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3432,16 +3394,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -3582,12 +3534,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Inscription - Date de naissance"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3603,16 +3557,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -3753,12 +3697,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Vérification d’identité"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3774,16 +3720,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -3924,12 +3860,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Profil"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3945,16 +3883,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -4095,12 +4023,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Modification de mot de passe"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4116,16 +4046,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -4266,12 +4186,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Recherche"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4287,16 +4209,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -4437,12 +4349,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Filtres"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4458,16 +4372,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -4608,12 +4512,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Résultats de recherche"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4629,16 +4535,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -4779,12 +4675,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Favoris"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4800,16 +4698,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -4950,12 +4838,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Détails d’une offre"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4971,16 +4861,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -5121,12 +5001,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       testID="Déclaration d’accessibilité"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -5142,16 +5024,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             button-icon-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            [
-                              {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             [
@@ -5281,12 +5153,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             testID="Ouvrir le gestionnaire mail pour contacter le support"
           >
             <View
+              gap={1}
               paddingForIcon={0}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 4,
                     "top": 0,
                   },
                 ]
@@ -5301,16 +5175,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   button-icon-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -5456,12 +5320,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 testID="Défenseur des droits"
               >
                 <View
+                  gap={1}
                   paddingForIcon={0}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row",
+                        "gap": 4,
                         "top": 0,
                       },
                     ]
@@ -5477,16 +5343,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       button-icon-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [
@@ -5568,12 +5424,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 testID="Défenseur des droits dans votre région"
               >
                 <View
+                  gap={1}
                   paddingForIcon={0}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row",
+                        "gap": 4,
                         "top": 0,
                       },
                     ]
@@ -5589,16 +5447,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       button-icon-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [

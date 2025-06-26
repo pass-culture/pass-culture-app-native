@@ -590,16 +590,6 @@ exports[`ThematicHome should render correctly 1`] = `
             <View>
               undefined-Lottie-Mock
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -608,6 +598,7 @@ exports[`ThematicHome should render correctly 1`] = `
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
+                    "marginLeft": 8,
                   },
                 ]
               }

@@ -10,7 +10,7 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { Offers } from 'ui/svg/icons/Offers'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export const VideoEndView: React.FC<{
   onPressReplay: () => void
@@ -35,8 +35,7 @@ export const VideoEndView: React.FC<{
             icon={StyledReplayIcon}
           />
           {offer ? (
-            <React.Fragment>
-              <Spacer.Row numberOfSpaces={9} />
+            <SeeOfferButtonContainer>
               <ButtonWithCaption
                 onPress={() => {
                   onPressSeeOffer()
@@ -61,7 +60,7 @@ export const VideoEndView: React.FC<{
                 wording="Voir l’offre"
                 icon={StyledOffersIcon}
               />
-            </React.Fragment>
+            </SeeOfferButtonContainer>
           ) : null}
         </ButtonsContainer>
       </BlackView>
@@ -93,3 +92,8 @@ const BlackView = styled.View(({ theme }) => ({
   borderTopLeftRadius: getSpacing(4),
   borderTopRightRadius: getSpacing(4),
 }))
+
+const SeeOfferButtonContainer = styled.View({
+  flexDirection: 'row',
+  paddingLeft: getSpacing(9),
+})

@@ -3,8 +3,9 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -15,9 +16,8 @@ export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistL
   const artistLinkEnabled = !!onPressArtistLink
   const prefix = 'de'
   return (
-    <ArtistInfoContainer>
+    <ArtistInfoContainer gap={2}>
       <StyledPrefix>{prefix}</StyledPrefix>
-      <Spacer.Row numberOfSpaces={2} />
       {artistLinkEnabled ? (
         <ButtonTertiaryBlack
           wording={artists}
@@ -45,7 +45,7 @@ const ArtistsText = styled(Typo.BodyAccent)({
   flex: 1,
 })
 
-const ArtistInfoContainer = styled.View({
+const ArtistInfoContainer = styled(ViewGap)({
   flexDirection: 'row',
 })
 

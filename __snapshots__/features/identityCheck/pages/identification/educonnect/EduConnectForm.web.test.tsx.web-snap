@@ -273,7 +273,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
                 <div
-                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
                 >
                   <div
                     aria-label="Nouvelle fenêtre"
@@ -287,9 +287,6 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                       button-icon-left-SVG-Mock
                     </div>
                   </div>
-                  <div
-                    class="css-view-175oi2r r-width-1jg9483"
-                  />
                 </div>
                 <div
                   class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"

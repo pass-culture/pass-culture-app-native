@@ -38,6 +38,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -378,9 +379,8 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         </Accordion>
       </Container>
       <BottomContainer>
-        <ErrorContainer>
+        <ErrorContainer gap={2}>
           <Warning />
-          <Spacer.Row numberOfSpaces={2} />
           <ErrorText>{errorText}</ErrorText>
         </ErrorContainer>
         <ButtonPrimary wording="Générer le lien" disabled={disabled} onPress={onPress} />
@@ -411,7 +411,7 @@ const Container = styled.ScrollView(({ theme }) => ({
   flexDirection: 'column',
 }))
 
-const ErrorContainer = styled.View({
+const ErrorContainer = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
 })

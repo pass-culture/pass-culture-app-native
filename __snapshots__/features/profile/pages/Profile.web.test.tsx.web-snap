@@ -293,7 +293,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-top-ipm5af"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-top-ipm5af"
                     >
                       <div
                         class="css-view-175oi2r"
@@ -306,9 +306,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           button-icon-SVG-Mock
                         </div>
                       </div>
-                      <div
-                        class="css-view-175oi2r r-width-10g5efv"
-                      />
                       <div
                         class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
@@ -404,10 +401,10 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     role="listitem"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <div
                           class="css-view-175oi2r"
@@ -419,9 +416,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             undefined-SVG-Mock
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <label
                           class="c4"
                           for="testUuidV4"
@@ -435,10 +429,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         </label>
                       </div>
                       <div
-                        class="css-view-175oi2r r-width-1janqcz"
-                      />
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
@@ -1050,7 +1041,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                     >
                       <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
                       >
                         <div
                           aria-label="Nouvelle fenêtre"
@@ -1064,9 +1055,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             button-icon-left-SVG-Mock
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                       </div>
                       <div
                         class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
@@ -1088,7 +1076,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                     >
                       <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
                       >
                         <div
                           aria-label="Nouvelle fenêtre"
@@ -1102,9 +1090,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             button-icon-left-SVG-Mock
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                       </div>
                       <div
                         class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
@@ -1439,7 +1424,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-top-ipm5af"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-top-ipm5af"
                     >
                       <div
                         class="css-view-175oi2r"
@@ -1452,9 +1437,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           button-icon-SVG-Mock
                         </div>
                       </div>
-                      <div
-                        class="css-view-175oi2r r-width-10g5efv"
-                      />
                       <div
                         class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
@@ -1550,10 +1532,10 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     role="listitem"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <div
                           class="css-view-175oi2r"
@@ -1565,9 +1547,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             undefined-SVG-Mock
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                         <label
                           class="c4"
                           for="testUuidV4"
@@ -1581,10 +1560,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         </label>
                       </div>
                       <div
-                        class="css-view-175oi2r r-width-1janqcz"
-                      />
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
@@ -2196,7 +2172,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                     >
                       <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
                       >
                         <div
                           aria-label="Nouvelle fenêtre"
@@ -2210,9 +2186,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             button-icon-left-SVG-Mock
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                       </div>
                       <div
                         class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
@@ -2234,7 +2207,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                     >
                       <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
                       >
                         <div
                           aria-label="Nouvelle fenêtre"
@@ -2248,9 +2221,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             button-icon-left-SVG-Mock
                           </div>
                         </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
                       </div>
                       <div
                         class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"

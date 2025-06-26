@@ -419,12 +419,14 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                     testID="conditions générales d’utilisation"
                   >
                     <View
+                      gap={1}
                       paddingForIcon={0}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 4,
                             "top": 0,
                           },
                         ]
@@ -440,16 +442,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                           button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
                         color="#161617"
                         style={
@@ -820,6 +812,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -834,16 +827,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

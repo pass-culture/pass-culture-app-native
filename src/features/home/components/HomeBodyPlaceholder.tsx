@@ -1,27 +1,23 @@
 import React from 'react'
-import { View, PixelRatio } from 'react-native'
+import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
-import { getSpacing, MARGIN_DP, RATIO_BUSINESS, Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing, MARGIN_DP, RATIO_BUSINESS } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const HomeBodyPlaceholder = () => (
-  <View>
+  <ViewGap gap={6}>
     <OfferPlaylistSkeleton size={TileSize.LARGE} numberOfTiles={4} />
-    <Spacer.Column numberOfSpaces={6} />
     <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={5} />
-    <Spacer.Column numberOfSpaces={6} />
     <Container testID="HomeBodyPlaceholder-testID">
-      <Spacer.Row numberOfSpaces={6} />
       <BusinessModulePlaceholder />
     </Container>
-    <Spacer.Column numberOfSpaces={6} />
     <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={5} />
-    <Spacer.Column numberOfSpaces={6} />
     <OfferPlaylistSkeleton size={TileSize.LARGE} numberOfTiles={4} />
-  </View>
+  </ViewGap>
 )
 
 const BusinessModulePlaceholder = () => {
@@ -33,4 +29,8 @@ const BusinessModulePlaceholder = () => {
   )
 }
 
-const Container = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })
+const Container = styled.View({
+  flexDirection: 'row',
+  paddingBottom: getSpacing(6),
+  paddingLeft: getSpacing(6),
+})

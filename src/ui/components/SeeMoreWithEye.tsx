@@ -6,7 +6,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type Props = {
@@ -18,9 +18,7 @@ type Props = {
 export const SeeMoreWithEye = ({ title, onPressSeeMore, titleSeeMoreLink }: Props) => {
   return (
     <React.Fragment>
-      <Spacer.Row numberOfSpaces={4} />
       <TitleSeparator />
-      <Spacer.Row numberOfSpaces={3} />
       {titleSeeMoreLink ? (
         <StyledTouchableLink
           navigateTo={titleSeeMoreLink}
@@ -28,8 +26,7 @@ export const SeeMoreWithEye = ({ title, onPressSeeMore, titleSeeMoreLink }: Prop
           accessibilityLabel={`Voir plus d’offres de la sélection ${title}`}
           highlight={false}>
           <EyeSophisticated />
-          <Spacer.Row numberOfSpaces={2} />
-          <Typo.BodyAccent>Voir tout</Typo.BodyAccent>
+          <SeeAllText>Voir tout</SeeAllText>
         </StyledTouchableLink>
       ) : (
         <StyledTouchable
@@ -37,8 +34,7 @@ export const SeeMoreWithEye = ({ title, onPressSeeMore, titleSeeMoreLink }: Prop
           accessibilityLabel={`Voir plus d’offres de la sélection ${title}`}>
           <React.Fragment>
             <EyeSophisticated />
-            <Spacer.Row numberOfSpaces={2} />
-            <Typo.BodyAccent>Voir tout</Typo.BodyAccent>
+            <SeeAllText>Voir tout</SeeAllText>
           </React.Fragment>
         </StyledTouchable>
       )}
@@ -50,6 +46,8 @@ const TitleSeparator = styled.View(({ theme }) => ({
   width: 1,
   height: getSpacing(5),
   backgroundColor: theme.designSystem.color.background.subtle,
+  marginLeft: getSpacing(4),
+  marginRight: getSpacing(3),
 }))
 
 const StyledTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(
@@ -72,3 +70,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
 const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
+
+const SeeAllText = styled(Typo.BodyAccent)({
+  marginLeft: getSpacing(2),
+})

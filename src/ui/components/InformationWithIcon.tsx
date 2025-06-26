@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const InformationWithIcon: FunctionComponent<{
   Icon: React.FC<AccessibleIcon>
@@ -15,9 +16,8 @@ export const InformationWithIcon: FunctionComponent<{
   }))``
 
   return (
-    <InfoContainer>
+    <InfoContainer gap={3.75}>
       <StyledIcon />
-      <Spacer.Row numberOfSpaces={3.75} />
       {subtitle ? (
         <TextContainer>
           <Info>{text}</Info>
@@ -30,7 +30,7 @@ export const InformationWithIcon: FunctionComponent<{
   )
 }
 
-const InfoContainer = styled.View({
+const InfoContainer = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
 })
