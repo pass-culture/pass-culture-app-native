@@ -31,7 +31,6 @@ export type StorageKey =
   | 'traffic_source'
   | 'user_age'
   | 'location_type'
-  | 'times_cultural_survey_has_been_requested'
   | 'times_user_subscribed_to_a_theme'
   | 'times_music_live_booking_survey_has_been_displayed'
   | '@passculture.venue.video_seen'
