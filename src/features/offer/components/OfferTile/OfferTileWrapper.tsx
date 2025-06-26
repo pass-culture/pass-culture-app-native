@@ -22,6 +22,7 @@ type Props = Omit<
 > & {
   item: Offer
   hasSmallLayout?: boolean
+  containerWidth?: number
 }
 
 export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Props) {

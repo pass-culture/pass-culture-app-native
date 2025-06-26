@@ -9,6 +9,7 @@ import { AccessibilityFiltersModal } from 'features/accessibility/components/Acc
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -18,6 +19,7 @@ import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
 import {
   FILTER_TYPES,
@@ -61,7 +63,6 @@ import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { FilterButtonList, FilterButtonListItem } from 'ui/components/FilterButtonList'
 import { Li } from 'ui/components/Li'
-import { LineSeparator } from 'ui/components/LineSeparator'
 import { useModal } from 'ui/components/modals/useModal'
 import {
   HeaderSearchResultsPlaceholder,
@@ -71,7 +72,7 @@ import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Map } from 'ui/svg/icons/Map'
 import { Sort } from 'ui/svg/icons/Sort'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
@@ -128,6 +129,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
+  const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
   const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
 
   const [isSearchListTab, setIsSearchListTab] = useState(true)
@@ -276,21 +278,33 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     }
   }, [searchState])
 
+  const { tileWidth, nbrOfTilesToDisplay } = getGridTileRatio(width)
+
   const renderItem = useCallback<
     ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   >(
-    ({ item: hit, index }) => (
-      <StyledHorizontalOfferTile
-        offer={hit}
-        analyticsParams={{
-          query: searchState.query,
-          index,
-          searchId: searchState.searchId,
-          from: 'searchresults',
-        }}
-      />
-    ),
-    [searchState.query, searchState.searchId]
+    ({ item, index }) =>
+      enableGridList ? (
+        <OfferTileWrapper
+          item={item}
+          analyticsFrom="searchresults"
+          height={tileWidth / RATIO_HOME_IMAGE}
+          width={tileWidth}
+          containerWidth={width / nbrOfTilesToDisplay}
+          searchId={searchState.searchId}
+        />
+      ) : (
+        <StyledHorizontalOfferTile
+          offer={item}
+          analyticsParams={{
+            query: searchState.query,
+            index,
+            searchId: searchState.searchId,
+            from: 'searchresults',
+          }}
+        />
+      ),
+    [enableGridList, tileWidth, width, nbrOfTilesToDisplay, searchState.query, searchState.searchId]
   )
 
   const hasDuoOfferToggle = useMemo(() => {
@@ -357,6 +371,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}
+        numColumns={nbrOfTilesToDisplay}
         autoScrollEnabled={autoScrollEnabled}
         onEndReached={onEndReached}
         onScroll={onScroll}
@@ -373,6 +388,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             />
           ) : undefined
         }
+        enableGrisList={enableGridList}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
@@ -627,7 +643,6 @@ const SearchResultsPlaceHolder = () => {
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
-        ItemSeparatorComponent={LineSeparator}
         ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />
