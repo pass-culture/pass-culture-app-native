@@ -318,7 +318,7 @@ const rootScreens: RouteConfig[] = [
   },
   {
     name: 'CulturalSurveyQuestions',
-    component: CulturalSurveyQuestions ?? withAuthProtection(CulturalSurveyQuestions),
+    component: withAuthProtection(CulturalSurveyQuestions),
   },
   {
     name: 'CulturalSurveyThanks',
