@@ -37,11 +37,11 @@ const ErrorMessageContainer = styled(ViewGap)({
 })
 
 const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
 }))

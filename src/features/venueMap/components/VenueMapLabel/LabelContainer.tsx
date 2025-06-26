@@ -7,7 +7,7 @@ import { getSpacing } from 'ui/theme'
 
 export const LabelContainer = styled(Animated.View)<{ labelSize: Size }>(({ theme, labelSize }) => {
   return {
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     borderRadius: theme.borderRadius.checkbox,
     borderWidth: 0,
     maxWidth: getSpacing(40),

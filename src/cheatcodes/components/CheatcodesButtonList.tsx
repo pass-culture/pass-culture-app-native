@@ -1,31 +1,28 @@
 import React from 'react'
 
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
 
 type Props = {
-  buttons: CheatcodesButtonsWithSubscreensProps[]
+  buttons: CheatcodeCategory[]
 }
 
+/**
+ * Renders a list of cheatcode categories.
+ * If a category contains subscreens (e.g., from a search result),
+ * it will render those as indented secondary buttons.
+ */
 export const CheatcodesButtonList: React.FC<Props> = ({ buttons }) => (
   <React.Fragment>
-    {buttons.map((button, index) => (
-      <React.Fragment key={index}>
-        <LinkToCheatcodesScreen
-          title={button.title ?? button.screen}
-          screen={button.screen}
-          onPress={button.onPress}
-          navigationParams={button.navigationParams}
-        />
-        {button.subscreens?.map((subscreen, subIndex) => (
+    {buttons.map((category) => (
+      <React.Fragment key={category.id}>
+        <LinkToCheatcodesScreen button={category} variant="primary" />
+
+        {category.subscreens.map((subscreen) => (
           <LinkToCheatcodesScreen
-            key={`${index}-${subIndex}`}
-            title={`${subscreen.showOnlyInSearch ? '↳ ' : ''} ${subscreen.title ?? subscreen.screen ?? '[sans titre]'}`}
-            screen={subscreen.showOnlyInSearch ? button.screen : subscreen.screen}
-            onPress={subscreen.onPress}
-            navigationParams={subscreen.navigationParams}
-            buttonHeight="extraSmall"
-            isSubscreen
+            key={subscreen.id}
+            button={{ ...subscreen, title: `↳ ${subscreen.title}` }}
+            variant="primary"
           />
         ))}
       </React.Fragment>

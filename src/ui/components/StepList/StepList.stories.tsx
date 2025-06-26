@@ -23,10 +23,10 @@ export default meta
 
 const styles = StyleSheet.create({
   contentActive: {
-    borderColor: theme.colors.black,
+    borderColor: theme.designSystem.color.border.focused,
   },
   content: {
-    borderColor: theme.colors.greyMedium,
+    borderColor: theme.designSystem.color.border.default,
     borderWidth: 2,
     borderStyle: 'solid',
     borderRadius: 4,

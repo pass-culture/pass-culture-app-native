@@ -93,7 +93,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      initialNumToRender={4}
+      initialNumToRender={10}
       keyExtractor={[Function]}
       maxToRenderPerBatch={6}
       onContentSizeChange={[Function]}
@@ -286,7 +286,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      initialNumToRender={4}
+      initialNumToRender={10}
       keyExtractor={[Function]}
       maxToRenderPerBatch={6}
       onContentSizeChange={[Function]}

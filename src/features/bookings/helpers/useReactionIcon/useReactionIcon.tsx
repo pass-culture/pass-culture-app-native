@@ -11,15 +11,7 @@ export const useReactionIcon = (reaction?: ReactionTypeEnum | null) => {
   const ReactionLikeIcon = useMemo(
     () =>
       styled(iconFactory.getIcon('like-filled')).attrs(({ theme }) => ({
-        color: theme.colors.primary,
-      }))``,
-    [iconFactory]
-  )
-
-  const ReactionDislikeIcon = useMemo(
-    () =>
-      styled(iconFactory.getIcon('dislike-filled')).attrs(({ theme }) => ({
-        color: theme.colors.black,
+        color: theme.designSystem.color.icon.brandPrimary,
       }))``,
     [iconFactory]
   )
@@ -30,12 +22,12 @@ export const useReactionIcon = (reaction?: ReactionTypeEnum | null) => {
         case ReactionTypeEnum.LIKE:
           return ReactionLikeIcon
         case ReactionTypeEnum.DISLIKE:
-          return ReactionDislikeIcon
+          return iconFactory.getIcon('dislike-filled')
         default:
           return iconFactory.getIcon('like')
       }
     },
-    [ReactionLikeIcon, ReactionDislikeIcon, iconFactory]
+    [ReactionLikeIcon, iconFactory]
   )
 
   return getCustomReactionIcon(reaction)

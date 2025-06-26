@@ -1,0 +1,32 @@
+appId: ${MAESTRO_APP_ID}
+jsengine: graaljs
+tags:
+  - nightlyAndroid
+  - nightlyIOS
+  - local
+  - squad-activation
+onFlowStart:
+  - runScript: subFolder/links/DeepLinks.js
+---
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/commons/StopApp.yml
+
+- runFlow: subFolder/links/DeepLinksToProfile.yml
+- runFlow: subFolder/auth/AgeStepInfoLoss.yml
+
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/PasswordStepInfoLoss.yml
+
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/SignupFromProfile.yml
+
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LoginFromProfileAfterSignup.yml
+
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
+
+- runFlow: subFolder/links/DeepLinksToHome.yml
+- runFlow: subFolder/home/OpenActivationModuleFromHome.yml
+
+- runFlow: subFolder/commons/StopApp.yml

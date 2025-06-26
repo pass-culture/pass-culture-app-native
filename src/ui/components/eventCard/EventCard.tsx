@@ -5,7 +5,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getShadow, getSpacing, Typo } from 'ui/theme'
 
 const BORDER_WIDTH = getSpacing(0.25)
 export const EVENT_CARD_HEIGHT = getSpacing(19)
@@ -54,15 +54,9 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
           {subtitleLeft}
         </SubtitleLeft>
         {hasSubtitleRight ? (
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={1} />
-            <SubtitleRight
-              accessibilityLabel={subtitleRight}
-              numberOfLines={1}
-              disabled={isDisabled}>
-              {subtitleRight}
-            </SubtitleRight>
-          </React.Fragment>
+          <SubtitleRight accessibilityLabel={subtitleRight} numberOfLines={1} disabled={isDisabled}>
+            {subtitleRight}
+          </SubtitleRight>
         ) : null}
       </SubtitleContainer>
     </StyledTouchableOpacity>
@@ -76,9 +70,12 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
     boxSizing: 'border-box',
     padding: getSpacing(3),
     justifyContent: 'flex-start',
+    borderColor: theme.designSystem.color.border.default,
     borderWidth: disabled ? 0 : BORDER_WIDTH,
     borderRadius: theme.borderRadius.radius,
-    backgroundColor: disabled ? theme.colors.greyLight : theme.colors.white,
+    backgroundColor: disabled
+      ? theme.designSystem.color.background.disabled
+      : theme.designSystem.color.background.default,
     ...(disabled
       ? {}
       : getShadow({
@@ -91,7 +88,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
 )
 
 const Title = styled(Typo.Button)<{ disabled: boolean }>(({ theme, disabled }) => ({
-  color: disabled ? theme.colors.greyDark : theme.colors.black,
+  color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,
   textAlign: 'left',
 }))
 
@@ -108,14 +105,15 @@ const SubtitleLeft = styled(Typo.BodyAccentXs)<{
   disabled: boolean
   hasSubtitleRight: boolean
 }>(({ theme, disabled, hasSubtitleRight }) => ({
-  color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
+  color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.subtle,
   lineHeight: `${getSpacing(5)}px`,
   textAlign: 'left',
   flex: hasSubtitleRight ? 'auto' : 1,
 }))
 
 const SubtitleRight = styled(Typo.Body)<{ disabled: boolean }>(({ theme, disabled }) => ({
-  color: disabled ? theme.colors.greySemiDark : theme.colors.black,
+  marginLeft: getSpacing(1),
+  color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,
   textAlign: 'right',
   flexShrink: 0,
   flexGrow: 1,

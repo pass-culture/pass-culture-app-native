@@ -52,7 +52,9 @@ function initGetEventOnSiteWithdrawLabelProperties(
   }
 }
 
-function getWithoutWithdrawaDelayLabel(properties: GetEventOnSiteWithdrawLabelProperties): string {
+const getWithoutWithdrawaDelayLabel = (
+  properties: GetEventOnSiteWithdrawLabelProperties
+): string => {
   if (
     isSameDay(properties.now, properties.eventDateMinus3Days) ||
     isSameDay(properties.now, properties.eventDateMinus2Days)
@@ -69,9 +71,9 @@ function getWithoutWithdrawaDelayLabel(properties: GetEventOnSiteWithdrawLabelPr
   return ''
 }
 
-function getWithLessOneDayWithdrawaDelayLabel(
+const getWithLessOneDayWithdrawaDelayLabel = (
   properties: GetEventOnSiteWithdrawLabelProperties
-): string {
+): string => {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
     return 'Billet à retirer sur place dans 3 jours'
 
@@ -92,9 +94,9 @@ function getWithLessOneDayWithdrawaDelayLabel(
   return ''
 }
 
-function getWithOneDayWithdrawaDelayLabel(
+const getWithOneDayWithdrawaDelayLabel = (
   properties: GetEventOnSiteWithdrawLabelProperties
-): string {
+): string => {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
     return 'Billet à retirer sur place dans 2 jours'
 
@@ -111,9 +113,9 @@ function getWithOneDayWithdrawaDelayLabel(
   return ''
 }
 
-function getWithTwoDaysWithdrawaDelayLabel(
+const getWithTwoDaysWithdrawaDelayLabel = (
   properties: GetEventOnSiteWithdrawLabelProperties
-): string {
+): string => {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
     return 'Billet à retirer sur place dès demain'
 

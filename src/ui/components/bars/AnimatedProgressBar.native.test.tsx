@@ -11,7 +11,7 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 describe('AnimatedProgressBar', () => {
   it('should have the right length and color', () => {
     const expectedProgress = 0.5
-    const expectedBackgroundColor = theme.colors.primary
+    const expectedBackgroundColor = theme.designSystem.color.background.brandPrimary
 
     render(
       <AnimatedProgressBar
@@ -34,7 +34,7 @@ describe('AnimatedProgressBar', () => {
 
   it('should have the right length and color when animated', () => {
     const expectedProgress = 0.5
-    const expectedBackgroundColor = theme.colors.primary
+    const expectedBackgroundColor = theme.designSystem.color.background.brandPrimary
 
     render(
       <AnimatedProgressBar

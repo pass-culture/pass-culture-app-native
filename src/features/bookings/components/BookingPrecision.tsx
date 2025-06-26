@@ -41,5 +41,5 @@ const EmailContainer = styled(ViewGap)({
 })
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentS)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

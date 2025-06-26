@@ -178,5 +178,5 @@ const HandleContainer = styled.View({
 const Handle = styled.View(({ theme }) => ({
   width: HANDLE_LENGTH,
   height: HANDLE_STROKE,
-  backgroundColor: theme.colors.greySemiDark,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))

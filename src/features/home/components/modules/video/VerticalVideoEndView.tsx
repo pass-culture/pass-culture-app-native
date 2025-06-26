@@ -68,7 +68,7 @@ const StyledPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
 }))``
 
 const BlackView = styled.View(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.black, 0.9),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0.9),
   height: '100%',
   justifyContent: 'center',
   borderTopLeftRadius: getSpacing(4),

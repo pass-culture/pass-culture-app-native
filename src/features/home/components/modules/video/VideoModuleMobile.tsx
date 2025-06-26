@@ -37,7 +37,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
       <StyledTitleContainer>
         <AccessibleTitle testID="playlistTitle" title={props.title} />
       </StyledTitleContainer>
-
       <View testID="mobile-video-module">
         <StyledTouchableHighlight
           onPress={props.showVideoModal}
@@ -96,10 +95,14 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const StyledTitleContainer = styled.View({ marginBottom: getSpacing(5), alignItems: 'center' })
+const StyledTitleContainer = styled.View({
+  marginBottom: getSpacing(5),
+  alignItems: 'center',
+  flexDirection: 'row',
+})
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
-  underlayColor: theme.colors.white,
+  underlayColor: theme.designSystem.color.background.lockedInverted,
 }))(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
 }))
@@ -110,7 +113,7 @@ const Thumbnail = styled.ImageBackground({
 })
 
 const BlackView = styled.View(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.black, 0.6),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0.6),
   height: THUMBNAIL_HEIGHT,
   justifyContent: 'center',
 }))
@@ -123,7 +126,7 @@ const TextContainer = styled.View({
 })
 
 const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
   textTransform: 'uppercase',
   fontSize: getSpacing(6.5),
@@ -138,10 +141,9 @@ const PlayerContainer = styled.View({
   alignItems: 'center',
 })
 
-const Player = styled(Play).attrs(({ theme }) => ({
+const Player = styled(Play).attrs({
   size: PLAYER_SIZE,
-  color: theme.colors.brownLight,
-}))({})
+})``
 
 const ColorCategoryBackground = styled.View<{
   colorCategoryBackgroundHeightUniqueOffer: number

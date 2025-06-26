@@ -28,12 +28,12 @@ describe('<Artist />', () => {
   })
 
   describe('When enablePageArtist feature flag activated', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
     })
 
     it('should display artist page content', async () => {
-      mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
       mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
       render(reactQueryProviderHOC(<Artist />))
 

@@ -639,32 +639,13 @@ exports[`Bookings should render correctly 1`] = `
                 }
                 withShadow={true}
               >
-                <BVLinearGradient
+                <View
                   borderRadius={4}
-                  colors={
-                    [
-                      4294046196,
-                      4291546578,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
                   style={
                     [
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "borderRadius": 4,
                         "height": "100%",
                         "justifyContent": "center",
@@ -684,7 +665,7 @@ exports[`Bookings should render correctly 1`] = `
                       categoryIcon-SVG-Mock
                     </Text>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
@@ -729,7 +710,7 @@ exports[`Bookings should render correctly 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -942,32 +923,13 @@ exports[`Bookings should render correctly 1`] = `
                 }
                 withShadow={true}
               >
-                <BVLinearGradient
+                <View
                   borderRadius={4}
-                  colors={
-                    [
-                      4294046196,
-                      4291546578,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
                   style={
                     [
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "borderRadius": 4,
                         "height": "100%",
                         "justifyContent": "center",
@@ -987,7 +949,7 @@ exports[`Bookings should render correctly 1`] = `
                       categoryIcon-SVG-Mock
                     </Text>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={
@@ -1032,7 +994,7 @@ exports[`Bookings should render correctly 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1245,32 +1207,13 @@ exports[`Bookings should render correctly 1`] = `
                 }
                 withShadow={true}
               >
-                <BVLinearGradient
+                <View
                   borderRadius={4}
-                  colors={
-                    [
-                      4294046196,
-                      4291546578,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
                   style={
                     [
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "borderRadius": 4,
                         "height": "100%",
                         "justifyContent": "center",
@@ -1290,7 +1233,7 @@ exports[`Bookings should render correctly 1`] = `
                       categoryIcon-SVG-Mock
                     </Text>
                   </View>
-                </BVLinearGradient>
+                </View>
               </View>
               <View
                 style={

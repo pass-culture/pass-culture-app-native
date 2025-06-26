@@ -16,9 +16,9 @@ export const CarouselBar: React.FunctionComponent<Props> = ({ animValue, index }
     const inputRange = [index - 1, index, index + 1]
 
     const colorOutputRange = [
-      theme.colors.greyMedium,
-      theme.colors.greyDark,
-      theme.colors.greyMedium,
+      theme.designSystem.color.background.disabled,
+      theme.designSystem.color.background.inverted,
+      theme.designSystem.color.background.disabled,
     ]
 
     return {
@@ -33,7 +33,7 @@ const Bar = styled(Animated.View)(({ theme }) => ({
   width: getSpacing(5),
   height: 3,
   borderRadius: getSpacing(12.5),
-  backgroundColor: theme.colors.greyDark,
+  backgroundColor: theme.designSystem.color.background.subtle,
   overflow: 'hidden',
   margin: getSpacing(1),
 }))

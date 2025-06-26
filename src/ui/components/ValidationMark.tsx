@@ -21,11 +21,11 @@ export const ValidationMark: React.FC<Props> = ({ isValid, size }) => {
 }
 
 const ValidateGreenValid = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.greenValid,
+  color: theme.designSystem.color.icon.success,
   accessibilityLabel: 'Accessible',
 }))``
 
 const InvalidateGreyDark = styled(Invalidate).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
   accessibilityLabel: 'Non accessible',
 }))``

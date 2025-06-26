@@ -326,13 +326,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -367,7 +371,14 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -404,29 +415,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                 >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280337897,
-                        4279138487,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
+                  <View
+                    fillColor="decorative01"
                     style={
                       [
                         {
+                          "backgroundColor": "#ffeae2",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -455,7 +449,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                  </BVLinearGradient>
+                  </View>
                 </View>
               </View>
             </View>
@@ -537,13 +531,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -578,7 +576,14 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -615,29 +620,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                 >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4294614806,
-                        4290271489,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
+                  <View
+                    fillColor="decorative05"
                     style={
                       [
                         {
+                          "backgroundColor": "#ffa5c0",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -666,7 +654,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                  </BVLinearGradient>
+                  </View>
                 </View>
               </View>
             </View>
@@ -748,13 +736,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -789,7 +781,14 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -826,29 +825,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                 >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4294614806,
-                        4290271489,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
+                  <View
+                    fillColor="decorative03"
                     style={
                       [
                         {
+                          "backgroundColor": "#94f0d6",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -877,7 +859,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                  </BVLinearGradient>
+                  </View>
                 </View>
               </View>
             </View>
@@ -959,13 +941,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1000,7 +986,14 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1037,29 +1030,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                 >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280802472,
-                        4279141492,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
+                  <View
+                    fillColor="decorative01"
                     style={
                       [
                         {
+                          "backgroundColor": "#ffeae2",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1088,7 +1064,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                  </BVLinearGradient>
+                  </View>
                 </View>
               </View>
             </View>
@@ -1170,13 +1146,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1211,7 +1191,14 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1248,29 +1235,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                 >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4293670008,
-                        4290777969,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
+                  <View
+                    fillColor="decorative03"
                     style={
                       [
                         {
+                          "backgroundColor": "#94f0d6",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1299,7 +1269,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                  </BVLinearGradient>
+                  </View>
                 </View>
               </View>
             </View>
@@ -1381,13 +1351,17 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -1422,7 +1396,14 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -1459,29 +1440,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                 >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4280337897,
-                        4279138487,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
+                  <View
+                    fillColor="decorative02"
                     style={
                       [
                         {
+                          "backgroundColor": "#9be3f3",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1510,7 +1474,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                  </BVLinearGradient>
+                  </View>
                 </View>
               </View>
             </View>

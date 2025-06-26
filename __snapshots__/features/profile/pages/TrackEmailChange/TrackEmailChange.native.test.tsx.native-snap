@@ -307,7 +307,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -598,7 +598,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -830,7 +830,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -1304,7 +1304,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -1789,7 +1789,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -2207,7 +2207,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -2722,7 +2722,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -3130,7 +3130,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -3655,7 +3655,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -3887,7 +3887,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -4361,7 +4361,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -5098,7 +5098,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -5516,7 +5516,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -5807,7 +5807,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -6291,7 +6291,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -6709,7 +6709,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -7458,7 +7458,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#90949D",
+                        "borderColor": "#90949d",
                         "borderRadius": 7,
                         "borderStyle": "solid",
                         "borderWidth": 1,

@@ -48,10 +48,14 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   paddingRight: getSpacing(4),
   columnGap: getSpacing(1),
   height: getSpacing(8),
-  backgroundColor: isSelected ? theme.colors.greyLight : theme.colors.white,
-  borderColor: theme.colors.black,
+  backgroundColor: isSelected
+    ? theme.designSystem.color.background.subtle
+    : theme.designSystem.color.background.default,
+  borderColor: isSelected
+    ? theme.designSystem.color.border.selected
+    : theme.designSystem.color.border.default,
   borderWidth: isSelected ? 2 : 1,
   borderRadius: theme.borderRadius.button,
-  ...customFocusOutline({ color: theme.colors.accent }),
-  ...getHoverStyle(theme.colors.black),
+  ...customFocusOutline({}),
+  ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default }),
 }))

@@ -253,7 +253,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       placeholder="Offre, artiste, lieu culturel..."
                       placeholderTextColor="#696a6f"
                       returnKeyType="search"
-                      selectionColor="#696A6F"
+                      selectionColor="#696a6f"
                       style={
                         [
                           {
@@ -386,7 +386,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#161617",
+                        "borderColor": "#90949d",
                         "borderRadius": 16,
                         "borderWidth": 1,
                         "height": 32,
@@ -508,7 +508,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
+                        "borderColor": "#90949d",
                         "borderRadius": 24,
                         "borderWidth": 1,
                         "boxSizing": "border-box",
@@ -594,7 +594,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "borderColor": "#161617",
                         "borderRadius": 24,
                         "borderWidth": 2,
@@ -690,7 +690,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "borderColor": "#161617",
                         "borderRadius": 24,
                         "borderWidth": 2,
@@ -786,7 +786,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
+                        "backgroundColor": "#f1f1f4",
                         "borderColor": "#161617",
                         "borderRadius": 24,
                         "borderWidth": 2,
@@ -883,7 +883,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
+                        "borderColor": "#90949d",
                         "borderRadius": 24,
                         "borderWidth": 1,
                         "boxSizing": "border-box",
@@ -1762,7 +1762,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             }
           }
           accessible={true}
-          focusable={true}
+          focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -1787,31 +1787,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           }
           testID="Revenir en haut"
         >
-          <BVLinearGradient
-            colors={
-              [
-                4293591125,
-                4281467030,
-              ]
-            }
-            endPoint={
-              {
-                "x": 0,
-                "y": 1,
-              }
-            }
-            locations={null}
-            startPoint={
-              {
-                "x": 0,
-                "y": 0,
-              }
-            }
+          <View
             style={
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#eb0055",
+                  "backgroundColor": "#320096",
                   "borderRadius": 24,
                   "height": 40,
                   "justifyContent": "center",
@@ -1830,7 +1811,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 undefined-SVG-Mock
               </Text>
             </View>
-          </BVLinearGradient>
+          </View>
         </View>
       </View>
       <View

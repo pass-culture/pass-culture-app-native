@@ -202,7 +202,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
+                        "borderColor": "#90949d",
                         "borderRadius": 40,
                         "borderStyle": "solid",
                         "borderWidth": 2,
@@ -362,7 +362,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       placeholder="Offre, artiste, lieu culturel..."
                       placeholderTextColor="#696a6f"
                       returnKeyType="search"
-                      selectionColor="#696A6F"
+                      selectionColor="#696a6f"
                       style={
                         [
                           {

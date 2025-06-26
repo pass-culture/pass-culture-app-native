@@ -232,12 +232,9 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
   borderRadius: getSpacing(3),
   marginHorizontal: getSpacing(1),
   ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(3),
-    },
+    shadowOffset: { width: 0, height: getSpacing(3) },
     shadowRadius: getSpacing(12),
-    shadowColor: theme.colors.black,
+    shadowColor: theme.designSystem.color.background.lockedInverted,
     shadowOpacity: 0.15,
   }),
 }))

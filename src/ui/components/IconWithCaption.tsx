@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -20,15 +20,16 @@ export const IconWithCaption = ({
   testID,
   isDisabled = false,
 }: IconWithCaptionProps) => {
-  const StyledIcon = styled(Icon).attrs(({ theme, size }) => ({
-    size: size ?? theme.icons.sizes.standard,
-    color: theme.colors.greyDark,
-  }))``
-
+  const { icons, designSystem } = useTheme()
   return (
     <Container gap={2}>
       <IconContainer>
-        <StyledIcon accessibilityLabel={accessibilityLabel} testID={testID} />
+        <Icon
+          accessibilityLabel={accessibilityLabel}
+          testID={testID}
+          color={designSystem.color.icon.subtle}
+          size={icons.sizes.standard}
+        />
       </IconContainer>
       <Caption testID={testID ? `caption-${testID}` : undefined} disabled={isDisabled}>
         {caption}

@@ -1,47 +1,68 @@
 import React from 'react'
-import { View } from 'react-native'
 
-import {
-  BookingOfferResponse,
-  BookingReponse,
-  UserProfileResponse,
-  WithdrawalTypeEnum,
-} from 'api/gen'
+import { TicketResponse, UserProfileResponse } from 'api/gen'
+import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
+import { DigitalTokenTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTokenTicket/DigitalTokenTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
+import {
+  ExternalBookingTicket,
+  HiddenExternalBookingTicket,
+} from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
+import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
 import { TicketCodeTitle } from 'features/bookings/components/Ticket/TicketBottomPart/TicketCodeTitle'
 
 export const TicketBottomPart = ({
-  offer,
-  booking,
+  isDuo,
+  isDigital,
+  isEvent,
   userEmail,
+  ticket,
+  ean,
 }: {
-  offer: BookingOfferResponse
-  booking: BookingReponse
+  isDuo: boolean
+  isDigital: boolean
+  isEvent: boolean
   userEmail: UserProfileResponse['email']
+  ticket: TicketResponse | null
+  ean: string | null
 }) => {
-  switch (offer.withdrawalType) {
-    case WithdrawalTypeEnum.no_ticket:
-      return <NoTicket />
-    case WithdrawalTypeEnum.by_email:
-      return (
-        <EmailWithdrawal
-          isDuo={booking.quantity === 2}
-          beginningDatetime={booking.stock.beginningDatetime}
-          withdrawalDelay={offer.withdrawalDelay}
-          userEmail={userEmail}
-        />
-      )
-    case WithdrawalTypeEnum.in_app:
-      return <View />
-    case WithdrawalTypeEnum.on_site:
-      return booking.token ? (
-        <OnSiteWithdrawal token={booking.token} isDuo={booking.quantity === 2} />
-      ) : null
-    default:
-      return booking.activationCode ? (
-        <TicketCodeTitle>{booking.activationCode.code}</TicketCodeTitle>
-      ) : null
+  if (ticket?.noTicket) return <NoTicket />
+
+  if (ticket?.email)
+    return (
+      <EmailWithdrawal
+        isDuo={isDuo}
+        withdrawalDelay={ticket.withdrawal.delay}
+        hasEmailBeenSent={ticket.email.hasTicketEmailBeenSent}
+        userEmail={userEmail}
+      />
+    )
+
+  if (ticket?.activationCode) return <TicketCodeTitle>{ticket.activationCode.code}</TicketCodeTitle>
+
+  if (ticket?.externalBooking)
+    return ticket?.externalBooking.data ? (
+      <ExternalBookingTicket data={ticket?.externalBooking.data} />
+    ) : (
+      <HiddenExternalBookingTicket />
+    )
+
+  if (ticket?.voucher) {
+    return isEvent ? (
+      <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token ?? null} />
+    ) : (
+      <PhysicalGoodBookingTicket voucher={ticket.voucher} token={ticket.token} ean={ean} />
+    )
   }
+
+  if (ticket?.token?.data) {
+    return isDigital ? (
+      <DigitalTokenTicket token={ticket.token ?? null} />
+    ) : (
+      <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
+    )
+  }
+  return null
 }

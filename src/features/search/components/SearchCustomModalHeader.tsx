@@ -6,9 +6,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
-import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 interface Props {
@@ -29,7 +27,7 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
   onClose,
 }) => {
   const { top } = useCustomSafeInsets()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const headerHeight = getSpacing(18) + (isDesktopViewport ? top : 0)
 
   return (
@@ -37,13 +35,15 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
       <HeaderContent testID="pageHeader" height={headerHeight}>
         <ButtonContainer positionInHeader="left" testID="back-button-container">
           {shouldDisplayBackButton ? (
-            <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />
+            <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
           ) : null}
         </ButtonContainer>
-        <Title nativeID={titleId}>{title}</Title>
+        <StyledTitle4 numberOfLines={1} nativeID={titleId} {...getHeadingAttrs(1)}>
+          {title}
+        </StyledTitle4>
         <ButtonContainer positionInHeader="right" testID="close-button-container">
           {shouldDisplayCloseButton ? (
-            <StyledCloseButton onClose={onClose} color={ColorsEnum.BLACK} />
+            <StyledCloseButton onClose={onClose} color={designSystem.color.icon.default} />
           ) : null}
         </ButtonContainer>
       </HeaderContent>
@@ -77,14 +77,9 @@ const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   })
 )
 
-const Title = styled.Text.attrs(() => ({
-  numberOfLines: 1,
-  ...getHeadingAttrs(1),
-}))(({ theme }) => ({
-  ...theme.designSystem.typography.title4,
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
-  color: theme.colors.black,
-}))
+})
 
 const StyledCloseButton = styledButton(CloseButton)({
   width: getSpacing(10),

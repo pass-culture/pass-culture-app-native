@@ -91,8 +91,11 @@ const webStyle = ({
     width: 'fit-content',
     margin: 0,
     padding: 0,
-    ...customFocusOutline({ color: buttonColor ?? theme.colors.primary, noOffset: true }),
-    ...getHoverStyle(buttonColor ?? theme.colors.primary),
+    ...customFocusOutline({
+      color: buttonColor ?? theme.designSystem.color.outline.default,
+      noOffset: true,
+    }),
+    ...getHoverStyle({ underlineColor: buttonColor ?? theme.designSystem.color.text.brandPrimary }),
   }) as CSSObject
 
 const Button = styled.button<

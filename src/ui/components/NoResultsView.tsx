@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -21,19 +21,13 @@ type Props = {
 export const NoResultsView = ({
   title,
   explanations,
-  icon,
+  icon: Icon,
   offline = false,
   trackingExplorerOffersFrom,
   ...props
 }: Props) => {
+  const { illustrations, designSystem } = useTheme()
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: trackingExplorerOffersFrom })
-
-  const Icon =
-    !!icon &&
-    styled(icon).attrs(({ theme }) => ({
-      size: theme.illustrations.sizes.fullPage,
-      color: theme.colors.greyMedium,
-    }))``
 
   return (
     <React.Fragment>
@@ -43,7 +37,9 @@ export const NoResultsView = ({
         </Container>
       ) : null}
       <ContentContainer gap={4} {...props}>
-        {Icon ? <Icon /> : null}
+        {Icon ? (
+          <Icon color={designSystem.color.icon.subtle} size={illustrations.sizes.fullPage} />
+        ) : null}
         <StyledBody>{explanations}</StyledBody>
         {offline ? null : (
           <ButtonContainer>

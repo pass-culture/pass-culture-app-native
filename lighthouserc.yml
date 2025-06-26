@@ -2,7 +2,7 @@ ci:
   collect:
     numberOfRuns: 3
     method: psi
-    url: https://app.testing.passculture.team/
+    url: https://app.staging.passculture.team/
     settings:
       onlyCategories:
         - performance

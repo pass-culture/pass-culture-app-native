@@ -197,9 +197,9 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     height: theme.slider.markerSize,
     width: theme.slider.markerSize,
     borderRadius: getSpacing(7),
-    borderColor: theme.colors.black,
+    borderColor: theme.designSystem.color.border.default,
     borderWidth: getSpacing(0.5),
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     shadowOpacity: 0,
   }
   const trackStyle = {
@@ -211,10 +211,10 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     markerStyle,
     pressedMarkerStyle: markerStyle,
     trackStyle,
-    selectedStyle: { backgroundColor: theme.colors.primary },
+    selectedStyle: { backgroundColor: theme.designSystem.color.background.brandPrimary },
     unselectedStyle: {
-      backgroundColor: theme.colors.white,
-      borderColor: theme.colors.greySemiDark,
+      backgroundColor: theme.designSystem.color.background.default,
+      borderColor: theme.designSystem.color.border.default,
       borderWidth: getSpacing(0.5),
     },
     containerStyle: { height: getSpacing(8) },

@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { DepositType, EligibilityType } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
@@ -73,6 +74,28 @@ describe('<PriceModal/>', () => {
     expect(searchButton).toBeEnabled()
 
     expect(screen).toMatchSnapshot()
+  })
+
+  describe('user with grant free deposite type (15-16 yo)', () => {
+    beforeEach(() => {
+      mockedUseAuthContext.mockImplementation(() => ({
+        user: {
+          ...beneficiaryUser,
+          eligibility: EligibilityType['free'],
+          depositType: DepositType.GRANT_FREE,
+        },
+        isLoggedIn: true,
+      }))
+    })
+
+    it('should not display banner when user deposite type is grant free', async () => {
+      renderSearchPrice()
+      await screen.findByLabelText('Rechercher')
+
+      const creditBanner = screen.queryByTestId('creditBanner')
+
+      expect(creditBanner).not.toBeOnTheScreen()
+    })
   })
 
   describe('without previous value in the search state', () => {

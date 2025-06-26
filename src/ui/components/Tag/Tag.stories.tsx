@@ -2,14 +2,18 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TagVariant } from 'ui/components/Tag/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
+import { Check } from 'ui/svg/icons/Check'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
+import { Close } from 'ui/svg/icons/Close'
 import { Star } from 'ui/svg/Star'
 
 import { Tag } from './Tag'
 
 const meta: Meta<typeof Tag> = {
-  title: 'ui/Tag',
+  title: 'design system/Tag',
   component: Tag,
 }
 export default meta
@@ -18,26 +22,70 @@ const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
+const StyledClose = styled(Close).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
+
+const StyledCheck = styled(Check).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
+
+const StyledWait = styled(ClockFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
+
 const variantConfig: Variants<typeof Tag> = [
   {
-    label: 'Tag default',
-    props: { label: '1,4km' },
+    label: 'Default',
+    props: { label: 'Tag default', variant: TagVariant.DEFAULT },
   },
   {
-    label: 'Tag with custom background color',
-    props: { label: '1,4km', backgroundColor: '#20C5E9' },
+    label: 'With Icon component',
+    props: { label: 'Flèche', Icon: StyledArrowRight },
   },
   {
-    label: 'Tag with custom horizontal padding',
-    props: { label: '1,4km', paddingHorizontal: 8 },
+    label: 'With JSX icon',
+    props: { label: 'Étoile', Icon: <Star size={16} /> },
   },
   {
-    label: 'Tag with icon',
-    props: { label: '1', Icon: StyledArrowRight },
+    label: 'Success',
+    props: { label: 'Tag success', variant: TagVariant.SUCCESS },
   },
   {
-    label: 'Tag with JSX icon ',
-    props: { label: '1', Icon: <Star size={16} /> },
+    label: 'Success with icon',
+    props: { label: 'Validé', variant: TagVariant.SUCCESS, Icon: StyledCheck },
+  },
+  {
+    label: 'Warning',
+    props: { label: 'Tag warning', variant: TagVariant.WARNING },
+  },
+  {
+    label: 'Warning with icon',
+    props: { label: 'À venir', variant: TagVariant.WARNING, Icon: StyledWait },
+  },
+  {
+    label: 'Error',
+    props: { label: 'Erreur', variant: TagVariant.ERROR },
+  },
+  {
+    label: 'Error with icon',
+    props: { label: 'Erreur', variant: TagVariant.ERROR, Icon: StyledClose },
+  },
+  {
+    label: 'Bookclub',
+    props: { label: 'Club', variant: TagVariant.BOOKCLUB },
+  },
+  {
+    label: 'Headline',
+    props: { label: 'À la une', variant: TagVariant.HEADLINE },
+  },
+  {
+    label: 'Like',
+    props: { label: 'Aimé', variant: TagVariant.LIKE },
+  },
+  {
+    label: 'New',
+    props: { label: 'Nouveau', variant: TagVariant.NEW },
   },
 ]
 

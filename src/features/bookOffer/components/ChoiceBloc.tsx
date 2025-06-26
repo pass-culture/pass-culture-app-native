@@ -1,20 +1,20 @@
 import React from 'react'
-import styled, { useTheme, DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boolean) => {
-  if (selected) return theme.colors.primary
-  if (disabled) return theme.colors.greyMedium
-  return theme.colors.greyDark
+  if (selected) return theme.designSystem.color.border.brandPrimary
+  if (disabled) return theme.designSystem.color.border.disabled
+  return theme.designSystem.color.border.default
 }
 
 export const getTextColor = (theme: DefaultTheme, selected: boolean, disabled: boolean) => {
-  if (selected) return theme.colors.white
-  if (disabled) return theme.colors.greyDark
-  return theme.colors.black
+  if (selected) return theme.designSystem.color.text.inverted
+  if (disabled) return theme.designSystem.color.text.disabled
+  return theme.designSystem.color.text.default
 }
 
 interface Props {
@@ -65,7 +65,7 @@ const IconContainer = styled.View({
 })
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.extraSmall,
 }))``
 
@@ -80,7 +80,9 @@ const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
     border: `solid 1px`,
     borderColor: getBorderColor(theme, selected, disabled),
     overflow: 'hidden',
-    backgroundColor: selected ? theme.colors.primary : theme.colors.white,
+    backgroundColor: selected
+      ? theme.designSystem.color.background.brandPrimary
+      : theme.designSystem.color.background.default,
     paddingHorizontal: getSpacing(3.25),
     alignItems: 'center',
     justifyContent: 'center',
@@ -93,7 +95,7 @@ const StrikeLine = styled.View<{ parentWidth: number }>(({ parentWidth, theme })
     transform: `rotate(-${strikeLineAngle}deg)`,
     height: `${LINE_THICKNESS}px`,
     width: `${parentWidth + getSpacing(6)}px`,
-    backgroundColor: theme.colors.greyMedium,
+    backgroundColor: theme.designSystem.color.background.subtle,
     borderRadius: `${LINE_THICKNESS / 2}px`,
     position: 'absolute',
   }

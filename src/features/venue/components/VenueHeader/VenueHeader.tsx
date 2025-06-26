@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { WebShareModal } from 'features/share/pages/WebShareModal'

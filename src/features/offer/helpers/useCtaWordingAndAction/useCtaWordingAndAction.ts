@@ -33,6 +33,7 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { getIsFreeOffer } from 'features/offer/helpers/getIsFreeOffer/getIsFreeOffer'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
+import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -130,16 +131,34 @@ export const getCtaWordingAndAction = ({
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
-
   const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
+  const userWithNotEnoughCredit =
+    userStatus.statusType == YoungStatusType.beneficiary && !hasEnoughCredit
+  const isExBeneficiary = user && isUserExBeneficiary(user)
+  const shouldBeRedirectedToExternalUrl =
+    externalTicketOfficeUrl && (userWithNotEnoughCredit || isExBeneficiary)
 
   if (!isLoggedIn) {
+    return externalTicketOfficeUrl
+      ? {
+          wording: 'Accéder au site partenaire',
+          externalNav: { url: externalTicketOfficeUrl },
+          isDisabled: false,
+        }
+      : {
+          modalToDisplay: OfferModal.AUTHENTICATION,
+          wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
+          isDisabled: false,
+          onPress: () => analytics.logConsultAuthenticationModal(offer.id),
+          movieScreeningUserData: { isUserLoggedIn: isLoggedIn },
+        }
+  }
+
+  if (shouldBeRedirectedToExternalUrl) {
     return {
-      modalToDisplay: OfferModal.AUTHENTICATION,
-      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
+      wording: 'Accéder au site partenaire',
+      externalNav: { url: externalTicketOfficeUrl },
       isDisabled: false,
-      onPress: () => analytics.logConsultAuthenticationModal(offer.id),
-      movieScreeningUserData: { isUserLoggedIn: isLoggedIn },
     }
   }
 

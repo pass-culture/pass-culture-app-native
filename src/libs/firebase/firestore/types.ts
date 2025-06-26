@@ -63,6 +63,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_IS_OPEN_TO_PUBLIC = 'wipIsOpenToPublic',
   WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
+  WIP_OFFER_VIDEO_SECTION = 'wipOfferVideoSection',
   WIP_OFFERS_IN_BOTTOM_SHEET = 'wipOffersInBottomSheet',
   WIP_REACTION_FEATURE = 'wipReactionFeature',
   WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS = 'wipThematicSearchConcertsAndFestivals',

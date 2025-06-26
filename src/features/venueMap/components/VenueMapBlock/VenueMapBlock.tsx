@@ -44,20 +44,20 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: bo
   ({ theme, isFocus }) => ({
     overflow: 'hidden',
     borderRadius: theme.borderRadius.radius,
-    borderColor: theme.colors.greyMedium,
+    borderColor: theme.designSystem.color.border.default,
     borderWidth: 1,
     marginTop: getSpacing(2),
-    ...customFocusOutline({ isFocus, color: theme.colors.black }),
+    ...customFocusOutline({ isFocus }),
   })
 )
 
 const StyledTouchable = styled(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
-  borderColor: theme.colors.greyMedium,
+  borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
   marginTop: getSpacing(2),
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus }),
 }))
 
 const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({

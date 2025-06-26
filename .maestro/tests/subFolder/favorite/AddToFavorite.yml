@@ -88,7 +88,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: ".*CD.*"
+      - tapOn: ".*catégorie CD.*"
       - tapOn:
           id: 'animated-icon-favorite'
       - tapOn:

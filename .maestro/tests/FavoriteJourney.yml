@@ -1,0 +1,25 @@
+appId: ${MAESTRO_APP_ID}
+jsengine: graaljs
+tags:
+  - nightlyAndroid
+  - nightlyIOS
+  - local
+  - squad-decouverte
+onFlowStart:
+  - runScript: subFolder/links/DeepLinks.js
+---
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/links/DeepLinksToProfile.yml
+- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/commons/GoToFavoritesFromTabBar.yml
+
+- runFlow: subFolder/favorite/VerifyFavScreen.yml
+- runFlow: subFolder/search/SearchBookableMusicalOffer.yml
+- runFlow: subFolder/booking/CheckDetailPage.yml
+- runFlow: subFolder/favorite/AddToFavorite.yml
+- runFlow: subFolder/commons/GoToFavoritesFromTabBar.yml
+
+- runFlow: subFolder/favorite/VerifyFavOrder.yml
+- runFlow: subFolder/favorite/DeleteFavorite.yml
+- runFlow: subFolder/commons/StopApp.yml

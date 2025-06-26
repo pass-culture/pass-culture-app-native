@@ -10,7 +10,7 @@ import { ModalSettings } from 'ui/components/modals/useModal'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { getSpacing, getShadow, Typo } from 'ui/theme'
+import { getShadow, getSpacing, Typo } from 'ui/theme'
 
 export type StickyFooterContentProps = {
   offerId: number
@@ -68,7 +68,7 @@ const ButtonContainer = styled.View({
 })
 
 const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   paddingTop: getSpacing(4),
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(6),
@@ -81,7 +81,6 @@ const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   }),
 }))
 
-const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)({
   textAlign: 'center',
-  color: theme.colors.black,
-}))
+})

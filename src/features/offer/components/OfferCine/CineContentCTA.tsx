@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { getSpacing } from 'ui/theme'
 
@@ -13,7 +13,7 @@ export const CineContentCTA: FC = () => {
   return (
     <StickyBottomWrapper>
       <CallToActionContainer testID={CineContentCTAID}>
-        <ButtonWithLinearGradient wording={wording} onPress={onPress} />
+        <ButtonWithLinearGradientDeprecated wording={wording} onPress={onPress} />
       </CallToActionContainer>
     </StickyBottomWrapper>
   )

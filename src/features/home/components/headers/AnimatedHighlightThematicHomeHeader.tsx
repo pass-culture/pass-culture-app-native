@@ -7,6 +7,8 @@ import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constan
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
+import { Tag } from 'ui/components/Tag/Tag'
+import { TagVariant } from 'ui/components/Tag/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -33,7 +35,7 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
     <Container testID="animated-thematic-header">
       <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight} />
       <DateRangeCaptionContainer statusBarHeight={top}>
-        <DateRangeCaption>{dateRange}</DateRangeCaption>
+        <Tag label={dateRange} variant={TagVariant.DEFAULT} />
       </DateRangeCaptionContainer>
       <TextContainer>
         <AnimatedBlackGradient
@@ -69,29 +71,27 @@ const StyledImage = styled.Image<{
 
 const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
   ({ theme, statusBarHeight }) => ({
-    backgroundColor: theme.colors.black,
     position: 'absolute',
+    zIndex: theme.zIndex.header,
     top: statusBarHeight + getSpacing(6),
     right: getSpacing(6),
-    borderRadius: getSpacing(2),
-    paddingVertical: getSpacing(1),
-    paddingHorizontal: getSpacing(2),
   })
 )
 
-const DateRangeCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
-const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
+const TextContainer = styled.View({
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+})
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   marginBottom: getSpacing(1),
 }))
 
 const Title = styled(Typo.Title1)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const AnimatedImage = Animated.createAnimatedComponent(StyledImage)

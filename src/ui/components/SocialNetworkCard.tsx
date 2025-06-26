@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics/provider'
+import { capitalize } from 'libs/formatter/capitalize'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
@@ -15,8 +16,7 @@ interface SocialNetworkCardProps {
 function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const { network } = props
   const { icon: Icon, link, fallbackLink } = SocialNetworkIconsMap[network]
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const name = network[0].toUpperCase() + network.slice(1)
+  const name = capitalize(network)
 
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.small,

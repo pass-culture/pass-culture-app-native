@@ -114,7 +114,7 @@ If you have a pass Culture's computer, which has a proxy that adds a custom cert
 ### Troubleshooting
 
 <details>
-  <summary>No value has been specified for property 'manifestOutputDirectory'</summary>
+<summary><strong>No value has been specified for property 'manifestOutputDirectory'</strong></summary>
 
 In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync the active variant" checkbox.
 
@@ -122,7 +122,7 @@ If you encounter an issue with JDK, install using `brew install --cask temurin@1
 
 </details>
 <details>
-  <summary>Version conflict</summary>
+<summary><strong>Version conflict</strong></summary>
 
 It happens when you try to install with a build number _lower_ than the one already installed.
 
@@ -134,24 +134,16 @@ $ yarn run-android | grep 'INSTALL_FAILED_VERSION_DOWNGRADE'
 
 - If no line containing `'INSTALL_FAILED_VERSION_DOWNGRADE'` is caught, this is not the problem
 - If a line with `'INSTALL_FAILED_VERSION_DOWNGRADE'` is caught
-→ **Uninstall the app on your emulator before building:**
+→ **Uninstall the app on your emulator before building**
 </details>
 <details>
-  <summary>General error for building the app on Android Studio</summary>
+  <summary><strong>General error for building the app on Android Studio</strong></summary>
 
-These are the general solutions for errors :
-
-run `cd android && ./gradlew clean` to clear the build directory.
-
-on the root of the repository : `rm -rf node_modules` then `yarn` or `yarn install`, this will delete all the installed modules from the repo then reinstalled it.
-
-Try to invalidate the cache: in Android Studio > open project's android folder > file tab > Invalidate caches/restart > Invalidate and restart
-
-If you're on M1 or M2 Mac and the problem still remains, see the error below.
+[See the general troubleshooting section](./setup.md#troubleshooting)
 
 </details>
 <details>
-  <summary>[M1 & M2 processor] Error while building the app on android with Android Studio : `Android Studio-- Cause: error=86, Bad CPU type in executable` or `Task :app:processApptestingDebugResources FAILED`</summary>
+  <summary><strong>[M1 & M2 processor] Error while building the app on android with Android Studio : `Android Studio-- Cause: error=86, Bad CPU type in executable` or `Task :app:processApptestingDebugResources FAILED`</strong></summary>
 
 If you get this error on M1 or M2 Mac, installing Rosetta 2 should solve the issue. You can install it with this command : `softwareupdate --install-rosetta`.
 

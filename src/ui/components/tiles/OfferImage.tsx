@@ -65,19 +65,18 @@ export const OfferImage: React.FC<Props> = ({
 const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, size }) => ({
   ...theme.tiles.sizes[size],
 }))<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   ...theme.tiles.sizes[size],
   borderRadius: borderRadius || theme.tiles.borderRadius,
   ...(withStroke
     ? {
         borderWidth: 1,
-        borderColor: theme.colors.greyDark,
+        borderColor: theme.designSystem.color.border.default,
       }
     : {}),
 }))
 
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
-  backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
   size: theme.icons.sizes.standard,
   borderRadius: theme.tiles.borderRadius,
 }))``
@@ -94,11 +93,11 @@ const Container = styled.View<StyleProps>(
           shadowColor: theme.colors.greyDark,
           shadowOpacity: 0.2,
         })),
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     ...(withStroke
       ? {
           borderWidth: 1,
-          borderColor: theme.colors.greySemiDark,
+          borderColor: theme.designSystem.color.border.default,
         }
       : {}),
   })

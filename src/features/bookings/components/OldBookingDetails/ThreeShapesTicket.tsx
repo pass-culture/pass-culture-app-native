@@ -34,7 +34,7 @@ const Container = styled.View(({ theme }) => {
         height: 2,
       },
       shadowRadius: 3,
-      shadowColor: theme.colors.black,
+      shadowColor: theme.designSystem.color.background.lockedInverted,
       shadowOpacity: 0.1,
     })
   }
@@ -48,7 +48,7 @@ const Container = styled.View(({ theme }) => {
 
 const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
   return {
-    backgroundColor: theme.ticket.backgroundColor,
+    backgroundColor: theme.designSystem.color.background.default,
     width,
     alignItems: 'center',
     maxWidth: '100%',

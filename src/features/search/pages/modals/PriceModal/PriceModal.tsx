@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { PriceInputController } from 'features/search/components/PriceInputController/PriceInputController'
@@ -100,6 +101,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
+  const depositTypeIsNotGrantFree = user?.depositType !== DepositType.GRANT_FREE
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
@@ -308,7 +310,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       }>
       <FormContainer isKeyboardOpen={isKeyboardOpen}>
         <Form.MaxWidth>
-          {isLoggedInAndBeneficiary ? (
+          {isLoggedInAndBeneficiary && depositTypeIsNotGrantFree ? (
             <Container>
               <InfoBanner message={bannerTitle} icon={Error} testID="creditBanner" />
             </Container>

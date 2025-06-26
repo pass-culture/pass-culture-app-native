@@ -3,7 +3,7 @@ import { AccessibilityRole, GestureResponderEvent } from 'react-native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export interface ButtonWithLinearGradientProps {
+export interface ButtonWithLinearGradientDeprecatedPropsProps {
   children?: never
   wording: string
   onPress?: (event: GestureResponderEvent | MouseEvent) => void | Promise<void>

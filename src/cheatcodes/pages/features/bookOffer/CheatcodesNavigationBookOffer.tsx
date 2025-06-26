@@ -1,24 +1,37 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { CheatcodeCategory } from 'cheatcodes/types'
 
-export const cheatcodesNavigationBookOfferButtons: [CheatcodesButtonsWithSubscreensProps] = [
-  {
-    title: 'BookOffer 🎫',
+const bookOfferCheatcodeCategory: CheatcodeCategory = {
+  id: uuidv4(),
+  title: 'BookOffer 🎫',
+  navigationTarget: {
     screen: 'CheatcodesStackNavigator',
-    navigationParams: { screen: 'CheatcodesNavigationBookOffer' },
-    subscreens: [
-      { screen: 'BookingConfirmation', navigationParams: { offerId: 11224, bookingId: 1240 } },
-    ],
+    params: { screen: 'CheatcodesNavigationBookOffer' },
   },
+  subscreens: [
+    {
+      id: uuidv4(),
+      title: 'BookingConfirmation',
+      navigationTarget: {
+        screen: 'BookingConfirmation',
+        params: { offerId: 11224, bookingId: 1240 },
+      },
+    },
+  ],
+}
+
+export const cheatcodesNavigationBookOfferButtons: CheatcodeCategory[] = [
+  bookOfferCheatcodeCategory,
 ]
 
 export function CheatcodesNavigationBookOffer(): React.JSX.Element {
   return (
-    <CheatcodesTemplateScreen title={cheatcodesNavigationBookOfferButtons[0].title}>
-      <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationBookOfferButtons} />
+    <CheatcodesTemplateScreen title={bookOfferCheatcodeCategory.title}>
+      <CheatcodesSubscreensButtonList buttons={bookOfferCheatcodeCategory.subscreens} />
     </CheatcodesTemplateScreen>
   )
 }

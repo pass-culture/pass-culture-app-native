@@ -177,13 +177,13 @@ const FlexRow = styled.View(({ theme }) => ({
 
 const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   angle: 0,
-  colors: [theme.uniqueColors.specificGrey, theme.colors.transparent],
+  colors: [theme.designSystem.color.background.lockedInverted, 'transparent'],
   useAngle: true,
 }))({ ...FULL_HEIGHT, ...FULL_WIDTH })
 
 const StyledLinearGradientLargeScreen = styled(LinearGradient).attrs(({ theme }) => ({
   angle: 90,
-  colors: [theme.uniqueColors.specificGrey, theme.colors.transparent],
+  colors: [theme.designSystem.color.background.lockedInverted, 'transparent'],
   useAngle: true,
 }))({ ...FULL_HEIGHT, ...FULL_WIDTH })
 
@@ -198,12 +198,12 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   flexWrap: 'wrap',
   overflow: 'hidden',
   marginHorizontal: MAIN_MARGIN,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
   marginBottom: theme.home.spaceBetweenModules,
+  ...customFocusOutline({ isFocus }),
 }))
 
 const ColumnLargeScreen = styled.View(({ theme }) => ({
-  backgroundColor: theme.uniqueColors.specificGrey,
+  backgroundColor: theme.designSystem.color.background.lockedInverted,
   width: '50%',
   flexDirection: 'column',
   ...FULL_HEIGHT,
@@ -241,32 +241,34 @@ const Row = styled.View({
 })
 
 const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
 }))
 
 const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.lockedInverted,
 }))({
   flexShrink: 0,
 })
 
-const IconContainer = styled.View({ transform: 'rotate(-45deg)' })
+const IconContainer = styled.View({
+  transform: 'rotate(-45deg)',
+})

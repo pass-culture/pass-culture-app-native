@@ -1,8 +1,8 @@
 import React from 'react'
-import { ScrollView, useWindowDimensions } from 'react-native'
+import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingReponse, UserProfileResponse } from 'api/gen'
+import { BookingResponse, UserProfileResponse } from 'api/gen'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsContentDesktop } from 'features/bookings/components/BookingDetailsContentDesktop'
@@ -11,9 +11,12 @@ import { BookingDetailsHeader } from 'features/bookings/components/BookingDetail
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { Ticket } from 'features/bookings/components/Ticket/Ticket'
-import { computeHeaderImageHeight } from 'features/bookings/helpers/computeHeaderImageHeight'
+import {
+  EXTRA_ANDROID_MARGIN,
+  MARGIN_TOP_TICKET,
+  computeHeaderImageHeight,
+} from 'features/bookings/helpers/computeHeaderImageHeight'
 import { BookingProperties } from 'features/bookings/types'
-import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -22,7 +25,6 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { useModal } from 'ui/components/modals/useModal'
-import { getSpacing } from 'ui/theme'
 
 const scrollIndicatorInsets = { right: 1 }
 
@@ -33,7 +35,7 @@ export const BookingDetailsContent = ({
   user,
 }: {
   properties: BookingProperties
-  booking: BookingReponse
+  booking: BookingResponse
   mapping: SubcategoriesMapping
   user: UserProfileResponse
 }) => {
@@ -41,11 +43,11 @@ export const BookingDetailsContent = ({
   const { height: windowHeight } = useWindowDimensions()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
   const display = properties.isEvent === true ? 'punched' : 'full'
-
   const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight({
     topBlockHeight,
     windowHeight,
     display,
+    isAndroid: Platform.OS === 'android',
   })
 
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
@@ -56,6 +58,7 @@ export const BookingDetailsContent = ({
   } = useModal(false)
 
   const { offer } = booking.stock
+  const { ticket } = booking
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offer.id && analytics.logBookingDetailsScrolledToBottom(offer.id)
@@ -78,7 +81,7 @@ export const BookingDetailsContent = ({
 
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
 
-  const ticket = (
+  const ticketDisplay = (
     <Ticket
       properties={properties}
       booking={booking}
@@ -86,6 +89,7 @@ export const BookingDetailsContent = ({
       user={user}
       display={display}
       setTopBlockHeight={setTopBlockHeight}
+      ticket={booking.ticket}
     />
   )
 
@@ -106,14 +110,14 @@ export const BookingDetailsContent = ({
         {isDesktopViewport ? (
           <BookingDetailsContentDesktop
             headerImageHeight={headerImageHeight}
-            leftBlock={ticket}
+            leftBlock={ticketDisplay}
             rightBlock={
               <React.Fragment>
                 <ErrorBanner message={errorBannerMessage} />
-                {booking.stock.offer.bookingContact || offer.withdrawalDetails ? (
+                {booking.stock.offer.bookingContact || ticket?.withdrawal.details ? (
                   <BookingPrecisions
                     bookingContactEmail={booking.stock.offer.bookingContact}
-                    withdrawalDetails={offer.withdrawalDetails}
+                    withdrawalDetails={ticket?.withdrawal.details}
                     onEmailPress={onEmailPress}
                   />
                 ) : null}
@@ -128,7 +132,7 @@ export const BookingDetailsContent = ({
           />
         ) : (
           <BookingDetailsContentMobile
-            topBlock={ticket}
+            topBlock={ticketDisplay}
             onEmailPress={onEmailPress}
             booking={booking}
             errorBannerMessage={errorBannerMessage}
@@ -161,5 +165,5 @@ const MainContainer = styled.View(({ theme }) => ({
 }))
 
 const StyledHeaderWithImage = styled(HeaderWithImage)({
-  marginBottom: getSpacing(offerImageContainerMarginTop),
+  marginBottom: MARGIN_TOP_TICKET + (Platform.OS === 'android' ? EXTRA_ANDROID_MARGIN : 0),
 })

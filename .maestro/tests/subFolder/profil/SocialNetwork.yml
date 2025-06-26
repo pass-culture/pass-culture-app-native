@@ -1,8 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- scroll
+- scrollUntilVisible: 
+    element: 
+        text: 'Instagram'
 - tapOn: 'Instagram'
-- 'waitForAnimationToEnd'
+- waitForAnimationToEnd
 
 - runFlow: # Si 1ere ouverture de chrome
     when:
@@ -35,6 +37,9 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn:
           id: 'Mon profil'
+      - scrollUntilVisible:
+          element: 
+            text: 'Facebook'
 
 - tapOn: 'Facebook'
 - waitForAnimationToEnd

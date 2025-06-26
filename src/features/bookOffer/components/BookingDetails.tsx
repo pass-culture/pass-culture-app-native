@@ -311,13 +311,13 @@ const Container = styled.View({ width: '100%' })
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(1),
   textAlign: 'center',
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const VenueTitleContainer = styled.View({

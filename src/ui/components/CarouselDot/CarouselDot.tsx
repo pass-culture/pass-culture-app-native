@@ -22,7 +22,11 @@ export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }
   const animStyle = useAnimatedStyle(() => {
     const inputRange = [index - 1, index, index + 1]
     const marginOutputRange = [2, 0, 2]
-    const colorOutputRange = [theme.colors.greyDark, theme.colors.black, theme.colors.greyDark]
+    const colorOutputRange = [
+      theme.designSystem.color.background.disabled,
+      theme.designSystem.color.background.inverted,
+      theme.designSystem.color.background.disabled,
+    ]
     const widthOutputRange = [SMALL_DOT_SIZE, BIG_DOT_SIZE, SMALL_DOT_SIZE]
 
     return {
@@ -38,6 +42,6 @@ export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }
 
 const Dot = styled(Animated.View)(({ theme }) => ({
   borderRadius: BIG_DOT_SIZE,
-  backgroundColor: theme.colors.greyDark,
+  backgroundColor: theme.designSystem.color.background.inverted,
   overflow: 'hidden',
 }))

@@ -55,8 +55,12 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
       <RoundedButton
         animationState={animationState}
         scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
-        initialColor={favorite ? theme.colors.primary : undefined}
-        finalColor={favorite ? theme.colors.primary : theme.colors.black}
+        initialColor={favorite ? theme.designSystem.color.background.brandPrimary : undefined}
+        finalColor={
+          favorite
+            ? theme.designSystem.color.background.brandPrimary
+            : theme.designSystem.color.background.inverted
+        }
         iconName={favorite ? 'favorite-filled' : 'favorite'}
         onPress={pressFavorite}
         disabled={isRemoveFavoriteLoading || isAddFavoriteLoading}

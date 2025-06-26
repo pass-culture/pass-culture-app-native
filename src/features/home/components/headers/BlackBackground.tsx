@@ -8,5 +8,8 @@ export const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
   paddingTop: getSpacing(2),
-  backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
+  backgroundColor: colorAlpha(
+    theme.designSystem.color.background.lockedInverted,
+    TEXT_BACKGROUND_OPACITY
+  ),
 }))

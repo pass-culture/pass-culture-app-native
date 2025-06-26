@@ -156,8 +156,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
-                "marginLeft": 4,
-                "marginRight": 8,
+                "paddingHorizontal": 8,
               },
             ]
           }

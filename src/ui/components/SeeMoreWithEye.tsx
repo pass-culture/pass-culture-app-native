@@ -29,7 +29,7 @@ export const SeeMoreWithEye = ({ title, onPressSeeMore, titleSeeMoreLink }: Prop
           highlight={false}>
           <EyeSophisticated />
           <Spacer.Row numberOfSpaces={2} />
-          <StyledButtonText>Voir tout</StyledButtonText>
+          <Typo.BodyAccent>Voir tout</Typo.BodyAccent>
         </StyledTouchableLink>
       ) : (
         <StyledTouchable
@@ -38,7 +38,7 @@ export const SeeMoreWithEye = ({ title, onPressSeeMore, titleSeeMoreLink }: Prop
           <React.Fragment>
             <EyeSophisticated />
             <Spacer.Row numberOfSpaces={2} />
-            <StyledButtonText>Voir tout</StyledButtonText>
+            <Typo.BodyAccent>Voir tout</Typo.BodyAccent>
           </React.Fragment>
         </StyledTouchable>
       )}
@@ -49,12 +49,12 @@ export const SeeMoreWithEye = ({ title, onPressSeeMore, titleSeeMoreLink }: Prop
 const TitleSeparator = styled.View(({ theme }) => ({
   width: 1,
   height: getSpacing(5),
-  backgroundColor: theme.colors.greyMedium,
+  backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
 const StyledTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(
   ({ theme }) => ({
-    hoverUnderlineColor: theme.colors.black,
+    hoverUnderlineColor: theme.designSystem.color.text.default,
   })
 )({
   flexDirection: 'row',
@@ -66,14 +66,9 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   padding: getSpacing(1),
-  ...getHoverStyle(theme.colors.black),
-}))
-
-const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.black,
+  ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default }),
 }))
 
 const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.black,
 }))``

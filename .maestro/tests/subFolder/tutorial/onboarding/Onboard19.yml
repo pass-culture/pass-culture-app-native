@@ -1,0 +1,22 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: "Bienvenue sur\_le\_pass\_Culture"
+- tapOn: "C’est parti\_!"
+
+- assertVisible: 'Découvre les offres près de chez toi'
+- tapOn: 'Continuer.*'
+
+- runFlow:
+    when:
+      visible: 'Ne pas autoriser'
+    commands:
+      - tapOn: "Lorsque vous utilisez l'appli"
+
+- assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
+- tapOn: "J’ai 19 ans ou plus"
+
+- assertVisible: "Explore, découvre, profite"
+- assertVisible: "Créer un compte"
+- tapOn: 'Accéder au catalogue'
+
+- waitForAnimationToEnd

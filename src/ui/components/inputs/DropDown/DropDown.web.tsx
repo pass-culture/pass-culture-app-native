@@ -109,13 +109,15 @@ const StyledSelect = styled.select<SelectProps>`
 
     const { fontFamily, fontSize, lineHeight } = typography
 
-    const color = isEmpty ? theme.colors.greyDark : theme.colors.black
+    const textColor = isEmpty
+      ? theme.designSystem.color.text.subtle
+      : theme.designSystem.color.text.default
 
     return `
       font-family: ${fontFamily};
       font-size: ${fontSize}px;
       line-height: ${lineHeight};
-      color: ${color}; 
+      color: ${textColor}; 
       width: 100%;
       padding-right: ${getSpacingString(4)};
       padding-left: ${getSpacingString(4)};
@@ -124,12 +126,12 @@ const StyledSelect = styled.select<SelectProps>`
       border-bottom-left-radius: ${borderRadiusLeft};
       border-top-right-radius: ${borderRadiusRight};
       border-bottom-right-radius: ${borderRadiusRight};
-      border: solid 1px ${isError ? theme.colors.error : theme.colors.greyDark};
+      border: solid 1px ${isError ? theme.designSystem.color.border.error : theme.designSystem.color.border.default};
       cursor: pointer;
-      background-color: ${theme.colors.white};
+      background-color: ${theme.designSystem.color.background.default};
       appearance: none;
       &:focus-visible, &:active {
-        border-color: ${theme.colors.primary};
+        border-color: ${theme.designSystem.color.border.brandPrimary};
       }
     `
   }}

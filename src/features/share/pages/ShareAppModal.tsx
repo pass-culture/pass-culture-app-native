@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { MarketingModal } from 'ui/components/modals/MarketingModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -33,7 +33,11 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, close, share 
           Fais découvrir le pass à tes amis&nbsp;!
         </StyledBody>
         <ViewGap gap={4}>
-          <ButtonWithLinearGradient wording="Partager l’appli" icon={Share} onPress={share} />
+          <ButtonWithLinearGradientDeprecated
+            wording="Partager l’appli"
+            icon={Share}
+            onPress={share}
+          />
           <ButtonQuaternaryBlack
             wording="Non merci"
             accessibilityLabel="Fermer la modale"

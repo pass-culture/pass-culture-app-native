@@ -89,7 +89,7 @@ const ContentContainer = styled.View({
 
 const DashedContainer = styled.View(({ theme }) => ({
   borderWidth: 2,
-  borderColor: theme.colors.greySemiDark,
+  borderColor: theme.designSystem.color.border.default,
   borderRadius: 8,
   borderStyle: 'dashed',
   alignSelf: 'center',

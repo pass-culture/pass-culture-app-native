@@ -120,12 +120,12 @@ const NotShrunk = styled.View({
 const LocationPointerFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.small,
-}))({})
+}))``
 
 const LocationPointerNotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.small,
-}))({})
+}))``
 
 const LocationTitle = styled(Typo.BodyAccent).attrs({
   numberOfLines: 1,

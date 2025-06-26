@@ -81,12 +81,7 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
       <Container gap={4}>
         <ThemeProvider theme={ALTERED_THEME}>
           <Typo.Title1>{title}</Typo.Title1>
-          <Checkbox
-            label="Tout sélectionner"
-            isChecked={hasAllFilters}
-            onPress={toggleAll}
-            variant="detailed"
-          />
+          <Checkbox label="Tout sélectionner" isChecked={hasAllFilters} onPress={toggleAll} />
           {venueTypes.map((venueType) => {
             const isChecked = venueFilters.includes(venueType)
             return (
@@ -97,7 +92,6 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
                 onPress={() => {
                   handleCheckboxPress(venueType)
                 }}
-                variant="detailed"
               />
             )
           })}

@@ -319,7 +319,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   placeholder="Livres..."
                   placeholderTextColor="#696a6f"
                   returnKeyType="search"
-                  selectionColor="#696A6F"
+                  selectionColor="#696a6f"
                   style={
                     [
                       {
@@ -1686,12 +1686,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 }
               >
                 <View
-                  numberOfLines={2}
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "row",
                         "marginHorizontal": 24,
                       },
                     ]
@@ -1699,6 +1696,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   testID="playlistTitle"
                 >
                   <Text
+                    accessibilityHidden={true}
+                    accessibilityLabel="GTL playlist"
+                    numberOfLines={2}
                     style={
                       [
                         {
@@ -1712,19 +1712,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   >
                     GTL playlist
                   </Text>
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 19,
-                          "lineHeight": 30.4,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -2635,33 +2622,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
@@ -2685,7 +2653,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text
@@ -2941,33 +2909,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
@@ -2991,7 +2940,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text
@@ -3247,33 +3196,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
@@ -3297,7 +3227,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text
@@ -3553,33 +3483,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                             width={280}
                           >
-                            <BVLinearGradient
+                            <View
                               borderRadius={8}
-                              colors={
-                                [
-                                  4294046196,
-                                  4291546578,
-                                ]
-                              }
-                              endPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 1,
-                                }
-                              }
-                              locations={null}
                               onlyTopBorderRadius={false}
-                              startPoint={
-                                {
-                                  "x": 0.5,
-                                  "y": 0,
-                                }
-                              }
                               style={
                                 [
                                   {
                                     "alignItems": "center",
-                                    "backgroundColor": "#F1F1F4",
+                                    "backgroundColor": "#f1f1f4",
                                     "borderRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
@@ -3603,7 +3514,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   categoryIcon-SVG-Mock
                                 </Text>
                               </View>
-                            </BVLinearGradient>
+                            </View>
                           </View>
                           <View>
                             <Text

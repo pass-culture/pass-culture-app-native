@@ -12,7 +12,7 @@ import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type ButtonStyles = InterpolationFunction<
   ThemedStyledProps<
-    TouchableOpacityProps & RefAttributes<RNTouchableOpacity> & TouchableOpacityButtonProps,
+    TouchableOpacityProps & RefAttributes<typeof RNTouchableOpacity> & TouchableOpacityButtonProps,
     DefaultTheme
   >
 >
@@ -113,8 +113,10 @@ export const appButtonWebStyles: ElementStylesWeb = ({
       cursor: 'initial',
       background: 'none',
     },
-    ...customFocusOutline({ color: focusOutlineColor ?? theme.buttons.outlineColor }),
-    ...getHoverStyle(hoverUnderlineColor ?? theme.colors.black),
+    ...customFocusOutline({ color: focusOutlineColor }),
+    ...getHoverStyle({
+      underlineColor: hoverUnderlineColor ?? theme.designSystem.color.text.default,
+    }),
   }
 }
 
@@ -124,7 +126,7 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
   activeOpacity,
 }: ButtonStylesArgs) => {
   const underlineColor =
-    hoverUnderlineColor === undefined ? theme.colors.black : hoverUnderlineColor
+    hoverUnderlineColor === undefined ? theme.designSystem.color.text.default : hoverUnderlineColor
   return {
     flexDirection: 'column',
     cursor: 'pointer',
@@ -142,6 +144,6 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
     ['&:disabled']: {
       cursor: 'initial',
     },
-    ...getHoverStyle(underlineColor),
+    ...getHoverStyle({ underlineColor: underlineColor ?? theme.designSystem.color.text.default }),
   }
 }

@@ -114,11 +114,11 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSear
 const LeftIconContainer = styled.View({ flexShrink: 0, marginRight: getSpacing(2) })
 
 const Invalidate = styled(DefaultInvalidate).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
-  selectionColor: theme.colors.greyDark,
+  selectionColor: theme.designSystem.color.text.subtle,
 }))``
 
 const StyledInputContainer = styled(InputContainer)({

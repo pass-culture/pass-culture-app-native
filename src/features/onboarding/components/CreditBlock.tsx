@@ -2,11 +2,11 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CreditStatusTag } from 'features/onboarding/components/CreditStatusTag'
 import { CreditStatus } from 'features/onboarding/enums'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
-import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
+import { getTagVariantFromCreditStatus } from 'features/onboarding/helpers/getTagVariantFromCreditStatus'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
+import { Tag } from 'ui/components/Tag/Tag'
 import { TouchableWithoutFeedback } from 'ui/components/touchable/TouchableWithoutFeedback'
 import { getSpacing } from 'ui/theme'
 
@@ -41,7 +41,7 @@ export const CreditBlock = ({ creditStatus, animated, onPress, children }: Props
       <Container as={ViewComponent} status={creditStatus} {...viewProps}>
         <View>{children}</View>
         <TagContainer>
-          <CreditStatusTag status={creditStatus} />
+          <Tag label={creditStatus} variant={getTagVariantFromCreditStatus(creditStatus)} />
         </TagContainer>
       </Container>
     </TouchableWithoutFeedback>
@@ -53,11 +53,10 @@ const Container = styled.View<{
 }>(({ theme, status }) => ({
   borderColor:
     status === CreditStatus.ONGOING
-      ? theme.designSystem.color.border.subtle
-      : getBackgroundColor(theme, status),
+      ? theme.designSystem.color.border.selected
+      : theme.designSystem.color.border.disabled,
   borderWidth: getSpacing(0.25),
   borderRadius: getSpacing(1),
-  backgroundColor: getBackgroundColor(theme, status),
   padding: getSpacing(4),
   overflow: 'hidden',
   marginHorizontal: status === CreditStatus.ONGOING ? 0 : getSpacing(1),
@@ -65,6 +64,6 @@ const Container = styled.View<{
 
 const TagContainer = styled.View({
   position: 'absolute',
-  right: 0,
-  top: 0,
+  right: 8,
+  top: 8,
 })

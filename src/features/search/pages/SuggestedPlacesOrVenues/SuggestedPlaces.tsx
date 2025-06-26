@@ -95,10 +95,10 @@ const ListIconWrapper = styled.View({
 })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const ListLocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``

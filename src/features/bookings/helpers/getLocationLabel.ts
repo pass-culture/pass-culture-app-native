@@ -1,10 +1,10 @@
 import { BookingStockResponse } from 'api/gen'
 import { BookingProperties } from 'features/bookings/types'
 
-export function getLocationLabel(
+export const getLocationLabel = (
   stock: BookingStockResponse,
   properties: BookingProperties
-): string {
+): string => {
   if (properties.isPermanent || properties.isDigital) {
     return ''
   }

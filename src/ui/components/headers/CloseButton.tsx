@@ -1,17 +1,16 @@
 import React from 'react'
 import { useTheme } from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface HeaderIconProps {
   hitSlop?: number
   onClose?: () => void
-  color?: ColorsEnum
+  color?: ColorsType
   size?: number | string
 }
 

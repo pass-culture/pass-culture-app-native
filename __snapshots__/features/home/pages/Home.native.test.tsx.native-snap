@@ -95,7 +95,7 @@ exports[`Home page should render correctly 1`] = `
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      initialNumToRender={4}
+      initialNumToRender={10}
       keyExtractor={[Function]}
       maxToRenderPerBatch={6}
       onContentSizeChange={[Function]}
@@ -265,7 +265,7 @@ exports[`Home page should render correctly 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderColor": "#161617",
+                          "borderColor": "#90949d",
                           "borderRadius": 40,
                           "borderStyle": "solid",
                           "borderWidth": 2,
@@ -380,13 +380,13 @@ exports[`Home page should render correctly 1`] = `
                 >
                   <View
                     backgroundColor="transparent"
-                    borderColor="#6123DF"
+                    borderColor="#320096"
                     style={
                       [
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "#6123DF",
+                          "borderColor": "#320096",
                           "borderRadius": 8,
                           "borderStyle": "solid",
                           "borderWidth": 1,

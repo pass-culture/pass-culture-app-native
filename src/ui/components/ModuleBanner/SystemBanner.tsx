@@ -6,6 +6,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { theme } from 'theme'
+import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -15,8 +16,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -72,9 +71,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
   }, [type, from])
 
   const color = withBackground ? 'inverted' : 'default'
-  const iconColor = withBackground ? theme.colors.white : theme.colors.secondaryLight200
+  const iconColor = withBackground
+    ? theme.designSystem.color.icon.lockedInverted
+    : theme.designSystem.color.icon.brandSecondary
   const backgroundColor = withBackground ? theme.uniqueColors.brand : theme.colors.transparent
-  const borderColor = withBackground ? theme.uniqueColors.brand : theme.colors.secondaryLight200
+  const borderColor = withBackground
+    ? theme.uniqueColors.brand
+    : theme.designSystem.color.border.brandSecondary
 
   const StyledIcon = LeftIcon
     ? styled(LeftIcon).attrs(({ theme }) => ({
@@ -97,7 +100,11 @@ export const SystemBanner: FunctionComponent<Props> = ({
       {...focusProps}
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      color={withBackground ? theme.colors.white : theme.colors.black}
+      color={
+        withBackground
+          ? theme.designSystem.color.text.lockedInverted
+          : theme.designSystem.color.text.default
+      }
       style={style}>
       <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">
         {StyledIcon ? (
@@ -122,32 +129,32 @@ export const SystemBanner: FunctionComponent<Props> = ({
 }
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
-  color: ColorsEnum
+  color: ColorsType
 }>(({ color }) => ({
   hoverUnderlineColor: color,
-}))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
+}))<{ isFocus: boolean; color: ColorsType }>(({ theme, isFocus, color }) => ({
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus, color }),
 }))
 
 const StyledExternalTouchableLink = styled(ExternalTouchableLink).attrs<{
-  color: ColorsEnum
+  color: ColorsType
 }>(({ color }) => ({
   hoverUnderlineColor: color,
-}))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
+}))<{ isFocus: boolean; color: ColorsType }>(({ theme, isFocus, color }) => ({
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus, color }),
 }))
 
 const StyledTouchableOpacity = styledButton(Touchable)<{
-  color: ColorsEnum
+  color: ColorsType
 }>(({ theme, color }) => ({
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ color: theme.colors.black }),
-  ...getHoverStyle(color),
+  ...customFocusOutline({ color }),
+  ...getHoverStyle({ underlineColor: color }),
 }))
 
-const Container = styled.View<{ backgroundColor: ColorsEnum; borderColor: ColorsEnum }>(
+const Container = styled.View<{ backgroundColor: ColorsType; borderColor: ColorsType }>(
   ({ theme, backgroundColor, borderColor }) => ({
     alignItems: 'center',
     backgroundColor,

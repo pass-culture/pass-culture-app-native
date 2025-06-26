@@ -4,12 +4,14 @@ import { UseQueryResult } from 'react-query'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import {
   BookingReponse,
+  BookingResponse,
   BookingsResponse,
+  BookingsResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'
@@ -65,12 +67,12 @@ const user = userEvent.setup()
 describe('BookingDetails', () => {
   let ongoingBookings: BookingReponse = bookingsSnap.ongoing_bookings[0]
   let endedBookings: BookingReponse = bookingsSnap.ended_bookings[0]
+  let ongoingBookingV2: BookingResponse = bookingsSnapV2.ongoingBookings[0]
 
   beforeEach(() => {
     ongoingBookings = bookingsSnap.ongoing_bookings[0]
     endedBookings = bookingsSnap.ended_bookings[0]
-    ongoingBookings = bookingsSnap.ongoing_bookings[0]
-    endedBookings = bookingsSnap.ended_bookings[0]
+    ongoingBookingV2 = bookingsSnapV2.ongoingBookings[0]
 
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -325,6 +327,7 @@ describe('BookingDetails', () => {
     })
 
     it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
       renderBookingDetails(ongoingBookings)
@@ -581,8 +584,8 @@ describe('BookingDetails', () => {
     })
 
     it('should render OldBookingPageContent', async () => {
-      const notAnEventOffer = bookingsSnap.ongoing_bookings[2]
-      renderBookingDetails(notAnEventOffer)
+      const notAnEventOffer = bookingsSnapV2.ongoingBookings[2]
+      renderBookingDetailsV2(notAnEventOffer)
 
       await screen.findByText('Ma réservation')
 
@@ -596,9 +599,9 @@ describe('BookingDetails', () => {
     })
 
     it('should render BookingPageContent', async () => {
-      renderBookingDetails(ongoingBookings)
+      renderBookingDetailsV2(ongoingBookingV2)
 
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(screen.getByTestId('ticket-punched')).toBeOnTheScreen()
     })
@@ -608,9 +611,9 @@ describe('BookingDetails', () => {
         .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue({ isEvent: true })
 
-      renderBookingDetails(ongoingBookings)
+      renderBookingDetailsV2(ongoingBookingV2)
 
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       const itineraryButton = await screen.findByText('Voir l’itinéraire')
 
@@ -620,9 +623,9 @@ describe('BookingDetails', () => {
     })
 
     it('should display banner warning about disposal', async () => {
-      renderBookingDetails(ongoingBookings)
+      renderBookingDetailsV2(ongoingBookingV2)
 
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(
         screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
@@ -632,48 +635,50 @@ describe('BookingDetails', () => {
     it("should render organizer's indications", async () => {
       const withdrawalDetails = 'Une explication de l’organisateur'
 
-      renderBookingDetails({
-        ...ongoingBookings,
-        stock: {
-          ...ongoingBookings.stock,
-          offer: {
-            ...ongoingBookings.stock.offer,
-            withdrawalDetails,
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          noTicket: false,
+          withdrawal: {
+            ...ongoingBookingV2.ticket?.withdrawal,
+            details: withdrawalDetails,
           },
         },
       })
 
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(screen.getByText(withdrawalDetails)).toBeOnTheScreen()
     })
 
     it("should render organizer's email", async () => {
       const organizerEmail = 'toto@email.com'
-      renderBookingDetails({
-        ...ongoingBookings,
+
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
         stock: {
-          ...ongoingBookings.stock,
+          ...ongoingBookingV2.stock,
           offer: {
-            ...ongoingBookings.stock.offer,
+            ...ongoingBookingV2.stock.offer,
             bookingContact: organizerEmail,
           },
         },
       })
 
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(screen.getByText(organizerEmail)).toBeOnTheScreen()
     })
 
     it('should log analytics on email press', async () => {
       const organizerEmail = 'toto@email.com'
-      renderBookingDetails({
-        ...ongoingBookings,
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
         stock: {
-          ...ongoingBookings.stock,
+          ...ongoingBookingV2.stock,
           offer: {
-            ...ongoingBookings.stock.offer,
+            ...ongoingBookingV2.stock.offer,
             bookingContact: organizerEmail,
           },
         },
@@ -687,8 +692,8 @@ describe('BookingDetails', () => {
     })
 
     it('should redirect to the Offer page and log event', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
-      renderBookingDetails(booking)
+      const booking: BookingsResponseV2['ongoingBookings'][number] = ongoingBookingV2
+      renderBookingDetailsV2(booking)
 
       const text = screen.getByText('Voir l’offre')
 
@@ -705,14 +710,15 @@ describe('BookingDetails', () => {
 
     it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
-      renderBookingDetails(ongoingBookings)
+      renderBookingDetailsV2(ongoingBookingV2)
 
       const text = screen.getByText('Voir l’offre')
 
       await user.press(text)
 
-      const offerId = ongoingBookings.stock.offer.id
+      const offerId = ongoingBookingV2.stock.offer.id
 
       expect(navigate).not.toHaveBeenCalledWith('Offer', {
         id: offerId,
@@ -726,18 +732,23 @@ describe('BookingDetails', () => {
     })
 
     it('should render correctly when offer is not digital withdrawal type is no ticket', async () => {
-      renderBookingDetails({
-        ...ongoingBookings,
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
         stock: {
-          ...ongoingBookings.stock,
+          ...ongoingBookingV2.stock,
           offer: {
-            ...ongoingBookings.stock.offer,
-            withdrawalType: WithdrawalTypeEnum.no_ticket,
+            ...ongoingBookingV2.stock.offer,
             isDigital: false,
           },
         },
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          noTicket: true,
+          withdrawal: {
+            type: WithdrawalTypeEnum.no_ticket,
+          },
+        },
       })
-
       await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(
@@ -746,19 +757,18 @@ describe('BookingDetails', () => {
     })
 
     it('should render error message with plural when booking is duo', async () => {
-      renderBookingDetails({
-        ...ongoingBookings,
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
         quantity: 2,
-        stock: {
-          ...ongoingBookings.stock,
-          offer: {
-            ...ongoingBookings.stock.offer,
-            withdrawalType: WithdrawalTypeEnum.no_ticket,
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          noTicket: true,
+          withdrawal: {
+            type: WithdrawalTypeEnum.no_ticket,
           },
         },
       })
-
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(
         screen.getByText('Tu n’as pas le droit de céder ou de revendre tes billets.')
@@ -766,24 +776,104 @@ describe('BookingDetails', () => {
     })
 
     it('should render error message singular when booking is not duo', async () => {
-      renderBookingDetails({
-        ...ongoingBookings,
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
         quantity: 1,
         stock: {
-          ...ongoingBookings.stock,
+          ...ongoingBookingV2.stock,
           offer: {
-            ...ongoingBookings.stock.offer,
-            withdrawalType: WithdrawalTypeEnum.no_ticket,
+            ...ongoingBookingV2.stock.offer,
             isDigital: false,
           },
         },
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          noTicket: true,
+          withdrawal: {
+            type: WithdrawalTypeEnum.no_ticket,
+          },
+        },
       })
-
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(
         screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
       ).toBeOnTheScreen()
+    })
+
+    describe('Ticket', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
+      })
+
+      it('should render External Booking Component when externalbooking data is present', async () => {
+        renderBookingDetailsV2({
+          ...ongoingBookingV2,
+          stock: {
+            ...ongoingBookingV2.stock,
+            offer: {
+              ...ongoingBookingV2.stock.offer,
+              isDigital: false,
+            },
+          },
+          ticket: {
+            ...ongoingBookingV2.ticket,
+            noTicket: false,
+            withdrawal: {},
+            externalBooking: {
+              data: [{ barcode: '1234', seat: 'B1' }],
+            },
+          },
+        })
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        expect(screen.getByTestId('external-booking-ticket-container')).toBeOnTheScreen()
+      })
+
+      it('should render Hidden External Booking Component when no externalbooking data', async () => {
+        renderBookingDetailsV2({
+          ...ongoingBookingV2,
+          stock: {
+            ...ongoingBookingV2.stock,
+            offer: {
+              ...ongoingBookingV2.stock.offer,
+              isDigital: false,
+            },
+          },
+          ticket: {
+            ...ongoingBookingV2.ticket,
+            noTicket: false,
+            withdrawal: {},
+            externalBooking: {},
+          },
+        })
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        expect(screen.getByTestId('hidden-external-booking-ticket-container')).toBeOnTheScreen()
+      })
+
+      it('should render cinema booking ticket if voucher is present', async () => {
+        renderBookingDetailsV2({
+          ...ongoingBookingV2,
+          stock: {
+            ...ongoingBookingV2.stock,
+            offer: {
+              ...ongoingBookingV2.stock.offer,
+              isDigital: false,
+            },
+          },
+          ticket: {
+            ...ongoingBookingV2.ticket,
+            noTicket: false,
+            withdrawal: {},
+            voucher: { data: 'test-voucher' },
+            token: { data: 'test-token' },
+          },
+        })
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        expect(screen.getByTestId('cinema-booking-ticket-container')).toBeOnTheScreen()
+      })
     })
   })
 })
@@ -796,6 +886,27 @@ const renderBookingDetails = (booking?: Booking, options = {}) => {
     isError: false,
     error: undefined,
     ...options,
-  } as unknown as UseQueryResult<BookingReponse | null>)
+  } as unknown as UseQueryResult<BookingReponse | null, Error>)
+  return render(reactQueryProviderHOC(<BookingDetails />))
+}
+
+const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
+    data: booking,
+    isLoading: false,
+    isSuccess: true,
+    isError: false,
+    error: undefined,
+    ...options,
+  } as unknown as UseQueryResult<BookingResponse | null, Error>)
+
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
+    data: booking,
+    isLoading: false,
+    isSuccess: true,
+    isError: false,
+    error: undefined,
+    ...options,
+  } as unknown as UseQueryResult<BookingReponse | null, Error>)
   return render(reactQueryProviderHOC(<BookingDetails />))
 }

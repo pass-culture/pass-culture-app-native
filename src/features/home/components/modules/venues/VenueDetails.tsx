@@ -36,6 +36,7 @@ const Row = styled.View({
   flexDirection: 'row',
 })
 
-const TypeLabel = styled(Typo.BodyAccentXs).attrs({
-  numberOfLines: 1,
-})(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))
+const TypeLabel = styled(Typo.BodyAccentXs).attrs({ numberOfLines: 1 })(({ theme }) => ({
+  flexShrink: 1,
+  color: theme.designSystem.color.text.subtle,
+}))

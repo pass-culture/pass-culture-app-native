@@ -1,18 +1,18 @@
 import { format } from 'date-fns'
 import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
-import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
+import { LocaleConfig, Calendar as RNCalendar } from 'react-native-calendars'
 import { Theme } from 'react-native-calendars/src/types'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
-import { useSelectDay, DayComponent } from 'features/bookOffer/components/Calendar/DayComponent'
+import { DayComponent, useSelectDay } from 'features/bookOffer/components/Calendar/DayComponent'
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import {
-  defaultMarking,
-  Marking,
-  useMarkedDates,
   MarkedDates,
+  Marking,
+  defaultMarking,
+  useMarkedDates,
 } from 'features/bookOffer/components/Calendar/useMarkedDates'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -26,7 +26,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 LocaleConfig.locales['fr'] = {
   monthNames: [...CAPITALIZED_MONTHS],
@@ -50,7 +50,7 @@ type CustomTheme = Theme & {
 }
 
 const calendarHeaderStyle = (theme: DefaultTheme): CustomTheme => ({
-  textSectionTitleColor: theme.colors.greyDark,
+  textSectionTitleColor: theme.designSystem.color.text.subtle,
   'stylesheet.calendar.header': {
     header: {
       flexDirection: 'row',
@@ -176,7 +176,10 @@ export const Calendar: React.FC<Props> = ({
 const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
 
 const Caption = styled(Typo.BodyAccentXs)<{ status: OfferStatus }>(({ status, theme }) => ({
-  color: status === OfferStatus.BOOKABLE ? theme.colors.primary : theme.colors.greyDark,
+  color:
+    status === OfferStatus.BOOKABLE
+      ? theme.designSystem.color.text.brandPrimary
+      : theme.designSystem.color.text.subtle,
   textAlign: 'center',
 }))
 

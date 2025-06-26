@@ -30,7 +30,7 @@ export const NoSearchResult: React.FC<NoSearchResultProps> = ({
       </ContainerNoOffer>
       <ContainerText>
         <Title>{title}</Title>
-        {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+        {subtitle ? <Typo.Body>{subtitle}</Typo.Body> : null}
         <ErrorDescriptionContainer>
           <ErrorDescription accessibilityLiveRegion="assertive">
             {errorDescription}
@@ -53,7 +53,7 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
   size: theme.isDesktopViewport
     ? theme.illustrations.sizes.fullPage
     : theme.illustrations.sizes.medium,
-  color: theme.colors.greyMedium,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const Container = styled.View(({ theme }) => ({
@@ -71,17 +71,12 @@ const ContainerText = styled.View(({ theme }) => ({
 
 const Title = styled(Typo.Title4).attrs({
   ...getHeadingAttrs(2),
-})(({ theme }) => ({
-  color: theme.colors.black,
+})({
   marginTop: getSpacing(4),
-}))
-
-const Subtitle = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.black,
-}))
+})
 
 const ErrorDescription = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const ErrorDescriptionContainer = styled(Typo.Body)({

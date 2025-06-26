@@ -34,10 +34,10 @@ export const ReactionChoiceValidation: FunctionComponent<Props> = ({
       default: getStyledIcon('like', { testID: 'thumbUp' }),
       pressed: getStyledIcon('like-filled', {
         testID: 'thumbUpFilled',
-        color: theme.colors.primary,
+        color: theme.designSystem.color.icon.brandPrimary,
       }),
     }),
-    [getStyledIcon, theme.colors.primary]
+    [getStyledIcon, theme.designSystem.color.icon.brandPrimary]
   )
 
   const ThumbDownIcon = useMemo(

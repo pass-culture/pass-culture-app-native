@@ -84,10 +84,10 @@ const RoundContainer = styled.View(({ theme }) => ({
   height: CONTAINER_SIZE,
   aspectRatio: '1',
   borderRadius: getSpacing(8),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   border: 1,
   justifyContent: 'center',
-  borderColor: theme.colors.greyLight,
+  borderColor: theme.designSystem.color.border.default,
   ...getShadow({
     shadowOffset: {
       width: 0,
@@ -101,10 +101,10 @@ const RoundContainer = styled.View(({ theme }) => ({
 }))
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.standard,
 }))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
-  color: theme.colors.primary,
+  color: theme.designSystem.color.text.brandPrimary,
 }))

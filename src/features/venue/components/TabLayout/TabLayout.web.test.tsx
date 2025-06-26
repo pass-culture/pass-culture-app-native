@@ -108,7 +108,7 @@ describe('TabLayout', () => {
 
     await act(() => userEvent.hover(secondTabTitle))
 
-    expect(secondTabTitle).toHaveStyle({ color: theme.colors.primary })
+    expect(secondTabTitle).toHaveStyle({ color: theme.designSystem.color.text.brandPrimary })
   })
 
   it('should restore tab title color on hover leave', async () => {
@@ -130,6 +130,6 @@ describe('TabLayout', () => {
       await userEvent.unhover(secondTabTitle)
     })
 
-    expect(secondTabTitle).toHaveStyle({ color: theme.colors.greyDark })
+    expect(secondTabTitle).toHaveStyle({ color: theme.designSystem.color.icon.disabled })
   })
 })

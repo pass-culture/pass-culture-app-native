@@ -120,7 +120,7 @@ const StyledView = styled.View({
 })
 
 const BlackView = styled.View(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.black, 0.6),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0.6),
   height: THUMBNAIL_HEIGHT,
   justifyContent: 'center',
 }))
@@ -168,10 +168,9 @@ const ColorCategoryBackground = styled.View<{
   backgroundColor,
 }))
 
-const Player = styled(Play).attrs(({ theme }) => ({
+const Player = styled(Play).attrs({
   size: PLAYER_SIZE,
-  color: theme.colors.brownLight,
-}))({})
+})``
 
 const TextContainer = styled.View({
   position: 'absolute',
@@ -181,7 +180,7 @@ const TextContainer = styled.View({
 })
 
 const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
   textTransform: 'uppercase',
   fontSize: getSpacing(6.5),
@@ -189,7 +188,7 @@ const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
 }))
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
-  underlayColor: theme.colors.white,
+  underlayColor: theme.designSystem.color.background.lockedInverted,
 }))({
   height: THUMBNAIL_HEIGHT,
   width: THUMBNAIL_WIDTH,

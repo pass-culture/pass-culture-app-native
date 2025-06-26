@@ -22,11 +22,11 @@ const getIconAndColorFromReactionType = ({
 }): { iconName: IconNames; color: ColorsType } => {
   switch (reactionType) {
     case ReactionTypeEnum.LIKE:
-      return { iconName: 'like-filled', color: theme.colors.primary }
+      return { iconName: 'like-filled', color: theme.designSystem.color.icon.brandPrimary }
     case ReactionTypeEnum.DISLIKE:
-      return { iconName: 'like-filled', color: theme.colors.black }
+      return { iconName: 'like-filled', color: theme.designSystem.color.icon.default }
     default:
-      return { iconName: 'like', color: theme.colors.black }
+      return { iconName: 'like', color: theme.designSystem.color.icon.default }
   }
 }
 

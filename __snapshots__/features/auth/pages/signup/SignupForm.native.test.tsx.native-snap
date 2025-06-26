@@ -496,13 +496,17 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 [
                   {
                     "alignItems": "center",
-                    "columnGap": 16,
+                    "columnGap": 12,
                     "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 state={
                   [
                     "default",
@@ -537,7 +541,14 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 }
               >
                 <Text
-                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     [
                       {
@@ -3021,13 +3032,17 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "columnGap": 16,
+                  "columnGap": 12,
                   "flexDirection": "row",
                 },
               ]
             }
           >
             <View
+              disabled={false}
+              isHover={false}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
               state={
                 [
                   "default",
@@ -3062,7 +3077,14 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               }
             >
               <Text
-                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -3142,13 +3164,17 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "columnGap": 16,
+                  "columnGap": 12,
                   "flexDirection": "row",
                 },
               ]
             }
           >
             <View
+              disabled={false}
+              isHover={false}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
               state={
                 [
                   "default",
@@ -3183,7 +3209,14 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               }
             >
               <Text
-                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                state={
+                  [
+                    "default",
+                  ]
+                }
                 style={
                   [
                     {
@@ -3500,6 +3533,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           }
         />
         <View
+          accessibilityHint="testUuidV4"
           accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
           accessibilityState={
             {

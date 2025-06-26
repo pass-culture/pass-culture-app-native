@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -15,7 +14,6 @@ export const ScrollToTopButton = ({
   transition: Animated.AnimatedInterpolation<string | number>
   onPress: () => void
 }) => {
-  const theme = useTheme()
   const [disabled, setDisabled] = useState(true)
   transition.addListener((opacity: { value: number }) => {
     setDisabled(opacity.value === 0)
@@ -23,12 +21,9 @@ export const ScrollToTopButton = ({
   return (
     <Animated.View style={{ opacity: transition }}>
       <Container onPress={onPress} disabled={disabled} accessibilityLabel="Revenir en haut">
-        <StyledLinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          colors={[theme.colors.primary, theme.colors.secondary]}>
+        <StyledView>
           <ScrollToTopIcon />
-        </StyledLinearGradient>
+        </StyledView>
       </Container>
     </Animated.View>
   )
@@ -36,8 +31,8 @@ export const ScrollToTopButton = ({
 
 const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
-const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
-  backgroundColor: theme.colors.primary,
+const StyledView = styled.View(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.brandSecondary,
   borderRadius: theme.borderRadius.button,
   alignItems: 'center',
   justifyContent: 'center',
@@ -47,6 +42,6 @@ const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
 }))
 
 const ScrollToTopIcon = styled(ScrollToTop).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.small,
 }))``

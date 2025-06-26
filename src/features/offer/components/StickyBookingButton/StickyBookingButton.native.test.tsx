@@ -2,10 +2,11 @@ import React from 'react'
 
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
 import { render, screen } from 'tests/utils'
+import { theme } from 'theme'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('<OfferBookingButton />', () => {
+describe('<StickyBookingButton />', () => {
   const mockCtaWordingAndAction = {
     wording: 'Réserver l’offre',
     onPress: jest.fn(),
@@ -56,7 +57,9 @@ describe('<OfferBookingButton />', () => {
     const disabledCtaWordingAndAction = { ...mockCtaWordingAndAction, isDisabled: true }
     render(<StickyBookingButton ctaWordingAndAction={disabledCtaWordingAndAction} />)
 
-    expect(screen.getByText('Réserver l’offre')).toHaveStyle({ color: '#696A6F' })
+    expect(screen.getByText('Réserver l’offre')).toHaveStyle({
+      color: theme.designSystem.color.text.disabled,
+    })
   })
 
   it("shouldn't return the button when it hasn't wording", () => {

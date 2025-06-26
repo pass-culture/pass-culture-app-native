@@ -23,9 +23,9 @@ const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
   borderWidth: getSpacing(0.25),
   borderStyle: 'solid',
-  borderColor: theme.colors.white,
+  borderColor: theme.designSystem.color.border.inverted,
   borderRadius: BADGE_SIZE,
-  backgroundColor: theme.colors.primary,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
 const Wrapper = styled.View({
@@ -36,6 +36,6 @@ const Wrapper = styled.View({
 
 const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.white,
+  color: theme.designSystem.color.text.inverted,
   lineHeight: `${BADGE_SIZE}px`,
 }))
