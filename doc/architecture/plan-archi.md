@@ -74,13 +74,13 @@ Les hypothèses historiques (implicites ou explicites) sont les suivantes :
 ### Séparation des états
 
 Pourquoi vouloir séparer les États dans l’app ?
-Être incapable de découpler les états qui viennent du server de ceux générer par l’app (user), empêche une gestion propre du cache, du stockage de data pour le mode offline, et entraîne un couplage non désirable pour l’évolution de l’app / la recherche et la gestion des bugs.
+Être incapable de découpler les états qui viennent du server de ceux générés par l’app (user), empêche une gestion propre du cache, du stockage de data pour le mode offline, et entraîne un couplage non désirable pour l’évolution de l’app / la recherche et la gestion des bugs.
 
 ### Server State
 
-Le server state concerne tous les calls d’API qui sont nécessaires au fonctionnement de l’app:
+Le server state concerne tous les calls d’API qui sont nécessaires au fonctionnement de l’app :
 
-- backend passculture
+- backend pass Culture
 - firebase (ff, remote config)
 - algolia (recherche, playlists)
 - contentful (édito)
@@ -95,7 +95,7 @@ Le but est d’uniformiser, isoler et identifier le server state dans l’app.
 ### App State
 
 L’app state concerne tous les états produits par l’utilisateur qui ne sont pas le reflet direct de la donnée serveur.
-On veut que ces états soit gérés de façon uniforme, pour cela il faudra:
+On veut que ces états soit gérés de façon uniforme, pour cela il faudra :
 
 - supprimer les contextes inutiles
 - déplacer les states locaux (components/hooks) vers des stores zustand
@@ -110,10 +110,10 @@ Cf. partie précédente
 
 ### Logiques métiers
 
-Toutes les logiques métiers doivent être isolées dans des fonctions.  
+Toutes les logiques métiers doivent être isolées dans des fonctions.
 Ces fonctions constitueront un ensemble uniforme et identifiable de règles qui seront testées unitairement.
 La notion de classe peut être remplacée par l’utilisation des modules JS et de fonctions dans cette portée.
-Pour cela, on effectuera les modifications suivantes:
+Pour cela, on effectuera les modifications suivantes :
 
 - suppression des hooks associés au server state, utilisation de fonction de sélection (select de RQ ou selector de Reselect): ces fonctions permettent de modifier la donnée server pour l’affichage
 - suppression des hooks d’abstraction d’actions au profit de fonctions pures: testables car stateless
@@ -121,29 +121,29 @@ Pour cela, on effectuera les modifications suivantes:
 
 ### Navigation
 
-Toutes les pages seront accessibles par des urls et aucune autre donnée ne devra être nécessaire pour y accéder, à part les données de connexions, et celles de localisation, toutes les deux très liées à l’état server/app de l’utilisateur.
+Toutes les pages seront accessibles par des URLs et aucune autre donnée ne devra être nécessaire pour y accéder, à part les données de connexions, et celles de localisation, toutes les deux très liées à l’état server/app de l’utilisateur.
 
-Pour cela il faut un principe bi-directionnel entre l’état et l’URL:
+Pour cela il faut un principe bi-directionnel entre l’état et l’URL :
 
-- que toutes les pages possèdent des urls
-- que tous les paramètres des urls déterminent l’état d’affichage de la page
-- que tous les états soient déterminé par les paramètres de l’url, sauf cas particulier pour des pages qui n’auront pas besoin d’être accessibles en deeplink
+- que toutes les pages possèdent des URLs
+- que tous les paramètres des URLs déterminent l’état d’affichage de la page
+- que tous les états soient déterminé par les paramètres de l’URL, sauf cas particulier pour des pages qui n’auront pas besoin d’être accessibles en deeplink
 
 ### Séparation des types de composants
 
-Tous les composants de l’app devront se ranger dans une des catégories suivantes:
+Tous les composants de l’app devront se ranger dans une des catégories suivantes :
 
-- dumb component: les dumb components (affichage) devront constituer la majorité de la codebase, il ne pourront pas contenir de logique métier, ils devront être des fonctions pures leur état n’est déterminé que par les props.
-- container: les containers seront connectés aux stores pour l’app state et au server state. Il devront gérer leur logique métier dans des fonctions pures (cf. partie sur la logique métier).
-- page: les pages sont les composants de plus haut niveau et doivent déterminer leur état interne uniquement via les paramètres de l’url (sauf exceptions).
+- dumb component : les dumb components (affichage) devront constituer la majorité de la codebase, ils ne pourront pas contenir de logique métier, ils devront être des fonctions pures, leur état n'est déterminé que par les props.
+- container : les containers seront connectés aux stores pour l'app state et au server state. Ils devront gérer leur logique métier dans des fonctions pures (cf. partie sur la logique métier).
+- page : les pages sont les composants de plus haut niveau et doivent déterminer leur état interne uniquement via les paramètres de l'URL (sauf exceptions).
 
-Pour cela il faut:
+Pour cela, il faut :
 
-- repérer et isoler dumbs components dans des dossiers spécifiques
+- repérer et isoler les dumb components dans des dossiers spécifiques
 - remonter les logiques contenues dans les composants d’affichage vers les containers et les pages
 - supprimer les connexions entre les composants d’affichage aux stores et au server state
 - isoler les containers dans des dossiers spécifiques
-- modifier les pages pour ne calculer leur état que à partir de l’url
+- modifier les pages pour ne calculer leur état que à partir de l'URL.
 
 ## Roadmap
 
