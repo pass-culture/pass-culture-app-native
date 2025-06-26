@@ -334,7 +334,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                       "alignItems": "center",
                       "alignSelf": "flex-start",
                       "backgroundColor": "#f1f1f4",
-                      "borderRadius": 6,
+                      "borderRadius": 4,
                       "flexDirection": "row",
                       "paddingHorizontal": 8,
                       "paddingVertical": 4,

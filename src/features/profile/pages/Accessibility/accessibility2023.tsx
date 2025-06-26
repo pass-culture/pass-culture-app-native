@@ -1,10 +1,6 @@
-import React from 'react'
-
 import { AccessibilityActionItem } from 'features/profile/components/AccessibilityActionPlanSection/types'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { renderAccessibilityExternalLink } from 'features/profile/helpers/renderAccessibilityExternalLink'
 import { TagVariant } from 'ui/components/Tag/types'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 export const accessibility2023: AccessibilityActionItem[] = [
   {
@@ -17,28 +13,12 @@ export const accessibility2023: AccessibilityActionItem[] = [
   },
   {
     text: 'Formation des développeurs du site',
-    customContent: (
-      <ExternalTouchableLink
-        as={ButtonInsideText}
-        typography="Body"
-        wording="https://passculture.pro/"
-        icon={ExternalSiteFilled}
-        externalNav={{ url: 'https://passculture.pro/' }}
-      />
-    ),
+    customContent: renderAccessibilityExternalLink('https://passculture.pro/'),
     tag: { label: 'Réalisé', variant: TagVariant.SUCCESS },
   },
   {
     text: 'Réalisation d’un audit d’accessibilité du site',
-    customContent: (
-      <ExternalTouchableLink
-        as={ButtonInsideText}
-        typography="Body"
-        wording="https://passculture.pro/"
-        icon={ExternalSiteFilled}
-        externalNav={{ url: 'https://passculture.pro/' }}
-      />
-    ),
+    customContent: renderAccessibilityExternalLink('https://passculture.pro/'),
     tag: { label: 'Réalisé', variant: TagVariant.SUCCESS },
   },
   {
@@ -47,15 +27,7 @@ export const accessibility2023: AccessibilityActionItem[] = [
   },
   {
     text: 'Maquettage d’un nouveau site 100% accessible',
-    customContent: (
-      <ExternalTouchableLink
-        as={ButtonInsideText}
-        typography="Body"
-        wording="https://pass.culture.fr/"
-        icon={ExternalSiteFilled}
-        externalNav={{ url: 'https://pass.culture.fr/' }}
-      />
-    ),
+    customContent: renderAccessibilityExternalLink('https://pass.culture.fr/'),
     tag: { label: 'Réalisé', variant: TagVariant.SUCCESS },
   },
   {

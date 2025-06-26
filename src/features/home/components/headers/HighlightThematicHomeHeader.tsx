@@ -59,8 +59,9 @@ const ImageBackground = styled.ImageBackground(({ theme }) => ({
 }))
 
 const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
-  ({ statusBarHeight }) => ({
+  ({ theme, statusBarHeight }) => ({
     position: 'absolute',
+    zIndex: theme.zIndex.header,
     top: statusBarHeight + getSpacing(6),
     right: getSpacing(6),
   })

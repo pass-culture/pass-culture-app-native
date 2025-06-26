@@ -1,10 +1,6 @@
-import React from 'react'
-
 import { AccessibilityActionItem } from 'features/profile/components/AccessibilityActionPlanSection/types'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { renderAccessibilityExternalLink } from 'features/profile/helpers/renderAccessibilityExternalLink'
 import { TagVariant } from 'ui/components/Tag/types'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 export const accessibility2024: AccessibilityActionItem[] = [
   {
@@ -21,28 +17,13 @@ export const accessibility2024: AccessibilityActionItem[] = [
   },
   {
     text: 'Publier la déclaration d’accessibilité du site',
-    customContent: (
-      <ExternalTouchableLink
-        as={ButtonInsideText}
-        typography="Body"
-        wording="https://pass.culture.fr/"
-        icon={ExternalSiteFilled}
-        externalNav={{ url: 'https://pass.culture.fr/' }}
-      />
-    ),
+    customContent: renderAccessibilityExternalLink('https://pass.culture.fr/'),
+
     tag: { label: 'Réalisé', variant: TagVariant.SUCCESS },
   },
   {
     text: 'Formation des Product Manager du site',
-    customContent: (
-      <ExternalTouchableLink
-        as={ButtonInsideText}
-        typography="Body"
-        wording="https://passculture.pro/"
-        icon={ExternalSiteFilled}
-        externalNav={{ url: 'https://passculture.pro/' }}
-      />
-    ),
+    customContent: renderAccessibilityExternalLink('https://passculture.pro/'),
     tag: { label: 'Réalisé', variant: TagVariant.SUCCESS },
   },
   {
@@ -51,15 +32,7 @@ export const accessibility2024: AccessibilityActionItem[] = [
   },
   {
     text: 'Rendre le site 100% accessible',
-    customContent: (
-      <ExternalTouchableLink
-        as={ButtonInsideText}
-        typography="Body"
-        wording="https://passculture.app/"
-        icon={ExternalSiteFilled}
-        externalNav={{ url: 'https://passculture.app/' }}
-      />
-    ),
+    customContent: renderAccessibilityExternalLink('https://passculture.app/'),
     tag: { label: 'En cours - poursuivi en 2025', variant: TagVariant.DEFAULT },
   },
   {

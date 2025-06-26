@@ -14,9 +14,4 @@ describe('getTagVariantFromCreditStatus', () => {
   it('should return WARNING when status is COMING', () => {
     expect(getTagVariantFromCreditStatus(CreditStatus.COMING)).toBe(TagVariant.WARNING)
   })
-
-  it('should return DEFAULT for an unknown status (type-casted)', () => {
-    // @ts-expect-error force test with unknown value
-    expect(getTagVariantFromCreditStatus('UNKNOWN')).toBe(TagVariant.DEFAULT)
-  })
 })

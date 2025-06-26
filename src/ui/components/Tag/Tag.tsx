@@ -46,7 +46,7 @@ const Wrapper = styled(View)<{ backgroundColor: string }>(({ backgroundColor }) 
   flexDirection: 'row',
   alignItems: 'center',
   alignSelf: 'flex-start',
-  borderRadius: 6,
+  borderRadius: getSpacing(1),
   backgroundColor,
   paddingVertical: PADDING_VERTICAL,
   paddingHorizontal: getSpacing(2),

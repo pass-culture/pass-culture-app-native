@@ -3165,7 +3165,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3260,7 +3260,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f1f1f4",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3355,7 +3355,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3450,7 +3450,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3545,7 +3545,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3640,7 +3640,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3735,7 +3735,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3830,7 +3830,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -3925,7 +3925,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -4020,7 +4020,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -4164,7 +4164,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -4259,7 +4259,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -4354,7 +4354,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -4531,7 +4531,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                             },
                           ]
                         }
-                        typography="Body"
+                        typography="Button"
                       >
                         https://pass.culture.fr/
                       </Text>
@@ -4547,7 +4547,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -4724,7 +4724,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                             },
                           ]
                         }
-                        typography="Body"
+                        typography="Button"
                       >
                         https://passculture.pro/
                       </Text>
@@ -4740,7 +4740,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -4835,7 +4835,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5012,7 +5012,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                             },
                           ]
                         }
-                        typography="Body"
+                        typography="Button"
                       >
                         https://passculture.app/
                       </Text>
@@ -5028,7 +5028,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f1f1f4",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5123,7 +5123,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f1f1f4",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5218,7 +5218,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5313,7 +5313,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#f9df81",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5457,7 +5457,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5552,7 +5552,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5729,7 +5729,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                             },
                           ]
                         }
-                        typography="Body"
+                        typography="Button"
                       >
                         https://passculture.pro/
                       </Text>
@@ -5745,7 +5745,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -5922,7 +5922,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                             },
                           ]
                         }
-                        typography="Body"
+                        typography="Button"
                       >
                         https://passculture.pro/
                       </Text>
@@ -5938,7 +5938,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6033,7 +6033,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6210,7 +6210,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                             },
                           ]
                         }
-                        typography="Body"
+                        typography="Button"
                       >
                         https://pass.culture.fr/
                       </Text>
@@ -6226,7 +6226,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6321,7 +6321,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6465,7 +6465,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6560,7 +6560,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6655,7 +6655,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6750,7 +6750,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6845,7 +6845,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -6940,7 +6940,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -7035,7 +7035,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
@@ -7130,7 +7130,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                         "alignItems": "center",
                         "alignSelf": "flex-start",
                         "backgroundColor": "#91e1b5",
-                        "borderRadius": 6,
+                        "borderRadius": 4,
                         "flexDirection": "row",
                         "paddingHorizontal": 8,
                         "paddingVertical": 4,
