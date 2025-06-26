@@ -66,6 +66,12 @@ Pour faire certains développements :
 - il est parfois nécessaire de développer nous même des logiques complexes
 - nous sommes parfois contraint de développer de la même manière qu'il y a 10 ans alors qu'entre temps les outils ont évoluées
 
+### Fonctionnalité de l'appareil
+
+Nous utilisons très peu de capteurs de l'appareil (caméra, bluetooth, micro, gyroscope ...).
+
+Nous utilisons très peu de fonctionnalités propres aux applications natives.
+
 ### Déploiement
 
 Nous devons déployer sur les stores, ce qui peut être long et contraignant.
@@ -142,6 +148,14 @@ Dans ces nombreuses évolutions, le web permet de faire des choses facilement qu
 
 Exemple : les `ViewTransition` qui permettent très facilement de faire une animation en passant d'une page à une autre ;
 [exemple minimaliste](https://http203-playlist.netlify.app/) : quand on clique sur le lien, on change d'URL, on change de page, et il y a une transition pendant le changement de page.
+
+##### Capteurs
+
+Avec les nouvelles évolutions web, il est possibles d'accéder à de plus en plus de capteurs des appareils (ex : caméra, micro, bluetooth, géolocalisation ...).
+
+Nos fonctionnalités seraient faisables en web uniquement.
+
+Si on avait besoin de faire une fonctionnalité accessible uniquement depuis une app native, il serait toujours possible de le faire (injection de JS dans la `WebView` pour déléguer la fonction à l'app native).
 
 ### Déploiement Continu
 
