@@ -22,9 +22,9 @@ Un test ne devrait pas casser si le comportement métier testé ne change pas, a
 
 #### Un environnement de test stable
 
-Un simple test comme ci-dessous devrait fonctionner dans n'importe quel fichier de test :
+Un simple test comme celui-ci devrait fonctionner dans n'importe quel fichier de test :
 
-```ts
+```tsx
 render(<ComplexComponent />)
 expect(true).toBeTruthy()
 ```
@@ -47,13 +47,13 @@ Quand tel est le cas, il est possible de tester l'application à des niveaux plu
 
 ### La gestion d'état réseau avec React Query
 
-React Query est au cœur de notre application et pas utilisé à sa pleine puissance.
+React Query est au cœur de notre application et n'est pas utilisé à sa pleine capacité.
 
 Voici quelques règles pour mieux l'utiliser.
 
 #### Selecteurs
 
-Utiliser des sélecteurs pour filtrer / formater les données plutôt que de faire un hook custom.
+Utiliser des sélecteurs pour filtrer / formater les données plutôt que d'écrire un hook custom.
 
 ```ts
 // ❌
@@ -107,7 +107,7 @@ const useArtists = () => useQuery({ queryFn: fetchArtists, queryKeys: ['artists'
 const useArtistsQuery = () => useQuery({ queryFn: fetchArtists, queryKeys: ['artists'] })
 ```
 
-Pour une mutation:
+Pour une mutation :
 
 ```ts
 // ❌
@@ -124,7 +124,7 @@ const useArtistsMutation = () => useMutation({ queryFn: fetchArtists, queryKeys:
 #### State des queries
 
 La gestion des états des queries (RQ) dans l'app est primordiale pour s'assurer d'avoir un rendu cohérent.
-Une fois la version de RQ ≥ 4 nous pouvons utiliser :
+Une fois la version de RQ ≥ 4, nous pouvons utiliser :
 
 - `Suspense`: pour gérer le loading des composants -> `Suspense` se charge d'afficher un composant de chargement tant que la data n'est pas présente et le composant désiré le cas échéant.
 
@@ -186,7 +186,7 @@ Si la `page` appelle une seule requête, il n'est pas nécessaire d'avoir des `c
 
 Le découpage de la page en `container` peut venir de plusieurs contraintes :
 
-- **plusieurs requêtes** entrainant plusieurs `containers`
+- **plusieurs requêtes** entraînant plusieurs `containers`
 - chaque `container` peut être **lié à un contexte** (SOC)
 - si les tests sont simplifiés par la mise en place de `containers` multiples : la séparation en `container` peut diminuer la combinatoire des tests en isolant les logiques et en ne les combinant pas
 - les `containers` seront testés dans la `page` pour leur cas nominal et dans leurs propres fichiers de tests pour les cas complexes
@@ -255,12 +255,15 @@ const Container: FunctionComponent = () => {
   return <Component title="Bouton" onPress={onPress} />
 }
 
-const Component: FunctionComponent<{ title: string; onPress: () => void }> = () => {
+const Component: FunctionComponent<{ title: string; onPress: () => void }> = ({
+  title,
+  onPress,
+}) => {
   return <Pressable title={title} onPress={onPress} />
 }
 ```
 
-Ainsi le `onPress` et le `title` sont utilisés au niveau du container rendant `Component` réutilisable
+Ainsi `onPress` et `title` sont utilisés au niveau du container rendant `Component` réutilisable.
 
 #### Type spécifique pour les composants
 
@@ -295,7 +298,7 @@ La composition évite principalement le props drilling (passage de props en casc
 
 Sans composition on aura un container qui sera plus concis et plus propre à première vue, mais sera très difficile à débugger pour 2 raisons :
 
-- un fichier de test par composant, donc les tests sont difficile à maintenir et à bouger
+- un fichier de test par composant, donc les tests sont difficiles à maintenir et à bouger
 - un manque de vue d'ensemble du composant
 
 ```tsx
@@ -353,7 +356,7 @@ const Container: FunctionComponent<{ subtitle: string }> = ({ subtitle }) => {
 
 ### Les tests unitaires
 
-Pour nos tests unitaires, nous devons isoler le SUT ([System Under Test](https://en.wikipedia.org/wiki/System_under_test)) du code que l'on n'édite pas dans ce repo et qui pourrait faire des effets de bords.
+Pour nos tests unitaires, nous devons isoler le SUT ([System Under Test](https://en.wikipedia.org/wiki/System_under_test)) du code que l'on n'édite pas dans ce repo et qui pourrait faire des effets de bord.
 
 Exemple :
 
@@ -368,7 +371,7 @@ Exemple :
 Zustand est le state global de l'app, il permet de partager et modifier des variables entre plusieurs vues.
 Il évite le props drilling et l'utilisation de contextes qui sont néfastes à l'app (en terme de maintenance et d'optimisation de rendus)
 
-Il ne doit être utilisé que pour les états qui ne proviennent pas du serveur (ex: localisation)
+Il ne doit être utilisé que pour les états qui ne proviennent pas du serveur (ex : localisation).
 
 Un seul store doit être créé pour un contexte
 
@@ -390,7 +393,7 @@ Nous pouvons introduire des breakings changes grâce au versioning des routes (`
   - navigation
   - analytics
   - API `null` `undefined`
-  - les données provenantURL/API/User -> Parsing
+  - Les données provenant de l'URL/API/User doivent être parsées avant d'être utilisées dans l'application.
 
     > never trust user input
 
