@@ -215,35 +215,35 @@ Isolation des logiques métiers:
 
 ### Définition
 
-Pour éviter de devoir redévelopper tout depuis zéro, nous utilisons du code écrit par des tiers
+Pour éviter de devoir redévelopper tout depuis zéro, nous utilisons du code écrit par des tiers.
 
-Ces portions de code se concentrent sur la réalisation de tache précise et générique (ex : afficher une date, afficher un calendrier...)
+Ces portions de code se concentrent sur la réalisation de tâche précise et générique (ex : afficher une date, afficher un calendrier...).
 
-Pour fonctionnner, notre application a besoin de ces portions de code, nous en sommes dépendant, on appelle ça des **dépendances** (aussi parfois appelé `bibliothèque`, `library`, `framework`)
+Pour fonctionner, notre application a besoin de ces portions de code, nous en sommes dépendant, on appelle ça des **dépendances** (aussi parfois appelé `bibliothèque`, `library`, `framework`).
 
 ### Constat
 
 #### Mise à jour de dépendances
 
-Nous passons actuellement beaucoup de temps à mettre à jour des dépendances (React Native, React Native Web...)
+Nous passons actuellement beaucoup de temps à mettre à jour des dépendances (React Native, React Native Web...).
 
-La mise à jour des dépendances est difficile car il y a des problèmes en cascade qui implique de mettre à jour d'autres dépendances
+La mise à jour des dépendances est difficile car il y a des problèmes en cascade qui implique de mettre à jour d'autres dépendances.
 
-Chaque mise à jour de chaque dépendance entraine des problèmes spécifiques, très difficilement anticipables, ce qui rend l'estimation du temps passé à faire une montée de version presque impossible
+Chaque mise à jour de chaque dépendance entraîne des problèmes spécifiques, très difficilement anticipables, ce qui rend l'estimation du temps passé à faire une montée de version presque impossible.
 
-Les mises à jour sont fastidieuses
+Les mises à jour sont fastidieuses.
 
 #### Écosystème
 
-Pour pouvoir partager le code entre Android et iOS nous utilisons React Native
+Pour pouvoir partager le code entre Android et iOS nous utilisons React Native.
 
-Pour pouvoir partager le code entre Android, iOS **et le web**, nous utilisons React Native **Web**
+Pour pouvoir partager le code entre Android, iOS **et le web**, nous utilisons React Native **Web**.
 
-Ce qui implique de choisir des dépendances qui soient compatibles avec React Native Web, ou de gérer des particularité au cas par cas pour faire des choses dédiées à Android et iOS et des choses dédidées au web
+Ce qui implique de choisir des dépendances qui soient compatibles avec React Native Web, ou de gérer des particularité au cas par cas pour faire des choses dédiées à Android et iOS et des choses dédiées au web.
 
 ##### Écosystème de niche
 
-Cet écosystème est très de niche
+Cet écosystème est très de niche.
 
 ```mermaid
 flowchart LR
@@ -259,9 +259,9 @@ flowchart LR
 
 ###### Choix
 
-Les choix les plus populaires nous sont parfois inaccessibles car incompatible avec React Native Web et/ou React Native
+Les choix les plus populaires nous sont parfois inaccessibles car incompatible avec React Native Web et/ou React Native.
 
-Il y a peu de choix
+Il y a peu de choix.
 
 Nous sommes contraints de :
 
@@ -271,68 +271,68 @@ Nous sommes contraints de :
 
 ##### Développement
 
-L'écosystème React Native évolue vite, l'écosystème web évolue encore plus vite
+L'écosystème React Native évolue vite, l'écosystème web évolue encore plus vite.
 
-Pour faire certains développment :
+Pour faire certains développements :
 
 - il est parfois très difficile de le faire en restant compatible avec React Native
-- il est parfois nécessaire de developper nous meme des logiques complexes
+- il est parfois nécessaire de développer nous même des logiques complexes
 
-#### Déploimement
+#### Déploiement
 
-Nous devons déployer sur les stores, ce qui peut etre long et contraignant
+Nous devons déployer sur les stores, ce qui peut être long et contraignant.
 
 ### Besoins
 
 #### Accès aux droits
 
-React Native nous impose de plus supporter les anciennes versions d'Android et iOS
+React Native nous impose de plus supporter les anciennes versions d'Android et iOS.
 
-Nous avons besoin de conserver le site web pour un meilleur accès aux droits
+Nous avons besoin de conserver le site web pour un meilleur accès aux droits.
 
 #### Accessibilité
 
-Un site web est par défaut accessible (les balises HTML sont conçus de manière accessible)
+Un site web est par défaut accessible (les balises HTML sont conçus de manière accessible).
 
 #### pass pour tous
 
-Pour étendre nos publics avec le projet du pass pour tous, nous pourrions vouloir mettre plus d'effort sur la partie web
+Pour étendre nos publics avec le projet du pass pour tous, nous pourrions vouloir mettre plus d'effort sur la partie web.
 
 #### Découvrabilité
 
-Nous avons besoin d'une présence sur les stores (Google Play, Apple Store) pour pouvoir etre découvert par nos jeunes
+Nous avons besoin d'une présence sur les stores (Google Play, Apple Store) pour pouvoir être découvert par nos jeunes.
 
 ### Proposition
 
-Il serait possible de se concentrer sur le développement sur la partie web (Progressive Web App)
+Il serait possible de se concentrer sur le développement sur la partie web (Progressive Web App).
 
-Le site serait adapté à l'affichage mobile (Responsive Design)
+Le site serait adapté à l'affichage mobile (Responsive Design).
 
-Le site serait affiché dans l'application (`WebView`) de manière relativement transparente pour l'utilisateur
+Le site serait affiché dans l'application (`WebView`) de manière relativement transparente pour l'utilisateur.
 
-Nous pourrions transitionner lentement de manière transparente
+Nous pourrions transitionner lentement de manière transparente.
 
 ### Conséquences
 
 #### Une plateforme principale à maintenir
 
-La maintenance et l'évolution serait facilitée : il y aura que le web à vérifier
+La maintenance et l'évolution seraient facilitées : il y aura que le web à vérifier.
 
-Android et iOS pourraient etre vérifié d'une manière moins fréquente
+Android et iOS pourraient être vérifié d'une manière moins fréquente.
 
 #### Moins de dépendances
 
-À terme, nous aurions moins de dépendances, car il resterait principalement les dépendances web
+À terme, nous aurions moins de dépendances, car il resterait principalement les dépendances web.
 
-Seul React Native et une petite sélection de dépendances liées à cet écosystème resterait
+Seul React Native et une petite sélection de dépendances liées à cet écosystème resterait.
 
-Les mises à jour de dépendance seraient plus facile, nous passerons moins de temps à les faire, et on pourrait utiliser ce temps pour travailler sur d'autres sujets techniques de fond
+Les mises à jour de dépendance seraient plus faciles, nous passerons moins de temps à les faire, et on pourrait utiliser ce temps pour travailler sur d'autres sujets techniques de fond.
 
-#### Développment simplifié
+#### Développement simplifié
 
-Les possibilités de développement sur le web évoluent rapidement, il y a des choses qui deviennent facile à faire car les navigateurs font de plus en plus de travail tout seul
+Les possibilités de développement sur le web évoluent rapidement, il y a des choses qui deviennent facile à faire car les navigateurs font de plus en plus de travail tout seul.
 
-Exemple : `grid-template-areas` qui permettent de positionner les éléments graphiques de manière extrèment simple ;
+Exemple : `grid-template-areas` qui permettent de positionner les éléments graphiques de manière extrêmement simple ;
 [exemple minimaliste](https://codepen.io/seyedi/full/bGoZjzX) : la disposition des différents éléments dans la page se fait simplement avec les lignes suivantes
 
 ```css
@@ -344,13 +344,13 @@ grid-template-areas:
 
 ##### De nouvelles possibilités
 
-Dans ces nombreuses évolutions, le web permet de faire des choses facilement qui aurait été extrèmement difficile à faire en React Native seul
+Dans ces nombreuses évolutions, le web permet de faire des choses facilement qui auraient été extrêmement difficile à faire en React Native seul.
 
 Exemple : les `ViewTransition` qui permettent très facilement de faire une animation en passant d'une page à une autre ;
-[exemple minimaliste](https://http203-playlist.netlify.app/) : quand on clique sur le lien, on change d'URL, on change de page, et il y a une animation pendant le changement de page
+[exemple minimaliste](https://http203-playlist.netlify.app/) : quand on clique sur le lien, on change d'URL, on change de page, et il y a une animation pendant le changement de page.
 
-#### Déploiement Continue
+#### Déploiement Continu
 
-Avec un site web, il serait possible de déployer plusieurs fois par jours très facilement
+Avec un site web, il serait possible de déployer plusieurs fois par jours très facilement.
 
-Nous continuerons de déployer sur les stores de manières moins fréquentes
+Nous continuerons de déployer sur les stores de manière moins fréquente.
