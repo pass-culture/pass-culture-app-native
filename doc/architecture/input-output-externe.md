@@ -7,12 +7,11 @@ flowchart TB
     Google_Recaptcha["Google Recaptcha"]
     Ubble["Ubble"]
     Google["Google SSO"]
-    Educonnect["EduConnect ?"]
-    DMS["Démarche Simplifiée ?"]
+    Educonnect["EduConnect"]
+    DMS["Démarche Simplifiée"]
   end
   subgraph tracking
     Algolia_Analytics["Algolia Analytics : tracking actions"]
-    Amplitude["Amplitude : traking actions"]
     AppsFlyer["AppsFlyer : traking downloads"]
     Firebase_Analytics["Firebase Analytics : tracking actions"]
   end
@@ -36,7 +35,7 @@ flowchart TB
     Google["Google Analytics : firebase traking"]
     GCP["GCP ? Bff SEO social"]
     Algolia["Algolia : recherche"]
-    Typeform["Typeform ?"]
+    Typeform["Typeform"]
     Batch["Batch : notification et modal in app"]
     Google_Maps["Google Maps"]
     Contentful["Contentful : gestion de contenu : home, home thématique, playlists"]
@@ -60,8 +59,8 @@ architecture-beta
   service Google_Recaptcha(cloud)[Google Recaptcha] in identification
   service Ubble(cloud)[Ubble] in identification
   service Google(cloud)[Google SSO] in identification
-  service Educonnect(cloud)[EduConnect] in identification %% ?
-  service DMS(cloud)[Demarche Simplifiee] in identification %% ?
+  service Educonnect(cloud)[EduConnect] in identification
+  service DMS(cloud)[Demarche Simplifiee] in identification
 
   App:R --> L:Google_Recaptcha
   App:R --> L:Ubble
@@ -70,12 +69,10 @@ architecture-beta
   App:R --> L:DMS
 
   service Algolia_Analytics(cloud)[Algolia Analytics] in tracking
-  service Amplitude(cloud)[Amplitude tracking actions] in tracking
   service AppsFlyer(cloud)[AppsFlyer tracking downloads] in tracking
   service Firebase_Analytics(cloud)[Firebase Analytics tracking actions] in tracking
 
   App:B --> T:Algolia_Analytics
-  App:B --> T:Amplitude
   App:B --> T:AppsFlyer
   App:B --> T:Firebase_Analytics
 
@@ -96,7 +93,7 @@ architecture-beta
   service Google_Analytics(cloud)[Google Analytics firebase tracking] in others
   service GCP(cloud)[GCP Bff SEO social] in others %% ?
   service Algolia(cloud)[Algolia recherche] in others
-  service typeform(cloud)[Typeform] in others %% ?
+  service typeform(cloud)[Typeform] in others
   service batch(cloud)[Batch notification et modal in app] in others
   service Google_Maps(cloud)[Google Maps] in others
   service Contentful(cloud)[Contentful gestion de contenu home et home thematique et playlists] in others
