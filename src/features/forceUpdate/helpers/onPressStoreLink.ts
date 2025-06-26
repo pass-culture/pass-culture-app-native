@@ -13,7 +13,7 @@ const clearStorageAndReload = (): void => {
 
   const location = globalThis.window.location
   const url = new URL(location.href)
-  url.searchParams.set(QUERY_PARAMETER_THAT_CLEAR_STUFF, Math.random().toString()) // force to bypass HTML cache
+  url.searchParams.set(QUERY_PARAMETER_THAT_CLEAR_STUFF, Date.now().toString()) // force to bypass HTML cache
   location.assign(url)
 }
 
