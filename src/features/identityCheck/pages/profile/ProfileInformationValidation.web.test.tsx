@@ -1,6 +1,6 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
@@ -8,7 +8,6 @@ import { useAddress } from 'features/identityCheck/pages/profile/store/addressSt
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -46,6 +45,12 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
+useRoute.mockReturnValue({
+  params: {
+    type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+  },
+})
+
 describe('ProfileInformationValidation', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -56,9 +61,7 @@ describe('ProfileInformationValidation', () => {
   })
 
   it('should render correctly', async () => {
-    const { container } = renderProfileInformationValidation({
-      type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-    })
+    const { container } = renderProfileInformationValidation()
 
     await screen.findByText('Informations personnelles')
 
@@ -68,10 +71,6 @@ describe('ProfileInformationValidation', () => {
   })
 })
 
-const renderProfileInformationValidation = (navigationParams: { type: string }) => {
-  const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    SubscriptionRootStackParamList,
-    'ProfileInformationValidation'
-  >
-  return render(reactQueryProviderHOC(<ProfileInformationValidation {...navProps} />))
+const renderProfileInformationValidation = () => {
+  return render(reactQueryProviderHOC(<ProfileInformationValidation />))
 }

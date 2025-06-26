@@ -1,10 +1,9 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { ActivityTypesResponse } from 'api/gen'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -14,6 +13,10 @@ import { SetStatus } from './SetStatus'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
+useRoute.mockReturnValue({
+  params: { type: ProfileTypes.IDENTITY_CHECK },
+})
+
 describe('<SetStatus/>', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -22,7 +25,7 @@ describe('<SetStatus/>', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
+      const { container } = renderSetStatus()
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -33,10 +36,6 @@ describe('<SetStatus/>', () => {
   })
 })
 
-const renderSetAddress = (navigationParams: { type: string }) => {
-  const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    SubscriptionRootStackParamList,
-    'SetStatus'
-  >
-  return render(reactQueryProviderHOC(<SetStatus {...navProps} />))
+const renderSetStatus = () => {
+  return render(reactQueryProviderHOC(<SetStatus />))
 }
