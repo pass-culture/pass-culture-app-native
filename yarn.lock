@@ -8547,8 +8547,8 @@ __metadata:
     react-native-web-linear-gradient: ^1.1.2
     react-native-web-lottie: ^1.4.4
     react-native-web-swiper: 2.2.4
-    react-native-webview: ^11.26.1
-    react-native-youtube-iframe: ^2.2.2
+    react-native-webview: ^13.15.0
+    react-native-youtube-iframe: ^2.3.0
     react-query: 3.39.3
     react-test-renderer: 18.3.1
     react-window: ^1.8.9
@@ -12627,17 +12627,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"escape-string-regexp@npm:2.0.0, escape-string-regexp@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "escape-string-regexp@npm:2.0.0"
-  checksum: 9f8a2d5743677c16e85c810e3024d54f0c8dea6424fad3c79ef6666e81dd0846f7437f5e729dfcdac8981bc9e5294c39b4580814d114076b8d36318f46ae4395
-  languageName: node
-  linkType: hard
-
 "escape-string-regexp@npm:^1.0.5":
   version: 1.0.5
   resolution: "escape-string-regexp@npm:1.0.5"
   checksum: 6092fda75c63b110c706b6a9bfde8a612ad595b628f0bd2147eea1d3406723020810e591effc7db1da91d80a71a737a313567c5abb3813e8d9c71f4aa595b410
+  languageName: node
+  linkType: hard
+
+"escape-string-regexp@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "escape-string-regexp@npm:2.0.0"
+  checksum: 9f8a2d5743677c16e85c810e3024d54f0c8dea6424fad3c79ef6666e81dd0846f7437f5e729dfcdac8981bc9e5294c39b4580814d114076b8d36318f46ae4395
   languageName: node
   linkType: hard
 
@@ -20949,22 +20949,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-webview@npm:^11.26.1":
-  version: 11.26.1
-  resolution: "react-native-webview@npm:11.26.1"
+"react-native-webview@npm:^13.15.0":
+  version: 13.15.0
+  resolution: "react-native-webview@npm:13.15.0"
   dependencies:
-    escape-string-regexp: 2.0.0
+    escape-string-regexp: ^4.0.0
     invariant: 2.2.4
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: d2f95a89e944a2f1e8cf402e4e274f3568edae42e7ef190915e9fba8004a01d699c962459bdc9688c159060538e90aea3017cab24e6f4112021cbbc10ef57104
+  checksum: 1c843206108358faef5cd8e25834de729a90319c3fa3f765923536fdd99b86b07a3e850b89ebe6503725a022dd9dddd5de76ef6e102d290cc5935dcf9c60198d
   languageName: node
   linkType: hard
 
-"react-native-youtube-iframe@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "react-native-youtube-iframe@npm:2.2.2"
+"react-native-youtube-iframe@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "react-native-youtube-iframe@npm:2.3.0"
   dependencies:
     events: ^3.2.0
   peerDependencies:
@@ -20977,7 +20977,7 @@ __metadata:
       optional: true
     react-native-webview:
       optional: true
-  checksum: 56fb4c8dc4b5d5b8f767ccaf01ae64eacdc8fdf47e53113dd364c0a1275c5b54fab184fe4835a6a46cf19264dbc074ed416120424e123c36b8116a87c968fcaf
+  checksum: c549f3557c30fa9236eb7209ad3dac95482e62319350ddcfdfacb7cb10ca50e822c1ae553afd6fc3b22408a9ae14e3119dcd99ae6c73da50cdb286e8c9f5812f
   languageName: node
   linkType: hard
 

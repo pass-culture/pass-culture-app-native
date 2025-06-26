@@ -1,6 +1,5 @@
 import React, { RefObject, useCallback, useEffect, useState } from 'react'
 import { useWindowDimensions, AppState } from 'react-native'
-import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -14,8 +13,10 @@ import { analytics } from 'libs/analytics/provider'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
+import { YoutubePlayer, YoutubePlayerRef } from './YoutubePlayer'
+
 interface VideoPlayerNativeProps extends VideoPlayerProps {
-  playerRef: RefObject<YoutubeIframeRef>
+  playerRef: RefObject<YoutubePlayerRef>
 }
 
 export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
@@ -92,18 +93,12 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
           height={playerHeight}
           width={playerWidth}
           play={isPlaying}
+          noThumbnail
           onReady={playVideo}
           videoId={youtubeVideoId}
           onChangeState={onChangeState}
           onError={() => {
             setShowErrorView(true)
-          }}
-          forceAndroidAutoplay
-          // Disable webview player scroll
-          webViewProps={{
-            overScrollMode: 'never',
-            bounces: false,
-            scrollEnabled: false,
           }}
         />
       </StyledVideoPlayerContainer>

@@ -191,51 +191,12 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
     }
   />,
   <View
-    style={
-      [
-        {
-          "flex": 1,
-          "overflow": "hidden",
-        },
-        undefined,
-      ]
+    source={
+      {
+        "uri": "https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs",
+      }
     }
-  >
-    <RNCWebView
-      cacheEnabled={true}
-      injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
-      injectedJavaScriptForMainFrameOnly={true}
-      javaScriptEnabled={true}
-      messagingEnabled={false}
-      onContentProcessDidTerminate={[Function]}
-      onHttpError={[Function]}
-      onLoadingError={[Function]}
-      onLoadingFinish={[Function]}
-      onLoadingProgress={[Function]}
-      onLoadingStart={[Function]}
-      onMessage={[Function]}
-      onShouldStartLoadWithRequest={[Function]}
-      source={
-        {
-          "uri": "https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs",
-        }
-      }
-      style={
-        [
-          {
-            "flex": 1,
-            "overflow": "hidden",
-          },
-          {
-            "backgroundColor": "#ffffff",
-          },
-          undefined,
-        ]
-      }
-      testID="FAQ-webview"
-      textInteractionEnabled={true}
-      useSharedProcessPool={true}
-    />
-  </View>,
+    testID="FAQ-webview"
+  />,
 ]
 `;
