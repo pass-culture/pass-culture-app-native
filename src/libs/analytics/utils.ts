@@ -93,11 +93,11 @@ export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperti
 const buildSearchDate = (searchState: SearchState) => {
   const startDate =
     searchState.date?.selectedDate ?? searchState.timeRange?.[0] ?? searchState.beginningDatetime
-  const endDate = searchState.timeRange?.[1] ?? searchState.endingDatetime
-  const option = searchState.date?.option ?? searchState.calendarFilterId
+  const endDate = searchState.timeRange?.[1] ?? searchState.endingDatetime ?? null
+  const searchFilter = searchState.date?.option ?? searchState.calendarFilterId ?? null
 
   if (startDate) {
-    return JSON.stringify({ startDate, endDate, option })
+    return JSON.stringify({ startDate, endDate, searchFilter })
   }
   return undefined
 }
