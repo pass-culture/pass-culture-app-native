@@ -354,8 +354,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     [
                       [
                         {
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#cbcdd2",
+                          "borderColor": "#161617",
                           "borderRadius": 4,
                           "borderWidth": 1,
                           "marginHorizontal": 0,
@@ -422,39 +421,37 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       [
                         {
                           "position": "absolute",
-                          "right": 0,
-                          "top": 0,
+                          "right": 8,
+                          "top": 8,
                         },
                       ]
                     }
                   >
                     <View
-                      status="cette année"
+                      backgroundColor="#91e1b5"
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "flex-start",
                             "backgroundColor": "#91e1b5",
-                            "borderBottomLeftRadius": 8,
-                            "borderRadius": 1,
-                            "borderTopRightRadius": 3,
-                            "paddingHorizontal": 12,
+                            "borderRadius": 4,
+                            "flexDirection": "row",
+                            "paddingHorizontal": 8,
                             "paddingVertical": 4,
-                            "textAlign": "center",
                           },
                         ]
                       }
+                      testID="tagWrapper"
                     >
                       <Text
-                        accessibilityHidden={true}
-                        status="cette année"
                         style={
                           [
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "lineHeight": 16,
                             },
                           ]
                         }
@@ -608,8 +605,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderRadius": 4,
                         "borderWidth": 1,
                         "marginHorizontal": 4,
@@ -682,39 +678,37 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       [
                         {
                           "position": "absolute",
-                          "right": 0,
-                          "top": 0,
+                          "right": 8,
+                          "top": 8,
                         },
                       ]
                     }
                   >
                     <View
-                      status="à venir"
+                      backgroundColor="#f9df81"
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "flex-start",
-                            "backgroundColor": "#320096",
-                            "borderBottomLeftRadius": 8,
-                            "borderRadius": 1,
-                            "borderTopRightRadius": 3,
-                            "paddingHorizontal": 12,
+                            "backgroundColor": "#f9df81",
+                            "borderRadius": 4,
+                            "flexDirection": "row",
+                            "paddingHorizontal": 8,
                             "paddingVertical": 4,
-                            "textAlign": "center",
                           },
                         ]
                       }
+                      testID="tagWrapper"
                     >
                       <Text
-                        accessibilityHidden={true}
-                        status="à venir"
                         style={
                           [
                             {
-                              "color": "#ffffff",
+                              "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "lineHeight": 16,
                             },
                           ]
                         }
@@ -1341,8 +1335,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderRadius": 4,
                         "borderWidth": 1,
                         "marginHorizontal": 4,
@@ -1400,39 +1393,37 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       [
                         {
                           "position": "absolute",
-                          "right": 0,
-                          "top": 0,
+                          "right": 8,
+                          "top": 8,
                         },
                       ]
                     }
                   >
                     <View
-                      status="passé"
+                      backgroundColor="#f1f1f4"
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "flex-start",
                             "backgroundColor": "#f1f1f4",
-                            "borderBottomLeftRadius": 8,
-                            "borderRadius": 1,
-                            "borderTopRightRadius": 3,
-                            "paddingHorizontal": 12,
+                            "borderRadius": 4,
+                            "flexDirection": "row",
+                            "paddingHorizontal": 8,
                             "paddingVertical": 4,
-                            "textAlign": "center",
                           },
                         ]
                       }
+                      testID="tagWrapper"
                     >
                       <Text
-                        accessibilityHidden={true}
-                        status="passé"
                         style={
                           [
                             {
-                              "color": "#696a6f",
+                              "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "lineHeight": 16,
                             },
                           ]
                         }
@@ -1576,8 +1567,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     [
                       [
                         {
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#cbcdd2",
+                          "borderColor": "#161617",
                           "borderRadius": 4,
                           "borderWidth": 1,
                           "marginHorizontal": 0,
@@ -1659,39 +1649,37 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       [
                         {
                           "position": "absolute",
-                          "right": 0,
-                          "top": 0,
+                          "right": 8,
+                          "top": 8,
                         },
                       ]
                     }
                   >
                     <View
-                      status="cette année"
+                      backgroundColor="#91e1b5"
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "flex-start",
                             "backgroundColor": "#91e1b5",
-                            "borderBottomLeftRadius": 8,
-                            "borderRadius": 1,
-                            "borderTopRightRadius": 3,
-                            "paddingHorizontal": 12,
+                            "borderRadius": 4,
+                            "flexDirection": "row",
+                            "paddingHorizontal": 8,
                             "paddingVertical": 4,
-                            "textAlign": "center",
                           },
                         ]
                       }
+                      testID="tagWrapper"
                     >
                       <Text
-                        accessibilityHidden={true}
-                        status="cette année"
                         style={
                           [
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "lineHeight": 16,
                             },
                           ]
                         }

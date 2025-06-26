@@ -327,28 +327,30 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               }
             >
               <View
-                color="Aquamarine"
+                backgroundColor="#f1f1f4"
                 style={
                   [
                     {
-                      "backgroundColor": "#0E8474",
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 4,
-                      "paddingBottom": 4,
-                      "paddingLeft": 4,
-                      "paddingRight": 4,
-                      "paddingTop": 4,
+                      "flexDirection": "row",
+                      "paddingHorizontal": 8,
+                      "paddingVertical": 4,
                     },
                   ]
                 }
+                testID="tagWrapper"
               >
                 <Text
                   style={
                     [
                       {
-                        "color": "#ffffff",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
-                        "lineHeight": 19.2,
+                        "lineHeight": 16,
                       },
                     ]
                   }

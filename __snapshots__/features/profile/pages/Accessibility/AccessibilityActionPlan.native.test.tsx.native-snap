@@ -3062,58 +3062,47 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           ]
         }
       />
-      <Text
+      <View
+        gap={6}
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
+              "gap": 24,
             },
           ]
         }
       >
-        Plan annuel 2025
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityRole="list"
-        style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityRole="none"
+        <Text
           style={
             [
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              },
+            ]
+          }
+        >
+          Plan annuel 2025
+        </Text>
+        <View
+          accessibilityRole="list"
+          style={
+            [
+              {
+                "flexDirection": "column",
+                "paddingLeft": 0,
               },
             ]
           }
         >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3122,77 +3111,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Réaliser un audit interne sur les parcours clés de la version web
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Réaliser un audit interne sur les parcours clés de la version web
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3201,77 +3206,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Valider la certification “Développer des sites web accessibles” (tous les développeurs front-end)
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Valider la certification “Développer des sites web accessibles” (tous les développeurs front-end)
                  
-                - 
-                En cours
+                <View
+                  backgroundColor="#f1f1f4"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f1f1f4",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    En cours
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3280,77 +3301,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Former un développeur à l’audit d’accessibilité numérique des applications mobiles
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Former un développeur à l’audit d’accessibilité numérique des applications mobiles
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3359,77 +3396,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Mettre en place un process de vérification d’accessibilité RGAA pour les nouvelles fonctionnalités
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Mettre en place un process de vérification d’accessibilité RGAA pour les nouvelles fonctionnalités
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3438,77 +3491,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Revoir l’accessibilité de tous les mails transactionnels
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Revoir l’accessibilité de tous les mails transactionnels
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3517,77 +3586,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Atteindre 100% d’accessibilité de la version web sur les parcours clés
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Atteindre 100% d’accessibilité de la version web sur les parcours clés
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3596,77 +3681,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Informer des modalités de mises en accessibilité des offres
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Informer des modalités de mises en accessibilité des offres
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3675,77 +3776,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Renforcer la visibilité sur le pass d’offres accessibles auprès des publics concernés (partenariats et inscriptions d’AC spécialisées…)
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Renforcer la visibilité sur le pass d’offres accessibles auprès des publics concernés (partenariats et inscriptions d’AC spécialisées…)
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3754,77 +3871,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Proposer un mode sombre aux utilisateurs
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Proposer un mode sombre aux utilisateurs
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3833,58 +3966,86 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Mettre en place un design system 100% accessible
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Mettre en place un design system 100% accessible
                  
-                - 
-                Prochainement
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -3900,58 +4061,47 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           ]
         }
       />
-      <Text
+      <View
+        gap={6}
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
+              "gap": 24,
             },
           ]
         }
       >
-        Plan annuel 2024
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityRole="list"
-        style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityRole="none"
+        <Text
           style={
             [
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              },
+            ]
+          }
+        >
+          Plan annuel 2024
+        </Text>
+        <View
+          accessibilityRole="list"
+          style={
+            [
+              {
+                "flexDirection": "column",
+                "paddingLeft": 0,
               },
             ]
           }
         >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -3960,267 +4110,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
               <Text
                 style={
                   [
                     {
                       "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginLeft": 12,
                     },
                   ]
                 }
               >
-                Publier la déclaration d’accessibilité du site
+                Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.pro/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.pro/"
-                  >
-                    <View
-                      paddingForIcon={0}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "top": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
-                        testID="button-icon"
-                        width={16}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#eb0055",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                            },
-                          ]
-                        }
-                        typography="BodyAccentXs"
-                      >
-                        https://passculture.pro/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <Text
-                  done={true}
+                <View
+                  backgroundColor="#91e1b5"
                   style={
                     [
                       {
-                        "color": "#15884f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
                       },
                     ]
                   }
+                  testID="tagWrapper"
                 >
-                   
-                  - 
-                  Réalisé
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -4229,205 +4205,236 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux
-              <Text
-                done={true}
-                style={
-                  [
-                    {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
               <Text
                 style={
                   [
                     {
                       "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
                     },
                   ]
                 }
@@ -4495,9 +4502,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
+                        height={20}
                         testID="button-icon"
-                        width={16}
+                        width={20}
                       >
                         <Text>
                           button-icon-SVG-Mock
@@ -4518,57 +4525,61 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           [
                             {
                               "color": "#eb0055",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
-                        typography="BodyAccentXs"
+                        typography="Button"
                       >
                         https://pass.culture.fr/
                       </Text>
                     </View>
                   </View>
                 </View>
-                <Text
-                  done={true}
+                 
+                <View
+                  backgroundColor="#91e1b5"
                   style={
                     [
                       {
-                        "color": "#15884f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
                       },
                     ]
                   }
+                  testID="tagWrapper"
                 >
-                   
-                  - 
-                  Réalisé
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -4577,47 +4588,46 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
               <Text
                 style={
                   [
                     {
                       "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginLeft": 12,
                     },
                   ]
                 }
@@ -4685,9 +4695,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
+                        height={20}
                         testID="button-icon"
-                        width={16}
+                        width={20}
                       >
                         <Text>
                           button-icon-SVG-Mock
@@ -4708,57 +4718,61 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           [
                             {
                               "color": "#eb0055",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
-                        typography="BodyAccentXs"
+                        typography="Button"
                       >
                         https://passculture.pro/
                       </Text>
                     </View>
                   </View>
                 </View>
-                <Text
-                  done={true}
+                 
+                <View
+                  backgroundColor="#91e1b5"
                   style={
                     [
                       {
-                        "color": "#15884f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
                       },
                     ]
                   }
+                  testID="tagWrapper"
                 >
-                   
-                  - 
-                  Réalisé
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -4767,131 +4781,146 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Sensibilisation des équipes internes aux enjeux d’accessibilité
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
               <Text
                 style={
                   [
                     {
                       "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginLeft": 12,
                     },
                   ]
                 }
               >
-                Rendre le site
+                Sensibilisation des équipes internes aux enjeux d’accessibilité
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Rendre le site 100% accessible
                  
                 <View>
                   <View
@@ -4954,9 +4983,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
+                        height={20}
                         testID="button-icon"
-                        width={16}
+                        width={20}
                       >
                         <Text>
                           button-icon-SVG-Mock
@@ -4977,13 +5006,13 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           [
                             {
                               "color": "#eb0055",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
-                        typography="BodyAccentXs"
+                        typography="Button"
                       >
                         https://passculture.app/
                       </Text>
@@ -4991,46 +5020,47 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   </View>
                 </View>
                  
-                100% accessible
-                <Text
-                  done={false}
+                <View
+                  backgroundColor="#f1f1f4"
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f1f1f4",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
                       },
                     ]
                   }
+                  testID="tagWrapper"
                 >
-                   
-                  - 
-                  En cours
-                   - poursuivi en 2025
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    En cours - poursuivi en 2025
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -5039,78 +5069,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Améliorer la lisibilité de l’accessibilité des offres avec la mise en place des modalités d’accessibilité par offre
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Améliorer la lisibilité de l’accessibilité des offres avec la mise en place des modalités d’accessibilité par offre
                  
-                - 
-                En cours
-                 - poursuivi en 2025
+                <View
+                  backgroundColor="#f1f1f4"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f1f1f4",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    En cours - poursuivi en 2025
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -5119,78 +5164,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Mettre en place une charte graphique 100% accessible
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Mettre en place une charte graphique 100% accessible
                  
-                - 
-                Prochainement
-                 - a faire en 2025
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement - à faire en 2025
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -5199,59 +5259,86 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe
-              <Text
-                done={false}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe
                  
-                - 
-                Prochainement
-                 - a faire en 2025
+                <View
+                  backgroundColor="#f9df81"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#f9df81",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Prochainement - à faire en 2025
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -5267,58 +5354,47 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           ]
         }
       />
-      <Text
+      <View
+        gap={6}
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
+              "gap": 24,
             },
           ]
         }
       >
-        Plan annuel 2023
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityRole="list"
-        style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityRole="none"
+        <Text
           style={
             [
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              },
+            ]
+          }
+        >
+          Plan annuel 2023
+        </Text>
+        <View
+          accessibilityRole="list"
+          style={
+            [
+              {
+                "flexDirection": "column",
+                "paddingLeft": 0,
               },
             ]
           }
         >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -5327,641 +5403,722 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Formation des équipes produit aux enjeux de l’accessibilité
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Formation des équipes territoires à l’accompagnement direct de jeunes en situation de handicap
-              <Text
-                done={true}
-                style={
-                  [
-                    {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Formation des développeurs du site 
-              <View>
                 <View
-                  accessibilityLabel="https://passculture.pro/"
-                  accessibilityRole="link"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "top": 3,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="https://passculture.pro/"
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
                 >
-                  <View
-                    paddingForIcon={0}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "top": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={16}
-                      testID="button-icon"
-                      width={16}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
-                      }
-                      typography="BodyAccentXs"
-                    >
-                      https://passculture.pro/
-                    </Text>
-                  </View>
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
                 </View>
               </View>
-              <Text
-                done={true}
-                style={
-                  [
-                    {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Réalisation d’un audit d’accessibilité du site 
-              <View>
-                <View
-                  accessibilityLabel="https://passculture.pro/"
-                  accessibilityRole="link"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "top": 3,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="https://passculture.pro/"
-                >
-                  <View
-                    paddingForIcon={0}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "top": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={16}
-                      testID="button-icon"
-                      width={16}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
-                      }
-                      typography="BodyAccentXs"
-                    >
-                      https://passculture.pro/
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <Text
-                done={true}
-                style={
-                  [
-                    {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Diffusion d’information sur le pass Culture via les MDPH (Maisons départementales des personnes handicapées)
-              <Text
-                done={true}
-                style={
-                  [
-                    {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                 
-                - 
-                Réalisé
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
               <Text
                 style={
                   [
                     {
                       "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginLeft": 12,
                     },
                   ]
                 }
               >
-                Maquettage d’un nouveau site
+                Formation des équipes produit aux enjeux de l’accessibilité
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Formation des équipes territoires à l’accompagnement direct de jeunes en situation de handicap
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Formation des développeurs du site
+                 
+                <View>
+                  <View
+                    accessibilityLabel="https://passculture.pro/"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="https://passculture.pro/"
+                  >
+                    <View
+                      paddingForIcon={0}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "top": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={20}
+                        testID="button-icon"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "width": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                        typography="Button"
+                      >
+                        https://passculture.pro/
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Réalisation d’un audit d’accessibilité du site
+                 
+                <View>
+                  <View
+                    accessibilityLabel="https://passculture.pro/"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="https://passculture.pro/"
+                  >
+                    <View
+                      paddingForIcon={0}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "top": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={20}
+                        testID="button-icon"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "width": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                        typography="Button"
+                      >
+                        https://passculture.pro/
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Diffusion d’information sur le pass Culture via les MDPH (Maisons départementales des personnes handicapées)
+                 
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Maquettage d’un nouveau site 100% accessible
                  
                 <View>
                   <View
@@ -6024,9 +6181,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     >
                       <View
                         accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
+                        height={20}
                         testID="button-icon"
-                        width={16}
+                        width={20}
                       >
                         <Text>
                           button-icon-SVG-Mock
@@ -6047,13 +6204,13 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           [
                             {
                               "color": "#eb0055",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             },
                           ]
                         }
-                        typography="BodyAccentXs"
+                        typography="Button"
                       >
                         https://pass.culture.fr/
                       </Text>
@@ -6061,45 +6218,47 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   </View>
                 </View>
                  
-                100% accessible
-                <Text
-                  done={true}
+                <View
+                  backgroundColor="#91e1b5"
                   style={
                     [
                       {
-                        "color": "#15884f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
                       },
                     ]
                   }
+                  testID="tagWrapper"
                 >
-                   
-                  - 
-                  Réalisé
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6108,58 +6267,86 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -6175,58 +6362,47 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           ]
         }
       />
-      <Text
+      <View
+        gap={6}
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
+              "gap": 24,
             },
           ]
         }
       >
-        Plan annuel 2022
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityRole="list"
-        style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityRole="none"
+        <Text
           style={
             [
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              },
+            ]
+          }
+        >
+          Plan annuel 2022
+        </Text>
+        <View
+          accessibilityRole="list"
+          style={
+            [
+              {
+                "flexDirection": "column",
+                "paddingLeft": 0,
               },
             ]
           }
         >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6235,77 +6411,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Constitution du pôle Accessibilité
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Constitution du pôle Accessibilité
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6314,77 +6506,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Nomination de 2 personnes référentes sur l’accessibilité numérique
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Nomination de 2 personnes référentes sur l’accessibilité numérique
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6393,77 +6601,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Formation de l’ensemble des développeurs travaillant sur le présent site
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Formation de l’ensemble des développeurs travaillant sur le présent site
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6472,77 +6696,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Organisation d’une journée dédiée à l’accessibilité numérique avec les développeurs travaillant sur le présent site
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Organisation d’une journée dédiée à l’accessibilité numérique avec les développeurs travaillant sur le présent site
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6551,77 +6791,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Audit d’accessibilité pour le présent site
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Audit d’accessibilité pour le présent site
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6630,77 +6886,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Publication de la déclaration de mise en conformité pour le présent site
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Publication de la déclaration de mise en conformité pour le présent site
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6709,77 +6981,93 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Rencontre avec des utilisateurs en situation de handicap
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Rencontre avec des utilisateurs en situation de handicap
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
           <View
+            accessibilityRole="none"
             style={
               [
                 {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
+                  "display": "flex",
                 },
               ]
             }
@@ -6788,58 +7076,86 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               style={
                 [
                   {
-                    "height": 25.6,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Formation du pôle Communication, Marketing, Recherche
-              <Text
-                done={true}
                 style={
                   [
                     {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "height": 25.6,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                Formation du pôle Communication, Marketing, Recherche
                  
-                - 
-                Réalisé
+                <View
+                  backgroundColor="#91e1b5"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "#91e1b5",
+                        "borderRadius": 4,
+                        "flexDirection": "row",
+                        "paddingHorizontal": 8,
+                        "paddingVertical": 4,
+                      },
+                    ]
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Réalisé
+                  </Text>
+                </View>
               </Text>
-            </Text>
+            </View>
           </View>
         </View>
       </View>

@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityActionPlanSection } from 'features/profile/components/AccessibilityActionPlanSection/AccessibilityActionPlanSection'
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
-import { AccessibilityActionPlan2022 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2022'
-import { AccessibilityActionPlan2023 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2023'
-import { AccessibilityActionPlan2024 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2024'
-import { AccessibilityActionPlan2025 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2025'
+import { accessibility2022 } from 'features/profile/pages/Accessibility/accessibility2022'
+import { accessibility2023 } from 'features/profile/pages/Accessibility/accessibility2023'
+import { accessibility2024 } from 'features/profile/pages/Accessibility/accessibility2024'
+import { accessibility2025 } from 'features/profile/pages/Accessibility/accessibility2025'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { Separator } from 'ui/components/Separator'
@@ -337,13 +338,13 @@ export function AccessibilityActionPlan() {
         externalNav={{ url: 'https://passculture.pro/' }}
       />
       <StyledSeparator />
-      <AccessibilityActionPlan2025 />
+      <AccessibilityActionPlanSection title="Plan annuel 2025" items={accessibility2025} />
       <StyledSeparator />
-      <AccessibilityActionPlan2024 />
+      <AccessibilityActionPlanSection title="Plan annuel 2024" items={accessibility2024} />
       <StyledSeparator />
-      <AccessibilityActionPlan2023 />
+      <AccessibilityActionPlanSection title="Plan annuel 2023" items={accessibility2023} />
       <StyledSeparator />
-      <AccessibilityActionPlan2022 />
+      <AccessibilityActionPlanSection title="Plan annuel 2022" items={accessibility2022} />
       <Spacer.BottomScreen />
     </SecondaryPageWithBlurHeader>
   )

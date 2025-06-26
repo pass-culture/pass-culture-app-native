@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
+import { Tag } from 'ui/components/Tag/Tag'
+import { TagVariant } from 'ui/components/Tag/types'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
@@ -63,11 +65,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         <RightColumn
           hasRightTagLabel={!!rightTagLabel}
           hasBottomRightElement={!!bottomRightElement}>
-          {rightTagLabel ? (
-            <TagWrapper label={rightTagLabel}>
-              <Typo.BodyAccentXs>{rightTagLabel}</Typo.BodyAccentXs>
-            </TagWrapper>
-          ) : null}
+          {rightTagLabel ? <Tag label={rightTagLabel} variant={TagVariant.DEFAULT} /> : null}
           {bottomRightElement ? (
             <BottomRightElementContainer>{bottomRightElement}</BottomRightElementContainer>
           ) : null}
@@ -93,14 +91,6 @@ const BottomBanner = styled.View(({ theme }) => ({
   borderBottomRightRadius: BORDER_RADIUS,
   flexDirection: 'row',
   alignItems: 'center',
-}))
-
-const TagWrapper = styled.View(({ theme }) => ({
-  borderRadius: theme.tiles.borderRadius,
-  backgroundColor: theme.designSystem.color.background.subtle,
-  paddingVertical: getSpacing(0.5),
-  paddingHorizontal: getSpacing(1),
-  alignSelf: 'baseline',
 }))
 
 const CentralColumn = styled.View({

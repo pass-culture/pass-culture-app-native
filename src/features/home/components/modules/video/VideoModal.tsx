@@ -1,9 +1,8 @@
 import React, { useRef } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform } from 'react-native'
 import { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled from 'styled-components/native'
 
-import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { VideoModalProps } from 'features/home/components/modules/video/types'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
@@ -12,10 +11,11 @@ import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
-import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSwipeDirection } from 'ui/components/modals/types'
+import { Tag } from 'ui/components/Tag/Tag'
+import { TagVariant } from 'ui/components/Tag/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -83,9 +83,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />
         <StyledTagContainer>
-          <StyledTagBackground color={props.color}>
-            <StyledCaptionTag>{props.videoTag}</StyledCaptionTag>
-          </StyledTagBackground>
+          <Tag label={props.videoTag} variant={TagVariant.DEFAULT} />
         </StyledTagContainer>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Title3>{props.title}</Typo.Title3>
@@ -140,16 +138,6 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
 const StyledTagContainer = styled.View({
   alignItems: 'flex-start',
 })
-
-const StyledTagBackground = styled(View)<{ color: string }>(({ color }) => ({
-  backgroundColor: getTagColor(color),
-  padding: getSpacing(1),
-  borderRadius: theme.borderRadius.checkbox,
-}))
-
-const StyledCaptionTag = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.inverted,
-}))
 
 const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
