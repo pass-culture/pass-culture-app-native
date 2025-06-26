@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
@@ -11,7 +11,6 @@ import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useAnimationToDisplay } from 'libs/styled/useAnimationToDisplay'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
-import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -34,8 +33,6 @@ export function BeneficiaryAccountCreated() {
   const { user, refetchUser } = useAuthContext()
 
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
-  const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
   const { showShareAppModal } = useShareAppContext()
 
   const currency = useGetCurrencyToDisplay()
@@ -73,9 +70,7 @@ export function BeneficiaryAccountCreated() {
       buttonPrimary={{
         wording: 'C’est parti\u00a0!',
         onBeforeNavigate: onBeforeNavigate,
-        navigateTo: shouldNavigateToCulturalSurvey
-          ? { screen: 'CulturalSurveyIntro' }
-          : navigateToHomeConfig,
+        navigateTo: { screen: 'CulturalSurveyIntro' },
       }}>
       <ProgressBarContainer>
         <AnimatedProgressBar

@@ -7,7 +7,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { storage } from 'libs/storage'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 const mockGoBack = jest.fn()
@@ -21,8 +20,6 @@ jest.mock('features/navigation/navigationRef')
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
-const CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY = 'times_cultural_survey_has_been_requested'
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -34,10 +31,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('CulturalSurveyIntro page', () => {
-  beforeEach(() => {
-    storage.clear(CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY)
-  })
-
   describe('When FF is disabled', () => {
     beforeEach(() => {
       setFeatureFlags()
@@ -99,20 +92,6 @@ describe('CulturalSurveyIntro page', () => {
       await user.press(FAQButton)
 
       expect(navigate).toHaveBeenCalledWith('FAQWebview', undefined)
-    })
-
-    it('should increment number of times cultural survey has been seen', async () => {
-      render(<CulturalSurveyIntro />)
-      await screen.findByText('Plus tard')
-
-      render(<CulturalSurveyIntro />)
-      await screen.findByText('Plus tard')
-
-      const numberOfCulturalSurveyDisplays = await storage.readObject(
-        CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY
-      )
-
-      expect(numberOfCulturalSurveyDisplays).toEqual(2)
     })
   })
 
