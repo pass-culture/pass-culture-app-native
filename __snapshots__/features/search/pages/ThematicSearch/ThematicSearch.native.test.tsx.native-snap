@@ -2560,6 +2560,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
+                      style={
+                        [
+                          {},
+                        ]
+                      }
                       testID="OfferTile"
                     >
                       <View
@@ -2847,6 +2852,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
+                      style={
+                        [
+                          {},
+                        ]
+                      }
                       testID="OfferTile"
                     >
                       <View
@@ -3134,6 +3144,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
+                      style={
+                        [
+                          {},
+                        ]
+                      }
                       testID="OfferTile"
                     >
                       <View
@@ -3421,6 +3436,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
+                      style={
+                        [
+                          {},
+                        ]
+                      }
                       testID="OfferTile"
                     >
                       <View
