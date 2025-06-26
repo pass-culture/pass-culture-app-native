@@ -67,7 +67,7 @@ const Bullet = styled(Dot).attrs({
 
 const NestedBullet = styled(Dot).attrs(({ theme }) => ({
   size: 3,
-  fillColor: theme.colors.transparent,
+  fillColor: theme.designSystem.color.icon.lockedInverted,
 }))``
 
 const BulletContainer = styled.View(({ theme }) => ({

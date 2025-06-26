@@ -380,13 +380,13 @@ exports[`Home page should render correctly 1`] = `
                 >
                   <View
                     backgroundColor="transparent"
-                    borderColor="#6123DF"
+                    borderColor="#320096"
                     style={
                       [
                         {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
-                          "borderColor": "#6123DF",
+                          "borderColor": "#320096",
                           "borderRadius": 8,
                           "borderStyle": "solid",
                           "borderWidth": 1,

@@ -34,5 +34,5 @@ const StyledBlurry = styled(BlurView)<{
 })
 
 const TransparentBackground = styled.View(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.white, 0.5),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.locked, 0.5),
 }))

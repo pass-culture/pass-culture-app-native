@@ -48,7 +48,7 @@ const Container = styled.View(({ theme }) => {
 
 const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
   return {
-    backgroundColor: theme.ticket.backgroundColor,
+    backgroundColor: theme.designSystem.color.background.default,
     width,
     alignItems: 'center',
     maxWidth: '100%',

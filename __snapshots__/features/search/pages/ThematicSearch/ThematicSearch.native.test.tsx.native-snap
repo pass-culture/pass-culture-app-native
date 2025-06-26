@@ -319,7 +319,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   placeholder="Livres..."
                   placeholderTextColor="#696a6f"
                   returnKeyType="search"
-                  selectionColor="#696A6F"
+                  selectionColor="#696a6f"
                   style={
                     [
                       {

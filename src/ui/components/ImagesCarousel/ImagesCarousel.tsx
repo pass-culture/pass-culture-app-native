@@ -84,20 +84,20 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const StyledHeader = styled(PageHeaderWithoutPlaceholder)(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.white, 0.6),
+  backgroundColor: colorAlpha(theme.designSystem.color.background.default, 0.6),
 }))
 
 const Footer = styled.View<{ height: number }>(({ theme, height }) => ({
   position: 'absolute',
   width: '100%',
   bottom: 0,
-  backgroundColor: colorAlpha(theme.colors.white, 0.6),
-  borderColor: theme.colors.greyLight,
-  borderWidth: 1,
+  backgroundColor: theme.designSystem.color.background.default,
+  borderColor: theme.designSystem.color.border.subtle,
+  borderTopWidth: 1,
   height,
   justifyContent: 'center',
 }))

@@ -26,6 +26,6 @@ const ValidateGreenValid = styled(Validate).attrs(({ theme }) => ({
 }))``
 
 const InvalidateGreyDark = styled(Invalidate).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
   accessibilityLabel: 'Non accessible',
 }))``

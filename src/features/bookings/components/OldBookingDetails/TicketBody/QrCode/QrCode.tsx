@@ -19,4 +19,6 @@ const QrCodeContainer = styled.View({
 
 const StyledQRCode = styled(QRCode).attrs(({ theme }) => ({
   size: theme.ticket.qrCodeSize,
+  color: theme.designSystem.color.background.inverted,
+  backgroundColor: theme.designSystem.color.background.default,
 }))``
