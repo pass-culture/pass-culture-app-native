@@ -1,41 +1,33 @@
-import { TICKET_SEPARATION_HEIGHT } from 'features/bookings/components/Ticket/TicketDisplay'
-import {
-  COMPENSATE_FULL,
-  TICKET_FULL_SEPARATION_HEIGHT,
-  computeHeaderImageHeight,
-} from 'features/bookings/helpers/computeHeaderImageHeight'
-import {
-  blurImageHeight,
-  offerImageContainerMarginTop,
-} from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { getSpacing } from 'ui/theme'
+import { computeHeaderImageHeight } from 'features/bookings/helpers/computeHeaderImageHeight'
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('computeHeaderImageHeight', () => {
-  const params = {
-    topBlockHeight: 120,
-    windowHeight: 780,
-    display: 'punched' as const,
-  }
+  it.each`
+    topBlockHeight | windowHeight | display      | isAndroid | expectedHeaderImageHeight | expectedScrollContentHeight
+    ${120}         | ${780}       | ${'punched'} | ${false}  | ${236}                    | ${484}
+    ${120}         | ${780}       | ${'full'}    | ${false}  | ${280}                    | ${484}
+    ${120}         | ${780}       | ${'punched'} | ${true}   | ${268}                    | ${484}
+    ${120}         | ${780}       | ${'full'}    | ${true}   | ${312}                    | ${484}
+  `(
+    'should return headerImageHeight:$expectedHeaderImageHeight and scrollContentHeight:$expectedScrollContentHeight for computeHeaderImageHeight({topBlockHeight:$topBlockHeight, windowHeight:$windowHeight, display:$display, isAndroid:$isAndroid})',
+    ({
+      topBlockHeight,
+      windowHeight,
+      display,
+      expectedHeaderImageHeight,
+      isAndroid,
+      expectedScrollContentHeight,
+    }) => {
+      const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight({
+        topBlockHeight,
+        windowHeight,
+        display,
+        isAndroid,
+      })
 
-  const extra = getSpacing(offerImageContainerMarginTop)
-  const expectedScrollHeight = params.windowHeight - blurImageHeight
-
-  it('should compute right height for punched Ticket on web', () => {
-    const ticketSeparationOffset = TICKET_SEPARATION_HEIGHT / 4
-    const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight(params)
-
-    expect(headerImageHeight).toEqual(params.topBlockHeight + extra + ticketSeparationOffset)
-    expect(scrollContentHeight).toEqual(expectedScrollHeight)
-  })
-
-  it('should compute right height for full Ticket on web', () => {
-    const ticketSeparationOffset = TICKET_FULL_SEPARATION_HEIGHT + COMPENSATE_FULL
-    const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight({
-      ...params,
-      display: 'full' as const,
-    })
-
-    expect(headerImageHeight).toEqual(params.topBlockHeight + extra + ticketSeparationOffset)
-    expect(scrollContentHeight).toEqual(expectedScrollHeight)
-  })
+      expect(headerImageHeight).toEqual(expectedHeaderImageHeight)
+      expect(scrollContentHeight).toEqual(expectedScrollContentHeight)
+    }
+  )
 })

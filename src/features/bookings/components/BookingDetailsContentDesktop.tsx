@@ -38,7 +38,7 @@ const StyledContainer = styled.View({
 const RightBlock = styled.View<{
   headerImageHeight: number
 }>(({ headerImageHeight }) => ({
-  marginTop: headerImageHeight - getSpacing(32),
+  marginTop: headerImageHeight - getSpacing(24),
   maxWidth: MAX_WIDTH_BLOCKS,
   gap: getSpacing(4),
   paddingTop: getSpacing(10),
