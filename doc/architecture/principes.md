@@ -2,38 +2,38 @@
 
 ## Introduction
 
-Ce document à pour vocation de donner des principes et lignes directrices pour les développeurs front-end de l'app native au sein du pass Culture.
+Ce document a pour vocation de donner des principes et lignes directrices pour les développeurs front-end de l'app native au sein du pass Culture.
 
-La base de code ayant plus de 4 ans, il est important de consacrer un temps à la reflexion pour une maintenabilité sur le long terme.
+La base de code ayant plus de 4 ans, il est important de consacrer un temps à la réflexion pour une maintenabilité sur le long terme.
 
-Il sera amené à évoluer avec le temps et l'évolution des technologies utilisée.
+Il sera amené à évoluer avec le temps et l'évolution des technologies utilisées.
 
-L'objectif est d'appliquer des principes approuvés par le consensus des développeurs sans entrer dans le dogmatisme, ce qui ralentirait les développement avec pour seules raisons des arguments d'autorité et non pour le bien fondé de la base de code.
+L'objectif est d'appliquer des principes approuvés par le consensus des développeurs sans entrer dans le dogmatisme, ce qui ralentirait les développements avec pour seules raisons des arguments d'autorité et non pour le bien fondé de la base de code.
 
 ### Pourquoi une architecture ?
 
-Faire en sorte que les développeurs, quelque soit leur niveau, peuvent écrire du code en sachant à l'avance où chaque partie de son code devra aller, ainsi, moins de temps sera perdu aux interrogations quant aux problématiques redondantes.
+Faire en sorte que les développeurs, quelque soit leur niveau, puissent écrire du code en sachant à l'avance où chaque partie de son code devra aller, ainsi, moins de temps sera perdu aux interrogations quant aux problématiques redondantes.
 
 ### Qu'est-ce qu'une bonne architecture ?
 
-#### Teste les comportements de l'app sans tester l'implémentation
+#### Tester les comportements de l'app sans tester l'implémentation
 
-Un test ne devrait pas casser, si le comportement métier testé ne change pas, ainsi, si un test est déplacé, l'UI change, un nom ou une signature de fonction modifié
+Un test ne devrait pas casser si le comportement métier testé ne change pas, ainsi, si un test est déplacé, l'UI change, un nom ou une signature de fonction modifié.
 
 #### Un environnement de test stable
 
-Un simple test comme ci-dessous devrait fonctionner dans n'importe quel fichier de test
+Un simple test comme ci-dessous devrait fonctionner dans n'importe quel fichier de test :
 
 ```ts
 render(<ComplexComponent />)
 expect(true).toBeTruthy()
 ```
 
-Ce test serait là pour vérifier l'environnment de test mais devrait etre effacé avant le commit
+Ce test serait là pour vérifier l'environnement de test mais devrait être effacé avant le commit.
 
-Si il faut déjà mocker des librairies pour que ce test passe, qu'il faut trigger plusieurs rendus utiliser des `act` ou des `waitFor` sans comprendre pourquoi, c'est qu'il y a un problème dans le setup de test
+Si il faut déjà mocker des librairies pour que ce test passe, qu'il faut trigger plusieurs rendus utiliser des `act` ou des `waitFor` sans comprendre pourquoi, c'est qu'il y a un problème dans le setup de test.
 
-Si tel est le cas (et tel est le cas), la mise en place de pratiques comme le TDD restent compromises sur les tests
+Si tel est le cas (et tel est le cas), la mise en place de pratiques comme le TDD restent compromises sur les tests.
 
 #### Un contrôle total des dépendances externes
 
@@ -41,19 +41,19 @@ Que ce soit par l'utilisation de mocks, injection de dépendances ou recréation
 
 #### Un bon découplage entre le métier et l'UI
 
-Quand tel est le cas, il est possible de tester l'application à des niveaux plus contrôlables (au niveau de fonctions pures ou de hooks)
+Quand tel est le cas, il est possible de tester l'application à des niveaux plus contrôlables (au niveau de fonctions pures ou de hooks).
 
 ## Les principes
 
 ### La gestion d'état réseau avec React Query
 
-React Query est au coeur de notre application et pas utilisé à sa pleine puissance.
+React Query est au cœur de notre application et pas utilisé à sa pleine puissance.
 
-Voici quelques règles pour mieux l'utiliser
+Voici quelques règles pour mieux l'utiliser.
 
 #### Selecteurs
 
-Utiliser des sélecteurs pour filtrer / formatter les données plutot que de faire un hook custom
+Utiliser des sélecteurs pour filtrer / formater les données plutôt que de faire un hook custom.
 
 ```ts
 // ❌
@@ -69,11 +69,11 @@ const selectArtistsNb = (artists: Artists) => artists.length
 const useArtistsNumber = () => useArtistsQuery({ select: selectArtistsNb })
 ```
 
-`selectArtistsNb` est une fonction pure et testable très facilement
+`selectArtistsNb` est une fonction pure et testable très facilement.
 
 #### Contrat
 
-La query doit être entièrement retournée:
+La query doit être entièrement retournée.
 
 ```ts
 // ❌
@@ -124,7 +124,7 @@ const useArtistsMutation = () => useMutation({ queryFn: fetchArtists, queryKeys:
 #### State des queries
 
 La gestion des états des queries (RQ) dans l'app est primordiale pour s'assurer d'avoir un rendu cohérent.
-Une fois la version de RQ ≥ 4 nous pouvons utiliser:
+Une fois la version de RQ ≥ 4 nous pouvons utiliser :
 
 - `Suspense`: pour gérer le loading des composants -> `Suspense` se charge d'afficher un composant de chargement tant que la data n'est pas présente et le composant désiré le cas échéant.
 
@@ -172,7 +172,7 @@ const SomeContainer = () => (
 
 ### La gestion des composants avec React
 
-Notre architecture de composant est constituée de `pages`, de `containers` et de `presentational` composants
+Notre architecture de composants est constituée de `pages`, de `containers` et de `presentational` composants.
 
 #### Séparation of concern `page`, `containers` et `presentational` components
 
@@ -195,7 +195,7 @@ Le découpage de la page en `container` peut venir de plusieurs contraintes :
 
 ##### Les `pages`
 
-Contiennent la `navigation` et envoient ces informations via les `props` aux `containers`
+Contiennent la `navigation` et envoient ces informations via les `props` aux `containers`.
 
 ```tsx
 const ArtistsPage: FunctionComponent = () => {
@@ -211,9 +211,9 @@ const ArtistsPage: FunctionComponent = () => {
 
 ##### Les `containers`
 
-Contiennent les `hooks` et les `queries`, ainsi ils sont modulaires
+Contiennent les `hooks` et les `queries`, ainsi ils sont modulaires.
 
-Les containers sont des composants React chargés de gérer les données et la logique. Ils sont généralement utilisés pour récupérer des données depuis une source externe, gérer l’état, et transmettre les données aux composants de présentation
+Les containers sont des composants React chargés de gérer les données et la logique. Ils sont généralement utilisés pour récupérer des données depuis une source externe, gérer l'état, et transmettre les données aux composants de présentation.
 
 ```tsx
 const ArtistsPage: FunctionComponent = () => {
@@ -229,38 +229,34 @@ const ArtistsPage: FunctionComponent = () => {
 
 ##### Les `presentational` components
 
-Ce sont des composants contenant uniquement des logiques de présentation (pas de logique métier), ils ne doivent afficher que ce qui est passé en `props`
+Ce sont des composants contenant uniquement des logiques de présentation (pas de logique métier), ils ne doivent afficher que ce qui est passé en `props`.
 
-```ts
+```tsx
 // ❌
 const Component: FunctionComponent = () => {
-	return (
-		<Pressable
-			title="Bouton"
-			onPress={() => {
-				analytics.logConsultOffer()
-			}}
-		/>
-	)
+  return (
+    <Pressable
+      title="Bouton"
+      onPress={() => {
+        analytics.logConsultOffer()
+      }}
+    />
+  )
 }
 ```
 
-```ts
+```tsx
 // ✅
 const Container: FunctionComponent = () => {
-	const onPress = () => {
-		analytics.logConsultOffer()
-	}
+  const onPress = () => {
+    analytics.logConsultOffer()
+  }
 
-	return (
-		<Component title="Bouton" onPress={onPress} />
-	)
+  return <Component title="Bouton" onPress={onPress} />
 }
 
 const Component: FunctionComponent<{ title: string; onPress: () => void }> = () => {
-	return (
-		<Pressable title={title} onPress={onPress} />
-	)
+  return <Pressable title={title} onPress={onPress} />
 }
 ```
 
@@ -268,7 +264,7 @@ Ainsi le `onPress` et le `title` sont utilisés au niveau du container rendant `
 
 #### Type spécifique pour les composants
 
-Les `props` des composants devraient éviter d'etre couplées à l'API
+Les `props` des composants devraient éviter d'être couplées à l'API.
 
 ```tsx
 // ❌
@@ -295,71 +291,69 @@ const ArtistImage: FunctionComponent<Props> = ({ artistImageURL }) => {
 
 #### La composition
 
-La composition évite principalement le props drilling (passage de props en cascade) et donne plus de visibilité sur le composant
+La composition évite principalement le props drilling (passage de props en cascade) et donne plus de visibilité sur le composant.
 
-Sans composition on aura un container qui sera plus concis et plus propre à première vue, mais sera très difficile à débugger pour 2 raisons:
+Sans composition on aura un container qui sera plus concis et plus propre à première vue, mais sera très difficile à débugger pour 2 raisons :
 
 - un fichier de test par composant, donc les tests sont difficile à maintenir et à bouger
 - un manque de vue d'ensemble du composant
 
-```ts
+```tsx
 // ❌
 const Container: FunctionComponent<{ subtitle: string }> = ({ subtitle }) => {
-	return (
-		<View>
-			<Component1 />
-		</View>
-	)
+  return (
+    <View>
+      <Component1 />
+    </View>
+  )
 }
 
 const Component1: FunctionComponent<{ subtitle: string }> = ({ subtitle }) => {
-	return (
-		<>
-			<Component2 subtitle={subtitle} />
-			<Component3 />
-		</>
-	)
+  return (
+    <>
+      <Component2 subtitle={subtitle} />
+      <Component3 />
+    </>
+  )
 }
 
 const Component2: FunctionComponent<{ subtitle: string }> = ({ subtitle }) => {
-	const title = useGetTitle()
+  const title = useGetTitle()
 
-	return (
-		<>
-			<Title>{title}</Title>
-			{!!subtitle ? <Text>{subtitle}</Text> : null}
-		</>
-	)
+  return (
+    <>
+      <Title>{title}</Title>
+      {!!subtitle ? <Text>{subtitle}</Text> : null}
+    </>
+  )
 }
 
 const Component3 = () => {
-	const onPress = useOnPress()
+  const onPress = useOnPress()
 
-	return (
-		<Button title='button' onPress={onPress} />
-	)
+  return <Button title="button" onPress={onPress} />
 }
 ```
 
-```ts
+```tsx
 // ✅
 const Container: FunctionComponent<{ subtitle: string }> = ({ subtitle }) => {
-	const onPress = useOnPress()
-	const title = useGetTitle()
+  const onPress = useOnPress()
+  const title = useGetTitle()
 
-	return (
-		<View>
-			<Title>{title}</Title>
-			{!!subtitle ? <Text>{subtitle}</Text> : null}
-			<Button title='button' onPress={onPress} />
-		</View>
-	)
+  return (
+    <View>
+      <Title>{title}</Title>
+      {!!subtitle ? <Text>{subtitle}</Text> : null}
+      <Button title="button" onPress={onPress} />
+    </View>
+  )
 }
 ```
 
 ### Les tests unitaires
 
-Pour nos tests unitaires, nous devons isoler le SUT ([System Under Test](https://en.wikipedia.org/wiki/System_under_test)) du code que l'ont n'édite pas dans ce repo et qui pourrait faire des effets de bords
+Pour nos tests unitaires, nous devons isoler le SUT ([System Under Test](https://en.wikipedia.org/wiki/System_under_test)) du code que l'on n'édite pas dans ce repo et qui pourrait faire des effets de bords.
 
 Exemple :
 
@@ -387,7 +381,7 @@ Nous nous efforcerons dans le futur de déplacer un maximum de logiques métiers
 - de pouvoir consommer une donnée dans le frontend qui soit déjà au format d'affichage
 
 Cette logique est possible car nous maintenons le code de l'API, et que les routes natives ne sont utilisées que par notre app.
-Nous pouvons introduire des breakings changes grâce au versionning des routes (`/v1`, `/v2`, ...).
+Nous pouvons introduire des breakings changes grâce au versioning des routes (`/v1`, `/v2`, ...).
 
 ## TODO
 
