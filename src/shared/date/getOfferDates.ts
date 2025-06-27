@@ -6,12 +6,17 @@ import {
   getTimeStampInMillis,
 } from 'libs/parsers/formatDates'
 
-export const getOfferDates = (
-  subcategoryId: SubcategoryIdEnum,
-  dates?: number[],
-  releaseDate?: string | number,
+export const getOfferDates = ({
+  subcategoryId,
+  dates,
+  releaseDate,
+  isPlaylist,
+}: {
+  subcategoryId: SubcategoryIdEnum
+  dates?: number[]
+  releaseDate?: string | number
   isPlaylist?: boolean
-): string | undefined => {
+}): string | undefined => {
   const isOfferAMovieScreeningWithAReleaseDate =
     subcategoryId === SubcategoryIdEnum.SEANCE_CINE && typeof releaseDate === 'number' // we do this because for now, some offers' releaseDate attribute have the wrong type
 

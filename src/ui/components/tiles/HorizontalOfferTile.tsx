@@ -53,7 +53,7 @@ export const HorizontalOfferTile = ({
 }: Props) => {
   const { geolocPosition, userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { offer: offerDetails, objectID, _geoloc } = offer
-  const { subcategoryId, prices, thumbUrl, name } = offerDetails
+  const { subcategoryId, prices, thumbUrl, name, dates, releaseDate, isDuo } = offerDetails
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
 
@@ -79,19 +79,19 @@ export const HorizontalOfferTile = ({
 
   const offerId = Number(objectID)
 
-  const formattedDate = getOfferDates(
-    offerDetails.subcategoryId,
-    offerDetails.dates,
-    offerDetails.releaseDate
-  )
+  const formattedDate = getOfferDates({
+    subcategoryId,
+    dates,
+    releaseDate,
+  })
 
   const formattedPrice = getDisplayedPrice(
     prices,
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(offerDetails.subcategoryId),
-      isDuo: !!(offerDetails.isDuo && user?.isBeneficiary),
+      isFixed: getIfPricesShouldBeFixed(subcategoryId),
+      isDuo: !!(isDuo && user?.isBeneficiary),
     })
   )
 
