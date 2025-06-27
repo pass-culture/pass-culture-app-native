@@ -362,12 +362,20 @@ describe('formatToFrenchDate', () => {
 
 describe('formatToFrenchDateWithoutYear', () => {
   it.each`
-    date               | expected
-    ${OCTOBER_5_2020}  | ${'5 octobre'}
-    ${NOVEMBER_1_2020} | ${'1er novembre'}
-  `('formatToFrenchDate($dates) \t= $expected', ({ date, expected }) => {
-    expect(formatToFrenchDateWithoutYear(date)).toEqual(expected)
-  })
+    date               | withShortMonth | shouldDisplayWeekDay | expected
+    ${OCTOBER_5_2020}  | ${undefined}   | ${undefined}         | ${'5 octobre'}
+    ${NOVEMBER_1_2020} | ${undefined}   | ${undefined}         | ${'1er novembre'}
+    ${OCTOBER_5_2020}  | ${true}        | ${undefined}         | ${'5 oct.'}
+    ${OCTOBER_5_2020}  | ${true}        | ${true}              | ${'Lundi 5 oct.'}
+    ${OCTOBER_5_2020}  | ${undefined}   | ${true}              | ${'Lundi 5 octobre'}
+  `(
+    'formatToFrenchDate($dates) \t= $expected',
+    ({ date, withShortMonth, shouldDisplayWeekDay, expected }) => {
+      expect(formatToFrenchDateWithoutYear({ date, withShortMonth, shouldDisplayWeekDay })).toEqual(
+        expected
+      )
+    }
+  )
 })
 
 describe('formatDatePeriod', () => {

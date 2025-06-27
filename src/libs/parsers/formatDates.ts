@@ -35,7 +35,7 @@ export const formatToCompleteFrenchDate = ({
   shouldDisplayWeekDay?: boolean
 }) => {
   const weekDay = DAYS[date.getDay()]
-  return shouldDisplayWeekDay ? `${weekDay} ${formatToFrenchDate(date)}` : formatToFrenchDate(date)
+  return `${shouldDisplayWeekDay ? `${weekDay} ` : ''}${formatToFrenchDate(date)}`
 }
 
 export const decomposeDate = (timestamp: number) => {
@@ -50,7 +50,7 @@ export const decomposeDate = (timestamp: number) => {
 
 export const formatToFrenchDate = (date: Date) => {
   const { year } = decomposeDate(date.getTime())
-  return `${formatToFrenchDateWithoutYear(date)} ${year}`
+  return `${formatToFrenchDateWithoutYear({ date })} ${year}`
 }
 
 const isCurrentYear = (dateYear: number) => {
@@ -62,14 +62,23 @@ const formatToFrenchDateForPlaylist = ({ date, nbDates }: { date: Date; nbDates:
   const { year, capitalizedShortMonth } = decomposeDate(date.getTime())
   const startLabel = nbDates === 1 ? '' : 'Dès le '
   return isCurrentYear(year)
-    ? `${startLabel}${formatToFrenchDateWithoutYear(date, true)}`
+    ? `${startLabel}${formatToFrenchDateWithoutYear({ date, withShortMonth: true })}`
     : `${capitalizedShortMonth} ${year}`
 }
-
-export const formatToFrenchDateWithoutYear = (date: Date, withShortMonth?: boolean) => {
+// PC-36800 : refactor functions in formatDates into composition pattern
+export const formatToFrenchDateWithoutYear = ({
+  date,
+  withShortMonth,
+  shouldDisplayWeekDay,
+}: {
+  date: Date
+  withShortMonth?: boolean
+  shouldDisplayWeekDay?: boolean
+}) => {
+  const weekDay = DAYS[date.getDay()]
   const { day, month, shortMonth } = decomposeDate(date.getTime())
   const suffix = isFirstDayOfMonth(date) ? 'er' : ''
-  return `${day}${suffix} ${withShortMonth ? shortMonth : month}`
+  return `${shouldDisplayWeekDay ? `${weekDay} ` : ''}${day}${suffix} ${withShortMonth ? shortMonth : month}`
 }
 
 /**
@@ -143,7 +152,7 @@ export const formatPublicationDate = ({
 }): string | undefined => {
   if (isAfter(publicationDate, new Date())) {
     return shouldDisplayPublicationDate
-      ? `Disponible le ${formatToFrenchDateWithoutYear(publicationDate)}`
+      ? `Disponible le ${formatToFrenchDateWithoutYear({ date: publicationDate })}`
       : 'Bientôt disponible'
   }
 
