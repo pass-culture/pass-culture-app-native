@@ -9,7 +9,7 @@ on:
         type: string
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 env:
@@ -26,7 +26,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.commitHash }}
-          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
       - name: 'get package version'
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
@@ -49,7 +48,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: master
-          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
       - name: 'Author'
         run: |
           git config --global user.email "$GIT_CONFIG_EMAIL"
