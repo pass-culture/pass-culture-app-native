@@ -19,6 +19,6 @@ export const getOfferDates = (
     isPlaylist ? formatPlaylistDates(timestamps) : formatDates(timestamps)
 
   return isOfferAMovieScreeningWithAReleaseDate
-    ? formatReleaseDate(new Date(releaseDate * 1000), isPlaylist)
+    ? formatReleaseDate({ releaseDate: new Date(releaseDate * 1000), isPlaylist })
     : handleFormatDates(dates && getTimeStampInMillis(dates))
 }
