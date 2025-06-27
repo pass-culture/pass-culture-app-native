@@ -7,7 +7,7 @@ import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/g
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
+import { EditableField } from 'features/profile/components/EditableFiled/EditableField'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -20,7 +20,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 function onEmailChangeClick() {
@@ -44,84 +44,39 @@ export function PersonalData() {
 
   return (
     <SecondaryPageWithBlurHeader onGoBack={goBack} title="Informations personnelles">
-      {user?.isBeneficiary ? (
-        <React.Fragment>
-          <ViewGap gap={2}>
-            <CaptionNeutralInfo>Prénom et nom</CaptionNeutralInfo>
-            <Typo.Body>{fullname}</Typo.Body>
-          </ViewGap>
-          <StyledSeparator />
-        </React.Fragment>
-      ) : null}
-
-      <CaptionNeutralInfo>Adresse e-mail</CaptionNeutralInfo>
-      <EditContainer>
-        <EditText>{user?.email}</EditText>
-        <EditButton
-          navigateTo={getProfileNavConfig(updateEmailRoute)}
-          onPress={onEmailChangeClick}
-          wording="Modifier"
-          accessibilityLabel="Modifier e-mail"
-        />
-      </EditContainer>
-
+      <EditableField label="Prénom et nom" value={fullname} />
       <StyledSeparator />
-
-      {user?.isBeneficiary && user?.phoneNumber ? (
-        <React.Fragment>
-          <ViewGap gap={2}>
-            <CaptionNeutralInfo>Numéro de téléphone</CaptionNeutralInfo>
-            <Typo.Body>{user?.phoneNumber}</Typo.Body>
-          </ViewGap>
-          <StyledSeparator />
-        </React.Fragment>
-      ) : null}
-
-      {user?.hasPassword ? (
-        <React.Fragment>
-          <CaptionNeutralInfo>Mot de passe</CaptionNeutralInfo>
-          <EditContainer>
-            <EditText>{'*'.repeat(12)}</EditText>
-            <EditButton
-              navigateTo={getProfileNavConfig('ChangePassword')}
-              wording="Modifier"
-              accessibilityLabel="Modifier mot de passe"
-            />
-          </EditContainer>
-          <StyledSeparator />
-        </React.Fragment>
-      ) : null}
-
-      {user?.isBeneficiary ? (
-        <React.Fragment>
-          <CaptionNeutralInfo>Statut</CaptionNeutralInfo>
-          <EditContainer>
-            <EditText>{getActivityLabel(user?.activityId)}</EditText>
-            <EditButton
-              navigateTo={getProfileNavConfig('ChangeStatus')}
-              wording="Modifier"
-              accessibilityLabel="Modifier le statut"
-            />
-          </EditContainer>
-          <StyledSeparator />
-        </React.Fragment>
-      ) : null}
-
-      {user?.isBeneficiary ? (
-        <React.Fragment>
-          <CaptionNeutralInfo>Ville de résidence</CaptionNeutralInfo>
-          <EditContainer>
-            <EditText numberOfLines={2}>{city}</EditText>
-            <EditButton
-              navigateTo={getProfileNavConfig('ChangeCity')}
-              wording="Modifier"
-              accessibilityLabel="Modifier la ville de résidence"
-            />
-          </EditContainer>
-          <StyledSeparator />
-        </React.Fragment>
-      ) : null}
-
+      <EditableField
+        label="Adresse e-mail"
+        value={user?.email}
+        navigateTo={updateEmailRoute}
+        onBeforeNavigate={onEmailChangeClick}
+        accessibilityLabel="Modifier e-mail"
+      />
+      <StyledSeparator />
+      <EditableField label="Numéro de téléphone" value={user?.phoneNumber} />
+      <StyledSeparator />
+      <EditableField
+        label="Mot de passe"
+        value={'*'.repeat(12)}
+        navigateTo="ChangePassword"
+        accessibilityLabel="Modifier mot de passe"
+      />
+      <StyledSeparator />
+      <EditableField
+        label="Statut"
+        value={getActivityLabel(user?.activityId)}
+        navigateTo="ChangeStatus"
+        accessibilityLabel="Modifier le statut"
+      />
+      <StyledSeparator />
+      <EditableField
+        label="Ville de résidence"
+        value={city}
+        navigateTo="ChangeCity"
+        accessibilityLabel="Modifier la ville de résidence"
+      />
+      <StyledSeparator />
       <ViewGap gap={8}>
         <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
           <Spacer.Column numberOfSpaces={3} />
@@ -150,18 +105,3 @@ export function PersonalData() {
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),
 })
-
-const EditContainer = styled.View({
-  marginTop: getSpacing(2),
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-})
-
-const EditText = styled(Typo.Body)({
-  flexShrink: 1,
-  marginRight: getSpacing(2),
-})
-
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))

@@ -8,7 +8,6 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 import { PersonalData } from './PersonalData'
 
 jest.mock('features/auth/context/AuthContext')
-
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<PersonalData/>', () => {
