@@ -33,7 +33,10 @@ const UnmemoizedMarketingBlockExclusivity = ({
   }
   const publicationDate = offer.offer.publicationDate
   const comingSoon = publicationDate
-    ? formatPublicationDate(new Date(publicationDate * 1000), shouldDisplayPublicationDate)
+    ? formatPublicationDate({
+        publicationDate: new Date(publicationDate * 1000),
+        shouldDisplayPublicationDate,
+      })
     : undefined
   const withGradient = !!comingSoon
 

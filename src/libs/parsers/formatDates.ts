@@ -116,10 +116,13 @@ export const formatReleaseDate = (releaseDate: Date, isPlaylist?: boolean): stri
 /**
  * @param publicationDate: Date
  */
-export const formatPublicationDate = (
-  publicationDate: Date,
+export const formatPublicationDate = ({
+  publicationDate,
+  shouldDisplayPublicationDate,
+}: {
+  publicationDate: Date
   shouldDisplayPublicationDate?: boolean
-): string | undefined => {
+}): string | undefined => {
   if (isAfter(publicationDate, new Date())) {
     return shouldDisplayPublicationDate
       ? `Disponible le ${formatToFrenchDateWithoutYear(publicationDate)}`
@@ -195,7 +198,7 @@ export function formatGroupedDates(grouped: GroupResult) {
   return { formatDates, arrayDays }
 }
 
-export const getFormattedDates = (dates: string[] | undefined): string => {
+export const getFormattedDates = (dates?: string[]): string => {
   if (!dates || dates.length === 0) return ''
 
   const timestamps = getUniqueSortedTimestamps(dates?.map((date) => new Date(date).getTime()))
