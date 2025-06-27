@@ -280,11 +280,15 @@ export function getTimeZonedDate(date: Date | string, timezone: string) {
   return utcToZonedTime(utcDate, timezone)
 }
 
-export const formatDateTimezone = (
-  limitDate: string,
-  shouldDisplayWeekDay?: boolean,
+export const formatDateTimezone = ({
+  limitDate,
+  shouldDisplayWeekDay,
+  timezone,
+}: {
+  limitDate: string
+  shouldDisplayWeekDay?: boolean
   timezone?: string
-): string => {
+}): string => {
   const limit = timezone ? getTimeZonedDate(limitDate, timezone) : new Date(limitDate)
   return `${formatToCompleteFrenchDate(limit, shouldDisplayWeekDay)}, ${formatToHour(limit)}`
 }

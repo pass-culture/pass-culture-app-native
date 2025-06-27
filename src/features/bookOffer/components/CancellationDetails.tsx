@@ -23,7 +23,7 @@ export const CancellationDetails: React.FC = () => {
     message =
       new Date(limitDate) < new Date()
         ? NOT_CANCELLABLE_MESSAGE
-        : `Cette réservation peut être annulée jusqu’au ${formatDateTimezone(limitDate, false)}`
+        : `Cette réservation peut être annulée jusqu’au ${formatDateTimezone({ limitDate, shouldDisplayWeekDay: false })}`
   }
 
   if (offer.isDigital && !!activationCode) {
