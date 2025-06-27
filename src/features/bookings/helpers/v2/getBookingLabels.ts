@@ -21,7 +21,7 @@ const formatEventDateLabel = (
   format: 'date' | 'day',
   prefix?: string
 ) => {
-  return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime(getTimeZonedDate(date, timezone), shouldDisplayWeekDay) : formatToCompleteFrenchDate(getTimeZonedDate(date, timezone), shouldDisplayWeekDay)}`
+  return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime({ date: getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay }) : formatToCompleteFrenchDate({ date: getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay })}`
 }
 
 const getDateLabel = (booking: BookingResponse, properties: BookingProperties): string => {
@@ -72,7 +72,10 @@ const getDayLabel = (booking: BookingResponse, properties: BookingProperties): s
 const getHourLabel = (booking: BookingResponse, properties: BookingProperties): string => {
   if (!properties.isEvent || !booking.stock.beginningDatetime) return ''
   return formatToHour(
-    getTimeZonedDate(new Date(booking.stock.beginningDatetime), booking.stock.offer.venue.timezone)
+    getTimeZonedDate({
+      date: new Date(booking.stock.beginningDatetime),
+      timezone: booking.stock.offer.venue.timezone,
+    })
   )
 }
 

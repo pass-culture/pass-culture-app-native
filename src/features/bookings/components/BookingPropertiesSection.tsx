@@ -9,12 +9,13 @@ import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useSubcategory } from 'libs/subcategories'
 import { SectionRow } from 'ui/components/SectionRow'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Calendar as DefaultCalendar } from 'ui/svg/icons/Calendar'
 import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice as DefaultOrderPrice } from 'ui/svg/icons/OrderPrice'
 import { Profile as DefaultProfile } from 'ui/svg/icons/Profile'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BookingPropertiesSectionProps = {
@@ -41,70 +42,71 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
   return (
     <View style={style}>
       <Typo.Title4 {...getHeadingAttrs(2)}>Ma réservation</Typo.Title4>
-      <Spacer.Column numberOfSpaces={4.5} />
-      {userFullName ? (
-        <SectionRow
-          title={userFullName}
-          accessibilityLabel={`Au nom de ${userFullName}`}
-          renderTitle={(title) => (
-            <TitleNameContainer>
-              <Title>{title}</Title>
-              <Spacer.Row numberOfSpaces={2} />
-              {properties.isDuo ? (
-                <IconDuoContainer {...accessibilityAndTestId('DUO&nbsp;: Elle comporte 2 places.')}>
-                  <Duo testID="duo-icon" />
-                </IconDuoContainer>
-              ) : null}
-            </TitleNameContainer>
-          )}
-          type="clickable"
-          icon={Profile}
-        />
-      ) : null}
-      {propertiesLabels.dateLabel?.length > 0 ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={5} />
+      <StyledViewGap gap={5}>
+        {userFullName ? (
           <SectionRow
-            title={propertiesLabels.dateLabel}
+            title={userFullName}
+            accessibilityLabel={`Au nom de ${userFullName}`}
+            renderTitle={(title) => (
+              <TitleNameContainer>
+                <Title>{title}</Title>
+                {properties.isDuo ? (
+                  <IconDuoContainer
+                    {...accessibilityAndTestId('DUO&nbsp;: Elle comporte 2 places.')}>
+                    <Duo testID="duo-icon" />
+                  </IconDuoContainer>
+                ) : null}
+              </TitleNameContainer>
+            )}
+            type="clickable"
+            icon={Profile}
+          />
+        ) : null}
+        {propertiesLabels.dateLabel?.length > 0 ? (
+          <React.Fragment>
+            <SectionRow
+              title={propertiesLabels.dateLabel}
+              renderTitle={renderRowTitle}
+              type="clickable"
+              icon={Calendar}
+              accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
+            />
+          </React.Fragment>
+        ) : null}
+        {propertiesLabels.locationLabel ? (
+          <SectionRow
+            title={propertiesLabels.locationLabel}
             renderTitle={renderRowTitle}
             type="clickable"
-            icon={Calendar}
-            accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
+            icon={LocationBuilding}
+            accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
           />
-        </React.Fragment>
-      ) : null}
-      <Spacer.Column numberOfSpaces={5} />
-      {propertiesLabels.locationLabel ? (
+        ) : null}
         <SectionRow
-          title={propertiesLabels.locationLabel}
-          renderTitle={renderRowTitle}
+          title=""
+          renderTitle={() => (
+            <PriceLine
+              unitPrice={booking.stock.price}
+              quantity={booking.quantity}
+              label={booking.stock.priceCategoryLabel}
+              attributes={booking.stock.features}
+              shouldDisabledStyles
+            />
+          )}
           type="clickable"
-          icon={LocationBuilding}
-          accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
+          icon={OrderPrice}
         />
-      ) : null}
-      <Spacer.Column numberOfSpaces={5} />
-      <SectionRow
-        title=""
-        renderTitle={() => (
-          <PriceLine
-            unitPrice={booking.stock.price}
-            quantity={booking.quantity}
-            label={booking.stock.priceCategoryLabel}
-            attributes={booking.stock.features}
-            shouldDisabledStyles
-          />
-        )}
-        type="clickable"
-        icon={OrderPrice}
-      />
+      </StyledViewGap>
     </View>
   )
 }
-
+const StyledViewGap = styled(ViewGap)({
+  marginTop: getSpacing(4.5),
+})
 const TitleNameContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  gap: getSpacing(2),
 })
 
 const IconDuoContainer = styled.View({

@@ -17,13 +17,25 @@ export function formatToHour(date: Date) {
   return `${pad(date.getHours())}h${pad(date.getMinutes())}`
 }
 
-export const formatToCompleteFrenchDateTime = (date: Date, shouldDisplayWeekDay = true) => {
-  return `${formatToCompleteFrenchDate(date, shouldDisplayWeekDay)} à ${formatToHour(date)}`
+export const formatToCompleteFrenchDateTime = ({
+  date,
+  shouldDisplayWeekDay = true,
+}: {
+  date: Date
+  shouldDisplayWeekDay?: boolean
+}) => {
+  return `${formatToCompleteFrenchDate({ date, shouldDisplayWeekDay })} à ${formatToHour(date)}`
 }
 
-export const formatToCompleteFrenchDate = (date: Date, shouldDisplayWeekDay = true) => {
+export const formatToCompleteFrenchDate = ({
+  date,
+  shouldDisplayWeekDay = true,
+}: {
+  date: Date
+  shouldDisplayWeekDay?: boolean
+}) => {
   const weekDay = DAYS[date.getDay()]
-  return shouldDisplayWeekDay ? `${weekDay} ${formatToFrenchDate(date)}` : formatToFrenchDate(date)
+  return `${shouldDisplayWeekDay ? `${weekDay} ` : ''}${formatToFrenchDate(date)}`
 }
 
 export const decomposeDate = (timestamp: number) => {
@@ -38,7 +50,7 @@ export const decomposeDate = (timestamp: number) => {
 
 export const formatToFrenchDate = (date: Date) => {
   const { year } = decomposeDate(date.getTime())
-  return `${formatToFrenchDateWithoutYear(date)} ${year}`
+  return `${formatToFrenchDateWithoutYear({ date })} ${year}`
 }
 
 const isCurrentYear = (dateYear: number) => {
@@ -46,24 +58,33 @@ const isCurrentYear = (dateYear: number) => {
   return dateYear === today.getFullYear()
 }
 
-const formatToFrenchDateForPlaylist = (date: Date, nbDates: number) => {
+const formatToFrenchDateForPlaylist = ({ date, nbDates }: { date: Date; nbDates: number }) => {
   const { year, capitalizedShortMonth } = decomposeDate(date.getTime())
   const startLabel = nbDates === 1 ? '' : 'Dès le '
   return isCurrentYear(year)
-    ? `${startLabel}${formatToFrenchDateWithoutYear(date, true)}`
+    ? `${startLabel}${formatToFrenchDateWithoutYear({ date, withShortMonth: true })}`
     : `${capitalizedShortMonth} ${year}`
 }
-
-export const formatToFrenchDateWithoutYear = (date: Date, withShortMonth?: boolean) => {
+// PC-36800 : refactor functions in formatDates into composition pattern
+export const formatToFrenchDateWithoutYear = ({
+  date,
+  withShortMonth,
+  shouldDisplayWeekDay,
+}: {
+  date: Date
+  withShortMonth?: boolean
+  shouldDisplayWeekDay?: boolean
+}) => {
+  const weekDay = DAYS[date.getDay()]
   const { day, month, shortMonth } = decomposeDate(date.getTime())
   const suffix = isFirstDayOfMonth(date) ? 'er' : ''
-  return `${day}${suffix} ${withShortMonth ? shortMonth : month}`
+  return `${shouldDisplayWeekDay ? `${weekDay} ` : ''}${day}${suffix} ${withShortMonth ? shortMonth : month}`
 }
 
 /**
  * @param timestamps: Array of timestamps in millisecond
  */
-export const getUniqueSortedTimestamps = (timestamps: number[] | undefined): number[] => {
+export const getUniqueSortedTimestamps = (timestamps?: number[]): number[] => {
   if (!timestamps || timestamps.length === 0) return []
   const uniqueTimestamps = Array.from(new Set(timestamps))
   const futureTimestamps = uniqueTimestamps.filter((timestamp) => timestamp >= new Date().valueOf())
@@ -86,7 +107,7 @@ export const formatPlaylistDates = (timestamps?: number[]): string | undefined =
   const uniques = getUniqueSortedTimestamps(timestamps)
   const firstUnique = uniques[0]
   if (firstUnique) {
-    return `${formatToFrenchDateForPlaylist(new Date(firstUnique), uniques.length)}`
+    return formatToFrenchDateForPlaylist({ date: new Date(firstUnique), nbDates: uniques.length })
   }
   return undefined
 }
@@ -95,7 +116,7 @@ export const formatPlaylistDates = (timestamps?: number[]): string | undefined =
  * @param releaseDate: Date
  */
 const formatPlaylistReleaseDate = (releaseDate: Date): string => {
-  const formattedDate = formatToFrenchDateForPlaylist(releaseDate, 1)
+  const formattedDate = formatToFrenchDateForPlaylist({ date: releaseDate, nbDates: 1 })
   const { year, capitalizedShortMonth } = decomposeDate(releaseDate.getTime())
   const label = isCurrentYear(year) ? `Dès le ${formattedDate}` : `${capitalizedShortMonth} ${year}`
 
@@ -105,7 +126,13 @@ const formatPlaylistReleaseDate = (releaseDate: Date): string => {
 /**
  * @param releaseDate: Date
  */
-export const formatReleaseDate = (releaseDate: Date, isPlaylist?: boolean): string => {
+export const formatReleaseDate = ({
+  releaseDate,
+  isPlaylist,
+}: {
+  releaseDate: Date
+  isPlaylist?: boolean
+}): string => {
   const formattedDate = formatToFrenchDate(releaseDate)
 
   if (isPlaylist) return formatPlaylistReleaseDate(releaseDate)
@@ -116,13 +143,16 @@ export const formatReleaseDate = (releaseDate: Date, isPlaylist?: boolean): stri
 /**
  * @param publicationDate: Date
  */
-export const formatPublicationDate = (
-  publicationDate: Date,
+export const formatPublicationDate = ({
+  publicationDate,
+  shouldDisplayPublicationDate,
+}: {
+  publicationDate: Date
   shouldDisplayPublicationDate?: boolean
-): string | undefined => {
+}): string | undefined => {
   if (isAfter(publicationDate, new Date())) {
     return shouldDisplayPublicationDate
-      ? `Disponible le ${formatToFrenchDateWithoutYear(publicationDate)}`
+      ? `Disponible le ${formatToFrenchDateWithoutYear({ date: publicationDate })}`
       : 'Bientôt disponible'
   }
 
@@ -195,7 +225,7 @@ export function formatGroupedDates(grouped: GroupResult) {
   return { formatDates, arrayDays }
 }
 
-export const getFormattedDates = (dates: string[] | undefined): string => {
+export const getFormattedDates = (dates?: string[]): string => {
   if (!dates || dates.length === 0) return ''
 
   const timestamps = getUniqueSortedTimestamps(dates?.map((date) => new Date(date).getTime()))
@@ -272,16 +302,20 @@ export const localizeUTCDate = (someDate: Date | string) => {
   return utcDate.setMinutes(utcDate.getMinutes() - timeZoneOffest)
 }
 
-export function getTimeZonedDate(date: Date | string, timezone: string) {
+export function getTimeZonedDate({ date, timezone }: { date: Date | string; timezone: string }) {
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
 }
 
-export const formatDateTimezone = (
-  limitDate: string,
-  shouldDisplayWeekDay?: boolean,
+export const formatDateTimezone = ({
+  limitDate,
+  shouldDisplayWeekDay,
+  timezone,
+}: {
+  limitDate: string
+  shouldDisplayWeekDay?: boolean
   timezone?: string
-): string => {
-  const limit = timezone ? getTimeZonedDate(limitDate, timezone) : new Date(limitDate)
-  return `${formatToCompleteFrenchDate(limit, shouldDisplayWeekDay)}, ${formatToHour(limit)}`
+}): string => {
+  const limit = timezone ? getTimeZonedDate({ date: limitDate, timezone }) : new Date(limitDate)
+  return `${formatToCompleteFrenchDate({ date: limit, shouldDisplayWeekDay })}, ${formatToHour(limit)}`
 }

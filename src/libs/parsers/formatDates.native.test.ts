@@ -362,12 +362,20 @@ describe('formatToFrenchDate', () => {
 
 describe('formatToFrenchDateWithoutYear', () => {
   it.each`
-    date               | expected
-    ${OCTOBER_5_2020}  | ${'5 octobre'}
-    ${NOVEMBER_1_2020} | ${'1er novembre'}
-  `('formatToFrenchDate($dates) \t= $expected', ({ date, expected }) => {
-    expect(formatToFrenchDateWithoutYear(date)).toEqual(expected)
-  })
+    date               | withShortMonth | shouldDisplayWeekDay | expected
+    ${OCTOBER_5_2020}  | ${undefined}   | ${undefined}         | ${'5 octobre'}
+    ${NOVEMBER_1_2020} | ${undefined}   | ${undefined}         | ${'1er novembre'}
+    ${OCTOBER_5_2020}  | ${true}        | ${undefined}         | ${'5 oct.'}
+    ${OCTOBER_5_2020}  | ${true}        | ${true}              | ${'Lundi 5 oct.'}
+    ${OCTOBER_5_2020}  | ${undefined}   | ${true}              | ${'Lundi 5 octobre'}
+  `(
+    'formatToFrenchDate($dates) \t= $expected',
+    ({ date, withShortMonth, shouldDisplayWeekDay, expected }) => {
+      expect(formatToFrenchDateWithoutYear({ date, withShortMonth, shouldDisplayWeekDay })).toEqual(
+        expected
+      )
+    }
+  )
 })
 
 describe('formatDatePeriod', () => {
@@ -481,7 +489,7 @@ describe('formatToCompleteFrenchDate()', () => {
   `(
     'should format Date $date to string "$expectedString"',
     ({ date, expectedString }: { date: Date; expectedString: string }) => {
-      expect(formatToCompleteFrenchDate(date)).toEqual(expectedString)
+      expect(formatToCompleteFrenchDate({ date })).toEqual(expectedString)
     }
   )
 })
@@ -513,7 +521,7 @@ describe('formatReleaseDate', () => {
 
   it('should format date properly when given date is today', () => {
     const TODAY = NOVEMBER_1_2020
-    const result = formatReleaseDate(TODAY)
+    const result = formatReleaseDate({ releaseDate: TODAY })
 
     expect(result).toEqual('')
   })
@@ -521,7 +529,7 @@ describe('formatReleaseDate', () => {
   it('should format date properly when given date is before today', () => {
     const BEFORE_TODAY = OCTOBER_5_2020
 
-    const result = formatReleaseDate(BEFORE_TODAY)
+    const result = formatReleaseDate({ releaseDate: BEFORE_TODAY })
 
     expect(result).toEqual('')
   })
@@ -529,7 +537,7 @@ describe('formatReleaseDate', () => {
   it('should format date properly when given date is after today', () => {
     const AFTER_TODAY = NOVEMBER_12_2020
 
-    const result = formatReleaseDate(AFTER_TODAY)
+    const result = formatReleaseDate({ releaseDate: AFTER_TODAY })
 
     expect(result).toEqual(`Dès le 12 novembre 2020`)
   })
@@ -545,15 +553,17 @@ describe('formatPublicationDate', () => {
   })
 
   it.each`
-    displayPublicationDate | date                                   | expected
-    ${true}                | ${TODAY}                               | ${undefined}
-    ${true}                | ${AFTER_TODAY}                         | ${`Disponible le 12 novembre`}
-    ${true}                | ${DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH} | ${`Disponible le 1er novembre`}
-    ${false}               | ${AFTER_TODAY}                         | ${`Bientôt disponible`}
+    shouldDisplayPublicationDate | publicationDate                        | expected
+    ${true}                      | ${TODAY}                               | ${undefined}
+    ${true}                      | ${AFTER_TODAY}                         | ${`Disponible le 12 novembre`}
+    ${true}                      | ${DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH} | ${`Disponible le 1er novembre`}
+    ${false}                     | ${AFTER_TODAY}                         | ${`Bientôt disponible`}
   `(
-    'getFavoriteDisplayPrice({ price: $price, startPrice: $startPrice }) \t= $expected',
-    ({ displayPublicationDate, date, expected }) => {
-      expect(formatPublicationDate(date, displayPublicationDate)).toBe(expected)
+    'formatPublicationDate({ shouldDisplayPublicationDate: $shouldDisplayPublicationDate, publicationDate: $publicationDate }) \t= $expected',
+    ({ shouldDisplayPublicationDate, publicationDate, expected }) => {
+      expect(formatPublicationDate({ publicationDate, shouldDisplayPublicationDate })).toBe(
+        expected
+      )
     }
   )
 })

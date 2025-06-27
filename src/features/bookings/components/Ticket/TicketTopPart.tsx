@@ -5,6 +5,7 @@ import { BookingOfferResponseV2 } from 'api/gen'
 import { LinkToOffer } from 'features/bookings/components/LinkToOffer'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { BookFilled } from 'ui/svg/icons/BookFilled'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Stock } from 'ui/svg/icons/Stock'
@@ -18,6 +19,8 @@ type TicketTopPartProps = {
   venueInfo?: React.JSX.Element
   offer: BookingOfferResponseV2
   mapping: SubcategoriesMapping
+  ean?: string
+  expirationDate?: string
 }
 
 export const TicketTopPart = ({
@@ -28,6 +31,8 @@ export const TicketTopPart = ({
   venueInfo,
   offer,
   mapping,
+  ean,
+  expirationDate,
 }: TicketTopPartProps) => {
   return (
     <ViewGap gap={6}>
@@ -43,6 +48,18 @@ export const TicketTopPart = ({
           <Row>
             <StyledClockFilled />
             <Typo.Body>{hour}</Typo.Body>
+          </Row>
+        ) : null}
+        {expirationDate ? (
+          <Row>
+            <StyledCalendarS />
+            <Typo.Body>{expirationDate}</Typo.Body>
+          </Row>
+        ) : null}
+        {ean ? (
+          <Row>
+            <StyledBook />
+            <Typo.Body>EAN&nbsp;: {ean}</Typo.Body>
           </Row>
         ) : null}
         {isDuo ? (
@@ -67,6 +84,9 @@ const StyledCalendarS = styled(CalendarS).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))({})
 const StyledStock = styled(Stock).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))({})
+const StyledBook = styled(BookFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))({})
 

@@ -19,18 +19,18 @@ export const TicketBottomPart = ({
   isEvent,
   userEmail,
   ticket,
-  ean,
+  expirationDate,
 }: {
   isDuo: boolean
   isDigital: boolean
   isEvent: boolean
   userEmail: UserProfileResponse['email']
-  ticket: TicketResponse | null
-  ean: string | null
+  ticket: TicketResponse
+  expirationDate?: string
 }) => {
-  if (ticket?.noTicket) return <NoTicket />
+  if (ticket.noTicket) return <NoTicket />
 
-  if (ticket?.email)
+  if (ticket.email)
     return (
       <EmailWithdrawal
         isDuo={isDuo}
@@ -40,24 +40,30 @@ export const TicketBottomPart = ({
       />
     )
 
-  if (ticket?.activationCode) return <TicketCodeTitle>{ticket.activationCode.code}</TicketCodeTitle>
+  if (ticket.activationCode) return <TicketCodeTitle>{ticket.activationCode.code}</TicketCodeTitle>
 
-  if (ticket?.externalBooking)
-    return ticket?.externalBooking.data ? (
-      <ExternalBookingTicket data={ticket?.externalBooking.data} />
+  if (ticket.externalBooking)
+    return ticket.externalBooking.data ? (
+      <ExternalBookingTicket data={ticket.externalBooking.data} />
     ) : (
       <HiddenExternalBookingTicket />
     )
 
-  if (ticket?.voucher) {
-    return isEvent ? (
-      <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token ?? null} />
-    ) : (
-      <PhysicalGoodBookingTicket voucher={ticket.voucher} token={ticket.token} ean={ean} />
-    )
+  if (ticket.voucher?.data) {
+    if (isEvent) {
+      return <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token ?? null} />
+    }
+    if (ticket.token?.data)
+      return (
+        <PhysicalGoodBookingTicket
+          voucherData={ticket.voucher.data}
+          tokenData={ticket.token.data}
+          expirationDate={expirationDate}
+        />
+      )
   }
 
-  if (ticket?.token?.data) {
+  if (ticket.token?.data) {
     return isDigital ? (
       <DigitalTokenTicket token={ticket.token ?? null} />
     ) : (

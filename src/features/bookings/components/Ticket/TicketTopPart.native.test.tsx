@@ -8,42 +8,37 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const offer = mockBuilder.bookingOfferResponse()
+const nonBreakingSpace = '\u00a0'
 
 describe('TicketTopPart', () => {
-  it('should display duo block when offer is duo', async () => {
+  it('should display duo block when booking is duo', async () => {
     renderTicketTopPart({ isDuo: true })
 
     expect(screen.getByText('Pour deux personnes')).toBeOnTheScreen()
   })
 
-  it('should not display duo block when offer is not duo', async () => {
-    renderTicketTopPart({})
-
-    expect(screen.queryByText('Pour deux personnes')).not.toBeOnTheScreen()
-  })
-
-  it('should display day block when offer has a day', async () => {
+  it('should display day block when booking has a day', async () => {
     renderTicketTopPart({ day: '20 mars 2025' })
 
     expect(screen.getByText('20 mars 2025')).toBeOnTheScreen()
   })
 
-  it('should not display day block when offer has no day', async () => {
-    renderTicketTopPart({})
-
-    expect(screen.queryByText('20 mars 2025')).not.toBeOnTheScreen()
-  })
-
-  it('should display hour block when offer has an hour', async () => {
+  it('should display hour block when booking has an hour', async () => {
     renderTicketTopPart({ hour: '18h56' })
 
     expect(screen.getByText('18h56')).toBeOnTheScreen()
   })
 
-  it('should not display hour block when offer has no hour', async () => {
-    renderTicketTopPart({})
+  it('should display ean block when offer has ean', async () => {
+    renderTicketTopPart({ ean: '847093429038' })
 
-    expect(screen.queryByText('18h56')).not.toBeOnTheScreen()
+    expect(screen.getByText(`EAN${nonBreakingSpace}: 847093429038`)).toBeOnTheScreen()
+  })
+
+  it('should display expirationDate block when booking has expirationDate', async () => {
+    renderTicketTopPart({ expirationDate: 'À récupérer avant le 14 juillet 2025' })
+
+    expect(screen.getByText(`À récupérer avant le 14 juillet 2025`)).toBeOnTheScreen()
   })
 })
 
@@ -51,10 +46,14 @@ const renderTicketTopPart = ({
   hour,
   day,
   isDuo,
+  ean,
+  expirationDate,
 }: {
   hour?: string
   day?: string
   isDuo?: boolean
+  ean?: string
+  expirationDate?: string
 }) => {
   return render(
     reactQueryProviderHOC(
@@ -65,6 +64,8 @@ const renderTicketTopPart = ({
         title="Toto au cirque"
         offer={offer}
         mapping={subcategoriesMappingSnap as SubcategoriesMapping}
+        ean={ean}
+        expirationDate={expirationDate}
       />
     )
   )

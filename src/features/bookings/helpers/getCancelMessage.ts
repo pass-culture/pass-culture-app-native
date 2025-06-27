@@ -21,7 +21,10 @@ export function getCancelMessage({
   if (isFreeOfferToArchive) return archiveMessage
   if (!confirmationDate) return isDigitalBooking ? archiveMessage : ''
 
-  const formattedConfirmationDate = formatToCompleteFrenchDate(new Date(confirmationDate), false)
+  const formattedConfirmationDate = formatToCompleteFrenchDate({
+    date: new Date(confirmationDate),
+    shouldDisplayWeekDay: false,
+  })
   const defaultBookingStatusMessage = `Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le ${formattedConfirmationDate}`
   const message = {
     stillCancellable: `La réservation est annulable jusqu’au\u00a0${formattedConfirmationDate}`,
