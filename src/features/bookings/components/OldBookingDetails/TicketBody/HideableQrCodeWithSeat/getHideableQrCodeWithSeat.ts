@@ -32,10 +32,10 @@ export const getHideableQrCodeWithSeat = ({
   )
   const shouldbeHidden = isAmongCategoriesToHide && isBeforeHoursOffset && enableHideTicket
 
-  const timezonedDate = getTimeZonedDate(
-    subHours(new Date(beginningDatetime), qrCodeVisibilityHoursBeforeEvent),
-    venue?.timezone
-  )
+  const timezonedDate = getTimeZonedDate({
+    date: subHours(new Date(beginningDatetime), qrCodeVisibilityHoursBeforeEvent),
+    timezone: venue?.timezone,
+  })
   const day = formatToCompleteFrenchDate(timezonedDate, false)
   const time = formatToHour(timezonedDate)
 
