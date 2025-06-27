@@ -5116,6 +5116,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pass-culture/design-system@npm:0.1.4":
+  version: 0.1.4
+  resolution: "@pass-culture/design-system@npm:0.1.4"
+  checksum: 3fbfd5ddd7c7780a349ae1d1219cab356f85f95c207e27088dfb45ac65d4415fc735309de8c59559c74a410eeecc36a021b05d4e8d198493607a264155aa68c7
+  languageName: node
+  linkType: hard
+
 "@paulirish/trace_engine@npm:^0.0.23":
   version: 0.0.23
   resolution: "@paulirish/trace_engine@npm:0.0.23"
@@ -8350,6 +8357,7 @@ __metadata:
     "@hookform/resolvers": ^2.9.11
     "@lhci/cli": ^0.14.0
     "@openspacelabs/react-native-zoomable-view": ^2.1.5
+    "@pass-culture/design-system": 0.1.4
     "@ptomasroos/react-native-multi-slider": ^2.2.2
     "@react-native-async-storage/async-storage": ^1.17.11
     "@react-native-clipboard/clipboard": ^1.12.1
@@ -8446,7 +8454,6 @@ __metadata:
     date-fns-tz: ^2.0.0
     deepmerge: ^4.2.2
     deprecated-react-native-prop-types: ^5.0.0
-    design-system: "https://github.com/pass-culture/design-system.git#v0.0.36"
     dotenv: ^8.2.0
     dotenv-expand: ^5.1.0
     eslint: ^8.57.0
@@ -11712,13 +11719,6 @@ __metadata:
   version: 2.0.3
   resolution: "dequal@npm:2.0.3"
   checksum: 8679b850e1a3d0ebbc46ee780d5df7b478c23f335887464023a631d1b9af051ad4a6595a44220f9ff8ff95a8ddccf019b5ad778a976fd7bbf77383d36f412f90
-  languageName: node
-  linkType: hard
-
-"design-system@https://github.com/pass-culture/design-system.git#v0.0.36":
-  version: 0.0.36
-  resolution: "design-system@https://github.com/pass-culture/design-system.git#commit=0359c399b70f22000d475d9a8d550d213b622427"
-  checksum: 886b17f3ace069d0a8f06a1df866154cf1b06ba0955d04a445b5c69fe944150d26220ae965b29f216e08131083f3562a23d8a205de5a7cb817b0679e93aade2d
   languageName: node
   linkType: hard
 
