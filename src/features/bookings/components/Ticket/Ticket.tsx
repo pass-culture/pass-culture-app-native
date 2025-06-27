@@ -64,7 +64,13 @@ export const Ticket = ({
   }
   const expirationDateFormated = ({ prefix }: { prefix: string }) => {
     return booking.expirationDate
-      ? formatEventDateLabel(booking.expirationDate, offer.venue.timezone, false, 'day', prefix)
+      ? formatEventDateLabel({
+          date: booking.expirationDate,
+          timezone: offer.venue.timezone,
+          shouldDisplayWeekDay: false,
+          format: 'dateWithoutYear',
+          prefix,
+        })
       : undefined
   }
   return (

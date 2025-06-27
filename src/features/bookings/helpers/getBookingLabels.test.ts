@@ -2,9 +2,38 @@ import mockdate from 'mockdate'
 
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { getBookingLabels } from 'features/bookings/helpers'
+import { addPrefix, formatDate } from 'features/bookings/helpers/getBookingLabels'
 import { Booking } from 'features/bookings/types'
 
 describe('getBookingLabels', () => {
+  it.each`
+    prefix       | date                    | expected
+    ${'Dès le '} | ${'15 mars 2021'}       | ${'Dès le 15 mars 2021'}
+    ${'Dès le '} | ${'Lundi 15 mars 2021'} | ${'Dès le lundi 15 mars 2021'}
+  `(
+    'addPrefix($date, $shouldDisplayWeekDay, $format) \t= $expected',
+    ({ prefix, date, expected }) => {
+      expect(addPrefix({ prefix, date })).toBe(expected)
+    }
+  )
+
+  it.each`
+    shouldDisplayWeekDay | format               | expected
+    ${true}              | ${'day'}             | ${'Lundi 15 mars 2021'}
+    ${false}             | ${'day'}             | ${'15 mars 2021'}
+    ${true}              | ${'date'}            | ${'Lundi 15 mars 2021 à 18h00'}
+    ${false}             | ${'date'}            | ${'15 mars 2021 à 18h00'}
+    ${true}              | ${'dateWithoutYear'} | ${'Lundi 15 mars'}
+    ${false}             | ${'dateWithoutYear'} | ${'15 mars'}
+  `(
+    'formatDate(date: "2021-03-15T18:00:00.000Z", shouldDisplayWeekDay:$shouldDisplayWeekDay, format:$format) \t= $expected',
+    ({ shouldDisplayWeekDay, format, expected }) => {
+      expect(
+        formatDate({ date: new Date('2021-03-15T18:00:00'), shouldDisplayWeekDay, format })
+      ).toBe(expected)
+    }
+  )
+
   it('should return the correct dateLabel for permanent bookings', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isPermanent: true }
