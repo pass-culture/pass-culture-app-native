@@ -593,7 +593,7 @@ describe('BookingDetails', () => {
     })
   })
 
-  describe('BookingPageContent : when FF WIP_NEW_BOOKING_PAGE is on and offer is Event', () => {
+  describe('BookingPageContent : when FF WIP_NEW_BOOKING_PAGE is on', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
     })
@@ -873,6 +873,64 @@ describe('BookingDetails', () => {
         await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
         expect(screen.getByTestId('cinema-booking-ticket-container')).toBeOnTheScreen()
+      })
+
+      describe('Digital Booking', () => {
+        it('should render activation code when offer is digital and activation code is present', async () => {
+          renderBookingDetailsV2({
+            ...ongoingBookingV2,
+            stock: {
+              ...ongoingBookingV2.stock,
+              offer: {
+                ...ongoingBookingV2.stock.offer,
+                isDigital: true,
+              },
+            },
+            ticket: {
+              ...ongoingBookingV2.ticket,
+              noTicket: false,
+              token: {
+                data: 'TEST12',
+              },
+              activationCode: {
+                code: 'test-activation-code',
+                expirationDate: null,
+              },
+              voucher: null,
+              withdrawal: {},
+            },
+          })
+
+          await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+          expect(screen.getByText('test-activation-code')).toBeOnTheScreen()
+        })
+
+        it('should render token when offer is digital and token is present', async () => {
+          renderBookingDetailsV2({
+            ...ongoingBookingV2,
+            stock: {
+              ...ongoingBookingV2.stock,
+              offer: {
+                ...ongoingBookingV2.stock.offer,
+                isDigital: true,
+              },
+            },
+            ticket: {
+              ...ongoingBookingV2.ticket,
+              noTicket: false,
+              token: {
+                data: 'TEST12',
+              },
+              activationCode: null,
+              voucher: null,
+              withdrawal: {},
+            },
+          })
+          await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+          expect(screen.getByText('TEST12')).toBeOnTheScreen()
+        })
       })
     })
   })
