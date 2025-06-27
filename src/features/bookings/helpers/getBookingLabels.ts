@@ -14,7 +14,7 @@ import {
   isTomorrow,
 } from 'libs/parsers/formatDates'
 
-const formatEventDateLabel = (
+export const formatEventDateLabel = (
   date: Date | string,
   timezone: string,
   shouldDisplayWeekDay: boolean,
