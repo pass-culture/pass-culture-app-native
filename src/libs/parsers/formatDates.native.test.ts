@@ -545,15 +545,17 @@ describe('formatPublicationDate', () => {
   })
 
   it.each`
-    displayPublicationDate | date                                   | expected
-    ${true}                | ${TODAY}                               | ${undefined}
-    ${true}                | ${AFTER_TODAY}                         | ${`Disponible le 12 novembre`}
-    ${true}                | ${DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH} | ${`Disponible le 1er novembre`}
-    ${false}               | ${AFTER_TODAY}                         | ${`Bientôt disponible`}
+    shouldDisplayPublicationDate | publicationDate                        | expected
+    ${true}                      | ${TODAY}                               | ${undefined}
+    ${true}                      | ${AFTER_TODAY}                         | ${`Disponible le 12 novembre`}
+    ${true}                      | ${DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH} | ${`Disponible le 1er novembre`}
+    ${false}                     | ${AFTER_TODAY}                         | ${`Bientôt disponible`}
   `(
-    'getFavoriteDisplayPrice({ price: $price, startPrice: $startPrice }) \t= $expected',
-    ({ displayPublicationDate, date, expected }) => {
-      expect(formatPublicationDate(date, displayPublicationDate)).toBe(expected)
+    'formatPublicationDate({ shouldDisplayPublicationDate: $shouldDisplayPublicationDate, publicationDate: $publicationDate }) \t= $expected',
+    ({ shouldDisplayPublicationDate, publicationDate, expected }) => {
+      expect(formatPublicationDate({ publicationDate, shouldDisplayPublicationDate })).toBe(
+        expected
+      )
     }
   )
 })
