@@ -102,7 +102,7 @@ export const Ticket = ({
           userEmail={user?.email}
           isDigital={properties.isDigital ?? false}
           isEvent={properties.isEvent ?? false}
-          ean={booking.stock.offer.extraData?.ean ?? null}
+          expirationDate={expirationDateFormated({ prefix: `avant le ` })}
         />
       }
       infoBanner={
