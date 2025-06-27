@@ -21,7 +21,7 @@ export const formatEventDateLabel = (
   format: 'date' | 'day',
   prefix?: string
 ) => {
-  return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime(getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay) : formatToCompleteFrenchDate(getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay)}`
+  return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime({ date: getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay }) : formatToCompleteFrenchDate(getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay)}`
 }
 
 const getDateLabel = (booking: Booking, properties: BookingProperties): string => {

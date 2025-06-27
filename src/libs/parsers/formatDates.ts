@@ -17,7 +17,13 @@ export function formatToHour(date: Date) {
   return `${pad(date.getHours())}h${pad(date.getMinutes())}`
 }
 
-export const formatToCompleteFrenchDateTime = (date: Date, shouldDisplayWeekDay = true) => {
+export const formatToCompleteFrenchDateTime = ({
+  date,
+  shouldDisplayWeekDay = true,
+}: {
+  date: Date
+  shouldDisplayWeekDay?: boolean
+}) => {
   return `${formatToCompleteFrenchDate(date, shouldDisplayWeekDay)} à ${formatToHour(date)}`
 }
 
