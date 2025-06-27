@@ -46,6 +46,7 @@ import { SuspenseAchievements } from 'features/navigation/RootNavigator/Suspense
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
+import { SuspenseSubscriptionStackNavigator } from 'features/navigation/SubscriptionStackNavigator/SuspenseSubscriptionStackNavigator'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
@@ -346,6 +347,9 @@ const RootStackNavigator = withWebWrapper(
           </RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen name="ProfileStackNavigator">
             {() => <SuspenseProfileStackNavigator />}
+          </RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen name="SubscriptionStackNavigator">
+            {() => <SuspenseSubscriptionStackNavigator />}
           </RootStackNavigatorBase.Screen>
           {isWeb ? null : (
             <RootStackNavigatorBase.Screen
