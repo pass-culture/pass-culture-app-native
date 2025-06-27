@@ -55,7 +55,10 @@ export const SuspendedAccountUponUserRequest = () => {
   if (accountSuspensionDate?.date) {
     const suspensionDate = new Date(accountSuspensionDate.date)
     const reactivationDeadline = addDaysToDate(suspensionDate, unsuspensionDelay)
-    formattedDate = formatToCompleteFrenchDateTime(reactivationDeadline, false)
+    formattedDate = formatToCompleteFrenchDateTime({
+      date: reactivationDeadline,
+      shouldDisplayWeekDay: false,
+    })
   }
 
   return (
