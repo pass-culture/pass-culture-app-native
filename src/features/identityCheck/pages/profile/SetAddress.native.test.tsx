@@ -36,7 +36,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const user = userEvent.setup()
-
 jest.useFakeTimers()
 
 useRoute.mockReturnValue({
@@ -89,9 +88,9 @@ describe('<SetAddress/>', () => {
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
-      expect(screen.getByText(mockedSuggestedPlaces.features[0].properties.label)).toBeOnTheScreen()
-      expect(screen.getByText(mockedSuggestedPlaces.features[1].properties.label)).toBeOnTheScreen()
-      expect(screen.getByText(mockedSuggestedPlaces.features[2].properties.label)).toBeOnTheScreen()
+      expect(screen.getByText(mockedSuggestedPlaces.features[0].properties.name)).toBeOnTheScreen()
+      expect(screen.getByText(mockedSuggestedPlaces.features[1].properties.name)).toBeOnTheScreen()
+      expect(screen.getByText(mockedSuggestedPlaces.features[2].properties.name)).toBeOnTheScreen()
     })
   })
 
@@ -101,7 +100,7 @@ describe('<SetAddress/>', () => {
     const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
+    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
     await user.press(screen.getByText('Continuer'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
@@ -115,12 +114,12 @@ describe('<SetAddress/>', () => {
     const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
+    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
     await user.press(screen.getByText('Continuer'))
 
     expect(await storage.readObject('profile-address')).toMatchObject({
       state: {
-        address: mockedSuggestedPlaces.features[1].properties.label,
+        address: mockedSuggestedPlaces.features[1].properties.name,
       },
     })
   })
