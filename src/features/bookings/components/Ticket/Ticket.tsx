@@ -33,7 +33,7 @@ type TicketProps = {
   user: UserProfileResponse
   display: 'punched' | 'full'
   setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
-  ticket: TicketResponse | null | undefined
+  ticket: TicketResponse
 }
 
 export const Ticket = ({
@@ -98,7 +98,7 @@ export const Ticket = ({
       bottomContent={
         <TicketBottomPart
           isDuo={properties.isDuo ?? false}
-          ticket={ticket ?? null}
+          ticket={ticket}
           userEmail={user?.email}
           isDigital={properties.isDigital ?? false}
           isEvent={properties.isEvent ?? false}

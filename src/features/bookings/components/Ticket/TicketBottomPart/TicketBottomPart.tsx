@@ -24,12 +24,12 @@ export const TicketBottomPart = ({
   isDigital: boolean
   isEvent: boolean
   userEmail: UserProfileResponse['email']
-  ticket: TicketResponse | null
+  ticket: TicketResponse
   ean: string | null
 }) => {
-  if (ticket?.noTicket) return <NoTicket />
+  if (ticket.noTicket) return <NoTicket />
 
-  if (ticket?.email)
+  if (ticket.email)
     return (
       <EmailWithdrawal
         isDuo={isDuo}
@@ -39,16 +39,16 @@ export const TicketBottomPart = ({
       />
     )
 
-  if (ticket?.activationCode) return <TicketCode code={ticket.activationCode.code} />
+  if (ticket.activationCode) return <TicketCode code={ticket.activationCode.code} />
 
-  if (ticket?.externalBooking)
-    return ticket?.externalBooking.data ? (
-      <ExternalBookingTicket data={ticket?.externalBooking.data} />
+  if (ticket.externalBooking)
+    return ticket.externalBooking.data ? (
+      <ExternalBookingTicket data={ticket.externalBooking.data} />
     ) : (
       <HiddenExternalBookingTicket />
     )
 
-  if (ticket?.voucher) {
+  if (ticket.voucher) {
     return isEvent ? (
       <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token ?? null} />
     ) : (
@@ -56,9 +56,9 @@ export const TicketBottomPart = ({
     )
   }
 
-  if (ticket?.token?.data && isDigital) return <TicketCode code={ticket?.token?.data} />
+  if (ticket.token?.data && isDigital) return <TicketCode code={ticket.token?.data} />
 
-  if (ticket?.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
+  if (ticket.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
 
   return null
 }
