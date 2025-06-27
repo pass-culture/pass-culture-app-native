@@ -1,20 +1,19 @@
-import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
-type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetProfileBookingError'>
-
-export const SetProfileBookingError: FunctionComponent<Props> = ({ route }: Props) => {
+export const SetProfileBookingError = () => {
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
+  const { params } = useRoute<UseRouteType<'SetProfileBookingError'>>()
 
-  const offerId = route.params.offerId
+  const offerId = params.offerId
 
   const navigateToHomeButton = {
     wording: 'Retourner à l’accueil',

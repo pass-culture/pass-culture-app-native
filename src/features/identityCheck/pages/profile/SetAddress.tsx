@@ -1,7 +1,6 @@
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { debounce } from 'lodash'
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -12,10 +11,7 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import {
-  SubscriptionRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -36,10 +32,9 @@ const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
-type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetAddress'>
-
-export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
-  const type = route.params.type
+export const SetAddress = () => {
+  const { params } = useRoute<UseRouteType<'SetAddress'>>()
+  const type = params.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck
     ? {
