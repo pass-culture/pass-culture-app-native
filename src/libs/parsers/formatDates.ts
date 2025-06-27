@@ -105,7 +105,13 @@ const formatPlaylistReleaseDate = (releaseDate: Date): string => {
 /**
  * @param releaseDate: Date
  */
-export const formatReleaseDate = (releaseDate: Date, isPlaylist?: boolean): string => {
+export const formatReleaseDate = ({
+  releaseDate,
+  isPlaylist,
+}: {
+  releaseDate: Date
+  isPlaylist?: boolean
+}): string => {
   const formattedDate = formatToFrenchDate(releaseDate)
 
   if (isPlaylist) return formatPlaylistReleaseDate(releaseDate)

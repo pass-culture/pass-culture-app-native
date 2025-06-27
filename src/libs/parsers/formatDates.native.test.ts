@@ -513,7 +513,7 @@ describe('formatReleaseDate', () => {
 
   it('should format date properly when given date is today', () => {
     const TODAY = NOVEMBER_1_2020
-    const result = formatReleaseDate(TODAY)
+    const result = formatReleaseDate({ releaseDate: TODAY })
 
     expect(result).toEqual('')
   })
@@ -521,7 +521,7 @@ describe('formatReleaseDate', () => {
   it('should format date properly when given date is before today', () => {
     const BEFORE_TODAY = OCTOBER_5_2020
 
-    const result = formatReleaseDate(BEFORE_TODAY)
+    const result = formatReleaseDate({ releaseDate: BEFORE_TODAY })
 
     expect(result).toEqual('')
   })
@@ -529,7 +529,7 @@ describe('formatReleaseDate', () => {
   it('should format date properly when given date is after today', () => {
     const AFTER_TODAY = NOVEMBER_12_2020
 
-    const result = formatReleaseDate(AFTER_TODAY)
+    const result = formatReleaseDate({ releaseDate: AFTER_TODAY })
 
     expect(result).toEqual(`Dès le 12 novembre 2020`)
   })
