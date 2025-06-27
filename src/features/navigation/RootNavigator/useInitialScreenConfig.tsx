@@ -8,22 +8,16 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
-import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 
 import { RootScreenNames } from './types'
 
 export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn, user } = useAuthContext()
-  const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
 
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 
   useEffect(() => {
-    const showCulturalSurvey = shouldShowCulturalSurvey(user)
-
-    if (showCulturalSurvey === undefined) return
-
-    getInitialScreen({ isLoggedIn, showCulturalSurvey, user })
+    getInitialScreen({ isLoggedIn, user })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -32,7 +26,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
         setInitialScreen('OnboardingStackNavigator')
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, user, shouldShowCulturalSurvey])
+  }, [isLoggedIn, user])
 
   initialScreen && performanceMonitoringStoreActions.setInitialScreenName(initialScreen)
   return initialScreen
@@ -40,11 +34,9 @@ export function useInitialScreen(): RootScreenNames | undefined {
 
 async function getInitialScreen({
   isLoggedIn,
-  showCulturalSurvey,
   user,
 }: {
   isLoggedIn: boolean
-  showCulturalSurvey: boolean
   user?: UserProfileResponse
 }): Promise<RootScreenNames> {
   if (isLoggedIn && user) {
@@ -57,7 +49,8 @@ async function getInitialScreen({
       if (!hasSeenEligibleCard && user.showEligibleCard) {
         return 'EighteenBirthday'
       }
-      if (showCulturalSurvey) {
+      // If user closed app after completing activation
+      if (user?.needsToFillCulturalSurvey) {
         return 'CulturalSurveyIntro'
       }
     } catch {

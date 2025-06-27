@@ -18,7 +18,6 @@ import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
-import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 
 export const useSignInMutation = ({
   params,
@@ -73,7 +72,6 @@ const useHandleSigninSuccess = (
   setErrorMessage?: (message: string) => void
 ) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer?.id) {
@@ -95,8 +93,6 @@ const useHandleSigninSuccess = (
       navigate('RecreditBirthdayNotification')
     } else if (!hasSeenEligibleCard && user.showEligibleCard) {
       navigate('EighteenBirthday')
-    } else if (shouldShowCulturalSurvey(user)) {
-      navigate('CulturalSurveyIntro')
     } else if (offerId) {
       switch (params.from) {
         case StepperOrigin.BOOKING:
@@ -117,7 +113,7 @@ const useHandleSigninSuccess = (
     } else {
       navigateToHome()
     }
-  }, [addFavorite, navigate, offerId, params?.from, shouldShowCulturalSurvey])
+  }, [addFavorite, navigate, offerId, params?.from])
 
   return useCallback(
     async (accountState: AccountState) => {
