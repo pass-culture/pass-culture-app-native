@@ -117,14 +117,13 @@ export const ThematicHome: FunctionComponent = () => {
   } = useLocation()
   const isLocated = !!userLocation
 
-  const { onScroll, headerTransition, gradientTranslation, viewTranslation } = useOpacityTransition(
-    {
+  const { onScroll, headerTransition, gradientTranslation, viewTranslation, imageAnimatedHeight } =
+    useOpacityTransition({
       headerHeight:
         thematicHeader?.type === ThematicHeaderType.Highlight
           ? getSpacing(ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT)
           : getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT),
-    }
-  )
+    })
 
   const moduleItemId =
     'moduleItemId' in params && typeof params.moduleItemId === 'string'
@@ -195,6 +194,7 @@ export const ThematicHome: FunctionComponent = () => {
               <AnimatedHighlightThematicHomeHeader
                 {...thematicHeader}
                 gradientTranslation={gradientTranslation}
+                imageAnimatedHeight={imageAnimatedHeight}
               />
             </AnimatedHeader>
           ) : null}
@@ -203,6 +203,7 @@ export const ThematicHome: FunctionComponent = () => {
               <AnimatedCategoryThematicHomeHeader
                 {...thematicHeader}
                 gradientTranslation={gradientTranslation}
+                imageAnimatedHeight={imageAnimatedHeight}
               />
             </AnimatedHeader>
           ) : null}
