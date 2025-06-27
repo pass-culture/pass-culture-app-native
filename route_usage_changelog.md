@@ -1,4 +1,4 @@
-# v1.345.0
+# v1.346.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -8,11 +8,11 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/account/suspension_status
 - /native/v1/artists/{artist_id}
 - /native/v1/banner
-- /native/v1/bookings
-- /native/v1/cultural_survey/questions
-- /native/v1/email_validation_remaining_resends/{email}
-- /native/v1/me
-- /native/v1/me/favorites
+Pathname not found for getNativeV1Bookings
+Pathname not found for getNativeV1CulturalSurveyQuestions
+Pathname not found for getNativeV1EmailValidationRemainingResendsemail
+Pathname not found for getNativeV1Me
+Pathname not found for getNativeV1MeFavorites
 - /native/v1/me/reminders
 - /native/v1/oauth/state
 - /native/v1/offer/{offer_id}
@@ -26,6 +26,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/subscription/activity_types
 - /native/v1/subscription/profile
 - /native/v1/venue/{venue_id}
+- /native/v2/bookings
 - /native/v2/offer/{offer_id}
 - /native/v2/profile/email_update/status
 - /native/v2/subscription/stepper
@@ -73,10 +74,10 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/profile/update_email
 - /native/v1/profile/email_update/validate
 ## Unused routes:
-- /native/v1/categories
+Pathname not found for getNativeV1Categories
 - /native/v1/me/favorites/count
 - /native/v1/offer/report/reasons
-Pathname not found for getNativeV1OffereroffererIdHeadlineOffer
+- /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offers/reports
 - /native/v1/profile/email_update/status
 - /native/v1/subscription/next_step
