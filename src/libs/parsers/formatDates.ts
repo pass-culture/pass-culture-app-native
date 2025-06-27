@@ -24,10 +24,16 @@ export const formatToCompleteFrenchDateTime = ({
   date: Date
   shouldDisplayWeekDay?: boolean
 }) => {
-  return `${formatToCompleteFrenchDate(date, shouldDisplayWeekDay)} à ${formatToHour(date)}`
+  return `${formatToCompleteFrenchDate({ date, shouldDisplayWeekDay })} à ${formatToHour(date)}`
 }
 
-export const formatToCompleteFrenchDate = (date: Date, shouldDisplayWeekDay = true) => {
+export const formatToCompleteFrenchDate = ({
+  date,
+  shouldDisplayWeekDay = true,
+}: {
+  date: Date
+  shouldDisplayWeekDay?: boolean
+}) => {
   const weekDay = DAYS[date.getDay()]
   return shouldDisplayWeekDay ? `${weekDay} ${formatToFrenchDate(date)}` : formatToFrenchDate(date)
 }
@@ -302,5 +308,5 @@ export const formatDateTimezone = ({
   timezone?: string
 }): string => {
   const limit = timezone ? getTimeZonedDate({ date: limitDate, timezone }) : new Date(limitDate)
-  return `${formatToCompleteFrenchDate(limit, shouldDisplayWeekDay)}, ${formatToHour(limit)}`
+  return `${formatToCompleteFrenchDate({ date: limit, shouldDisplayWeekDay })}, ${formatToHour(limit)}`
 }
