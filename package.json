@@ -268,7 +268,7 @@
     "appcenter-cli": "^2.14.0",
     "babel-jest": "29.6.3",
     "babel-loader": "^8.2.5",
-    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-macros": "^3.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-named-asset-import": "^0.3.8",
     "babel-plugin-polyfill-corejs2": "^0.4.11",
