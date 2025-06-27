@@ -275,7 +275,7 @@ export const localizeUTCDate = (someDate: Date | string) => {
   return utcDate.setMinutes(utcDate.getMinutes() - timeZoneOffest)
 }
 
-export function getTimeZonedDate(date: Date | string, timezone: string) {
+export function getTimeZonedDate({ date, timezone }: { date: Date | string; timezone: string }) {
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
 }
@@ -289,6 +289,6 @@ export const formatDateTimezone = ({
   shouldDisplayWeekDay?: boolean
   timezone?: string
 }): string => {
-  const limit = timezone ? getTimeZonedDate(limitDate, timezone) : new Date(limitDate)
+  const limit = timezone ? getTimeZonedDate({ date: limitDate, timezone }) : new Date(limitDate)
   return `${formatToCompleteFrenchDate(limit, shouldDisplayWeekDay)}, ${formatToHour(limit)}`
 }
