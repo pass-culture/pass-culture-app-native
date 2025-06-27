@@ -34,6 +34,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     artistName,
     interactionTag,
     navigationMethod = NAVIGATION_METHOD.NAVIGATE,
+    containerWidth,
     ...offer
   } = props
 
@@ -80,11 +81,12 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   }
 
   return (
-    <View
+    <StyledContainer
       {...getHeadingAttrs(3)}
       testID="OfferTile"
       renderToHardwareTextureAndroid
-      shouldRasterizeIOS>
+      shouldRasterizeIOS
+      containerWidth={containerWidth}>
       <StyledTouchableLink
         highlight
         navigateTo={{
@@ -119,11 +121,15 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
           height={height}
         />
       </StyledTouchableLink>
-    </View>
+    </StyledContainer>
   )
 }
 
 export const OfferTile = memo(UnmemoizedOfferTile)
+
+const StyledContainer = styled(View).attrs<{ containerWidth?: number }>({})<{
+  containerWidth
+}>(({ containerWidth }) => (containerWidth ? { width: containerWidth, alignItems: 'center' } : {}))
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.designSystem.color.background.default,

@@ -46,6 +46,7 @@ export interface OfferTileProps {
   artistName?: string
   navigationMethod?: NavigationMethod
   interactionTag?: ReactNode
+  containerWidth?: number
 }
 
 export type FavoriteProps = {
