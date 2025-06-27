@@ -102,7 +102,7 @@ describe('<DatesHoursModal/>', () => {
     renderDatesHoursModal()
 
     const radioButton = screen.getByTestId(
-      `${RadioButtonDate.PRECISE_DATE} ${formatToCompleteFrenchDate(TODAY)}`
+      `${RadioButtonDate.PRECISE_DATE} ${formatToCompleteFrenchDate({ date: TODAY })}`
     )
 
     await user.press(radioButton)

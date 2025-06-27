@@ -481,7 +481,7 @@ describe('formatToCompleteFrenchDate()', () => {
   `(
     'should format Date $date to string "$expectedString"',
     ({ date, expectedString }: { date: Date; expectedString: string }) => {
-      expect(formatToCompleteFrenchDate(date)).toEqual(expectedString)
+      expect(formatToCompleteFrenchDate({ date })).toEqual(expectedString)
     }
   )
 })
