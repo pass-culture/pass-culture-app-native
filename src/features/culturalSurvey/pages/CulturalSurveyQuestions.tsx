@@ -1,5 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { LayoutChangeEvent, NativeScrollEvent, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -19,10 +18,7 @@ import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQu
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/queries/useCulturalSurveyAnswersMutation'
 import { useCulturalSurveyQuestionsQuery } from 'features/culturalSurvey/queries/useCulturalSurveyQuestionsQuery'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import {
-  CulturalSurveyRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { isCloseToBottom } from 'libs/analytics'
@@ -39,20 +35,16 @@ import { VerticalUl } from 'ui/components/Ul'
 import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type CulturalSurveyQuestionsProps = StackScreenProps<
-  CulturalSurveyRootStackParamList,
-  'CulturalSurveyQuestions'
->
-
-export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps) {
+export function CulturalSurveyQuestions() {
   const enableCulturalSurveyMandatory = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
   )
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const { push, reset } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'CulturalSurveyQuestions'>>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestionsQuery()
-  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(route.params.question)
-  const culturalSurveyProgress = useCulturalSurveyProgress(route.params.question)
+  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params.question)
+  const culturalSurveyProgress = useCulturalSurveyProgress(params.question)
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
 
@@ -61,7 +53,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
     setBottomChildrenViewHeight(height)
   }
 
-  const currentQuestion = route.params.question
+  const currentQuestion = params.question
   const { goBack } = useGoBack(...homeNavConfig)
   const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
   const [currentAnswers, setCurrentAnswers] = useState<CulturalSurveyAnswerEnum[]>([])
@@ -98,7 +90,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
   })
 
   const culturalSurveyQuestion = culturalSurveyQuestionsData?.questions?.find(
-    (question) => question.id === route.params.question
+    (question) => question.id === params.question
   )
 
   const logCulturalSurveyScrolledToBottom = useFunctionOnce(

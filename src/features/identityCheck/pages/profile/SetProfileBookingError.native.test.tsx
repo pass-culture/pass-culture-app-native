@@ -1,9 +1,7 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { reset } from '__mocks__/@react-navigation/native'
+import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -18,15 +16,19 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
+useRoute.mockReturnValue({
+  params: { offerId: 123 },
+})
+
 describe('<SetProfileBookingError/>', () => {
   it('should render correctly', () => {
-    renderSetProfileBookingError({ offerId: 123 })
+    renderSetProfileBookingError()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to offer when clicking on "Revenir vers l’offre"', async () => {
-    renderSetProfileBookingError({ offerId: 123 })
+    renderSetProfileBookingError()
     await user.press(screen.getByText('Revenir vers l’offre'))
 
     expect(reset).toHaveBeenCalledWith({
@@ -36,7 +38,7 @@ describe('<SetProfileBookingError/>', () => {
   })
 
   it('should navigate to home when clicking on "Retourner à l’accueil"', async () => {
-    renderSetProfileBookingError({ offerId: 123 })
+    renderSetProfileBookingError()
     await user.press(screen.getByText('Retourner à l’accueil'))
 
     expect(reset).toHaveBeenCalledWith({
@@ -46,7 +48,11 @@ describe('<SetProfileBookingError/>', () => {
   })
 
   it('should not display "Revenir vers l’offre" when no offerId', async () => {
-    renderSetProfileBookingError({ offerId: undefined })
+    useRoute.mockReturnValueOnce({
+      params: { offerId: undefined },
+    })
+
+    renderSetProfileBookingError()
 
     const recaptchaWebviewModal = screen.queryByText('Revenir vers l’offre')
 
@@ -54,10 +60,6 @@ describe('<SetProfileBookingError/>', () => {
   })
 })
 
-const renderSetProfileBookingError = (navigationParams: { offerId?: number }) => {
-  const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    SubscriptionRootStackParamList,
-    'SetProfileBookingError'
-  >
-  return render(<SetProfileBookingError {...navProps} />)
+const renderSetProfileBookingError = () => {
+  return render(<SetProfileBookingError />)
 }

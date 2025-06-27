@@ -83,7 +83,7 @@ export type AccessibilityRootStackParamList = {
   RecommendedPaths?: undefined
 }
 
-export type CulturalSurveyRootStackParamList = {
+type CulturalSurveyRootStackParamList = {
   CulturalSurveyIntro: undefined
   CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
   CulturalSurveyThanks: undefined

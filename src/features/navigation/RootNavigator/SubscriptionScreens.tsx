@@ -74,32 +74,32 @@ export const SubscriptionScreens = (
     />
     <RootStackNavigatorBase.Screen
       name="SetName"
-      component={SetName ?? withAuthProtection(SetName)}
+      component={withAuthProtection(SetName)}
       options={{ title: 'Ton nom/prénom | Profil' }}
     />
     <RootStackNavigatorBase.Screen
       name="SetCity"
-      component={SetCity ?? withAuthProtection(SetCity)}
+      component={withAuthProtection(SetCity)}
       options={{ title: 'Ton code postal | Profil' }}
     />
     <RootStackNavigatorBase.Screen
       name="SetAddress"
-      component={SetAddress ?? withAuthProtection(SetAddress)}
+      component={withAuthProtection(SetAddress)}
       options={{ title: 'Ton adresse | Profil' }}
     />
     <RootStackNavigatorBase.Screen
       name="SetStatus"
-      component={SetStatus ?? withAuthProtection(SetStatus)}
+      component={withAuthProtection(SetStatus)}
       options={{ title: 'Ton statut | Profil' }}
     />
     <RootStackNavigatorBase.Screen
       name="SetProfileBookingError"
-      component={SetProfileBookingError ?? withAuthProtection(SetProfileBookingError)}
+      component={withAuthProtection(SetProfileBookingError)}
       options={{ title: 'Erreur | Profil' }}
     />
     <RootStackNavigatorBase.Screen
       name="ProfileInformationValidation"
-      component={ProfileInformationValidation ?? withAuthProtection(ProfileInformationValidation)}
+      component={withAuthProtection(ProfileInformationValidation)}
       options={{ title: 'Validation informations | Profil' }}
     />
     <RootStackNavigatorBase.Screen
