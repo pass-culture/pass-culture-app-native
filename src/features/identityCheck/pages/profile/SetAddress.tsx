@@ -100,14 +100,7 @@ export const SetAddress = () => {
 
   const isValidAddress = isAddressValid(query)
 
-  // The button is enabled only when the user has selected an address
-  // if suggested addresses are available. Otherwise, if the user has
-  // typed something and either the FF doesn't allow suggested addresses
-  // or the API call fails, then the button is enabled
-  const enabled =
-    !isError && idCheckAddressAutocompletion && query.length > 0
-      ? !!selectedAddress
-      : isValidAddress
+  const enabled = query.trim().length > 0
 
   const label = idCheckAddressAutocompletion
     ? 'Recherche et sélectionne ton adresse'

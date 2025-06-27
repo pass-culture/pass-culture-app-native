@@ -6,6 +6,7 @@ import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
+
 interface Props {
   onPressOption: (optionKey: string) => void
   optionKey: string
