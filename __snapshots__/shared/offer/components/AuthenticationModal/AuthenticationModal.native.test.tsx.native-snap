@@ -531,6 +531,7 @@ pour réserver l’offre
                       {
                         "alignItems": "center",
                         "flexDirection": "row",
+                        "flexWrap": "wrap",
                         "gap": 4,
                         "justifyContent": "center",
                       },

@@ -8,9 +8,9 @@ import { TrustedDevice } from 'api/gen'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 
 export type DeviceInformation = TrustedDevice & {
-  resolution?: string
+  resolution: string
+  fontScale: number
   screenZoomLevel?: number
-  fontScale?: number
 }
 
 const isWeb = Platform.OS === 'web'

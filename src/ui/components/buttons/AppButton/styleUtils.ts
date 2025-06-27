@@ -45,7 +45,7 @@ export const appButtonStyles: ButtonStyles = ({
   mediumWidth,
   fullWidth,
   justifyContent,
-  numberOfLines,
+  numberOfLines = 1,
   center,
   backgroundColor,
 }: ButtonStylesArgs) => {
@@ -90,7 +90,7 @@ export const appButtonStyles: ButtonStyles = ({
         }
       : {}),
     ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
-    ...(numberOfLines ? { height: 'auto' } : {}),
+    ...(numberOfLines > 1 ? { height: 'auto' } : {}),
   }
 }
 
