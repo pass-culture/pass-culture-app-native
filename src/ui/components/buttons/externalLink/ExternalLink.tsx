@@ -5,7 +5,7 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   url: string
@@ -23,11 +23,10 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
       primary={primary}
       onPress={() => openUrl(url)}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
-      <Spacer.Row numberOfSpaces={1} />
-      <Typo.Body>
+      <StyledBody>
         <ExternalSite primary={primary} testID="externalSiteIcon" />
         {firstWord}
-      </Typo.Body>
+      </StyledBody>
       {remainingWords}
     </ButtonText>
   )
@@ -45,3 +44,7 @@ const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
     size: theme.icons.sizes.extraSmall,
   })
 )<{ primary?: boolean }>``
+
+const StyledBody = styled(Typo.Body)({
+  marginLeft: getSpacing(1),
+})

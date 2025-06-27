@@ -469,6 +469,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     [
                       {
                         "flexShrink": 1,
+                        "marginLeft": 8,
+                        "marginRight": 24,
                       },
                     ]
                   }
@@ -491,16 +493,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     Uniquement les offres gratuites
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     [
@@ -649,6 +641,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     [
                       {
                         "flexShrink": 1,
+                        "marginLeft": 8,
+                        "marginRight": 24,
                       },
                     ]
                   }
@@ -671,16 +665,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     Limiter la recherche à mon crédit
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     [
@@ -1170,6 +1154,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       {
                         "flexDirection": "row",
                         "flexShrink": 0,
+                        "marginRight": 8,
                       },
                     ]
                   }
@@ -1183,16 +1168,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}

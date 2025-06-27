@@ -116,7 +116,7 @@ export const FavoriteHitPlaceholder = () => (
         <TextPlaceholder width={getSpacing(8)} />
       </View>
     </Row>
-    <FavoriteButtonsContainer>
+    <FavoriteButtonsContainer gap={0}>
       <FirstButtonContainer>
         <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
       </FirstButtonContainer>

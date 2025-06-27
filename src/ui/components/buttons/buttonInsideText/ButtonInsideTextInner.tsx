@@ -2,8 +2,9 @@ import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -36,13 +37,8 @@ export function ButtonInsideTextInner({
   const paddingForIcon = hasPadding ? paddingIcon : 0
 
   return (
-    <Container paddingForIcon={paddingForIcon}>
-      {StyledIcon ? (
-        <React.Fragment>
-          <StyledIcon testID="button-icon" />
-          <Spacer.Row numberOfSpaces={1} />
-        </React.Fragment>
-      ) : null}
+    <Container paddingForIcon={paddingForIcon} gap={1}>
+      {StyledIcon ? <StyledIcon testID="button-icon" /> : null}
       <StyledText typography={typography} color={color}>
         {wording}
       </StyledText>
@@ -50,7 +46,7 @@ export function ButtonInsideTextInner({
   )
 }
 
-const Container = styled.View<{
+const Container = styled(ViewGap)<{
   paddingForIcon: number
 }>(({ paddingForIcon }) => ({
   flexDirection: 'row',

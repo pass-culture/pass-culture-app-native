@@ -323,12 +323,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   testID="Accueil"
                 >
                   <View
+                    gap={1}
                     paddingForIcon={0}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 4,
                           "top": 0,
                         },
                       ]
@@ -467,12 +469,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   testID="Recherche"
                 >
                   <View
+                    gap={1}
                     paddingForIcon={0}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 4,
                           "top": 0,
                         },
                       ]
@@ -610,12 +614,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Explore la carte"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -742,12 +748,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Concerts & festivals"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -874,12 +882,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Cinéma"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1006,12 +1016,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Films, séries et documentaires"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1138,12 +1150,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Livres"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1270,12 +1284,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Musique"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1402,12 +1418,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Arts & loisirs créatifs"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1534,12 +1552,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Spectacles"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1666,12 +1686,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Musées & visites culturelles"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1798,12 +1820,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Jeux & jeux vidéos"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -1930,12 +1954,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Médias & presse"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -2062,12 +2088,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Cartes jeunes"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -2194,12 +2222,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Conférences & rencontres"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -2326,12 +2356,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Évènements en ligne"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -2460,12 +2492,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   testID="Réservations"
                 >
                   <View
+                    gap={1}
                     paddingForIcon={0}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 4,
                           "top": 0,
                         },
                       ]
@@ -2604,12 +2638,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   testID="Favoris"
                 >
                   <View
+                    gap={1}
                     paddingForIcon={0}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 4,
                           "top": 0,
                         },
                       ]
@@ -2748,12 +2784,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   testID="Profil"
                 >
                   <View
+                    gap={1}
                     paddingForIcon={0}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 4,
                           "top": 0,
                         },
                       ]
@@ -2891,12 +2929,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Créer un compte"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3023,12 +3063,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Se connecter"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3155,12 +3197,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Mes succès"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3287,12 +3331,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Notifications"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3419,12 +3465,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Comment ça marche ?"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3551,12 +3599,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Informations personnelles"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3683,12 +3733,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Préférence d’affichage"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3815,12 +3867,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Accessibilité"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -3947,12 +4001,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Faire une suggestion"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4079,12 +4135,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Informations légales"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4211,12 +4269,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Confidentialité"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]
@@ -4343,12 +4403,14 @@ exports[`SiteMapScreen should render correctly 1`] = `
                       testID="Débuggage"
                     >
                       <View
+                        gap={1}
                         paddingForIcon={0}
                         style={
                           [
                             {
                               "alignItems": "center",
                               "flexDirection": "row",
+                              "gap": 4,
                               "top": 0,
                             },
                           ]

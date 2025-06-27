@@ -683,6 +683,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -697,16 +698,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -1325,6 +1316,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -1339,16 +1331,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -2057,6 +2039,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -2071,16 +2054,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

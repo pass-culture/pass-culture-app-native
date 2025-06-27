@@ -482,6 +482,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -495,16 +496,6 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

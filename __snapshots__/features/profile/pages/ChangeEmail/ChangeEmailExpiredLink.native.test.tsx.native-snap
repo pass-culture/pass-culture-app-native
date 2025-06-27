@@ -393,6 +393,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -406,16 +407,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -834,6 +825,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -847,16 +839,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

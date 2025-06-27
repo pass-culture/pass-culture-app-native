@@ -2,8 +2,9 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ColorsType, TextColorKey } from 'theme/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type InputRuleType = 'Valid' | 'Error' | 'Neutral'
 
@@ -48,11 +49,10 @@ export const InputRule: FunctionComponent<Props> = ({
   })``
 
   return (
-    <StyledView noFullWidth={noFullWidth}>
+    <StyledView noFullWidth={noFullWidth} gap={1}>
       <StyledCaption color={color} noFullWidth={noFullWidth}>
         {title}
       </StyledCaption>
-      <Spacer.Row numberOfSpaces={1} />
       <IconContainer>
         <Icon testID={testIdSuffix ? `rule-icon-${testIdSuffix}` : undefined} />
       </IconContainer>
@@ -62,7 +62,7 @@ export const InputRule: FunctionComponent<Props> = ({
 
 const IconContainer = styled.View({ flexShrink: 0 })
 
-const StyledView = styled.View<{ noFullWidth?: boolean }>(({ noFullWidth, theme }) => ({
+const StyledView = styled(ViewGap)<{ noFullWidth?: boolean }>(({ noFullWidth, theme }) => ({
   flexDirection: 'row-reverse', // For accessibility purposes, we switch the title and the icon in the DOM so the VoiceOver restitution makes sense.
   maxWidth: theme.forms.maxWidth,
   alignItems: 'center',

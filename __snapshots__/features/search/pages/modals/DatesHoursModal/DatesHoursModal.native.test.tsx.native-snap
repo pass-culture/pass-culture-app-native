@@ -393,6 +393,8 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     [
                       {
                         "flexShrink": 1,
+                        "marginLeft": 8,
+                        "marginRight": 24,
                       },
                     ]
                   }
@@ -430,16 +432,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     Seules les sorties seront affichées
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     [
@@ -588,6 +580,8 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     [
                       {
                         "flexShrink": 1,
+                        "marginLeft": 8,
+                        "marginRight": 24,
                       },
                     ]
                   }
@@ -625,16 +619,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     Seules les sorties seront affichées
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     [
@@ -866,6 +850,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       {
                         "flexDirection": "row",
                         "flexShrink": 0,
+                        "marginRight": 8,
                       },
                     ]
                   }
@@ -879,16 +864,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}

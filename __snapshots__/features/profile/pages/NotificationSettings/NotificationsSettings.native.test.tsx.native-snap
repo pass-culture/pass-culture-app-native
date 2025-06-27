@@ -300,11 +300,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -312,6 +314,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -320,6 +323,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -355,21 +359,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -509,11 +505,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -521,6 +519,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -529,6 +528,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -564,21 +564,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -833,11 +825,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -845,6 +839,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -853,6 +848,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -888,21 +884,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -1041,11 +1029,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -1053,6 +1043,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -1061,6 +1052,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -1096,21 +1088,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -1239,11 +1223,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -1251,6 +1237,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -1259,6 +1246,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -1294,21 +1282,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -1437,11 +1417,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -1449,6 +1431,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -1457,6 +1440,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -1492,21 +1476,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -1635,11 +1611,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -1647,6 +1625,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -1655,6 +1634,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -1690,21 +1670,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -1833,11 +1805,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -1845,6 +1819,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -1853,6 +1828,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -1888,21 +1864,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -2031,11 +1999,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -2043,6 +2013,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -2051,6 +2022,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -2086,21 +2058,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -2731,11 +2695,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -2743,6 +2709,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -2751,6 +2718,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -2786,21 +2754,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -2929,11 +2889,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -2941,6 +2903,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -2949,6 +2912,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -2984,21 +2948,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -3182,11 +3138,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -3194,6 +3152,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -3202,6 +3161,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -3237,21 +3197,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -3390,11 +3342,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -3402,6 +3356,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -3410,6 +3365,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -3445,21 +3401,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -3588,11 +3536,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -3600,6 +3550,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -3608,6 +3559,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -3643,21 +3595,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -3786,11 +3730,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -3798,6 +3744,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -3806,6 +3753,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -3841,21 +3789,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -3984,11 +3924,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -3996,6 +3938,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -4004,6 +3947,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -4039,21 +3983,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -4182,11 +4118,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -4194,6 +4132,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -4202,6 +4141,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -4237,21 +4177,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }
@@ -4380,11 +4312,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           >
             <View
+              gap={4}
               style={
                 [
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "flex-start",
                   },
                 ]
@@ -4392,6 +4326,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               toggleLabel={false}
             >
               <View
+                gap={2}
                 style={
                   [
                     {
@@ -4400,6 +4335,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 8,
                     },
                   ]
                 }
@@ -4435,21 +4371,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </Text>
               </View>
               <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
+                gap={4}
                 style={
                   [
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "gap": 16,
                     },
                   ]
                 }

@@ -369,12 +369,14 @@ exports[`EndedBookings should render correctly 1`] = `
                 }
               >
                 <View
+                  gap={1}
                   noFullWidth={true}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row-reverse",
+                        "gap": 4,
                         "justifyContent": "flex-end",
                         "maxWidth": 500,
                       },
@@ -400,16 +402,6 @@ exports[`EndedBookings should render correctly 1`] = `
                   >
                     Réservation annulée
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     style={
                       [
@@ -805,12 +797,14 @@ exports[`EndedBookings should render correctly 1`] = `
                 }
               >
                 <View
+                  gap={1}
                   noFullWidth={true}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row-reverse",
+                        "gap": 4,
                         "justifyContent": "flex-end",
                         "maxWidth": 500,
                       },
@@ -836,16 +830,6 @@ exports[`EndedBookings should render correctly 1`] = `
                   >
                     Réservation utilisée
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     style={
                       [

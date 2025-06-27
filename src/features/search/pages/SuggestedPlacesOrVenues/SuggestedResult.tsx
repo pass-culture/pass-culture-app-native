@@ -4,9 +4,10 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 type Props = {
@@ -31,9 +32,8 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
       onBlur={onBlur}
       onPress={onPress}
       accessibilityLabel={accessibilityLabel}>
-      <RefContainer ref={containerRef}>
+      <RefContainer ref={containerRef} gap={1}>
         <Icon />
-        <Spacer.Row numberOfSpaces={1} />
         <Typo.Body numberOfLines={2}>
           <Typo.BodyAccent>{label}</Typo.BodyAccent>
           {SPACE}
@@ -44,7 +44,7 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
   )
 }
 
-const RefContainer = styled.View({
+const RefContainer = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
 })
