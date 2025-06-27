@@ -1,5 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -15,10 +14,7 @@ import {
 } from 'features/identityCheck/queries/profileSubmissionHandlers'
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import {
-  SubscriptionRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -29,9 +25,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
-type Props = StackScreenProps<SubscriptionRootStackParamList, 'ProfileInformationValidation'>
-
-export const ProfileInformationValidation = ({ route }: Props) => {
+export const ProfileInformationValidation = () => {
   const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
@@ -41,7 +35,8 @@ export const ProfileInformationValidation = ({ route }: Props) => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { navigate, reset } = useNavigation<UseNavigationType>()
-  const type = route.params.type
+  const { params } = useRoute<UseRouteType<'ProfileInformationValidation'>>()
+  const type = params.type
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck

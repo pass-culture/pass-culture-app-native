@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
@@ -20,10 +19,7 @@ import {
 } from 'features/identityCheck/queries/profileSubmissionHandlers'
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import {
-  SubscriptionRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -41,9 +37,8 @@ const schema = yup.object().shape({
   selectedStatus: yup.string().required(),
 })
 
-type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetStatus'>
-
-export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
+export const SetStatus = () => {
+  const { params } = useRoute<UseRouteType<'SetStatus'>>()
   const { reset } = useNavigation<UseNavigationType>()
   const { refetchUser } = useAuthContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
@@ -52,7 +47,7 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
-  const type = route.params.type
+  const type = params.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
   const title = isIdentityCheck ? 'Profil' : 'Informations personnelles'

@@ -1,10 +1,8 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -23,14 +21,20 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SetName/>', () => {
+  beforeEach(() => {
+    useRoute.mockReturnValue({
+      params: { type: ProfileTypes.IDENTITY_CHECK },
+    })
+  })
+
   it('should render correctly', () => {
-    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetName()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display correct infos in identity check', async () => {
-    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetName()
 
     expect(await screen.findByText('Profil')).toBeTruthy()
     expect(await screen.findByText('Comment t’appelles-tu\u00a0?')).toBeTruthy()
@@ -42,7 +46,11 @@ describe('<SetName/>', () => {
   })
 
   it('should display correct infos in booking free offer 15/16 years', async () => {
-    renderSetName({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    useRoute.mockReturnValueOnce({
+      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+    })
+
+    renderSetName()
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
     expect(await screen.findByText('Renseigne ton prénom et ton nom')).toBeTruthy()
@@ -54,7 +62,7 @@ describe('<SetName/>', () => {
   })
 
   it('should enable the submit button when first name and last name is not empty', async () => {
-    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetName()
 
     const continueButton = screen.getByTestId('Continuer vers la ville de résidence')
 
@@ -72,7 +80,7 @@ describe('<SetName/>', () => {
   })
 
   it('should store name in storage when submit name', async () => {
-    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetName()
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -90,7 +98,7 @@ describe('<SetName/>', () => {
   })
 
   it('should navigate to SetCity with identityCheck params when submit name', async () => {
-    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetName()
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -100,11 +108,19 @@ describe('<SetName/>', () => {
 
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', { type: ProfileTypes.IDENTITY_CHECK })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', {
+      type: ProfileTypes.IDENTITY_CHECK,
+    })
   })
 
   it('should navigate to SetCity with booking params when submit name', async () => {
-    renderSetName({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    // Test fails if mockReturnValueOnce
+    // eslint-disable-next-line local-rules/independent-mocks
+    useRoute.mockReturnValue({
+      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+    })
+
+    renderSetName()
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -120,7 +136,7 @@ describe('<SetName/>', () => {
   })
 
   it('should log analytics on press Continuer', async () => {
-    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetName()
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -134,10 +150,6 @@ describe('<SetName/>', () => {
   })
 })
 
-const renderSetName = (navigationParams: { type: string }) => {
-  const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    SubscriptionRootStackParamList,
-    'SetName'
-  >
-  return render(<SetName {...navProps} />)
+const renderSetName = () => {
+  return render(<SetName />)
 }

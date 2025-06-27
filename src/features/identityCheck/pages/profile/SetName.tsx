@@ -1,17 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import {
-  SubscriptionRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -29,10 +25,9 @@ type FormValues = {
   lastName: string
 }
 
-type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetName'>
-
-export const SetName: FunctionComponent<Props> = ({ route }: Props) => {
-  const type = route.params.type
+export const SetName = () => {
+  const { params } = useRoute<UseRouteType<'SetName'>>()
+  const type = params.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck
     ? {

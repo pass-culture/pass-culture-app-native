@@ -1,16 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import {
-  SubscriptionRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
@@ -32,10 +28,9 @@ export const cityResolver = object().shape({
     .required(),
 })
 
-type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetCity'>
-
-export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
-  const type = route.params.type
+export const SetCity = () => {
+  const { params } = useRoute<UseRouteType<'SetCity'>>()
+  const type = params.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck
     ? {

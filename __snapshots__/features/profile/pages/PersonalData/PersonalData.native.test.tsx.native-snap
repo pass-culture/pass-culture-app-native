@@ -220,38 +220,42 @@ exports[`PersonalData should render personal data success 1`] = `
           ]
         }
       />
-      <View
-        gap={2}
+      <Text
         style={
           [
             {
-              "gap": 8,
+              "color": "#696a6f",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            },
+          ]
+        }
+      >
+        Prénom et nom
+      </Text>
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginTop": 8,
             },
           ]
         }
       >
         <Text
-          style={
-            [
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          Prénom et nom
-        </Text>
-        <Text
+          numberOfLines={2}
           style={
             [
               {
                 "color": "#161617",
+                "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
+                "marginRight": 8,
               },
             ]
           }
@@ -297,6 +301,7 @@ exports[`PersonalData should render personal data success 1`] = `
         }
       >
         <Text
+          numberOfLines={2}
           style={
             [
               {
@@ -445,38 +450,42 @@ exports[`PersonalData should render personal data success 1`] = `
           ]
         }
       />
-      <View
-        gap={2}
+      <Text
         style={
           [
             {
-              "gap": 8,
+              "color": "#696a6f",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            },
+          ]
+        }
+      >
+        Numéro de téléphone
+      </Text>
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginTop": 8,
             },
           ]
         }
       >
         <Text
-          style={
-            [
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          Numéro de téléphone
-        </Text>
-        <Text
+          numberOfLines={2}
           style={
             [
               {
                 "color": "#161617",
+                "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
+                "marginRight": 8,
               },
             ]
           }
@@ -522,6 +531,7 @@ exports[`PersonalData should render personal data success 1`] = `
         }
       >
         <Text
+          numberOfLines={2}
           style={
             [
               {
@@ -696,6 +706,7 @@ exports[`PersonalData should render personal data success 1`] = `
         }
       >
         <Text
+          numberOfLines={2}
           style={
             [
               {

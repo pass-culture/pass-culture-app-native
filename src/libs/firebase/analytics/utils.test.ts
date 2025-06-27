@@ -1,8 +1,8 @@
+import { endOfMonth } from 'date-fns'
 import { NativeScrollEvent } from 'react-native'
 
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
@@ -46,11 +46,13 @@ describe('[Analytics utils]', () => {
       })
     })
 
-    it('with date filter', () => {
+    it('with date filter (Today)', () => {
       const partialSearchState = buildPerformSearchState(
         {
           ...initialSearchState,
-          date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
+          beginningDatetime: TODAY.toISOString(),
+          endingDatetime: undefined,
+          calendarFilterId: 'today',
         },
         'SearchResults'
       )
@@ -59,7 +61,74 @@ describe('[Analytics utils]', () => {
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchDate: JSON.stringify({
           startDate: TODAY.toISOString(),
-          option: DATE_FILTER_OPTIONS.TODAY,
+          endDate: null,
+          searchFilter: 'today',
+        }),
+        searchView: SearchView.Results,
+      })
+    })
+
+    it('with date filter (next month)', () => {
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          beginningDatetime: TODAY.toISOString(),
+          endingDatetime: endOfMonth(TODAY).toISOString(),
+          calendarFilterId: 'thisMonth',
+        },
+        'SearchResults'
+      )
+
+      expect(partialSearchState).toMatchObject({
+        searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
+        searchDate: JSON.stringify({
+          startDate: TODAY.toISOString(),
+          endDate: endOfMonth(TODAY).toISOString(),
+          searchFilter: 'thisMonth',
+        }),
+        searchView: SearchView.Results,
+      })
+    })
+
+    it('with single date selected (no filter)', () => {
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          beginningDatetime: TODAY.toISOString(),
+          endingDatetime: undefined,
+          calendarFilterId: undefined,
+        },
+        'SearchResults'
+      )
+
+      expect(partialSearchState).toMatchObject({
+        searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
+        searchDate: JSON.stringify({
+          startDate: TODAY.toISOString(),
+          endDate: null,
+          searchFilter: null,
+        }),
+        searchView: SearchView.Results,
+      })
+    })
+
+    it('with date range selected (no filter)', () => {
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          beginningDatetime: TODAY.toISOString(),
+          endingDatetime: endOfMonth(TODAY).toISOString(),
+          calendarFilterId: undefined,
+        },
+        'SearchResults'
+      )
+
+      expect(partialSearchState).toMatchObject({
+        searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
+        searchDate: JSON.stringify({
+          startDate: TODAY.toISOString(),
+          endDate: endOfMonth(TODAY).toISOString(),
+          searchFilter: null,
         }),
         searchView: SearchView.Results,
       })
@@ -310,7 +379,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchDate: JSON.stringify({ startDate: 18, endDate: 22, option: 'thisWeekend' }),
+        searchDate: JSON.stringify({ startDate: 18, endDate: 22, searchFilter: 'thisWeekend' }),
         searchView: SearchView.Results,
       })
     })

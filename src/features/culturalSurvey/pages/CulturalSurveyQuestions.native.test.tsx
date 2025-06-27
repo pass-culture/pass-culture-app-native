@@ -1,7 +1,6 @@
-import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React from 'react'
 
-import { push, reset } from '__mocks__/@react-navigation/native'
+import { push, reset, useRoute } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import {
   dispatch,
@@ -12,7 +11,6 @@ import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalS
 import { useCulturalSurveyQuestionsQuery as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/queries/__mocks__/useCulturalSurveyQuestionsQuery'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/queries/useCulturalSurveyAnswersMutation'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -36,14 +34,11 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
 
-const navigationProps = {
-  route: {
-    params: {
-      question: CulturalSurveyQuestionEnum.SORTIES,
-    },
+useRoute.mockReturnValue({
+  params: {
+    question: CulturalSurveyQuestionEnum.SORTIES,
   },
-  navigation: {},
-} as StackScreenProps<CulturalSurveyRootStackParamList, 'CulturalSurveyQuestions'>
+})
 
 let mockUseGetNextQuestionReturnValue = {
   isCurrentQuestionLastQuestion: false,
@@ -85,13 +80,13 @@ describe('CulturalSurveyQuestions page', () => {
   })
 
   it('should render the page with correct layout', () => {
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to next page when pressing Continuer', async () => {
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByLabelText('Continuer vers l’étape suivante'))
 
@@ -105,7 +100,7 @@ describe('CulturalSurveyQuestions page', () => {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByLabelText('Valider le formulaire'))
 
@@ -117,7 +112,7 @@ describe('CulturalSurveyQuestions page', () => {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByLabelText('Valider le formulaire'))
 
@@ -129,7 +124,7 @@ describe('CulturalSurveyQuestions page', () => {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByLabelText('Valider le formulaire'))
 
@@ -145,7 +140,7 @@ describe('CulturalSurveyQuestions page', () => {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByLabelText('Valider le formulaire'))
 
@@ -163,7 +158,7 @@ describe('CulturalSurveyQuestions page', () => {
 
     mockUseCulturalSurveyAnswersMutation()
 
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByLabelText('Valider le formulaire'))
 
@@ -171,21 +166,21 @@ describe('CulturalSurveyQuestions page', () => {
   })
 
   it('should dispatch empty answers on go back', async () => {
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByTestId('Revenir en arrière'))
 
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_ANSWERS',
       payload: {
-        questionId: navigationProps.route.params.question,
+        questionId: CulturalSurveyQuestionEnum.SORTIES,
         answers: [],
       },
     })
   })
 
   it('should dispatch default questions on go back when current question is "sorties"', async () => {
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     await user.press(screen.getByTestId('Revenir en arrière'))
 
@@ -200,7 +195,7 @@ describe('CulturalSurveyQuestions page', () => {
   })
 
   it('should updateQuestionsToDisplay on checkbox press if answer pressed has sub_question', async () => {
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     const CulturalSurveyAnswerCheckbox = screen.getByText(
       // @ts-expect-error mocked Hook is defined
@@ -215,7 +210,7 @@ describe('CulturalSurveyQuestions page', () => {
   })
 
   it('should not updateQuestionsToDisplay on checkbox press if answer pressed has no sub_question', async () => {
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     const thirdAnswerTitle = questionsFromMockedHook?.questions[0]?.answers[2]?.title as string
     const CulturalSurveyAnswerCheckbox = screen.getByText(thirdAnswerTitle)
@@ -228,7 +223,7 @@ describe('CulturalSurveyQuestions page', () => {
   })
 
   it('should log event CulturalSurveyScrolledToBottom when user reach end of screen', () => {
-    render(<CulturalSurveyQuestions {...navigationProps} />)
+    render(<CulturalSurveyQuestions />)
 
     const scrollContainer = screen.getByTestId('cultural-survey-questions-scrollview')
 

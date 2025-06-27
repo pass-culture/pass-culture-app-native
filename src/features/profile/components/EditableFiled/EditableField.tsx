@@ -1,0 +1,67 @@
+import React from 'react'
+import styled from 'styled-components/native'
+
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
+import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
+import { getSpacing, Typo } from 'ui/theme'
+
+type EditableFieldProps = {
+  label: string
+  value?: string | null
+  navigateTo?: ProfileNavigateParams[0]
+  onBeforeNavigate?: () => void
+  accessibilityLabel?: string
+}
+
+export function EditableField({
+  label,
+  value,
+  navigateTo,
+  onBeforeNavigate,
+  accessibilityLabel,
+}: EditableFieldProps) {
+  const displayValue = value?.trim()
+  const isCompleted = !!displayValue
+  const showButton = !!navigateTo
+
+  return (
+    <React.Fragment>
+      <StyledBodyAccentXs>{label}</StyledBodyAccentXs>
+      <EditContainer>
+        {isCompleted ? (
+          <EditText numberOfLines={2}>{displayValue}</EditText>
+        ) : (
+          <NoEditText>Non complété</NoEditText>
+        )}
+        {showButton ? (
+          <EditButton
+            navigateTo={getProfileNavConfig(navigateTo)}
+            onPress={onBeforeNavigate}
+            wording={isCompleted ? 'Modifier' : 'Compléter'}
+            accessibilityLabel={accessibilityLabel}
+          />
+        ) : null}
+      </EditContainer>
+    </React.Fragment>
+  )
+}
+
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
+}))
+
+const EditContainer = styled.View({
+  marginTop: getSpacing(2),
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const EditText = styled(Typo.Body)({
+  flexShrink: 1,
+  marginRight: getSpacing(2),
+})
+
+const NoEditText = styled(Typo.BodyItalic)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
+}))

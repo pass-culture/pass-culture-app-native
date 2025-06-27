@@ -1,7 +1,6 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { dispatch, reset } from '__mocks__/@react-navigation/native'
+import { dispatch, reset, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
@@ -13,7 +12,6 @@ import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -127,26 +125,34 @@ describe('<SetStatus/>', () => {
 
   it('should render correctly', async () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+    // eslint-disable-next-line local-rules/independent-mocks
+    useRoute.mockReturnValue({
+      params: { type: ProfileTypes.IDENTITY_CHECK },
+    })
+    renderSetStatus()
 
     await waitFor(() => expect(screen).toMatchSnapshot())
   })
 
   it('should display correct infos in identity check', async () => {
-    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetStatus()
 
     expect(await screen.findByText('Profil')).toBeTruthy()
   })
 
   it('should display correct infos in booking free offer 15/16 years', async () => {
-    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    // eslint-disable-next-line local-rules/independent-mocks
+    useRoute.mockReturnValue({
+      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+    })
+    renderSetStatus()
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
   })
 
   it('should navigate to stepper on press "Continuer"', async () => {
     mockStatus = ActivityTypesSnap.activities[2].id
-    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
 
@@ -159,7 +165,7 @@ describe('<SetStatus/>', () => {
   })
 
   it('should log analytics on press Continuer', async () => {
-    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
     await user.press(screen.getByText('Continuer'))
@@ -170,7 +176,7 @@ describe('<SetStatus/>', () => {
   it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
     mockStatus = ActivityTypesSnap.activities[0].id
 
-    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
     await user.press(screen.getByText('Continuer'))
@@ -182,7 +188,7 @@ describe('<SetStatus/>', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     mockStatus = ActivityTypesSnap.activities[0].id
 
-    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
     await user.press(screen.getByText('Continuer'))
@@ -196,7 +202,7 @@ describe('<SetStatus/>', () => {
     mockStatus = ActivityTypesSnap.activities[0].id
     mockOfferId = null
 
-    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
     await user.press(screen.getByText('Continuer'))
@@ -209,7 +215,7 @@ describe('<SetStatus/>', () => {
     mockStatus = ActivityTypesSnap.activities[0].id
     mockOfferId = null
 
-    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
     await user.press(screen.getByText('Continuer'))
@@ -220,7 +226,7 @@ describe('<SetStatus/>', () => {
   it('should reset profile stores after submission succeeds', async () => {
     const resetStoresSpy = jest.spyOn(resetStores, 'resetProfileStores')
 
-    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
     await user.press(screen.getByText('Continuer'))
@@ -231,7 +237,7 @@ describe('<SetStatus/>', () => {
   })
 
   it('should call refetchUser after submission succeeds', async () => {
-    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
     await user.press(screen.getByText('Continuer'))
@@ -252,7 +258,7 @@ describe('<SetStatus/>', () => {
     mockStatus = ActivityTypesSnap.activities[0].id
     mockOfferId = 1
 
-    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
     await user.press(screen.getByText('Continuer'))
@@ -263,7 +269,7 @@ describe('<SetStatus/>', () => {
   })
 
   it('should save status in local storage when clicking on status', async () => {
-    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+    renderSetStatus()
 
     await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
 
@@ -275,10 +281,6 @@ describe('<SetStatus/>', () => {
   })
 })
 
-const renderSetStatus = (navigationParams: { type: string }) => {
-  const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    SubscriptionRootStackParamList,
-    'SetStatus'
-  >
-  return render(reactQueryProviderHOC(<SetStatus {...navProps} />))
+const renderSetStatus = () => {
+  return render(reactQueryProviderHOC(<SetStatus />))
 }
