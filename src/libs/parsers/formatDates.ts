@@ -46,7 +46,7 @@ const isCurrentYear = (dateYear: number) => {
   return dateYear === today.getFullYear()
 }
 
-const formatToFrenchDateForPlaylist = (date: Date, nbDates: number) => {
+const formatToFrenchDateForPlaylist = ({ date, nbDates }: { date: Date; nbDates: number }) => {
   const { year, capitalizedShortMonth } = decomposeDate(date.getTime())
   const startLabel = nbDates === 1 ? '' : 'Dès le '
   return isCurrentYear(year)
@@ -63,7 +63,7 @@ export const formatToFrenchDateWithoutYear = (date: Date, withShortMonth?: boole
 /**
  * @param timestamps: Array of timestamps in millisecond
  */
-export const getUniqueSortedTimestamps = (timestamps: number[] | undefined): number[] => {
+export const getUniqueSortedTimestamps = (timestamps?: number[]): number[] => {
   if (!timestamps || timestamps.length === 0) return []
   const uniqueTimestamps = Array.from(new Set(timestamps))
   const futureTimestamps = uniqueTimestamps.filter((timestamp) => timestamp >= new Date().valueOf())
@@ -86,7 +86,7 @@ export const formatPlaylistDates = (timestamps?: number[]): string | undefined =
   const uniques = getUniqueSortedTimestamps(timestamps)
   const firstUnique = uniques[0]
   if (firstUnique) {
-    return `${formatToFrenchDateForPlaylist(new Date(firstUnique), uniques.length)}`
+    return formatToFrenchDateForPlaylist({ date: new Date(firstUnique), nbDates: uniques.length })
   }
   return undefined
 }
@@ -95,7 +95,7 @@ export const formatPlaylistDates = (timestamps?: number[]): string | undefined =
  * @param releaseDate: Date
  */
 const formatPlaylistReleaseDate = (releaseDate: Date): string => {
-  const formattedDate = formatToFrenchDateForPlaylist(releaseDate, 1)
+  const formattedDate = formatToFrenchDateForPlaylist({ date: releaseDate, nbDates: 1 })
   const { year, capitalizedShortMonth } = decomposeDate(releaseDate.getTime())
   const label = isCurrentYear(year) ? `Dès le ${formattedDate}` : `${capitalizedShortMonth} ${year}`
 
