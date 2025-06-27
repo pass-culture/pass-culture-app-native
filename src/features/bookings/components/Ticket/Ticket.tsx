@@ -11,6 +11,7 @@ import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBott
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
 import { getBookingLabelsV2 } from 'features/bookings/helpers'
+import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
@@ -61,7 +62,11 @@ export const Ticket = ({
     analytics.logConsultVenue({ venueId: offer.venue.id, from: 'bookings' })
     navigate('Venue', { id: offer.venue.id })
   }
-
+  const expirationDateFormated = ({ prefix }: { prefix: string }) => {
+    return booking.expirationDate
+      ? formatEventDateLabel(booking.expirationDate, offer.venue.timezone, false, 'day', prefix)
+      : undefined
+  }
   return (
     <TicketDisplay
       onTopBlockLayout={setTopBlockHeight}
@@ -71,6 +76,8 @@ export const Ticket = ({
           day={dayLabel == '' ? undefined : dayLabel}
           hour={hourLabel == '' ? undefined : hourLabel}
           isDuo={properties.isDuo}
+          ean={booking.stock.offer.extraData?.ean ?? undefined}
+          expirationDate={expirationDateFormated({ prefix: 'À récupérer avant le ' })}
           title={offer.name}
           offer={offer}
           mapping={mapping}
