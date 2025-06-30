@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
@@ -70,7 +70,7 @@ export function BeneficiaryAccountCreated() {
       buttonPrimary={{
         wording: 'C’est parti\u00a0!',
         onBeforeNavigate: onBeforeNavigate,
-        navigateTo: { screen: 'CulturalSurveyIntro' },
+        navigateTo: navigateToHomeConfig,
       }}>
       <ProgressBarContainer>
         <AnimatedProgressBar
