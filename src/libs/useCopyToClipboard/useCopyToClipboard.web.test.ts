@@ -21,19 +21,22 @@ const textToCopy = 'Texte à copier'
 
 describe('useCopyToClipboard', () => {
   it('should copy to clipboard on trigger', async () => {
-    renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(writeTextMock).toHaveBeenCalledWith(textToCopy)
   })
 
   it('should call onCopy on trigger', async () => {
-    await renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(onCopyMock).toHaveBeenCalledTimes(1)
   })
 
   it('should show success snack bar when text is copied', async () => {
-    await renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: successSnackBarMessage,
@@ -43,7 +46,8 @@ describe('useCopyToClipboard', () => {
 
   it('should show error snack bar when text could not be copied', async () => {
     writeTextMock.mockRejectedValueOnce(new Error('error'))
-    await renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: errorSnackBarMessage,

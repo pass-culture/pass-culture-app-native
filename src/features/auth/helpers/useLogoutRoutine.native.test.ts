@@ -24,7 +24,8 @@ const mockEditor = { setAttribute: mockSetAttribute, save: mockSave }
 describe('useLogoutRoutine', () => {
   describe('Batch', () => {
     it('should remove batch identifier', async () => {
-      await renderUseLogoutRoutine()
+      const { result } = renderUseLogoutRoutine()
+      await result.current()
 
       expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, null)
     })
@@ -32,7 +33,8 @@ describe('useLogoutRoutine', () => {
     it('should set app_version to null in BatchProfile editor', async () => {
       jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
 
-      await renderUseLogoutRoutine()
+      const { result } = renderUseLogoutRoutine()
+      await result.current()
 
       expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
       expect(mockSetAttribute).toHaveBeenCalledWith('app_version', null)
@@ -41,7 +43,8 @@ describe('useLogoutRoutine', () => {
     it('should set last_booking_date to null in BatchProfile editor', async () => {
       jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
 
-      await renderUseLogoutRoutine()
+      const { result } = renderUseLogoutRoutine()
+      await result.current()
 
       expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
       expect(mockSetAttribute).toHaveBeenCalledWith('last_booking_date', null)
@@ -50,7 +53,8 @@ describe('useLogoutRoutine', () => {
     it('should set credit_activation_date to null in BatchProfile editor', async () => {
       jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
 
-      await renderUseLogoutRoutine()
+      const { result } = renderUseLogoutRoutine()
+      await result.current()
 
       expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
       expect(mockSetAttribute).toHaveBeenCalledWith('credit_activation_date', null)
@@ -59,33 +63,38 @@ describe('useLogoutRoutine', () => {
     it('should save BatchProfile', async () => {
       jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
 
-      await renderUseLogoutRoutine()
+      const { result } = renderUseLogoutRoutine()
+      await result.current()
 
       expect(mockSave).toHaveBeenCalledTimes(1)
     })
   })
 
   it('should log analytics', async () => {
-    await renderUseLogoutRoutine()
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
 
     expect(analytics.logLogout).toHaveBeenCalledTimes(1)
   })
 
   it('should remove access token from async storage', async () => {
-    await renderUseLogoutRoutine()
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
 
     expect(AsyncStorage.removeItem).toHaveBeenNthCalledWith(1, 'access_token')
   })
 
   it('should clear refresh token', async () => {
     const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
-    await renderUseLogoutRoutine()
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
 
     expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
   })
 
   it('should clear the currently set user in sentry', async () => {
-    await renderUseLogoutRoutine()
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
 
     expect(eventMonitoring.setUser).toHaveBeenCalledWith(null)
   })
@@ -98,22 +107,22 @@ describe('useLogoutRoutine', () => {
       removeQueries: removeQueriesMock,
     } as unknown as ReactQueryAPI.QueryClient)
 
-    await renderUseLogoutRoutine()
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
 
     expect(removeQueriesMock).toHaveBeenCalledWith([query])
   })
 
   it('should logout from Google account', async () => {
-    await renderUseLogoutRoutine()
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
 
     expect(googleLogout).toHaveBeenCalledTimes(1)
   })
 })
 
-const renderUseLogoutRoutine = async () => {
-  const { result } = renderHook(useLogoutRoutine, {
+const renderUseLogoutRoutine = () => {
+  return renderHook(useLogoutRoutine, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  const logout = result.current
-  await logout()
 }

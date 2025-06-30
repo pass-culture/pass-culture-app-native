@@ -14,14 +14,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<ForceUpdateWithResetErrorBoundary/>', () => {
-  it('should match snapshot', async () => {
+  it('should match snapshot', () => {
     jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
       minimalBuildNumber: 10_304_000,
       isLoading: false,
       error: undefined,
     })
 
-    await render(<ForceUpdateWithResetErrorBoundary resetErrorBoundary={() => null} />)
+    render(<ForceUpdateWithResetErrorBoundary resetErrorBoundary={() => null} />)
 
     expect(screen).toMatchSnapshot()
   })

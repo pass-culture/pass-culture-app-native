@@ -8,7 +8,13 @@ import { analytics } from 'libs/analytics/provider'
 import { saveRefreshToken } from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 
-export function useLoginRoutine() {
+export type LoginRoutine = (
+  response: SigninResponse,
+  method: LoginRoutineMethod,
+  analyticsType?: SSOType
+) => Promise<void>
+
+export function useLoginRoutine(): LoginRoutine {
   const { setIsLoggedIn } = useAuthContext()
   const resetContexts = useResetContexts()
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
@@ -19,7 +25,7 @@ export function useLoginRoutine() {
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
 
-  return async (response: SigninResponse, method: LoginRoutineMethod, analyticsType?: SSOType) => {
+  return async (response, method, analyticsType) => {
     connectServicesRequiringUserId(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)

@@ -19,23 +19,26 @@ const successSnackBarMessage = 'Copié avec succès\u00a0!'
 const errorSnackBarMessage = 'Une erreur est survenue, veuillez réessayer.'
 const textToCopy = 'Texte à copier'
 
-describe('CopyToClipboardButton', () => {
+describe('useCopyToClipboard', () => {
   it('should copy to clipboard when pressing the button', async () => {
-    await renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(clipboard.setString).toHaveBeenCalledWith(textToCopy)
   })
 
   it('should call onCopy when text is copied', async () => {
     clipboard.getString.mockResolvedValueOnce(textToCopy)
-    await renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(onCopyMock).toHaveBeenCalledTimes(1)
   })
 
   it('should show success snack bar with default text when no snackBarMessage is given', async () => {
     clipboard.getString.mockResolvedValueOnce(textToCopy)
-    await renderHook(() => useCopyToClipboard({ textToCopy })).result.current()
+    const { result } = renderHook(() => useCopyToClipboard({ textToCopy }))
+    await result.current()
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Copié\u00a0!',
@@ -45,7 +48,8 @@ describe('CopyToClipboardButton', () => {
 
   it('should show success snack bar when text is copied', async () => {
     clipboard.getString.mockResolvedValueOnce(textToCopy)
-    await renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: successSnackBarMessage,
@@ -55,7 +59,8 @@ describe('CopyToClipboardButton', () => {
 
   it('should show error snack bar if text has not been copied', async () => {
     clipboard.getString.mockResolvedValueOnce('Different text')
-    await renderUseCopyToClipboard().result.current()
+    const { result } = renderUseCopyToClipboard()
+    await result.current()
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: errorSnackBarMessage,

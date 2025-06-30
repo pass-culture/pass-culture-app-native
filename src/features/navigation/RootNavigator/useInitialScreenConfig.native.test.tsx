@@ -36,7 +36,7 @@ describe('useInitialScreen()', () => {
       { persist: true }
     )
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('TabNavigator')
@@ -58,7 +58,7 @@ describe('useInitialScreen()', () => {
       { persist: true }
     )
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('EighteenBirthday')
@@ -94,7 +94,7 @@ describe('useInitialScreen()', () => {
     await storage.saveObject('has_seen_eligible_card', true)
     mockAuthContextWithoutUser({ persist: true })
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('TabNavigator')
@@ -108,7 +108,7 @@ describe('useInitialScreen()', () => {
     await storage.saveObject('has_seen_eligible_card', true)
     mockAuthContextWithoutUser({ persist: true })
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('OnboardingStackNavigator')
@@ -118,7 +118,7 @@ describe('useInitialScreen()', () => {
   })
 })
 
-async function renderUseInitialScreen() {
+function renderUseInitialScreen() {
   const wrapper = (props: { children: unknown }) => (
     <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
   )

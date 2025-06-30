@@ -39,31 +39,31 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<PrivacyPolicy />', () => {
-  it('should not show cookies modal when fetching cookies is loading', async () => {
+  it('should not show cookies modal when fetching cookies is loading', () => {
     mockUseCookies.mockReturnValueOnce({
       ...defaultUseCookies,
       cookiesConsent: { state: ConsentState.LOADING },
     })
-    await renderPrivacyPolicy()
+    renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
 
     expect(title).not.toBeOnTheScreen()
   })
 
-  it('should show cookies modal when cookies is unknown', async () => {
+  it('should show cookies modal when cookies is unknown', () => {
     mockUseCookies.mockReturnValueOnce({
       ...defaultUseCookies,
       cookiesConsent: { state: ConsentState.UNKNOWN },
     })
-    await renderPrivacyPolicy()
+    renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
 
     expect(title).toBeOnTheScreen()
   })
 
-  it('should not show cookies modal when fetching cookies is defined but user has made cookie choice', async () => {
+  it('should not show cookies modal when fetching cookies is defined but user has made cookie choice', () => {
     mockUseIsCookiesListUpToDate.mockReturnValueOnce({
       isCookiesListUpToDate: true,
       cookiesLastUpdate: undefined,
@@ -76,14 +76,14 @@ describe('<PrivacyPolicy />', () => {
         value: consentValue,
       },
     })
-    await renderPrivacyPolicy()
+    renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
 
     expect(title).not.toBeOnTheScreen()
   })
 
-  it('should show cookies modal when fetching cookies is defined and user has made cookie choice', async () => {
+  it('should show cookies modal when fetching cookies is defined and user has made cookie choice', () => {
     mockUseIsCookiesListUpToDate.mockReturnValueOnce({
       isCookiesListUpToDate: false,
       cookiesLastUpdate: undefined,
@@ -96,7 +96,7 @@ describe('<PrivacyPolicy />', () => {
         value: consentValue,
       },
     })
-    await renderPrivacyPolicy()
+    renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
 
@@ -104,7 +104,7 @@ describe('<PrivacyPolicy />', () => {
   })
 })
 
-const renderPrivacyPolicy = async () => {
+const renderPrivacyPolicy = () => {
   render(<PrivacyPolicy />, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

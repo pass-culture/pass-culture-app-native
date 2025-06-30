@@ -24,7 +24,7 @@ jest.useFakeTimers()
 
 describe('<ForceUpdateInfos/>', () => {
   it('should log click force update when pressing "Télécharger la dernière version" button', async () => {
-    await render(<ForceUpdateInfos />)
+    render(<ForceUpdateInfos />)
 
     await user.press(screen.getByText('Télécharger la dernière version'))
 
@@ -32,7 +32,7 @@ describe('<ForceUpdateInfos/>', () => {
   })
 
   it('should open the web app when pressing "Utiliser la version web"', async () => {
-    await render(<ForceUpdateInfos />)
+    render(<ForceUpdateInfos />)
 
     const goToWebappButton = screen.getByText('Utiliser la version web')
     await user.press(goToWebappButton)

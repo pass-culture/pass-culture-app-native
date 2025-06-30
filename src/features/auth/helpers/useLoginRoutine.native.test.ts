@@ -1,7 +1,7 @@
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { AccountState } from 'api/gen'
 import * as RefreshAccessTokenAPI from 'api/refreshAccessToken'
-import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
+import { LoginRoutine, useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
@@ -31,6 +31,8 @@ const cookiesChoice: CookiesConsent = {
 const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 
+jest.useFakeTimers()
+
 jest.mock('api/api')
 jest.mock('libs/campaign')
 jest.mock('libs/keychain/keychain')
@@ -55,25 +57,29 @@ describe('useLoginRoutine', () => {
 
   it('should saveRefreshToken', async () => {
     const mockSaveRefreshToken = jest.spyOn(Keychain, 'saveRefreshToken')
-    await renderUseLoginRoutine()
+    const { result } = renderUseLoginRoutine()
+    await act(newFunction(result.current))
 
     expect(mockSaveRefreshToken).toHaveBeenCalledTimes(1)
   })
 
   it('should log login analytics', async () => {
-    await renderUseLoginRoutine()
+    const { result } = renderUseLoginRoutine()
+    await act(newFunction(result.current))
 
     expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
   })
 
   it('should log login analytics with sso type when defined', async () => {
-    await renderUseLoginRoutine('SSO_login')
+    const { result } = renderUseLoginRoutine()
+    await act(newFunction(result.current, 'SSO_login'))
 
     expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method, type: 'SSO_login' })
   })
 
   it('should save access token to storage', async () => {
-    await renderUseLoginRoutine()
+    const { result } = renderUseLoginRoutine()
+    await act(newFunction(result.current))
 
     const accessTokenStorage = await storage.readString('access_token')
 
@@ -81,26 +87,30 @@ describe('useLoginRoutine', () => {
   })
 
   it('should schedule access removal when it expires', async () => {
-    await renderUseLoginRoutine()
+    const { result } = renderUseLoginRoutine()
+    await act(newFunction(result.current))
 
     expect(scheduleAccessTokenRemovalSpy).toHaveBeenCalledWith(accessToken)
   })
 
   describe('connectServicesRequiringUserId', () => {
     it('should set batch identifier', async () => {
-      await renderUseLoginRoutine()
+      const { result } = renderUseLoginRoutine()
+      await act(newFunction(result.current))
 
       expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
     })
 
     it('should log set user id analytics', async () => {
-      await renderUseLoginRoutine()
+      const { result } = renderUseLoginRoutine()
+      await act(newFunction(result.current))
 
       expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
     })
 
     it('should set user id in cookies consent storage', async () => {
-      await renderUseLoginRoutine()
+      const { result } = renderUseLoginRoutine()
+      await act(newFunction(result.current))
 
       const cookiesConsentStorage = await storage.readObject(COOKIES_CONSENT_KEY)
 
@@ -113,25 +123,29 @@ describe('useLoginRoutine', () => {
 
   describe('resetContexts', () => {
     it('should reset search context because search results can be different for connected user (example: video games are hidden for underage beneficiaries)', async () => {
-      await renderUseLoginRoutine()
+      const { result } = renderUseLoginRoutine()
+      await act(newFunction(result.current))
 
       expect(mockResetSearch).toHaveBeenCalledTimes(1)
     })
 
     it('should reset identity check context because user logged in can be different than previous user', async () => {
-      await renderUseLoginRoutine()
+      const { result } = renderUseLoginRoutine()
+      await act(newFunction(result.current))
 
       expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
     })
   })
 })
 
-const renderUseLoginRoutine = async (analyticsType?: SSOType) => {
-  const { result } = renderHook(useLoginRoutine, {
+const renderUseLoginRoutine = () => {
+  return renderHook(useLoginRoutine, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  const login = result.current
-  await act(async () => {
+}
+
+function newFunction(login: LoginRoutine, analyticsType?: SSOType): () => Promise<void> {
+  return async () => {
     await login(
       {
         accessToken,
@@ -141,5 +155,5 @@ const renderUseLoginRoutine = async (analyticsType?: SSOType) => {
       method,
       analyticsType
     )
-  })
+  }
 }
