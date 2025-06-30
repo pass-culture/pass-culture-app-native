@@ -1074,6 +1074,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
+                              style={
+                                [
+                                  {},
+                                ]
+                              }
                               testID="OfferTile"
                             >
                               <View
@@ -1283,6 +1288,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
+                              style={
+                                [
+                                  {},
+                                ]
+                              }
                               testID="OfferTile"
                             >
                               <View
@@ -1492,6 +1502,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
+                              style={
+                                [
+                                  {},
+                                ]
+                              }
                               testID="OfferTile"
                             >
                               <View
@@ -4337,6 +4352,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             <View
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
+                              style={
+                                [
+                                  {},
+                                ]
+                              }
                               testID="OfferTile"
                             >
                               <View
@@ -4546,6 +4566,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             <View
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
+                              style={
+                                [
+                                  {},
+                                ]
+                              }
                               testID="OfferTile"
                             >
                               <View
@@ -4755,6 +4780,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             <View
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
+                              style={
+                                [
+                                  {},
+                                ]
+                              }
                               testID="OfferTile"
                             >
                               <View
