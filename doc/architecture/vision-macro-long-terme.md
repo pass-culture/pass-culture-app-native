@@ -144,7 +144,7 @@ grid-template-areas:
 
 #### De nouvelles possibilités
 
-Dans ces nombreuses évolutions, le web permet de faire des choses facilement qui auraient été extrêmement difficile à faire en React Native seul.
+Dans ces nombreuses évolutions, le web permet de faire des choses facilement qui auraient été extrêmement difficile à faire en React Native seul en étant compatible avec React Native Web.
 
 Exemple : les `ViewTransition` qui permettent très facilement de faire une animation en passant d'une page à une autre ;
 [exemple minimaliste](https://http203-playlist.netlify.app/) : quand on clique sur le lien, on change d'URL, on change de page, et il y a une transition pendant le changement de page.
