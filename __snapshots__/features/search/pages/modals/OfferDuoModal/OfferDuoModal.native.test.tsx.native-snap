@@ -385,6 +385,8 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   [
                     {
                       "flexShrink": 1,
+                      "marginLeft": 8,
+                      "marginRight": 24,
                     },
                   ]
                 }
@@ -422,16 +424,6 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   Seules les sorties seront affichées
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "width": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   [
@@ -662,6 +654,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       {
                         "flexDirection": "row",
                         "flexShrink": 0,
+                        "marginRight": 8,
                       },
                     ]
                   }
@@ -675,16 +668,6 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}

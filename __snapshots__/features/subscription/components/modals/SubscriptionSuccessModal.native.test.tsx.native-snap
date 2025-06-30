@@ -598,6 +598,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -612,16 +613,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -1261,6 +1252,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -1275,16 +1267,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -1924,6 +1906,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -1938,16 +1921,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -2587,6 +2560,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -2601,16 +2575,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -3250,6 +3214,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -3264,16 +3229,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -3913,6 +3868,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -3927,16 +3883,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}

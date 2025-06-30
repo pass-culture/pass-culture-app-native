@@ -26,13 +26,11 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
           size={theme.illustrations.sizes.medium}
           color={theme.designSystem.color.icon.brandPrimary}
         />
-        <Spacer.Column numberOfSpaces={getSpacing(2)} />
         <ModalBodyText>
           En quittant la réservation, elle ne sera pas annulée{LINE_BREAK}
           {LINE_BREAK}Si elle est éligible à une annulation, tu pourras lʼannuler depuis lʼonglet
           “Réservations”
         </ModalBodyText>
-        <Spacer.Column numberOfSpaces={getSpacing(2)} />
         <ButtonPrimary
           wording="J’ai compris"
           accessibilityLabel="J’ai compris, je ferme la pop-up "
@@ -45,4 +43,5 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
 
 const ModalBodyText = styled(Typo.Body)({
   textAlign: 'center',
+  marginVertical: getSpacing(8),
 })

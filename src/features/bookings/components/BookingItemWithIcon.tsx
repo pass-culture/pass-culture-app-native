@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const Item: React.FC<{
   Icon: React.FC<AccessibleIcon>
@@ -16,9 +16,7 @@ export const Item: React.FC<{
       <IconWrapper>
         <Icon color={designSystem.color.icon.subtle} size={icons.sizes.small} />
       </IconWrapper>
-      <Spacer.Row numberOfSpaces={3} />
       {typeof message === 'string' ? <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs> : message}
-      <Spacer.Row numberOfSpaces={2} />
       <StyledBodyAccentXs>{subtext}</StyledBodyAccentXs>
     </Row>
   )
@@ -33,8 +31,10 @@ const Row = styled.View(({ theme }) => ({
 
 const IconWrapper = styled.View({
   flexShrink: 0,
+  marginRight: getSpacing(3),
 })
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+  marginLeft: getSpacing(2),
 }))

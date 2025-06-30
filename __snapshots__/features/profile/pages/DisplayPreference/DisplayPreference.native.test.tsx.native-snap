@@ -277,6 +277,8 @@ exports[`DisplayPreference should render correctly 1`] = `
                   [
                     {
                       "flexShrink": 1,
+                      "marginLeft": 8,
+                      "marginRight": 24,
                     },
                   ]
                 }
@@ -314,16 +316,6 @@ exports[`DisplayPreference should render correctly 1`] = `
                   L’affichage en mode paysage peut être moins optimal
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "width": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   [

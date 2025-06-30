@@ -342,6 +342,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           {
                             "flexDirection": "row",
                             "flexShrink": 0,
+                            "marginRight": 8,
                           },
                         ]
                       }
@@ -355,16 +356,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           button-icon-left-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
                     </View>
                     <Text
                       adjustsFontSizeToFit={false}
@@ -461,6 +452,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -475,16 +467,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -1861,16 +1843,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                   <View>
                     undefined-Lottie-Mock
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [
@@ -1879,6 +1851,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
+                          "marginLeft": 8,
                         },
                       ]
                     }
@@ -2903,6 +2876,7 @@ d’options
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -2917,16 +2891,6 @@ d’options
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -3305,6 +3269,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           {
                             "flexDirection": "row",
                             "flexShrink": 0,
+                            "marginRight": 8,
                           },
                         ]
                       }
@@ -3318,16 +3283,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           button-icon-left-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
                     </View>
                     <Text
                       adjustsFontSizeToFit={false}
@@ -3424,6 +3379,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -3438,16 +3394,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -5160,16 +5106,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   <View>
                     undefined-Lottie-Mock
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [
@@ -5178,6 +5114,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
+                          "marginLeft": 8,
                         },
                       ]
                     }
@@ -6202,6 +6139,7 @@ d’options
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -6216,16 +6154,6 @@ d’options
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -6604,6 +6532,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           {
                             "flexDirection": "row",
                             "flexShrink": 0,
+                            "marginRight": 8,
                           },
                         ]
                       }
@@ -6617,16 +6546,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           button-icon-left-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
                     </View>
                     <Text
                       adjustsFontSizeToFit={false}
@@ -6723,6 +6642,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             {
                               "flexDirection": "row",
                               "flexShrink": 0,
+                              "marginRight": 8,
                             },
                           ]
                         }
@@ -6737,16 +6657,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             button-icon-left-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
@@ -7249,6 +7159,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               {
                                 "flexDirection": "row",
                                 "flexShrink": 0,
+                                "marginRight": 8,
                               },
                             ]
                           }
@@ -7262,16 +7173,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               button-icon-left-SVG-Mock
                             </Text>
                           </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <Text
                           adjustsFontSizeToFit={false}
@@ -7357,6 +7258,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               {
                                 "flexDirection": "row",
                                 "flexShrink": 0,
+                                "marginRight": 8,
                               },
                             ]
                           }
@@ -7370,16 +7272,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               button-icon-left-SVG-Mock
                             </Text>
                           </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <Text
                           adjustsFontSizeToFit={false}
@@ -7465,6 +7357,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               {
                                 "flexDirection": "row",
                                 "flexShrink": 0,
+                                "marginRight": 8,
                               },
                             ]
                           }
@@ -7479,16 +7372,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               button-icon-left-SVG-Mock
                             </Text>
                           </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <Text
                           adjustsFontSizeToFit={false}
@@ -8530,16 +8413,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   <View>
                     undefined-Lottie-Mock
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [
@@ -8548,6 +8421,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
+                          "marginLeft": 8,
                         },
                       ]
                     }
@@ -9572,6 +9446,7 @@ d’options
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -9586,16 +9461,6 @@ d’options
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

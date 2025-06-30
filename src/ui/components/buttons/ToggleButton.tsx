@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export enum ToggleButtonSize {
   SMALL = 'small',
@@ -44,10 +44,7 @@ export const ToggleButton = ({
       onPress={onPress}>
       {active ? <Icon.active /> : <Icon.inactive />}
       {size === ToggleButtonSize.MEDIUM ? (
-        <React.Fragment>
-          <Spacer.Row numberOfSpaces={2} />
-          <Typo.BodyAccentXs>{active ? label.active : label.inactive}</Typo.BodyAccentXs>
-        </React.Fragment>
+        <LabelText>{active ? label.active : label.inactive}</LabelText>
       ) : null}
     </TouchableComponent>
   )
@@ -85,3 +82,7 @@ const FlexTouchableOpacity = styled(BaseTouchableOpacity)({
 })
 
 const StaticTouchableOpacity = styled(BaseTouchableOpacity)({})
+
+const LabelText = styled(Typo.BodyAccentXs)({
+  marginLeft: getSpacing(2),
+})

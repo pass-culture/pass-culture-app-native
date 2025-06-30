@@ -1985,6 +1985,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -1998,16 +1999,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -2742,6 +2733,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -2756,16 +2748,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -2874,6 +2856,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -2888,16 +2871,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -3006,6 +2979,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -3020,16 +2994,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -4489,12 +4453,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     testID="https://pass.culture.fr/"
                   >
                     <View
+                      gap={1}
                       paddingForIcon={0}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 4,
                             "top": 0,
                           },
                         ]
@@ -4510,16 +4476,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
                         style={
                           [
@@ -4682,12 +4638,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     testID="https://passculture.pro/"
                   >
                     <View
+                      gap={1}
                       paddingForIcon={0}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 4,
                             "top": 0,
                           },
                         ]
@@ -4703,16 +4661,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
                         style={
                           [
@@ -4970,12 +4918,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     testID="https://passculture.app/"
                   >
                     <View
+                      gap={1}
                       paddingForIcon={0}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 4,
                             "top": 0,
                           },
                         ]
@@ -4991,16 +4941,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
                         style={
                           [
@@ -5687,12 +5627,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     testID="https://passculture.pro/"
                   >
                     <View
+                      gap={1}
                       paddingForIcon={0}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 4,
                             "top": 0,
                           },
                         ]
@@ -5708,16 +5650,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
                         style={
                           [
@@ -5880,12 +5812,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     testID="https://passculture.pro/"
                   >
                     <View
+                      gap={1}
                       paddingForIcon={0}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 4,
                             "top": 0,
                           },
                         ]
@@ -5901,16 +5835,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
                         style={
                           [
@@ -6168,12 +6092,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     testID="https://pass.culture.fr/"
                   >
                     <View
+                      gap={1}
                       paddingForIcon={0}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 4,
                             "top": 0,
                           },
                         ]
@@ -6189,16 +6115,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                           button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          [
-                            {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
                         style={
                           [

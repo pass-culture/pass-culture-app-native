@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
-import { Spacer, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   password: string
@@ -63,15 +64,12 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
         <RulesContainer
           isVisible={visible}
           accessibilityRole={AccessibilityRole.STATUS}
-          accessibilityAtomic={false}>
+          accessibilityAtomic={false}
+          gap={1}>
           <PasswordRule title="12 caractères" isValidated={isLongEnough(password)} />
-          <Spacer.Column numberOfSpaces={1} />
           <PasswordRule title="1 majuscule" isValidated={containsCapital(password)} />
-          <Spacer.Column numberOfSpaces={1} />
           <PasswordRule title="1 minuscule" isValidated={containsLowercase(password)} />
-          <Spacer.Column numberOfSpaces={1} />
           <PasswordRule title="1 chiffre" isValidated={containsNumber(password)} />
-          <Spacer.Column numberOfSpaces={1} />
           <PasswordRule
             title="1 caractère spécial (!@#$%^&*...)"
             isValidated={containsSpecialCharacter(password)}
@@ -82,7 +80,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
   )
 }
 
-const RulesContainer = styled.View<{ isVisible?: boolean }>(({ theme }) => ({
+const RulesContainer = styled(ViewGap)<{ isVisible?: boolean }>(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
   maxWidth: theme.forms.maxWidth,

@@ -1164,6 +1164,7 @@ Les récents ajustements du dispositif peuvent en être la raison.
                     {
                       "flexDirection": "row",
                       "flexShrink": 0,
+                      "marginRight": 8,
                     },
                   ]
                 }
@@ -1178,16 +1179,6 @@ Les récents ajustements du dispositif peuvent en être la raison.
                     button-icon-left-SVG-Mock
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
               </View>
               <Text
                 adjustsFontSizeToFit={false}

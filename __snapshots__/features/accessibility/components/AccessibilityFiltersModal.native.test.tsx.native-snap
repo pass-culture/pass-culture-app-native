@@ -1164,6 +1164,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         {
                           "flexDirection": "row",
                           "flexShrink": 0,
+                          "marginRight": 8,
                         },
                       ]
                     }
@@ -1177,16 +1178,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "width": 8,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}

@@ -360,6 +360,7 @@ Reviens lundi pour débloquer ton crédit !
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -374,16 +375,6 @@ Reviens lundi pour débloquer ton crédit !
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -768,6 +759,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
                 {
                   "flexDirection": "row",
                   "flexShrink": 0,
+                  "marginRight": 8,
                 },
               ]
             }
@@ -782,16 +774,6 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
                 button-icon-left-SVG-Mock
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
           </View>
           <Text
             adjustsFontSizeToFit={false}

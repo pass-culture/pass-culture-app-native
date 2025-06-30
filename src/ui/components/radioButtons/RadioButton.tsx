@@ -74,12 +74,9 @@ export function RadioButton(props: RadioButtonProps) {
       {...props}>
       <LabelContainer ref={containerRef}>
         {StyledIcon ? (
-          <React.Fragment>
-            <IconWrapper>
-              <StyledIcon />
-            </IconWrapper>
-            <Spacer.Row numberOfSpaces={2} />
-          </React.Fragment>
+          <IconWrapper>
+            <StyledIcon />
+          </IconWrapper>
         ) : null}
         <LabelWrapper>
           {props.complement ? (
@@ -178,6 +175,7 @@ const LabelWrapper = styled.View({
 
 const IconWrapper = styled.View({
   flexShrink: 0,
+  marginRight: getSpacing(2),
 })
 
 const ContainerWithComplement = styled.View({

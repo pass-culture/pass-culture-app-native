@@ -264,12 +264,14 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         testID="Se connecter"
       >
         <View
+          gap={1}
           paddingForIcon={0}
           style={
             [
               {
                 "alignItems": "center",
                 "flexDirection": "row",
+                "gap": 4,
                 "top": 0,
               },
             ]
@@ -285,16 +287,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               button-icon-SVG-Mock
             </Text>
           </View>
-          <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "width": 4,
-                },
-              ]
-            }
-          />
           <Text
             color="#320096"
             style={

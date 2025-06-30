@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from 'uuid'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   accessibilityDescribedBy?: string
@@ -36,27 +37,18 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   const Icon = icon
 
   return (
-    <Container toggleLabel={!!toggleLabel}>
-      <TitleContainer toggleLabel={!!toggleLabel}>
-        {Icon ? (
-          <React.Fragment>
-            <Icon size={iconSize} color={designSystem.color.icon.default} />
-            <Spacer.Row numberOfSpaces={2} />
-          </React.Fragment>
-        ) : null}
+    <Container toggleLabel={!!toggleLabel} gap={4}>
+      <TitleContainer toggleLabel={!!toggleLabel} gap={2}>
+        {Icon ? <Icon size={iconSize} color={designSystem.color.icon.default} /> : null}
         <InputLabel htmlFor={checkboxID}>
           <Typo.BodyAccent>{title}</Typo.BodyAccent>
         </InputLabel>
       </TitleContainer>
-      <Spacer.Row numberOfSpaces={4} />
-      <FilterSwitchLabelContainer>
+      <FilterSwitchLabelContainer gap={4}>
         {toggleLabel && !isMobileViewport ? (
-          <React.Fragment>
-            <ToggleLabel id={labelID} htmlFor={checkboxID}>
-              {toggleLabel}
-            </ToggleLabel>
-            <Spacer.Row numberOfSpaces={4} />
-          </React.Fragment>
+          <ToggleLabel id={labelID} htmlFor={checkboxID}>
+            {toggleLabel}
+          </ToggleLabel>
         ) : null}
         <FilterSwitch
           checkboxID={checkboxID}
@@ -72,19 +64,19 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   )
 }
 
-const Container = styled.View<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
+const Container = styled(ViewGap)<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
   flexDirection: theme.isMobileViewport || toggleLabel ? 'row' : 'row-reverse',
   justifyContent: theme.isMobileViewport || toggleLabel ? 'flex-start' : 'flex-end',
   alignItems: 'center',
 }))
 
-const TitleContainer = styled.View<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
+const TitleContainer = styled(ViewGap)<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
   flex: theme.isMobileViewport || toggleLabel ? 1 : undefined,
   flexDirection: 'row',
   alignItems: 'center',
 }))
 
-const FilterSwitchLabelContainer = styled.View({
+const FilterSwitchLabelContainer = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
 })
