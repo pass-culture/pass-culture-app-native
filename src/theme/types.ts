@@ -3,19 +3,19 @@
 import {
   theme as themeDarkMobile,
   ColorsType as ColorsTypeDarkMobile,
-} from 'design-system/dist/build/jeune/index.dark.mobile'
+} from '@pass-culture/design-system/lib/jeune/dark.mobile'
 import {
   theme as themeDarkWeb,
   ColorsType as ColorsTypeDarkWeb,
-} from 'design-system/dist/build/jeune/index.dark.web'
+} from '@pass-culture/design-system/lib/jeune/dark.web'
 import {
   theme as themeLightMobile,
   ColorsType as ColorsTypeLightMobile,
-} from 'design-system/dist/build/jeune/index.light.mobile'
+} from '@pass-culture/design-system/lib/jeune/light.mobile'
 import {
   theme as themeLightWeb,
   ColorsType as ColorsTypeLightWeb,
-} from 'design-system/dist/build/jeune/index.light.web'
+} from '@pass-culture/design-system/lib/jeune/light.web'
 
 import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
 

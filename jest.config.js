@@ -57,7 +57,7 @@ module.exports = {
         '@sentry/react-native',
         'react-native-geolocation-service',
         'instantsearch.js',
-        'design-system',
+        '@pass-culture/design-system',
         'search-insights',
       ].join('|') +
       ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
