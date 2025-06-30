@@ -1,11 +1,11 @@
-name: "2 [pull/pr] Initiate workflow"
+name: '2 [pull/pr] Initiate workflow'
 
 on:
   push:
     branches:
       - master
     tags:
-      - "**"
+      - '**'
   pull_request:
 
 permissions:
@@ -87,6 +87,8 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+      PASSCULTURE_GITHUB_ACTION_APP_ID: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+      PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
   yarn-chromatic:
     needs: [yarn-linter, check-storybook-folder-changes]
     uses: ./.github/workflows/dev_on_workflow_chromatic.yml
@@ -208,12 +210,7 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-staging:
-    needs:
-      [
-        check-server-folder-changes-staging,
-        deploy-web-staging,
-        check-proxy-version-staging,
-      ]
+    needs: [check-server-folder-changes-staging, deploy-web-staging, check-proxy-version-staging]
     if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
