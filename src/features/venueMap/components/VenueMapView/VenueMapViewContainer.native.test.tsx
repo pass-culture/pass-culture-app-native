@@ -17,6 +17,7 @@ import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
@@ -301,6 +302,32 @@ describe('VenueMapViewContainer', () => {
     ])
 
     expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: venuesFixture[0].venueId })
+  })
+
+  it('should trigger ConsultVenue log when bottom sheet is open and fling gesture detected if venue is permanent', async () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
+      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+    ])
+    mockUseVenueOffers(true)
+    renderVenueMapViewContainer()
+
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+    await pressVenueMarker(venuesFixture[0])
+    await waitFor(() => expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen())
+
+    fireGestureHandler(getByGestureTestId('flingGesture'), [
+      { state: State.BEGAN, absoluteY: 0 },
+      { state: State.ACTIVE, absoluteY: -10 },
+      { state: State.END, absoluteY: -30 },
+    ])
+
+    expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+      venueId: venuesFixture[0].venueId,
+      from: 'venueMap',
+    })
   })
 
   it('should not navigate to Venue page when bottom sheet is open and fling gesture detected if venue is not permanent', async () => {
