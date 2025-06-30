@@ -36,6 +36,7 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { camelCase } from 'libs/formatter/camelCase'
 import { useLocation } from 'libs/location'
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
@@ -182,8 +183,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   }
 
   const onNavigateToVenuePress = (venueId: number) => {
-    const camelCaseRouteName = (routeName.charAt(0).toLowerCase() + routeName.slice(1)) as Referrals
-    analytics.logConsultVenue({ venueId, from: camelCaseRouteName })
+    analytics.logConsultVenue({ venueId, from: camelCase(routeName) as Referrals })
   }
 
   const handleBottomSheetAnimation = useCallback(
