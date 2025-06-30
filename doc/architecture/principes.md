@@ -197,6 +197,8 @@ Le découpage de la page en `container` peut venir de plusieurs contraintes :
 
 Contiennent la `navigation` et envoient ces informations via les `props` aux `containers`.
 
+Les `pages` se trouvent dans `src/features/<feature>/pages/<nom de la page>Page.tsx`
+
 Les noms des composants sont suffixé de `Page`
 
 ```tsx
@@ -216,6 +218,8 @@ const ArtistsPage: FunctionComponent = () => {
 Contiennent les `hooks` et les `queries`, ainsi ils sont modulaires.
 
 Les containers sont des composants React chargés de gérer les données et la logique. Ils sont généralement utilisés pour récupérer des données depuis une source externe, gérer l'état, et transmettre les données aux composants de présentation.
+
+Les `containers` se trouvent dans `src/features/<feature>/containers/<nom du container>Container.tsx`
 
 Les noms des composants sont suffixé de `Container`
 
@@ -253,6 +257,8 @@ const ArtistsContainer: FunctionComponent<Props> = ({ artistId }) => {
 ##### Les `presentational` components
 
 Ce sont des composants contenant uniquement des logiques de présentation (pas de logique métier), ils ne doivent afficher que ce qui est passé en `props`.
+
+Les `presentational` components se trouvent dans `src/features/<feature>/components/<nom du composant>.tsx`
 
 Les noms des composants n'ont pas de suffix particulier
 
