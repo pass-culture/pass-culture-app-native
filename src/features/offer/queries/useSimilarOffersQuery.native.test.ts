@@ -89,7 +89,7 @@ describe('useSimilarOffersQuery', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&categories=CINEMA`,
+          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&search_group_names=CINEMA`,
           {
             credentials: 'omit',
             headers: {
@@ -123,7 +123,7 @@ describe('useSimilarOffersQuery', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?categories=CINEMA`,
+          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?search_group_names=CINEMA`,
           {
             credentials: 'omit',
             headers: {
@@ -204,13 +204,13 @@ describe('useSimilarOffersQuery', () => {
         new Error('Error 400 with recommendation endpoint to get similar offers'),
         {
           extra: {
-            categories: '["CINEMA"]',
+            searchGroupNames: '["CINEMA"]',
             latitude: undefined,
             longitude: undefined,
             offerId: 1,
             statusCode: 400,
             errorMessage:
-              'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?categories=CINEMA, code: 400',
+              'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?search_group_names=CINEMA, code: 400',
           },
         }
       )
