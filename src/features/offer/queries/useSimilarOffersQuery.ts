@@ -56,20 +56,22 @@ export const useSimilarOffersQuery = ({
   categoryExcluded,
   searchGroupList,
 }: Props) => {
-  const categories: SearchGroupNameEnumv2[] = useMemo(
+  const searchGroupNames: SearchGroupNameEnumv2[] = useMemo(
     () => getCategories(searchGroupList, categoryIncluded, categoryExcluded),
     [categoryExcluded, categoryIncluded, searchGroupList]
   )
 
   const { data: apiRecoResponse } = useQuery(
-    [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, categories],
+    [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, searchGroupNames],
     async () => {
       try {
         return await api.getNativeV1RecommendationSimilarOffersofferId(
           offerId,
           position?.longitude,
           position?.latitude,
-          categories
+          undefined,
+          undefined,
+          searchGroupNames
         )
       } catch (err) {
         const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
@@ -86,7 +88,7 @@ export const useSimilarOffersQuery = ({
                 offerId,
                 longitude: position?.longitude,
                 latitude: position?.latitude,
-                categories: JSON.stringify(categories),
+                searchGroupNames: JSON.stringify(searchGroupNames),
                 statusCode,
                 errorMessage,
               },
@@ -99,7 +101,7 @@ export const useSimilarOffersQuery = ({
     },
     {
       staleTime: 1000 * 60 * 5,
-      enabled: !!categories && onlineManager.isOnline() && shouldFetch,
+      enabled: !!searchGroupNames && onlineManager.isOnline() && shouldFetch,
     }
   )
 

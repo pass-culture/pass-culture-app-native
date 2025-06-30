@@ -4056,6 +4056,11 @@ export interface SimilarOffersRequestQuery {
    * @type {Array<string>}
    * @memberof SimilarOffersRequestQuery
    */
+  search_group_names?: Array<string> | null
+  /**
+   * @type {Array<string>}
+   * @memberof SimilarOffersRequestQuery
+   */
   subcategories?: Array<string> | null
 }
 /**
@@ -5814,6 +5819,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @param {number} [latitude]
      * @param {Array<string>} [categories]
      * @param {Array<string>} [subcategories]
+     * @param {Array<string>} [search_group_names]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -5823,6 +5829,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       latitude?: number,
       categories?: Array<string>,
       subcategories?: Array<string>,
+      search_group_names?: Array<string>,
       options: any = {}
     ): Promise<FetchArgs> {
       // verify required parameter 'offer_id' is not null or undefined
@@ -5852,6 +5859,10 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
 
       if (subcategories != null) {
         queryParameters['subcategories'] = subcategories
+      }
+
+      if (search_group_names != null) {
+        queryParameters['search_group_names'] = search_group_names
       }
 
       const encodedQueryParams =
@@ -7760,6 +7771,7 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
      * @param {number} [latitude]
      * @param {Array<string>} [categories]
      * @param {Array<string>} [subcategories]
+     * @param {Array<string>} [search_group_names]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -7769,6 +7781,7 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
       latitude?: number,
       categories?: Array<string>,
       subcategories?: Array<string>,
+      search_group_names?: Array<string>,
       options?: any
     ): Promise<SimilarOffersResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(
@@ -7779,6 +7792,7 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
         latitude,
         categories,
         subcategories,
+        search_group_names,
         options
       )
       const response = await safeFetch(
@@ -9244,6 +9258,7 @@ export class DefaultApi extends BaseAPI {
    * @param {number} [latitude]
    * @param {Array<string>} [categories]
    * @param {Array<string>} [subcategories]
+   * @param {Array<string>} [search_group_names]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DefaultApi
@@ -9254,6 +9269,7 @@ export class DefaultApi extends BaseAPI {
     latitude?: number,
     categories?: Array<string>,
     subcategories?: Array<string>,
+    search_group_names?: Array<string>,
     options?: any
   ) {
     const configuration = this.getConfiguration()
@@ -9263,6 +9279,7 @@ export class DefaultApi extends BaseAPI {
       latitude,
       categories,
       subcategories,
+      search_group_names,
       options
     )
   }
