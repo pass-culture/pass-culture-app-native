@@ -45,28 +45,6 @@ describe('useInitialScreen()', () => {
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
   })
 
-  it('should return CulturalSurveyIntro when user should see cultural survey', async () => {
-    await storage.saveObject('has_seen_tutorials', true)
-    await storage.saveObject('has_seen_eligible_card', true)
-    mockAuthContextWithUser(
-      {
-        ...beneficiaryUser,
-        needsToFillCulturalSurvey: true,
-        showEligibleCard: true,
-        recreditAmountToShow: null,
-      },
-      { persist: true }
-    )
-
-    const result = await renderUseInitialScreen()
-
-    await waitFor(() => {
-      expect(result.current).toEqual('CulturalSurveyIntro')
-    })
-
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro')
-  })
-
   it('should return EighteenBirthday when user hasn’t seen eligible card', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', null)

@@ -21,7 +21,6 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
-import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
@@ -247,23 +246,6 @@ describe('<Login/>', () => {
     expect(navigateToHome).toHaveBeenCalledTimes(1)
     expect(mockResetSearch).toHaveBeenCalledTimes(1)
     expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
-  })
-
-  it('should redirect to NATIVE Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
-    setFeatureFlags() // disabled ENABLE_CULTURAL_SURVEY_MANDATORY feature flag
-
-    mockMeApiCall({
-      ...beneficiaryUser,
-      needsToFillCulturalSurvey: true,
-      showEligibleCard: false,
-    } as UserProfileResponse)
-    renderLogin()
-
-    await fillInputs()
-    await user.press(screen.getByText('Se connecter'))
-
-    expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro')
   })
 
   it('should redirect to home WHEN signin is successful and ENABLE_CULTURAL_SURVEY_MANDATORY enabled', async () => {

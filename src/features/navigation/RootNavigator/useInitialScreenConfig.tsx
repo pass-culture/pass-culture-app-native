@@ -49,10 +49,6 @@ async function getInitialScreen({
       if (!hasSeenEligibleCard && user.showEligibleCard) {
         return 'EighteenBirthday'
       }
-      // If user closed app after completing activation
-      if (user?.needsToFillCulturalSurvey) {
-        return 'CulturalSurveyIntro'
-      }
     } catch {
       // If we cannot get user's information, we just go to the homepage
       return homeNavConfig[0]
