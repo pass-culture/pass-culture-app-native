@@ -216,14 +216,33 @@ Contiennent les `hooks` et les `queries`, ainsi ils sont modulaires.
 Les containers sont des composants React chargés de gérer les données et la logique. Ils sont généralement utilisés pour récupérer des données depuis une source externe, gérer l'état, et transmettre les données aux composants de présentation.
 
 ```tsx
-const ArtistsPage: FunctionComponent = () => {
-  const route = useRoute<UseRouteType<'Artists'>>()
-  return (
-    <>
-      <Container1 artistId={route.params.artistId} />
-      <Container2 from={route.params.from} />
-    </>
-  )
+type Props = {
+  artistId: string
+}
+
+const ArtistsContainer: FunctionComponent<Props> = ({ artistId }) => {
+  const { data: artist, status } = useGetArtistQuery(artistId)
+
+  switch (status) {
+    case 'idle':
+    case 'loading':
+      return <Skeleton />
+
+    case 'success':
+      return (
+        <View>
+          <ArtistHeader artist={artist.name} />
+          <ArtistInfos
+            name={artist.name}
+            description={artist.description || undefined}
+            imageURL={artist.image || undefined}
+          />
+        </View>
+      )
+
+    case 'error':
+      return <NotFound />
+  }
 }
 ```
 
