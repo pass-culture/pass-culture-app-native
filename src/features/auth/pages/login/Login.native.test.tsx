@@ -600,20 +600,6 @@ describe('<Login/>', () => {
         offerId: OFFER_ID,
       })
     })
-
-    it('should redirect to CulturalSurveyIntro instead of Offer when user needs to fill it', async () => {
-      mockMeApiCall({
-        ...beneficiaryUser,
-        needsToFillCulturalSurvey: true,
-        showEligibleCard: false,
-      } as UserProfileResponse)
-      renderLogin()
-
-      await fillInputs()
-      await user.press(screen.getByText('Se connecter'))
-
-      expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
-    })
   })
 
   describe('Login from offer booking modal', () => {

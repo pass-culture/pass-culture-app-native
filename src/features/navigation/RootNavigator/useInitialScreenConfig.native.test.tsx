@@ -102,7 +102,7 @@ describe('useInitialScreen()', () => {
       { persist: true }
     )
 
-    const result = await renderUseInitialScreen()
+    const { result } = renderHook(() => useInitialScreen())
 
     await waitFor(() => {
       expect(result.current).toEqual('RecreditBirthdayNotification')

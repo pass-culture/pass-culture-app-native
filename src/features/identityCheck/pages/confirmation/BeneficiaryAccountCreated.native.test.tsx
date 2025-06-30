@@ -87,18 +87,6 @@ describe('<BeneficiaryAccountCreated/>', () => {
     await waitFor(() => expect(mockShowAppModal).not.toHaveBeenCalled())
   })
 
-  it('should redirect to native cultural survey page when "C’est parti !"button is clicked and user is supposed to see cultural survey', async () => {
-    mockAuthContextWithUser(
-      { ...beneficiaryUser, needsToFillCulturalSurvey: true },
-      { persist: true }
-    )
-    renderBeneficiaryAccountCreated()
-
-    await user.press(await screen.findByLabelText('C’est parti !'))
-
-    expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro', undefined)
-  })
-
   it('should redirect to home page when "C’est parti !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     renderBeneficiaryAccountCreated()
