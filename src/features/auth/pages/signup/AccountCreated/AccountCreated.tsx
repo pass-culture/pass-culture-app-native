@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect } from 'react'
-import styled from 'styled-components/native'
 
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { Typo } from 'ui/theme'
 
 export function AccountCreated() {
   useEffect(() => {
@@ -30,16 +29,7 @@ export function AccountCreated() {
       buttonPrimary={{
         wording: 'On y va\u00a0!',
         onBeforeNavigate,
-        navigateTo: { screen: 'CulturalSurveyIntro' },
-      }}>
-      <StyledBody>
-        Aide-nous à en savoir plus sur tes pratiques culturelles&nbsp;! Ta sélection n’aura pas
-        d’impact sur les offres proposées.
-      </StyledBody>
-    </GenericInfoPage>
+        navigateTo: navigateToHomeConfig,
+      }}></GenericInfoPage>
   )
 }
-
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
