@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -14,7 +15,7 @@ export function BeneficiaryRequestSent() {
       subtitle={subtitle}
       buttonPrimary={{
         wording: 'On y va\u00a0!',
-        navigateTo: { screen: 'CulturalSurveyIntro' },
+        navigateTo: navigateToHomeConfig,
       }}
     />
   )
