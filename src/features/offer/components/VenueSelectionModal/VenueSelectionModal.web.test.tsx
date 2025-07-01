@@ -8,6 +8,8 @@ import { VenueSelectionModal } from './VenueSelectionModal'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<VenueSelectionModal />', () => {
   const items: VenueListItem[] = [
     {

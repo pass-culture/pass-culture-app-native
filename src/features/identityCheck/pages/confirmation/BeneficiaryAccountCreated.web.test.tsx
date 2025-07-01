@@ -9,6 +9,8 @@ import { BeneficiaryAccountCreated } from './BeneficiaryAccountCreated'
 
 jest.mock('features/auth/context/AuthContext')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<BeneficiaryAccountCreated/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

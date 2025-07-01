@@ -57,6 +57,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {

@@ -5,6 +5,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { BookingNotFound } from './BookingNotFound'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<BookingNotFound/>', () => {
   beforeEach(() => {
     setFeatureFlags()

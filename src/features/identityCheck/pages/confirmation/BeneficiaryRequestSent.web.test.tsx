@@ -7,6 +7,8 @@ import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
 jest.mock('features/auth/context/AuthContext')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<BeneficiaryRequestSent/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
