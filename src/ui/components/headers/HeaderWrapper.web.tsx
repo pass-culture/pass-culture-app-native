@@ -5,12 +5,12 @@ type Props = {
   header?: React.ReactNode
 }
 
-/* On native VenueHeader is called after Body to implement the BlurView for iOS */
-export const VenueHeaderWrapper = ({ children, header }: Props) => {
+/* On web Header is called before Body for accessibility navigate order */
+export const HeaderWrapper = ({ children, header }: Props) => {
   return (
     <React.Fragment>
-      {children}
       {header}
+      {children}
     </React.Fragment>
   )
 }
