@@ -13,12 +13,14 @@ type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
+  secondaryShowOfferModal?: ICTAWordingAndAction
 }
 
 export const StickyBookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,
+  secondaryShowOfferModal,
 }) => {
   const { bottom } = useCustomSafeInsets()
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
@@ -42,6 +44,17 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
               isFreeDigitalOffer={isFreeDigitalOffer}
               isLoggedIn={isLoggedIn}
             />
+            {secondaryShowOfferModal ? (
+              <CTAButton
+                wording={secondaryShowOfferModal.wording ?? ''}
+                onPress={secondaryShowOfferModal.onPress}
+                navigateTo={secondaryShowOfferModal.navigateTo}
+                externalNav={secondaryShowOfferModal.externalNav}
+                isDisabled={secondaryShowOfferModal.isDisabled}
+                isFreeDigitalOffer={isFreeDigitalOffer}
+                isLoggedIn={isLoggedIn}
+              />
+            ) : null}
           </CallToActionContainer>
         </BlurryWrapper>
       ) : null}

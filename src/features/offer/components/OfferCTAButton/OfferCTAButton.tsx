@@ -21,8 +21,13 @@ export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
   subcategory,
   trackEventHasSeenOfferOnce,
 }) => {
-  const { ctaWordingAndAction, showOfferModal, CTAOfferModal, openModalOnNavigation } =
-    useOfferCTAButton(offer, subcategory)
+  const {
+    ctaWordingAndAction,
+    showOfferModal,
+    CTAOfferModal,
+    openModalOnNavigation,
+    secondaryCtaWordingAndAction,
+  } = useOfferCTAButton(offer, subcategory)
 
   const { isLoggedIn } = useAuthContext()
   const { isDesktopViewport } = useTheme()
@@ -50,6 +55,7 @@ export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
           ctaWordingAndAction={ctaWordingAndAction}
           isFreeDigitalOffer={isFreeDigitalOffer}
           isLoggedIn={isLoggedIn}
+          secondaryCtaWordingAndAction={secondaryCtaWordingAndAction}
         />
       )}
 

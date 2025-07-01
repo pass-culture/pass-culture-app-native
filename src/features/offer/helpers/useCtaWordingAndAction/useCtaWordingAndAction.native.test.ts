@@ -310,14 +310,14 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCredit: true,
         })
-        const { wording, onPress, navigateTo, externalNav } = result || {}
+        const { wording, onPress, navigateTo, externalNav } = result?.[0] || {}
 
         expect(wording).toEqual(expected)
         expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
           disabled
         )
-        expect(result?.externalNav?.url).toEqual(url)
-        expect(result?.modalToDisplay).toEqual(modalToDisplay)
+        expect(result?.[0]?.externalNav?.url).toEqual(url)
+        expect(result?.[0]?.modalToDisplay).toEqual(modalToDisplay)
       }
     )
 
@@ -363,14 +363,14 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCredit: true,
         })
-        const { wording, onPress, navigateTo, externalNav } = result || {}
+        const { wording, onPress, navigateTo, externalNav } = result?.[0] || {}
 
         expect(wording).toEqual(expected)
         expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
           disabled
         )
-        expect(result?.externalNav?.url).toEqual(url)
-        expect(result?.modalToDisplay).toEqual(modalToDisplay)
+        expect(result?.[0]?.externalNav?.url).toEqual(url)
+        expect(result?.[0]?.modalToDisplay).toEqual(modalToDisplay)
       }
     )
   })
@@ -391,7 +391,7 @@ describe('getCtaWordingAndAction', () => {
         hasEnoughCredit: true,
         isUnderageBeneficiary: true,
         ...parameters,
-      }) || { wording: '' }
+      })
 
     it('CTA="Offre épuisée" if offer is sold out', () => {
       const result = getCta({ isSoldOut: true })
@@ -614,7 +614,7 @@ describe('getCtaWordingAndAction', () => {
           isForbiddenToUnderage,
           modalToDisplay: mustShowBookingModal,
         }) => {
-          const { wording, onPress, navigateTo, externalNav, modalToDisplay } = getCta(
+          const result = getCta(
             {
               isDigital,
               isForbiddenToUnderage,
@@ -634,8 +634,10 @@ describe('getCtaWordingAndAction', () => {
             { isUnderageBeneficiary: true },
             { isEvent, searchGroupName: category }
           )
+          const { wording, onPress, navigateTo, externalNav, modalToDisplay } = result
 
           expect(wording).toEqual(expected)
+
           expect(modalToDisplay).toEqual(mustShowBookingModal)
           expect(
             onPress === undefined && navigateTo === undefined && externalNav === undefined

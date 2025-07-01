@@ -16,6 +16,11 @@ export const useOfferCTAButton = (
   const route = useRoute<UseRouteType<'Offer'>>()
   const { from, searchId, openModalOnNavigation } = route.params
 
+  const ctas = useCtaWordingAndAction({ offer, from, searchId, subcategory }) ?? [{}]
+
+  const primaryCTA = ctas[0]
+  const secondaryCTA = ctas[1]
+
   const {
     wording,
     onPress: onPressCTA,
@@ -26,7 +31,27 @@ export const useOfferCTAButton = (
     bottomBannerText,
     isDisabled,
     movieScreeningUserData,
-  } = useCtaWordingAndAction({ offer, from, searchId, subcategory }) ?? {}
+  } = primaryCTA
+
+  const {
+    wording: secondaryWording,
+    onPress: secondaryOnPressCTA,
+    navigateTo: secondaryNavigateTo,
+    externalNav: secondaryExternalNav,
+    modalToDisplay: secondaryModalToDisplay,
+    isEndedUsedBooking: secondaryIsEndedUsedBooking,
+    bottomBannerText: secondaryBottomBannerText,
+    isDisabled: secondaryIsDisabled,
+  } = secondaryCTA ?? {
+    secondaryWording: undefined,
+    onPress: undefined,
+    secondaryNavigateTo: undefined,
+    secondaryExternalNav: undefined,
+    msecondaryModalToDisplay: undefined,
+    secondaryIsEndedUsedBooking: undefined,
+    secondaryBottomBannerText: undefined,
+    secondaryIsDisabled: undefined,
+  }
 
   const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useBookOfferModal({
     modalToDisplay,
@@ -35,6 +60,14 @@ export const useOfferCTAButton = (
     from: StepperOrigin.OFFER,
     bookingDataMovieScreening: bookingData,
   })
+
+  const { OfferModal: secondaryCTAOfferModal, showModal: secondaryShowOfferModal } =
+    useBookOfferModal({
+      modalToDisplay: secondaryModalToDisplay,
+      offerId: offer.id,
+      isEndedUsedBooking: secondaryIsEndedUsedBooking,
+      from: StepperOrigin.OFFER,
+    })
 
   const { resetFreeOfferId } = freeOfferIdActions
   const storedFreeOfferId = useFreeOfferId()
@@ -60,6 +93,15 @@ export const useOfferCTAButton = (
     bottomBannerText,
   }
 
+  const secondaryCtaWordingAndAction = {
+    secondaryWording,
+    secondaryOnPressCTA,
+    secondaryNavigateTo,
+    secondaryExternalNav,
+    secondaryIsDisabled,
+    secondaryBottomBannerText,
+  }
+
   return {
     ctaWordingAndAction,
     onPress,
@@ -67,5 +109,8 @@ export const useOfferCTAButton = (
     CTAOfferModal,
     openModalOnNavigation,
     movieScreeningUserData,
+    secondaryCtaWordingAndAction,
+    secondaryCTAOfferModal,
+    secondaryShowOfferModal,
   }
 }
