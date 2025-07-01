@@ -41,7 +41,7 @@ export const filterValidOfferHit = (hit?: AlgoliaOffer): hit is AlgoliaOffer => 
 
 export const transformOfferHit =
   (urlPrefix?: string) =>
-  (hit: AlgoliaOffer): AlgoliaOffer => ({
+  <Hit extends AlgoliaOffer>(hit: Hit): Hit => ({
     ...hit,
     offer: {
       ...hit.offer,

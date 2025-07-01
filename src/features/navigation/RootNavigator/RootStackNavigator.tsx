@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { Artist } from 'features/artist/pages/Artist'
+import { ArtistPage } from 'features/artist/pages/ArtistPage'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -285,8 +285,8 @@ const rootScreens: RouteConfig[] = [
     component: VenuePreviewCarousel,
     options: { title: 'Aperçu du lieu' },
   },
-  { name: 'Artist', component: Artist, options: { title: 'Artiste' } },
-  { name: '_DeeplinkOnlyArtist1', component: Artist, options: { title: 'Artiste' } },
+  { name: 'Artist', component: ArtistPage, options: { title: 'Artiste' } },
+  { name: '_DeeplinkOnlyArtist1', component: ArtistPage, options: { title: 'Artiste' } },
   {
     name: 'Chronicles',
     component: Chronicles,
