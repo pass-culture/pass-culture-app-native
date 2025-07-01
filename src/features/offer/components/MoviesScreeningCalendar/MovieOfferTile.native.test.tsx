@@ -15,6 +15,7 @@ import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalenda
 import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { VenueOffers } from 'features/venue/types'
+import { mockAlgoliaResponse } from 'libs/algolia/fetchAlgolia/multipleQueries/__test__/mockAlgoliaResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { getDates } from 'shared/date/getDates'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -49,7 +50,7 @@ const VENUE_OFFERS_HIT = {
   venue: {},
 }
 
-const VENUE_OFFERS_MOCK = { hits: [VENUE_OFFERS_HIT], nbHits: 1 }
+const VENUE_OFFERS_MOCK = mockAlgoliaResponse([VENUE_OFFERS_HIT])
 
 const MOCK_MOVIE_OFFER = {
   isUpcoming: false,
@@ -132,7 +133,7 @@ describe('MovieOfferTile', () => {
     const ID = '4321'
     const movieOffer = { ...MOCK_MOVIE_OFFER, offer: { ...MOCK_MOVIE_OFFER.offer, id: +ID } }
     const venueOffersHit = { ...VENUE_OFFERS_HIT, objectID: ID }
-    const venueOffers = { ...VENUE_OFFERS_MOCK, hits: [...VENUE_OFFERS_MOCK.hits, venueOffersHit] }
+    const venueOffers = mockAlgoliaResponse([VENUE_OFFERS_HIT, venueOffersHit])
 
     it('should render offer component', async () => {
       renderMovieOfferTile({ movieOffer, venueOffers })
@@ -144,7 +145,7 @@ describe('MovieOfferTile', () => {
   describe('without screening on selected date', () => {
     const ID = '4321'
     const venueOffersHit = { ...VENUE_OFFERS_HIT, objectID: ID }
-    const venueOffers = { ...VENUE_OFFERS_MOCK, hits: [...VENUE_OFFERS_MOCK.hits, venueOffersHit] }
+    const venueOffers = { ...VENUE_OFFERS_MOCK, hits: [VENUE_OFFERS_HIT, venueOffersHit] }
 
     it('should not render offer component', () => {
       renderMovieOfferTile({ movieOffer: MOCK_MOVIE_OFFER, venueOffers })
