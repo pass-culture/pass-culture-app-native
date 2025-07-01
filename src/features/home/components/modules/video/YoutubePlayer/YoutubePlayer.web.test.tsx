@@ -2,26 +2,19 @@ import React, { createRef } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image, View } from 'react-native'
 
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, userEvent, waitFor, screen } from 'tests/utils/web'
 
-import { YoutubePlayer, YoutubePlayerRef } from './YoutubePlayer'
+import { YoutubePlayerRef } from './types'
+import { YoutubePlayer } from './YoutubePlayer'
 
 describe('YoutubePlayer', () => {
   const user = userEvent.setup()
   const mockRef = createRef<YoutubePlayerRef>()
 
-  beforeAll(() => {
-    jest.useFakeTimers()
-  })
-
-  afterAll(() => {
-    jest.useRealTimers()
-  })
-
   it('should render correctly with thumbnail', () => {
-    const { root } = render(<YoutubePlayer height={300} thumbnail={<View />} />)
+    const { baseElement } = render(<YoutubePlayer height={300} thumbnail={<View />} />)
 
-    expect(root).toBeOnTheScreen()
+    expect(baseElement).toBeInTheDocument()
   })
 
   it('should have default ref', async () => {
@@ -52,7 +45,7 @@ describe('YoutubePlayer', () => {
       />
     )
 
-    await user.press(screen.getByRole('imagebutton'))
+    await user.click(screen.getByLabelText('Jouer'))
 
     await waitFor(() => expect(handleOnReady).toHaveBeenCalledWith())
   })

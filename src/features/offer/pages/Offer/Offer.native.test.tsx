@@ -214,6 +214,14 @@ describe('<Offer />', () => {
     expect(await screen.findByText('La reco du Book Club')).toBeOnTheScreen()
   })
 
+  it('should display video section when FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
+
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
+  })
+
   it('should display offer placeholder on init', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap, mockIsLoading: true })
 

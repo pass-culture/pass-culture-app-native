@@ -73,6 +73,7 @@ export type OfferContentProps = {
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
   chronicles?: ChronicleCardData[]
+  videoData?: { videoId: string; thumbnailUri: string }
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
