@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { TicketResponse, UserProfileResponse } from 'api/gen'
+import { TicketCode } from 'features/bookings/components/OldBookingDetails/TicketCode'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
-import { DigitalTokenTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTokenTicket/DigitalTokenTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
 import {
   ExternalBookingTicket,
@@ -11,7 +11,6 @@ import {
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
-import { TicketCodeTitle } from 'features/bookings/components/Ticket/TicketBottomPart/TicketCodeTitle'
 
 export const TicketBottomPart = ({
   isDuo,
@@ -40,7 +39,7 @@ export const TicketBottomPart = ({
       />
     )
 
-  if (ticket?.activationCode) return <TicketCodeTitle>{ticket.activationCode.code}</TicketCodeTitle>
+  if (ticket?.activationCode) return <TicketCode code={ticket.activationCode.code} />
 
   if (ticket?.externalBooking)
     return ticket?.externalBooking.data ? (
@@ -57,12 +56,9 @@ export const TicketBottomPart = ({
     )
   }
 
-  if (ticket?.token?.data) {
-    return isDigital ? (
-      <DigitalTokenTicket token={ticket.token ?? null} />
-    ) : (
-      <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
-    )
-  }
+  if (ticket?.token?.data && isDigital) return <TicketCode code={ticket?.token?.data} />
+
+  if (ticket?.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
+
   return null
 }
