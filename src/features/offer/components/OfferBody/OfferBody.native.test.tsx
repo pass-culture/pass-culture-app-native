@@ -63,6 +63,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+// FIXME(PC-36828): do not mock query hook and test that artist cannot be display when subcategoryId is not in allowed list from remote config
 const useArtistResultsSpy = jest
   .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
   .mockImplementation()
