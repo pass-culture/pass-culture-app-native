@@ -1,9 +1,9 @@
 import { SubscriptionStepperResponseV2 } from 'api/gen'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import {
   SubscriptionStepperErrorResponseFixture,
   SubscriptionStepperResponseFixture,
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -45,6 +45,6 @@ describe('useGetStepperInfo', () => {
 })
 
 const renderGetStepperInfo = () =>
-  renderHook(() => useGetStepperInfo(), {
+  renderHook(() => useGetStepperInfoQuery(), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

@@ -3,13 +3,13 @@ import React from 'react'
 import { CurrencyEnum, SubscriptionStepCompletionState } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconStepCurrent } from 'features/identityCheck/components/IconStepCurrent'
 import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisabled'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -38,8 +38,8 @@ export const useStepperInfo = (): StepperInfo => {
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
 
-  const { remainingAttempts } = usePhoneValidationRemainingAttempts()
-  const { data } = useGetStepperInfo()
+  const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
+  const { data } = useGetStepperInfoQuery()
   const { data: settings } = useSettingsContext()
 
   if (!data) {

@@ -2,8 +2,8 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -15,9 +15,9 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 jest.useFakeTimers()
 
 jest.mock('libs/jwt/jwt')
-jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
+jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery', () => {
   return {
-    usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
+    usePhoneValidationRemainingAttemptsQuery: jest.fn().mockReturnValue({
       remainingAttempts: 5,
       counterResetDatetime: 'time',
       isLastAttempt: false,
@@ -32,7 +32,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
+const mockedUsePhoneValidationRemainingAttempts = jest.mocked(
+  usePhoneValidationRemainingAttemptsQuery
+)
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),

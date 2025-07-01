@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { timeDiffInHours } from 'libs/dates'
 import { plural } from 'libs/plural'
@@ -11,7 +11,7 @@ import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
 export function PhoneValidationTooManySMSSent() {
-  const { counterResetDatetime } = usePhoneValidationRemainingAttempts()
+  const { counterResetDatetime } = usePhoneValidationRemainingAttemptsQuery()
 
   const hoursUntilAllowedRetry = Math.max(0, timeDiffInHours(counterResetDatetime ?? new Date()))
 

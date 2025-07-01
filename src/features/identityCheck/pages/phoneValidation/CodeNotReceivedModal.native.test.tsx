@@ -2,11 +2,11 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import {
   CodeNotReceivedModal,
   CodeNotReceivedModalProps,
 } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -23,9 +23,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
+jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery', () => {
   return {
-    usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
+    usePhoneValidationRemainingAttemptsQuery: jest.fn().mockReturnValue({
       remainingAttempts: 5,
       counterResetDatetime: 'time',
       isLastAttempt: false,
@@ -43,7 +43,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
+const mockedUsePhoneValidationRemainingAttempts = jest.mocked(
+  usePhoneValidationRemainingAttemptsQuery
+)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

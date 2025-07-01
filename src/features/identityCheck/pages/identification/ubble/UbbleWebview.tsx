@@ -4,9 +4,9 @@ import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useIdentificationUrl } from 'features/identityCheck/api/useIdentificationUrl'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { parseUrlParams } from 'features/identityCheck/pages/helpers/parseUrlParams'
+import { useIdentificationUrlMutation } from 'features/identityCheck/queries/useIdentificationUrlMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
@@ -17,7 +17,7 @@ import { Spacer } from 'ui/theme'
 const ORIGIN_WHITELIST = ['*']
 
 export const UbbleWebview: React.FC = () => {
-  const identificationUrl = useIdentificationUrl()
+  const identificationUrl = useIdentificationUrlMutation()
   const { navigate } = useNavigation<UseNavigationType>()
 
   function onNavigationStateChange({ url }: { url: string }) {

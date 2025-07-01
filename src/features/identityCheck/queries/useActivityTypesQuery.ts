@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_ACTIVITY_TYPES = 5 * 60 * 1000
 
-function useActivityTypesResponse() {
+function useActivityTypesResponseQuery() {
   return useQuery<ActivityTypesResponse>(
     [QueryKeys.ACTIVITY_TYPES],
     () => api.getNativeV1SubscriptionActivityTypes(),
@@ -17,7 +17,7 @@ function useActivityTypesResponse() {
 }
 
 export const useActivityTypes = () => {
-  const { data } = useActivityTypesResponse()
+  const { data } = useActivityTypesResponseQuery()
   const activities = data?.activities
   return { activities }
 }

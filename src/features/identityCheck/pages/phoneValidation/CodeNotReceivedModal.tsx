@@ -3,10 +3,10 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
-import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSendPhoneValidationMutation'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
+import { useSendPhoneValidationMutation } from 'features/identityCheck/queries/useSendPhoneValidationMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { plural } from 'libs/plural'
@@ -25,7 +25,7 @@ export interface CodeNotReceivedModalProps {
 
 export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> = (props) => {
   const { phoneValidation } = useSubscriptionContext()
-  const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
+  const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttemptsQuery()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
 

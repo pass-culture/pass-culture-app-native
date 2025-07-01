@@ -1,4 +1,4 @@
-import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
+import { useEduConnectLoginMutation } from 'features/identityCheck/queries/useEduConnectLoginMutation'
 import { act, renderHook } from 'tests/utils/web'
 
 jest.mock('libs/eduConnectClient')
@@ -16,7 +16,7 @@ mockFetch.mockResolvedValue(
 
 describe('useEduconnectLogin', () => {
   it('should open new tab when calling openEduConnectTab method', async () => {
-    const { result } = renderHook(() => useEduConnectLogin())
+    const { result } = renderHook(() => useEduConnectLoginMutation())
 
     result.current.openEduConnectTab()
 
@@ -26,7 +26,7 @@ describe('useEduconnectLogin', () => {
   })
 
   it('should refetch login url when calling openEduConnectTab method', async () => {
-    const { result } = renderHook(() => useEduConnectLogin())
+    const { result } = renderHook(() => useEduConnectLoginMutation())
 
     result.current.openEduConnectTab()
 

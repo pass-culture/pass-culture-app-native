@@ -2,8 +2,8 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { userEvent, render, screen } from 'tests/utils'
@@ -13,9 +13,9 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
-jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
+jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery', () => {
   return {
-    usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
+    usePhoneValidationRemainingAttemptsQuery: jest.fn().mockReturnValue({
       remainingAttempts: 0,
       counterResetDatetime: '2022-07-08T13:30:00Z',
       isLastAttempt: false,
@@ -23,7 +23,7 @@ jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () =
   }
 })
 
-const mockedPhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
+const mockedPhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttemptsQuery)
 
 jest.useFakeTimers()
 

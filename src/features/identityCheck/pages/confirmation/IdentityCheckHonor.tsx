@@ -6,8 +6,8 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { usePostHonorStatement } from 'features/identityCheck/api/usePostHonorStatement'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { usePostHonorStatementMutation } from 'features/identityCheck/queries/usePostHonorStatementMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { QueryKeys } from 'libs/queryKeys'
@@ -32,7 +32,7 @@ export const IdentityCheckHonor = () => {
     mutate: postHonorStatement,
     isLoading: isPostingHonorLoading,
     isSuccess: isPostingHonorSuccess,
-  } = usePostHonorStatement({
+  } = usePostHonorStatementMutation({
     onSuccess: async () => {
       queryClient.invalidateQueries([QueryKeys.NEXT_SUBSCRIPTION_STEP])
       queryClient.invalidateQueries([QueryKeys.HOME_BANNER])

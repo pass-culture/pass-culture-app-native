@@ -6,13 +6,13 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
-import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/useValidatePhoneNumberMutation'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
-import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
+import { invalidateStepperInfoQueries } from 'features/identityCheck/pages/helpers/invalidateStepperQueries'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
+import { useValidatePhoneNumberMutation } from 'features/identityCheck/queries/useValidatePhoneNumberMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -36,7 +36,7 @@ export const SetPhoneValidationCode = () => {
     : ''
   const { navigate, dispatch } = useNavigation<UseNavigationType>()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
-  const { remainingAttempts } = usePhoneValidationRemainingAttempts()
+  const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
 
   // We amend our navigation history to replace "SetPhoneNumber" with "PhoneValidationTooManySMSSent"
   const goBackToPhoneValidationTooManySMSSent = () => {
@@ -73,7 +73,7 @@ export const SetPhoneValidationCode = () => {
 
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: async () => {
-      invalidateStepperInfoQuery()
+      invalidateStepperInfoQueries()
       navigateForwardToStepper()
     },
     onError: (error: unknown) => {

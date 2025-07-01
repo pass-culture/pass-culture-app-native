@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 
 import { eduConnectClient } from 'libs/eduConnectClient'
 
-export function useEduConnectLogin() {
+export function useEduConnectLoginMutation() {
   const [error, setError] = useState<Error | null>(null)
 
   const getLoginUrl = useCallback(async () => {
@@ -21,7 +21,6 @@ export function useEduConnectLogin() {
         mode: 'cors',
         credentials: 'include',
       })
-
       if (response.ok) {
         const finalURL = response.headers.get('educonnect-redirect')
         if (finalURL) {

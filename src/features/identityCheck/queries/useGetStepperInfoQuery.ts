@@ -5,7 +5,10 @@ import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useGetStepperInfo = (): UseQueryResult<SubscriptionStepperResponseV2, unknown> => {
+export const useGetStepperInfoQuery = (): UseQueryResult<
+  SubscriptionStepperResponseV2,
+  unknown
+> => {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<SubscriptionStepperResponseV2>(
