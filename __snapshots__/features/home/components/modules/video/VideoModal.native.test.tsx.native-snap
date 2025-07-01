@@ -236,9 +236,11 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 {
                   "backgroundColor": "#161617",
                   "height": 421.875,
+                  "width": 750,
                 },
               ]
             }
+            width={750}
           >
             <View
               height={421.875}
