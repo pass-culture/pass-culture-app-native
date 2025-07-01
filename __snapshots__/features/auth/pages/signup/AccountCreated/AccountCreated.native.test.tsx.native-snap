@@ -190,31 +190,6 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       </Text>
     </View>
     <View
-      style={
-        [
-          {
-            "marginBottom": 24,
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n’aura pas d’impact sur les offres proposées.
-      </Text>
-    </View>
-    <View
       flex={1}
       style={
         [

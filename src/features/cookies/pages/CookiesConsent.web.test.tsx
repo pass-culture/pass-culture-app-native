@@ -11,7 +11,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<CookiesConsent/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = await renderCookiesConsent()
+      const { container } = renderCookiesConsent()
       await act(async () => {
         const results = await checkAccessibilityFor(container)
 
@@ -21,9 +21,8 @@ describe('<CookiesConsent/>', () => {
   })
 })
 
-const renderCookiesConsent = async () => {
-  const renderAPI = render(<CookiesConsent visible hideModal={jest.fn()} />, {
+const renderCookiesConsent = () => {
+  return render(<CookiesConsent visible hideModal={jest.fn()} />, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  return renderAPI
 }

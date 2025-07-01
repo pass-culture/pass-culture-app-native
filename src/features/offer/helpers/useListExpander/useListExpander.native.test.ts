@@ -62,7 +62,7 @@ describe('useListExpander', () => {
       nextCount: 3,
     }
 
-    const { result, rerender } = await renderUseListExpander(todaysOffers, options)
+    const { result, rerender } = renderUseListExpander(todaysOffers, options)
 
     await act(async () => {
       result.current.showMore()

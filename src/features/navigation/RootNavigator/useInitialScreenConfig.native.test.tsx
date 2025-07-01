@@ -36,35 +36,13 @@ describe('useInitialScreen()', () => {
       { persist: true }
     )
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('TabNavigator')
     })
 
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
-  })
-
-  it('should return CulturalSurveyIntro when user should see cultural survey', async () => {
-    await storage.saveObject('has_seen_tutorials', true)
-    await storage.saveObject('has_seen_eligible_card', true)
-    mockAuthContextWithUser(
-      {
-        ...beneficiaryUser,
-        needsToFillCulturalSurvey: true,
-        showEligibleCard: true,
-        recreditAmountToShow: null,
-      },
-      { persist: true }
-    )
-
-    const result = await renderUseInitialScreen()
-
-    await waitFor(() => {
-      expect(result.current).toEqual('CulturalSurveyIntro')
-    })
-
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro')
   })
 
   it('should return EighteenBirthday when user hasn’t seen eligible card', async () => {
@@ -80,7 +58,7 @@ describe('useInitialScreen()', () => {
       { persist: true }
     )
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('EighteenBirthday')
@@ -102,7 +80,7 @@ describe('useInitialScreen()', () => {
       { persist: true }
     )
 
-    const result = await renderUseInitialScreen()
+    const { result } = renderHook(() => useInitialScreen())
 
     await waitFor(() => {
       expect(result.current).toEqual('RecreditBirthdayNotification')
@@ -116,7 +94,7 @@ describe('useInitialScreen()', () => {
     await storage.saveObject('has_seen_eligible_card', true)
     mockAuthContextWithoutUser({ persist: true })
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('TabNavigator')
@@ -130,7 +108,7 @@ describe('useInitialScreen()', () => {
     await storage.saveObject('has_seen_eligible_card', true)
     mockAuthContextWithoutUser({ persist: true })
 
-    const result = await renderUseInitialScreen()
+    const result = renderUseInitialScreen()
 
     await waitFor(() => {
       expect(result.current).toEqual('OnboardingStackNavigator')
@@ -140,7 +118,7 @@ describe('useInitialScreen()', () => {
   })
 })
 
-async function renderUseInitialScreen() {
+function renderUseInitialScreen() {
   const wrapper = (props: { children: unknown }) => (
     <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
   )

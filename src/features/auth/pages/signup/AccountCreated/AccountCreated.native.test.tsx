@@ -10,7 +10,6 @@ import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -54,17 +53,7 @@ describe('<AccountCreated />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to native cultural survey page WHEN "On y va !" button is clicked', async () => {
-    renderAccountCreated()
-
-    await user.press(await screen.findByLabelText('On y va\u00a0!'))
-
-    expect(navigateFromRef).not.toHaveBeenCalled()
-    expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro', undefined)
-  })
-
-  it('should redirect to home page WHEN "On y va !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+  it('should redirect to home page WHEN "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
     await user.press(await screen.findByLabelText('On y va\u00a0!'))
