@@ -1,8 +1,8 @@
 import { ChronicleAuthor } from 'api/gen'
 
-export function getChronicleCardTitle(author?: ChronicleAuthor | null) {
+export function getChronicleCardTitle(subtitle: string, author?: ChronicleAuthor | null) {
   if (!author?.firstName) {
-    return 'Membre du Book Club'
+    return subtitle
   }
   if (author?.age) {
     return `${author.firstName}, ${author.age} ans`

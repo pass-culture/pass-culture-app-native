@@ -13,9 +13,11 @@ const CHRONICLE_PREVIEW: ChroniclePreview = {
   },
 }
 
+const subtitle = 'Membre du Book Club'
+
 describe('chroniclePreviewToChronicleCardData', () => {
   it('should convert ChroniclePreview to ChronicleCardData with Author', () => {
-    expect(chroniclePreviewToChronicalCardData(CHRONICLE_PREVIEW)).toStrictEqual({
+    expect(chroniclePreviewToChronicalCardData(CHRONICLE_PREVIEW, subtitle)).toStrictEqual({
       date: 'Janvier 2025',
       description: 'lorem ipsum dolor',
       id: 1,
@@ -27,7 +29,7 @@ describe('chroniclePreviewToChronicleCardData', () => {
   it('should convert ChroniclePreview to ChronicleCardData with no Author', () => {
     const data = { ...CHRONICLE_PREVIEW, author: null }
 
-    expect(chroniclePreviewToChronicalCardData(data)).toStrictEqual({
+    expect(chroniclePreviewToChronicalCardData(data, subtitle)).toStrictEqual({
       date: 'Janvier 2025',
       description: 'lorem ipsum dolor',
       id: 1,
@@ -51,7 +53,7 @@ describe('chroniclePreviewToChronicleCardData', () => {
       author: { ...CHRONICLE_PREVIEW.author, age: null, firstName: null },
     }
 
-    expect(chroniclePreviewToChronicalCardData(dataWithoutName)).toStrictEqual({
+    expect(chroniclePreviewToChronicalCardData(dataWithoutName, subtitle)).toStrictEqual({
       date: 'Janvier 2025',
       description: 'lorem ipsum dolor',
       id: 1,
@@ -59,7 +61,7 @@ describe('chroniclePreviewToChronicleCardData', () => {
       title: 'Membre du Book Club',
     })
 
-    expect(chroniclePreviewToChronicalCardData(dataWithoutAge)).toStrictEqual({
+    expect(chroniclePreviewToChronicalCardData(dataWithoutAge, subtitle)).toStrictEqual({
       date: 'Janvier 2025',
       description: 'lorem ipsum dolor',
       id: 1,
@@ -67,7 +69,7 @@ describe('chroniclePreviewToChronicleCardData', () => {
       title: 'John',
     })
 
-    expect(chroniclePreviewToChronicalCardData(dataWithEmptyAuthor)).toStrictEqual({
+    expect(chroniclePreviewToChronicalCardData(dataWithEmptyAuthor, subtitle)).toStrictEqual({
       date: 'Janvier 2025',
       description: 'lorem ipsum dolor',
       id: 1,

@@ -14,4 +14,10 @@ export type ChronicleSectionProps = {
   style?: StyleProp<ViewStyle>
   chronicleIcon?: ReactNode
 }
+
+export type ChronicleVariantInfo = {
+  titleSection: string
+  subtitleSection: string
+  subtitleItem: string
+  Icon?: React.ReactNode
 }

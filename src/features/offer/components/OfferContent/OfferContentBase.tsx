@@ -77,6 +77,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   searchGroupList,
   subcategory,
   chronicles,
+  chronicleVariantInfo,
   headlineOffersCount,
   onOfferPreviewPress,
   contentContainerStyle,
@@ -279,9 +280,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           {chronicles?.length ? (
             <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
               <ChronicleSection
-                title="La reco du Book Club"
+                title={chronicleVariantInfo.titleSection}
                 ctaLabel="Voir tous les avis"
-                subtitle="Notre communauté de lecteurs te partagent leurs avis sur ce livre&nbsp;!"
+                subtitle={chronicleVariantInfo.subtitleSection}
+                chronicleIcon={chronicleVariantInfo.Icon}
                 data={chronicles}
                 // It's dirty but necessary to use from parameter for the logs
                 navigateTo={{
