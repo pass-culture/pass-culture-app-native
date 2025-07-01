@@ -1,5 +1,6 @@
 import React, {
   ReactElement,
+  ReactNode,
   forwardRef,
   useCallback,
   useEffect,
@@ -39,6 +40,7 @@ export type ChronicleCardListProps = Pick<
   style?: StyleProp<ViewStyle>
   onSeeMoreButtonPress?: (chronicleId: number) => void
   shouldTruncate?: boolean
+  chronicleIcon?: ReactNode
 }
 
 export const ChronicleCardListBase = forwardRef<
@@ -60,6 +62,7 @@ export const ChronicleCardListBase = forwardRef<
     onSeeMoreButtonPress,
     onLayout,
     shouldTruncate,
+    chronicleIcon,
   },
   ref
 ) {
@@ -89,6 +92,7 @@ export const ChronicleCardListBase = forwardRef<
     ({ item }) => {
       return (
         <ChronicleCard
+          chronicleIcon={chronicleIcon}
           id={item.id}
           title={item.title}
           subtitle={item.subtitle}
@@ -107,7 +111,7 @@ export const ChronicleCardListBase = forwardRef<
         </ChronicleCard>
       )
     },
-    [cardWidth, onSeeMoreButtonPress, shouldTruncate]
+    [cardWidth, onSeeMoreButtonPress, shouldTruncate, chronicleIcon]
   )
 
   return (

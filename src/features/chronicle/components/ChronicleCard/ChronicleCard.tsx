@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren, useState } from 'react'
+import React, { FunctionComponent, PropsWithChildren, ReactNode, useState } from 'react'
 import { LayoutChangeEvent, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -6,7 +6,6 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { Typo, getShadow, getSpacing } from 'ui/theme'
 import { REM_TO_PX } from 'ui/theme/constants'
 
@@ -16,6 +15,7 @@ type Props = PropsWithChildren<
   ChronicleCardData & {
     cardWidth?: number
     shouldTruncate?: boolean
+    chronicleIcon?: ReactNode
   }
 >
 
@@ -30,6 +30,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   date,
   cardWidth,
   children,
+  chronicleIcon,
   shouldTruncate = false,
 }) => {
   const theme = useTheme()
@@ -61,7 +62,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         title={title}
         subtitle={subtitle}
         defaultThumbnailSize={CHRONICLE_THUMBNAIL_SIZE}
-        thumbnailComponent={<BookClubIcon />}
+        thumbnailComponent={chronicleIcon}
       />
       <Separator.Horizontal />
       <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>
@@ -97,10 +98,6 @@ const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
     }),
   })
 )
-
-const BookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.bookclub,
-}))``
 
 const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
   ({ defaultHeight, shouldTruncate }) =>

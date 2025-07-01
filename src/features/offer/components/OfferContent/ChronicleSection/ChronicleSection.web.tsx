@@ -16,7 +16,16 @@ import { ChronicleSectionProps } from './types'
 
 export const ChronicleSection = (props: ChronicleSectionProps) => {
   const { isDesktopViewport } = useTheme()
-  const { data, title, subtitle, ctaLabel, navigateTo, style, onSeeMoreButtonPress } = props
+  const {
+    data,
+    title,
+    subtitle,
+    ctaLabel,
+    navigateTo,
+    style,
+    onSeeMoreButtonPress,
+    chronicleIcon,
+  } = props
 
   return isDesktopViewport ? (
     <View style={style}>
@@ -39,6 +48,7 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
         data={data}
         onSeeMoreButtonPress={onSeeMoreButtonPress}
         shouldTruncate
+        chronicleIcon={chronicleIcon}
       />
     </View>
   ) : (
