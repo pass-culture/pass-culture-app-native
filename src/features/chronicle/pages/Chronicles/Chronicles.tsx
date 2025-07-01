@@ -29,6 +29,7 @@ export const Chronicles: FunctionComponent = () => {
       chronicleCardsData={chronicleCardsData}
       offerId={offer.id}
       offerName={offer.name}
+      offerSubcategoryId={offer.subcategoryId}
     />
   )
 }

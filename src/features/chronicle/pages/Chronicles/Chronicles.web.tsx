@@ -17,9 +17,9 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import {
+  formatPrice,
   getDisplayedPrice,
   getIfPricesShouldBeFixed,
-  formatPrice,
 } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
@@ -74,6 +74,7 @@ export const Chronicles: FunctionComponent = () => {
       <ChroniclesBase
         offerId={offer.id}
         offerName={offer.name}
+        offerSubcategoryId={offer.subcategoryId}
         chronicleCardsData={chronicleCardsData}>
         {isDesktopViewport ? (
           <StyledChronicleOfferInfo
