@@ -326,7 +326,6 @@
     "resolve": "^1.20.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^11.0.1",
-    "solid-js": "^1.9.7",
     "storybook": "^8.6.4",
     "style-loader": "^2.0.0",
     "timezone-mock": "^1.2.1",

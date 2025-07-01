@@ -147,7 +147,7 @@ describe('<HomeModule />', () => {
 
     await act(async () => {})
 
-    await act(async () => {
+    await waitFor(async () => {
       expect(await screen.findByText(' L’offre du moment 💥')).toBeOnTheScreen()
     })
   })
