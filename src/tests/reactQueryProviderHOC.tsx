@@ -1,7 +1,8 @@
 import { notifyManager } from '@tanstack/query-core'
 import { QueryCache, MutationCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
-import { unstable_batchedUpdates } from 'react-native'
+
+import { unstable_batchedUpdates } from 'tests/reactBatching'
 
 export const queryCache = new QueryCache()
 export const mutationCache = new MutationCache()

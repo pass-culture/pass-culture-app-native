@@ -20,7 +20,7 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-//TOTO(PC-36585): unskip these tests
+//TODO(PC-36585): unskip these tests
 describe.skip('<Artist />', () => {
   useRoute.mockReturnValue({
     params: {

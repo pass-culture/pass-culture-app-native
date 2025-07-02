@@ -226,7 +226,16 @@ exports[`GenericHome With not displayed skeleton by default should display skele
       >
         Header
       </Text>
-      <View>
+      <View
+        gap={6}
+        style={
+          [
+            {
+              "gap": 24,
+            },
+          ]
+        }
+      >
         <View
           style={
             [
@@ -1126,16 +1135,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             </View>
           </RCTScrollView>
         </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
@@ -2239,36 +2238,17 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           </RCTScrollView>
         </View>
         <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-        <View
           style={
             [
               {
                 "flexDirection": "row",
                 "paddingBottom": 24,
+                "paddingLeft": 24,
               },
             ]
           }
           testID="HomeBodyPlaceholder-testID"
         >
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "width": 24,
-                },
-              ]
-            }
-          />
           <View
             borderRadius={8}
             height={304}
@@ -2326,16 +2306,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           </View>
         </View>
         <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-        <View
           style={
             [
               {
@@ -3437,16 +3407,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             </View>
           </RCTScrollView>
         </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
