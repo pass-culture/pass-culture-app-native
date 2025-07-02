@@ -13,7 +13,8 @@ import { analytics } from 'libs/analytics/provider'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-import { YoutubePlayer, YoutubePlayerRef } from './YoutubePlayer'
+import { YoutubePlayerRef } from './YoutubePlayer/types'
+import { YoutubePlayer } from './YoutubePlayer/YoutubePlayer'
 
 interface VideoPlayerNativeProps extends VideoPlayerProps {
   playerRef: RefObject<YoutubePlayerRef>
