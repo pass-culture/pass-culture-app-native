@@ -24,11 +24,6 @@ import { VideoCarouselModule } from 'features/home/components/modules/video/Vide
 import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData'
 import { getItemTypeFromModuleType } from 'features/home/helpers/getItemTypeFromModuleType'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
-import {
-  performanceMonitoringStoreActions,
-  useInitialScreenName,
-  useWasPerformanceMarkedThisSession,
-} from 'features/home/pages/helpers/usePerformanceMonitoringStore'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,
@@ -47,8 +42,8 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
-import { markScreenInteractiveOnHomeLayout } from 'performance/markScreenInteractiveOnHomeLayout'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
+import { useMarkScreenInteractive } from 'performance/useMarkScreenInteractive'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
@@ -162,8 +157,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   statusBar,
 }) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.HOME)
-  const initialScreenName = useInitialScreenName()
-  const wasPerformanceMarkedThisSession = useWasPerformanceMarkedThisSession()
+  useMarkScreenInteractive()
   const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
@@ -341,12 +335,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
-          onLayout={() => {
-            if (!wasPerformanceMarkedThisSession) {
-              markScreenInteractiveOnHomeLayout(initialScreenName)
-              performanceMonitoringStoreActions.setWasPerformanceMarkedThisSession(true)
-            }
-          }}
           accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"
