@@ -1,2 +1,1 @@
-import { unstable_batchedUpdates } from 'react-native'
-export { unstable_batchedUpdates }
+export { unstable_batchedUpdates } from 'react-native'
