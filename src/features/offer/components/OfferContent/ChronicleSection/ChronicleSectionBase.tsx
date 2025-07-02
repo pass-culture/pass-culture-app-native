@@ -31,7 +31,7 @@ export const ChronicleSectionBase = ({
         data={data}
         onSeeMoreButtonPress={onSeeMoreButtonPress}
         shouldTruncate
-        icon={icon}
+        cardIcon={icon}
       />
       <Gutter>
         <InternalTouchableLink

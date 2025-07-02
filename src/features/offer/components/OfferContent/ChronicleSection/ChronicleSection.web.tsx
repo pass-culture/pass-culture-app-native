@@ -39,7 +39,7 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
         data={data}
         onSeeMoreButtonPress={onSeeMoreButtonPress}
         shouldTruncate
-        icon={icon}
+        cardIcon={icon}
       />
     </View>
   ) : (

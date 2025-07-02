@@ -21,7 +21,7 @@ describe('transformOfferChroniclesToChronicleCardData', () => {
         description:
           'Chronique sur le produit Product 30 écrite par l’utilisateur Jeanne Doux (2).',
         id: 1,
-        subtitle: '',
+        subtitle: 'Membre du Book Club',
         title: 'Jeanne, 15 ans',
       },
     ])
