@@ -23,7 +23,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { PlaylistType } from 'features/offer/enums'
-import { chronicleVariantInfo } from 'features/offer/fixtures/chronicleVariantInfo'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
@@ -862,7 +862,7 @@ function renderOfferContent({
           searchGroupList={subcategoriesDataTest.searchGroups}
           subcategory={subcategory}
           chronicles={chroniclesData}
-          chronicleVariantInfo={chronicleVariantInfo}
+          chronicleVariantInfo={chronicleVariantInfoFixture}
         />
       </NavigationContainer>
     ),

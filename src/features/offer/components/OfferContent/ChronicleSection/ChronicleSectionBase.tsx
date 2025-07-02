@@ -19,7 +19,7 @@ export const ChronicleSectionBase = ({
   navigateTo,
   onSeeMoreButtonPress,
   style,
-  chronicleIcon,
+  icon,
 }: ChronicleSectionProps) => {
   return (
     <View style={style}>
@@ -31,7 +31,7 @@ export const ChronicleSectionBase = ({
         data={data}
         onSeeMoreButtonPress={onSeeMoreButtonPress}
         shouldTruncate
-        chronicleIcon={chronicleIcon}
+        icon={icon}
       />
       <Gutter>
         <InternalTouchableLink

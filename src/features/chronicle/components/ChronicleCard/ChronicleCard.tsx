@@ -15,7 +15,7 @@ type Props = PropsWithChildren<
   ChronicleCardData & {
     cardWidth?: number
     shouldTruncate?: boolean
-    chronicleIcon?: ReactNode
+    icon?: ReactNode
   }
 >
 
@@ -30,7 +30,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   date,
   cardWidth,
   children,
-  chronicleIcon,
+  icon,
   shouldTruncate = false,
 }) => {
   const theme = useTheme()
@@ -62,7 +62,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         title={title}
         subtitle={subtitle}
         defaultThumbnailSize={CHRONICLE_THUMBNAIL_SIZE}
-        thumbnailComponent={chronicleIcon}
+        thumbnailComponent={icon}
       />
       <Separator.Horizontal />
       <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>

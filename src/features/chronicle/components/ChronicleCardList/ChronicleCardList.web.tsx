@@ -33,7 +33,7 @@ export const ChronicleCardList = forwardRef<
     onSeeMoreButtonPress,
     onLayout,
     shouldTruncate,
-    chronicleIcon,
+    icon,
   },
   ref
 ) {
@@ -105,7 +105,7 @@ export const ChronicleCardList = forwardRef<
         onSeeMoreButtonPress={onSeeMoreButtonPress}
         onLayout={onLayout}
         shouldTruncate={shouldTruncate}
-        chronicleIcon={chronicleIcon}
+        icon={icon}
       />
     </View>
   )

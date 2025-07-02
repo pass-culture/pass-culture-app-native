@@ -283,7 +283,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 title={chronicleVariantInfo.titleSection}
                 ctaLabel="Voir tous les avis"
                 subtitle={chronicleVariantInfo.subtitleSection}
-                chronicleIcon={chronicleVariantInfo.Icon}
+                icon={chronicleVariantInfo.Icon}
                 data={chronicles}
                 // It's dirty but necessary to use from parameter for the logs
                 navigateTo={{

@@ -25,7 +25,7 @@ const baseProps = {
   description:
     'Pour moi, cette biographie n’est pas comme une autre. Cela concerne le créateur de Star Wars, le premier film...',
   date: 'Juin 2024',
-  chronicleIcon: <BookClubIcon />,
+  icon: <BookClubIcon />,
 }
 
 const variantConfig: Variants<typeof ChronicleCard> = [

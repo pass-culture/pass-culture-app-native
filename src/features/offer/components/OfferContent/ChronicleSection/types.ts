@@ -12,7 +12,7 @@ export type ChronicleSectionProps = {
   navigateTo: InternalNavigationProps['navigateTo']
   onSeeMoreButtonPress?: (chronicleId: number) => void
   style?: StyleProp<ViewStyle>
-  chronicleIcon?: ReactNode
+  icon?: ReactNode
 }
 
 export type ChronicleVariantInfo = {
