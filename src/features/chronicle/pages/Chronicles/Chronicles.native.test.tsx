@@ -3,6 +3,7 @@ import React from 'react'
 import { FlatList } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -54,6 +55,32 @@ describe('Chronicles', () => {
           chronicleId: 1,
         },
       })
+    })
+
+    it('should display book club icon when offer subcategory linked to a book', async () => {
+      mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      render(reactQueryProviderHOC(<Chronicles />))
+
+      await screen.findByText('Tous les avis')
+
+      expect(screen.getAllByTestId('bookClubIcon')[0]).toBeOnTheScreen()
+    })
+
+    it('should display cine club icon when offer subcategory linked to a film', async () => {
+      mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      })
+
+      render(reactQueryProviderHOC(<Chronicles />))
+
+      await screen.findByText('Tous les avis')
+
+      expect(screen.getAllByTestId('cineClubIcon')[0]).toBeOnTheScreen()
     })
 
     it('should scroll to selected chronicle on layout', async () => {

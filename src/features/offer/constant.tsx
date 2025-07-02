@@ -33,13 +33,13 @@ export const CHRONICLE_VARIANT_CONFIG = [
     titleSection: 'La reco du Book Club',
     subtitleSection: 'Notre communauté de lecteurs te partagent leurs avis sur ce livre\u00a0!',
     subtitleItem: 'Membre du Book Club',
-    Icon: <BookClubIcon />,
+    Icon: <BookClubIcon testID="bookClubIcon" />,
   },
   {
     subcategories: CINE_CLUB_SUBCATEGORIES,
     titleSection: 'La reco du Ciné Club',
-    subtitleSection: 'Des avis de jeunes passionnés sélectionnés par le pass Culture\u00a0!',
+    subtitleSection: 'Notre communauté de cinéphiles te partage leur avis sur ce film\u00a0!',
     subtitleItem: 'Membre du Ciné Club',
-    Icon: <CineClubIcon />,
+    Icon: <CineClubIcon testID="cineClubIcon" />,
   },
 ] as const

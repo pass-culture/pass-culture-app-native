@@ -20,12 +20,14 @@ type Props = PropsWithChildren<{
   offerId: number
   offerName: string
   chronicleCardsData: ChronicleCardData[]
+  cardIcon?: React.ReactNode
 }>
 
 export const ChroniclesBase: FunctionComponent<Props> = ({
   offerId,
   offerName,
   chronicleCardsData,
+  cardIcon,
   children,
 }) => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
@@ -96,6 +98,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
                 }),
           }}
           onLayout={handleLayout}
+          cardIcon={cardIcon}
         />
       </FullFlexRow>
       <ChroniclesWritersModal
