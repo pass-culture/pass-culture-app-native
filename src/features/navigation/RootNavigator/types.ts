@@ -271,7 +271,7 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SignupForm: SignupFormParams
-  SubscriptionStackNavigator: NavigatorScreenParams<SubscriptionStackParamList>
+  SubscriptionStackNavigator?: NavigatorScreenParams<SubscriptionStackParamList>
   _DeeplinkOnlySignupForm1: SignupFormParams
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: NavigatorScreenParams<TabParamList>
@@ -295,7 +295,8 @@ export type AllNavParamList = RootStackParamList &
   TabParamList &
   SearchStackParamList &
   ProfileStackParamList &
-  OnboardingStackParamList
+  OnboardingStackParamList &
+  SubscriptionStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList

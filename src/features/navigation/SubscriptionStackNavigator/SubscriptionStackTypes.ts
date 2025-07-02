@@ -30,7 +30,7 @@ export type SubscriptionStackParamList = {
   ExpiredOrLostID: undefined
   UbbleWebview: undefined
   IdentityCheckEnd: undefined
-  IdentityCheckUnavailable: { withDMS?: boolean }
+  IdentityCheckUnavailable?: { withDMS?: boolean }
   EduConnectForm: undefined
   EduConnectValidation: {
     firstName?: string
