@@ -1,16 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
+import styled from 'styled-components/native'
 
 import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
+import { BookClubCertification } from 'ui/svg/BookClubCertification'
 
 const meta: Meta<typeof ChronicleCard> = {
   title: 'ui/ChronicleCard',
   component: ChronicleCard,
 }
 export default meta
+
+const BookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.bookclub,
+}))``
 
 const baseProps = {
   id: 1,
@@ -19,6 +25,7 @@ const baseProps = {
   description:
     'Pour moi, cette biographie n’est pas comme une autre. Cela concerne le créateur de Star Wars, le premier film...',
   date: 'Juin 2024',
+  chronicleIcon: <BookClubIcon />,
 }
 
 const variantConfig: Variants<typeof ChronicleCard> = [
