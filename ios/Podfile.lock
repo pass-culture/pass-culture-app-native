@@ -229,12 +229,6 @@ PODS:
     - nanopb/encode (= 3.30910.0)
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
-  - Permission-Camera (3.8.0):
-    - RNPermissions
-  - Permission-LocationWhenInUse (3.8.0):
-    - RNPermissions
-  - Permission-Notifications (3.8.0):
-    - RNPermissions
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
@@ -1868,7 +1862,7 @@ PODS:
     - React-Core
   - RNLaunchNavigator (1.0.9):
     - React
-  - RNPermissions (3.8.0):
+  - RNPermissions (5.4.1):
     - React-Core
   - RNReanimated (3.18.0):
     - DoubleConversion
@@ -2065,9 +2059,6 @@ DEPENDENCIES:
   - GoogleUtilities
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
-  - Permission-Camera (from `../node_modules/react-native-permissions/ios/Camera`)
-  - Permission-LocationWhenInUse (from `../node_modules/react-native-permissions/ios/LocationWhenInUse`)
-  - Permission-Notifications (from `../node_modules/react-native-permissions/ios/Notifications`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -2235,12 +2226,6 @@ EXTERNAL SOURCES:
     :tag: hermes-2025-02-06-RNv0.75.5-53ff6df3af18e250c29a74f34273f50dbfa410dc
   lottie-react-native:
     :path: "../node_modules/lottie-react-native"
-  Permission-Camera:
-    :path: "../node_modules/react-native-permissions/ios/Camera"
-  Permission-LocationWhenInUse:
-    :path: "../node_modules/react-native-permissions/ios/LocationWhenInUse"
-  Permission-Notifications:
-    :path: "../node_modules/react-native-permissions/ios/Notifications"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTDeprecation:
@@ -2482,9 +2467,6 @@ SPEC CHECKSUMS:
   lottie-ios: 8f97d3271e155c2d688875c29cd3c74908aef5f8
   lottie-react-native: 8f9d4be452e23f6e5ca0fdc11669dc99ab52be81
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
-  Permission-Camera: e6d142d7d8b714afe0a83e5e6ae17eb949f1e3e9
-  Permission-LocationWhenInUse: 1c80e4797ae587642a83125e80b86686cefeba53
-  Permission-Notifications: aa91ec29236626ff59cb60e08389c0a59a9d32c5
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   RCT-Folly: 4464f4d875961fce86008d45f4ecf6cef6de0740
@@ -2574,7 +2556,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: a6a612cce56a45ab701c5c5c6e36f5390522d100
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLaunchNavigator: d855643e1f842f13c6cc65575e0755975667032c
-  RNPermissions: 215c54462104b3925b412b0fb3c9c497b21c358b
+  RNPermissions: 3c0fbad5e1e327910c68d2fded749d7c828dfb26
   RNReanimated: 3da9365990e3de79b00d02635cfb094582a5de01
   RNScreens: a77d531f86f2f76dc8a02f7a938d560f2a94540f
   RNSentry: 29fd059be5d6b9410e4b634e454fa2f46ba9be00
@@ -2587,6 +2569,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: a7bfab58243c025cd29201015103b072841f4f0d
 
-PODFILE CHECKSUM: 2a6bd012e930669d1fdfd2c4f15176fad40b0e9b
+PODFILE CHECKSUM: ce28ca4b1cc16ba121f58cc1b42e3b440aa526dc
 
 COCOAPODS: 1.14.3
