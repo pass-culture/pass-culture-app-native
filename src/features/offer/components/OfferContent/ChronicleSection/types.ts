@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
@@ -11,4 +12,12 @@ export type ChronicleSectionProps = {
   navigateTo: InternalNavigationProps['navigateTo']
   onSeeMoreButtonPress?: (chronicleId: number) => void
   style?: StyleProp<ViewStyle>
+  icon?: ReactNode
+}
+
+export type ChronicleVariantInfo = {
+  titleSection: string
+  subtitleSection: string
+  subtitleItem: string
+  Icon?: React.ReactNode
 }

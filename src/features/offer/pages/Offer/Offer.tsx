@@ -7,6 +7,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
+import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
@@ -59,13 +60,18 @@ export function Offer() {
     [hideModal, saveReaction]
   )
 
-  const chronicles = hasOfferChronicleSection
-    ? offer?.chronicles?.map((value) => chroniclePreviewToChronicalCardData(value))
-    : undefined
-
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
+
+  const subcategory = subcategoriesMapping[offer?.subcategoryId]
+  const chronicleVariantInfo = chronicleVariant[subcategory.id]
+
+  const chronicles = hasOfferChronicleSection
+    ? offer?.chronicles?.map((value) =>
+        chroniclePreviewToChronicalCardData(value, chronicleVariantInfo.subtitleItem)
+      )
+    : undefined
 
   const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
   const headlineOffersCount = shouldFetchSearchVenueOffers ? data?.headlineOffersCount : undefined
@@ -88,6 +94,7 @@ export function Offer() {
       <OfferContent
         offer={offer}
         chronicles={chronicles}
+        chronicleVariantInfo={chronicleVariantInfo}
         headlineOffersCount={headlineOffersCount}
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}

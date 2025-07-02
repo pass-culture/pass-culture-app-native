@@ -17,6 +17,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   searchGroupList,
   subcategory,
   chronicles,
+  chronicleVariantInfo,
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
@@ -38,6 +39,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onOfferPreviewPress={handlePress}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
+        chronicleVariantInfo={chronicleVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}

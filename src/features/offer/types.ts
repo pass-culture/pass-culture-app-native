@@ -11,6 +11,7 @@ import {
 } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -71,6 +72,7 @@ export interface VenueDetail {
 export type OfferContentProps = {
   offer: OfferResponseV2
   searchGroupList: SearchGroupResponseModelv2[]
+  chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory
   chronicles?: ChronicleCardData[]
   headlineOffersCount?: number

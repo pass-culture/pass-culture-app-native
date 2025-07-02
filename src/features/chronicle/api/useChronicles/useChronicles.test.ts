@@ -8,6 +8,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
+const subtitle = 'Membre du Book Club'
+
 describe('useChronicles', () => {
   beforeEach(() =>
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerChroniclesFixture)
@@ -34,7 +36,7 @@ describe('useChronicles', () => {
       () =>
         useChronicles<ChronicleCardData[]>({
           offerId: offerResponseSnap.id,
-          select: (data) => offerChroniclesToChronicleCardData(data.chronicles),
+          select: (data) => offerChroniclesToChronicleCardData(data.chronicles, subtitle),
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -45,9 +47,10 @@ describe('useChronicles', () => {
 
     expect(JSON.stringify(result.current.data)).toEqual(
       JSON.stringify(
-        offerChroniclesToChronicleCardData([
-          ...offerChroniclesFixture.chronicles,
-        ] as OfferChronicle[])
+        offerChroniclesToChronicleCardData(
+          [...offerChroniclesFixture.chronicles] as OfferChronicle[],
+          subtitle
+        )
       )
     )
   })

@@ -1,10 +1,12 @@
 import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
 import { chroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 
+const subtitle = 'Membre du Book Club'
+
 describe('transformOfferChroniclesToChronicleCardData', () => {
   it('should transform offer chronicles to chronicle card data', () => {
     const chronicles = [...chroniclesFixture]
-    const result = offerChroniclesToChronicleCardData(chronicles)
+    const result = offerChroniclesToChronicleCardData(chronicles, subtitle)
 
     expect(result).toEqual([
       {

@@ -2,6 +2,7 @@ import React, { ComponentProps } from 'react'
 import * as ReactQueryAPI from 'react-query'
 
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
@@ -172,6 +173,7 @@ const renderOfferContent = ({
         offer={offer}
         searchGroupList={PLACEHOLDER_DATA.searchGroups}
         subcategory={subcategory}
+        chronicleVariantInfo={chronicleVariantInfoFixture}
       />
     ),
     {

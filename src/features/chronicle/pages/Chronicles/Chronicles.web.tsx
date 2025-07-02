@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SubcategoryIdEnumv2 } from 'api/gen'
+import { SubcategoryIdEnum, SubcategoryIdEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
 import { useChronicles } from 'features/chronicle/api/useChronicles/useChronicles'
@@ -12,6 +12,7 @@ import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBa
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
+import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
@@ -30,10 +31,12 @@ export const Chronicles: FunctionComponent = () => {
   const offerId = route.params?.offerId
   const { data: offer } = useOfferQuery({ offerId })
   const subcategoriesMapping = useSubcategoriesMapping()
-
+  const chronicleVariantInfo =
+    chronicleVariant[offer?.subcategoryId ?? SubcategoryIdEnum.LIVRE_PAPIER]
   const { data: chronicleCardsData } = useChronicles<ChronicleCardData[]>({
     offerId,
-    select: ({ chronicles }) => offerChroniclesToChronicleCardData(chronicles),
+    select: ({ chronicles }) =>
+      offerChroniclesToChronicleCardData(chronicles, chronicleVariantInfo.subtitleItem),
   })
 
   const { user } = useAuthContext()

@@ -211,7 +211,7 @@ describe('<Offer />', () => {
 
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    expect(await screen.findByText('La reco du Book Club')).toBeOnTheScreen()
+    expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
   })
 
   it('should display offer placeholder on init', async () => {

@@ -1,0 +1,39 @@
+import React from 'react'
+import { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
+
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
+
+const CineClubCertificationSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}) => {
+  return (
+    <AccessibleSvg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      testID={testID}
+      accessibilityLabel={accessibilityLabel}>
+      <Path
+        d="M45.6875 20.5982L46.9375 16.6034L43.5625 14.1066V9.92458L39.5625 8.61379L38.25 4.61899H34.0625L31.5625 1.24838L27.5625 2.49675L24.0625 0L20.625 2.43433L16.625 1.18596L14.125 4.55657H9.9375L8.625 8.55137L4.625 9.86216V14.0442L1.25 16.541L2.5 20.5358L0 24.0312L2.4375 27.4643L1.1875 31.4591L4.5625 33.9558V38.1379L8.5625 39.4487L9.875 43.4435H14.0625L16.5625 46.8141L20.5625 45.5657L24 48L27.4375 45.5657L31.4375 46.8141L33.9375 43.4435H38.125L39.4375 39.4487L43.4375 38.1379V33.9558L46.8125 31.4591L45.5625 27.4643L48 24.0312L45.6875 20.5982Z"
+        fill={color}
+      />
+      <Path
+        d="M34.1821 33.0467C34.1821 34.1234 33.1771 34.9978 31.9428 34.9979H15.9848C14.7452 34.9979 13.7446 34.1234 13.7446 33.0467V27.7098H34.1821V33.0467ZM19.9741 22.2586L18.7553 22.5291H31.9428C33.1823 22.5292 34.1821 23.4036 34.1821 24.4803V26.6746H13.7446V24.4803C13.7446 23.4036 14.7504 22.5291 15.9848 22.5291H16.2221L19.1928 17.0623L23.2915 16.1473L19.9741 22.2586ZM14.2915 22.8621V22.8573C14.0831 22.6596 13.9266 22.3992 13.8588 22.0975L13.3588 19.8768C13.1818 19.0811 13.682 18.2853 14.4838 18.1082L17.1977 17.5047L14.2915 22.8621ZM26.0415 20.9012L21.9692 21.8114L25.2866 15.7L29.354 14.7899L26.0415 20.9012ZM31.8911 14.2274C32.6878 14.0507 33.4845 14.5505 33.6616 15.3514L34.1616 17.5721C34.3387 18.3679 33.8387 19.1638 33.0366 19.3407L28.0366 20.4588L31.3491 14.3475L31.8911 14.2274Z"
+        fill="white"
+      />
+    </AccessibleSvg>
+  )
+}
+
+export const CineClubCertification = styled(CineClubCertificationSvg).attrs(
+  ({ color, size, theme }) => ({
+    color: color ?? theme.designSystem.color.icon.default,
+    size: size ?? theme.icons.sizes.standard,
+  })
+)``
