@@ -21,8 +21,6 @@ const setupWithReminders = (client: QueryClient) => {
   jest.spyOn(queryClient, 'invalidateQueries')
 }
 
-jest.useFakeTimers()
-
 describe('useDeleteReminderMutation', () => {
   beforeEach(() => {
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse)
