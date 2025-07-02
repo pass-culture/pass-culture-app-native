@@ -29,7 +29,7 @@ export const Chronicles: FunctionComponent = () => {
       chronicleCardsData={chronicleCardsData}
       offerId={offer.id}
       offerName={offer.name}
-      cardIcon={chronicleVariantInfo.Icon}
+      variantInfo={chronicleVariantInfo}
     />
   )
 }

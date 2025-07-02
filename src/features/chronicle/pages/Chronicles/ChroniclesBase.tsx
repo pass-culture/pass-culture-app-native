@@ -12,6 +12,7 @@ import { ChroniclesWebMetaHeader } from 'features/chronicle/components/Chronicle
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -20,14 +21,14 @@ type Props = PropsWithChildren<{
   offerId: number
   offerName: string
   chronicleCardsData: ChronicleCardData[]
-  cardIcon?: React.ReactNode
+  variantInfo: ChronicleVariantInfo
 }>
 
 export const ChroniclesBase: FunctionComponent<Props> = ({
   offerId,
   offerName,
   chronicleCardsData,
-  cardIcon,
+  variantInfo,
   children,
 }) => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
@@ -98,13 +99,14 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
                 }),
           }}
           onLayout={handleLayout}
-          cardIcon={cardIcon}
+          cardIcon={variantInfo.Icon}
         />
       </FullFlexRow>
       <ChroniclesWritersModal
         closeModal={hideModal}
         isVisible={visible}
         onShowRecoButtonPress={handleOnShowRecoButtonPress}
+        variantInfo={variantInfo}
       />
     </React.Fragment>
   )

@@ -173,7 +173,7 @@ describe('Chronicles', () => {
       it('should navigate to recommandation thematic home when pressing button', async () => {
         render(reactQueryProviderHOC(<Chronicles />))
 
-        await user.press(await screen.findByText('Voir toutes les recos du book club'))
+        await user.press(await screen.findByText('Voir toutes les recos du Ciné Club'))
 
         await waitFor(async () => {
           expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
