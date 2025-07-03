@@ -540,7 +540,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
                     "lineHeight": 27.2,
-                    "marginBottom": 18,
                   },
                 ]
               }
@@ -553,6 +552,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                 [
                   {
                     "gap": 20,
+                    "marginTop": 18,
                   },
                 ]
               }
@@ -644,6 +644,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 8,
                           },
                         ]
                       }

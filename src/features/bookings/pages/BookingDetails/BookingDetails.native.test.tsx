@@ -578,21 +578,6 @@ describe('BookingDetails', () => {
     })
   })
 
-  describe('OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is on an is not Event', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
-    })
-
-    it('should render OldBookingPageContent', async () => {
-      const notAnEventOffer = bookingsSnapV2.ongoingBookings[2]
-      renderBookingDetailsV2(notAnEventOffer)
-
-      await screen.findByText('Ma réservation')
-
-      expect(screen.getByTestId('BookingDetailsScrollView')).toBeOnTheScreen()
-    })
-  })
-
   describe('BookingPageContent : when FF WIP_NEW_BOOKING_PAGE is on', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
@@ -929,7 +914,7 @@ describe('BookingDetails', () => {
           })
           await screen.findAllByText(ongoingBookings.stock.offer.name)
 
-          expect(screen.getByText('TEST12')).toBeOnTheScreen()
+          expect(await screen.findByText('TEST12')).toBeOnTheScreen()
         })
       })
     })

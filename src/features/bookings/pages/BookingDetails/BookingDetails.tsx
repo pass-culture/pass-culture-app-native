@@ -146,8 +146,7 @@ const BookingDetailsContainer = ({
 
   // FIXME(PC-36440): To remove when no need for Old/new container
 
-  return (properties.isPhysical && user) ||
-    (properties.isEvent && !properties.isDigital && user) ? (
+  return (properties.isPhysical || properties.isEvent || properties.isDigital) && user ? (
     <BookingDetailsContent
       user={user}
       properties={properties}
