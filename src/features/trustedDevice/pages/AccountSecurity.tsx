@@ -8,10 +8,11 @@ import { DeviceInformationsBanner } from 'features/trustedDevice/components/Devi
 import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { analytics } from 'libs/analytics/provider'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const AccountSecurity = () => {
   const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
@@ -61,23 +62,23 @@ export const AccountSecurity = () => {
         wording: 'Ne pas sécuriser mon compte',
         onPress: onPressDismissAccountSecurity,
       }}>
-      <Typo.Body>
-        Tu as indiqué <Typo.BodyAccent>ne pas être à l’origine</Typo.BodyAccent> de cette
-        connexion&nbsp;:
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={4} />
-      <DeviceInformationsBanner
-        osAndSource={osAndSource}
-        location={location}
-        loginDate={loginDate}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
-        Pour des raisons de <Typo.BodyAccent>sécurité,</Typo.BodyAccent> nous te conseillons de
-        {isLoggedOutOrHasPassword
-          ? ' modifier ton mot de passe ou de suspendre ton compte temporairement.'
-          : ' sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.'}
-      </Typo.Body>
+      <ViewGap gap={4}>
+        <Typo.Body>
+          Tu as indiqué <Typo.BodyAccent>ne pas être à l’origine</Typo.BodyAccent> de cette
+          connexion&nbsp;:
+        </Typo.Body>
+        <DeviceInformationsBanner
+          osAndSource={osAndSource}
+          location={location}
+          loginDate={loginDate}
+        />
+        <Typo.Body>
+          Pour des raisons de <Typo.BodyAccent>sécurité,</Typo.BodyAccent> nous te conseillons de
+          {isLoggedOutOrHasPassword
+            ? ' modifier ton mot de passe ou de suspendre ton compte temporairement.'
+            : ' sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.'}
+        </Typo.Body>
+      </ViewGap>
     </GenericInfoPage>
   )
 }

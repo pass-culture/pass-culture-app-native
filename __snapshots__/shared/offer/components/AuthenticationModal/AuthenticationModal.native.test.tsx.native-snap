@@ -384,16 +384,6 @@ pour réserver l’offre
                 >
                   Tu as 17 ou 18 ans ?
                 </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -402,6 +392,8 @@ pour réserver l’offre
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
+                        "marginTop": 8,
                         "textAlign": "center",
                       },
                     ]
@@ -410,19 +402,10 @@ pour réserver l’offre
                   Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -515,16 +498,6 @@ pour réserver l’offre
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     [

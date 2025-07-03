@@ -14,7 +14,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function ConfirmDeleteProfile() {
@@ -77,8 +77,7 @@ export function ConfirmDeleteProfile() {
         <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau" />
         <BulletListItem text="tu n’auras plus accès au catalogue" />
       </VerticalUl>
-      <Spacer.Column numberOfSpaces={5} />
-      <Typo.BodyAccent>Les données que nous conservons&nbsp;:</Typo.BodyAccent>
+      <StyledBodyAccent>Les données que nous conservons&nbsp;:</StyledBodyAccent>
       <Typo.Body>
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
         vérification de ton identité.
@@ -90,3 +89,7 @@ export function ConfirmDeleteProfile() {
 const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.designSystem.color.text.default,
 }))``
+
+const StyledBodyAccent = styled(Typo.BodyAccent)({
+  marginTop: getSpacing(5),
+})

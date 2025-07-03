@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BookingHold } from 'ui/svg/BookingHold'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -48,7 +48,6 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
         {DOUBLE_LINE_BREAK}
         Pour en savoir plus, va sur ton profil.
       </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
       <InternalTouchableLink
         as={ButtonPrimary}
         wording="Aller sur mon profil"
@@ -62,4 +61,5 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })
