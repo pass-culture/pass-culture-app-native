@@ -74,7 +74,7 @@ export const Chronicles: FunctionComponent = () => {
       <ChroniclesBase
         offerId={offer.id}
         offerName={offer.name}
-        cardIcon={chronicleVariantInfo.Icon}
+        variantInfo={chronicleVariantInfo}
         chronicleCardsData={chronicleCardsData}>
         {isDesktopViewport ? (
           <StyledChronicleOfferInfo

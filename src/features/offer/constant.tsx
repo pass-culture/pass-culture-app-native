@@ -34,6 +34,8 @@ export const CHRONICLE_VARIANT_CONFIG = [
     subtitleSection: 'Notre communauté de lecteurs te partagent leurs avis sur ce livre\u00a0!',
     subtitleItem: 'Membre du Book Club',
     Icon: <BookClubIcon testID="bookClubIcon" />,
+    modalWording: 'Les avis du Book Club sont écrits par des jeunes passionnés de lecture.',
+    modalButtonLabel: 'Voir toutes les recos du Book Club',
   },
   {
     subcategories: CINE_CLUB_SUBCATEGORIES,
@@ -41,5 +43,7 @@ export const CHRONICLE_VARIANT_CONFIG = [
     subtitleSection: 'Notre communauté de cinéphiles te partage leur avis sur ce film\u00a0!',
     subtitleItem: 'Membre du Ciné Club',
     Icon: <CineClubIcon testID="cineClubIcon" />,
+    modalWording: 'Les avis du Ciné Club sont écrits par des jeunes passionnés de cinéma.',
+    modalButtonLabel: 'Voir toutes les recos du Ciné Club',
   },
 ] as const

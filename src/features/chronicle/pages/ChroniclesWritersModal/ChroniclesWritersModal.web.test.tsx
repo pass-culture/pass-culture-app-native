@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 describe('<ChroniclesWritersModal/>', () => {
@@ -11,6 +12,7 @@ describe('<ChroniclesWritersModal/>', () => {
           isVisible
           closeModal={jest.fn()}
           onShowRecoButtonPress={jest.fn()}
+          variantInfo={chronicleVariantInfoFixture}
         />
       )
       await act(async () => {

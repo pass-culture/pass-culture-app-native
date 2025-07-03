@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -10,12 +11,14 @@ type Props = {
   isVisible: boolean
   closeModal: VoidFunction
   onShowRecoButtonPress: VoidFunction
+  variantInfo: ChronicleVariantInfo
 }
 
 export const ChroniclesWritersModal: FunctionComponent<Props> = ({
   isVisible,
   closeModal,
   onShowRecoButtonPress,
+  variantInfo,
 }) => {
   return (
     <AppModal
@@ -26,18 +29,13 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
       rightIcon={Close}
       onRightIconPress={closeModal}>
       <ViewGap gap={6}>
-        <Typo.Body>
-          Les avis du book club sont écrits par des jeunes passionnés de lecture.
-        </Typo.Body>
+        <Typo.Body>{variantInfo.modalWording}</Typo.Body>
         <Typo.Body>
           Ils sont sélectionnés par le pass Culture pour te faire leurs meilleures recos tous les
           mois.
         </Typo.Body>
 
-        <ButtonPrimary
-          wording="Voir toutes les recos du book club"
-          onPress={onShowRecoButtonPress}
-        />
+        <ButtonPrimary wording={variantInfo.modalButtonLabel} onPress={onShowRecoButtonPress} />
       </ViewGap>
     </AppModal>
   )
