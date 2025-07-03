@@ -245,16 +245,6 @@ exports[`GeolocationActivationModal should render properly 1`] = `
           undefined-SVG-Mock
         </Text>
       </View>
-      <View
-        numberOfSpaces={10}
-        style={
-          [
-            {
-              "height": 40,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -263,6 +253,7 @@ exports[`GeolocationActivationModal should render properly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 40,
               "textAlign": "center",
             },
           ]
@@ -270,16 +261,6 @@ exports[`GeolocationActivationModal should render properly 1`] = `
       >
         Retrouve toutes les offres autour de chez toi en activant les données de localisation.
       </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -288,6 +269,7 @@ exports[`GeolocationActivationModal should render properly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 16,
               "textAlign": "center",
             },
           ]
@@ -295,16 +277,6 @@ exports[`GeolocationActivationModal should render properly 1`] = `
       >
         Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Activer la géolocalisation"
         accessibilityState={
@@ -353,7 +325,9 @@ exports[`GeolocationActivationModal should render properly 1`] = `
                 "paddingTop": 2,
                 "width": "100%",
               },
-              {},
+              {
+                "marginTop": 24,
+              },
             ],
             {
               "opacity": 1,

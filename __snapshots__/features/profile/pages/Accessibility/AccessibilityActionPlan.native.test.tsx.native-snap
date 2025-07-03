@@ -234,17 +234,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       >
         Schéma pluriannuel d’accessibilité 2022 - 2024
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginTop={24}
         style={
           [
             {
@@ -252,6 +243,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -284,17 +276,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       >
         Définition de l’accessibilité numérique
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginTop={24}
         style={
           [
             {
@@ -302,23 +285,15 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
       >
         L’accessibilité numérique permet d’accéder aux contenus (sites web, documents bureautiques, supports multimédias, intranets d’entreprise, applications mobiles…), quelle que soit sa façon de naviguer.
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={20}
         style={
           [
             {
@@ -326,22 +301,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 20,
+              "marginTop": 24,
             },
           ]
         }
       >
         L’accessibilité numérique est indispensable aux personnes en situation de handicap pour :
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <View
         accessibilityRole="list"
         style={
@@ -602,17 +569,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginTop={24}
         style={
           [
             {
@@ -620,6 +578,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -658,17 +617,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       >
         Politique d’accessibilité
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={20}
+        marginTop={24}
         style={
           [
             {
@@ -676,6 +627,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 20,
+              "marginTop": 24,
             },
           ]
         }
@@ -693,16 +646,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
 
         Ses missions sont :
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <View
         accessibilityRole="list"
         style={
@@ -1051,17 +994,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       >
         Ressources humaines et financières affectées à l’accessibilité numérique
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginTop={24}
         style={
           [
             {
@@ -1069,6 +1003,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -1101,17 +1036,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       >
         Organisation de la prise en compte de l’accessibilité numérique
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={20}
         style={
           [
             {
@@ -1119,22 +1045,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 20,
+              "marginTop": 24,
             },
           ]
         }
       >
         La prise en compte de l’accessibilité numérique nécessite :
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <View
         accessibilityRole="list"
         style={
@@ -1395,17 +1313,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={24}
+        marginTop={20}
         style={
           [
             {
@@ -1413,22 +1323,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 24,
+              "marginTop": 20,
             },
           ]
         }
       >
         Les éléments ci-dessous décrivent les points importants sur lesquels la SAS pass Culture s’appuiera pour améliorer l’accessibilité numérique de l’ensemble de ses sites web et applications.
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -1463,17 +1365,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Elles permettront aux personnels intervenant sur les sites, les applications mais aussi sur les supports de communication de développer, éditer et mettre en ligne des contenus accessibles.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={20}
         style={
           [
             {
@@ -1481,22 +1374,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 20,
+              "marginTop": 24,
             },
           ]
         }
       >
         Plus précisément, notre action consiste à :
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <View
         accessibilityRole="list"
         style={
@@ -1633,17 +1518,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={24}
         style={
           [
             {
@@ -1651,6 +1527,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 24,
+              "marginTop": 24,
             },
           ]
         }
@@ -1674,16 +1552,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Chaque fois que nécessaire, la SAS pass Culture fait appel à des intervenants externes afin de l’accompagner dans la prise en compte de l’accessibilité. Cela recouvre par exemple les actions de sensibilisation et de formation, les actions d’accompagnements et plus particulièrement les actions d’audits et de certification des sites web et applications concernés.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -1724,17 +1592,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Pour favoriser la prise en compte de l’accessibilité numérique dans les projets, des composants normés, des modèles accessibles et une documentation dédiée et évolutive sont mis à la disposition des équipes projets.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={24}
         style={
           [
             {
@@ -1742,6 +1601,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 24,
+              "marginTop": 24,
             },
           ]
         }
@@ -1768,16 +1629,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Le Conseil national consultatif des personnes handicapées accompagne en particulier le pass Culture sur cette dimension.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -1812,16 +1663,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Les procédures d’élaboration des marchés ainsi que les règles d’évaluation des candidatures seront adaptées pour davantage prendre en compte les exigences de conformité au RGAA.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -1830,6 +1671,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -1853,17 +1695,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Une attention particulière devra être portée sur les compétences en matière d’accessibilité numérique des personnels intervenant sur les services numériques, lors de la création des fiches de postes et les procédures de recrutement.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={24}
         style={
           [
             {
@@ -1871,6 +1704,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 24,
+              "marginTop": 24,
             },
           ]
         }
@@ -1901,16 +1736,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Dans l’attente les demandes seront traitées par le pôle Support, en étroite collaboration avec le pôle Accessibilité, responsable de l’élaboration, la mise en place et le suivi de ce schéma pluriannuel.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
         accessibilityState={
@@ -2019,16 +1844,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2037,6 +1852,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -2089,16 +1905,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       >
         Périmètre technique et fonctionnel
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2107,6 +1913,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -2133,16 +1940,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Elle gère également de nombreux outils et applications à destination de ses collaborateurs.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2151,6 +1948,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -2496,17 +2294,9 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <Text
+        marginBottom={24}
+        marginTop={20}
         style={
           [
             {
@@ -2514,6 +2304,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginBottom": 24,
+              "marginTop": 20,
             },
           ]
         }
@@ -2523,16 +2315,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
 
         Ces évaluations portent sur un petit nombre de critères choisis pour leur pertinence en termes d’évaluation de la complexité et la faisabilité de la mise aux normes RGAA. L’annexe 1 (infra : « Annexe 1 : périmètre technique et fonctionnel public ») décrit les éléments pouvant être rendus publics du périmètre technique et fonctionnel. En effet, certaines applications peuvent ne pas être rendues publiques pour des raisons de sécurité ou de confidentialité par exemple.
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2564,16 +2346,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           Compte tenu des informations recueillies lors de l’élaboration de ce schéma, la complexité des sites et applications, leur classement par ordre de priorité et leur évaluation en termes de faisabilité, les opérations de mise en conformité vont s’étaler sur les années 2021 à 2022 et au-delà.
         </Text>
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -2582,6 +2354,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
@@ -2631,17 +2404,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       >
         Annexe 1 : Périmètre technique et fonctionnel
       </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <Text
+        marginTop={24}
         style={
           [
             {
@@ -2649,6 +2413,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 24,
             },
           ]
         }
