@@ -45,6 +45,41 @@ Quand tel est le cas, il est possible de tester l'application à des niveaux plu
 
 ## Les principes
 
+### Structure
+
+```txt
+src/
+  features/
+    NOM_DE_LA_FEATURE/
+      pages/
+        UnePage.tsx
+      containers/
+        UnContainer/
+          UnContainer.tsx
+      components/
+        Component/
+          Component.tsx
+      queries/
+        useUneQuery.ts
+        useUneMutation.ts
+      stores/
+        unStore.ts
+      selectors/
+        unSelector.ts
+      fixtures/
+        uneFixture.ts
+      constants.ts
+      types.ts
+  queries/
+    NOM_DE_LA_FEATURE_PRINCIPALE/
+      useUneQuery.ts
+  selectors/
+    NOM_DE_LA_FEATURE_PRINCIPALE/
+      unSelector.ts
+```
+
+En cas de doute, prévenir la guilde archi ⚠️ (ça signifie qu'il manque peut être un truc).
+
 ### La gestion d'état réseau avec React Query
 
 React Query est au cœur de notre application et n'est pas utilisé à sa pleine capacité.
@@ -57,19 +92,38 @@ Utiliser des sélecteurs pour filtrer / formater les données plutôt que d'écr
 
 ```ts
 // ❌
-const useArtistsNumber = () => {
+const useArtistsNumberQuery = () => {
   const { data, ...rest } = useArtistsQuery()
   return { data: data.length, ...rest }
 }
 ```
 
-```ts
+```tsx
 // ✅
+// dans feature/artist/selectors/selectArtistsNb.ts
 const selectArtistsNb = (artists: Artists) => artists.length
-const useArtistsNumber = () => useArtistsQuery({ select: selectArtistsNb })
+// dans feature/artist/containers/ArtistContainer/ArtistContainer.tsx
+const ArtistContainer = () => {
+  const { data: artistsNb } = useArtistsQuery({ select: selectArtistsNb })
+  return <Text>{artistsNb}</Text>
+}
 ```
 
 `selectArtistsNb` est une fonction pure et testable très facilement.
+
+```tsx
+// ✅
+// dans feature/artist/selectors/selectArtistById.ts
+const selectArtistById = (artistID: ArtistId) => (artists: Record<ArtistId, Artist>) =>
+  artists[artistID]
+// dans feature/artist/containers/ArtistContainer/ArtistContainer.tsx
+const ArtistContainer: FunctionComponent<{ artistID: ArtistId }> = ({ artistID }) => {
+  const { data: artist } = useArtistsQuery({ select: selectArtistById(artistID) })
+  return <Text>{artist.name}</Text>
+}
+```
+
+Lorsque un `selector` a de la logique (comme au moins une condition `if`, `switch`), il faut le séparer dans le dossier `../selectors/` et le tester unitairement.
 
 #### Contrat
 
@@ -219,7 +273,7 @@ Contiennent les `hooks` et les `queries`, ainsi ils sont modulaires.
 
 Les containers sont des composants React chargés de gérer les données et la logique. Ils sont généralement utilisés pour récupérer des données depuis une source externe, gérer l'état, et transmettre les données aux composants de présentation.
 
-Les `containers` se trouvent dans `src/features/<feature>/containers/<nom du container>Container.tsx`
+Les `containers` se trouvent dans `src/features/<feature>/containers/<nom du container>Container/containers/<nom du container>Container.tsx`
 
 Les noms des composants sont suffixé de `Container`
 
@@ -258,7 +312,7 @@ const ArtistsContainer: FunctionComponent<Props> = ({ artistId }) => {
 
 Ce sont des composants contenant uniquement des logiques de présentation (pas de logique métier), ils ne doivent afficher que ce qui est passé en `props`.
 
-Les `presentational` components se trouvent dans `src/features/<feature>/components/<nom du composant>.tsx`
+Les `presentational` components se trouvent dans `src/features/<feature>/components/<nom du composant>/<nom du composant>.tsx`
 
 Les noms des composants n'ont pas de suffix particulier
 
