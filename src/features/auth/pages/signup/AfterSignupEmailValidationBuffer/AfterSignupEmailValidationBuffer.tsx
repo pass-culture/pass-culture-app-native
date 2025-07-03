@@ -57,11 +57,7 @@ export function AfterSignupEmailValidationBuffer() {
 
     validateEmail({
       emailValidationToken: params.token,
-      deviceInfo: {
-        deviceId: deviceInfo?.deviceId ?? 'This should never be undefined',
-        os: deviceInfo?.os,
-        source: deviceInfo?.source,
-      },
+      deviceInfo,
     })
   }
 
