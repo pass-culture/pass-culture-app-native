@@ -61,6 +61,7 @@ export const env: Environment = {
     'https://play.google.com/store/apps/details?id=app.passculture.webapp&hl=fr',
   IOS_APP_ID: 'app.ios',
   IOS_APP_STORE_ID: '1557887412',
+  LOG_PERF: 'none',
   PASSCULTURE_DOWNLOAD_APP_URL: 'https://pass.culture.fr/nosapplications/',
   PRIVACY_POLICY_LINK: 'https://passculture.privacy',
   PUBLIC_URL: 'https://web.example.com',

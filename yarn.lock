@@ -8539,6 +8539,7 @@ __metadata:
     react-native-modal: 13.0.0
     react-native-orientation-locker: ^1.7.0
     react-native-performance: ^5.1.2
+    react-native-performance-stats: ^0.2.3
     react-native-permissions: ^3.8.0
     react-native-qrcode-svg: ^6.1.2
     react-native-reanimated: ^3.15.0
@@ -20692,6 +20693,16 @@ __metadata:
     react-native-windows:
       optional: true
   checksum: 495010b3150adcbc1dcb24e0ca5c13838f02dbcee7c6ec391fe07bd47f9b75ac57b0ec1144aaab5d6ed62e7a354497e9fa5399359d896099ecbea439908817cf
+  languageName: node
+  linkType: hard
+
+"react-native-performance-stats@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "react-native-performance-stats@npm:0.2.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: dbe2fed4b2e62581abf78e169aaf89a6a786a34d333390c48d3f8aee4250fa6b8a25a7344de9ed3ee6b161c19dade93b1ea7280d5c6abd6a6b5f69926cface9c
   languageName: node
   linkType: hard
 
