@@ -35,7 +35,8 @@ export const formatToCompleteFrenchDate = ({
   shouldDisplayWeekDay?: boolean
 }) => {
   const weekDay = DAYS[date.getDay()]
-  return `${shouldDisplayWeekDay ? `${weekDay} ` : ''}${formatToFrenchDate(date)}`
+  const weekDayDisplay = shouldDisplayWeekDay ? `${weekDay} ` : ''
+  return `${weekDayDisplay}${formatToFrenchDate(date)}`
 }
 
 export const decomposeDate = (timestamp: number) => {
@@ -76,9 +77,10 @@ export const formatToFrenchDateWithoutYear = ({
   shouldDisplayWeekDay?: boolean
 }) => {
   const weekDay = DAYS[date.getDay()]
+  const weekDayDisplay = shouldDisplayWeekDay ? `${weekDay} ` : ''
   const { day, month, shortMonth } = decomposeDate(date.getTime())
   const suffix = isFirstDayOfMonth(date) ? 'er' : ''
-  return `${shouldDisplayWeekDay ? `${weekDay} ` : ''}${day}${suffix} ${withShortMonth ? shortMonth : month}`
+  return `${weekDayDisplay}${day}${suffix} ${withShortMonth ? shortMonth : month}`
 }
 
 /**
