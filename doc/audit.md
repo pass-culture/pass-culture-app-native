@@ -1,49 +1,19 @@
-# Rapport d'Audit Technique – Projet pass Culture
+# Audit Technique du Code
 
-## Table des matières
+⚠️ Cet audit ⚠️ :
 
-1.  [Introduction et Contexte](#1-introduction-et-contexte)
-2.  [Méthodologie et Périmètre de l'Audit](#2-méthodologie-et-périmètre-de-laudit)
-3.  [Synthèse des Observations et Constats](#3-synthèse-des-observations-et-constats)
-    - [3.1 Architecture et Gestion de l'État](#31-architecture-et-gestion-de-létat)
-    - [3.2 Performances et Expérience Utilisateur](#32-performances-et-expérience-utilisateur)
-    - [3.3 Qualité du Code et Maintenabilité](#33-qualité-du-code-et-maintenabilité)
-    - [3.4 Structure des Requêtes Réseau](#34-structure-des-requêtes-réseau)
-    - [3.5 Tests et Fiabilité](#35-tests-et-fiabilité)
-    - [3.6 Écosystème des Composants Boutons et Liens](#36-écosystème-des-composants-boutons-et-liens)
-4.  [Recommandations et Priorisation](#4-recommandations-et-priorisation)
-5.  [Plan d'Action Proposé](#5-plan-daction-proposé)
-6.  [Annexes](#6-annexes)
-    - [6.1 Annexe A : Complexité des Composants Bouton](#61-annexe-a--complexité-des-composants-bouton)
-    - [6.2 Annexe B : Exemple de "Hook Hell" - `useCtaWordingAndAction`](#62-annexe-b--exemple-de-hook-hell---usectawordingandaction)
-    - [6.3 Annexe C : Configuration React Query Problématique](#63-annexe-c--configuration-react-query-problématique)
-    - [6.4 Annexe D : Liens vers les Fichiers Clés](#64-annexe-d--liens-vers-les-fichiers-clés)
+- ce concentre uniquement sur les points d'améliorations
+- ce concentre uniquement sur le repo `pass-culture-app-native`
+- n'est pas exhaustif et ce concentre uniquement sur un sous ensemble
+- n'analyse pas le BFF
 
----
+## Audit de différents parcours
 
-## 1. Introduction et Contexte
-
-Ce rapport présente les conclusions de l'audit technique mené sur l'application mobile `pass-culture-app-native`. L'objectif est d'identifier les axes d'amélioration structurels, de mettre en lumière les risques potentiels et de proposer des recommandations concrètes pour garantir la maintenabilité, la performance et la scalabilité du projet.
-
-## 2. Méthodologie et Périmètre de l'Audit
-
-L'audit s'est concentré sur une analyse ciblée du code source, en examinant plusieurs parcours utilisateurs clés :
-
-- Chargement initial de l'application
-- Navigation sur la page d'accueil
-- Réalisation d'une recherche
-- Réservation d'une offre
-
-⚠️ **Exclusions :** Cet audit n'est pas exhaustif. Il se concentre sur certains points d'amélioration et n'inclut pas l'analyse du _Backend For Frontend_ (BFF).
-
-## 3. Synthèse des Observations et Constats
-
-### 3.1 Architecture et Gestion de l'État
+### Chargement Initial
 
 #### Observations
 
-- ⚠️ **Inflation de `Context` React :** L'application initialise plus de 20 `Contexts` React au démarrage. Cette approche, bien que simple à mettre en œuvre initialement, crée un couplage fort et des re-rendus en cascade qui dégradent les performances.
-
+- Nous avons actuellement beaucoup de `Provider` / `Context`
   - Mobile & Web
     - `ReactQueryClientProvider`
     - `ThemeWrapper`
@@ -75,141 +45,176 @@ L'audit s'est concentré sur une analyse ciblée du code source, en examinant pl
     - `AppWebHead`
     - `Suspense`
 
-- ⚠️ **Source de Vérité Diffuse :** L'état de la recherche est un exemple parlant. Il est synchronisé manuellement entre les paramètres de l'URL et plusieurs `Contexts` via le hook `useSync.ts`, une source connue de bugs et de complexité.
+#### Points de Friction
 
-- ⚠️ **Logique Frontend :** Des calculs coûteux, comme le mapping des sous-catégories dans `src/libs/subcategories/mappings.ts`, sont exécutés côté client à chaque rendu, alors que le serveur pourrait fournir ces données dans le format attendu.
+- Utiliser des contextes peut engendrer des problèmes de performance en causant des re-render d'une grande partie de l'arborescence de composants
 
-#### Points de Vigilance
+#### Recommandations
 
-- **Risque de Performance :** L'usage intensif des `Contexts` peut provoquer des rafraîchissements inutiles et coûteux de l'interface, dégradant l'expérience utilisateur.
-- **Maintenance Difficile :** La complexité de la synchronisation entre URL, `Contexts` et états locaux rend le code difficile à comprendre et à faire évoluer sans risque de régression.
+- Remplacer les contextes
+  - À garder
+    - `ReactQueryClientProvider`
+    - `ThemeProvider`
+    - `SafeAreaProvider`
+    - `ErrorBoundary` il faudrait expérimenter d'en ajouter à des niveaux plus bas, sur les parties qui peuvent échouer indépendamment sans impacter le reste de l'app
+    - `AppWebHead`
+  - À remplacer par un store Zustand
+    - `ThemeWrapper`
+    - `LocationWrapper`
+    - `AccessibilityFiltersWrapper`
+    - `SearchAnalyticsWrapper`
+    - `SubscriptionContextProvider`
+  - À remplacer par react-query
+    - `SettingsWrapper`
+    - `AuthWrapper` à rediscuté pour le refresh token qui est stocké
+    - `FavoritesWrapper`
+  - Source de vérité venant des query params / URL
+    - `SearchWrapper`
+    - `CulturalSurveyContextProvider` et / ou react-hook-form, ou Zustand, ou faire une requete au backend pour envoyer la réponse partielle, ou au minimum mettre ce Context qu'au niveau du Navigator
+  - probablement une fonction à appeler directement dans App
+    - `AnalyticsInitializer`
+    - `FirestoreNetworkObserver`
+  - TBD mécanisme global
+    - `SnackBarProvider`
+      - supprimer ces contexts au passage
+        - `OfflineModeContainer` supprimer complètement lorsqu'on retravaillera l'offline
+    - pareil pour les modales
+      - supprimer ces contexts au passage
+        - `PushNotificationsWrapper`
+        - `ShareAppWrapper`
+    - `NetInfoWrapper` centraliser les requêtes
+  - TBD lorsqu'on s'en occupera
+    - `Suspense` à supprimer ? à bouger top level ?
+    - `ScreenErrorProvider` je ne sais pas encore mais pas de cette manière
+    - `SplashScreenProvider` revoir le splash screen et la navigation pour supprimer ce context
+    - `SupportedBrowsersGate`
+      - revoir le wording du bouton qui est trop long
+      - vérifier que ça fonctionne sur ces browsers
+      - bump aux versions réellement supportées
+        - aligner le reste du projet
+          - `src/cheatcodes/pages/others/CheatcodesNavigationNotScreensPages.tsx`
+          - la [config `browserslist`](https://browsersl.ist/) utilisée par vite
+    - `GoogleOAuthProvider` est-ce qu'il ne pourrait pas être bougé au moins dans le bundle qui contient l'inscription et la connexion ?
 
-### 3.2 Performances et Expérience Utilisateur
-
-#### Observations
-
-- ✅ **Identification des Problèmes :** Les outils de monitoring (Sentry) ont permis d'identifier des pages peu performantes, comme la page `accueil-thematique`.
-
-- ⚠️ **Lenteurs Critiques :** La page `accueil-thematique`, très visitée, présente des temps de chargement très longs (**Largest Contentful Paint** jusqu'à 15s) et des gels d'interface (**Interaction to Next Paint** de 1s), comme le rapporte Sentry.
-
-- ⚠️ **Configuration des Requêtes sous-optimale :** La configuration de `react-query` dans `src/libs/react-query/queryClient.ts` n'est pas résiliente :
-
-  - `retry: 0` : L'application n'essaie pas de relancer une requête en cas d'échec réseau (ex: passage sous un tunnel), affichant une erreur immédiatement.
-  - `useErrorBoundary: true` : Les erreurs réseau remontent systématiquement en plein écran, empêchant l'affichage partiel de la page même lorsque des données en cache ou par défaut sont disponibles.
-
-- ⚠️ **Problèmes sur les Modales :** Des problèmes de performance ont été identifiés sur les modales, obligeant parfois à des contournements dans les tests (double-clic), ce qui indique un blocage du thread principal de l'interface.
-
-#### Points de Vigilance
-
-- **Impact Utilisateur :** Les mauvaises performances sur des écrans clés nuisent directement à la rétention et à la satisfaction des utilisateurs.
-- **Manque de Résilience :** L'application ne gère pas gracieusement les erreurs réseau, affichant une page d'erreur là où une nouvelle tentative ou l'utilisation de données en cache serait préférable.
-
-### 3.3 Qualité du Code et Maintenabilité
-
-#### Observations
-
-- ✅ **Conscience de la Dette :** L'équipe a identifié des zones de code très complexes ("Hook Hell"), comme le hook `useCtaWordingAndAction`.
-
-- ⚠️ **Complexité Cognitive Élevée :** Ce même hook (`useCtaWordingAndAction.ts`) est composé d'une fonction pure avec un score de complexité cognitive de 58. Un tel score rend toute modification hasardeuse et coûteuse en temps d'analyse.
-
-- ⚠️ **Complexité des Composants :** L'écosystème de boutons et de liens est un labyrinthe de composants héritant les uns des autres, avec de la duplication de code et des abstractions difficiles à maintenir (ex: la propriété `as`). **(Voir Annexe A)**.
-
-#### Points de Vigilance
-
-- **Risque d'Erreurs Métier :** La complexité du code augmente la probabilité d'introduire des bugs dans des parcours critiques (ex: afficher le mauvais bouton de réservation).
-- **Vélocité Réduite :** Un code complexe et difficile à tester ralentit les développements futurs et augmente le coût de chaque nouvelle fonctionnalité.
-
-### 3.4 Structure des Requêtes Réseau
-
-#### Observations
-
-- ✅ **Code Généré :** L'utilisation d'OpenAPI pour générer le code d'appel à l'API backend est une bonne pratique.
-
-- ⚠️ **Maintenance Difficile :** L'organisation du code est complexe, avec de nombreux allers-retours entre le code généré automatiquement (`src/api/gen/api.ts`) et le code écrit manuellement (`src/api/apiHelpers.ts`), ce qui complique la maintenance et le suivi des appels.
-
-#### Points de Vigilance
-
-- **Complexité de Maintenance :** Les allers-retours entre code généré et code manuel rendent difficile le suivi des flux de données et la résolution des problèmes.
-
-### 3.5 Tests et Fiabilité
+### Accueil
 
 #### Observations
 
-- ✅ **Bonne Couverture Globale :** Le projet affiche un taux de couverture de tests unitaires de 90% sur SonarCloud.
+- Le fichier `src/features/home/pages/Home.tsx` contient de nombreux hooks dont plusieurs `useEffect`
+- on a des durées éparpillées dans la codebase
+  - `src/features/home/constants.ts`
+- sur [Sentry, `accueil-thematique`](https://pass-culture.sentry.io/insights/frontend/pageloads/overview/?environment=production&project=4508839229718608&statsPeriod=7d&transaction=%2Faccueil-thematique) fait parti des pages avec un score de performance faible et pourtant très visité
+  - Largest Contentful Paint ~10s : 10s parfois jusqu'à 15s pour complètement charger la page
+  - Interaction to Next Paint 1s : l'app freeze pendant 1s
 
-- ⚠️ **Pertinence des Tests :** Les tests actuels vérifient souvent des **détails d'implémentation** plutôt que des **comportements métier**. Un simple refactoring, sans impact fonctionnel, casse fréquemment les tests, ce qui décourage l'amélioration continue du code.
+#### Points de friction
 
-- ⚠️ **Manque de Tests sur l'Ancien Code :** Le code le plus ancien et souvent le plus fondamental (briques transverses) est le moins bien testé, car il n'a pas été conçu pour être testable.
+- Utiliser de nombreux hooks peut engendrer des problèmes de performance en causant de nombreux re-render
 
-#### Points de Vigilance
+#### Recommandations
 
-- **Faux Sentiment de Sécurité :** Une couverture de tests élevée ne garantit pas l'absence de régressions si les tests ne valident pas les bonnes choses.
-- **Frein au Refactoring :** La fragilité des tests décourage les efforts de refactoring nécessaires pour améliorer la qualité du code.
+- Utiliser un state manager (comme Zustand) pour centraliser les états de l'application et limiter le nombre de hooks utiliser pour limiter le nombre de re-render
 
-### 3.6 Écosystème des Composants Boutons et Liens
+### Réalisation d’une Recherche
 
 #### Observations
 
-- ⚠️ **Complexité de l'Arborescence :** L'application contient de nombreux composants de boutons et de liens avec une hiérarchie complexe (ex: `ButtonSecondaryBlack`, `ButtonQuaternaryPrimary`, etc.).
+- `src/features/search/helpers/useSync/useSync.ts` hook permettant de synchroniser la navigation avec les états des contextes de recherche et de localisation
+- sur la page thématique search `src/features/gtlPlaylist/hooks/useGTLPlaylists.ts` il y a une cascade de requêtes
 
-- ⚠️ **Propriété `as` Problématique :** La propriété `as` permet d'avoir des composants avec un comportement de lien et une apparence d'un autre composant, mais rend le code complexe et oblige à mal typer.
+#### Points de friction
 
-- ⚠️ **Nommage Descriptif vs Sémantique :** Certains composants sont nommés de manière descriptive (`ButtonSecondaryBlack`) plutôt que sémantique, ce qui nuit à la cohérence.
+- `src/features/search/helpers/useSync/useSync.ts` difficile à maintenir, source de bug
+- les hooks en cascades sont complexes à gérer
+  - notamment à cause des données absentes lors du premier rendus
 
-#### Points de Vigilance
+#### Recommandations
 
-- **Duplication de Code :** L'arborescence complexe entraîne de la duplication et rend la maintenance difficile.
-- **Complexité de Typage :** La propriété `as` complique le système de types et peut introduire des erreurs.
+- l'URL devrait être la source de vérité
+- pour les états locaux (ex : localisation), le state manager (Zustand) devrait être la source de vérité
+- les requêtes devraient être gérées au niveau de la page
 
-## 4. Recommandations et Priorisation
+### Réserve d’une Offre
 
-💡 **Philosophie Directrice :** Simplifier l'architecture, clarifier les responsabilités et renforcer la résilience de l'application.
+#### Observations
 
-| Priorité    | Thème                   | Recommandation                                                                                                                                                                              | Impact Attendu                  |
-| :---------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------ |
-| **Haute**   | **Architecture & État** | 🔹 Remplacer la majorité des `Contexts` par un store centralisé (**Zustand**).<br>🔹 Utiliser **React Query** pour tout l'état serveur.<br>🔹 Établir l'**URL comme source de vérité**.     | **Performance, Maintenabilité** |
-| **Haute**   | **Performances**        | 🔹 Reconfigurer **React Query** pour activer les `retries` et gérer les erreurs localement.<br>🔹 Implémenter une gestion robuste de l'expiration du token.                                 | **Expérience Utilisateur**      |
-| **Moyenne** | **Qualité du Code**     | 🔹 Refactorer les hooks complexes (ex: `useCtaWordingAndAction`) en suivant le découpage `Page / Container / Composant pur`.<br>🔹 Réduire la complexité cognitive des fonctions critiques. | **Maintenabilité, Vélocité**    |
-| **Moyenne** | **API & Requêtes**      | 🔹 Faire évoluer le BFF pour qu'il retourne des données pré-formatées.<br>🔹 Mettre en place un PoC avec **Orval** pour simplifier la génération du code d'appel API.                       | **Performance, Maintenabilité** |
-| **Basse**   | **Composants & Tests**  | 🔹 Rationaliser l'écosystème de `Button` et `Link`.<br>🔹 Orienter les tests vers la validation des **comportements métier**.                                                               | **Fiabilité, Cohérence**        |
+- sur une page offre, pour déterminer quel bouton afficher (ex : "Réserver") le comportement que le bouton doit avoir, on utilise le hook `src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts`
+  - ce hook est décomposé en 2 parties
+    - un hook qui montre le hook hell dans lequel nous sommes : un hook qui appelle plein de hooks pour récupérer toutes les informations nécessaires et les passer à la fonction suivante
+    - une fonction pure avec niveau de complexité cognitive de 58
+- [des problèmes de performances ont été identifié sur les modales avec les boutons primary](https://github.com/pass-culture/pass-culture-app-native/pull/8064#discussion_r2065954706), obligeant les tests end to end à faire certains click 2 fois pour être certains que ça passe
 
-## 5. Plan d'Action Proposé
+#### Points de friction
 
-### Phase 1 - Fondation (Court Terme)
+- le hook `src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts` est [trop complexe](https://codescene.io/projects/45999/jobs/4034898/results/files/hotspots?file-name=pass-culture-app-native%2Fsrc%2Ffeatures%2Foffer%2Fhelpers%2FuseCtaWordingAndAction%2FuseCtaWordingAndAction.ts#hotspots), le rendant [difficile à maintenir](https://codescene.io/projects/45999/jobs/4034898/results/code/hotspots/biomarkers?name=pass-culture-app-native%2Fsrc%2Ffeatures%2Foffer%2Fhelpers%2FuseCtaWordingAndAction%2FuseCtaWordingAndAction.ts) et difficile de dire avec assurance quel bouton sera affiché dans telle situation
 
-**Objectif :** Gains de performance rapides et amélioration de la résilience.
+#### Recommandations
 
-**Actions :**
+### Activation d’un Compte
 
-- Mettre en place **Zustand** et migrer les premiers `Contexts` liés à l'état UI (`ThemeWrapper`, `LocationWrapper`, `AccessibilityFiltersWrapper`, `SearchAnalyticsWrapper`, `SubscriptionContextProvider`).
-- Ajuster la configuration de **React Query** (`retry`, gestion des erreurs) et implémenter une gestion robuste de l'expiration du token.
-- Remplacer les `Contexts` par react-query pour `SettingsWrapper`, `AuthWrapper`, `FavoritesWrapper`.
+#### Observations
 
-### Phase 2 - Refactoring Ciblé (Moyen Terme)
+#### Points de Friction
 
-**Objectif :** Réduire la dette technique sur des parcours critiques.
+#### Recommandations
 
-**Actions :**
+### Test
 
-- Refactorer intégralement le parcours de **Recherche** en utilisant l'URL comme source de vérité et en supprimant `useSync.ts`.
-- Simplifier le hook `useCtaWordingAndAction` en isolant la logique métier dans des fonctions pures et testables. **(Voir Annexe B)**.
-- Établir l'URL comme source de vérité pour `SearchWrapper` et `CulturalSurveyContextProvider`.
+#### Observations
 
-### Phase 3 - Rationalisation (Long Terme)
+Pour rappel :
 
-**Objectif :** Améliorer la cohérence et la maintenabilité globale du projet.
+- un taux de coverage élevé n'assure aucune garantie
+- un taux de coverage faible assure d'un manque de tests
+- notre taux de coverage est calculé sur les tests unitaires
 
-**Actions :**
+Nous avons [un taux de coverage de 90%](https://sonarcloud.io/component_measures?id=pass-culture_pass-culture-app-native&metric=coverage&view=list)
 
-- Auditer et consolider l'ensemble des composants `Button` et `Link` pour réduire la complexité et la duplication.
-- Collaborer avec l'équipe backend pour optimiser les formats de données retournés par l'API.
-- Orienter les nouveaux tests vers la validation des **comportements métier** plutôt que des détails d'implémentation.
+[Le nombre de lignes non couvertes décroît](https://sonarcloud.io/project/activity?graph=coverage&id=pass-culture_pass-culture-app-native) (ce qui est positif)
 
-## 6. Annexes
+Une analyse rapide mets en évidence que c'est [le code le plus ancien qui n'est pas testé](https://sonarcloud.io/component_measures?metric=Coverage&id=pass-culture_pass-culture-app-native) :
 
-### 6.1 Annexe A : Complexité des Composants Bouton
+- souvent pas conçu pour être testé, il est difficilement testable
+- souvent des briques fondamentales transverses très techniques difficilement testables
+- parfois un manque de connaissance des règles métiers
 
-L'arborescence des composants de type "bouton" ou "lien cliquable" est révélatrice de la complexité accumulée. De nombreux composants héritent les uns des autres, parfois avec des noms descriptifs (`ButtonSecondaryBlack`) plutôt que sémantiques, et l'utilisation de la prop `as` ajoute une couche de complexité de typage.
+Nos tests vérifient souvent des détails d'implémentations
+
+Un refactoring sans aucun changement de comportement casse souvent les tests
+
+Nous vérifions peu les comportements métier
+
+Les tests sont souvent écrit après l'implem :
+
+- rendant les tests difficiles à écrire
+- il y a des règles métiers qui ne sont pas testés
+  - rendant les refactoring et évolution dangereuses car pouvant casser des comportements sans le signaler
+
+#### Points de Friction
+
+C'est très verbeux d'écrire des tests sur des composants
+
+C'est difficile de faire du tests first sur notre codebase avec les hooks hells qui rendent les mocks difficiles à écrire
+
+#### Recommandations
+
+Il faudrait :
+
+- tester en vérifiant des comportements métiers
+- avoir au moins un test qui vérifie le bon usage d'un container dans un dumb component :
+  - vérifier que la glue entre les règles métiers et l'UI est bien faite
+  - dans les cas simples, tester directement l'UI via le container
+  - dans les cas complexes, tester un peu la glue et tester la combinatoire dans une fonction pure isolée
+
+## Autres
+
+### Boutons et liens
+
+#### Observations
+
+Nous avons beaucoup de composants de boutons et de liens
+
+Ceci est un aperçu non exhaustif
 
 ```mermaid
 flowchart LR
@@ -231,44 +236,141 @@ flowchart LR
   ToggleButton --> TouchableOpacity
 ```
 
-**Recommandation :** Aplatir cette hiérarchie, définir un nombre limité de variantes sémantiques (ex: `primary`, `secondary`, `danger`, `quiet`) et utiliser la composition plutôt que l'héritage et la prop `as`.
+La propriété `as` permet d'avoir des composants avec un comportement de lien et une apparence d'un autre composant (généralement un bouton)
 
-### 6.2 Annexe B : Exemple de "Hook Hell" - `useCtaWordingAndAction`
+#### Points de Friction
 
-Ce hook est l'exemple parfait de la complexité qui peut émerger lorsque la logique métier est mélangée à la récupération de données dans la vue.
+L'arborescence des composants est complexes, avec beaucoup de duplication
 
-**Partie 1 : Le "Hook Hell"**  
-Le hook lui-même est une longue liste d'appels à d'autres hooks pour agréger des données de sources multiples (contexte d'authentification, état de l'offre, favoris, etc.).
+La propriété `as` rend le code complexe et oblige a mal typer
 
-**Partie 2 : La Logique Impénétrable**  
-Ces données sont ensuite passées à une fonction pure, `getCtaWordingAndAction`, qui contient une structure conditionnelle extrêmement dense (switch, if/else imbriqués) pour déterminer quel libellé et quelle action associer au bouton. Sa complexité cognitive de 58 signifie qu'il est statistiquement très probable d'y introduire un bug à chaque modification.
+`ButtonQuaternaryPrimary` & `ButtonQuaternarySecondary` 🤔
 
-**Recommandation de refactoring :**
+#### Recommandations
 
-1.  **Container :** La page de l'offre récupère toutes les données nécessaires via `react-query`.
-2.  **Fonctions Pures :** La logique de `getCtaWordingAndAction` est éclatée en plusieurs petites fonctions pures, testables unitairement, chacune responsable d'une seule règle métier (ex: `isBookable`, `isExpired`, `isFavorite`).
-3.  **Composant :** Le composant de la page appelle ces fonctions pures avec les données récupérées et affiche le bouton approprié.
+- Avoir moins de types de boutons
+- Renommer les composants sémantiquement pas en les décrivant (`Black`, `Grey`)
+- Réduire la complexité
+- Réduire la duplication
+- Remplacer la propriété `as`
+  - peut être par [le pattern `asChild`](https://grafikart.fr/tutoriels/aschild-props-react-2287)
 
-### 6.3 Annexe C : Configuration React Query Problématique
+### Restructuration des données
 
-La configuration actuelle de React Query présente deux problèmes majeurs :
+#### Observations
 
-**1. `retry: 0`**  
-Supprimé historiquement lors de la mise en place du refresh token pour éviter de faire des requêtes multiples lors de l'expiration du token. Cependant, cela signifie qu'en cas d'échec réseau (passage sous un tunnel, mauvaise connexion), l'application n'essaie pas de relancer la requête et affiche immédiatement une erreur.
+Nous avons fréquemment des calculs fait coté frontend pour formatter les données dans une structure directement utilisable par nos composants
 
-**2. `useErrorBoundary: true`**  
-Pour des raisons historiques, lorsqu'une requête échoue, l'application affiche systématiquement une page d'erreur au lieu de gérer l'erreur localement. Même si des valeurs par défaut sont définies, l'erreur remonte au niveau global.
+Exemple la restructuration des catégories en arborescences : `src/libs/subcategories/mappings.ts`
 
-**Impact :** Ces configurations rendent l'application fragile aux instabilités réseau et nuisent à l'expérience utilisateur.
+On a tendance à utiliser le backend comme si on ne pouvait pas le changer, comme si cette API était utilisée par des tiers, ce qui n'est pas le cas, l'API est uniquement utilisée par notre code frontend
 
-### 6.4 Annexe D : Liens vers les Fichiers Clés
+#### Points de Friction
 
-Pour référence, voici des liens directs vers les fichiers mentionnés dans ce rapport :
+On fait des calculs sur les end devices qui sont majoritairement moins performant que nos serveurs
 
-- **Configuration React Query :** [`src/libs/react-query/queryClient.ts`](https://github.com/pass-culture/pass-culture-app-native/blob/master/src/libs/react-query/queryClient.ts)
-- **Hook de synchronisation de la recherche :** [`src/features/search/helpers/useSync/useSync.ts`](https://github.com/pass-culture/pass-culture-app-native/blob/master/src/features/search/helpers/useSync/useSync.ts)
-- **Hook complexe de réservation :** [`src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts`](https://github.com/pass-culture/pass-culture-app-native/blob/master/src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts)
-- **Mapping des sous-catégories :** [`src/libs/subcategories/mappings.ts`](https://github.com/pass-culture/pass-culture-app-native/blob/master/src/libs/subcategories/mappings.ts)
-- **Rapport de complexité CodeScene :** [Lien vers l'analyse CodeScene du hook](https://codescene.io/projects/45999/jobs/4034898/results/files/hotspots?file-name=pass-culture-app-native%2Fsrc%2Ffeatures%2Foffer%2Fhelpers%2FuseCtaWordingAndAction%2FuseCtaWordingAndAction.ts#hotspots)
-- **Rapport de couverture SonarCloud :** [Lien vers la couverture du projet](https://sonarcloud.io/component_measures?id=pass-culture_pass-culture-app-native&metric=coverage&view=list)
-- **Rapport Sentry page accueil-thematique :** [Lien vers les performances Sentry](https://pass-culture.sentry.io/insights/frontend/pageloads/overview/?environment=production&project=4508839229718608&statsPeriod=7d&transaction=%2Faccueil-thematique)
+On fait les calculs à chaque requête
+
+#### Recommandations
+
+- Notre API devraient retourner les datas au format le plus proche des besoins frontend
+- On pourrait mettre en cache les restructurations des données pour éviter de le faire à chaque appel
+
+### Requêtes
+
+#### Observations
+
+On pour chaque route exposée par le backend via le schema OpenAPI on génère du code 🤖 qui s'occupe de faire les appels
+
+Ce code fini par appelé du code non généré🧑‍💻
+
+Exemple avec `/native/v1/settings`
+
+- 🧑‍💻 `src/features/auth/context/SettingsContext.tsx` `useAppSettings()`
+  - 🤖 `src/api/gen/api.ts` `DefaultApi.getNativeV1Settings()`
+    - 🤖 `src/api/gen/api.ts` `DefaultApiFp.getNativeV1Settings()`
+      - 🤖 `src/api/gen/api.ts` `DefaultApiFetchParamCreator.getNativeV1Settings()`
+      - 🧑‍💻 `src/api/apiHelpers.ts` `safeFetch`
+      - 🧑‍💻 `src/api/apiHelpers.ts` `handleGeneratedApiResponse`
+
+#### Points de Friction
+
+L'organisation du code est complexe faisant des allers-retours avec le code généré 🤖 et le code écrit par des humains 🧑‍💻
+
+La maintenance est difficile
+
+#### Recommandations
+
+- Faire un PoC avec [Orval](https://orval.dev) pour générer ce code
+
+### Requêtes config react query
+
+#### Observations
+
+On a [une config de prod de react-query](https://github.com/pass-culture/pass-culture-app-native/blob/25d03eaf31efb53cd50d71a973c8561f419d18b1/src/libs/react-query/queryClient.ts#L9) qui n'est pas bonne pour des raisons historiques :
+
+##### `retry: 0`
+
+En mettant en place le refresh token, [on a supprimé les retries](https://github.com/pass-culture/pass-culture-app-native/pull/234/commits/64e9c2a0227c061df857b366d352718fd26718b5#diff-26ad4b834941d9b19ebf9db8082bd202aaf72ea0ddea85f5a8a0cb3c729cc6f2R53)
+
+@bpeyrou-pass a émis l'hypothèse que c'est pour éviter de faire des requêtes plusieurs fois lorsque le token est expiré
+
+Si une requête échoue (ex : mauvais réseau, je suis dans le train, je passe sous un tunnel), l'app ne réessaie pas de faire la requête
+
+Par défaut, react-query [réessaie chaque requête 3 fois](https://tanstack.com/query/latest/docs/framework/react/guides/query-retries), ce qui pourrait faire diminuer nos erreurs liés aux réseaux ([top 1 🥇 erreurs sur Sentry](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=&referrer=issue-list&sort=freq&statsPeriod=30d) en nombre d'occurrences d'erreurs)
+
+##### `useErrorBoundary: true`
+
+Pour [une raison encore plus historique](https://github.com/pass-culture/pass-culture-app-native/pull/125/files#diff-26ad4b834941d9b19ebf9db8082bd202aaf72ea0ddea85f5a8a0cb3c729cc6f2R30), lorsqu'une requête échoue, on affiche une page d'erreur
+
+On n'essaie pas de la gérer localement
+
+Pour [certaines requêtes définissent des valeurs par défaut](https://github.com/pass-culture/pass-culture-app-native/blob/e235c64aae55b08c1e29f695ed63f68486de6895/src/libs/subcategories/useSubcategories.ts#L17), qui sont utilisées lors du premier render (avant que la requête soit finie) et en cas d'erreurs
+
+Meme si on fourni une valeur par défaut qui non-idéale mais suffisante, lorsqu'il y a une erreur, on affiche la page d'erreur
+
+Si on veut utiliser la valeur par défaut en cas d'erreur, avec notre config actuelle, [il faut le demander explicitement](https://github.com/pass-culture/pass-culture-app-native/blob/4401026df896c9b97a823a01712ebcb3469cabd7/src/libs/firebase/remoteConfig/queries/useRemoteConfigQuery.ts#L32)
+
+#### Points de Friction
+
+#### Recommandations
+
+@mmeissonnier-pass a créé [un ticket](https://passculture.atlassian.net/browse/PC-36132) pour profiter du retry par défaut sans spammer pour rien lorsque le refresh token expire
+
+- Essayer l'une de ces pistes pour gérer les cas d'erreur liés à l'expiration du refresh token
+  - [axios-auth-fetch](https://www.npmjs.com/package/axios-auth-refresh)
+  - [XHRInterceptor](https://nikunj09.medium.com/intercept-http-request-in-react-native-1f07754e12d1)
+- Supprimer de [`safeFetch`](https://github.com/pass-culture/pass-culture-app-native/blob/be07b683df6bb2364bfcdd16841b7ed5ab350ec2/src/api/apiHelpers.ts#L59)
+- Supprimer le `retries: 0`
+
+### Autre
+
+#### Observations
+
+#### Points de Friction
+
+#### Recommandations
+
+## Conclusion
+
+### Recommandations
+
+- Suivre les préconisations de la guilde architecture
+  - découper :
+    - composant Page : qui fait les requêtes
+    - composant Container : qui centralise les logiques en appelant des fonctions pures
+    - composant débile pure : qui ne font que de l'affichage
+  - gestion des états
+    - URL comme source de vérité
+    - utilisation de react-query pour toutes les requêtes
+    - cache de react-query utilisés pour éviter de refaire des requêtes inutiles tout en limitant le cache en mémoire
+    - utilisation de Zustand pour centraliser les états locaux de l'app
+
+## TODO
+
+Android iOS permission
+Audit greenspector
+
+useSafeState
+
+"quels sont les principes qui vont devoir être mis en place" il nous faut clairement "comment ils vont être mis en place"
