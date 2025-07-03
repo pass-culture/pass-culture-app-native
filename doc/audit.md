@@ -150,13 +150,8 @@
 
 #### Recommandations
 
-### Activation d’un Compte
-
-#### Observations
-
-#### Points de Friction
-
-#### Recommandations
+1. Sécuriser le comportement existant avec des tests (ou s'assurer que ceux existant sont exhaustif)
+1. Refactorer pour casser la complexité
 
 ### Test
 
@@ -343,14 +338,6 @@ Si on veut utiliser la valeur par défaut en cas d'erreur, avec notre config act
 - Supprimer de [`safeFetch`](https://github.com/pass-culture/pass-culture-app-native/blob/be07b683df6bb2364bfcdd16841b7ed5ab350ec2/src/api/apiHelpers.ts#L59)
 - Supprimer le `retries: 0`
 
-### Autre
-
-#### Observations
-
-#### Points de Friction
-
-#### Recommandations
-
 ## Conclusion
 
 ### Recommandations
@@ -365,12 +352,3 @@ Si on veut utiliser la valeur par défaut en cas d'erreur, avec notre config act
     - utilisation de react-query pour toutes les requêtes
     - cache de react-query utilisés pour éviter de refaire des requêtes inutiles tout en limitant le cache en mémoire
     - utilisation de Zustand pour centraliser les états locaux de l'app
-
-## TODO
-
-Android iOS permission
-Audit greenspector
-
-useSafeState
-
-"quels sont les principes qui vont devoir être mis en place" il nous faut clairement "comment ils vont être mis en place"
