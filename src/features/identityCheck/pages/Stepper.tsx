@@ -12,8 +12,8 @@ import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/he
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionNavConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionNavConfig'
-import { getSubscriptionStackConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionStackConfig'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { getSubscriptionNavigateToConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionNavigateToConfig'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
@@ -58,7 +58,7 @@ export const Stepper = () => {
     const showMaintenance = () => {
       if (subscription?.nextSubscriptionStep === SubscriptionStep.maintenance) {
         navigate(
-          ...getSubscriptionStackConfig('IdentityCheckUnavailable', {
+          ...getSubscriptionHookConfig('IdentityCheckUnavailable', {
             withDMS: subscription?.maintenancePageType === MaintenancePageType['with-dms'],
           })
         )
@@ -74,7 +74,7 @@ export const Stepper = () => {
         .then(({ data: userProfile }) => {
           const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
           if (hasUserOngoingCredit) {
-            navigate(...getSubscriptionStackConfig('BeneficiaryAccountCreated'))
+            navigate(...getSubscriptionHookConfig('BeneficiaryAccountCreated'))
           }
         })
         .catch((error) => {
@@ -99,7 +99,7 @@ export const Stepper = () => {
         <StepButtonContainer key={step.name}>
           <StepButton
             step={step}
-            navigateTo={getSubscriptionNavConfig(step.firstScreen, {
+            navigateTo={getSubscriptionNavigateToConfig(step.firstScreen, {
               type: ProfileTypes.IDENTITY_CHECK,
             })}
             onPress={() => {

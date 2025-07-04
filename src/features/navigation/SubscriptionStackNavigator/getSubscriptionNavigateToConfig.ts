@@ -3,7 +3,10 @@ import {
   SubscriptionStackRouteName,
 } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 
-export function getSubscriptionNavConfig<Screen extends SubscriptionStackRouteName>(
+/**
+ * The returned object can be passed to "navigateTo" of in-house components
+ */
+export function getSubscriptionNavigateToConfig<Screen extends SubscriptionStackRouteName>(
   screen: Screen,
   params?: SubscriptionStackParamList[Screen]
 ): {
