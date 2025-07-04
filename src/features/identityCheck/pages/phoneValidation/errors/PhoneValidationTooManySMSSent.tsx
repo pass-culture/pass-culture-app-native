@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { timeDiffInHours } from 'libs/dates'
 import { plural } from 'libs/plural'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -31,7 +32,7 @@ export function PhoneValidationTooManySMSSent() {
       }}
       buttonTertiary={{
         wording: 'J’ai reçu mon code',
-        navigateTo: { screen: 'SetPhoneValidationCode' },
+        navigateTo: getSubscriptionPropConfig('SetPhoneValidationCode'),
         icon: PlainArrowPrevious,
       }}>
       <StyledBody>{hoursLeftWording}</StyledBody>

@@ -10,6 +10,7 @@ import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { usePostHonorStatementMutation } from 'features/identityCheck/queries/usePostHonorStatementMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { QueryKeys } from 'libs/queryKeys'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,10 +49,10 @@ export const IdentityCheckHonor = () => {
       }
       const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
       if (hasUserOngoingCredit) {
-        navigate('BeneficiaryAccountCreated')
+        navigate(...getSubscriptionHookConfig('BeneficiaryAccountCreated'))
       } else {
         saveStep(IdentityCheckStep.CONFIRMATION)
-        navigate('BeneficiaryRequestSent')
+        navigate(...getSubscriptionHookConfig('BeneficiaryRequestSent'))
       }
     },
     onError: (error) =>

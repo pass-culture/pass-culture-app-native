@@ -8,6 +8,7 @@ import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneV
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { useSendPhoneValidationMutation } from 'features/identityCheck/queries/useSendPhoneValidationMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'
@@ -42,7 +43,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
     onError: (error: unknown) => {
       props.dismissModal()
       if (isApiError(error) && error.content?.code === 'TOO_MANY_SMS_SENT') {
-        navigate('PhoneValidationTooManySMSSent')
+        navigate(...getSubscriptionHookConfig('PhoneValidationTooManySMSSent'))
       } else {
         const message = extractApiErrorMessage(error)
         showErrorSnackBar({

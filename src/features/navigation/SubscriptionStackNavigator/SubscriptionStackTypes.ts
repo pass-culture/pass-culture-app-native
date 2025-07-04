@@ -17,22 +17,22 @@ export type SubscriptionStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   NewSignup: undefined
   // Profile
-  ProfileInformationValidation: ProfileType
+  ProfileInformationValidation?: ProfileType
   SetEmail: undefined
-  SetName: ProfileType
-  SetCity: ProfileType
-  SetAddress: ProfileType
-  SetStatus: ProfileType
-  SetProfileBookingError: { offerId?: number }
+  SetName?: ProfileType
+  SetCity?: ProfileType
+  SetAddress?: ProfileType
+  SetStatus?: ProfileType
+  SetProfileBookingError?: { offerId?: number }
   // Identification
   ComeBackLater: undefined
-  DMSIntroduction: { isForeignDMSInformation: boolean }
+  DMSIntroduction?: { isForeignDMSInformation: boolean }
   ExpiredOrLostID: undefined
   UbbleWebview: undefined
   IdentityCheckEnd: undefined
   IdentityCheckUnavailable?: { withDMS?: boolean }
   EduConnectForm: undefined
-  EduConnectValidation: {
+  EduConnectValidation?: {
     firstName?: string
     lastName?: string
     dateOfBirth?: string

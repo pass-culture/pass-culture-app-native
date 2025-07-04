@@ -5,6 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 
 const bookingsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
@@ -22,34 +23,30 @@ const bookingsCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'SetName',
-      navigationTarget: {
-        screen: 'SetName',
-        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-      },
+      navigationTarget: getSubscriptionPropConfig('SetName', {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }),
     },
     {
       id: uuidv4(),
       title: 'SetCity',
-      navigationTarget: {
-        screen: 'SetCity',
-        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-      },
+      navigationTarget: getSubscriptionPropConfig('SetCity', {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }),
     },
     {
       id: uuidv4(),
       title: 'SetAddress',
-      navigationTarget: {
-        screen: 'SetAddress',
-        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-      },
+      navigationTarget: getSubscriptionPropConfig('SetAddress', {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }),
     },
     {
       id: uuidv4(),
       title: 'SetStatus',
-      navigationTarget: {
-        screen: 'SetStatus',
-        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-      },
+      navigationTarget: getSubscriptionPropConfig('SetStatus', {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }),
     },
   ],
 }
