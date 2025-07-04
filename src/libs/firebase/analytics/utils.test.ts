@@ -90,7 +90,7 @@ describe('[Analytics utils]', () => {
       })
     })
 
-    it('with single date selected (no filter)', () => {
+    it('with single date selected (should return specificDate)', () => {
       const partialSearchState = buildPerformSearchState(
         {
           ...initialSearchState,
@@ -106,13 +106,13 @@ describe('[Analytics utils]', () => {
         searchDate: JSON.stringify({
           startDate: TODAY.toISOString(),
           endDate: null,
-          searchFilter: null,
+          searchFilter: 'specificDate',
         }),
         searchView: SearchView.Results,
       })
     })
 
-    it('with date range selected (no filter)', () => {
+    it('with date range selected (should return dateInterval)', () => {
       const partialSearchState = buildPerformSearchState(
         {
           ...initialSearchState,
@@ -128,7 +128,7 @@ describe('[Analytics utils]', () => {
         searchDate: JSON.stringify({
           startDate: TODAY.toISOString(),
           endDate: endOfMonth(TODAY).toISOString(),
-          searchFilter: null,
+          searchFilter: 'dateInterval',
         }),
         searchView: SearchView.Results,
       })
