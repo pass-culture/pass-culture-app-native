@@ -756,7 +756,10 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
           paddingBottom={0}
           style={
             [
-              {},
+              {
+                "backgroundColor": "#ffffff",
+                "paddingBottom": 0,
+              },
             ]
           }
         >
