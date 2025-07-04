@@ -40,31 +40,32 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const labelMapping = useCategoryHomeLabelMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
+  const { subcategoryId, dates, releaseDate, isDuo, thumbUrl, name } = offer.offer
 
   const displayPrice = getDisplayedPrice(
     offer?.offer?.prices,
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(offer.offer.subcategoryId),
-      isDuo: !!(offer.offer.isDuo && user?.isBeneficiary),
+      isFixed: getIfPricesShouldBeFixed(subcategoryId),
+      isDuo: !!(isDuo && user?.isBeneficiary),
     })
   )
 
-  const displayDate = getOfferDates(
-    offer.offer.subcategoryId,
-    offer.offer.dates,
-    offer.offer.releaseDate
-  )
+  const displayDate = getOfferDates({
+    subcategoryId,
+    dates,
+    releaseDate,
+  })
   const displayDistance = getDistance(offer._geoloc, {
     userLocation,
     selectedPlace,
     selectedLocationMode,
   })
 
-  const categoryId = mapping[offer.offer.subcategoryId]
+  const categoryId = mapping[subcategoryId]
 
-  const categoryLabel = labelMapping[offer.offer.subcategoryId]
+  const categoryLabel = labelMapping[subcategoryId]
 
   return (
     <Container>
@@ -88,9 +89,9 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
         testId="multi-offer-tile">
         <PlaylistCardOffer
           categoryId={categoryId}
-          thumbnailUrl={offer.offer.thumbUrl}
+          thumbnailUrl={thumbUrl}
           distance={displayDistance}
-          name={offer.offer.name}
+          name={name}
           date={displayDate}
           price={displayPrice}
           categoryLabel={categoryLabel}

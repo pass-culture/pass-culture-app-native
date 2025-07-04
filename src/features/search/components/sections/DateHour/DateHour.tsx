@@ -18,7 +18,7 @@ const buildDateString = (date: SearchState['date']) => {
     case DATE_FILTER_OPTIONS.CURRENT_WEEK_END:
       return 'ce week-end'
     default:
-      return `le ${formatToCompleteFrenchDate(new Date(date.selectedDate))}`
+      return `le ${formatToCompleteFrenchDate({ date: new Date(date.selectedDate) })}`
   }
 }
 

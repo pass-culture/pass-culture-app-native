@@ -1,14 +1,35 @@
 import React from 'react'
-import { View } from 'react-native'
+import styled from 'styled-components/native'
 
-import { VoucherResponse, TokenResponse } from 'api/gen'
+import { TicketCode } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/TicketCode'
+import { QrCode } from 'features/bookings/components/Ticket/TicketBottomPart/QrCode'
+import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing } from 'ui/theme'
 
-type props = {
-  voucher: VoucherResponse | null
-  token: TokenResponse | null | undefined
-  ean: string | null
+export type PhysicalGoodBookingTicketProps = {
+  voucherData: string
+  tokenData: string
+  expirationDate?: string
 }
-export const PhysicalGoodBookingTicket = ({ voucher, token, ean }: props) => {
-  if (voucher && token && ean) return <View testID="physical-good-booking-ticket-container" />
-  return null
+export const PhysicalGoodBookingTicket = ({
+  voucherData,
+  tokenData,
+  expirationDate,
+}: PhysicalGoodBookingTicketProps) => {
+  const text = `Présente le code ci-dessus à la caisse du lieu indiqué ${expirationDate ?? ''} pour récupérer ton offre.`
+
+  return (
+    <StyledViewGap gap={4} testID="physical-good-booking-ticket-container">
+      <QrCode qrCode={voucherData} />
+      <TicketCode code={tokenData} />
+      <TicketText>{text}</TicketText>
+    </StyledViewGap>
+  )
 }
+
+const StyledViewGap = styled(ViewGap)({
+  justifyContent: 'center',
+  minHeight: getSpacing(25),
+  width: '100%',
+})
