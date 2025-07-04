@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -25,7 +26,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
 
   const navigateToStepper = useCallback(() => {
     hideModal()
-    navigate('Stepper', { from })
+    navigate(...getSubscriptionHookConfig('Stepper', { from }))
   }, [hideModal, navigate, from])
 
   const depositAmountByAge = useGetDepositAmountsByAge(user?.birthDate)

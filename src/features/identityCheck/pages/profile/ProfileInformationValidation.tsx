@@ -15,6 +15,7 @@ import {
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -36,7 +37,7 @@ export const ProfileInformationValidation = () => {
 
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ProfileInformationValidation'>>()
-  const type = params.type
+  const type = params?.type
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck
@@ -91,7 +92,8 @@ export const ProfileInformationValidation = () => {
   }, [postProfile, saveStep, storedProfileInfos])
 
   const onSubmitProfile = () => submitProfileInfo()
-  const onChangeInformation = () => navigate('SetName', { type: pageInfos.navigateParamsType })
+  const onChangeInformation = () =>
+    navigate(...getSubscriptionHookConfig('SetName', { type: pageInfos.navigateParamsType }))
 
   return (
     <PageWithHeader

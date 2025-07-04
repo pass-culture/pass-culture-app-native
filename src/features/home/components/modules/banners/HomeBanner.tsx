@@ -6,6 +6,7 @@ import { BannerName } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -68,7 +69,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   const onPressSystemBanner = useCallback(
     (from: StepperOrigin) => {
-      navigate('Stepper', { from })
+      navigate(...getSubscriptionHookConfig('Stepper', { from }))
     },
     [navigate]
   )

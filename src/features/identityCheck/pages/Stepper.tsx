@@ -13,7 +13,7 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { getSubscriptionNavigateToConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionNavigateToConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
@@ -99,7 +99,7 @@ export const Stepper = () => {
         <StepButtonContainer key={step.name}>
           <StepButton
             step={step}
-            navigateTo={getSubscriptionNavigateToConfig(step.firstScreen, {
+            navigateTo={getSubscriptionPropConfig(step.firstScreen, {
               type: ProfileTypes.IDENTITY_CHECK,
             })}
             onPress={() => {

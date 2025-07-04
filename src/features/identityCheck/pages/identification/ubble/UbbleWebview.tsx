@@ -9,6 +9,7 @@ import { parseUrlParams } from 'features/identityCheck/pages/helpers/parseUrlPar
 import { useIdentificationUrlMutation } from 'features/identityCheck/queries/useIdentificationUrlMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { Spacer } from 'ui/theme'
@@ -33,7 +34,7 @@ export const UbbleWebview: React.FC = () => {
       navigateToHome()
     } else if (url.includes(REDIRECT_URL_UBBLE)) {
       analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
-      navigate('IdentityCheckEnd')
+      navigate(...getSubscriptionHookConfig('IdentityCheckEnd'))
     }
   }
 

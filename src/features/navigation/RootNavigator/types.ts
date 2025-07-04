@@ -85,7 +85,7 @@ export type AccessibilityRootStackParamList = {
 
 export type CulturalSurveyRootStackParamList = {
   CulturalSurveyIntro: undefined
-  CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
+  CulturalSurveyQuestions?: { question: CulturalSurveyQuestionEnum }
   CulturalSurveyThanks: undefined
   FAQWebview: undefined
 }

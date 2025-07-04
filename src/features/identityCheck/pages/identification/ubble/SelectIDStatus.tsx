@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
@@ -36,7 +37,7 @@ const MainOptionButton = (
     Title={<Typo.BodyAccent>J’ai ma pièce d’identité en cours de validité</Typo.BodyAccent>}
     Subtitle={<Typo.BodyAccentXs>Les copies ne sont pas acceptées</Typo.BodyAccentXs>}
     Icon={<IdCard />}
-    navigateTo={{ screen: 'UbbleWebview' }}
+    navigateTo={getSubscriptionPropConfig('UbbleWebview')}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.ID_OK)}
   />
 )
@@ -49,7 +50,7 @@ const FirstOtherOption = (
   <SecondButtonList
     label="Je n’ai pas ma pièce d’identité originale avec moi"
     leftIcon={NoId}
-    navigateTo={{ screen: 'ComeBackLater' }}
+    navigateTo={getSubscriptionPropConfig('ComeBackLater')}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.NO_ID)}
   />
 )
@@ -62,7 +63,7 @@ const SecondOtherOption = (
   <SecondButtonList
     label="Ma pièce d’identité est expirée ou perdue"
     leftIcon={LostId}
-    navigateTo={{ screen: 'ExpiredOrLostID' }}
+    navigateTo={getSubscriptionPropConfig('ExpiredOrLostID')}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.EXPIRED_OR_LOST)}
   />
 )

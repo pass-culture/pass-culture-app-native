@@ -12,6 +12,7 @@ import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneVali
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
@@ -27,7 +28,7 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'BeneficiaryRequestSent',
-      navigationTarget: { screen: 'BeneficiaryRequestSent' },
+      navigationTarget: getSubscriptionPropConfig('BeneficiaryRequestSent'),
     },
     {
       id: uuidv4(),
@@ -37,83 +38,131 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
         params: { screen: 'CheatcodesScreenNotEligibleEduConnect' },
       },
     },
-    { id: uuidv4(), title: 'ComeBackLater', navigationTarget: { screen: 'ComeBackLater' } },
-    { id: uuidv4(), title: 'DisableActivation', navigationTarget: { screen: 'DisableActivation' } },
-    { id: uuidv4(), title: 'DMSIntroduction', navigationTarget: { screen: 'DMSIntroduction' } },
-    { id: uuidv4(), title: 'EduConnectForm', navigationTarget: { screen: 'EduConnectForm' } },
-    { id: uuidv4(), title: 'ExpiredOrLostID', navigationTarget: { screen: 'ExpiredOrLostID' } },
+    {
+      id: uuidv4(),
+      title: 'ComeBackLater',
+      navigationTarget: getSubscriptionPropConfig('ComeBackLater'),
+    },
+    {
+      id: uuidv4(),
+      title: 'DisableActivation',
+      navigationTarget: getSubscriptionPropConfig('DisableActivation'),
+    },
+    {
+      id: uuidv4(),
+      title: 'DMSIntroduction',
+      navigationTarget: getSubscriptionPropConfig('DMSIntroduction'),
+    },
+    {
+      id: uuidv4(),
+      title: 'EduConnectForm',
+      navigationTarget: getSubscriptionPropConfig('EduConnectForm'),
+    },
+    {
+      id: uuidv4(),
+      title: 'ExpiredOrLostID',
+      navigationTarget: getSubscriptionPropConfig('ExpiredOrLostID'),
+    },
     {
       id: uuidv4(),
       title: 'IdentificationFork',
-      navigationTarget: { screen: 'IdentificationFork' },
+      navigationTarget: getSubscriptionPropConfig('IdentificationFork'),
     },
-    { id: uuidv4(), title: 'IdentityCheckDMS', navigationTarget: { screen: 'IdentityCheckDMS' } },
-    { id: uuidv4(), title: 'IdentityCheckEnd', navigationTarget: { screen: 'IdentityCheckEnd' } },
+    {
+      id: uuidv4(),
+      title: 'IdentityCheckDMS',
+      navigationTarget: getSubscriptionPropConfig('IdentityCheckDMS'),
+    },
+    {
+      id: uuidv4(),
+      title: 'IdentityCheckEnd',
+      navigationTarget: getSubscriptionPropConfig('IdentityCheckEnd'),
+    },
     {
       id: uuidv4(),
       title: 'IdentityCheckHonor',
-      navigationTarget: { screen: 'IdentityCheckHonor' },
+      navigationTarget: getSubscriptionPropConfig('IdentityCheckHonor'),
     },
     {
       id: uuidv4(),
       title: 'IdentityCheckPending',
-      navigationTarget: { screen: 'IdentityCheckPending' },
+      navigationTarget: getSubscriptionPropConfig('IdentityCheckPending'),
     },
     {
       id: uuidv4(),
       title: 'IdentityCheckUnavailable',
-      navigationTarget: { screen: 'IdentityCheckUnavailable' },
+      navigationTarget: getSubscriptionPropConfig('IdentityCheckUnavailable'),
     },
     {
       id: uuidv4(),
       title: 'PhoneValidationTooManyAttempts',
-      navigationTarget: { screen: 'PhoneValidationTooManyAttempts' },
+      navigationTarget: getSubscriptionPropConfig('PhoneValidationTooManyAttempts'),
     },
     {
       id: uuidv4(),
       title: 'PhoneValidationTooManySMSSent',
-      navigationTarget: { screen: 'PhoneValidationTooManySMSSent' },
+      navigationTarget: getSubscriptionPropConfig('PhoneValidationTooManySMSSent'),
     },
-    { id: uuidv4(), title: 'SelectIDOrigin', navigationTarget: { screen: 'SelectIDOrigin' } },
-    { id: uuidv4(), title: 'SelectIDStatus', navigationTarget: { screen: 'SelectIDStatus' } },
-    { id: uuidv4(), title: 'SelectPhoneStatus', navigationTarget: { screen: 'SelectPhoneStatus' } },
+    {
+      id: uuidv4(),
+      title: 'SelectIDOrigin',
+      navigationTarget: getSubscriptionPropConfig('SelectIDOrigin'),
+    },
+    {
+      id: uuidv4(),
+      title: 'SelectIDStatus',
+      navigationTarget: getSubscriptionPropConfig('SelectIDStatus'),
+    },
+    {
+      id: uuidv4(),
+      title: 'SelectPhoneStatus',
+      navigationTarget: getSubscriptionPropConfig('SelectPhoneStatus'),
+    },
     {
       id: uuidv4(),
       title: 'ProfileInformationValidation',
-      navigationTarget: { screen: 'ProfileInformationValidation' },
+      navigationTarget: getSubscriptionPropConfig('ProfileInformationValidation'),
     },
     {
       id: uuidv4(),
       title: 'Set Address',
-      navigationTarget: { screen: 'SetAddress', params: { type: ProfileTypes.IDENTITY_CHECK } },
+      navigationTarget: getSubscriptionPropConfig('SetAddress', {
+        type: ProfileTypes.IDENTITY_CHECK,
+      }),
     },
     {
       id: uuidv4(),
       title: 'Set City',
-      navigationTarget: { screen: 'SetCity', params: { type: ProfileTypes.IDENTITY_CHECK } },
+      navigationTarget: getSubscriptionPropConfig('SetCity', { type: ProfileTypes.IDENTITY_CHECK }),
     },
     {
       id: uuidv4(),
       title: 'Set Name',
-      navigationTarget: { screen: 'SetName', params: { type: ProfileTypes.IDENTITY_CHECK } },
+      navigationTarget: getSubscriptionPropConfig('SetName', { type: ProfileTypes.IDENTITY_CHECK }),
     },
-    { id: uuidv4(), title: 'SetPhoneNumber', navigationTarget: { screen: 'SetPhoneNumber' } },
+    {
+      id: uuidv4(),
+      title: 'SetPhoneNumber',
+      navigationTarget: getSubscriptionPropConfig('SetPhoneNumber'),
+    },
     {
       id: uuidv4(),
       title: 'SetPhoneNumberWithoutValidation',
-      navigationTarget: { screen: 'SetPhoneNumberWithoutValidation' },
+      navigationTarget: getSubscriptionPropConfig('SetPhoneNumberWithoutValidation'),
     },
     {
       id: uuidv4(),
       title: 'SetPhoneValidationCode',
-      navigationTarget: { screen: 'SetPhoneValidationCode' },
+      navigationTarget: getSubscriptionPropConfig('SetPhoneValidationCode'),
     },
     {
       id: uuidv4(),
       title: 'Set Status',
-      navigationTarget: { screen: 'SetStatus', params: { type: ProfileTypes.IDENTITY_CHECK } },
+      navigationTarget: getSubscriptionPropConfig('SetStatus', {
+        type: ProfileTypes.IDENTITY_CHECK,
+      }),
     },
-    { id: uuidv4(), title: 'Stepper', navigationTarget: { screen: 'Stepper' } },
+    { id: uuidv4(), title: 'Stepper', navigationTarget: getSubscriptionPropConfig('Stepper') },
     { id: uuidv4(), title: 'VerifyEligibility', navigationTarget: { screen: 'VerifyEligibility' } },
     {
       id: uuidv4(),
@@ -126,20 +175,21 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'SetProfileBookingError with offer',
-      navigationTarget: { screen: 'SetProfileBookingError', params: { offerId: 1 } },
+      navigationTarget: getSubscriptionPropConfig('SetProfileBookingError', { offerId: 1 }),
     },
     {
       id: uuidv4(),
       title: 'SetProfileBookingError without offer',
-      navigationTarget: { screen: 'SetProfileBookingError', params: { offerId: undefined } },
+      navigationTarget: getSubscriptionPropConfig('SetProfileBookingError', { offerId: undefined }),
     },
     {
       id: uuidv4(),
       title: 'EduConnectValidation',
-      navigationTarget: {
-        screen: 'EduConnectValidation',
-        params: { firstName: 'firstName', lastName: 'lastName', dateOfBirth: '2021-12-01' },
-      },
+      navigationTarget: getSubscriptionPropConfig('EduConnectValidation', {
+        firstName: 'firstName',
+        lastName: 'lastName',
+        dateOfBirth: '2021-12-01',
+      }),
     },
     { id: uuidv4(), title: 'DuplicateUser Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Generic Error', showOnlyInSearch: true },

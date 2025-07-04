@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
@@ -35,7 +36,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         Title={<Typo.BodyAccent>Mes codes ÉduConnect</Typo.BodyAccent>}
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
         icon={Marianne}
-        navigateTo={{ screen: 'EduConnectForm' }}
+        navigateTo={getSubscriptionPropConfig('EduConnectForm')}
         onBeforeNavigate={analytics.logChooseEduConnectMethod}
         key={0}
       />
@@ -56,7 +57,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         Title={<Typo.BodyAccent>Ma pièce d’identité</Typo.BodyAccent>}
         Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
         icon={Ubble}
-        navigateTo={{ screen: 'SelectIDOrigin' }}
+        navigateTo={getSubscriptionPropConfig('SelectIDOrigin')}
         onBeforeNavigate={analytics.logChooseUbbleMethod}
         key={1}
       />

@@ -4,9 +4,9 @@ import {
 } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 
 /**
- * The returned object can be passed to "navigateTo" of in-house components
+ * The returned object can be passed to "navigateTo" props of in-house components
  */
-export function getSubscriptionNavigateToConfig<Screen extends SubscriptionStackRouteName>(
+export function getSubscriptionPropConfig<Screen extends SubscriptionStackRouteName>(
   screen: Screen,
   params?: SubscriptionStackParamList[Screen]
 ): {

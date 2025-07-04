@@ -25,6 +25,7 @@ import {
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { PlaylistType } from 'features/offer/enums'
@@ -169,10 +170,10 @@ export const getCtaWordingAndAction = ({
         return {
           wording: 'Réserver l’offre',
           isDisabled: false,
-          navigateTo: {
-            screen: storedProfileInfos ? 'ProfileInformationValidation' : 'SetName',
-            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-          },
+          navigateTo: getSubscriptionPropConfig(
+            storedProfileInfos ? 'ProfileInformationValidation' : 'SetName',
+            { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
+          ),
         }
       }
 
