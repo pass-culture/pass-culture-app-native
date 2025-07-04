@@ -27,7 +27,12 @@ export function AfterSignupEmailValidationBuffer() {
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
   useEffect(() => {
-    if (!params?.token || !deviceInfo || !params?.email || !params?.expiration_timestamp) {
+    if (
+      !params?.token ||
+      !deviceInfo?.deviceId ||
+      !params?.email ||
+      !params?.expiration_timestamp
+    ) {
       return
     }
 
@@ -37,7 +42,7 @@ export function AfterSignupEmailValidationBuffer() {
       clearTimeout(timeoutRef.current)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deviceInfo])
+  }, [deviceInfo?.deviceId])
 
   const { mutate: validateEmail } = useValidateEmailMutation(
     onEmailValidationSuccess,
