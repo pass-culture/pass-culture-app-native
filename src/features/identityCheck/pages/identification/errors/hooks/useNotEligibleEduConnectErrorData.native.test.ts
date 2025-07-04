@@ -41,9 +41,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     descriptionAlignment: 'center',
     primaryButton: {
       wording: 'Vérifier mon identité',
-      navigateTo: {
-        screen: 'SelectIDOrigin',
-      },
+      navigateTo: { screen: 'SubscriptionStackNavigator', params: { screen: 'SelectIDOrigin' } },
     },
     isGoHomeTertiaryButtonVisible: true,
   }

@@ -72,7 +72,12 @@ describe('<FinishSubscriptionModal />', () => {
     await user.press(screen.getByText('Confirmer mes informations'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.FAVORITE })
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: {
+        from: 'favorite',
+      },
+      screen: 'Stepper',
+    })
   })
 
   it('should close modal when pressing right header icon', async () => {
