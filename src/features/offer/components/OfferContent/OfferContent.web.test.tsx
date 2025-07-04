@@ -1,5 +1,5 @@
+import * as ReactQueryAPI from '@tanstack/react-query'
 import React, { ComponentProps } from 'react'
-import * as ReactQueryAPI from 'react-query'
 
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'

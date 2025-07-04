@@ -5,7 +5,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const apiOAuthStateSpy = jest.spyOn(API.api, 'getNativeV1OauthState')
 
@@ -28,7 +28,7 @@ describe('useOAuthStateQuery', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     const { result } = renderOAuthState()
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data).toEqual({
       oauthStateToken: 'oauth_state_token',

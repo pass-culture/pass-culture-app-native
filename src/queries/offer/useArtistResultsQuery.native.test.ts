@@ -10,7 +10,7 @@ import * as fetchOffersByArtist from './fetchOffersByArtist'
 import { useArtistResultsQuery } from './useArtistResultsQuery'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
+  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
 }))
 
 const fetchOffersByArtistSpy = jest
@@ -28,6 +28,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQueryAPI, 'useRemoteConfigQuery')
+
+jest.useFakeTimers()
 
 describe('useArtistResultsQuery', () => {
   beforeAll(() => {

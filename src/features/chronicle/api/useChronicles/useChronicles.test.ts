@@ -6,7 +6,7 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const subtitle = 'Membre du Book Club'
 
@@ -43,7 +43,7 @@ describe('useChronicles', () => {
       }
     )
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(JSON.stringify(result.current.data)).toEqual(
       JSON.stringify(

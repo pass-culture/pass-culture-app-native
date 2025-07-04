@@ -25,7 +25,6 @@ export const CookiesSettings = ({
 }: CookiesChoiceSettings) => {
   const { cookiesConsent } = useCookies()
   const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesConsent)
-
   useFocusEffect(
     useCallback(() => {
       setSettingsCookiesChoice({

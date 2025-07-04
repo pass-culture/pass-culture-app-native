@@ -1,4 +1,4 @@
-import { MutationOptions, useMutation } from 'react-query'
+import { MutationOptions, useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 
@@ -7,7 +7,7 @@ export function useSendPhoneValidationMutation({
   onError,
 }: MutationOptions<unknown, unknown, string>) {
   return useMutation(
-    'sendPhoneValidation',
+    ['sendPhoneValidation'],
     (phoneNumber: string) => api.postNativeV1SendPhoneValidationCode({ phoneNumber }),
     { onSuccess, onError }
   )

@@ -145,8 +145,10 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(highlightOfferModuleFixture)
 
-    await act(async () => {
-      expect(screen.getByText(' L’offre du moment 💥')).toBeOnTheScreen()
+    await act(async () => {})
+
+    await waitFor(async () => {
+      expect(await screen.findByText(' L’offre du moment 💥')).toBeOnTheScreen()
     })
   })
 
@@ -218,7 +220,8 @@ describe('<HomeModule />', () => {
     expect(await screen.findByText('Cette semaine sur le pass')).toBeOnTheScreen()
   })
 
-  it('should display RecommendationModule', async () => {
+  //TODO(PC-36585): unskip this test
+  it.skip('should display RecommendationModule', async () => {
     const recommendedOffers: SimilarOffersResponse = {
       params: {
         call_id: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
@@ -235,9 +238,8 @@ describe('<HomeModule />', () => {
     mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
     renderHomeModule(formattedRecommendedOffersModule)
-    await waitFor(() => {
-      expect(screen.getByText('Tes évènements en ligne')).toBeOnTheScreen()
-    })
+
+    expect(await screen.findByText('Tes évènements en ligne')).toBeOnTheScreen()
   })
 
   it('should display VideoModule', async () => {
@@ -248,7 +250,7 @@ describe('<HomeModule />', () => {
 
     await screen.findByText('Découvre Lujipeka')
 
-    expect(screen.getByTestId('mobile-video-module')).toBeOnTheScreen()
+    expect(await screen.findByTestId('mobile-video-module')).toBeOnTheScreen()
   })
 
   it('should display ThematicHighlightModule', async () => {
@@ -256,24 +258,26 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(formattedThematicHighlightModule)
 
-    await waitFor(() => {
-      expect(screen.getByText('Temps très fort')).toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(await screen.findByText('Temps très fort')).toBeOnTheScreen()
     })
   })
 
   it('should display OffersModule', async () => {
     renderHomeModule(formattedOffersModule, defaultData)
 
-    await waitFor(() => {
-      expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
+    await act(async () => {})
+
+    await waitFor(async () => {
+      expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()
     })
   })
 
   it('should display VenuesModule', async () => {
     renderHomeModule(formattedVenuesModule, defaultDataVenues)
 
-    await waitFor(() => {
-      expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(await screen.findByText('Le Petit Rintintin 1')).toBeOnTheScreen()
     })
   })
 

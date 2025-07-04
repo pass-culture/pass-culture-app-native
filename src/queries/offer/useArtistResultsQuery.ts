@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
+import { useQuery } from '@tanstack/react-query'
 import { useCallback, useMemo } from 'react'
-import { useQuery } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'

@@ -56,9 +56,12 @@ describe('<RootNavigator />', () => {
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
-    renderRootNavigator()
-    await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
+
+    await renderRootNavigator()
+
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
+
+    await act(async () => {})
 
     expect(privacyPolicyTitle).not.toBeInTheDocument()
   })
@@ -66,7 +69,7 @@ describe('<RootNavigator />', () => {
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    renderRootNavigator()
+    await renderRootNavigator()
 
     const privacyPolicyTitle = await screen.findByText('Respect de ta vie privée')
 
@@ -76,7 +79,8 @@ describe('<RootNavigator />', () => {
   it('should display quick access button if show tabBar and current route is TabNavigator', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    renderRootNavigator()
+    await renderRootNavigator()
+
     await act(async () => {})
 
     expect(await screen.findByText('Accéder au menu de navigation')).toBeInTheDocument()
@@ -86,7 +90,7 @@ describe('<RootNavigator />', () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
     mockUseCurrentRoute.mockReturnValueOnce({ name: 'Offer', key: 'key' })
 
-    renderRootNavigator()
+    await renderRootNavigator()
 
     await screen.findByText('Respect de ta vie privée')
 
@@ -96,12 +100,13 @@ describe('<RootNavigator />', () => {
   })
 })
 
-function renderRootNavigator() {
-  render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+const renderRootNavigator = async () =>
+  act(async () => {
+    return render(
+      reactQueryProviderHOC(
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      )
     )
-  )
-}
+  })

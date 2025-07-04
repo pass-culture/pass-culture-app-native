@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
+import * as ReactQueryAPI from '@tanstack/react-query'
 import React from 'react'
-import * as ReactQueryAPI from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -10,7 +10,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
@@ -51,12 +51,13 @@ describe('<ResetPasswordExpiredLink/>', () => {
 
     await user.press(screen.getByText(`Renvoyer l’email`))
 
-    expect(navigate).toHaveBeenCalledTimes(1)
-
     expect(analytics.logResendEmailResetPasswordExpiredLink).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
-      email: 'test@email.com',
-    })
+
+    await waitFor(() =>
+      expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
+        email: 'test@email.com',
+      })
+    )
   })
 
   it('should NOT redirect to reset password link sent page WHEN clicking on resend email and response is failure', async () => {

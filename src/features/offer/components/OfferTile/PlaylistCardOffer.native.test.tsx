@@ -7,6 +7,8 @@ import { TagVariant } from 'ui/components/Tag/types'
 
 import { PlaylistCardOffer } from './PlaylistCardOffer'
 
+jest.mock('libs/subcategories/useSubcategories')
+
 const props = {
   categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
   distance: '1,2km',

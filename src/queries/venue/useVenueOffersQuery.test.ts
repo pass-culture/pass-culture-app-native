@@ -141,6 +141,8 @@ describe('useVenueOffers', () => {
     )
     await waitFor(() => expect(mockFetchMultipleOffers).toHaveBeenCalledWith(EXPECTED_CALL_PARAM))
 
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+
     expect(result.current.data?.hits).toMatchObject(
       FETCH_MULTIPLE_OFFERS_RESPONSE.slice(0, 2)
         .flatMap((result) => result?.hits)

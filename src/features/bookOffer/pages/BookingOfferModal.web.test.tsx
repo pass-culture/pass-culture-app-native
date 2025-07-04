@@ -7,7 +7,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
@@ -70,7 +70,7 @@ describe('<BookingOfferModal/>', () => {
 
     it('should not have basic accessibility issues for step "date"', async () => {
       mockStep = Step.DATE
-      const { container } = renderBookingOfferModalComponent({
+      const { container } = await renderBookingOfferModalComponent({
         offerId: mockOffer.id,
         visible: true,
       })
@@ -84,7 +84,7 @@ describe('<BookingOfferModal/>', () => {
 
     it('should not have basic accessibility issues for step "hour"', async () => {
       mockStep = Step.HOUR
-      const { container } = renderBookingOfferModalComponent({
+      const { container } = await renderBookingOfferModalComponent({
         offerId: mockOffer.id,
         visible: true,
       })
@@ -98,7 +98,7 @@ describe('<BookingOfferModal/>', () => {
 
     it('should not have basic accessibility issues for step "duo"', async () => {
       mockStep = Step.DUO
-      const { container } = renderBookingOfferModalComponent({
+      const { container } = await renderBookingOfferModalComponent({
         offerId: mockOffer.id,
         visible: true,
       })
@@ -112,7 +112,7 @@ describe('<BookingOfferModal/>', () => {
 
     it('should not have basic accessibility issues for step "confirmation"', async () => {
       mockStep = Step.CONFIRMATION
-      const { container } = renderBookingOfferModalComponent({
+      const { container } = await renderBookingOfferModalComponent({
         offerId: mockOffer.id,
         visible: true,
       })
@@ -125,7 +125,7 @@ describe('<BookingOfferModal/>', () => {
     })
 
     it('should not have basic accessibility issues for ended used booking', async () => {
-      const { container } = renderBookingOfferModalComponent({
+      const { container } = await renderBookingOfferModalComponent({
         offerId: mockOffer.id,
         visible: true,
         isEndedUsedBooking: true,
@@ -140,8 +140,9 @@ describe('<BookingOfferModal/>', () => {
   })
 })
 
-const renderBookingOfferModalComponent = (
+const renderBookingOfferModalComponent = async (
   props: ComponentProps<typeof BookingOfferModalComponent>
-) => {
-  return render(reactQueryProviderHOC(<BookingOfferModalComponent {...props} />))
-}
+) =>
+  act(async () => {
+    return render(reactQueryProviderHOC(<BookingOfferModalComponent {...props} />))
+  })

@@ -6,7 +6,7 @@ import {
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -19,10 +19,10 @@ describe('useGetStepperInfo', () => {
       '/v2/subscription/stepper',
       SubscriptionStepperResponseFixture
     )
-    const result = renderGetStepperInfo()
-    await act(async () => {})
+    const { result } = renderGetStepperInfo()
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
-    expect(result.result.current.data).toEqual({
+    expect(result.current.data).toEqual({
       ...SubscriptionStepperResponseFixture,
       title: 'Titre Stepper',
       subtitle: 'Sous titre Stepper',
@@ -35,10 +35,10 @@ describe('useGetStepperInfo', () => {
       SubscriptionStepperErrorResponseFixture
     )
 
-    const result = renderGetStepperInfo()
-    await act(async () => {})
+    const { result } = renderGetStepperInfo()
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
-    expect(result.result.current.data?.subscriptionMessage?.messageSummary).toEqual(
+    expect(result.current.data?.subscriptionMessage?.messageSummary).toEqual(
       'Tu n’as pas fournis les bons documents'
     )
   })

@@ -46,7 +46,7 @@ describe('AutocompleteOffer component', () => {
 
       await act(() => {})
 
-      expect(screen.getByText('Suggestions')).toBeOnTheScreen()
+      expect(await screen.findByText('Suggestions')).toBeOnTheScreen()
     })
   })
 

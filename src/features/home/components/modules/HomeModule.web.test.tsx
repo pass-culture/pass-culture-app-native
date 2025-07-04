@@ -75,7 +75,7 @@ describe('<HomeModule />', () => {
   // because it's easier to test them one by one
   describe('Accessibility', () => {
     it('Business module should not have basic accessibility issues', async () => {
-      const { container } = renderHomeModule(formattedNewBusinessModule)
+      const { container } = await renderHomeModule(formattedNewBusinessModule)
 
       expect(screen.getByText('Rencontre d’arles participe à notre concours')).toBeInTheDocument()
 
@@ -90,7 +90,7 @@ describe('<HomeModule />', () => {
     it('Highlight module should not have basic accessibility issues', async () => {
       mockUseHighlightOffer.mockReturnValueOnce(highlightOfferFixture)
 
-      const { container } = renderHomeModule(highlightOfferModuleFixture)
+      const { container } = await renderHomeModule(highlightOfferModuleFixture)
 
       await act(async () => {
         expect(screen.getByText('L’offre du moment')).toBeInTheDocument()
@@ -102,7 +102,7 @@ describe('<HomeModule />', () => {
     })
 
     it('CategoryList module should not have basic accessibility issues', async () => {
-      const { container } = renderHomeModule(formattedCategoryListModule)
+      const { container } = await renderHomeModule(formattedCategoryListModule)
 
       expect(await screen.findByText('Cette semaine sur le pass')).toBeInTheDocument()
 
@@ -131,7 +131,7 @@ describe('<HomeModule />', () => {
 
     mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
-    const { container } = renderHomeModule(formattedRecommendedOffersModule)
+    const { container } = await renderHomeModule(formattedRecommendedOffersModule)
     await act(async () => {})
 
     expect(screen.getByText('Tes évènements en ligne')).toBeInTheDocument()
@@ -147,7 +147,7 @@ describe('<HomeModule />', () => {
   it('ThematicHighlight module should not have basic accessibility issues', async () => {
     mockdate.set(new Date(2024))
 
-    const { container } = renderHomeModule(formattedThematicHighlightModule)
+    const { container } = await renderHomeModule(formattedThematicHighlightModule)
 
     await act(async () => {})
 
@@ -159,7 +159,7 @@ describe('<HomeModule />', () => {
   })
 
   it('OffersModule should not have basic accessibility issues', async () => {
-    const { container } = renderHomeModule(formattedOffersModule, defaultData)
+    const { container } = await renderHomeModule(formattedOffersModule, defaultData)
 
     await act(async () => {})
 
@@ -174,11 +174,12 @@ describe('<HomeModule />', () => {
   })
 })
 
-function renderHomeModule(item: HomepageModule, data?: ModuleData) {
-  return render(
-    reactQueryProviderHOC(
-      <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
-    ),
-    { theme: { isDesktopViewport: true } }
-  )
-}
+const renderHomeModule = async (item: HomepageModule, data?: ModuleData) =>
+  act(async () => {
+    return render(
+      reactQueryProviderHOC(
+        <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
+      ),
+      { theme: { isDesktopViewport: true } }
+    )
+  })

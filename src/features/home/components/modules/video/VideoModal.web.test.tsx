@@ -26,13 +26,13 @@ describe('VideoModal', () => {
   })
 
   it('should render correctly', async () => {
-    renderVideoModal()
+    await renderVideoModal()
 
     expect(await screen.findByText('Découvre Lujipeka')).toBeInTheDocument()
   })
 
   it('should log HasDismissedModal when pressing close button', async () => {
-    renderVideoModal()
+    await renderVideoModal()
 
     const closeButton = screen.getByTestId('Fermer la modale vidéo')
 
@@ -49,18 +49,19 @@ describe('VideoModal', () => {
   })
 })
 
-function renderVideoModal() {
-  render(
-    reactQueryProviderHOC(
-      <VideoModal
-        homeEntryId="xyz"
-        visible
-        hideModal={hideModalMock}
-        offers={mockOffers}
-        moduleId="abcd"
-        isMultiOffer={false}
-        {...videoModuleFixture}
-      />
+const renderVideoModal = async () =>
+  act(async () => {
+    return render(
+      reactQueryProviderHOC(
+        <VideoModal
+          homeEntryId="xyz"
+          visible
+          hideModal={hideModalMock}
+          offers={mockOffers}
+          moduleId="abcd"
+          isMultiOffer={false}
+          {...videoModuleFixture}
+        />
+      )
     )
-  )
-}
+  })

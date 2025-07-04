@@ -1,11 +1,11 @@
-import { QueryClient } from 'react-query'
+import { QueryClient } from '@tanstack/react-query'
 
 import { GetRemindersResponse } from 'api/gen'
 import { reminder, remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useAddReminderMutation } from './useAddReminderMutation'
 
@@ -58,6 +58,8 @@ describe('useAddReminderMutation', () => {
 
     const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
 
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+
     expect(updatedCache?.reminders).toEqual(expectedRemindersInCache)
   })
 
@@ -78,6 +80,8 @@ describe('useAddReminderMutation', () => {
       result.current.mutate(offerId)
     })
 
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
+
     expect(doRevertCache).toHaveBeenCalledTimes(1)
   })
 
@@ -89,6 +93,8 @@ describe('useAddReminderMutation', () => {
     })
 
     await act(async () => expect(result.current.isSuccess).toBe(true))
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
@@ -105,6 +111,8 @@ describe('useAddReminderMutation', () => {
     })
 
     await act(async () => expect(result.current.isSuccess).toBe(false))
+
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
 
     expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })

@@ -3,6 +3,7 @@ import React from 'react'
 import { OfferResponseV2 } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -29,6 +30,23 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
     },
     dispatch: jest.fn(),
   })),
+}))
+
+const mockCreditOffer = 50000
+jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => ({
+  useCreditForOffer: jest.fn(() => mockCreditOffer),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
+  useBookingStock: jest.fn(() => ({
+    price: 2000,
+    id: '148409',
+    beginningDatetime: new Date('2021-03-02T20:00:00'),
+  })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
+  useBookingOffer: jest.fn(() => mockOffer),
 }))
 
 describe('<BookingEventChoices />', () => {

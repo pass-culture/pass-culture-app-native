@@ -6,7 +6,7 @@ import { VenueNotFound } from 'features/venue/pages/VenueNotFound/VenueNotFound'
 import { LogTypeEnum, VenueNotFoundError } from 'libs/monitoring/errors'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useVenueQuery } from './useVenueQuery'
 
@@ -22,7 +22,7 @@ describe('useVenueQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toBeTruthy())
 
     expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(venueDataTest))
   })
@@ -33,7 +33,7 @@ describe('useVenueQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isError).toBeTruthy())
 
     expect(result.current.error).toEqual(
       new VenueNotFoundError(venueDataTest.id, {
@@ -49,7 +49,7 @@ describe('useVenueQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isError).toBeTruthy())
 
     expect(result.current.error).toEqual(new ApiError(400, 'Bad request'))
   })

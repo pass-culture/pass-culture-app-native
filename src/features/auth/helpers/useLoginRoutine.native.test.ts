@@ -12,7 +12,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import * as Keychain from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const method = 'fromLogin'
 const accessToken = 'access_token'
@@ -50,6 +50,8 @@ const scheduleAccessTokenRemovalSpy = jest.spyOn(
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.useFakeTimers()
+
 describe('useLoginRoutine', () => {
   beforeEach(async () => {
     await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
@@ -60,21 +62,23 @@ describe('useLoginRoutine', () => {
     const { result } = renderUseLoginRoutine()
     await act(loginFunction(result.current))
 
-    expect(mockSaveRefreshToken).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(mockSaveRefreshToken).toHaveBeenCalledTimes(1))
   })
 
   it('should log login analytics', async () => {
     const { result } = renderUseLoginRoutine()
     await act(loginFunction(result.current))
 
-    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
+    await waitFor(() => expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method }))
   })
 
   it('should log login analytics with sso type when defined', async () => {
     const { result } = renderUseLoginRoutine()
     await act(loginFunction(result.current, 'SSO_login'))
 
-    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method, type: 'SSO_login' })
+    await waitFor(() =>
+      expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method, type: 'SSO_login' })
+    )
   })
 
   it('should save access token to storage', async () => {
@@ -83,14 +87,14 @@ describe('useLoginRoutine', () => {
 
     const accessTokenStorage = await storage.readString('access_token')
 
-    expect(accessTokenStorage).toEqual(accessToken)
+    await waitFor(() => expect(accessTokenStorage).toEqual(accessToken))
   })
 
   it('should schedule access removal when it expires', async () => {
     const { result } = renderUseLoginRoutine()
     await act(loginFunction(result.current))
 
-    expect(scheduleAccessTokenRemovalSpy).toHaveBeenCalledWith(accessToken)
+    await waitFor(() => expect(scheduleAccessTokenRemovalSpy).toHaveBeenCalledWith(accessToken))
   })
 
   describe('connectServicesRequiringUserId', () => {
@@ -98,14 +102,16 @@ describe('useLoginRoutine', () => {
       const { result } = renderUseLoginRoutine()
       await act(loginFunction(result.current))
 
-      expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
+      await waitFor(() =>
+        expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
+      )
     })
 
     it('should log set user id analytics', async () => {
       const { result } = renderUseLoginRoutine()
       await act(loginFunction(result.current))
 
-      expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
+      await waitFor(() => expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID))
     })
 
     it('should set user id in cookies consent storage', async () => {
@@ -114,10 +120,12 @@ describe('useLoginRoutine', () => {
 
       const cookiesConsentStorage = await storage.readObject(COOKIES_CONSENT_KEY)
 
-      expect(cookiesConsentStorage).toEqual({
-        ...cookiesChoice,
-        userId: FAKE_USER_ID,
-      })
+      await waitFor(() =>
+        expect(cookiesConsentStorage).toEqual({
+          ...cookiesChoice,
+          userId: FAKE_USER_ID,
+        })
+      )
     })
   })
 
@@ -126,14 +134,16 @@ describe('useLoginRoutine', () => {
       const { result } = renderUseLoginRoutine()
       await act(loginFunction(result.current))
 
-      expect(mockResetSearch).toHaveBeenCalledTimes(1)
+      await waitFor(() => expect(mockResetSearch).toHaveBeenCalledTimes(1))
     })
 
     it('should reset identity check context because user logged in can be different than previous user', async () => {
       const { result } = renderUseLoginRoutine()
       await act(loginFunction(result.current))
 
-      expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      await waitFor(() =>
+        expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      )
     })
   })
 })

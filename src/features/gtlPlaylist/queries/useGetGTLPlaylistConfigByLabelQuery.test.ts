@@ -5,7 +5,7 @@ import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -61,7 +61,7 @@ describe('useGetGTLPlaylistsConfigByLabelQuery', () => {
       VenueTypeCodeKey.CONCERT_HALL
     )
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data).toEqual(mockedReturnedConfigPlaylist)
   })
@@ -76,7 +76,7 @@ describe('useGetGTLPlaylistsConfigByLabelQuery', () => {
     async ({ venueType, expectedResult }) => {
       const { result } = renderUseGetGTLPlaylistsConfigByLabelQuery(undefined, venueType)
 
-      await act(async () => {})
+      await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
       expect(result.current.data).toEqual(expectedResult)
     }
