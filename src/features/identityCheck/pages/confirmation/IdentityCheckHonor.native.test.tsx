@@ -55,7 +55,10 @@ describe('<IdentityCheckHonor/>', () => {
 
     await user.press(screen.getByText('Valider et continuer'))
 
-    expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BeneficiaryRequestSent',
+    })
   })
 
   it('should navigate to BeneficiaryAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
@@ -72,7 +75,10 @@ describe('<IdentityCheckHonor/>', () => {
 
     await user.press(screen.getByText('Valider et continuer'))
 
-    expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BeneficiaryAccountCreated',
+    })
   })
 
   it("should navigate to BeneficiaryRequestSent if user's credit is expired (non beneficiary)", async () => {
@@ -86,7 +92,10 @@ describe('<IdentityCheckHonor/>', () => {
 
     await user.press(screen.getByText('Valider et continuer'))
 
-    expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BeneficiaryRequestSent',
+    })
   })
 })
 

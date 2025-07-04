@@ -145,7 +145,10 @@ describe('SetPhoneNumber', () => {
       fireEvent.changeText(input, '612345678')
       await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetPhoneValidationCode')
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'SetPhoneValidationCode',
+      })
     })
 
     it('should display input error message if validate phone number request fails', async () => {
@@ -179,7 +182,10 @@ describe('SetPhoneNumber', () => {
       fireEvent.changeText(input, '612345678')
       await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
-      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent')
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'PhoneValidationTooManySMSSent',
+      })
     })
 
     it('should log event HasRequestedCode when pressing "Continuer" button', async () => {

@@ -56,7 +56,10 @@ describe('useLoginAndRedirect', () => {
 
     jest.advanceTimersByTime(2000)
 
-    expect(replace).toHaveBeenCalledWith('DisableActivation')
+    expect(replace).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'DisableActivation',
+    })
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {

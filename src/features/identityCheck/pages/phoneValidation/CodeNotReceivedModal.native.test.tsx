@@ -145,7 +145,10 @@ describe('<CodeNotReceivedModal />', () => {
 
     await user.press(screen.getByTestId('Demander un autre code'))
 
-    expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'PhoneValidationTooManySMSSent',
+    })
   })
 
   it('should log event when pressing "Demander un autre code" button', async () => {

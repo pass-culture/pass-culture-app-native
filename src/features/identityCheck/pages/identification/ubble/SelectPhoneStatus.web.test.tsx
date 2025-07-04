@@ -20,7 +20,10 @@ describe('SelectPhoneStatus', () => {
     // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.click(HeroButtonList)
 
-    expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'SelectIDStatus',
+    })
   })
 
   it('should navigate to DMSIntroduction FR when pressing "Je n’ai pas de smartphone" button', () => {
@@ -30,7 +33,10 @@ describe('SelectPhoneStatus', () => {
     // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.click(HeroButtonList)
 
-    expect(navigate).toHaveBeenCalledWith('DMSIntroduction', { isForeignDMSInformation: false })
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      screen: 'DMSIntroduction',
+      params: { isForeignDMSInformation: false },
+    })
   })
 
   describe('Accessibility', () => {

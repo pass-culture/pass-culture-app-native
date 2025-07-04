@@ -97,7 +97,13 @@ describe('getCtaWordingAndAction', () => {
       expect(result).toEqual({
         isDisabled: false,
         wording: 'Réserver l’offre',
-        navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+        navigateTo: {
+          params: {
+            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+            screen: 'SetName',
+          },
+          screen: 'SubscriptionStackNavigator',
+        },
       })
       expect(setFreeOfferIdSpy).toHaveBeenCalledTimes(1)
     })
@@ -121,8 +127,11 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         wording: 'Réserver l’offre',
         navigateTo: {
-          screen: 'ProfileInformationValidation',
-          params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+          screen: 'SubscriptionStackNavigator',
+          params: {
+            screen: 'ProfileInformationValidation',
+            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+          },
         },
       })
       expect(setFreeOfferIdSpy).toHaveBeenCalledTimes(1)
