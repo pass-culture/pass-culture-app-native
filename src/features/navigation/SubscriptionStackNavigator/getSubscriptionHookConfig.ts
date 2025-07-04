@@ -3,7 +3,10 @@ import {
   SubscriptionStackRouteName,
 } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 
-export function getSubscriptionStackConfig<Screen extends SubscriptionStackRouteName>(
+/**
+ * The returned object can be passed to "navigate" of useNavigation (react-navigation/native)
+ */
+export function getSubscriptionHookConfig<Screen extends SubscriptionStackRouteName>(
   screen: Screen,
   params?: SubscriptionStackParamList[Screen]
 ): [
