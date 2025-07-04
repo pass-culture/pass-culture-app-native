@@ -578,16 +578,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -596,6 +586,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 20,
             },
           ]
         }

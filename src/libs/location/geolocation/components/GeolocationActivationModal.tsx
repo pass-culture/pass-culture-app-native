@@ -6,9 +6,10 @@ import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   hideGeolocPermissionModal: () => void
@@ -39,28 +40,21 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       visible={isGeolocPermissionModalVisible}
       onCloseIconPress={hideGeolocPermissionModal}
       testIdSuffix="geoloc-permission-modal">
-      <React.Fragment>
-        {/** Special case where theme.icons.sizes is not used */}
-        <LocationPointer />
-        <Spacer.Column numberOfSpaces={10} />
-        <InformationText>
-          Retrouve toutes les offres autour de chez toi en activant les données de localisation.
-        </InformationText>
-        <Spacer.Column numberOfSpaces={4} />
-        <InformationText>{informationText}</InformationText>
-        {isNative ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={6} />
-            <ButtonPrimary
-              wording={callToActionMessage}
-              onPress={() => {
-                analytics.logOpenLocationSettings()
-                onPressGeolocPermissionModalButton()
-              }}
-            />
-          </React.Fragment>
-        ) : null}
-      </React.Fragment>
+      {/** Special case where theme.icons.sizes is not used */}
+      <LocationPointer />
+      <FirstInformationText>
+        Retrouve toutes les offres autour de chez toi en activant les données de localisation.
+      </FirstInformationText>
+      <SecondInformationText>{informationText}</SecondInformationText>
+      {isNative ? (
+        <StyledButtonPrimary
+          wording={callToActionMessage}
+          onPress={() => {
+            analytics.logOpenLocationSettings()
+            onPressGeolocPermissionModalButton()
+          }}
+        />
+      ) : null}
     </AppInformationModal>
   )
 }
@@ -69,7 +63,19 @@ const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
+const FirstInformationText = styled(InformationText)({
+  marginTop: getSpacing(10),
+})
+
+const SecondInformationText = styled(InformationText)({
+  marginTop: getSpacing(4),
+})
+
 const LocationPointer = styled(InitialLocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.small,
 }))``
+
+const StyledButtonPrimary = styledButton(ButtonPrimary)({
+  marginTop: getSpacing(6),
+})

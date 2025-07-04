@@ -2,7 +2,7 @@ import React from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   message?: string
@@ -11,15 +11,8 @@ type Props = {
 export function Loader({ message }: Props) {
   return (
     <Center testID="loadingScreen">
-      <Spacer.Column numberOfSpaces={50} />
       <LoaderIndicator accessibilityLabel="Chargement en cours..." />
-      {message ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <Typo.BodyAccent>{message}</Typo.BodyAccent>
-        </React.Fragment>
-      ) : null}
-      <Spacer.Column numberOfSpaces={50} />
+      {message ? <StyledBodyAccent>{message}</StyledBodyAccent> : null}
     </Center>
   )
 }
@@ -27,9 +20,14 @@ export function Loader({ message }: Props) {
 const Center = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
+  paddingVertical: getSpacing(50),
 })
 
 const LoaderIndicator = styled(ActivityIndicator).attrs(({ theme }) => ({
   size: 'large',
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
+
+const StyledBodyAccent = styled(Typo.BodyAccent)({
+  marginTop: getSpacing(4),
+})

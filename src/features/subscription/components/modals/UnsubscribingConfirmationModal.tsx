@@ -6,9 +6,10 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { RingingBellOff } from 'ui/svg/RingingBellOff'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -32,19 +33,18 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
       <StyledBody>
         {`Tu ne recevras plus toutes les dernières offres et l’actu liées au thème "${mapSubscriptionThemeToName[theme]}".`}
       </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
-      <StyledButtonContainer>
+      <StyledButtonContainer gap={2}>
         <ButtonPrimary wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} />
-        <Spacer.Column numberOfSpaces={2} />
         <ButtonTertiaryBlack wording="Annuler" icon={Invalidate} onPress={dismissModal} />
       </StyledButtonContainer>
-      <Spacer.Column numberOfSpaces={4} />
     </AppModalWithIllustration>
   )
 }
 
-const StyledButtonContainer = styled.View({
+const StyledButtonContainer = styled(ViewGap)({
   width: '100%',
+  marginTop: getSpacing(6),
+  marginBottom: getSpacing(4),
 })
 
 const StyledBody = styled(Typo.Body)({

@@ -5,7 +5,7 @@ import React, { useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const SVGTemplate: StoryFn<
   React.FC<{
@@ -34,9 +34,7 @@ export const SVGTemplate: StoryFn<
 
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={3} />
-      <Typo.Title2>{title}</Typo.Title2>
-      <Spacer.Column numberOfSpaces={3} />
+      <StyledTitle2>{title}</StyledTitle2>
       <GridContainer>
         {sortedIcons.map(([name, Icon]) => {
           const IconComponent = styled(Icon).attrs(({ theme }) => ({
@@ -54,8 +52,7 @@ export const SVGTemplate: StoryFn<
               isIllustration={isIllustration}>
               {isBicolor ? <IconComponentBicolor /> : <IconComponent />}
               {isCopied ? <StyledTitle4>Copié&nbsp;!</StyledTitle4> : null}
-              <Spacer.Column numberOfSpaces={2} />
-              <Typo.BodyS numberOfLines={2}>{name}</Typo.BodyS>
+              <StyledBodyS numberOfLines={2}>{name}</StyledBodyS>
             </IconWrapper>
           )
         })}
@@ -63,6 +60,10 @@ export const SVGTemplate: StoryFn<
     </React.Fragment>
   )
 }
+
+const StyledTitle2 = styled(Typo.Title2)({
+  marginVertical: getSpacing(3),
+})
 
 const GridContainer = styled.View({
   flexDirection: 'row',
@@ -96,3 +97,7 @@ const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   borderRadius: getSpacing(1),
   zIndex: 1,
 }))
+
+const StyledBodyS = styled(Typo.BodyS)({
+  marginTop: getSpacing(2),
+})

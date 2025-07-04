@@ -136,15 +136,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         <Styled(Styled(Text))>
           Choisis des thèmes à suivre
         </Styled(Styled(Text))>
-        <Styled(View)
-          numberOfSpaces={4}
-        />
-        <Styled(Text)>
+        <Styled(Styled(Text))>
           Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus !
-        </Styled(Text)>
-        <Styled(View)
-          numberOfSpaces={6}
-        />
+        </Styled(Styled(Text))>
       </React.Fragment>
     }
     contentContainerStyle={
@@ -210,22 +204,13 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
+                "marginBottom": 16,
               },
             ]
           }
         >
           Choisis des thèmes à suivre
         </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
         <Text
           style={
             [
@@ -234,22 +219,13 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
+                "marginBottom": 24,
               },
             ]
           }
         >
           Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus !
         </Text>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
       </View>
       <View
         onFocusCapture={[Function]}

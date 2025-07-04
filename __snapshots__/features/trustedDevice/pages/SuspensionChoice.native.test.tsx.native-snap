@@ -590,16 +590,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -608,6 +598,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 16,
             },
           ]
         }

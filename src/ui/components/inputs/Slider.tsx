@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export type ValuesType = [number] | [number, number]
 
@@ -163,7 +163,6 @@ export function Slider(props: Props) {
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
         </CenteredText>
       ) : null}
-      <Spacer.Column numberOfSpaces={4} />
       <SliderWrapper
         ref={setStyledViewRef}
         testID="slider"
@@ -180,13 +179,10 @@ export function Slider(props: Props) {
         />
       </SliderWrapper>
       {shouldShowMinMaxValues ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={1} />
-          <MinMaxContainer>
-            <MinMaxValue>{`${min}${minMaxValuesComplement}`}</MinMaxValue>
-            <MinMaxValue>{`${max}${minMaxValuesComplement}`}</MinMaxValue>
-          </MinMaxContainer>
-        </React.Fragment>
+        <MinMaxContainer>
+          <MinMaxValue>{`${min}${minMaxValuesComplement}`}</MinMaxValue>
+          <MinMaxValue>{`${max}${minMaxValuesComplement}`}</MinMaxValue>
+        </MinMaxContainer>
       ) : null}
     </React.Fragment>
   )
@@ -230,6 +226,7 @@ const CenteredText = styled(Typo.BodyAccent)<{ width?: number }>(({ width, theme
 const MinMaxContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
+  marginTop: getSpacing(1),
 })
 
 const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
@@ -238,6 +235,7 @@ const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const SliderWrapper = styled(View)<{ shouldShowMinMaxValues?: boolean }>(
   ({ shouldShowMinMaxValues, theme }) => ({
-    ...(shouldShowMinMaxValues && { paddingLeft: theme.slider.markerSize / 2 }),
+    marginTop: getSpacing(4),
+    paddingLeft: shouldShowMinMaxValues ? theme.slider.markerSize / 2 : undefined,
   })
 )

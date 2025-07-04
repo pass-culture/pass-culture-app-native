@@ -22,34 +22,29 @@ export function AccessibilityActionPlan() {
   return (
     <SecondaryPageWithBlurHeader title="Schéma pluriannuel" enableMaxWidth={false}>
       <Typo.BodyItalic>Schéma pluriannuel d’accessibilité 2022 - 2024</Typo.BodyItalic>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(6)}>
         L’article 47 de la loi n° 2005-102 du 11 février 2005 pour l’égalité des droits et des
         chances, la participation et la citoyenneté des personnes rend obligatoire à tout service de
         communication publique en ligne d’être accessible à tous.
-      </Typo.Body>
+      </StyledBody>
       <StyledSeparator />
       <TitleText>Définition de l’accessibilité numérique</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(6)}>
         L’accessibilité numérique permet d’accéder aux contenus (sites web, documents bureautiques,
         supports multimédias, intranets d’entreprise, applications mobiles…), quelle que soit sa
         façon de naviguer.
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      </StyledBody>
+      <StyledBodyAccent marginBottom={getSpacing(5)}>
         L’accessibilité numérique est indispensable aux personnes en situation de handicap
         pour&nbsp;:
-      </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={5} />
+      </StyledBodyAccent>
       <VerticalUl>
         <BulletListItem text="s’informer ;" />
         <BulletListItem text="communiquer ;" />
         <BulletListItem text="accomplir des démarches administratives ;" />
         <BulletListItem text="mener une activité professionnelle…" />
       </VerticalUl>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(6)}>
         L’accessibilité numérique profite à tous&nbsp;: aux personnes âgées, aux personnes en
         situation de handicap temporaire ou permanent, aux personnes peu à l’aise avec Internet…
         {LINE_BREAK}
@@ -61,11 +56,10 @@ export function AccessibilityActionPlan() {
         impliquées dans la création, la maintenance et l’utilisation des dispositifs
         numériques&nbsp;: décideurs, chefs de projet, graphistes, développeurs, producteurs de
         contenus.
-      </Typo.Body>
+      </StyledBody>
       <StyledSeparator />
       <TitleText>Politique d’accessibilité</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(6)} marginBottom={getSpacing(5)}>
         L’accessibilité numérique est au cœur des préoccupations liées au développement ou à la mise
         à disposition de sites web ou d’applications tant auprès du public que des personnels
         internes de la SAS pass Culture.
@@ -79,8 +73,7 @@ export function AccessibilityActionPlan() {
         responsabilité du pôle Accessibilité.
         {DOUBLE_LINE_BREAK}
         Ses missions sont&nbsp;:
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={5} />
+      </StyledBody>
       <VerticalUl>
         <BulletListItem text="promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;" />
         <BulletListItem text="accompagner les équipes internes par des actions notamment de formation ;" />
@@ -92,33 +85,28 @@ export function AccessibilityActionPlan() {
       <TitleText>
         Ressources humaines et financières affectées à l’accessibilité numérique
       </TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(6)}>
         Le pilotage et le suivi de la conformité au RGAA reviennent au pôle Accessibilité. Cette
         équipe transverse est notamment composée d’une personne en lien avec les publics,
         d’ingénieurs en informatique, d’une designeuse, et d’une personne dédiée à la conception du
         produit.
-      </Typo.Body>
+      </StyledBody>
       <StyledSeparator />
       <TitleText>Organisation de la prise en compte de l’accessibilité numérique</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      <StyledBodyAccent marginBottom={getSpacing(5)}>
         La prise en compte de l’accessibilité numérique nécessite&nbsp;:
-      </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={5} />
+      </StyledBodyAccent>
       <VerticalUl>
         <BulletListItem text="de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;" />
         <BulletListItem text="de poursuivre l’accompagnement des équipes ;" />
         <BulletListItem text="de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;" />
         <BulletListItem text="de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés." />
       </VerticalUl>
-      <Spacer.Column numberOfSpaces={5} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(5)} marginBottom={getSpacing(6)}>
         Les éléments ci-dessous décrivent les points importants sur lesquels la SAS pass Culture
         s’appuiera pour améliorer l’accessibilité numérique de l’ensemble de ses sites web et
         applications.
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={6} />
+      </StyledBody>
       <Typo.BodyAccent>
         Action de formation et de sensibilisation
         {DOUBLE_LINE_BREAK}
@@ -131,15 +119,14 @@ export function AccessibilityActionPlan() {
           accessibles.
         </Typo.Body>
       </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>Plus précisément, notre action consiste à&nbsp;:</Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={5} />
+      <StyledBodyAccent marginBottom={getSpacing(5)}>
+        Plus précisément, notre action consiste à&nbsp;:
+      </StyledBodyAccent>
       <VerticalUl>
         <BulletListItem text="sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;" />
         <BulletListItem text="former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles." />
       </VerticalUl>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      <StyledBodyAccent marginBottom={getSpacing(6)}>
         Recours à des compétences externes
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -149,8 +136,7 @@ export function AccessibilityActionPlan() {
           plus particulièrement les actions d’audits et de certification des sites web et
           applications concernés.
         </Typo.Body>
-      </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
+      </StyledBodyAccent>
       <Typo.BodyAccent>
         Prise en compte de l’accessibilité numérique dans les projets
         {DOUBLE_LINE_BREAK}
@@ -169,8 +155,7 @@ export function AccessibilityActionPlan() {
           mis à la disposition des équipes projets.
         </Typo.Body>
       </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      <StyledBodyAccent marginBottom={getSpacing(6)}>
         Tests utilisateurs
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -181,8 +166,7 @@ export function AccessibilityActionPlan() {
           Le Conseil national consultatif des personnes handicapées accompagne en particulier le
           pass Culture sur cette dimension.
         </Typo.Body>
-      </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
+      </StyledBodyAccent>
       <Typo.BodyAccent>
         Prise en compte de l’accessibilité dans les procédures de marchés
         {DOUBLE_LINE_BREAK}
@@ -196,8 +180,7 @@ export function AccessibilityActionPlan() {
           au RGAA.
         </Typo.Body>
       </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      <StyledBodyAccent>
         Recrutement
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -205,9 +188,8 @@ export function AccessibilityActionPlan() {
           d’accessibilité numérique des personnels intervenant sur les services numériques, lors de
           la création des fiches de postes et les procédures de recrutement.
         </Typo.Body>
-      </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      </StyledBodyAccent>
+      <StyledBodyAccent marginBottom={getSpacing(6)}>
         Traitement des retours utilisateurs
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -223,11 +205,9 @@ export function AccessibilityActionPlan() {
           avec le pôle Accessibilité, responsable de l’élaboration, la mise en place et le suivi de
           ce schéma pluriannuel.
         </Typo.Body>
-      </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
+      </StyledBodyAccent>
       <ContactSupportButton />
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      <StyledBodyAccent>
         Processus de contrôle et de validation
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -241,11 +221,10 @@ export function AccessibilityActionPlan() {
           interviennent en complément des opérations habituelles de recette et contrôles
           intermédiaires qui sont organisées tout au long de la vie des projets.
         </Typo.Body>
-      </Typo.BodyAccent>
+      </StyledBodyAccent>
       <StyledSeparator />
       <TitleText>Périmètre technique et fonctionnel</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      <StyledBodyAccent>
         Recensement
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -255,15 +234,14 @@ export function AccessibilityActionPlan() {
           Elle gère également de nombreux outils et applications à destination de ses
           collaborateurs.
         </Typo.Body>
-      </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      </StyledBodyAccent>
+      <StyledBodyAccent>
         Évaluation et qualification
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
           Chaque site ou application a été qualifié selon des critères tels que&nbsp;:
         </Typo.Body>
-      </Typo.BodyAccent>
+      </StyledBodyAccent>
       <VerticalUl>
         <BulletListItem text="la fréquentation ;" />
         <BulletListItem text="le service rendu ;" />
@@ -271,8 +249,7 @@ export function AccessibilityActionPlan() {
         <BulletListItem text="le cycle de vie (date de la prochaine refonte) ;" />
         <BulletListItem text="les technologies employées." />
       </VerticalUl>
-      <Spacer.Column numberOfSpaces={5} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(5)} marginBottom={getSpacing(6)}>
         Des évaluations rapides de l’accessibilité, permettant de servir de socle à l’élaboration
         des interventions d’audits ont été ou vont être réalisées sur l’ensemble des sites et
         applications concernées.
@@ -283,8 +260,7 @@ export function AccessibilityActionPlan() {
         décrit les éléments pouvant être rendus publics du périmètre technique et fonctionnel. En
         effet, certaines applications peuvent ne pas être rendues publiques pour des raisons de
         sécurité ou de confidentialité par exemple.
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={6} />
+      </StyledBody>
       <Typo.BodyAccent>
         Agenda planifié des interventions
         {DOUBLE_LINE_BREAK}
@@ -295,8 +271,7 @@ export function AccessibilityActionPlan() {
           2021 à 2022 et au-delà.
         </Typo.Body>
       </Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyAccent>
+      <StyledBodyAccent>
         Plans annuels
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -304,16 +279,15 @@ export function AccessibilityActionPlan() {
           les opérations mises en œuvre pour prendre en charge l’ensemble des besoins en termes
           d’accessibilité numérique de la SAS pass Culture.
         </Typo.Body>
-      </Typo.BodyAccent>
+      </StyledBodyAccent>
       <StyledSeparator />
       <TitleText>Annexe 1&nbsp;: Périmètre technique et fonctionnel</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Body>
+      <StyledBody marginTop={getSpacing(6)}>
         La liste ci-dessous présente les sites et applications de la SAS pass Culture ouverts au
         public&nbsp;:
         {DOUBLE_LINE_BREAK}
         Site institutionnel&nbsp;:
-      </Typo.Body>
+      </StyledBody>
       <ExternalTouchableLink
         as={ButtonQuaternaryPrimary}
         wording="https://pass.culture.fr/"
@@ -355,3 +329,15 @@ const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(6),
 })
+
+const StyledBody = styled(Typo.Body)<{ marginTop: number; marginBottom?: number }>(
+  ({ marginTop, marginBottom }) => ({
+    marginTop,
+    marginBottom,
+  })
+)
+
+const StyledBodyAccent = styled(Typo.BodyAccent)<{ marginBottom?: number }>(({ marginBottom }) => ({
+  marginTop: getSpacing(6),
+  marginBottom,
+}))
