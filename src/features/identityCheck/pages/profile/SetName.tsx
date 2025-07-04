@@ -8,6 +8,7 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -27,7 +28,7 @@ type FormValues = {
 
 export const SetName = () => {
   const { params } = useRoute<UseRouteType<'SetName'>>()
-  const type = params.type
+  const type = params?.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck
     ? {
@@ -68,7 +69,7 @@ export const SetName = () => {
     if (disabled) return
     setStoredName({ firstName, lastName })
     analytics.logSetNameClicked()
-    navigate('SetCity', { type: pageInfos.navigateParamsType })
+    navigate(...getSubscriptionHookConfig('SetCity', { type: pageInfos.navigateParamsType }))
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitName))

@@ -8,6 +8,7 @@ import { MaintenancePageType } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { MutationKeys } from 'libs/queryKeys'
 
 export function useIdentificationUrlMutation() {
@@ -24,10 +25,10 @@ export function useIdentificationUrlMutation() {
       } catch (err) {
         const error = (err as ApiError)?.content.code
         if (error === 'IDCHECK_ALREADY_PROCESSED') {
-          navigate('IdentityCheckPending')
+          navigate(...getSubscriptionHookConfig('IdentityCheckPending'))
         } else {
           const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
-          navigate('IdentityCheckUnavailable', { withDMS })
+          navigate(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
         }
       }
     }

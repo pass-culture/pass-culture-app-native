@@ -22,6 +22,9 @@ describe('useShowForceUpdateWhenDisableActivation', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
     renderHook(() => useShowDisableActivation())
 
-    expect(replace).toHaveBeenCalledWith('DisableActivation')
+    expect(replace).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'DisableActivation',
+    })
   })
 })

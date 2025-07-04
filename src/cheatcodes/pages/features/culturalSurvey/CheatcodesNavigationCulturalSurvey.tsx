@@ -5,6 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 const culturalSurveyCheatcodeCategory: CheatcodeCategory = {
@@ -18,17 +19,17 @@ const culturalSurveyCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'CulturalSurveyIntro',
-      navigationTarget: { screen: 'CulturalSurveyIntro' },
+      navigationTarget: getSubscriptionPropConfig('CulturalSurveyIntro'),
     },
     {
       id: uuidv4(),
       title: 'CulturalSurveyQuestions',
-      navigationTarget: { screen: 'CulturalSurveyQuestions' },
+      navigationTarget: getSubscriptionPropConfig('CulturalSurveyQuestions'),
     },
     {
       id: uuidv4(),
       title: 'CulturalSurveyThanks',
-      navigationTarget: { screen: 'CulturalSurveyThanks' },
+      navigationTarget: getSubscriptionPropConfig('CulturalSurveyThanks'),
     },
   ],
 }

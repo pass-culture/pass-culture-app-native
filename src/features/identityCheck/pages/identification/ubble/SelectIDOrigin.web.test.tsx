@@ -16,7 +16,10 @@ describe('selectIDOrigin', () => {
     fireEvent.click(HeroButtonList)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SelectPhoneStatus', undefined)
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'SelectPhoneStatus',
+      })
     })
   })
 

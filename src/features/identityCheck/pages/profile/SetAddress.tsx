@@ -12,6 +12,7 @@ import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -34,7 +35,7 @@ const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.
 
 export const SetAddress = () => {
   const { params } = useRoute<UseRouteType<'SetAddress'>>()
-  const type = params.type
+  const type = params?.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck
     ? {
@@ -112,7 +113,7 @@ export const SetAddress = () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
     analytics.logSetAddressClicked()
-    navigate('SetStatus', { type: pageInfos.navigateParamsType })
+    navigate(...getSubscriptionHookConfig('SetStatus', { type: pageInfos.navigateParamsType }))
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)

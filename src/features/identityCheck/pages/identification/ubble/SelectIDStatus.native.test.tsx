@@ -28,7 +28,10 @@ describe('SelectIDStatus', () => {
     const button = screen.getByText('J’ai ma pièce d’identité en cours de validité')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('UbbleWebview', undefined)
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'UbbleWebview',
+    })
   })
 
   it('should navigate to ComeBackLater when pressing "Je n’ai pas ma pièce d’identité originale" button', async () => {
@@ -37,7 +40,10 @@ describe('SelectIDStatus', () => {
     const button = screen.getByText('Je n’ai pas ma pièce d’identité originale avec moi')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('ComeBackLater', undefined)
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'ComeBackLater',
+    })
   })
 
   it("should navigate to ExpiredOrLostID when pressing 'Ma pièce d'identité est expirée ou perdue' button", async () => {
@@ -46,7 +52,10 @@ describe('SelectIDStatus', () => {
     const button = screen.getByText('Ma pièce d’identité est expirée ou perdue')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('ExpiredOrLostID', undefined)
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'ExpiredOrLostID',
+    })
   })
 
   it('should log analytics with id_ok type when pressing "J’ai ma pièce d’identité" button', async () => {

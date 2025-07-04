@@ -1,4 +1,4 @@
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { StepDetails } from 'ui/components/StepButton/types'
 
 export enum DeprecatedIdentityCheckStep {
@@ -27,7 +27,7 @@ export interface RehydrationProfile {
   schoolType: string
 }
 
-export type SubscriptionScreen = keyof SubscriptionRootStackParamList
+export type SubscriptionScreen = keyof SubscriptionStackParamList
 
 export type StepConfig = Pick<StepDetails, 'icon'> & {
   name: IdentityCheckStep

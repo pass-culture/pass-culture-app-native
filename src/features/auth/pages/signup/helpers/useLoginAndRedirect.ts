@@ -5,6 +5,7 @@ import { api } from 'api/api'
 import { AccountState, EligibilityType } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
@@ -51,7 +52,7 @@ export const useLoginAndRedirect = () => {
         }
 
         if (disableActivation) {
-          delayedReplace('DisableActivation')
+          delayedReplace(...getSubscriptionHookConfig('DisableActivation'))
           return
         }
 

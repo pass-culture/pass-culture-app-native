@@ -47,7 +47,7 @@ export const SetStatus = () => {
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
-  const type = params.type
+  const type = params?.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
   const title = isIdentityCheck ? 'Profil' : 'Informations personnelles'

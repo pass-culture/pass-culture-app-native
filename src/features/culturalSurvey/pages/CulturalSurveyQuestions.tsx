@@ -43,8 +43,8 @@ export function CulturalSurveyQuestions() {
   const { push, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'CulturalSurveyQuestions'>>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestionsQuery()
-  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params.question)
-  const culturalSurveyProgress = useCulturalSurveyProgress(params.question)
+  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params?.question)
+  const culturalSurveyProgress = useCulturalSurveyProgress(params?.question)
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
 
@@ -53,7 +53,7 @@ export function CulturalSurveyQuestions() {
     setBottomChildrenViewHeight(height)
   }
 
-  const currentQuestion = params.question
+  const currentQuestion = params?.question
   const { goBack } = useGoBack(...homeNavConfig)
   const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
   const [currentAnswers, setCurrentAnswers] = useState<CulturalSurveyAnswerEnum[]>([])

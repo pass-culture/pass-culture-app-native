@@ -129,8 +129,11 @@ describe('ProfileInformationValidation', () => {
 
     await user.press(screen.getByText('Modifier mes informations'))
 
-    expect(navigate).toHaveBeenCalledWith('SetName', {
-      type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      screen: 'SetName',
+      params: {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      },
     })
   })
 

@@ -50,7 +50,10 @@ describe('<VerifyEligibility />', () => {
     const startButton = screen.getByText('Commencer la vérification')
     await user.press(startButton)
 
-    expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.VERIFY_ELIGIBILITY })
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      screen: 'Stepper',
+      params: { from: StepperOrigin.VERIFY_ELIGIBILITY },
+    })
   })
 
   it('should track Batch event when "Vérifier mon identité plus tard" button is clicked', async () => {

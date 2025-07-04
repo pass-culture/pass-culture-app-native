@@ -4,6 +4,7 @@ import { TextStyle } from 'react-native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
@@ -65,7 +66,7 @@ const InvalidInformationErrorData: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
   primaryButton: {
     wording: 'Vérifier mon identité',
-    navigateTo: { screen: 'SelectIDOrigin' },
+    navigateTo: getSubscriptionPropConfig('SelectIDOrigin'),
   },
   isGoHomeTertiaryButtonVisible: true,
 }

@@ -13,7 +13,7 @@ export const SetProfileBookingError = () => {
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
   const { params } = useRoute<UseRouteType<'SetProfileBookingError'>>()
 
-  const offerId = params.offerId
+  const offerId = params?.offerId
 
   const navigateToHomeButton = {
     wording: 'Retourner à l’accueil',
