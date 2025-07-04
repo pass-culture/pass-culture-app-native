@@ -31,32 +31,31 @@ describe('useVenuesInRegionQuery', () => {
   })
 
   it('should fetch all venues', async () => {
-    renderHook(() => useVenuesInRegionQuery({ region }), {
+    const { result } = renderHook(() => useVenuesInRegionQuery({ region }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
-    await waitFor(() => {
-      expect(mockFetchVenues).toHaveBeenCalledWith({
-        buildLocationParameterParams: {
-          aroundMeRadius: 'all',
-          aroundPlaceRadius: 50,
-          selectedLocationMode: 'AROUND_PLACE',
-          userLocation: {
-            latitude: 48.866667,
-            longitude: 2.333333,
-          },
+    await waitFor(async () => expect(result.current.isFetched).toBeTruthy())
+
+    expect(mockFetchVenues).toHaveBeenCalledWith({
+      buildLocationParameterParams: {
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 50,
+        selectedLocationMode: 'AROUND_PLACE',
+        userLocation: {
+          latitude: 48.866667,
+          longitude: 2.333333,
         },
-        options: {
-          hitsPerPage: 1000,
-        },
-        query: '',
-      })
+      },
+      options: {
+        hitsPerPage: 1000,
+      },
+      query: '',
     })
   })
 
   it('should not fetch venues when no region defined', async () => {
-    renderHook(
+    const { result } = renderHook(
       () =>
         useVenuesInRegionQuery({
           region: {} as Region,
@@ -67,13 +66,13 @@ describe('useVenuesInRegionQuery', () => {
       }
     )
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toBeFalsy())
 
     expect(mockFetchVenues).not.toHaveBeenCalled()
   })
 
   it('should not dispatch in context when initial venues not defined', async () => {
-    renderHook(
+    const { result } = renderHook(
       () =>
         useVenuesInRegionQuery({
           region,
@@ -84,9 +83,9 @@ describe('useVenuesInRegionQuery', () => {
       }
     )
 
-    await waitFor(() => {
-      expect(spySetVenues).toHaveBeenCalledTimes(0)
-    })
+    await waitFor(() => expect(result.current.isSuccess).toBeFalsy())
+
+    expect(spySetVenues).toHaveBeenCalledTimes(0)
   })
 
   it('should return custom data', async () => {
@@ -103,8 +102,8 @@ describe('useVenuesInRegionQuery', () => {
       }
     )
 
-    await waitFor(() => {
-      expect(result.current.data).toStrictEqual(mockVenues.map((venue) => venue.venueId))
-    })
+    await waitFor(() => expect(result.current.isSuccess).toBeTruthy())
+
+    expect(result.current.data).toStrictEqual(mockVenues.map((venue) => venue.venueId))
   })
 })
