@@ -167,10 +167,13 @@ recreate_emulator() {
     echo -e "${C_BLUE}[INFO] ==> Starting emulator '$EMULATOR_NAME' in the background.${C_RESET}"
     echo -e "${C_BLUE}[INFO] ==> Emulator output will be logged to: ${EMULATOR_LOG_FILE}${C_RESET}"
 
+    ## --- FIX APPLIED HERE ---
+    # 1. Removed `-no-accel` to enable hardware acceleration (critical for performance).
+    # 2. Increased `-partition-size` to 2048 (2GB) to prevent storage issues.
     emulator \
         -avd "$EMULATOR_NAME" \
-        -no-window -no-audio -no-snapshot -no-boot-anim -no-accel \
-        -partition-size 1024 \
+        -no-window -no-audio -no-snapshot -no-boot-anim \
+        -partition-size 2048 \
         > "$EMULATOR_LOG_FILE" 2>&1 &
 
     local EMULATOR_PID=$!
@@ -188,8 +191,6 @@ recreate_emulator() {
 }
 
 # --- Main Execution Logic ---
-# The secret files are created by the GitHub Actions workflow.
-
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \
     corepack enable
 
@@ -262,13 +263,14 @@ log_and_run "Verifying final boot status" \
 log_and_run "Listing connected devices" \
     adb devices
 
-# --- FIX APPLIED HERE ---
+## --- FIX APPLIED HERE ---
+# Added a 15-second delay to ensure all emulator services are stable before installing.
+echo -e "${C_BLUE}[INFO] ==> Waiting an extra 15 seconds for emulator services to stabilize...${C_RESET}"
+sleep 15
 
-# 1. Install the APK first using adb
 log_and_run "Installing the APK onto the emulator" \
     adb install "$APK_PATH"
 
-# 2. Run Flashlight test against the now-installed app, without the invalid --apkPath flag
 log_and_run "Running Flashlight test with Maestro" \
     flashlight test \
     --bundleId app.passculture.testing \
