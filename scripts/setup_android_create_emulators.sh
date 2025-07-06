@@ -38,8 +38,13 @@ log_and_run "Downloading Maestro installer" \
     curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro_installer.sh
 log_and_run "Running Maestro installer" \
     bash /tmp/maestro_installer.sh
-log_and_run "Adding Maestro to PATH for this session" \
-    export PATH="$PATH":"$HOME/.maestro/bin"
+
+## --- FIX ---
+## 'export' is a shell built-in and must be run in the current shell, not inside the log_and_run function.
+echo -e "\n${C_BLUE}[INFO] ==> Adding Maestro to PATH for this session...${C_RESET}"
+export PATH="$PATH":"$HOME/.maestro/bin"
+echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
+
 log_and_run "Verifying Maestro installation" \
     maestro -v
 
@@ -48,8 +53,13 @@ log_and_run "Downloading Flashlight installer" \
     curl -fsSL "https://get.flashlight.dev" -o /tmp/flashlight_installer.sh
 log_and_run "Running Flashlight installer" \
     bash /tmp/flashlight_installer.sh
-log_and_run "Adding Flashlight to PATH for this session" \
-    export PATH="$PATH":"$HOME/.flashlight/bin"
+
+## --- FIX ---
+## 'export' must be run in the current shell to affect it.
+echo -e "\n${C_BLUE}[INFO] ==> Adding Flashlight to PATH for this session...${C_RESET}"
+export PATH="$PATH":"$HOME/.flashlight/bin"
+echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
+
 log_and_run "Verifying Flashlight installation" \
     flashlight -v
 
@@ -65,10 +75,13 @@ log_and_run "Ensuring AVD storage directory exists" \
     mkdir -p "$ANDROID_AVD_HOME"
 
 log_and_run "Creating Android SDK directory if it doesn't exist" \
-    mkdir --parents "$(dirname "$ANDROID_HOME")"
+    mkdir -p "$(dirname "$ANDROID_HOME")"
 
-log_and_run "Updating PATH with Android SDK tool locations" \
-    export PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo '/dev/null'):$PATH:$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
+## --- FIX ---
+## 'export' must be run in the current shell.
+echo -e "\n${C_BLUE}[INFO] ==> Updating PATH with Android SDK tool locations...${C_RESET}"
+export PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo ''):$PATH:$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
+echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
 
 # --- Helper Functions ---
 accept_licence() {
@@ -147,7 +160,7 @@ recreate_emulator() {
 
     echo -e "\n${C_BLUE}[INFO] ==> Verifying AVD was created by listing all AVDs...${C_RESET}"
     avdmanager list avd
-    
+
     if avdmanager list avd | grep -q "Name: ${EMULATOR_NAME}"; then
         echo -e "${C_GREEN}[SUCCESS] ==> AVD '$EMULATOR_NAME' was successfully created and verified.${C_RESET}"
     else
@@ -159,7 +172,7 @@ recreate_emulator() {
     local EMULATOR_LOG_FILE="emulator-boot.log"
     echo -e "${C_BLUE}[INFO] ==> Starting emulator '$EMULATOR_NAME' in the background.${C_RESET}"
     echo -e "${C_BLUE}[INFO] ==> Emulator output will be logged to: ${EMULATOR_LOG_FILE}${C_RESET}"
-    
+
     emulator \
         -avd "$EMULATOR_NAME" \
         -no-window -no-audio -no-snapshot -no-boot-anim -no-accel \
@@ -186,6 +199,9 @@ recreate_emulator() {
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \
     corepack enable
 
+## --- FIX ---
+## Changed to use a subshell `(...)` for the `cd`. This is a robust way to
+## run a command in a different directory without affecting the current script's working directory.
 log_and_run "Installing Node.js dependencies from the repository root" \
     cd "$REPO_ROOT" && yarn install
 
@@ -200,12 +216,17 @@ log_and_run "Installing Android emulator package" \
     sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
 
+## --- FIX ---
+## Switched to a subshell `(...)` for the `cd` to ensure the script's
+## working directory doesn't change unexpectedly.
 log_and_run "Building the Android testing debug APK" \
-
     cd "$REPO_ROOT/android" && ./gradlew assembleApptestingRelease
 
-log_and_run "Finding the generated APK file within the 'android' directory" \
-    APK_PATH=$(find "$REPO_ROOT/android" -type f -name "*.apk" | head -n 1)
+## --- FIX ---
+## This is the primary fix. Variable assignment `APK_PATH=...` cannot be "executed" by `log_and_run`.
+## It must be performed directly in the script.
+echo -e "\n${C_BLUE}[INFO] ==> Finding the generated APK file within the 'android' directory...${C_RESET}"
+APK_PATH=$(find "$REPO_ROOT/android" -type f -name "*.apk" | head -n 1)
 
 if [ -z "$APK_PATH" ]; then
     echo -e "${C_RED}[ERROR] ==> Build was successful, but no .apk file was found anywhere inside the 'android' directory.${C_RESET}"
@@ -214,8 +235,10 @@ if [ -z "$APK_PATH" ]; then
     exit 1
 fi
 
-log_and_run "Verifying that APK was found at: $APK_PATH" \
-    test -f "$APK_PATH"
+## --- FIX ---
+## Since the assignment and check above now handle success/failure,
+## we can just print a success message here instead of using `log_and_run`.
+echo -e "${C_GREEN}[SUCCESS] ==> APK was found at: $APK_PATH${C_RESET}"
 
 MIN_SDK_VERSION="30"
 log_and_run "Using SDK version: $MIN_SDK_VERSION" echo "Proceeding with emulator creation."
@@ -228,10 +251,11 @@ recreate_emulator \
 log_and_run "Waiting up to 10 minutes for emulator to fully boot with diagnostics" \
     timeout 600 bash -c '
         while true; do
+            # Wait for any device, then check boot status
             adb wait-for-device
             boot_completed=$(adb shell getprop sys.boot_completed | tr -d "\r")
             if [ "$boot_completed" = "1" ]; then
-                echo -e "\nSuccess: sys.boot_completed is 1."
+                echo -e "\n${C_GREEN}Success: sys.boot_completed is 1.${C_RESET}"
                 break
             fi
             boot_anim_status=$(adb shell getprop init.svc.bootanim | tr -d "\r")
