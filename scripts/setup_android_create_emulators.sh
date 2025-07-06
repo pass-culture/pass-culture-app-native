@@ -39,8 +39,6 @@ log_and_run "Downloading Maestro installer" \
 log_and_run "Running Maestro installer" \
     bash /tmp/maestro_installer.sh
 
-## --- FIX ---
-## 'export' is a shell built-in and must be run in the current shell, not inside the log_and_run function.
 echo -e "\n${C_BLUE}[INFO] ==> Adding Maestro to PATH for this session...${C_RESET}"
 export PATH="$PATH":"$HOME/.maestro/bin"
 echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
@@ -54,8 +52,6 @@ log_and_run "Downloading Flashlight installer" \
 log_and_run "Running Flashlight installer" \
     bash /tmp/flashlight_installer.sh
 
-## --- FIX ---
-## 'export' must be run in the current shell to affect it.
 echo -e "\n${C_BLUE}[INFO] ==> Adding Flashlight to PATH for this session...${C_RESET}"
 export PATH="$PATH":"$HOME/.flashlight/bin"
 echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
@@ -77,8 +73,6 @@ log_and_run "Ensuring AVD storage directory exists" \
 log_and_run "Creating Android SDK directory if it doesn't exist" \
     mkdir -p "$(dirname "$ANDROID_HOME")"
 
-## --- FIX ---
-## 'export' must be run in the current shell.
 echo -e "\n${C_BLUE}[INFO] ==> Updating PATH with Android SDK tool locations...${C_RESET}"
 export PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo ''):$PATH:$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
 echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
@@ -199,9 +193,6 @@ recreate_emulator() {
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \
     corepack enable
 
-## --- FIX ---
-## Changed to use a subshell `(...)` for the `cd`. This is a robust way to
-## run a command in a different directory without affecting the current script's working directory.
 log_and_run "Installing Node.js dependencies from the repository root" \
     cd "$REPO_ROOT" && yarn install
 
@@ -216,15 +207,9 @@ log_and_run "Installing Android emulator package" \
     sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
 
-## --- FIX ---
-## Switched to a subshell `(...)` for the `cd` to ensure the script's
-## working directory doesn't change unexpectedly.
 log_and_run "Building the Android testing debug APK" \
     cd "$REPO_ROOT/android" && ./gradlew assembleApptestingRelease
 
-## --- FIX ---
-## This is the primary fix. Variable assignment `APK_PATH=...` cannot be "executed" by `log_and_run`.
-## It must be performed directly in the script.
 echo -e "\n${C_BLUE}[INFO] ==> Finding the generated APK file within the 'android' directory...${C_RESET}"
 APK_PATH=$(find "$REPO_ROOT/android" -type f -name "*.apk" | head -n 1)
 
@@ -235,9 +220,6 @@ if [ -z "$APK_PATH" ]; then
     exit 1
 fi
 
-## --- FIX ---
-## Since the assignment and check above now handle success/failure,
-## we can just print a success message here instead of using `log_and_run`.
 echo -e "${C_GREEN}[SUCCESS] ==> APK was found at: $APK_PATH${C_RESET}"
 
 MIN_SDK_VERSION="30"
@@ -250,8 +232,10 @@ recreate_emulator \
 
 log_and_run "Waiting up to 10 minutes for emulator to fully boot with diagnostics" \
     timeout 600 bash -c '
+        set -o errexit
+        C_GREEN='\''\e[1;32m'\''
+        C_RESET='\''\e[0m'\''
         while true; do
-            # Wait for any device, then check boot status
             adb wait-for-device
             boot_completed=$(adb shell getprop sys.boot_completed | tr -d "\r")
             if [ "$boot_completed" = "1" ]; then
@@ -278,9 +262,15 @@ log_and_run "Verifying final boot status" \
 log_and_run "Listing connected devices" \
     adb devices
 
+# --- FIX APPLIED HERE ---
+
+# 1. Install the APK first using adb
+log_and_run "Installing the APK onto the emulator" \
+    adb install "$APK_PATH"
+
+# 2. Run Flashlight test against the now-installed app, without the invalid --apkPath flag
 log_and_run "Running Flashlight test with Maestro" \
     flashlight test \
-    --apkPath "$APK_PATH" \
     --bundleId app.passculture.testing \
     --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test .maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
