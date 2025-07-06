@@ -388,7 +388,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             />
           ) : undefined
         }
-        enableGrisList={enableGridList}
+        enableGridList={enableGridList}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,

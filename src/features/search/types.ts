@@ -93,7 +93,7 @@ export interface SearchListProps {
   onScroll?: () => void
   onPress?: () => void
   artistSection?: ReactNode
-  enableGrisList?: boolean
+  enableGridList?: boolean
   numColumns?: number
 }
 
