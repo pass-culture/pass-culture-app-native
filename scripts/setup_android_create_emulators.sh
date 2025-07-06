@@ -187,6 +187,53 @@ recreate_emulator() {
     fi
 }
 
+log_performance_summary() {
+    local results_file="$1"
+    echo -e "\n${C_BLUE}========== Performance Test Summary ==========${C_RESET}"
+
+    if ! command -v jq &> /dev/null; then
+        echo -e "${C_RED}[ERROR] 'jq' is not installed. Cannot parse performance results. Please install jq.${C_RESET}" >&2
+        return 1
+    fi
+
+    if [ ! -f "$results_file" ]; then
+        echo -e "${C_RED}[ERROR] Results file not found at '$results_file'${C_RESET}" >&2
+        return 1
+    fi
+
+    # Use jq to parse the JSON and format a summary for each iteration
+    # Note: We pipe the output to `echo -e` to correctly render the ANSI color codes
+    jq -r '
+      .iterations | to_entries | .[] |
+      (
+        "\n" +
+        "\(env.C_BLUE)--- Iteration \(.key + 1) ---\(env.C_RESET)\n" +
+        "Status: " + if .value.status == "SUCCESS" then "\(.value.status)" else "\(env.C_RED)\(.value.status)\(env.C_RESET)" end + "\n" +
+        if .value.status == "SUCCESS" then
+          (
+            # Select only non-null values for calculations to avoid errors
+            (.value.measures[].fps | select(. != null)) as $fps_values |
+            (.value.measures[].ram | select(. != null)) as $ram_values |
+            (.value.measures[].cpu.perName."UI Thread" | select(. != null)) as $cpu_ui_values |
+            (.value.measures[].cpu.perName."mqt_js" | select(. != null)) as $cpu_js_values |
+
+            "  - FPS (Avg/Min):      \(($fps_values | add / length) | floor) / \($fps_values | min | floor)\n" +
+            "  - RAM (Avg/Max):      \(($ram_values | add / length) | floor) MB / \($ram_values | max | floor) MB\n" +
+            "  - CPU UI Thread (Avg):  \(($cpu_ui_values | add / length) | floor) %\n" +
+            "  - CPU JS Thread (Avg):  \(($cpu_js_values | add / length) | floor) %"
+          )
+        else
+          "  Test failed, skipping metrics."
+        end
+      )
+    ' "$results_file" | echo -e "$(cat -)"
+
+    echo -e "\n${C_BLUE}===========================================${C_RESET}"
+}
+
+# --- End of Helper Functions ---
+
+
 # --- Main Execution Logic ---
 log_and_run "Enabling Corepack to use the project-specified Yarn version" \
     corepack enable
@@ -260,20 +307,23 @@ log_and_run "Verifying final boot status" \
 log_and_run "Listing connected devices" \
     adb devices
 
-# Added a 15-second delay to ensure all emulator services are stable before installing.
 echo -e "${C_BLUE}[INFO] ==> Waiting an extra 15 seconds for emulator services to stabilize...${C_RESET}"
 sleep 15
 
 log_and_run "Installing the APK onto the emulator" \
     adb install "$APK_PATH"
 
-# --- FIX APPLIED HERE ---
-# Use the absolute path to the Maestro test file by prepending $REPO_ROOT
 log_and_run "Running Flashlight test with Maestro" \
     flashlight test \
     --bundleId app.passculture.testing \
     --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
     --resultsFilePath resultsLaunchApp.json
+
+# Log the custom summary and generate the full report
+log_performance_summary "resultsLaunchApp.json"
+
+log_and_run "Generating full Flashlight report" \
+    flashlight report resultsLaunchApp.json
 
 echo -e "\n${C_GREEN}Script finished successfully!${C_RESET}"
