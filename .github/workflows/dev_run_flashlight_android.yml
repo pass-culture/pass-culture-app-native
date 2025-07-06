@@ -30,6 +30,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Enable KVM for Hardware Acceleration
+        run: |
+          echo 'Enabling KVM...'
+          sudo chmod 777 /dev/kvm
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
