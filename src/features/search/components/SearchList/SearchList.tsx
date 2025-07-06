@@ -29,7 +29,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
       venuesUserData,
       artistSection,
       numColumns,
-      enableGrisList,
+      enableGridList,
     },
     ref
   ) => {
@@ -51,9 +51,9 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
             venuesUserData={venuesUserData}
           />
         }
-        ItemSeparatorComponent={enableGrisList ? undefined : LineSeparator}
+        ItemSeparatorComponent={enableGridList ? undefined : LineSeparator}
         renderItem={renderItem}
-        numColumns={enableGrisList ? numColumns : undefined}
+        numColumns={enableGridList ? numColumns : undefined}
         refreshing={refreshing}
         onRefresh={onRefresh}
         onEndReached={autoScrollEnabled ? onEndReached : undefined}

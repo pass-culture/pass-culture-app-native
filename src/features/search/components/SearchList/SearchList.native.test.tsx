@@ -69,21 +69,21 @@ describe('<SearchList />', () => {
   })
 
   it('should sets ItemSeparatorComponent when enableGrisList is false', () => {
-    const screen = render(<SearchList {...props} enableGrisList={false} />)
+    const screen = render(<SearchList {...props} enableGridList={false} />)
     const searchList = screen.getByTestId('searchResultsFlashlist')
 
     expect(searchList.props.ItemSeparatorComponent).toBeDefined()
   })
 
   it('should not set ItemSeparatorComponent when enableGrisList is true', () => {
-    const screen = render(<SearchList {...props} enableGrisList />)
+    const screen = render(<SearchList {...props} enableGridList />)
     const searchList = screen.getByTestId('searchResultsFlashlist')
 
     expect(searchList.props.ItemSeparatorComponent).toBeUndefined()
   })
 
   it('sets numColumns when enableGrisList is true', () => {
-    const screen = render(<SearchList {...props} enableGrisList numColumns={2} />)
+    const screen = render(<SearchList {...props} enableGridList numColumns={2} />)
     const searchList = screen.getByTestId('searchResultsFlashlist')
 
     expect(searchList.props.numColumns).toEqual(2)
