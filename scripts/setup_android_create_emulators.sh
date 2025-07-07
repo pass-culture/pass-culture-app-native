@@ -269,20 +269,18 @@ log_and_run "Installing the APK onto the emulator" \
     adb install "$APK_PATH"
 
 echo -e "\n${C_BLUE}[INFO] ==> Running Flashlight test with Maestro...${C_RESET}"
-# We run this command directly to allow it to fail without exiting the script,
-# so we can still attempt to parse the partial results for debugging.
 flashlight test \
     --bundleId app.passculture.testing \
     --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
     --resultsFilePath resultsLaunchApp.json || echo -e "${C_RED}[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete.${C_RESET}"
 
-# Use the Node.js script to parse and display the performance summary.
-# The log_and_run helper will handle the exit code from the script.
+# --- FIX APPLIED HERE ---
+# Use a subshell to run the node script from the repository root
 log_and_run "Parsing and evaluating performance results" \
-    node "$REPO_ROOT/scripts/parse-perf-results.js" "resultsLaunchApp.json"
+    cd "$REPO_ROOT" && node "scripts/parse-perf-results.js" "resultsLaunchApp.json"
 
-log_and_run "Generating full Flashlight report" \
+log_and_run "Generating full Flashlight HTML report" \
     flashlight report resultsLaunchApp.json
 
 echo -e "\n${C_GREEN}Script finished successfully!${C_RESET}"
