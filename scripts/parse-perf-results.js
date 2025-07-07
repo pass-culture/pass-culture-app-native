@@ -1,19 +1,17 @@
 const fs = require('fs')
-// Import functions for BOTH per-iteration stats AND the final aggregated report
+// Import all the functions we need for our manual, detailed reporting
 const {
+  averageTestCaseResult,
   getAverageCpuUsage,
+  getAverageCpuUsagePerProcess,
   getAverageFPSUsage,
   getAverageRAMUsage,
-  averageTestCaseResult,
   getScore,
-  getFpsStats,
-  getRamStats,
-  getCpuStats,
-  getThreadsStats,
 } = require('@perf-profiler/reporter')
 
 // --- Configuration ---
-const TOP_N_THREADS = 5
+// The most important threads to report on for a React Native app
+const THREADS_TO_MONITOR = ['UI Thread', 'mqt_js', 'RenderThread']
 
 // --- ANSI color codes for logging ---
 const C_BLUE = '\x1b[1;34m'
@@ -21,12 +19,18 @@ const C_GREEN = '\x1b[1;32m'
 const C_RED = '\x1b[1;31m'
 const C_YELLOW = '\x1b[1;33m'
 const C_RESET = '\x1b[0m'
-const C_DIM = '\x1b[2m'
 
 // --- Helper Functions ---
 const logTitle = (title) => console.log(`\n${C_BLUE}===== ${title} =====${C_RESET}`)
 const logMetric = (name, value) => console.log(`  - ${name.padEnd(25, ' ')}${value}`)
 const toInt = (num) => Math.floor(num || 0)
+
+// A robust averaging function, inspired by the example you provided.
+const average = (numbers) => {
+  if (!numbers || numbers.length === 0) return 0
+  const sum = numbers.reduce((a, b) => a + b, 0)
+  return sum / numbers.length
+}
 
 // --- Script Entry Point ---
 const resultsPath = process.argv[2]
@@ -34,18 +38,17 @@ if (!resultsPath) {
   console.error(`${C_RED}ERROR: No results file path provided.${C_RESET}`)
   process.exit(1)
 }
-
 if (!fs.existsSync(resultsPath)) {
   console.error(`${C_RED}ERROR: Results file not found at '${resultsPath}'${C_RESET}`)
   process.exit(1)
 }
-
 const content = fs.readFileSync(resultsPath, 'utf8')
-let results
-try {
-  results = JSON.parse(content)
-} catch (error) {
-  console.error(`${C_RED}ERROR: Failed to parse JSON from '${resultsPath}'${C_RESET}`, error)
+const results = JSON.parse(content)
+
+// --- Crucial First Step: Filter for successful iterations ---
+const successfulIterations = results.iterations.filter((iter) => iter.status === 'SUCCESS')
+if (successfulIterations.length === 0) {
+  console.error(`${C_RED}ERROR: No successful test iterations found to analyze.${C_RESET}`)
   process.exit(1)
 }
 
@@ -56,10 +59,8 @@ logTitle('Per-Iteration Details')
 
 results.iterations.forEach((iteration, index) => {
   console.log(`\n${C_BLUE}--- Iteration ${index + 1} ---${C_RESET}`)
-
   if (iteration.status !== 'SUCCESS') {
     console.log(`Status: ${C_RED}${iteration.status}${C_RESET}`)
-    console.log('  Test failed, skipping metrics.')
     return
   }
   console.log(`Status: ${iteration.status}`)
@@ -69,68 +70,58 @@ results.iterations.forEach((iteration, index) => {
   const avgRam = getAverageRAMUsage(measures)
   const avgCpu = getAverageCpuUsage(measures)
 
-  // Manually calculate Min FPS from the raw measures
-  const allFpsValues = measures.map((m) => m.fps).filter((fps) => fps !== null && fps !== undefined)
+  const allFpsValues = measures.map((m) => m.fps).filter(Boolean)
   const minFps = allFpsValues.length > 0 ? Math.min(...allFpsValues) : 'N/A'
+  const maxRam = Math.max(...measures.map((m) => m.ram).filter(Boolean))
 
-  // Manually calculate Max RAM from the raw measures
-  const allRamValues = measures.map((m) => m.ram).filter((ram) => ram !== null && ram !== undefined)
-  const maxRam = allRamValues.length > 0 ? Math.max(...allRamValues) : 'N/A'
-
-  console.log(`  - FPS (Avg/Min):      ${toInt(avgFps)} / ${toInt(minFps)}`)
-  console.log(`  - RAM (Avg/Max):      ${toInt(avgRam)} MB / ${toInt(maxRam)} MB`)
+  console.log(`  - FPS (Avg/Min):        ${toInt(avgFps)} / ${toInt(minFps)}`)
+  console.log(`  - RAM (Avg/Max):        ${toInt(avgRam)} MB / ${toInt(maxRam)} MB`)
   console.log(`  - CPU (Total Avg):      ${toInt(avgCpu)} %`)
 })
 
 // =============================================================================
 // PART 2: LOG THE FINAL, AGGREGATED SUMMARY REPORT
 // =============================================================================
-const report = averageTestCaseResult(results)
-const averageData = report.average
-
-if (!averageData) {
-  console.error(
-    `\n${C_RED}ERROR: No successful test iterations found to generate a final summary.${C_RESET}`
-  )
-  process.exit(1)
-}
-
 logTitle('Aggregated Performance Summary')
 
-const score = getScore(report)
+// Calculate the official score using the library's black-box method
+const score = getScore(averageTestCaseResult(results))
 logMetric('Overall Score', `${C_GREEN}${score.toFixed(2)} / 100${C_RESET}`)
-logMetric('Successful Iterations', `${report.iterations.length} / ${results.iterations.length}`)
+logMetric('Successful Iterations', `${successfulIterations.length} / ${results.iterations.length}`)
 
-logTitle('FPS (UI Smoothness)')
-const fpsStats = getFpsStats(averageData)
-logMetric('Average FPS', `${toInt(fpsStats.average)} FPS`)
-logMetric('Min FPS (UI Stutter)', `${C_YELLOW}${toInt(fpsStats.min)} FPS${C_RESET}`)
+// Manually calculate averages for our metrics
+logTitle('Averaged Metrics (across all successful runs)')
+const avgAllFps = average(successfulIterations.map((iter) => getAverageFPSUsage(iter.measures)))
+const avgAllRam = average(successfulIterations.map((iter) => getAverageRAMUsage(iter.measures)))
+const avgAllCpu = average(successfulIterations.map((iter) => getAverageCpuUsage(iter.measures)))
 
-logTitle('RAM (Memory Usage)')
-const ramStats = getRamStats(averageData)
-logMetric('Average RAM Usage', `${toInt(ramStats.average)} MB`)
-logMetric('Max RAM Usage', `${C_YELLOW}${toInt(ramStats.max)} MB${C_RESET}`)
+logMetric('Average FPS', `${toInt(avgAllFps)}`)
+logMetric('Average RAM Usage', `${toInt(avgAllRam)} MB`)
+logMetric('Average Total CPU', `${toInt(avgAllCpu)} %`)
 
-logTitle('CPU Usage (Total)')
-const cpuStats = getCpuStats(averageData)
-logMetric('Average CPU Usage', `${toInt(cpuStats.average)} %`)
-logMetric('Max CPU Usage', `${C_YELLOW}${toInt(cpuStats.max)} %${C_RESET}`)
+// This is the most complex part: averaging CPU usage for specific threads
+logTitle('Average CPU Usage Per Thread')
+THREADS_TO_MONITOR.forEach((threadName) => {
+  const threadCpuValues = successfulIterations.map((iteration) => {
+    const perProcessUsage = getAverageCpuUsagePerProcess(iteration.measures)
+    // Find the specific thread in this iteration's measures
+    const threadInfo = perProcessUsage.find((p) => p.processName === threadName)
+    // Return its usage, or 0 if it wasn't found in this iteration
+    return threadInfo ? threadInfo.cpuUsage : 0
+  })
 
-logTitle(`CPU Usage (Top ${TOP_N_THREADS} Threads)`)
-const threads = getThreadsStats(averageData)
-  .sort((a, b) => b.averageCpuUsage - a.averageCpuUsage)
-  .slice(0, TOP_N_THREADS)
-
-threads.forEach((thread) => {
-  logMetric(thread.name, `${toInt(thread.averageCpuUsage)} %`)
+  const avgThreadCpu = average(threadCpuValues)
+  // Use a different color for the JS thread as it's often a key focus
+  const color = threadName.includes('js') ? C_YELLOW : ''
+  logMetric(threadName, `${color}${avgThreadCpu.toFixed(2)} %${C_RESET}`)
 })
 
 // =============================================================================
 // FINAL VERDICT
 // =============================================================================
-if (report.status !== 'SUCCESS') {
+if (results.status !== 'SUCCESS') {
   console.error(
-    `\n${C_RED}[FAIL] Overall test status was '${report.status}'. Failing the build.${C_RESET}`
+    `\n${C_RED}[FAIL] Overall test status was '${results.status}'. Failing the build.${C_RESET}`
   )
   process.exit(1)
 }
