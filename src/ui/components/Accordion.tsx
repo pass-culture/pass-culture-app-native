@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  Platform,
   Animated,
   Easing,
-  StyleProp,
-  ViewStyle,
-  View,
-  StyleSheet,
   LayoutChangeEvent,
+  Platform,
+  StyleProp,
+  StyleSheet,
   TextProps,
+  View,
+  ViewStyle,
 } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -20,7 +20,7 @@ import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocu
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
-import { getSpacing, Spacer, Typo } from '../theme'
+import { getSpacing, Typo } from '../theme'
 
 interface AccordionProps {
   title: React.JSX.Element | string
@@ -101,10 +101,9 @@ export const Accordion = ({
     <React.Fragment>
       <SwitchContainer>
         {leftComponent ? (
-          <View style={[styles.titleContainer, titleStyle]}>
+          <LeftComponentView style={[styles.titleContainer, titleStyle]}>
             {leftComponent}
-            <Spacer.Row numberOfSpaces={2} />
-          </View>
+          </LeftComponentView>
         ) : null}
         <StyledTouchableOpacity
           accessibilityLabel={accessibilityLabel}
@@ -182,3 +181,7 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
   color: theme.designSystem.color.icon.default,
 }))``
+
+const LeftComponentView = styled.View({
+  marginRight: getSpacing(2),
+})

@@ -7,8 +7,9 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { UserNotification } from 'ui/svg/UserNotification'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -31,8 +32,7 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
         Ton compte te permettra de recevoir toutes les offres et actus en lien avec tes thèmes
         préférés&nbsp;!
       </InformationText>
-      <Spacer.Column numberOfSpaces={6} />
-      <ButtonContainer>
+      <ButtonContainer gap={4}>
         <InternalTouchableLink
           as={ButtonWithLinearGradientDeprecated}
           wording="Créer un compte"
@@ -43,7 +43,6 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
           }}
           buttonHeight="tall"
         />
-        <Spacer.Column numberOfSpaces={4} />
         <StyledAuthenticationButton
           type="login"
           onAdditionalPress={() => {
@@ -57,7 +56,7 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
   )
 }
 
-const ButtonContainer = styled.View({
+const ButtonContainer = styled(ViewGap)({
   width: '100%',
 })
 
@@ -67,6 +66,7 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
 
 const InformationText = styled(Typo.Body)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })
 
 const StyledIcon = styled(UserNotification).attrs(({ theme }) => ({

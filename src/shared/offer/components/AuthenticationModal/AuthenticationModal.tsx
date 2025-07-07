@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { UserIdentification as InitialUserIdentification } from 'ui/svg/UserIdentification'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -48,11 +48,9 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       Illustration={UserIdentification}
       hideModal={closeModal}>
       <Typo.BodyAccent>Tu as 17 ou 18 ans&nbsp;?</Typo.BodyAccent>
-      <Spacer.Column numberOfSpaces={2} />
       <StyledBody>
         Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
       </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
         <InternalTouchableLink
           as={ButtonPrimary}
@@ -64,7 +62,6 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
           onBeforeNavigate={signUp}
         />
       </StyledButtonContainer>
-      <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton
         type="login"
         onAdditionalPress={signIn}
@@ -80,10 +77,13 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
 
 const StyledButtonContainer = styled.View({
   width: '100%',
+  marginBottom: getSpacing(4),
 })
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
+  marginTop: getSpacing(2),
+  marginBottom: getSpacing(6),
 })
 
 const UserIdentification = styled(InitialUserIdentification).attrs(({ theme }) => ({

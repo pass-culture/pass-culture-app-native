@@ -377,6 +377,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
                         "textAlign": "center",
                       },
                     ]
@@ -384,16 +385,6 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                 >
                   Du mal à trouver ce qui te plaît ? Reçois toutes les offres et actus en lien avec tes thèmes préférés !
                 </Text>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Choisir des thèmes à suivre"
                   accessibilityState={
@@ -481,16 +472,6 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
                   accessibilityLabel="Fermer la modale"
                   accessibilityState={
                     {
@@ -539,6 +520,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                         },
                         {
                           "backgroundColor": "transparent",
+                          "marginTop": 16,
                         },
                       ],
                       {

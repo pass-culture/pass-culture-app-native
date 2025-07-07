@@ -443,6 +443,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           style={
             [
               {
+                "marginRight": 8,
+              },
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -564,16 +567,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
         </View>
         <View
           accessibilityRole="button"
@@ -829,6 +822,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           style={
             [
               {
+                "marginRight": 8,
+              },
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -950,16 +946,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
         </View>
         <View
           accessibilityRole="button"
@@ -1215,6 +1201,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           style={
             [
               {
+                "marginRight": 8,
+              },
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -1336,16 +1325,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
         </View>
         <View
           accessibilityRole="button"
@@ -1601,6 +1580,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           style={
             [
               {
+                "marginRight": 8,
+              },
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -1725,16 +1707,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
         </View>
         <View
           accessibilityRole="button"
