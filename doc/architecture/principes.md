@@ -251,7 +251,7 @@ Le découpage de la page en `container` peut venir de plusieurs contraintes :
 
 Contiennent la `navigation` et envoient ces informations via les `props` aux `containers`.
 
-Les `pages` se trouvent dans `src/features/<feature>/pages/<nom de la page>Page.tsx`
+Les `pages` se trouvent dans `src/features/<feature>/pages/<nom de la page>Page/<nom de la page>Page.tsx`
 
 Les noms des composants sont suffixé de `Page`
 
