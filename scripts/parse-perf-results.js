@@ -1,21 +1,18 @@
 const fs = require('fs')
+// Import functions for BOTH per-iteration stats AND the final aggregated report
 const {
-  averageIterations,
+  getAverageCpuUsage,
+  getAverageFPSUsage,
+  getAverageRAMUsage,
+  averageTestCaseResult,
   getScore,
   getFpsStats,
   getRamStats,
   getCpuStats,
   getThreadsStats,
-  getStandardDeviationFPS,
-  getStandardDeviationCPU,
-  getAverageCpuUsagePerProcess,
-  sanitizeProcessName,
-  canComputeHighCpuUsage,
-  averageHighCpuUsage,
 } = require('@perf-profiler/reporter')
 
 // --- Configuration ---
-// Show the top N CPU consuming threads to avoid overly verbose logs
 const TOP_N_THREADS = 5
 
 // --- ANSI color codes for logging ---
@@ -52,67 +49,88 @@ try {
   process.exit(1)
 }
 
-// --- Main Logic ---
+// =============================================================================
+// PART 1: LOG DETAILS FOR EACH INDIVIDUAL ITERATION
+// =============================================================================
+logTitle('Per-Iteration Details')
 
-// Step 1: Create a single, averaged result from all successful test iterations
-const successfulIterations = results.iterations.filter((iter) => iter.status === 'SUCCESS')
-if (successfulIterations.length === 0) {
-  console.error(`${C_RED}ERROR: No successful test iterations found to analyze.${C_RESET}`)
+results.iterations.forEach((iteration, index) => {
+  console.log(`\n${C_BLUE}--- Iteration ${index + 1} ---${C_RESET}`)
+
+  if (iteration.status !== 'SUCCESS') {
+    console.log(`Status: ${C_RED}${iteration.status}${C_RESET}`)
+    console.log('  Test failed, skipping metrics.')
+    return
+  }
+  console.log(`Status: ${iteration.status}`)
+
+  const measures = iteration.measures
+  const avgFps = getAverageFPSUsage(measures)
+  const avgRam = getAverageRAMUsage(measures)
+  const avgCpu = getAverageCpuUsage(measures)
+
+  // Manually calculate Min FPS from the raw measures
+  const allFpsValues = measures.map((m) => m.fps).filter((fps) => fps !== null && fps !== undefined)
+  const minFps = allFpsValues.length > 0 ? Math.min(...allFpsValues) : 'N/A'
+
+  // Manually calculate Max RAM from the raw measures
+  const allRamValues = measures.map((m) => m.ram).filter((ram) => ram !== null && ram !== undefined)
+  const maxRam = allRamValues.length > 0 ? Math.max(...allRamValues) : 'N/A'
+
+  console.log(`  - FPS (Avg/Min):      ${toInt(avgFps)} / ${toInt(minFps)}`)
+  console.log(`  - RAM (Avg/Max):      ${toInt(avgRam)} MB / ${toInt(maxRam)} MB`)
+  console.log(`  - CPU (Total Avg):      ${toInt(avgCpu)} %`)
+})
+
+// =============================================================================
+// PART 2: LOG THE FINAL, AGGREGATED SUMMARY REPORT
+// =============================================================================
+const report = averageTestCaseResult(results)
+const averageData = report.average
+
+if (!averageData) {
+  console.error(
+    `\n${C_RED}ERROR: No successful test iterations found to generate a final summary.${C_RESET}`
+  )
   process.exit(1)
 }
-const averagedResult = averageIterations(successfulIterations)
 
-// Step 2: Generate and display the report sections
-logTitle('Overall Performance Summary')
+logTitle('Aggregated Performance Summary')
 
-const score = getScore(averagedResult)
+const score = getScore(report)
 logMetric('Overall Score', `${C_GREEN}${score.toFixed(2)} / 100${C_RESET}`)
-logMetric('Successful Iterations', `${successfulIterations.length} / ${results.iterations.length}`)
-
-if (canComputeHighCpuUsage(averagedResult)) {
-  const highCpu = averageHighCpuUsage(averagedResult)
-  logMetric('Time with High CPU (>90%)', `${C_YELLOW}${highCpu.toFixed(2)}% of the time${C_RESET}`)
-}
+logMetric('Successful Iterations', `${report.iterations.length} / ${results.iterations.length}`)
 
 logTitle('FPS (UI Smoothness)')
-const fpsStats = getFpsStats(averagedResult)
-const fpsStdDev = getStandardDeviationFPS(averagedResult)
+const fpsStats = getFpsStats(averageData)
 logMetric('Average FPS', `${toInt(fpsStats.average)} FPS`)
 logMetric('Min FPS (UI Stutter)', `${C_YELLOW}${toInt(fpsStats.min)} FPS${C_RESET}`)
-logMetric('Std Deviation (Jankiness)', `${toInt(fpsStdDev)}`)
-console.log(`${C_DIM}  (Lower is smoother)${C_RESET}`)
 
 logTitle('RAM (Memory Usage)')
-const ramStats = getRamStats(averagedResult)
+const ramStats = getRamStats(averageData)
 logMetric('Average RAM Usage', `${toInt(ramStats.average)} MB`)
 logMetric('Max RAM Usage', `${C_YELLOW}${toInt(ramStats.max)} MB${C_RESET}`)
 
 logTitle('CPU Usage (Total)')
-const cpuStats = getCpuStats(averagedResult)
-const cpuStdDev = getStandardDeviationCPU(averagedResult)
+const cpuStats = getCpuStats(averageData)
 logMetric('Average CPU Usage', `${toInt(cpuStats.average)} %`)
 logMetric('Max CPU Usage', `${C_YELLOW}${toInt(cpuStats.max)} %${C_RESET}`)
-logMetric('Std Deviation (Stability)', `${toInt(cpuStdDev)}`)
-
-logTitle('CPU Usage (Per Process)')
-const perProcessCpu = getAverageCpuUsagePerProcess(averagedResult)
-for (const processName in perProcessCpu) {
-  logMetric(sanitizeProcessName(processName), `${toInt(perProcessCpu[processName])} %`)
-}
 
 logTitle(`CPU Usage (Top ${TOP_N_THREADS} Threads)`)
-const threads = getThreadsStats(averagedResult)
+const threads = getThreadsStats(averageData)
   .sort((a, b) => b.averageCpuUsage - a.averageCpuUsage)
   .slice(0, TOP_N_THREADS)
 
 threads.forEach((thread) => {
-  logMetric(sanitizeProcessName(thread.name), `${toInt(thread.averageCpuUsage)} %`)
+  logMetric(thread.name, `${toInt(thread.averageCpuUsage)} %`)
 })
 
-// --- Final Verdict ---
-if (results.status !== 'SUCCESS') {
+// =============================================================================
+// FINAL VERDICT
+// =============================================================================
+if (report.status !== 'SUCCESS') {
   console.error(
-    `\n${C_RED}[FAIL] Overall test status was '${results.status}'. Failing the build.${C_RESET}`
+    `\n${C_RED}[FAIL] Overall test status was '${report.status}'. Failing the build.${C_RESET}`
   )
   process.exit(1)
 }
