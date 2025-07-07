@@ -1,5 +1,4 @@
 const fs = require('fs')
-// FIX: Use the exact function names from the documentation you provided.
 const {
   getAverageCpuUsage,
   getAverageFPSUsage,
@@ -47,8 +46,6 @@ if (overallStatus !== 'SUCCESS') {
 results.iterations.forEach((iteration, index) => {
   console.log(`\n${C_BLUE}--- Iteration ${index + 1} ---${C_RESET}`)
   const status = iteration.status
-
-  // FIX: The failing "getMeasures" function is removed. We will use iteration.measures directly.
   const measures = iteration.measures
 
   if (status !== 'SUCCESS') {
@@ -59,24 +56,22 @@ results.iterations.forEach((iteration, index) => {
 
   console.log(`Status: ${status}`)
 
-  // FIX: Call the correct functions and pass the measures array to them.
   const avgFps = getAverageFPSUsage(measures)
   const avgRam = getAverageRAMUsage(measures)
   const avgCpu = getAverageCpuUsage(measures)
 
-  // Calculate Min FPS from the raw measures
   const allFpsValues = measures.map((m) => m.fps).filter((fps) => fps !== null && fps !== undefined)
   const minFps = allFpsValues.length > 0 ? Math.min(...allFpsValues) : 'N/A'
 
-  // Calculate Max RAM from the raw measures
   const allRamValues = measures.map((m) => m.ram).filter((ram) => ram !== null && ram !== undefined)
   const maxRam = allRamValues.length > 0 ? Math.max(...allRamValues) : 'N/A'
 
   console.log(`  - FPS (Avg/Min):      ${Math.floor(avgFps)} / ${Math.floor(minFps)}`)
   console.log(`  - RAM (Avg/Max):      ${Math.floor(avgRam)} MB / ${Math.floor(maxRam)} MB`)
-  console.log(`  - CPU UI Thread (Avg):  ${Math.floor(avgCpu.perName['UI Thread'] || 0)} %`)
-  // Note: The JS thread is often named "mqt_js" in React Native with Hermes
-  console.log(`  - CPU JS Thread (Avg):  ${Math.floor(avgCpu.perName['mqt_js'] || 0)} %`)
+
+  // FIX: Treat avgCpu as a single number for the total average CPU usage.
+  // The getAverageCpuUsage function in this library version does not return a per-thread breakdown.
+  console.log(`  - CPU (Total Avg):      ${Math.floor(avgCpu)} %`)
 })
 
 console.log(`\n${C_BLUE}===========================================${C_RESET}`)
