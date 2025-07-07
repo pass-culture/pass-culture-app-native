@@ -12,7 +12,7 @@ type props = {
   token: string | null | undefined
 }
 export const CinemaBookingTicket = ({ voucher, token }: props) => {
-  const text = 'Présente ce billet pour acéder à l’évènement.'
+  const text = 'Présente ce billet pour accéder à l’évènement.'
 
   if (voucher && token) {
     return (
