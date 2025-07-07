@@ -50,7 +50,7 @@ export const TicketBottomPart = ({
 
   if (ticket.voucher?.data) {
     if (isEvent) {
-      return <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token ?? null} />
+      return <CinemaBookingTicket voucher={ticket.voucher.data} token={ticket.token?.data} />
     }
     if (ticket.token?.data)
       return (
