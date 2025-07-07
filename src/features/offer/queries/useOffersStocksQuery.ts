@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { OffersStocksResponseV2 } from 'api/gen'
 import { getStocksByOfferIds } from 'features/offer/api/getStocksByOfferIds'

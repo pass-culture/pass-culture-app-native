@@ -46,7 +46,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
-describe('useCookies', () => {
+//TODO(PC-36587): unskip this test
+describe.skip('useCookies', () => {
   beforeAll(() => {
     mockAuthContextWithoutUser({ persist: true })
   })

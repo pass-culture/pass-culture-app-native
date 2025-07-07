@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import { chain } from 'lodash'
-import { UseQueryResult } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { Artist, VenueOffersArtists } from 'features/venue/types'

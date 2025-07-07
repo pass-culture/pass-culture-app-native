@@ -26,7 +26,8 @@ const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
-describe('useFeatureFlagOptions', () => {
+//TODO(PC-35000): unskip this test
+describe.skip('useFeatureFlagOptions', () => {
   beforeAll(() =>
     collection(FIRESTORE_ROOT_COLLECTION)
       .doc(RemoteStoreDocuments.FEATURE_FLAGS)

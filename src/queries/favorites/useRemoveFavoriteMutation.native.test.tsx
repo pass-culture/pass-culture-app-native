@@ -12,7 +12,7 @@ import { useRemoveFavoriteMutation } from './useRemoveFavoriteMutation'
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
-jest.unmock('react-query')
+jest.unmock('@tanstack/react-query')
 
 describe('useRemoveFavoriteMutation', () => {
   it('should remove favorite', async () => {
@@ -36,9 +36,8 @@ describe('useRemoveFavoriteMutation', () => {
 
     expect(result.current.isLoading).toBeFalsy()
 
-    result.current.mutate(favoriteId)
-
-    await act(async () => {})
+    await act(async () => result.current.mutate(favoriteId))
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(onError).not.toHaveBeenCalled()
   })

@@ -20,6 +20,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.useFakeTimers()
+
 describe('<SignupConfirmationEmailSentPage />', () => {
   it('should render correctly', async () => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(

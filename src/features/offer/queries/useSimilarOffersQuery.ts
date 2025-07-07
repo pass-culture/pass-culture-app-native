@@ -1,5 +1,5 @@
+import { onlineManager, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { onlineManager, useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'

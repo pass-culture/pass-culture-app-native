@@ -16,6 +16,8 @@ jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
 })
 jest.mock('libs/jwt/jwt')
 
+jest.useFakeTimers()
+
 describe('useChangeEmailMutation', () => {
   it('should show snack bar on success', async () => {
     mockServer.postApi('/v2/profile/update_email', {

@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { BuildSearchAddressProps } from 'libs/place/buildUrl'
 import { fetchAddresses } from 'libs/place/fetchAddresses'

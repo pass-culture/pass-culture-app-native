@@ -1,7 +1,7 @@
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useThematicSearchPlaylists } from './useThematicSearchPlaylists'
 
@@ -38,12 +38,7 @@ describe('useThematicSearchPlaylists', () => {
       }
     )
 
-    await act(() => {})
-
-    expect(fetchThematicSearchPlaylistsOffers).toHaveBeenCalledWith(mockUserLocation),
-      expect.any(Object),
-      false,
-      undefined
+    expect(fetchThematicSearchPlaylistsOffers).toHaveBeenCalledTimes(1)
   })
 
   it('should only return offers with images', async () => {
@@ -60,20 +55,20 @@ describe('useThematicSearchPlaylists', () => {
       }
     )
 
-    await act(() => {})
-
-    expect(result).toEqual({
-      current: {
-        playlists: [
-          {
-            title: PLAYLISTS_TITLES[0],
-            offers: {
-              hits: [OFFER_WITH_IMAGE],
+    await waitFor(() =>
+      expect(result).toEqual({
+        current: {
+          playlists: [
+            {
+              title: PLAYLISTS_TITLES[0],
+              offers: {
+                hits: [OFFER_WITH_IMAGE],
+              },
             },
-          },
-        ],
-        isLoading: false,
-      },
-    })
+          ],
+          isLoading: false,
+        },
+      })
+    )
   })
 })

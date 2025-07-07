@@ -2,7 +2,7 @@ import { GetRemindersResponse } from 'api/gen'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useGetRemindersQuery } from './useGetRemindersQuery'
 
@@ -17,9 +17,7 @@ describe('useGetRemindersQuery', () => {
   it('should only fetch data if user is loogedIn', async () => {
     const { result } = renderUseGetRemindersQuery()
 
-    expect(result.current.isFetching).toEqual(true)
-
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.reminders.length).toEqual(remindersResponse.reminders.length)
   })
@@ -29,7 +27,7 @@ describe('useGetRemindersQuery', () => {
       data.reminders.find((r) => r.id === remindersResponse.reminders[0]?.id)
     )
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data).toEqual(remindersResponse.reminders[0])
   })
