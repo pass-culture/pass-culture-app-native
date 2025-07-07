@@ -1070,7 +1070,10 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
             paddingBottom={0}
             style={
               [
-                {},
+                {
+                  "backgroundColor": "#ffffff",
+                  "paddingBottom": 0,
+                },
               ]
             }
           >

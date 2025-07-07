@@ -41,6 +41,9 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   )
 })
 
-const FilterPageButtonsContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
-  ...(paddingBottom ? { paddingBottom } : {}),
-}))
+const FilterPageButtonsContainer = styled.View<{ paddingBottom: number }>(
+  ({ paddingBottom, theme }) => ({
+    paddingBottom,
+    backgroundColor: theme.designSystem.color.background.default,
+  })
+)

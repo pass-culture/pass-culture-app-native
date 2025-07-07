@@ -560,7 +560,10 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
           paddingBottom={0}
           style={
             [
-              {},
+              {
+                "backgroundColor": "#ffffff",
+                "paddingBottom": 0,
+              },
             ]
           }
         >
