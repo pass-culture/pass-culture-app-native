@@ -1,10 +1,6 @@
 const fs = require('fs')
-const {
-  getAverageCpuUsage,
-  getAverageFPS,
-  getAverageRAM,
-  getMeasures,
-} = require('@perf-profiler/reporter')
+// FIX: Import the new getSummary function instead of the old, separate ones
+const { getSummary } = require('@perf-profiler/reporter')
 
 // ANSI color codes for logging
 const C_BLUE = '\x1b[1;34m'
@@ -47,34 +43,30 @@ if (overallStatus !== 'SUCCESS') {
 results.iterations.forEach((iteration, index) => {
   console.log(`\n${C_BLUE}--- Iteration ${index + 1} ---${C_RESET}`)
   const status = iteration.status
-  const measures = getMeasures(iteration, { time: iteration.time })
 
   if (status !== 'SUCCESS') {
     console.log(`Status: ${C_RED}${status}${C_RESET}`)
     console.log('  Test failed, skipping metrics.')
     return
   }
-
   console.log(`Status: ${status}`)
 
-  // Calculate statistics
-  const avgFps = getAverageFPS(measures)
-  const avgRam = getAverageRAM(measures)
-  const avgCpu = getAverageCpuUsage(measures)
+  // FIX: Use the new getSummary function to get all stats in one object
+  const summary = getSummary(iteration)
 
-  // Calculate Min FPS from the raw measures
-  const allFpsValues = measures.map((m) => m.fps).filter((fps) => fps !== null && fps !== undefined)
-  const minFps = allFpsValues.length > 0 ? Math.min(...allFpsValues) : 'N/A'
-
-  // Calculate Max RAM from the raw measures
-  const allRamValues = measures.map((m) => m.ram).filter((ram) => ram !== null && ram !== undefined)
-  const maxRam = allRamValues.length > 0 ? Math.max(...allRamValues) : 'N/A'
+  // FIX: Access the calculated values directly from the summary object
+  const avgFps = summary.average.fps
+  const minFps = summary.min.fps
+  const avgRam = summary.average.ram
+  const maxRam = summary.max.ram
+  // The CPU usage object is nested
+  const avgCpuUI = summary.average.cpu.perName['UI Thread'] || 0
+  const avgCpuJS = summary.average.cpu.perName['mqt_js'] || 0 // Common name for JS thread in RN
 
   console.log(`  - FPS (Avg/Min):      ${Math.floor(avgFps)} / ${Math.floor(minFps)}`)
   console.log(`  - RAM (Avg/Max):      ${Math.floor(avgRam)} MB / ${Math.floor(maxRam)} MB`)
-  console.log(`  - CPU UI Thread (Avg):  ${Math.floor(avgCpu.perName['UI Thread'] || 0)} %`)
-  // Note: The JS thread is often named "mqt_js" in React Native with Hermes
-  console.log(`  - CPU JS Thread (Avg):  ${Math.floor(avgCpu.perName['mqt_js'] || 0)} %`)
+  console.log(`  - CPU UI Thread (Avg):  ${Math.floor(avgCpuUI)} %`)
+  console.log(`  - CPU JS Thread (Avg):  ${Math.floor(avgCpuJS)} %`)
 })
 
 console.log(`\n${C_BLUE}===========================================${C_RESET}`)
