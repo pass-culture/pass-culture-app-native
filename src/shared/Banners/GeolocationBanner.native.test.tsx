@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { requestGeolocPermission, showGeolocPermissionModal } from 'libs/location/__mocks__'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -14,17 +16,21 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<GeolocationBanner />', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should display system banner for geolocation incitation', () => {
     mockUseLocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
       showGeolocPermissionModal,
     })
     render(
-      <GeolocationBanner
-        title="Géolocalise-toi"
-        subtitle="Pour trouver des offres autour de toi."
-        analyticsFrom="thematicHome"
-      />
+      reactQueryProviderHOC(
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="Pour trouver des offres autour de toi."
+          analyticsFrom="thematicHome"
+        />
+      )
     )
 
     expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
@@ -36,11 +42,13 @@ describe('<GeolocationBanner />', () => {
       showGeolocPermissionModal,
     })
     render(
-      <GeolocationBanner
-        title="Géolocalise-toi"
-        subtitle="Pour trouver des offres autour de toi."
-        analyticsFrom="thematicHome"
-      />
+      reactQueryProviderHOC(
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="Pour trouver des offres autour de toi."
+          analyticsFrom="thematicHome"
+        />
+      )
     )
     const button = screen.getByText('Géolocalise-toi')
 
@@ -55,11 +63,13 @@ describe('<GeolocationBanner />', () => {
       requestGeolocPermission,
     })
     render(
-      <GeolocationBanner
-        title="Géolocalise-toi"
-        subtitle="Pour trouver des offres autour de toi."
-        analyticsFrom="thematicHome"
-      />
+      reactQueryProviderHOC(
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="Pour trouver des offres autour de toi."
+          analyticsFrom="thematicHome"
+        />
+      )
     )
     const button = screen.getByText('Géolocalise-toi')
 
@@ -71,12 +81,14 @@ describe('<GeolocationBanner />', () => {
   it('should call onPress externaly when specified', async () => {
     const mockOnPress = jest.fn()
     render(
-      <GeolocationBanner
-        title="Géolocalise-toi"
-        subtitle="Pour trouver des offres autour de toi."
-        analyticsFrom="thematicHome"
-        onPress={mockOnPress}
-      />
+      reactQueryProviderHOC(
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="Pour trouver des offres autour de toi."
+          analyticsFrom="thematicHome"
+          onPress={mockOnPress}
+        />
+      )
     )
 
     const button = screen.getByText('Géolocalise-toi')

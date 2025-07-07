@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { theme } from 'theme'
+import { ColorScheme, useColorScheme } from 'libs/styled/useColorScheme'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -64,20 +64,30 @@ export const SystemBanner: FunctionComponent<Props> = ({
   style,
   ...touchableProps
 }) => {
+  const { designSystem } = useTheme()
   const focusProps = useHandleFocus()
+  const colorScheme = useColorScheme()
 
   useEffect(() => {
     analytics.logSystemBlockDisplayed({ type, from })
   }, [type, from])
 
   const color = withBackground ? 'inverted' : 'default'
+
+  const iconColorWithBackground =
+    colorScheme === ColorScheme.DARK
+      ? designSystem.color.icon.locked
+      : designSystem.color.icon.lockedInverted
+
   const iconColor = withBackground
-    ? theme.designSystem.color.icon.lockedInverted
-    : theme.designSystem.color.icon.brandSecondary // TODO(PC-36898): theme.designSystem.color.icon.brandSecondary doesn't work in dark theme
+    ? iconColorWithBackground
+    : designSystem.color.icon.brandSecondary
+
   const backgroundColor = withBackground
-    ? theme.designSystem.color.background.brandSecondary
-    : 'transparent' // TODO(PC-36898): theme.designSystem.color.background.default doesn't work in dark theme
-  const borderColor = theme.designSystem.color.border.brandSecondary // TODO(PC-36898): theme.designSystem.color.border.brandSecondary doesn't work in dark theme
+    ? designSystem.color.background.brandSecondary
+    : designSystem.color.background.default
+
+  const borderColor = designSystem.color.border.brandSecondary
 
   const StyledIcon = LeftIcon
     ? styled(LeftIcon).attrs(({ theme }) => ({
@@ -101,9 +111,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
       color={
-        withBackground
-          ? theme.designSystem.color.text.lockedInverted
-          : theme.designSystem.color.text.default
+        withBackground ? designSystem.color.text.lockedInverted : designSystem.color.text.default
       }
       style={style}>
       <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">

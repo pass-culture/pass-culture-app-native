@@ -21,7 +21,6 @@ import { useVerticalVideoPlayer } from 'features/home/components/modules/video/u
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
-import { theme } from 'theme'
 import { Pause } from 'ui/svg/icons/Pause'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { SoundOff } from 'ui/svg/icons/SoundOff'
@@ -142,6 +141,8 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   }
 
   const PlayerCalque = () => {
+    const { designSystem } = useTheme()
+
     if (hasFinishedPlaying) {
       return (
         <VerticalVideoEndView
@@ -160,8 +161,8 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           start={{ x: 0, y: 0.9 }}
           end={{ x: 0, y: 1 }}
           colors={[
-            colorAlpha(theme.designSystem.color.background.lockedInverted, 0.9),
-            colorAlpha(theme.designSystem.color.background.lockedInverted, 0.9),
+            colorAlpha(designSystem.color.background.lockedInverted, 0.9),
+            colorAlpha(designSystem.color.background.lockedInverted, 0.9),
           ]}>
           <ButtonsContainer>
             <IconContainer>
@@ -251,9 +252,9 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
 
 const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient)
 
-const ProgressBarWrapper = styled.View({
+const ProgressBarWrapper = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.locked,
-})
+}))
 
 const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
   colors: [
@@ -267,10 +268,10 @@ const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
   borderRadius: getSpacing(12),
 })
 
-const StyledVideoPlayerContainer = styled.View({
+const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.lockedInverted,
   alignSelf: 'stretch',
-})
+}))
 
 const Calque = styled(LinearGradient)({
   position: 'absolute',

@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import { FlatList } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
-import { theme } from 'theme'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Typo, getSpacing } from 'ui/theme'
@@ -37,13 +36,15 @@ const renderItem = ({
 }
 
 export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items }) => {
+  const { contentPage } = useTheme()
+
   return items.length > 0 ? (
     <FlatList
       data={items}
       keyExtractor={keyExtractor}
       ListHeaderComponent={<StyledTitle3>Ses oeuvres populaires</StyledTitle3>}
       ItemSeparatorComponent={StyledSeparator}
-      contentContainerStyle={contentContainerStyle}
+      contentContainerStyle={{ marginHorizontal: contentPage.marginHorizontal }}
       scrollEnabled={false}
       renderItem={({ item }) => renderItem({ item, artistName })}
     />
@@ -53,10 +54,6 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
 const StyledTitle3 = styled(Typo.Title3)({
   marginBottom: getSpacing(4),
 })
-
-const contentContainerStyle = {
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),

@@ -9,7 +9,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { theme } from 'theme'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
@@ -66,7 +65,7 @@ const NavItemsContainer = styled.View<{
   maxWidth?: number
   navHeight?: number
   noShadow?: boolean
-}>(({ maxWidth, navHeight, noShadow }) => ({
+}>(({ theme, maxWidth, navHeight, noShadow }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
