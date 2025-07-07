@@ -2,9 +2,8 @@ import React from 'react'
 import { ViewStyle, View } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { getSpacing, padding } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   isError?: boolean
@@ -60,7 +59,7 @@ const StyledView = styled(View)<{
   isFocus?: boolean
   isError?: boolean
   isDisabled?: boolean
-  focusOutlineColor?: ColorsEnum
+  focusOutlineColor?: ColorsType
 }>(({ height, isFocus, isError, isDisabled, theme }) => {
   const getHeightValue = () => {
     if (height === 'small') {

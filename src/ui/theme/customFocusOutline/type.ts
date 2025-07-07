@@ -1,7 +1,7 @@
-import { ColorsTypeLegacy } from 'theme/types'
+import { ColorsType } from 'theme/types'
 
 export type Argument = {
-  color?: ColorsTypeLegacy
+  color?: ColorsType
   width?: number
   isFocus?: boolean
   noOffset?: boolean

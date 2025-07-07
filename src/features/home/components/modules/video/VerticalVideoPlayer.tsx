@@ -303,22 +303,22 @@ const ControlsContainer = styled.View({
 })
 
 const StyledPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
-  color: theme.colors.black,
+  color: theme.designSystem.color.icon.locked,
   size: theme.icons.sizes.standard,
 }))``
 
 const StyledUnmutedIcon = styled(SoundOn).attrs(({ theme }) => ({
-  color: theme.colors.black,
+  color: theme.designSystem.color.icon.locked,
   size: theme.icons.sizes.small,
 }))``
 
 const StyledPauseIcon = styled(Pause).attrs(({ theme }) => ({
-  color: theme.colors.black,
+  color: theme.designSystem.color.icon.locked,
   size: theme.icons.sizes.small,
 }))``
 
 const StyledMutedIcon = styled(SoundOff).attrs(({ theme }) => ({
-  color: theme.colors.black,
+  color: theme.designSystem.color.icon.locked,
   size: theme.icons.sizes.small,
 }))``
 

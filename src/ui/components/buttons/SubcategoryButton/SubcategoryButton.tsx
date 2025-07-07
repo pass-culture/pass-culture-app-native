@@ -10,8 +10,6 @@ import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getShadow, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import type { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 import { getSpacing } from 'ui/theme/spacing'
@@ -63,8 +61,8 @@ export const SubcategoryButton = ({
 const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
   isFocus?: boolean
   windowWidth: number
-  backgroundColor: ColorsEnum
-  borderColor: ColorsEnum
+  backgroundColor: ColorsType
+  borderColor: ColorsType
 }>(({ theme, isFocus, windowWidth, backgroundColor, borderColor }) => ({
   ...(theme.isMobileViewport
     ? {

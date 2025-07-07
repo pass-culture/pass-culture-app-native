@@ -73,11 +73,11 @@ export const SystemBanner: FunctionComponent<Props> = ({
   const color = withBackground ? 'inverted' : 'default'
   const iconColor = withBackground
     ? theme.designSystem.color.icon.lockedInverted
-    : theme.designSystem.color.icon.brandSecondary
-  const backgroundColor = withBackground ? theme.uniqueColors.brand : theme.colors.transparent
-  const borderColor = withBackground
-    ? theme.uniqueColors.brand
-    : theme.designSystem.color.border.brandSecondary
+    : theme.designSystem.color.icon.brandSecondary // TODO(PC-36898): theme.designSystem.color.icon.brandSecondary doesn't work in dark theme
+  const backgroundColor = withBackground
+    ? theme.designSystem.color.background.brandSecondary
+    : 'transparent' // TODO(PC-36898): theme.designSystem.color.background.default doesn't work in dark theme
+  const borderColor = theme.designSystem.color.border.brandSecondary // TODO(PC-36898): theme.designSystem.color.border.brandSecondary doesn't work in dark theme
 
   const StyledIcon = LeftIcon
     ? styled(LeftIcon).attrs(({ theme }) => ({

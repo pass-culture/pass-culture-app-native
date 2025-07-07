@@ -9,13 +9,12 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Offer } from 'shared/offer/types'
+import { ColorsType } from 'theme/types'
 import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
 
 const PLAYER_SIZE = getSpacing(24)
@@ -161,7 +160,7 @@ const ColorCategoryBackgroundWrapper = styled.View({
 
 const ColorCategoryBackground = styled.View<{
   isMultiOffer: boolean
-  backgroundColor: ColorsEnum
+  backgroundColor: ColorsType
 }>(({ isMultiOffer, backgroundColor }) => ({
   height: COLOR_CATEGORY_BACKGROUND_HEIGHT,
   width: isMultiOffer ? COLOR_CATEGORY_BACKGROUND_WIDTH : '100%',

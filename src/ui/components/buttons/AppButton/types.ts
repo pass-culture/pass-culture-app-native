@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import { ColorsType, ColorsTypeLegacy } from 'theme/types'
+import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export interface TouchableOpacityButtonProps {
@@ -19,7 +19,7 @@ export interface TouchableOpacityButtonProps {
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
   center?: boolean
-  focusOutlineColor?: ColorsTypeLegacy
+  focusOutlineColor?: ColorsType
   hoverUnderlineColor?: ColorsType | null
   backgroundColor?: string
 }
@@ -48,9 +48,9 @@ export interface BaseButtonProps {
   center?: boolean
   disabled?: boolean
   ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
-  focusOutlineColor?: ColorsTypeLegacy
+  focusOutlineColor?: ColorsType
   fullWidth?: boolean
-  hoverUnderlineColor?: ColorsTypeLegacy
+  hoverUnderlineColor?: ColorsType
   href?: string
   icon?: FunctionComponent<AccessibleIcon>
   iconPosition?: 'left' | 'right'
@@ -68,7 +68,7 @@ export interface BaseButtonProps {
   textSize?: number
   type?: 'button' | 'submit' | 'reset'
   wording: string
-  color?: ColorsTypeLegacy
+  color?: ColorsType
 }
 
 export interface AppButtonProps extends BaseButtonProps {

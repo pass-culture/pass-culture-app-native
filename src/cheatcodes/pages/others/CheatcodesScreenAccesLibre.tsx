@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
@@ -12,9 +12,9 @@ import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const CheatcodesScreenAccesLibre = () => {
+  const { designSystem } = useTheme()
   const [value, setValue] = useState('')
   const [venueId, setVenueId] = useState<number | null>(null)
 
@@ -52,7 +52,11 @@ export const CheatcodesScreenAccesLibre = () => {
               <StyledViewGap gap={5}>
                 <StyledView>
                   <detail.icon
-                    color={detail.isAccessible ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
+                    color={
+                      detail.isAccessible
+                        ? designSystem.color.icon.success
+                        : designSystem.color.icon.error
+                    }
                   />
                   <Typo.Title3>{detail.category}</Typo.Title3>
                 </StyledView>

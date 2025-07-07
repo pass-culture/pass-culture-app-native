@@ -10,8 +10,6 @@ import { IconNames } from 'ui/components/icons/iconFactory'
 import { useIconFactory } from 'ui/components/icons/useIconFactory'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
@@ -22,8 +20,8 @@ interface Props {
   onPress: () => void
   scaleAnimatedValue?: Animated.Value
   animationState?: {
-    iconBackgroundColor: Animated.AnimatedInterpolation<ColorsEnum>
-    iconBorderColor: Animated.AnimatedInterpolation<ColorsEnum>
+    iconBackgroundColor: Animated.AnimatedInterpolation<ColorsType>
+    iconBorderColor: Animated.AnimatedInterpolation<ColorsType>
     transition: Animated.AnimatedInterpolation<string | number>
   }
   accessibilityRole?: AccessibilityRole

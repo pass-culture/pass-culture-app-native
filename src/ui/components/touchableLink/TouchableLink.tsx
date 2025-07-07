@@ -6,11 +6,10 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { ColorsType } from 'theme/types'
 import { handleNavigationWrapper } from 'ui/components/touchableLink/handleNavigationWrapper'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -104,7 +103,7 @@ export function TouchableLink({
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   isFocus?: boolean
   isHover?: boolean
-  hoverUnderlineColor?: ColorsEnum
+  hoverUnderlineColor?: ColorsType
 }>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
   ...touchableFocusOutline(theme, isFocus),
   ...getHoverStyle({
@@ -116,7 +115,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
 const StyledTouchableHighlight = styled.TouchableHighlight<{
   isFocus?: boolean
   isHover?: boolean
-  hoverUnderlineColor?: ColorsEnum
+  hoverUnderlineColor?: ColorsType
 }>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
   textDecoration: 'none',
   ...touchableFocusOutline(theme, isFocus),

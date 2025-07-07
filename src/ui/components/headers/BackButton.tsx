@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { ColorsTypeLegacy } from 'theme/types'
+import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -12,7 +12,7 @@ import { getSpacing } from 'ui/theme'
 
 interface HeaderIconProps {
   onGoBack?: () => void
-  color?: ColorsTypeLegacy
+  color?: ColorsType
 }
 
 export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
@@ -33,7 +33,7 @@ const StyledTouchable = styledButton(Touchable)({
   alignItems: 'center',
 })
 
-const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color: ColorsTypeLegacy }>(
+const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color: ColorsType }>(
   ({ theme, color }) => ({
     color: color ?? theme.designSystem.color.icon.default,
     size: theme.icons.sizes.small,

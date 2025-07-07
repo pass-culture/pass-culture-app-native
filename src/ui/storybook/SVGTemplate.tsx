@@ -80,7 +80,7 @@ const IconWrapper = styled.TouchableOpacity<{
   padding: getSpacing(2),
   width: isIllustration ? getSpacing(60) : getSpacing(40),
   minHeight: isIllustration ? getSpacing(40) : getSpacing(25),
-  border: `2px solid ${isCopied ? theme.colors.greenValid : theme.designSystem.color.border.subtle}`,
+  border: `2px solid ${isCopied ? theme.designSystem.color.border.success : theme.designSystem.color.border.subtle}`,
   borderRadius: getSpacing(2),
   justifyContent: 'center',
   backgroundColor: isCopied

@@ -2,12 +2,11 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { ColorsType } from 'theme/types'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type HeroButtonListProps = {
@@ -47,7 +46,7 @@ export function HeroButtonList({
 }
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
-  color: ColorsEnum
+  color: ColorsType
 }>(({ color }) => ({
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
