@@ -1,16 +1,37 @@
 const fs = require('fs')
 const {
-  getAverageCpuUsage,
-  getAverageFPSUsage,
-  getAverageRAMUsage,
+  averageIterations,
+  getScore,
+  getFpsStats,
+  getRamStats,
+  getCpuStats,
+  getThreadsStats,
+  getStandardDeviationFPS,
+  getStandardDeviationCPU,
+  getAverageCpuUsagePerProcess,
+  sanitizeProcessName,
+  canComputeHighCpuUsage,
+  averageHighCpuUsage,
 } = require('@perf-profiler/reporter')
 
-// ANSI color codes for logging
+// --- Configuration ---
+// Show the top N CPU consuming threads to avoid overly verbose logs
+const TOP_N_THREADS = 5
+
+// --- ANSI color codes for logging ---
 const C_BLUE = '\x1b[1;34m'
 const C_GREEN = '\x1b[1;32m'
 const C_RED = '\x1b[1;31m'
+const C_YELLOW = '\x1b[1;33m'
 const C_RESET = '\x1b[0m'
+const C_DIM = '\x1b[2m'
 
+// --- Helper Functions ---
+const logTitle = (title) => console.log(`\n${C_BLUE}===== ${title} =====${C_RESET}`)
+const logMetric = (name, value) => console.log(`  - ${name.padEnd(25, ' ')}${value}`)
+const toInt = (num) => Math.floor(num || 0)
+
+// --- Script Entry Point ---
 const resultsPath = process.argv[2]
 if (!resultsPath) {
   console.error(`${C_RED}ERROR: No results file path provided.${C_RESET}`)
@@ -27,57 +48,71 @@ let results
 try {
   results = JSON.parse(content)
 } catch (error) {
-  console.error(`${C_RED}ERROR: Failed to parse JSON from '${resultsPath}'${C_RESET}`)
-  console.error(error)
+  console.error(`${C_RED}ERROR: Failed to parse JSON from '${resultsPath}'${C_RESET}`, error)
   process.exit(1)
 }
 
-console.log(`${C_BLUE}========== Performance Test Summary ==========${C_RESET}`)
+// --- Main Logic ---
 
-const overallStatus = results.status
-if (overallStatus !== 'SUCCESS') {
-  console.log(
-    `${C_RED}Test run reported a FAILURE status overall. Summary of iterations below.${C_RESET}`
-  )
-} else {
-  console.log(`${C_GREEN}Test run reported a SUCCESS status overall.${C_RESET}`)
+// Step 1: Create a single, averaged result from all successful test iterations
+const successfulIterations = results.iterations.filter((iter) => iter.status === 'SUCCESS')
+if (successfulIterations.length === 0) {
+  console.error(`${C_RED}ERROR: No successful test iterations found to analyze.${C_RESET}`)
+  process.exit(1)
+}
+const averagedResult = averageIterations(successfulIterations)
+
+// Step 2: Generate and display the report sections
+logTitle('Overall Performance Summary')
+
+const score = getScore(averagedResult)
+logMetric('Overall Score', `${C_GREEN}${score.toFixed(2)} / 100${C_RESET}`)
+logMetric('Successful Iterations', `${successfulIterations.length} / ${results.iterations.length}`)
+
+if (canComputeHighCpuUsage(averagedResult)) {
+  const highCpu = averageHighCpuUsage(averagedResult)
+  logMetric('Time with High CPU (>90%)', `${C_YELLOW}${highCpu.toFixed(2)}% of the time${C_RESET}`)
 }
 
-results.iterations.forEach((iteration, index) => {
-  console.log(`\n${C_BLUE}--- Iteration ${index + 1} ---${C_RESET}`)
-  const status = iteration.status
-  const measures = iteration.measures
+logTitle('FPS (UI Smoothness)')
+const fpsStats = getFpsStats(averagedResult)
+const fpsStdDev = getStandardDeviationFPS(averagedResult)
+logMetric('Average FPS', `${toInt(fpsStats.average)} FPS`)
+logMetric('Min FPS (UI Stutter)', `${C_YELLOW}${toInt(fpsStats.min)} FPS${C_RESET}`)
+logMetric('Std Deviation (Jankiness)', `${toInt(fpsStdDev)}`)
+console.log(`${C_DIM}  (Lower is smoother)${C_RESET}`)
 
-  if (status !== 'SUCCESS') {
-    console.log(`Status: ${C_RED}${status}${C_RESET}`)
-    console.log('  Test failed, skipping metrics.')
-    return
-  }
+logTitle('RAM (Memory Usage)')
+const ramStats = getRamStats(averagedResult)
+logMetric('Average RAM Usage', `${toInt(ramStats.average)} MB`)
+logMetric('Max RAM Usage', `${C_YELLOW}${toInt(ramStats.max)} MB${C_RESET}`)
 
-  console.log(`Status: ${status}`)
+logTitle('CPU Usage (Total)')
+const cpuStats = getCpuStats(averagedResult)
+const cpuStdDev = getStandardDeviationCPU(averagedResult)
+logMetric('Average CPU Usage', `${toInt(cpuStats.average)} %`)
+logMetric('Max CPU Usage', `${C_YELLOW}${toInt(cpuStats.max)} %${C_RESET}`)
+logMetric('Std Deviation (Stability)', `${toInt(cpuStdDev)}`)
 
-  const avgFps = getAverageFPSUsage(measures)
-  const avgRam = getAverageRAMUsage(measures)
-  const avgCpu = getAverageCpuUsage(measures)
+logTitle('CPU Usage (Per Process)')
+const perProcessCpu = getAverageCpuUsagePerProcess(averagedResult)
+for (const processName in perProcessCpu) {
+  logMetric(sanitizeProcessName(processName), `${toInt(perProcessCpu[processName])} %`)
+}
 
-  const allFpsValues = measures.map((m) => m.fps).filter((fps) => fps !== null && fps !== undefined)
-  const minFps = allFpsValues.length > 0 ? Math.min(...allFpsValues) : 'N/A'
+logTitle(`CPU Usage (Top ${TOP_N_THREADS} Threads)`)
+const threads = getThreadsStats(averagedResult)
+  .sort((a, b) => b.averageCpuUsage - a.averageCpuUsage)
+  .slice(0, TOP_N_THREADS)
 
-  const allRamValues = measures.map((m) => m.ram).filter((ram) => ram !== null && ram !== undefined)
-  const maxRam = allRamValues.length > 0 ? Math.max(...allRamValues) : 'N/A'
-
-  console.log(`  - FPS (Avg/Min):      ${Math.floor(avgFps)} / ${Math.floor(minFps)}`)
-  console.log(`  - RAM (Avg/Max):      ${Math.floor(avgRam)} MB / ${Math.floor(maxRam)} MB`)
-
-  // FIX: Treat avgCpu as a single number for the total average CPU usage.
-  // The getAverageCpuUsage function in this library version does not return a per-thread breakdown.
-  console.log(`  - CPU (Total Avg):      ${Math.floor(avgCpu)} %`)
+threads.forEach((thread) => {
+  logMetric(sanitizeProcessName(thread.name), `${toInt(thread.averageCpuUsage)} %`)
 })
 
-console.log(`\n${C_BLUE}===========================================${C_RESET}`)
-
-// Exit with a non-zero code if the overall test run failed to fail the CI job
-if (overallStatus !== 'SUCCESS') {
-  console.error(`${C_RED}[ERROR] Performance test suite did not pass. Failing the build.${C_RESET}`)
+// --- Final Verdict ---
+if (results.status !== 'SUCCESS') {
+  console.error(
+    `\n${C_RED}[FAIL] Overall test status was '${results.status}'. Failing the build.${C_RESET}`
+  )
   process.exit(1)
 }
