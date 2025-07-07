@@ -77,7 +77,7 @@ jobs:
         run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/testing.keystore
 
       - name: Run the full test script
-        run: ./scripts/setup_android_create_emulators.sh
+        run: ./scripts/run_flashlight_on_android.sh
 
       - name: Log app version
         run: |
