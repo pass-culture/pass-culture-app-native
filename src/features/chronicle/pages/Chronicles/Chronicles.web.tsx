@@ -71,7 +71,7 @@ export const Chronicles: FunctionComponent = () => {
   )
 
   const onPress = () => {
-    navigate('Offer', { id: offerId, openModalOnNavigation: undefined, from: 'chronicles' })
+    navigate('Offer', { id: offerId, from: 'chronicles' })
   }
 
   if (!offer || !chronicleCardsData) return null

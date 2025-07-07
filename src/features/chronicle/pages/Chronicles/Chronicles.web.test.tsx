@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
@@ -8,7 +8,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 
 useRoute.mockReturnValue({
   params: {
@@ -110,6 +110,23 @@ describe('Chronicles', () => {
 
         expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
         expect(screen.getByText('Trouve ta séance')).toBeInTheDocument()
+      })
+
+      it('should redirect to offer page when pressing session button and offer subscategory is in cine club subcategories', async () => {
+        render(reactQueryProviderHOC(<Chronicles />), {
+          theme: {
+            isDesktopViewport: true,
+          },
+        })
+
+        await screen.findByText('Tous les avis')
+
+        fireEvent.click(screen.getByText('Trouve ta séance'))
+
+        expect(navigate).toHaveBeenCalledWith('Offer', {
+          id: offerResponseSnap.id,
+          from: 'chronicles',
+        })
       })
     })
 
