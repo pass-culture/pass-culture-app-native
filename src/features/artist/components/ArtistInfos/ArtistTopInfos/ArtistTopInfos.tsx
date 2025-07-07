@@ -23,7 +23,7 @@ export const ArtistTopInfos = ({ avatarImage, name }: ArtistHeaderProps) => {
           <StyledImage
             url={avatarImage}
             accessibilityRole={AccessibilityRole.IMAGE}
-            accessibilityLabel={`image de ${name}`}
+            accessibilityLabel=""
           />
         ) : (
           <DefaultAvatar />
