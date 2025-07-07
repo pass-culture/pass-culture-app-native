@@ -111,8 +111,6 @@ SimulatorsList.txt
 scripts/multipleSimulatorsStartup.sh
 
 # Sentry
-android/sentry.properties
-ios/sentry.properties
 sourcemaps/*
 .sentryclirc
 !templates_github_ci/.sentryclirc
