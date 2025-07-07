@@ -217,7 +217,4 @@ else
     echo -e "${C_RED}[ERROR] ==> Performance script failed. Exiting.${C_RESET}" >&2; exit 1
 fi
 
-log_and_run "Generating full Flashlight HTML report" \
-    cd "$REPO_ROOT" && flashlight report "resultsLaunchApp.json"
-
 echo -e "\n${C_GREEN}Script finished successfully!${C_RESET}"
