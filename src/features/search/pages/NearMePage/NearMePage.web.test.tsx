@@ -11,11 +11,11 @@ import { NearMePage } from './NearMePage'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+// jest.mock('libs/location')
+
 const client = algoliasearch()
 const index = client.initIndex()
 index.search.mockResolvedValue(mockAlgoliaResponse(offerNearMeHits))
-
-jest.mock('libs/location')
 
 describe('<NearMePage />', () => {
   beforeAll(() => {
@@ -28,9 +28,9 @@ describe('<NearMePage />', () => {
 
       await screen.findByText('Les offres autour de moi')
 
-      const results = await act(async () => {
-        return checkAccessibilityFor(container)
-      })
+      await act(async () => {})
+
+      const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
     })
