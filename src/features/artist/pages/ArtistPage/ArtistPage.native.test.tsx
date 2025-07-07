@@ -9,7 +9,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
-import { mockArtist } from '../fixtures/mockArtist'
+import { mockArtist } from '../../fixtures/mockArtist'
 
 import { ArtistPage } from './ArtistPage'
 
