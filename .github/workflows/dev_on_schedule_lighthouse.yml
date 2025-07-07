@@ -1,4 +1,4 @@
-name: '4 [on_pr] Lighthouse Web Performance test'
+name: '[on_schedule] Lighthouse Web Performance test'
 
 on:
   schedule:

@@ -1,23 +1,13 @@
-name: 'E2E Tests'
+name: '[on_schedule] Flashlight Android Performance test'
 
-on:
-  workflow_dispatch: # Or push, pull_request, etc.
-  workflow_call:
-    inputs:
-      # Define any inputs your job needs, like the cache bucket
-      CACHE_BUCKET_NAME:
-        type: string
-        required: true
-    secrets:
-      # These must be passed from the calling workflow or configured in the repo
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
+on: push
+
+env:
+  CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
 
 jobs:
   run-e2e-tests:
-    name: 'Run Android E2E Tests'
+    name: 'Run Flashlight Android Performance Test'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
