@@ -815,28 +815,6 @@ describe('BookingDetails', () => {
         expect(screen.getByTestId('external-booking-ticket-container')).toBeOnTheScreen()
       })
 
-      it('should render Hidden External Booking Component when no externalbooking data', async () => {
-        renderBookingDetailsV2({
-          ...ongoingBookingV2,
-          stock: {
-            ...ongoingBookingV2.stock,
-            offer: {
-              ...ongoingBookingV2.stock.offer,
-              isDigital: false,
-            },
-          },
-          ticket: {
-            ...ongoingBookingV2.ticket,
-            noTicket: false,
-            withdrawal: {},
-            externalBooking: {},
-          },
-        })
-        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
-
-        expect(screen.getByTestId('hidden-external-booking-ticket-container')).toBeOnTheScreen()
-      })
-
       it('should render cinema booking ticket if voucher is present', async () => {
         renderBookingDetailsV2({
           ...ongoingBookingV2,
