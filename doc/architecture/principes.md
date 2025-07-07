@@ -41,7 +41,7 @@ Que ce soit par l'utilisation de mocks, injection de dépendances ou recréation
 
 #### Un bon découplage entre le métier et l'UI
 
-Quand tel est le cas, il est possible de tester l'application à des niveaux plus contrôlables (au niveau de fonctions pures ou de hooks).
+Un bon découplage entre le métier et l'UI permet de tester l'application à des niveaux plus contrôlables (au niveau de fonctions pures ou de hooks).
 
 ## Les principes
 
@@ -123,7 +123,7 @@ const ArtistContainer: FunctionComponent<{ artistID: ArtistId }> = ({ artistID }
 }
 ```
 
-Lorsque un `selector` a de la logique (comme au moins une condition `if`, `switch`), il faut le séparer dans le dossier `../selectors/` et le tester unitairement.
+Lorsque un `selector` contient de la logique (comme au moins une condition `if`, `switch`), il faut le séparer dans le dossier `../selectors/` et le tester unitairement.
 
 #### Contrat
 
@@ -379,7 +379,7 @@ const ArtistImage: FunctionComponent<Props> = ({ artistImageURL }) => {
 
 #### La composition
 
-La composition évite principalement le props drilling (passage de props en cascade) et donne plus de visibilité sur le composant.
+La composition évite principalement le props drilling (passage de props en cascade) et permet d'avoir des composants plus simples.
 
 Sans composition on aura un container qui sera plus concis et plus propre à première vue, mais sera très difficile à débugger pour 2 raisons :
 
@@ -454,11 +454,11 @@ Exemple :
 ### La gestion d'états locaux avec Zustand
 
 Zustand est le state global de l'app, il permet de partager et modifier des variables entre plusieurs vues.
-Il évite le props drilling et l'utilisation de contextes qui sont néfastes à l'app (en terme de maintenance et d'optimisation de rendus)
+Il évite le props drilling et l'utilisation de `Context` qui sont néfastes à l'app (en terme de maintenance et d'optimisation de rendus)
 
-Il ne doit être utilisé que pour les états qui ne proviennent pas du serveur (ex : localisation).
+Il doit être utilisé que pour les états qui locaux (ne provenant pas du serveur) (ex : localisation).
 
-Un seul store doit être créé pour un contexte
+Un seul store doit être créé pour un contexte métier
 
 ### Logiques portées par le backend
 
