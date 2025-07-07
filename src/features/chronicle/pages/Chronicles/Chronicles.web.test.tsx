@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -21,34 +22,114 @@ jest.mock('features/navigation/helpers/openUrl')
 
 describe('Chronicles', () => {
   beforeEach(() => {
-    mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerChroniclesFixture)
     mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should render correctly in mobile', async () => {
-    render(reactQueryProviderHOC(<Chronicles />), {
-      theme: {
-        isDesktopViewport: false,
-      },
+  describe('Mobile displaying', () => {
+    describe('Book Club subcategory', () => {
+      beforeEach(() => {
+        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        })
+      })
+
+      it('should render correctly', async () => {
+        render(reactQueryProviderHOC(<Chronicles />), {
+          theme: {
+            isDesktopViewport: false,
+          },
+        })
+
+        expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
+        expect(screen.getAllByTestId(/chronicle-*/).length).toBeGreaterThan(0)
+      })
+
+      it('should not display booking button when offer subscategory is in book club subcategories', async () => {
+        render(reactQueryProviderHOC(<Chronicles />), {
+          theme: {
+            isDesktopViewport: false,
+          },
+        })
+
+        expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
+        expect(screen.queryByText("Réserver l'offre")).not.toBeInTheDocument()
+      })
     })
 
-    expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
-    expect(screen.queryByText("Réserver l'offre")).not.toBeInTheDocument()
-    expect(screen.getAllByTestId(/chronicle-*/).length).toBeGreaterThan(0)
+    describe('Cine Club subcategory', () => {
+      beforeEach(() => {
+        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        })
+      })
+
+      it('should not display session button when offer subscategory is in cine club subcategories', async () => {
+        render(reactQueryProviderHOC(<Chronicles />), {
+          theme: {
+            isDesktopViewport: false,
+          },
+        })
+
+        expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
+        expect(screen.queryByText('Trouve ta séance')).not.toBeInTheDocument()
+      })
+    })
   })
 
-  it('should render correctly in desktop', async () => {
-    render(reactQueryProviderHOC(<Chronicles />), {
-      theme: {
-        isDesktopViewport: true,
-      },
+  describe('Desktop displaying', () => {
+    describe('Cine Club subcategory', () => {
+      beforeEach(() => {
+        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        })
+      })
+
+      it('should render correctly', async () => {
+        render(reactQueryProviderHOC(<Chronicles />), {
+          theme: {
+            isDesktopViewport: true,
+          },
+        })
+
+        expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
+        expect(screen.getByText('Sous les étoiles de Paris - VF')).toBeInTheDocument()
+        expect(screen.getByText('Dès 5,00 €')).toBeInTheDocument()
+        expect(screen.getAllByTestId(/chronicle-*/).length).toBeGreaterThan(0)
+      })
+
+      it('should display session button when offer subscategory is in cine club subcategories', async () => {
+        render(reactQueryProviderHOC(<Chronicles />), {
+          theme: {
+            isDesktopViewport: true,
+          },
+        })
+
+        expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
+        expect(screen.getByText('Trouve ta séance')).toBeInTheDocument()
+      })
     })
 
-    expect(await screen.findByText('Tous les avis')).toBeInTheDocument()
-    expect(screen.getByText('Sous les étoiles de Paris - VF')).toBeInTheDocument()
-    expect(screen.getByText('Dès 5,00 €')).toBeInTheDocument()
-    expect(screen.getByTestId('booking-button')).toBeInTheDocument()
-    expect(screen.getAllByTestId(/chronicle-*/).length).toBeGreaterThan(0)
+    describe('Book Club subcategory', () => {
+      beforeEach(() => {
+        mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        })
+      })
+
+      it('should display booking button when offer subscategory is in book club subcategories', async () => {
+        render(reactQueryProviderHOC(<Chronicles />), {
+          theme: {
+            isDesktopViewport: true,
+          },
+        })
+
+        expect(await screen.findByText('Réserver l’offre')).toBeInTheDocument()
+      })
+    })
   })
 })
