@@ -74,15 +74,18 @@ jobs:
             ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
           result_path: android/keystores/testing.keystore.properties
 
-      # This step is also correct and should be kept
       - name: Setup android Google services config
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
 
-      # This step is also correct and should be kept
       - name: Setup android keystore file
         run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/testing.keystore
 
-      # --- FIX 2: SIMPLIFY THE SCRIPT EXECUTION ---
-      # The script no longer needs the secrets passed via `env`
       - name: Run the full test script
         run: ./scripts/setup_android_create_emulators.sh
+
+      - name: Log app version
+        run: |
+          APP_VERSION=$(jq --raw-output '.version' ./package.json)
+          echo "App version is: $APP_VERSION"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
