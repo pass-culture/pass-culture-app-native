@@ -94,7 +94,16 @@ const buildSearchDate = (searchState: SearchState) => {
   const startDate =
     searchState.date?.selectedDate ?? searchState.timeRange?.[0] ?? searchState.beginningDatetime
   const endDate = searchState.timeRange?.[1] ?? searchState.endingDatetime ?? null
-  const searchFilter = searchState.date?.option ?? searchState.calendarFilterId ?? null
+
+  let searchFilter: string | null = null
+  const filterId = searchState.date?.option ?? searchState.calendarFilterId ?? null
+  if (filterId) {
+    searchFilter = filterId
+  } else if (startDate && endDate && startDate !== endDate) {
+    searchFilter = 'dateInterval'
+  } else if (startDate && (!endDate || startDate === endDate)) {
+    searchFilter = 'specificDate'
+  }
 
   if (startDate) {
     return JSON.stringify({ startDate, endDate, searchFilter })
