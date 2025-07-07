@@ -16,11 +16,11 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { Page } from 'ui/pages/Page'
 
-import { ArtistInfos } from '../components/ArtistInfos/ArtistInfos'
-import { ArtistWebMetaHeader } from '../components/ArtistWebMetaHeader'
-import { ArtistPlaylistContainer } from '../containers/ArtistPlaylistContainer/ArtistPlaylistContainer'
-import { ArtistTopOffersContainer } from '../containers/ArtistTopOffersContainer/ArtistTopOffersContainer'
-import { useArtistQuery } from '../queries/useArtistQuery'
+import { ArtistInfos } from '../../components/ArtistInfos/ArtistInfos'
+import { ArtistWebMetaHeader } from '../../components/ArtistWebMetaHeader'
+import { ArtistPlaylistContainer } from '../../containers/ArtistPlaylistContainer/ArtistPlaylistContainer'
+import { ArtistTopOffersContainer } from '../../containers/ArtistTopOffersContainer/ArtistTopOffersContainer'
+import { useArtistQuery } from '../../queries/useArtistQuery'
 
 export const ArtistPage: FunctionComponent = () => {
   const { goBack } = useGoBack('Offer')
