@@ -31,91 +31,89 @@ log_and_run() {
 }
 # --- End of Logging Helper ---
 
-log_and_run "Starting script" echo "Environment setup begins."
-
-# --- Tool Installations (Maestro, Flashlight) ---
-# ... these are fine as they are ...
-log_and_run "Downloading Maestro installer" \
-    curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro_installer.sh
-log_and_run "Running Maestro installer" \
-    bash /tmp/maestro_installer.sh
-echo -e "\n${C_BLUE}[INFO] ==> Adding Maestro to PATH for this session...${C_RESET}"
-export PATH="$PATH":"$HOME/.maestro/bin"
-echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
-log_and_run "Verifying Maestro installation" maestro -v
-
-log_and_run "Downloading Flashlight installer" \
-    curl -fsSL "https://get.flashlight.dev" -o /tmp/flashlight_installer.sh
-log_and_run "Running Flashlight installer" \
-    bash /tmp/flashlight_installer.sh
-echo -e "\n${C_BLUE}[INFO] ==> Adding Flashlight to PATH for this session...${C_RESET}"
-export PATH="$PATH":"$HOME/.flashlight/bin"
-echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
-log_and_run "Verifying Flashlight installation" flashlight -v
-# --- End of Tool Installations ---
-
-
-# --- Android SDK Configuration ---
-# ... this section is also fine ...
-ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
-export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
-log_and_run "Ensuring AVD storage directory exists" mkdir -p "$ANDROID_AVD_HOME"
-log_and_run "Creating Android SDK directory if it doesn't exist" mkdir -p "$(dirname "$ANDROID_HOME")"
-echo -e "\n${C_BLUE}[INFO] ==> Updating PATH with Android SDK tool locations...${C_RESET}"
-export PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo ''):$PATH:$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
-echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
-# --- End of Android SDK Configuration ---
-
-
 # --- Helper Functions ---
-# ... all helper functions like recreate_emulator are fine ...
-accept_licence() { echo "y"; }
-sdkmanager_install_accepting_licence() { accept_licence | sdkmanager "$@" >/dev/null; }
+accept_licence() {
+    echo "y"
+}
+
+sdkmanager_install_accepting_licence() {
+    accept_licence | sdkmanager "$@" >/dev/null
+}
+
 verify_package_installed() {
     local package_name="$1"
     echo -e "${C_BLUE}[INFO] ==> Verifying that package '$package_name' is installed...${C_RESET}"
     if sdkmanager --list_installed | grep -q -E "^\s*${package_name}"; then
         echo -e "${C_GREEN}[SUCCESS] ==> Package '$package_name' is confirmed to be installed.${C_RESET}"
+        return 0
     else
         echo -e "${C_RED}[ERROR] ==> Verification failed. Package '$package_name' was NOT found after installation attempt.${C_RESET}"
         exit 1
     fi
 }
+
 image_for_sdk() {
-    local SDK_VERSION="$1"; local ARCHITECTURE_SUFFIX
-    if [ "$(uname -m)" == "arm64" ]; then ARCHITECTURE_SUFFIX="arm64-v8a"; else ARCHITECTURE_SUFFIX="x86_64"; fi
+    local SDK_VERSION="$1"
+    local ARCHITECTURE_SUFFIX
+    if [ "$(uname -m)" == "arm64" ]; then
+        ARCHITECTURE_SUFFIX="arm64-v8a"
+    else
+        ARCHITECTURE_SUFFIX="x86_64"
+    fi
     echo "system-images;android-$SDK_VERSION;google_apis;$ARCHITECTURE_SUFFIX"
 }
+
 install_platforms_and_image() {
-    local SDK_VERSION="$1"; local PLATFORM_PACKAGE="platforms;android-$SDK_VERSION"; local IMAGE_PACKAGE
+    local SDK_VERSION="$1"
+    local PLATFORM_PACKAGE="platforms;android-$SDK_VERSION"
+    local IMAGE_PACKAGE
     IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
-    log_and_run "Attempting to install Android SDK platform '$PLATFORM_PACKAGE'" sdkmanager_install_accepting_licence --install "$PLATFORM_PACKAGE"
+
+    log_and_run "Attempting to install Android SDK platform '$PLATFORM_PACKAGE'" \
+        sdkmanager_install_accepting_licence --install "$PLATFORM_PACKAGE"
     verify_package_installed "$PLATFORM_PACKAGE"
-    log_and_run "Attempting to install system image '$IMAGE_PACKAGE'" sdkmanager_install_accepting_licence --install "$IMAGE_PACKAGE"
+
+    log_and_run "Attempting to install system image '$IMAGE_PACKAGE'" \
+        sdkmanager_install_accepting_licence --install "$IMAGE_PACKAGE"
     verify_package_installed "$IMAGE_PACKAGE"
 }
+
 recreate_emulator() {
-    local EMULATOR_NAME="$1"; local SDK_VERSION="$2"; local DEVICE_NAME="$3"; local IMAGE_PACKAGE
-    install_platforms_and_image "$SDK_VERSION"; IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
-    echo -e "${C_BLUE}[INFO] ==> Listing available device definitions...${C_RESET}"; avdmanager list device
-    echo -e "${C_BLUE}----------------------------------${C_RESET}"
+    local EMULATOR_NAME="$1"
+    local SDK_VERSION="$2"
+    local DEVICE_NAME="$3"
+    local IMAGE_PACKAGE
+
+    install_platforms_and_image "$SDK_VERSION"
+    IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
+
     echo -e "\n${C_BLUE}[INFO] ==> Attempting to create AVD '$EMULATOR_NAME'...${C_RESET}"
-    if ! avdmanager create avd --name "$EMULATOR_NAME" --package "$IMAGE_PACKAGE" --device "$DEVICE_NAME" --force; then
-        echo -e "${C_RED}[ERROR] ==> avdmanager create command failed.${C_RESET}"; exit 1
+    if ! avdmanager create avd \
+        --name "$EMULATOR_NAME" \
+        --package "$IMAGE_PACKAGE" \
+        --device "$DEVICE_NAME" \
+        --force; then
+        echo -e "${C_RED}[ERROR] ==> avdmanager create command failed.${C_RESET}"
+        exit 1
     fi
-    echo -e "\n${C_BLUE}[INFO] ==> Verifying AVD was created...${C_RESET}"; avdmanager list avd
-    if ! avdmanager list avd | grep -q "Name: ${EMULATOR_NAME}"; then
-        echo -e "${C_RED}[ERROR] ==> VERIFICATION FAILED: AVD '$EMULATOR_NAME' was not found.${C_RESET}"; exit 1
-    fi
-    echo -e "${C_GREEN}[SUCCESS] ==> AVD '$EMULATOR_NAME' was successfully created.${C_RESET}"
+    echo -e "${C_GREEN}[SUCCESS] ==> AVD '$EMULATOR_NAME' created.${C_RESET}"
+    
     local EMULATOR_LOG_FILE="emulator-boot.log"
     echo -e "${C_BLUE}[INFO] ==> Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE}).${C_RESET}"
-    emulator -avd "$EMULATOR_NAME" -no-window -no-audio -no-snapshot -no-boot-anim -partition-size 2048 > "$EMULATOR_LOG_FILE" 2>&1 &
-    local EMULATOR_PID=$!; echo -e "${C_BLUE}[INFO] ==> Waiting 15s for emulator process...${C_RESET}"; sleep 15
+    emulator \
+        -avd "$EMULATOR_NAME" \
+        -no-window -no-audio -no-snapshot -no-boot-anim \
+        -partition-size 2048 \
+        > "$EMULATOR_LOG_FILE" 2>&1 &
+
+    local EMULATOR_PID=$!
+    echo -e "${C_BLUE}[INFO] ==> Waiting 15s for emulator process...${C_RESET}"
+    sleep 15
+    
     if ! ps -p $EMULATOR_PID > /dev/null; then
-        echo -e "${C_RED}[ERROR] ==> Emulator process (PID $EMULATOR_PID) crashed on startup.${C_RESET}"; cat "$EMULATOR_LOG_FILE"; exit 1
+        echo -e "${C_RED}[ERROR] ==> Emulator process (PID $EMULATOR_PID) crashed on startup.${C_RESET}"
+        cat "$EMULATOR_LOG_FILE"
+        exit 1
     else
         echo -e "${C_GREEN}[SUCCESS] ==> Emulator process is running (PID $EMULATOR_PID).${C_RESET}"
     fi
@@ -124,26 +122,50 @@ recreate_emulator() {
 
 
 # --- Main Execution Logic ---
+log_and_run "Starting script" echo "Environment setup begins."
+
 log_and_run "Enabling Corepack" corepack enable
 
-# --- FIX: Handle complex commands with `cd` manually and robustly ---
-echo -e "\n${C_BLUE}[INFO] ==> Installing Node.js dependencies from the repository root...${C_RESET}"
-if (cd "$REPO_ROOT" && yarn install); then
-    echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
+# --- Dependency Installation ---
+echo -e "\n${C_BLUE}[INFO] ==> Installing Node.js dependencies from lockfile...${C_RESET}"
+if (cd "$REPO_ROOT" && yarn install --frozen-lockfile); then
+    echo -e "${C_GREEN}[SUCCESS] ==> yarn install complete.${C_RESET}"
 else
     echo -e "${C_RED}[ERROR] ==> yarn install failed. Exiting.${C_RESET}" >&2; exit 1
 fi
+
+echo -e "\n${C_BLUE}[INFO] ==> Explicitly installing profiler packages to ensure they exist for parsing...${C_RESET}"
+if (cd "$REPO_ROOT" && yarn add --dev @perf-profiler/e2e @perf-profiler/reporter); then
+    echo -e "${C_GREEN}[SUCCESS] ==> Profiler packages installed.${C_RESET}"
+else
+    echo -e "${C_RED}[ERROR] ==> Failed to install profiler packages. Exiting.${C_RESET}" >&2; exit 1
+fi
+# --- End of Dependency Installation ---
+
+
+# --- Tool & SDK Installation ---
+log_and_run "Downloading Maestro installer" curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro_installer.sh
+log_and_run "Running Maestro installer" bash /tmp/maestro_installer.sh
+echo -e "\n${C_BLUE}[INFO] ==> Adding Maestro to PATH...${C_RESET}"
+export PATH="$PATH":"$HOME/.maestro/bin"
+
+log_and_run "Downloading Flashlight installer" curl -fsSL "https://get.flashlight.dev" -o /tmp/flashlight_installer.sh
+log_and_run "Running Flashlight installer" bash /tmp/flashlight_installer.sh
+echo -e "\n${C_BLUE}[INFO] ==> Adding Flashlight to PATH...${C_RESET}"
+export PATH="$PATH":"$HOME/.flashlight/bin"
 
 log_and_run "Installing Android command-line tools v${ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION}" sdkmanager_install_accepting_licence --install "cmdline-tools;$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION"
 log_and_run "Installing Android platform-tools" sdkmanager_install_accepting_licence --install "platform-tools"
 verify_package_installed "platform-tools"
 log_and_run "Installing Android emulator package" sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
+# --- End of Tool & SDK Installation ---
 
-# --- FIX: Handle complex commands with `cd` manually and robustly ---
+
+# --- Build, Emulator, and Test Execution ---
 echo -e "\n${C_BLUE}[INFO] ==> Building the Android testing debug APK...${C_RESET}"
 if (cd "$REPO_ROOT/android" && ./gradlew assembleApptestingRelease); then
-    echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
+    echo -e "${C_GREEN}[SUCCESS] ==> APK build complete.${C_RESET}"
 else
     echo -e "${C_RED}[ERROR] ==> ./gradlew assembleApptestingRelease failed. Exiting.${C_RESET}" >&2; exit 1
 fi
@@ -159,24 +181,23 @@ MIN_SDK_VERSION="30"
 recreate_emulator "SDK_modern_test" "$MIN_SDK_VERSION" "pixel_6"
 
 log_and_run "Waiting up to 10 minutes for emulator to fully boot..." \
-    timeout 600 adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
+    timeout 600 adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; echo "Emulator booted."'
 
-echo -e "${C_GREEN}[SUCCESS] ==> Emulator is fully booted!${C_RESET}"
 log_and_run "Listing connected devices" adb devices
 echo -e "${C_BLUE}[INFO] ==> Waiting an extra 15 seconds for services to stabilize...${C_RESET}"; sleep 15
 
 log_and_run "Installing the APK onto the emulator" adb install "$APK_PATH"
 
 echo -e "\n${C_BLUE}[INFO] ==> Running Flashlight test with Maestro...${C_RESET}"
+# We run this directly and allow it to fail with a warning, so we can still try to parse results.
 flashlight test \
     --bundleId app.passculture.testing \
     --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
-    --resultsFilePath resultsLaunchApp.json || echo -e "${C_RED}[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete.${C_RESET}"
+    --resultsFilePath "$REPO_ROOT/resultsLaunchApp.json" || echo -e "${C_RED}[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete.${C_RESET}"
 
-# --- FIX: Handle complex commands with `cd` manually and robustly ---
 echo -e "\n${C_BLUE}[INFO] ==> Parsing and evaluating performance results...${C_RESET}"
-# We run `node` from the repo root to ensure it finds the `node_modules` directory.
+# Run the node script from the repo root to ensure it finds node_modules.
 if (cd "$REPO_ROOT" && node "scripts/parse-perf-results.js" "resultsLaunchApp.json"); then
     echo -e "${C_GREEN}[SUCCESS] ==> Performance parsing complete.${C_RESET}"
 else
@@ -184,6 +205,6 @@ else
 fi
 
 log_and_run "Generating full Flashlight HTML report" \
-    flashlight report resultsLaunchApp.json
+    cd "$REPO_ROOT" && flashlight report "resultsLaunchApp.json"
 
 echo -e "\n${C_GREEN}Script finished successfully!${C_RESET}"
