@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { ColorScheme, useColorScheme } from 'libs/styled/useColorScheme'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -64,9 +64,8 @@ export const SystemBanner: FunctionComponent<Props> = ({
   style,
   ...touchableProps
 }) => {
-  const { designSystem } = useTheme()
+  const { designSystem, colorScheme } = useTheme()
   const focusProps = useHandleFocus()
-  const colorScheme = useColorScheme()
 
   useEffect(() => {
     analytics.logSystemBlockDisplayed({ type, from })
