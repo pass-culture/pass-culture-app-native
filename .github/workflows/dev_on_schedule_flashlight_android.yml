@@ -2,6 +2,11 @@ name: '[on_schedule] Flashlight Android Performance test'
 
 on: push
 
+permissions:
+  contents: write
+  id-token: write
+  pages: write
+
 env:
   CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
 
