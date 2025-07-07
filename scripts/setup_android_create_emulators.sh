@@ -1,18 +1,11 @@
 #!/usr/bin/env bash
-# Exit immediately if a command exits with a non-zero status.
-# Treat unset variables as an error.
-# Pipelines return the exit status of the last command to exit with a non-zero status.
+
 set -o errexit -o nounset -o pipefail
 
-# --- Determine Absolute Paths ---
-# Get the directory where this script is located.
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-# Assume the repository root is one level up from the 'scripts' directory.
 REPO_ROOT=$(dirname "$SCRIPT_DIR")
 echo "Repository root detected at: $REPO_ROOT"
-# --- End of Absolute Paths ---
 
-# --- Logging Helper ---
 readonly C_BLUE='\e[1;34m'
 readonly C_GREEN='\e[1;32m'
 readonly C_RED='\e[1;31m'
@@ -29,9 +22,7 @@ log_and_run() {
         exit 1
     fi
 }
-# --- End of Logging Helper ---
 
-# --- Helper Functions ---
 accept_licence() {
     echo "y"
 }
@@ -118,10 +109,7 @@ recreate_emulator() {
         echo -e "${C_GREEN}[SUCCESS] ==> Emulator process is running (PID $EMULATOR_PID).${C_RESET}"
     fi
 }
-# --- End of Helper Functions ---
 
-
-# --- Android SDK Configuration (FIX: RESTORED THIS BLOCK) ---
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
@@ -131,15 +119,11 @@ log_and_run "Creating Android SDK directory if it doesn't exist" mkdir -p "$(dir
 echo -e "\n${C_BLUE}[INFO] ==> Updating PATH with Android SDK tool locations...${C_RESET}"
 export PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo ''):$PATH:$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
 echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
-# --- End of Android SDK Configuration ---
 
-
-# --- Main Execution Logic ---
 log_and_run "Starting script" echo "Environment setup begins."
 
 log_and_run "Enabling Corepack" corepack enable
 
-# --- Dependency Installation ---
 echo -e "\n${C_BLUE}[INFO] ==> Installing Node.js dependencies from lockfile...${C_RESET}"
 if (cd "$REPO_ROOT" && yarn install --frozen-lockfile); then
     echo -e "${C_GREEN}[SUCCESS] ==> yarn install complete.${C_RESET}"
@@ -153,10 +137,7 @@ if (cd "$REPO_ROOT" && yarn add --dev @perf-profiler/e2e @perf-profiler/reporter
 else
     echo -e "${C_RED}[ERROR] ==> Failed to install profiler packages. Exiting.${C_RESET}" >&2; exit 1
 fi
-# --- End of Dependency Installation ---
 
-
-# --- Tool & SDK Installation ---
 log_and_run "Downloading Maestro installer" curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro_installer.sh
 log_and_run "Running Maestro installer" bash /tmp/maestro_installer.sh
 echo -e "\n${C_BLUE}[INFO] ==> Adding Maestro to PATH...${C_RESET}"
@@ -172,10 +153,7 @@ log_and_run "Installing Android platform-tools" sdkmanager_install_accepting_lic
 verify_package_installed "platform-tools"
 log_and_run "Installing Android emulator package" sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
-# --- End of Tool & SDK Installation ---
 
-
-# --- Build, Emulator, and Test Execution ---
 echo -e "\n${C_BLUE}[INFO] ==> Building the Android testing debug APK...${C_RESET}"
 if (cd "$REPO_ROOT/android" && ./gradlew assembleApptestingRelease); then
     echo -e "${C_GREEN}[SUCCESS] ==> APK build complete.${C_RESET}"
@@ -202,7 +180,7 @@ echo -e "${C_BLUE}[INFO] ==> Waiting an extra 15 seconds for services to stabili
 log_and_run "Installing the APK onto the emulator" adb install "$APK_PATH"
 
 echo -e "\n${C_BLUE}[INFO] ==> Running Flashlight test with Maestro...${C_RESET}"
-# We run this directly and allow it to fail with a warning, so we can still try to parse results.
+
 flashlight test \
     --bundleId app.passculture.testing \
     --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
@@ -210,7 +188,7 @@ flashlight test \
     --resultsFilePath "$REPO_ROOT/resultsLaunchApp.json" || echo -e "${C_RED}[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete.${C_RESET}"
 
 echo -e "\n${C_BLUE}[INFO] ==> Parsing and evaluating performance results...${C_RESET}"
-# Run the node script from the repo root to ensure it finds node_modules.
+
 if (cd "$REPO_ROOT" && node "scripts/parse-perf-results.js" "resultsLaunchApp.json"); then
     echo -e "${C_GREEN}[SUCCESS] ==> Performance parsing complete.${C_RESET}"
 else

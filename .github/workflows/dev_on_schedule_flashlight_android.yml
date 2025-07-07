@@ -58,7 +58,6 @@ jobs:
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
 
-      # This step is correct and should be kept
       - name: Setup android keystore properties for testing environment
         uses: chuhlomin/render-template@v1.10
         with:
