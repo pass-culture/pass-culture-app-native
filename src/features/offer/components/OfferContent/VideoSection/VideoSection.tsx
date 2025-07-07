@@ -1,9 +1,8 @@
-import React, { ReactElement, useRef } from 'react'
+import React, { ReactElement } from 'react'
 import { StyleProp, View, ViewStyle, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
-import { YoutubePlayerRef } from 'features/home/components/modules/video/YoutubePlayer/types'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -30,15 +29,13 @@ export const VideoSection = ({
   playerRatio = RATIO169,
 }: VideoSectionProps) => {
   const { width: viewportWidth } = useWindowDimensions()
-  const videoHeight = Math.min(viewportWidth, MAX_WIDTH) * playerRatio
-  const testRef = useRef<YoutubePlayerRef>(null)
+  const videoHeight = Math.min(viewportWidth, maxWidth) * playerRatio
 
   return (
     <Container style={style}>
       <Typo.Title3 {...getHeadingAttrs(3)}>{title}</Typo.Title3>
       {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
       <StyledYoutubePlayer
-        ref={testRef}
         videoId={videoId}
         thumbnail={videoThumbnail}
         height={videoHeight}

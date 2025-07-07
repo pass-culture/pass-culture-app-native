@@ -63,7 +63,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
       setPlayerReady(false)
     },
     measure: (callback) => containerRef.current?.measure?.(callback),
-    ...innerVideoRef.current,
+    ...(innerVideoRef.current ?? {}),
   }))
 
   const handleOnReady = () => {
