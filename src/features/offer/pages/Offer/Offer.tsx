@@ -33,6 +33,7 @@ export function Offer() {
     RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   const { isLoggedIn } = useAuthContext()
   const { data: offer, isLoading } = useOfferQuery({
@@ -51,6 +52,14 @@ export function Offer() {
     enabled: isLoggedIn && isReactionEnabled && !!offer?.id,
   })
   const { mutate: saveReaction } = useReactionMutation()
+
+  const videoData = isVideoSectionEnabled
+    ? {
+        videoId: 'hCqdTGWspes',
+        thumbnailUri:
+          'https://rukminim2.flixcart.com/image/750/900/kgcl7680-0/poster/0/o/c/medium-sa-503-cartoon-sticker-poster-peppa-pig-wall-poster-original-imafwhuqjgjjtucs.jpeg?q=90&crop=false',
+      }
+    : undefined
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
@@ -99,6 +108,7 @@ export function Offer() {
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
+        videoData={videoData}
         onReactionButtonPress={booking?.canReact ? showModal : undefined}
       />
     </Page>

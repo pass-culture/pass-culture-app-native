@@ -19,6 +19,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   chronicles,
   chronicleVariantInfo,
   defaultReaction,
+  videoData,
   onReactionButtonPress,
   headlineOffersCount,
 }) => {
@@ -67,6 +68,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicleVariantInfo={chronicleVariantInfo}
           onOfferPreviewPress={handlePress}
           BodyWrapper={BodyWrapper}
+          videoData={videoData}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}

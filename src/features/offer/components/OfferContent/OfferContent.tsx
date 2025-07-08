@@ -18,6 +18,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
   chronicles,
   chronicleVariantInfo,
+  videoData,
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
@@ -43,6 +44,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}
+        videoData={videoData}
         onReactionButtonPress={onReactionButtonPress}
         onLayout={onLayout}>
         {comingSoonFooterHeight ? (
