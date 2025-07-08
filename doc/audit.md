@@ -485,10 +485,19 @@ moderate
 
 - Mettre en place **Zustand** et migrer les premiers `Context` d'état locaux(`AccessibilityFiltersWrapper`, `CulturalSurveyContextProvider` ...)
   - Effort : M
+  - Métrique de suivi : status des tickets Jira pour chaque `Context`
+  - Métrique de mesure du succès : le nombre de `Context` concernés qui ont été remplacé par Zustand
 - Ajuster la configuration de **React Query** (`retry`, gestion des erreurs)
   - Effort : M
+  - Métrique de suivi : pourcentage de requêtes où avec la configuration corrigé
+  - Métrique de mesure du succès :
+    - nombre d'erreurs d'erreurs en baisses
+      - liées [aux erreurs réseau](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=network%20request%20failed&referrer=issue-list&statsPeriod=90d)
+      - liées [au `refresh_access_token`](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&page=0&project=4508839229718608&query=refresh_access_token&referrer=issue-list&statsPeriod=90d)
 - Remplacer les `Context` par `react-query` pour `SettingsWrapper`, `FavoritesWrapper`
   - Effort : S
+  - Métrique de suivi : status des tickets Jira pour chaque `Context`
+  - Métrique de mesure du succès : le nombre de `Context` concernés qui ont été remplacé par `react-query`
 
 ### Parcours critiques
 
