@@ -6,6 +6,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 REPO_ROOT=$(dirname "$SCRIPT_DIR")
 echo "Repository root detected at: $REPO_ROOT"
 
+BUNDLE_ID=app.passculture.staging
 MIN_SDK_VERSION="30"
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
@@ -198,8 +199,8 @@ log_and_run "Installing the APK onto the emulator" adb install "$APK_PATH"
 echo -e "\n${C_BLUE}[INFO] ==> Running Flashlight test with Maestro...${C_RESET}"
 
 flashlight test \
-    --bundleId app.passculture.staging \
-    --testCommand "MAESTRO_APP_ID=app.passculture.staging maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
+    --bundleId $BUNDLE_ID \
+    --testCommand "MAESTRO_APP_ID=$BUNDLE_ID maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
     --resultsFilePath "$REPO_ROOT/resultsLaunchApp.json" || echo -e "${C_RED}[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete.${C_RESET}"
 
