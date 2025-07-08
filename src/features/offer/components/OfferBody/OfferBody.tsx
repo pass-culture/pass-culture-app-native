@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { FeedBackVideoSection } from 'features/offer/components/FeedBackVideoSection/FeedBackVideoSection'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
@@ -176,6 +177,8 @@ export const OfferBody: FunctionComponent<Props> = ({
           />
         </MarginContainer>
       ) : null}
+
+      <FeedBackVideoSection offerId={offer.id} />
 
       {hasSameAddress ? null : (
         <ProposedBySection
