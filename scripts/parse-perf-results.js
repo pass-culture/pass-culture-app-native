@@ -1,5 +1,4 @@
 const fs = require('fs')
-// Import all the functions we need for our manual, detailed reporting
 const {
   averageTestCaseResult,
   getAverageCpuUsage,
@@ -19,6 +18,11 @@ const C_RESET = '\x1b[0m'
 
 const logTitle = (title) => console.log(`\n${C_BLUE}===== ${title} =====${C_RESET}`)
 const logMetric = (name, value) => console.log(`  - ${name.padEnd(25, ' ')}${value}`)
+
+const logError = (message) => {
+  console.error(`\n${C_RED}[ERROR] ==> ${message}${C_RESET}`)
+}
+
 const toInt = (num) => Math.floor(num || 0)
 
 const average = (numbers) => {
@@ -29,19 +33,20 @@ const average = (numbers) => {
 
 const resultsPath = process.argv[2]
 if (!resultsPath) {
-  console.error(`${C_RED}ERROR: No results file path provided.${C_RESET}`)
+  logError('No results file path provided.')
   process.exit(1)
 }
 if (!fs.existsSync(resultsPath)) {
-  console.error(`${C_RED}ERROR: Results file not found at '${resultsPath}'${C_RESET}`)
+  logError(`Results file not found at '${resultsPath}'`)
   process.exit(1)
 }
+
 const content = fs.readFileSync(resultsPath, 'utf8')
 const results = JSON.parse(content)
 
 const successfulIterations = results.iterations.filter((iter) => iter.status === 'SUCCESS')
 if (successfulIterations.length === 0) {
-  console.error(`${C_RED}ERROR: No successful test iterations found to analyze.${C_RESET}`)
+  logError('No successful test iterations found to analyze.')
   process.exit(1)
 }
 
@@ -98,8 +103,6 @@ THREADS_TO_MONITOR.forEach((threadName) => {
 })
 
 if (results.status !== 'SUCCESS') {
-  console.error(
-    `\n${C_RED}[FAIL] Overall test status was '${results.status}'. Failing the build.${C_RESET}`
-  )
+  logError(`Overall test status was '${results.status}'. Failing the build.`)
   process.exit(1)
 }
