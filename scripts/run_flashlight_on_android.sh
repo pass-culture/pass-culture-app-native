@@ -135,7 +135,7 @@ CMDLINE_TOOLS_LATEST_PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev
 readonly CMDLINE_TOOLS_LATEST_PATH
 export PATH="$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$CMDLINE_TOOLS_LATEST_PATH:$PATH"echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
 
-log_and_run "Starting script" echo "Environment setup begins."
+echo "Environment setup begins."
 
 log_and_run "Enabling Corepack" corepack enable
 
