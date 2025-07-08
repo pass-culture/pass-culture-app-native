@@ -6,6 +6,8 @@ import {
   RemoteBannerType as RemoteBannerType,
 } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -15,8 +17,11 @@ const user = userEvent.setup()
 
 describe('<RemoteActivationBanner/>', () => {
   it('should log analytics when user presses banner', async () => {
+    setFeatureFlags()
     render(
-      <RemoteActivationBanner from="profile" remoteActivationBannerOptions={bannerExternalUrl} />
+      reactQueryProviderHOC(
+        <RemoteActivationBanner from="profile" remoteActivationBannerOptions={bannerExternalUrl} />
+      )
     )
 
     const banner = await screen.findByText('title 1')

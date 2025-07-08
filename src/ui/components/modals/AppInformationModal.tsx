@@ -61,7 +61,7 @@ const ClickAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ th
   position: 'absolute',
   height: '100%',
   width: '100%',
-  backgroundColor: theme.uniqueColors.greyOverlay,
+  backgroundColor: theme.designSystem.color.background.overlay,
 }))
 
 const Container = styled(ViewGap)(({ theme }) => ({

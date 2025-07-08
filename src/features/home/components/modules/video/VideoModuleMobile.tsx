@@ -8,10 +8,9 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { ColorsType } from 'theme/types'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
 
 const THUMBNAIL_HEIGHT = getSpacing(52.5)
@@ -148,7 +147,7 @@ const Player = styled(Play).attrs({
 const ColorCategoryBackground = styled.View<{
   colorCategoryBackgroundHeightUniqueOffer: number
   isMultiOffer: boolean
-  backgroundColor: ColorsEnum
+  backgroundColor: ColorsType
 }>(({ colorCategoryBackgroundHeightUniqueOffer, isMultiOffer, backgroundColor, theme }) => ({
   height: isMultiOffer
     ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER

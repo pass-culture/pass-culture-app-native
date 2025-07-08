@@ -2,17 +2,17 @@ import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   wording: string
   typography?: 'Button' | 'BodyAccentXs'
   icon?: FunctionComponent<AccessibleIcon>
-  color?: ColorsEnum
+  color?: ColorsType
   disablePadding?: boolean
 }
 
@@ -56,7 +56,7 @@ const Container = styled(ViewGap)<{
 
 const StyledText = styled.Text<{
   typography?: string
-  color?: ColorsEnum
+  color?: ColorsType
 }>(({ theme, typography, color }) => ({
   ...(typography === 'BodyAccentXs'
     ? theme.designSystem.typography.bodyAccentXs

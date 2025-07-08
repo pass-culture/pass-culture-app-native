@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { theme } from 'theme'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -64,6 +64,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
   style,
   ...touchableProps
 }) => {
+  const { designSystem, colorScheme } = useTheme()
   const focusProps = useHandleFocus()
 
   useEffect(() => {
@@ -71,13 +72,21 @@ export const SystemBanner: FunctionComponent<Props> = ({
   }, [type, from])
 
   const color = withBackground ? 'inverted' : 'default'
+
+  const iconColorWithBackground =
+    colorScheme === ColorScheme.DARK
+      ? designSystem.color.icon.locked
+      : designSystem.color.icon.lockedInverted
+
   const iconColor = withBackground
-    ? theme.designSystem.color.icon.lockedInverted
-    : theme.designSystem.color.icon.brandSecondary
-  const backgroundColor = withBackground ? theme.uniqueColors.brand : theme.colors.transparent
-  const borderColor = withBackground
-    ? theme.uniqueColors.brand
-    : theme.designSystem.color.border.brandSecondary
+    ? iconColorWithBackground
+    : designSystem.color.icon.brandSecondary
+
+  const backgroundColor = withBackground
+    ? designSystem.color.background.brandSecondary
+    : designSystem.color.background.default
+
+  const borderColor = designSystem.color.border.brandSecondary
 
   const StyledIcon = LeftIcon
     ? styled(LeftIcon).attrs(({ theme }) => ({
@@ -101,9 +110,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
       color={
-        withBackground
-          ? theme.designSystem.color.text.lockedInverted
-          : theme.designSystem.color.text.default
+        withBackground ? designSystem.color.text.lockedInverted : designSystem.color.text.default
       }
       style={style}>
       <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">

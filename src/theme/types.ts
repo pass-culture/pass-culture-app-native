@@ -17,15 +17,11 @@ import {
   ColorsType as ColorsTypeLightWeb,
 } from '@pass-culture/design-system/lib/jeune/light.web'
 
-import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
-
 export type ColorsType =
   | ColorsTypeDarkMobile
   | ColorsTypeDarkWeb
   | ColorsTypeLightMobile
   | ColorsTypeLightWeb
-
-export type ColorsTypeLegacy = ColorsEnum | UniqueColors | ColorsType
 
 export type DesignTokensType =
   | typeof themeDarkMobile

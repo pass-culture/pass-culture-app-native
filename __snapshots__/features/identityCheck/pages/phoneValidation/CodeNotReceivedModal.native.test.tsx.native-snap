@@ -321,7 +321,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -840,7 +840,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [

@@ -180,15 +180,9 @@ export const theme = {
     lilacLight: ColorsEnum.LILAC_LIGHT,
   },
   uniqueColors: {
-    tabBar: UniqueColors.TAB_BAR,
-    greyOverlay: UniqueColors.GREY_OVERLAY,
     backgroundColor: UniqueColors.BACKGROUND_COLOR,
-    backgroundSurface: UniqueColors.BACKGROUND_SURFACE,
     foregroundColor: UniqueColors.FOREGROUND_COLOR,
     brand: UniqueColors.BRAND,
-    brandDark: UniqueColors.BRAND_DARK,
-    greenDisabled: UniqueColors.GREEN_DISABLED,
-    specificGrey: UniqueColors.SPECIFIC_GREY,
   },
   breakpoints: {
     xxs: Breakpoints.XXS,

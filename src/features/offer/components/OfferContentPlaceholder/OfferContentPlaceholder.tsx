@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { theme } from 'theme'
 import { TextPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const OfferContentPlaceholder: FunctionComponent = () => {
+  const { borderRadius } = useTheme()
   return (
     <View testID="OfferContentPlaceholder">
       <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
@@ -60,7 +60,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
       </SectionWithDivider>
       <BodyContainer>
         <SkeletonTile
-          borderRadius={theme.borderRadius.button}
+          borderRadius={borderRadius.button}
           width={getSpacing(82)}
           height={getSpacing(10)}
           fullWidth
@@ -79,4 +79,7 @@ const BodyContainer = styled.View({
   marginHorizontal: getSpacing(6),
 })
 
-const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
+const Row = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})

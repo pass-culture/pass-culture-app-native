@@ -55,11 +55,11 @@ type SystemBannerProps = {
 }
 
 const StyledUnlock = styled(Unlock).attrs(({ theme }) => ({
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.brandSecondary,
 }))``
 
 const StyledBirthdayCake = styled(BirthdayCake).attrs(({ theme }) => ({
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.brandSecondary,
 }))``
 
 const systemBannerIcons: {

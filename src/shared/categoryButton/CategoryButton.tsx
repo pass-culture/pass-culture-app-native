@@ -3,15 +3,13 @@ import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { ColorsTypeLegacy } from 'theme/types'
+import { ColorsType } from 'theme/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import {
   InternalNavigationProps,
   InternalTouchableLinkProps,
 } from 'ui/components/touchableLink/types'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -21,8 +19,8 @@ export type CategoryButtonProps = {
   onBeforeNavigate?: () => void
   height?: number
   style?: InternalTouchableLinkProps['style']
-  fillColor: ColorsTypeLegacy
-  borderColor: ColorsTypeLegacy
+  fillColor: ColorsType
+  borderColor: ColorsType
 }
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
@@ -59,8 +57,8 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
   onMouseDown: (e: Event) => void
   isFocus: boolean
   isHover: boolean
-  baseColor: ColorsEnum
-  borderColor: ColorsEnum
+  baseColor: ColorsType
+  borderColor: ColorsType
   height?: number
 }>(({ theme, isFocus, isHover, baseColor, borderColor, height }) => ({
   height,

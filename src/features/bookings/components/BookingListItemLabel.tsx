@@ -1,7 +1,6 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { theme } from 'theme'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Stock } from 'ui/svg/icons/Stock'
 import { Typo, getSpacing } from 'ui/theme'
@@ -9,10 +8,8 @@ import { Typo, getSpacing } from 'ui/theme'
 type BookingListItemLabelProps = { alert?: boolean; text: string; icon: 'clock' | 'tickets' }
 
 export const BookingListItemLabel = ({ alert, text, icon }: BookingListItemLabelProps) => {
-  const colorToDisplay = alert
-    ? theme.designSystem.color.text.error
-    : theme.designSystem.color.text.default
-
+  const { designSystem } = useTheme()
+  const colorToDisplay = alert ? designSystem.color.text.error : designSystem.color.text.default
   return (
     <Row>
       {icon === 'clock' ? <ClockFilled color={colorToDisplay} /> : <Stock color={colorToDisplay} />}

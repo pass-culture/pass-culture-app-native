@@ -1,12 +1,11 @@
 import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
 import { FavoriteProps } from 'features/offer/types'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { theme } from 'theme'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -20,6 +19,8 @@ export type FavoriteButtonProps = {
 } & FavoriteProps
 
 export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
+  const { designSystem } = useTheme()
+
   const {
     animationState,
     offerId,
@@ -55,11 +56,11 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
       <RoundedButton
         animationState={animationState}
         scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
-        initialColor={favorite ? theme.designSystem.color.background.brandPrimary : undefined}
+        initialColor={favorite ? designSystem.color.background.brandPrimary : undefined}
         finalColor={
           favorite
-            ? theme.designSystem.color.background.brandPrimary
-            : theme.designSystem.color.background.inverted
+            ? designSystem.color.background.brandPrimary
+            : designSystem.color.background.inverted
         }
         iconName={favorite ? 'favorite-filled' : 'favorite'}
         onPress={pressFavorite}

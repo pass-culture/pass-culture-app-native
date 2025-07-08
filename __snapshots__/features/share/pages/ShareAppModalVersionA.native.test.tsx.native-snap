@@ -279,7 +279,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={5}
         style={
           [

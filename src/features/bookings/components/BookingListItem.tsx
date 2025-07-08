@@ -1,9 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { theme } from 'theme'
 import { CutoutVertical } from 'ui/svg/CutoutVertical'
 import { StrokeVertical } from 'ui/svg/StrokeVertical'
 import { Typo, getSpacing } from 'ui/theme'
@@ -26,6 +25,8 @@ export const BookingListItem = ({
   display,
   children,
 }: BookingListItemProp) => {
+  const { designSystem } = useTheme()
+
   const content = (
     <Column>
       {children}
@@ -37,7 +38,7 @@ export const BookingListItem = ({
   )
   const image = <StyledImage url={imageUrl} />
 
-  const backgroundColor = theme.designSystem.color.background.default
+  const backgroundColor = designSystem.color.background.default
 
   return display === 'punched' ? (
     <Ticket testID="punched_booking_list_item">
@@ -45,7 +46,7 @@ export const BookingListItem = ({
         <LeftContainer>{image}</LeftContainer>
         <MiddleBlock>
           <CutoutVertical orientation="up" color={backgroundColor} />
-          <StrokeVertical color={theme.designSystem.color.border.subtle} />
+          <StrokeVertical color={designSystem.color.border.subtle} />
           <CutoutVertical orientation="down" color={backgroundColor} />
         </MiddleBlock>
         <RightContainer>{content}</RightContainer>

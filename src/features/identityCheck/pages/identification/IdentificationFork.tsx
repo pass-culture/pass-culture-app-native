@@ -6,7 +6,6 @@ import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedL
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { theme } from 'theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
@@ -96,6 +95,6 @@ const StyledExternalTouchableLinkContainer = styled.View({
   marginTop: getSpacing(3),
 })
 
-const StyledCaption = styled(Typo.BodyAccentXs)({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-})
+}))
