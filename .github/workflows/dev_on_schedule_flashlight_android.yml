@@ -1,4 +1,4 @@
-name: '[on_schedule] Flashlight Android Performance test'
+name: '[on_schedule] Flashlight Android Staging Performance test'
 
 on:
   schedule:
@@ -45,10 +45,10 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
         with:
           secrets: |-
-            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-testing
-            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-store-password
-            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-key-password
-            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-testing-keystore
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-staging
+            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
+            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
 
       - name: 'Render Sentry Template'
@@ -60,21 +60,21 @@ jobs:
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
 
-      - name: Setup android keystore properties for testing environment
+      - name: Setup android keystore properties for staging environment
         uses: chuhlomin/render-template@v1.10
         with:
-          template: templates_github_ci/testing.keystore.properties
+          template: templates_github_ci/staging.keystore.properties
           vars: |
-            ENVIRONMENT: testing
+            ENVIRONMENT: staging
             ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
             ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
-          result_path: android/keystores/testing.keystore.properties
+          result_path: android/keystores/staging.keystore.properties
 
       - name: Setup android Google services config
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
 
       - name: Setup android keystore file
-        run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/testing.keystore
+        run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/staging.keystore
 
       - name: Run the full test script
         run: ./scripts/run_flashlight_on_android.sh

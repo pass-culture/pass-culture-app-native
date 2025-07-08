@@ -154,11 +154,11 @@ verify_package_installed "platform-tools"
 log_and_run "Installing Android emulator package" sdkmanager_install_accepting_licence --install "emulator"
 verify_package_installed "emulator"
 
-echo -e "\n${C_BLUE}[INFO] ==> Building the Android testing debug APK...${C_RESET}"
-if (cd "$REPO_ROOT/android" && ./gradlew assembleApptestingRelease); then
+echo -e "\n${C_BLUE}[INFO] ==> Building the Android staging debug APK...${C_RESET}"
+if (cd "$REPO_ROOT/android" && ./gradlew assembleAppstagingRelease); then
     echo -e "${C_GREEN}[SUCCESS] ==> APK build complete.${C_RESET}"
 else
-    echo -e "${C_RED}[ERROR] ==> ./gradlew assembleApptestingRelease failed. Exiting.${C_RESET}" >&2; exit 1
+    echo -e "${C_RED}[ERROR] ==> ./gradlew assembleAppstagingRelease failed. Exiting.${C_RESET}" >&2; exit 1
 fi
 
 echo -e "\n${C_BLUE}[INFO] ==> Finding the generated APK file...${C_RESET}"
@@ -182,8 +182,8 @@ log_and_run "Installing the APK onto the emulator" adb install "$APK_PATH"
 echo -e "\n${C_BLUE}[INFO] ==> Running Flashlight test with Maestro...${C_RESET}"
 
 flashlight test \
-    --bundleId app.passculture.testing \
-    --testCommand "MAESTRO_APP_ID=app.passculture.testing maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
+    --bundleId app.passculture.staging \
+    --testCommand "MAESTRO_APP_ID=app.passculture.staging maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
     --duration 10000 \
     --resultsFilePath "$REPO_ROOT/resultsLaunchApp.json" || echo -e "${C_RED}[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete.${C_RESET}"
 
