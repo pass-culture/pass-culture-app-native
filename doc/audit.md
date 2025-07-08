@@ -489,7 +489,7 @@ moderate
   - Métrique de mesure du succès : le nombre de `Context` concernés qui ont été remplacé par Zustand
 - Ajuster la configuration de **React Query** (`retry`, gestion des erreurs)
   - Effort : M
-  - Métrique de suivi : pourcentage de requêtes où avec la configuration corrigé
+  - Métrique de suivi : pourcentage de requêtes avec la configuration corrigée
   - Métrique de mesure du succès :
     - nombre d'erreurs d'erreurs en baisses
       - liées [aux erreurs réseau](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=network%20request%20failed&referrer=issue-list&statsPeriod=90d)
