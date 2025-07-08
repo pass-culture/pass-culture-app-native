@@ -1,8 +1,6 @@
 name: '[on_schedule] Flashlight Android Staging Performance test'
 
-on:
-  schedule:
-    - cron: '0 22 * * 0' # At 10PM every Sunday
+on: push
 
 permissions:
   contents: write
@@ -27,6 +25,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Log app version
+        run: |
+          APP_VERSION=$(jq --raw-output '.version' ./package.json)
+          echo "App version is: $APP_VERSION"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
+
       - name: Enable KVM for Hardware Acceleration
         run: |
           echo 'Enabling KVM...'
@@ -78,10 +84,3 @@ jobs:
 
       - name: Run the full test script
         run: ./scripts/run_flashlight_on_android.sh
-
-      - name: Log app version
-        run: |
-          APP_VERSION=$(jq --raw-output '.version' ./package.json)
-          echo "App version is: $APP_VERSION"
-          echo "Branch: ${{ github.ref_name }}"
-          echo "Commit SHA: ${{ github.sha }}"

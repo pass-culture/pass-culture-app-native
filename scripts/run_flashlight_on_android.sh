@@ -11,14 +11,29 @@ readonly C_GREEN='\e[1;32m'
 readonly C_RED='\e[1;31m'
 readonly C_RESET='\e[0m'
 
+log_info() {
+    echo -e "\n${C_BLUE}[INFO] ==> $*${C_RESET}"
+}
+
+log_success() {
+    echo -e "${C_GREEN}[SUCCESS] ==> $*${C_RESET}"
+}
+
+log_error() {
+    # Redirecting error messages to stderr (>&2).
+    echo -e "${C_RED}[ERROR] ==> $*${C_RESET}" >&2
+}
+
 log_and_run() {
     local message="$1"
     shift
-    echo -e "\n${C_BLUE}[INFO] ==> ${message}...${C_RESET}"
+    local cmd_string="$*"
+
+    log_info "${message}..."
     if "$@"; then
-        echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
+        log_success "Done."
     else
-        echo -e "${C_RED}[ERROR] ==> The last command failed: '$*'. Exiting.${C_RESET}" >&2
+        log_error "Command failed with exit code $?: '${cmd_string}'"
         exit 1
     fi
 }
