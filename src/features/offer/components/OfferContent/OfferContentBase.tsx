@@ -25,7 +25,6 @@ import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
-import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferFooter } from 'features/offer/components/OfferFooter/OfferFooter'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
@@ -46,7 +45,6 @@ import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { QueryKeys } from 'libs/queryKeys'
-import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
@@ -277,22 +275,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               likesCount={offer.reactionsCount.likes}
               chroniclesCount={chronicles?.length}
               distance={distance}
-              headlineOffersCount={headlineOffersCount}>
+              headlineOffersCount={headlineOffersCount}
+              videoData={videoData}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>
-
-          {videoData ? (
-            <StyledSectionWithDivider visible gap={8}>
-              <VideoSection
-                videoId={videoData.videoId}
-                videoThumbnail={
-                  <VideoThumbnailImage url={videoData.thumbnailUri} resizeMode="cover" />
-                }
-                title="Vidéo"
-              />
-            </StyledSectionWithDivider>
-          ) : null}
 
           {chronicles?.length ? (
             <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
@@ -346,11 +333,6 @@ const ScrollViewContainer = React.memo(
     overflow: 'visible',
   })
 )
-
-const VideoThumbnailImage = styled(FastImage)({
-  width: '100%',
-  height: '100%',
-})
 
 const StyledSectionWithDivider = styled(SectionWithDivider)({
   paddingBottom: getSpacing(8),

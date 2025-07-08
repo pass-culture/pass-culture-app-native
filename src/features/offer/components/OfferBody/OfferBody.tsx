@@ -6,10 +6,10 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { FeedBackVideoSection } from 'features/offer/components/FeedBackVideoSection/FeedBackVideoSection'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
+import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
@@ -27,6 +27,7 @@ import {
   getDisplayedPrice,
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
+import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { formatFullAddress } from 'shared/address/addressFormatter'
@@ -47,6 +48,7 @@ type Props = {
   chroniclesCount?: number
   distance?: string | null
   headlineOffersCount?: number
+  videoData?: { videoId: string; thumbnailUri: string }
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -57,6 +59,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   chroniclesCount,
   distance,
   headlineOffersCount,
+  videoData,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -178,7 +181,14 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      <FeedBackVideoSection offerId={offer.id} />
+      {videoData ? (
+        <VideoSection
+          videoId={videoData.videoId}
+          videoThumbnail={<VideoThumbnailImage url={videoData.thumbnailUri} resizeMode="cover" />}
+          title="Vidéo"
+          offerId={offer.id}
+        />
+      ) : null}
 
       {hasSameAddress ? null : (
         <ProposedBySection
@@ -235,3 +245,8 @@ const GroupWithSeparator = ({
     </GroupWithoutGap>
   ) : null
 }
+
+const VideoThumbnailImage = styled(FastImage)({
+  width: '100%',
+  height: '100%',
+})

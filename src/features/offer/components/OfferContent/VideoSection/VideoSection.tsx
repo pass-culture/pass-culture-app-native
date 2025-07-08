@@ -1,15 +1,20 @@
-import React, { ReactElement } from 'react'
-import { StyleProp, View, ViewStyle, useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import React, { ReactElement, useCallback } from 'react'
+import { StyleProp, ViewStyle, useWindowDimensions } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
+import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
+import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type VideoSectionProps = {
-  videoId?: string
   title: string
+  offerId: number
+  videoId?: string
   subtitle?: string
   videoThumbnail?: ReactElement
   style?: StyleProp<ViewStyle>
@@ -17,32 +22,49 @@ type VideoSectionProps = {
   playerRatio?: number
 }
 
-const MAX_WIDTH = 800
-
 export const VideoSection = ({
   videoId,
   title,
   subtitle,
   videoThumbnail,
   style,
-  maxWidth = MAX_WIDTH,
+  maxWidth = MAX_WIDTH_VIDEO,
   playerRatio = RATIO169,
+  offerId,
 }: VideoSectionProps) => {
+  const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
   const videoHeight = Math.min(viewportWidth, maxWidth) * playerRatio
 
+  const renderVideoSection = useCallback(() => {
+    return (
+      <React.Fragment>
+        <Typo.Title3 {...getHeadingAttrs(3)}>{title}</Typo.Title3>
+        {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
+        <StyledYoutubePlayer
+          videoId={videoId}
+          thumbnail={videoThumbnail}
+          height={videoHeight}
+          width={viewportWidth < maxWidth ? undefined : maxWidth}
+          initialPlayerParams={{ autoplay: true }}
+        />
+        <FeedBackVideo offerId={offerId} />
+      </React.Fragment>
+    )
+  }, [maxWidth, offerId, subtitle, title, videoHeight, videoId, videoThumbnail, viewportWidth])
+
   return (
-    <Container style={style}>
-      <Typo.Title3 {...getHeadingAttrs(3)}>{title}</Typo.Title3>
-      {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
-      <StyledYoutubePlayer
-        videoId={videoId}
-        thumbnail={videoThumbnail}
-        height={videoHeight}
-        width={viewportWidth < maxWidth ? undefined : maxWidth}
-        initialPlayerParams={{ autoplay: true }}
-      />
-    </Container>
+    <React.Fragment>
+      {isDesktopViewport ? (
+        <ViewGap testID="video-section-without-divider" gap={4} style={style}>
+          {renderVideoSection()}
+        </ViewGap>
+      ) : (
+        <SectionWithDivider testID="video-section-with-divider" visible gap={4}>
+          <Container gap={8}>{renderVideoSection()}</Container>
+        </SectionWithDivider>
+      )}
+    </React.Fragment>
   )
 }
 
@@ -50,14 +72,11 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const Container = styled(View)(({ theme }) => ({
+const Container = styled(ViewGap)(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
-  rowGap: theme.contentPage.marginVertical,
 }))
 
 const StyledYoutubePlayer = styled(YoutubePlayer)({
   borderRadius: 25,
   overflow: 'hidden',
-  marginLeft: 'auto',
-  marginRight: 'auto',
 })
