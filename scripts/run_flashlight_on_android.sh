@@ -49,7 +49,7 @@ sdkmanager_install_accepting_licence() {
 verify_package_installed() {
     local package_name="$1"
     echo -e "${C_BLUE}[INFO] ==> Verifying that package '$package_name' is installed...${C_RESET}"
-    if sdkmanager --list_installed | grep -q -E "^\s*${package_name}"; then
+    if sdkmanager --list_installed | grep --quiet --extended-regexp "^\s*${package_name}"; then
         echo -e "${C_GREEN}[SUCCESS] ==> Package '$package_name' is confirmed to be installed.${C_RESET}"
         return 0
     else
@@ -109,7 +109,6 @@ recreate_emulator() {
     emulator \
         -avd "$EMULATOR_NAME" \
         -no-window -no-audio -no-snapshot -no-boot-anim \
-        -partition-size 2048 \
         > "$EMULATOR_LOG_FILE" 2>&1 &
 
     local EMULATOR_PID=$!
