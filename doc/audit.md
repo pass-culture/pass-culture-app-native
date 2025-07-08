@@ -484,8 +484,11 @@ moderate
 **Actions :**
 
 - Mettre en place **Zustand** et migrer les premiers `Context` d'état locaux(`AccessibilityFiltersWrapper`, `CulturalSurveyContextProvider` ...)
+  - Effort : M
 - Ajuster la configuration de **React Query** (`retry`, gestion des erreurs)
+  - Effort : M
 - Remplacer les `Context` par `react-query` pour `SettingsWrapper`, `FavoritesWrapper`
+  - Effort : S
 
 ### Parcours critiques
 
