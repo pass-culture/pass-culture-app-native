@@ -70,7 +70,7 @@
     - `FavoritesWrapper`
   - Source de vérité venant des query params / URL
     - `SearchWrapper`
-    - `CulturalSurveyContextProvider` et / ou react-hook-form, ou Zustand, ou faire une requete au backend pour envoyer la réponse partielle, ou au minimum mettre ce Context qu'au niveau du Navigator
+    - `CulturalSurveyContextProvider` et / ou react-hook-form, ou Zustand, ou faire une requête au backend pour envoyer la réponse partielle, ou au minimum mettre ce Context qu'au niveau du Navigator
   - probablement une fonction à appeler directement dans App
     - `AnalyticsInitializer`
     - `FirestoreNetworkObserver`
@@ -183,7 +183,7 @@ Un refactoring sans aucun changement de comportement casse souvent les tests
 
 Nous vérifions peu les comportements métier
 
-Les tests sont souvent écrit après l'implem :
+Les tests sont souvent écrit après l'implementation :
 
 - rendant les tests difficiles à écrire
 - il y a des règles métiers qui ne sont pas testés
