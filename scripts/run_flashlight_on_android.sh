@@ -6,6 +6,12 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 REPO_ROOT=$(dirname "$SCRIPT_DIR")
 echo "Repository root detected at: $REPO_ROOT"
 
+MIN_SDK_VERSION="30"
+ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
+export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
+
 readonly C_BLUE='\e[1;34m'
 readonly C_GREEN='\e[1;32m'
 readonly C_RED='\e[1;31m'
@@ -124,10 +130,6 @@ recreate_emulator() {
     fi
 }
 
-ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
-export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
 log_and_run "Ensuring AVD storage directory exists" mkdir -p "$ANDROID_AVD_HOME"
 log_and_run "Creating Android SDK directory if it doesn't exist" mkdir -p "$(dirname "$ANDROID_HOME")"
 echo -e "\n${C_BLUE}[INFO] ==> Updating PATH with Android SDK tool locations...${C_RESET}"
@@ -147,7 +149,7 @@ else
 fi
 
 echo -e "\n${C_BLUE}[INFO] ==> Explicitly installing profiler packages to ensure they exist for parsing...${C_RESET}"
-if (cd "$REPO_ROOT" && yarn add --dev @perf-profiler/e2e @perf-profiler/reporter); then
+if (cd "$REPO_ROOT" && yarn add --dev @perf-profiler/reporter@0.9.0); then
     echo -e "${C_GREEN}[SUCCESS] ==> Profiler packages installed.${C_RESET}"
 else
     echo -e "${C_RED}[ERROR] ==> Failed to install profiler packages. Exiting.${C_RESET}" >&2; exit 1
@@ -183,7 +185,6 @@ if [ -z "$APK_PATH" ]; then
 fi
 echo -e "${C_GREEN}[SUCCESS] ==> APK was found at: $APK_PATH${C_RESET}"
 
-MIN_SDK_VERSION="30"
 recreate_emulator "SDK_modern_test" "$MIN_SDK_VERSION" "pixel_6"
 
 log_and_run "Waiting up to 10 minutes for emulator to fully boot..." \
