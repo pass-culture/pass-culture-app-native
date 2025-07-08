@@ -490,10 +490,7 @@ moderate
 - Ajuster la configuration de **React Query** (`retry`, gestion des erreurs)
   - Effort : M
   - Métrique de suivi : pourcentage de requêtes avec la configuration corrigée
-  - Métrique de mesure du succès :
-    - nombre d'erreurs d'erreurs en baisses
-      - liées [aux erreurs réseau](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=network%20request%20failed&referrer=issue-list&statsPeriod=90d)
-      - liées [au `refresh_access_token`](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&page=0&project=4508839229718608&query=refresh_access_token&referrer=issue-list&statsPeriod=90d)
+  - Métrique de mesure du succès : nombre d'erreurs d'erreurs en baisses liées [aux erreurs réseau](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&project=4508839229718608&query=network%20request%20failed&referrer=issue-list&statsPeriod=90d)
 - Remplacer les `Context` par `react-query` pour `SettingsWrapper`, `FavoritesWrapper`
   - Effort : S
   - Métrique de suivi : status des tickets Jira pour chaque `Context`
@@ -506,7 +503,24 @@ moderate
 **Actions :**
 
 - Refactorer intégralement le parcours de **Recherche** en utilisant l'URL comme source de vérité et en supprimant `useSync.ts` et le `Context` `SearchWrapper`
+  - Effort : XL
+  - Métrique de suivi : TBD
+  - Métrique de mesure du succès :
+    - moins de bugs liés aux pages de la recherche
+    - plus facile d'ajouter / modifier des pages de la recherche
 - Remplacer le `Context` de localisation pour le remplacer par Zustand
+  - Effort : XL
+  - Métrique de suivi : TBD
+  - Métrique de mesure du succès : moins de bugs liés à la localisation (home, recherche)
 - Remplacer le `Context` `AuthWrapper` par `react-query` pour implémenter une gestion robuste de l'expiration du token
+  - Effort : L
+  - Métrique de suivi : TBD
+  - Métrique de mesure du succès : nombre d'erreurs d'erreurs en baisses liées [au `refresh_access_token`](https://pass-culture.sentry.io/issues/?environment=production&groupStatsPeriod=auto&page=0&project=4508839229718608&query=refresh_access_token&referrer=issue-list&statsPeriod=90d)
 - Simplifier le hook `useCtaWordingAndAction` en isolant la logique métier dans des fonctions pures et testables
+  - Effort : L
+  - Métrique de suivi : TBD
+  - Métrique de mesure du succès : plus facile d'ajouter / modifier des états possibles à ce bouton
 - Consolider l'ensemble des composants `Button` et `Link` pour réduire la complexité et la duplication
+  - Effort : M
+  - Métrique de suivi : TBD
+  - Métrique de mesure du succès : TBD
