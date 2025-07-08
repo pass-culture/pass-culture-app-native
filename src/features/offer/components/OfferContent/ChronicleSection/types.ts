@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
+import { BOOK_CLUB_SUBCATEGORIES } from 'features/offer/constant'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 export type ChronicleSectionProps = {
@@ -23,3 +24,5 @@ export type ChronicleVariantInfo = {
   modalWording: string
   modalButtonLabel: string
 }
+
+export type BookClubSubcategoryId = (typeof BOOK_CLUB_SUBCATEGORIES)[number]
