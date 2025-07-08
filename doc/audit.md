@@ -340,6 +340,33 @@ Si on veut utiliser la valeur par défaut en cas d'erreur, avec notre config act
 - Supprimer de [`safeFetch`](https://github.com/pass-culture/pass-culture-app-native/blob/be07b683df6bb2364bfcdd16841b7ed5ab350ec2/src/api/apiHelpers.ts#L59)
 - Supprimer le `retries: 0`
 
+### Sécurité
+
+#### Observations
+
+Selon la commande suivante, nous avons 13 dépendances avec un risque de sécurité identité.
+
+```sh
+yarn npm audit --recursive | grep 'URL:' | wc -l
+```
+
+La commande suivante permet de voir la réparation des niveaux de sévérité.
+
+```sh
+yarn npm audit --recursive --json | jq --raw-output '[ .advisories.[].severity ] | group_by(.) | map([ .[0] , length ]) | flatten | .[]'
+```
+
+```txt
+high
+1
+low
+4
+moderate
+9
+```
+
+À ce jour, aucune dépendance avec une faille critique connue n'est inclue dans nos dépendances.
+
 ## Synthèse des Observations et Constats
 
 ### Architecture et Gestion de l'État
