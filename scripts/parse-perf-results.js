@@ -23,7 +23,7 @@ const logError = (message) => {
   console.error(`\n${C_RED}[ERROR] ==> ${message}${C_RESET}`)
 }
 
-const toInt = (num) => Math.floor(num || 0)
+const toInt = (num) => Math.round(num || 0)
 
 const average = (numbers) => {
   if (!numbers || numbers.length === 0) return 0
