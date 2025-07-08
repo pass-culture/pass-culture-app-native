@@ -7,6 +7,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
+import { videoDataFixture } from 'features/offer/fixtures/videoDataFixture'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
@@ -53,13 +54,7 @@ export function Offer() {
   })
   const { mutate: saveReaction } = useReactionMutation()
 
-  const videoData = isVideoSectionEnabled
-    ? {
-        videoId: 'hCqdTGWspes',
-        thumbnailUri:
-          'https://rukminim2.flixcart.com/image/750/900/kgcl7680-0/poster/0/o/c/medium-sa-503-cartoon-sticker-poster-peppa-pig-wall-poster-original-imafwhuqjgjjtucs.jpeg?q=90&crop=false',
-      }
-    : undefined
+  const videoData = isVideoSectionEnabled ? videoDataFixture : undefined
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
