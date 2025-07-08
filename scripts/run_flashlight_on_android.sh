@@ -155,10 +155,10 @@ log_and_run "Installing Android emulator package" sdkmanager_install_accepting_l
 verify_package_installed "emulator"
 
 echo -e "\n${C_BLUE}[INFO] ==> Building the Android staging debug APK...${C_RESET}"
-if (cd "$REPO_ROOT/android" && ./gradlew assembleAppstagingRelease); then
+if (cd "$REPO_ROOT/android" && ./gradlew assembleStagingRelease); then
     echo -e "${C_GREEN}[SUCCESS] ==> APK build complete.${C_RESET}"
 else
-    echo -e "${C_RED}[ERROR] ==> ./gradlew assembleAppstagingRelease failed. Exiting.${C_RESET}" >&2; exit 1
+    echo -e "${C_RED}[ERROR] ==> ./gradlew assembleStagingRelease failed. Exiting.${C_RESET}" >&2; exit 1
 fi
 
 echo -e "\n${C_BLUE}[INFO] ==> Finding the generated APK file...${C_RESET}"
