@@ -131,8 +131,9 @@ export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
 log_and_run "Ensuring AVD storage directory exists" mkdir -p "$ANDROID_AVD_HOME"
 log_and_run "Creating Android SDK directory if it doesn't exist" mkdir -p "$(dirname "$ANDROID_HOME")"
 echo -e "\n${C_BLUE}[INFO] ==> Updating PATH with Android SDK tool locations...${C_RESET}"
-export PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo ''):$PATH:$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
-echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
+CMDLINE_TOOLS_LATEST_PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo '')"
+readonly CMDLINE_TOOLS_LATEST_PATH
+export PATH="$ANDROID_HOME/cmdline-tools/$ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$CMDLINE_TOOLS_LATEST_PATH:$PATH"echo -e "${C_GREEN}[SUCCESS] ==> Done.${C_RESET}"
 
 log_and_run "Starting script" echo "Environment setup begins."
 
