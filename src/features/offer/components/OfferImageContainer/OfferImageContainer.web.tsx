@@ -18,6 +18,7 @@ type Props = {
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
+  onSeeVideoPress: VoidFunction
 }
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
@@ -26,6 +27,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
   placeholderImage,
   imageDimensions,
+  onSeeVideoPress,
 }) => {
   const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
@@ -55,6 +57,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         onPress={onPress}
         categoryId={categoryId}
         imageDimensions={imageDimensions}
+        onSeeVideoPress={onSeeVideoPress}
       />
     </Wrapper>
   )

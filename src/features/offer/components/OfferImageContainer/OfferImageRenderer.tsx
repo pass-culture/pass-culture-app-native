@@ -9,10 +9,14 @@ import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Play } from 'ui/svg/icons/Play'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   categoryId: CategoryIdEnum | null
   imageDimensions: OfferImageContainerDimensions
+  onSeeVideoPress?: VoidFunction
   offerImages?: ImageWithCredit[]
   placeholderImage?: string
   progressValue: SharedValue<number>
@@ -27,6 +31,7 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
   placeholderImage,
   categoryId,
   onPress,
+  onSeeVideoPress,
   style,
 }) => {
   const [carouselReady, setCarouselReady] = useState(false)
@@ -56,6 +61,11 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
           </OfferImageCarouselItem>
         </AnimatedImageContainer>
       )}
+      {onSeeVideoPress ? (
+        <ButtonContainer>
+          <ButtonTertiaryBlack wording="Voir la vidéo" onPress={onSeeVideoPress} icon={Play} />
+        </ButtonContainer>
+      ) : null}
     </Animated.View>
   )
 }
@@ -71,4 +81,9 @@ const AnimatedImageContainer = styled(Animated.View)({
   position: 'absolute',
   top: 0,
   left: 0,
+})
+
+const ButtonContainer = styled.View({
+  alignItems: 'center',
+  marginTop: getSpacing(4),
 })
