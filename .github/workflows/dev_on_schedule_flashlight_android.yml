@@ -1,8 +1,6 @@
 name: '[on_schedule] Flashlight Android Staging Performance test'
 
-on:
-  schedule:
-    - cron: '0 22 * * 0' # At 10PM every Sunday
+on: push
 
 permissions:
   contents: write
