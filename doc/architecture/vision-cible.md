@@ -92,45 +92,137 @@ Cold start
 ```mermaid
 flowchart TB
   subgraph errorboundaryWrapper
-  direction TB
-  ErrorBoundary
-  --> OfferPage
-  --> parseOfferIdFromURL{{"parseOfferIdFromURL ({ offerId?: number })"}}
+    direction TB
 
-  ErrorBoundary
-  -->|invalid offer id| ErrorNotFound
+    ErrorBoundary
+    --> OfferPage
+    --> parseOfferIdFromURL{{"parseOfferIdFromURL ({ offerId?: number })"}}
 
-  parseOfferIdFromURL
-  -->|get offer id from URL| MaybeOfferContainer
+    ErrorBoundary
+    -->|invalid offer id| ErrorNotFound
 
-  MaybeOfferContainer["MaybeOfferContainer ({ offerId: number })"]
-  --> Suspense
-  -->|loading| LoadingPage
+    parseOfferIdFromURL
+    -->|get offer id from URL| MaybeOfferContainer
 
-  Suspense
-  -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
-  -->|has offer| OfferContainer
+    MaybeOfferContainer["MaybeOfferContainer ({ offerId: number })"]
+    --> Suspense
+    -->|loading| LoadingPage
 
-  OfferContainer["OfferContainer ({ offer: Offer })"]
-  --> OfferDetail
+    Suspense
+    -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
+    -->|has offer| OfferContainer
 
-  OfferContainer
-  --> ErrorBoundary2[ErrorBoundary]
-  subgraph ErrorBoundary2Wrapper
-  ErrorBoundary2
-  -->|has no recommanded offers or error| DisplayNothingAndIgnoreSilently["Display nothing and ignore silently"]
+    OfferContainer["OfferContainer ({ offer: Offer })"]
+    --> OfferDetail
 
-  ErrorBoundary2
-  --> Suspense2[Suspense]
-  -->|loading| PlaceholderPlaylists
+    OfferContainer
+    --> ErrorBoundary2[ErrorBoundary]
 
-  Suspense2
-  -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
+    subgraph ErrorBoundary2Wrapper
+      ErrorBoundary2
+      -->|has no recommanded offers or error| DisplayNothingAndIgnoreSilently["Display nothing and ignore silently"]
 
-  useRecommandedOffersQuery
-  -->|has recommanded offers| RecommandedOffers
+      ErrorBoundary2
+      --> Suspense2[Suspense]
+      -->|loading| PlaceholderPlaylists
 
+      Suspense2
+      -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
+
+      useRecommandedOffersQuery
+      -->|has recommanded offers| RecommandedOffers
+    end
+
+    MaybeOfferContainer -..->|"prefetch (si on veut améliorer les perfs)"| useRecommandedOffersQuery
   end
-  MaybeOfferContainer -..->|"prefetch (si on veut améliorer les perfs)"| useRecommandedOffersQuery
+```
+
+### Schéma généralisé
+
+#### 2 données
+
+Graphique montrant une page avec 2 données récupérées en parallèle
+
+```mermaid
+flowchart TB
+  subgraph ErrorBoundary1Wrapper["ErrorBoundary"]
+    direction TB
+
+    ErrorBoundary1["ErrorBoundary"]
+    --> Page
+    --> parseArgumentsFromURL{{"parseArgumentsFromURL ({ resource1Id?: number, resource2Name?: string })"}}
+    -->|invalid arguments| ErrorNotFound
+
+    parseArgumentsFromURL
+    -->|get arguments from URL| Container1
+    parseArgumentsFromURL
+    -->|get arguments from URL| Container2
+
+    subgraph Container1Wrapper["Container1"]
+      Container1
+      --> Suspense1
+      -->|loading| Skeleton1
+      Suspense1
+      -->|load resource| useGetResource1Query{{"useGetResource1Query(resource1Id)"}}
+      -->|has resource| Presentational1
+    end
+
+    subgraph Container2Wrapper["Container2"]
+      Container2
+      --> Suspense2
+      -->|loading| Skeleton2
+      Suspense2
+      -->|load resource| useGetResource2Query{{"useGetResource2Query(resource2Name)"}}
+      -->|has resource| Presentational2
+    end
+  end
+```
+
+#### Donnée optionnelle
+
+Graphique montrant une ressource principale nécessaire à la page et une ressource optionnelle
+
+```mermaid
+flowchart TB
+  subgraph ErrorBoundaryWrapper["ErrorBoundary"]
+  direction TB
+
+    ErrorBoundary
+    --> Page
+    --> parseArgumentsFromURL{{"parseArgumentsFromURL ({ argument1?: number, argument2?: string })"}}
+
+    ErrorBoundary
+    -->|invalid arguments| ErrorNotFound
+
+    parseArgumentsFromURL
+    -->|get arguments from URL| Suspense
+    -->|loading| LoadingPage
+
+    Suspense
+    -->|load resource| useGetResourceQuery{{"useGetResourceQuery(ResourceId)"}}
+    -->|has resource| Container
+
+    Container["Container ({ resource: Resource })"]
+    --> ResourceDetail
+
+    Container
+    --> ErrorBoundary2[ErrorBoundary]
+
+    subgraph ErrorBoundary2Wrapper["ErrorBoundary"]
+      ErrorBoundary2
+      -->|has no OptionalResources or error| DisplayNothingAndIgnoreSilently["Display nothing and ignore silently"]
+
+      ErrorBoundary2
+      --> Suspense2[Suspense]
+      -->|loading| Placeholder
+
+      Suspense2
+      -->|load OptionalResources| useOptionalResourcesQuery{{"useOptionalResourcesQuery(ResourceId: number)"}}
+
+      useOptionalResourcesQuery
+      -->|has recommanded Resources| OptionalResources
+    end
+
+    Page -..->|"prefetch (si on veut améliorer les perfs)"| useOptionalResourcesQuery
   end
 ```
