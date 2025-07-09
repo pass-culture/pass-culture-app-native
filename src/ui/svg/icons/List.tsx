@@ -3,15 +3,13 @@ import { G, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
-
-import { AccessibleIcon } from './types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 const ListSvg = ({ size, color, accessibilityLabel, testID }: AccessibleIcon) => {
   return (
     <AccessibleSvg
       width={size}
       height={size}
-      fill="none"
       viewBox="0 0 16 16"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>

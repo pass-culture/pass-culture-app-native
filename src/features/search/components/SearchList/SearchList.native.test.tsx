@@ -6,6 +6,8 @@ import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
@@ -40,7 +42,10 @@ jest.mock('@shopify/flash-list', () => {
 })
 
 describe('<SearchList />', () => {
-  beforeEach(() => mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' }))
+  beforeEach(() => {
+    setFeatureFlags()
+    mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
+  })
 
   const renderItem = jest.fn()
 
@@ -68,25 +73,29 @@ describe('<SearchList />', () => {
     })
   })
 
-  it('should sets ItemSeparatorComponent when enableGrisList is false', () => {
-    const screen = render(<SearchList {...props} enableGridList={false} />)
-    const searchList = screen.getByTestId('searchResultsFlashlist')
+  describe('with WIP_ENABLE_GRID_LIST FF enabled', () => {
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
 
-    expect(searchList.props.ItemSeparatorComponent).toBeDefined()
-  })
+    it('should sets ItemSeparatorComponent when isGridLayout is false', () => {
+      const screen = render(<SearchList {...props} isGridLayout={false} />)
+      const searchList = screen.getByTestId('searchResultsFlashlist')
 
-  it('should not set ItemSeparatorComponent when enableGrisList is true', () => {
-    const screen = render(<SearchList {...props} enableGridList />)
-    const searchList = screen.getByTestId('searchResultsFlashlist')
+      expect(searchList.props.ItemSeparatorComponent).toBeDefined()
+    })
 
-    expect(searchList.props.ItemSeparatorComponent).toBeUndefined()
-  })
+    it('should not set ItemSeparatorComponent when isGridLayout is true', () => {
+      const screen = render(<SearchList {...props} isGridLayout />)
+      const searchList = screen.getByTestId('searchResultsFlashlist')
 
-  it('sets numColumns when enableGrisList is true', () => {
-    const screen = render(<SearchList {...props} enableGridList numColumns={2} />)
-    const searchList = screen.getByTestId('searchResultsFlashlist')
+      expect(searchList.props.ItemSeparatorComponent).toBeUndefined()
+    })
 
-    expect(searchList.props.numColumns).toEqual(2)
+    it('sets numColumns when isGridLayout is true', () => {
+      const screen = render(<SearchList {...props} isGridLayout numColumns={2} />)
+      const searchList = screen.getByTestId('searchResultsFlashlist')
+
+      expect(searchList.props.numColumns).toEqual(2)
+    })
   })
 
   it('should disable scrolling when nbHits is 0', () => {

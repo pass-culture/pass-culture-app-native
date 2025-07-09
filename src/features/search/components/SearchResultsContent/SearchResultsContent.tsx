@@ -35,7 +35,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { VenuesUserData } from 'features/search/types'
+import { GridListLayout, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -130,6 +130,9 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
   const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
+  const [gridListLayout, setGridListLayout] = useState(GridListLayout.LIST)
+  const isGridLayout = enableGridList && gridListLayout === GridListLayout.GRID
+
   const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
 
   const [isSearchListTab, setIsSearchListTab] = useState(true)
@@ -284,7 +287,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   >(
     ({ item, index }) =>
-      enableGridList ? (
+      isGridLayout ? (
         <OfferTileWrapper
           item={item}
           analyticsFrom="searchresults"
@@ -304,7 +307,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           }}
         />
       ),
-    [enableGridList, tileWidth, width, nbrOfTilesToDisplay, searchState.query, searchState.searchId]
+    [isGridLayout, tileWidth, width, nbrOfTilesToDisplay, searchState.searchId, searchState.query]
   )
 
   const hasDuoOfferToggle = useMemo(() => {
@@ -388,7 +391,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             />
           ) : undefined
         }
-        enableGridList={enableGridList}
+        isGridLayout={isGridLayout}
+        setGridListLayout={setGridListLayout}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
