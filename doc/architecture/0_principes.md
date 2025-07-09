@@ -470,18 +470,3 @@ Nous nous efforcerons dans le futur de déplacer un maximum de logiques métiers
 
 Cette logique est possible car nous maintenons le code de l'API, et que les routes natives ne sont utilisées que par notre app.
 Nous pouvons introduire des breakings changes grâce au versioning des routes (`/v1`, `/v2`, ...).
-
-## TODO
-
-- à creuser plus tard
-
-  - navigation
-  - analytics
-  - API `null` `undefined`
-  - Les données provenant de l'URL/API/User doivent être parsées avant d'être utilisées dans l'application.
-
-    > never trust user input
-
-    - Type Primitif -> Value object (ex : Price)
-
-- faire des règles ESLint pour enforce nos principes
