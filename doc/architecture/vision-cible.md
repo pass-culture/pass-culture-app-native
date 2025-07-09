@@ -1,5 +1,9 @@
 # Architecture Vision Cible
 
+Exemple d'une page offre où on charge les données de l'offre puis on charge des offres recommandées associées
+
+S'il n'y a pas d'offres recommandées ou s'il y a une erreur lors de leur chargement, on n'affiche rien
+
 ## Maintenant
 
 Aujourd'hui, nos pages ressemblent +/- à ça

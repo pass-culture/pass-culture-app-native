@@ -146,6 +146,8 @@ Tous les composants de l’app devront se ranger dans une des catégories suivan
 - container : les containers seront connectés aux stores pour l'app state et au server state. Ils devront gérer leur logique métier dans des fonctions pures (cf. partie sur la logique métier).
 - page : les pages sont les composants de plus haut niveau et doivent déterminer leur état interne uniquement via les paramètres de l'URL (sauf exceptions).
 
+[Voir le schema](./vision-cible.md#archi-cible)
+
 Pour cela, il faut :
 
 - repérer et isoler les presentational components dans des dossiers spécifiques
