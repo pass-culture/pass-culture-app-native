@@ -51,7 +51,7 @@ export const SetPhoneValidationCode = () => {
       )
 
       // If for some reason we're not in that stack, do nothing.
-      if (!subscriptionStackRoute || !subscriptionStackRoute.state) {
+      if (!subscriptionStackRoute?.state) {
         // Returning the original state effectively does nothing.
         return CommonActions.reset(rootState)
       }
