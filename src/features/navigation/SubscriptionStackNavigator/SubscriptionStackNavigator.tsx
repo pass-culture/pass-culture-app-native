@@ -50,7 +50,7 @@ type SubscriptionRouteConfig = {
   options?: StackNavigationOptions
 }
 
-export const subscriptionScreens: SubscriptionRouteConfig[] = [
+const subscriptionScreens: SubscriptionRouteConfig[] = [
   {
     name: 'Stepper',
     component: withAuthProtection(Stepper),

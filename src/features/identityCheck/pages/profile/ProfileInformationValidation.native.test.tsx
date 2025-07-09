@@ -171,7 +171,12 @@ describe('ProfileInformationValidation', () => {
     await user.press(screen.getByText('Continuer'))
 
     expect(reset).toHaveBeenCalledWith({
-      routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }],
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: { routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }] },
+        },
+      ],
     })
   })
 })

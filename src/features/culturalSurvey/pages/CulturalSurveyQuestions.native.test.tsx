@@ -90,8 +90,11 @@ describe('CulturalSurveyQuestions page', () => {
 
     await user.press(screen.getByLabelText('Continuer vers l’étape suivante'))
 
-    expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
-      question: CulturalSurveyQuestionEnum.ACTIVITES,
+    expect(push).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: {
+        question: 'ACTIVITES',
+      },
+      screen: 'CulturalSurveyQuestions',
     })
   })
 
@@ -130,7 +133,15 @@ describe('CulturalSurveyQuestions page', () => {
 
     expect(reset).toHaveBeenCalledWith({
       index: 1,
-      routes: [{ name: navigateToHomeConfig.screen }, { name: 'CulturalSurveyThanks' }],
+      routes: [
+        { name: navigateToHomeConfig.screen },
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            routes: [{ name: 'CulturalSurveyThanks' }],
+          },
+        },
+      ],
     })
   })
 
@@ -146,7 +157,28 @@ describe('CulturalSurveyQuestions page', () => {
 
     expect(reset).toHaveBeenCalledWith({
       index: 1,
-      routes: [{ name: 'Stepper' }, { name: 'CulturalSurveyThanks' }],
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            routes: [
+              {
+                name: 'Stepper',
+              },
+            ],
+          },
+        },
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            routes: [
+              {
+                name: 'CulturalSurveyThanks',
+              },
+            ],
+          },
+        },
+      ],
     })
   })
 

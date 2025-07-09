@@ -220,7 +220,14 @@ describe('<SetStatus/>', () => {
     await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
     await user.press(screen.getByText('Continuer'))
 
-    expect(reset).toHaveBeenCalledWith({ routes: [{ name: 'SetProfileBookingError' }] })
+    expect(reset).toHaveBeenCalledWith({
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: { routes: [{ name: 'SetProfileBookingError' }] },
+        },
+      ],
+    })
   })
 
   it('should reset profile stores after submission succeeds', async () => {
@@ -264,7 +271,12 @@ describe('<SetStatus/>', () => {
     await user.press(screen.getByText('Continuer'))
 
     expect(reset).toHaveBeenCalledWith({
-      routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }],
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: { routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }] },
+        },
+      ],
     })
   })
 
