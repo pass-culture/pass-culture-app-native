@@ -90,7 +90,7 @@ image_for_sdk() {
 
 install_flashlight() {
     local os_name
-    local binary_name="flashlight"
+    local binary_name
 
     if [[ "$(uname)" == "Darwin" ]]; then
         os_name="macos"
@@ -101,7 +101,9 @@ install_flashlight() {
         exit 1
     fi
 
-    local archive_name="flashlight-${os_name}.zip"
+    binary_name="flashlight-${os_name}"
+    local archive_name="${binary_name}.zip"
+    
     local url="https://github.com/bamlab/flashlight/releases/download/v${FLASHLIGHT_VERSION}/${archive_name}"
     local install_dir="$HOME/.flashlight/bin"
     local download_dir
@@ -203,7 +205,6 @@ log_and_run "Downloading Maestro installer" curl -fsSL "https://get.maestro.mobi
 log_and_run "Running Maestro installer" bash /tmp/maestro_installer.sh
 log_info "Adding Maestro to PATH..."
 export PATH="$PATH":"$HOME/.maestro/bin"
-
 
 install_flashlight
 log_info "Adding Flashlight to PATH..."
