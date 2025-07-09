@@ -8,11 +8,12 @@ REPO_ROOT=$(dirname "$SCRIPT_DIR")
 BUNDLE_ID=app.passculture.staging
 MIN_SDK_VERSION="30"
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
-PERF_PROFILER_REPORTER_VERSION="0.9.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
 export MAESTRO_VERSION="1.41.0"
+export FLASHLIGHT_VERSION="0.18.0"
+PERF_PROFILER_REPORTER_VERSION="0.9.0"
 
 readonly C_BLUE='\e[1;34m'
 readonly C_GREEN='\e[1;32m'
@@ -28,7 +29,6 @@ log_success() {
 }
 
 log_error() {
-    # Redirecting error messages to stderr (>&2).
     echo -e "${C_RED}[ERROR] ==> $*${C_RESET}" >&2
 }
 
@@ -44,6 +44,17 @@ log_and_run() {
         log_error "Command failed with exit code $?: '${cmd_string}'"
         exit 1
     fi
+}
+
+verify_dependencies() {
+    log_info "Verifying required commands: $*"
+    for cmd in "$@"; do
+        if ! command -v "$cmd" &> /dev/null; then
+            log_error "Required command '$cmd' is not installed. Please install it and try again."
+            exit 1
+        fi
+    done
+    log_success "All required commands are present."
 }
 
 accept_licence() {
@@ -77,6 +88,43 @@ image_for_sdk() {
     echo "system-images;android-$SDK_VERSION;google_apis;$ARCHITECTURE_SUFFIX"
 }
 
+install_flashlight() {
+    local os_name
+    local binary_name="flashlight"
+
+    if [[ "$(uname)" == "Darwin" ]]; then
+        os_name="macos"
+    elif [[ "$(uname)" == "Linux" ]]; then
+        os_name="linux"
+    else
+        log_error "Unsupported OS for Flashlight installation: $(uname)"
+        exit 1
+    fi
+
+    local archive_name="flashlight-${os_name}.zip"
+    local url="https://github.com/bamlab/flashlight/releases/download/v${FLASHLIGHT_VERSION}/${archive_name}"
+    local install_dir="$HOME/.flashlight/bin"
+    local download_dir
+    download_dir=$(mktemp -d)
+    # Ensure the temp directory is cleaned up on script exit
+    trap 'rm -rf "$download_dir"' EXIT
+
+    log_and_run "Ensuring Flashlight installation directory exists" mkdir -p "$install_dir"
+    log_and_run "Downloading Flashlight v${FLASHLIGHT_VERSION} for ${os_name}" \
+        curl --fail --location --progress-bar "$url" -o "$download_dir/$archive_name"
+
+    log_and_run "Unzipping Flashlight archive" \
+        unzip -q "$download_dir/$archive_name" -d "$download_dir"
+
+    log_and_run "Moving Flashlight binary to installation directory" \
+        mv "$download_dir/$binary_name" "$install_dir/flashlight"
+
+    log_and_run "Making Flashlight binary executable" \
+        chmod u+x "$install_dir/flashlight"
+
+    log_info "Flashlight v${FLASHLIGHT_VERSION} installation complete."
+}
+
 install_platforms_and_image() {
     local SDK_VERSION="$1"
     local PLATFORM_PACKAGE="platforms;android-$SDK_VERSION"
@@ -107,10 +155,9 @@ recreate_emulator() {
             --package "$IMAGE_PACKAGE" \
             --device "$DEVICE_NAME" \
             --force
-    
+
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
-    # We run this in the background, so log_and_run is not suitable. Manual logging is used.
     emulator \
         -avd "$EMULATOR_NAME" \
         -no-window -no-audio -no-snapshot -no-boot-anim \
@@ -119,7 +166,7 @@ recreate_emulator() {
     local EMULATOR_PID=$!
     log_info "Waiting 15s for emulator process (PID: $EMULATOR_PID) to initialize..."
     sleep 15
-    
+
     if ! ps -p $EMULATOR_PID > /dev/null; then
         log_error "Emulator process (PID $EMULATOR_PID) crashed on startup. See log below:"
         cat "$EMULATOR_LOG_FILE" >&2
@@ -132,6 +179,7 @@ recreate_emulator() {
 # --- Main Script ---
 
 log_info "Repository root detected at: $REPO_ROOT"
+verify_dependencies "curl" "unzip" "yarn" "corepack" "node"
 
 log_and_run "Ensuring AVD storage directory exists" mkdir -p "$ANDROID_AVD_HOME"
 log_and_run "Creating Android SDK directory if it doesn't exist" mkdir -p "$ANDROID_HOME"
@@ -157,8 +205,8 @@ log_and_run "Running Maestro installer" bash /tmp/maestro_installer.sh
 log_info "Adding Maestro to PATH..."
 export PATH="$PATH":"$HOME/.maestro/bin"
 
-log_and_run "Downloading Flashlight installer" curl -fsSL "https://get.flashlight.dev" -o /tmp/flashlight_installer.sh
-log_and_run "Running Flashlight installer" bash /tmp/flashlight_installer.sh
+
+install_flashlight
 log_info "Adding Flashlight to PATH..."
 export PATH="$PATH":"$HOME/.flashlight/bin"
 
