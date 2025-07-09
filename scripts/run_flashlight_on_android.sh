@@ -182,7 +182,6 @@ log_info "Repository root detected at: $REPO_ROOT"
 verify_dependencies "curl" "unzip" "yarn" "corepack" "node"
 
 log_and_run "Ensuring AVD storage directory exists" mkdir -p "$ANDROID_AVD_HOME"
-log_and_run "Creating Android SDK directory if it doesn't exist" mkdir -p "$ANDROID_HOME"
 
 log_info "Updating PATH with Android SDK tool locations..."
 CMDLINE_TOOLS_LATEST_PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo '')"
