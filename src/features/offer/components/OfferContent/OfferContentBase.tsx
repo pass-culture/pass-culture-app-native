@@ -61,6 +61,7 @@ type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
+    onSeeVideoPress?: () => void
     chronicles?: ChronicleCardData[]
     videoData?: { videoId: string; thumbnailUri: string }
     likesCount?: number
@@ -81,6 +82,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   chronicleVariantInfo,
   headlineOffersCount,
   onOfferPreviewPress,
+  onSeeVideoPress,
   contentContainerStyle,
   defaultReaction,
   onReactionButtonPress,
@@ -268,6 +270,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               onPress={onOfferPreviewPress}
               placeholderImage={placeholderImage}
               imageDimensions={imageDimensions}
+              onSeeVideoPress={onSeeVideoPress}
             />
             <OfferBody
               offer={offer}

@@ -26,6 +26,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { videoDataFixture } from 'features/offer/fixtures/videoDataFixture'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { beneficiaryUser } from 'fixtures/user'
 import {
@@ -838,6 +839,36 @@ describe('<OfferContent />', () => {
       expect(screen.queryByTestId('coming-soon-footer-offset')).not.toBeOnTheScreen()
     })
   })
+
+  describe('See video button', () => {
+    it('should not display see video button when video data not defined', async () => {
+      renderOfferContent({})
+
+      await screen.findByText('Réserver l’offre')
+
+      expect(screen.queryByText('Voir la vidéo')).not.toBeOnTheScreen()
+    })
+
+    it('should display see video button when video data defined', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
+      renderOfferContent({ videoData: videoDataFixture })
+
+      expect(await screen.findByText('Voir la vidéo')).toBeOnTheScreen()
+    })
+
+    it('should navigate to OfferVideoPreview screen when pressing see video button', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
+      renderOfferContent({ videoData: videoDataFixture })
+
+      await screen.findByText('Réserver l’offre')
+
+      await user.press(screen.getByText('Voir la vidéo'))
+
+      expect(mockNavigate).toHaveBeenCalledWith('OfferVideoPreview', {
+        id: offerResponseSnap.id,
+      })
+    })
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
@@ -849,6 +880,7 @@ function renderOfferContent({
   subcategory = mockSubcategory,
   isDesktopViewport,
   chronicles,
+  videoData,
 }: RenderOfferContentType) {
   const subtitle = 'Membre du Book Club'
   const chroniclesData =
@@ -863,6 +895,7 @@ function renderOfferContent({
           subcategory={subcategory}
           chronicles={chroniclesData}
           chronicleVariantInfo={chronicleVariantInfoFixture}
+          videoData={videoData}
         />
       </NavigationContainer>
     ),

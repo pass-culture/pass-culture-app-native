@@ -144,12 +144,13 @@ const StyledAnimatedView = styled(Animated.View).attrs({
 }))
 
 const StyledPlayIcon = styled(Play).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.lockedInverted,
+  color: theme.designSystem.color.icon.inverted,
+  color2: theme.designSystem.color.icon.default,
   size: getSpacing(14),
 }))``
 
 const IconContainer = styled.View(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.xxl,
   padding: theme.designSystem.size.spacing.xxs,
-  backgroundColor: theme.designSystem.color.background.lockedInverted,
+  backgroundColor: theme.designSystem.color.background.default,
 }))

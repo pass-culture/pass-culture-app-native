@@ -1,6 +1,8 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
@@ -23,6 +25,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onReactionButtonPress,
   headlineOffersCount,
 }) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
@@ -34,10 +37,14 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
 
   const offerImagesUrl = useMemo(() => offerImages.map((image) => image.url), [offerImages])
 
-  const handlePress = (defaultIndex = 0) => {
+  const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
     setCarouselDefaultIndex(defaultIndex)
     showModal()
+  }
+
+  const handleVideoPress = () => {
+    navigate('OfferVideoPreview', { id: offer.id })
   }
 
   const BodyWrapper = useMemo(
@@ -66,7 +73,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           subcategory={subcategory}
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}
-          onOfferPreviewPress={handlePress}
+          onOfferPreviewPress={handlePreviewPress}
+          onSeeVideoPress={videoData ? handleVideoPress : undefined}
           BodyWrapper={BodyWrapper}
           videoData={videoData}
           defaultReaction={defaultReaction}

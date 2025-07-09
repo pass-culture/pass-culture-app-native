@@ -56,6 +56,7 @@ import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
+import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
@@ -195,6 +196,15 @@ const rootScreens: RouteConfig[] = [
     name: '_DeeplinkOnlyOfferPreview3',
     component: OfferPreview,
     options: { title: 'Aperçu de l’offre' },
+  },
+  {
+    name: 'OfferVideoPreview',
+    component: OfferVideoPreview,
+    options: {
+      title: 'Vidéo de l’offre',
+      presentation: 'modal',
+      ...FILTERS_MODAL_NAV_OPTIONS,
+    },
   },
   { name: 'BookingDetails', component: withAuthProtection(BookingDetails) },
   {

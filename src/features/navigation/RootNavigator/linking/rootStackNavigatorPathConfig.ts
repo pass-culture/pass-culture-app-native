@@ -204,6 +204,10 @@ export const rootStackNavigatorPathConfig = {
     path: 'offer/apercu',
     parse: screenParamsParser['OfferPreview'],
   },
+  OfferVideoPreview: {
+    path: 'offre/:id/video',
+    parse: screenParamsParser['OfferVideoPreview'],
+  },
   BookingDetails: {
     path: 'reservation/:id/details',
     parse: screenParamsParser['BookingDetails'],

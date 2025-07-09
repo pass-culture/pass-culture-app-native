@@ -204,6 +204,10 @@ type OfferPreviewParams = {
   defaultIndex?: number
 }
 
+type OfferVideoPreviewParams = {
+  id: number
+}
+
 type BookingDetailsParams = {
   id: number
 }
@@ -304,6 +308,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyOfferPreview1: OfferPreviewParams
   _DeeplinkOnlyOfferPreview2: OfferPreviewParams
   _DeeplinkOnlyOfferPreview3: OfferPreviewParams
+  OfferVideoPreview: OfferVideoPreviewParams
   OnboardingSubscription: undefined
   PageNotFound: undefined
   Profile: undefined

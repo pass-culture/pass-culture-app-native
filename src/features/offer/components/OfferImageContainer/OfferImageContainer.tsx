@@ -15,6 +15,7 @@ type Props = {
   imageDimensions: OfferImageContainerDimensions
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
+  onSeeVideoPress?: VoidFunction
   placeholderImage?: string
 }
 
@@ -24,6 +25,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
   placeholderImage,
   imageDimensions,
+  onSeeVideoPress,
 }) => {
   const progressValue = useSharedValue<number>(0)
 
@@ -39,6 +41,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         onPress={onPress}
         categoryId={categoryId}
         imageDimensions={imageDimensions}
+        onSeeVideoPress={onSeeVideoPress}
       />
     </OfferImageHeaderWrapper>
   )
