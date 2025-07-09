@@ -1,7 +1,19 @@
+import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { AccessibilityRootStackParamList } from 'features/navigation/RootNavigator/types'
+export interface PersonalDataType {
+  type: PersonalDataTypes.PROFIL_PERSONAL_DATA | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+}
 
 export type ProfileStackParamList = {
-  NotificationsSettings: undefined
+  ChangeAddress: PersonalDataType | undefined
+  ChangeCity: PersonalDataType | undefined
+  ChangeEmail: { showModal: boolean } | undefined
+  ChangePassword: undefined
+  ChangeStatus: PersonalDataType | undefined
+  ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
+  ConfirmDeleteProfile: undefined
+  ConsentSettings: { onGoBack?: () => void } | undefined
+  DeactivateProfileSuccess: undefined
   DebugScreen: undefined
   DeleteProfileAccountHacked: undefined
   DeleteProfileAccountNotDeletable: undefined
@@ -10,23 +22,16 @@ export type ProfileStackParamList = {
   DeleteProfileEmailHacked: undefined
   DeleteProfileReason: undefined
   DeleteProfileSuccess: undefined
-  ConfirmDeleteProfile: undefined
-  DeactivateProfileSuccess: undefined
-  SuspendAccountConfirmationWithoutAuthentication: undefined
-  ChangeStatus: undefined
-  ChangeCity: undefined
-  ChangeEmail: { showModal: boolean } | undefined
-  TrackEmailChange: undefined
-  LegalNotices: undefined
-  PersonalData: undefined
-  ValidateEmailChange: { token: string } | undefined
-  ChangePassword: undefined
-  SuspendAccountConfirmation: { token: string } | undefined
-  FeedbackInApp: undefined
-  ProfileTutorialAgeInformationCredit: undefined
   DisplayPreference: undefined
-  ConsentSettings: { onGoBack?: () => void } | undefined
-  ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
+  FeedbackInApp: undefined
+  LegalNotices: undefined
+  NotificationsSettings: undefined
+  PersonalData: undefined
+  ProfileTutorialAgeInformationCredit: undefined
+  SuspendAccountConfirmation: { token: string } | undefined
+  SuspendAccountConfirmationWithoutAuthentication: undefined
+  TrackEmailChange: undefined
+  ValidateEmailChange: { token: string } | undefined
   ChangeEmailSetPassword:
     | { token: string | null | undefined; emailSelectionToken: string | null | undefined }
     | undefined
