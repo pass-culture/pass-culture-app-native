@@ -21,15 +21,15 @@ readonly C_RED='\e[1;31m'
 readonly C_RESET='\e[0m'
 
 log_info() {
-    echo -e "\n${C_BLUE}[INFO] ==> $*${C_RESET}"
+    printf "\n${C_BLUE}[INFO] ==> %s${C_RESET}\n" "$*"
 }
 
 log_success() {
-    echo -e "${C_GREEN}[SUCCESS] ==> $*${C_RESET}"
+    printf "${C_GREEN}[SUCCESS] ==> %s${C_RESET}\n" "$*"
 }
 
 log_error() {
-    echo -e "${C_RED}[ERROR] ==> $*${C_RESET}" >&2
+    printf "${C_RED}[ERROR] ==> %s${C_RESET}\n" "$*" >&2
 }
 
 log_and_run() {
@@ -80,7 +80,7 @@ verify_package_installed() {
 image_for_sdk() {
     local SDK_VERSION="$1"
     local ARCHITECTURE_SUFFIX
-    if [ "$(uname -m)" == "arm64" ]; then
+    if [ "$(uname --machine)" == "arm64" ]; then
         ARCHITECTURE_SUFFIX="arm64-v8a"
     else
         ARCHITECTURE_SUFFIX="x86_64"
@@ -107,12 +107,12 @@ install_flashlight() {
     local url="https://github.com/bamlab/flashlight/releases/download/v${FLASHLIGHT_VERSION}/${archive_name}"
     local install_dir="$HOME/.flashlight/bin"
     local download_dir
-    download_dir=$(mktemp -d)
-    trap 'rm -rf "$download_dir"' RETURN
+    download_dir=$(mktemp --directory)
+    trap 'rm --recursive --force "$download_dir"' RETURN
 
-    log_and_run "Ensuring Flashlight installation directory exists" mkdir -p "$install_dir"
+    log_and_run "Ensuring Flashlight installation directory exists" mkdir --parents "$install_dir"
     log_and_run "Downloading Flashlight v${FLASHLIGHT_VERSION} for ${os_name}" \
-        curl --fail --location --progress-bar "$url" -o "$download_dir/$archive_name"
+        curl --fail --location --progress-bar "$url" --output "$download_dir/$archive_name"
 
     log_and_run "Unzipping Flashlight archive" \
         unzip -q "$download_dir/$archive_name" -d "$download_dir"
@@ -168,7 +168,7 @@ recreate_emulator() {
     log_info "Waiting 15s for emulator process (PID: $EMULATOR_PID) to initialize..."
     sleep 15
 
-    if ! ps -p $EMULATOR_PID > /dev/null; then
+    if ! ps --pid "$EMULATOR_PID" > /dev/null; then
         log_error "Emulator process (PID $EMULATOR_PID) crashed on startup. See log below:"
         cat "$EMULATOR_LOG_FILE" >&2
         exit 1
@@ -182,7 +182,7 @@ recreate_emulator() {
 log_info "Repository root detected at: $REPO_ROOT"
 verify_dependencies "curl" "unzip" "yarn" "corepack" "node"
 
-log_and_run "Ensuring AVD storage directory exists" mkdir -p "$ANDROID_AVD_HOME"
+log_and_run "Ensuring AVD storage directory exists" mkdir --parents "$ANDROID_AVD_HOME"
 
 log_info "Updating PATH with Android SDK tool locations..."
 CMDLINE_TOOLS_LATEST_PATH="$(realpath "$ANDROID_HOME"/cmdline-tools/*/bin 2>/dev/null || echo '')"
@@ -200,7 +200,8 @@ log_and_run "Installing Node.js dependencies from lockfile" \
 log_and_run "Installing profiler packages for parsing" \
     bash -c "cd '$REPO_ROOT' && yarn add --dev @perf-profiler/reporter@$PERF_PROFILER_REPORTER_VERSION"
 
-log_and_run "Downloading Maestro installer" curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro_installer.sh
+log_and_run "Downloading Maestro installer" \
+    curl --fail --silent --show-error --location "https://get.maestro.mobile.dev" --output /tmp/maestro_installer.sh
 log_and_run "Running Maestro installer" bash /tmp/maestro_installer.sh
 log_info "Adding Maestro to PATH..."
 export PATH="$PATH":"$HOME/.maestro/bin"
@@ -222,7 +223,7 @@ log_and_run "Building the Android staging release APK" \
     bash -c "cd '$REPO_ROOT/android' && ./gradlew assembleStagingRelease"
 
 log_info "Finding the generated APK file..."
-APK_PATH=$(find "$REPO_ROOT/android" -type f -name "*.apk" | head -n 1)
+APK_PATH=$(find "$REPO_ROOT/android" -type f -name "*.apk" | head --lines=1)
 if [ -z "$APK_PATH" ]; then
     log_error "No .apk file was found."
     exit 1
