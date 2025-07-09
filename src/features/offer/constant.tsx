@@ -47,3 +47,5 @@ export const CHRONICLE_VARIANT_CONFIG = [
     modalButtonLabel: 'Voir toutes les recos du Ciné Club',
   },
 ] as const
+
+export const MAX_WIDTH_VIDEO = 540
