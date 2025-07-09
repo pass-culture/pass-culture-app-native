@@ -108,8 +108,7 @@ install_flashlight() {
     local install_dir="$HOME/.flashlight/bin"
     local download_dir
     download_dir=$(mktemp -d)
-    # Ensure the temp directory is cleaned up on script exit
-    trap 'rm -rf "$download_dir"' EXIT
+    trap 'rm -rf "$download_dir"' RETURN
 
     log_and_run "Ensuring Flashlight installation directory exists" mkdir -p "$install_dir"
     log_and_run "Downloading Flashlight v${FLASHLIGHT_VERSION} for ${os_name}" \
