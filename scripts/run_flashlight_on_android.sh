@@ -8,9 +8,11 @@ REPO_ROOT=$(dirname "$SCRIPT_DIR")
 BUNDLE_ID=app.passculture.staging
 MIN_SDK_VERSION="30"
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
+PERF_PROFILER_REPORTER_VERSION="0.9.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
+export MAESTRO_VERSION="1.41.0"
 
 readonly C_BLUE='\e[1;34m'
 readonly C_GREEN='\e[1;32m'
@@ -148,7 +150,7 @@ log_and_run "Installing Node.js dependencies from lockfile" \
     bash -c "cd '$REPO_ROOT' && yarn install --frozen-lockfile"
 
 log_and_run "Installing profiler packages for parsing" \
-    bash -c "cd '$REPO_ROOT' && yarn add --dev @perf-profiler/reporter@0.9.0"
+    bash -c "cd '$REPO_ROOT' && yarn add --dev @perf-profiler/reporter@$PERF_PROFILER_REPORTER_VERSION"
 
 log_and_run "Downloading Maestro installer" curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro_installer.sh
 log_and_run "Running Maestro installer" bash /tmp/maestro_installer.sh
