@@ -1,5 +1,7 @@
 # Input / Output Externe
 
+Graphique des appels réseaux vers des services externes
+
 ```mermaid
 flowchart TB
   App["App"]

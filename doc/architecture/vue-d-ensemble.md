@@ -1,5 +1,7 @@
 # Architecture Vue D'Ensemble
 
+Graphique de l'organisation des différents composants
+
 ```mermaid
 flowchart LR
   subgraph AppState["AppState (Zustand)"]

@@ -1,5 +1,7 @@
 # Input / Output Local
 
+Graphique des appels aux différentes API de l'appareil
+
 ```mermaid
 architecture-beta
   service App(cloud)[App]
