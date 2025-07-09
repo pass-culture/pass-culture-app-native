@@ -74,6 +74,10 @@ export const Chronicles: FunctionComponent = () => {
     navigate('Offer', { id: offerId, from: 'chronicles' })
   }
 
+  const handleOnShowRecoButtonPress = () => {
+    navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+  }
+
   if (!offer || !chronicleCardsData) return null
 
   return (
@@ -82,7 +86,8 @@ export const Chronicles: FunctionComponent = () => {
         offerId={offer.id}
         offerName={offer.name}
         variantInfo={chronicleVariantInfo}
-        chronicleCardsData={chronicleCardsData}>
+        chronicleCardsData={chronicleCardsData}
+        onShowRecoButtonPress={handleOnShowRecoButtonPress}>
         {isDesktopViewport ? (
           <StyledChronicleOfferInfo
             imageUrl={offer.images?.recto?.url ?? ''}
