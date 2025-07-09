@@ -25,6 +25,7 @@ import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferFooter } from 'features/offer/components/OfferFooter/OfferFooter'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
@@ -69,6 +70,7 @@ type OfferContentBaseProps = OfferContentProps &
     onReactionButtonPress?: () => void
     contentContainerStyle?: StyleProp<ViewStyle>
     onLayout?: (params: LayoutChangeEvent) => void
+    chronicleVariantInfo?: ChronicleVariantInfo
   }>
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
@@ -276,7 +278,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               chroniclesCount={chronicles?.length}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
-              videoData={videoData}>
+              videoData={videoData}
+              chronicleVariantInfo={chronicleVariantInfo}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>
