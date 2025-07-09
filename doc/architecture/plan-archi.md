@@ -139,13 +139,13 @@ Pour cela il faut un principe bi-directionnel entre l’état et l’URL :
 
 Tous les composants de l’app devront se ranger dans une des catégories suivantes :
 
-- dumb component : les dumb components (affichage) devront constituer la majorité de la codebase, ils ne pourront pas contenir de logique métier, ils devront être des fonctions pures, leur état n'est déterminé que par les props.
+- presentational component : les presentational components (affichage) devront constituer la majorité de la codebase, ils ne pourront pas contenir de logique métier, ils devront être des fonctions pures, leur état n'est déterminé que par les props.
 - container : les containers seront connectés aux stores pour l'app state et au server state. Ils devront gérer leur logique métier dans des fonctions pures (cf. partie sur la logique métier).
 - page : les pages sont les composants de plus haut niveau et doivent déterminer leur état interne uniquement via les paramètres de l'URL (sauf exceptions).
 
 Pour cela, il faut :
 
-- repérer et isoler les dumb components dans des dossiers spécifiques
+- repérer et isoler les presentational components dans des dossiers spécifiques
 - remonter les logiques contenues dans les composants d’affichage vers les containers et les pages
 - supprimer les connexions entre les composants d’affichage aux stores et au server state
 - isoler les containers dans des dossiers spécifiques
@@ -208,8 +208,8 @@ Isolation des logiques métiers:
 
 - création de nouveaux composants containers (cf. ci-dessous)
 - déplacement des connexions à l’app/server state dans les containers
-- migrations de tous les autres composants vers des dumbs components
-- les composants pages existant déjà il faudra simplement s’assurer que ces composants appellent bien des containers et non des dumb components autant que possible
+- migrations de tous les autres composants vers des presentational components
+- les composants pages existant déjà il faudra simplement s’assurer que ces composants appellent bien des containers et non des presentational components autant que possible
 
 #### Refonte de la navigation
 

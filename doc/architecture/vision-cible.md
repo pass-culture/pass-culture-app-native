@@ -38,7 +38,7 @@ Découpage en
 
 - Page
 - Container
-- Dumb Component
+- Presentational Component
 
 Parfois une information détermine si on doit en charger une autre
 

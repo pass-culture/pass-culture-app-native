@@ -26,7 +26,7 @@ flowchart LR
 
   Page@{ shape: doc }
   -->|render| Container@{ shape: processes }
-  -->|render| Dumb@{ shape: processes }
+  -->|render| Presentational@{ shape: processes }
 
   Page -->|parse| queryParams
   Container -->|read| selectors
