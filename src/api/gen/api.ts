@@ -912,7 +912,7 @@ export interface BookingResponse {
    * @type {TicketResponse}
    * @memberof BookingResponse
    */
-  ticket?: TicketResponse | null
+  ticket: TicketResponse
   /**
    * @type {number}
    * @memberof BookingResponse
@@ -1669,17 +1669,6 @@ export enum EmailHistoryEventTypeEnum {
   'ADMIN_VALIDATION' = 'ADMIN_VALIDATION',
   'ADMIN_UPDATE_REQUEST' = 'ADMIN_UPDATE_REQUEST',
   'ADMIN_UPDATE' = 'ADMIN_UPDATE',
-}
-/**
- * @export
- * @interface EmailResponse
- */
-export interface EmailResponse {
-  /**
-   * @type {boolean}
-   * @memberof EmailResponse
-   */
-  hasTicketEmailBeenSent: boolean
 }
 /**
  * @export
@@ -4538,6 +4527,21 @@ export interface SuspendAccountForSuspiciousLoginRequest {
   token: string
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum TicketDisplayEnum {
+  'no_ticket' = 'no_ticket',
+  'email_sent' = 'email_sent',
+  'email_will_be_sent' = 'email_will_be_sent',
+  'online_code' = 'online_code',
+  'not_visible' = 'not_visible',
+  'qr_code' = 'qr_code',
+  'voucher' = 'voucher',
+  'ticket' = 'ticket',
+}
+/**
  * @export
  * @interface TicketResponse
  */
@@ -4548,20 +4552,15 @@ export interface TicketResponse {
    */
   activationCode?: ActivationCodeResponse | null
   /**
-   * @type {EmailResponse}
+   * @type {TicketDisplayEnum}
    * @memberof TicketResponse
    */
-  email?: EmailResponse | null
+  display: TicketDisplayEnum
   /**
    * @type {ExternalBookingResponseV2}
    * @memberof TicketResponse
    */
   externalBooking?: ExternalBookingResponseV2 | null
-  /**
-   * @type {boolean}
-   * @memberof TicketResponse
-   */
-  noTicket: boolean
   /**
    * @type {TokenResponse}
    * @memberof TicketResponse
