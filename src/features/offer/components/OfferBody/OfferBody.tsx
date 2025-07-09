@@ -9,6 +9,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
@@ -49,6 +50,7 @@ type Props = {
   distance?: string | null
   headlineOffersCount?: number
   videoData?: { videoId: string; thumbnailUri: string }
+  chronicleVariantInfo: ChronicleVariantInfo
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -60,6 +62,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   distance,
   headlineOffersCount,
   videoData,
+  chronicleVariantInfo,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -157,6 +160,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           likesCount={likesCount}
           chroniclesCount={chroniclesCount}
           headlineOffersCount={headlineOffersCount}
+          chronicleVariantInfo={chronicleVariantInfo}
         />
 
         <GroupWithSeparator

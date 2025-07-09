@@ -1,6 +1,7 @@
 import React, { ComponentProps } from 'react'
 
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -36,13 +37,6 @@ describe('<OfferReactionSection />', () => {
       renderOfferReactionSection({ chroniclesCount: 3 })
 
       expect(await screen.findByText('3 avis')).toBeOnTheScreen()
-      expect(screen.getByTestId('chroniclesCounterIcon')).toBeOnTheScreen()
-    })
-
-    it('should not display chronicles information when not exists', () => {
-      renderOfferReactionSection({ likesCount: 2 })
-
-      expect(screen.queryByTestId('chroniclesCounterIcon')).not.toBeOnTheScreen()
     })
 
     it('should display headline offers count when exist', async () => {
@@ -61,7 +55,6 @@ describe('<OfferReactionSection />', () => {
     it('should display nothing when there are not chronicles, likes information and headline offers count', async () => {
       renderOfferReactionSection({})
 
-      expect(screen.queryByTestId('chroniclesCounterIcon')).not.toBeOnTheScreen()
       expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
       expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
     })
@@ -81,6 +74,7 @@ function renderOfferReactionSection({
         chroniclesCount={chroniclesCount}
         likesCount={likesCount}
         headlineOffersCount={headlineOffersCount}
+        chronicleVariantInfo={chronicleVariantInfoFixture}
       />
     )
   )

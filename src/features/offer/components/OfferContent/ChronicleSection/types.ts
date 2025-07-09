@@ -23,6 +23,7 @@ export type ChronicleVariantInfo = {
   Icon?: React.ReactNode
   modalWording: string
   modalButtonLabel: string
+  SmallIcon?: React.ReactNode
 }
 
 export type BookClubSubcategoryId = (typeof BOOK_CLUB_SUBCATEGORIES)[number]

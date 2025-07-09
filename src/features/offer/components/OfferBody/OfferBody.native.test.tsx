@@ -12,6 +12,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -603,7 +604,11 @@ describe('<OfferBody />', () => {
   }: RenderOfferBodyType) {
     render(
       reactQueryProviderHOC(
-        <OfferBody offer={offer} subcategory={subcategory} distance={distance}>
+        <OfferBody
+          offer={offer}
+          subcategory={subcategory}
+          distance={distance}
+          chronicleVariantInfo={chronicleVariantInfoFixture}>
           {children}
         </OfferBody>
       ),
