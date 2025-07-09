@@ -1,6 +1,6 @@
 # Architecture Vision Cible
 
-## Grossomodo maintenant
+## Maintenant
 
 Aujourd'hui, nos pages ressemblent +/- à ça
 
@@ -31,6 +31,8 @@ flowchart TB
   useRecommandedOffersQuery
   -->|has recommanded offers| RecommandedOffers
 ```
+
+<small>Ce schéma ne représente pas réellement la page Offer actuelle mais représente les patterns qui apparaissent souvent</small>
 
 ## Intermédiaire
 

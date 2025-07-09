@@ -78,7 +78,7 @@ Ces propositions se font dans ce cadre.
 ### Séparation des états
 
 Pourquoi vouloir séparer les États dans l’app ?
-Être incapable de découpler les états qui viennent du server de ceux générés par l’app (user), empêche une gestion propre du cache, du stockage de data pour le mode offline, et entraîne un couplage non désirable pour l’évolution de l’app / la recherche et la gestion des bugs.
+Être incapable de découpler les états qui viennent du serveur (réservation d'une offre, bénéficiaire, ...) de ceux générés par l’app (modale, formulaires, notifications, ...), empêche une gestion propre du cache, du stockage de données pour le mode offline, et entraîne un couplage non désirable pour l’évolution de l’app / la recherche et la gestion des bugs.
 
 ### Server State
 
@@ -109,7 +109,7 @@ Le but est d’uniformiser, isoler et identifier l’app state dans l’app.
 
 ### Suppression des Contexts
 
-Une grande partie des contextes React sera supprimée, au profit de l’utilisation de stores zustands pour l’app state et de queries pour le server state.
+Une grande partie des contextes React sera supprimée, au profit de l’utilisation de stores Zustand pour l’app state et de queries pour le server state.
 Cf. partie précédente
 
 Cette étape sera vue plus précisément plus tard.
@@ -121,7 +121,8 @@ Ces fonctions constitueront un ensemble uniforme et identifiable de règles qui 
 La notion de classe peut être remplacée par l’utilisation des modules JS et de fonctions dans cette portée.
 Pour cela, on effectuera les modifications suivantes :
 
-- suppression des hooks associés au server state, utilisation de fonction de sélection (select de RQ ou selector de Reselect): ces fonctions permettent de modifier la donnée server pour l’affichage
+- suppression des hooks associés au server state
+- utilisation de fonction de sélection (select de RQ ou selector de Reselect): ces fonctions permettent de modifier la donnée server pour l’affichage
 - suppression des hooks d’abstraction d’actions au profit de fonctions pures: testables car stateless
 - suppression des logiques métiers dans les components, les logiques seront extraites et transformées en fonctions pures.
 
@@ -133,13 +134,15 @@ Pour cela il faut un principe bi-directionnel entre l’état et l’URL :
 
 - que toutes les pages possèdent des URLs
 - que tous les paramètres des URLs déterminent l’état d’affichage de la page
-- que tous les états soient déterminé par les paramètres de l’URL, sauf cas particulier pour des pages qui n’auront pas besoin d’être accessibles en deeplink
+- que tous les états soient déterminé par les paramètres de l’URL, sauf cas particulier exceptionnel pour des pages qui n’auront pas besoin d’être accessibles en DeepLink
 
 ### Séparation des types de composants
 
 Tous les composants de l’app devront se ranger dans une des catégories suivantes :
 
 - presentational component : les presentational components (affichage) devront constituer la majorité de la codebase, ils ne pourront pas contenir de logique métier, ils devront être des fonctions pures, leur état n'est déterminé que par les props.
+  - Ils peuvent venir du Design System.
+  - Ils peuvent être créé dans Storybook pour aider à créer des composants réutilisables.
 - container : les containers seront connectés aux stores pour l'app state et au server state. Ils devront gérer leur logique métier dans des fonctions pures (cf. partie sur la logique métier).
 - page : les pages sont les composants de plus haut niveau et doivent déterminer leur état interne uniquement via les paramètres de l'URL (sauf exceptions).
 
