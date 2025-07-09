@@ -55,7 +55,6 @@ case "$target" in
     run_cloud_commands=true
     api_key=$(parse_env_variable ROBIN_API_KEY .maestro/.env.secret)
     project_id=$(parse_env_variable ROBIN_PROJECT_ID .maestro/.env.secret)
-    maestro_cloud_api_key=$(parse_env_variable MAESTRO_CLOUD_API_KEY .maestro/.env.secret)
     cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/tests/ --device-locale fr_FR --android-api-level 34 --timeout 120 --ios-version 17"
     ;;
 esac
@@ -113,6 +112,7 @@ stop_mock_analytics_server() {
 }
 
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
+maestro_cloud_api_key=$(parse_env_variable MAESTRO_CLOUD_API_KEY .maestro/.env.secret)
 
 if [ "$target" == "test" ]; then
   stop_mock_analytics_server
