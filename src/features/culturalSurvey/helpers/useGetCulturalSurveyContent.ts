@@ -22,7 +22,18 @@ export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boole
   }
 
   const navigateToIdentityCheckHonor = async () => {
-    reset({ index: 0, routes: [{ name: 'IdentityCheckHonor' }] })
+    reset({
+      index: 0,
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            index: 0,
+            routes: [{ name: 'IdentityCheckHonor' }],
+          },
+        },
+      ],
+    })
   }
 
   if (enableCulturalSurveyMandatory) {

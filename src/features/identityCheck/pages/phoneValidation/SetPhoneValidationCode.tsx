@@ -14,6 +14,7 @@ import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneV
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { useValidatePhoneNumberMutation } from 'features/identityCheck/queries/useValidatePhoneNumberMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -40,19 +41,52 @@ export const SetPhoneValidationCode = () => {
 
   // We amend our navigation history to replace "SetPhoneNumber" with "PhoneValidationTooManySMSSent"
   const goBackToPhoneValidationTooManySMSSent = () => {
-    dispatch((state) => {
-      // Here we check the index of our 'Stepper' page in our navigation stack
-      const stepperIndex = state.routes.findIndex((route) => route.name === 'Stepper')
-      // Here we reset the routes parameter, taking all pages up to Stepper and adding 'PhoneValidationTooManySMSSent'
-      // The ternary is used to prevent edge case crashes. stepperIndex could return -1 if we were brought to this page
-      // without going through the stepper, e.g. through a deeplink.
-      const routes =
-        stepperIndex === -1
-          ? [...state.routes, { name: 'PhoneValidationTooManySMSSent' }]
-          : [...state.routes.slice(0, stepperIndex + 1), { name: 'PhoneValidationTooManySMSSent' }]
+    dispatch((rootState) => {
+      // This `rootState` is the state of the top-level navigator.
+      // It might look like: { index: 0, routes: [{ name: 'SubscriptionStackNavigator', state: {...} }] }
+
+      // 1. Find the SubscriptionStackNavigator's state
+      const subscriptionStackRoute = rootState.routes.find(
+        (route) => route.name === 'SubscriptionStackNavigator'
+      )
+
+      // If for some reason we're not in that stack, do nothing.
+      if (!subscriptionStackRoute || !subscriptionStackRoute.state) {
+        // Returning the original state effectively does nothing.
+        return CommonActions.reset(rootState)
+      }
+
+      const subState = subscriptionStackRoute.state
+
+      // 2. Perform your the logic on the NESTED state
+      const stepperIndex = subState.routes.findIndex((route) => route.name === 'Stepper')
+      const baseRoutes =
+        stepperIndex === -1 ? subState.routes : subState.routes.slice(0, stepperIndex + 1)
+
+      const newSubRoutes = [...baseRoutes, { name: 'PhoneValidationTooManySMSSent' }]
       // Here we reset the state AND navigate to the page whose index is given to the "index" parameter.
       // Therefore, we navigate to "PhoneValidationTooManySMSSent"
-      return CommonActions.reset({ ...state, routes, index: routes.length - 1 })
+
+      // 3. Create a new version of the SubscriptionStackNavigator's state
+      const newSubState = {
+        ...subState,
+        routes: newSubRoutes,
+        index: newSubRoutes.length - 1,
+      }
+
+      // 4. Rebuild the root navigator's routes array with the modified stack state
+      const newRootRoutes = rootState.routes.map((route) => {
+        if (route.name === 'SubscriptionStackNavigator') {
+          return { ...route, state: newSubState }
+        }
+        return route
+      })
+
+      // 5. Return the reset action with the fully reconstructed new root state
+      return CommonActions.reset({
+        ...rootState,
+        routes: newRootRoutes,
+      })
     })
   }
 
@@ -78,7 +112,7 @@ export const SetPhoneValidationCode = () => {
     },
     onError: (error: unknown) => {
       if (isApiError(error) && error.content?.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
-        navigate('PhoneValidationTooManyAttempts')
+        navigate(...getSubscriptionHookConfig('PhoneValidationTooManyAttempts'))
       } else {
         setErrorMessage(extractApiErrorMessage(error))
       }

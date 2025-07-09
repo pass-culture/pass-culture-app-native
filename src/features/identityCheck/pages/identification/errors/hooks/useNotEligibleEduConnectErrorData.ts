@@ -126,7 +126,7 @@ export function useNotEligibleEduConnectErrorData(message: EduConnectErrorMessag
         () => {
           goBack()
         },
-        { screen: 'EduConnectForm' }
+        { ...getSubscriptionPropConfig('EduConnectForm') }
       )
 
     case EduConnectErrorMessageEnum.DuplicateUser:
