@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -25,9 +25,7 @@ describe('<FeedBackVideo />', () => {
 
     render(<FeedBackVideo offerId={offerId} />)
 
-    await waitFor(() => {
-      expect(screen.getByText('Trouves-tu le contenu de cette vidéo utile ?')).toBeTruthy()
-    })
+    expect(await screen.findByText('Trouves-tu le contenu de cette vidéo utile ?')).toBeTruthy()
   })
 
   it('should display thank you message when LIKE reaction is stored', async () => {
@@ -35,12 +33,11 @@ describe('<FeedBackVideo />', () => {
 
     render(<FeedBackVideo offerId={offerId} />)
 
-    await waitFor(() => {
-      expect(AsyncStorage.getItem).toHaveBeenCalledWith(storageKey)
-      expect(
-        screen.getByText('Merci pour ta réponse ! As-tu 2 minutes pour nous dire pourquoi ?')
-      ).toBeTruthy()
-    })
+    expect(AsyncStorage.getItem).toHaveBeenCalledWith(storageKey)
+
+    expect(
+      await screen.findByText('Merci pour ta réponse ! As-tu 2 minutes pour nous dire pourquoi ?')
+    ).toBeTruthy()
   })
 
   it('should store the reaction when user clicks a button', async () => {
@@ -49,10 +46,8 @@ describe('<FeedBackVideo />', () => {
     render(<FeedBackVideo offerId={offerId} />)
 
     const thumbUp = await screen.findByTestId('thumbUp')
-    user.press(thumbUp)
+    await user.press(thumbUp)
 
-    await waitFor(() => {
-      expect(AsyncStorage.setItem).toHaveBeenCalledWith(storageKey, ReactionTypeEnum.LIKE)
-    })
+    expect(AsyncStorage.setItem).toHaveBeenCalledWith(storageKey, ReactionTypeEnum.LIKE)
   })
 })
