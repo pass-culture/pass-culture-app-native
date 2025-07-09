@@ -4,10 +4,7 @@ import { TicketResponse, UserProfileResponse } from 'api/gen'
 import { TicketCode } from 'features/bookings/components/OldBookingDetails/TicketCode'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
-import {
-  ExternalBookingTicket,
-  HiddenExternalBookingTicket,
-} from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
+import { ExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
@@ -19,6 +16,7 @@ export const TicketBottomPart = ({
   userEmail,
   ticket,
   expirationDate,
+  beginningDateTime,
 }: {
   isDuo: boolean
   isDigital: boolean
@@ -26,6 +24,7 @@ export const TicketBottomPart = ({
   userEmail: UserProfileResponse['email']
   ticket: TicketResponse
   expirationDate?: string
+  beginningDateTime: string | undefined
 }) => {
   if (ticket.noTicket) return <NoTicket />
 
@@ -38,14 +37,14 @@ export const TicketBottomPart = ({
         userEmail={userEmail}
       />
     )
-
   if (ticket.activationCode) return <TicketCode code={ticket.activationCode.code} />
 
   if (ticket.externalBooking)
-    return ticket.externalBooking.data ? (
-      <ExternalBookingTicket data={ticket.externalBooking.data} />
-    ) : (
-      <HiddenExternalBookingTicket />
+    return (
+      <ExternalBookingTicket
+        data={ticket.externalBooking.data ?? undefined}
+        beginningDatetime={beginningDateTime}
+      />
     )
 
   if (ticket.voucher?.data) {

@@ -109,6 +109,7 @@ export const Ticket = ({
           isDigital={properties.isDigital ?? false}
           isEvent={properties.isEvent ?? false}
           expirationDate={expirationDateFormated({ prefix: `avant le ` })}
+          beginningDateTime={booking.stock.beginningDatetime ?? undefined}
         />
       }
       infoBanner={
