@@ -1,0 +1,88 @@
+name: '[on_schedule] Flashlight Android Staging Performance test'
+
+on:
+  schedule:
+    - cron: '0 22 * * 0' # At 10PM every Sunday
+
+permissions:
+  contents: write
+  id-token: write
+  pages: write
+
+env:
+  CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+
+jobs:
+  run-e2e-tests:
+    name: 'Run Flashlight Android Performance Test'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Log app version
+        run: |
+          APP_VERSION=$(jq --raw-output '.version' ./package.json)
+          echo "App version is: $APP_VERSION"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
+
+      - name: Enable KVM for Hardware Acceleration
+        run: |
+          echo 'Enabling KVM...'
+          sudo chmod 777 /dev/kvm
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Authenticate to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get CI Secrets
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-staging
+            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
+            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+
+      - name: 'Render Sentry Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.10
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
+
+      - name: Setup android keystore properties for staging environment
+        uses: chuhlomin/render-template@v1.10
+        with:
+          template: templates_github_ci/staging.keystore.properties
+          vars: |
+            ENVIRONMENT: staging
+            ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
+            ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
+          result_path: android/keystores/staging.keystore.properties
+
+      - name: Setup android Google services config
+        run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+
+      - name: Setup android keystore file
+        run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/staging.keystore
+
+      - name: Run the full test script
+        run: ./scripts/run_flashlight_on_android.sh
