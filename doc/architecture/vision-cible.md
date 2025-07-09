@@ -46,6 +46,8 @@ Découpage en
 - Container
 - Presentational Component
 
+Pour plus d'information, [voir l'organisation des composants](./principes.md#lorganisation-des-composants)
+
 Parfois une information détermine si on doit en charger une autre
 
 -> découpage en sous container pour avoir un bon typage et éviter les `offer?.id` partout
