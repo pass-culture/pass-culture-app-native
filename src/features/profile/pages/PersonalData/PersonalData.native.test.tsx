@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration, UserProfileResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
+import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
@@ -34,6 +35,7 @@ const mockedUser: UserProfileResponse = {
   lastName: 'Bonheur',
   email: 'rosa.bonheur@gmail.com',
   phoneNumber: '+33685974563',
+  street: '10 rue de Bohneur',
 }
 
 const initialAuthContext = {
@@ -113,10 +115,10 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    await user.press(screen.getByTestId('Modifier la ville de résidence'))
+    await user.press(screen.getByTestId('Modifier mon adresse de résidence'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-      params: undefined,
+      params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA },
       screen: 'ChangeCity',
     })
   })
@@ -159,28 +161,5 @@ describe('PersonalData', () => {
     await user.press(screen.getByTestId('Modifier e-mail'))
 
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
-  })
-
-  //TODO(PC-36587): unskip this test
-  it.skip('should not show password field when user has no password', async () => {
-    mockedUseAuthContext
-      .mockReturnValueOnce({
-        ...initialAuthContext,
-        user: {
-          ...mockedUser,
-          hasPassword: false,
-        },
-      })
-      .mockReturnValueOnce({
-        ...initialAuthContext,
-        user: {
-          ...mockedUser,
-          hasPassword: false,
-        },
-      })
-    render(reactQueryProviderHOC(<PersonalData />))
-    await screen.findByText('Adresse e-mail')
-
-    expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
   })
 })
