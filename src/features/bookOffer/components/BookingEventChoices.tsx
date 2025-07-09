@@ -11,7 +11,7 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -37,38 +37,24 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       {shouldDisplayDateSelection ? (
         <BookDateChoice stocks={stocks} userRemainingCredit={creditForOffer} />
       ) : null}
-
-      {step && step >= Step.HOUR ? (
-        <React.Fragment>
-          {shouldDisplayHourSelection ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
-              <BookHourChoice />
-              <Spacer.Column numberOfSpaces={6} />
-            </React.Fragment>
-          ) : null}
-        </React.Fragment>
+      {step && step >= Step.HOUR && shouldDisplayHourSelection ? (
+        <Wrapper>
+          <BookHourChoice />
+        </Wrapper>
       ) : null}
-      {step && step >= Step.PRICE ? (
-        <React.Fragment>
-          {shouldDisplayPriceSelection ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
-              <BookPricesChoice stocks={stocksWithCategory} isDuo={offerIsDuo} />
-              <Spacer.Column numberOfSpaces={6} />
-            </React.Fragment>
-          ) : null}
-        </React.Fragment>
+      {step && step >= Step.PRICE && shouldDisplayPriceSelection ? (
+        <Wrapper>
+          <BookPricesChoice stocks={stocksWithCategory} isDuo={offerIsDuo} />
+        </Wrapper>
       ) : null}
       {step && step >= Step.DUO ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={6} />
+        <Wrapper>
           <BookDuoChoice />
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
+        </Wrapper>
       ) : null}
     </Container>
   )
 }
 
 const Container = styled.View({ width: '100%', marginTop: -getSpacing(2) })
+const Wrapper = styled.View({ marginVertical: getSpacing(6) })
