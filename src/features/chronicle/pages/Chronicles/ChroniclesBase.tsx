@@ -22,6 +22,7 @@ type Props = PropsWithChildren<{
   offerName: string
   chronicleCardsData: ChronicleCardData[]
   variantInfo: ChronicleVariantInfo
+  onShowRecoButtonPress: VoidFunction
 }>
 
 export const ChroniclesBase: FunctionComponent<Props> = ({
@@ -29,6 +30,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
   offerName,
   chronicleCardsData,
   variantInfo,
+  onShowRecoButtonPress,
   children,
 }) => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
@@ -65,9 +67,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
 
   const handleOnShowRecoButtonPress = () => {
     hideModal()
-    InteractionManager.runAfterInteractions(() => {
-      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
-    })
+    onShowRecoButtonPress()
   }
 
   return (
