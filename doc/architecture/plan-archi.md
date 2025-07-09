@@ -160,18 +160,21 @@ Pour cela, il faut :
 
 ### Étapes
 
-- L’audit de l’archi + archi macro 90% achevé
-- Les principes T2
-- VALIDÉ PAR EM SUR LA VISION 2025
-- Séparation des états de l’app T3…
+- PoC
 - Suppression des contexts au profit des autres états
 - Fonctionnalisation des logiques métiers
 - Séparation des types de composants
 - Refonte de la navigation
-- Quels sont les pré-requis avant de laisser en T3 les devs faire les nouvelles features avec ces nouveaux principes ?
-- En T3 il faudra trouver les stratégies pour modifier le légacy
 
 Toutes les étapes sont citées dans un ordre de faisabilité préférentielle, néanmoins une fois la séparation des états de l’app effectuée toutes les autres étapes sont faisables en parallèle si besoin.
+
+### PoC
+
+[Un PoC a été fait pour tester la nouvelle architecture sur la feature artiste](https://github.com/pass-culture/pass-culture-app-native/pull/8352), ce qui nous a permis de :
+
+- se rendre compte que on était pas d'accord sur certains points et de trouver des accords qui se retrouvent dans [les principes](./0_principes.md)
+- affiner certaines règles qui se retrouvent dans [les principes](./0_principes.md)
+- voir qu'il y a des sujets transverses (localisation, contexte de recherche, gestion de la connexion, affichage des prix ...) qu'il faudra améliorer tout en conservant une seule source de données pour éviter les désynchronisations et donc les bugs, et réfléchir à chaque point en pensant à l'utilisation globale dans l'app
 
 ### Lots
 
