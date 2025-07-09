@@ -4823,6 +4823,11 @@ export interface UserProfileResponse {
    */
   status: YoungStatusResponse
   /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  street?: string | null
+  /**
    * @type {SubscriptionMessage}
    * @memberof UserProfileResponse
    */

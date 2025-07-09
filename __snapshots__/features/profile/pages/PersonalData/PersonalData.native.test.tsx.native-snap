@@ -840,7 +840,7 @@ exports[`PersonalData should render personal data success 1`] = `
           ]
         }
       >
-        Ville de résidence
+        Adresse de résidence
       </Text>
       <View
         style={
@@ -868,10 +868,10 @@ exports[`PersonalData should render personal data success 1`] = `
             ]
           }
         >
-          75001, Paris
+          10 rue de Bohneur, 75001, Paris
         </Text>
         <View
-          accessibilityLabel="Modifier la ville de résidence"
+          accessibilityLabel="Modifier mon adresse de résidence"
           accessibilityState={
             {
               "busy": undefined,
@@ -928,7 +928,7 @@ exports[`PersonalData should render personal data success 1`] = `
               },
             ]
           }
-          testID="Modifier la ville de résidence"
+          testID="Modifier mon adresse de résidence"
         >
           <View
             style={
