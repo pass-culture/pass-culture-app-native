@@ -50,7 +50,6 @@ export const ChangeAddress = () => {
                 name="address"
                 render={({ field: { value, onChange } }) => (
                   <SearchInput
-                    autoFocus
                     onChangeText={(text) => {
                       onChangeAddress(text)
                       onChange(text)

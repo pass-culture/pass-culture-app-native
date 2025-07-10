@@ -122,7 +122,6 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
           render={({ field: { value, onChange }, fieldState: { error } }) => (
             <StyledView>
               <SearchInput
-                autoFocus
                 onChangeText={(text) => {
                   onChange(text)
                   handlePostalCodeChange(text)
