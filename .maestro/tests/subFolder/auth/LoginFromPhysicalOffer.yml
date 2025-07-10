@@ -14,19 +14,19 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - scrollUntilVisible:
-        element: "Envoyer par\nSMS"
-    - assertVisible: "Envoyer par\nSMS"
+      - scrollUntilVisible:
+          element: "Envoyer par\nSMS"
+      - assertVisible: "Envoyer par\nSMS"
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - scrollUntilVisible:
-        element: "Envoyer sur\niMessage"
-    - assertVisible: "Envoyer sur\niMessage"
+      - scrollUntilVisible:
+          element: "Envoyer sur\niMessage"
+      - assertVisible: "Envoyer sur\niMessage"
 
-- assertVisible: 
+- assertVisible:
     text: 'Voir l’itinéraire'
     optional: true
 
@@ -37,6 +37,4 @@ appId: ${MAESTRO_APP_ID}
 - waitForAnimationToEnd
 
 - tapOn:
-    id: 'AnimatedHeaderIconRoundContainer'
-    index: 2
-
+    id: 'Fermer la modale'

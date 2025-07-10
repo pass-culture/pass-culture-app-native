@@ -37,15 +37,16 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - tapOn:
-        text: 'One piece.*'
-        index: 1
+      - tapOn:
+          text: 'One piece.*'
+          index: 1
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - assertWithAI:
-        assertion: Verify that search results are displayed and all visible results are related to 'One Piece' manga or anime content. Each result should clearly indicate it's a book or digital content about One Piece, with titles or descriptions containing relevant terms like 'One Piece'
-    - tapOn:
-        point: "50%,53%"
+      - assertWithAI:
+          assertion: Verify that search results are displayed and all visible results are related to 'One Piece' manga or anime content. Each result should clearly indicate it's a book or digital content about One Piece, with titles or descriptions containing relevant terms like 'One Piece'
+      - tapOn:
+          id: 'native-category-value'
+          index: 0

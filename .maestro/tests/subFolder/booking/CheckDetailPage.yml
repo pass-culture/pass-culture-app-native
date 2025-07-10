@@ -13,7 +13,8 @@ appId: ${MAESTRO_APP_ID}
       text: .*résultats
 
 - waitForAnimationToEnd
-- tapOn: 'Réserver l’offre'
+- tapOn:
+    id: sticky-booking-button
 
 - assertVisible: 'Détails de la réservation'
 - assertVisible: 'Informations'

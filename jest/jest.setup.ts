@@ -16,6 +16,7 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
   }
 } */
 jest.mock('libs/analytics/provider')
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
 /* I have problem in web test files, it doesn't work when use it directly */

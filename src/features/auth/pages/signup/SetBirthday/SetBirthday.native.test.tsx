@@ -95,7 +95,7 @@ describe('<SetBirthday />', () => {
 
       const datePicker = await screen.findByTestId('date-picker-spinner-native')
 
-      expect(datePicker.props.date).toBe(DEFAULT_SELECTED_DATE.getTime())
+      expect(datePicker.props.date).toBe(DEFAULT_SELECTED_DATE.toISOString())
     }
   )
 
@@ -126,7 +126,7 @@ describe('<SetBirthday />', () => {
 
     const datePicker = await screen.findByTestId('date-picker-spinner-native')
 
-    expect(datePicker.props.date).toBe(new Date('1994-12-11').getTime())
+    expect(datePicker.props.date).toBe(new Date('1994-12-11').toISOString())
   })
 
   describe('banner', () => {
