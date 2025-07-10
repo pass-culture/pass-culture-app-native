@@ -3,7 +3,6 @@ import mockdate from 'mockdate'
 import { BookingResponse } from 'api/gen'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { getBookingLabelsV2 } from 'features/bookings/helpers'
-import { Booking } from 'features/bookings/types'
 
 describe('getBookingLabels', () => {
   it('should return the correct dateLabel for permanent bookings', () => {
@@ -82,7 +81,7 @@ describe('getBookingLabels', () => {
     const booking = {
       ...bookingsSnapV2.ongoingBookings[0],
       expirationDate: '2021-03-15T23:00:00', // expires in 2 hours
-    } as unknown as Booking
+    } as unknown as BookingResponse
     const properties = { isPhysical: true }
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 
@@ -100,7 +99,7 @@ describe('getBookingLabels', () => {
     const booking = {
       ...bookingsSnapV2.ongoingBookings[0],
       expirationDate: '2021-03-16T22:00:00', // expires in 25 hours
-    } as unknown as Booking
+    } as unknown as BookingResponse
     const properties = { isPhysical: true }
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 

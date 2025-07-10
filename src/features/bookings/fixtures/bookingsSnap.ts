@@ -5,6 +5,7 @@ import {
   BookingsResponse,
   BookingsResponseV2,
   SubcategoryIdEnum,
+  TicketDisplayEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
@@ -372,7 +373,6 @@ export const bookingsSnap = toMutable({
         voucher: {
           data: 'PASSCULTURE:v3;TOKEN:352UW5',
         },
-        email: null,
         token: {
           data: '352UW5',
         },
@@ -381,9 +381,9 @@ export const bookingsSnap = toMutable({
           type: WithdrawalTypeEnum.on_site,
           delay: null,
         },
-        noTicket: false,
         activationCode: null,
         externalBooking: null,
+        display: TicketDisplayEnum.qr_code,
       },
     },
     {
@@ -435,7 +435,6 @@ export const bookingsSnap = toMutable({
         voucher: {
           data: 'PASSCULTURE:v3;TOKEN:352UW5',
         },
-        email: null,
         token: {
           data: '352UW5',
         },
@@ -444,9 +443,9 @@ export const bookingsSnap = toMutable({
           type: WithdrawalTypeEnum.on_site,
           delay: null,
         },
-        noTicket: false,
         activationCode: null,
         externalBooking: null,
+        display: TicketDisplayEnum.qr_code,
       },
     },
   ],
@@ -501,7 +500,6 @@ export const bookingsSnap = toMutable({
         voucher: {
           data: 'PASSCULTURE:v3;TOKEN:352UW4',
         },
-        email: null,
         token: {
           data: '352UW4',
         },
@@ -510,9 +508,9 @@ export const bookingsSnap = toMutable({
           type: WithdrawalTypeEnum.in_app,
           delay: null,
         },
-        noTicket: false,
         activationCode: null,
         externalBooking: null,
+        display: TicketDisplayEnum.qr_code,
       },
     },
     {
@@ -564,14 +562,12 @@ export const bookingsSnap = toMutable({
       },
       ticket: {
         voucher: null,
-        email: null,
         token: null,
         withdrawal: {
           details: null,
           type: WithdrawalTypeEnum.on_site,
           delay: null,
         },
-        noTicket: false,
         activationCode: null,
         externalBooking: {
           data: [
@@ -579,6 +575,7 @@ export const bookingsSnap = toMutable({
             { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
           ],
         },
+        display: TicketDisplayEnum.qr_code,
       },
     },
     {
@@ -630,14 +627,13 @@ export const bookingsSnap = toMutable({
       },
       ticket: {
         voucher: null,
-        email: null,
+        display: TicketDisplayEnum.qr_code,
         token: null,
         withdrawal: {
           details: 'How to withdraw, https://test.com',
           type: WithdrawalTypeEnum.on_site,
           delay: null,
         },
-        noTicket: false,
         activationCode: null,
         externalBooking: {
           data: [

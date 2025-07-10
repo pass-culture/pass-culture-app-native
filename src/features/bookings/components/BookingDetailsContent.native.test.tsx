@@ -4,7 +4,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import type { BookingResponse } from 'api/gen'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
-import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { BookingProperties } from 'features/bookings/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -104,7 +104,7 @@ describe('<BookingDetailsContent />', () => {
 
   it('should not display seeItineraryButton when offer is neither physical neither digital and offer address is defined', async () => {
     const booking: BookingResponse = {
-      ...bookingsSnap.ongoing_bookings[0],
+      ...bookingsSnapV2.ongoingBookings[0],
     }
     renderBookingDetailsContent({
       booking,
