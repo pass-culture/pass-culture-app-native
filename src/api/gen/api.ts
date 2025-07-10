@@ -4650,6 +4650,11 @@ export interface UserProfilePatchRequest {
    * @type {string}
    * @memberof UserProfilePatchRequest
    */
+  address?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
   city?: string | null
   /**
    * @type {string}

@@ -2,6 +2,7 @@ import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import * as API from 'api/api'
 import { SettingsResponse, UserProfileResponse } from 'api/gen'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
@@ -18,6 +19,8 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('libs/network/NetInfoWrapper')
+
+const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
 
@@ -79,6 +82,20 @@ describe('<SetAddress/>', () => {
         expect(
           screen.getByText(mockedSuggestedPlaces.features[2].properties.name)
         ).toBeOnTheScreen()
+      })
+    })
+
+    it('should update profile when clicking on "Valider mon adresse"', async () => {
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText('Valider mon adresse'))
+
+      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
+        address: mockedSuggestedPlaces.features[1].properties.name,
       })
     })
 
