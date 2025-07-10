@@ -12,7 +12,6 @@ import {
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
-import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -44,8 +43,6 @@ const defaultParameters = {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
-
-const setFreeOfferIdSpy = jest.spyOn(freeOfferIdActions, 'setFreeOfferId')
 
 describe('getCtaWordingAndAction', () => {
   describe('Logged out user', () => {
@@ -105,7 +102,6 @@ describe('getCtaWordingAndAction', () => {
           screen: 'SubscriptionStackNavigator',
         },
       })
-      expect(setFreeOfferIdSpy).toHaveBeenCalledTimes(1)
     })
 
     it('should display "Réserver l’offre" wording with navigate to ProfileInformationValidation screen and params type', () => {
@@ -134,7 +130,6 @@ describe('getCtaWordingAndAction', () => {
           },
         },
       })
-      expect(setFreeOfferIdSpy).toHaveBeenCalledTimes(1)
     })
 
     it('should display "Réserver l’offre" wording and open booking modal when user profile complete', () => {

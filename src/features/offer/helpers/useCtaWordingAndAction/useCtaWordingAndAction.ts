@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import { UseMutateFunction } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 import { ApiError } from 'api/ApiError'
 import {
@@ -125,8 +126,6 @@ export const getCtaWordingAndAction = ({
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
   const isMovieScreeningOffer = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
-  const { setFreeOfferId } = freeOfferIdActions
-
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
@@ -166,7 +165,6 @@ export const getCtaWordingAndAction = ({
   if (isEligibleFreeOffer15To16) {
     if (isProfileIncomplete) {
       if (isFreeOffer) {
-        setFreeOfferId(offer.id)
         return {
           wording: 'Réserver l’offre',
           isDisabled: false,
@@ -419,6 +417,17 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     : false
 
   const { refetch: getBookings } = useBookingsQuery()
+
+  useEffect(() => {
+    const isUserFreeStatus = user?.eligibility === EligibilityType.free
+    const isFreeOffer = getIsFreeOffer(offer)
+    const isProfileIncomplete = getIsProfileIncomplete(user)
+    const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
+
+    if (isLoggedIn && isEligibleFreeOffer15To16 && isProfileIncomplete && isFreeOffer) {
+      freeOfferIdActions.setFreeOfferId(offer.id)
+    }
+  }, [isLoggedIn, enableBookingFreeOfferFifteenSixteen, user, offer])
 
   async function redirectToBookingAction(response: BookOfferResponse) {
     const bookings = await getBookings()
