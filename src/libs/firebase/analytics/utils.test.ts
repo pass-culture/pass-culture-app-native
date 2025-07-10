@@ -7,6 +7,7 @@ import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
 import { buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 
 const TODAY = new Date(2023, 0, 3)
 
@@ -60,7 +61,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toMatchObject({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchDate: JSON.stringify({
-          startDate: TODAY.toISOString(),
+          startDate: formatDateToISOStringWithoutTime(TODAY),
           endDate: null,
           searchFilter: 'today',
         }),
@@ -82,8 +83,8 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toMatchObject({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchDate: JSON.stringify({
-          startDate: TODAY.toISOString(),
-          endDate: endOfMonth(TODAY).toISOString(),
+          startDate: formatDateToISOStringWithoutTime(TODAY),
+          endDate: formatDateToISOStringWithoutTime(endOfMonth(TODAY)),
           searchFilter: 'thisMonth',
         }),
         searchView: SearchView.Results,
@@ -104,7 +105,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toMatchObject({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchDate: JSON.stringify({
-          startDate: TODAY.toISOString(),
+          startDate: formatDateToISOStringWithoutTime(TODAY),
           endDate: null,
           searchFilter: 'specificDate',
         }),
@@ -116,8 +117,8 @@ describe('[Analytics utils]', () => {
       const partialSearchState = buildPerformSearchState(
         {
           ...initialSearchState,
-          beginningDatetime: TODAY.toISOString(),
-          endingDatetime: endOfMonth(TODAY).toISOString(),
+          beginningDatetime: formatDateToISOStringWithoutTime(TODAY),
+          endingDatetime: formatDateToISOStringWithoutTime(endOfMonth(TODAY)),
           calendarFilterId: undefined,
         },
         'SearchResults'
@@ -126,8 +127,8 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toMatchObject({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchDate: JSON.stringify({
-          startDate: TODAY.toISOString(),
-          endDate: endOfMonth(TODAY).toISOString(),
+          startDate: formatDateToISOStringWithoutTime(TODAY),
+          endDate: formatDateToISOStringWithoutTime(endOfMonth(TODAY)),
           searchFilter: 'dateInterval',
         }),
         searchView: SearchView.Results,
