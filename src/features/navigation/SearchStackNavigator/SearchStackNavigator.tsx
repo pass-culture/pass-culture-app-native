@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/SearchStackNavigator/searchStackNavigationOptions'
 import { SearchStackNavigatorBase } from 'features/navigation/SearchStackNavigator/SearchStackNavigatorBase'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
@@ -26,11 +25,7 @@ export const SearchStackNavigator = () => {
       initialRouteName={SearchView.Landing}
       screenOptions={SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS}>
       {searchScreens.map(({ name, component }) => (
-        <SearchStackNavigatorBase.Screen
-          key={name}
-          name={name}
-          component={withAsyncErrorBoundary(component)}
-        />
+        <SearchStackNavigatorBase.Screen key={name} name={name} component={component} />
       ))}
     </SearchStackNavigatorBase.Navigator>
   )
