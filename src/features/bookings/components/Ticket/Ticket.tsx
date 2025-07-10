@@ -73,6 +73,13 @@ export const Ticket = ({
         })
       : undefined
   }
+  const infoBanner = (
+    <InfoBanner
+      message={`Tu auras besoin de ta carte d’identité pour ${properties.isEvent ? 'accéder à l’évènement' : 'récupérer ta réservation'}.`}
+      icon={IdCard}
+    />
+  )
+
   return (
     <TicketDisplay
       onTopBlockLayout={setTopBlockHeight}
@@ -112,12 +119,7 @@ export const Ticket = ({
           beginningDateTime={booking.stock.beginningDatetime ?? undefined}
         />
       }
-      infoBanner={
-        <InfoBanner
-          message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
-          icon={IdCard}
-        />
-      }
+      infoBanner={properties.isDigital ? undefined : infoBanner}
     />
   )
 }
