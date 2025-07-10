@@ -5,12 +5,15 @@ export type CustomRemoteConfig = {
   test_param: string
   aroundPrecision: Record<'from' | 'value', number>[] | number
   artistPageSubcategories: Record<'subcategories', SubcategoryIdEnum[]>
+  homeEntryIdBeneficiary: string
+  homeEntryIdFreeBeneficiary: string
   homeEntryIdFreeOffers: string
   homeEntryIdNotConnected: string
   homeEntryIdGeneral: string
   homeEntryIdOnboardingGeneral: string
   homeEntryIdOnboardingUnderage: string
   homeEntryIdOnboarding_18: string
+  homeEntryIdWithoutBooking: string
   homeEntryIdWithoutBooking_18: string
   homeEntryIdWithoutBooking_15_17: string
   homeEntryId_18: string
