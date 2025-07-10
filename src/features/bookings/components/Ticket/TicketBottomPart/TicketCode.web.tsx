@@ -5,7 +5,15 @@ import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart
 import { TicketVisual } from 'features/bookings/components/Ticket/TicketBottomPart/TicketVisual'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 
-export function TicketCode({ code, text }: { code: string; text: string }) {
+export function TicketCode({
+  code,
+  text,
+  cta,
+}: {
+  code: string
+  text: string
+  cta?: React.JSX.Element
+}) {
   const copyToClipboard = useCopyToClipboard({
     textToCopy: code,
     snackBarMessage: 'Ton code a été copié dans le presse-papier\u00a0!',
@@ -18,6 +26,7 @@ export function TicketCode({ code, text }: { code: string; text: string }) {
         </TicketCodeTitle>
       </TicketVisual>
       <TicketText>{text}</TicketText>
+      {cta}
     </React.Fragment>
   )
 }

@@ -117,6 +117,9 @@ export const Ticket = ({
           isEvent={properties.isEvent ?? false}
           expirationDate={expirationDateFormated({ prefix: `avant le ` })}
           beginningDateTime={booking.stock.beginningDatetime ?? undefined}
+          completedUrl={booking.completedUrl ?? undefined}
+          offerId={offer.id}
+          subcategoryId={offer.subcategoryId}
         />
       }
       infoBanner={properties.isDigital ? undefined : infoBanner}
