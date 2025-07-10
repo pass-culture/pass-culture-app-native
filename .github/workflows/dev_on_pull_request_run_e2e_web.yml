@@ -35,6 +35,19 @@ jobs:
       - name: Yarn install
         run: yarn install
 
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
+
       - name: Set Maestro Version
         run: echo "MAESTRO_VERSION=1.40.0" >> $GITHUB_ENV
 
@@ -66,11 +79,18 @@ jobs:
       - name: Start Vite server
         run: yarn start:web:staging --host > /dev/null 2>&1 &
 
-      - name: Run Maestro E2E Tests
-        run: |
-          echo "Running Maestro tests against on web Staging"
-          export PATH=$HOME/.maestro/bin:$PATH
-          maestro test .maestro/tests/SmokeTestWeb.yaml --headless
+      # - name: Run Maestro E2E Tests
+      #   run: |
+      #     echo "Running Maestro tests against on web Staging"
+      #     export PATH=$HOME/.maestro/bin:$PATH
+      #     maestro test .maestro/tests/SmokeTestWeb.yaml --headless
+
+      - uses: mobile-dev-inc/action-maestro-cloud@v1.9.8
+        with:
+          api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
+          project-id: 'proj_01example0example1example2'
+          include-tags: Web
+          device-os: web
           
       - name: Upload Maestro artifacts (logs & screenshots)
         if: failure()
