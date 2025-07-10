@@ -29,11 +29,13 @@ export function SectionRow({
   }
 
   if (navigateTo) {
+    const { onPress: onBeforeNavigateHook, ...restTouchableProps } = touchableProps
+
     return (
       <InternalTouchableLink
-        onBeforeNavigate={touchableProps.onPress}
+        onBeforeNavigate={onBeforeNavigateHook}
         navigateTo={navigateTo}
-        {...touchableProps}>
+        {...restTouchableProps}>
         <SectionRowContent title={title} {...props} />
       </InternalTouchableLink>
     )

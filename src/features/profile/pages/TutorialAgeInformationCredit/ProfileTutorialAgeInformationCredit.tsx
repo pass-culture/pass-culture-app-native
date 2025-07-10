@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -25,7 +25,7 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const ProfileTutorialAgeInformationCredit: FunctionComponent = () => {
+export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   const { onScroll, headerTransition } = useOpacityTransition()
