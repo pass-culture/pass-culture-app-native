@@ -4650,6 +4650,11 @@ export interface UserProfilePatchRequest {
    * @type {string}
    * @memberof UserProfilePatchRequest
    */
+  address?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
   city?: string | null
   /**
    * @type {string}
@@ -4822,6 +4827,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   status: YoungStatusResponse
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  street?: string | null
   /**
    * @type {SubscriptionMessage}
    * @memberof UserProfileResponse

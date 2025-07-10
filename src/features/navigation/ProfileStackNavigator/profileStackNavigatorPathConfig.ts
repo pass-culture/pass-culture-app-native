@@ -67,6 +67,9 @@ export const profileStackNavigatorPathConfig = {
       ChangeCity: {
         path: 'profil/modification-ville',
       },
+      ChangeAddress: {
+        path: 'profil/modification-adresse',
+      },
       ChangeEmail: {
         path: 'profil/modification-email',
       },

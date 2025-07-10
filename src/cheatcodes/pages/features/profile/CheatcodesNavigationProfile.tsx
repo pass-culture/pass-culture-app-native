@@ -32,6 +32,11 @@ const profileCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'ChangeAddress',
+      navigationTarget: getProfileNavConfig('ChangeAddress'),
+    },
+    {
+      id: uuidv4(),
       title: 'ChangeEmail',
       navigationTarget: getProfileNavConfig('ChangeEmail'),
     },

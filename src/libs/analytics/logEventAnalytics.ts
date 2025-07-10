@@ -692,6 +692,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.TRENDS_BLOCK_CLICKED }, params),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
+  logUpdateAddress: (params: { newAddress: string; oldAddress: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.UPDATE_ADDRESS }, params),
   logUpdatePostalCode: (params: {
     oldCity: string
     oldPostalCode: string

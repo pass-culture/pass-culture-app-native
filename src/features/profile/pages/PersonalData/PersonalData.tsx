@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
+import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -33,7 +34,10 @@ export function PersonalData() {
 
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
   const hasCity = user?.postalCode && user?.city
-  const city = hasCity && user?.postalCode && user?.city ? `${user.postalCode}, ${user.city}` : ''
+  const city =
+    hasCity && user?.postalCode && user?.city && user?.street
+      ? `${user.street}, ${user.postalCode}, ${user.city}`
+      : ''
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 
@@ -71,10 +75,11 @@ export function PersonalData() {
       />
       <StyledSeparator />
       <EditableField
-        label="Ville de résidence"
+        label="Adresse de résidence"
         value={city}
         navigateTo="ChangeCity"
-        accessibilityLabel="Modifier la ville de résidence"
+        navigateParams={{ type: PersonalDataTypes.PROFIL_PERSONAL_DATA }}
+        accessibilityLabel="Modifier mon adresse de résidence"
       />
       <StyledSeparator />
       <ViewGap gap={8}>

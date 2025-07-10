@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { UserProfileResponse } from 'api/gen'
+import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -46,118 +47,211 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ChangeCity', () => {
-  it('should render correctly', async () => {
-    render(reactQueryProviderHOC(<ChangeCity />))
+  describe('without previous screen', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { type: undefined } })
+      mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+    })
 
-    expect(screen).toMatchSnapshot()
+    it('should render correctly', async () => {
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should update profile when clicking on "Valider ma ville de résidence"', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Valider ma ville de résidence'))
+
+      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
+        city: city.nom,
+        postalCode: POSTAL_CODE,
+      })
+    })
+
+    it('should navigate to PersonalData when clicking on "Valider ma ville de résidence"', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Valider ma ville de résidence'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+        params: undefined,
+        screen: 'PersonalData',
+      })
+    })
+
+    it('should show snackbar on success', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Valider ma ville de résidence'))
+
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Ta ville de résidence a bien été modifiée\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    })
+
+    it('should send analytics when success', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Valider ma ville de résidence'))
+
+      expect(analytics.logUpdatePostalCode).toHaveBeenCalledWith({
+        oldPostalCode: beneficiaryUser.postalCode,
+        oldCity: beneficiaryUser.city,
+        newPostalCode: POSTAL_CODE,
+        newCity: city.nom,
+      })
+    })
+
+    it('should show snackbar on error', async () => {
+      const city = mockedSuggestedCities[0]
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', {
+        responseOptions: { statusCode: 400 },
+      })
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Valider ma ville de résidence'))
+
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: 'Une erreur est survenue',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    })
   })
 
-  it('should update profile', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
-
-    render(reactQueryProviderHOC(<ChangeCity />))
-
-    const input = await screen.findByTestId('Entrée pour la ville')
-    await act(async () => {
-      fireEvent.changeText(input, POSTAL_CODE)
+  describe('from profil personal data screen', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA } })
+      mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
     })
 
-    await user.press(await screen.findByText(city.nom))
+    it('should render correctly', async () => {
+      render(reactQueryProviderHOC(<ChangeCity />))
 
-    await user.press(await screen.findByText('Valider ma ville de résidence'))
-
-    expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
-      city: city.nom,
-      postalCode: POSTAL_CODE,
-    })
-  })
-
-  it('should navigate to PersonalData when clicking on "Valider"', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
-
-    render(reactQueryProviderHOC(<ChangeCity />))
-
-    const input = await screen.findByTestId('Entrée pour la ville')
-    await act(async () => {
-      fireEvent.changeText(input, POSTAL_CODE)
+      expect(screen).toMatchSnapshot()
     })
 
-    await user.press(await screen.findByText(city.nom))
-    await user.press(await screen.findByText('Valider ma ville de résidence'))
+    it('should update profile when clicking on "Continuer"', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
-      params: undefined,
-      screen: 'PersonalData',
-    })
-  })
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Continuer'))
 
-  it('should show snackbar on success', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
-
-    render(reactQueryProviderHOC(<ChangeCity />))
-
-    const input = await screen.findByTestId('Entrée pour la ville')
-    await act(async () => {
-      fireEvent.changeText(input, POSTAL_CODE)
+      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
+        city: city.nom,
+        postalCode: POSTAL_CODE,
+      })
     })
 
-    await user.press(await screen.findByText(city.nom))
-    await user.press(await screen.findByText('Valider ma ville de résidence'))
+    it('should navigate to ChangeAddress when clicking on "Continuer"', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Ta ville de résidence a bien été modifiée\u00a0!',
-      timeout: SNACK_BAR_TIME_OUT,
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Continuer'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+        params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA },
+        screen: 'ChangeAddress',
+      })
+    })
+
+    it('should not show snackbar on success', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Continuer'))
+
+      expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
     })
   })
 
-  it('should send analytics when success', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
-
-    render(reactQueryProviderHOC(<ChangeCity />))
-
-    const input = await screen.findByTestId('Entrée pour la ville')
-    await act(async () => {
-      fireEvent.changeText(input, POSTAL_CODE)
+  describe('from mandatory udpate personal data screen', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({
+        params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
+      })
+      mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
     })
 
-    await user.press(await screen.findByText(city.nom))
-    await user.press(await screen.findByText('Valider ma ville de résidence'))
+    it('should render correctly', async () => {
+      render(reactQueryProviderHOC(<ChangeCity />))
 
-    expect(analytics.logUpdatePostalCode).toHaveBeenCalledWith({
-      oldPostalCode: beneficiaryUser.postalCode,
-      oldCity: beneficiaryUser.city,
-      newPostalCode: POSTAL_CODE,
-      newCity: city.nom,
-    })
-  })
-
-  it('should show snackbar on error', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    mockServer.patchApi<UserProfileResponse>('/v1/profile', {
-      responseOptions: { statusCode: 400 },
-    })
-    render(reactQueryProviderHOC(<ChangeCity />))
-
-    const input = await screen.findByTestId('Entrée pour la ville')
-    await act(async () => {
-      fireEvent.changeText(input, POSTAL_CODE)
+      expect(screen).toMatchSnapshot()
     })
 
-    await user.press(await screen.findByText(city.nom))
-    await user.press(await screen.findByText('Valider ma ville de résidence'))
+    it('should update profile when clicking on "Continuer"', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Une erreur est survenue',
-      timeout: SNACK_BAR_TIME_OUT,
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Continuer'))
+
+      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
+        city: city.nom,
+        postalCode: POSTAL_CODE,
+      })
+    })
+
+    it('should navigate to ChangeAddress when clicking on "Continuer"', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Continuer'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+        params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
+        screen: 'ChangeAddress',
+      })
+    })
+
+    it('should not show snackbar on success', async () => {
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Continuer'))
+
+      expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
     })
   })
 })

@@ -13,6 +13,7 @@ import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibilit
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
+import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
@@ -140,6 +141,11 @@ const profileScreens: ProfileRouteConfig[] = [
     name: 'ChangeCity',
     component: withAuthProtection(ChangeCity),
     options: { title: 'Ton code postal | Profil' },
+  },
+  {
+    name: 'ChangeAddress',
+    component: withAuthProtection(ChangeAddress),
+    options: { title: 'Ton adresse | Profil' },
   },
   {
     name: 'ChangeEmail',

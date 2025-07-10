@@ -213,14 +213,14 @@ exports[`ChangeCity should render correctly 1`] = `
               <div
                 class="css-view-175oi2r r-marginBottom-117bsoe"
               >
-                <h1
-                  aria-level="1"
+                <h2
+                  aria-level="2"
                   class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                   dir="ltr"
                   role="heading"
                 >
                   Renseigne ta ville de résidence
-                </h1>
+                </h2>
               </div>
               <form
                 class="c2"
@@ -284,25 +284,6 @@ exports[`ChangeCity should render correctly 1`] = `
                   />
                 </div>
               </form>
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  style="width: 32px; transform: rotate(0deg);"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-146c3p1"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div
                 class="css-view-175oi2r r-boxSizing-1tjplnt r-flexGrow-16y2uox r-overflowY-17y9yhz"
                 role="radiogroup"
