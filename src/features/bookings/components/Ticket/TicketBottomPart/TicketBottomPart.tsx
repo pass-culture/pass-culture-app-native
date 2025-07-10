@@ -47,6 +47,7 @@ export const TicketBottomPart = ({
       <ExternalBookingTicket
         data={ticket.externalBooking.data ?? undefined}
         beginningDatetime={beginningDateTime}
+        isDuo={isDuo}
       />
     )
 
