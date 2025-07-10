@@ -1,4 +1,4 @@
-# v1.348.0
+# v1.349.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -75,7 +75,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/profile/email_update/validate
 ## Unused routes:
 - /native/v1/categories
-- /native/v1/me/favorites/count
+Pathname not found for getNativeV1MeFavoritesCount
 - /native/v1/offer/report/reasons
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offers/reports
