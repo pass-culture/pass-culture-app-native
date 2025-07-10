@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TicketResponse, UserProfileResponse } from 'api/gen'
+import { TicketDisplayEnum, TicketResponse, UserProfileResponse } from 'api/gen'
 import { TicketCode } from 'features/bookings/components/OldBookingDetails/TicketCode'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
@@ -26,14 +26,17 @@ export const TicketBottomPart = ({
   expirationDate?: string
   beginningDateTime: string | undefined
 }) => {
-  if (ticket.noTicket) return <NoTicket />
+  if (ticket.display === TicketDisplayEnum.no_ticket) return <NoTicket />
 
-  if (ticket.email)
+  if (
+    ticket.display === TicketDisplayEnum.email_sent ||
+    ticket.display === TicketDisplayEnum.email_will_be_sent
+  )
     return (
       <EmailWithdrawal
         isDuo={isDuo}
         withdrawalDelay={ticket.withdrawal.delay}
-        hasEmailBeenSent={ticket.email.hasTicketEmailBeenSent}
+        hasEmailBeenSent={ticket.display === TicketDisplayEnum.email_sent}
         userEmail={userEmail}
       />
     )

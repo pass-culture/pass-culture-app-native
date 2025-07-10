@@ -9,6 +9,7 @@ import {
   BookingsResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
+  TicketDisplayEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
 import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
@@ -624,7 +625,6 @@ describe('BookingDetails', () => {
         ...ongoingBookingV2,
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: false,
           withdrawal: {
             ...ongoingBookingV2.ticket?.withdrawal,
             details: withdrawalDetails,
@@ -728,7 +728,7 @@ describe('BookingDetails', () => {
         },
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: true,
+          display: TicketDisplayEnum.no_ticket,
           withdrawal: {
             type: WithdrawalTypeEnum.no_ticket,
           },
@@ -747,7 +747,7 @@ describe('BookingDetails', () => {
         quantity: 2,
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: true,
+          display: TicketDisplayEnum.no_ticket,
           withdrawal: {
             type: WithdrawalTypeEnum.no_ticket,
           },
@@ -773,7 +773,7 @@ describe('BookingDetails', () => {
         },
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: true,
+          display: TicketDisplayEnum.no_ticket,
           withdrawal: {
             type: WithdrawalTypeEnum.no_ticket,
           },
@@ -803,7 +803,6 @@ describe('BookingDetails', () => {
           },
           ticket: {
             ...ongoingBookingV2.ticket,
-            noTicket: false,
             withdrawal: {},
             externalBooking: {
               data: [{ barcode: '1234', seat: 'B1' }],
@@ -827,7 +826,6 @@ describe('BookingDetails', () => {
           },
           ticket: {
             ...ongoingBookingV2.ticket,
-            noTicket: false,
             withdrawal: {},
             voucher: { data: 'test-voucher' },
             token: { data: 'test-token' },
@@ -851,7 +849,6 @@ describe('BookingDetails', () => {
             },
             ticket: {
               ...ongoingBookingV2.ticket,
-              noTicket: false,
               token: {
                 data: 'TEST12',
               },
@@ -881,7 +878,6 @@ describe('BookingDetails', () => {
             },
             ticket: {
               ...ongoingBookingV2.ticket,
-              noTicket: false,
               token: {
                 data: 'TEST12',
               },
