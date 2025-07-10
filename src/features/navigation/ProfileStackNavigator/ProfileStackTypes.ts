@@ -1,6 +1,7 @@
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { AccessibilityRootStackParamList } from 'features/navigation/RootNavigator/types'
-export interface PersonalDataType {
+
+interface PersonalDataType {
   type: PersonalDataTypes.PROFIL_PERSONAL_DATA | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
 }
 
