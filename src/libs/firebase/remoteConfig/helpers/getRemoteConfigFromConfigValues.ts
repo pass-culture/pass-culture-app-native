@@ -13,6 +13,8 @@ export const getRemoteConfigFromConfigValues = (
     getConfigValue(parameters.artistPageSubcategories).asString()
   ),
   aroundPrecision: JSON.parse(getConfigValue(parameters.aroundPrecision).asString()),
+  homeEntryIdBeneficiary: getConfigValue(parameters.homeEntryIdBeneficiary).asString(),
+  homeEntryIdFreeBeneficiary: getConfigValue(parameters.homeEntryIdFreeBeneficiary).asString(),
   homeEntryIdFreeOffers: getConfigValue(parameters.homeEntryIdFreeOffers).asString(),
   homeEntryIdNotConnected: getConfigValue(parameters.homeEntryIdNotConnected).asString(),
   homeEntryIdGeneral: getConfigValue(parameters.homeEntryIdGeneral).asString(),
@@ -21,6 +23,7 @@ export const getRemoteConfigFromConfigValues = (
     parameters.homeEntryIdOnboardingUnderage
   ).asString(),
   homeEntryIdOnboarding_18: getConfigValue(parameters.homeEntryIdOnboarding_18).asString(),
+  homeEntryIdWithoutBooking: getConfigValue(parameters.homeEntryIdWithoutBooking).asString(),
   homeEntryIdWithoutBooking_18: getConfigValue(parameters.homeEntryIdWithoutBooking_18).asString(),
   homeEntryIdWithoutBooking_15_17: getConfigValue(
     parameters.homeEntryIdWithoutBooking_15_17
