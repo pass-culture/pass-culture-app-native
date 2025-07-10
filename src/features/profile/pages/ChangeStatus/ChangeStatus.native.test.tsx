@@ -1,11 +1,13 @@
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum, UserProfileResponse } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { beneficiaryUser } from 'fixtures/user'
@@ -13,8 +15,8 @@ import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor, userEvent } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { render, screen, userEvent } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 const mockStatus: ActivityIdEnum | null = null
 
@@ -60,10 +62,12 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
+const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+    showSuccessSnackBar: mockShowSuccessSnackBar,
+    showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
 
@@ -100,33 +104,86 @@ describe('<ChangeStatus/>', () => {
     mockServer.postApi('/v1/subscription/profile', {})
   })
 
-  it('should render correctly', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockIsLoading = false
-    renderChangedStatus()
+  describe('without previous screen', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { type: undefined } })
+    })
 
-    await waitFor(() => expect(screen).toMatchSnapshot())
+    it('should render correctly', async () => {
+      mockedUseIsUserUnderage.mockReturnValueOnce(true)
+      mockIsLoading = false
+
+      renderChangedStatus()
+      await screen.findByText('Modifier mon statut')
+
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should show loading component', async () => {
+      mockedUseIsUserUnderage.mockReturnValueOnce(true)
+      mockIsLoading = true
+
+      renderChangedStatus()
+      await screen.findByText('Modifier mon statut')
+
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should send analytics event when success', async () => {
+      renderChangedStatus()
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+
+      await user.press(screen.getByText('Employé'))
+      await user.press(screen.getByText('Continuer'))
+
+      expect(analytics.logUpdateStatus).toHaveBeenCalledWith({
+        oldStatus: beneficiaryUser.activityId,
+        newStatus: ActivityIdEnum.EMPLOYEE,
+      })
+    })
+
+    it('should show snackbar on success when clicking on "Valider mon adresse"', async () => {
+      renderChangedStatus()
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+
+      await user.press(screen.getByText('Employé'))
+      await user.press(screen.getByText('Continuer'))
+
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Ton statut a bien été modifié\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    })
   })
 
-  it('should show loading component', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockIsLoading = true
-    renderChangedStatus()
+  describe('from mandatory udpate personal data screen', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({
+        params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
+      })
+    })
 
-    await waitFor(() => expect(screen).toMatchSnapshot())
-  })
+    it('should render correctly', async () => {
+      mockedUseIsUserUnderage.mockReturnValueOnce(true)
+      mockIsLoading = false
 
-  it('should send analytics event when success', async () => {
-    renderChangedStatus()
-    mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      renderChangedStatus()
+      await screen.findByText('Modifier mon statut')
 
-    await user.press(screen.getByText('Employé'))
+      expect(screen).toMatchSnapshot()
+    })
 
-    await user.press(screen.getByText('Continuer'))
+    it('should show snackbar on success when clicking on "Valider mon adresse"', async () => {
+      renderChangedStatus()
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
-    expect(analytics.logUpdateStatus).toHaveBeenCalledWith({
-      oldStatus: beneficiaryUser.activityId,
-      newStatus: ActivityIdEnum.EMPLOYEE,
+      await user.press(screen.getByText('Employé'))
+      await user.press(screen.getByText('Continuer'))
+
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Tes informations ont bien été modifiés\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 })

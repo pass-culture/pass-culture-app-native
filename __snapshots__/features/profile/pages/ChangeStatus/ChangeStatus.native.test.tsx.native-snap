@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChangeStatus/> should render correctly 1`] = `
+exports[`<ChangeStatus/> from mandatory udpate personal data screen should render correctly 1`] = `
 [
   <View
     accessibilityRole="header"
@@ -741,7 +741,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                 accessibilityState={
                   {
                     "busy": undefined,
-                    "checked": false,
+                    "checked": true,
                     "disabled": undefined,
                     "expanded": undefined,
                     "selected": undefined,
@@ -773,16 +773,16 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#cbcdd2",
+                        "borderColor": "#90949d",
                         "borderRadius": 8,
                         "borderStyle": "solid",
-                        "borderWidth": 1,
+                        "borderWidth": 2,
                         "flexDirection": "row",
                         "flexGrow": 1,
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
+                        "paddingBottom": 15,
+                        "paddingLeft": 15,
+                        "paddingRight": 15,
+                        "paddingTop": 15,
                       },
                     ],
                     {
@@ -793,12 +793,12 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                 testID="Étudiant"
               >
                 <View
-                  isSelected={false}
+                  isSelected={true}
                   style={
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#cbcdd2",
+                        "borderColor": "#eb0055",
                         "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -811,11 +811,11 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
-                    isSelected={false}
+                    isSelected={true}
                     style={
                       [
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#eb0055",
                           "borderRadius": 16,
                           "height": 8,
                           "width": 8,
@@ -2064,12 +2064,12 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Valider mon statut"
+        accessibilityLabel="Continuer vers l’étape suivante"
         accessibilityState={
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": true,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -2083,7 +2083,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
           }
         }
         accessible={true}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -2099,7 +2099,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#f1f1f4",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -2118,7 +2118,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
             },
           ]
         }
-        testID="Valider mon statut"
+        testID="Continuer vers l’étape suivante"
       >
         <View
           style={
@@ -2136,7 +2136,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#696a6f",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -2145,7 +2145,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
               ]
             }
           >
-            Valider mon statut
+            Continuer
           </Text>
         </View>
       </View>
@@ -2200,7 +2200,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
 ]
 `;
 
-exports[`<ChangeStatus/> should show loading component 1`] = `
+exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
 [
   <View
     accessibilityRole="header"
@@ -2941,7 +2941,7 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                 accessibilityState={
                   {
                     "busy": undefined,
-                    "checked": false,
+                    "checked": true,
                     "disabled": undefined,
                     "expanded": undefined,
                     "selected": undefined,
@@ -2973,16 +2973,16 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#cbcdd2",
+                        "borderColor": "#90949d",
                         "borderRadius": 8,
                         "borderStyle": "solid",
-                        "borderWidth": 1,
+                        "borderWidth": 2,
                         "flexDirection": "row",
                         "flexGrow": 1,
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
+                        "paddingBottom": 15,
+                        "paddingLeft": 15,
+                        "paddingRight": 15,
+                        "paddingTop": 15,
                       },
                     ],
                     {
@@ -2993,12 +2993,12 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                 testID="Étudiant"
               >
                 <View
-                  isSelected={false}
+                  isSelected={true}
                   style={
                     [
                       {
                         "alignItems": "center",
-                        "borderColor": "#cbcdd2",
+                        "borderColor": "#eb0055",
                         "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -3011,11 +3011,11 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                   }
                 >
                   <View
-                    isSelected={false}
+                    isSelected={true}
                     style={
                       [
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#eb0055",
                           "borderRadius": 16,
                           "height": 8,
                           "width": 8,
@@ -4264,12 +4264,12 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
       }
     >
       <View
-        accessibilityLabel="Valider mon statut"
+        accessibilityLabel="Continuer vers l’étape suivante"
         accessibilityState={
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": true,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -4283,7 +4283,7 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
           }
         }
         accessible={true}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -4299,7 +4299,7 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#f1f1f4",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -4318,7 +4318,7 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
             },
           ]
         }
-        testID="Valider mon statut"
+        testID="Continuer vers l’étape suivante"
       >
         <View
           style={
@@ -4336,7 +4336,7 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
             style={
               [
                 {
-                  "color": "#696a6f",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -4345,7 +4345,2207 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
               ]
             }
           >
-            Valider mon statut
+            Continuer
+          </Text>
+        </View>
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    height={65}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 65,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+        ]
+      }
+    />
+  </View>,
+]
+`;
+
+exports[`<ChangeStatus/> without previous screen should show loading component 1`] = `
+[
+  <View
+    accessibilityRole="header"
+    style={
+      [
+        {
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Modifier mon statut
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#ffffff",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <RCTScrollView
+        ListHeaderComponent={
+          <React.Fragment>
+            <Styled(View)
+              headerHeight={65}
+            />
+            <Styled(View)
+              numberOfSpaces={2}
+            />
+            <Styled(Text)>
+              Sélectionne ton statut
+            </Styled(Text)>
+            <Styled(View)
+              numberOfSpaces={8}
+            />
+          </React.Fragment>
+        }
+        contentContainerStyle={
+          {
+            "alignSelf": "center",
+            "maxWidth": 500,
+            "paddingHorizontal": 24,
+            "paddingVertical": 24,
+            "width": "100%",
+          }
+        }
+        data={
+          [
+            {
+              "description": null,
+              "id": "MIDDLE_SCHOOL_STUDENT",
+              "label": "Collégien",
+            },
+            {
+              "description": null,
+              "id": "HIGH_SCHOOL_STUDENT",
+              "label": "Lycéen",
+            },
+            {
+              "description": null,
+              "id": "STUDENT",
+              "label": "Étudiant",
+            },
+            {
+              "description": null,
+              "id": "EMPLOYEE",
+              "label": "Employé",
+            },
+            {
+              "description": null,
+              "id": "APPRENTICE",
+              "label": "Apprenti",
+            },
+            {
+              "description": null,
+              "id": "APPRENTICE_STUDENT",
+              "label": "Alternant",
+            },
+            {
+              "description": "En service civique",
+              "id": "VOLUNTEER",
+              "label": "Volontaire",
+            },
+            {
+              "description": "En incapacité de travailler",
+              "id": "INACTIVE",
+              "label": "Inactif",
+            },
+            {
+              "description": "En recherche d’emploi",
+              "id": "UNEMPLOYED",
+              "label": "Chômeur",
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        keyExtractor={[Function]}
+        listAs="ul"
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        onViewableItemsChanged={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={0.0001}
+        scrollIndicatorInsets={
+          {
+            "right": 1,
+          }
+        }
+        stickyHeaderIndices={[]}
+        viewabilityConfig={
+          {
+            "itemVisiblePercentThreshold": 100,
+          }
+        }
+        viewabilityConfigCallbackPairs={
+          [
+            {
+              "onViewableItemsChanged": [Function],
+              "viewabilityConfig": {
+                "itemVisiblePercentThreshold": 100,
+              },
+            },
+          ]
+        }
+      >
+        <View>
+          <View
+            collapsable={false}
+            onLayout={[Function]}
+          >
+            <View
+              headerHeight={65}
+              style={
+                [
+                  {
+                    "paddingTop": 65,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  },
+                ]
+              }
+            >
+              Sélectionne ton statut
+            </Text>
+            <View
+              numberOfSpaces={8}
+              style={
+                [
+                  {
+                    "height": 32,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Collégien"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Collégien"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Collégien
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Lycéen"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Lycéen"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Lycéen
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Étudiant"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": true,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949d",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 15,
+                        "paddingLeft": 15,
+                        "paddingRight": 15,
+                        "paddingTop": 15,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Étudiant"
+              >
+                <View
+                  isSelected={true}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#eb0055",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={true}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#eb0055",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Étudiant
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Employé"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Employé"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Employé
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Apprenti"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Apprenti"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Apprenti
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Alternant"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Alternant"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Alternant
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Volontaire"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Volontaire"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Volontaire
+                      </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 4,
+                            },
+                          ]
+                        }
+                      >
+                        En service civique
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Inactif"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Inactif"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Inactif
+                      </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 4,
+                            },
+                          ]
+                        }
+                      >
+                        En incapacité de travailler
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Chômeur"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Chômeur"
+              >
+                <View
+                  isSelected={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#cbcdd2",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  contentDirection="row"
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        isHover={false}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Chômeur
+                      </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 4,
+                            },
+                          ]
+                        }
+                      >
+                        En recherche d’emploi
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+    <BVLinearGradient
+      bottomViewHeight={0}
+      colors={
+        [
+          16777215,
+          4294967295,
+        ]
+      }
+      endPoint={
+        {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={
+        [
+          0,
+          1,
+        ]
+      }
+      pointerEvents="none"
+      startPoint={
+        {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
+      style={
+        [
+          [
+            {
+              "bottom": 0,
+              "height": 120,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+            },
+          ],
+          {},
+          {},
+        ]
+      }
+    />
+    <View
+      onLayout={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "paddingBottom": 20,
+            "paddingHorizontal": 20,
+            "paddingTop": 12,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Continuer vers l’étape suivante"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Continuer vers l’étape suivante"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Continuer
           </Text>
         </View>
       </View>
