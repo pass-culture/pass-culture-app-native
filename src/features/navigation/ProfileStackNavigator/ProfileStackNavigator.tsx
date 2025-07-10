@@ -45,7 +45,7 @@ type ProfileRouteConfig = {
   name: ProfileStackRouteName
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
-  options: StackNavigationOptions
+  options?: StackNavigationOptions
 }
 
 const profileScreens: ProfileRouteConfig[] = [
@@ -209,7 +209,6 @@ const profileScreens: ProfileRouteConfig[] = [
   {
     name: 'ProfileTutorialAgeInformationCredit',
     component: ProfileTutorialAgeInformationCredit,
-    options: { title: 'Préférence d’affichage' },
   },
 ]
 
