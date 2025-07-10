@@ -22,7 +22,7 @@ export function EduConnectValidation() {
     : ''
 
   const navigateToNextEduConnectStep = () => {
-    const logoutUrl = params.logoutUrl
+    const logoutUrl = params?.logoutUrl
     logoutFromEduConnectIfAllowed(logoutUrl)
     dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
     // in web context, we are redirected to this page after educonnect login in a new tab.
@@ -37,9 +37,9 @@ export function EduConnectValidation() {
       dispatch({
         type: 'SET_IDENTIFICATION',
         payload: {
-          firstName: params.firstName ?? null,
-          lastName: params.lastName ?? null,
-          birthDate: params.dateOfBirth ?? null,
+          firstName: params?.firstName ?? null,
+          lastName: params?.lastName ?? null,
+          birthDate: params?.dateOfBirth ?? null,
         },
       })
       // eslint-disable-next-line react-hooks/exhaustive-deps

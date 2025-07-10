@@ -172,7 +172,10 @@ describe('Stepper navigation', () => {
     render(reactQueryProviderHOC(<Stepper />))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'BeneficiaryAccountCreated',
+      })
     })
   })
 

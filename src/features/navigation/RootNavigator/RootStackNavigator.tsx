@@ -29,10 +29,6 @@ import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDe
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
-import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
-import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
-import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
-import { FAQWebview } from 'features/culturalSurvey/pages/FAQWebview'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -46,11 +42,11 @@ import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
-import { SubscriptionScreens } from 'features/navigation/RootNavigator/SubscriptionScreens'
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
+import { SuspenseSubscriptionStackNavigator } from 'features/navigation/SubscriptionStackNavigator/SuspenseSubscriptionStackNavigator'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
@@ -321,20 +317,6 @@ const rootScreens: RouteConfig[] = [
     component: ThematicHome,
     options: { title: 'Page d’accueil thématique' },
   },
-  {
-    name: 'CulturalSurveyIntro',
-    component: withAuthProtection(CulturalSurveyIntro),
-    options: { title: 'Prenons 1 minute' },
-  },
-  {
-    name: 'CulturalSurveyQuestions',
-    component: withAuthProtection(CulturalSurveyQuestions),
-  },
-  {
-    name: 'CulturalSurveyThanks',
-    component: withAuthProtection(CulturalSurveyThanks),
-  },
-  { name: 'FAQWebview', component: FAQWebview },
   { name: 'AccountSecurityBuffer', component: AccountSecurityBuffer },
   {
     name: 'AccountSecurity',
@@ -376,6 +358,9 @@ const RootStackNavigator = withWebWrapper(
           <RootStackNavigatorBase.Screen name="ProfileStackNavigator">
             {() => <SuspenseProfileStackNavigator />}
           </RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen name="SubscriptionStackNavigator">
+            {() => <SuspenseSubscriptionStackNavigator />}
+          </RootStackNavigatorBase.Screen>
           {isWeb ? null : (
             <RootStackNavigatorBase.Screen
               name="VenueMapFiltersStackNavigator"
@@ -399,8 +384,6 @@ const RootStackNavigator = withWebWrapper(
               options={options}
             />
           ))}
-
-          {SubscriptionScreens}
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )

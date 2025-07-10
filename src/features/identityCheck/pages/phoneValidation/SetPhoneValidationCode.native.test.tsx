@@ -135,7 +135,10 @@ describe('SetPhoneValidationCode', () => {
     await user.press(screen.getByTestId('Continuer'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'PhoneValidationTooManyAttempts',
+      })
     })
   })
 

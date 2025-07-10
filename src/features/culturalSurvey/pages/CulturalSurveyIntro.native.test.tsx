@@ -49,8 +49,11 @@ describe('CulturalSurveyIntro page', () => {
       user.press(StartButton)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('CulturalSurveyQuestions', {
-          question: CulturalSurveyQuestionEnum.SORTIES,
+        expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+          screen: 'CulturalSurveyQuestions',
+          params: {
+            question: CulturalSurveyQuestionEnum.SORTIES,
+          },
         })
       })
     })
@@ -91,7 +94,10 @@ describe('CulturalSurveyIntro page', () => {
       const FAQButton = screen.getByText('En savoir plus')
       await user.press(FAQButton)
 
-      expect(navigate).toHaveBeenCalledWith('FAQWebview', undefined)
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'FAQWebview',
+      })
     })
   })
 

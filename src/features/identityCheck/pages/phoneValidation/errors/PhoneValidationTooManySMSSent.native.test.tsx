@@ -71,7 +71,10 @@ describe('PhoneValidationTooManySMSSent', () => {
 
     await userEvent.press(screen.getByText('J’ai reçu mon code'))
 
-    expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCode', undefined)
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'SetPhoneValidationCode',
+    })
   })
 })
 

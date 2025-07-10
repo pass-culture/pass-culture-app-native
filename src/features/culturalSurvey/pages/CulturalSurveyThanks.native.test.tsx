@@ -63,7 +63,19 @@ describe('CulturalSurveyThanksPage page', () => {
 
       expect(reset).toHaveBeenCalledWith({
         index: 0,
-        routes: [{ name: 'IdentityCheckHonor' }],
+        routes: [
+          {
+            name: 'SubscriptionStackNavigator',
+            state: {
+              index: 0,
+              routes: [
+                {
+                  name: 'IdentityCheckHonor',
+                },
+              ],
+            },
+          },
+        ],
       })
     })
   })

@@ -9,11 +9,11 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
-import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -83,9 +83,9 @@ export type AccessibilityRootStackParamList = {
   RecommendedPaths?: undefined
 }
 
-type CulturalSurveyRootStackParamList = {
+export type CulturalSurveyRootStackParamList = {
   CulturalSurveyIntro: undefined
-  CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
+  CulturalSurveyQuestions?: { question: CulturalSurveyQuestionEnum | undefined }
   CulturalSurveyThanks: undefined
   FAQWebview: undefined
 }
@@ -129,62 +129,6 @@ export enum StepperOrigin {
   VALIDATE_EMAIL_CHANGE = 'validateEmailChange',
   VERIFY_ELIGIBILITY = 'verifyEligibility',
 }
-
-export type SubscriptionRootStackParamList = {
-  // Other
-  DisableActivation: undefined
-  // Stepper
-  Stepper: { from: StepperOrigin } | undefined
-  // PhoneValidation
-  SetPhoneNumberWithoutValidation: undefined
-  SetPhoneNumber: undefined
-  SetPhoneValidationCode: undefined
-  PhoneValidationTooManyAttempts: undefined
-  PhoneValidationTooManySMSSent: undefined
-  NewSignup: undefined
-  // Profile
-  ProfileInformationValidation: ProfileType
-  SetEmail: undefined
-  SetName: ProfileType
-  SetCity: ProfileType
-  SetAddress: ProfileType
-  SetStatus: ProfileType
-  SetProfileBookingError: { offerId?: number }
-  // Identification
-  ComeBackLater: undefined
-  DMSIntroduction: { isForeignDMSInformation: boolean }
-  ExpiredOrLostID: undefined
-  UbbleWebview: undefined
-  IdentityCheckEnd: undefined
-  IdentityCheckUnavailable: { withDMS?: boolean }
-  EduConnectForm: undefined
-  EduConnectValidation: {
-    firstName?: string
-    lastName?: string
-    dateOfBirth?: string
-    logoutUrl?: string
-  }
-  SelectIDOrigin: undefined
-  SelectIDStatus: undefined
-  SelectPhoneStatus: undefined
-  IdentificationFork: undefined
-  // TODO(PC-12433): this duplicate route is required until we solve PC-12433
-  Validation: {
-    firstName?: string
-    lastName?: string
-    dateOfBirth?: string
-    logoutUrl?: string
-  }
-  IdentityCheckPending: undefined
-  IdentityCheckDMS: undefined
-  // Confirmation
-  IdentityCheckHonor: undefined
-  BeneficiaryRequestSent: undefined
-  BeneficiaryAccountCreated: undefined
-  // Errors
-  EduConnectErrors: { code?: string; logoutUrl?: string }
-  EduConnectErrorsPage: { code?: string; logoutUrl?: string }
-} & CulturalSurveyRootStackParamList
 
 type OfferParams = {
   id: number
@@ -327,6 +271,7 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SignupForm: SignupFormParams
+  SubscriptionStackNavigator?: NavigatorScreenParams<SubscriptionStackParamList>
   _DeeplinkOnlySignupForm1: SignupFormParams
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: NavigatorScreenParams<TabParamList>
@@ -344,15 +289,14 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
-} & CulturalSurveyRootStackParamList &
-  SubscriptionRootStackParamList &
-  TrustedDeviceRootStackParamList
+} & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
   TabParamList &
   SearchStackParamList &
   ProfileStackParamList &
-  OnboardingStackParamList
+  OnboardingStackParamList &
+  SubscriptionStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
