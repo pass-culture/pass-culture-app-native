@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { TicketDisplayEnum, TicketResponse, UserProfileResponse } from 'api/gen'
-import { TicketCode } from 'features/bookings/components/OldBookingDetails/TicketCode'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
+import { DigitalTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
 import { ExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
@@ -40,7 +40,7 @@ export const TicketBottomPart = ({
         userEmail={userEmail}
       />
     )
-  if (ticket.activationCode) return <TicketCode code={ticket.activationCode.code} />
+  if (ticket.activationCode) return <DigitalTicket code={ticket.activationCode.code} />
 
   if (ticket.externalBooking)
     return (
@@ -64,7 +64,7 @@ export const TicketBottomPart = ({
       )
   }
 
-  if (ticket.token?.data && isDigital) return <TicketCode code={ticket.token?.data} />
+  if (ticket.token?.data && isDigital) return <DigitalTicket code={ticket.token?.data} />
 
   if (ticket.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
 
