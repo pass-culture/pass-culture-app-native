@@ -106,7 +106,7 @@ jobs:
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
       - name: Post to a Slack channel
         id: slack
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@v2.1.0
         with:
           # channel #alertes-deploiement-native
           channel-id: 'C0309RP8K42'
