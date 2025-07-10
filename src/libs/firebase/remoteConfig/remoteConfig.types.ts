@@ -8,16 +8,8 @@ export type CustomRemoteConfig = {
   homeEntryIdBeneficiary: string
   homeEntryIdFreeBeneficiary: string
   homeEntryIdFreeOffers: string
-  homeEntryIdNotConnected: string
   homeEntryIdGeneral: string
-  homeEntryIdOnboardingGeneral: string
-  homeEntryIdOnboardingUnderage: string
-  homeEntryIdOnboarding_18: string
   homeEntryIdWithoutBooking: string
-  homeEntryIdWithoutBooking_18: string
-  homeEntryIdWithoutBooking_15_17: string
-  homeEntryId_18: string
-  homeEntryId_15_17: string
   reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   sameAuthorPlaylist: string
   shouldDisplayReassuranceMention: boolean
