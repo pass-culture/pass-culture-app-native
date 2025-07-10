@@ -35,6 +35,7 @@ const Container = styled(ViewGap)<{ paddingBottom: number }>(({ paddingBottom, t
   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',
+  backgroundColor: theme.designSystem.color.background.default,
   paddingBottom,
 }))
 
