@@ -17,6 +17,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 const offerWithAddress = {
   ...offerResponseSnap,
   address: {
+    id: 123,
     street: '1 RUE DES CAFÉS',
     postalCode: '75013',
     city: 'PARIS 13',
@@ -26,6 +27,10 @@ const offerWithAddress = {
       longitude: 2.43884,
     },
     timezone: 'Europe/Paris',
+  },
+  venue: {
+    ...offerResponseSnap.venue,
+    addressId: 321,
   },
 }
 
@@ -94,7 +99,7 @@ describe('useVenueBlock with offer address', () => {
     expect(result.current.venueAddress).toBe('1 RUE DES CAFÉS, 75013 PARIS 13')
   })
 
-  it('should return isOfferAddressDifferent to true if offer and venue address are different', () => {
+  it('should return isOfferAddressDifferent to true if offer and venue address ids are different', () => {
     const { result } = renderHook(() =>
       useVenueBlock({
         venue: offerWithAddress.venue,
@@ -107,14 +112,10 @@ describe('useVenueBlock with offer address', () => {
 
   it('should return isOfferAddressDifferent to false if offer and venue address are the same', () => {
     const offerWithSameAddress = {
-      ...offerResponseSnap,
-      address: {
-        street: '2 RUE LAMENNAIS',
-        postalCode: '75008',
-        city: 'PARIS 8',
-        label: 'PATHE BEAUGRENELLE',
-        coordinates: { latitude: 20, longitude: 2 },
-        timezone: 'Europe/Paris',
+      ...offerWithAddress,
+      venue: {
+        ...offerWithAddress.venue,
+        addressId: 123,
       },
     }
     const { result } = renderHook(() =>
