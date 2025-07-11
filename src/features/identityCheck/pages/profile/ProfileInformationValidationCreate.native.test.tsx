@@ -16,7 +16,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
-import { ProfileInformationValidation } from './ProfileInformationValidation'
+import { ProfileInformationValidationCreate } from './ProfileInformationValidationCreate'
 
 const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
 
@@ -76,7 +76,7 @@ useRoute.mockReturnValue({
   },
 })
 
-describe('ProfileInformationValidation', () => {
+describe('ProfileInformationValidationCreate', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockedUseName.mockReturnValue(mockName)
@@ -182,5 +182,5 @@ describe('ProfileInformationValidation', () => {
 })
 
 const renderProfileInformationValidation = () => {
-  return render(reactQueryProviderHOC(<ProfileInformationValidation />))
+  return render(reactQueryProviderHOC(<ProfileInformationValidationCreate />))
 }

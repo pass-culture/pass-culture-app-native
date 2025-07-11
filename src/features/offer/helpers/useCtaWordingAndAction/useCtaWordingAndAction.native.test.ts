@@ -104,7 +104,7 @@ describe('getCtaWordingAndAction', () => {
       })
     })
 
-    it('should display "Réserver l’offre" wording with navigate to ProfileInformationValidation screen and params type', () => {
+    it('should display "Réserver l’offre" wording with navigate to ProfileInformationValidationCreate screen and params type', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
         user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
@@ -125,7 +125,7 @@ describe('getCtaWordingAndAction', () => {
         navigateTo: {
           screen: 'SubscriptionStackNavigator',
           params: {
-            screen: 'ProfileInformationValidation',
+            screen: 'ProfileInformationValidationCreate',
             params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
           },
         },

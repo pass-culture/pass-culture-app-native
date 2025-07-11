@@ -33,13 +33,18 @@ export const useSubmitChangeStatus = () => {
 
   const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
+      if (isMandatoryUpdatePersonalData) {
+        navigate(...getProfileStackConfig('UpdatePersonalDataConfirmation'))
+      } else {
+        navigate(...getProfileStackConfig('PersonalData'))
+        showSuccessSnackBar({
+          message: successSnackBarMessage,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+      }
       analytics.logUpdateStatus({
         oldStatus: user?.activityId ?? '',
         newStatus: variables.activityId ?? '',
-      })
-      showSuccessSnackBar({
-        message: successSnackBarMessage,
-        timeout: SNACK_BAR_TIME_OUT,
       })
     },
 
@@ -64,11 +69,8 @@ export const useSubmitChangeStatus = () => {
   const selectedStatus = watch('selectedStatus')
 
   const submitStatus = useCallback(
-    async (formValues: StatusForm) => {
-      patchProfile({ activityId: formValues.selectedStatus })
-      navigate(...getProfileStackConfig('PersonalData'))
-    },
-    [navigate, patchProfile]
+    async (formValues: StatusForm) => patchProfile({ activityId: formValues.selectedStatus }),
+    [patchProfile]
   )
 
   return { isLoading, control, handleSubmit, selectedStatus, submitStatus, formIsValid }
