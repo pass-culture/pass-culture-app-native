@@ -125,11 +125,7 @@ end
 platform :android do
 
   lane :build do |options|
-    Dir.chdir(ENV['ANDROID_PROJECT_DIR']) do
-      gradle(
-        task: ENV['ANDROID_GRADLE_TASK']
-      )
-    end
+    sh "cd ../#{ENV['ANDROID_PROJECT_DIR']} && ./gradlew #{ENV['ANDROID_GRADLE_TASK']}"
   end
 
   private_lane :deploy_playStore do |options|
