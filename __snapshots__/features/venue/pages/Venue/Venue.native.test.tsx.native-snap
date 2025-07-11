@@ -6905,7 +6905,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "maxWidth": 180,
-                      "opacity": 0.7,
+                      "opacity": 1,
                       "userSelect": "auto",
                     }
                   }

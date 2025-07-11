@@ -239,8 +239,8 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
             <div
               aria-labelledby="testUuidV4"
               aria-modal="true"
-              class="css-view-175oi2r r-flex-13awgt0 r-justifyContent-1777fci r-alignItems-1awozwy r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-n0puxl r-pointerEvents-12vffkv"
-              style="margin: auto auto auto auto; transform: translateY(0px);"
+              class="css-view-175oi2r r-flex-13awgt0 r-justifyContent-1777fci r-alignItems-1awozwy r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-n0puxl r-margin-ywje51 r-pointerEvents-12vffkv"
+              style="transform: translateY(0px);"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderBottomRightRadius-zmljjp r-borderBottomLeftRadius-pm2fo r-borderStartEndRadius-st84sj r-borderStartEndRadius-j3xhw6 r-borderTopLeftRadius-f1w8kp r-borderTopRightRadius-cqzzvf r-flexDirection-eqz5dr r-height-1ln4yuo r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
