@@ -12,6 +12,9 @@ export type ProfileStackParamList = {
   ChangePassword: undefined
   ChangeStatus: PersonalDataType | undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
+  MandatoryUpdatePersonalData: undefined
+  UpdatePersonalDataConfirmation: undefined
+  ProfileInformationValidationUpdate: undefined
   ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   DeactivateProfileSuccess: undefined

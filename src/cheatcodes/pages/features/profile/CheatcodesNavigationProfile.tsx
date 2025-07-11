@@ -93,7 +93,26 @@ const profileCheatcodeCategory: CheatcodeCategory = {
         emailSelectionToken: 'token',
       }),
     },
-    { id: uuidv4(), title: 'ExpiredCreditModal', showOnlyInSearch: true },
+    {
+      id: uuidv4(),
+      title: 'ExpiredCreditModal',
+      showOnlyInSearch: true,
+    },
+    {
+      id: uuidv4(),
+      title: 'MandatoryUpdatePersonalData',
+      navigationTarget: getProfileNavConfig('MandatoryUpdatePersonalData'),
+    },
+    {
+      id: uuidv4(),
+      title: 'UpdatePersonalDataConfirmation',
+      navigationTarget: getProfileNavConfig('UpdatePersonalDataConfirmation'),
+    },
+    {
+      id: uuidv4(),
+      title: 'ProfileInformationValidationUpdate',
+      navigationTarget: getProfileNavConfig('ProfileInformationValidationUpdate'),
+    },
   ],
 }
 

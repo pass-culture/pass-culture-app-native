@@ -17,7 +17,8 @@ export type SubscriptionStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   NewSignup: undefined
   // Profile
-  ProfileInformationValidation?: ProfileType
+  ProfileInformationValidationCreate?: ProfileType
+  ProfileInformationValidationUpdate: undefined
   SetEmail: undefined
   SetName?: ProfileType
   SetCity?: ProfileType
