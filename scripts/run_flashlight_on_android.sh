@@ -244,12 +244,12 @@ log_and_run "Installing the APK onto the emulator" adb install "$APK_PATH"
 log_info "Running Flashlight test with Maestro..."
 flashlight test \
     --bundleId "$BUNDLE_ID" \
-    --testCommand "MAESTRO_APP_ID=$BUNDLE_ID maestro test $REPO_ROOT/.maestro/tests/subFolder/commons/LaunchApp.yml" \
+    --testCommand "MAESTRO_APP_ID=$BUNDLE_ID maestro test $REPO_ROOT/.maestro/tests/HomePerformance.yml" \
     --duration 10000 \
-    --resultsFilePath "$REPO_ROOT/resultsLaunchApp.json" \
+    --resultsFilePath "$REPO_ROOT/resultsHomePerformance.json" \
     || log_error "[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete."
 
 log_and_run "Parsing and evaluating performance results" \
-    bash -c "cd '$REPO_ROOT' && node 'scripts/parse-perf-results.js' 'resultsLaunchApp.json'"
+    bash -c "cd '$REPO_ROOT' && node 'scripts/parse-perf-results.js' 'resultsHomePerformance.json'"
 
 log_success "Script finished successfully!"

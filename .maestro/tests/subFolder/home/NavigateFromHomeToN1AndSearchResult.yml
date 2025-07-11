@@ -1,0 +1,22 @@
+appId: ${MAESTRO_APP_ID}
+---
+- waitForAnimationToEnd
+- scrollUntilVisible:
+    element: "OFFRES GRATUITES"
+- tapOn:
+    label: Accès à une Home N-1
+    text: "OFFRES GRATUITES"
+- scrollUntilVisible:
+    element: "En voir plus"
+- tapOn:
+    label: Accès à la searchResult depuis une playlist
+    text: "En voir plus"
+- waitForAnimationToEnd
+- swipe:
+    from:
+      text: "Les offres"
+    direction: DOWN
+- tapOn:
+    label: Quitter la searchResult avec le backButton
+    text: "Revenir en arrière"
+- waitForAnimationToEnd
