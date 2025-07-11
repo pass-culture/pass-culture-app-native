@@ -159,7 +159,22 @@ describe('<SetStatus/>', () => {
     await user.press(screen.getByText('Continuer'))
 
     expect(dispatch).toHaveBeenCalledWith({
-      payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+      payload: {
+        index: 1,
+        routes: [
+          { name: 'TabNavigator' },
+          {
+            name: 'SubscriptionStackNavigator',
+            state: {
+              routes: [
+                {
+                  name: 'Stepper',
+                },
+              ],
+            },
+          },
+        ],
+      },
       type: 'RESET',
     })
   })
