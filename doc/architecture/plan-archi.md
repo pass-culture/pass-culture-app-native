@@ -2,11 +2,11 @@
 
 ## Constat
 
-L’app jeunes a été construite sur la base d’hypothèses qui ne permettent pas toujours la scalabilité: garantie de la performance/stabilité/maintenabilité.
+L’app jeunes a été construite sur la base d’hypothèses qui ne permettent pas toujours la scalabilité : garantie de la performance/stabilité/maintenabilité.
 
 ## Hypothèses historiques
 
-Les hypothèses historiques (implicites ou explicites) sont les suivantes:
+Les hypothèses historiques (implicites ou explicites) sont les suivantes :
 
 - gestion de l’état faite de plusieurs manières (sans séparation de l’app/server state):
   - component states -> état locaux très proches des composants, s’utilise via useState et permet de stocker des états éphémères (en théorie)
@@ -71,16 +71,20 @@ Les hypothèses historiques (implicites ou explicites) sont les suivantes:
 
 ## Propositions
 
+Nous voulons créer un produit inclusif et robuste, accessible à tous les publics grâce à une architecture adaptative et optimisée.
+
+Ces propositions se font dans ce cadre.
+
 ### Séparation des états
 
 Pourquoi vouloir séparer les États dans l’app ?
-Être incapable de découpler les états qui viennent du server de ceux générer par l’app (user), empêche une gestion propre du cache, du stockage de data pour le mode offline, et entraîne un couplage non désirable pour l’évolution de l’app / la recherche et la gestion des bugs.
+Être incapable de découpler les états qui viennent du serveur (réservation d'une offre, bénéficiaire, ...) de ceux générés par l’app (modale, formulaires, notifications, ...), empêche une gestion propre du cache, du stockage de données pour le mode offline, et entraîne un couplage non désirable pour l’évolution de l’app / la recherche et la gestion des bugs.
 
 ### Server State
 
-Le server state concerne tous les calls d’API qui sont nécessaires au fonctionnement de l’app:
+Le server state concerne tous les calls d’API qui sont nécessaires au fonctionnement de l’app :
 
-- backend passculture
+- backend pass Culture
 - firebase (ff, remote config)
 - algolia (recherche, playlists)
 - contentful (édito)
@@ -95,7 +99,7 @@ Le but est d’uniformiser, isoler et identifier le server state dans l’app.
 ### App State
 
 L’app state concerne tous les états produits par l’utilisateur qui ne sont pas le reflet direct de la donnée serveur.
-On veut que ces états soit gérés de façon uniforme, pour cela il faudra:
+On veut que ces états soit gérés de façon uniforme, pour cela il faudra :
 
 - supprimer les contextes inutiles
 - déplacer les states locaux (components/hooks) vers des stores zustand
@@ -105,62 +109,72 @@ Le but est d’uniformiser, isoler et identifier l’app state dans l’app.
 
 ### Suppression des Contexts
 
-Une grande partie des contextes React sera supprimée, au profit de l’utilisation de stores zustands pour l’app state et de queries pour le server state.
+Une grande partie des contextes React sera supprimée, au profit de l’utilisation de stores Zustand pour l’app state et de queries pour le server state.
 Cf. partie précédente
+
+Cette étape sera vue plus précisément plus tard.
 
 ### Logiques métiers
 
-Toutes les logiques métiers doivent être isolées dans des fonctions.  
+Toutes les logiques métiers doivent être isolées dans des fonctions.
 Ces fonctions constitueront un ensemble uniforme et identifiable de règles qui seront testées unitairement.
 La notion de classe peut être remplacée par l’utilisation des modules JS et de fonctions dans cette portée.
-Pour cela, on effectuera les modifications suivantes:
+Pour cela, on effectuera les modifications suivantes :
 
-- suppression des hooks associés au server state, utilisation de fonction de sélection (select de RQ ou selector de Reselect): ces fonctions permettent de modifier la donnée server pour l’affichage
+- suppression des hooks associés au server state
+- utilisation de fonction de sélection (select de RQ ou selector de Reselect): ces fonctions permettent de modifier la donnée server pour l’affichage
 - suppression des hooks d’abstraction d’actions au profit de fonctions pures: testables car stateless
 - suppression des logiques métiers dans les components, les logiques seront extraites et transformées en fonctions pures.
 
 ### Navigation
 
-Toutes les pages seront accessibles par des urls et aucune autre donnée ne devra être nécessaire pour y accéder, à part les données de connexions, et celles de localisation, toutes les deux très liées à l’état server/app de l’utilisateur.
+Toutes les pages seront accessibles par des URLs et aucune autre donnée ne devra être nécessaire pour y accéder, à part les données de connexions, et celles de localisation, toutes les deux très liées à l’état server/app de l’utilisateur.
 
-Pour cela il faut un principe bi-directionnel entre l’état et l’URL:
+Pour cela il faut un principe bi-directionnel entre l’état et l’URL :
 
-- que toutes les pages possèdent des urls
-- que tous les paramètres des urls déterminent l’état d’affichage de la page
-- que tous les états soient déterminé par les paramètres de l’url, sauf cas particulier pour des pages qui n’auront pas besoin d’être accessibles en deeplink
+- que toutes les pages possèdent des URLs
+- que tous les paramètres des URLs déterminent l’état d’affichage de la page
+- que tous les états soient déterminé par les paramètres de l’URL, sauf cas particulier exceptionnel pour des pages qui n’auront pas besoin d’être accessibles en DeepLink
 
 ### Séparation des types de composants
 
-Tous les composants de l’app devront se ranger dans une des catégories suivantes:
+Tous les composants de l’app devront se ranger dans une des catégories suivantes :
 
-- dumb component: les dumb components (affichage) devront constituer la majorité de la codebase, il ne pourront pas contenir de logique métier, ils devront être des fonctions pures leur état n’est déterminé que par les props.
-- container: les containers seront connectés aux stores pour l’app state et au server state. Il devront gérer leur logique métier dans des fonctions pures (cf. partie sur la logique métier).
-- page: les pages sont les composants de plus haut niveau et doivent déterminer leur état interne uniquement via les paramètres de l’url (sauf exceptions).
+- presentational component : les presentational components (affichage) devront constituer la majorité de la codebase, ils ne pourront pas contenir de logique métier, ils devront être des fonctions pures, leur état n'est déterminé que par les props.
+  - Ils peuvent venir du Design System.
+  - Ils peuvent être créé dans Storybook pour aider à créer des composants réutilisables.
+- container : les containers seront connectés aux stores pour l'app state et au server state. Ils devront gérer leur logique métier dans des fonctions pures (cf. partie sur la logique métier).
+- page : les pages sont les composants de plus haut niveau et doivent déterminer leur état interne uniquement via les paramètres de l'URL (sauf exceptions).
 
-Pour cela il faut:
+[Voir le schema](./vision-cible.md#archi-cible)
 
-- repérer et isoler dumbs components dans des dossiers spécifiques
+Pour cela, il faut :
+
+- repérer et isoler les presentational components dans des dossiers spécifiques
 - remonter les logiques contenues dans les composants d’affichage vers les containers et les pages
 - supprimer les connexions entre les composants d’affichage aux stores et au server state
 - isoler les containers dans des dossiers spécifiques
-- modifier les pages pour ne calculer leur état que à partir de l’url
+- modifier les pages pour ne calculer leur état que à partir de l'URL.
 
 ## Roadmap
 
 ### Étapes
 
-- L’audit de l’archi + archi macro 90% achevé
-- Les principes T2
-- VALIDÉ PAR EM SUR LA VISION 2025
-- Séparation des états de l’app T3…
+- PoC
 - Suppression des contexts au profit des autres états
 - Fonctionnalisation des logiques métiers
 - Séparation des types de composants
 - Refonte de la navigation
-- Quels sont les pré-requis avant de laisser en T3 les devs faire les nouvelles features avec ces nouveaux principes ?
-- En T3 il faudra trouver les stratégies pour modifier le légacy
 
 Toutes les étapes sont citées dans un ordre de faisabilité préférentielle, néanmoins une fois la séparation des états de l’app effectuée toutes les autres étapes sont faisables en parallèle si besoin.
+
+### PoC
+
+[Un PoC a été fait pour tester la nouvelle architecture sur la feature artiste](https://github.com/pass-culture/pass-culture-app-native/pull/8352), ce qui nous a permis de :
+
+- se rendre compte que on était pas d'accord sur certains points et de trouver des accords qui se retrouvent dans [les principes](./0_principes.md)
+- affiner certaines règles qui se retrouvent dans [les principes](./0_principes.md)
+- voir qu'il y a des sujets transverses (localisation, contexte de recherche, gestion de la connexion, affichage des prix ...) qu'il faudra améliorer tout en conservant une seule source de données pour éviter les désynchronisations et donc les bugs, et réfléchir à chaque point en pensant à l'utilisation globale dans l'app
 
 ### Lots
 
@@ -202,8 +216,8 @@ Isolation des logiques métiers:
 
 - création de nouveaux composants containers (cf. ci-dessous)
 - déplacement des connexions à l’app/server state dans les containers
-- migrations de tous les autres composants vers des dumbs components
-- les composants pages existant déjà il faudra simplement s’assurer que ces composants appellent bien des containers et non des dumb components autant que possible
+- migrations de tous les autres composants vers des presentational components
+- les composants pages existant déjà il faudra simplement s’assurer que ces composants appellent bien des containers et non des presentational components autant que possible
 
 #### Refonte de la navigation
 
