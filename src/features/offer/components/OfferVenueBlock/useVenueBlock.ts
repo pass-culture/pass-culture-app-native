@@ -14,7 +14,7 @@ export const useVenueBlock = ({
   onCopy?: () => void
 }) => {
   const venueName = offerAddress?.label || venue.name
-  const street = offerAddress?.street
+  const street = offerAddress?.street || venue?.address
   const postalCode = offerAddress?.postalCode ?? venue.postalCode
   const city = offerAddress?.city ?? venue.city
 
