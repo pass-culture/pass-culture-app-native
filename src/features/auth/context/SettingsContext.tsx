@@ -25,7 +25,7 @@ export const SettingsWrapper = memo(function SettingsWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const { data, isLoading } = useAppSettings()
+  const { data, isInitialLoading: isLoading } = useAppSettings()
 
   const value = useMemo(() => ({ data, isLoading }), [data, isLoading])
 

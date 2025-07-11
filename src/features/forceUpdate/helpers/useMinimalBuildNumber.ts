@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 export const useMinimalBuildNumber = () => {
   const {
     data: minimalBuildNumber,
-    isLoading,
+    isInitialLoading: isLoading,
     error,
   } = useQuery([QueryKeys.MINIMAL_BUILD_NUMBER], getMinimalBuildNumber, {
     staleTime: 1000 * 30,
