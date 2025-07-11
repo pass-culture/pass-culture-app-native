@@ -5,6 +5,7 @@ import {
   ScrollView,
   ScrollViewProps,
   StatusBar,
+  StyleSheet,
   useWindowDimensions,
   ViewProps,
 } from 'react-native'
@@ -56,7 +57,7 @@ type Props = {
   Pick<ViewProps, 'onLayout'>
 
 // Without this, the margin is recomputed with arbitrary values
-const modalStyles = { margin: 'auto' }
+const styles = StyleSheet.create({ modal: { margin: 'auto' } })
 
 const DESKTOP_FULLSCREEN_RATIO = 0.75
 
@@ -218,7 +219,7 @@ export const AppModal: FunctionComponent<Props> = ({
     <StyledModal
       accessibilityModal
       animationOutTiming={animationOutTiming}
-      style={modalStyles}
+      style={styles.modal}
       supportedOrientations={['portrait', 'landscape']}
       statusBarTranslucent
       hasBackdrop={shouldDisplayOverlay}
@@ -317,7 +318,7 @@ const ScrollViewContainer = styled.View.attrs(({ theme }) => ({
 
 const MODAL_PADDING = getSpacing(5)
 // @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'Any<StyledComponent>'
-const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => {
+const StyledModal = styled(ReactNativeModal)(({ theme }) => {
   const { isDesktopViewport } = theme
   return {
     position: 'absolute',
