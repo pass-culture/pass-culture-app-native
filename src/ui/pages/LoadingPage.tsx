@@ -9,7 +9,21 @@ import { Typo } from 'ui/theme'
 const UnmemoizedLoadingPage: FunctionComponent = () => {
   return (
     <Container>
-      <StyledLottieView source={LoadingAnimation} autoPlay loop />
+      <StyledLottieView
+        source={LoadingAnimation}
+        autoPlay
+        loop
+        colorFilters={[
+          {
+            keypath: '**.Stroke 1',
+            color: 'red',
+          },
+          {
+            keypath: '**.Fill 1',
+            color: 'red',
+          },
+        ]}
+      />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )
