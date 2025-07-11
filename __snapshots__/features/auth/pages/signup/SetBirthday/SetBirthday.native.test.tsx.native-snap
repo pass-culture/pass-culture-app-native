@@ -207,13 +207,14 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     </View>
     <RNDatePicker
       accessibilityDescribedBy="testUuidV4"
-      androidVariant="nativeAndroid"
+      buttonColor="#000000"
       cancelText="Cancel"
       confirmText="Confirm"
-      date={1164931200000}
+      date="2006-12-01T00:00:00.000Z"
+      dividerColor="#000000"
       locale="fr-FR"
-      maximumDate={1167523200000}
-      minimumDate={-2208988800000}
+      maximumDate="2006-12-31T00:00:00.000Z"
+      minimumDate="1900-01-01T00:00:00.000Z"
       minuteInterval={1}
       mode="date"
       onChange={[Function]}
@@ -235,7 +236,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         ]
       }
       testID="date-picker-spinner-native"
-      textColor="#161617"
+      textColor="#000000"
       theme="light"
       timeZoneOffsetInMinutes=""
       title="Select date"
@@ -583,13 +584,14 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     </View>
     <RNDatePicker
       accessibilityDescribedBy="testUuidV4"
-      androidVariant="nativeAndroid"
+      buttonColor="#000000"
       cancelText="Cancel"
       confirmText="Confirm"
-      date={1164931200000}
+      date="2006-12-01T00:00:00.000Z"
+      dividerColor="#000000"
       locale="fr-FR"
-      maximumDate={1167523200000}
-      minimumDate={-2208988800000}
+      maximumDate="2006-12-31T00:00:00.000Z"
+      minimumDate="1900-01-01T00:00:00.000Z"
       minuteInterval={1}
       mode="date"
       onChange={[Function]}
@@ -611,7 +613,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
         ]
       }
       testID="date-picker-spinner-native"
-      textColor="#161617"
+      textColor="#000000"
       theme="light"
       timeZoneOffsetInMinutes=""
       title="Select date"

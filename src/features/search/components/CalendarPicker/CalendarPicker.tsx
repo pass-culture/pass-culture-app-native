@@ -38,7 +38,6 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
         minimumDate={CURRENT_DATE}
         onDateChange={setCurrentDate}
         locale="fr-FR"
-        androidVariant="nativeAndroid"
       />
       <ButtonPrimary wording="Valider la date" onPress={onValidate} />
     </AppModal>

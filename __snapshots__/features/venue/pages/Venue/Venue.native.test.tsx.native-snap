@@ -1032,16 +1032,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           }
                         }
                         viewabilityConfigCallbackPairs={[]}
-                        waitFor={
-                          [
-                            {
-                              "current": null,
-                            },
-                            {
-                              "current": null,
-                            },
-                          ]
-                        }
                         windowSize={7}
                       >
                         <View>
@@ -4310,16 +4300,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           }
                         }
                         viewabilityConfigCallbackPairs={[]}
-                        waitFor={
-                          [
-                            {
-                              "current": null,
-                            },
-                            {
-                              "current": null,
-                            },
-                          ]
-                        }
                         windowSize={7}
                       >
                         <View>

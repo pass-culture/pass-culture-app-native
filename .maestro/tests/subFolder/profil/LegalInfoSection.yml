@@ -1,11 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- scrollUntilVisible: 
+- scrollUntilVisible:
     element: 'Confidentialité'
 
 - tapOn:
     text: 'Informations légales'
-    index: 1
 
 - assertVisible: 'Informations légales'
 - tapOn:
@@ -21,7 +20,6 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn:
           text: 'Informations légales'
-          index: 1
 
 - tapOn:
     id: "Nouvelle fenêtre\_: Charte de protection des données personnelles"
