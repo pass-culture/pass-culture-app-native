@@ -2,6 +2,7 @@ import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
+import { theme } from 'theme'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
@@ -9,7 +10,21 @@ import { Typo } from 'ui/theme'
 const UnmemoizedLoadingPage: FunctionComponent = () => {
   return (
     <Container>
-      <StyledLottieView source={LoadingAnimation} autoPlay loop />
+      <StyledLottieView
+        source={LoadingAnimation}
+        autoPlay
+        loop
+        colorFilters={[
+          {
+            keypath: '**.Stroke 1',
+            color: theme.uniqueColors.brand,
+          },
+          {
+            keypath: '**.Fill 1',
+            color: theme.uniqueColors.brand,
+          },
+        ]}
+      />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )
