@@ -1,4 +1,10 @@
-import { BookingOfferResponse, BookingReponse, BookingsResponse, SubcategoryIdEnum } from 'api/gen'
+import {
+  BookingOfferResponse,
+  BookingOfferResponseV2,
+  BookingReponse,
+  BookingsResponse,
+  SubcategoryIdEnum,
+} from 'api/gen'
 
 export const mockedBookingOfferResponse: BookingOfferResponse = {
   id: 32871,
@@ -9,6 +15,23 @@ export const mockedBookingOfferResponse: BookingOfferResponse = {
     name: 'venueName',
     id: 3131,
     coordinates: {},
+    timezone: 'Europe/Paris',
+    isOpenToPublic: true,
+  },
+  subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
+}
+
+export const mockedBookingOfferResponseV2: BookingOfferResponseV2 = {
+  id: 32871,
+  isDigital: true,
+  isPermanent: true,
+  name: 'mockedBookingName',
+  venue: {
+    address: {
+      id: 1212,
+    },
+    name: 'venueName',
+    id: 3131,
     timezone: 'Europe/Paris',
     isOpenToPublic: true,
   },

@@ -31,7 +31,7 @@ export const VenueBlockWithItinerary = ({
   addressLabel,
 }: Props) => {
   const { venueName, venueAddress, isOfferAddressDifferent } = useVenueBlock({
-    venue,
+    venue: { ...venue, addressId: venue.address.id ?? undefined, address: null },
     offerAddress: address,
   })
 

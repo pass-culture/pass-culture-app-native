@@ -7,7 +7,7 @@ import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-const offer = mockBuilder.bookingOfferResponse()
+const offer = mockBuilder.bookingOfferResponseV2()
 const nonBreakingSpace = '\u00a0'
 
 describe('TicketTopPart', () => {

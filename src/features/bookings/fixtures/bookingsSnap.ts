@@ -346,6 +346,7 @@ export const bookingsSnap = toMutable({
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           address: {
+            id: 111,
             street: '1 boulevard de la brique',
             postalCode: '93700',
             city: 'Drancy',
@@ -361,6 +362,9 @@ export const bookingsSnap = toMutable({
           isDigital: true,
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
+            address: {
+              id: 112,
+            },
             id: 2185,
             name: 'Maison de la Brique',
             publicName: 'Maison de la Brique en mousse',
@@ -408,6 +412,7 @@ export const bookingsSnap = toMutable({
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           address: {
+            id: 113,
             street: '1 boulevard de la brique',
             postalCode: '93700',
             city: 'Drancy',
@@ -423,6 +428,9 @@ export const bookingsSnap = toMutable({
           isDigital: true,
           subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
           venue: {
+            address: {
+              id: 114,
+            },
             id: 2185,
             name: 'Maison de la Brique',
             publicName: 'Maison de la Brique en mousse',
@@ -473,6 +481,7 @@ export const bookingsSnap = toMutable({
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           address: {
+            id: 115,
             street: '1 boulevard de la brique',
             postalCode: '93700',
             city: 'Drancy',
@@ -489,6 +498,9 @@ export const bookingsSnap = toMutable({
           isDigital: false,
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
+            address: {
+              id: 116,
+            },
             id: 2185,
             name: 'Maison de la Brique',
             timezone: 'Europe/Paris',
@@ -536,6 +548,7 @@ export const bookingsSnap = toMutable({
           bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           address: {
+            id: 117,
             street: '1 boulevard de la brique',
             postalCode: '93700',
             city: 'Drancy',
@@ -553,6 +566,9 @@ export const bookingsSnap = toMutable({
           isDigital: false,
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
+            address: {
+              id: 118,
+            },
             id: 2185,
             name: 'Maison de la Brique',
             timezone: 'Europe/Paris',
@@ -601,6 +617,7 @@ export const bookingsSnap = toMutable({
           bookingContact: null,
           name: 'Un titre de livre',
           address: {
+            id: 119,
             street: '45 rue de Paris',
             postalCode: '59300',
             city: 'Valenciennes',
@@ -618,6 +635,9 @@ export const bookingsSnap = toMutable({
           isDigital: false,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
           venue: {
+            address: {
+              id: 120,
+            },
             id: 2185,
             name: 'Libraire du Petit Prince',
             timezone: 'Europe/Paris',

@@ -666,6 +666,11 @@ export interface BookingOfferResponseAddressV2 {
    */
   coordinates: Coordinates
   /**
+   * @type {number}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  id: number
+  /**
    * @type {string}
    * @memberof BookingOfferResponseAddressV2
    */
@@ -998,6 +1003,17 @@ export interface BookingStockResponseV2 {
 }
 /**
  * @export
+ * @interface BookingVenueAddressResponseV2
+ */
+export interface BookingVenueAddressResponseV2 {
+  /**
+   * @type {number}
+   * @memberof BookingVenueAddressResponseV2
+   */
+  id?: number | null
+}
+/**
+ * @export
  * @interface BookingVenueResponse
  */
 export interface BookingVenueResponse {
@@ -1058,6 +1074,11 @@ export interface BookingVenueResponse {
  * @interface BookingVenueResponseV2
  */
 export interface BookingVenueResponseV2 {
+  /**
+   * @type {BookingVenueAddressResponseV2}
+   * @memberof BookingVenueResponseV2
+   */
+  address: BookingVenueAddressResponseV2
   /**
    * @type {string}
    * @memberof BookingVenueResponseV2
@@ -2847,6 +2868,11 @@ export interface OfferResponse {
    * @memberof OfferResponse
    */
   artists: Array<OfferArtist>
+/**
+   * @type {string}
+   * @memberof OfferResponse
+   */
+  bookingAllowedDatetime?: string | null
   /**
    * @type {Array<ChroniclePreview>}
    * @memberof OfferResponse
@@ -2993,6 +3019,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   artists: Array<OfferArtist>
+/**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
+  bookingAllowedDatetime?: string | null
   /**
    * @type {Array<ChroniclePreview>}
    * @memberof OfferResponseV2
