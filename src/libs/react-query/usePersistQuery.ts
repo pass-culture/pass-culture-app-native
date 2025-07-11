@@ -33,12 +33,12 @@ function useSetPersistQuery<TData, TError, TQueryKey>(
   queryKey: TQueryKey
 ) {
   useEffect(() => {
-    if (!query.isLoading && query.data) {
+    if (!query.isInitialLoading && query.data) {
       AsyncStorage.setItem(String(queryKey), JSON.stringify(query.data)).catch((error) => {
         eventMonitoring.captureException(error, { extra: { queryKey, data: query.data } })
       })
     }
-  }, [query.data, query.isLoading, queryKey])
+  }, [query.data, query.isInitialLoading, queryKey])
 }
 
 type UsePersistQueryResult<TData, TError> = UseQueryResult<TData, TError> & {

@@ -27,7 +27,7 @@ export const useCheatcodesFeatureFlagQuery = () => {
   const appBuildVersion = getAppBuildVersion()
   const {
     data: docSnapshot,
-    isLoading,
+    isInitialLoading: isLoading,
     error,
   } = useQuery(['FEATURE_FLAGS'], getAllFeatureFlags, {
     staleTime: 1000 * 30,
