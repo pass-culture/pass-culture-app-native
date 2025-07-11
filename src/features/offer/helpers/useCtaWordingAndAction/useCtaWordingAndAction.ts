@@ -169,7 +169,7 @@ export const getCtaWordingAndAction = ({
           wording: 'Réserver l’offre',
           isDisabled: false,
           navigateTo: getSubscriptionPropConfig(
-            storedProfileInfos ? 'ProfileInformationValidation' : 'SetName',
+            storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
             { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
           ),
         }

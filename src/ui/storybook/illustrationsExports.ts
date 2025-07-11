@@ -43,6 +43,7 @@ import { CircledClock } from 'ui/svg/icons/CircledClock'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
+import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
 import { IdCardError } from 'ui/svg/icons/IdCardError'
 import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
@@ -78,6 +79,7 @@ export const BasicsIllustrations = {
   EmailSent,
   EmptyFavorites,
   ErrorIllustration,
+  HappyFace,
   HappyFaceWithTear,
   IdCardError,
   IdCardInvalid,

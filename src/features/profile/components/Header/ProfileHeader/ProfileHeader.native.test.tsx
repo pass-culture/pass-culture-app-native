@@ -45,6 +45,7 @@ const user: UserProfileResponse = {
   status: { statusType: YoungStatusType.beneficiary },
   currency: CurrencyEnum.EUR,
   achievements: [],
+  street: '10 rue du Bohneur',
 }
 
 const exBeneficiaryUser: UserProfileResponse = {

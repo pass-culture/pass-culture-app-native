@@ -120,8 +120,8 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'ProfileInformationValidation',
-      navigationTarget: getSubscriptionPropConfig('ProfileInformationValidation'),
+      title: 'ProfileInformationValidationCreate',
+      navigationTarget: getSubscriptionPropConfig('ProfileInformationValidationCreate'),
     },
     {
       id: uuidv4(),
