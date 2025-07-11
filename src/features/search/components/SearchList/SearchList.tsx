@@ -29,12 +29,12 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
       venuesUserData,
       artistSection,
       numColumns,
-      enableGrisList,
+      setGridListLayout,
+      isGridLayout,
     },
     ref
   ) => {
     const theme = useTheme()
-
     return (
       <FlashList
         estimatedItemSize={LIST_ITEM_HEIGHT}
@@ -49,11 +49,12 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
             venues={hits.venues}
             artistSection={artistSection}
             venuesUserData={venuesUserData}
+            setGridListLayout={setGridListLayout}
           />
         }
-        ItemSeparatorComponent={enableGrisList ? undefined : LineSeparator}
+        ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
         renderItem={renderItem}
-        numColumns={enableGrisList ? numColumns : undefined}
+        numColumns={isGridLayout ? numColumns : undefined}
         refreshing={refreshing}
         onRefresh={onRefresh}
         onEndReached={autoScrollEnabled ? onEndReached : undefined}

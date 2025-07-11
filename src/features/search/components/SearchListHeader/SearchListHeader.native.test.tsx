@@ -473,4 +473,23 @@ describe('<SearchListHeader />', () => {
 
     expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
   })
+
+  describe('with WIP_ENABLE_GRID_LIST FF activated', () => {
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
+
+    it('should display grid list menu', async () => {
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
+
+      await screen.findByText('Les offres')
+
+      expect(await screen.findByTestId('grid-list-menu')).toBeOnTheScreen()
+    })
+  })
 })

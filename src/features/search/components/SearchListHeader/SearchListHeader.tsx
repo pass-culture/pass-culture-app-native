@@ -1,5 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -11,14 +11,18 @@ import { NumberOfResults } from 'features/search/components/NumberOfResults/Numb
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
-import { SearchView, VenuesUserData } from 'features/search/types'
+import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
+import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
 import { Error } from 'ui/svg/icons/Error'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -28,6 +32,7 @@ interface SearchListHeaderProps extends ScrollViewProps {
   venues?: SearchOfferHits['venues']
   venuesUserData: VenuesUserData
   artistSection?: React.ReactNode
+  setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -36,7 +41,12 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
   artistSection,
+  setGridListLayout,
 }) => {
+  const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
+
+  const [selectedGridListLayout, setSelectedGridListLayout] = useState(GridListLayout.LIST)
+
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const {
@@ -78,6 +88,17 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
+  const onGridListButtonPress = (layout: GridListLayout) => {
+    setSelectedGridListLayout(layout)
+    setGridListLayout?.(layout)
+  }
+
+  const getLayoutButtonProps = (layout: GridListLayout) => ({
+    layout,
+    isSelected: selectedGridListLayout === layout,
+    onPress: () => onGridListButtonPress(layout),
+  })
+
   return (
     <View testID="searchListHeader">
       {shouldDisplayGeolocationButton ? (
@@ -106,11 +127,39 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           isLocated={isLocated}
         />
       ) : null}
-      <Title>{offerTitle}</Title>
-      <NumberOfResults nbHits={nbHits} />
+      <HeaderSectionContainer>
+        <TitleContainer>
+          <Title>{offerTitle}</Title>
+          <NumberOfResults nbHits={nbHits} />
+        </TitleContainer>
+        {enableGridList ? (
+          <GridListMenu testID="grid-list-menu">
+            <ListLayoutButton {...getLayoutButtonProps(GridListLayout.LIST)} />
+            <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
+          </GridListMenu>
+        ) : null}
+      </HeaderSectionContainer>
     </View>
   )
 }
+
+const GridListMenu = styled(View)({
+  flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  marginRight: getSpacing(6),
+})
+
+const HeaderSectionContainer = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const TitleContainer = styled.View({
+  flexDirection: 'column',
+})
 
 const GeolocationButtonContainer = styled.View(({ theme }) => ({
   marginVertical: getSpacing(4),
