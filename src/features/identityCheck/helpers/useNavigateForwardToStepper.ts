@@ -17,7 +17,15 @@ export const useNavigateForwardToStepper = () => {
     dispatch(
       CommonActions.reset({
         index: 1,
-        routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+        routes: [
+          { name: 'TabNavigator' },
+          {
+            name: 'SubscriptionStackNavigator',
+            state: {
+              routes: [{ name: 'Stepper' }],
+            },
+          },
+        ],
       })
     )
 
