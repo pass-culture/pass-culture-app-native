@@ -2,6 +2,7 @@ import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
+import { theme } from 'theme'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
@@ -16,11 +17,11 @@ const UnmemoizedLoadingPage: FunctionComponent = () => {
         colorFilters={[
           {
             keypath: '**.Stroke 1',
-            color: 'red',
+            color: theme.uniqueColors.brand,
           },
           {
             keypath: '**.Fill 1',
-            color: 'red',
+            color: theme.uniqueColors.brand,
           },
         ]}
       />
