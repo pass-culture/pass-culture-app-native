@@ -27,7 +27,11 @@ export function useThematicSearchPlaylists({
   const transformHits = useTransformOfferHits()
 
   const { userLocation } = useLocation()
-  const { data, refetch, isLoading } = useQuery({
+  const {
+    data,
+    refetch,
+    isInitialLoading: isLoading,
+  } = useQuery({
     queryKey: [queryKey],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchMethod(userLocation)
