@@ -4,5 +4,5 @@ import { OfferResponseV2 } from 'api/gen'
 
 export const getIsAComingSoonOffer = (offer: OfferResponseV2): boolean =>
   !offer.isReleased &&
-  !!offer.publicationDate &&
-  isAfter(new Date(offer.publicationDate), new Date())
+  !!offer.bookingAllowedDatetime &&
+  isAfter(new Date(offer.bookingAllowedDatetime), new Date())
