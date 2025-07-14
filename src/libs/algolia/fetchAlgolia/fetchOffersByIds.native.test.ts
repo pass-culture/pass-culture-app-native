@@ -51,7 +51,6 @@ describe('fetchOffersByIds', () => {
     expect(search).toHaveBeenCalledWith('', {
       facetFilters: [['offer.isEducational:false'], ['objectID:id1', 'objectID:id2']],
       numericFilters: [['offer.prices: 0 TO 300']],
-      tagFilters: '["-is_future"]',
       attributesToRetrieve: offerAttributesToRetrieve,
       attributesToHighlight: [],
       page: 0,
@@ -70,7 +69,6 @@ describe('fetchOffersByIds', () => {
         ['objectID:id1', 'objectID:id2'],
       ],
       numericFilters: [['offer.prices: 0 TO 300']],
-      tagFilters: '["-is_future"]',
       attributesToRetrieve: offerAttributesToRetrieve,
       attributesToHighlight: [],
       page: 0,

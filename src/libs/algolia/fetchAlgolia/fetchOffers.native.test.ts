@@ -77,7 +77,6 @@ describe('fetchOffer', () => {
       attributesToRetrieve: offerAttributesToRetrieve,
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
-      tagFilters: '["-is_future"]',
       clickAnalytics: true,
     })
   })
@@ -113,7 +112,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         clickAnalytics: true,
       })
     })
@@ -135,7 +133,6 @@ describe('fetchOffer', () => {
           ['offer.searchGroupNamev2:LECON'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -160,7 +157,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -178,7 +174,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -210,7 +205,6 @@ describe('fetchOffer', () => {
         attributesToRetrieve: offerAttributesToRetrieve,
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         clickAnalytics: true,
       })
     })
@@ -235,7 +229,6 @@ describe('fetchOffer', () => {
         attributesToRetrieve: offerAttributesToRetrieve,
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         clickAnalytics: true,
       })
     })
@@ -261,7 +254,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -283,7 +275,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -310,7 +301,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -337,7 +327,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -364,7 +353,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -387,7 +375,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -406,7 +393,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:LECON']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -430,7 +416,6 @@ describe('fetchOffer', () => {
           ['offer.searchGroupNamev2:SPECTACLES', 'offer.searchGroupNamev2:LIVRES'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -451,7 +436,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.subcategoryId:CINE_PLEIN_AIR']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -475,7 +459,6 @@ describe('fetchOffer', () => {
           ['offer.subcategoryId:CINE_PLEIN_AIR', 'offer.subcategoryId:ESCAPE_GAME'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -496,7 +479,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.nativeCategoryId:LIVRES_PAPIER']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -523,7 +505,6 @@ describe('fetchOffer', () => {
           ],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -544,7 +525,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.movieGenres:DRAMA']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -565,7 +545,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.bookMacroSection:Droit']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -588,7 +567,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.showType:Arts de la rue']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -609,7 +587,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.musicType:Pop']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -630,7 +607,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -654,7 +630,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -674,7 +649,6 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -693,7 +667,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -716,7 +689,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -735,7 +707,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.isDuo:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -760,7 +731,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -780,7 +750,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices = 0']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -802,7 +771,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 50']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -823,7 +791,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 5 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -843,7 +810,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -864,7 +830,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 25']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -886,7 +851,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith(query, {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [[`offer.prices: 0 TO ${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -920,7 +884,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith(query, {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -953,7 +916,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith(query, {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -986,7 +948,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith(query, {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -1019,7 +980,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith(query, {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -1044,7 +1004,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith('', {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.times: 64800 TO 79200`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -1075,7 +1034,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith(query, {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -1114,7 +1072,6 @@ describe('fetchOffer', () => {
             ['offer.prices: 0 TO 300'],
             [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`, `offer.dates: 327 TO 328`],
           ],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -1155,7 +1112,6 @@ describe('fetchOffer', () => {
             ['offer.prices: 0 TO 300'],
             [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`],
           ],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -1187,7 +1143,6 @@ describe('fetchOffer', () => {
         expect(search).toHaveBeenCalledWith(query, {
           facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
-          tagFilters: '["-is_future"]',
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
@@ -1219,7 +1174,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices = 0'], ['offer.dates: 123456789 TO 987654321']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -1246,7 +1200,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices = 0'], ['offer.times: 123456789 TO 987654321']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -1283,7 +1236,6 @@ describe('fetchOffer', () => {
           ['offer.prices = 0'],
           ['offer.dates: 123456789 TO 987654321', 'offer.dates: 123 TO 1234'],
         ],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -1320,7 +1272,6 @@ describe('fetchOffer', () => {
           ['offer.isDigital:true'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
         attributesToHighlight: [],
@@ -1361,7 +1312,6 @@ describe('fetchOffer', () => {
           ['offer.isDuo:true'],
         ],
         numericFilters: [['offer.prices: 5 TO 40']],
-        tagFilters: '["-is_future"]',
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
         attributesToHighlight: [],
@@ -1387,7 +1337,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -1409,7 +1358,6 @@ describe('fetchOffer', () => {
           ['offer.tags:Semaine du 14 juillet', 'offer.tags:Offre cinema spéciale pass culture'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
@@ -1432,7 +1380,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -1453,7 +1400,6 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         attributesToRetrieve: offerAttributesToRetrieve,
         clickAnalytics: true,
       })
@@ -1475,7 +1421,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates >= 1596240000`]],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -1497,7 +1442,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates <= 1596240000`]],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -1525,7 +1469,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 1596240000 TO 1596326400`]],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
@@ -1578,7 +1521,6 @@ describe('fetchOffer', () => {
         attributesToRetrieve: offerAttributesToRetrieve,
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         clickAnalytics: true,
         typoTolerance: false,
         distinct: false,
@@ -1601,7 +1543,6 @@ describe('fetchOffer', () => {
         attributesToRetrieve: offerAttributesToRetrieve,
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         clickAnalytics: true,
       })
     })
@@ -1621,7 +1562,6 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.allocineId:12345']],
         numericFilters: [['offer.prices: 0 TO 300']],
-        tagFilters: '["-is_future"]',
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,

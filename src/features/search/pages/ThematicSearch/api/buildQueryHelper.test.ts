@@ -16,7 +16,6 @@ describe('buildQueryHelper', () => {
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         hitsPerPage: 50,
-        tagFilters: '["-is_future"]',
       },
     })
   })
@@ -51,16 +50,6 @@ describe('buildQueryHelper', () => {
     })
 
     expect(result.params).toHaveProperty('numericFilters', numericFilters)
-  })
-
-  it('should include tagFilters', () => {
-    const tagFilters = '["-is_future"]'
-    const result = buildQueryHelper({
-      indexName: mockIndexName,
-      tagFilters,
-    })
-
-    expect(result.params).toHaveProperty('tagFilters', tagFilters)
   })
 
   it('should set distinct flag when true', () => {
@@ -105,7 +94,6 @@ describe('buildQueryHelper', () => {
         aroundRadius: DEFAULT_RADIUS * 1000,
         filters: 'offer.subcategoryId:"CONCERT"',
         numericFilters: 'offer.prices < 50',
-        tagFilters: '["-is_future"]',
         distinct: true,
         hitsPerPage: 30,
       },

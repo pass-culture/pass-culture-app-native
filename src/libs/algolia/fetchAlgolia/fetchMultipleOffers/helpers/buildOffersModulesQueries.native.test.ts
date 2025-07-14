@@ -26,7 +26,6 @@ describe('buildOffersModulesQueries', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
-      tagFilters: '["-is_future"]',
       hitsPerPage: 20,
       attributesToHighlight: [],
       attributesToRetrieve: offerAttributesToRetrieve,

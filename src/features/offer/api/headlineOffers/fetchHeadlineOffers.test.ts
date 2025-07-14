@@ -22,7 +22,6 @@ describe('fetchHeadlineOffers', () => {
       facetFilters: [['offer.isEducational:false'], ['offer.isHeadline:true']],
       hitsPerPage: 100,
       numericFilters: [['offer.prices: 0 TO 300']],
-      tagFilters: '["-is_future"]',
       page: 0,
     })
   })
