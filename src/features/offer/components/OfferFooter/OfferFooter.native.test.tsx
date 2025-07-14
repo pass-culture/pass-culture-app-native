@@ -83,7 +83,7 @@ describe('OfferFooter', () => {
     const offerWithPublicationDate = {
       ...offerResponseSnap,
       isReleased: false,
-      publicationDate: addDays(CURRENT_DATE, 20).toString(),
+      bookingAllowedDatetime: addDays(CURRENT_DATE, 20).toString(),
     }
 
     beforeEach(() => {

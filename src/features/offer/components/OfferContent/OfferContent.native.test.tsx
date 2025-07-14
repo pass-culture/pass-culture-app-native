@@ -478,7 +478,7 @@ describe('<OfferContent />', () => {
       const comingSoonOffer = {
         ...offerResponseSnap,
         isReleased: false,
-        publicationDate: addDays(new Date(), 20).toString(),
+        bookingAllowedDatetime: addDays(new Date(), 20).toString(),
       }
       mockdate.set(new Date('2025-03-31T10:00:00Z'))
 
