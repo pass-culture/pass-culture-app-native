@@ -65,8 +65,7 @@ export const SetAddress = () => {
 
   const {
     data: addresses = [],
-    isLoading,
-    isInitialLoading,
+    isInitialLoading: isLoading,
     isError,
   } = useAddresses({
     query: debouncedQuery,
@@ -149,7 +148,7 @@ export const SetAddress = () => {
               />
             </Container>
           </Form.MaxWidth>
-          {isLoading && isInitialLoading ? <Spinner /> : null}
+          {isLoading ? <Spinner /> : null}
           <AdressesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             {addresses.map((address, index) => (
               <AddressOption

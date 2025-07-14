@@ -26,7 +26,7 @@ export const TrackEmailChangeContent = () => {
   const { replace, reset } = useNavigation<UseNavigationType>()
 
   const { user } = useAuthContext()
-  const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatus()
+  const { data: requestStatus, isInitialLoading: isRequestStatusLoading } = useEmailUpdateStatus()
 
   const hasPasswordStep = !user?.hasPassword || requestStatus?.hasRecentlyResetPassword
   const currentStep = getEmailUpdateStep(

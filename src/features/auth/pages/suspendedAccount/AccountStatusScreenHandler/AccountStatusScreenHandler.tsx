@@ -13,7 +13,8 @@ import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/Su
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const AccountStatusScreenHandler = () => {
-  const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatusQuery()
+  const { data: accountSuspensionStatus, isInitialLoading: isLoading } =
+    useAccountSuspensionStatusQuery()
   const suspensionStatus = accountSuspensionStatus?.status
   const currentRoute = useCurrentRoute()
   const signOut = useLogoutRoutine()

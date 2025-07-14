@@ -40,11 +40,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
-  const {
-    data: cities = [],
-    isLoading,
-    isInitialLoading,
-  } = useCities(postalCodeQuery, {
+  const { data: cities = [], isInitialLoading: isLoading } = useCities(postalCodeQuery, {
     onError: () => {
       showErrorSnackBar({
         message:
@@ -156,7 +152,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
         </InfoBannerContainer>
       ) : (
         <React.Fragment>
-          {isLoading && isInitialLoading ? <Spinner /> : null}
+          {isLoading ? <Spinner /> : null}
           <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             <VerticalUl>
               {cities.map((cityOption, index) => (

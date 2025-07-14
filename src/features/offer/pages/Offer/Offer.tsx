@@ -37,7 +37,7 @@ export function Offer() {
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   const { isLoggedIn } = useAuthContext()
-  const { data: offer, isLoading } = useOfferQuery({
+  const { data: offer, isInitialLoading: isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({
       ...data,
