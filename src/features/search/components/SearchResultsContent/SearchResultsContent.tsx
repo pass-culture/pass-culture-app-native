@@ -130,6 +130,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
   const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
+  const shouldDisplayGridList = enableGridList && !isWeb
   const [gridListLayout, setGridListLayout] = useState(GridListLayout.LIST)
   const isGridLayout = enableGridList && gridListLayout === GridListLayout.GRID
 

@@ -35,6 +35,8 @@ interface SearchListHeaderProps extends ScrollViewProps {
   setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   nbHits,
   userData,
@@ -44,7 +46,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   setGridListLayout,
 }) => {
   const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
-
+  const shouldDisplayGridList = enableGridList && !isWeb
   const [selectedGridListLayout, setSelectedGridListLayout] = useState(GridListLayout.LIST)
 
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
