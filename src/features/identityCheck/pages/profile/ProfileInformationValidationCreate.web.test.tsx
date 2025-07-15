@@ -12,7 +12,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
-import { ProfileInformationValidation } from './ProfileInformationValidation'
+import { ProfileInformationValidationCreate } from './ProfileInformationValidationCreate'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -51,7 +51,7 @@ useRoute.mockReturnValue({
   },
 })
 
-describe('ProfileInformationValidation', () => {
+describe('ProfileInformationValidationCreate', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockedUseName.mockReturnValue(mockName)
@@ -72,5 +72,5 @@ describe('ProfileInformationValidation', () => {
 })
 
 const renderProfileInformationValidation = () => {
-  return render(reactQueryProviderHOC(<ProfileInformationValidation />))
+  return render(reactQueryProviderHOC(<ProfileInformationValidationCreate />))
 }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProfileInformationValidation should render correctly 1`] = `
+exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
 <View
   style={
     [
@@ -282,7 +282,7 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
                   ]
                 }
               >
-                Tu valides que ces informations sont correctes ?
+                Ces informations sont-elles toujours exactes ?
               </Text>
               <View
                 style={
@@ -305,23 +305,13 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
                   data={
                     [
                       {
-                        "testID": "validation-first-name",
-                        "title": "Ton prénom",
-                        "value": "Jean",
-                      },
-                      {
-                        "testID": "validation-name",
-                        "title": "Ton nom de famille",
-                        "value": "Dupont",
-                      },
-                      {
                         "title": "Adresse",
-                        "value": "1 rue du Test",
+                        "value": "10 rue du Bonheur",
                       },
                       {
                         "testID": "validation-birth-date",
                         "title": "Ville de résidence",
-                        "value": "Paris 75011",
+                        "value": "Paris 75001",
                       },
                       {
                         "title": "Statut",
@@ -373,98 +363,6 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
                             ]
                           }
                         >
-                          Ton prénom
-                        </Text>
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
-                          }
-                          testID="validation-first-name"
-                        >
-                          Jean
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      onFocusCapture={[Function]}
-                      onLayout={[Function]}
-                      style={null}
-                    >
-                      <View
-                        gap={1}
-                        style={
-                          [
-                            {
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
-                          }
-                        >
-                          Ton nom de famille
-                        </Text>
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
-                          }
-                          testID="validation-name"
-                        >
-                          Dupont
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      onFocusCapture={[Function]}
-                      onLayout={[Function]}
-                      style={null}
-                    >
-                      <View
-                        gap={1}
-                        style={
-                          [
-                            {
-                              "gap": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
-                          }
-                        >
                           Adresse
                         </Text>
                         <Text
@@ -479,7 +377,7 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
                             ]
                           }
                         >
-                          1 rue du Test
+                          10 rue du Bonheur
                         </Text>
                       </View>
                     </View>
@@ -525,7 +423,7 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
                           }
                           testID="validation-birth-date"
                         >
-                          Paris 75011
+                          Paris 75001
                         </Text>
                       </View>
                     </View>
@@ -608,7 +506,7 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Continuer"
+              accessibilityLabel="Confirmer"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -654,7 +552,7 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Continuer"
+              testID="Confirmer"
             >
               <View
                 style={
@@ -681,7 +579,7 @@ exports[`ProfileInformationValidation should render correctly 1`] = `
                     ]
                   }
                 >
-                  Continuer
+                  Confirmer
                 </Text>
               </View>
             </View>

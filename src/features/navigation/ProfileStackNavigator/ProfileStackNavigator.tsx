@@ -34,6 +34,9 @@ import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/
 import { DisplayPreference } from 'features/profile/pages/DisplayPreference/DisplayPreference'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
+import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
+import { ProfileInformationValidationUpdate } from 'features/profile/pages/MandatoryUpdatePersonalData/ProfileInformationValidationUpdate'
+import { UpdatePersonalDataConfirmation } from 'features/profile/pages/MandatoryUpdatePersonalData/UpdatePersonalDataConfirmation'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
@@ -215,6 +218,21 @@ const profileScreens: ProfileRouteConfig[] = [
   {
     name: 'ProfileTutorialAgeInformationCredit',
     component: ProfileTutorialAgeInformationCredit,
+  },
+  {
+    name: 'MandatoryUpdatePersonalData',
+    component: withAuthProtection(MandatoryUpdatePersonalData),
+    options: { title: 'Confirmation de la validité de tes données personnelles' },
+  },
+  {
+    name: 'UpdatePersonalDataConfirmation',
+    component: withAuthProtection(UpdatePersonalDataConfirmation),
+    options: { title: 'Confirmation de la validité de tes données personnelles' },
+  },
+  {
+    name: 'ProfileInformationValidationUpdate',
+    component: withAuthProtection(ProfileInformationValidationUpdate),
+    options: { title: 'Vérification de la validité de tes données personnelles' },
   },
 ]
 

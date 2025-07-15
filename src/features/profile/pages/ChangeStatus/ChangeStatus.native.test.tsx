@@ -48,14 +48,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
     dispatch: jest.fn(),
     ...mockState,
     profile: {
-      name: {
-        firstName: 'Jean',
-        lastName: 'Dupont',
-      },
-      city: {
-        name: 'Paris',
-        postalCode: '75011',
-      },
+      name: { firstName: 'Jean', lastName: 'Dupont' },
+      city: { name: 'Paris', postalCode: '75011' },
       address: '1 rue du désespoir',
       status: mockStatus,
     },
@@ -173,17 +167,14 @@ describe('<ChangeStatus/>', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should show snackbar on success when clicking on "Valider mon adresse"', async () => {
+    it('should not show snackbar on success when clicking on "Valider mon adresse"', async () => {
       renderChangedStatus()
       mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Continuer'))
 
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Tes informations ont bien été modifiés\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
     })
   })
 })

@@ -101,7 +101,7 @@ export const rootStackNavigatorPathConfig = {
       SetProfileBookingError: {
         path: 'verification-identite/profil/statut/erreur',
       },
-      ProfileInformationValidation: {
+      ProfileInformationValidationCreate: {
         path: 'verification-identite/profil/validation-informations',
       },
       UbbleWebview: {

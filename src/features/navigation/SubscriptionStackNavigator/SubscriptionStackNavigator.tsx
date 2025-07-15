@@ -31,7 +31,7 @@ import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phon
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { SetPhoneNumberWithoutValidation } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumberWithoutValidation'
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
-import { ProfileInformationValidation } from 'features/identityCheck/pages/profile/ProfileInformationValidation'
+import { ProfileInformationValidationCreate } from 'features/identityCheck/pages/profile/ProfileInformationValidationCreate'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
@@ -112,8 +112,8 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
     options: { title: 'Erreur | Profil' },
   },
   {
-    name: 'ProfileInformationValidation',
-    component: withAuthProtection(ProfileInformationValidation),
+    name: 'ProfileInformationValidationCreate',
+    component: withAuthProtection(ProfileInformationValidationCreate),
     options: { title: 'Validation informations | Profil' },
   },
   {

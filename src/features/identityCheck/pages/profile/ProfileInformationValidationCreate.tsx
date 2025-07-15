@@ -26,7 +26,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
-export const ProfileInformationValidation = () => {
+export const ProfileInformationValidationCreate = () => {
   const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
@@ -36,7 +36,7 @@ export const ProfileInformationValidation = () => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { navigate, reset } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'ProfileInformationValidation'>>()
+  const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
   const type = params?.type
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
