@@ -32,7 +32,7 @@ type Props = {
 }
 
 export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVenue }) => {
-  const { data: venues = [], isLoading } = useVenues(query)
+  const { data: venues = [], isInitialLoading: isLoading } = useVenues(query)
 
   if (isLoading) {
     return <Spinner />

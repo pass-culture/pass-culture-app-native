@@ -14,7 +14,9 @@ export const AccountSecurityBuffer = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'AccountSecurityBuffer'>>()
 
-  const { data: tokenStatus, isLoading } = useAccountSuspendTokenValidationQuery(params.token)
+  const { data: tokenStatus, isInitialLoading: isLoading } = useAccountSuspendTokenValidationQuery(
+    params.token
+  )
 
   const { showErrorSnackBar } = useSnackBarContext()
 

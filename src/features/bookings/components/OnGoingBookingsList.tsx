@@ -29,8 +29,8 @@ const ANIMATION_DURATION = 700
 
 export const OnGoingBookingsList: FunctionComponent = () => {
   const netInfo = useNetInfoContext()
-  const { data: bookings, isLoading, isFetching, refetch } = useBookingsQuery()
-  const { isLoading: subcategoriesIsLoading } = useSubcategories()
+  const { data: bookings, isInitialLoading: isLoading, isFetching, refetch } = useBookingsQuery()
+  const { isInitialLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()

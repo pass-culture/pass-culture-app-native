@@ -29,7 +29,7 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 const venueId = venueDataTest.id
 
 jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
-  isLoading: false,
+  isInitialLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
 } as unknown as UseQueryResult<VenueOffersType, unknown>)
 
@@ -100,7 +100,7 @@ describe('<VenueOffers />', () => {
 
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValueOnce({
-      isLoading: true,
+      isInitialLoading: true,
     } as UseQueryResult<VenueOffersType, unknown>)
     renderVenueOffers({})
 

@@ -43,7 +43,7 @@ const BookingDetailsContainerOld = ({ bookingId }: { bookingId: number }) => {
   const {
     data: booking,
     status,
-    isLoading,
+    isInitialLoading: isLoading,
     isError,
     error,
     dataUpdatedAt,
@@ -104,7 +104,7 @@ const BookingDetailsContainer = ({
   const {
     data: booking,
     status,
-    isLoading,
+    isInitialLoading: isLoading,
     isError,
     error,
     dataUpdatedAt,

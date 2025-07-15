@@ -56,7 +56,7 @@ export const SearchResults = () => {
     data,
     refetch,
     nbHits,
-    isLoading,
+    isInitialLoading: isLoading,
     isFetching,
     isFetchingNextPage,
     userData,
