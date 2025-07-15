@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
@@ -45,12 +46,13 @@ type Props = {
   offer: OfferResponseV2
   subcategory: Subcategory
   children: ReactNode
+  chronicleVariantInfo: ChronicleVariantInfo
   likesCount?: number
-  chroniclesCount?: number
+  chroniclesCount?: number | null
   distance?: string | null
   headlineOffersCount?: number
   videoData?: { videoId: string; thumbnailUri: string }
-  chronicleVariantInfo: ChronicleVariantInfo
+  chronicles?: ChronicleCardData[]
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -63,6 +65,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   headlineOffersCount,
   videoData,
   chronicleVariantInfo,
+  chronicles,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -161,6 +164,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           chroniclesCount={chroniclesCount}
           headlineOffersCount={headlineOffersCount}
           chronicleVariantInfo={chronicleVariantInfo}
+          chronicles={chronicles}
         />
 
         <GroupWithSeparator
