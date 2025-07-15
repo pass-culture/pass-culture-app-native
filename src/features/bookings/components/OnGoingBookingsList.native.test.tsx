@@ -126,7 +126,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     it('when bookings are loading', () => {
       const loadingBookings = {
         data: undefined,
-        isLoading: true,
+        isInitialLoading: true,
         isFetching: false,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
@@ -139,7 +139,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
     it('when subcategories are loading', () => {
       const loadingSubcategories = {
-        isLoading: true,
+        isInitialLoading: true,
       } as UseQueryResult<SubcategoriesResponseModelv2, unknown>
       mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
       renderOnGoingBookingsList()

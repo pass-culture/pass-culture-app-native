@@ -25,7 +25,7 @@ let mockedIsLoading = false
 jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => ({
     data: mockedOffer,
-    isLoading: mockedIsLoading,
+    isInitialLoading: mockedIsLoading,
   }),
 }))
 
