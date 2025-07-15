@@ -2494,10 +2494,10 @@ SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 5910c05091914c3ca415ca8793e5ce6fcc36cfee
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
-  boost: 4cb898d0bf20404aab1850c656dcea009429d6c1
+  boost: 1dca942403ed9342f98334bf4c3621f011aa7946
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   CodePush: d892f13c5012e9e2cb36640f4929654b7be21fe5
-  DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
+  DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
   FBLazyVector: 7605ea4810e0e10ae4815292433c09bf4324ba45
   Firebase: 3435bc66b4d494c2f22c79fd3aae4c1db6662327
@@ -2521,7 +2521,7 @@ SPEC CHECKSUMS:
   FirebaseSessions: eaa8ec037e7793769defe4201c20bd4d976f9677
   FirebaseSharedSwift: aca73668bc95e8efccb618e0167eab05d19d3a75
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
-  glog: 69ef571f3de08433d766d614c73a9838a06bf7eb
+  glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   GoogleAppMeasurement: 0dfca1a4b534d123de3945e28f77869d10d0d600
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
