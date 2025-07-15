@@ -30,5 +30,5 @@ const Container = styled(Page)({
 const LoadingText = styled(Typo.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
-  color: theme.uniqueColors.brand,
+  color: theme.designSystem.color.background.brandPrimary,
 }))
