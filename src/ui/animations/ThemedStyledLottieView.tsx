@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import LottieView from 'libs/lottie'
 
 // Copied AnimationObject from lottie-react-native as not available on web:
-export interface AnimationObject {
+interface AnimationObject {
   v: string
   fr: number
   ip: number
