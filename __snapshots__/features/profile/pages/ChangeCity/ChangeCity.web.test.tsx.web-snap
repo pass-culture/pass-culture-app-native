@@ -285,25 +285,6 @@ exports[`ChangeCity should render correctly 1`] = `
                 </div>
               </form>
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  style="width: 32px; transform: rotate(0deg);"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-146c3p1"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
                 class="css-view-175oi2r r-boxSizing-1tjplnt r-flexGrow-16y2uox r-overflowY-17y9yhz"
                 role="radiogroup"
               >

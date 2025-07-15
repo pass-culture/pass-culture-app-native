@@ -449,37 +449,6 @@ exports[`ChangeCity should render correctly 1`] = `
               </View>
             </View>
             <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  {
-                    "transform": [
-                      {
-                        "rotate": "0deg",
-                      },
-                    ],
-                    "width": 32,
-                  }
-                }
-              >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
               accessibilityRole="radiogroup"
               style={
                 [
