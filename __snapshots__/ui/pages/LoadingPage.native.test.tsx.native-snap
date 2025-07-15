@@ -25,7 +25,7 @@ exports[`<LoadingPage /> should render correctly 1`] = `
     style={
       [
         {
-          "color": "#870087",
+          "color": "#eb0055",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
