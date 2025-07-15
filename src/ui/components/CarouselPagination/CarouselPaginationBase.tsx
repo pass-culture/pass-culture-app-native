@@ -25,8 +25,12 @@ export const CarouselPaginationBase: FunctionComponent<CarouselPaginationProps> 
   )
 }
 
-const Container = styled(ViewGap)({
+const Container = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
   alignSelf: 'center',
   alignItems: 'center',
-})
+  backgroundColor: theme.designSystem.color.background.locked,
+  paddingVertical: theme.designSystem.size.spacing.xs,
+  paddingHorizontal: theme.designSystem.size.spacing.s,
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
+}))
