@@ -1,6 +1,6 @@
-import { action } from '@storybook/addon-actions'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import React, { type ComponentProps } from 'react'
+import { action } from 'storybook/actions'
 
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'

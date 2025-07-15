@@ -1,6 +1,6 @@
 // remove this after rename without old.tsx
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryFn } from '@storybook/react'
+import { StoryFn } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 

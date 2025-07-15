@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { env } from 'libs/environment/fixtures'

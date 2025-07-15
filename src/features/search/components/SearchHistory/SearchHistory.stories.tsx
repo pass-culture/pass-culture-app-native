@@ -1,6 +1,6 @@
-import { action } from '@storybook/addon-actions'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import React from 'react'
+import { action } from 'storybook/actions'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'

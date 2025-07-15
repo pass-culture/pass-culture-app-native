@@ -1,8 +1,8 @@
 // remove this after rename without old.tsx
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { action } from '@storybook/addon-actions'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
+import { action } from 'storybook/actions'
 
 import { SearchMainInput } from './SearchMainInput'
 

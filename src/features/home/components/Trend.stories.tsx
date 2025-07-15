@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-unresolved
 
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'

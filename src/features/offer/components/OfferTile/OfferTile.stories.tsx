@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { Tag } from 'ui/components/Tag/Tag'

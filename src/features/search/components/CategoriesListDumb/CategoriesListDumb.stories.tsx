@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'

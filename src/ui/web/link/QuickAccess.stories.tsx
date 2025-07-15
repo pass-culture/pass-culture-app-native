@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { userEvent, screen } from '@storybook/testing-library'
 import React, { Fragment } from 'react'
 

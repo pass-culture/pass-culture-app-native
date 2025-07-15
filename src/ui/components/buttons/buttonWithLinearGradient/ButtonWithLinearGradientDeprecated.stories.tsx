@@ -1,6 +1,6 @@
-import { action } from '@storybook/addon-actions'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import React from 'react'
+import { action } from 'storybook/actions'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Email } from 'ui/svg/icons/Email'

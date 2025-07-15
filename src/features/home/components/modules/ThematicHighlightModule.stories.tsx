@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import mockDate from 'mockdate'
 import React from 'react'
 
