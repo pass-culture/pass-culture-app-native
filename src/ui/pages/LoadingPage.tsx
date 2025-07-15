@@ -1,15 +1,16 @@
 import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
-import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
 
+import { ThemedStyledLottieView } from '../animations/ThemedStyledLottieView'
+
 const UnmemoizedLoadingPage: FunctionComponent = () => {
   return (
     <Container>
-      <StyledLottieView source={LoadingAnimation} autoPlay loop />
+      <ThemedStyledLottieView width={150} height={150} source={LoadingAnimation} />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )
@@ -26,13 +27,8 @@ const Container = styled(Page)({
   width: '100%',
 })
 
-const StyledLottieView = styled(LottieView)({
-  width: 150,
-  height: 150,
-})
-
 const LoadingText = styled(Typo.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
-  color: theme.uniqueColors.brand,
+  color: theme.designSystem.color.background.brandPrimary,
 }))
