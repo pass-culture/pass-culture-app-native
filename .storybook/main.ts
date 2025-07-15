@@ -1,4 +1,4 @@
-import type { StorybookConfig } from '@storybook/react-vite'
+import type { StorybookConfig } from '@storybook/react-native-web-vite'
 import { mergeConfig } from 'vite'
 import path from 'path'
 
@@ -17,7 +17,13 @@ const config: StorybookConfig = {
       process.env.NODE_ENV === 'production'
         ? '@storybook/react-native-web-vite'
         : '@storybook/react-vite',
-    options: {},
+    options: {
+      pluginBabelOptions: {
+        babelConfig: {
+          configFile: true
+        }
+      },
+    },
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
