@@ -859,6 +859,7 @@ describe('BookingDetails', () => {
               voucher: null,
               withdrawal: {},
             },
+            completedUrl: 'https://example.com',
           })
 
           await screen.findAllByText(ongoingBookings.stock.offer.name)

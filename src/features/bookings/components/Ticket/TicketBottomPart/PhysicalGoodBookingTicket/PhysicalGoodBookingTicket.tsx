@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TicketCode } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/TicketCode'
 import { QrCode } from 'features/bookings/components/Ticket/TicketBottomPart/QrCode'
-import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
+import { TicketCode } from 'features/bookings/components/Ticket/TicketBottomPart/TicketCode'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
@@ -22,8 +21,7 @@ export const PhysicalGoodBookingTicket = ({
   return (
     <StyledViewGap gap={4} testID="physical-good-booking-ticket-container">
       <QrCode qrCode={voucherData} />
-      <TicketCode code={tokenData} />
-      <TicketText>{text}</TicketText>
+      <TicketCode code={tokenData} text={text} />
     </StyledViewGap>
   )
 }
