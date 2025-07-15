@@ -1,13 +1,26 @@
 import React from 'react'
 
-import { TicketDisplayEnum, TicketResponse, UserProfileResponse } from 'api/gen'
-import { TicketCode } from 'features/bookings/components/OldBookingDetails/TicketCode'
+import { SubcategoryIdEnum, TicketDisplayEnum, TicketResponse, UserProfileResponse } from 'api/gen'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
+import { DigitalTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
 import { ExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
+
+type TicketBottomPartProps = {
+  isDuo: boolean
+  isDigital: boolean
+  isEvent: boolean
+  userEmail: UserProfileResponse['email']
+  ticket: TicketResponse
+  expirationDate?: string
+  beginningDateTime?: string
+  completedUrl?: string
+  offerId: number
+  subcategoryId: SubcategoryIdEnum
+}
 
 export const TicketBottomPart = ({
   isDuo,
@@ -17,15 +30,10 @@ export const TicketBottomPart = ({
   ticket,
   expirationDate,
   beginningDateTime,
-}: {
-  isDuo: boolean
-  isDigital: boolean
-  isEvent: boolean
-  userEmail: UserProfileResponse['email']
-  ticket: TicketResponse
-  expirationDate?: string
-  beginningDateTime: string | undefined
-}) => {
+  completedUrl,
+  offerId,
+  subcategoryId,
+}: TicketBottomPartProps) => {
   if (ticket.display === TicketDisplayEnum.no_ticket) return <NoTicket />
 
   if (
@@ -40,13 +48,22 @@ export const TicketBottomPart = ({
         userEmail={userEmail}
       />
     )
-  if (ticket.activationCode) return <TicketCode code={ticket.activationCode.code} />
+  if (ticket.activationCode && completedUrl)
+    return (
+      <DigitalTicket
+        code={ticket.activationCode.code}
+        completedUrl={completedUrl}
+        offerId={offerId}
+        subcategoryId={subcategoryId}
+      />
+    )
 
   if (ticket.externalBooking)
     return (
       <ExternalBookingTicket
         data={ticket.externalBooking.data ?? undefined}
         beginningDatetime={beginningDateTime}
+        isDuo={isDuo}
       />
     )
 
@@ -64,7 +81,15 @@ export const TicketBottomPart = ({
       )
   }
 
-  if (ticket.token?.data && isDigital) return <TicketCode code={ticket.token?.data} />
+  if (ticket.token?.data && isDigital && completedUrl)
+    return (
+      <DigitalTicket
+        code={ticket.token?.data}
+        completedUrl={completedUrl}
+        offerId={offerId}
+        subcategoryId={subcategoryId}
+      />
+    )
 
   if (ticket.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
 

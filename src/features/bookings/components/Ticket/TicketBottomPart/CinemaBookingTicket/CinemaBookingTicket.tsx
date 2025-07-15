@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TicketCode } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/TicketCode'
 import { QrCode } from 'features/bookings/components/Ticket/TicketBottomPart/QrCode'
-import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
+import { TicketCode } from 'features/bookings/components/Ticket/TicketBottomPart/TicketCode'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
@@ -12,14 +11,11 @@ type props = {
   token: string | null | undefined
 }
 export const CinemaBookingTicket = ({ voucher, token }: props) => {
-  const text = 'Présente ce billet pour accéder à l’évènement.'
-
   if (voucher && token) {
     return (
       <StyledViewGap gap={4} testID="cinema-booking-ticket-container">
         <QrCode qrCode={voucher} />
-        <TicketCode code={token} />
-        <TicketText>{text}</TicketText>
+        <TicketCode code={token} text="Présente ce billet pour accéder à l’évènement." />
       </StyledViewGap>
     )
   }
