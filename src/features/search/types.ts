@@ -101,6 +101,7 @@ export interface SearchListProps {
   artistSection?: ReactNode
   numColumns?: number
   isGridLayout?: boolean
+  shouldDisplayGridList?: boolean
   setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
 }
 

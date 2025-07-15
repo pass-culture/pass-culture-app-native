@@ -132,7 +132,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
   const shouldDisplayGridList = enableGridList && !isWeb
   const [gridListLayout, setGridListLayout] = useState(GridListLayout.LIST)
-  const isGridLayout = enableGridList && gridListLayout === GridListLayout.GRID
+  const isGridLayout = shouldDisplayGridList && gridListLayout === GridListLayout.GRID
 
   const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
 
@@ -393,6 +393,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           ) : undefined
         }
         isGridLayout={isGridLayout}
+        shouldDisplayGridList={shouldDisplayGridList}
         setGridListLayout={setGridListLayout}
       />
     ),

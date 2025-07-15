@@ -443,7 +443,7 @@ describe('<SearchListHeader />', () => {
     })
   })
 
-  describe('When wipVenueMapInSearch feature flag activated', () => {
+  describe('when FF WIP_VENUE_MAP_IN_SEARCH is activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH])
     })
@@ -474,9 +474,7 @@ describe('<SearchListHeader />', () => {
     expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
   })
 
-  describe('with WIP_ENABLE_GRID_LIST FF activated', () => {
-    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
-
+  describe('when FF WIP_ENABLE_GRID_LIST is activated', () => {
     it('should display grid list menu', async () => {
       render(
         <SearchListHeader
@@ -484,6 +482,7 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockAlgoliaVenues}
+          shouldDisplayGridList
         />
       )
 
