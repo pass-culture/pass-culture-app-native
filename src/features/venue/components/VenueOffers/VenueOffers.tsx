@@ -50,7 +50,7 @@ export function VenueOffers({
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
-  const { isLoading: areVenueOffersLoading } = useVenueOffersQuery({
+  const { isInitialLoading: areVenueOffersLoading } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
     isUserUnderage,

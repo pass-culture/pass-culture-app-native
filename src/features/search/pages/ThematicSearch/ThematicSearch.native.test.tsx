@@ -153,7 +153,7 @@ describe('<ThematicSearch/>', () => {
     it('should render skeleton when playlists are loading', async () => {
       mockUseGtlPlaylist.mockReturnValueOnce({
         data: [],
-        isLoading: true,
+        isInitialLoading: true,
       } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
       render(reactQueryProviderHOC(<ThematicSearch />))

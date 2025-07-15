@@ -46,7 +46,7 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading: isBookingsLoading } = useBookingsQuery()
+  const { data: bookings, isInitialLoading: isBookingsLoading } = useBookingsQuery()
 
   const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
     bookings,

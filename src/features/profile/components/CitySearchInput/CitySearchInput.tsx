@@ -40,7 +40,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
-  const { data: cities = [], isLoading } = useCities(postalCodeQuery, {
+  const { data: cities = [], isInitialLoading: isLoading } = useCities(postalCodeQuery, {
     onError: () => {
       showErrorSnackBar({
         message:
