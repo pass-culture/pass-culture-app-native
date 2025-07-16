@@ -1,0 +1,7 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard17.yml
+- runFlow: subFolder/home/NavigateFromHomeToN1AndSearchResult.yml
+- runFlow: subFolder/commons/StopApp.yml
