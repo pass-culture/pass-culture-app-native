@@ -17,6 +17,7 @@ jest.mock('libs/e2e/getIsMaestro', () => ({
   getIsMaestro: () => Promise.resolve(true),
 }))
 jest.mock('libs/campaign')
+jest.mock('@hot-updater/react-native')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.mock('libs/firebase/analytics/analytics')

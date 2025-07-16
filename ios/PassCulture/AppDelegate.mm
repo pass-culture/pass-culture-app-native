@@ -5,7 +5,7 @@
 #import <React/RCTBundleURLProvider.h>
 
 #import "RNSplashScreen.h" // react-native-lottie-splash-screen
-#import <CodePush/CodePush.h> // @codepush
+#import <HotUpdater/HotUpdater.h> // @hot-updater
 #import <RNBatchPush/RNBatch.h>
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
@@ -100,7 +100,7 @@
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
 #else
-  return [CodePush bundleURL]; // @codepush
+  return [HotUpdater bundleURL]; // @hot-updater
 #endif
 }
 
