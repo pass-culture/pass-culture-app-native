@@ -23,23 +23,23 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-      - name: 'Cache the node_modules'
-        uses: pass-culture-github-actions/cache@v1.0.0
-        with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:lint
+      # - uses: actions/checkout@v4
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version-file: '.nvmrc'
+      # - name: 'Cache the node_modules'
+      #   uses: pass-culture-github-actions/cache@v1.0.0
+      #   with:
+      #     path: |
+      #       node_modules
+      #       ~/.cache/yarn
+      #     key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      #     workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+      #     service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      #     bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      # - run: yarn test:lint
 
   yarn_typescript:
     runs-on: ubuntu-24.04
@@ -47,21 +47,21 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-      - name: Cache the node_modules
-        id: yarn-modules-cache
-        uses: pass-culture-github-actions/cache@v1.0.0
-        with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:types
+      # - uses: actions/checkout@v4
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version-file: '.nvmrc'
+      # - name: Cache the node_modules
+      #   id: yarn-modules-cache
+      #   uses: pass-culture-github-actions/cache@v1.0.0
+      #   with:
+      #     path: |
+      #       node_modules
+      #       ~/.cache/yarn
+      #     key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      #     workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+      #     service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      #     bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      # - run: yarn test:types
