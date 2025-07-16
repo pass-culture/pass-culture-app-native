@@ -15,7 +15,6 @@ module.exports = {
     'android.js',
   ],
   testEnvironment: process.env.RUN_ALLURE === 'true' ? 'allure-jest/node' : undefined,
-  testEnvironmentOptions: { customExportConditions: [''] },
   moduleNameMapper: {
     // if you change those lines, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
     '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
@@ -44,23 +43,7 @@ module.exports = {
     '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!' + // Start ignoring node_modules unless it's one of the following:
-      [
-        '(jest-)?react-native',
-        '@react-navigation',
-        '@react-native',
-        '@ptomasroos/react-native-multi-slider',
-        'react-navigation',
-        '@react-native-firebase/analytics',
-        '@react-native-firebase/app',
-        '@react-native-firebase/remote-config',
-        '@sentry/react-native',
-        'react-native-geolocation-service',
-        'instantsearch.js',
-        '@pass-culture/design-system',
-        'search-insights',
-      ].join('|') +
-      ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
+    'node_modules/(?!(jest-)?react-native|@react-navigation|@react-native|@ptomasroos/react-native-multi-slider|react-navigation|@react-native-firebase/analytics|@react-native-firebase/app|@react-native-firebase/remote-config|@sentry/react-native|react-native-geolocation-service|instantsearch.js|@pass-culture/design-system|search-insights)/',
   ],
   testMatch: ['**/*(?<!.(web|perf)).(?:test|spec).[jt]s?(x)'],
   testPathIgnorePatterns: [
@@ -79,7 +62,7 @@ module.exports = {
     ...excludeCollectCoverageFrom,
   ],
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
-  coverageReporters: process.env.CI === 'true' ? ['json']: ['text'],
+  coverageReporters: process.env.CI === 'true' ? ['json'] : ['text'],
   collectCoverage: false,
   // TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
   testTimeout: 10_000,

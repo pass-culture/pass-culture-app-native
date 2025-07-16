@@ -149,3 +149,8 @@ scripts/dead_code_current.txt
 storybook-static
 
 .direnv/
+
+# stryker temp files
+.stryker-tmp
+/reports
+stryker.log
