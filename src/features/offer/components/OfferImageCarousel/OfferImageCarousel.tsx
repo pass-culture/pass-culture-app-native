@@ -8,7 +8,7 @@ import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCaro
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { CarouselPagination } from 'ui/components/CarouselPagination/CarouselPagination'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type OfferImageCarouselProps = {
   progressValue: SharedValue<number>
@@ -108,6 +108,7 @@ const Container = styled.View({
   flexDirection: 'row',
 })
 
-const StyledCarouselPagination = styled(CarouselPagination)({
-  marginTop: getSpacing(4),
-})
+const StyledCarouselPagination = styled(CarouselPagination)(({ theme }) => ({
+  position: 'absolute',
+  bottom: theme.designSystem.size.spacing.l,
+}))
