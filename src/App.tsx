@@ -134,7 +134,7 @@ const App: FunctionComponent = function () {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppWithHotUpdater: any =
-  __DEV__ || env.ENV !== 'testing' // TODO(PC-000): remove after tests done
+  __DEV__ || env.ENV !== 'testing'
     ? App
     : HotUpdater.wrap({
         source: getUpdateSource(`${env.HOT_UPDATER_FUNCTION_URL}/api/check-update`, {
