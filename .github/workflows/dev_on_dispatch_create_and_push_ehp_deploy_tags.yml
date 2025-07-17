@@ -13,8 +13,8 @@ permissions:
   id-token: write
 
 env:
-  GIT_CONFIG_EMAIL: PassCulture-SA@users.noreply.github.com
-  GIT_CONFIG_NAME: ${{ github.actor }}
+  GIT_CONFIG_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+  GIT_CONFIG_NAME: github-actions[bot]
 
 jobs:
   create_and_push_staging_tag:
