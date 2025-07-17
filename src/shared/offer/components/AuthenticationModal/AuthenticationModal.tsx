@@ -9,7 +9,6 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { UserIdentification as InitialUserIdentification } from 'ui/svg/UserIdentification'
 import { Typo, getSpacing } from 'ui/theme'
-import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
   visible: boolean
@@ -44,12 +43,11 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
   return (
     <AppModalWithIllustration
       visible={visible}
-      title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
+      title="Crée-toi un compte ou connecte-toi"
       Illustration={UserIdentification}
       hideModal={closeModal}>
-      <Typo.BodyAccent>Tu as 17 ou 18 ans&nbsp;?</Typo.BodyAccent>
       <StyledBody>
-        Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
+        Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.
       </StyledBody>
       <StyledButtonContainer>
         <InternalTouchableLink

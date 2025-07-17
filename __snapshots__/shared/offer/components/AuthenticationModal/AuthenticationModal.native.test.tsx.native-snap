@@ -232,8 +232,7 @@ exports[`<AuthenticationModal /> should render correctly 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Identifie-toi
-pour réserver l’offre
+            Crée-toi un compte ou connecte-toi
           </Text>
         </View>
         <View
@@ -375,20 +374,6 @@ pour réserver l’offre
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  Tu as 17 ou 18 ans ?
-                </Text>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -399,7 +384,7 @@ pour réserver l’offre
                     ]
                   }
                 >
-                  Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
+                  Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.
                 </Text>
                 <View
                   style={

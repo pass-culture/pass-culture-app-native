@@ -109,7 +109,9 @@ describe('<OfferCTAButton />', () => {
 
     await user.press(screen.getByText('Réserver l’offre'))
 
-    expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.')
+    ).toBeOnTheScreen()
   })
 
   it('should log analytics when display authentication modal', async () => {
