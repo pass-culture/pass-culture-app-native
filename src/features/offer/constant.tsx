@@ -40,6 +40,7 @@ export const CINE_CLUB_SUBCATEGORIES = [
 export const CHRONICLE_VARIANT_CONFIG = [
   {
     subcategories: BOOK_CLUB_SUBCATEGORIES,
+    labelReaction: 'Book Club',
     titleSection: 'La reco du Book Club',
     subtitleSection: 'Notre communauté de lecteurs te partagent leurs avis sur ce livre\u00a0!',
     subtitleItem: 'Membre du Book Club',
@@ -50,6 +51,7 @@ export const CHRONICLE_VARIANT_CONFIG = [
   },
   {
     subcategories: CINE_CLUB_SUBCATEGORIES,
+    labelReaction: 'Ciné Club',
     titleSection: 'La reco du Ciné Club',
     subtitleSection: 'Notre communauté de cinéphiles te partage leur avis sur ce film\u00a0!',
     subtitleItem: 'Membre du Ciné Club',

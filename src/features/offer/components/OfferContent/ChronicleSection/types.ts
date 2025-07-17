@@ -17,6 +17,7 @@ export type ChronicleSectionProps = {
 }
 
 export type ChronicleVariantInfo = {
+  labelReaction: string
   titleSection: string
   subtitleSection: string
   subtitleItem: string
