@@ -62,6 +62,17 @@ describe('PersonalData', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should not display name section when first name and last name not provided', async () => {
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: { ...mockedUser, firstName: null, lastName: null },
+    })
+    render(reactQueryProviderHOC(<PersonalData />))
+    await screen.findByText('Informations personnelles')
+
+    expect(screen.queryByText('Prénom et nom')).not.toBeOnTheScreen()
+  })
+
   it('should redirect to ChangeEmail when clicking on modify email button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
