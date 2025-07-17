@@ -1007,11 +1007,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
-                    fillColor="decorative01"
+                    fillColor="decorative05"
                     style={
                       [
                         {
-                          "backgroundColor": "#ffeae2",
+                          "backgroundColor": "#ffa5c0",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1212,11 +1212,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
-                    fillColor="decorative03"
+                    fillColor="decorative01"
                     style={
                       [
                         {
-                          "backgroundColor": "#94f0d6",
+                          "backgroundColor": "#ffeae2",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1417,11 +1417,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
-                    fillColor="decorative02"
+                    fillColor="decorative03"
                     style={
                       [
                         {
-                          "backgroundColor": "#9be3f3",
+                          "backgroundColor": "#94f0d6",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
