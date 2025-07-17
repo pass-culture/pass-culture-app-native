@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
 
 type EditableFieldProps = {
@@ -27,6 +28,8 @@ export function EditableField({
   const isCompleted = !!displayValue
   const showButton = !!navigateTo
 
+  if (!displayValue && !navigateTo) return null
+
   return (
     <React.Fragment>
       <StyledBodyAccentXs>{label}</StyledBodyAccentXs>
@@ -45,6 +48,7 @@ export function EditableField({
           />
         ) : null}
       </EditContainer>
+      <StyledSeparator />
     </React.Fragment>
   )
 }
@@ -67,3 +71,7 @@ const EditText = styled(Typo.Body)({
 const NoEditText = styled(Typo.BodyItalic)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(4),
+})
