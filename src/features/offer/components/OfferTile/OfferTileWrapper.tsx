@@ -68,6 +68,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     headlinesCount: headlineCount,
     hasSmallLayout,
     isComingSoonOffer: item._tags?.includes('is_future'),
+    subcategoryId: item.offer.subcategoryId,
   })
 
   return (

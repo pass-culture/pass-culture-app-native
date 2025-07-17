@@ -81,6 +81,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       chroniclesCount: item.offer.chroniclesCount,
       headlinesCount: item.offer.headlineCount,
       isComingSoonOffer: item._tags?.includes('is_future'),
+      subcategoryId: item.offer.subcategoryId,
     })
 
     return (
