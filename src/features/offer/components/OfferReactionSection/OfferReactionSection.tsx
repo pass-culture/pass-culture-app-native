@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
@@ -26,21 +25,20 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
   chronicles,
 }) => {
   const hasPublishedChronicles = (chronicles?.length ?? 0) > 0
-  const hasOnlyUnpublishedChronicles = !hasPublishedChronicles && (chroniclesCount ?? 0) > 0
+  const hasUnpublishedChronicles = (chroniclesCount ?? 0) - (chronicles?.length ?? 0) > 0
 
   const likesCounterElement = likesCount ? <LikesInfoCounter text={`${likesCount} j’aime`} /> : null
 
   const getChroniclesCounterElement = (): React.ReactNode => {
     if (hasPublishedChronicles) {
-      if (!chronicles?.length) return
       return (
         <ChroniclesInfoCounter
-          text={`${chronicles?.length} avis`}
+          text={`${chronicles?.length ?? 0} avis`}
           icon={chronicleVariantInfo.SmallIcon}
         />
       )
     }
-    if (hasOnlyUnpublishedChronicles) {
+    if (hasUnpublishedChronicles) {
       return (
         <ChroniclesInfoCounter
           text={`Recommandé par le ${chronicleVariantInfo.labelReaction}`}
@@ -69,7 +67,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
           {chroniclesCounterElement}
         </InfosCounterContainer>
       ) : null}
-      {headlineOffersCounterElement ? <View>{headlineOffersCounterElement}</View> : null}
+      {headlineOffersCounterElement}
     </ViewGap>
   )
 }

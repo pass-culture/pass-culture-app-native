@@ -63,7 +63,7 @@ describe('<OfferReactionSection />', () => {
       expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
     })
 
-    it('should display labelReaction when there are chronicles but no published count', async () => {
+    it('should display labelReaction when there are only unpublished chronicles', async () => {
       renderOfferReactionSection({
         chronicles: [],
         chroniclesCount: 10,
@@ -76,7 +76,7 @@ describe('<OfferReactionSection />', () => {
       expect(await screen.findByText('Recommandé par le Book-club')).toBeOnTheScreen()
     })
 
-    it('should not display anything when there are no chronicles and no count', () => {
+    it('should not display anything when there are no chronicles at all', () => {
       renderOfferReactionSection({
         chroniclesCount: 0,
         chronicles: [],
@@ -89,7 +89,7 @@ describe('<OfferReactionSection />', () => {
       expect(screen.queryByText(/Recommandé par/)).not.toBeOnTheScreen()
     })
 
-    it('should display the number of published chronicles only when offer has both published and unpublished chronicles', async () => {
+    it('should display the number of published chronicles when there is at least one published offer', async () => {
       render(
         reactQueryProviderHOC(
           <OfferReactionSection
@@ -101,6 +101,19 @@ describe('<OfferReactionSection />', () => {
       )
 
       expect(await screen.findByText('16 avis')).toBeOnTheScreen()
+    })
+
+    it('should display published chronicles count when there is at least one published chronicle', async () => {
+      renderOfferReactionSection({
+        chronicles: [chroniclesSnap[0], chroniclesSnap[1]],
+        chroniclesCount: 5,
+        chronicleVariantInfo: {
+          ...chronicleVariantInfoFixture,
+          labelReaction: 'Book-club',
+        },
+      })
+
+      expect(await screen.findByText('2 avis')).toBeOnTheScreen()
     })
   })
 })
