@@ -3,7 +3,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
 import globalThisShim from 'globalthis/shim'
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-app-polyfill/stable'
 
@@ -28,6 +28,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
 import 'reset-css'
 
@@ -70,7 +71,9 @@ export function App() {
                                   <SubscriptionContextProvider>
                                     <AppWebHead />
                                     <ScreenErrorProvider>
-                                      <AppNavigationContainer />
+                                      <Suspense fallback={<LoadingPage />}>
+                                        <AppNavigationContainer />
+                                      </Suspense>
                                     </ScreenErrorProvider>
                                   </SubscriptionContextProvider>
                                 </CulturalSurveyContextProvider>
