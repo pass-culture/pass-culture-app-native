@@ -185,7 +185,7 @@ describe('useSelectHomepageEntry', () => {
     it.each`
       user                                                                                     | onboardingRole                 | hasBookings | credit              | expectedHomepage            | expectedHomepageName
       ${{ roles: [UserRole.BENEFICIARY], eligibility: EligibilityType['age-17-18'] }}          | ${UserOnboardingRole.EIGHTEEN} | ${true}     | ${notExpiredCredit} | ${homeEntryBeneficiary}     | ${'homeEntryBeneficiary'}
-      ${{ roles: [UserRole.BENEFICIARY], eligibility: EligibilityType['age-17-18'] }}          | ${UserOnboardingRole.EIGHTEEN} | ${true}     | ${expiredCredit}    | ${homeEntryGeneral}         | ${'homeEntryGeneral'}
+      ${{ roles: [UserRole.BENEFICIARY], eligibility: EligibilityType['age-17-18'] }}          | ${UserOnboardingRole.EIGHTEEN} | ${true}     | ${expiredCredit}    | ${homeEntryBeneficiary}     | ${'homeEntryBeneficiary'}
       ${{ roles: [UserRole.BENEFICIARY], eligibility: EligibilityType['age-17-18'] }}          | ${UserOnboardingRole.EIGHTEEN} | ${false}    | ${notExpiredCredit} | ${homeEntryWithoutBooking}  | ${'homeEntryWithoutBooking'}
       ${{ roles: [UserRole.UNDERAGE_BENEFICIARY], eligibility: EligibilityType['age-17-18'] }} | ${UserOnboardingRole.UNDERAGE} | ${true}     | ${notExpiredCredit} | ${homeEntryBeneficiary}     | ${'homeEntryBeneficiary'}
       ${{ roles: [UserRole.UNDERAGE_BENEFICIARY], eligibility: EligibilityType['age-17-18'] }} | ${UserOnboardingRole.UNDERAGE} | ${false}    | ${notExpiredCredit} | ${homeEntryWithoutBooking}  | ${'homeEntryWithoutBooking'}

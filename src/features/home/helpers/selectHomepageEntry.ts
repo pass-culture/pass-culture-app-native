@@ -12,7 +12,6 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useUserHasBookingsQuery } from 'queries/bookings'
-import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const scoreHomepageByTags = (
   homepage: Homepage,
@@ -78,8 +77,7 @@ export const useSelectHomepageEntry = (
         )
       }
 
-      const credit = getAvailableCredit(user)
-      if (isUserBeneficiary(user) && !credit.isExpired) {
+      if (isUserBeneficiary(user)) {
         if (userHasBookings) {
           return (
             homepageList.find(({ id }) => id === homeEntryIdBeneficiary) ?? defaultHomepageEntry
