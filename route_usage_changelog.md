@@ -1,4 +1,4 @@
-# v1.349.0
+# v1.350.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -11,7 +11,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/bookings
 - /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
-- /native/v1/me
+Pathname not found for getNativeV1Me
 - /native/v1/me/favorites
 - /native/v1/me/reminders
 - /native/v1/oauth/state
@@ -75,7 +75,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/profile/email_update/validate
 ## Unused routes:
 - /native/v1/categories
-Pathname not found for getNativeV1MeFavoritesCount
+- /native/v1/me/favorites/count
 - /native/v1/offer/report/reasons
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offers/reports
