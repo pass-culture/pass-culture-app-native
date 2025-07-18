@@ -14,17 +14,15 @@ import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
-import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
+import { NoSearchResultContainer } from 'features/search/components/NoSearchResults/NoSearchResultContainer'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { getFilterButtonListItem } from 'features/search/helpers/getFilterButtonListItem'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
-import {
-  FILTER_TYPES,
-  useAppliedFilters,
-} from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
+import { useAppliedFilters } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
@@ -59,9 +57,8 @@ import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
-import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { FilterButtonList, FilterButtonListItem } from 'ui/components/FilterButtonList'
+import { FilterButtonList } from 'ui/components/FilterButtonList'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import {
@@ -76,7 +73,6 @@ import { getSpacing, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
-const MAX_VENUE_CHARACTERS = 20
 
 enum Tab {
   SEARCHLIST = 'Liste',
@@ -402,117 +398,35 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
   const shouldDisplayTabLayout = shouldDisplayVenueMapInSearch && !isWeb
 
-  const renderTabLayout = () => (
-    <TabLayout
-      tabPanels={tabPanels}
-      defaultTab={defaultTab}
-      tabs={[
-        { key: Tab.SEARCHLIST, Icon: Sort },
-        { key: Tab.MAP, Icon: Map },
-      ]}
-      onTabChange={{
-        Carte: triggerMapTab,
-        Liste: () => setIsSearchListTab(true),
-      }}
-    />
-  )
-
-  const renderNoSearchResults = () => {
-    const isEverywhereSearch = searchState.locationFilter.locationType === LocationMode.EVERYWHERE
-
-    const noResultsProps = {
-      title: 'Pas de résultat',
-      subtitle: searchState.query ? `pour "${searchState.query}"` : '',
-      errorDescription: searchState.query
-        ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
-        : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.',
-    }
-
-    if (isEverywhereSearch) {
-      return (
-        <NoSearchResultsWrapper>
-          <NoSearchResult
-            {...noResultsProps}
-            ctaWording="Modifier mes filtres"
-            onPress={() => navigateToSearchFilter(searchState)}
-          />
-        </NoSearchResultsWrapper>
+  const renderSearchList = () => {
+    if (nbHits > 0) {
+      return shouldDisplayTabLayout ? (
+        <TabLayout
+          tabPanels={tabPanels}
+          defaultTab={defaultTab}
+          tabs={[
+            { key: Tab.SEARCHLIST, Icon: Sort },
+            { key: Tab.MAP, Icon: Map },
+          ]}
+          onTabChange={{
+            Carte: triggerMapTab,
+            Liste: () => setIsSearchListTab(true),
+          }}
+        />
+      ) : (
+        tabPanels[Tab.SEARCHLIST]
       )
     }
 
     return (
-      <NoSearchResultsWrapper>
-        <NoSearchResult
-          {...noResultsProps}
-          errorDescription="Élargis la zone de recherche pour plus de résultats."
-          ctaWording="Élargir la zone de recherche"
-          onPress={() => {
-            analytics.logExtendSearchRadiusClicked(searchState.searchId)
-            onResetPlace()
-            navigateToSearchResults({
-              ...searchState,
-              locationFilter: {
-                locationType: LocationMode.EVERYWHERE,
-              },
-            })
-          }}
-        />
-      </NoSearchResultsWrapper>
+      <NoSearchResultContainer
+        searchState={searchState}
+        navigateToSearchFilter={navigateToSearchFilter}
+        onResetPlace={onResetPlace}
+        navigateToSearchResults={navigateToSearchResults}
+      />
     )
   }
-
-  const renderSearchList = () => {
-    if (nbHits > 0) {
-      return shouldDisplayTabLayout ? renderTabLayout() : tabPanels[Tab.SEARCHLIST]
-    }
-
-    return renderNoSearchResults()
-  }
-
-  const filterButtonListItems: FilterButtonListItem[] = [
-    {
-      label: shouldDisplayCalendarModal ? 'Dates' : 'Dates & heures',
-      testID: 'datesHoursButton',
-      onPress: shouldDisplayCalendarModal ? showCalendarModal : showDatesHoursModal,
-      isApplied: appliedFilters.includes(FILTER_TYPES.DATES_HOURS),
-    },
-    {
-      label: searchState.venue
-        ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
-        : 'Lieu culturel',
-      testID: 'venueButton',
-      onPress: showVenueModal,
-      isApplied: isVenue,
-    },
-    {
-      label: 'Catégories',
-      testID: 'categoryButton',
-      onPress: showCategoriesModal,
-      isApplied: appliedFilters.includes(FILTER_TYPES.CATEGORIES),
-    },
-    {
-      label: 'Prix',
-      testID: 'priceButton',
-      onPress: showSearchPriceModal,
-      isApplied: appliedFilters.includes(FILTER_TYPES.PRICES),
-    },
-    ...(hasDuoOfferToggle
-      ? [
-          {
-            label: 'Duo',
-            testID: 'DuoButton',
-            onPress: showOfferDuoModal,
-            isApplied: appliedFilters.includes(FILTER_TYPES.OFFER_DUO),
-          },
-        ]
-      : []),
-    {
-      label: 'Accessibilité',
-      testID: 'lieuxAccessiblesButton',
-      onPress: showAccessibilityModal,
-      isApplied: appliedFilters.includes(FILTER_TYPES.ACCESSIBILITY),
-    },
-  ]
 
   return (
     <React.Fragment>
@@ -524,7 +438,20 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
       />
       <View>
         <FilterButtonList
-          items={filterButtonListItems}
+          items={getFilterButtonListItem({
+            shouldDisplayCalendarModal,
+            showCalendarModal,
+            showDatesHoursModal,
+            appliedFilters,
+            searchState,
+            showVenueModal,
+            isVenue,
+            showCategoriesModal,
+            showSearchPriceModal,
+            hasDuoOfferToggle,
+            showOfferDuoModal,
+            showAccessibilityModal,
+          })}
           contentContainerStyle={{ marginBottom: getSpacing(2), paddingHorizontal: getSpacing(5) }}>
           <StyledLi>
             <FilterButton
@@ -655,8 +582,3 @@ const SearchResultsPlaceHolder = () => {
     </Container>
   )
 }
-
-const NoSearchResultsWrapper = styled.View({
-  flex: 1,
-  flexDirection: 'row',
-})
