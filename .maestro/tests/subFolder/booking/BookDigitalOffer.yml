@@ -6,28 +6,39 @@ appId: ${MAESTRO_APP_ID}
     below:
       text: .*résultats
 
-- tapOn: 'Réserver l’offre'
-
 - runFlow:
     when:
       platform: Android
     commands:
-    - assertVisible: 'Détails de la réservation'
-    - tapOn: "J’ai lu et j’accepte les conditions générales d’utilisation"
-    - scrollUntilVisible:
-        element: 'Confirmer la réservation'
-    - tapOn: 'Confirmer la réservation'
-
-    - assertVisible: "Réservation confirmée\_!"
-    - tapOn: 'Voir ma réservation'
-
-    - scrollUntilVisible:
-        element: 'Annuler ma réservation'
-    - tapOn: 'Annuler ma réservation'
-    - tapOn: 'Annuler ma réservation'
+      - tapOn: 'Réserver l’offre'
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - assertVisible: "Tu y es presque"
+      - tapOn:
+          point: ${output.button.ios.booking}
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - assertVisible: 'Détails de la réservation'
+      - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+      - scrollUntilVisible:
+          element: 'Confirmer la réservation'
+      - tapOn: 'Confirmer la réservation'
+
+      - assertVisible: "Réservation confirmée\_!"
+      - tapOn: 'Voir ma réservation'
+
+      - scrollUntilVisible:
+          element: 'Annuler ma réservation'
+      - tapOn: 'Annuler ma réservation'
+      - tapOn: 'Annuler ma réservation'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - assertVisible: 'Tu y es presque'

@@ -5,37 +5,48 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - tapOn:
-        text: 'Livre'
-        index: 0
+      - tapOn:
+          text: 'Livre'
+          index: 0
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn:
-        above:
-          id: searchResultsFlashlist
+      - tapOn:
+          above:
+            id: searchResultsFlashlist
 
 - waitForAnimationToEnd
 
-- tapOn: 'Réserver l’offre'
-
-- assertVisible: 'Détails de la réservation'
-- tapOn: "J’ai lu et j’accepte les conditions générales d’utilisation"
 - runFlow:
     when:
       platform: Android
     commands:
-    - scrollUntilVisible:
-        element: 'Confirmer la réservation'
+      - tapOn: 'Réserver l’offre'
+
 - runFlow:
     when:
       platform: iOS
     commands:
-    - scroll
-    
-- tapOn: 
+      - tapOn:
+          point: ${output.button.ios.booking}
+
+- assertVisible: 'Détails de la réservation'
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - scrollUntilVisible:
+          element: 'Confirmer la réservation'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - scroll
+
+- tapOn:
     text: 'Confirmer la réservation'
     retryTapIfNoChange: false
 
@@ -43,24 +54,22 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     when:
       platform: iOS
-      visible: "Plus tard"
+      visible: 'Plus tard'
     commands:
-    - tapOn: "Plus tard"
+      - tapOn: 'Plus tard'
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 
-        text: 'Voir ma réservation'
-
+      - tapOn:
+          text: 'Voir ma réservation'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - tapOn: 'Voir ma réservation'
-
+      - tapOn: 'Voir ma réservation'
 
 - scrollUntilVisible:
     element: 'Annuler ma réservation'
