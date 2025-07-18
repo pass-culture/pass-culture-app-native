@@ -20,7 +20,7 @@ export const BookingDetailsContentMobile = ({
   topBlock: React.JSX.Element
   booking: BookingResponse
   onEmailPress: () => void
-  errorBannerMessage: string
+  errorBannerMessage: string | null
   cancelBooking: () => void
   showArchiveModal: () => void
 }) => {
@@ -29,9 +29,11 @@ export const BookingDetailsContentMobile = ({
       <SectionContainer>
         <TicketCutoutContainer>{topBlock}</TicketCutoutContainer>
 
-        <Container>
-          <ErrorBanner message={errorBannerMessage} />
-        </Container>
+        {errorBannerMessage ? (
+          <ErrorBannerContainer>
+            <ErrorBanner message={errorBannerMessage} />
+          </ErrorBannerContainer>
+        ) : null}
       </SectionContainer>
 
       {booking.stock.offer.bookingContact || booking.ticket?.withdrawal.details ? (
@@ -87,10 +89,11 @@ const Container = styled.View({
 const TicketCutoutContainer = styled.View({
   width: '100%',
   maxWidth: MAX_CONTENT_WIDTH,
-  marginBottom: getSpacing(8),
   alignSelf: 'center',
 })
 
 const BookingDetailsCancelButtonContainer = styled(Container)({
   marginBottom: getSpacing(10),
 })
+
+const ErrorBannerContainer = styled(Container)({ marginTop: getSpacing(8) })
