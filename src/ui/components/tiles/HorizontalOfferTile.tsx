@@ -142,7 +142,7 @@ export const HorizontalOfferTile = ({
       from={analyticsParams.from}
       style={style}>
       <StyledHorizontalTile {...horizontalTileProps} categoryId={categoryId} imageUrl={thumbUrl}>
-        <Row flex={1} gap={getSpacing(4)} alignItems="space-between">
+        <Row flex={1} gap={getSpacing(4)} alignItems="space-between" testID="horizontal_offer_tile">
           <Column flex={1}>
             {distanceToOffer ? (
               <OfferName title={name ?? ''} />

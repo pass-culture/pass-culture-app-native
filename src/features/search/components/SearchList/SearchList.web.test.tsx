@@ -66,6 +66,16 @@ describe('<SearchList />', () => {
 
     expect(screen.getByTestId('searchListHeader')).toBeInTheDocument()
   })
+
+  describe('when WIP_ENABLE_GRID_LIST is activated', () => {
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
+
+    it('should not display grid list menu on web', async () => {
+      render(reactQueryProviderHOC(<SearchList {...props} />))
+
+      expect(screen.queryByTestId('grid-list-menu')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 describe('getHeaderSize', () => {

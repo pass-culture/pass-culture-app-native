@@ -29,7 +29,7 @@ import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor, within } from 'tests/utils'
 
 import { SearchResultsContent, SearchResultsContentProps } from './SearchResultsContent'
 
@@ -920,6 +920,56 @@ describe('SearchResultsContent component', () => {
 
       expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
       expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('WIP_ENABLE_GRID_LIST', () => {
+    describe('is activated', () => {
+      beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
+
+      it('should display results as list when click on gridlist toggle already on list mode', async () => {
+        renderSearchResultContent()
+
+        await initSearchResultsFlashlist()
+
+        expect(screen.getAllByTestId(`horizontal_offer_tile`)).toBeTruthy()
+      })
+
+      it('should display results as grid when click on gridlist toggle already on list mode', async () => {
+        renderSearchResultContent()
+
+        await initSearchResultsFlashlist()
+        const grilleIcon = await screen.findByTestId('Grille-icon')
+        await user.press(grilleIcon)
+
+        await initSearchResultsFlashlist()
+
+        expect(screen.getAllByTestId('OfferTile')).toBeTruthy()
+      })
+
+      it('should display list word on toggle when list mode', async () => {
+        renderSearchResultContent()
+
+        await initSearchResultsFlashlist()
+
+        const gridListMenu = await screen.findByTestId('grid-list-menu')
+
+        expect(within(gridListMenu).getByText(`Liste`)).toBeTruthy()
+      })
+
+      it('should display grille word on toggle when grille mode', async () => {
+        renderSearchResultContent()
+
+        await initSearchResultsFlashlist()
+
+        const grilleIcon = await screen.findByTestId('Grille-icon')
+        await user.press(grilleIcon)
+        await initSearchResultsFlashlist()
+
+        await waitFor(() => {
+          expect(screen.getByText('Grille')).toBeTruthy()
+        })
+      })
     })
   })
 
