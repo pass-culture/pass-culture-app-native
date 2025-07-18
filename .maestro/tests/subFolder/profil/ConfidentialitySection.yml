@@ -7,7 +7,6 @@ appId: ${MAESTRO_APP_ID}
       - scroll
 - tapOn:
     text: 'Confidentialité'
-    index: 1
 
 - assertVisible: 'Paramètres de confidentialité'
 - tapOn:

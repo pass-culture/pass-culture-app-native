@@ -13,8 +13,19 @@ appId: ${MAESTRO_APP_ID}
       text: .*résultats
 
 - waitForAnimationToEnd
-- tapOn:
-    id: sticky-booking-button
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn:
+          id: sticky-booking-button
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          point: ${output.button.ios.booking}
 
 - assertVisible: 'Détails de la réservation'
 - assertVisible: 'Informations'
