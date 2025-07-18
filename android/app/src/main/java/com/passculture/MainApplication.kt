@@ -12,7 +12,7 @@ import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
 import com.passculture.DefaultBrowserPackage
-import com.microsoft.codepush.react.CodePush
+import com.hotupdater.HotUpdater
  
 class MainApplication : Application(), ReactApplication {
  
@@ -35,10 +35,10 @@ class MainApplication : Application(), ReactApplication {
         override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
 
         // 2. Override the getJSBundleFile method in order to let
-        // the CodePush runtime determine where to get the JS
+        // the HotUpdater runtime determine where to get the JS
         // bundle location from on each app start
-        override fun getJSBundleFile(): String {
-            return CodePush.getJSBundleFile() 
+        override fun getJSBundleFile(): String? {
+            return HotUpdater.getJSBundleFile(applicationContext)  
         }
       }
  

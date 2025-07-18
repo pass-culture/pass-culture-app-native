@@ -1,5 +1,5 @@
 import React from 'react'
-import { LogBox } from 'react-native'
+import { LogBox, Platform, StatusBar } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -17,6 +17,7 @@ jest.mock('libs/e2e/getIsMaestro', () => ({
   getIsMaestro: () => Promise.resolve(true),
 }))
 jest.mock('libs/campaign')
+jest.mock('@hot-updater/react-native')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -25,6 +26,9 @@ jest.mock('react-native-safe-area-context', () => ({
   ...jest.requireActual('react-native-safe-area-context'),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+const setTranslucent = jest.spyOn(StatusBar, 'setTranslucent')
+const setBackgroundColor = jest.spyOn(StatusBar, 'setBackgroundColor')
 
 describe('<App /> with mocked RootNavigator', () => {
   beforeEach(() => {
@@ -65,6 +69,14 @@ describe('<App /> with mocked RootNavigator', () => {
     await waitFor(() => {
       expect(LogBox.ignoreAllLogs).toHaveBeenCalledTimes(1)
     })
+  })
+
+  it('should set status bar with specific value for android', () => {
+    Platform.OS = 'android'
+    renderApp()
+
+    expect(setTranslucent).toHaveBeenNthCalledWith(1, true)
+    expect(setBackgroundColor).toHaveBeenNthCalledWith(1, 'transparent', false)
   })
 })
 

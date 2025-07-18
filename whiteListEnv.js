@@ -63,6 +63,7 @@ export const whiteListEnv = (env, commitHash) => {
     'GOOGLE_IOS_REVERSED_CLIENT_ID',
     'GOOGLE_MAPS_API_PUBLIC_KEY',
     'GOOGLE_PLAY_STORE_URL',
+    'HOT_UPDATER_FUNCTION_URL',
     'IOS_APP_ICON',
     'IOS_APP_ID',
     'IOS_APP_NAME',

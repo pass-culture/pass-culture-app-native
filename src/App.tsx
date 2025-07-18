@@ -1,9 +1,9 @@
 import 'intl'
 import 'intl/locale-data/jsonp/en'
+import { HotUpdater, getUpdateSource } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LogBox, Platform, StatusBar } from 'react-native'
-import CodePush from 'react-native-code-push'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 
@@ -27,7 +27,6 @@ import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { AutoImmediate, NextResume } from 'libs/codepush/options'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
@@ -133,8 +132,14 @@ const App: FunctionComponent = function () {
   )
 }
 
-const config = env.ENV === 'testing' ? AutoImmediate : NextResume
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const AppWithHotUpdater: any =
+  __DEV__ || env.ENV !== 'testing'
+    ? App
+    : HotUpdater.wrap({
+        source: getUpdateSource(`${env.HOT_UPDATER_FUNCTION_URL}/api/check-update`, {
+          updateStrategy: 'appVersion',
+        }),
+      })(App)
 
-const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)
-
-export { AppWithCodepush as App }
+export { AppWithHotUpdater as App }
