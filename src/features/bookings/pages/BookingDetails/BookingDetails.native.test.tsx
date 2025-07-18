@@ -579,12 +579,12 @@ describe('BookingDetails', () => {
     })
   })
 
-  describe('BookingPageContent : when FF WIP_NEW_BOOKING_PAGE is on', () => {
+  describe('BookingDetails : when FF WIP_NEW_BOOKING_PAGE is on', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
     })
 
-    it('should render BookingPageContent', async () => {
+    it('should render BookingDetails', async () => {
       renderBookingDetailsV2(ongoingBookingV2)
 
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
