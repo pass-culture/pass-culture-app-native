@@ -23,7 +23,7 @@ const homepageEntryIds = [
 
 describe('useHomepageModules', () => {
   beforeEach(() => {
-    mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
+    mockServer.getApi<BookingsResponse>('/v2/bookings', bookingsSnap)
     mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, homepageEntriesAPIResponse)
   })
 

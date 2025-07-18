@@ -6,13 +6,12 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Homepage } from 'features/home/types'
 import { UserOnboardingRole } from 'features/onboarding/enums'
 import { useUserRoleFromOnboarding } from 'features/onboarding/helpers/useUserRoleFromOnboarding'
-import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
-import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
+import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
+import { isUserFreeBeneficiary } from 'features/profile/helpers/isUserFreeBeneficiary'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useUserHasBookingsQuery, useBookingsQuery } from 'queries/bookings'
-import { getAvailableCredit } from 'shared/user/useAvailableCredit'
+import { useUserHasBookingsQuery } from 'queries/bookings'
 
 const scoreHomepageByTags = (
   homepage: Homepage,
@@ -34,15 +33,12 @@ export const useSelectHomepageEntry = (
 ): ((homepageList: Homepage[]) => Homepage | undefined) => {
   const { isLoggedIn, user } = useAuthContext()
   const userHasBookings = useUserHasBookingsQuery()
-  const { data: userBookings } = useBookingsQuery()
   const onboardingRole = useUserRoleFromOnboarding()
   const {
     homeEntryIdGeneral,
-    homeEntryIdWithoutBooking_18,
-    homeEntryIdWithoutBooking_15_17,
-    homeEntryId_18,
-    homeEntryId_15_17,
-    ...onboardingHomeEntryIds
+    homeEntryIdBeneficiary,
+    homeEntryIdFreeBeneficiary,
+    homeEntryIdWithoutBooking,
   } = useRemoteConfigQuery()
 
   return useCallback(
@@ -66,31 +62,29 @@ export const useSelectHomepageEntry = (
         : firstHomepageEntry
 
       if (!isLoggedIn || !user) {
-        const onboardingHomeEntryId = getOnboardingHomepageEntryId(
-          onboardingRole,
-          onboardingHomeEntryIds
-        )
+        const onboardingHomeEntryId = getOnboardingHomepageEntryId(onboardingRole, {
+          homeEntryIdBeneficiary,
+          homeEntryIdGeneral,
+          homeEntryIdFreeBeneficiary,
+        })
 
         return homepageList.find(({ id }) => id === onboardingHomeEntryId) ?? defaultHomepageEntry
       }
 
-      if (isUserUnderage(user)) {
-        if (userHasBookings) {
-          return homepageList.find(({ id }) => id === homeEntryId_15_17) ?? defaultHomepageEntry
-        }
+      if (isUserFreeBeneficiary(user)) {
         return (
-          homepageList.find(({ id }) => id === homeEntryIdWithoutBooking_15_17) ??
-          defaultHomepageEntry
+          homepageList.find(({ id }) => id === homeEntryIdFreeBeneficiary) ?? defaultHomepageEntry
         )
       }
 
-      const credit = getAvailableCredit(user)
-      if (user?.eligibility === 'age-18' || (isUserBeneficiary18(user) && !credit.isExpired)) {
-        if (userBookings?.hasBookingsAfter18) {
-          return homepageList.find(({ id }) => id === homeEntryId_18) ?? defaultHomepageEntry
+      if (isUserBeneficiary(user)) {
+        if (userHasBookings) {
+          return (
+            homepageList.find(({ id }) => id === homeEntryIdBeneficiary) ?? defaultHomepageEntry
+          )
         }
         return (
-          homepageList.find(({ id }) => id === homeEntryIdWithoutBooking_18) ?? defaultHomepageEntry
+          homepageList.find(({ id }) => id === homeEntryIdWithoutBooking) ?? defaultHomepageEntry
         )
       }
 
@@ -101,14 +95,11 @@ export const useSelectHomepageEntry = (
       isLoggedIn,
       user,
       onboardingRole,
-      onboardingHomeEntryIds,
-      userHasBookings,
-      homeEntryId_15_17,
-      homeEntryIdWithoutBooking_15_17,
-      userBookings?.hasBookingsAfter18,
-      homeEntryId_18,
-      homeEntryIdWithoutBooking_18,
+      homeEntryIdBeneficiary,
       homeEntryIdGeneral,
+      homeEntryIdFreeBeneficiary,
+      userHasBookings,
+      homeEntryIdWithoutBooking,
     ]
   )
 }
@@ -116,20 +107,16 @@ export const useSelectHomepageEntry = (
 const getOnboardingHomepageEntryId = (
   onboardingRole: UserOnboardingRole,
   {
-    homeEntryIdNotConnected,
-    homeEntryIdOnboardingGeneral,
-    homeEntryIdOnboardingUnderage,
-    homeEntryIdOnboarding_18,
+    homeEntryIdBeneficiary,
+    homeEntryIdGeneral,
+    homeEntryIdFreeBeneficiary,
   }: Partial<CustomRemoteConfig>
 ) => {
-  switch (onboardingRole) {
-    case UserOnboardingRole.EIGHTEEN:
-      return homeEntryIdOnboarding_18
-    case UserOnboardingRole.UNDERAGE:
-      return homeEntryIdOnboardingUnderage
-    case UserOnboardingRole.NON_ELIGIBLE:
-      return homeEntryIdOnboardingGeneral
-    default:
-      return homeEntryIdNotConnected
+  if (onboardingRole === UserOnboardingRole.EIGHTEEN) {
+    return homeEntryIdBeneficiary
   }
+  if (onboardingRole === UserOnboardingRole.UNDERAGE) {
+    return homeEntryIdFreeBeneficiary
+  }
+  return homeEntryIdGeneral
 }
