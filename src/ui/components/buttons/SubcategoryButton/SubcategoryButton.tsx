@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
+import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -47,7 +47,7 @@ export const SubcategoryButton = ({
       {...hoverProps}
       onMouseDown={(e: Event) => e.preventDefault()} // Prevent focus on click
       onBeforeNavigate={onBeforeNavigate}
-      navigateTo={getSearchNavConfig('SearchResults', searchParams)}
+      navigateTo={getSearchPropConfig('SearchResults', searchParams)}
       testID={`SubcategoryButton ${label}`}
       accessibilityLabel={label}
       windowWidth={windowWidth}

@@ -5,7 +5,7 @@ import { ApiError } from 'api/ApiError'
 import { AccountState } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useConfirmChangeEmailMutationV2 } from 'features/profile/helpers/useConfirmChangeEmailMutationV2'
 import { isTimestampExpired } from 'libs/dates'
@@ -34,13 +34,13 @@ export function ConfirmChangeEmail() {
 
       if (resetPasswordToken) {
         replace(
-          ...getProfileStackConfig('ChangeEmailSetPassword', {
+          ...getProfileHookConfig('ChangeEmailSetPassword', {
             token: resetPasswordToken,
             emailSelectionToken: newEmailSelectionToken,
           })
         )
       } else {
-        replace(...getProfileStackConfig('NewEmailSelection', { token: newEmailSelectionToken }))
+        replace(...getProfileHookConfig('NewEmailSelection', { token: newEmailSelectionToken }))
       }
     },
     onError: (error) => {

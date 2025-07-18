@@ -9,7 +9,7 @@ import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrac
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -25,7 +25,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   const { showSuccessSnackBar } = useSnackBarContext()
   const { setCookiesConsent } = useCookies()
@@ -51,7 +51,7 @@ export const ConsentSettings = () => {
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    navigate(...getTabNavConfig('Profile'))
+    navigate(...getTabHookConfig('Profile'))
   }, [navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (

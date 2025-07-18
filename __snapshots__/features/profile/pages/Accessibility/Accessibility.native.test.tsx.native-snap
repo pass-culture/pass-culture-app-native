@@ -247,7 +247,7 @@ exports[`Accessibility should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Plan du site"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -280,7 +280,6 @@ exports[`Accessibility should render correctly 1`] = `
                   {
                     "userSelect": "auto",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
@@ -379,7 +378,7 @@ exports[`Accessibility should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Les engagements du pass Culture"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -412,7 +411,6 @@ exports[`Accessibility should render correctly 1`] = `
                   {
                     "userSelect": "auto",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
@@ -511,7 +509,7 @@ exports[`Accessibility should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Schéma pluriannuel"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -544,7 +542,6 @@ exports[`Accessibility should render correctly 1`] = `
                   {
                     "userSelect": "auto",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
@@ -643,7 +640,7 @@ exports[`Accessibility should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Déclaration d’accessibilité des applications iOS et Android"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -676,7 +673,6 @@ exports[`Accessibility should render correctly 1`] = `
                   {
                     "userSelect": "auto",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
@@ -775,7 +771,7 @@ exports[`Accessibility should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Déclaration d’accessibilité de la version web"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -808,7 +804,6 @@ exports[`Accessibility should render correctly 1`] = `
                   {
                     "userSelect": "auto",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
@@ -907,7 +902,7 @@ exports[`Accessibility should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Parcours recommandés de la version web"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -940,7 +935,6 @@ exports[`Accessibility should render correctly 1`] = `
                   {
                     "userSelect": "auto",
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,

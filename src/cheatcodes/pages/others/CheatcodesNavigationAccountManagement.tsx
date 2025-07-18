@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 const accountManagementCheatcodeCategory: CheatcodeCategory = {
@@ -47,42 +47,42 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'DeleteProfileReason',
-      navigationTarget: getProfileNavConfig('DeleteProfileReason'),
+      navigationTarget: getProfilePropConfig('DeleteProfileReason'),
     },
     {
       id: uuidv4(),
       title: 'DebugScreen',
-      navigationTarget: getProfileNavConfig('DebugScreen'),
+      navigationTarget: getProfilePropConfig('DebugScreen'),
     },
     {
       id: uuidv4(),
       title: 'ConfirmDeleteProfile',
-      navigationTarget: getProfileNavConfig('ConfirmDeleteProfile'),
+      navigationTarget: getProfilePropConfig('ConfirmDeleteProfile'),
     },
     {
       id: uuidv4(),
       title: 'DeactivateProfileSuccess',
-      navigationTarget: getProfileNavConfig('DeactivateProfileSuccess'),
+      navigationTarget: getProfilePropConfig('DeactivateProfileSuccess'),
     },
     {
       id: uuidv4(),
       title: 'DeleteProfileSuccess',
-      navigationTarget: getProfileNavConfig('DeleteProfileSuccess'),
+      navigationTarget: getProfilePropConfig('DeleteProfileSuccess'),
     },
     {
       id: uuidv4(),
       title: 'DeleteProfileConfirmation',
-      navigationTarget: getProfileNavConfig('DeleteProfileConfirmation'),
+      navigationTarget: getProfilePropConfig('DeleteProfileConfirmation'),
     },
     {
       id: uuidv4(),
       title: 'DeleteProfileAccountNotDeletable',
-      navigationTarget: getProfileNavConfig('DeleteProfileAccountNotDeletable'),
+      navigationTarget: getProfilePropConfig('DeleteProfileAccountNotDeletable'),
     },
     {
       id: uuidv4(),
       title: 'DeleteProfileAccountHacked',
-      navigationTarget: getProfileNavConfig('DeleteProfileAccountHacked'),
+      navigationTarget: getProfilePropConfig('DeleteProfileAccountHacked'),
     },
   ],
 }
@@ -92,7 +92,7 @@ export const cheatcodesNavigationAccountManagementButtons: CheatcodeCategory[] =
 ]
 
 export function CheatcodesNavigationAccountManagement(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
 
   return (
     <CheatcodesTemplateScreen title={accountManagementCheatcodeCategory.title} onGoBack={goBack}>

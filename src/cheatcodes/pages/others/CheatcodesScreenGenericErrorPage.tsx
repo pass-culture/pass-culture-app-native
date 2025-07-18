@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -12,7 +12,7 @@ import { Typo, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const CheatcodesScreenGenericErrorPage = () => {
-  const { goBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavigationConfig)
   const { top } = useCustomSafeInsets()
 
   return (

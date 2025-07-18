@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { performanceMonitoringStoreActions } from 'features/home/pages/helpers/usePerformanceMonitoringStore'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
@@ -51,17 +51,17 @@ async function getInitialScreen({
       }
     } catch {
       // If we cannot get user's information, we just go to the homepage
-      return homeNavConfig[0]
+      return homeNavigationConfig[0]
     }
   }
 
   try {
     const hasSeenTutorials = !!(await storage.readObject('has_seen_tutorials'))
     if (hasSeenTutorials || Platform.OS === 'web') {
-      return homeNavConfig[0]
+      return homeNavigationConfig[0]
     }
   } catch {
-    return homeNavConfig[0]
+    return homeNavigationConfig[0]
   }
 
   return 'OnboardingStackNavigator'

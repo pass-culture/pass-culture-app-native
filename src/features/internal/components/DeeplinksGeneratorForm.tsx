@@ -20,9 +20,9 @@ import {
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/isSearchStackScreen'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { isTabNavigatorScreen } from 'features/navigation/TabBar/isTabNavigatorScreen'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
@@ -300,15 +300,15 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     let screenPath = getScreenPath(selectedScreen, appAndMarketingParams)
     if (isTabNavigatorScreen(selectedScreen)) {
-      const tabNavConfig = getTabNavConfig(
+      const tabNavigationConfig = getTabHookConfig(
         selectedScreen,
         appAndMarketingParams as Record<string, unknown>
       )
 
-      screenPath = getScreenPath(...tabNavConfig)
+      screenPath = getScreenPath(...tabNavigationConfig)
     }
     if (isSearchStackScreen(selectedScreen)) {
-      const searchStackConfig = getSearchStackConfig(selectedScreen, appAndMarketingParams)
+      const searchStackConfig = getSearchHookConfig(selectedScreen, appAndMarketingParams)
       screenPath = getScreenPath(...searchStackConfig)
     }
 

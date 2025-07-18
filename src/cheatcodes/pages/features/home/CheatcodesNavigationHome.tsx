@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 const homeCheatcodeCategory: CheatcodeCategory = {
@@ -45,7 +45,7 @@ const homeCheatcodeCategory: CheatcodeCategory = {
 export const cheatcodesNavigationHomeButtons: CheatcodeCategory[] = [homeCheatcodeCategory]
 
 export function CheatcodesNavigationHome(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
 
   return (
     <CheatcodesTemplateScreen title={homeCheatcodeCategory.title} onGoBack={goBack}>

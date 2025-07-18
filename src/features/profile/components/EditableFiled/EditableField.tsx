@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { Separator } from 'ui/components/Separator'
@@ -41,7 +41,7 @@ export function EditableField({
         )}
         {showButton ? (
           <EditButton
-            navigateTo={getProfileNavConfig(navigateTo, navigateParams)}
+            navigateTo={getProfilePropConfig(navigateTo, navigateParams)}
             onPress={onBeforeNavigate}
             wording={isCompleted ? 'Modifier' : 'Compléter'}
             accessibilityLabel={accessibilityLabel}

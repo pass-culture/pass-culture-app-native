@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -19,8 +19,8 @@ import { SPACE } from 'ui/theme/constants'
 export const DeleteProfileAccountNotDeletable: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
-  const navigateToNotifications = () => navigate(...getProfileStackConfig('NotificationsSettings'))
+  const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
+  const navigateToNotifications = () => navigate(...getProfileHookConfig('NotificationsSettings'))
 
   return (
     <GenericInfoPage

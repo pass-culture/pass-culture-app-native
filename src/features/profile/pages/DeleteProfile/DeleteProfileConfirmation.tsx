@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
 import { env } from 'libs/environment/env'
@@ -23,7 +23,7 @@ export const DeleteProfileConfirmation = () => {
   const { anonymizeAccount } = useAnonymizeAccountMutation({
     onSuccess: async () => {
       await signOut()
-      navigate(...getProfileStackConfig('DeleteProfileSuccess'))
+      navigate(...getProfileHookConfig('DeleteProfileSuccess'))
     },
     onError: () => {
       showErrorSnackBar({
@@ -35,7 +35,7 @@ export const DeleteProfileConfirmation = () => {
   })
 
   const navigateToDeleteProfileReason = () =>
-    navigate(...getProfileStackConfig('DeleteProfileReason'))
+    navigate(...getProfileHookConfig('DeleteProfileReason'))
 
   return (
     <GenericInfoPage

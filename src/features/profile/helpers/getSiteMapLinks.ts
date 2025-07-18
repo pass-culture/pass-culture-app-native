@@ -1,5 +1,5 @@
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -11,7 +11,7 @@ type SubPage = {
 
 type SiteMap = SubPage & { subPages: SubPage[] }
 
-const toInternalNavigationProps = ([screen, params]: ReturnType<typeof getTabNavConfig>) => ({
+const toInternalNavigationProps = ([screen, params]: ReturnType<typeof getTabHookConfig>) => ({
   screen,
   params,
 })
@@ -21,13 +21,13 @@ export const getSiteMapLinks = (
 ): SiteMap[] => [
   {
     wording: 'Accueil',
-    navigateTo: toInternalNavigationProps(getTabNavConfig('Home')),
+    navigateTo: toInternalNavigationProps(getTabHookConfig('Home')),
     isLoggedIn: false,
     subPages: [],
   },
   {
     wording: 'Recherche',
-    navigateTo: toInternalNavigationProps(getTabNavConfig('SearchStackNavigator')),
+    navigateTo: toInternalNavigationProps(getTabHookConfig('SearchStackNavigator')),
     isLoggedIn: false,
     subPages: [
       { wording: 'Explore la carte', navigateTo: { screen: 'VenueMap' }, isLoggedIn: false },
@@ -40,19 +40,19 @@ export const getSiteMapLinks = (
   },
   {
     wording: 'Réservations',
-    navigateTo: toInternalNavigationProps(getTabNavConfig('Bookings')),
+    navigateTo: toInternalNavigationProps(getTabHookConfig('Bookings')),
     isLoggedIn: true,
     subPages: [],
   },
   {
     wording: 'Favoris',
-    navigateTo: toInternalNavigationProps(getTabNavConfig('Favorites')),
+    navigateTo: toInternalNavigationProps(getTabHookConfig('Favorites')),
     isLoggedIn: true,
     subPages: [],
   },
   {
     wording: 'Profil',
-    navigateTo: toInternalNavigationProps(getTabNavConfig('Profile')),
+    navigateTo: toInternalNavigationProps(getTabHookConfig('Profile')),
     isLoggedIn: false,
     subPages: [
       {
@@ -72,47 +72,47 @@ export const getSiteMapLinks = (
       },
       {
         wording: 'Notifications',
-        navigateTo: getProfileNavConfig('NotificationsSettings'),
+        navigateTo: getProfilePropConfig('NotificationsSettings'),
         isLoggedIn: false,
       },
       {
         wording: 'Comment ça marche\u00a0?',
-        navigateTo: getProfileNavConfig('ProfileTutorialAgeInformationCredit'),
+        navigateTo: getProfilePropConfig('ProfileTutorialAgeInformationCredit'),
         isLoggedIn: false,
       },
       {
         wording: 'Informations personnelles',
-        navigateTo: getProfileNavConfig('PersonalData'),
+        navigateTo: getProfilePropConfig('PersonalData'),
         isLoggedIn: true,
       },
       {
         wording: 'Préférence d’affichage',
-        navigateTo: getProfileNavConfig('DisplayPreference'),
+        navigateTo: getProfilePropConfig('DisplayPreference'),
         isLoggedIn: false,
       },
       {
         wording: 'Accessibilité',
-        navigateTo: getProfileNavConfig('Accessibility'),
+        navigateTo: getProfilePropConfig('Accessibility'),
         isLoggedIn: false,
       },
       {
         wording: 'Faire une suggestion',
-        navigateTo: getProfileNavConfig('FeedbackInApp'),
+        navigateTo: getProfilePropConfig('FeedbackInApp'),
         isLoggedIn: false,
       },
       {
         wording: 'Informations légales',
-        navigateTo: getProfileNavConfig('LegalNotices'),
+        navigateTo: getProfilePropConfig('LegalNotices'),
         isLoggedIn: false,
       },
       {
         wording: 'Confidentialité',
-        navigateTo: getProfileNavConfig('ConsentSettings'),
+        navigateTo: getProfilePropConfig('ConsentSettings'),
         isLoggedIn: false,
       },
       {
         wording: 'Débuggage',
-        navigateTo: getProfileNavConfig('DebugScreen'),
+        navigateTo: getProfilePropConfig('DebugScreen'),
         isLoggedIn: true,
       },
     ],

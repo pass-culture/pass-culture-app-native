@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
@@ -17,7 +17,7 @@ export function ChangeEmailExpiredLink() {
   const changeEmailExpiredLink = () => {
     resendEmailNumberOfHits++
     analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
-    isLoggedIn ? navigate(...getProfileStackConfig('ChangeEmail')) : navigate('Login')
+    isLoggedIn ? navigate(...getProfileHookConfig('ChangeEmail')) : navigate('Login')
   }
 
   const upperBodyText =

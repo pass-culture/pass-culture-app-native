@@ -20,7 +20,7 @@ import { useCulturalSurveyQuestionsQuery } from 'features/culturalSurvey/queries
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
@@ -55,7 +55,7 @@ export function CulturalSurveyQuestions() {
   }
 
   const currentQuestion = params?.question
-  const { goBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavigationConfig)
   const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
   const [currentAnswers, setCurrentAnswers] = useState<CulturalSurveyAnswerEnum[]>([])
 

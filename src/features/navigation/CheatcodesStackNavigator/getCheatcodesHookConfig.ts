@@ -3,7 +3,7 @@ import {
   CheatcodesStackRouteName,
 } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 
-export function getCheatcodesStackConfig<Screen extends CheatcodesStackRouteName>(
+export function getCheatcodesHookConfig<Screen extends CheatcodesStackRouteName>(
   screen: Screen,
   params?: CheatcodesStackParamList[Screen]
 ): [

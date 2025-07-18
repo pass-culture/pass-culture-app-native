@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useChangeEmailSetPasswordMutation } from 'features/profile/helpers/useChangeEmailSetPasswordMutation'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -51,7 +51,7 @@ export const ChangeEmailSetPassword = () => {
         timeout: SNACK_BAR_TIME_OUT,
       })
       if (!params?.emailSelectionToken) return // emailSelectionToken should never be undefined if token is defined
-      replace(...getProfileStackConfig('NewEmailSelection', { token: params?.emailSelectionToken }))
+      replace(...getProfileHookConfig('NewEmailSelection', { token: params?.emailSelectionToken }))
     },
     onError: () =>
       showErrorSnackBar({

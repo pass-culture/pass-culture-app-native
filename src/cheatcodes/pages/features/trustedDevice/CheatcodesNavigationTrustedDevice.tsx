@@ -7,7 +7,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
@@ -57,7 +57,7 @@ export const cheatcodesNavigationTrustedDeviceButtons: CheatcodeCategory[] = [
 ]
 
 export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
   const [value, setValue] = useState('')
   const { navigate } = useNavigation<UseNavigationType>()
 

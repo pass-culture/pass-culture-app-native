@@ -20,7 +20,7 @@ import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHom
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -163,7 +163,7 @@ export const ThematicHome: FunctionComponent = () => {
   }, [hasGeolocPosition, isFromDeeplink])
 
   const handleBackPress = () => {
-    params.from === 'chronicles' ? goBack() : navigate(...homeNavConfig)
+    params.from === 'chronicles' ? goBack() : navigate(...homeNavigationConfig)
   }
 
   return (

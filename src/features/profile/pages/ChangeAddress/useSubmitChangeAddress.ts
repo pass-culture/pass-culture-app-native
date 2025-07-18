@@ -10,7 +10,7 @@ import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -105,9 +105,9 @@ export const useSubmitChangeAddress = () => {
   const { mutate: patchProfile } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
-        navigate(...getProfileStackConfig('ChangeStatus', { type }))
+        navigate(...getProfileHookConfig('ChangeStatus', { type }))
       } else {
-        navigate(...getProfileStackConfig('PersonalData'))
+        navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
           message: 'Ton adresse de résidence a bien été modifiée\u00a0!',
           timeout: SNACK_BAR_TIME_OUT,

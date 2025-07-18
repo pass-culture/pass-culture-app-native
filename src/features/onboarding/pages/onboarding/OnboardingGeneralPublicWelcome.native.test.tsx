@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, reset, push } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { OnboardingGeneralPublicWelcome } from './OnboardingGeneralPublicWelcome'
@@ -25,7 +25,7 @@ describe('OnboardingGeneralPublicWelcome', () => {
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,
-      routes: [{ name: homeNavConfig[0] }],
+      routes: [{ name: homeNavigationConfig[0] }],
     })
   })
 

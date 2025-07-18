@@ -25,11 +25,15 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
       <TabBarContainer>
         <StyledUl>
           {tabRoutes.map((route) => {
-            const tabNavConfig = getTabNavigatorConfig(route, searchState)
+            const tabNavigationConfig = getTabNavigatorConfig(route, searchState)
             return (
               <LinkContainer key={route.name}>
                 <TabBarComponent
-                  navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1], fromRef: true }}
+                  navigateTo={{
+                    screen: tabNavigationConfig[0],
+                    params: tabNavigationConfig[1],
+                    fromRef: true,
+                  }}
                   onPress={route.name === 'SearchStackNavigator' ? hideSuggestions : undefined}
                   tabName={route.name}
                   isSelected={route.isSelected}

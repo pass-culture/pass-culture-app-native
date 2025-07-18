@@ -1,29 +1,29 @@
 jest.mock('features/navigation/TabBar/helpers', () => ({
-  getTabNavConfig: jest.fn((name, config) => ({ name, config })),
+  getTabHookConfig: jest.fn((name, config) => ({ name, config })),
 }))
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { getTabNavigatorConfig } from 'features/navigation/RootNavigator/Header/getTabNavigatorConfig'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { TabStateRoute } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 
 describe('getTabNavigatorConfig', () => {
-  const mockGetTabNavConfig = getTabNavConfig as jest.Mock
+  const mockGetTabHookConfig = getTabHookConfig as jest.Mock
 
   beforeEach(() => {
-    mockGetTabNavConfig.mockClear()
+    mockGetTabHookConfig.mockClear()
   })
 
   describe('for non-SearchStackNavigator routes', () => {
     const homeRoute: TabStateRoute = { name: 'Home', key: 'home-initial', isSelected: true }
 
-    it('should call getTabNavConfig with received route', () => {
+    it('should call getTabNavigationConfig with received route', () => {
       getTabNavigatorConfig(homeRoute, initialSearchState)
 
-      expect(mockGetTabNavConfig).toHaveBeenCalledWith('Home')
+      expect(mockGetTabHookConfig).toHaveBeenCalledWith('Home')
     })
   })
 
@@ -55,7 +55,7 @@ describe('getTabNavigatorConfig', () => {
     it('should return config with empty params when route is not selected', () => {
       getTabNavigatorConfig(searchRouteNotSelected, initialSearchState)
 
-      expect(mockGetTabNavConfig).toHaveBeenCalledWith('SearchStackNavigator', {
+      expect(mockGetTabHookConfig).toHaveBeenCalledWith('SearchStackNavigator', {
         screen: 'SearchLanding',
         params: {},
       })
@@ -74,7 +74,7 @@ describe('getTabNavigatorConfig', () => {
         locationFilter: mockedLocation,
       })
 
-      expect(mockGetTabNavConfig).toHaveBeenCalledWith('SearchStackNavigator', {
+      expect(mockGetTabHookConfig).toHaveBeenCalledWith('SearchStackNavigator', {
         screen: 'SearchLanding',
         params: { ...mockedSearchState, query: '', locationFilter: mockedLocation },
       })

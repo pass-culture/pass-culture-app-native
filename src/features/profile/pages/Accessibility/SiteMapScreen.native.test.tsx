@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -48,7 +48,7 @@ describe('SiteMapScreen', () => {
     const homeButton = screen.getByText('Accueil')
     await user.press(homeButton)
 
-    expect(navigate).toHaveBeenCalledWith(...getTabNavConfig('Home'))
+    expect(navigate).toHaveBeenCalledWith(...getTabHookConfig('Home'))
   })
 
   it('should navigate to thematic search "Cinema" when press "Cinéma" button', async () => {

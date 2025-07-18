@@ -6,13 +6,13 @@ import { HighlightThematicHomeHeader } from 'features/home/components/headers/Hi
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { CategoryThematicHeader, Color, ThematicHeaderType } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 export const CheatcodesScreenHighlightThematicHomeHeader: FunctionComponent = () => {
   const { headerTransition } = useOpacityTransition()
   const { navigate } = useNavigation<UseNavigationType>()
-  const handleBackPress = () => navigate(...homeNavConfig)
+  const handleBackPress = () => navigate(...homeNavigationConfig)
 
   const thematicHomeHeader: CategoryThematicHeader = {
     type: ThematicHeaderType.Category,

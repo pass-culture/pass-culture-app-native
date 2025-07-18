@@ -4,7 +4,7 @@ import { push } from '__mocks__/@react-navigation/native'
 import { SearchState } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { SearchNavConfig } from 'features/venue/types'
+import { SearchNavigationConfig } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -35,7 +35,7 @@ const defaultParams: SearchState = {
   },
 } as SearchState
 
-const searchNavConfigMock: SearchNavConfig = {
+const searchNavigationConfigMock: SearchNavigationConfig = {
   screen: 'TabNavigator',
   params: {
     screen: 'SearchStackNavigator',
@@ -54,7 +54,9 @@ const user = userEvent.setup()
 
 describe('<VenueCTA />', () => {
   it('should navigate to the search page when pressed on', async () => {
-    render(<VenueCTA searchNavConfig={searchNavConfigMock} onBeforeNavigate={jest.fn()} />)
+    render(
+      <VenueCTA searchNavigationConfig={searchNavigationConfigMock} onBeforeNavigate={jest.fn()} />
+    )
 
     await user.press(await screen.findByText('Rechercher une offre'))
 
@@ -81,7 +83,7 @@ describe('<VenueCTA />', () => {
   it('should log event when pressed on', async () => {
     render(
       <VenueCTA
-        searchNavConfig={searchNavConfigMock}
+        searchNavigationConfig={searchNavigationConfigMock}
         onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venueDataTest.id)}
       />
     )

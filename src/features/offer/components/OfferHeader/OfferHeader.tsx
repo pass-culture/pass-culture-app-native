@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
@@ -37,7 +37,7 @@ export function OfferHeader({
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
+  const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
 
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,

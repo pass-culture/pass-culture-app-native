@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -16,7 +16,7 @@ interface Props {
 export const EmptyHeader = ({ onGoBack }: Props) => {
   const { designSystem } = useTheme()
   const { top } = useCustomSafeInsets()
-  const { goBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavigationConfig)
   return (
     <React.Fragment>
       <TopSpacer top={top} />

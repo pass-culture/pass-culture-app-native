@@ -4,7 +4,7 @@ import React from 'react'
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { CreditStatus } from 'features/onboarding/enums'
 import { OnboardingAgeInformation } from 'features/onboarding/pages/onboarding/OnboardingAgeInformation'
@@ -41,7 +41,7 @@ describe('OnboardingAgeInformation', () => {
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,
-      routes: [{ name: homeNavConfig[0] }],
+      routes: [{ name: homeNavigationConfig[0] }],
     })
     expect(eventMonitoring.captureException).toHaveBeenCalledWith('route.params.type is falsy')
   })
@@ -97,7 +97,7 @@ describe('OnboardingAgeInformation', () => {
 
       expect(reset).toHaveBeenCalledWith({
         index: 0,
-        routes: [{ name: homeNavConfig[0] }],
+        routes: [{ name: homeNavigationConfig[0] }],
       })
     }
   )

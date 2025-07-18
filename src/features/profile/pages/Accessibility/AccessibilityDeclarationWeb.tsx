@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -36,8 +38,12 @@ const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
 
 export function AccessibilityDeclarationWeb() {
+  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   return (
-    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité web" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader
+      onGoBack={goBack}
+      title="Déclaration d’accessibilité web"
+      enableMaxWidth={false}>
       <Typo.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
@@ -51,7 +57,7 @@ export function AccessibilityDeclarationWeb() {
                 as={ButtonInsideText}
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
                 icon={PlainArrowNext}
-                navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
+                navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -61,7 +67,7 @@ export function AccessibilityDeclarationWeb() {
                 as={ButtonInsideText}
                 wording="Actions réalisées depuis 2022"
                 icon={PlainArrowNext}
-                navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
+                navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -71,7 +77,7 @@ export function AccessibilityDeclarationWeb() {
                 as={ButtonInsideText}
                 wording="Plan d’actions 2024"
                 icon={PlainArrowNext}
-                navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
+                navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
               />
             </Typo.BodyXs>
           </BulletListItem>

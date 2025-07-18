@@ -3,7 +3,7 @@ import { openInbox } from 'react-native-email-link'
 
 import { navigate, replace, reset } from '__mocks__/@react-navigation/native'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
@@ -91,7 +91,7 @@ describe('TrackEmailChangeContent', () => {
     render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
     await waitFor(() => {
-      expect(replace).toHaveBeenCalledWith(...homeNavConfig)
+      expect(replace).toHaveBeenCalledWith(...homeNavigationConfig)
     })
   })
 

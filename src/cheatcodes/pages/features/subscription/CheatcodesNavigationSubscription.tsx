@@ -5,7 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
@@ -43,7 +43,7 @@ export const cheatcodesNavigationSubscriptionButtons: CheatcodeCategory[] = [
 ]
 
 export function CheatcodesNavigationSubscription(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
   const [visibleModal, setVisibleModal] = useState<VisibleModal>(null)
 
   const visibleSubscreens = subscriptionCheatcodeCategory.subscreens.filter(

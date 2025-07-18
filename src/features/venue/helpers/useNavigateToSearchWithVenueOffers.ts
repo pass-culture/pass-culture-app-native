@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { VenueResponse } from 'api/gen'
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
+import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 
@@ -9,7 +9,7 @@ export const useNavigateToSearchWithVenueOffers = (venue: VenueResponse) => {
   const venueSearchParams: SearchStackParamList['SearchResults'] = useVenueSearchParameters(venue)
   return useMemo(
     () => ({
-      ...getSearchNavConfig('SearchResults', {
+      ...getSearchPropConfig('SearchResults', {
         ...venueSearchParams,
       }),
       withPush: true,

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, replace, reset, useRoute } from '__mocks__/@react-navigation/native'
 import { EmailChangeConfirmationResponse } from 'api/gen'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { EmptyResponse } from 'libs/fetch'
 import { getRefreshToken } from 'libs/keychain/keychain'
@@ -75,7 +75,7 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => userEvent.press(screen.getByText('Annuler')))
 
-    expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
+    expect(navigate).toHaveBeenCalledWith(...homeNavigationConfig)
   })
 
   it('should navigate to new email selection on change email confirmation success', async () => {

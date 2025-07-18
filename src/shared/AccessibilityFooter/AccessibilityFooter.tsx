@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { env } from 'libs/environment/env'
 import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { Separator } from 'ui/components/Separator'
@@ -26,13 +26,13 @@ export const AccessibilityFooter = () => {
             <ColoredPassCultureLogo />
           </LogoContainer>
           <LinksContainer gap={4}>
-            <InternalTouchableLink navigateTo={getProfileNavConfig('Accessibility')}>
+            <InternalTouchableLink navigateTo={getProfilePropConfig('Accessibility')}>
               <StyledBodyAccentXs>Accessibilité&nbsp;: partiellement conforme</StyledBodyAccentXs>
             </InternalTouchableLink>
-            <InternalTouchableLink navigateTo={getProfileNavConfig('SiteMapScreen')}>
+            <InternalTouchableLink navigateTo={getProfilePropConfig('SiteMapScreen')}>
               <StyledBodyAccentXs>Plan du site</StyledBodyAccentXs>
             </InternalTouchableLink>
-            <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
+            <InternalTouchableLink navigateTo={getProfilePropConfig('LegalNotices')}>
               <StyledBodyAccentXs>Informations légales</StyledBodyAccentXs>
             </InternalTouchableLink>
             <ExternalTouchableLink

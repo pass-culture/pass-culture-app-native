@@ -6,7 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
@@ -45,9 +45,9 @@ export const useSubmitChangeCity = () => {
   const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isFromProfileUpdateFlow) {
-        navigate(...getProfileStackConfig('ChangeAddress', { type }))
+        navigate(...getProfileHookConfig('ChangeAddress', { type }))
       } else {
-        navigate(...getProfileStackConfig('PersonalData'))
+        navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
           message: 'Ta ville de résidence a bien été modifiée\u00a0!',
           timeout: SNACK_BAR_TIME_OUT,

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
@@ -24,7 +24,7 @@ export function ChangeEmail() {
   const handleHideModal = () => {
     hideModal()
     if (Platform.OS === 'web')
-      return replace(...getProfileStackConfig('ChangeEmail', { showModal: false }))
+      return replace(...getProfileHookConfig('ChangeEmail', { showModal: false }))
   }
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()

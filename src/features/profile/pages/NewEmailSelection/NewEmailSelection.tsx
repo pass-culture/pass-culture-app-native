@@ -4,7 +4,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useNewEmailSelectionMutation } from 'features/profile/helpers/useNewEmailSelectionMutation'
 import { newEmailSelectionSchema } from 'features/profile/pages/NewEmailSelection/schema/newEmailSelectionSchema'
@@ -52,7 +52,7 @@ export const NewEmailSelection = () => {
           'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
         timeout: SNACK_BAR_TIME_OUT_LONG,
       })
-      replace(...getProfileStackConfig('TrackEmailChange'))
+      replace(...getProfileHookConfig('TrackEmailChange'))
     },
     onError: () =>
       showErrorSnackBar({

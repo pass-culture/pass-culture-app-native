@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -16,7 +16,7 @@ interface HeaderIconProps {
 }
 
 export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
-  const { goBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavigationConfig)
   return (
     <StyledTouchable onPress={onGoBack || goBack} accessibilityLabel="Revenir en arrière">
       <ArrowPrevious testID="icon-back" color={color} />

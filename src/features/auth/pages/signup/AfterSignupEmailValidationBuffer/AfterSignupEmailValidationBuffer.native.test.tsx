@@ -6,7 +6,7 @@ import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { UserProfileResponse, ValidateEmailResponse } from 'api/gen'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import * as datesLib from 'libs/dates'
@@ -102,7 +102,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
             timeout: SNACK_BAR_TIME_OUT,
           })
           expect(replace).toHaveBeenCalledTimes(1)
-          expect(replace).toHaveBeenCalledWith(...homeNavConfig)
+          expect(replace).toHaveBeenCalledWith(...homeNavigationConfig)
         },
         { timeout: 10_000 }
       )

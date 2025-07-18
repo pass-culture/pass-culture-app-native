@@ -15,7 +15,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
@@ -58,7 +58,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
-  const { goBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavigationConfig)
   const { showErrorSnackBar } = useSnackBarContext()
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)

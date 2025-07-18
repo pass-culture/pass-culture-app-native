@@ -3,7 +3,7 @@ import {
   ProfileStackRouteName,
 } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 
-export function getProfileNavConfig<Screen extends ProfileStackRouteName>(
+export function getProfilePropConfig<Screen extends ProfileStackRouteName>(
   screen: Screen,
   params?: ProfileStackParamList[Screen]
 ): {

@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -12,8 +14,12 @@ import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityEngagement() {
+  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   return (
-    <SecondaryPageWithBlurHeader title="Les engagements du pass Culture" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader
+      onGoBack={goBack}
+      title="Les engagements du pass Culture"
+      enableMaxWidth={false}>
       <Typo.BodyItalic>Date de publication&nbsp;: 19 mai 2022</Typo.BodyItalic>
       <StyledBody>
         Au pass Culture, notre mission est de renforcer et de diversifier les pratiques culturelles
