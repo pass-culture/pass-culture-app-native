@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -36,8 +38,12 @@ const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
 
 export function AccessibilityDeclarationWeb() {
+  const { goBack } = useGoBack(...getProfileStackConfig('Accessibility'))
   return (
-    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité web" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader
+      onGoBack={goBack}
+      title="Déclaration d’accessibilité web"
+      enableMaxWidth={false}>
       <Typo.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les

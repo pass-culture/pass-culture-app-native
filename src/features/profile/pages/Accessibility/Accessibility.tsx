@@ -1,8 +1,11 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
+import {
+  AccessibilityRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -18,7 +21,7 @@ const StyledSectionRow = styled(SectionRow)<{ noTopMargin?: boolean }>(({ noTopM
 
 const sectionConfig: {
   title: string
-  screen: keyof ProfileStackParamList
+  screen: keyof AccessibilityRootStackParamList
   noTopMargin?: boolean
 }[] = [
   {
@@ -48,22 +51,28 @@ const sectionConfig: {
   },
 ]
 
-const sections = sectionConfig.map(({ title, screen, noTopMargin }) => (
-  <StyledSectionRow
-    key={title}
-    title={title}
-    type="navigable"
-    navigateTo={getProfileNavConfig(screen)}
-    noTopMargin={noTopMargin}
-  />
-))
-
 export function Accessibility() {
   const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { push } = useNavigation<UseNavigationType>()
 
   return (
     <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false} onGoBack={goBack}>
-      <AccessibleUnorderedList items={sections} Separator={<Separator.Horizontal />} />
+      <AccessibleUnorderedList
+        items={sectionConfig.map(({ title, screen, noTopMargin }) => (
+          <StyledSectionRow
+            key={title}
+            title={title}
+            type="navigable"
+            onPress={() =>
+              push('ProfileStackNavigator', {
+                screen: screen,
+              })
+            }
+            noTopMargin={noTopMargin}
+          />
+        ))}
+        Separator={<Separator.Horizontal />}
+      />
     </SecondaryPageWithBlurHeader>
   )
 }
