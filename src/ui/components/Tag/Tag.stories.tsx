@@ -73,7 +73,11 @@ const variantConfig: Variants<typeof Tag> = [
   },
   {
     label: 'Bookclub',
-    props: { label: 'Club', variant: TagVariant.BOOKCLUB },
+    props: { label: 'Book Club', variant: TagVariant.BOOKCLUB },
+  },
+  {
+    label: 'Cineclub',
+    props: { label: 'Ciné Club', variant: TagVariant.CINECLUB },
   },
   {
     label: 'Headline',

@@ -61,6 +61,7 @@ export const OfferPlaylistItem = ({
       headlinesCount: item.offer.headlineCount,
       hasSmallLayout,
       isComingSoonOffer: item._tags?.includes('is_future'),
+      subcategoryId: item.offer.subcategoryId,
     })
     return (
       <OfferTile
