@@ -34,4 +34,7 @@ export const getRemoteConfigFromConfigValues = (
     parameters.shareAppModalVersion
   ).asString() as CustomRemoteConfig['shareAppModalVersion'],
   showAccessScreeningButton: getConfigValue(parameters.showAccessScreeningButton).asBoolean(),
+  displayMandatoryUpdatePersonalData: getConfigValue(
+    parameters.displayMandatoryUpdatePersonalData
+  ).asBoolean(),
 })
