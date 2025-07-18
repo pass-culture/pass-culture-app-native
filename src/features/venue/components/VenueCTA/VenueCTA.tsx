@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { SearchNavConfig } from 'features/venue/types'
+import { SearchNavigationConfig } from 'features/venue/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -11,16 +11,19 @@ import { Spacer } from 'ui/theme'
 export const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
 interface Props {
-  searchNavConfig: SearchNavConfig
+  searchNavigationConfig: SearchNavigationConfig
   onBeforeNavigate: () => void
 }
 
-export const VenueCTA: FunctionComponent<Props> = ({ searchNavConfig, onBeforeNavigate }) => {
+export const VenueCTA: FunctionComponent<Props> = ({
+  searchNavigationConfig,
+  onBeforeNavigate,
+}) => {
   return (
     <StickyBottomWrapper>
       <CallToActionContainer>
         <InternalTouchableLink
-          navigateTo={searchNavConfig}
+          navigateTo={searchNavigationConfig}
           onBeforeNavigate={onBeforeNavigate}
           as={ButtonPrimary}
           wording="Rechercher une offre"

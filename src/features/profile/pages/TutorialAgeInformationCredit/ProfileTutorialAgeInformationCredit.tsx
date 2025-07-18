@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { CreditTimelineV3 } from 'features/onboarding/components/CreditTimelineV3'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
@@ -26,7 +26,7 @@ import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCredit = () => {
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()

@@ -3,9 +3,9 @@ import React, { useMemo } from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { EditableField } from 'features/profile/components/EditableFiled/EditableField'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
@@ -28,7 +28,7 @@ function onEmailChangeClick() {
 
 export function PersonalData() {
   const { user } = useAuthContext()
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   const fullname = [user?.firstName, user?.lastName].filter(Boolean).join(' ').trim()
   const hasCity = user?.postalCode && user?.city
@@ -89,7 +89,7 @@ export function PersonalData() {
         <SectionRow
           title="Supprimer mon compte"
           type="navigable"
-          navigateTo={getProfileNavConfig('DeleteProfileReason')}
+          navigateTo={getProfilePropConfig('DeleteProfileReason')}
           onPress={analytics.logAccountDeletion}
           icon={Trash}
           iconSize={SECTION_ROW_ICON_SIZE}

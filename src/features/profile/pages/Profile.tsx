@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -175,7 +175,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Informations personnelles"
                         type="navigable"
-                        navigateTo={getProfileNavConfig('PersonalData')}
+                        navigateTo={getProfilePropConfig('PersonalData')}
                         icon={ProfileIcon}
                       />
                     </Li>
@@ -185,7 +185,7 @@ const OnlineProfile: React.FC = () => {
                       type="navigable"
                       title="Notifications"
                       icon={Bell}
-                      navigateTo={getProfileNavConfig('NotificationsSettings')}
+                      navigateTo={getProfilePropConfig('NotificationsSettings')}
                     />
                   </Li>
                   <LiWithMarginVertical>
@@ -217,7 +217,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Comment ça marche&nbsp;?"
                         type="navigable"
-                        navigateTo={getProfileNavConfig('ProfileTutorialAgeInformationCredit')}
+                        navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
                         onPress={() =>
                           analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
                         }
@@ -252,7 +252,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Préférences d’affichage"
                         type="navigable"
-                        navigateTo={getProfileNavConfig('DisplayPreference')}
+                        navigateTo={getProfilePropConfig('DisplayPreference')}
                         icon={ArtMaterial}
                       />
                     </Li>
@@ -261,7 +261,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Accessibilité"
                       type="navigable"
-                      navigateTo={getProfileNavConfig('Accessibility')}
+                      navigateTo={getProfilePropConfig('Accessibility')}
                       icon={HandicapMental}
                     />
                   </Li>
@@ -270,7 +270,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Faire une suggestion"
                         type="navigable"
-                        navigateTo={getProfileNavConfig('FeedbackInApp')}
+                        navigateTo={getProfilePropConfig('FeedbackInApp')}
                         icon={Bulb}
                       />
                     </Li>
@@ -279,7 +279,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Informations légales"
                       type="navigable"
-                      navigateTo={getProfileNavConfig('LegalNotices')}
+                      navigateTo={getProfilePropConfig('LegalNotices')}
                       icon={LegalNotices}
                     />
                   </Li>
@@ -287,7 +287,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Confidentialité"
                       type="navigable"
-                      navigateTo={getProfileNavConfig('ConsentSettings')}
+                      navigateTo={getProfilePropConfig('ConsentSettings')}
                       icon={Confidentiality}
                     />
                   </Li>
@@ -332,7 +332,7 @@ const OnlineProfile: React.FC = () => {
                     <InternalTouchableLink
                       as={ButtonQuaternaryBlack}
                       wording="Débuggage"
-                      navigateTo={getProfileNavConfig('DebugScreen')}
+                      navigateTo={getProfilePropConfig('DebugScreen')}
                       justifyContent="flex-start"
                       inline
                     />

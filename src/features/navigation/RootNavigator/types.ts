@@ -74,7 +74,7 @@ export type ThematicHomeParams = BaseThematicHome &
   (OtherThematicBlockHome | CategoryBlockThematicHome | HighlightThematicBlockThematicHome)
 
 export type AccessibilityRootStackParamList = {
-  Accessibility?: Record<string, unknown> // I had to put type Record<string, unknown> so that getProfileStackConfig in DeeplinksGeneratorForm can take appAndMarketingParams, otherwise I would have just put undefined.
+  Accessibility?: Record<string, unknown> // I had to put type Record<string, unknown> so that getProfileHookConfig in DeeplinksGeneratorForm can take appAndMarketingParams, otherwise I would have just put undefined.
   AccessibilityActionPlan?: undefined
   AccessibilityDeclarationMobile?: undefined
   AccessibilityDeclarationWeb?: undefined

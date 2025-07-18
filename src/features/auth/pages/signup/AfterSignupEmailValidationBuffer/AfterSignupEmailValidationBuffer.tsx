@@ -5,7 +5,7 @@ import { ValidateEmailResponse } from 'api/gen'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { useValidateEmailMutation } from 'features/auth/queries/useValidateEmailMutation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
 import { isTimestampExpired } from 'libs/dates'
@@ -71,7 +71,7 @@ export function AfterSignupEmailValidationBuffer() {
       message: 'Ce lien de validation n’est plus valide',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    delayedReplace(...homeNavConfig)
+    delayedReplace(...homeNavigationConfig)
   }
 
   return <LoadingPage />

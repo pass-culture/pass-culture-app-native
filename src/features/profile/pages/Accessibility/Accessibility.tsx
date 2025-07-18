@@ -6,7 +6,7 @@ import {
   AccessibilityRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -52,7 +52,7 @@ const sectionConfig: {
 ]
 
 export function Accessibility() {
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { push } = useNavigation<UseNavigationType>()
 
   return (

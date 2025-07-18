@@ -3,7 +3,7 @@ import { FallbackProps } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError, AsyncError } from 'libs/monitoring/errors'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -19,7 +19,7 @@ interface AsyncFallbackProps extends FallbackProps {
 }
 
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
-  const { goBack, canGoBack } = useGoBack(...homeNavConfig)
+  const { goBack, canGoBack } = useGoBack(...homeNavigationConfig)
   const { top } = useCustomSafeInsets()
 
   return (

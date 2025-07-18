@@ -35,7 +35,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
       noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => {
-          const tabNavConfig = getTabNavigatorConfig(route, searchState)
+          const tabNavigationConfig = getTabNavigatorConfig(route, searchState)
           return (
             <StyledLi key={`key-tab-nav-${route.name}`}>
               {index > 0 ? <Spacer.Row numberOfSpaces={1.5} /> : null}
@@ -48,8 +48,8 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
                 }
                 badgeValue={routeBadgeMap?.[route.name]}
                 navigateTo={{
-                  screen: tabNavConfig[0],
-                  params: tabNavConfig[1],
+                  screen: tabNavigationConfig[0],
+                  params: tabNavigationConfig[1],
                   fromRef: true,
                 }}
               />

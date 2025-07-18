@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useAnimationToDisplay } from 'libs/styled/useAnimationToDisplay'
 import BirthdayCakeAnimation from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -32,7 +32,7 @@ export const OnboardingNotEligible = () => {
       buttonSecondary={{
         wording: 'Accéder au catalogue',
         navigateTo: {
-          screen: homeNavConfig[0],
+          screen: homeNavigationConfig[0],
           withReset: true,
         },
       }}

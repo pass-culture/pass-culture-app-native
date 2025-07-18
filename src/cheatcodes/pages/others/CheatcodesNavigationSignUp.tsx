@@ -6,7 +6,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { useSomeOfferIdQuery } from 'cheatcodes/queries/useSomeOfferIdQuery'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -74,7 +74,7 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
 export const cheatcodesNavigationSignUpButtons: CheatcodeCategory[] = [signUpCheatcodeCategory]
 
 export function CheatcodesNavigationSignUp(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
   const offerId = useSomeOfferIdQuery()
   const [visibleModal, setVisibleModal] = useState<VisibleModal>(null)
 

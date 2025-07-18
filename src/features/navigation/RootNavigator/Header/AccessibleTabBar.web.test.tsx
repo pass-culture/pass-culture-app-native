@@ -4,7 +4,7 @@ import React from 'react'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
@@ -164,7 +164,7 @@ describe('AccessibleTabBar', () => {
     fireEvent.click(searchButton)
 
     expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getSearchStackConfig('SearchLanding', {
+      ...getSearchHookConfig('SearchLanding', {
         ...mockSearchState,
         query: '',
         locationFilter: mockedLocation,

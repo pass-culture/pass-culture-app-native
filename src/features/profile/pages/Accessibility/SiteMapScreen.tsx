@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
@@ -13,7 +13,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
 export function SiteMapScreen() {
-  const { goBack } = useGoBack(...getProfileStackConfig('Accessibility'))
+  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   const { isLoggedIn } = useAuthContext()
   const sortedCategories = useSortedSearchCategories()
   const siteMapLinks = getSiteMapLinks(sortedCategories)

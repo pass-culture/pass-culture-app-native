@@ -5,9 +5,9 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Summary } from 'features/identityCheck/components/Summary'
 import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -20,14 +20,14 @@ export const ProfileInformationValidationUpdate = () => {
   const { user } = useAuthContext()
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
-  const [navigatorName, screenConfig] = getProfileStackConfig('UpdatePersonalDataConfirmation')
+  const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
   const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: () => {
       reset({
         index: 1,
         routes: [
-          { name: homeNavConfig[0], params: homeNavConfig[1] },
+          { name: homeNavigationConfig[0], params: homeNavigationConfig[1] },
           { name: navigatorName, params: screenConfig },
         ],
       })
@@ -47,7 +47,7 @@ export const ProfileInformationValidationUpdate = () => {
 
   const onChangeInformation = () =>
     navigate(
-      ...getProfileStackConfig('ChangeCity', {
+      ...getProfileHookConfig('ChangeCity', {
         type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA,
       })
     )

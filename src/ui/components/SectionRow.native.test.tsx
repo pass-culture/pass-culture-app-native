@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { render, screen } from 'tests/utils'
 
 import { SectionRow } from './SectionRow'
@@ -13,7 +13,7 @@ describe('<SectionRow/>', () => {
       <SectionRow
         type="navigable"
         title="navigable"
-        navigateTo={getProfileNavConfig('Accessibility')}
+        navigateTo={getProfilePropConfig('Accessibility')}
       />
     )
 

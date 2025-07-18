@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
@@ -25,7 +25,7 @@ export const OnboardingGeneralPublicWelcome = () => {
       buttonSecondary={{
         wording: 'Accéder au catalogue',
         navigateTo: {
-          screen: homeNavConfig[0],
+          screen: homeNavigationConfig[0],
           withPush: true,
         },
       }}

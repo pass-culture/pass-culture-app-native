@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -12,7 +12,7 @@ import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 export function RecommendedPaths() {
-  const { goBack } = useGoBack(...getProfileStackConfig('Accessibility'))
+  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   return (
     <SecondaryPageWithBlurHeader
       title="Parcours recommandés web"

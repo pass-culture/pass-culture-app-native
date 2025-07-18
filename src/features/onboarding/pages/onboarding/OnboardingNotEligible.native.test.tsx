@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingNotEligible } from 'features/onboarding/pages/onboarding/OnboardingNotEligible'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -39,7 +39,7 @@ describe('OnboardingNotEligible', () => {
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,
-      routes: [{ name: homeNavConfig[0] }],
+      routes: [{ name: homeNavigationConfig[0] }],
     })
   })
 
@@ -51,7 +51,7 @@ describe('OnboardingNotEligible', () => {
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,
-      routes: [{ name: homeNavConfig[0] }],
+      routes: [{ name: homeNavigationConfig[0] }],
     })
   })
 })

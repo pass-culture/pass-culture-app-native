@@ -2,7 +2,7 @@ import React from 'react'
 
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -43,7 +43,7 @@ describe('<SetProfileBookingError/>', () => {
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,
-      routes: [{ name: homeNavConfig[0] }],
+      routes: [{ name: homeNavigationConfig[0] }],
     })
   })
 

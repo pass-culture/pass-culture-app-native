@@ -1,7 +1,7 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
-import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
+import { getTabHookConfig, homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -17,7 +17,7 @@ describe('getScreenFromDeeplink()', () => {
 
   it('should return PageNotFound when prefix is not in known config', () => {
     const prefix = 'https://unknown.com'
-    const url = getFullUrl(getScreenPath(...homeNavConfig), prefix)
+    const url = getFullUrl(getScreenPath(...homeNavigationConfig), prefix)
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('PageNotFound')
@@ -25,7 +25,7 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should return Home', () => {
-    const url = getFullUrl(getScreenPath(...homeNavConfig))
+    const url = getFullUrl(getScreenPath(...homeNavigationConfig))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
@@ -33,7 +33,7 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should also work with a different accepted prefix', () => {
-    const url = getFullUrl(getScreenPath(...homeNavConfig), '')
+    const url = getFullUrl(getScreenPath(...homeNavigationConfig), '')
     const screenFromDeeplink = getScreenFromDeeplink(url)
 
     expect(screenFromDeeplink.screen).toEqual('TabNavigator')
@@ -41,7 +41,7 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should return ProfileStackNavigator when url = /profil', () => {
-    const url = getFullUrl(getScreenPath(...getTabNavConfig('Profile')))
+    const url = getFullUrl(getScreenPath(...getTabHookConfig('Profile')))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
@@ -49,7 +49,7 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should return SearchStackNavigator when url = /recherche/resultats', () => {
-    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchResults')))
+    const url = getFullUrl(getScreenPath(...getSearchHookConfig('SearchResults')))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
@@ -57,7 +57,7 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should return SearchStackNavigator when url = /recherche/accueil', () => {
-    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchLanding')))
+    const url = getFullUrl(getScreenPath(...getSearchHookConfig('SearchLanding')))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
@@ -73,7 +73,7 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should return SearchStackNavigator when url = /recherche/thematic', () => {
-    const url = getFullUrl(getScreenPath(...getSearchStackConfig('ThematicSearch')))
+    const url = getFullUrl(getScreenPath(...getSearchHookConfig('ThematicSearch')))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')

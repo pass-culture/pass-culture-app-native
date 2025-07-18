@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DisableActivation } from 'features/identityCheck/pages/DisableActivation'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import {
   RemoteBannerRedirectionType,
   RemoteBannerType,
@@ -42,7 +42,7 @@ describe('<DisableActivation/>', () => {
     const goHomeButton = screen.getByText('Retourner à l’accueil')
     await userEvent.press(goHomeButton)
 
-    expect(navigate).toHaveBeenCalledWith(homeNavConfig[0], homeNavConfig[1])
+    expect(navigate).toHaveBeenCalledWith(homeNavigationConfig[0], homeNavigationConfig[1])
   })
 
   it('should open FAQ link when pressing "Plus d’infos dans notre FAQ"', async () => {

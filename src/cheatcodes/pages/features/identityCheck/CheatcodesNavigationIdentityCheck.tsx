@@ -10,7 +10,7 @@ import { NotEligibleEduConnect } from 'features/identityCheck/pages/identificati
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -205,7 +205,7 @@ export const cheatcodesNavigationIdentityCheckButtons: CheatcodeCategory[] = [
 ]
 
 export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [phoneValidationTipsModalVisible, setPhoneValidationTipsModalVisible] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
@@ -27,7 +27,7 @@ const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
 export const FavoritesSorts: React.FC = () => {
-  const { goBack } = useGoBack(...getTabNavConfig('Favorites'))
+  const { goBack } = useGoBack(...getTabHookConfig('Favorites'))
   const {
     geolocPosition,
     geolocPositionError,

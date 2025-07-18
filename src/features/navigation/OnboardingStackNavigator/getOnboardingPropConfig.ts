@@ -3,7 +3,7 @@ import {
   OnboardingStackRouteName,
 } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 
-export function getOnboardingNavConfig<Screen extends OnboardingStackRouteName>(
+export function getOnboardingPropConfig<Screen extends OnboardingStackRouteName>(
   screen: Screen,
   params?: OnboardingStackParamList[Screen]
 ): {

@@ -6,7 +6,7 @@ import {
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { useTabBar } from 'features/navigation/TabBar/useTabBar'
@@ -72,11 +72,11 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
           }
           navigation.navigate('TabNavigator', navigateParams)
         }
-        const tabNavConfig = getTabNavConfig(route.name)
+        const tabNavigationConfig = getTabHookConfig(route.name)
 
         return (
           <TabBarComponent
-            navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1] }}
+            navigateTo={{ screen: tabNavigationConfig[0], params: tabNavigationConfig[1] }}
             key={`key-tab-nav-${route.key}`}
             tabName={route.name}
             isSelected={route.isSelected}

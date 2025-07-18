@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
@@ -99,7 +99,7 @@ describe('<ExternalTouchableLink />', () => {
       fireEvent.click(screen.getByText(linkText))
 
       await waitFor(() => {
-        expect(navigateFromRef).toHaveBeenCalledWith(...homeNavConfig)
+        expect(navigateFromRef).toHaveBeenCalledWith(...homeNavigationConfig)
       })
     })
   })

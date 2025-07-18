@@ -10,7 +10,7 @@ import {
   userCompletedMovieBooking,
 } from 'features/achievements/data/AchievementData'
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -49,7 +49,7 @@ export const cheatcodesNavigationAchievementsButtons: CheatcodeCategory[] = [
 ]
 
 export function CheatcodesNavigationAchievements(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
   const {
     visible: visibleOneAchievement,
     showModal: showModalOneAchievement,
