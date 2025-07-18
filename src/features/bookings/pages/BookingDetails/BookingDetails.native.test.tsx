@@ -741,7 +741,7 @@ describe('BookingDetails', () => {
       ).toBeOnTheScreen()
     })
 
-    it('should render error message with plural when booking is duo', async () => {
+    it('should not render error message when booking is no ticket', async () => {
       renderBookingDetailsV2({
         ...ongoingBookingV2,
         quantity: 2,
@@ -750,6 +750,25 @@ describe('BookingDetails', () => {
           display: TicketDisplayEnum.no_ticket,
           withdrawal: {
             type: WithdrawalTypeEnum.no_ticket,
+          },
+        },
+      })
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+      expect(
+        screen.queryByText('Tu n’as pas le droit de céder ou de revendre tes billets.')
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should render error message with plural when booking is duo', async () => {
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
+        quantity: 2,
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          display: TicketDisplayEnum.email_sent,
+          withdrawal: {
+            type: WithdrawalTypeEnum.by_email,
           },
         },
       })
@@ -773,9 +792,9 @@ describe('BookingDetails', () => {
         },
         ticket: {
           ...ongoingBookingV2.ticket,
-          display: TicketDisplayEnum.no_ticket,
+          display: TicketDisplayEnum.email_sent,
           withdrawal: {
-            type: WithdrawalTypeEnum.no_ticket,
+            type: WithdrawalTypeEnum.by_email,
           },
         },
       })

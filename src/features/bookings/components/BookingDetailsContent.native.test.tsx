@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import type { BookingResponse } from 'api/gen'
+import { BookingResponse, TicketDisplayEnum } from 'api/gen'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { BookingProperties } from 'features/bookings/types'
@@ -189,6 +189,40 @@ describe('<BookingDetailsContent />', () => {
     renderBookingDetailsContent({ properties: { ...mockProperties, isEvent: false }, booking })
 
     expect(screen.getByTestId('ticket-full')).toBeOnTheScreen()
+  })
+
+  it('should display not display error banner when booking is no ticket', async () => {
+    renderBookingDetailsContent({
+      properties: { ...mockProperties, isEvent: false },
+      booking: {
+        ...bookingsSnapV2.ongoingBookings[0],
+        ticket: {
+          ...bookingsSnapV2.ongoingBookings[0].ticket,
+          display: TicketDisplayEnum.no_ticket,
+        },
+      },
+    })
+
+    expect(
+      screen.queryByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
+    ).not.toBeOnTheScreen()
+  })
+
+  it('should display display error banner when booking has a ticket', async () => {
+    renderBookingDetailsContent({
+      properties: { ...mockProperties, isEvent: false },
+      booking: {
+        ...bookingsSnapV2.ongoingBookings[0],
+        ticket: {
+          ...bookingsSnapV2.ongoingBookings[0].ticket,
+          display: TicketDisplayEnum.ticket,
+        },
+      },
+    })
+
+    expect(
+      screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
+    ).toBeOnTheScreen()
   })
 })
 
