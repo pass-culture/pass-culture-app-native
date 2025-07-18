@@ -5,6 +5,7 @@ import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 
 const FILMS_PLAYLISTS_TITLES = [
@@ -17,11 +18,12 @@ export const FilmsPlaylists: React.FC = () => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
+  const { userLocation } = useLocation()
 
   const { playlists: filmsPlaylists, isLoading: areFilmsPlaylistsLoading } =
     useThematicSearchPlaylists({
       playlistTitles: FILMS_PLAYLISTS_TITLES,
-      fetchMethod: () => fetchFilmsOffers({ isReplicaAlgoliaIndexActive }),
+      fetchMethod: () => fetchFilmsOffers({ userLocation, isReplicaAlgoliaIndexActive }),
       queryKey: QueryKeys.FILMS_OFFERS,
     })
 
