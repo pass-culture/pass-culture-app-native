@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { OnboardingGeolocation } from 'features/onboarding/pages/onboarding/OnboardingGeolocation'
-import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -38,16 +37,5 @@ describe('OnboardingGeolocation', () => {
     await user.press(loginButton)
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-  })
-
-  it('should log analytics when "Continuer" is clicked', async () => {
-    render(reactQueryProviderHOC(<OnboardingGeolocation />))
-
-    const loginButton = screen.getByLabelText('Continuer vers l’étape suivante')
-    await user.press(loginButton)
-
-    expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {
-      type: 'use_my_position',
-    })
   })
 })

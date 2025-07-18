@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
-import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CITIES_API_URL, CitiesResponse } from 'libs/place/useCities'
 import { storage } from 'libs/storage'
@@ -26,29 +25,21 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
-useRoute.mockReturnValue({
-  params: { type: ProfileTypes.IDENTITY_CHECK },
-})
-
 describe('<SetCity/>', () => {
-  //TODO(PC-36587): unskip this test
-  it.skip('should render correctly', () => {
-    renderSetCity()
+  it('should render correctly', () => {
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display correct infos in identity check', async () => {
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(await screen.findByText('Profil')).toBeTruthy()
   })
 
   it('should display correct infos in booking free offer 15/16 years', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-    })
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
   })
@@ -56,36 +47,7 @@ describe('<SetCity/>', () => {
   it('should navigate to SetAddress with identityCheck params when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity()
-
-    await act(async () => {
-      const input = await screen.findByTestId('Entrée pour la ville')
-      fireEvent.changeText(input, POSTAL_CODE)
-    })
-
-    await screen.findByText(city.nom)
-    await user.press(await screen.findByText(city.nom))
-
-    await user.press(await screen.findByText('Continuer'))
-
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
-      screen: 'SetAddress',
-      params: {
-        type: ProfileTypes.IDENTITY_CHECK,
-      },
-    })
-  })
-
-  it('should navigate to SetAddress with booking params when clicking on "Continuer"', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    useRoute.mockReturnValueOnce({
-      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-    })
-    useRoute.mockReturnValueOnce({
-      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-    }) // re-render
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
       const input = screen.getByTestId('Entrée pour la ville')
@@ -93,31 +55,49 @@ describe('<SetCity/>', () => {
     })
 
     await screen.findByText(city.nom)
-    await user.press(await screen.findByText(city.nom))
+    await user.press(screen.getByText(city.nom))
 
-    await user.press(await screen.findByText('Continuer'))
+    await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
-      screen: 'SetAddress',
-      params: {
-        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      },
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
+      type: ProfileTypes.IDENTITY_CHECK,
+    })
+  })
+
+  it('should navigate to SetAddress with booking params when clicking on "Continuer"', async () => {
+    const city = mockedSuggestedCities[0]
+    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
+    renderSetCity({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await act(async () => {
+      const input = screen.getByTestId('Entrée pour la ville')
+      fireEvent.changeText(input, POSTAL_CODE)
+    })
+
+    await screen.findByText(city.nom)
+    await user.press(screen.getByText(city.nom))
+
+    await user.press(screen.getByText('Continuer'))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
+      type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
     })
   })
 
   it('should save city in storage when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
-      const input = await screen.findByTestId('Entrée pour la ville')
+      const input = screen.getByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await user.press(await screen.findByText(city.nom))
+    await screen.findByText(city.nom)
+    await user.press(screen.getByText(city.nom))
 
-    await user.press(await screen.findByText('Continuer'))
+    await user.press(screen.getByText('Continuer'))
 
     expect(await storage.readObject('profile-city')).toMatchObject({
       state: {
@@ -125,25 +105,9 @@ describe('<SetCity/>', () => {
       },
     })
   })
-
-  it('should log analytics on press Continuer', async () => {
-    const city = mockedSuggestedCities[0]
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity()
-
-    await act(async () => {
-      const input = await screen.findByTestId('Entrée pour la ville')
-      fireEvent.changeText(input, POSTAL_CODE)
-    })
-
-    await user.press(await screen.findByText(city.nom))
-
-    await user.press(await screen.findByText('Continuer'))
-
-    expect(analytics.logSetPostalCodeClicked).toHaveBeenCalledTimes(1)
-  })
 })
 
-const renderSetCity = () => {
+const renderSetCity = (navigationParams: { type: string }) => {
+  useRoute.mockReturnValue({ params: navigationParams })
   return render(reactQueryProviderHOC(<SetCity />))
 }

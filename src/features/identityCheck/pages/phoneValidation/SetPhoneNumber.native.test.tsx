@@ -201,20 +201,6 @@ describe('SetPhoneNumber', () => {
 
       expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1)
     })
-
-    it('should log analytics when pressing "Continuer" button', async () => {
-      renderSetPhoneNumber()
-
-      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
-
-      await act(async () => {
-        fireEvent.changeText(input, '612345678')
-      })
-
-      await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
-
-      expect(analytics.logPhoneNumberClicked).toHaveBeenCalledTimes(1)
-    })
   })
 })
 

@@ -1,15 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
-import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -43,7 +43,7 @@ export const SetCity = () => {
         navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
       }
 
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
   const storedCity = useCity()
   const { setCity: setStoreCity } = cityActions
   const {
@@ -58,8 +58,7 @@ export const SetCity = () => {
 
   const onSubmit = ({ city }: CityForm) => {
     setStoreCity(city)
-    analytics.logSetPostalCodeClicked()
-    navigate(...getSubscriptionHookConfig('SetAddress', { type: pageInfos.navigateParamsType }))
+    navigate('SetAddress', { type: pageInfos.navigateParamsType })
   }
 
   return (

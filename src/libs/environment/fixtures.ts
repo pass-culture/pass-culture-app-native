@@ -11,7 +11,6 @@ export const env: Environment = {
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST: 'algoliaVenuesIndexPlaylistSearchNewest',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: 'algoliaVenuesIndexPlaylistSearch',
-  AMPLITUDE_API_PUBLIC_KEY: 'amplitudeApiKey',
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
   APPLE_STORE_URL: 'https://apps.apple.com/fr/app/pass-culture/id1557887412',

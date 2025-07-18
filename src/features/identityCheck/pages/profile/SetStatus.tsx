@@ -21,7 +21,6 @@ import { usePostProfileMutation } from 'features/identityCheck/queries/usePostPr
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
-import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -105,7 +104,6 @@ export const SetStatus = () => {
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
-      analytics.logSetStatusClicked()
 
       const profile = {
         name: storedName,
