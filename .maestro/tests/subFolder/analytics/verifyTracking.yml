@@ -1,0 +1,19 @@
+appId: ${MAESTRO_APP_ID}
+---
+# Verify tracking analytics call
+# Usage: Call this script with EXPECTED_ANALYTICS_CALL environment variable set to the expected analytics event name
+
+- runScript:
+    label: 'Check tracking data'
+    file: hasBeenCalled.js
+    env:
+      EXPECTED_ANALYTICS_CALL: ${EXPECTED_ANALYTICS_CALL}
+      MAESTRO_MOCK_ANALYTICS_SERVER: ${MAESTRO_MOCK_ANALYTICS_SERVER}
+
+- assertTrue: ${output.analyticsHasBeenCalled}
+
+- runScript:
+    label: 'Clear tracking storage'
+    file: clear.js
+    env:
+      MAESTRO_MOCK_ANALYTICS_SERVER: ${MAESTRO_MOCK_ANALYTICS_SERVER}

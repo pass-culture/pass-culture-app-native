@@ -19,24 +19,13 @@ tags:
 
 - runFlow: subFolder/cookies/AcceptCookies.yml
 
-- runScript:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Check tracking data'
-    file: subFolder/analytics/hasBeenCalled.js
-    env:
-      EXPECTED_ANALYTICS_CALL: 'HasAcceptedAllCookies'
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
-      label: 'Verify needed analytics is in the list'
-    commands:
-      - assertTrue: ${output.analyticsHasBeenCalled}
-- runScript:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Clear tracking storage'
-    file: subFolder/analytics/clear.js
+    file: subFolder/analytics/verifyTracking.yml
+    env:
+      EXPECTED_ANALYTICS_CALL: 'HasAcceptedAllCookies'
+      MAESTRO_MOCK_ANALYTICS_SERVER: ${MAESTRO_MOCK_ANALYTICS_SERVER}
 
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
@@ -44,43 +33,21 @@ tags:
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableCinemaOffer.yml
-- runScript:
+- runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Check tracking data'
-    file: subFolder/analytics/hasBeenCalled.js
+    file: subFolder/analytics/verifyTracking.yml
     env:
       EXPECTED_ANALYTICS_CALL: 'PerformSearch'
-- runFlow:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Verify needed analytic is in the list'
-    commands:
-      - assertTrue: ${output.analyticsHasBeenCalled}
-- runScript:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Clear tracking storage'
-    file: subFolder/analytics/clear.js
+      MAESTRO_MOCK_ANALYTICS_SERVER: ${MAESTRO_MOCK_ANALYTICS_SERVER}
 - runFlow: subFolder/booking/BookCinemaOffer.yml
 
-- runScript:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Check tracking data'
-    file: subFolder/analytics/hasBeenCalled.js
-    env:
-      EXPECTED_ANALYTICS_CALL: 'BookingConfirmation'
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Verify needed analytics is in the list'
-    commands:
-      - assertTrue: ${output.analyticsHasBeenCalled}
-- runScript:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Clear tracking storage'
-    file: subFolder/analytics/clear.js
+    file: subFolder/analytics/verifyTracking.yml
+    env:
+      EXPECTED_ANALYTICS_CALL: 'BookingConfirmation'
+      MAESTRO_MOCK_ANALYTICS_SERVER: ${MAESTRO_MOCK_ANALYTICS_SERVER}
 
 - runFlow: subFolder/commons/StopApp.yml
