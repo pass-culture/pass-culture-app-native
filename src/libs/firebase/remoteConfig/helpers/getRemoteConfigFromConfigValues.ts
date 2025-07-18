@@ -13,20 +13,11 @@ export const getRemoteConfigFromConfigValues = (
     getConfigValue(parameters.artistPageSubcategories).asString()
   ),
   aroundPrecision: JSON.parse(getConfigValue(parameters.aroundPrecision).asString()),
+  homeEntryIdBeneficiary: getConfigValue(parameters.homeEntryIdBeneficiary).asString(),
+  homeEntryIdFreeBeneficiary: getConfigValue(parameters.homeEntryIdFreeBeneficiary).asString(),
   homeEntryIdFreeOffers: getConfigValue(parameters.homeEntryIdFreeOffers).asString(),
-  homeEntryIdNotConnected: getConfigValue(parameters.homeEntryIdNotConnected).asString(),
   homeEntryIdGeneral: getConfigValue(parameters.homeEntryIdGeneral).asString(),
-  homeEntryIdOnboardingGeneral: getConfigValue(parameters.homeEntryIdOnboardingGeneral).asString(),
-  homeEntryIdOnboardingUnderage: getConfigValue(
-    parameters.homeEntryIdOnboardingUnderage
-  ).asString(),
-  homeEntryIdOnboarding_18: getConfigValue(parameters.homeEntryIdOnboarding_18).asString(),
-  homeEntryIdWithoutBooking_18: getConfigValue(parameters.homeEntryIdWithoutBooking_18).asString(),
-  homeEntryIdWithoutBooking_15_17: getConfigValue(
-    parameters.homeEntryIdWithoutBooking_15_17
-  ).asString(),
-  homeEntryId_18: getConfigValue(parameters.homeEntryId_18).asString(),
-  homeEntryId_15_17: getConfigValue(parameters.homeEntryId_15_17).asString(),
+  homeEntryIdWithoutBooking: getConfigValue(parameters.homeEntryIdWithoutBooking).asString(),
   reactionFakeDoorCategories: JSON.parse(
     getConfigValue(parameters.reactionFakeDoorCategories).asString()
   ),
