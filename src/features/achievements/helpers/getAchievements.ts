@@ -18,7 +18,7 @@ type Categories = {
 
 type GetAchievements = {
   categories: Categories
-  track: (from: 'profile' | 'success' | 'cheatcodes') => void
+  track: (from: 'profile' | 'success') => void
 }
 
 export type GetAchivementsParams = {
@@ -34,7 +34,7 @@ export const getAchievements = ({
     createCategory(achievements, completedAchievements)
   )
 
-  const track = (from: 'profile' | 'success' | 'cheatcodes') => {
+  const track = (from: 'profile' | 'success') => {
     analytics.logDisplayAchievements({ from, numberUnlocked: completedAchievements.length })
   }
 

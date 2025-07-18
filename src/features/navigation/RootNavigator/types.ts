@@ -211,7 +211,7 @@ export type RootStackParamList = {
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
   AccountStatusScreenHandler: undefined
-  Achievements: { from: 'profile' | 'success' | 'cheatcodes' }
+  Achievements: { from?: 'profile' | 'success' }
   AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
   _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams
   Artist: ArtistParams

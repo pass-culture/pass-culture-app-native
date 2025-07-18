@@ -27,7 +27,6 @@ const achievementCheatcodeCategory: CheatcodeCategory = {
       title: 'Liste des achievements',
       navigationTarget: {
         screen: 'Achievements',
-        params: { from: 'cheatcodes' },
       },
     },
     // These are "ContainerButtons". They exist for search but have no action here.

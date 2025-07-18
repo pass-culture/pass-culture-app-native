@@ -29,9 +29,7 @@ const emptyAchievement = {
 }
 
 export const Achievements = () => {
-  const {
-    params: { from },
-  } = useRoute<UseRouteType<'Achievements'>>()
+  const { params } = useRoute<UseRouteType<'Achievements'>>()
   const { user } = useAuthContext()
   const { categories, track } = getAchievements({
     achievements: achievementData,
@@ -39,8 +37,10 @@ export const Achievements = () => {
   })
 
   useEffect(() => {
-    track(from)
-  }, [from, track])
+    if (params?.from) {
+      track(params.from)
+    }
+  }, [params?.from, track])
 
   return (
     <SecondaryPageWithBlurHeader title="Mes succès">
