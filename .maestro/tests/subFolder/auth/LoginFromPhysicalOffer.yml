@@ -42,6 +42,6 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn:
           point: ${output.button.ios.booking}
-- assertVisible: 'Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.'
+- assertVisible: 'Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.'
 
 - waitForAnimationToEnd
