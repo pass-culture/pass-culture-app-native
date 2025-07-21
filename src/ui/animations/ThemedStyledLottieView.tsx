@@ -31,10 +31,17 @@ const findAndSetColorInItems = (items: any[], shapeName: string, color: number[]
   })
 }
 
+export type AnimationSource =
+  | string
+  | AnimationObject
+  | {
+      uri: string
+    }
+
 type ThemedStyledLottieViewProps = {
-  width: number
-  height: number
-  source: string | AnimationObject | { uri: string }
+  width?: number | string
+  height: number | string
+  source: AnimationSource
 }
 
 export const ThemedStyledLottieView = ({ width, height, source }: ThemedStyledLottieViewProps) => {
