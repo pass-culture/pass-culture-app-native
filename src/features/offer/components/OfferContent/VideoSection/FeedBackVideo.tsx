@@ -66,6 +66,8 @@ export function FeedBackVideo({ offerId }: Props) {
       <ReactionChoiceValidation
         reactionStatus={null}
         handleOnPressReactionButton={handleReaction}
+        likeLabel="Oui"
+        dislikeLabel="Non"
       />
     </Container>
   )

@@ -10,11 +10,15 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 type Props = {
   handleOnPressReactionButton: (reactionType: ReactionTypeEnum) => void
   reactionStatus?: ReactionTypeEnum | null
+  likeLabel: string
+  dislikeLabel: string
 }
 
 export const ReactionChoiceValidation: FunctionComponent<Props> = ({
   reactionStatus,
   handleOnPressReactionButton,
+  likeLabel,
+  dislikeLabel,
   ...props
 }) => {
   const iconFactory = useIconFactory()
@@ -49,18 +53,19 @@ export const ReactionChoiceValidation: FunctionComponent<Props> = ({
     }),
     [getStyledIcon]
   )
+
   return (
     <ButtonsContainer gap={4} {...props}>
       <ReactionToggleButton
         active={reactionStatus === ReactionTypeEnum.LIKE}
-        label="J’aime"
+        label={likeLabel}
         Icon={ThumbUpIcon.default}
         FilledIcon={ThumbUpIcon.pressed}
         onPress={() => handleOnPressReactionButton(ReactionTypeEnum.LIKE)}
       />
       <ReactionToggleButton
         active={reactionStatus === ReactionTypeEnum.DISLIKE}
-        label="Je n’aime pas"
+        label={dislikeLabel}
         Icon={ThumbDownIcon.default}
         FilledIcon={ThumbDownIcon.pressed}
         onPress={() => handleOnPressReactionButton(ReactionTypeEnum.DISLIKE)}

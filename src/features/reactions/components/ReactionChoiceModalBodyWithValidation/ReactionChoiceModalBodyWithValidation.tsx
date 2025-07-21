@@ -53,6 +53,8 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
       <StyledReactionChoiceValidation
         reactionStatus={reactionStatus}
         handleOnPressReactionButton={handleOnPressReactionButton}
+        likeLabel="J’aime"
+        dislikeLabel="Je n’aime pas"
       />
     </Container>
   )
