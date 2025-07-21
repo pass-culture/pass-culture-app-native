@@ -25,7 +25,7 @@ import { IdentityCheckPending } from 'features/identityCheck/pages/identificatio
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web'
-import { UbbleWebview } from 'features/identityCheck/pages/identification/ubble/UbbleWebview'
+import { LazyUbbleWebview as UbbleWebview } from 'features/identityCheck/pages/identification/ubble/LazyUbbleWebview'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'

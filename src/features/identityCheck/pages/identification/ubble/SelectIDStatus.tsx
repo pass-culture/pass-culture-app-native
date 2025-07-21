@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
+import { checkCameraPermission } from 'libs/permissions/cameraPermissions.android'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
@@ -38,7 +39,10 @@ const MainOptionButton = (
     Subtitle={<Typo.BodyAccentXs>Les copies ne sont pas acceptées</Typo.BodyAccentXs>}
     Icon={<IdCard />}
     navigateTo={getSubscriptionPropConfig('UbbleWebview')}
-    onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.ID_OK)}
+    onBeforeNavigate={async () => {
+      logEventSelectIdStatusClicked(IDStatus.ID_OK)
+      checkCameraPermission()
+    }}
   />
 )
 

@@ -1,7 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
-import { WebView } from 'react-native-webview'
+import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/native'
+
+const WebView = lazy(() =>
+  import('react-native-webview').then((module) => ({ default: module.WebView }))
+)
 
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
@@ -45,14 +48,16 @@ export const UbbleWebview: React.FC = () => {
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <StyledWebview
-        allowsInlineMediaPlayback
-        mediaPlaybackRequiresUserAction={false}
-        source={{ uri: identificationUrl }}
-        onNavigationStateChange={onNavigationStateChange}
-        originWhitelist={ORIGIN_WHITELIST}
-        testID="identity-check-webview"
-      />
+      <Suspense fallback={<LoadingPage />}>
+        <StyledWebview
+          allowsInlineMediaPlayback={false}
+          mediaPlaybackRequiresUserAction
+          source={{ uri: identificationUrl }}
+          onNavigationStateChange={onNavigationStateChange}
+          originWhitelist={ORIGIN_WHITELIST}
+          testID="identity-check-webview"
+        />
+      </Suspense>
       <Spacer.BottomScreen />
     </React.Fragment>
   )
