@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { mapSubscriptionThemeToDescription } from 'features/subscription/helpers/mapSubscriptionThemeToDescription'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -39,7 +39,7 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
           as={ButtonTertiaryBlack}
           wording="Voir mes préférences"
           icon={Parameters}
-          navigateTo={getProfileNavConfig('NotificationsSettings')}
+          navigateTo={getProfilePropConfig('NotificationsSettings')}
           onBeforeNavigate={dismissModal}
         />
       </StyledButtonContainer>

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
+import { getOnboardingPropConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingPropConfig'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { NonEligible } from 'features/onboarding/enums'
 import { EligibleAges } from 'features/onboarding/types'
@@ -32,28 +32,28 @@ export const OnboardingAgeSelectionFork: FunctionComponent = () => {
       startButtonTitle: 'J’ai ',
       age: '16 ans',
       endButtonTitle: ' ou moins',
-      navigateTo: getOnboardingNavConfig('OnboardingNotEligible'),
+      navigateTo: getOnboardingPropConfig('OnboardingNotEligible'),
       onBeforeNavigate: () => onAgeChoice(NonEligible.UNDER_17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '17 ans',
       endButtonTitle: '',
-      navigateTo: getOnboardingNavConfig('OnboardingAgeInformation', { age: 17 }),
+      navigateTo: getOnboardingPropConfig('OnboardingAgeInformation', { age: 17 }),
       onBeforeNavigate: () => onAgeChoice(17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '18 ans',
       endButtonTitle: '',
-      navigateTo: getOnboardingNavConfig('OnboardingAgeInformation', { age: 18 }),
+      navigateTo: getOnboardingPropConfig('OnboardingAgeInformation', { age: 18 }),
       onBeforeNavigate: () => onAgeChoice(18),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '19 ans',
       endButtonTitle: ' ou plus',
-      navigateTo: getOnboardingNavConfig('OnboardingGeneralPublicWelcome'),
+      navigateTo: getOnboardingPropConfig('OnboardingGeneralPublicWelcome'),
       onBeforeNavigate: () => onAgeChoice(NonEligible.OVER_18),
     },
   ]

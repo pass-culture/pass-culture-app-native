@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { UserError } from 'ui/svg/UserError'
 
@@ -11,7 +11,7 @@ export const MandatoryUpdatePersonalData = () => (
     subtitle="Avant de continuer, assure-toi que tes informations personnelles sont toujours correctes. C’est rapide, promis."
     buttonPrimary={{
       wording: 'Commencer',
-      navigateTo: getProfileNavConfig('ProfileInformationValidationUpdate'),
+      navigateTo: getProfilePropConfig('ProfileInformationValidationUpdate'),
     }}
   />
 )

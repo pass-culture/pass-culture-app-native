@@ -2,7 +2,7 @@ import React from 'react'
 
 import { replace } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -130,7 +130,7 @@ describe('OnboardingSubscription', () => {
     await user.press(screen.getByLabelText('Activités créatives'))
     await user.press(screen.getByText('Suivre la sélection'))
 
-    expect(replace).toHaveBeenCalledWith(...homeNavConfig)
+    expect(replace).toHaveBeenCalledWith(...homeNavigationConfig)
   })
 
   it('should show success snackbar on subscription success', async () => {

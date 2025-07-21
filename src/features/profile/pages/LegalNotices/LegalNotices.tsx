@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -18,7 +18,7 @@ import { Typo } from 'ui/theme'
 import { LINE_BREAK, SECTION_ROW_ICON_SIZE, SPACE } from 'ui/theme/constants'
 
 export function LegalNotices() {
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
     <SecondaryPageWithBlurHeader title="Informations légales" onGoBack={goBack} scrollable>

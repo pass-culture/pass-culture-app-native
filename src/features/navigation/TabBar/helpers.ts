@@ -15,11 +15,11 @@ export function getShouldDisplayTab({
   }
 }
 
-export function getTabNavConfig<Screen extends TabRouteName>(
+export function getTabHookConfig<Screen extends TabRouteName>(
   screen: Screen,
   params?: TabParamList[Screen]
 ): ['TabNavigator', { screen: Screen; params: TabParamList[Screen] }] {
   return ['TabNavigator', { screen, params }]
 }
 
-export const homeNavConfig = getTabNavConfig('Home')
+export const homeNavigationConfig = getTabHookConfig('Home')

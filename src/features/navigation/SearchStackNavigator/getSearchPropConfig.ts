@@ -1,6 +1,6 @@
 import { SearchStackRouteName, SearchStackParamList } from './SearchStackTypes'
 
-export function getSearchNavConfig<Screen extends SearchStackRouteName>(
+export function getSearchPropConfig<Screen extends SearchStackRouteName>(
   screen: Screen,
   params?: SearchStackParamList[Screen]
 ): {

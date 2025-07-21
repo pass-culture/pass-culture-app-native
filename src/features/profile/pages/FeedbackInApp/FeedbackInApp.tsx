@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import {
   FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
@@ -31,7 +31,7 @@ type FormValue = {
 
 export const FeedbackInApp = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
+  const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const {
@@ -64,7 +64,7 @@ export const FeedbackInApp = () => {
     sendFeedback({ feedback })
   }
 
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
     <PageWithHeader

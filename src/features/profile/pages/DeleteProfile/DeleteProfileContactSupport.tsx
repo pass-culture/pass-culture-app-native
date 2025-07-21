@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
@@ -23,7 +23,7 @@ export const DeleteProfileContactSupport: FC = () => {
   const { requestSendMail } = getContactSupportForDeletionProfile({ emailProvider })
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
+  const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
   return (
     <GenericInfoPage
       withGoBack

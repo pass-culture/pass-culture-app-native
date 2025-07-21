@@ -10,7 +10,7 @@ import {
   OffersModule as OffersModuleType,
   RecommendedOffersModule,
 } from 'features/home/types'
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/getSearchNavConfig'
+import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
@@ -75,7 +75,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     locationParams,
     hitsPerPage: 20,
   }
-  const searchTabConfig = getSearchNavConfig('SearchResults', searchParams)
+  const searchTabConfig = getSearchPropConfig('SearchResults', searchParams)
 
   const moduleName = displayParameters.title ?? parameters?.title
 

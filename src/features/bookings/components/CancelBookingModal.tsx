@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useCancelBookingMutation } from 'features/bookings/queries'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
@@ -43,7 +43,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   function onSuccess() {
-    navigate(...getTabNavConfig('Bookings'))
+    navigate(...getTabHookConfig('Bookings'))
     showSuccessSnackBar({
       message:
         'La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées',
@@ -53,7 +53,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 
   function onError(error: unknown) {
     dismissModal()
-    navigate(...getTabNavConfig('Bookings'))
+    navigate(...getTabHookConfig('Bookings'))
     showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
   }
 

@@ -2,14 +2,14 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToSearchTab = () => navigate(...getSearchStackConfig('SearchLanding'))
+  const navigateToSearchTab = () => navigate(...getSearchHookConfig('SearchLanding'))
 
   const helmetTitle =
     'Page erreur\u00a0: Erreur pendant le chargement de nos recommandations | pass Culture'

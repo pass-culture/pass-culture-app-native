@@ -7,7 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig, homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
@@ -34,7 +34,7 @@ const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export const OnboardingSubscription = () => {
   const { replace } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...getTabNavConfig('Home'))
+  const { goBack } = useGoBack(...getTabHookConfig('Home'))
   const { user } = useAuthContext()
   const theme = useTheme()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
@@ -73,7 +73,7 @@ export const OnboardingSubscription = () => {
         message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      replace(...homeNavConfig)
+      replace(...homeNavigationConfig)
     },
     onError: () => {
       showErrorSnackBar({

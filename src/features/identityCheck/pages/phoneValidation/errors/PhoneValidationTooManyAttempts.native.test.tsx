@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { userEvent, render, waitFor, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -38,6 +38,6 @@ describe('PhoneValidationTooManyAttempts', () => {
     render(<PhoneValidationTooManyAttempts />)
     await userEvent.press(screen.getByText('Retourner à l’accueil'))
 
-    expect(navigate).toHaveBeenCalledWith(homeNavConfig[0], homeNavConfig[1])
+    expect(navigate).toHaveBeenCalledWith(homeNavigationConfig[0], homeNavigationConfig[1])
   })
 })

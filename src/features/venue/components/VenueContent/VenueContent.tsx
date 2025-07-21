@@ -71,7 +71,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
   const { isButtonVisible, wording } = useOfferCTA()
-  const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
+  const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
 
   const renderVenueCTA = useCallback(() => {
     if (showAccessScreeningButton && wording.length) {
@@ -79,7 +79,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     }
     return isCTADisplayed ? (
       <VenueCTA
-        searchNavConfig={searchNavConfig}
+        searchNavigationConfig={searchNavigationConfig}
         onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
       />
     ) : null
@@ -89,7 +89,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     showAccessScreeningButton,
     venue.id,
     wording.length,
-    searchNavConfig,
+    searchNavigationConfig,
   ])
 
   return (

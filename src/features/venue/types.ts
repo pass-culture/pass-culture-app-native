@@ -77,7 +77,7 @@ export type Artist = {
 
 export type VenueOffersArtists = { artists: Artist[] }
 
-export type SearchNavConfig = {
+export type SearchNavigationConfig = {
   screen: RootNavigateParams[0]
   params?: RootNavigateParams[1]
   withPush?: boolean

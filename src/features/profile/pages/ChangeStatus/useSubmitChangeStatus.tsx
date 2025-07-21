@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StatusForm } from 'features/identityCheck/pages/profile/StatusFlatList'
 import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
@@ -34,9 +34,9 @@ export const useSubmitChangeStatus = () => {
   const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
-        navigate(...getProfileStackConfig('UpdatePersonalDataConfirmation'))
+        navigate(...getProfileHookConfig('UpdatePersonalDataConfirmation'))
       } else {
-        navigate(...getProfileStackConfig('PersonalData'))
+        navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
           message: successSnackBarMessage,
           timeout: SNACK_BAR_TIME_OUT,

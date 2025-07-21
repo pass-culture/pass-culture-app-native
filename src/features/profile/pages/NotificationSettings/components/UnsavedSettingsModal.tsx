@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -21,7 +21,7 @@ export const UnsavedSettingsModal: FunctionComponent<Props> = ({
   dismissModal,
   onPressSaveChanges,
 }) => {
-  const { goBack: goBackAndLeaveNotificationsSettings } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack: goBackAndLeaveNotificationsSettings } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
     <AppModal

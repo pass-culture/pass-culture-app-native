@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityActionPlanSection } from 'features/profile/components/AccessibilityActionPlanSection/AccessibilityActionPlanSection'
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
 import { accessibility2022 } from 'features/profile/pages/Accessibility/accessibility2022'
@@ -19,8 +21,12 @@ import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityActionPlan() {
+  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   return (
-    <SecondaryPageWithBlurHeader title="Schéma pluriannuel" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader
+      onGoBack={goBack}
+      title="Schéma pluriannuel"
+      enableMaxWidth={false}>
       <Typo.BodyItalic>Schéma pluriannuel d’accessibilité 2022 - 2024</Typo.BodyItalic>
       <StyledBody marginTop={getSpacing(6)}>
         L’article 47 de la loi n° 2005-102 du 11 février 2005 pour l’égalité des droits et des

@@ -5,7 +5,7 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { Nav } from 'features/navigation/RootNavigator/Header/Nav'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
@@ -127,7 +127,7 @@ describe('Nav', () => {
     await user.press(searchButton)
 
     expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getSearchStackConfig('SearchLanding', {
+      ...getSearchHookConfig('SearchLanding', {
         ...mockSearchState,
         query: '',
         locationFilter: mockedLocation,

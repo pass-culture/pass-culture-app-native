@@ -9,7 +9,7 @@ import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -188,7 +188,7 @@ describe('ValidateEmailChange', () => {
 
     renderValidateEmailChange()
 
-    expect(navigation.replace).toHaveBeenCalledWith(...homeNavConfig)
+    expect(navigation.replace).toHaveBeenCalledWith(...homeNavigationConfig)
   })
 
   it('should log to sentry, redirect to home and show error message when token is falsy', async () => {
@@ -199,7 +199,7 @@ describe('ValidateEmailChange', () => {
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       new Error('Expected a string, but received undefined')
     )
-    expect(navigation.replace).toHaveBeenCalledWith(...homeNavConfig)
+    expect(navigation.replace).toHaveBeenCalledWith(...homeNavigationConfig)
     expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
   })
 })
