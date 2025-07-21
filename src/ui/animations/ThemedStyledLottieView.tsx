@@ -73,7 +73,7 @@ export const ThemedStyledLottieView = ({
     const newAnimation = JSON.parse(JSON.stringify(source))
     const themedColor = hexToLottieRgb(designSystem.color.background.brandPrimary)
 
-    const shapesToColor = ['Fill 1', 'Stroke 1', 'Fond 1', 'Gradient Fill 1']
+    const shapesToColor = ['Fill 1', 'Stroke 1', 'Fond 1'] // Gradients aren't supported
 
     newAnimation.layers.forEach((layer: any) => {
       shapesToColor.forEach((shapeName) => {
