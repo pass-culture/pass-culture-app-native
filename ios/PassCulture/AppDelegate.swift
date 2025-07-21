@@ -30,9 +30,8 @@ class AppDelegate: RCTAppDelegate {
     
     // Enable Firebase debug view on testing environment
     if env == "testing" {
-      var newArguments = ProcessInfo.processInfo.arguments
-      newArguments.append("-FIRAnalyticsDebugEnabled")
-      newArguments.append("-FIRDebugEnabled")
+      setenv("FIRAnalyticsDebugEnabled", "1", 1)
+      setenv("FIRDebugEnabled", "1", 1)
       // Note: setValue for arguments is not available in Swift, this is handled differently
     }
     
@@ -42,6 +41,7 @@ class AppDelegate: RCTAppDelegate {
     
     // Setup Batch
     let associatedDomain = ReactNativeConfig.env(for: "WEBAPP_V2_DOMAIN")
+    BatchSDK.associatedDomains = associatedDomain.map { [$0] } ?? []
     BatchEventDispatcher.add(BatchFirebaseDispatcher.instance())
     RNBatch.start()
     BatchUNUserNotificationCenterDelegate.registerAsDelegate()
