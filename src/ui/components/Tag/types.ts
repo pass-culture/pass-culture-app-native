@@ -11,6 +11,7 @@ export enum TagVariant {
   ERROR = 'error',
   NEW = 'new',
   BOOKCLUB = 'bookclub',
+  CINECLUB = 'cineclub',
   HEADLINE = 'headline',
   LIKE = 'like',
 }

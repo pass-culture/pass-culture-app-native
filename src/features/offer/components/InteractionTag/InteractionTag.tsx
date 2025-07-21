@@ -1,11 +1,14 @@
 import React, { ReactElement } from 'react'
 
+import { SubcategoryIdEnum } from 'api/gen'
+import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
 import { theme } from 'theme'
 import { Tag } from 'ui/components/Tag/Tag'
 import { TagVariant } from 'ui/components/Tag/types'
 
 type InteractionTagParams = {
   theme: typeof theme
+  subcategoryId: SubcategoryIdEnum
   likesCount?: number
   chroniclesCount?: number
   headlinesCount?: number
@@ -31,6 +34,7 @@ export const getTagProps = ({
   headlinesCount = 0,
   hasSmallLayout,
   isComingSoonOffer,
+  subcategoryId,
 }: InteractionTagParams): TagProps | null => {
   if (isComingSoonOffer) {
     return {
@@ -40,9 +44,15 @@ export const getTagProps = ({
   }
 
   if (chroniclesCount > 0) {
+    if (isBookClubSubcategory(subcategoryId)) {
+      return {
+        label: hasSmallLayout ? 'Reco Club' : 'Reco du Book Club',
+        variant: TagVariant.BOOKCLUB,
+      }
+    }
     return {
-      label: hasSmallLayout ? 'Reco Club' : 'Reco du Club',
-      variant: TagVariant.BOOKCLUB,
+      label: hasSmallLayout ? 'Reco Club' : 'Reco du Ciné Club',
+      variant: TagVariant.CINECLUB,
     }
   }
 

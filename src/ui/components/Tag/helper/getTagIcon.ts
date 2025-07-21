@@ -8,6 +8,11 @@ export function getTagIcon(
   variant: TagVariant,
   icon?: FunctionComponent<AccessibleIcon> | ReactElement
 ): FunctionComponent<AccessibleIcon> | ReactElement {
-  const forcedVariants = [TagVariant.BOOKCLUB, TagVariant.HEADLINE, TagVariant.LIKE]
+  const forcedVariants = [
+    TagVariant.BOOKCLUB,
+    TagVariant.CINECLUB,
+    TagVariant.HEADLINE,
+    TagVariant.LIKE,
+  ]
   return forcedVariants.includes(variant) ? variantIcons[variant] : icon
 }
