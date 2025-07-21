@@ -18,7 +18,7 @@ import { isMobileDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { getSpacing } from 'ui/theme'
 
 interface VideoPlayerWebProps extends VideoPlayerProps {
-  playerRef: RefObject<YouTube>
+  playerRef: RefObject<YouTube | null>
 }
 
 export const VideoPlayerWeb: React.FC<VideoPlayerWebProps> = ({
@@ -85,6 +85,7 @@ export const VideoPlayerWeb: React.FC<VideoPlayerWebProps> = ({
   return (
     <React.Fragment>
       <StyledVideoPlayerContainer>
+        {/* @ts-expect-error - type incompatibility with React 19 */}
         <YouTube
           ref={playerRef}
           videoId={youtubeVideoId}

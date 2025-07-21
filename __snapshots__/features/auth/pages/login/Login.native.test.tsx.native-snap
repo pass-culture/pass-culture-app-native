@@ -827,7 +827,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               }
             }
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

@@ -22,7 +22,7 @@ export function useThrottle<T, U>(
   delay: number,
   options?: ThrottleSettings
 ) {
-  const ref = useRef<(props: T) => U>()
+  const ref = useRef<(props: T) => U>(callback)
 
   useEffect(() => {
     ref.current = callback

@@ -1,9 +1,7 @@
 import React from 'react'
 import CodePush, { LocalPackage, RemotePackage } from 'react-native-code-push' // @codepush
-import TestRenderer from 'react-test-renderer'
 
-import { tick } from 'libs/tick'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, renderAsync, screen, userEvent } from 'tests/utils'
 
 import { CodePushButton } from './CodePushButton'
 
@@ -19,41 +17,36 @@ describe('CodePushButton', () => {
     CodePush.getUpdateMetadata = jest.fn(() =>
       Promise.resolve({ label: 'V4', description: 'New Release !' } as LocalPackage)
     )
-    const testRenderer = TestRenderer.create(<CodePushButton />)
+    await renderAsync(<CodePushButton />)
 
     expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
 
-    await tick()
-
-    // We expect that our state has those metadata
-    expect(testRenderer.root.instance.state.info).toEqual('V4 (New Release !)')
+    // We expect that the component displays the metadata info
+    expect(screen.getByText('V4 (New Release !)')).toBeTruthy()
     expect.assertions(2)
   })
 
   it('gets the partial metadata when CodePush update metdata with partial information', async () => {
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve({ label: 'V5' } as LocalPackage))
-    const testRenderer = TestRenderer.create(<CodePushButton />)
+    await renderAsync(<CodePushButton />)
 
     expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
 
-    await tick()
-
-    // We expect that our state has those metadata
-    expect(testRenderer.root.instance.state.info).toEqual('V5')
+    // We expect that the component displays the partial metadata
+    expect(screen.getByText('V5')).toBeTruthy()
     expect.assertions(2)
   })
 
   it('gets the partial metadata when CodePush update metdata with null information', async () => {
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve(null))
-    const testRenderer = TestRenderer.create(<CodePushButton />)
+    await renderAsync(<CodePushButton />)
 
     expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
 
-    await tick()
-
-    // We expect that our state has not changed
-    expect(testRenderer.root.instance.state.info).toBeUndefined()
-    expect.assertions(2)
+    // We expect that no metadata info is displayed (only the button with default text)
+    expect(screen.getByTestId('Check update')).toBeTruthy()
+    expect(screen.queryByText(/V\d/)).toBeNull() // Should not find any version text
+    expect.assertions(3)
   })
 
   it('prints that a new version is available if version mismatches', async () => {
