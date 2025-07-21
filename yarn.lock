@@ -8374,18 +8374,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/core@npm:6.2.2":
-  version: 6.2.2
-  resolution: "@react-navigation/core@npm:6.2.2"
+"@react-navigation/core@npm:7.12.1":
+  version: 7.12.1
+  resolution: "@react-navigation/core@npm:7.12.1"
   dependencies:
-    "@react-navigation/routers": ^6.1.1
+    "@react-navigation/routers": ^7.4.1
     escape-string-regexp: ^4.0.0
-    nanoid: ^3.1.23
-    query-string: ^7.0.0
-    react-is: ^16.13.0
+    nanoid: ^3.3.11
+    query-string: ^7.1.3
+    react-is: ^19.1.0
+    use-latest-callback: ^0.2.4
+    use-sync-external-store: ^1.5.0
   peerDependencies:
-    react: "*"
-  checksum: ecc56be910c2eb98b8bb949db76cb59f0ce4b20479c05058244530383e363a57a4680ae638904810238f6cc29d67a140d0cc25b4cbcbce89808de3529ab45ebb
+    react: ">= 18.2.0"
+  checksum: 0e274c1ad3fad0ddb65037bd8403216c2281a9e166f5e2e4d5a054dbcbac76729ebdf3688c4b3e46f98a9ded3ae8128ee01eb38431b12425929402b1782e1724
   languageName: node
   linkType: hard
 
@@ -8416,12 +8418,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/routers@npm:^6.1.1":
-  version: 6.1.6
-  resolution: "@react-navigation/routers@npm:6.1.6"
+"@react-navigation/routers@npm:^7.4.1":
+  version: 7.4.1
+  resolution: "@react-navigation/routers@npm:7.4.1"
   dependencies:
-    nanoid: ^3.1.23
-  checksum: 3e765b66cf3e94b9194cfffe8ba6fa51e6652e8f9d8fed713ac76f6ad9e2bd5af5590d83e546efb71455bd6bf2ab1faefcf7f1b0c24b15324c4fe1b8246f8dab
+    nanoid: ^3.3.11
+  checksum: 7cc889f8a89c656082b7302653b462bb28db422c443a9df3d5d379715cb837027f484faf8889567adf829638754ab9c7f36a6d0771942530460aec2a64605840
   languageName: node
   linkType: hard
 
@@ -11112,7 +11114,7 @@ __metadata:
     "@react-native/metro-config": 0.77.2
     "@react-native/typescript-config": 0.77.2
     "@react-navigation/bottom-tabs": ^6.6.1
-    "@react-navigation/core": 6.2.2
+    "@react-navigation/core": 7.12.1
     "@react-navigation/native": ^6.1.17
     "@react-navigation/stack": ^6.4.1
     "@react-oauth/google": ^0.11.1
@@ -28930,6 +28932,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"use-latest-callback@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "use-latest-callback@npm:0.2.4"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 60c3a6b1b6567e1794f9e48cd86b8cde8a149485cc2fed60570f69ec3b157f6812e0ff0a877f0b971592fb9254b1363cc21c120fd1fc993b1dad1406c69211df
+  languageName: node
+  linkType: hard
+
 "use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.0.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
@@ -28939,7 +28950,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.5.0, use-sync-external-store@npm:^1.2.0":
+"use-sync-external-store@npm:1.5.0, use-sync-external-store@npm:^1.2.0, use-sync-external-store@npm:^1.5.0":
   version: 1.5.0
   resolution: "use-sync-external-store@npm:1.5.0"
   peerDependencies:
