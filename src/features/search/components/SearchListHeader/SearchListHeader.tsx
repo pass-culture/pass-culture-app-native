@@ -11,7 +11,7 @@ import { NumberOfResults } from 'features/search/components/NumberOfResults/Numb
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
-import { SearchView, VenuesUserData } from 'features/search/types'
+import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
@@ -19,6 +19,8 @@ import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
+import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
 import { Error } from 'ui/svg/icons/Error'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -28,6 +30,9 @@ interface SearchListHeaderProps extends ScrollViewProps {
   venues?: SearchOfferHits['venues']
   venuesUserData: VenuesUserData
   artistSection?: React.ReactNode
+  setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
+  selectedGridListLayout?: GridListLayout
+  shouldDisplayGridList?: boolean
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -36,6 +41,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
   artistSection,
+  setGridListLayout,
+  selectedGridListLayout,
+  shouldDisplayGridList,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
@@ -60,9 +68,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const previousRoute = usePreviousRoute()
 
-  const offerTitle = shouldDisplayAccessibilityContent
-    ? 'Les offres dans des lieux accessibles'
-    : 'Les offres'
+  const offerTitle = `Les offres${shouldDisplayAccessibilityContent ? ' dans des lieux accessibles' : ''}`
 
   const shouldDisplayVenuesPlaylist =
     !venue && !!venues?.length && previousRoute?.name !== SearchView.Thematic
@@ -72,23 +78,29 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     showGeolocPermissionModal()
   }
 
-  const shouldDisplayGeolocationButton =
+  const shouldDisplayGeolocationBanner =
     geolocPosition === null &&
     offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
+  const getLayoutButtonProps = (layout: GridListLayout) => ({
+    layout,
+    isSelected: selectedGridListLayout === layout,
+    onPress: () => setGridListLayout?.(layout),
+  })
+
   return (
     <View testID="searchListHeader">
-      {shouldDisplayGeolocationButton ? (
-        <GeolocationButtonContainer>
+      {shouldDisplayGeolocationBanner ? (
+        <GeolocationBannerContainer>
           <GeolocationBanner
             title="Géolocalise-toi"
             subtitle="Pour trouver des offres autour de toi"
             analyticsFrom="search"
             onPress={onPress}
           />
-        </GeolocationButtonContainer>
+        </GeolocationBannerContainer>
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
         <BannerOfferNotPresentContainer
@@ -106,16 +118,41 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           isLocated={isLocated}
         />
       ) : null}
-      <Title>{offerTitle}</Title>
-      <NumberOfResults nbHits={nbHits} />
+      <HeaderSectionContainer>
+        <TitleContainer>
+          <Title>{offerTitle}</Title>
+          <NumberOfResults nbHits={nbHits} />
+        </TitleContainer>
+        {shouldDisplayGridList ? (
+          <GridListMenu testID="grid-list-menu">
+            <ListLayoutButton {...getLayoutButtonProps(GridListLayout.LIST)} />
+            <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
+          </GridListMenu>
+        ) : null}
+      </HeaderSectionContainer>
     </View>
   )
 }
 
-const GeolocationButtonContainer = styled.View(({ theme }) => ({
+const GridListMenu = styled(View)({
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  marginRight: getSpacing(6),
+})
+
+const HeaderSectionContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const TitleContainer = styled.View({
+  flexDirection: 'column',
+})
+
+const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginVertical: getSpacing(4),
-  marginLeft: theme.contentPage.marginHorizontal,
-  marginRight: theme.contentPage.marginHorizontal,
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({

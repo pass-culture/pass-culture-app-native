@@ -18,6 +18,7 @@ import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
 import { ColorsType } from 'theme/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
@@ -32,6 +33,11 @@ export enum SearchView {
   Landing = 'SearchLanding',
   Results = 'SearchResults',
   Thematic = 'ThematicSearch',
+}
+
+export enum GridListLayout {
+  GRID = 'Grille',
+  LIST = 'Liste',
 }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
@@ -93,8 +99,10 @@ export interface SearchListProps {
   onScroll?: () => void
   onPress?: () => void
   artistSection?: ReactNode
-  enableGrisList?: boolean
   numColumns?: number
+  isGridLayout?: boolean
+  shouldDisplayGridList?: boolean
+  setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
 }
 
 export type CreateHistoryItem = {
@@ -141,3 +149,10 @@ export type CalendarModalFormData = {
 }
 
 export type CalendarFilterId = 'today' | 'thisWeek' | 'thisWeekend' | 'thisMonth' | 'nextMonth'
+
+export type LayoutButtonProps = {
+  layout: GridListLayout
+  isSelected: boolean
+  onPress: () => void
+  Icon: React.FC<AccessibleIcon>
+}

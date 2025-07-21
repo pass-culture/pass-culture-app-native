@@ -963,6 +963,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           ListHeaderComponent={
             <SearchListHeader
               nbHits={4}
+              selectedGridListLayout="Liste"
+              setGridListLayout={[Function]}
+              shouldDisplayGridList={false}
               venues={
                 [
                   {
@@ -1366,6 +1369,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 },
                 "ListHeaderComponent": <SearchListHeader
                   nbHits={4}
+                  selectedGridListLayout="Liste"
+                  setGridListLayout={[Function]}
+                  shouldDisplayGridList={false}
                   venues={
                     [
                       {
