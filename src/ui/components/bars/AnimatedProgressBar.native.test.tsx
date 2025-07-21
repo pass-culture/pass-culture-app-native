@@ -22,10 +22,11 @@ describe('AnimatedProgressBar', () => {
     )
 
     const progressBar = screen.getByTestId('animated-progress-bar')
-    const style = progressBar.props.style
 
-    expect(style.backgroundColor).toEqual(expectedBackgroundColor)
-    expect(style.flexGrow).toEqual(expectedProgress)
+    expect(progressBar).toHaveStyle({
+      backgroundColor: expectedBackgroundColor,
+      flexGrow: expectedProgress,
+    })
 
     const progressBarIcon = screen.getByText('progress-bar-icon-SVG-Mock')
 
@@ -46,10 +47,11 @@ describe('AnimatedProgressBar', () => {
     )
 
     const progressBar = screen.getByTestId('animated-progress-bar')
-    const style = progressBar.props.style
 
-    expect(style.backgroundColor).toEqual(expectedBackgroundColor)
-    expect(style.flexGrow).toEqual(1)
+    expect(progressBar).toHaveStyle({
+      backgroundColor: expectedBackgroundColor,
+      flexGrow: 1,
+    })
 
     const progressBarIcon = screen.getByText('progress-bar-icon-SVG-Mock')
 
