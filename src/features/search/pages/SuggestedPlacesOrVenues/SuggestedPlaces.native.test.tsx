@@ -52,8 +52,7 @@ describe('<SuggestedPlaces/>', () => {
     ).not.toBeOnTheScreen()
   })
 
-  // TODO(PC-36586): unskip this test
-  it.skip('should show help message when the query is too short', async () => {
+  it('should show help message when the query is too short', async () => {
     mockApiAdresse({
       responseOptions: {
         statusCode: 400,
