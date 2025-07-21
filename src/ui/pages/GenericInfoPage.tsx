@@ -62,7 +62,7 @@ type Props = PropsWithChildren<
     buttonPrimary: ButtonProps
     buttonSecondary?: ButtonProps
     buttonTertiary?: ButtonProps
-    temporarilyDeactivateColors: boolean // TODO(PC-37129)
+    temporarilyDeactivateColors?: boolean // TODO(PC-37129)
   } & (
     | { illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>; animation?: never }
     | { animation: AnimationObject; illustration?: never }
