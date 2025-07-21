@@ -21,6 +21,7 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 - [ ] 🎨 dev storybook `yarn build-storybook`
 - [ ] 🧪 tests e2e
 - [ ] 🚀 build environnement de test `yarn trigger:testing:deploy`
+- [ ] 🙊 mettre un message sur le canal slack `dev-mobile`
 
 | Tâche                                        | Commande                                                | Etat attendu                                                          |
 | -------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- |
@@ -70,6 +71,8 @@ Certains tests (voir quasi tous) peuvent échouer. Cela peut être dû aux mocks
 Tous les tests doivent être au vert avant de passer à la suite.
 
 La CI doit être complètement verte avant de passer aux étapes suivantes.
+
+Bien vérifier les différences de snapshots notamment sur les balises ou les CSS
 
 ### 🔧 Faire fonctionner les environnements
 
@@ -165,11 +168,25 @@ yarn storybook
 yarn build-storybook
 ```
 
+#### 📝 Changelogs
+
+Lire la page web de la release note de cette version afin de :
+
+- comprendre les impacts de la nouvelle version
+- faire remonter en synchro tech les nouveautés utilisables par les développeurs
+- tester les nouveautés (rapidement) pour s'assurer que cela fonctionne
+
 #### 🧪 QA
 
 Les tests e2e doivent être lancés depuis la CI et la PR doit être approuvée par un membre de la QA.
 
-### 🔀 Merge
+#### 🫃 La PR devient énorme
+
+Il est commun qu'un bump de react native demande des bumps d'autres libs.
+Si ces libs sont compatibles avec la version actuelle de l'app, préférer faire ce changement dans une PR différente.
+Ainsi le travail sera mieux suivi par les PM, mieux découpé et plus facile à relire par les pairs
+
+#### 🔀 Merge
 
 À ce stade-là, après une validation d'un tech lead, de la QA et d'un autre développeur expérimenté, on peut merge mais ce n'est pas encore terminé.
 
@@ -193,3 +210,4 @@ N'hésitez pas à laisser un petit message si quelque chose ne fonctionne pas ch
 #### 🚀 Déploiement en testing
 
 Déployer l'app en testing et s'assurer que tout fonctionne.
+En tant que dev responsable du bump, il faut également surveiller les deploiements staging et prod car il y a des petits diffs. On peut avoir un deploiement testing qui passe, mais pas staging/prod
