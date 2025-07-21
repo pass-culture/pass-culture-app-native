@@ -25,7 +25,7 @@ export const BookingDetailsContentMobile = ({
   showArchiveModal: () => void
 }) => {
   return (
-    <View>
+    <View testID="booking_details_mobile">
       <SectionContainer>
         <TicketCutoutContainer>{topBlock}</TicketCutoutContainer>
 

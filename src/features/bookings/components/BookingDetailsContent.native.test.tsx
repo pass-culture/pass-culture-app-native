@@ -232,7 +232,7 @@ describe('<BookingDetailsContent />', () => {
     expect(screen.getByTestId('ticket-full')).toBeOnTheScreen()
   })
 
-  it('should display not display error banner when booking is no ticket', async () => {
+  it('should not display error banner when booking is no ticket', async () => {
     renderBookingDetailsContent({
       properties: { ...mockProperties, isEvent: false },
       booking: {
@@ -249,7 +249,7 @@ describe('<BookingDetailsContent />', () => {
     ).not.toBeOnTheScreen()
   })
 
-  it('should display display error banner when booking has a ticket', async () => {
+  it('should display error banner when booking has a ticket', async () => {
     renderBookingDetailsContent({
       properties: { ...mockProperties, isEvent: false },
       booking: {

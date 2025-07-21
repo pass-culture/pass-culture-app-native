@@ -79,6 +79,57 @@ describe('BookingDetails', () => {
         })
       })
 
+      it('should display details section when there is a organizer contact', async () => {
+        renderBookingDetailsV2({
+          booking: {
+            ...ongoingBookingV2,
+            stock: {
+              ...ongoingBookingV2.stock,
+              offer: { ...ongoingBookingV2.stock.offer, bookingContact: 'toto@monemail.com' },
+            },
+          },
+
+          isDesktopViewport: true,
+        })
+
+        expect(screen.getByText('toto@monemail.com')).toBeInTheDocument()
+      })
+
+      it('should display details section when there is a withdrawal detail', async () => {
+        renderBookingDetailsV2({
+          booking: {
+            ...ongoingBookingV2,
+            ticket: {
+              ...ongoingBookingV2.ticket,
+              withdrawal: {
+                details: 'Il faudra se présenter 42 minutes avant la représentation au gichet.',
+              },
+            },
+          },
+          isDesktopViewport: true,
+        })
+
+        expect(
+          screen.getByText('Il faudra se présenter 42 minutes avant la représentation au gichet.')
+        ).toBeInTheDocument()
+      })
+
+      it.each`
+        isDesktopViewport | expectedComponent
+        ${true}           | ${'booking_details_desktop'}
+        ${false}          | ${'booking_details_mobile'}
+      `(
+        'should display $expectedComponent when isDesktopViewport is $isDesktopViewport',
+        async ({ isDesktopViewport, expectedComponent }) => {
+          renderBookingDetailsV2({
+            booking: ongoingBookingV2,
+            isDesktopViewport,
+          })
+
+          expect(screen.getByTestId(expectedComponent)).toBeInTheDocument()
+        }
+      )
+
       it.each`
         isDesktopViewport
         ${true}
@@ -109,7 +160,7 @@ describe('BookingDetails', () => {
           await waitFor(() => {
             expect(
               screen.queryByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
-            ).not.toBeOnTheScreen()
+            ).not.toBeInTheDocument()
           })
         }
       )
@@ -125,7 +176,7 @@ describe('BookingDetails', () => {
 
           expect(
             screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
-          ).toBeTruthy()
+          ).toBeInTheDocument()
         }
       )
     })

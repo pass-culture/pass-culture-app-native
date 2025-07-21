@@ -911,6 +911,37 @@ describe('BookingDetails', () => {
           expect(await screen.findByText('TEST12')).toBeOnTheScreen()
         })
       })
+
+      it('should trigger logEvent "BookingDetailsScrolledToBottom" when reaching the end', async () => {
+        const nativeEventMiddle = {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 400 }, // how far did we scroll
+          contentSize: { height: 1600 },
+        }
+        const nativeEventBottom = {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 900 },
+          contentSize: { height: 1600 },
+        }
+
+        renderBookingDetailsV2(ongoingBookingV2)
+
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        const scrollView = screen.getByTestId('BookingDetailsScrollView')
+
+        await act(async () => {
+          await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        })
+
+        expect(analytics.logBookingDetailsScrolledToBottom).not.toHaveBeenCalled()
+
+        await act(async () => {
+          await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+        })
+
+        expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })
