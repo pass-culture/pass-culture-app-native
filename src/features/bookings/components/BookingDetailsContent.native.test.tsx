@@ -37,14 +37,45 @@ jest.mock('libs/subcategories/mappings', () => ({
 }))
 
 const booking: BookingResponse = bookingsSnapV2.ongoingBookings[0]
+const bookingVenueOpenToPublic: BookingResponse = {
+  ...booking,
+  stock: {
+    ...booking.stock,
+    offer: {
+      ...booking.stock.offer,
+      address: {
+        id: 116,
+        street: '1 boulevard de la brique',
+        postalCode: '93700',
+        city: 'Drancy',
+        coordinates: {
+          latitude: 48.91683,
+          longitude: 2.43884,
+        },
+        timezone: 'Europe/Paris',
+      },
+    },
+  },
+}
+const bookingVenueNotOpenToPublic: BookingResponse = {
+  ...booking,
+  stock: {
+    ...booking.stock,
+    offer: {
+      ...booking.stock.offer,
+      venue: { ...booking.stock.offer.venue, isOpenToPublic: false, id: 115 },
+    },
+  },
+}
 
 describe('<BookingDetailsContent />', () => {
   beforeEach(() => setFeatureFlags())
 
-  //PC-36804 : fix VenueBlock and unskip tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should navigate to Venue page when venue isOpenToPublic', async () => {
-    renderBookingDetailsContent({ booking, properties: mockProperties })
+  it('should navigate to Venue page when venue isOpenToPublic and booking adress is the same', async () => {
+    renderBookingDetailsContent({
+      booking: bookingVenueOpenToPublic,
+      properties: mockProperties,
+    })
 
     const venueBlock = screen.getByText('Maison de la Brique')
     await user.press(venueBlock)
@@ -52,9 +83,11 @@ describe('<BookingDetailsContent />', () => {
     expect(navigate).toHaveBeenCalledWith('Venue', { id: 2185 })
   })
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should locConsultVenue when click on venue which is OpenToPublic', async () => {
-    renderBookingDetailsContent({ booking, properties: mockProperties })
+  it('should locConsultVenue when click on venue which is OpenToPublic and booking adress is the same', async () => {
+    renderBookingDetailsContent({
+      booking: bookingVenueOpenToPublic,
+      properties: mockProperties,
+    })
 
     const venueBlock = screen.getByText('Maison de la Brique')
     await user.press(venueBlock)
@@ -62,17 +95,25 @@ describe('<BookingDetailsContent />', () => {
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({ venueId: 2185, from: 'bookings' })
   })
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not navigate to Venue page when venue is not OpenToPublic', async () => {
-    const bookingWithVenueNotOpenedToPublic = booking
-    bookingWithVenueNotOpenedToPublic.stock.offer.venue.isOpenToPublic = false
-
+  it('should not navigate to Venue page when venue is not OpenToPublic', async () => {
     renderBookingDetailsContent({
-      booking: bookingWithVenueNotOpenedToPublic,
+      booking: bookingVenueNotOpenToPublic,
       properties: mockProperties,
     })
 
-    const venueBlock = screen.getByText('Maison de la Brique')
+    const venueBlock = screen.getByText('1 boulevard de la brique, 93700 Drancy')
+    await user.press(venueBlock)
+
+    expect(navigate).not.toHaveBeenCalledWith('Venue', { id: 2185 })
+  })
+
+  it('should not navigate to Venue page when venue is OpenToPublic but booking adress is not the same', async () => {
+    renderBookingDetailsContent({
+      booking,
+      properties: mockProperties,
+    })
+
+    const venueBlock = screen.getByText('1 boulevard de la brique, 93700 Drancy')
     await user.press(venueBlock)
 
     expect(navigate).not.toHaveBeenCalledWith('Venue', { id: 2185 })
