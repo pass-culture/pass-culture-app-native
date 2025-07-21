@@ -106,14 +106,12 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <IllustrationContainer animation={!!animation}>
           {Illustration ? <Illustration /> : null}
           {animation ? (
-            <React.Fragment>
-              <ThemedStyledLottieView
-                source={animation}
-                width="100%"
-                height="100%"
-                temporarilyDeactivateColors={temporarilyDeactivateColors}
-              />
-            </React.Fragment>
+            <ThemedStyledLottieView
+              source={animation}
+              width="100%"
+              height="100%"
+              temporarilyDeactivateColors={temporarilyDeactivateColors}
+            />
           ) : null}
         </IllustrationContainer>
 
