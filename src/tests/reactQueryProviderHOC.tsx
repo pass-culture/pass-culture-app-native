@@ -20,6 +20,8 @@ export const reactQueryProviderHOC = (
         cacheTime: Infinity, // react-query documentation recommends to disable cache when testing https://tanstack.com/query/v3/docs/framework/react/guides/testing#set-cachetime-to-infinity-with-jest
       },
     },
+    queryCache,
+    mutationCache,
     logger: {
       log: jest.fn(),
       warn: jest.fn(),
