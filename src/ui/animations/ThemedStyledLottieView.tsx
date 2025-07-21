@@ -3,6 +3,7 @@ import React, { useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
+import { AnimationObject } from 'ui/animations/type'
 
 const hexToLottieRgb = (hex: string): number[] => {
   if (!hex) return [0, 0, 0, 1]
@@ -28,20 +29,6 @@ const findAndSetColorInItems = (items: any[], shapeName: string, color: number[]
       findAndSetColorInItems(item.it, shapeName, color)
     }
   })
-}
-
-interface AnimationObject {
-  v: string
-  fr: number
-  ip: number
-  op: number
-  w: number
-  h: number
-  nm?: string
-  ddd?: number
-  assets: any[]
-  layers: any[]
-  markers?: any[]
 }
 
 type ThemedStyledLottieViewProps = {
