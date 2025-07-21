@@ -80,7 +80,7 @@ export const Checkbox: FunctionComponent<Props> = ({
   display,
   hasError,
   indeterminate,
-  isChecked,
+  isChecked = indeterminate !== undefined,
   label,
   onPress,
   required,
@@ -100,14 +100,11 @@ export const Checkbox: FunctionComponent<Props> = ({
   const effectiveDisplay: CheckboxDisplay = display ?? (variant === 'detailed' ? 'fill' : 'hug')
 
   const state = getCheckboxState(isChecked, indeterminate, hasError, disabled)
-  const isDisabled = state.includes('disabled')
-  const isCheckedState = state.includes('checked')
-  const isIndeterminate = state.includes('indeterminate')
 
   const colorMark = disabled ? designSystem.color.icon.disabled : designSystem.color.icon.inverted
   const checkboxMarkSize = checkbox.size / 1.75 // Parent padding doesn't have effect on CheckboxMarkIndeterminate
 
-  const Label = isCheckedState || isIndeterminate ? StyledBodyAccent : StyledBody
+  const Label = isChecked || indeterminate ? StyledBodyAccent : StyledBody
 
   return (
     <CheckboxContainer
@@ -120,14 +117,14 @@ export const Checkbox: FunctionComponent<Props> = ({
       {...focusProps}
       {...hoverProps}>
       <ContentContainer>
-        <LeftBox state={state} variant={variant} disabled={isDisabled} {...hoverProps}>
-          {isIndeterminate ? (
+        <LeftBox state={state} variant={variant} disabled={disabled} {...hoverProps}>
+          {indeterminate ? (
             <CheckboxMarkIndeterminate
               color={colorMark}
               width={checkboxMarkSize}
               height={checkboxMarkSize}
             />
-          ) : isCheckedState ? (
+          ) : isChecked ? (
             <CheckboxMarkChecked
               color={colorMark}
               width={checkboxMarkSize}
@@ -148,7 +145,7 @@ export const Checkbox: FunctionComponent<Props> = ({
         </RightBox>
         {asset ? (
           <BottomBox>
-            <CheckboxAsset {...asset} disable={isDisabled} />
+            <CheckboxAsset {...asset} disable={disabled} />
           </BottomBox>
         ) : null}
       </ContentContainer>

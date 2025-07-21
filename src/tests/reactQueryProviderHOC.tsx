@@ -19,7 +19,7 @@ export const reactQueryProviderHOC = (
     mutationCache,
   })
 
-  if (setup) setup(queryClient)
+  setup?.(queryClient)
 
   return <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
 }
