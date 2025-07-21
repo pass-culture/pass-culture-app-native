@@ -22,7 +22,6 @@ import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
-import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
@@ -103,15 +102,13 @@ const App: FunctionComponent = function () {
                                 <CulturalSurveyContextProvider>
                                   <SubscriptionContextProvider>
                                     <SplashScreenProvider>
-                                      <PushNotificationsWrapper>
-                                        <ShareAppWrapper>
-                                          <OfflineModeContainer>
-                                            <ScreenErrorProvider>
-                                              <AppNavigationContainer />
-                                            </ScreenErrorProvider>
-                                          </OfflineModeContainer>
-                                        </ShareAppWrapper>
-                                      </PushNotificationsWrapper>
+                                      <ShareAppWrapper>
+                                        <OfflineModeContainer>
+                                          <ScreenErrorProvider>
+                                            <AppNavigationContainer />
+                                          </ScreenErrorProvider>
+                                        </OfflineModeContainer>
+                                      </ShareAppWrapper>
                                     </SplashScreenProvider>
                                   </SubscriptionContextProvider>
                                 </CulturalSurveyContextProvider>
