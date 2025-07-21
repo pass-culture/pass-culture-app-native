@@ -3,6 +3,7 @@ import React, { useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
+import { usePartialLottieAnimation } from 'shared/animations/useLottieAnimation'
 import { AnimationObject } from 'ui/animations/type'
 
 const hexToLottieRgb = (hex: string): number[] => {
@@ -42,9 +43,19 @@ type ThemedStyledLottieViewProps = {
   width?: number | string
   height: number | string
   source: AnimationSource
+  autoPlay?: boolean
+  loop?: boolean
+  resizeMode?: 'center' | 'contain' | 'cover' | undefined
 }
 
-export const ThemedStyledLottieView = ({ width, height, source }: ThemedStyledLottieViewProps) => {
+export const ThemedStyledLottieView = ({
+  width,
+  height,
+  source,
+  autoPlay = false,
+  loop = false,
+  resizeMode,
+}: ThemedStyledLottieViewProps) => {
   const { designSystem } = useTheme()
 
   const animationData = useMemo(() => {
@@ -66,12 +77,24 @@ export const ThemedStyledLottieView = ({ width, height, source }: ThemedStyledLo
     return newAnimation
   }, [designSystem.color.background.brandPrimary, source])
 
-  return <StyledLottieView width={width} height={height} source={animationData} autoPlay loop />
+  const animationRef = usePartialLottieAnimation(animationData)
+
+  return (
+    <StyledLottieView
+      ref={animationRef}
+      width={width}
+      height={height}
+      source={animationData}
+      autoPlay={autoPlay}
+      loop={loop}
+      resizeMode={resizeMode}
+    />
+  )
 }
 
 const StyledLottieView = styled(LottieView)<{
-  width: number
-  height: number
+  width?: number | string
+  height: number | string
 }>(({ width, height }) => ({
   width: width,
   height: height,

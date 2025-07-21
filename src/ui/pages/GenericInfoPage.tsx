@@ -2,9 +2,8 @@ import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import LottieView from 'libs/lottie'
-import { usePartialLottieAnimation } from 'shared/animations/useLottieAnimation'
 import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
+import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -89,7 +88,6 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
 
   const Illustration = getPrimaryIllustration(illustration)
-  const animationRef = usePartialLottieAnimation(animation)
 
   return (
     <Page>
@@ -106,7 +104,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <IllustrationContainer animation={!!animation}>
           {Illustration ? <Illustration /> : null}
           {animation ? (
-            <StyledLottieView ref={animationRef} source={animation} loop={false} />
+            <React.Fragment>
+              <ThemedStyledLottieView source={animation} width="100%" height="100%" />
+            </React.Fragment>
           ) : null}
         </IllustrationContainer>
 
@@ -274,11 +274,6 @@ const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation }
   marginBottom: getSpacing(6),
   ...(animation && { height: '30%' }),
 }))
-
-const StyledLottieView = styled(LottieView)({
-  width: '100%',
-  height: '100%',
-})
 
 const TextContainer = styled(ViewGap)({
   alignItems: 'center',
