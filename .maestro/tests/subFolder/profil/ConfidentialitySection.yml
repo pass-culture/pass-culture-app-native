@@ -4,10 +4,11 @@ appId: ${MAESTRO_APP_ID}
     when:
       true: ${MAESTRO_RUN_CLOUD_COMMANDS}
     commands:
-      - scroll
+      - scrollUntilVisible:
+          element:
+            text: 'Partager le pass Culture'
 - tapOn:
     text: 'Confidentialité'
-    index: 1
 
 - assertVisible: 'Paramètres de confidentialité'
 - tapOn:
