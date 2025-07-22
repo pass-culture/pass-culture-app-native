@@ -187,6 +187,7 @@ const renderBookingDetails = (booking: Booking) => {
   jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
