@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingResponse, UserProfileResponse } from 'api/gen'
+import { BookingResponse, TicketDisplayEnum, UserProfileResponse } from 'api/gen'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsContentDesktop } from 'features/bookings/components/BookingDetailsContentDesktop'
@@ -78,8 +78,8 @@ export const BookingDetailsContent = ({
     analytics.logClickEmailOrganizer()
   }
 
+  const isNoTicket = booking.ticket.display === TicketDisplayEnum.no_ticket
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
-
   return booking.ticket ? (
     <MainContainer>
       <ScrollView
@@ -110,7 +110,7 @@ export const BookingDetailsContent = ({
             }
             rightBlock={
               <React.Fragment>
-                <ErrorBanner message={errorBannerMessage} />
+                {isNoTicket ? null : <ErrorBanner message={errorBannerMessage} />}
                 {booking.stock.offer.bookingContact || booking.ticket.withdrawal.details ? (
                   <BookingPrecisions
                     bookingContactEmail={booking.stock.offer.bookingContact}
@@ -142,7 +142,7 @@ export const BookingDetailsContent = ({
             }
             onEmailPress={onEmailPress}
             booking={booking}
-            errorBannerMessage={errorBannerMessage}
+            errorBannerMessage={isNoTicket ? null : errorBannerMessage}
             cancelBooking={cancelBooking}
             showArchiveModal={showArchiveModal}
           />

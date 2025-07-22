@@ -10,6 +10,7 @@ import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Stock } from 'ui/svg/icons/Stock'
 import { Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type TicketTopPartProps = {
   title: string
@@ -36,7 +37,7 @@ export const TicketTopPart = ({
 }: TicketTopPartProps) => {
   return (
     <ViewGap gap={6}>
-      <Typo.Title2>{title}</Typo.Title2>
+      <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
       <ViewGap gap={2}>
         {day ? (
           <Row>

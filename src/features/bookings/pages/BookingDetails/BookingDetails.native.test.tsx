@@ -579,12 +579,12 @@ describe('BookingDetails', () => {
     })
   })
 
-  describe('BookingPageContent : when FF WIP_NEW_BOOKING_PAGE is on', () => {
+  describe('BookingDetails : when FF WIP_NEW_BOOKING_PAGE is on', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
     })
 
-    it('should render BookingPageContent', async () => {
+    it('should render BookingDetails', async () => {
       renderBookingDetailsV2(ongoingBookingV2)
 
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
@@ -741,7 +741,7 @@ describe('BookingDetails', () => {
       ).toBeOnTheScreen()
     })
 
-    it('should render error message with plural when booking is duo', async () => {
+    it('should not render error message when booking is no ticket', async () => {
       renderBookingDetailsV2({
         ...ongoingBookingV2,
         quantity: 2,
@@ -750,6 +750,25 @@ describe('BookingDetails', () => {
           display: TicketDisplayEnum.no_ticket,
           withdrawal: {
             type: WithdrawalTypeEnum.no_ticket,
+          },
+        },
+      })
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+      expect(
+        screen.queryByText('Tu n’as pas le droit de céder ou de revendre tes billets.')
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should render error message with plural when booking is duo', async () => {
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
+        quantity: 2,
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          display: TicketDisplayEnum.email_sent,
+          withdrawal: {
+            type: WithdrawalTypeEnum.by_email,
           },
         },
       })
@@ -773,9 +792,9 @@ describe('BookingDetails', () => {
         },
         ticket: {
           ...ongoingBookingV2.ticket,
-          display: TicketDisplayEnum.no_ticket,
+          display: TicketDisplayEnum.email_sent,
           withdrawal: {
-            type: WithdrawalTypeEnum.no_ticket,
+            type: WithdrawalTypeEnum.by_email,
           },
         },
       })
@@ -891,6 +910,37 @@ describe('BookingDetails', () => {
 
           expect(await screen.findByText('TEST12')).toBeOnTheScreen()
         })
+      })
+
+      it('should trigger logEvent "BookingDetailsScrolledToBottom" when reaching the end', async () => {
+        const nativeEventMiddle = {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 400 }, // how far did we scroll
+          contentSize: { height: 1600 },
+        }
+        const nativeEventBottom = {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 900 },
+          contentSize: { height: 1600 },
+        }
+
+        renderBookingDetailsV2(ongoingBookingV2)
+
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        const scrollView = screen.getByTestId('BookingDetailsScrollView')
+
+        await act(async () => {
+          await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        })
+
+        expect(analytics.logBookingDetailsScrolledToBottom).not.toHaveBeenCalled()
+
+        await act(async () => {
+          await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+        })
+
+        expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
       })
     })
   })
