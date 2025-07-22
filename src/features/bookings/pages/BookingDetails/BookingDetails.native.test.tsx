@@ -900,6 +900,7 @@ const renderBookingDetails = (booking?: Booking, options = {}) => {
   jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
@@ -912,6 +913,7 @@ const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
   jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
@@ -921,6 +923,7 @@ const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
   jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
