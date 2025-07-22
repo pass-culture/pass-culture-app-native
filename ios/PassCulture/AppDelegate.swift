@@ -30,9 +30,8 @@ class AppDelegate: RCTAppDelegate {
     
     // Enable Firebase debug view on testing environment
     if env == "testing" {
-      setenv("FIRAnalyticsDebugEnabled", "1", 1)
-      setenv("FIRDebugEnabled", "1", 1)
-      // Note: setValue for arguments is not available in Swift, this is handled differently
+        UserDefaults.standard.set(true, forKey: "FIRAnalyticsDebugEnabled")
+        UserDefaults.standard.set(true, forKey: "FIRDebugEnabled")
     }
     
     if FirebaseApp.app() == nil {
