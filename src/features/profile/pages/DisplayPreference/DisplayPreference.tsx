@@ -100,9 +100,9 @@ const DarkThemeContainer = styled.View({
   marginVertical: getSpacing(10),
 })
 
-const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
+const GreySeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.designSystem.separator.color.subtle,
-}))``
+}))
 
 const SelectorContainer = styled(ViewGap)({
   marginTop: getSpacing(6),

@@ -34,7 +34,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
 }) => {
   const theme = useTheme()
   return (
-    <StyledScrollView vertical showsHorizontalScrollIndicator={false} testID="categoriesButtons">
+    <StyledScrollView showsHorizontalScrollIndicator={false} testID="categoriesButtons">
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
         <Container>
           <ContainerVenueMapBlock>

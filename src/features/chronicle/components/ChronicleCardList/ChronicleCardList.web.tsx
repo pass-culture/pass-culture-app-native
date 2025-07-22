@@ -121,7 +121,7 @@ const ArrowWrapper = styled.View.attrs({
   justifyContent: 'center',
 })
 
-const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     theme.designSystem.color.background.default,
     colorAlpha(theme.designSystem.color.background.default, 0.7),

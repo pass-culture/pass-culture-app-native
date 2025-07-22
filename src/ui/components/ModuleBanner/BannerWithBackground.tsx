@@ -56,7 +56,14 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
         size: theme.icons.sizes.small,
       }))``
 
-  const TouchableComponent = 'navigateTo' in touchableProps ? StyledTouchableLink : TouchableOpacity
+  let TouchableComponent: React.ComponentType<
+    React.ComponentProps<typeof StyledTouchableLink> | React.ComponentProps<typeof TouchableOpacity>
+  >
+  if ('navigateTo' in touchableProps) {
+    TouchableComponent = StyledTouchableLink
+  } else {
+    TouchableComponent = TouchableOpacity
+  }
 
   return (
     <TouchableComponent

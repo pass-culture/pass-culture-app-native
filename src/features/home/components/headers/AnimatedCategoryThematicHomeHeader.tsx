@@ -30,7 +30,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
         height={getSpacing(MOBILE_HEADER_HEIGHT)}
       />
       <TextContainer>
-        <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
+        <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
           {subtitle ? (
             <ViewGap gap={1}>
               <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
@@ -40,7 +40,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
         </AnimatedBackground>
       </TextContainer>
       <AnimatedBackgroundSubscribeButton
-        style={{ transform: [{ translateY: gradientTranslation }] }}
+        style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
       />
     </Container>
   )

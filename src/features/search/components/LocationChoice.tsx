@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -80,7 +81,7 @@ const Container = styled(TouchableOpacity)({
   marginHorizontal: getSpacing(4),
 })
 
-const FirstPart = styled.View({
+const FirstPart = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
   flex: 1,

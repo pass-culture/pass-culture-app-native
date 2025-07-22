@@ -33,16 +33,16 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
 
   return (
     <Container testID="animated-thematic-header">
-      <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight} />
+      <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight || 0} />
       <DateRangeCaptionContainer statusBarHeight={top}>
         <Tag label={dateRange} variant={TagVariant.DEFAULT} />
       </DateRangeCaptionContainer>
       <TextContainer>
         <AnimatedBlackGradient
           height={HEADER_BLACK_BACKGROUND_HEIGHT}
-          style={{ transform: [{ translateY: gradientTranslation }] }}
+          style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
         />
-        <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
+        <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
           {subtitle ? <Subtitle numberOfLines={1}>{subtitle}</Subtitle> : null}
           <Title numberOfLines={2}>{title}</Title>
         </AnimatedBlackBackground>

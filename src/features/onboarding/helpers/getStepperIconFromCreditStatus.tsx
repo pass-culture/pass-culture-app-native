@@ -33,9 +33,7 @@ const GoneLock = styled(LockFilled).attrs(({ theme }) => ({
   marginHorizontal: getSpacing(1.5),
 })
 
-const StyledLottieView = styled(LottieView).attrs({
-  rendererSettings: { accessibilityHidden: true },
-})(({ theme }) => ({
+const StyledLottieView = styled(LottieView)(({ theme }) => ({
   width: theme.icons.sizes.standard,
   height: theme.icons.sizes.standard,
 }))

@@ -33,7 +33,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
 
 const GRADIENT_HEIGHT = getSpacing(0.5)
 
-const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
+const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     colorAlpha(theme.designSystem.color.icon.brandPrimary, 0),
     theme.designSystem.color.icon.brandPrimary,

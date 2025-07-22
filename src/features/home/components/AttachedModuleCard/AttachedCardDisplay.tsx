@@ -47,7 +47,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
       <Container
         accessibilityLabel={accessibilityLabel}
         shouldFixHeight={shouldFixHeight}
-        bottomBannerText={bottomBannerText}>
+        bottomBannerText={bottomBannerText ?? ''}>
         {LeftImageComponent ? (
           <ImageContainer>
             <LeftImageComponent {...leftImageProps} />
@@ -72,7 +72,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         </RightColumn>
       </Container>
       {bottomBannerText ? (
-        <BottomBanner testId="bottom-banner">
+        <BottomBanner testID="bottom-banner">
           <ClockFilled />
           <Typo.BodyAccentXs>{bottomBannerText}</Typo.BodyAccentXs>
         </BottomBanner>

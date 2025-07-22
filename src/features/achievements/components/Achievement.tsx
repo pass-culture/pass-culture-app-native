@@ -22,7 +22,7 @@ export const Achievement: FC<AchievementProps> = ({ Illustration, name, title, i
   return (
     <React.Fragment>
       <StyledTouchableOpacity onPress={showModal}>
-        <AchievementContainer isCompleted={isCompleted}>
+        <AchievementContainer isCompleted={!!isCompleted}>
           <IllustrationContainer>
             <Illustration size={illustrations.sizes.small} />
           </IllustrationContainer>
