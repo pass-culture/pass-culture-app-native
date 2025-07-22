@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import achievements_success from 'ui/animations/achievements_success.json'
-import eighteen_birthday from 'ui/animations/eighteen_birthday.json'
 import geolocalisation from 'ui/animations/geolocalisation.json'
 import lottie_loading from 'ui/animations/lottie_loading.json'
 import notif_basic_medium from 'ui/animations/notif_basic_medium.json'
@@ -28,11 +27,6 @@ export default {
 const LottieAnimations = {
   achievements_success: {
     source: achievements_success,
-    hasBackground: false,
-    isSmallAnimation: false,
-  },
-  eighteen_birthday: {
-    source: eighteen_birthday,
     hasBackground: false,
     isSmallAnimation: false,
   },

@@ -11,7 +11,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
-import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
+import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -22,8 +22,8 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export const RecreditBirthdayNotification = () => {
   // TODO(PC-36293): use TutorialPassLogoDark and TutorialPassLogoLight
   const animation = useAnimationToDisplay({
-    light: TutorialPassLogo,
-    dark: TutorialPassLogo,
+    light: BirthdayCake,
+    dark: BirthdayCake,
   })
 
   const { user } = useAuthContext()
