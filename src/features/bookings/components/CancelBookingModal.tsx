@@ -3,17 +3,16 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { UserProfileResponse, BookingResponse } from 'api/gen'
+import { BookingResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getRefundRule } from 'features/bookings/helpers/getRefundRule'
 import { useCancelBookingMutation } from 'features/bookings/queries'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
-import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
@@ -38,7 +37,12 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const refundRule = getRefundRule(booking.totalAmount, currency, euroToPacificFrancRate, user)
+  const refundRule = getRefundRule({
+    totalAmount: booking.totalAmount,
+    currency,
+    euroToPacificFrancRate,
+    user,
+  })
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
@@ -119,26 +123,3 @@ const CancelButtonContainer = styled.View({
   marginTop: getSpacing(8),
   marginBottom: getSpacing(5),
 })
-
-// FIXME(PC-36440) move function to file
-const getRefundRule = (
-  totalAmount: number,
-  currency: Currency,
-  euroToPacificFrancRate: number,
-  user?: UserProfileResponse
-) => {
-  const price = convertCentsToEuros(totalAmount)
-  if (price > 0 && user) {
-    const isExBeneficiary = !user.isBeneficiary
-    const price = formatCurrencyFromCents(totalAmount, currency, euroToPacificFrancRate)
-    if (isExBeneficiary) {
-      return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
-    }
-
-    const isBeneficiary = user.isBeneficiary
-    if (isBeneficiary) {
-      return `${price} seront recrédités sur ton pass Culture.`
-    }
-  }
-  return null
-}
