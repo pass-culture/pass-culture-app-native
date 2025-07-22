@@ -21,7 +21,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -86,21 +86,15 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
       onRightIconPress={dismissModal}>
       <ModalContent>
         <OfferName>{booking.stock.offer.name}</OfferName>
-        {refundRule ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={2} />
-            <Refund>{refundRule}</Refund>
-          </React.Fragment>
-        ) : null}
-        <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary wording="Annuler ma réservation" onPress={confirmCancelBooking} />
-        <Spacer.Column numberOfSpaces={5} />
+        {refundRule ? <Refund>{refundRule}</Refund> : null}
+        <CancelButtonContainer>
+          <ButtonPrimary wording="Annuler ma réservation" onPress={confirmCancelBooking} />
+        </CancelButtonContainer>
         <ButtonTertiaryPrimary
           wording="Retourner à ma réservation"
           onPress={dismissModal}
           icon={PlainArrowPrevious}
         />
-        <Spacer.Column numberOfSpaces={1} />
       </ModalContent>
     </AppModal>
   )
@@ -109,6 +103,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 const ModalContent = styled.View({
   paddingHorizontal: getSpacing(5.5),
   width: '100%',
+  marginBottom: getSpacing(1),
 })
 
 const OfferName = styled(Typo.BodyAccent)({
@@ -117,6 +112,12 @@ const OfferName = styled(Typo.BodyAccent)({
 
 const Refund = styled(Typo.Body)({
   textAlign: 'center',
+  marginTop: getSpacing(2),
+})
+
+const CancelButtonContainer = styled.View({
+  marginTop: getSpacing(8),
+  marginBottom: getSpacing(5),
 })
 
 // FIXME(PC-36440) move function to file
