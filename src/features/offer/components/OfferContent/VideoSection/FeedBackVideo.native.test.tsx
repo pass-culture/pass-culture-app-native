@@ -29,7 +29,7 @@ describe('<FeedBackVideo />', () => {
     expect(await screen.findByText('Trouves-tu le contenu de cette vidéo utile ?')).toBeTruthy()
   })
 
-  it('should NOT display thank you message if reaction was stored but user did not just react', async () => {
+  it('should not show thank you message when reaction is restored without recent interaction', async () => {
     asyncStorageSpyOn.mockResolvedValueOnce(ReactionTypeEnum.LIKE)
 
     render(<FeedBackVideo offerId={offerId} />)
@@ -43,7 +43,7 @@ describe('<FeedBackVideo />', () => {
     ).toBeNull()
   })
 
-  it('should display thank you message right after user reacts', async () => {
+  it('should show thank you message immediately after user selects a reaction', async () => {
     asyncStorageSpyOn.mockResolvedValueOnce(null)
 
     render(<FeedBackVideo offerId={offerId} />)
