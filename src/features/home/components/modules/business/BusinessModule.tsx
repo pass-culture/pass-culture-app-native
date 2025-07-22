@@ -175,17 +175,19 @@ const FlexRow = styled.View(({ theme }) => ({
   ...FULL_HEIGHT,
 }))
 
-const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   angle: 0,
   colors: [theme.designSystem.color.background.lockedInverted, 'transparent'],
   useAngle: true,
 }))({ ...FULL_HEIGHT, ...FULL_WIDTH })
 
-const StyledLinearGradientLargeScreen = styled(LinearGradient).attrs(({ theme }) => ({
-  angle: 90,
-  colors: [theme.designSystem.color.background.lockedInverted, 'transparent'],
-  useAngle: true,
-}))({ ...FULL_HEIGHT, ...FULL_WIDTH })
+const StyledLinearGradientLargeScreen = styled(LinearGradient).attrs<{ colors?: string[] }>(
+  ({ theme }) => ({
+    angle: 90,
+    colors: [theme.designSystem.color.background.lockedInverted, 'transparent'],
+    useAngle: true,
+  })
+)({ ...FULL_HEIGHT, ...FULL_WIDTH })
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   onMouseDown: (e: Event) => void

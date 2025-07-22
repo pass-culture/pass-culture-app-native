@@ -69,7 +69,7 @@ const DefaultImagePlaceholderOfferV2 = styled.View<{ width: number; height: numb
   })
 )
 
-const BlackGradient = styled(LinearGradient).attrs(({ theme }) => ({
+const BlackGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
     colorAlpha(theme.designSystem.color.background.lockedInverted, 0.1),

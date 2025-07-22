@@ -75,7 +75,9 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   )
 }
 
-const StyledStickyBottomWrapper = styled(StickyBottomWrapper)(({ bottom }) => ({ bottom }))
+const StyledStickyBottomWrapper = styled(StickyBottomWrapper)<{ bottom: number }>(({ bottom }) => ({
+  bottom,
+}))
 
 const CallToActionContainer = styled.View({
   paddingHorizontal: getSpacing(4),

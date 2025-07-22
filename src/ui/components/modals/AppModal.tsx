@@ -306,7 +306,7 @@ const SpacerBetweenHeaderAndContent = styled.View({
   height: SPACE_BETWEEN_HEADER_AND_CONTENT,
 })
 
-const ScrollViewContainer = styled.View.attrs(({ theme }) => ({
+const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ theme }) => ({
   backdropColor: theme.designSystem.color.background.overlay,
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
@@ -317,8 +317,9 @@ const ScrollViewContainer = styled.View.attrs(({ theme }) => ({
 }))
 
 const MODAL_PADDING = getSpacing(5)
-// @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'Any<StyledComponent>'
-const StyledModal = styled(ReactNativeModal)(({ theme }) => {
+// https://github.com/react-native-modal/react-native-modal/issues/381
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const StyledModal = styled(ReactNativeModal as any)(({ theme }) => {
   const { isDesktopViewport } = theme
   return {
     position: 'absolute',

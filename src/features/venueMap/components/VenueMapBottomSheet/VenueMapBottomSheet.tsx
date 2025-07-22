@@ -124,6 +124,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     return (
       <GestureDetector gesture={FLING_GESTURE}>
         <StyledBottomSheet
+          offersPlaylistType={offersPlaylistType}
           ref={ref}
           index={-1}
           enablePanDownToClose

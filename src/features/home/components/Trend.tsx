@@ -13,10 +13,15 @@ type TrendProps = TrendBlock &
 const DESKTOP_BUTTON_SIZE = getSpacing(20)
 const MOBILE_BUTTON_SIZE = getSpacing(14)
 
-export const Trend = ({ image, title, ...rest }: TrendProps) => {
+export const Trend = ({ image, title, navigateTo, ...rest }: TrendProps) => {
+  if (!navigateTo?.screen) return null
+
   return (
-    <Item key={title} {...rest}>
-      <ItemIcon source={image} />
+    <Item
+      key={title}
+      navigateTo={{ screen: navigateTo.screen, params: navigateTo.params }}
+      {...rest}>
+      <ItemIcon source={'testUri' in image ? { uri: image.testUri } : image} />
       <StyledText>{title}</StyledText>
     </Item>
   )

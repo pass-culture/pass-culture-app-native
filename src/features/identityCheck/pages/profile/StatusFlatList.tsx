@@ -163,14 +163,16 @@ const SpinnerView = styled(View).attrs<{ headerHeight: number }>({})<{
 }))
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)
-const Gradient = styled(AnimatedGradient).attrs<{ bottomViewHeight: number }>(({ theme }) => ({
-  colors: [
-    colorAlpha(theme.designSystem.color.background.default, 0),
-    theme.designSystem.color.background.default,
-  ],
-  locations: [0, 1],
-  pointerEvents: 'none',
-}))<{ bottomViewHeight: number }>(({ bottomViewHeight }) => ({
+const Gradient = styled(AnimatedGradient).attrs<{ colors?: string[]; bottomViewHeight: number }>(
+  ({ theme }) => ({
+    colors: [
+      colorAlpha(theme.designSystem.color.background.default, 0),
+      theme.designSystem.color.background.default,
+    ],
+    locations: [0, 1],
+    pointerEvents: 'none',
+  })
+)<{ bottomViewHeight: number }>(({ bottomViewHeight }) => ({
   position: 'absolute',
   height: GRADIENT_HEIGHT,
   left: 0,

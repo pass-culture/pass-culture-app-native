@@ -24,7 +24,7 @@ export const ImagePlaceholder = styled(
   iconColor: iconColor ?? theme.designSystem.color.icon.subtle,
 }))``
 
-const Container = styled.View<{ borderRadius: number }>(({ borderRadius, theme }) => ({
+const Container = styled.View<{ borderRadius?: number }>(({ borderRadius, theme }) => ({
   borderRadius,
   height: '100%',
   width: '100%',

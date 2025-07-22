@@ -306,7 +306,7 @@ const StyledCalendarList = styled(CalendarList).attrs(({ theme }) => ({
     width: '100%',
     backgroundColor: theme.designSystem.color.background.default,
   },
-  theme: {
+  calendarTheme: {
     calendarBackground: theme.designSystem.color.background.default,
     dayTextColor: theme.designSystem.color.text.subtle,
     monthTextColor: theme.designSystem.color.text.default,
@@ -316,7 +316,7 @@ const StyledCalendarList = styled(CalendarList).attrs(({ theme }) => ({
   marginTop: getSpacing(4),
 })
 
-const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
+const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     colorAlpha(theme.designSystem.color.background.default, 0),
     colorAlpha(theme.designSystem.color.background.default, 0.5),

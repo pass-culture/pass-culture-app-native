@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { formatCallingCode } from 'features/identityCheck/components/countryPicker/formatCallingCode'
@@ -44,7 +45,7 @@ export const CountryButton = ({ country, selectedCountry, onCountrySelect }: Pro
   )
 }
 
-const CountryContainer = styled.View({
+const CountryContainer = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
   paddingVertical: getSpacing(3),

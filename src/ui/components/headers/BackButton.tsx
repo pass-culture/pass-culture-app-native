@@ -33,7 +33,7 @@ const StyledTouchable = styledButton(Touchable)({
   alignItems: 'center',
 })
 
-const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color: ColorsType }>(
+const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color?: ColorsType }>(
   ({ theme, color }) => ({
     color: color ?? theme.designSystem.color.icon.default,
     size: theme.icons.sizes.small,

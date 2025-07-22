@@ -252,7 +252,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             <NoSSOSpace />
           )}
         </Form.MaxWidth>
-        <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
+        <SignUpButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>
     </React.Fragment>
   )

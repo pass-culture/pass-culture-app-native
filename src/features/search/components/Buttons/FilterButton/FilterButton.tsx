@@ -38,7 +38,9 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters = 0, navi
   )
 }
 
-const StyledTouchableLink = styled(InternalTouchableLink)({
+const StyledTouchableLink = styled(InternalTouchableLink)<{
+  navigateTo?: InternalTouchableLinkProps['navigateTo']
+}>({
   display: 'flex',
   width: getSpacing(8),
   height: getSpacing(8),

@@ -104,7 +104,7 @@ export const VerticalStepper = memo(function VerticalStepper({
   return (
     <Wrapper testID={`vertical-stepper-${variant}`}>
       <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} />
-      <IconWrapper addMoreSpacingToIcons={addMoreSpacingToIcons}>
+      <IconWrapper addMoreSpacingToIcons={!!addMoreSpacingToIcons}>
         <Icon testID="icon" />
       </IconWrapper>
       <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} />

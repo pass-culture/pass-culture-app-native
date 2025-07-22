@@ -29,7 +29,9 @@ interface Props {
 export function IntersectionObserver({ children, onChange, threshold = 0 }: Readonly<Props>) {
   return (
     <Container>
-      <StyledInView testID="intersectionObserver" onChange={onChange} threshold={threshold} />
+      <StyledInView testID="intersectionObserver" onChange={onChange} threshold={threshold}>
+        {null}
+      </StyledInView>
       {children}
     </Container>
   )
@@ -39,7 +41,9 @@ const Container = styled.View({
   position: 'relative',
 })
 
-const StyledInView = styled(InView)<{ threshold: Percent | number }>(({ threshold }) => ({
+const StyledInView = styled(InView).attrs<{ testID?: string }>({})<{
+  threshold: Percent | number
+}>(({ threshold }) => ({
   position: 'absolute',
   bottom: 0,
   top: threshold,

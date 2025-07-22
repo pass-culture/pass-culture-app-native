@@ -101,30 +101,27 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
 
       const categoryId = mapping[offer.offer.subcategoryId]
 
-      const containerProps = offer
-        ? {
-            navigateTo: {
-              screen: 'Offer',
-              params: { id: +offer.objectID },
-            },
-            onBeforeNavigate: () => {
-              prePopulateOffer({
-                ...offer.offer,
-                offerId: +offer.objectID,
-                categoryId,
-              })
-              triggerConsultOfferLog({
-                offerId: +offer.objectID,
-                moduleId: item.id,
-                from: 'video_carousel_block',
-                homeEntryId,
-              })
-            },
-          }
-        : undefined
-
       return (
-        <StyledInternalTouchableLink key={index} color={color} {...containerProps}>
+        <StyledInternalTouchableLink
+          key={index}
+          color={color}
+          navigateTo={{
+            screen: 'Offer',
+            params: { id: +offer.objectID },
+          }}
+          onBeforeNavigate={() => {
+            prePopulateOffer({
+              ...offer.offer,
+              offerId: +offer.objectID,
+              categoryId,
+            })
+            triggerConsultOfferLog({
+              offerId: +offer.objectID,
+              moduleId: item.id,
+              from: 'video_carousel_block',
+              homeEntryId,
+            })
+          }}>
           <AttachedOfferCard offer={offer} shouldFixHeight />
         </StyledInternalTouchableLink>
       )
@@ -141,7 +138,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
           moduleItemId: item.id,
         },
       },
-    }
+    } as const
 
     return (
       <StyledInternalTouchableLink key={index} color={color} {...containerProps}>

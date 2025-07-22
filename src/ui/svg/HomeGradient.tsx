@@ -9,8 +9,8 @@ import { svgIdentifier } from 'ui/svg/utils'
 
 export interface HomeGradientProps extends AccessibleIcon {
   colors: ColorsType[]
-  width?: number
-  height?: number
+  width?: number | string
+  height?: number | string
 }
 
 const HomeGradientSvg: React.FunctionComponent<HomeGradientProps> = ({

@@ -19,24 +19,27 @@ type Props = {
 export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from }) => {
   const focusProps = useHandleFocus()
 
-  const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
-
   const handleOnBeforeNavigate = () => {
     removeSelectedVenue()
     setVenues([])
     analytics.logConsultVenueMap({ from })
   }
 
-  const touchableProps = onPress
-    ? { onPress }
-    : { navigateTo: { screen: 'VenueMap' }, onBeforeNavigate: handleOnBeforeNavigate }
-
-  return (
-    <TouchableContainer {...touchableProps} {...focusProps}>
+  return onPress ? (
+    <StyledTouchable onPress={onPress} {...focusProps}>
       <StyledImageBackground source={VENUE_MAP_BACKGROUND_APP_V2}>
         <CardText>Explore la carte</CardText>
       </StyledImageBackground>
-    </TouchableContainer>
+    </StyledTouchable>
+  ) : (
+    <StyledInternalTouchableLink
+      navigateTo={{ screen: 'VenueMap' }}
+      onBeforeNavigate={handleOnBeforeNavigate}
+      {...focusProps}>
+      <StyledImageBackground source={VENUE_MAP_BACKGROUND_APP_V2}>
+        <CardText>Explore la carte</CardText>
+      </StyledImageBackground>
+    </StyledInternalTouchableLink>
   )
 }
 

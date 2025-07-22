@@ -56,7 +56,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
                   <CreditProgressBar progress={0.5} />
                   <Spacer.Column numberOfSpaces={4} />
                   <BlockDescriptionItem
-                    icon={<SmallLock bicolor={false} />}
+                    icon={<SmallLock />}
                     text="Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit."
                   />
                 </React.Fragment>
@@ -73,12 +73,12 @@ export const ProfileTutorialAgeInformationCredit = () => {
                     items={[
                       <BlockDescriptionItem
                         key={1}
-                        icon={<SmallLock bicolor={false} />}
+                        icon={<SmallLock />}
                         text="Tu as jusqu’à la veille de tes 19 ans pour confirmer ton identité et activer ton crédit."
                       />,
                       <BlockDescriptionItem
                         key={2}
-                        icon={<SmallClock bicolor={false} />}
+                        icon={<SmallClock />}
                         text="Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire."
                       />,
                     ]}

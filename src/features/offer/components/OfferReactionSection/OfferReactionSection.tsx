@@ -85,14 +85,14 @@ const StarIcon = styled(Star).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.headline,
 }))``
 
-const LikesInfoCounter = styled(InfoCounter).attrs(() => ({
+const LikesInfoCounter = styled(InfoCounter).attrs<{ icon?: React.ReactNode }>({
   icon: <ThumbUpIcon testID="likesCounterIcon" />,
-}))``
+})``
 
 const ChroniclesInfoCounter = styled(InfoCounter).attrs<{ icon: React.ReactNode }>(({ icon }) => ({
   icon,
 }))``
 
-const HeadlineOffersCount = styled(InfoCounter).attrs(() => ({
+const HeadlineOffersCount = styled(InfoCounter).attrs<{ icon?: React.ReactNode }>({
   icon: <StarIcon testID="headlineOffersCounterIcon" />,
-}))``
+})``

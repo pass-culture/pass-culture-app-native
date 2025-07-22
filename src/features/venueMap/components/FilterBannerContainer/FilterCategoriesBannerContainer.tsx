@@ -59,9 +59,11 @@ const ButtonsContainer = styled.View({
   columnGap: getSpacing(1),
 })
 
-const ColoredGradientBullet = styled(LinearGradient).attrs(({ color }: { color: string }) => ({
-  colors: [color, colorAlpha(color, 0.7)],
-}))<{ color: string }>(({ theme }) => ({
+const ColoredGradientBullet = styled(LinearGradient).attrs<{ color: string; colors?: string[] }>(
+  ({ color }) => ({
+    colors: [color, colorAlpha(color, 0.7)],
+  })
+)<{ color: string }>(({ theme }) => ({
   backgroundColor: theme.designSystem.color.icon.default,
   width: BULLET_SIZE,
   height: BULLET_SIZE,

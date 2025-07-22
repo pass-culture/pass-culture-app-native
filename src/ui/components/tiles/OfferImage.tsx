@@ -76,7 +76,7 @@ const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, siz
     : {}),
 }))
 
-const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
+const StyledImagePlaceholder = styled(ImagePlaceholder).attrs<{ size?: number }>(({ theme }) => ({
   size: theme.icons.sizes.standard,
   borderRadius: theme.tiles.borderRadius,
 }))``

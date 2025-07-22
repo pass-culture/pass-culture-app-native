@@ -37,7 +37,7 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
 }
 
 export const CreditProgressBar = memo(
-  styled(CreditProgressBarComponent).attrs(({ theme }) => ({
+  styled(CreditProgressBarComponent).attrs<{ color?: '#ffa5c0' | '#eb0055' }>(({ theme }) => ({
     color: theme.designSystem.color.background.brandPrimary,
   }))``
 )

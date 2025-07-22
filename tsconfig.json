@@ -24,8 +24,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "removeComments": true,
-    "downlevelIteration": true,
-    "types": ["@types/styled-components-react-native"]
+    "downlevelIteration": true
   },
   "exclude": [
     "build/**",

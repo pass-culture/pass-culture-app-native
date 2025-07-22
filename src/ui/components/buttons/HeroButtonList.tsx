@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { ColorsType } from 'theme/types'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -45,14 +44,12 @@ export function HeroButtonList({
   )
 }
 
-const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
-  color: ColorsType
-}>(({ color }) => ({
-  hoverUnderlineColor: color,
-}))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
-  borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus }),
-}))
+const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus: boolean }>(
+  ({ theme, isFocus }) => ({
+    borderRadius: theme.borderRadius.radius,
+    ...customFocusOutline({ isFocus }),
+  })
+)
 
 const TextWrapper = styled.View({
   minHeight: getSpacing(14.5),
