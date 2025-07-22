@@ -4,7 +4,7 @@
 
 Ce document a pour vocation de définir une architecture moderne et évolutive pour l'application native Pass Culture, alignée avec notre **Vision Tribe 2025** et les besoins produit croissants.
 
-Avec une codebase de plus de 4 ans et l'évolution rapide de l'écosystème React Native, nous devons adapter notre architecture pour répondre aux nouveaux défis : **performance <2s**, **accessibilité RGAA**, **autonomie des squads**, et **gestion responsable des ressources**.
+Avec une codebase de plus de 4 ans et l'évolution rapide de l'écosystème React Native, nous devons adapter notre architecture pour répondre aux nouveaux défis : **performance < 2s**, **accessibilité RGAA**, **autonomie des squads**, et **gestion responsable des ressources**.
 
 L'objectif est d'établir des principes consensuels et éprouvés qui guident nos décisions techniques tout en servant notre mission : **faciliter l'accès à la culture pour tous**.
 
@@ -16,7 +16,7 @@ Une architecture bien conçue répond directement aux besoins de notre service p
 
 - **Scalabilité utilisateurs** : Supporter la croissance et diversification des publics (15-20 ans → tous âges)
 - **Fiabilité critique** : Assurer un service stable pour l'accès à la culture (crash rate <0.1%)
-- **Performance inclusive** : Temps de chargement <2s sur tous appareils et réseaux
+- **Performance inclusive** : Temps de chargement < 2s sur tous appareils et réseaux
 - **Maintenance efficace** : Réduire le coût de développement pour maximiser l'investissement dans les fonctionnalités
 
 ### Fondamentaux architecturaux logiciels
@@ -54,9 +54,9 @@ Un développeur, quel que soit son niveau, doit savoir instinctivement :
 - **Gestion d'erreur cohérente** : Comportement prévisible en cas d'échec
 - **Monitoring intégré** : Visibilité sur la santé applicative (performances brutes, accessibilité, …)
 
-## Les principes
+# Les principes
 
-### Vue d'ensemble
+## Vue d'ensemble
 
 Notre architecture moderne repose sur **7 principes fondamentaux** qui garantissent la **modularité**, la **séparation des responsabilités**, et l'**optimisation des performances** tout en respectant les standards actuels de React Native et surtout les contraintes du service public :
 
@@ -301,6 +301,7 @@ L’injection de dépendance facilite la testabilité et l’évolutivité du sy
 * **Utilisation typique** : Injection de services, configuration, thème
 
 ```tsx
+// ✅ 
 const UserServiceContext = createContext<UserService | null>(null)
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -311,13 +312,54 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     </UserServiceContext.Provider>
   )
 }
+
+// ❌ Anti-pattern : Context comme store global
+const UserStateContext = createContext({
+  user: null,
+  setUser: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
+  error: null,
+  setError: () => {},
+  preferences: {},
+  setPreferences: () => {}
+})
+
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [preferences, setPreferences] = useState({})
+
+  // Chaque changement re-render tous les enfants
+  return (
+    <UserStateContext.Provider 
+      value={{ user, setUser, isLoading, setIsLoading, error, setError, preferences, setPreferences }}
+    >
+      {children}
+    </UserStateContext.Provider>
+  )
+}
+
+// ❌ Anti-pattern : Service recréé sans memoization
+export const ApiProvider = ({ children }) => {
+  // Nouvelle instance à chaque render = re-render cascade
+  const apiService = new ApiService()
+  const analyticsService = new AnalyticsService()
+  
+  return (
+    <ApiContext.Provider value={{ apiService, analyticsService }}>
+      {children}
+    </ApiContext.Provider>
+  )
+}
 ```
 
 ## 5. Logiques portées par le backend
 
 ### Pain points adressés
 
-- **✅ Complexité frontend excessive** : Calculs métier côté serveur pour réduire la complexité côté mobile et l’unicité des règles métier.
+- **✅ Complexité frontend excessive** : Calculs métier côté serveur pour réduire la complexité côté mobile et l’unicité des règles métier, voire le partage avec Pro…
 - **✅ Performance P95 ~4s** : Données pré-formatées pour réduire les temps de traitement
 - **✅ Bundle Android 18.7MB/iOS 33.8MB** : Moins de logique = moins de code = bundle plus petit
 
@@ -360,7 +402,7 @@ const usePersonalizedOffers = (userId: string) => {
 - **✅ 97 commits context/provider** : Tests comportementaux qui résistent aux refactors
 - **✅ Complexité maintenance** : Tests focalisés sur comportements vs implémentation (trophé de test)
 
-* **Responsabilité** : Tester les comportements sans couplage à l'implémentation
+* **Responsabilité** : Tester les comportements sans couplage à l'implémentation (mais à l’utilisateur)
 * **Colocation** : Tests à côté du code testé dans chaque feature
 * **Utilisation typique** : Isolation des dépendances externes, tests de comportement
 
@@ -372,11 +414,101 @@ render(<ComplexComponent />)
 expect(true).toBeTruthy()
 ```
 
+```tsx
+// ✅ Bon pattern : Test du comportement utilisateur
+const ArtistContainer = () => {
+  const { data: artist, isLoading } = useArtistQuery()
+  
+  if (isLoading) return <Loading />
+  return <ArtistCard name={artist.name} />
+}
+
+// Test focalisé sur l'expérience utilisateur
+test('should show loading then artist name', async () => {
+  // Setup: API retourne des données réelles via MSW
+  server.use(
+    rest.get('/api/artists/123', (req, res, ctx) =>
+      res(ctx.json({ name: 'Real Artist' }))
+    )
+  )
+
+  render(<ArtistContainer artistId="123" />)
+  
+  // Comportement: utilisateur voit loading puis contenu
+  expect(screen.getByText('Chargement...')).toBeInTheDocument()
+  await waitFor(() => {
+    expect(screen.getByText('Real Artist')).toBeInTheDocument()
+  })
+})
+
+// ✅ Bon pattern : Mock les services externes, pas nos hooks
+beforeEach(() => {
+  // Mock la librairie externe, pas notre logique
+  jest.mock('algoliasearch', () => ({
+    search: jest.fn().mockResolvedValue({
+      hits: [{ name: 'Artist from Algolia' }]
+    })
+  }))
+})
+
+test('should display search results from API', async () => {
+  render(<SearchContainer query="artist" />)
+  
+  // Notre useSearchQuery utilise la vraie logique avec Algolia mocké
+  await waitFor(() => {
+    expect(screen.getByText('Artist from Algolia')).toBeInTheDocument()
+  })
+})
+```
+
 **Règles d'isolation :**
 
-- Mocker (ou injecter un service de test) les librairies externes (`algoliasearch`), pas nos hooks
+- Injecter un service de test (ou mocker) les librairies externes (`algoliasearch`), pas nos hooks
 - Mocker le backend via MSW, pas les appels individuels
 - Tester les comportements utilisateur, pas l'implémentation
+
+### Anti-patterns à éviter pour les Tests
+
+```tsx
+// ❌ Anti-pattern : Test fragile couplé aux détails internes
+const ArtistContainer = () => {
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState(null)
+  
+  useEffect(() => {
+    setLoading(true)
+    fetchArtist().then(setData).finally(() => setLoading(false))
+  }, [])
+  
+  return loading ? <Loading /> : <ArtistCard data={data} />
+}
+
+// Test cassant à chaque refactor
+test('should set loading to true then false', () => {
+  const { rerender } = render(<ArtistContainer />)
+  expect(mockSetLoading).toHaveBeenCalledWith(true)
+  expect(mockSetLoading).toHaveBeenCalledWith(false)
+})
+
+// ❌ Anti-pattern : Mock nos propres hooks = masque les régressions
+test('should display artist name', () => {
+  jest.mock('./useArtistQuery', () => ({
+    useArtistQuery: () => ({ data: { name: 'Fake Artist' } })
+  }))
+  
+  render(<ArtistContainer />)
+  expect(screen.getByText('Fake Artist')).toBeInTheDocument()
+})
+
+// Si useArtistQuery casse, le test passe toujours
+```
+
+**Problèmes générés :**
+
+- Tests cassent à chaque refactor (couplage/dépendance à l’implémentation)
+- Fausse confiance (mocks cachent les vrais bugs)
+- Maintenance test = 2x temps développement feature
+- Environment instable = CI/CD non fiable
 
 ## 7. Performance et accessibilité intégrées
 
@@ -384,13 +516,13 @@ expect(true).toBeTruthy()
 
 - **✅ Bundle Android 18.7MB → objectif <15MB** : Architecture optimisée pour réduire le bundle
 - **✅ Performance P95 ~4s → objectif <2s** : Patterns optimisés pour améliorer le temps de chargement et les performances d’affichages générales
-- **✅ Accessibilité manquante** : Standards RGAA intégrés par le design
+- **✅ Accessibilité manquante** : Standards RGAA intégrés par le design, elle est intégrée dès la conception de l'architecture, pas ajoutée après coup
 
-* **Responsabilité** : Respecter les objectifs Vision 2025 par design architectural
+* **Responsabilité** : Respecter les objectifs Vision 2025 par notre design architectural
 * **Colocation** : Standards appliqués dans chaque composant et feature
-* **Utilisation typique** : RGAA AA, performance <2s, bundle <2MB
+* **Utilisation typique** : RGAA AA, performance <2s, bundle <15MB android
 
-**Composition over props drilling :**
+**Composition > props drilling :**
 
 ```tsx
 // ✅ Composition simple et performance
@@ -408,24 +540,79 @@ const Container: FunctionComponent<{ subtitle: string }> = ({ subtitle }) => {
 }
 ```
 
-## Standards techniques et outils
+### Anti-patterns à éviter pour Performance et Accessibilité
 
-### TypeScript strict
+```tsx
+// ❌ Anti-pattern : Props drilling + re-renders excessifs
+const Container: FunctionComponent = () => {
+  const [user, setUser] = useState()
+  const [theme, setTheme] = useState()
+  const [analytics, setAnalytics] = useState()
+  
+  return (
+    <ArtistSection 
+      user={user} 
+      theme={theme} 
+      analytics={analytics}
+      onUserUpdate={setUser}
+      onThemeChange={setTheme}
+    />
+  )
+}
+
+const ArtistSection = ({ user, theme, analytics, onUserUpdate, onThemeChange }) => {
+  return (
+    <ArtistCard 
+      user={user}
+      theme={theme} 
+      analytics={analytics}
+      onUserUpdate={onUserUpdate}
+      onThemeChange={onThemeChange}
+    />
+  )
+}
+
+// Chaque changement user/theme re-render toute la hiérarchie
+
+// ❌ Anti-pattern : Accessibilité comme afterthought
+const OfferCard = ({ title, price }) => {
+  return (
+    <Pressable onPress={handlePress}>
+      <Image source={offerImage} />
+      <Text>{title}</Text>
+      <Text>{price}€</Text>
+      {/* Pas de labels, pas de roles, pas de hints */}
+    </Pressable>
+  )
+}
+```
+
+**Problèmes générés :**
+
+- Performance dégradée par re-renders inutiles
+- Bundle alourdi par props drilling
+- Accessibilité impossible à rattraper sans refactor complet
+- Maintenance complexifiée par couplages
+
+# Standards techniques et outils
+
+## TypeScript strict
 
 - Interfaces pour tous les props et types métier
 - Pas de `any`, utilisation de types utilitaires
-- Sécurité de type pour les API calls
+- Sécurité de type pour les appels API
 
-### Conventions de nommage
+## Conventions de nommage
 
 - Queries : `useArtistsQuery.ts`
 - Mutations : `useArtistsMutation.ts`
 - Stores : `useArtistStore.ts`
 - Components : `ArtistCard.tsx`
 
-### Outils de qualité
+## Outils de qualité
 
-- ESLint avec règles strictes
+- ESLint avec des règles strictes
 - Tests avec React Native Testing Library
 - Performance monitoring intégré, comparés, analysés
 - Bundle analyzer pour optimisation
+- Sonar pour analyser et suivre la qualité du code

@@ -1,6 +1,6 @@
-# ~~Architecture Vue D'Ensemble~~
+# Architecture Vue D'Ensemble
 
-~~Graphique de l'organisation des différents composants~~
+Graphique de l'organisation des différents composants
 
 ```mermaid
 flowchart LR
