@@ -11,6 +11,7 @@ appId: ${MAESTRO_APP_ID}
     label: 'Sélection de la 1ère offre disponible'
     below:
       text: .*résultats
+      index: 1
 
 - waitForAnimationToEnd
 
