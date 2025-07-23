@@ -5,17 +5,10 @@ import { getOnboardingHookConfig } from 'features/navigation/OnboardingStackNavi
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
-import { useAnimationToDisplay } from 'libs/styled/useAnimationToDisplay'
-import GeolocationAnimation from 'ui/animations/geolocalisation.json'
+import Geolocation from 'ui/animations/geolocalisation.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingGeolocation = () => {
-  // TODO(PC-36293): use GeolocationAnimationDark and GeolocationAnimationLight
-  const animation = useAnimationToDisplay({
-    light: GeolocationAnimation,
-    dark: GeolocationAnimation,
-  })
-
   const { navigate } = useNavigation<UseNavigationType>()
   const { requestGeolocPermission } = useLocation()
 
@@ -33,7 +26,7 @@ export const OnboardingGeolocation = () => {
 
   return (
     <GenericInfoPage
-      animation={animation}
+      animation={Geolocation}
       title="Découvre les offres près de chez toi"
       subtitle="Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
       buttonPrimary={{

@@ -4,14 +4,13 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { storage } from 'libs/storage'
-import { useAnimationToDisplay } from 'libs/styled/useAnimationToDisplay'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
-import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
+import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -20,12 +19,6 @@ import { getSpacing, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const RecreditBirthdayNotification = () => {
-  // TODO(PC-36293): use TutorialPassLogoDark and TutorialPassLogoLight
-  const animation = useAnimationToDisplay({
-    light: TutorialPassLogo,
-    dark: TutorialPassLogo,
-  })
-
   const { user } = useAuthContext()
   const { designSystem } = useTheme()
 
@@ -62,7 +55,7 @@ export const RecreditBirthdayNotification = () => {
 
   return (
     <GenericInfoPage
-      animation={animation}
+      animation={BirthdayCake}
       title="Bonne nouvelle&nbsp;!"
       subtitle={recreditMessage}
       buttonPrimary={{

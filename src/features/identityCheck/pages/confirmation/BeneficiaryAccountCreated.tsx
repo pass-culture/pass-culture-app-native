@@ -7,7 +7,6 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
-import { useAnimationToDisplay } from 'libs/styled/useAnimationToDisplay'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -22,12 +21,6 @@ import { Typo, getSpacing } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
-  // TODO(PC-36293): use TutorialPassLogoDark and TutorialPassLogoLight
-  const animation = useAnimationToDisplay({
-    light: TutorialPassLogo,
-    dark: TutorialPassLogo,
-  })
-
   const { designSystem } = useTheme()
   const { user, refetchUser } = useAuthContext()
 
@@ -62,7 +55,8 @@ export function BeneficiaryAccountCreated() {
 
   return (
     <GenericInfoPage
-      animation={animation}
+      animation={TutorialPassLogo}
+      temporarilyDeactivateColors // TODO(PC-37129)
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{

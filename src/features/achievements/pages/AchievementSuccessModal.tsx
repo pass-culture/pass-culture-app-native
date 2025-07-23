@@ -6,6 +6,7 @@ import { useAchievementsMarkAsSeenMutation } from 'features/achievements/queries
 import { analytics } from 'libs/analytics/provider'
 import LottieView from 'libs/lottie'
 import success from 'ui/animations/achievements_success.json'
+import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -55,8 +56,8 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
       onCloseIconPress={hideModalAndMarkAsSeen}
       visible={visible}>
       <StyledViewGap gap={2}>
-        <AchievementView
-          ref={logoRef}
+        <ThemedStyledLottieView
+          height={getSpacing(60)}
           source={success}
           autoPlay={false}
           loop={false}
@@ -96,8 +97,4 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
 const StyledTitle = styled(Typo.Title3)({
   textAlign: 'center',
   marginBottom: getSpacing(6),
-})
-
-const AchievementView = styled(LottieView)({
-  height: getSpacing(60),
 })
