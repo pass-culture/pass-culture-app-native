@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
@@ -7,9 +8,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { analytics } from 'libs/analytics/provider'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -48,7 +48,7 @@ export const SetName = () => {
 
   const storedName = useName()
   const { setName: setStoredName } = nameActions
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
   const { control, formState, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
@@ -68,8 +68,7 @@ export const SetName = () => {
   async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
     setStoredName({ firstName, lastName })
-    analytics.logSetNameClicked()
-    navigate(...getSubscriptionHookConfig('SetCity', { type: pageInfos.navigateParamsType }))
+    navigate('SetCity', { type: pageInfos.navigateParamsType })
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitName))

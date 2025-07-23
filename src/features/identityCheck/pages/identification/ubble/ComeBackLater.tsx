@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
@@ -21,7 +20,6 @@ export const ComeBackLater: FunctionComponent = () => {
       buttonPrimary={{
         wording: 'M’identifier plus tard',
         navigateTo: navigateToHomeConfig,
-        onBeforeNavigate: () => analytics.logComeBackLaterClicked(undefined),
       }}>
       <StyledText>
         <Typo.Body>Pour profiter du pass Culture, tu dois avoir </Typo.Body>

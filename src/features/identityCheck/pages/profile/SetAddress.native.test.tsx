@@ -7,7 +7,6 @@ import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
-import { analytics } from 'libs/analytics/provider'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { Properties } from 'libs/place/types'
@@ -104,11 +103,8 @@ describe('<SetAddress/>', () => {
     await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
-      screen: 'SetStatus',
-      params: {
-        type: ProfileTypes.IDENTITY_CHECK,
-      },
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
+      type: ProfileTypes.IDENTITY_CHECK,
     })
   })
 
@@ -126,17 +122,6 @@ describe('<SetAddress/>', () => {
         address: mockedSuggestedPlaces.features[1].properties.name,
       },
     })
-  })
-
-  it('should log analytics on press Continuer', async () => {
-    renderSetAddress()
-
-    const input = screen.getByTestId('Entrée pour l’adresse')
-    fireEvent.changeText(input, QUERY_ADDRESS)
-
-    await user.press(screen.getByText('Continuer'))
-
-    expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1)
   })
 })
 

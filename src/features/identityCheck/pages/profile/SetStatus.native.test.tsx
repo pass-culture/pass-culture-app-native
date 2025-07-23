@@ -13,7 +13,6 @@ import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
-import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
@@ -177,15 +176,6 @@ describe('<SetStatus/>', () => {
       },
       type: 'RESET',
     })
-  })
-
-  it('should log analytics on press Continuer', async () => {
-    renderSetStatus()
-
-    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
-    await user.press(screen.getByText('Continuer'))
-
-    expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
   })
 
   it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
