@@ -22,6 +22,8 @@ import { AlgoliaOffer, AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { GeolocPermissionState, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -43,6 +45,7 @@ const mockUseSearch = jest.fn(() => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
@@ -221,6 +224,9 @@ const initSearchResultsFlashlist = async () => {
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useRemoteConfigSpy.mockReturnValue({
+      ...DEFAULT_REMOTE_CONFIG,
+    })
   })
 
   const user = userEvent.setup()
@@ -927,12 +933,29 @@ describe('SearchResultsContent component', () => {
     describe('is activated', () => {
       beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
 
-      it('should display results as list when click on gridlist toggle already on list mode', async () => {
-        renderSearchResultContent()
+      describe('gridListLayout remote config is default', () => {
+        it('should display results as list', async () => {
+          renderSearchResultContent()
 
-        await initSearchResultsFlashlist()
+          await initSearchResultsFlashlist()
 
-        expect(screen.getAllByTestId(`horizontal_offer_tile`)).toBeTruthy()
+          expect(screen.getAllByTestId(`horizontal_offer_tile`)).toBeTruthy()
+        })
+      })
+
+      describe('gridListLayout remote config is grid', () => {
+        it('should display results as grid', async () => {
+          useRemoteConfigSpy.mockReturnValueOnce({
+            ...DEFAULT_REMOTE_CONFIG,
+            gridListLayoutRemoteConfig: 'Grille',
+          })
+
+          renderSearchResultContent()
+
+          await initSearchResultsFlashlist()
+
+          expect(screen.getAllByTestId('OfferTile')).toBeTruthy()
+        })
       })
 
       it('should display results as grid when click on gridlist toggle already on list mode', async () => {
@@ -969,6 +992,18 @@ describe('SearchResultsContent component', () => {
         await waitFor(() => {
           expect(screen.getByText('Grille')).toBeTruthy()
         })
+      })
+    })
+
+    describe('is desactivated', () => {
+      beforeEach(() => setFeatureFlags())
+
+      it('should not display toggle', async () => {
+        renderSearchResultContent()
+
+        await initSearchResultsFlashlist()
+
+        expect(screen.queryByTestId('grid-list-menu')).not.toBeOnTheScreen()
       })
     })
   })

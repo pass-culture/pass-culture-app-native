@@ -8,6 +8,8 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   artistPageSubcategories: {
     subcategories: [],
   },
+  displayInAppFeedback: false,
+  gridListLayoutRemoteConfig: 'Liste',
   homeEntryIdBeneficiary: '',
   homeEntryIdFreeBeneficiary: '',
   homeEntryIdFreeOffers: '',
@@ -19,7 +21,6 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   sameAuthorPlaylist: '',
   shouldDisplayReassuranceMention: false,
   shouldLogInfo: false,
-  displayInAppFeedback: false,
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: '',
     [SubscriptionTheme.MUSIQUE]: '',
