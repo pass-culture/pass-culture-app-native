@@ -22,14 +22,14 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER = getSpacing(38.5)
 const MONO_OFFER_CARD_VERTICAL_SPACING = getSpacing(8)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
 
   const COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER =
     MONO_OFFER_CARD_VERTICAL_SPACING + monoOfferCardHeight
 
   const fillFromDesignSystem =
-    theme.designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
+    designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
 
   return (
     <Container>

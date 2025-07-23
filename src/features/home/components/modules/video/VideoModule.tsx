@@ -18,14 +18,14 @@ interface VideoModuleBaseProps extends VideoModuleType {
 }
 
 const VideoModuleContent: FunctionComponent<VideoModuleProps> = (props) => {
-  const theme = useTheme()
+  const { isDesktopViewport } = useTheme()
 
   const videoModule = {
     DESKTOP: <VideoModuleDesktop {...props} />,
     MOBILE: <VideoModuleMobile {...props} />,
   }
 
-  return theme.isDesktopViewport ? videoModule.DESKTOP : videoModule.MOBILE
+  return isDesktopViewport ? videoModule.DESKTOP : videoModule.MOBILE
 }
 
 export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {

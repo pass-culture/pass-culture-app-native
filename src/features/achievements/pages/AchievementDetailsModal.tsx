@@ -14,7 +14,7 @@ interface Props {
 
 export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => {
   const achievement = useAchievementDetails(name)
-  const theme = useTheme()
+  const { illustrations } = useTheme()
 
   useEffect(() => {
     if (!visible) return
@@ -33,7 +33,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
       testIdSuffix="achievement-details">
       <Container>
         <IconsWrapper>
-          <Illustration size={theme.illustrations.sizes.fullPage} />
+          <Illustration size={illustrations.sizes.fullPage} />
         </IconsWrapper>
         <Spacer.Column numberOfSpaces={6} />
         <BodyWrapper isCompleted={achievement.completed}>

@@ -25,7 +25,7 @@ export type SummaryInfoItem = SummaryInfoProps & {
 }
 
 export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
-  const theme = useTheme()
+  const { designSystem, icons } = useTheme()
   const { venue, isDigital, isDuo, extraData, address } = offer
   const dates = extractStockDates(offer)
   const formattedDate = capitalize(getFormattedDates(dates))
@@ -40,37 +40,31 @@ export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
   const summaryInfoItems: SummaryInfoItem[] = [
     {
       isDisplayed: !!fullAddressOffer && fullAddressOffer !== fullAddressVenue,
-      Icon: <MapPin color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />,
+      Icon: <MapPin color={designSystem.color.icon.default} size={icons.sizes.small} />,
       title: address?.label ?? 'Adresse',
       subtitle: fullAddressOffer,
     },
     {
       isDisplayed: !!formattedDate && !isCinemaOffer,
-      Icon: (
-        <CalendarS color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />
-      ),
+      Icon: <CalendarS color={designSystem.color.icon.default} size={icons.sizes.small} />,
       title: 'Dates',
       subtitle: formattedDate,
     },
     {
       isDisplayed: isDigital,
-      Icon: (
-        <Digital color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />
-      ),
+      Icon: <Digital color={designSystem.color.icon.default} size={icons.sizes.small} />,
       title: 'En ligne',
       subtitle: locationName,
     },
     {
       isDisplayed: !!duration,
-      Icon: (
-        <ClockFilled color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />
-      ),
+      Icon: <ClockFilled color={designSystem.color.icon.default} size={icons.sizes.small} />,
       title: 'Durée',
       subtitle: duration,
     },
     {
       isDisplayed: isDuo,
-      Icon: <Stock color={theme.designSystem.color.icon.default} size={theme.icons.sizes.small} />,
+      Icon: <Stock color={designSystem.color.icon.default} size={icons.sizes.small} />,
       title: 'Duo',
       subtitle: 'Tu peux prendre deux places',
     },

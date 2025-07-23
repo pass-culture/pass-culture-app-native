@@ -70,5 +70,5 @@ const LegendContainer = styled.View<{ reverse?: boolean }>(({ reverse }) => ({
 const DisabledRectangle = styled.View(({ theme }) => ({
   width: '100%',
   height: getSpacing(12),
-  backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
+  backgroundColor: theme.designSystem.color.background.disabled,
 }))

@@ -181,9 +181,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
   const modulesIntervalId = useRef<NodeJS.Timeout>()
-  const theme = useTheme()
+  const { zIndex } = useTheme()
 
-  const flatListHeaderStyle = { zIndex: theme.zIndex.header }
+  const flatListHeaderStyle = { zIndex: zIndex.header }
 
   const enrichedModules = useMemo(
     () => enrichModulesWithData(modules, offersModulesData, venuesModulesData).slice(0, maxIndex),

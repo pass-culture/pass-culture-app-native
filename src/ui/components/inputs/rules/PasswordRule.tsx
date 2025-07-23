@@ -20,13 +20,13 @@ const NotMemoizedPasswordRule: FunctionComponent<Props> = ({ title, isValidated 
   const InfoWithLabel = styled(Info).attrs({
     accessibilityLabel,
   })``
-  const theme = useTheme()
+  const { icons } = useTheme()
 
   return (
     <InputRule
       title={title}
       icon={isValidated ? ValidWithLabel : InfoWithLabel}
-      iconSize={theme.icons.sizes.smaller}
+      iconSize={icons.sizes.smaller}
       testIdSuffix={isValidated ? 'check' : 'close'}
       type={isValidated ? 'Valid' : 'Neutral'}
     />

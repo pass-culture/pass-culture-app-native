@@ -21,10 +21,10 @@ export const CloseButton: React.FC<HeaderIconProps> = ({
   size,
   ...props
 }) => {
-  const theme = useTheme()
+  const { icons } = useTheme()
   return (
     <StyledTouchable onPress={onClose} accessibilityLabel="Fermer" hitSlop={hitSlop} {...props}>
-      <DefaultClose testID="icon-close" color={color} size={size ?? theme.icons.sizes.small} />
+      <DefaultClose testID="icon-close" color={color} size={size ?? icons.sizes.small} />
       <HiddenAccessibleText>Retour</HiddenAccessibleText>
     </StyledTouchable>
   )

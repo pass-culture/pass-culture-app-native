@@ -28,7 +28,7 @@ type Props = {
 }
 
 export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress, distance }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
 
   const { data: offers, isInitialLoading: isLoading } = useOffersStocksFromOfferQuery(offer)
   const { selectedDate, dates } = useMovieCalendar()
@@ -69,7 +69,7 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress, distance }
             icon={PlainMore}
             wording="Afficher plus de cinémas"
             onPress={showMore}
-            color={theme.designSystem.color.text.default}
+            color={designSystem.color.text.default}
           />
         </SeeMoreContainer>
       )}

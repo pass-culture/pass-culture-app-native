@@ -17,15 +17,15 @@ const SMALL_DOT_SIZE = 4
 const BIG_DOT_SIZE = SMALL_DOT_SIZE + 4
 
 export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
 
   const animStyle = useAnimatedStyle(() => {
     const inputRange = [index - 1, index, index + 1]
     const marginOutputRange = [2, 0, 2]
     const colorOutputRange = [
-      theme.designSystem.color.icon.subtle,
-      theme.designSystem.color.icon.locked,
-      theme.designSystem.color.icon.subtle,
+      designSystem.color.icon.subtle,
+      designSystem.color.icon.locked,
+      designSystem.color.icon.subtle,
     ]
     const widthOutputRange = [SMALL_DOT_SIZE, BIG_DOT_SIZE, SMALL_DOT_SIZE]
 

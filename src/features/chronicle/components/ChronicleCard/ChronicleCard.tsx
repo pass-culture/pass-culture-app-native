@@ -33,16 +33,16 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   icon,
   shouldTruncate = false,
 }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
 
   const [currentNumberOfLines, setCurrentNumberOfLines] = useState<number | undefined>(undefined)
   const [shouldDisplayButton, setShouldDisplayButton] = useState(false)
 
   // height depending on the platform
   const DEFAULT_HEIGHT_WEB =
-    parseFloat(theme.designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES * REM_TO_PX
+    parseFloat(designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES * REM_TO_PX
   const DEFAULT_HEIGHT_MOBILE =
-    parseFloat(theme.designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES
+    parseFloat(designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES
   const defaultHeight = Platform.OS === 'web' ? DEFAULT_HEIGHT_WEB : DEFAULT_HEIGHT_MOBILE
 
   const handleOnLayout = (event: LayoutChangeEvent) => {
