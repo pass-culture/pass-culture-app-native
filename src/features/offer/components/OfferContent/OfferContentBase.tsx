@@ -321,9 +321,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           />
           {children}
         </ScrollViewContainer>
-        <OfferFooter offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
-          {offerCtaButton}
-        </OfferFooter>
+        <FooterContainer>
+          <OfferFooter offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
+            {offerCtaButton}
+          </OfferFooter>
+        </FooterContainer>
       </AnchorProvider>
     </Container>
   )
@@ -340,6 +342,9 @@ const ScrollViewContainer = React.memo(
     overflow: 'visible',
   })
 )
+const FooterContainer = styled.View(({ theme }) => ({
+  marginTop: theme.isDesktopViewport ? 0 : getSpacing(18),
+}))
 
 const StyledSectionWithDivider = styled(SectionWithDivider)({
   paddingBottom: getSpacing(8),
