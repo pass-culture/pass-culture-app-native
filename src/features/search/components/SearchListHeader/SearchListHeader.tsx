@@ -84,10 +84,16 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
+  const handleToggleChange = (layout: GridListLayout) => {
+    const fromLayout = layout === GridListLayout.GRID ? GridListLayout.LIST : GridListLayout.GRID
+    analytics.logHasClickedGridListToggle({ fromLayout })
+    setGridListLayout?.(layout)
+  }
+
   const getLayoutButtonProps = (layout: GridListLayout) => ({
     layout,
     isSelected: selectedGridListLayout === layout,
-    onPress: () => setGridListLayout?.(layout),
+    onPress: () => handleToggleChange(layout),
   })
 
   return (
