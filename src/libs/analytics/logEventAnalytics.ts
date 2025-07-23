@@ -30,7 +30,7 @@ import {
   RemoteBannerType,
   RemoteBannerOrigin,
 } from 'features/remoteBanners/utils/remoteBannerSchema'
-import { SearchState } from 'features/search/types'
+import { GridListLayout, SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { AmplitudeEvent } from 'libs/amplitude/events'
@@ -365,6 +365,8 @@ export const logEventAnalytics = {
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
+  logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasClickedRemoteActivationBanner: (from: RemoteBannerOrigin, options: RemoteBannerType) =>

@@ -947,6 +947,21 @@ describe('SearchResultsContent component', () => {
         expect(screen.getAllByTestId('OfferTile')).toBeTruthy()
       })
 
+      it('should trigger logHasClickedGridListToggle whith previous layout when pressing gridListToggle', async () => {
+        renderSearchResultContent()
+
+        await initSearchResultsFlashlist()
+
+        const grilleIcon = await screen.findByTestId('Grille-icon')
+        await user.press(grilleIcon)
+
+        await initSearchResultsFlashlist()
+
+        expect(analytics.logHasClickedGridListToggle).toHaveBeenCalledWith({
+          fromLayout: 'Liste',
+        })
+      })
+
       it('should display list word on toggle when list mode', async () => {
         renderSearchResultContent()
 
