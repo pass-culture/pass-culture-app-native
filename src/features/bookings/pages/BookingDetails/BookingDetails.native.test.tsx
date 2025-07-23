@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import {
@@ -9,6 +9,7 @@ import {
   BookingsResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
+  TicketDisplayEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
 import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
@@ -578,27 +579,12 @@ describe('BookingDetails', () => {
     })
   })
 
-  describe('OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is on an is not Event', () => {
+  describe('BookingDetails : when FF WIP_NEW_BOOKING_PAGE is on', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
     })
 
-    it('should render OldBookingPageContent', async () => {
-      const notAnEventOffer = bookingsSnapV2.ongoingBookings[2]
-      renderBookingDetailsV2(notAnEventOffer)
-
-      await screen.findByText('Ma réservation')
-
-      expect(screen.getByTestId('BookingDetailsScrollView')).toBeOnTheScreen()
-    })
-  })
-
-  describe('BookingPageContent : when FF WIP_NEW_BOOKING_PAGE is on', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
-    })
-
-    it('should render BookingPageContent', async () => {
+    it('should render BookingDetails', async () => {
       renderBookingDetailsV2(ongoingBookingV2)
 
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
@@ -639,7 +625,6 @@ describe('BookingDetails', () => {
         ...ongoingBookingV2,
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: false,
           withdrawal: {
             ...ongoingBookingV2.ticket?.withdrawal,
             details: withdrawalDetails,
@@ -743,7 +728,7 @@ describe('BookingDetails', () => {
         },
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: true,
+          display: TicketDisplayEnum.no_ticket,
           withdrawal: {
             type: WithdrawalTypeEnum.no_ticket,
           },
@@ -756,15 +741,34 @@ describe('BookingDetails', () => {
       ).toBeOnTheScreen()
     })
 
+    it('should not render error message when booking is no ticket', async () => {
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
+        quantity: 2,
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          display: TicketDisplayEnum.no_ticket,
+          withdrawal: {
+            type: WithdrawalTypeEnum.no_ticket,
+          },
+        },
+      })
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+      expect(
+        screen.queryByText('Tu n’as pas le droit de céder ou de revendre tes billets.')
+      ).not.toBeOnTheScreen()
+    })
+
     it('should render error message with plural when booking is duo', async () => {
       renderBookingDetailsV2({
         ...ongoingBookingV2,
         quantity: 2,
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: true,
+          display: TicketDisplayEnum.email_sent,
           withdrawal: {
-            type: WithdrawalTypeEnum.no_ticket,
+            type: WithdrawalTypeEnum.by_email,
           },
         },
       })
@@ -788,9 +792,9 @@ describe('BookingDetails', () => {
         },
         ticket: {
           ...ongoingBookingV2.ticket,
-          noTicket: true,
+          display: TicketDisplayEnum.email_sent,
           withdrawal: {
-            type: WithdrawalTypeEnum.no_ticket,
+            type: WithdrawalTypeEnum.by_email,
           },
         },
       })
@@ -818,7 +822,6 @@ describe('BookingDetails', () => {
           },
           ticket: {
             ...ongoingBookingV2.ticket,
-            noTicket: false,
             withdrawal: {},
             externalBooking: {
               data: [{ barcode: '1234', seat: 'B1' }],
@@ -828,28 +831,6 @@ describe('BookingDetails', () => {
         await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
         expect(screen.getByTestId('external-booking-ticket-container')).toBeOnTheScreen()
-      })
-
-      it('should render Hidden External Booking Component when no externalbooking data', async () => {
-        renderBookingDetailsV2({
-          ...ongoingBookingV2,
-          stock: {
-            ...ongoingBookingV2.stock,
-            offer: {
-              ...ongoingBookingV2.stock.offer,
-              isDigital: false,
-            },
-          },
-          ticket: {
-            ...ongoingBookingV2.ticket,
-            noTicket: false,
-            withdrawal: {},
-            externalBooking: {},
-          },
-        })
-        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
-
-        expect(screen.getByTestId('hidden-external-booking-ticket-container')).toBeOnTheScreen()
       })
 
       it('should render cinema booking ticket if voucher is present', async () => {
@@ -864,7 +845,6 @@ describe('BookingDetails', () => {
           },
           ticket: {
             ...ongoingBookingV2.ticket,
-            noTicket: false,
             withdrawal: {},
             voucher: { data: 'test-voucher' },
             token: { data: 'test-token' },
@@ -888,7 +868,6 @@ describe('BookingDetails', () => {
             },
             ticket: {
               ...ongoingBookingV2.ticket,
-              noTicket: false,
               token: {
                 data: 'TEST12',
               },
@@ -899,6 +878,7 @@ describe('BookingDetails', () => {
               voucher: null,
               withdrawal: {},
             },
+            completedUrl: 'https://example.com',
           })
 
           await screen.findAllByText(ongoingBookings.stock.offer.name)
@@ -918,7 +898,6 @@ describe('BookingDetails', () => {
             },
             ticket: {
               ...ongoingBookingV2.ticket,
-              noTicket: false,
               token: {
                 data: 'TEST12',
               },
@@ -929,8 +908,39 @@ describe('BookingDetails', () => {
           })
           await screen.findAllByText(ongoingBookings.stock.offer.name)
 
-          expect(screen.getByText('TEST12')).toBeOnTheScreen()
+          expect(await screen.findByText('TEST12')).toBeOnTheScreen()
         })
+      })
+
+      it('should trigger logEvent "BookingDetailsScrolledToBottom" when reaching the end', async () => {
+        const nativeEventMiddle = {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 400 }, // how far did we scroll
+          contentSize: { height: 1600 },
+        }
+        const nativeEventBottom = {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 900 },
+          contentSize: { height: 1600 },
+        }
+
+        renderBookingDetailsV2(ongoingBookingV2)
+
+        await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+        const scrollView = screen.getByTestId('BookingDetailsScrollView')
+
+        await act(async () => {
+          await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        })
+
+        expect(analytics.logBookingDetailsScrolledToBottom).not.toHaveBeenCalled()
+
+        await act(async () => {
+          await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+        })
+
+        expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
       })
     })
   })
@@ -940,6 +950,7 @@ const renderBookingDetails = (booking?: Booking, options = {}) => {
   jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
@@ -952,6 +963,7 @@ const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
   jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,
@@ -961,6 +973,7 @@ const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
   jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
     data: booking,
     isLoading: false,
+    isFetching: false,
     isSuccess: true,
     isError: false,
     error: undefined,

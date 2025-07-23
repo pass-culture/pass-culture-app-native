@@ -23,9 +23,7 @@ describe('formatDateTimezone()', () => {
   `(
     'should format Date $limitDate to string "$expected"',
     ({ limitDate, expected }: { limitDate: string; expected: string }) => {
-      const shouldShowWeekDay = false
-
-      expect(formatDateTimezone(limitDate, shouldShowWeekDay)).toEqual(expected)
+      expect(formatDateTimezone({ limitDate, shouldDisplayWeekDay: false })).toEqual(expected)
     }
   )
 })

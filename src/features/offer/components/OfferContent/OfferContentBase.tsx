@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import React, {
   FunctionComponent,
   PropsWithChildren,
@@ -16,7 +17,6 @@ import {
   ViewStyle,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
-import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
@@ -25,6 +25,7 @@ import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferFooter } from 'features/offer/components/OfferFooter/OfferFooter'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
@@ -61,13 +62,16 @@ type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
+    onSeeVideoPress?: () => void
     chronicles?: ChronicleCardData[]
+    videoData?: { videoId: string; thumbnailUri: string }
     likesCount?: number
     headlineOffersCount?: number
     defaultReaction?: ReactionTypeEnum | null
     onReactionButtonPress?: () => void
     contentContainerStyle?: StyleProp<ViewStyle>
     onLayout?: (params: LayoutChangeEvent) => void
+    chronicleVariantInfo?: ChronicleVariantInfo
   }>
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
@@ -80,11 +84,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   chronicleVariantInfo,
   headlineOffersCount,
   onOfferPreviewPress,
+  onSeeVideoPress,
   contentContainerStyle,
   defaultReaction,
   onReactionButtonPress,
   BodyWrapper = React.Fragment,
   onLayout,
+  videoData,
   children,
 }) => {
   const theme = useTheme()
@@ -266,17 +272,22 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               onPress={onOfferPreviewPress}
               placeholderImage={placeholderImage}
               imageDimensions={imageDimensions}
+              onSeeVideoPress={onSeeVideoPress}
             />
             <OfferBody
               offer={offer}
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
-              chroniclesCount={chronicles?.length}
+              chroniclesCount={offer.chroniclesCount}
+              chronicles={chronicles}
               distance={distance}
-              headlineOffersCount={headlineOffersCount}>
+              headlineOffersCount={headlineOffersCount}
+              videoData={videoData}
+              chronicleVariantInfo={chronicleVariantInfo}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>
+
           {chronicles?.length ? (
             <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
               <ChronicleSection

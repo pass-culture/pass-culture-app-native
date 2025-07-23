@@ -321,7 +321,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -377,6 +377,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
                         "textAlign": "center",
                       },
                     ]
@@ -388,16 +389,6 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
 
                   Pour en savoir plus, va sur ton profil.
                 </Text>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Aller sur mon profil"
                   accessibilityState={

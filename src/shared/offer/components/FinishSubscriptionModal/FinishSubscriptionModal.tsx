@@ -4,11 +4,12 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
@@ -25,7 +26,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
 
   const navigateToStepper = useCallback(() => {
     hideModal()
-    navigate('Stepper', { from })
+    navigate(...getSubscriptionHookConfig('Stepper', { from }))
   }, [hideModal, navigate, from])
 
   const depositAmountByAge = useGetDepositAmountsByAge(user?.birthDate)
@@ -53,7 +54,6 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
           offre.
         </StyledBody>
       )}
-      <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording={buttonLabel}
         accessibilityLabel="Aller vers la section profil"
@@ -73,6 +73,7 @@ const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })
 
 const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({

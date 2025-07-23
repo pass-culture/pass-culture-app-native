@@ -3,7 +3,7 @@ import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksRe
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
@@ -21,7 +21,7 @@ describe('useOffersStocksQuery', () => {
       }
     )
 
-    await act(async () => {})
+    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offersStocksResponseSnap))
   })

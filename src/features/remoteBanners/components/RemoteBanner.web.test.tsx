@@ -6,14 +6,22 @@ import {
   RemoteBannerType,
 } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<RemoteBanner/>', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should show web specific subtitle', async () => {
-    render(<RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerExternalUrl} />)
+    render(
+      reactQueryProviderHOC(
+        <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerExternalUrl} />
+      )
+    )
 
     const subtitle = screen.queryByText('subtitleWeb')
 
@@ -21,7 +29,11 @@ describe('<RemoteBanner/>', () => {
   })
 
   it('should not show mobile specific subtitle', async () => {
-    render(<RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerExternalUrl} />)
+    render(
+      reactQueryProviderHOC(
+        <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerExternalUrl} />
+      )
+    )
 
     const subtitle = screen.queryByText('subtitleMobile')
 
@@ -30,7 +42,9 @@ describe('<RemoteBanner/>', () => {
 
   it('should have noRightIcon for store redirection on web', async () => {
     render(
-      <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerStoreRedirection} />
+      reactQueryProviderHOC(
+        <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerStoreRedirection} />
+      )
     )
 
     const rightIcon = screen.queryByTestId('ArrowNext')
@@ -40,7 +54,9 @@ describe('<RemoteBanner/>', () => {
 
   it('should have correct accessibilityRole for store redirection', async () => {
     render(
-      <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerStoreRedirection} />
+      reactQueryProviderHOC(
+        <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerStoreRedirection} />
+      )
     )
 
     const buttonBanner = await screen.findByRole(AccessibilityRole.BUTTON)
@@ -49,8 +65,11 @@ describe('<RemoteBanner/>', () => {
   })
 
   it('should have correct accessibilityRole for external redirection', async () => {
-    render(<RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerExternalUrl} />)
-
+    render(
+      reactQueryProviderHOC(
+        <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerExternalUrl} />
+      )
+    )
     const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 
     expect(linkBanner).toBeTruthy()

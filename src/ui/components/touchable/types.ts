@@ -1,12 +1,11 @@
 import { TouchableOpacityProps } from 'react-native'
 
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsType } from 'theme/types'
 
 export type TouchableProps = {
   type?: string
   onPress?: () => void
   testID?: string
   accessibilityLabel?: string
-  hoverUnderlineColor?: ColorsEnum | null
+  hoverUnderlineColor?: ColorsType | null
 } & TouchableOpacityProps

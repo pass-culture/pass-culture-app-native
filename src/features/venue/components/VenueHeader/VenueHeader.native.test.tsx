@@ -8,6 +8,8 @@ import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/jwt/jwt')
+
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('features/venue/queries/useVenueQuery')
 jest.useFakeTimers()
@@ -72,7 +74,7 @@ describe('<VenueHeader />', () => {
   })
 })
 
-function renderVenueHeader() {
+const renderVenueHeader = () => {
   const animatedValue = new Animated.Value(0)
   render(
     reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} venue={venueDataTest} />)

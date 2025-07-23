@@ -13,8 +13,8 @@ type Props = {
   animValue: SharedValue<number>
 }
 
-const SMALL_DOT_SIZE = 6
-const BIG_DOT_SIZE = SMALL_DOT_SIZE + 2
+const SMALL_DOT_SIZE = 4
+const BIG_DOT_SIZE = SMALL_DOT_SIZE + 4
 
 export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }) => {
   const theme = useTheme()
@@ -23,9 +23,9 @@ export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }
     const inputRange = [index - 1, index, index + 1]
     const marginOutputRange = [2, 0, 2]
     const colorOutputRange = [
-      theme.designSystem.color.background.disabled,
-      theme.designSystem.color.background.inverted,
-      theme.designSystem.color.background.disabled,
+      theme.designSystem.color.icon.subtle,
+      theme.designSystem.color.icon.locked,
+      theme.designSystem.color.icon.subtle,
     ]
     const widthOutputRange = [SMALL_DOT_SIZE, BIG_DOT_SIZE, SMALL_DOT_SIZE]
 

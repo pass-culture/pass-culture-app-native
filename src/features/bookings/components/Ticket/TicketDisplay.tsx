@@ -1,8 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { theme } from 'theme'
 import { CutoutHorizontal } from 'ui/svg/CutoutHorizontal'
 import { Stroke } from 'ui/svg/Stroke'
 import { getSpacing } from 'ui/theme'
@@ -25,8 +24,9 @@ export const TicketDisplay = ({
   display,
   onTopBlockLayout,
 }: TicketContentProps) => {
-  const backgroundColor = theme.designSystem.color.background.default
-  const borderColor = theme.designSystem.color.border.subtle
+  const { designSystem } = useTheme()
+  const backgroundColor = designSystem.color.background.default
+  const borderColor = designSystem.color.border.subtle
 
   return display === 'punched' ? (
     <View testID="ticket-punched">

@@ -2,9 +2,8 @@ import React, { memo } from 'react'
 import { Path } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const ratio = 309 / 50
 const viewBox = '0 0 309 50'
@@ -12,7 +11,7 @@ const viewBox = '0 0 309 50'
 type Props = {
   width: number
   // eslint-disable-next-line react/no-unused-prop-types
-  color?: ColorsEnum
+  color?: ColorsType
 }
 
 const TicketFooterComponent: React.FC<Props> = (props) => {

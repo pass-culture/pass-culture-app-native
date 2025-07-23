@@ -43,5 +43,5 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
 
 const StyledLocationIcon = styled(Everywhere).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.brandSecondary,
 }))``

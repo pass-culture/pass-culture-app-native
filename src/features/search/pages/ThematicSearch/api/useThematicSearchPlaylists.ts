@@ -1,6 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
 import { SearchResponse } from 'instantsearch.js'
 import { useEffect } from 'react'
-import { useQuery } from 'react-query'
 
 import { ThematicSearchPlaylistListProps } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import {
@@ -27,7 +27,11 @@ export function useThematicSearchPlaylists({
   const transformHits = useTransformOfferHits()
 
   const { userLocation } = useLocation()
-  const { data, refetch, isLoading } = useQuery({
+  const {
+    data,
+    refetch,
+    isInitialLoading: isLoading,
+  } = useQuery({
     queryKey: [queryKey],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchMethod(userLocation)

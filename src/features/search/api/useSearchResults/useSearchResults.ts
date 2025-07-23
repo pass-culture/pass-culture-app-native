@@ -1,8 +1,8 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
+import { onlineManager, useInfiniteQuery } from '@tanstack/react-query'
 import { uniqBy } from 'lodash'
 import flatten from 'lodash/flatten'
 import { useMemo, useRef } from 'react'
-import { onlineManager, useInfiniteQuery } from 'react-query'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'

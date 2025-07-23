@@ -1,4 +1,4 @@
-import { onlineManager, useQuery } from 'react-query'
+import { onlineManager, useQuery } from '@tanstack/react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
@@ -27,9 +27,9 @@ export const useCheatcodesFeatureFlagQuery = () => {
   const appBuildVersion = getAppBuildVersion()
   const {
     data: docSnapshot,
-    isLoading,
+    isInitialLoading: isLoading,
     error,
-  } = useQuery('FEATURE_FLAGS', getAllFeatureFlags, {
+  } = useQuery(['FEATURE_FLAGS'], getAllFeatureFlags, {
     staleTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
   })
@@ -53,10 +53,12 @@ export const useCheatcodesFeatureFlagQuery = () => {
         ? ((config?.owner?.toLowerCase() as squads) ?? 'squad non-definie')
         : 'not used in code'
 
+      //@ts-ignore: (PC-36587): fix typing
       if (!flags[owner]) {
+        //@ts-ignore: (PC-36587): fix typing
         flags[owner] = []
       }
-
+      //@ts-ignore: (PC-36587): fix typing
       flags[owner].push({
         featureFlag: key,
         isFeatureFlagActive: isFeatureFlagActive(config, appBuildVersion),

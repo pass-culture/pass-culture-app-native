@@ -4,47 +4,52 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeButton } from 'cheatcodes/types'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 export function CheatcodesNavigationNewIdentificationFlow(): React.JSX.Element {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
 
   const navigationButtons: CheatcodeButton[] = [
     {
       id: uuidv4(),
       title: 'SelectIDOrigin',
-      navigationTarget: { screen: 'SelectIDOrigin' },
+      navigationTarget: getSubscriptionPropConfig('SelectIDOrigin'),
     },
     {
       id: uuidv4(),
       title: 'SelectIDStatus',
-      navigationTarget: { screen: 'SelectIDStatus' },
+      navigationTarget: getSubscriptionPropConfig('SelectIDStatus'),
     },
     {
       id: uuidv4(),
       title: 'SelectPhoneStatus',
-      navigationTarget: { screen: 'SelectPhoneStatus' },
+      navigationTarget: getSubscriptionPropConfig('SelectPhoneStatus'),
     },
     {
       id: uuidv4(),
       title: 'DMS français',
-      navigationTarget: { screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } },
+      navigationTarget: getSubscriptionPropConfig('DMSIntroduction', {
+        isForeignDMSInformation: false,
+      }),
     },
     {
       id: uuidv4(),
       title: 'DMS étranger',
-      navigationTarget: { screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } },
+      navigationTarget: getSubscriptionPropConfig('DMSIntroduction', {
+        isForeignDMSInformation: true,
+      }),
     },
     {
       id: uuidv4(),
       title: 'ExpiredOrLostID',
-      navigationTarget: { screen: 'ExpiredOrLostID' },
+      navigationTarget: getSubscriptionPropConfig('ExpiredOrLostID'),
     },
     {
       id: uuidv4(),
       title: 'ComeBackLater',
-      navigationTarget: { screen: 'ComeBackLater' },
+      navigationTarget: getSubscriptionPropConfig('ComeBackLater'),
     },
   ]
 

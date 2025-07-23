@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -15,10 +15,10 @@ import { Typo } from 'ui/theme'
 export const DeleteProfileAccountHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
+  const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
 
   const navigateToSuspendAccount = () => {
-    navigate(...getProfileStackConfig('SuspendAccountConfirmationWithoutAuthentication'))
+    navigate(...getProfileHookConfig('SuspendAccountConfirmationWithoutAuthentication'))
   }
 
   return (

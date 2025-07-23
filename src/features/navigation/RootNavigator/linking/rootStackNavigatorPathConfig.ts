@@ -51,110 +51,114 @@ export const rootStackNavigatorPathConfig = {
       },
     },
   },
-  CulturalSurveyIntro: {
-    path: 'questionnaire-pratiques-initiales/introduction',
-  },
-  CulturalSurveyQuestions: {
-    path: 'questionnaire-pratiques-initiales/questions',
-  },
-  CulturalSurveyThanks: {
-    path: 'questionnaire-pratiques-initiales/merci',
-  },
-  FAQWebview: {
-    path: 'questionnaire-pratiques-initiales/foire-aux-questions',
-  },
-  Stepper: {
-    path: 'verification-identite',
-  },
-  DisableActivation: {
-    path: 'creation-compte/desactivation',
-  },
-  SetPhoneNumberWithoutValidation: {
-    path: 'creation-compte/telephone-sans-validation',
-  },
-  SetPhoneNumber: {
-    path: 'creation-compte/telephone',
-  },
-  SetPhoneValidationCode: {
-    path: 'creation-compte/code-de-validation-telephone',
-  },
-  PhoneValidationTooManyAttempts: {
-    path: 'creation-compte/code-de-validation-trop-d-essais',
-  },
-  PhoneValidationTooManySMSSent: {
-    path: 'creation-compte/code-de-validation-trop-de-sms',
-  },
-  SetName: {
-    path: 'creation-profil/nom-prenom',
-  },
-  SetCity: {
-    path: 'creation-profil/ville',
-  },
-  SetAddress: {
-    path: 'creation-profil/adresse',
-  },
-  SetStatus: {
-    path: 'verification-identite/profil/statut',
-  },
-  SetProfileBookingError: {
-    path: 'verification-identite/profil/statut/erreur',
-  },
-  ProfileInformationValidation: {
-    path: 'verification-identite/profil/validation-informations',
-  },
-  UbbleWebview: {
-    path: 'identification/verification-manuelle-piece-identite',
-  },
-  EduConnectForm: {
-    path: 'educonnect-formulaire',
-  },
-  EduConnectValidation: {
-    path: 'educonnect/validation',
-  },
-  IdentityCheckEnd: {
-    path: 'verification-identite/fin',
-  },
-  IdentityCheckUnavailable: {
-    path: 'verification-identite/verification-indisponible',
-  },
-  IdentityCheckPending: {
-    path: 'verification-identite/demande-en-attente',
-  },
-  IdentityCheckDMS: {
-    path: 'verification-identite/demarches-simplifiees',
-  },
-  IdentificationFork: {
-    path: 'identification/fourche',
-  },
-  IdentityCheckHonor: {
-    path: 'confirmation',
-  },
-  BeneficiaryRequestSent: {
-    path: 'demande-beneficiaire-envoyee',
-  },
-  BeneficiaryAccountCreated: {
-    path: 'creation-compte/confirmation-beneficiaire',
-  },
-  EduConnectErrors: {
-    path: 'educonnect/erreur',
-  },
-  DMSIntroduction: {
-    path: 'identification/redirection-demarches-simplifiees',
-  },
-  ExpiredOrLostID: {
-    path: 'identification/document-identite-perdu-ou-expire',
-  },
-  SelectIDOrigin: {
-    path: 'identification/origine-document-identite',
-  },
-  SelectIDStatus: {
-    path: 'identification/statut-document-identite',
-  },
-  SelectPhoneStatus: {
-    path: 'identification/statut-telephone',
-  },
-  ComeBackLater: {
-    path: 'identification/reviens-plus-tard',
+  SubscriptionStackNavigator: {
+    screens: {
+      CulturalSurveyIntro: {
+        path: 'questionnaire-pratiques-initiales/introduction',
+      },
+      CulturalSurveyQuestions: {
+        path: 'questionnaire-pratiques-initiales/questions',
+      },
+      CulturalSurveyThanks: {
+        path: 'questionnaire-pratiques-initiales/merci',
+      },
+      FAQWebview: {
+        path: 'questionnaire-pratiques-initiales/foire-aux-questions',
+      },
+      Stepper: {
+        path: 'verification-identite',
+      },
+      DisableActivation: {
+        path: 'creation-compte/desactivation',
+      },
+      SetPhoneNumberWithoutValidation: {
+        path: 'creation-compte/telephone-sans-validation',
+      },
+      SetPhoneNumber: {
+        path: 'creation-compte/telephone',
+      },
+      SetPhoneValidationCode: {
+        path: 'creation-compte/code-de-validation-telephone',
+      },
+      PhoneValidationTooManyAttempts: {
+        path: 'creation-compte/code-de-validation-trop-d-essais',
+      },
+      PhoneValidationTooManySMSSent: {
+        path: 'creation-compte/code-de-validation-trop-de-sms',
+      },
+      SetName: {
+        path: 'creation-profil/nom-prenom',
+      },
+      SetCity: {
+        path: 'creation-profil/ville',
+      },
+      SetAddress: {
+        path: 'creation-profil/adresse',
+      },
+      SetStatus: {
+        path: 'verification-identite/profil/statut',
+      },
+      SetProfileBookingError: {
+        path: 'verification-identite/profil/statut/erreur',
+      },
+      ProfileInformationValidationCreate: {
+        path: 'verification-identite/profil/validation-informations',
+      },
+      UbbleWebview: {
+        path: 'identification/verification-manuelle-piece-identite',
+      },
+      EduConnectForm: {
+        path: 'educonnect-formulaire',
+      },
+      EduConnectValidation: {
+        path: 'educonnect/validation',
+      },
+      IdentityCheckEnd: {
+        path: 'verification-identite/fin',
+      },
+      IdentityCheckUnavailable: {
+        path: 'verification-identite/verification-indisponible',
+      },
+      IdentityCheckPending: {
+        path: 'verification-identite/demande-en-attente',
+      },
+      IdentityCheckDMS: {
+        path: 'verification-identite/demarches-simplifiees',
+      },
+      IdentificationFork: {
+        path: 'identification/fourche',
+      },
+      IdentityCheckHonor: {
+        path: 'confirmation',
+      },
+      BeneficiaryRequestSent: {
+        path: 'demande-beneficiaire-envoyee',
+      },
+      BeneficiaryAccountCreated: {
+        path: 'creation-compte/confirmation-beneficiaire',
+      },
+      EduConnectErrors: {
+        path: 'educonnect/erreur',
+      },
+      DMSIntroduction: {
+        path: 'identification/redirection-demarches-simplifiees',
+      },
+      ExpiredOrLostID: {
+        path: 'identification/document-identite-perdu-ou-expire',
+      },
+      SelectIDOrigin: {
+        path: 'identification/origine-document-identite',
+      },
+      SelectIDStatus: {
+        path: 'identification/statut-document-identite',
+      },
+      SelectPhoneStatus: {
+        path: 'identification/statut-telephone',
+      },
+      ComeBackLater: {
+        path: 'identification/reviens-plus-tard',
+      },
+    },
   },
   AccountSecurityBuffer: {
     path: 'securisation-compte',
@@ -203,6 +207,10 @@ export const rootStackNavigatorPathConfig = {
   _DeeplinkOnlyOfferPreview3: {
     path: 'offer/apercu',
     parse: screenParamsParser['OfferPreview'],
+  },
+  OfferVideoPreview: {
+    path: 'offre/:id/video',
+    parse: screenParamsParser['OfferVideoPreview'],
   },
   BookingDetails: {
     path: 'reservation/:id/details',
@@ -358,7 +366,7 @@ export const rootStackNavigatorPathConfig = {
     parse: screenParamsParser['ThematicHome'],
   },
   Achievements: {
-    path: 'profile/achievements',
+    path: 'profil/succes',
   },
   Chronicles: {
     path: 'avis-du-book-club/:offerId/:chronicleId',

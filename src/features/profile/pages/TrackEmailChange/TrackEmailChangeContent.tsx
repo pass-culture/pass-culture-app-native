@@ -5,9 +5,9 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { Step } from 'ui/components/Step/Step'
@@ -26,7 +26,7 @@ export const TrackEmailChangeContent = () => {
   const { replace, reset } = useNavigation<UseNavigationType>()
 
   const { user } = useAuthContext()
-  const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatus()
+  const { data: requestStatus, isInitialLoading: isRequestStatusLoading } = useEmailUpdateStatus()
 
   const hasPasswordStep = !user?.hasPassword || requestStatus?.hasRecentlyResetPassword
   const currentStep = getEmailUpdateStep(
@@ -78,7 +78,7 @@ export const TrackEmailChangeContent = () => {
         disabled: DisabledConfidentialityIcon,
         retry: DisabledConfidentialityIcon,
       },
-      navigateTo: getProfileNavConfig('ChangeEmailSetPassword', {
+      navigateTo: getProfilePropConfig('ChangeEmailSetPassword', {
         token: requestStatus?.resetPasswordToken,
         emailSelectionToken: requestStatus?.token,
       }),
@@ -93,7 +93,7 @@ export const TrackEmailChangeContent = () => {
         disabled: DisabledPencilIcon,
         retry: DisabledPencilIcon,
       },
-      navigateTo: getProfileNavConfig('NewEmailSelection', { token: requestStatus?.token }),
+      navigateTo: getProfilePropConfig('NewEmailSelection', { token: requestStatus?.token }),
     },
     VALIDATION: {
       currentTitle: 'Valide ta nouvelle adresse',
@@ -110,7 +110,7 @@ export const TrackEmailChangeContent = () => {
   }
 
   if (!isRequestStatusLoading && !requestStatus?.status) {
-    replace(...homeNavConfig)
+    replace(...homeNavigationConfig)
     return null
   }
   if (!isRequestStatusLoading && requestStatus?.expired) {

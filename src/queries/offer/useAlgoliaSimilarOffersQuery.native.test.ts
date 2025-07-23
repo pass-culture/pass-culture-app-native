@@ -4,7 +4,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { useAlgoliaSimilarOffersQuery } from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -14,6 +14,8 @@ const getSimilarOffersInOrderSpy = jest.spyOn(
 )
 
 const ids = ['102280', '102272', '102249', '102310']
+
+jest.useFakeTimers()
 
 describe('useAlgoliaSimilarOffersQuery', () => {
   const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
@@ -66,26 +68,21 @@ describe('useAlgoliaSimilarOffersQuery', () => {
     renderHook(() => useAlgoliaSimilarOffersQuery(ids, true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
-
-    expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1)
+    await waitFor(async () => expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1))
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
     renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
-
-    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
+    await waitFor(() => expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled())
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
     renderHook(() => useAlgoliaSimilarOffersQuery(ids, false), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
 
-    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
+    await waitFor(() => expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled())
   })
 })

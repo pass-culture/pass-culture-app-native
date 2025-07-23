@@ -20,12 +20,13 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SearchBox } from './SearchBox'
 
+jest.mock('libs/subcategories/useSubcategories')
+
 let mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.CINEMA],
   priceRange: [0, 20],
 }
-
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

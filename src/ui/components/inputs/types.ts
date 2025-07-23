@@ -2,14 +2,13 @@ import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
 import { theme } from 'theme'
+import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type InputProps = {
   label?: string
   accessibilityDescribedBy?: string
-  focusOutlineColor?: ColorsEnum
+  focusOutlineColor?: ColorsType
 }
 
 type CustomTextInputProps = InputProps & {

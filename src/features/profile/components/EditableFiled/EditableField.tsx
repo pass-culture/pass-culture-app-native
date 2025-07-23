@@ -1,15 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
 
 type EditableFieldProps = {
   label: string
   value?: string | null
   navigateTo?: ProfileNavigateParams[0]
+  navigateParams?: ProfileNavigateParams[1]
   onBeforeNavigate?: () => void
   accessibilityLabel?: string
 }
@@ -18,12 +20,15 @@ export function EditableField({
   label,
   value,
   navigateTo,
+  navigateParams,
   onBeforeNavigate,
   accessibilityLabel,
 }: EditableFieldProps) {
   const displayValue = value?.trim()
   const isCompleted = !!displayValue
   const showButton = !!navigateTo
+
+  if (!displayValue && !navigateTo) return null
 
   return (
     <React.Fragment>
@@ -36,13 +41,14 @@ export function EditableField({
         )}
         {showButton ? (
           <EditButton
-            navigateTo={getProfileNavConfig(navigateTo)}
+            navigateTo={getProfilePropConfig(navigateTo, navigateParams)}
             onPress={onBeforeNavigate}
             wording={isCompleted ? 'Modifier' : 'Compléter'}
             accessibilityLabel={accessibilityLabel}
           />
         ) : null}
       </EditContainer>
+      <StyledSeparator />
     </React.Fragment>
   )
 }
@@ -65,3 +71,7 @@ const EditText = styled(Typo.Body)({
 const NoEditText = styled(Typo.BodyItalic)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(4),
+})

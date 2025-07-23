@@ -15,6 +15,9 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
         color: disabled
           ? theme.designSystem.color.icon.disabled
           : theme.designSystem.color.icon.default,
+        color2: disabled
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.inverted,
         size:
           buttonHeight === 'extraSmall'
             ? theme.icons.sizes.extraSmall

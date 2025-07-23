@@ -40,6 +40,7 @@ const mockShowModal = jest.fn()
 const mockCloseModal = jest.fn()
 
 const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('Chronicles', () => {
   beforeEach(() => {
@@ -92,13 +93,12 @@ describe('Chronicles', () => {
         fireEvent(screen.getByTestId('chronicle-list'), 'onLayout', mockOnLayout)
       })
 
-      expect(mockScrollToIndex).toHaveBeenCalledTimes(1)
+      await waitFor(() => expect(mockScrollToIndex).toHaveBeenCalledTimes(1))
     })
   })
 
   describe('When chronicle id not defined', () => {
     beforeAll(() => {
-      jest.useFakeTimers()
       useRoute.mockReturnValue({
         params: {
           offerId: offerResponseSnap.id,

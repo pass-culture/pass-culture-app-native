@@ -44,6 +44,7 @@ const BookingDetailsContainerOld = ({ bookingId }: { bookingId: number }) => {
     data: booking,
     status,
     isLoading,
+    isFetching,
     isError,
     error,
     dataUpdatedAt,
@@ -54,7 +55,7 @@ const BookingDetailsContainerOld = ({ bookingId }: { bookingId: number }) => {
 
   if ((isLoading || !dataUpdatedAt) && !booking) {
     return <LoadingPage />
-  } else if (!isLoading && !booking) {
+  } else if (!isLoading && !booking && !isFetching) {
     if (Platform.OS !== 'web') {
       const bookingNotFoundError = new Error('BookingNotFound')
       bookingNotFoundError.name = 'BookingNotFound'
@@ -105,6 +106,7 @@ const BookingDetailsContainer = ({
     data: booking,
     status,
     isLoading,
+    isFetching,
     isError,
     error,
     dataUpdatedAt,
@@ -115,7 +117,7 @@ const BookingDetailsContainer = ({
 
   if ((isLoading || !dataUpdatedAt) && !booking) {
     return <LoadingPage />
-  } else if (!isLoading && !booking) {
+  } else if (!isLoading && !booking && !isFetching) {
     if (Platform.OS !== 'web') {
       const bookingNotFoundError = new Error('BookingNotFound')
       bookingNotFoundError.name = 'BookingNotFound'
@@ -145,7 +147,8 @@ const BookingDetailsContainer = ({
   )
 
   // FIXME(PC-36440): To remove when no need for Old/new container
-  return (properties.isEvent || properties.isDigital) && user ? (
+
+  return (properties.isPhysical || properties.isEvent || properties.isDigital) && user ? (
     <BookingDetailsContent
       user={user}
       properties={properties}

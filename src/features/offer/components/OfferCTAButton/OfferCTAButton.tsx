@@ -1,5 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
+import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
@@ -38,7 +39,7 @@ export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
   )
 
   return (
-    <React.Fragment>
+    <View>
       {isDesktopViewport ? (
         <BookingButton
           ctaWordingAndAction={ctaWordingAndAction}
@@ -54,6 +55,6 @@ export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
       )}
 
       {CTAOfferModal}
-    </React.Fragment>
+    </View>
   )
 }

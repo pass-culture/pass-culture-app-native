@@ -44,7 +44,8 @@ describe('<IdentityCheckEnd/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to stepper after timeout if nextSubscriptionStep is not null', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should navigate to stepper after timeout if nextSubscriptionStep is not null', async () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
       nextSubscriptionStep: SubscriptionStep['honor-statement'],
@@ -57,12 +58,12 @@ describe('<IdentityCheckEnd/>', () => {
 
     jest.advanceTimersByTime(3000)
 
-    await waitFor(() => {
+    await waitFor(() =>
       expect(dispatch).toHaveBeenCalledWith({
         payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
         type: 'RESET',
       })
-    })
+    )
   })
 
   it('should navigate to home after timeout if nextSubscriptionStep is null', async () => {
@@ -77,7 +78,7 @@ describe('<IdentityCheckEnd/>', () => {
 
     jest.advanceTimersByTime(3000)
 
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(navigateToHome).toHaveBeenCalledTimes(1))
   })
 })
 

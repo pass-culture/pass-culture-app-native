@@ -379,13 +379,13 @@ exports[`Home page should render correctly 1`] = `
                   testID="Crée ton compte si tu as 17 ou 18 ans !"
                 >
                   <View
-                    backgroundColor="transparent"
+                    backgroundColor="#ffffff"
                     borderColor="#320096"
                     style={
                       [
                         {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#ffffff",
                           "borderColor": "#320096",
                           "borderRadius": 8,
                           "borderStyle": "solid",

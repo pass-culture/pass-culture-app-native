@@ -7,6 +7,7 @@ import { object, string } from 'yup'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
@@ -30,7 +31,7 @@ export const cityResolver = object().shape({
 
 export const SetCity = () => {
   const { params } = useRoute<UseRouteType<'SetCity'>>()
-  const type = params.type
+  const type = params?.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
   const pageInfos = isIdentityCheck
     ? {
@@ -58,7 +59,7 @@ export const SetCity = () => {
   const onSubmit = ({ city }: CityForm) => {
     setStoreCity(city)
     analytics.logSetPostalCodeClicked()
-    navigate('SetAddress', { type: pageInfos.navigateParamsType })
+    navigate(...getSubscriptionHookConfig('SetAddress', { type: pageInfos.navigateParamsType }))
   }
 
   return (

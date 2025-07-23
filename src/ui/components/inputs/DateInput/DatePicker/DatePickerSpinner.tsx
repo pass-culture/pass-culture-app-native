@@ -34,13 +34,11 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
         locale="fr-FR"
         maximumDate={maximumDate}
         minimumDate={minimumDate}
-        androidVariant="nativeAndroid"
         accessibilityDescribedBy={birthdateInputErrorId}
       />
     </React.Fragment>
   )
 }
-
 // This height will only show 3 rows of the spinner instead of 7
 const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
 const SpinnerDatePicker = styled(DatePicker).attrs(({ theme }) => ({

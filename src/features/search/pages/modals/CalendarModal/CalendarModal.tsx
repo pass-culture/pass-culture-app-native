@@ -1,9 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import colorAlpha from 'color-alpha'
 import { addMonths, addYears, format } from 'date-fns'
 import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
 import { View } from 'react-native'
 import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars'
+import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -250,13 +252,16 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       rightIcon={Close}
       onRightIconPress={closeModal}
       fixedModalBottom={
-        <SearchFixedModalBottom
-          onSearchPress={onSubmit}
-          onResetPress={onResetPress}
-          isSearchDisabled={disabled}
-          filterBehaviour={filterBehaviour}
-          isResetDisabled={hasDefaultValues}
-        />
+        <React.Fragment>
+          <Gradient />
+          <SearchFixedModalBottom
+            onSearchPress={onSubmit}
+            onResetPress={onResetPress}
+            isSearchDisabled={disabled}
+            filterBehaviour={filterBehaviour}
+            isResetDisabled={hasDefaultValues}
+          />
+        </React.Fragment>
       }
       scrollEnabled={false}>
       <View>
@@ -292,10 +297,35 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   )
 }
 
-const StyledCalendarList = styled(CalendarList).attrs({
+const StyledCalendarList = styled(CalendarList).attrs(({ theme }) => ({
   calendarStyle: {
     width: '100%',
+    backgroundColor: theme.designSystem.color.background.default,
   },
-})({
+  theme: {
+    calendarBackground: theme.designSystem.color.background.default,
+    dayTextColor: theme.designSystem.color.text.subtle,
+    monthTextColor: theme.designSystem.color.text.default,
+    textSectionTitleColor: theme.designSystem.color.text.subtle,
+  },
+}))({
   marginTop: getSpacing(4),
+})
+
+const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    colorAlpha(theme.designSystem.color.background.default, 0),
+    colorAlpha(theme.designSystem.color.background.default, 0.5),
+    theme.designSystem.color.background.default,
+  ],
+  locations: [0, 0.5, 1],
+  start: { x: 0, y: 0 },
+  end: { x: 0, y: 1 },
+}))({
+  position: 'absolute',
+  bottom: getSpacing(10),
+  left: 0,
+  right: 0,
+  height: getSpacing(23),
+  zIndex: 1,
 })

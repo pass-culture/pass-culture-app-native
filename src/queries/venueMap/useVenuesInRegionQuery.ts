@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Venue } from 'features/venue/types'

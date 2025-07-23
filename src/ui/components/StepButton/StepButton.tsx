@@ -3,6 +3,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
@@ -11,8 +12,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
@@ -165,7 +164,7 @@ const ChildrenContainer = styled.View({
 const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(
   InternalTouchableLink
 ).attrs<{
-  color: ColorsEnum
+  color: ColorsType
 }>(({ color }) => ({
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean }>(({ theme, isFocus }) => ({

@@ -71,16 +71,18 @@ describe('<ThematicSearch/>', () => {
   })
 
   it('should render', async () => {
-    render(reactQueryProviderHOC(<ThematicSearch />))
-
+    await act(async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
+    })
     await screen.findByText('Musique')
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should dispatch action with offerCategories when params change', async () => {
-    render(reactQueryProviderHOC(<ThematicSearch />))
-
+    await act(async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
+    })
     await screen.findByText('Musique')
 
     await act(async () => {})
@@ -96,7 +98,7 @@ describe('<ThematicSearch/>', () => {
   it('should not have basic accessibility issues', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
 
-    const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
+    const { container } = await renderThematicSearch()
 
     await screen.findByText('Musique')
 
@@ -108,7 +110,7 @@ describe('<ThematicSearch/>', () => {
   it('should not have basic accessibility issues when offline', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
-    const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
+    const { container } = await renderThematicSearch()
 
     await screen.findByText('Musique')
 
@@ -118,9 +120,14 @@ describe('<ThematicSearch/>', () => {
   })
 })
 
-function MockOfferCategoriesParams(offerCategoriesParams: {
+const renderThematicSearch = async () =>
+  act(async () => {
+    return render(reactQueryProviderHOC(<ThematicSearch />))
+  })
+
+const MockOfferCategoriesParams = (offerCategoriesParams: {
   offerCategories: SearchGroupNameEnumv2[]
-}) {
+}) => {
   useRoute.mockImplementation(() => ({
     params: offerCategoriesParams,
     name: 'ThematicSearch',

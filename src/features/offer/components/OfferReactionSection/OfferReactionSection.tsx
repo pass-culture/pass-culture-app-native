@@ -1,29 +1,57 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ChronicleCardData } from 'features/chronicle/type'
 import { InfoCounter } from 'features/offer/components/InfoCounter/InfoCounter'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { getRecommendationText } from 'features/offer/helpers/getRecommendationText/getRecommendationText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Star } from 'ui/svg/Star'
 
 type Props = {
   likesCount?: number
-  chroniclesCount?: number
+  chroniclesCount?: number | null
   headlineOffersCount?: number
+  chronicleVariantInfo: ChronicleVariantInfo
+  chronicles?: ChronicleCardData[]
 }
 
 export const OfferReactionSection: FunctionComponent<Props> = ({
   likesCount,
   chroniclesCount,
   headlineOffersCount,
+  chronicleVariantInfo,
+  chronicles,
 }) => {
+  const hasPublishedChronicles = (chronicles?.length ?? 0) > 0
+  const hasUnpublishedChronicles = (chroniclesCount ?? 0) - (chronicles?.length ?? 0) > 0
+
   const likesCounterElement = likesCount ? <LikesInfoCounter text={`${likesCount} j’aime`} /> : null
-  const chroniclesCounterElement = chroniclesCount ? (
-    <ChroniclesInfoCounter text={`${chroniclesCount} avis`} />
-  ) : null
+
+  const getChroniclesCounterElement = (): React.ReactNode => {
+    if (hasPublishedChronicles) {
+      return (
+        <ChroniclesInfoCounter
+          text={`${chronicles?.length ?? 0} avis`}
+          icon={chronicleVariantInfo.SmallIcon}
+        />
+      )
+    }
+    if (hasUnpublishedChronicles) {
+      return (
+        <ChroniclesInfoCounter
+          text={`Recommandé par le ${chronicleVariantInfo.labelReaction}`}
+          icon={chronicleVariantInfo.SmallIcon}
+        />
+      )
+    }
+
+    return null
+  }
+
+  const chroniclesCounterElement = getChroniclesCounterElement()
+
   const headlineOffersCounterElement = headlineOffersCount ? (
     <HeadlineOffersCount text={getRecommendationText(headlineOffersCount)} />
   ) : null
@@ -33,13 +61,13 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
 
   return (
     <ViewGap gap={4}>
-      {likesCount || chroniclesCount ? (
+      {likesCounterElement || chroniclesCounterElement ? (
         <InfosCounterContainer gap={2}>
           {likesCounterElement}
           {chroniclesCounterElement}
         </InfosCounterContainer>
       ) : null}
-      {headlineOffersCount ? <View>{headlineOffersCounterElement}</View> : null}
+      {headlineOffersCounterElement}
     </ViewGap>
   )
 }
@@ -53,11 +81,6 @@ const ThumbUpIcon = styled(ThumbUpFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const BookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.bookclub,
-  size: theme.icons.sizes.small,
-}))``
-
 const StarIcon = styled(Star).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.headline,
 }))``
@@ -66,8 +89,8 @@ const LikesInfoCounter = styled(InfoCounter).attrs(() => ({
   icon: <ThumbUpIcon testID="likesCounterIcon" />,
 }))``
 
-const ChroniclesInfoCounter = styled(InfoCounter).attrs(() => ({
-  icon: <BookClubIcon testID="chroniclesCounterIcon" />,
+const ChroniclesInfoCounter = styled(InfoCounter).attrs<{ icon: React.ReactNode }>(({ icon }) => ({
+  icon,
 }))``
 
 const HeadlineOffersCount = styled(InfoCounter).attrs(() => ({

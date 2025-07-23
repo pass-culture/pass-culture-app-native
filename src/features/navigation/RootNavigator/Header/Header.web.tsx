@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
@@ -31,8 +31,8 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
         <LeftContainer>
           <LogoContainer
             navigateTo={{
-              screen: homeNavConfig[0],
-              params: homeNavConfig[1],
+              screen: homeNavigationConfig[0],
+              params: homeNavigationConfig[1],
               fromRef: true,
               withPush: true,
             }}>

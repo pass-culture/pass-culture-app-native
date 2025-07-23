@@ -8,7 +8,6 @@ import LottieView from 'libs/lottie'
 import achievements_success from 'ui/animations/achievements_success.json'
 import eighteen_birthday from 'ui/animations/eighteen_birthday.json'
 import geolocalisation from 'ui/animations/geolocalisation.json'
-import lottie_illuminated_smiley from 'ui/animations/lottie_illuminated_smiley.json'
 import lottie_loading from 'ui/animations/lottie_loading.json'
 import notif_basic_medium from 'ui/animations/notif_basic_medium.json'
 import onboarding_birthday_cake from 'ui/animations/onboarding_birthday_cake.json'
@@ -40,11 +39,6 @@ const LottieAnimations = {
   geolocalisation: {
     source: geolocalisation,
     hasBackground: false,
-    isSmallAnimation: false,
-  },
-  lottie_illuminated_smiley: {
-    source: lottie_illuminated_smiley,
-    hasBackground: true,
     isSmallAnimation: false,
   },
   lottie_loading: {

@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { useGetCulturalSurveyContent } from 'features/culturalSurvey/helpers/useGetCulturalSurveyContent'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -39,10 +40,9 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
       buttonPrimary={{
         wording: 'Commencer le questionnaire',
         onBeforeNavigate: analytics.logHasStartedCulturalSurvey,
-        navigateTo: {
-          screen: 'CulturalSurveyQuestions',
-          params: { question: initialQuestions[0] },
-        },
+        navigateTo: getSubscriptionPropConfig('CulturalSurveyQuestions', {
+          question: initialQuestions[0],
+        }),
       }}
       buttonTertiary={{
         wording: intro.secondaryButton.text,
@@ -61,7 +61,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           ) : (
             <InternalTouchableLink
               key={1}
-              navigateTo={{ screen: 'FAQWebview' }}
+              navigateTo={getSubscriptionPropConfig('FAQWebview')}
               {...FAQTouchableLinkProps}
             />
           )}

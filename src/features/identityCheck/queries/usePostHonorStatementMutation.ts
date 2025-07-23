@@ -1,4 +1,4 @@
-import { MutationOptions, useMutation } from 'react-query'
+import { MutationOptions, useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 

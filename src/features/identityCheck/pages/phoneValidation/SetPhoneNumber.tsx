@@ -17,7 +17,8 @@ import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck
 import { useSendPhoneValidationMutation } from 'features/identityCheck/queries/useSendPhoneValidationMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
@@ -41,7 +42,7 @@ export const SetPhoneNumber = () => {
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavigationConfig)
   const isContinueButtonEnabled = isPhoneNumberValid(phoneNumber, country.id)
   const saveStep = useSaveStep()
 
@@ -77,7 +78,7 @@ export const SetPhoneNumber = () => {
         },
       })
       saveStep(IdentityCheckStep.PHONE_VALIDATION)
-      navigate('SetPhoneValidationCode')
+      navigate(...getSubscriptionHookConfig('SetPhoneValidationCode'))
       queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
     },
     onError: (error: unknown) => {
@@ -89,7 +90,7 @@ export const SetPhoneNumber = () => {
         },
       })
       if (isApiError(error) && error.content?.code === 'TOO_MANY_SMS_SENT') {
-        navigate('PhoneValidationTooManySMSSent')
+        navigate(...getSubscriptionHookConfig('PhoneValidationTooManySMSSent'))
       } else {
         const message = extractApiErrorMessage(error)
         setInvalidPhoneNumberMessage(message)

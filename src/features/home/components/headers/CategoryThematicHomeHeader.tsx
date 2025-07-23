@@ -2,16 +2,14 @@ import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { theme } from 'theme'
+import { ColorsType } from 'theme/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 const HEADER_HEIGHT = getSpacing(45)
@@ -21,10 +19,11 @@ type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 type AppHeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
 
 const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }) => {
+  const { breakpoints } = useTheme()
   const { width } = useWindowDimensions()
 
   const alpha = 0.5
-  const gradientWithAlpha = gradientImagesMapping[color].map((color: ColorsEnum) =>
+  const gradientWithAlpha = gradientImagesMapping[color].map((color: ColorsType) =>
     colorAlpha(color, alpha)
   )
 
@@ -36,7 +35,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
         <HomeGradient
           colors={gradientImagesMapping[color]}
           testID="HomeGradient"
-          width={Math.min(width, theme.breakpoints.lg)}
+          width={Math.min(width, breakpoints.lg)}
         />
       )}
       <TextContainer>

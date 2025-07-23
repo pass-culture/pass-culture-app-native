@@ -12,6 +12,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -24,6 +25,8 @@ import { Subcategory } from 'libs/subcategories/types'
 import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
+
+jest.mock('libs/subcategories/useSubcategories')
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -601,7 +604,11 @@ describe('<OfferBody />', () => {
   }: RenderOfferBodyType) {
     render(
       reactQueryProviderHOC(
-        <OfferBody offer={offer} subcategory={subcategory} distance={distance}>
+        <OfferBody
+          offer={offer}
+          subcategory={subcategory}
+          distance={distance}
+          chronicleVariantInfo={chronicleVariantInfoFixture}>
           {children}
         </OfferBody>
       ),

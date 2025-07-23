@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingReponse } from 'api/gen'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { bookingsSnap } from 'features/bookings/fixtures'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { beneficiaryUser, nonBeneficiaryUser as exBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -147,7 +147,7 @@ describe('<CancelBookingModal />', () => {
 
     await user.press(cancelButton)
 
-    expect(navigate).toHaveBeenCalledWith(...getTabNavConfig('Bookings'))
+    expect(navigate).toHaveBeenCalledWith(...getTabHookConfig('Bookings'))
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: response.message,
       timeout: 5000,

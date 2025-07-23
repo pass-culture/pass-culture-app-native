@@ -9,7 +9,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { theme } from 'theme'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
@@ -36,7 +35,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
       noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => {
-          const tabNavConfig = getTabNavigatorConfig(route, searchState)
+          const tabNavigationConfig = getTabNavigatorConfig(route, searchState)
           return (
             <StyledLi key={`key-tab-nav-${route.name}`}>
               {index > 0 ? <Spacer.Row numberOfSpaces={1.5} /> : null}
@@ -49,8 +48,8 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
                 }
                 badgeValue={routeBadgeMap?.[route.name]}
                 navigateTo={{
-                  screen: tabNavConfig[0],
-                  params: tabNavConfig[1],
+                  screen: tabNavigationConfig[0],
+                  params: tabNavigationConfig[1],
                   fromRef: true,
                 }}
               />
@@ -66,7 +65,7 @@ const NavItemsContainer = styled.View<{
   maxWidth?: number
   navHeight?: number
   noShadow?: boolean
-}>(({ maxWidth, navHeight, noShadow }) => ({
+}>(({ theme, maxWidth, navHeight, noShadow }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

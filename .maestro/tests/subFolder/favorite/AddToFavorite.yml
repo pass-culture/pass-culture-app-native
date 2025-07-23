@@ -16,7 +16,7 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn:
           text: ".*catégorie CD.*"
-          index: 2
+          index: 1
 
 - runFlow:
     when:

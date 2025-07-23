@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import React, { createElement, FunctionComponent, useState } from 'react'
-import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -9,7 +9,7 @@ import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesSc
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
-import { getCheatcodesStackConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesStackConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { AsyncError, LogTypeEnum, ScreenError } from 'libs/monitoring/errors'
@@ -47,7 +47,7 @@ const MaintenanceScreenForCheatcode = () => (
 )
 
 export const CheatcodesNavigationErrors: FunctionComponent = () => {
-  const { goBack } = useGoBack(...getCheatcodesStackConfig('CheatcodesMenu'))
+  const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)

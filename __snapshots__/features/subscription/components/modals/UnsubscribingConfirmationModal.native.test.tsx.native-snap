@@ -321,7 +321,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -385,19 +385,13 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                   Tu ne recevras plus toutes les dernières offres et l’actu liées au thème "Musique".
                 </Text>
                 <View
-                  numberOfSpaces={6}
+                  gap={2}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "gap": 8,
+                        "marginBottom": 16,
+                        "marginTop": 24,
                         "width": "100%",
                       },
                     ]
@@ -489,16 +483,6 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityLabel="Annuler"
                     accessibilityState={
@@ -609,16 +593,6 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>

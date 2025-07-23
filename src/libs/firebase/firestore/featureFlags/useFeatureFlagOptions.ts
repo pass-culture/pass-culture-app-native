@@ -1,4 +1,4 @@
-import { onlineManager, useQuery } from 'react-query'
+import { onlineManager, useQuery } from '@tanstack/react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
@@ -20,10 +20,14 @@ export type FeatureFlagOptions = {
 // firestore feature flag documentation:
 // https://www.notion.so/passcultureapp/Feature-Flag-e7b0da7946f64020b8403e3581b4ed42#fff5fb17737240c9996c432117acacd8
 export const useFeatureFlagOptions = (featureFlag: RemoteStoreFeatureFlags): FeatureFlagOptions => {
-  const { data: docSnapshot, isLoading } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
-    staleTime: 1000 * 60 * 60 * 24, // 24h (re-renders whole app because of usage of feature flag in the ThemeWrapper)
-    enabled: onlineManager.isOnline(),
-  })
+  const { data: docSnapshot, isInitialLoading: isLoading } = useQuery(
+    [QueryKeys.FEATURE_FLAGS],
+    getAllFeatureFlags,
+    {
+      staleTime: 1000 * 60 * 60 * 24, // 24h (re-renders whole app because of usage of feature flag in the ThemeWrapper)
+      enabled: onlineManager.isOnline(),
+    }
+  )
   const { logType } = useLogTypeFromRemoteConfig()
 
   if (isLoading || !docSnapshot) return { isFeatureFlagActive: false }

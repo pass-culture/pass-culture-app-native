@@ -1,6 +1,6 @@
+import { useQueryClient } from '@tanstack/react-query'
 import React, { memo } from 'react'
 import { View } from 'react-native'
-import { useQueryClient } from 'react-query'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -15,7 +15,6 @@ import { getDistance } from 'libs/location/getDistance'
 import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
-import { theme } from 'theme'
 import { ImageTile } from 'ui/components/ImageTile'
 import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -44,7 +43,8 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { venue, width, height } = props
   const queryClient = useQueryClient()
-  const { designSystem } = useTheme()
+  const { designSystem, tiles } = useTheme()
+  const MAX_VENUE_CAPTION_HEIGHT = tiles.maxCaptionHeight.venue
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
   const distance = getDistance(
@@ -103,8 +103,6 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
 }
 
 export const VenueTile = memo(UnmemoizedVenueTile)
-
-const MAX_VENUE_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.venue
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.designSystem.color.background.default,

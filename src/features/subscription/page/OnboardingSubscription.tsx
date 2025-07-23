@@ -7,7 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig, homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
@@ -16,7 +16,7 @@ import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnVi
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
-import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
+import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
 import { storage } from 'libs/storage'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,7 +26,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Page } from 'ui/pages/Page'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
@@ -34,7 +34,7 @@ const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export const OnboardingSubscription = () => {
   const { replace } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...getTabNavConfig('Home'))
+  const { goBack } = useGoBack(...getTabHookConfig('Home'))
   const { user } = useAuthContext()
   const theme = useTheme()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
@@ -73,7 +73,7 @@ export const OnboardingSubscription = () => {
         message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      replace(...homeNavConfig)
+      replace(...homeNavigationConfig)
     },
     onError: () => {
       showErrorSnackBar({
@@ -154,12 +154,10 @@ export const OnboardingSubscription = () => {
         ListHeaderComponent={
           <React.Fragment>
             <StyledTitle3>Choisis des thèmes à suivre</StyledTitle3>
-            <Spacer.Column numberOfSpaces={4} />
-            <Typo.Body>
+            <StyledBody>
               Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et
               actus&nbsp;!
-            </Typo.Body>
-            <Spacer.Column numberOfSpaces={6} />
+            </StyledBody>
           </React.Fragment>
         }
         contentContainerStyle={contentContainerStyle}
@@ -191,7 +189,13 @@ export const OnboardingSubscription = () => {
   )
 }
 
-const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
+const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
+  marginBottom: getSpacing(4),
+})
+
+const StyledBody = styled(Typo.Body)({
+  marginBottom: getSpacing(6),
+})
 
 const StyledView = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,

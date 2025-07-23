@@ -1,10 +1,8 @@
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { BookingsResponse, BookOfferRequest, BookOfferResponse } from 'api/gen'
-import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
 
 interface BookingMutationContext {
@@ -25,23 +23,9 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
 
   return useMutation((body: BookOfferRequest) => api.postNativeV1Bookings(body), {
     onSuccess: async (data: BookOfferResponse) => {
-      queryClient.invalidateQueries([QueryKeys.USER_PROFILE])
-
-      try {
-        const bookings: BookingsResponse = await api.getNativeV1Bookings()
-        queryClient.setQueryData([QueryKeys.BOOKINGS], bookings)
-      } catch (error) {
-        if (
-          !(error instanceof ApiError) ||
-          (error instanceof ApiError && !isAPIExceptionCapturedAsInfo(error.statusCode))
-        ) {
-          eventMonitoring.captureException(error, {
-            extra: {
-              bookingId: data.bookingId,
-            },
-          })
-        }
-      }
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.USER_PROFILE] })
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] })
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] })
 
       onSuccess(data)
     },

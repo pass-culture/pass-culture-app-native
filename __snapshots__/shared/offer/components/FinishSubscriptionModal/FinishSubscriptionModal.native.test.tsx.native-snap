@@ -322,7 +322,7 @@ pour réserver cette offre
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -379,6 +379,7 @@ pour réserver cette offre
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
                         "textAlign": "center",
                       },
                     ]
@@ -393,6 +394,7 @@ pour réserver cette offre
                           "fontFamily": "Montserrat-Medium",
                           "fontSize": 16,
                           "lineHeight": 25.6,
+                          "marginBottom": 24,
                           "textAlign": "center",
                         },
                       ]
@@ -418,16 +420,6 @@ pour réserver cette offre
                   </Text>
                   et réserver cette offre.
                 </Text>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Aller vers la section profil"
                   accessibilityState={
@@ -846,7 +838,7 @@ pour réserver cette offre
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -903,6 +895,7 @@ pour réserver cette offre
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
                         "textAlign": "center",
                       },
                     ]
@@ -917,6 +910,7 @@ pour réserver cette offre
                           "fontFamily": "Montserrat-Medium",
                           "fontSize": 16,
                           "lineHeight": 25.6,
+                          "marginBottom": 24,
                           "textAlign": "center",
                         },
                       ]
@@ -942,16 +936,6 @@ pour réserver cette offre
                   </Text>
                   et réserver cette offre.
                 </Text>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Aller vers la section profil"
                   accessibilityState={
@@ -1370,7 +1354,7 @@ pour réserver cette offre
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -1427,6 +1411,7 @@ pour réserver cette offre
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
                         "textAlign": "center",
                       },
                     ]
@@ -1436,16 +1421,6 @@ pour réserver cette offre
                    ton crédit 
                   et réserver cette offre.
                 </Text>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Aller vers la section profil"
                   accessibilityState={

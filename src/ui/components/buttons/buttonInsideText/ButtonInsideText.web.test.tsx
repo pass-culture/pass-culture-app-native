@@ -68,10 +68,15 @@ describe('ButtonInsideText Component', () => {
     })
 
     it('should display custom color when color provided', () => {
-      render(<ButtonInsideText wording={wording} buttonColor={theme.colors.greenValid} />)
+      render(
+        <ButtonInsideText
+          wording={wording}
+          buttonColor={theme.designSystem.color.background.success}
+        />
+      )
       const button = screen.getByText(wording)
 
-      expect(button).toHaveStyle({ color: theme.colors.greenValid })
+      expect(button).toHaveStyle({ color: theme.designSystem.color.background.success })
     })
   })
 })

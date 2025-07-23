@@ -1,9 +1,9 @@
 import { ViewStyle } from 'react-native'
 
-import { ColorsTypeLegacy } from 'theme/types'
+import { ColorsType } from 'theme/types'
 
 interface AccessibleIconSharedProperties {
-  color?: ColorsTypeLegacy
+  color?: ColorsType
   testID?: string
   style?: ViewStyle
   accessibilityLabel?: string
@@ -12,7 +12,7 @@ interface AccessibleIconSharedProperties {
 export interface AccessibleIcon extends AccessibleIconSharedProperties {
   size?: number | string
   opacity?: number
-  backgroundColor?: ColorsTypeLegacy
+  backgroundColor?: ColorsType
   thin?: boolean
   badgeValue?: number
 }

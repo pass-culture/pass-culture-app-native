@@ -222,20 +222,25 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
               delayLongPress={600}
               enabled={true}
               exclusive={true}
-              handlerTag={1}
+              handlerTag={-1}
               handlerType="NativeViewGestureHandler"
               innerRef={null}
-              onGestureEvent={[Function]}
               onGestureHandlerEvent={[Function]}
               onGestureHandlerStateChange={[Function]}
-              onHandlerStateChange={[Function]}
-              rippleColor={0}
+              rippleColor="transparent"
+              style={
+                [
+                  undefined,
+                  {
+                    "cursor": undefined,
+                  },
+                ]
+              }
               touchSoundDisabled={false}
             >
               <View
                 accessible={true}
                 collapsable={false}
-                style={{}}
               >
                 <View
                   collapsable={false}
@@ -555,20 +560,25 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
               delayLongPress={600}
               enabled={true}
               exclusive={true}
-              handlerTag={2}
+              handlerTag={-1}
               handlerType="NativeViewGestureHandler"
               innerRef={null}
-              onGestureEvent={[Function]}
               onGestureHandlerEvent={[Function]}
               onGestureHandlerStateChange={[Function]}
-              onHandlerStateChange={[Function]}
-              rippleColor={0}
+              rippleColor="transparent"
+              style={
+                [
+                  undefined,
+                  {
+                    "cursor": undefined,
+                  },
+                ]
+              }
               touchSoundDisabled={false}
             >
               <View
                 accessible={true}
                 collapsable={false}
-                style={{}}
               >
                 <View
                   collapsable={false}

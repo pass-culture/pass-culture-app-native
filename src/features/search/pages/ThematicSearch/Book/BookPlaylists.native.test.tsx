@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
@@ -36,7 +36,6 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   error: null,
   isSuccess: true,
   isError: false,
-  isIdle: false,
   refetch: jest.fn(),
   status: 'success',
   failureCount: 0,
@@ -53,6 +52,10 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   errorUpdatedAt: 0,
   errorUpdateCount: 0,
   isRefetching: false,
+  failureReason: new Error(),
+  isInitialLoading: false,
+  isPaused: false,
+  fetchStatus: 'fetching',
 }
 
 const useGTLPlaylistsSpy = jest
@@ -75,7 +78,7 @@ describe('BookPlaylists', () => {
   it('should render skeleton when playlists are still loading', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
       ...defaultResponse,
-      isLoading: true,
+      isInitialLoading: true,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
@@ -86,7 +89,7 @@ describe('BookPlaylists', () => {
 
   it('should not render gtl playlists when algolia does not return offers', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
-      isLoading: false,
+      isInitialLoading: false,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 

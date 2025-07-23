@@ -15,7 +15,7 @@ export const BookingDetailsContentDesktop = ({
   leftBlock: React.JSX.Element
 }) => {
   return (
-    <StyledContainer>
+    <StyledContainer testID="booking_details_desktop">
       <LeftBlock>{leftBlock}</LeftBlock>
       <RightBlock headerImageHeight={headerImageHeight}>{rightBlock}</RightBlock>
     </StyledContainer>

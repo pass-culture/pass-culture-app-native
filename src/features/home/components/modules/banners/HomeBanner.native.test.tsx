@@ -12,7 +12,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
@@ -149,9 +149,9 @@ describe('<HomeBanner/>', () => {
 
       renderHomeBanner({})
 
-      await act(async () => {})
-
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(ApiError))
+      await waitFor(() =>
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(ApiError))
+      )
     })
   })
 })

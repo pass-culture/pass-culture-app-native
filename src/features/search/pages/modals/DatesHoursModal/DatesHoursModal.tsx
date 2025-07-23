@@ -275,7 +275,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                                 value === DATE_FILTER_OPTIONS.USER_PICK &&
                                 item.label === RadioButtonDate.PRECISE_DATE &&
                                 selectedDate
-                                  ? formatToCompleteFrenchDate(selectedDate)
+                                  ? formatToCompleteFrenchDate({ date: selectedDate })
                                   : undefined
                               }
                             />

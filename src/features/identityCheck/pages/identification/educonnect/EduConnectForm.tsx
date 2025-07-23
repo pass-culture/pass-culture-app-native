@@ -12,6 +12,7 @@ import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identifica
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
@@ -75,7 +76,7 @@ export const EduConnectForm = () => {
           birthDate: url.searchParams.get('dateOfBirth') ?? null,
         },
       })
-      navigate('EduConnectValidation', {})
+      navigate(...getSubscriptionHookConfig('EduConnectValidation', {}))
     }
   }
 

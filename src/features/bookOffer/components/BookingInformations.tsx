@@ -46,15 +46,14 @@ export const BookingInformations = () => {
     )
 
   if (mapping[offer.subcategoryId].isEvent) {
-    const shouldDisplayWeekday = true
     let message = ''
 
     if (stock.beginningDatetime) {
-      message = formatDateTimezone(
-        stock.beginningDatetime,
-        shouldDisplayWeekday,
-        offer.venue.timezone
-      )
+      message = formatDateTimezone({
+        limitDate: stock.beginningDatetime,
+        shouldDisplayWeekDay: true,
+        timezone: offer.venue.timezone,
+      })
     }
 
     if (offer.extraData?.durationMinutes) {

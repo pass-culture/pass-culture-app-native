@@ -38,7 +38,7 @@ describe('<CitySearchInput />', () => {
     await waitForScreenToBeLoaded()
 
     expect(
-      screen.getByText(
+      await screen.findByText(
         'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
       )
     ).toBeOnTheScreen()
@@ -69,8 +69,8 @@ describe('<CitySearchInput />', () => {
 
     await waitForScreenToBeLoaded()
 
-    expect(screen.getByText(mockedSuggestedCities[0].nom)).toBeOnTheScreen()
-    expect(screen.getByText(mockedSuggestedCities[1].nom)).toBeOnTheScreen()
+    expect(await screen.findByText(mockedSuggestedCities[0].nom)).toBeOnTheScreen()
+    expect(await screen.findByText(mockedSuggestedCities[1].nom)).toBeOnTheScreen()
   })
 
   it('should reset the search input when pressing the reset icon', async () => {

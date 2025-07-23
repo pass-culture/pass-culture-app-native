@@ -30,7 +30,9 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
     dispatch({ type: 'RESET_STOCK' })
   }
 
-  const buttonTitle = bookingState.date ? formatToCompleteFrenchDate(bookingState.date) : ''
+  const buttonTitle = bookingState.date
+    ? formatToCompleteFrenchDate({ date: bookingState.date })
+    : ''
 
   return (
     <StyledView>

@@ -6,6 +6,7 @@ import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { useIdentificationUrlMutation } from 'features/identityCheck/queries/useIdentificationUrlMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -43,7 +44,8 @@ export const UbbleWebview: React.FC = () => {
           onComplete({ redirectUrl }: CompleteEvent) {
             analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
             ubbleIDV.destroy()
-            if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigate('IdentityCheckEnd')
+            if (redirectUrl.includes(REDIRECT_URL_UBBLE))
+              navigate(...getSubscriptionHookConfig('IdentityCheckEnd'))
           },
           onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
             analytics.logIdentityCheckAbort({

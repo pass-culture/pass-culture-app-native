@@ -33,41 +33,54 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const formattedDate = getOfferDates(
-    item.offer.subcategoryId,
-    item.offer.dates,
-    item.offer.releaseDate,
-    true
-  )
+  const {
+    subcategoryId,
+    dates,
+    releaseDate,
+    isDuo,
+    likes,
+    chroniclesCount,
+    headlineCount,
+    name,
+    thumbUrl,
+  } = item.offer
+
+  const formattedDate = getOfferDates({
+    subcategoryId,
+    dates,
+    releaseDate,
+    isPlaylist: true,
+  })
   const formattedPrice = getDisplayedPrice(
     item.offer?.prices,
     currency,
     euroToPacificFrancRate,
     formatPrice({
-      isFixed: getIfPricesShouldBeFixed(item.offer.subcategoryId),
-      isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
+      isFixed: getIfPricesShouldBeFixed(subcategoryId),
+      isDuo: !!(isDuo && user?.isBeneficiary),
     })
   )
 
   const tag = renderInteractionTag({
     theme,
-    likesCount: item.offer.likes,
-    chroniclesCount: item.offer.chroniclesCount,
-    headlinesCount: item.offer.headlineCount,
+    likesCount: likes,
+    chroniclesCount: chroniclesCount,
+    headlinesCount: headlineCount,
     hasSmallLayout,
     isComingSoonOffer: item._tags?.includes('is_future'),
+    subcategoryId: item.offer.subcategoryId,
   })
 
   return (
     <OfferTile
       offerLocation={item._geoloc}
-      categoryLabel={labelMapping[item.offer.subcategoryId]}
-      categoryId={mapping[item.offer.subcategoryId]}
-      subcategoryId={item.offer.subcategoryId}
+      categoryLabel={labelMapping[subcategoryId]}
+      categoryId={mapping[subcategoryId]}
+      subcategoryId={subcategoryId}
       offerId={+item.objectID}
-      name={item.offer.name}
+      name={name}
       date={formattedDate}
-      thumbUrl={item.offer.thumbUrl}
+      thumbUrl={thumbUrl}
       price={formattedPrice}
       interactionTag={tag}
       {...props}

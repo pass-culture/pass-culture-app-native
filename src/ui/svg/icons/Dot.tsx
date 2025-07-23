@@ -2,14 +2,13 @@ import React from 'react'
 import { Circle, G } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = Omit<AccessibleIcon, 'color'> & {
-  borderColor?: ColorsEnum
-  fillColor?: ColorsEnum
+  borderColor?: ColorsType
+  fillColor?: ColorsType
 }
 
 const DotSvg: React.FC<Props> = ({ size, borderColor, fillColor, accessibilityLabel, testID }) => (

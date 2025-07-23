@@ -135,7 +135,10 @@ describe('SetPhoneValidationCode', () => {
     await user.press(screen.getByTestId('Continuer'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'PhoneValidationTooManyAttempts',
+      })
     })
   })
 
@@ -156,7 +159,22 @@ describe('SetPhoneValidationCode', () => {
     await user.press(screen.getByTestId('Continuer'))
 
     expect(dispatch).toHaveBeenCalledWith({
-      payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+      payload: {
+        index: 1,
+        routes: [
+          { name: 'TabNavigator' },
+          {
+            name: 'SubscriptionStackNavigator',
+            state: {
+              routes: [
+                {
+                  name: 'Stepper',
+                },
+              ],
+            },
+          },
+        ],
+      },
       type: 'RESET',
     })
   })

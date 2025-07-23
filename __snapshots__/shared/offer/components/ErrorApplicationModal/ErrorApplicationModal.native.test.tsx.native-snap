@@ -322,7 +322,7 @@ ton crédit
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -378,6 +378,7 @@ ton crédit
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
                         "textAlign": "center",
                       },
                     ]
@@ -389,16 +390,6 @@ ton crédit
 
                   Pour terminer ton inscription et obtenir ton crédit, va sur ton profil.
                 </Text>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Aller vers la section profil"
                   accessibilityState={

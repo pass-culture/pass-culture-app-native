@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingResponse, UserProfileResponse } from 'api/gen'
+import { BookingResponse, TicketDisplayEnum, UserProfileResponse } from 'api/gen'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsContentDesktop } from 'features/bookings/components/BookingDetailsContentDesktop'
@@ -58,7 +58,6 @@ export const BookingDetailsContent = ({
   } = useModal(false)
 
   const { offer } = booking.stock
-  const { ticket } = booking
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offer.id && analytics.logBookingDetailsScrolledToBottom(offer.id)
@@ -79,21 +78,9 @@ export const BookingDetailsContent = ({
     analytics.logClickEmailOrganizer()
   }
 
+  const isNoTicket = booking.ticket.display === TicketDisplayEnum.no_ticket
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
-
-  const ticketDisplay = (
-    <Ticket
-      properties={properties}
-      booking={booking}
-      mapping={mapping}
-      user={user}
-      display={display}
-      setTopBlockHeight={setTopBlockHeight}
-      ticket={booking.ticket}
-    />
-  )
-
-  return (
+  return booking.ticket ? (
     <MainContainer>
       <ScrollView
         onScroll={onScroll}
@@ -110,14 +97,24 @@ export const BookingDetailsContent = ({
         {isDesktopViewport ? (
           <BookingDetailsContentDesktop
             headerImageHeight={headerImageHeight}
-            leftBlock={ticketDisplay}
+            leftBlock={
+              <Ticket
+                properties={properties}
+                booking={booking}
+                mapping={mapping}
+                user={user}
+                display={display}
+                setTopBlockHeight={setTopBlockHeight}
+                ticket={booking.ticket}
+              />
+            }
             rightBlock={
               <React.Fragment>
-                <ErrorBanner message={errorBannerMessage} />
-                {booking.stock.offer.bookingContact || ticket?.withdrawal.details ? (
+                {isNoTicket ? null : <ErrorBanner message={errorBannerMessage} />}
+                {booking.stock.offer.bookingContact || booking.ticket.withdrawal.details ? (
                   <BookingPrecisions
                     bookingContactEmail={booking.stock.offer.bookingContact}
-                    withdrawalDetails={ticket?.withdrawal.details}
+                    withdrawalDetails={booking.ticket.withdrawal.details}
                     onEmailPress={onEmailPress}
                   />
                 ) : null}
@@ -132,10 +129,20 @@ export const BookingDetailsContent = ({
           />
         ) : (
           <BookingDetailsContentMobile
-            topBlock={ticketDisplay}
+            topBlock={
+              <Ticket
+                properties={properties}
+                booking={booking}
+                mapping={mapping}
+                user={user}
+                display={display}
+                setTopBlockHeight={setTopBlockHeight}
+                ticket={booking.ticket}
+              />
+            }
             onEmailPress={onEmailPress}
             booking={booking}
-            errorBannerMessage={errorBannerMessage}
+            errorBannerMessage={isNoTicket ? null : errorBannerMessage}
             cancelBooking={cancelBooking}
             showArchiveModal={showArchiveModal}
           />
@@ -155,7 +162,7 @@ export const BookingDetailsContent = ({
       {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </MainContainer>
-  )
+  ) : null
 }
 
 const MainContainer = styled.View(({ theme }) => ({

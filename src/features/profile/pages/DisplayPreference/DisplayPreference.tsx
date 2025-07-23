@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { analytics } from 'libs/analytics/provider'
@@ -26,7 +26,7 @@ const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 export const DisplayPreference = () => {
   const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
 
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   const [isOrientationLocked, toggleIsOrientationLocked] = useOrientationLocked()
 

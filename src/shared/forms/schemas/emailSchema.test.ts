@@ -22,6 +22,10 @@ describe('emailSchema', () => {
     'domain.com',
     'prenom.nom@exampl_e.com', // underscore in hostname
     'prenom@nom@example.com', // double @
+    'hello$@example.com',
+    'hello|world@example.com',
+    'hello·world@example.com',
+    'hello.w%rld@example.com',
   ])('should reject a well formated email: %s', async (email) => {
     const result = emailSchema.validate(email)
 

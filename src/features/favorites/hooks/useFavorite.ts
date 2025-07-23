@@ -7,7 +7,7 @@ export const useFavorite = ({
 }: {
   offerId?: number
 }): FavoriteResponse | undefined | null => {
-  const { data, isLoading } = useFavoritesQuery()
+  const { data, isInitialLoading: isLoading } = useFavoritesQuery()
   if (isLoading) return undefined
   const favorites = data?.favorites ?? []
   return favorites.find((favorite) => favorite.offer.id === offerId) ?? null

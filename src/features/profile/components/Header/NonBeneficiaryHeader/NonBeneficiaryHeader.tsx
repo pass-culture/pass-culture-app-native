@@ -6,6 +6,7 @@ import { Banner, BannerName } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
@@ -55,11 +56,11 @@ type SystemBannerProps = {
 }
 
 const StyledUnlock = styled(Unlock).attrs(({ theme }) => ({
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.brandSecondary,
 }))``
 
 const StyledBirthdayCake = styled(BirthdayCake).attrs(({ theme }) => ({
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.brandSecondary,
 }))``
 
 const systemBannerIcons: {
@@ -81,7 +82,7 @@ function SystemBanner({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const onPress = () => {
-    navigate('Stepper', { from: StepperOrigin.PROFILE })
+    navigate(...getSubscriptionHookConfig('Stepper', { from: StepperOrigin.PROFILE }))
   }
 
   const subtitle = formattedEligibilityEndDatetime ? (

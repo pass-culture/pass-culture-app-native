@@ -1,17 +1,18 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { mapSubscriptionThemeToDescription } from 'features/subscription/helpers/mapSubscriptionThemeToDescription'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Parameters } from 'ui/svg/icons/Parameters'
 import { RingingBell } from 'ui/svg/RingingBell'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -31,27 +32,28 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
       Illustration={StyledIcon}
       hideModal={dismissModal}>
       <StyledBody>{mapSubscriptionThemeToDescription[theme]}</StyledBody>
-      <Spacer.Column numberOfSpaces={4} />
       <StyledBodyAccentXs>Tu pourras gérer tes alertes depuis ton profil.</StyledBodyAccentXs>
-      <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
-        <ButtonPrimary wording="Continuer sur l’app" onPress={dismissModal} />
-        <Spacer.Column numberOfSpaces={2} />
+        <StyledButtonPrimary wording="Continuer sur l’app" onPress={dismissModal} />
         <InternalTouchableLink
           as={ButtonTertiaryBlack}
           wording="Voir mes préférences"
           icon={Parameters}
-          navigateTo={getProfileNavConfig('NotificationsSettings')}
+          navigateTo={getProfilePropConfig('NotificationsSettings')}
           onBeforeNavigate={dismissModal}
         />
       </StyledButtonContainer>
-      <Spacer.Column numberOfSpaces={4} />
     </AppModalWithIllustration>
   )
 }
 
 const StyledButtonContainer = styled.View({
   width: '100%',
+  marginBottom: getSpacing(4),
+})
+
+const StyledButtonPrimary = styledButton(ButtonPrimary)({
+  marginBottom: getSpacing(2),
 })
 
 const StyledBody = styled(Typo.Body)({
@@ -60,6 +62,8 @@ const StyledBody = styled(Typo.Body)({
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
   textAlign: 'center',
+  marginTop: getSpacing(4),
+  marginBottom: getSpacing(6),
 }))
 
 const StyledIcon = styled(RingingBell).attrs(({ theme }) => ({

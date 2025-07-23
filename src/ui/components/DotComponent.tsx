@@ -2,24 +2,26 @@ import React, { FunctionComponent } from 'react'
 import { SwiperProps } from 'react-native-web-swiper'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { ColorsTypeLegacy } from 'theme/types'
+import { ColorsType } from 'theme/types'
 import { Dot as DotIcon } from 'ui/svg/icons/Dot'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
 
 function getDotColors(
   theme: DefaultTheme,
   stepIndex: number,
   currentStepIndex: number,
   withNeutralPreviousStepsColor?: boolean
-): { borderColor?: ColorsTypeLegacy; fillColor?: ColorsTypeLegacy } {
+): { borderColor?: ColorsType; fillColor?: ColorsType } {
   if (stepIndex === currentStepIndex)
     return {
       borderColor: theme.designSystem.color.border.brandPrimary,
       fillColor: theme.designSystem.color.background.brandPrimary,
     }
   if (stepIndex < currentStepIndex && !withNeutralPreviousStepsColor)
-    return { borderColor: theme.colors.greenValid, fillColor: theme.colors.greenValid }
+    return {
+      borderColor: theme.designSystem.color.border.success,
+      fillColor: theme.designSystem.color.background.success,
+    }
   return {
     borderColor: theme.designSystem.color.border.default,
     fillColor: theme.designSystem.color.background.default,

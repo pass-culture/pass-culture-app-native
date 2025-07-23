@@ -4,6 +4,7 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { splitArrayIntoStrings } from 'shared/splitArrayIntoStrings/splitArrayIntoStrings'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
@@ -90,16 +91,33 @@ export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperti
   return JSON.stringify(formattedDisability, null, 2)
 }
 
-const buildSearchDate = (searchState: SearchState) => {
-  const startDate =
+const buildSearchDate = (searchState: SearchState): string | undefined => {
+  const rawStart =
     searchState.date?.selectedDate ?? searchState.timeRange?.[0] ?? searchState.beginningDatetime
-  const endDate = searchState.timeRange?.[1] ?? searchState.endingDatetime ?? null
-  const searchFilter = searchState.date?.option ?? searchState.calendarFilterId ?? null
+  const rawEnd = searchState.timeRange?.[1] ?? searchState.endingDatetime ?? null
 
-  if (startDate) {
-    return JSON.stringify({ startDate, endDate, searchFilter })
+  const startDate =
+    typeof rawStart === 'string' ? formatDateToISOStringWithoutTime(new Date(rawStart)) : rawStart
+  const endDate =
+    typeof rawEnd === 'string' ? formatDateToISOStringWithoutTime(new Date(rawEnd)) : rawEnd
+
+  if (!startDate) return undefined
+
+  if (endDate && endDate < startDate) {
+    return undefined
   }
-  return undefined
+
+  const filterId = searchState.date?.option ?? searchState.calendarFilterId ?? null
+  let searchFilter: string
+  if (filterId) {
+    searchFilter = filterId
+  } else if (endDate && startDate !== endDate) {
+    searchFilter = 'dateInterval'
+  } else {
+    searchFilter = 'specificDate'
+  }
+
+  return JSON.stringify({ startDate, endDate, searchFilter })
 }
 
 export const buildPerformSearchState = (

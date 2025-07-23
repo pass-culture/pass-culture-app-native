@@ -19,7 +19,8 @@ import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/querie
 import { useCulturalSurveyQuestionsQuery } from 'features/culturalSurvey/queries/useCulturalSurveyQuestionsQuery'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
@@ -43,8 +44,8 @@ export function CulturalSurveyQuestions() {
   const { push, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'CulturalSurveyQuestions'>>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestionsQuery()
-  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params.question)
-  const culturalSurveyProgress = useCulturalSurveyProgress(params.question)
+  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params?.question)
+  const culturalSurveyProgress = useCulturalSurveyProgress(params?.question)
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
 
@@ -53,8 +54,8 @@ export function CulturalSurveyQuestions() {
     setBottomChildrenViewHeight(height)
   }
 
-  const currentQuestion = params.question
-  const { goBack } = useGoBack(...homeNavConfig)
+  const currentQuestion = params?.question
+  const { goBack } = useGoBack(...homeNavigationConfig)
   const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
   const [currentAnswers, setCurrentAnswers] = useState<CulturalSurveyAnswerEnum[]>([])
 
@@ -70,13 +71,44 @@ export function CulturalSurveyQuestions() {
   const onSuccess = async () => {
     await refetchUser()
     dispatch({ type: 'FLUSH_ANSWERS' })
-    reset({
-      index: 1,
-      routes: [
-        { name: enableCulturalSurveyMandatory ? 'Stepper' : navigateToHomeConfig.screen },
-        { name: 'CulturalSurveyThanks' },
-      ],
-    })
+    performReset()
+  }
+
+  const performReset = () => {
+    if (enableCulturalSurveyMandatory) {
+      reset({
+        index: 1,
+        routes: [
+          {
+            name: 'SubscriptionStackNavigator',
+            state: {
+              routes: [{ name: 'Stepper' }],
+            },
+          },
+          {
+            name: 'SubscriptionStackNavigator',
+            state: {
+              routes: [{ name: 'CulturalSurveyThanks' }],
+            },
+          },
+        ],
+      })
+    } else {
+      reset({
+        index: 1,
+        routes: [
+          {
+            name: navigateToHomeConfig.screen,
+          },
+          {
+            name: 'SubscriptionStackNavigator',
+            state: {
+              routes: [{ name: 'CulturalSurveyThanks' }],
+            },
+          },
+        ],
+      })
+    }
   }
 
   const onError = (error: unknown) => {
@@ -90,7 +122,7 @@ export function CulturalSurveyQuestions() {
   })
 
   const culturalSurveyQuestion = culturalSurveyQuestionsData?.questions?.find(
-    (question) => question.id === params.question
+    (question) => question.id === params?.question
   )
 
   const logCulturalSurveyScrolledToBottom = useFunctionOnce(
@@ -106,7 +138,7 @@ export function CulturalSurveyQuestions() {
     if (isCurrentQuestionLastQuestion) {
       postCulturalSurveyAnswers({ answers })
     } else if (nextQuestion) {
-      push('CulturalSurveyQuestions', { question: nextQuestion })
+      push(...getSubscriptionHookConfig('CulturalSurveyQuestions', { question: nextQuestion }))
     }
   }
 
@@ -132,13 +164,14 @@ export function CulturalSurveyQuestions() {
       ? currentAnswers.filter((answerId) => answerId !== answer.id)
       : [...currentAnswers, answer.id]
 
-    dispatch({
-      type: 'SET_ANSWERS',
-      payload: {
-        questionId: currentQuestion,
-        answers: updatedAnswers,
-      },
-    })
+    currentQuestion &&
+      dispatch({
+        type: 'SET_ANSWERS',
+        payload: {
+          questionId: currentQuestion,
+          answers: updatedAnswers,
+        },
+      })
   }
 
   const handleToggleAnswer = (answer: CulturalSurveyAnswer) => () => {
@@ -154,13 +187,14 @@ export function CulturalSurveyQuestions() {
 
   const onGoBack = () => {
     goBack()
-    dispatch({
-      type: 'SET_ANSWERS',
-      payload: {
-        questionId: currentQuestion,
-        answers: [],
-      },
-    })
+    currentQuestion &&
+      dispatch({
+        type: 'SET_ANSWERS',
+        payload: {
+          questionId: currentQuestion,
+          answers: [],
+        },
+      })
 
     if (currentQuestion === CulturalSurveyQuestionEnum.SORTIES) {
       const INITIAL_CULTURAL_SURVEY_QUESTIONS = [

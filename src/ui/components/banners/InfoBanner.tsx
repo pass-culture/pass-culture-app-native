@@ -3,10 +3,9 @@ import { ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type ColorMessageProps = {
   withLightColorMessage?: boolean
@@ -16,7 +15,7 @@ type Props = ColorMessageProps & {
   message: string | ReactNode
   icon?: FunctionComponent<AccessibleIcon>
   testID?: string
-  backgroundColor?: ColorsEnum
+  backgroundColor?: ColorsType
   children?: React.ReactNode
   messageContainerStyle?: ViewStyle
 }

@@ -1,47 +1,68 @@
 import React from 'react'
 
-import { TokenResponse, VoucherResponse } from 'api/gen'
-import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
+import {
+  PhysicalGoodBookingTicket,
+  PhysicalGoodBookingTicketProps,
+} from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
 import { render, screen } from 'tests/utils'
 
 describe('PhysicalGoodBookingTicket', () => {
-  it('should not display anything when voucher is valid but token and ean are null', async () => {
-    renderPhysicalGoodBookingTicket({ voucher: { data: 'test-voucher' }, token: null, ean: null })
-
-    expect(screen.queryByTestId('physical-good-booking-ticket-container')).not.toBeOnTheScreen()
-  })
-
-  it('should not display anything when token is valid but voucher and ean are null', async () => {
-    renderPhysicalGoodBookingTicket({ voucher: null, token: { data: 'test-token' }, ean: null })
-
-    expect(screen.queryByTestId('physical-good-booking-ticket-container')).not.toBeOnTheScreen()
-  })
-
-  it('should not display anything when ean is valid but token and voucher are null', async () => {
-    renderPhysicalGoodBookingTicket({ voucher: null, token: { data: 'test-token' }, ean: '1234' })
-
-    expect(screen.queryByTestId('physical-good-booking-ticket-container')).not.toBeOnTheScreen()
-  })
-
-  it('should display container when token, voucher and ean are present', async () => {
+  it('should display voucher', async () => {
     renderPhysicalGoodBookingTicket({
-      voucher: { data: 'test-voucher' },
-      token: { data: 'test-token' },
-      ean: '1234',
+      voucherData: 'PASSCULTURE:v12;TOKEN:EAJFK3P',
+      tokenData: 'EAJFK3P',
     })
 
-    expect(screen.getByTestId('physical-good-booking-ticket-container')).toBeOnTheScreen()
+    expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
+  })
+
+  it('should display token', async () => {
+    renderPhysicalGoodBookingTicket({
+      voucherData: 'PASSCULTURE:v12;TOKEN:EAJFK3P',
+      tokenData: 'EAJFK3P',
+    })
+
+    expect(screen.getByText('EAJFK3P')).toBeOnTheScreen()
+  })
+
+  it('should display withdrawal indication without delay', async () => {
+    renderPhysicalGoodBookingTicket({
+      voucherData: 'PASSCULTURE:v12;TOKEN:EAJFK3P',
+      tokenData: 'EAJFK3P',
+    })
+
+    expect(
+      screen.getByText(
+        `Présente le code ci-dessus à la caisse du lieu indiqué pour récupérer ton offre.`
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should display withdrawal indication with delay', async () => {
+    renderPhysicalGoodBookingTicket({
+      voucherData: 'PASSCULTURE:v12;TOKEN:EAJFK3P',
+      tokenData: 'EAJFK3P',
+      expirationDate: 'avant le 5 juillet 2025',
+    })
+
+    expect(
+      screen.getByText(
+        `Présente le code ci-dessus à la caisse du lieu indiqué avant le 5 juillet 2025 pour récupérer ton offre.`
+      )
+    ).toBeOnTheScreen()
   })
 })
 
 const renderPhysicalGoodBookingTicket = ({
-  voucher,
-  token,
-  ean,
-}: {
-  voucher: VoucherResponse | null
-  token: TokenResponse | null
-  ean: string | null
-}) => {
-  return render(<PhysicalGoodBookingTicket voucher={voucher} token={token} ean={ean} />)
+  voucherData,
+  tokenData,
+  expirationDate,
+}: PhysicalGoodBookingTicketProps) => {
+  return render(
+    <PhysicalGoodBookingTicket
+      voucherData={voucherData}
+      tokenData={tokenData}
+      expirationDate={expirationDate}
+    />
+  )
 }

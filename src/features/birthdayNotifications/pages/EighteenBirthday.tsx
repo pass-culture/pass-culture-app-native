@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { storage } from 'libs/storage'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
@@ -22,7 +23,7 @@ export function EighteenBirthday() {
       subtitle={pageWording.text}
       buttonPrimary={{
         wording: pageWording.buttonText,
-        navigateTo: { screen: 'Stepper' },
+        navigateTo: getSubscriptionPropConfig('Stepper'),
       }}
       buttonTertiary={{
         wording: 'Plus tard',

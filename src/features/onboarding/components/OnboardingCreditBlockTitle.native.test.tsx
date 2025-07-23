@@ -2,8 +2,7 @@ import React from 'react'
 
 import { OnboardingCreditBlockTitle } from 'features/onboarding/components/OnboardingCreditBlockTitle'
 import { render, screen } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 describe('CreditBlockTitle', () => {
   it('should return correct text for expired credit', () => {
@@ -27,7 +26,9 @@ describe('CreditBlockTitle', () => {
   it('should return secondary text for ongoing credit', () => {
     render(<OnboardingCreditBlockTitle age={15} userAge={15} deposit="20&nbsp;€" />)
 
-    expect(screen.getByText('20\u00a0€')).toHaveStyle({ color: ColorsEnum.SECONDARY })
+    expect(screen.getByText('20\u00a0€')).toHaveStyle({
+      color: theme.designSystem.color.text.brandSecondary,
+    })
   })
 
   it('should return correct text for coming credit', () => {

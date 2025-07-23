@@ -36,7 +36,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-describe('useOfferModal', () => {
+describe('useBookOfferModal', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
@@ -73,7 +73,7 @@ describe('useOfferModal', () => {
     )
 
     expect(
-      screen.getByText('Identifie-toi' + LINE_BREAK + 'pour réserver l’offre')
+      screen.getByText('Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.')
     ).toBeOnTheScreen()
   })
 

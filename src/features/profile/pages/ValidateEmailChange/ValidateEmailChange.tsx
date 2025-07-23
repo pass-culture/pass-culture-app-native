@@ -9,7 +9,7 @@ import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { Separator } from 'ui/components/Separator'
@@ -25,7 +25,8 @@ type ValidateEmailChangeProps = NativeStackScreenProps<
 >
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isInitialLoading: isLoadingEmailUpdateStatus } =
+    useEmailUpdateStatus()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -68,7 +69,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         timeout: SNACK_BAR_TIME_OUT,
       })
       eventMonitoring.captureException(error)
-      navigation.replace(...homeNavConfig)
+      navigation.replace(...homeNavigationConfig)
     } finally {
       setIsLoading(false)
     }
@@ -77,7 +78,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus) {
       if (!emailUpdateStatus) {
-        navigation.replace(...homeNavConfig)
+        navigation.replace(...homeNavigationConfig)
       }
       if (emailUpdateStatus?.expired) {
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })

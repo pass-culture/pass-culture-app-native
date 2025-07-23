@@ -1,4 +1,4 @@
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { renderHook } from 'tests/utils/web'
 
 import { useGoBack } from './useGoBack'
@@ -59,7 +59,7 @@ describe('useGoBack()', () => {
       const { result } = renderUseGoBack()
       result.current.goBack()
 
-      expect(mockNavigate).toHaveBeenCalledWith(...homeNavConfig)
+      expect(mockNavigate).toHaveBeenCalledWith(...homeNavigationConfig)
     })
 
     it("should use history if previous route doesn't exist and canGoBack = true", async () => {
@@ -84,5 +84,5 @@ describe('useGoBack()', () => {
 })
 
 function renderUseGoBack() {
-  return renderHook(() => useGoBack(...homeNavConfig))
+  return renderHook(() => useGoBack(...homeNavigationConfig))
 }

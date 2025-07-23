@@ -56,7 +56,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const { user } = useAuthContext()
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
-  const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
+  const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
   const { artists = [] } = venueArtists ?? {}
@@ -69,7 +69,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     <SeeMore
       width={width}
       height={height}
-      navigateTo={showSeeMore ? searchNavConfig : undefined}
+      navigateTo={showSeeMore ? searchNavigationConfig : undefined}
       onPress={() => analytics.logVenueSeeMoreClicked(venue.id)}
     />
   )
@@ -81,6 +81,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       chroniclesCount: item.offer.chroniclesCount,
       headlinesCount: item.offer.headlineCount,
       isComingSoonOffer: item._tags?.includes('is_future'),
+      subcategoryId: item.offer.subcategoryId,
     })
 
     return (
@@ -127,7 +128,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
         onPressSeeMore={onPressSeeMore}
         renderItem={renderItem}
-        titleSeeMoreLink={showSeeMore ? searchNavConfig : undefined}
+        titleSeeMoreLink={showSeeMore ? searchNavigationConfig : undefined}
         renderFooter={renderFooter}
         keyExtractor={keyExtractor}
         FlatListComponent={FlatList}

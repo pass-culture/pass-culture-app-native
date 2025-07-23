@@ -15,6 +15,7 @@ import { render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.useFakeTimers()
 const user = userEvent.setup()

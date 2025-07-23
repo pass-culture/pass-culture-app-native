@@ -11,18 +11,30 @@ appId: ${MAESTRO_APP_ID}
     label: 'Sélection de la 1ère offre disponible'
     below:
       text: .*résultats
+      index: 1
 
 - runFlow:
     when:
-      visible: "Voir ma réservation"
+      visible: 'Voir ma réservation'
     commands:
-    - tapOn: "Voir ma réservation"
-    - scrollUntilVisible:
-        element: 'Annuler ma réservation'
-    - tapOn: 'Annuler ma réservation' # TODO(PC-36108) améliorer les perfs pour éviter de devoir cliquer deux fois sur ce bouton
-    - tapOn: 'Annuler ma réservation'
+      - tapOn: 'Voir ma réservation'
+      - scrollUntilVisible:
+          element: 'Annuler ma réservation'
+      - tapOn: 'Annuler ma réservation' # TODO(PC-36108) améliorer les perfs pour éviter de devoir cliquer deux fois sur ce bouton
+      - tapOn: 'Annuler ma réservation'
 
-- tapOn: 'Réserver l’offre'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn:
+          id: sticky-booking-button
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          point: ${output.button.ios.booking}
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
@@ -30,13 +42,13 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - scrollUntilVisible:
-        element: 'Confirmer la réservation'
+      - scrollUntilVisible:
+          element: 'Confirmer la réservation'
 - runFlow:
     when:
       platform: iOS
     commands:
-    - scroll
+      - scroll
 - doubleTapOn: 'Confirmer la réservation'
 
 - assertVisible: "Réservation confirmée\_!"
@@ -45,9 +57,9 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     when:
       platform: iOS
-      visible: "Plus tard"
+      visible: 'Plus tard'
     commands:
-    - tapOn: "Plus tard"
+      - tapOn: 'Plus tard'
 
 - scrollUntilVisible:
     element: 'Annuler ma réservation'

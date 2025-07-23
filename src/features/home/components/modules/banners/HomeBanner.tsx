@@ -6,6 +6,7 @@ import { BannerName } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -23,15 +24,15 @@ type HomeBannerProps = {
 }
 
 const StyledUnlock = styled(Unlock).attrs(({ theme }) => ({
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.error,
 }))``
 
 const StyledArrowAgain = styled(ArrowAgain).attrs(({ theme }) => ({
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.error,
 }))``
 
 const StyledBirthdayCake = styled(BirthdayCake).attrs(({ theme }) => ({
-  color: theme.colors.secondaryLight200,
+  color: theme.designSystem.color.icon.error,
 }))``
 
 const systemBannerIcons: {
@@ -68,7 +69,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   const onPressSystemBanner = useCallback(
     (from: StepperOrigin) => {
-      navigate('Stepper', { from })
+      navigate(...getSubscriptionHookConfig('Stepper', { from }))
     },
     [navigate]
   )

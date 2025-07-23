@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/getSearchStackConfig'
+import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
@@ -23,7 +23,7 @@ interface Props {
  */
 export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
   const theme = useTheme()
-  const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
+  const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
 
   const { share: shareVenue, shareContent } = getShareVenue({ venue, utmMedium: 'header' })
   const {

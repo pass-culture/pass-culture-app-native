@@ -1,8 +1,9 @@
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 
-export const useGetNextQuestion = (currentQuestion: CulturalSurveyQuestionEnum) => {
+export const useGetNextQuestion = (currentQuestion: CulturalSurveyQuestionEnum | undefined) => {
   const { questionsToDisplay } = useCulturalSurveyContext()
+  if (!currentQuestion) return {}
 
   const nextQuestionIndex = questionsToDisplay.indexOf(currentQuestion) + 1
 

@@ -44,13 +44,7 @@ export enum ColorsEnum {
 }
 export enum UniqueColors {
   BRAND = '#870087',
-  BRAND_DARK = '#070C36',
-  GREEN_DISABLED = '#b8d7c1',
-  GREY_OVERLAY = '#00000080',
   BACKGROUND_COLOR = '#DDDDDD',
-  BACKGROUND_SURFACE = '#212121',
   FOREGROUND_COLOR = '#EEEEEE',
-  TAB_BAR = '#FFFFFF',
-  SPECIFIC_GREY = '#2C2C2E',
 }
 export const ACTIVE_OPACITY = 0.7

@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { Separator } from 'ui/components/Separator'
@@ -24,8 +26,12 @@ const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
 
 export function AccessibilityDeclarationMobile() {
+  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   return (
-    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité mobile" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader
+      onGoBack={goBack}
+      title="Déclaration d’accessibilité mobile"
+      enableMaxWidth={false}>
       <ViewGap gap={6}>
         <Typo.BodyItalic>Cette déclaration a été établie le 30 janvier 2025.</Typo.BodyItalic>
         <Typo.Body>

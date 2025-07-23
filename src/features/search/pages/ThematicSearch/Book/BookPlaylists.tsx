@@ -30,18 +30,20 @@ export const BookPlaylists: React.FC = () => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
 
-  const { data: bookGtlPlaylists, isLoading: areGtlPlaylistsLoading } = useGTLPlaylistsQuery({
-    searchIndex: isReplicaAlgoliaIndexActive
-      ? env.ALGOLIA_OFFERS_INDEX_NAME_B
-      : env.ALGOLIA_OFFERS_INDEX_NAME,
-    searchGroupLabel,
-    userLocation,
-    selectedLocationMode,
-    isUserUnderage,
-    adaptPlaylistParameters,
-    queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
-    transformHits,
-  })
+  const { data: bookGtlPlaylists, isInitialLoading: areGtlPlaylistsLoading } = useGTLPlaylistsQuery(
+    {
+      searchIndex: isReplicaAlgoliaIndexActive
+        ? env.ALGOLIA_OFFERS_INDEX_NAME_B
+        : env.ALGOLIA_OFFERS_INDEX_NAME,
+      searchGroupLabel,
+      userLocation,
+      selectedLocationMode,
+      isUserUnderage,
+      adaptPlaylistParameters,
+      queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
+      transformHits,
+    }
+  )
 
   return areGtlPlaylistsLoading ? (
     <ThematicSearchSkeleton />

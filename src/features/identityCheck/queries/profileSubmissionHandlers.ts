@@ -29,7 +29,16 @@ function handleFreeOfferProfileSuccess({
   if (storedFreeOfferId) {
     reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
   } else {
-    reset({ routes: [{ name: 'SetProfileBookingError' }] })
+    reset({
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            routes: [{ name: 'SetProfileBookingError' }],
+          },
+        },
+      ],
+    })
   }
 }
 
@@ -65,10 +74,26 @@ function handleFreeOfferProfileError({
 }: Pick<ErrorParams, 'storedFreeOfferId' | 'reset'>) {
   if (storedFreeOfferId) {
     reset({
-      routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
+          },
+        },
+      ],
     })
   } else {
-    reset({ routes: [{ name: 'SetProfileBookingError' }] })
+    reset({
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            routes: [{ name: 'SetProfileBookingError' }],
+          },
+        },
+      ],
+    })
   }
 }
 

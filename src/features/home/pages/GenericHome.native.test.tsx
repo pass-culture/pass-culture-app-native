@@ -44,6 +44,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.useFakeTimers()
+
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 

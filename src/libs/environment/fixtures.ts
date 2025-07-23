@@ -59,6 +59,7 @@ export const env: Environment = {
   GOOGLE_IOS_REVERSED_CLIENT_ID: 'GOOGLE_IOS_REVERSED_CLIENT_ID',
   GOOGLE_PLAY_STORE_URL:
     'https://play.google.com/store/apps/details?id=app.passculture.webapp&hl=fr',
+  HOT_UPDATER_FUNCTION_URL: 'https://hot-updater-5zhbbjibjq-ew.a.run.app',
   IOS_APP_ID: 'app.ios',
   IOS_APP_STORE_ID: '1557887412',
   PASSCULTURE_DOWNLOAD_APP_URL: 'https://pass.culture.fr/nosapplications/',

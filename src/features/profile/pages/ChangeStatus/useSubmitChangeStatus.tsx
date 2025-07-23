@@ -1,13 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StatusForm } from 'features/identityCheck/pages/profile/StatusFlatList'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
+import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -17,18 +19,32 @@ const schema = yup.object().shape({
 })
 
 export const useSubmitChangeStatus = () => {
+  const { params } = useRoute<UseRouteType<'ChangeStatus'>>()
+  const type = params?.type
+  const isMandatoryUpdatePersonalData = type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+  const successSnackBarMessage = isMandatoryUpdatePersonalData
+    ? 'Tes informations ont bien été modifiés\u00a0!'
+    : 'Ton statut a bien été modifié\u00a0!'
+
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const storedStatus = useStatus()
+
   const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
+      if (isMandatoryUpdatePersonalData) {
+        navigate(...getProfileHookConfig('UpdatePersonalDataConfirmation'))
+      } else {
+        navigate(...getProfileHookConfig('PersonalData'))
+        showSuccessSnackBar({
+          message: successSnackBarMessage,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+      }
       analytics.logUpdateStatus({
         oldStatus: user?.activityId ?? '',
         newStatus: variables.activityId ?? '',
-      })
-      showSuccessSnackBar({
-        message: 'Ton statut a bien été modifié\u00a0!',
-        timeout: SNACK_BAR_TIME_OUT,
       })
     },
 
@@ -47,16 +63,14 @@ export const useSubmitChangeStatus = () => {
   } = useForm<StatusForm>({
     mode: 'onChange',
     resolver: yupResolver(schema),
+    defaultValues: { selectedStatus: storedStatus ?? user?.activityId ?? undefined },
   })
 
   const selectedStatus = watch('selectedStatus')
 
   const submitStatus = useCallback(
-    async (formValues: StatusForm) => {
-      patchProfile({ activityId: formValues.selectedStatus })
-      navigate(...getProfileStackConfig('PersonalData'))
-    },
-    [navigate, patchProfile]
+    async (formValues: StatusForm) => patchProfile({ activityId: formValues.selectedStatus }),
+    [patchProfile]
   )
 
   return { isLoading, control, handleSubmit, selectedStatus, submitStatus, formIsValid }

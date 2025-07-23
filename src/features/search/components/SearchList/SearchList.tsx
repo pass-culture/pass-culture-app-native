@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components/native'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { LIST_ITEM_HEIGHT } from 'features/search/constants'
-import { SearchListProps } from 'features/search/types'
+import { GridListLayout, SearchListProps } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { getSpacing } from 'ui/theme'
@@ -29,16 +29,18 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
       venuesUserData,
       artistSection,
       numColumns,
-      enableGrisList,
+      setGridListLayout,
+      isGridLayout,
+      shouldDisplayGridList,
     },
     ref
   ) => {
     const theme = useTheme()
-
     return (
       <FlashList
         estimatedItemSize={LIST_ITEM_HEIGHT}
         ref={ref}
+        key={isGridLayout ? 'grid_search_results' : 'list_search_results'}
         testID="searchResultsFlashlist"
         data={hits.offers}
         keyExtractor={keyExtractor}
@@ -49,11 +51,14 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
             venues={hits.venues}
             artistSection={artistSection}
             venuesUserData={venuesUserData}
+            setGridListLayout={setGridListLayout}
+            selectedGridListLayout={isGridLayout ? GridListLayout.GRID : GridListLayout.LIST}
+            shouldDisplayGridList={shouldDisplayGridList}
           />
         }
-        ItemSeparatorComponent={enableGrisList ? undefined : LineSeparator}
+        ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
         renderItem={renderItem}
-        numColumns={enableGrisList ? numColumns : undefined}
+        numColumns={isGridLayout ? numColumns : undefined}
         refreshing={refreshing}
         onRefresh={onRefresh}
         onEndReached={autoScrollEnabled ? onEndReached : undefined}

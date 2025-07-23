@@ -21,7 +21,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { StorageKey, storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useAuthContext } from './AuthContext'
 import { AuthWrapper } from './AuthWrapper'
@@ -74,13 +74,12 @@ describe('AuthContext', () => {
     it('should return the user when logged in with internet connection', async () => {
       await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
+
       mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
       const result = renderUseAuthContext()
 
-      await act(async () => {})
-
-      expect(result.current.user).toEqual(beneficiaryUser)
+      await waitFor(() => expect(result.current.user).toEqual(beneficiaryUser))
     })
 
     it('should return undefined user when logged out (no token)', async () => {
@@ -124,19 +123,19 @@ describe('AuthContext', () => {
 
       renderUseAuthContext()
 
-      await act(async () => {})
-
-      expect(amplitude.setUserProperties).toHaveBeenCalledWith({
-        age: 18,
-        appVersion: '1.10.5',
-        depositType: 'GRANT_18',
-        eligibility: 'age-18',
-        eligibilityEndDatetime: '2023-11-19T11:00:00Z',
-        id: 1234,
-        isBeneficiary: true,
-        needsToFillCulturalSurvey: true,
-        status: 'beneficiary',
-      })
+      await waitFor(() =>
+        expect(amplitude.setUserProperties).toHaveBeenCalledWith({
+          age: 18,
+          appVersion: '1.10.5',
+          depositType: 'GRANT_18',
+          eligibility: 'age-18',
+          eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+          id: 1234,
+          isBeneficiary: true,
+          needsToFillCulturalSurvey: true,
+          status: 'beneficiary',
+        })
+      )
     })
 
     it('should not set user properties to Amplitude events when user is not logged in', async () => {
@@ -153,9 +152,9 @@ describe('AuthContext', () => {
 
       renderUseAuthContext()
 
-      await act(async () => {})
-
-      expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
+      await waitFor(() =>
+        expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
+      )
     })
 
     it('should log out user when refresh token is no longer valid', async () => {
@@ -170,7 +169,7 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
-      expect(result.current.isLoggedIn).toBe(false)
+      await waitFor(() => expect(result.current.isLoggedIn).toBe(false))
     })
 
     it('should log out user when refresh token remaining lifetime is longer than max average session duration', async () => {
@@ -236,9 +235,11 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
-      expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
-        displayForcedLoginHelpMessage: true,
-      })
+      await waitFor(() =>
+        expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
+          displayForcedLoginHelpMessage: true,
+        })
+      )
     })
 
     it('should clear refresh token when it expires', async () => {

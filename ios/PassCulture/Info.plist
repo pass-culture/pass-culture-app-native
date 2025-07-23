@@ -116,6 +116,8 @@
 	<string>Cette application peut vérifier ton identité avec une photo de votre galerie.</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Pour vous offrir les meilleurs offres et une expérience personnalisée</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Cette application a besoin d'accéder aux notifications pour vous tenir informé des offres et événements.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>

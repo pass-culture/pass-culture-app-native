@@ -1032,16 +1032,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           }
                         }
                         viewabilityConfigCallbackPairs={[]}
-                        waitFor={
-                          [
-                            {
-                              "current": null,
-                            },
-                            {
-                              "current": null,
-                            },
-                          ]
-                        }
                         windowSize={7}
                       >
                         <View>
@@ -4310,16 +4300,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           }
                         }
                         viewabilityConfigCallbackPairs={[]}
-                        waitFor={
-                          [
-                            {
-                              "current": null,
-                            },
-                            {
-                              "current": null,
-                            },
-                          ]
-                        }
                         windowSize={7}
                       >
                         <View>
@@ -6925,7 +6905,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "maxWidth": 180,
-                      "opacity": 0.7,
+                      "opacity": 1,
                       "userSelect": "auto",
                     }
                   }

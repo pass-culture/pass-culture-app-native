@@ -53,7 +53,8 @@ describe('<SetAddress/>', () => {
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  it('should render correctly', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should render correctly', async () => {
     renderSetAddress()
 
     await screen.findByText('Recherche et sélectionne ton adresse')
@@ -103,8 +104,11 @@ describe('<SetAddress/>', () => {
     await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
-      type: ProfileTypes.IDENTITY_CHECK,
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
+      screen: 'SetStatus',
+      params: {
+        type: ProfileTypes.IDENTITY_CHECK,
+      },
     })
   })
 

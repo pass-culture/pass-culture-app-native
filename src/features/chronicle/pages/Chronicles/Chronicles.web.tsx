@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -8,9 +8,10 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
 import { useChronicles } from 'features/chronicle/api/useChronicles/useChronicles'
 import { ChronicleOfferInfo } from 'features/chronicle/components/ChronicleOfferInfo/ChronicleOfferInfo.web'
+import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
@@ -25,10 +26,12 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
   const offerId = route.params?.offerId
+  const { navigate } = useNavigation<UseNavigationType>()
   const { data: offer } = useOfferQuery({ offerId })
   const subcategoriesMapping = useSubcategoriesMapping()
   const chronicleVariantInfo =
@@ -67,6 +70,14 @@ export const Chronicles: FunctionComponent = () => {
     }
   )
 
+  const onPress = () => {
+    navigate('Offer', { id: offerId, from: 'chronicles' })
+  }
+
+  const handleOnShowRecoButtonPress = () => {
+    navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+  }
+
   if (!offer || !chronicleCardsData) return null
 
   return (
@@ -75,7 +86,8 @@ export const Chronicles: FunctionComponent = () => {
         offerId={offer.id}
         offerName={offer.name}
         variantInfo={chronicleVariantInfo}
-        chronicleCardsData={chronicleCardsData}>
+        chronicleCardsData={chronicleCardsData}
+        onShowRecoButtonPress={handleOnShowRecoButtonPress}>
         {isDesktopViewport ? (
           <StyledChronicleOfferInfo
             imageUrl={offer.images?.recto?.url ?? ''}
@@ -84,11 +96,15 @@ export const Chronicles: FunctionComponent = () => {
             categoryId={subcategory.categoryId}
             paddingTop={headerHeight}
             imageDimensions={imageDimensions}>
-            <OfferCTAButton
-              offer={offer}
-              subcategory={subcategoriesMapping[offer.subcategoryId]}
-              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-            />
+            {isBookClubSubcategory(offer.subcategoryId) ? (
+              <OfferCTAButton
+                offer={offer}
+                subcategory={subcategoriesMapping[offer.subcategoryId]}
+                trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+              />
+            ) : (
+              <ButtonPrimary wording="Trouve ta séance" onPress={onPress} />
+            )}
           </StyledChronicleOfferInfo>
         ) : null}
       </ChroniclesBase>

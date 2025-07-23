@@ -4,7 +4,7 @@ import {
 } from 'shared/address/addressFormatter'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
+  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
 }))
 
 describe('formatFullAddress', () => {

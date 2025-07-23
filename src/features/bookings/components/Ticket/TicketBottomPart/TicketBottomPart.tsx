@@ -1,16 +1,26 @@
 import React from 'react'
 
-import { TicketResponse, UserProfileResponse } from 'api/gen'
-import { TicketCode } from 'features/bookings/components/OldBookingDetails/TicketCode'
+import { SubcategoryIdEnum, TicketDisplayEnum, TicketResponse, UserProfileResponse } from 'api/gen'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
+import { DigitalTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
-import {
-  ExternalBookingTicket,
-  HiddenExternalBookingTicket,
-} from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
+import { ExternalBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/ExternalBookingTicket'
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
+
+type TicketBottomPartProps = {
+  isDuo: boolean
+  isDigital: boolean
+  isEvent: boolean
+  userEmail: UserProfileResponse['email']
+  ticket: TicketResponse
+  expirationDate?: string
+  beginningDateTime?: string
+  completedUrl?: string
+  offerId: number
+  subcategoryId: SubcategoryIdEnum
+}
 
 export const TicketBottomPart = ({
   isDuo,
@@ -18,47 +28,70 @@ export const TicketBottomPart = ({
   isEvent,
   userEmail,
   ticket,
-  ean,
-}: {
-  isDuo: boolean
-  isDigital: boolean
-  isEvent: boolean
-  userEmail: UserProfileResponse['email']
-  ticket: TicketResponse | null
-  ean: string | null
-}) => {
-  if (ticket?.noTicket) return <NoTicket />
+  expirationDate,
+  beginningDateTime,
+  completedUrl,
+  offerId,
+  subcategoryId,
+}: TicketBottomPartProps) => {
+  if (ticket.display === TicketDisplayEnum.no_ticket) return <NoTicket />
 
-  if (ticket?.email)
+  if (
+    ticket.display === TicketDisplayEnum.email_sent ||
+    ticket.display === TicketDisplayEnum.email_will_be_sent
+  )
     return (
       <EmailWithdrawal
         isDuo={isDuo}
         withdrawalDelay={ticket.withdrawal.delay}
-        hasEmailBeenSent={ticket.email.hasTicketEmailBeenSent}
+        hasEmailBeenSent={ticket.display === TicketDisplayEnum.email_sent}
         userEmail={userEmail}
       />
     )
-
-  if (ticket?.activationCode) return <TicketCode code={ticket.activationCode.code} />
-
-  if (ticket?.externalBooking)
-    return ticket?.externalBooking.data ? (
-      <ExternalBookingTicket data={ticket?.externalBooking.data} />
-    ) : (
-      <HiddenExternalBookingTicket />
+  if (ticket.activationCode && completedUrl)
+    return (
+      <DigitalTicket
+        code={ticket.activationCode.code}
+        completedUrl={completedUrl}
+        offerId={offerId}
+        subcategoryId={subcategoryId}
+      />
     )
 
-  if (ticket?.voucher) {
-    return isEvent ? (
-      <CinemaBookingTicket voucher={ticket.voucher} token={ticket.token ?? null} />
-    ) : (
-      <PhysicalGoodBookingTicket voucher={ticket.voucher} token={ticket.token} ean={ean} />
+  if (ticket.externalBooking)
+    return (
+      <ExternalBookingTicket
+        data={ticket.externalBooking.data ?? undefined}
+        beginningDatetime={beginningDateTime}
+        isDuo={isDuo}
+      />
     )
+
+  if (ticket.voucher?.data) {
+    if (isEvent) {
+      return <CinemaBookingTicket voucher={ticket.voucher.data} token={ticket.token?.data} />
+    }
+    if (ticket.token?.data)
+      return (
+        <PhysicalGoodBookingTicket
+          voucherData={ticket.voucher.data}
+          tokenData={ticket.token.data}
+          expirationDate={expirationDate}
+        />
+      )
   }
 
-  if (ticket?.token?.data && isDigital) return <TicketCode code={ticket?.token?.data} />
+  if (ticket.token?.data && isDigital && completedUrl)
+    return (
+      <DigitalTicket
+        code={ticket.token?.data}
+        completedUrl={completedUrl}
+        offerId={offerId}
+        subcategoryId={subcategoryId}
+      />
+    )
 
-  if (ticket?.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
+  if (ticket.token?.data) return <OnSiteWithdrawal token={ticket.token.data} isDuo={isDuo} />
 
   return null
 }

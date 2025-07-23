@@ -4,7 +4,7 @@ import React from 'react'
 
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
@@ -268,7 +268,7 @@ describe('TabBar', () => {
     await user.press(searchButton)
 
     expect(navigation.navigate).toHaveBeenCalledWith(
-      ...getTabNavConfig('SearchStackNavigator', {
+      ...getTabHookConfig('SearchStackNavigator', {
         screen: 'SearchLanding',
         params: { ...initialSearchState, accessibilityFilter: mockAccessibilityState },
       })
@@ -285,7 +285,7 @@ describe('TabBar', () => {
     await user.press(searchButton)
 
     expect(navigation.navigate).toHaveBeenCalledWith(
-      ...getTabNavConfig('SearchStackNavigator', {
+      ...getTabHookConfig('SearchStackNavigator', {
         screen: 'SearchLanding',
         params: {
           ...initialSearchState,
@@ -307,7 +307,7 @@ describe('TabBar', () => {
     await user.press(searchButton)
 
     expect(navigation.navigate).toHaveBeenCalledWith(
-      ...getTabNavConfig('SearchStackNavigator', {
+      ...getTabHookConfig('SearchStackNavigator', {
         screen: 'SearchLanding',
         params: {
           ...initialSearchState,

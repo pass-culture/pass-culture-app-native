@@ -43,7 +43,7 @@ exports[`AskNotificationsModal should render properly 1`] = `
             "userSelect": "auto",
           },
           {
-            "backgroundColor": "#00000080",
+            "backgroundColor": "#24242429",
             "flexDirection": "column",
             "flexGrow": 1,
             "height": "100%",

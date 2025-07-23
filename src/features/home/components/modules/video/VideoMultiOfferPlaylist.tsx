@@ -1,15 +1,11 @@
 import { slice } from 'lodash'
 import React, { FunctionComponent } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { VideoMultiOfferTile } from 'features/home/components/modules/video/VideoMultiOfferTile'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
-import { theme } from 'theme'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
-
-const PLAYLIST_ITEM_HEIGHT =
-  theme.tiles.sizes.large.height + theme.tiles.maxCaptionHeight.videoModuleOffer
-const PLAYLIST_ITEM_WIDTH = theme.tiles.sizes.large.width
 
 type Props = {
   offers: Offer[]
@@ -22,6 +18,10 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
   hideModal,
   analyticsParams,
 }) => {
+  const { tiles } = useTheme()
+  const PLAYLIST_ITEM_HEIGHT = tiles.sizes.large.height + tiles.maxCaptionHeight.videoModuleOffer
+  const PLAYLIST_ITEM_WIDTH = tiles.sizes.large.width
+
   const keyExtractor = (item: Offer) => item.objectID
 
   const renderItem: CustomListRenderItem<Offer> = ({ item }) => {

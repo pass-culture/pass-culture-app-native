@@ -5,8 +5,6 @@ import { ColorsType } from 'theme/types'
 import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const VenueTypeLocationIcon = ({
   VenueTypeIcon,
@@ -38,7 +36,7 @@ export const VenueTypeLocationIcon = ({
   )
 }
 
-const Container = styled.View<{ backgroundColor?: ColorsEnum }>(({ theme, backgroundColor }) => ({
+const Container = styled.View<{ backgroundColor?: ColorsType }>(({ theme, backgroundColor }) => ({
   background: backgroundColor ?? theme.designSystem.color.background.default,
   position: 'relative',
   width: getSpacing(20),

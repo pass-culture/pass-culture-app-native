@@ -1,8 +1,7 @@
 import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { theme } from 'theme'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
@@ -14,14 +13,15 @@ const ERROR_MESSAGE = 'Une erreur s’est produite pendant le chargement de la v
 export const VerticalVideoErrorView: React.FC<{
   style?: StyleProp<ViewStyle>
 }> = ({ style }) => {
+  const { designSystem, illustrations } = useTheme()
   return (
     <Content style={style}>
       <Spacer.TopScreen />
       <BackgroundWithDefaultStatusBar />
       <BrokenConnectionContainer>
         <BrokenConnection
-          color={theme.designSystem.color.icon.lockedInverted}
-          size={theme.illustrations.sizes.fullPage}
+          color={designSystem.color.icon.lockedInverted}
+          size={illustrations.sizes.fullPage}
         />
       </BrokenConnectionContainer>
       <ErrorMessageContainer gap={4}>

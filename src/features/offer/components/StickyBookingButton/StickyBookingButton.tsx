@@ -32,7 +32,7 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
     <StyledStickyBottomWrapper bottom={-bottom}>
       {wording ? (
         <BlurryWrapper>
-          <CallToActionContainer testID="sticky-booking-button">
+          <CallToActionContainer testID="sticky-booking-button" accessible>
             <CTAButton
               wording={wording}
               onPress={onPress}

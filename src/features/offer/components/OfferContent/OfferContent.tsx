@@ -18,14 +18,20 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
   chronicles,
   chronicleVariantInfo,
+  videoData,
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const handlePress = (defaultIndex = 0) => {
+
+  const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
     navigate('OfferPreview', { id: offer.id, defaultIndex })
+  }
+
+  const handleVideoPress = () => {
+    navigate('OfferVideoPreview', { id: offer.id })
   }
 
   const { onLayout, height: comingSoonFooterHeight } = useLayout()
@@ -36,13 +42,15 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         offer={offer}
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
-        onOfferPreviewPress={handlePress}
+        onOfferPreviewPress={handlePreviewPress}
+        onSeeVideoPress={videoData ? handleVideoPress : undefined}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
         chronicleVariantInfo={chronicleVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}
+        videoData={videoData}
         onReactionButtonPress={onReactionButtonPress}
         onLayout={onLayout}>
         {comingSoonFooterHeight ? (

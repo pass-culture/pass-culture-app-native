@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
@@ -10,7 +10,7 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 
 export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boolean) => {
   const { reset } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavigationConfig)
 
   const navigateSendAnalyticsAndShowShareAppModal = async () => {
     reset({ index: 0, routes: [{ name: navigateToHomeConfig.screen }] })
@@ -22,7 +22,18 @@ export const useGetCulturalSurveyContent = (enableCulturalSurveyMandatory: boole
   }
 
   const navigateToIdentityCheckHonor = async () => {
-    reset({ index: 0, routes: [{ name: 'IdentityCheckHonor' }] })
+    reset({
+      index: 0,
+      routes: [
+        {
+          name: 'SubscriptionStackNavigator',
+          state: {
+            index: 0,
+            routes: [{ name: 'IdentityCheckHonor' }],
+          },
+        },
+      ],
+    })
   }
 
   if (enableCulturalSurveyMandatory) {

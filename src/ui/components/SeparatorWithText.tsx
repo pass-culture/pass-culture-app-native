@@ -4,8 +4,6 @@ import styled from 'styled-components/native'
 import { ColorsType } from 'theme/types'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface SeparatorWithTextProps {
   label: string
@@ -35,7 +33,7 @@ const StyledLabel = styled(Typo.BodyAccentXs)({
   marginHorizontal: getSpacing(2.5),
 })
 
-const StyledSeparator = styled(Separator.Horizontal)<{ backgroundColor?: ColorsEnum }>(
+const StyledSeparator = styled(Separator.Horizontal)<{ backgroundColor?: ColorsType }>(
   ({ theme, backgroundColor }) => ({
     flex: 1,
     backgroundColor: backgroundColor ?? theme.designSystem.separator.color.subtle,

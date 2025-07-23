@@ -57,6 +57,7 @@ export const beneficiaryUser: UserProfileResponse = {
   lastName: 'Dupond',
   city: 'Paris',
   postalCode: '75001',
+  street: '10 rue du Bonheur',
   activityId: ActivityIdEnum.STUDENT,
 }
 

@@ -68,9 +68,7 @@ const BaseTouchableOpacity = styled(TouchableOpacity)<{ size: ToggleButtonSize }
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'flex-start',
-    backgroundColor: isMedium
-      ? theme.designSystem.color.background.default
-      : theme.colors.transparent,
+    backgroundColor: isMedium ? theme.designSystem.color.background.default : 'transparent',
     width: isMedium ? 'auto' : theme.buttons.roundedButton.size,
     height: isMedium ? 'auto' : theme.buttons.roundedButton.size,
   }

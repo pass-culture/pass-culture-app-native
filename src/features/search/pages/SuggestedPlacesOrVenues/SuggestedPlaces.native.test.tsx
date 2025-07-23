@@ -7,8 +7,15 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
 
 const mockSetSelectedPlace = jest.fn()
+
+jest.useFakeTimers()
 
 describe('<SuggestedPlaces/>', () => {
   it('should show suggested places when searching a place', async () => {
@@ -69,7 +76,7 @@ describe('<SuggestedPlaces/>', () => {
 
     renderSuggestedPlaces('aix')
 
-    expect(screen.getByTestId('loader')).toBeOnTheScreen()
+    expect(await screen.findByTestId('loader')).toBeOnTheScreen()
 
     await act(() => {})
   })

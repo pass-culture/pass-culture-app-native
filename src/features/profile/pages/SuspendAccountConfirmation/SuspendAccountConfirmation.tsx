@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
@@ -25,7 +25,8 @@ export function SuspendAccountConfirmation({
   route: { params },
   navigation,
 }: SuspendAccountConfirmationProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isInitialLoading: isLoadingEmailUpdateStatus } =
+    useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -45,7 +46,7 @@ export function SuspendAccountConfirmation({
     setIsLoading(true)
     try {
       await mutate()
-      navigation.navigate(...getProfileStackConfig('TrackEmailChange'))
+      navigation.navigate(...getProfileHookConfig('TrackEmailChange'))
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })

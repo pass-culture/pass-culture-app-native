@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import { shuffle } from 'lodash'
-import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures'
@@ -11,7 +11,7 @@ import * as OnboardingRoleAPI from 'features/onboarding/helpers/useUserRoleFromO
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useUserHasBookingsQuery, useBookingsQuery } from 'queries/bookings'
+import { useBookingsQuery, useUserHasBookingsQuery } from 'queries/bookings'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   mockAuthContextWithoutUser,
@@ -51,44 +51,21 @@ const homeEntryMaster: Homepage = {
   tags: [masterTag],
 }
 
-const homeEntryNotConnected: Homepage = {
-  ...adaptedHomepage,
-  id: 'homeEntryIdNotConnected',
-}
 const homeEntryGeneral: Homepage = {
   ...adaptedHomepage,
   id: 'homeEntryIdGeneral',
 }
-const homeEntryWithoutBooking_18: Homepage = {
+const homeEntryWithoutBooking: Homepage = {
   ...adaptedHomepage,
-  id: 'homeEntryIdWithoutBooking_18',
+  id: 'homeEntryIdWithoutBooking',
 }
-const homeEntryWithoutBooking_15_17: Homepage = {
+const homeEntryBeneficiary: Homepage = {
   ...adaptedHomepage,
-  id: 'homeEntryIdWithoutBooking_15_17',
+  id: 'homeEntryIdBeneficiary',
 }
-const homeEntry_18: Homepage = {
+const homeEntryFreeBeneficiary: Homepage = {
   ...adaptedHomepage,
-  id: 'homeEntryId_18',
-}
-const homeEntry_15_17: Homepage = {
-  ...adaptedHomepage,
-  id: 'homeEntryId_15_17',
-}
-
-const homeEntryOnboardingGeneral: Homepage = {
-  ...adaptedHomepage,
-  id: 'homeEntryIdOnboardingGeneral',
-}
-
-const homeEntryOnboardingUnderage: Homepage = {
-  ...adaptedHomepage,
-  id: 'homeEntryIdOnboardingUnderage',
-}
-
-const homeEntryOnboarding_18: Homepage = {
-  ...adaptedHomepage,
-  id: 'homeEntryIdOnboarding_18',
+  id: 'homeEntryIdFreeBeneficiary',
 }
 const expiredCredit: Credit = { isExpired: true, amount: 100 }
 const notExpiredCredit: Credit = { isExpired: false, amount: 100 }
@@ -101,27 +78,25 @@ const homepageEntries = [
   homeEntryMaster,
   adaptedHomepage,
   homeEntryWithId,
-  homeEntryNotConnected,
   homeEntryGeneral,
-  homeEntryWithoutBooking_18,
-  homeEntryWithoutBooking_15_17,
-  homeEntry_18,
-  homeEntry_15_17,
-  homeEntryOnboardingGeneral,
-  homeEntryOnboardingUnderage,
-  homeEntryOnboarding_18,
+  homeEntryWithoutBooking,
+  homeEntryWithoutBooking,
+  homeEntryFreeBeneficiary,
+  homeEntryBeneficiary,
 ]
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('react-native/src/private/animated/NativeAnimatedHelper')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('queries/bookings/useUserHasBookingsQuery')
-const mockUseUserHasBookings = useUserHasBookingsQuery as jest.MockedFunction<
+jest.mock('queries/bookings')
+const useUserHasBookings = useUserHasBookingsQuery as jest.MockedFunction<
   typeof useUserHasBookingsQuery
 >
+
+const mockedUseUserHasBookings = (useUserHasBookings as jest.Mock).mockReturnValue(true)
 
 jest.mock('queries/bookings/useBookingsQuery')
 const mockUseBookings = useBookingsQuery as jest.MockedFunction<typeof useBookingsQuery>
@@ -139,15 +114,10 @@ const mockUseUserRoleFromOnboarding = jest.spyOn(OnboardingRoleAPI, 'useUserRole
 const defaultRemoteConfig: CustomRemoteConfig = {
   ...DEFAULT_REMOTE_CONFIG,
   homeEntryIdFreeOffers: 'homeEntryIdFreeOffers',
-  homeEntryIdNotConnected: 'homeEntryIdNotConnected',
   homeEntryIdGeneral: 'homeEntryIdGeneral',
-  homeEntryIdOnboardingGeneral: 'homeEntryIdOnboardingGeneral',
-  homeEntryIdOnboardingUnderage: 'homeEntryIdOnboardingUnderage',
-  homeEntryIdOnboarding_18: 'homeEntryIdOnboarding_18',
-  homeEntryIdWithoutBooking_18: 'homeEntryIdWithoutBooking_18',
-  homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
-  homeEntryId_18: 'homeEntryId_18',
-  homeEntryId_15_17: 'homeEntryId_15_17',
+  homeEntryIdBeneficiary: 'homeEntryIdBeneficiary',
+  homeEntryIdFreeBeneficiary: 'homeEntryIdFreeBeneficiary',
+  homeEntryIdWithoutBooking: 'homeEntryIdWithoutBooking',
 }
 
 describe('useSelectHomepageEntry', () => {
@@ -169,11 +139,10 @@ describe('useSelectHomepageEntry', () => {
 
   describe('remote config entry', () => {
     it.each`
-      onboardingRole                     | expectedHomepage               | expectedHomepageName
-      ${UserOnboardingRole.UNKNOWN}      | ${homeEntryNotConnected}       | ${'homeEntryNotConnected'}
-      ${UserOnboardingRole.UNDERAGE}     | ${homeEntryOnboardingUnderage} | ${'homeEntryOnboardingUnderage'}
-      ${UserOnboardingRole.EIGHTEEN}     | ${homeEntryOnboarding_18}      | ${'homeEntryOnboarding_18'}
-      ${UserOnboardingRole.NON_ELIGIBLE} | ${homeEntryOnboardingGeneral}  | ${'homeEntryOnboardingGeneral'}
+      onboardingRole                     | expectedHomepage            | expectedHomepageName
+      ${UserOnboardingRole.UNDERAGE}     | ${homeEntryFreeBeneficiary} | ${'homeEntryIdFreeBeneficiary'}
+      ${UserOnboardingRole.EIGHTEEN}     | ${homeEntryBeneficiary}     | ${'homeEntryBeneficiary'}
+      ${UserOnboardingRole.NON_ELIGIBLE} | ${homeEntryGeneral}         | ${'homeEntryIdGeneral'}
     `(
       `should return remote config $expectedHomepageName when user in not logged in, onboardingRole=$onboardingRole`,
       async ({
@@ -186,7 +155,7 @@ describe('useSelectHomepageEntry', () => {
         useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
         mockAuthContextWithoutUser()
         mockUseUserRoleFromOnboarding.mockReturnValueOnce(onboardingRole)
-        mockUseUserHasBookings.mockReturnValueOnce(false)
+        mockedUseUserHasBookings.mockReturnValueOnce(false)
 
         const { result } = renderHook(() => useSelectHomepageEntry())
         const Homepage = result.current(shuffle(homepageEntries))
@@ -197,7 +166,7 @@ describe('useSelectHomepageEntry', () => {
       }
     )
 
-    it('should return not connected home entry when user is logged in but undefined', () => {
+    it('should return general home entry when user is logged in but undefined', () => {
       useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
       mockUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
@@ -206,22 +175,22 @@ describe('useSelectHomepageEntry', () => {
         refetchUser: jest.fn(),
         isUserLoading: false,
       })
-      mockUseUserRoleFromOnboarding.mockReturnValueOnce(UserOnboardingRole.UNKNOWN)
-      mockUseUserHasBookings.mockReturnValueOnce(false)
-
+      mockedUseUserHasBookings.mockReturnValueOnce(true)
       const { result } = renderHook(() => useSelectHomepageEntry())
       const Homepage = result.current(shuffle(homepageEntries))
 
-      expect(Homepage).toBe(homeEntryNotConnected)
+      expect(Homepage).toBe(homeEntryGeneral)
     })
 
     it.each`
-      user                                         | onboardingRole                 | hasBookings | credit              | expectedHomepage                 | expectedHomepageName
-      ${{ roles: [UserRole.BENEFICIARY] }}         | ${UserOnboardingRole.EIGHTEEN} | ${true}     | ${notExpiredCredit} | ${homeEntry_18}                  | ${'homeEntry_18'}
-      ${{ roles: [UserRole.BENEFICIARY] }}         | ${UserOnboardingRole.EIGHTEEN} | ${true}     | ${expiredCredit}    | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
-      ${{ eligibility: EligibilityType.underage }} | ${UserOnboardingRole.UNDERAGE} | ${true}     | ${notExpiredCredit} | ${homeEntry_15_17}               | ${'homeEntry_15_17'}
-      ${{ eligibility: EligibilityType.underage }} | ${UserOnboardingRole.UNDERAGE} | ${false}    | ${notExpiredCredit} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
-      ${{ eligibility: undefined }}                | ${UserOnboardingRole.UNKNOWN}  | ${false}    | ${notExpiredCredit} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
+      user                                                                                     | onboardingRole                 | hasBookings | credit              | expectedHomepage            | expectedHomepageName
+      ${{ roles: [UserRole.BENEFICIARY], eligibility: EligibilityType['age-17-18'] }}          | ${UserOnboardingRole.EIGHTEEN} | ${true}     | ${notExpiredCredit} | ${homeEntryBeneficiary}     | ${'homeEntryBeneficiary'}
+      ${{ roles: [UserRole.BENEFICIARY], eligibility: EligibilityType['age-17-18'] }}          | ${UserOnboardingRole.EIGHTEEN} | ${true}     | ${expiredCredit}    | ${homeEntryBeneficiary}     | ${'homeEntryBeneficiary'}
+      ${{ roles: [UserRole.BENEFICIARY], eligibility: EligibilityType['age-17-18'] }}          | ${UserOnboardingRole.EIGHTEEN} | ${false}    | ${notExpiredCredit} | ${homeEntryWithoutBooking}  | ${'homeEntryWithoutBooking'}
+      ${{ roles: [UserRole.UNDERAGE_BENEFICIARY], eligibility: EligibilityType['age-17-18'] }} | ${UserOnboardingRole.UNDERAGE} | ${true}     | ${notExpiredCredit} | ${homeEntryBeneficiary}     | ${'homeEntryBeneficiary'}
+      ${{ roles: [UserRole.UNDERAGE_BENEFICIARY], eligibility: EligibilityType['age-17-18'] }} | ${UserOnboardingRole.UNDERAGE} | ${false}    | ${notExpiredCredit} | ${homeEntryWithoutBooking}  | ${'homeEntryWithoutBooking'}
+      ${{ roles: [UserRole.FREE_BENEFICIARY], eligibility: EligibilityType.free }}             | ${UserOnboardingRole.UNDERAGE} | ${false}    | ${notExpiredCredit} | ${homeEntryFreeBeneficiary} | ${'homeEntryFreeBeneficiary'}
+      ${{ eligibility: undefined }}                                                            | ${UserOnboardingRole.UNKNOWN}  | ${false}    | ${notExpiredCredit} | ${homeEntryGeneral}         | ${'homeEntryGeneral'}
     `(
       `should return remote config $expectedHomepageName when user=$user, onboardingRole=$onboardingRole, hasBookings=$hasBookings, credit=$credit`,
       async ({
@@ -241,7 +210,7 @@ describe('useSelectHomepageEntry', () => {
         mockAuthContextWithUser(user)
 
         mockUseUserRoleFromOnboarding.mockReturnValueOnce(onboardingRole)
-        mockUseUserHasBookings.mockReturnValueOnce(hasBookings)
+        mockedUseUserHasBookings.mockReturnValueOnce(hasBookings)
         mockGetAvailableCredit.mockReturnValueOnce(credit)
 
         const { result } = renderHook(() => useSelectHomepageEntry())
@@ -254,39 +223,6 @@ describe('useSelectHomepageEntry', () => {
         mockGetAvailableCredit.mockReset()
       }
     )
-
-    it.each`
-      user
-      ${{ eligibility: EligibilityType['age-18'] }}
-      ${{ roles: [UserRole.BENEFICIARY] }}
-    `(
-      'should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old',
-      async ({ user }) => {
-        useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
-        mockUseAuthContext.mockReturnValueOnce({
-          isLoggedIn: true,
-          user: user as UserProfileResponse,
-          setIsLoggedIn: jest.fn(),
-          refetchUser: jest.fn(),
-          isUserLoading: false,
-        })
-        mockUseUserHasBookings.mockReturnValueOnce(true)
-        mockGetAvailableCredit.mockReturnValueOnce({ isExpired: false, amount: 100 })
-
-        mockUseBookings.mockReturnValueOnce({
-          data: { ...bookingsSnap, hasBookingsAfter18: false },
-          isLoading: false,
-          isFetching: false,
-        } as unknown as UseQueryResult<BookingsResponse, unknown>)
-
-        const { result } = renderHook(() => useSelectHomepageEntry())
-        const Homepage = result.current(shuffle(homepageEntries))
-
-        await waitFor(() => {
-          expect(Homepage).toBe(homeEntryWithoutBooking_18)
-        })
-      }
-    )
   })
 
   describe('default home entry when no remote config available', () => {
@@ -294,12 +230,10 @@ describe('useSelectHomepageEntry', () => {
       useRemoteConfigSpy.mockReturnValueOnce({
         ...defaultRemoteConfig,
         test_param: 'A',
-        homeEntryIdNotConnected: '',
         homeEntryIdGeneral: '',
-        homeEntryIdWithoutBooking_18: '',
-        homeEntryIdWithoutBooking_15_17: '',
-        homeEntryId_18: '',
-        homeEntryId_15_17: '',
+        homeEntryIdWithoutBooking: '',
+        homeEntryIdBeneficiary: '',
+        homeEntryIdFreeBeneficiary: '',
       })
     })
 

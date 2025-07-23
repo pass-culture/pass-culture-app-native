@@ -1,7 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {
+  QueryKey,
+  UseQueryOptions,
+  UseQueryResult,
+  useQuery,
+  QueryFunction,
+} from '@tanstack/react-query'
 import { useEffect, useMemo, useState } from 'react'
-import { QueryKey, UseQueryOptions, UseQueryResult, useQuery } from 'react-query'
-import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 
@@ -28,12 +33,12 @@ function useSetPersistQuery<TData, TError, TQueryKey>(
   queryKey: TQueryKey
 ) {
   useEffect(() => {
-    if (!query.isLoading && query.data) {
+    if (!query.isInitialLoading && query.data) {
       AsyncStorage.setItem(String(queryKey), JSON.stringify(query.data)).catch((error) => {
         eventMonitoring.captureException(error, { extra: { queryKey, data: query.data } })
       })
     }
-  }, [query.data, query.isLoading, queryKey])
+  }, [query.data, query.isInitialLoading, queryKey])
 }
 
 type UsePersistQueryResult<TData, TError> = UseQueryResult<TData, TError> & {

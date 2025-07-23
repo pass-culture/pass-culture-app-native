@@ -3,13 +3,13 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { UserError } from 'ui/svg/UserError'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -36,7 +36,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
   const navigateToProfile = () => {
     analytics.logGoToProfil({ from: 'ErrorApplicationModal', offerId })
     hideModal()
-    navigate(...getTabNavConfig('Profile'))
+    navigate(...getTabHookConfig('Profile'))
   }
 
   return (
@@ -50,7 +50,6 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
         {DOUBLE_LINE_BREAK}
         Pour terminer ton inscription et obtenir ton crédit, va sur ton profil.
       </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Aller sur mon profil"
         accessibilityLabel="Aller vers la section profil"
@@ -63,4 +62,5 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })

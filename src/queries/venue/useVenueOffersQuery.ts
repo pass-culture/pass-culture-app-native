@@ -1,6 +1,6 @@
+import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { uniqBy } from 'lodash'
 import { useCallback } from 'react'
-import { useQuery, UseQueryResult } from 'react-query'
 
 import { VenueResponse } from 'api/gen'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'

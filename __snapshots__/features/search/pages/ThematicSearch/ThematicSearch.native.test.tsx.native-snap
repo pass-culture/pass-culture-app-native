@@ -469,7 +469,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
   />
   <RCTScrollView
     collapsable={false}
-    handlerTag={1}
+    handlerTag={-1}
     handlerType="NativeViewGestureHandler"
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
@@ -478,13 +478,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         {
           "marginBottom": 24,
           "paddingBottom": 24,
-        },
-      ]
-    }
-    waitFor={
-      [
-        {
-          "current": null,
         },
       ]
     }
@@ -2484,7 +2477,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 getItem={[Function]}
                 getItemCount={[Function]}
                 getItemLayout={[Function]}
-                handlerTag={2}
+                handlerTag={1}
                 handlerType="NativeViewGestureHandler"
                 horizontal={true}
                 initialNumToRender={4}
@@ -2518,16 +2511,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   }
                 }
                 viewabilityConfigCallbackPairs={[]}
-                waitFor={
-                  [
-                    {
-                      "current": null,
-                    },
-                    {
-                      "current": null,
-                    },
-                  ]
-                }
                 windowSize={7}
               >
                 <View>

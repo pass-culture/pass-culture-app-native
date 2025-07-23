@@ -321,7 +321,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -384,16 +384,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                 >
                   Tu recevras nos bons plans et toute l’actu des ateliers, cours et masterclass près de chez toi !
                 </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -402,6 +392,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 24,
+                        "marginTop": 16,
                         "textAlign": "center",
                       },
                     ]
@@ -410,19 +402,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -476,7 +459,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                             "paddingTop": 2,
                             "width": "100%",
                           },
-                          {},
+                          {
+                            "marginBottom": 8,
+                          },
                         ],
                         {
                           "opacity": 1,
@@ -514,16 +499,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityLabel="Voir mes préférences"
                     accessibilityState={
@@ -634,16 +609,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
@@ -975,7 +940,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -1038,16 +1003,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                 >
                   Tu recevras toute l’actu ciné (sorties, avant-premières…) et les bons plans !
                 </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -1056,6 +1011,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 24,
+                        "marginTop": 16,
                         "textAlign": "center",
                       },
                     ]
@@ -1064,19 +1021,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -1130,7 +1078,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                             "paddingTop": 2,
                             "width": "100%",
                           },
-                          {},
+                          {
+                            "marginBottom": 8,
+                          },
                         ],
                         {
                           "opacity": 1,
@@ -1168,16 +1118,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityLabel="Voir mes préférences"
                     accessibilityState={
@@ -1288,16 +1228,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
@@ -1629,7 +1559,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -1692,16 +1622,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                 >
                   Tu recevras nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -1710,6 +1630,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 24,
+                        "marginTop": 16,
                         "textAlign": "center",
                       },
                     ]
@@ -1718,19 +1640,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -1784,7 +1697,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                             "paddingTop": 2,
                             "width": "100%",
                           },
-                          {},
+                          {
+                            "marginBottom": 8,
+                          },
                         ],
                         {
                           "opacity": 1,
@@ -1822,16 +1737,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityLabel="Voir mes préférences"
                     accessibilityState={
@@ -1942,16 +1847,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
@@ -2283,7 +2178,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -2346,16 +2241,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                 >
                   Tu recevras les bons plans musique et l’actu des événements près de chez toi !
                 </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -2364,6 +2249,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 24,
+                        "marginTop": 16,
                         "textAlign": "center",
                       },
                     ]
@@ -2372,19 +2259,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -2438,7 +2316,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                             "paddingTop": 2,
                             "width": "100%",
                           },
-                          {},
+                          {
+                            "marginBottom": 8,
+                          },
                         ],
                         {
                           "opacity": 1,
@@ -2476,16 +2356,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityLabel="Voir mes préférences"
                     accessibilityState={
@@ -2596,16 +2466,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
@@ -2937,7 +2797,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -3000,16 +2860,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                 >
                   Stand-up, théâtre, comédies musicales... tu recevras toute l’actu des événements près de chez toi !
                 </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -3018,6 +2868,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 24,
+                        "marginTop": 16,
                         "textAlign": "center",
                       },
                     ]
@@ -3026,19 +2878,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -3092,7 +2935,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                             "paddingTop": 2,
                             "width": "100%",
                           },
-                          {},
+                          {
+                            "marginBottom": 8,
+                          },
                         ],
                         {
                           "opacity": 1,
@@ -3130,16 +2975,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityLabel="Voir mes préférences"
                     accessibilityState={
@@ -3250,16 +3085,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
@@ -3591,7 +3416,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -3654,16 +3479,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                 >
                   Tu recevras les meilleurs plans de sorties, visites, expos et évènements près de chez toi !
                 </Text>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -3672,6 +3487,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 24,
+                        "marginTop": 16,
                         "textAlign": "center",
                       },
                     ]
@@ -3680,19 +3497,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -3746,7 +3554,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                             "paddingTop": 2,
                             "width": "100%",
                           },
-                          {},
+                          {
+                            "marginBottom": 8,
+                          },
                         ],
                         {
                           "opacity": 1,
@@ -3784,16 +3594,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityLabel="Voir mes préférences"
                     accessibilityState={
@@ -3904,16 +3704,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>

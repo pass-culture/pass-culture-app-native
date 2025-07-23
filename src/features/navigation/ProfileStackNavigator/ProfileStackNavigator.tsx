@@ -13,6 +13,7 @@ import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibilit
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
+import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
@@ -33,6 +34,9 @@ import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/
 import { DisplayPreference } from 'features/profile/pages/DisplayPreference/DisplayPreference'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
+import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
+import { ProfileInformationValidationUpdate } from 'features/profile/pages/MandatoryUpdatePersonalData/ProfileInformationValidationUpdate'
+import { UpdatePersonalDataConfirmation } from 'features/profile/pages/MandatoryUpdatePersonalData/UpdatePersonalDataConfirmation'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
@@ -45,7 +49,7 @@ type ProfileRouteConfig = {
   name: ProfileStackRouteName
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
-  options: StackNavigationOptions
+  options?: StackNavigationOptions
 }
 
 const profileScreens: ProfileRouteConfig[] = [
@@ -142,6 +146,11 @@ const profileScreens: ProfileRouteConfig[] = [
     options: { title: 'Ton code postal | Profil' },
   },
   {
+    name: 'ChangeAddress',
+    component: withAuthProtection(ChangeAddress),
+    options: { title: 'Ton adresse | Profil' },
+  },
+  {
     name: 'ChangeEmail',
     component: ChangeEmail,
     options: { title: 'Modification de l’e-mail' },
@@ -209,7 +218,21 @@ const profileScreens: ProfileRouteConfig[] = [
   {
     name: 'ProfileTutorialAgeInformationCredit',
     component: ProfileTutorialAgeInformationCredit,
-    options: { title: 'Préférence d’affichage' },
+  },
+  {
+    name: 'MandatoryUpdatePersonalData',
+    component: withAuthProtection(MandatoryUpdatePersonalData),
+    options: { title: 'Confirmation de la validité de tes données personnelles' },
+  },
+  {
+    name: 'UpdatePersonalDataConfirmation',
+    component: withAuthProtection(UpdatePersonalDataConfirmation),
+    options: { title: 'Confirmation de la validité de tes données personnelles' },
+  },
+  {
+    name: 'ProfileInformationValidationUpdate',
+    component: withAuthProtection(ProfileInformationValidationUpdate),
+    options: { title: 'Vérification de la validité de tes données personnelles' },
   },
 ]
 

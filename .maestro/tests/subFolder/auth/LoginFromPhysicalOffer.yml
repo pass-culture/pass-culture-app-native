@@ -14,29 +14,34 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - scrollUntilVisible:
-        element: "Envoyer par\nSMS"
-    - assertVisible: "Envoyer par\nSMS"
+      - scrollUntilVisible:
+          element: "Envoyer par\nSMS"
+      - assertVisible: "Envoyer par\nSMS"
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - scrollUntilVisible:
-        element: "Envoyer sur\niMessage"
-    - assertVisible: "Envoyer sur\niMessage"
+      - scrollUntilVisible:
+          element: "Envoyer sur\niMessage"
+      - assertVisible: "Envoyer sur\niMessage"
 
-- assertVisible: 
+- assertVisible:
     text: 'Voir l’itinéraire'
     optional: true
 
-- tapOn: 'Réserver l’offre'
-- assertVisible: 'Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.'
-- tapOn: 'Fermer la modale'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: 'Réserver l’offre'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          point: ${output.button.ios.booking}
+- assertVisible: 'Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.'
 
 - waitForAnimationToEnd
-
-- tapOn:
-    id: 'AnimatedHeaderIconRoundContainer'
-    index: 2
-

@@ -11,6 +11,7 @@ import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBott
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
 import { getBookingLabelsV2 } from 'features/bookings/helpers'
+import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
@@ -32,7 +33,7 @@ type TicketProps = {
   user: UserProfileResponse
   display: 'punched' | 'full'
   setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
-  ticket: TicketResponse | null | undefined
+  ticket: TicketResponse
 }
 
 export const Ticket = ({
@@ -61,6 +62,23 @@ export const Ticket = ({
     analytics.logConsultVenue({ venueId: offer.venue.id, from: 'bookings' })
     navigate('Venue', { id: offer.venue.id })
   }
+  const expirationDateFormated = ({ prefix }: { prefix: string }) => {
+    return booking.expirationDate
+      ? formatEventDateLabel({
+          date: booking.expirationDate,
+          timezone: offer.venue.timezone,
+          shouldDisplayWeekDay: false,
+          format: 'dateWithoutYear',
+          prefix,
+        })
+      : undefined
+  }
+  const infoBanner = (
+    <InfoBanner
+      message={`Tu auras besoin de ta carte d’identité pour ${properties.isEvent ? 'accéder à l’évènement' : 'récupérer ta réservation'}.`}
+      icon={IdCard}
+    />
+  )
 
   return (
     <TicketDisplay
@@ -71,6 +89,8 @@ export const Ticket = ({
           day={dayLabel == '' ? undefined : dayLabel}
           hour={hourLabel == '' ? undefined : hourLabel}
           isDuo={properties.isDuo}
+          ean={booking.stock.offer.extraData?.ean ?? undefined}
+          expirationDate={expirationDateFormated({ prefix: 'À récupérer avant le ' })}
           title={offer.name}
           offer={offer}
           mapping={mapping}
@@ -91,19 +111,18 @@ export const Ticket = ({
       bottomContent={
         <TicketBottomPart
           isDuo={properties.isDuo ?? false}
-          ticket={ticket ?? null}
+          ticket={ticket}
           userEmail={user?.email}
           isDigital={properties.isDigital ?? false}
           isEvent={properties.isEvent ?? false}
-          ean={booking.stock.offer.extraData?.ean ?? null}
+          expirationDate={expirationDateFormated({ prefix: `avant le ` })}
+          beginningDateTime={booking.stock.beginningDatetime ?? undefined}
+          completedUrl={booking.completedUrl ?? undefined}
+          offerId={offer.id}
+          subcategoryId={offer.subcategoryId}
         />
       }
-      infoBanner={
-        <InfoBanner
-          message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
-          icon={IdCard}
-        />
-      }
+      infoBanner={properties.isDigital ? undefined : infoBanner}
     />
   )
 }

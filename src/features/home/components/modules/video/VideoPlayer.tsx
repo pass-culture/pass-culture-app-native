@@ -10,10 +10,10 @@ import { VideoPlayerProps } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { analytics } from 'libs/analytics/provider'
-import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-import { YoutubePlayer, YoutubePlayerRef } from './YoutubePlayer'
+import { YoutubePlayerRef } from './YoutubePlayer/types'
+import { YoutubePlayer } from './YoutubePlayer/YoutubePlayer'
 
 interface VideoPlayerNativeProps extends VideoPlayerProps {
   playerRef: RefObject<YoutubePlayerRef>
@@ -120,9 +120,9 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   )
 }
 
-const StyledVideoPlayerContainer = styled.View({
+const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.lockedInverted,
   borderTopLeftRadius: getSpacing(4),
   borderTopRightRadius: getSpacing(4),
   overflow: 'hidden',
-})
+}))

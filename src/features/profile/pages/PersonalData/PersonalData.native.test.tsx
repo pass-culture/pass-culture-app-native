@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration, UserProfileResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
+import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
@@ -34,6 +35,7 @@ const mockedUser: UserProfileResponse = {
   lastName: 'Bonheur',
   email: 'rosa.bonheur@gmail.com',
   phoneNumber: '+33685974563',
+  street: '10 rue de Bohneur',
 }
 
 const initialAuthContext = {
@@ -58,6 +60,17 @@ describe('PersonalData', () => {
     await screen.findByText('Informations personnelles')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should not display name section when first name and last name not provided', async () => {
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: { ...mockedUser, firstName: null, lastName: null },
+    })
+    render(reactQueryProviderHOC(<PersonalData />))
+    await screen.findByText('Informations personnelles')
+
+    expect(screen.queryByText('Prénom et nom')).not.toBeOnTheScreen()
   })
 
   it('should redirect to ChangeEmail when clicking on modify email button', async () => {
@@ -113,10 +126,10 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    await user.press(screen.getByTestId('Modifier la ville de résidence'))
+    await user.press(screen.getByTestId('Modifier mon adresse de résidence'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-      params: undefined,
+      params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA },
       screen: 'ChangeCity',
     })
   })

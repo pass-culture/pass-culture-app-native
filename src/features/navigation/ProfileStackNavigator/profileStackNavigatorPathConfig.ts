@@ -67,6 +67,9 @@ export const profileStackNavigatorPathConfig = {
       ChangeCity: {
         path: 'profil/modification-ville',
       },
+      ChangeAddress: {
+        path: 'profil/modification-adresse',
+      },
       ChangeEmail: {
         path: 'profil/modification-email',
       },
@@ -105,6 +108,15 @@ export const profileStackNavigatorPathConfig = {
       },
       ProfileTutorialAgeInformationCredit: {
         path: 'profil/tutoriel',
+      },
+      MandatoryUpdatePersonalData: {
+        path: 'profil/mise-a-jour-informations-personnelles',
+      },
+      UpdatePersonalDataConfirmation: {
+        path: 'profil/confirmation-mise-a-jour-informations-personnelles',
+      },
+      ProfileInformationValidationUpdate: {
+        path: 'profil/verification-informations-personnelles',
       },
     },
   },

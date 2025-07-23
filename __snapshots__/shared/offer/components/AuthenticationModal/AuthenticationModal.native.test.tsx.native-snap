@@ -232,8 +232,7 @@ exports[`<AuthenticationModal /> should render correctly 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Identifie-toi
-pour réserver l’offre
+            Crée-toi un compte ou connecte-toi
           </Text>
         </View>
         <View
@@ -322,7 +321,7 @@ pour réserver l’offre
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#00000080"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           [
@@ -375,54 +374,23 @@ pour réserver l’offre
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  Tu as 17 ou 18 ans ?
-                </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
+                        "marginBottom": 24,
+                        "marginTop": 8,
                         "textAlign": "center",
                       },
                     ]
                   }
                 >
-                  Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
+                  Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.
                 </Text>
                 <View
-                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
+                        "marginBottom": 16,
                         "width": "100%",
                       },
                     ]
@@ -515,16 +483,6 @@ pour réserver l’offre
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     [

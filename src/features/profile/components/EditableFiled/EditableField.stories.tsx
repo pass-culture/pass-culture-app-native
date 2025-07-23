@@ -21,10 +21,6 @@ export default meta
 
 const variantConfig: Variants<typeof EditableField> = [
   {
-    label: 'EditableField default',
-    props: { label: 'Label' },
-  },
-  {
     label: 'EditableField with value',
     props: { label: 'Label', value: 'Value' },
   },

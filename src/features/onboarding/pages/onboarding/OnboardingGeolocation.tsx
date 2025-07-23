@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
-import { getOnboardingStackConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingStackConfig'
+import { getOnboardingHookConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
@@ -20,7 +20,7 @@ export const OnboardingGeolocation = () => {
   const { requestGeolocPermission } = useLocation()
 
   const navigateToNextScreen = useCallback(() => {
-    navigate(...getOnboardingStackConfig('OnboardingAgeSelectionFork'))
+    navigate(...getOnboardingHookConfig('OnboardingAgeSelectionFork'))
   }, [navigate])
 
   const onGeolocationButtonPress = useCallback(async () => {

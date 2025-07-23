@@ -1,4 +1,4 @@
-import { onlineManager } from 'react-query'
+import { onlineManager } from '@tanstack/react-query'
 
 import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
 import { getCategories, useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQuery'
@@ -26,6 +26,8 @@ const algoliaSpy = jest.spyOn(useAlgoliaSimilarOffersAPI, 'useAlgoliaSimilarOffe
 const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
+
+jest.useFakeTimers()
 
 describe('useSimilarOffersQuery', () => {
   describe('When success API response', () => {

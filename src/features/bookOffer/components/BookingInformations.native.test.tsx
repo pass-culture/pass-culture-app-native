@@ -209,9 +209,7 @@ describe('<BookingInformations />', () => {
     `(
       'should format Date $limitDate to string "$expected"',
       ({ limitDate, expected }: { limitDate: string; expected: string }) => {
-        const shouldShowWeekDay = true
-
-        expect(formatDateTimezone(limitDate, shouldShowWeekDay)).toEqual(expected)
+        expect(formatDateTimezone({ limitDate, shouldDisplayWeekDay: true })).toEqual(expected)
       }
     )
   })

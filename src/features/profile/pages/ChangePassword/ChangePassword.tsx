@@ -10,7 +10,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useChangePasswordMutation } from 'features/auth/queries/useChangePasswordMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -81,7 +81,7 @@ export function ChangePassword() {
               message: 'Ton mot de passe est modifié',
               timeout: SNACK_BAR_TIME_OUT,
             })
-            navigate(...getTabNavConfig('Profile'))
+            navigate(...getTabHookConfig('Profile'))
             analytics.logHasChangedPassword({ from: 'personaldata', reason: 'changePassword' })
             resolve()
           },

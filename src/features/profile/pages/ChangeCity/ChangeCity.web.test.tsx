@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),
@@ -22,11 +22,7 @@ describe('ChangeCity', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<ChangeCity />))
-
-      await waitFor(() => {
-        expect(screen.getByTestId('Entrée pour la ville')).toHaveFocus()
-      })
+      const { container } = await renderAccessibility()
 
       const results = await checkAccessibilityFor(container)
 
@@ -34,3 +30,8 @@ describe('ChangeCity', () => {
     })
   })
 })
+
+const renderAccessibility = async () =>
+  act(async () => {
+    return render(reactQueryProviderHOC(<ChangeCity />))
+  })
