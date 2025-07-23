@@ -241,6 +241,7 @@ export type RootStackParamList = {
     from?: StepperOrigin
   }
   Maintenance: undefined
+  MandatoryUpdatePersonalData: undefined
   MovieCalendar: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Offer: OfferParams

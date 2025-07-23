@@ -45,6 +45,7 @@ import { withAuthProtection } from 'features/navigation/RootNavigator/linking/wi
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
+import { useShowMandatoryUpdatePersonalData } from 'features/navigation/RootNavigator/useShowMandatoryUpdatePersonalData'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { SuspenseSubscriptionStackNavigator } from 'features/navigation/SubscriptionStackNavigator/SuspenseSubscriptionStackNavigator'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -54,6 +55,7 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
@@ -325,6 +327,11 @@ const rootScreens: RouteConfig[] = [
     component: SuspiciousLoginSuspendedAccount,
     options: { title: 'Confirmation de suspension de compte' },
   },
+  {
+    name: 'MandatoryUpdatePersonalData',
+    component: MandatoryUpdatePersonalData,
+    options: { title: 'Confirmation de la validité de tes données personnelles' },
+  },
 ]
 
 // For some reason, inlining "withAsyncErrorBoundary" directly in the Screen's component prop causes unexpected behavior with a Youtube player when pressing fullscreen button
@@ -412,6 +419,8 @@ export const RootNavigator: React.ComponentType = () => {
   const { showTabBar } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const { isSplashScreenHidden } = useSplashScreenContext()
+
+  useShowMandatoryUpdatePersonalData()
 
   const initialScreen = useInitialScreen()
 
