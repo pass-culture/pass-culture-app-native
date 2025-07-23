@@ -17,3 +17,6 @@ scripts/parse-perf-results.js
 
 # If your build storybook locally
 storybook-static
+
+# If your build the web app locally
+dist
