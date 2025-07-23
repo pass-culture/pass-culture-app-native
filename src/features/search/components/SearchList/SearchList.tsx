@@ -35,7 +35,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
     },
     ref
   ) => {
-    const theme = useTheme()
+    const { tabBar } = useTheme()
     return (
       <FlashList
         estimatedItemSize={LIST_ITEM_HEIGHT}
@@ -64,7 +64,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
         onEndReached={autoScrollEnabled ? onEndReached : undefined}
         scrollEnabled={nbHits > 0}
         onScroll={onScroll}
-        contentContainerStyle={{ paddingBottom: theme.tabBar.height + getSpacing(10) }}
+        contentContainerStyle={{ paddingBottom: tabBar.height + getSpacing(10) }}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
       />

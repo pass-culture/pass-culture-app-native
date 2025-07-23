@@ -25,19 +25,19 @@ export const InputRule: FunctionComponent<Props> = ({
   testIdSuffix,
   noFullWidth = false,
 }: Props) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const colorMapping: Record<InputRuleType, { text: TextColorKey; icon: ColorsType }> = {
     Valid: {
       text: 'success',
-      icon: theme.designSystem.color.icon.success,
+      icon: designSystem.color.icon.success,
     },
     Error: {
       text: 'error',
-      icon: theme.designSystem.color.icon.error,
+      icon: designSystem.color.icon.error,
     },
     Neutral: {
       text: 'default',
-      icon: theme.designSystem.color.icon.default,
+      icon: designSystem.color.icon.default,
     },
   }
 

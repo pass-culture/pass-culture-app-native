@@ -18,7 +18,7 @@ export const ReactionChoiceValidation: FunctionComponent<Props> = ({
   ...props
 }) => {
   const iconFactory = useIconFactory()
-  const theme = useTheme()
+  const { designSystem } = useTheme()
 
   const getStyledIcon = useCallback(
     (name: IconNames, props?: object) =>
@@ -34,10 +34,10 @@ export const ReactionChoiceValidation: FunctionComponent<Props> = ({
       default: getStyledIcon('like', { testID: 'thumbUp' }),
       pressed: getStyledIcon('like-filled', {
         testID: 'thumbUpFilled',
-        color: theme.designSystem.color.icon.brandPrimary,
+        color: designSystem.color.icon.brandPrimary,
       }),
     }),
-    [getStyledIcon, theme.designSystem.color.icon.brandPrimary]
+    [getStyledIcon, designSystem.color.icon.brandPrimary]
   )
 
   const ThumbDownIcon = useMemo(

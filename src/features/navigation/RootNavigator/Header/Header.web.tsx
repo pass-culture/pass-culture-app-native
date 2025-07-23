@@ -15,12 +15,12 @@ import { QuickAccess } from 'ui/web/link/QuickAccess'
 import { Nav } from './Nav'
 
 export const Header = memo(function Header({ mainId }: { mainId: string }) {
-  const theme = useTheme()
+  const { contentPage, breakpoints, appContentWidth, navTopHeight } = useTheme()
   const routeBadgeMap = useTabBarItemBadges()
 
   const { user } = useAuthContext()
-  const marginHorizontal = user ? theme.contentPage.marginHorizontal * 2 : 0
-  const breakpoint = user ? theme.breakpoints.lg : theme.breakpoints.md
+  const marginHorizontal = user ? contentPage.marginHorizontal * 2 : 0
+  const breakpoint = user ? breakpoints.lg : breakpoints.md
   const minWidth = breakpoint + marginHorizontal
   const isDesktopOffset = useMediaQuery({ minWidth })
 
@@ -42,8 +42,8 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
       ) : null}
       <CenterContainer>
         <Nav
-          maxWidth={theme.appContentWidth}
-          height={theme.navTopHeight}
+          maxWidth={appContentWidth}
+          height={navTopHeight}
           routeBadgeMap={routeBadgeMap}
           noShadow
         />

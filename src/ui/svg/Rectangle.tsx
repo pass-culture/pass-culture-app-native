@@ -15,9 +15,7 @@ const NotMemoizedRectangle: React.FC<Omit<AccessibleIcon, 'color'> & { height?: 
   accessibilityLabel,
   testID,
 }) => {
-  const {
-    colors: { primary, secondary },
-  } = useTheme()
+  const { designSystem } = useTheme()
   const { id, fill } = svgIdentifier()
   return (
     <AccessibleSvg
@@ -29,8 +27,8 @@ const NotMemoizedRectangle: React.FC<Omit<AccessibleIcon, 'color'> & { height?: 
       testID={testID}>
       <Defs>
         <LinearGradient id={id} x1="0%" x2="100%" y1="49.977%" y2="50.023%">
-          <Stop offset="0%" stopColor={primary} />
-          <Stop offset="100%" stopColor={secondary} />
+          <Stop offset="0%" stopColor={designSystem.color.background.brandPrimary} />
+          <Stop offset="100%" stopColor={designSystem.color.background.brandPrimary} />
         </LinearGradient>
       </Defs>
       <G fill="none">

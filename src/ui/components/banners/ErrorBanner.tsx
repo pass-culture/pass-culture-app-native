@@ -12,15 +12,15 @@ type Props = {
 }
 
 export const ErrorBanner: FunctionComponent<Props> = ({ message, testID, children }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const Icon = StyledErrorIcon
 
   return (
     <GenericColoredBanner
       message={message}
       Icon={Icon}
-      backgroundColor={theme.designSystem.color.background.error}
-      textColor={theme.designSystem.color.text.error}
+      backgroundColor={designSystem.color.background.error}
+      textColor={designSystem.color.text.error}
       testID={testID}>
       {children}
     </GenericColoredBanner>

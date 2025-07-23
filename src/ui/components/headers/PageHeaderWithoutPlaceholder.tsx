@@ -41,7 +41,7 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   children,
   style,
 }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   return (
     <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
       <Spacer.TopScreen />
@@ -49,7 +49,7 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
         <Row>
           <ButtonContainer positionInHeader="left" testID="back-button-container">
             {shouldDisplayBackButton ? (
-              <BackButton onGoBack={onGoBack} color={theme.designSystem.color.icon.default} />
+              <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
             ) : null}
           </ButtonContainer>
           {title ? <Title nativeID={titleID}>{title}</Title> : null}

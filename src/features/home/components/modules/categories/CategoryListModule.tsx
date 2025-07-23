@@ -29,7 +29,7 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
@@ -45,10 +45,10 @@ export const CategoryListModule = ({
       <StyledView>
         {categoryBlockList.map((item) => {
           const fillFromDesignSystem =
-            theme.designSystem.color.background[colorMapping[item.color].fill ?? 'default']
+            designSystem.color.background[colorMapping[item.color].fill ?? 'default']
 
           const borderFromDesignSystem =
-            theme.designSystem.color.border[colorMapping[item.color].border ?? 'default']
+            designSystem.color.border[colorMapping[item.color].border ?? 'default']
           return (
             <StyledCategoryButton
               key={item.id}
