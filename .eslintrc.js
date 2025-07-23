@@ -41,6 +41,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',
     'local-rules/no-direct-consult-offer-log': 'error',
+    'local-rules/no-theme-from-theme': 'warn',
     'local-rules/no-empty-arrow-function': 'off',
     'local-rules/no-fireEvent': 'error',
     'local-rules/no-hardcoded-id-in-svg': 'error',
