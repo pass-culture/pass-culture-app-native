@@ -1,4 +1,5 @@
 import { Color } from 'features/home/types'
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { BackgroundColorKey } from 'theme/types'
 // eslint-disable-next-line no-restricted-imports

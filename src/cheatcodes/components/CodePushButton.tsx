@@ -2,6 +2,7 @@ import React, { Component, ReactElement } from 'react'
 import { StyleSheet, Text } from 'react-native'
 import CodePush from 'react-native-code-push' // @codepush
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 

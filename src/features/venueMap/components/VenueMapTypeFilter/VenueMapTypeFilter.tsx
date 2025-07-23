@@ -10,6 +10,7 @@ import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFiltersModal/VenueMapFiltersModal'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'

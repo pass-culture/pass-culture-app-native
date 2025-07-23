@@ -10,6 +10,7 @@ import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnVi
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedViewRefType } from 'libs/react-native-animatable'
 import { getAge } from 'shared/user/getAge'
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
