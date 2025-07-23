@@ -13,6 +13,8 @@ describe('ReactionChoiceValidation', () => {
       <ReactionChoiceValidation
         reactionStatus={ReactionTypeEnum.LIKE}
         handleOnPressReactionButton={jest.fn()}
+        likeLabel="J’aime"
+        dislikeLabel="Je n’aime pas"
       />
     )
 
@@ -25,6 +27,8 @@ describe('ReactionChoiceValidation', () => {
       <ReactionChoiceValidation
         reactionStatus={ReactionTypeEnum.LIKE}
         handleOnPressReactionButton={jest.fn()}
+        likeLabel="J’aime"
+        dislikeLabel="Je n’aime pas"
       />
     )
 
@@ -38,6 +42,8 @@ describe('ReactionChoiceValidation', () => {
       <ReactionChoiceValidation
         reactionStatus={ReactionTypeEnum.DISLIKE}
         handleOnPressReactionButton={mockHandleOnPress}
+        likeLabel="J’aime"
+        dislikeLabel="Je n’aime pas"
       />
     )
 
