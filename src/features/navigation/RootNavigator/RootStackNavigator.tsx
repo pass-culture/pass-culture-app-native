@@ -169,10 +169,6 @@ const rootScreens: RouteConfig[] = [
     component: SignupConfirmationEmailSentPage,
     options: { title: 'Email création de compte envoyé' },
   },
-  { name: 'Offer', component: Offer, options: { title: 'Offre' } },
-  { name: '_DeeplinkOnlyOffer1', component: Offer, options: { title: 'Offre' } },
-  { name: '_DeeplinkOnlyOffer2', component: Offer, options: { title: 'Offre' } },
-  { name: '_DeeplinkOnlyOffer3', component: Offer, options: { title: 'Offre' } },
   {
     name: 'OfferPreview',
     component: OfferPreview,
@@ -192,15 +188,6 @@ const rootScreens: RouteConfig[] = [
     name: '_DeeplinkOnlyOfferPreview3',
     component: OfferPreview,
     options: { title: 'Aperçu de l’offre' },
-  },
-  {
-    name: 'OfferVideoPreview',
-    component: OfferVideoPreview,
-    options: {
-      title: 'Vidéo de l’offre',
-      presentation: 'modal',
-      ...FILTERS_MODAL_NAV_OPTIONS,
-    },
   },
   { name: 'BookingDetails', component: withAuthProtection(BookingDetails) },
   {
@@ -340,6 +327,11 @@ const rootScreens: RouteConfig[] = [
   },
 ]
 
+// For some reason, inlining "withAsyncErrorBoundary" directly in the Screen's component prop causes unexpected behavior with a Youtube player when pressing fullscreen button
+// Youtube player in fullscreen opens and closes 1 second later automatically
+const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
+const OfferWithAsyncErrorBoundry = withAsyncErrorBoundary(Offer)
+
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
@@ -384,6 +376,30 @@ const RootStackNavigator = withWebWrapper(
               options={options}
             />
           ))}
+          <RootStackNavigatorBase.Screen
+            name="Offer"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="_DeeplinkOnlyOffer1"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="_DeeplinkOnlyOffer2"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="_DeeplinkOnlyOffer3"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="OfferVideoPreview"
+            component={OfferVideoPreviewWithAsyncErrorBoundry}
+            options={{
+              title: 'Vidéo de l’offre',
+              presentation: 'modal',
+              ...FILTERS_MODAL_NAV_OPTIONS,
+            }}></RootStackNavigatorBase.Screen>
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )
