@@ -41,7 +41,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export interface GeneratedDeeplink {
   universalLink: string
@@ -204,8 +204,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     const placeholder = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
     return (
-      <React.Fragment key={name}>
-        <Spacer.Column numberOfSpaces={2} />
+      <TextInputContainer key={name}>
         {config.type === 'string' ? (
           <TextInput
             placeholder={placeholder}
@@ -268,7 +267,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           </PaddingContainer>
         ) : null}
         <Separator.Horizontal />
-      </React.Fragment>
+      </TextInputContainer>
     )
   }
 
@@ -338,7 +337,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     <React.Fragment>
       <Container>
         <StyledTitle4>Besoin d’un lien&nbsp;?</StyledTitle4>
-        <Spacer.Column numberOfSpaces={6} />
         <Accordion title="Pages" defaultOpen>
           {Object.keys(SCREENS_CONFIG).map((key) => renderScreenItem(key))}
         </Accordion>
@@ -423,6 +421,7 @@ const ErrorText = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })
 
 const BottomContainer = styled.View({
@@ -443,3 +442,7 @@ const Warning = styled(WarningDefault).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
   size: theme.icons.sizes.extraSmall,
 }))``
+
+const TextInputContainer = styled.View({
+  marginTop: getSpacing(2),
+})
