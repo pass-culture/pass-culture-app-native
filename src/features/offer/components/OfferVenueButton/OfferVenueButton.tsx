@@ -13,7 +13,7 @@ interface Props {
 }
 
 export function OfferVenueButton({ venue }: Readonly<Props>) {
-  const theme = useTheme()
+  const { designSystem, icons } = useTheme()
 
   return (
     <HeroButtonList
@@ -22,10 +22,7 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
         venue.city ? <SubtitleText testID="subtitle">{venue.city}</SubtitleText> : undefined
       }
       Icon={
-        <LocationBuildingFilled
-          color={theme.designSystem.color.icon.default}
-          size={theme.icons.sizes.small}
-        />
+        <LocationBuildingFilled color={designSystem.color.icon.default} size={icons.sizes.small} />
       }
       navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
       onBeforeNavigate={() => analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })}

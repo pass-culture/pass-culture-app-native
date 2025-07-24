@@ -1,6 +1,7 @@
 import { Text as RNText } from 'react-native'
 import styled from 'styled-components/native'
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { TextColorKey } from 'theme/types'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'

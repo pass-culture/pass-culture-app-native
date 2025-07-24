@@ -30,9 +30,7 @@ const BackgroundContainer = styled.View<Props>(({ width, height, theme }) => ({
 }))
 
 function BackgroundSvg({ width = '100%', height = '100%' }: Props) {
-  const {
-    colors: { primary, secondary },
-  } = useTheme()
+  const { designSystem } = useTheme()
   const { id: ida, xlinkHref: xlinkHrefa } = svgIdentifier()
   const { id: idb, fill: fillb } = svgIdentifier()
   const { id: idc, fill: fillc } = svgIdentifier()
@@ -42,12 +40,12 @@ function BackgroundSvg({ width = '100%', height = '100%' }: Props) {
     <AccessibleSvg width={width} height={height} viewBox="0 0 375 667" preserveAspectRatio="none">
       <Defs>
         <LinearGradient id={idb} x1="65.805%" x2="47.731%" y1="26.588%" y2="116.28%">
-          <Stop offset="0%" stopColor={primary} />
-          <Stop offset="100%" stopColor={secondary} />
+          <Stop offset="0%" stopColor={designSystem.color.background.brandPrimary} />
+          <Stop offset="100%" stopColor={designSystem.color.background.brandPrimary} />
         </LinearGradient>
         <LinearGradient id={idd} x1="29.678%" x2="32.571%" y1="71.761%" y2="14.036%">
-          <Stop offset="0%" stopColor={primary} />
-          <Stop offset="100%" stopColor={secondary} />
+          <Stop offset="0%" stopColor={designSystem.color.background.brandPrimary} />
+          <Stop offset="100%" stopColor={designSystem.color.background.brandPrimary} />
         </LinearGradient>
         <Path id={ida} d="M0 0h375v667H0z" />
         <Path

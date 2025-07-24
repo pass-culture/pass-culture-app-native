@@ -3,6 +3,8 @@ import React, { useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
+import { usePartialLottieAnimation } from 'shared/animations/useLottieAnimation'
+import { AnimationObject } from 'ui/animations/type'
 
 const hexToLottieRgb = (hex: string): number[] => {
   if (!hex) return [0, 0, 0, 1]
@@ -30,38 +32,48 @@ const findAndSetColorInItems = (items: any[], shapeName: string, color: number[]
   })
 }
 
-interface AnimationObject {
-  v: string
-  fr: number
-  ip: number
-  op: number
-  w: number
-  h: number
-  nm?: string
-  ddd?: number
-  assets: any[]
-  layers: any[]
-  markers?: any[]
-}
+export type AnimationSource =
+  | string
+  | AnimationObject
+  | {
+      uri: string
+    }
 
 type ThemedStyledLottieViewProps = {
-  width: number
-  height: number
-  source: string | AnimationObject | { uri: string }
+  width?: number | string
+  height: number | string
+  source: AnimationSource
+  autoPlay?: boolean
+  loop?: boolean
+  resizeMode?: 'center' | 'contain' | 'cover' | undefined
+  temporarilyDeactivateColors?: boolean
 }
 
-export const ThemedStyledLottieView = ({ width, height, source }: ThemedStyledLottieViewProps) => {
+export const ThemedStyledLottieView = ({
+  width,
+  height,
+  source,
+  autoPlay = false,
+  loop = false,
+  resizeMode,
+  temporarilyDeactivateColors = false, // TODO(PC-37129)
+}: ThemedStyledLottieViewProps) => {
   const { designSystem } = useTheme()
 
   const animationData = useMemo(() => {
-    if (typeof source !== 'object' || source === null || !('layers' in source)) {
+    if (
+      temporarilyDeactivateColors ||
+      typeof source !== 'object' ||
+      source === null ||
+      !('layers' in source)
+    ) {
       return source
     }
 
     const newAnimation = JSON.parse(JSON.stringify(source))
     const themedColor = hexToLottieRgb(designSystem.color.background.brandPrimary)
 
-    const shapesToColor = ['Fill 1', 'Stroke 1']
+    const shapesToColor = ['Fill 1', 'Stroke 1', 'Fond 1'] // Gradients aren't supported
 
     newAnimation.layers.forEach((layer: any) => {
       shapesToColor.forEach((shapeName) => {
@@ -70,14 +82,26 @@ export const ThemedStyledLottieView = ({ width, height, source }: ThemedStyledLo
     })
 
     return newAnimation
-  }, [designSystem.color.background.brandPrimary, source])
+  }, [designSystem.color.background.brandPrimary, source, temporarilyDeactivateColors])
 
-  return <StyledLottieView width={width} height={height} source={animationData} autoPlay loop />
+  const animationRef = usePartialLottieAnimation(animationData)
+
+  return (
+    <StyledLottieView
+      ref={animationRef}
+      width={width}
+      height={height}
+      source={animationData}
+      autoPlay={autoPlay}
+      loop={loop}
+      resizeMode={resizeMode}
+    />
+  )
 }
 
 const StyledLottieView = styled(LottieView)<{
-  width: number
-  height: number
+  width?: number | string
+  height: number | string
 }>(({ width, height }) => ({
   width: width,
   height: height,

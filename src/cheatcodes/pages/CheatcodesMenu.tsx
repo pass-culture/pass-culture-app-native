@@ -161,6 +161,15 @@ export function CheatcodesMenu(): React.JSX.Element {
       },
       subscreens: [],
     },
+    {
+      id: uuidv4(),
+      title: 'Nouvelles Calédonie 🇳🇨',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenNewCaledonia' },
+      },
+      subscreens: [],
+    },
   ]
 
   const filteredFeaturesButtons = filterAndSortCheatcodes(searchValue, featuresButtons)

@@ -11,8 +11,8 @@ function buildTree(...args) {
 
 function isTemplateLiteralParentStyledComponents(node) {
   return (
-    node.parent.parent.type === 'TaggedTemplateExpression' &&
-    node.parent.parent.tag.object.name === 'styled'
+    node.parent?.parent?.type === 'TaggedTemplateExpression' &&
+    node.parent?.parent?.tag?.object?.name === 'styled'
   )
 }
 
@@ -33,8 +33,13 @@ module.exports = {
   },
   create(context) {
     const handler = (node, autofix = true) => {
-      // Returns problematic word in the string literal
-      const word = node.raw.match(/([A-zÀ-ú]+'[A-zÀ-ú]+)/)[0]
+      const match = node.raw.match(/([A-zÀ-ú]+'[A-zÀ-ú]+)/)
+
+      if (!match) {
+        return
+      }
+
+      const word = match[0]
 
       context.report({
         node,
@@ -45,7 +50,7 @@ module.exports = {
         },
         data: {
           before: word,
-          after: word.replace(/'/, '‘'),
+          after: word.replace(/'/, '’'),
         },
       })
     }
@@ -66,14 +71,20 @@ module.exports = {
         // Do not handle `styled-components` template literals.
         if (isTemplateLiteralParentStyledComponents(node)) return
 
-        const word = node.value.raw.match(/([A-zÀ-ú]+'[A-zÀ-ú]+)/)[0]
+        const match = node.value.raw.match(/([A-zÀ-ú]+'[A-zÀ-ú]+)/)
+
+        if (!match) {
+          return
+        }
+
+        const word = match[0]
 
         context.report({
           node,
           messageId: 'useApostrophe',
           data: {
-            before: node.value.raw,
-            after: node.value.raw.replace(/'/, '’'),
+            before: word,
+            after: word.replace(/'/, '’'),
           },
         })
       },

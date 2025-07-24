@@ -52,6 +52,7 @@ import { FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -127,7 +128,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   )
   const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
   const shouldDisplayGridList = enableGridList && !isWeb
-  const [gridListLayout, setGridListLayout] = useState(GridListLayout.LIST)
+  const { gridListLayoutRemoteConfig } = useRemoteConfigQuery()
+  const initialGridListLayout =
+    gridListLayoutRemoteConfig === 'Grille' ? GridListLayout.GRID : GridListLayout.LIST
+  const [gridListLayout, setGridListLayout] = useState(initialGridListLayout)
   const isGridLayout = shouldDisplayGridList && gridListLayout === GridListLayout.GRID
 
   const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)

@@ -2,6 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'

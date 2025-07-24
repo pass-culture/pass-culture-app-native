@@ -23,11 +23,11 @@ export const LocationModalButton = ({
   subtitle,
   onPress,
 }: LocationModalButtonProps) => {
-  const theme = useTheme()
+  const { designSystem, icons } = useTheme()
   return (
     <TouchableOpacity onPress={onPress} accessibilityRole={AccessibilityRole.BUTTON}>
       <TopContainer gap={2}>
-        <Icon color={theme.designSystem.color.icon[color]} size={theme.icons.sizes.small} />
+        <Icon color={designSystem.color.icon[color]} size={icons.sizes.small} />
         <Typo.Button color={color}>{title}</Typo.Button>
       </TopContainer>
       {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}

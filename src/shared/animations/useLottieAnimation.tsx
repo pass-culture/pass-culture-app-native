@@ -2,9 +2,9 @@ import { useCallback, useEffect, useRef } from 'react'
 
 import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
-import { AnimationObject } from 'ui/animations/type'
+import { AnimationSource } from 'ui/animations/ThemedStyledLottieView'
 
-export const usePartialLottieAnimation = (animation?: AnimationObject) => {
+export const usePartialLottieAnimation = (animation?: AnimationSource) => {
   const animationRef = useRef<LottieView>(null)
 
   const playAnimation = useCallback(() => {

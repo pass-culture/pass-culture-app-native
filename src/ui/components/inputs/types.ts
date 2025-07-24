@@ -1,6 +1,7 @@
 import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'

@@ -42,7 +42,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
   }: YoutubePlayerProps,
   ref: React.ForwardedRef<YoutubePlayerRef>
 ) {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const innerVideoRef = React.useRef<YoutubeRendererRef>(null)
   const containerRef = useRef<View>(null)
 
@@ -94,10 +94,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
             style={PRESSABLE_STYLE}>
             <ThumbnailOverlay>
               {playerVisible ? (
-                <ActivityIndicator
-                  size="large"
-                  color={theme.designSystem.color.icon.lockedInverted}
-                />
+                <ActivityIndicator size="large" color={designSystem.color.icon.lockedInverted} />
               ) : (
                 <IconContainer>
                   <StyledPlayIcon />

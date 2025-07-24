@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { getShadow, getSpacing } from 'ui/theme'
 import { AVATAR_SMALL } from 'ui/theme/constants'

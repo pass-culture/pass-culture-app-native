@@ -9,7 +9,7 @@ import { Checkmark } from 'ui/svg/icons/Checkmark'
 import { Typo, getSpacing } from 'ui/theme'
 
 export const LayoutButton = ({ isSelected, Icon, onPress, layout }: LayoutButtonProps) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
 
   const StyledIcon = useMemo(() => {
     return Icon
@@ -27,7 +27,7 @@ export const LayoutButton = ({ isSelected, Icon, onPress, layout }: LayoutButton
       <TitleContainer gap={2} isSelected={isSelected}>
         {StyledIcon ? (
           <IconsContainer gap={2}>
-            {isSelected ? <Checkmark color={theme.designSystem.color.icon.brandPrimary} /> : null}
+            {isSelected ? <Checkmark color={designSystem.color.icon.brandPrimary} /> : null}
             <StyledIcon testID={`${layout}-icon`} />
           </IconsContainer>
         ) : null}

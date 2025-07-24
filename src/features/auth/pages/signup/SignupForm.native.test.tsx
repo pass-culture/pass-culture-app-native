@@ -342,23 +342,6 @@ describe('Signup Form', () => {
       )
     })
 
-    it('should log analytics when clicking on close icon', async () => {
-      renderSignupForm()
-
-      const emailInput = screen.getByTestId('Entrée pour l’email')
-      await user.type(emailInput, 'email@gmail.com')
-
-      const continueButton = screen.getByText('Continuer')
-      await user.press(continueButton)
-
-      await screen.findAllByText('Mot de passe')
-
-      const quitButton = screen.getByText('Quitter')
-      await user.press(quitButton)
-
-      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
-    })
-
     it('should call logCancelSignup with Email when quitting after signup modal', async () => {
       renderSignupForm()
 

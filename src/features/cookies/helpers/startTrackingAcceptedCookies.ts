@@ -2,7 +2,6 @@ import { CookieNameEnum } from 'features/cookies/enums'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { Cookies } from 'features/cookies/types'
 // eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
@@ -31,9 +30,6 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   const acceptedAppsFlyers = acceptedCookies.includes(CookieNameEnum.APPSFLYER)
   campaignTracker.init(acceptedAppsFlyers)
   campaignTracker.startAppsFlyer(acceptedAppsFlyers)
-
-  const acceptedAmplitude = acceptedCookies.includes(CookieNameEnum.AMPLITUDE)
-  acceptedAmplitude ? amplitude.enableCollection() : amplitude.disableCollection()
 
   const acceptedBatch = acceptedCookies.includes(CookieNameEnum.BATCH)
   acceptedBatch ? Batch.optIn() : Batch.optOut()

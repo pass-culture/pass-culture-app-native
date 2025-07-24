@@ -70,12 +70,12 @@ export const Tooltip: FunctionComponent<Props> = ({
 }
 
 const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   return (
     <Svg width="12" height="6" viewBox="0 0 12 6" style={style}>
       <Path
         d="M12 6H0L5.293 0.293188C5.684 -0.0978099 6.317 -0.0978098 6.707 0.293189Z"
-        fill={theme.designSystem.color.background.inverted}
+        fill={designSystem.color.background.inverted}
       />
     </Svg>
   )

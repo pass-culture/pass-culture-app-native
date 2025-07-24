@@ -1,6 +1,4 @@
 PODS:
-  - amplitude-react-native (1.0.1):
-    - React-Core
   - AppAuth (1.7.6):
     - AppAuth/Core (= 1.7.6)
     - AppAuth/ExternalUserAgent (= 1.7.6)
@@ -2068,7 +2066,6 @@ PODS:
   - Yoga (0.0.0)
 
 DEPENDENCIES:
-  - "amplitude-react-native (from `../node_modules/@amplitude/analytics-react-native`)"
   - Batch (~> 2.0.0)
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -2231,8 +2228,6 @@ SPEC REPOS:
     - SSZipArchive
 
 EXTERNAL SOURCES:
-  amplitude-react-native:
-    :path: "../node_modules/@amplitude/analytics-react-native"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   BVLinearGradient:
@@ -2460,7 +2455,6 @@ CHECKOUT OPTIONS:
     :tag: 11.13.0
 
 SPEC CHECKSUMS:
-  amplitude-react-native: 77be2d0a6b5a0900f01fa99f4ec198134231255f
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   AppsFlyerFramework: fe5303bffcdfd941d5f570c2d21eaaea982e7bdc
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b

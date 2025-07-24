@@ -23,7 +23,7 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
   const { data: subcategories = PLACEHOLDER_DATA } = useSubcategories()
   const { searchState, dispatch } = useSearch()
 
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const nativeCategories = useNativeCategories(offerCategory)
   const offerCategoryTheme = useMemo(
     () => ({
@@ -46,9 +46,8 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
           return {
             label: nativeCategory[1].label,
             backgroundColor:
-              theme.designSystem.color.background[offerCategoryTheme.backgroundColor ?? 'default'],
-            borderColor:
-              theme.designSystem.color.border[offerCategoryTheme.borderColor ?? 'default'],
+              designSystem.color.background[offerCategoryTheme.backgroundColor ?? 'default'],
+            borderColor: designSystem.color.border[offerCategoryTheme.borderColor ?? 'default'],
             nativeCategory: nativeCategory[0] as NativeCategoryEnum,
             position: nativeCategory[1].position,
             searchParams,
@@ -64,8 +63,8 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
       offerCategoryTheme.borderColor,
       searchState,
       subcategories,
-      theme.designSystem.color.background,
-      theme.designSystem.color.border,
+      designSystem.color.background,
+      designSystem.color.border,
     ]
   )
 

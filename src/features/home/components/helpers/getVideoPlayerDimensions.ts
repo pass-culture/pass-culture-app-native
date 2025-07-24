@@ -1,5 +1,6 @@
 import { PixelRatio } from 'react-native'
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 
 export const RATIO169 = 9 / 16

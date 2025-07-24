@@ -31,7 +31,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const Stepper = () => {
   useShowDisableActivation()
 
-  const theme = useTheme()
+  const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Stepper'>>()
 
@@ -116,7 +116,7 @@ export const Stepper = () => {
     <Page>
       <Container>
         <Spacer.TopScreen />
-        {theme.isDesktopViewport ? (
+        {isDesktopViewport ? (
           <Spacer.Column numberOfSpaces={16} />
         ) : (
           <Spacer.Column numberOfSpaces={4} />

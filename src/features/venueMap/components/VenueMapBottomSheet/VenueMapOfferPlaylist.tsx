@@ -91,17 +91,22 @@ export const VenueMapOfferPlaylist = ({
         itemSeparatorSize={getSpacing(2)}
         horizontalMargin={getSpacing(4)}
       />
-      <StyleButtonTertiaryBlack
-        inline
-        wording="Voir les offres du lieu"
-        onPress={onPressMore}
-        icon={PlainArrowNext}
-      />
+      <StyledView>
+        <StyleButtonTertiaryBlack
+          inline
+          wording="Voir les offres du lieu"
+          onPress={onPressMore}
+          icon={PlainArrowNext}
+        />
+      </StyledView>
     </Fragment>
   )
 }
 
+const StyledView = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
 const StyleButtonTertiaryBlack = styled(ButtonTertiaryBlack)({
   transform: 'translateY(-10px)',
-  paddingBottom: getSpacing(2),
 })

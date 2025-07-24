@@ -26,7 +26,7 @@ export type SnackBarProps = {
 }
 
 const SnackBarBase = (props: SnackBarProps) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const firstRender = useRef(true)
   const animationDuration = props.animationDuration || 500
 
@@ -117,7 +117,7 @@ const SnackBarBase = (props: SnackBarProps) => {
               testID="snackbar-container"
               accessibilityHidden={!isVisible}>
               {Icon ? (
-                <Icon testID="snackbar-icon" color={theme.designSystem.color.icon[props.color]} />
+                <Icon testID="snackbar-icon" color={designSystem.color.icon[props.color]} />
               ) : null}
               <Spacer.Flex flex={1}>
                 <StyledBody testID="snackbar-message" color={props.color}>
@@ -127,7 +127,7 @@ const SnackBarBase = (props: SnackBarProps) => {
               <Touchable
                 accessibilityLabel={`Supprimer le message\u00a0: ${props.message}`}
                 onPress={onClose}>
-                <Close color={theme.designSystem.color.icon[props.color]} />
+                <Close color={designSystem.color.icon[props.color]} />
               </Touchable>
             </SnackBarContainer>
           </View>

@@ -25,7 +25,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
   imageUrl,
   navigateTo,
 }) => {
-  const theme = useTheme()
+  const { icons, designSystem, isDesktopViewport } = useTheme()
 
   const content = (
     <ViewGap gap={4}>
@@ -34,7 +34,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
         title={name}
         rightComponent={
           navigateTo ? (
-            <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
+            <RightFilled size={icons.sizes.extraSmall} testID="RightFilled" />
           ) : undefined
         }
         defaultThumbnailSize={AVATAR_SMALL}
@@ -44,7 +44,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
               <FullSizeImage url={imageUrl} testID="VenueImage" />
             ) : (
               <DefaultVenueAvatar testID="DefaultImage">
-                <Venue color={theme.designSystem.color.icon.inverted} size={29} />
+                <Venue color={designSystem.color.icon.inverted} size={29} />
               </DefaultVenueAvatar>
             )}
           </Avatar>
@@ -53,7 +53,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
     </ViewGap>
   )
 
-  const Wrapper = theme.isDesktopViewport ? Fragment : StyledSectionWithDivider
+  const Wrapper = isDesktopViewport ? Fragment : StyledSectionWithDivider
 
   return (
     <Wrapper>

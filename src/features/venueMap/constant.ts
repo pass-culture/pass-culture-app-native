@@ -1,6 +1,7 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
 import { FilterGroupData } from 'features/venueMap/types'
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { Show } from 'ui/svg/icons/Show'
 import { Sort } from 'ui/svg/icons/Sort'
