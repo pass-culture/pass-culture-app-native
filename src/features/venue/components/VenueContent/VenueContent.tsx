@@ -6,7 +6,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { VenueResponse } from 'api/gen'
 import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { VenueHeaderWrapper } from 'features/venue/components/VenueContent/VenueHeaderWrapper'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
@@ -18,6 +17,7 @@ import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
+import { HeaderWrapper } from 'ui/components/headers/HeaderWrapper'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 type Props = {
@@ -96,8 +96,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
       <Container>
         <VenueWebMetaHeader title={venue.name} description={venue.description} />
-        <VenueHeaderWrapper
-          header={<VenueHeader headerTransition={headerTransition} venue={venue} />}>
+        <HeaderWrapper header={<VenueHeader headerTransition={headerTransition} venue={venue} />}>
           <ContentContainer
             onScroll={handleScroll}
             scrollEventThrottle={16}
@@ -106,7 +105,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
             {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
             {children}
           </ContentContainer>
-        </VenueHeaderWrapper>
+        </HeaderWrapper>
         {renderVenueCTA()}
       </Container>
     </AnchorProvider>
