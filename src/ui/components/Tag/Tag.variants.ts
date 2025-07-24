@@ -15,7 +15,7 @@ export const variantBackground = {
   [TagVariant.CINECLUB]: 'cineclub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'subtle',
-  [TagVariant.COMINGSOON]: 'warning',
+  [TagVariant.COMING_SOON]: 'warning',
 }
 
 export const variantIconColor = {
@@ -27,7 +27,7 @@ export const variantIconColor = {
   [TagVariant.CINECLUB]: 'cineclub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'brandPrimary',
-  [TagVariant.COMINGSOON]: 'warning',
+  [TagVariant.COMING_SOON]: 'warning',
 }
 
 export const variantLabelColor = {
@@ -39,5 +39,5 @@ export const variantIcons = {
   [TagVariant.CINECLUB]: CineClubCertification,
   [TagVariant.HEADLINE]: Star,
   [TagVariant.LIKE]: ThumbUpFilled,
-  [TagVariant.COMINGSOON]: ClockFilled,
+  [TagVariant.COMING_SOON]: ClockFilled,
 }

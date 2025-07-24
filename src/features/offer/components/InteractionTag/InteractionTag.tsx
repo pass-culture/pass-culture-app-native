@@ -43,7 +43,7 @@ export const getTagProps = ({
   if (isComingSoonOffer) {
     return {
       label: hasSmallLayout ? 'Bientôt' : 'Bientôt dispo',
-      variant: TagVariant.COMINGSOON,
+      variant: TagVariant.COMING_SOON,
       withColor,
     }
   }

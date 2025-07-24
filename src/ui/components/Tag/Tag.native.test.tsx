@@ -48,7 +48,7 @@ describe('<Tag />', () => {
   })
 
   it('should use default backgroundColor when withColor prop is false', () => {
-    render(<Tag label="Club" variant={TagVariant.COMINGSOON} withColor={false} />)
+    render(<Tag label="Club" variant={TagVariant.COMING_SOON} withColor={false} />)
 
     const expectedColor = theme.designSystem.color.background.default
 

@@ -147,6 +147,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   ]
                 }
                 testID="tagWrapper"
+                withColor={true}
               >
                 <Text
                   style={
@@ -3079,6 +3080,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   ]
                 }
                 testID="tagWrapper"
+                withColor={true}
               >
                 <Text
                   style={
@@ -6347,6 +6349,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   ]
                 }
                 testID="tagWrapper"
+                withColor={true}
               >
                 <Text
                   style={
