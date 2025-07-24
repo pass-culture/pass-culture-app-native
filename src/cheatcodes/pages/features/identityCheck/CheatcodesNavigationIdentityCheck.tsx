@@ -120,8 +120,24 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'ProfileInformationValidationCreate',
-      navigationTarget: getSubscriptionPropConfig('ProfileInformationValidationCreate'),
+      title: 'ProfileInformationValidationCreate (identityCheck)',
+      navigationTarget: getSubscriptionPropConfig('ProfileInformationValidationCreate', {
+        type: ProfileTypes.IDENTITY_CHECK,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'ProfileInformationValidationCreate (booking)',
+      navigationTarget: getSubscriptionPropConfig('ProfileInformationValidationCreate', {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'ProfileInformationValidationCreate (recapExistingData)',
+      navigationTarget: getSubscriptionPropConfig('ProfileInformationValidationCreate', {
+        type: ProfileTypes.RECAP_EXISTING_DATA,
+      }),
     },
     {
       id: uuidv4(),
