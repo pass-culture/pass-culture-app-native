@@ -1687,27 +1687,6 @@ export enum EmailHistoryEventTypeEnum {
 }
 /**
  * @export
- * @interface EmailUpdateStatus
- */
-export interface EmailUpdateStatus {
-  /**
-   * @type {boolean}
-   * @memberof EmailUpdateStatus
-   */
-  expired: boolean
-  /**
-   * @type {string}
-   * @memberof EmailUpdateStatus
-   */
-  newEmail: string
-  /**
-   * @type {EmailHistoryEventTypeEnum}
-   * @memberof EmailUpdateStatus
-   */
-  status: EmailHistoryEventTypeEnum
-}
-/**
- * @export
  * @interface EmailUpdateStatusResponse
  */
 export interface EmailUpdateStatusResponse {
@@ -2446,37 +2425,6 @@ export interface NewEmailSelectionRequest {
    * @memberof NewEmailSelectionRequest
    */
   token: string
-}
-/**
- * @export
- * @interface NextSubscriptionStepResponse
- */
-export interface NextSubscriptionStepResponse {
-  /**
-   * @type {Array<IdentityCheckMethod>}
-   * @memberof NextSubscriptionStepResponse
-   */
-  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
-  /**
-   * @type {boolean}
-   * @memberof NextSubscriptionStepResponse
-   */
-  hasIdentityCheckPending: boolean
-  /**
-   * @type {MaintenancePageType}
-   * @memberof NextSubscriptionStepResponse
-   */
-  maintenancePageType?: MaintenancePageType | null
-  /**
-   * @type {SubscriptionStep}
-   * @memberof NextSubscriptionStepResponse
-   */
-  nextSubscriptionStep?: SubscriptionStep | null
-  /**
-   * @type {SubscriptionMessage}
-   * @memberof NextSubscriptionStepResponse
-   */
-  subscriptionMessage?: SubscriptionMessage | null
 }
 /**
  * @export
@@ -4470,42 +4418,6 @@ export enum SubscriptionStepTitle {
 }
 /**
  * @export
- * @interface SubscriptionStepperResponse
- */
-export interface SubscriptionStepperResponse {
-  /**
-   * @type {Array<IdentityCheckMethod>}
-   * @memberof SubscriptionStepperResponse
-   */
-  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
-  /**
-   * @type {string}
-   * @memberof SubscriptionStepperResponse
-   */
-  errorMessage?: string | null
-  /**
-   * @type {MaintenancePageType}
-   * @memberof SubscriptionStepperResponse
-   */
-  maintenancePageType?: MaintenancePageType | null
-  /**
-   * @type {Array<SubscriptionStepDetailsResponse>}
-   * @memberof SubscriptionStepperResponse
-   */
-  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponse>
-  /**
-   * @type {string}
-   * @memberof SubscriptionStepperResponse
-   */
-  subtitle?: string | null
-  /**
-   * @type {string}
-   * @memberof SubscriptionStepperResponse
-   */
-  title: string
-}
-/**
- * @export
  * @interface SubscriptionStepperResponseV2
  */
 export interface SubscriptionStepperResponseV2 {
@@ -4654,22 +4566,6 @@ export interface UpdateEmailTokenExpiration {
    * @memberof UpdateEmailTokenExpiration
    */
   expiration?: string | null
-}
-/**
- * @export
- * @interface UserProfileEmailUpdate
- */
-export interface UserProfileEmailUpdate {
-  /**
-   * @type {string}
-   * @memberof UserProfileEmailUpdate
-   */
-  email: string
-  /**
-   * @type {string}
-   * @memberof UserProfileEmailUpdate
-   */
-  password: string
 }
 /**
  * @export
@@ -5781,25 +5677,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_email_update_status <GET>
-     * @deprecated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1ProfileEmailUpdateStatus(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/profile/email_update/status`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary get_email_update_token_expiration_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5944,50 +5821,12 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary next_subscription_step <GET>
-     * @deprecated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionNextStep(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/subscription/next_step`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary get_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionProfile(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/subscription/profile`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_subscription_stepper_deprecated <GET>
-     * @deprecated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionStepper(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/subscription/stepper`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6619,63 +6458,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization =
-        <any>'ChangeBeneficiaryEmailBody' !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary confirm_email_update <POST>
-     * @param {ChangeBeneficiaryEmailBody} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1ProfileEmailUpdateConfirm(
-      body?: ChangeBeneficiaryEmailBody,
-      options: any = {}
-    ): Promise<FetchArgs> {
-      let pathname = `/native/v1/profile/email_update/confirm`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization =
-        <any>'ChangeBeneficiaryEmailBody' !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary update_user_email <POST>
-     * @deprecated
-     * @param {UserProfileEmailUpdate} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1ProfileUpdateEmail(
-      body?: UserProfileEmailUpdate,
-      options: any = {}
-    ): Promise<FetchArgs> {
-      let pathname = `/native/v1/profile/update_email`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization =
-        <any>'UserProfileEmailUpdate' !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
+      const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -7443,37 +7227,9 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1PhoneValidationRemainingAttempts(
-      options?: any
-    ): Promise<PhoneValidationRemainingAttemptsRequest> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(
-          configuration
-        ).getNativeV1PhoneValidationRemainingAttempts(options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary get_email_update_status <GET>
-     * @deprecated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatus> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1ProfileEmailUpdateStatus(
-          options
-        )
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+    async getNativeV1PhoneValidationRemainingAttempts(options?: any): Promise<PhoneValidationRemainingAttemptsRequest> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1PhoneValidationRemainingAttempts(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -7544,32 +7300,8 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionActivityTypes(options?: any): Promise<ActivityTypesResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionActivityTypes(
-          options
-        )
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary next_subscription_step <GET>
-     * @deprecated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionNextStep(options?: any): Promise<NextSubscriptionStepResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionNextStep(options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionActivityTypes(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -7579,30 +7311,8 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionProfile(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionProfile(options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary get_subscription_stepper_deprecated <GET>
-     * @deprecated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionStepper(options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionProfile(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -7960,61 +7670,9 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1ProfileEmailUpdateCancel(
-      body?: ChangeBeneficiaryEmailBody,
-      options?: any
-    ): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(
-        configuration
-      ).postNativeV1ProfileEmailUpdateCancel(body, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary confirm_email_update <POST>
-     * @param {ChangeBeneficiaryEmailBody} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1ProfileEmailUpdateConfirm(
-      body?: ChangeBeneficiaryEmailBody,
-      options?: any
-    ): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(
-        configuration
-      ).postNativeV1ProfileEmailUpdateConfirm(body, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary update_user_email <POST>
-     * @deprecated
-     * @param {UserProfileEmailUpdate} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1ProfileUpdateEmail(
-      body?: UserProfileEmailUpdate,
-      options?: any
-    ): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(
-        configuration
-      ).postNativeV1ProfileUpdateEmail(body, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+    async postNativeV1ProfileEmailUpdateCancel(body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ProfileEmailUpdateCancel(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -8543,18 +8201,6 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).getNativeV1PhoneValidationRemainingAttempts(options)
   }
   /**
-   *
-   * @summary get_email_update_status <GET>
-   * @deprecated
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async getNativeV1ProfileEmailUpdateStatus(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1ProfileEmailUpdateStatus(options)
-  }
-  /**
     * 
     * @summary get_email_update_token_expiration_date <GET>
     * @param {*} [options] Override http request option.
@@ -8627,18 +8273,6 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionActivityTypes(options)
   }
   /**
-   *
-   * @summary next_subscription_step <GET>
-   * @deprecated
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async getNativeV1SubscriptionNextStep(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1SubscriptionNextStep(options)
-  }
-  /**
     * 
     * @summary get_profile <GET>
     * @param {*} [options] Override http request option.
@@ -8648,18 +8282,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1SubscriptionProfile(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionProfile(options)
-  }
-  /**
-   *
-   * @summary get_subscription_stepper_deprecated <GET>
-   * @deprecated
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async getNativeV1SubscriptionStepper(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1SubscriptionStepper(options)
   }
   /**
     * 
@@ -8996,34 +8618,6 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ProfileEmailUpdateCancel(body?: ChangeBeneficiaryEmailBody, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ProfileEmailUpdateCancel(body, options)
-  }
-  /**
-   *
-   * @summary confirm_email_update <POST>
-   * @param {ChangeBeneficiaryEmailBody} [body]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async postNativeV1ProfileEmailUpdateConfirm(
-    body?: ChangeBeneficiaryEmailBody,
-    options?: any
-  ) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1ProfileEmailUpdateConfirm(body, options)
-  }
-  /**
-   *
-   * @summary update_user_email <POST>
-   * @deprecated
-   * @param {UserProfileEmailUpdate} [body]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async postNativeV1ProfileUpdateEmail(body?: UserProfileEmailUpdate, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1ProfileUpdateEmail(body, options)
   }
   /**
     * 
