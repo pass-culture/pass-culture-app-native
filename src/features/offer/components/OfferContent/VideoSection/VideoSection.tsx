@@ -2,6 +2,7 @@ import React, { ReactElement, useCallback } from 'react'
 import { StyleProp, ViewStyle, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
@@ -14,6 +15,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type VideoSectionProps = {
   title: string
   offerId: number
+  offerSubcategory: SubcategoryIdEnum
   videoId?: string
   subtitle?: string
   videoThumbnail?: ReactElement
@@ -31,6 +33,7 @@ export const VideoSection = ({
   maxWidth = MAX_WIDTH_VIDEO,
   playerRatio = RATIO169,
   offerId,
+  offerSubcategory,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
@@ -48,10 +51,20 @@ export const VideoSection = ({
           width={viewportWidth < maxWidth ? undefined : maxWidth}
           initialPlayerParams={{ autoplay: true }}
         />
-        <FeedBackVideo offerId={offerId} />
+        <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} />
       </React.Fragment>
     )
-  }, [maxWidth, offerId, subtitle, title, videoHeight, videoId, videoThumbnail, viewportWidth])
+  }, [
+    maxWidth,
+    offerId,
+    offerSubcategory,
+    subtitle,
+    title,
+    videoHeight,
+    videoId,
+    videoThumbnail,
+    viewportWidth,
+  ])
 
   return (
     <React.Fragment>
