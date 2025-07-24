@@ -11,7 +11,12 @@ permissions:
 
 jobs:
   notify_test_launch:
-    if: ${{ startsWith(github.event.label.name, 'e2e') }}
+    if: |
+      ${{
+        github.event.label.name == 'e2e' ||
+        github.event.label.name == 'e2e iOS' ||
+        github.event.label.name == 'e2e Android'
+      }}
     runs-on: ubuntu-latest
     steps:
       - name: Comment PR
