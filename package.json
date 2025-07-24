@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.350.2",
-  "build": 10350002,
+  "version": "1.350.3",
+  "build": 10350003,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -86,7 +86,7 @@
     "update:tools": "nix flake update && direnv exec . devbox update && git commit --only flake.lock devbox.lock --message '(BSR) chore(deps): update tools'"
   },
   "dependencies": {
-    "@algolia/client-search": "^4.24.0",    
+    "@algolia/client-search": "^4.24.0",
     "@bam.tech/react-native-config": "^1.4.5",
     "@batch.com/react-native-plugin": "9.0.2",
     "@gorhom/bottom-sheet": "^4",
