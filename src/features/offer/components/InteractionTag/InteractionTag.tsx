@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { Tag } from 'ui/components/Tag/Tag'
 import { TagVariant } from 'ui/components/Tag/types'

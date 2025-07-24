@@ -14,3 +14,9 @@ src/api/gen
 # Occurred while linting /home/runner/work/pass-culture-app-native/pass-culture-app-native/scripts/parse-perf-results.js:42
 # Rule: "local-rules/apostrophe-in-text"
 scripts/parse-perf-results.js
+
+# If your build storybook locally
+storybook-static
+
+# If your build the web app locally
+dist

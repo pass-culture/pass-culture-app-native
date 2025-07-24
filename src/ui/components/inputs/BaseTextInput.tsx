@@ -3,6 +3,7 @@ import React, { forwardRef, useEffect, useRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 

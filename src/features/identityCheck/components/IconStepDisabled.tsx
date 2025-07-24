@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 

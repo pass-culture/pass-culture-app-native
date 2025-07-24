@@ -41,6 +41,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',
     'local-rules/no-direct-consult-offer-log': 'error',
+    'local-rules/no-theme-from-theme': 'error',
     'local-rules/no-empty-arrow-function': 'off',
     'local-rules/no-fireEvent': 'error',
     'local-rules/no-hardcoded-id-in-svg': 'error',
@@ -386,7 +387,10 @@ module.exports = {
     // Stories overrides
     {
       files: ['**/*.stories.tsx'],
-      rules: { 'local-rules/no-currency-symbols': 'off' },
+      rules: {
+        'local-rules/no-currency-symbols': 'off',
+        'local-rules/no-theme-from-theme': 'off',
+      },
     },
     // Tests overrides
     {
@@ -394,6 +398,7 @@ module.exports = {
       env: { jest: true },
       extends: 'plugin:@bam.tech/tests',
       rules: {
+        'local-rules/no-theme-from-theme': 'off',
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
         'local-rules/no-currency-symbols': 'off',
