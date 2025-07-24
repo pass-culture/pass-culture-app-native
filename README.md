@@ -157,7 +157,45 @@ See doc about deployment process [here](./doc/ci-cd/deployment.md) for the mobil
 
 ## Performances
 
+You can find most of the code related to performance measurement in `src/performance`.
+
+### Mobile performances
+
+#### Local development
+
+For local development, you can monitor the performances by pressing `d` in your metro console. The developer menu should popup on your emulator. Press the "performance monitor" button. You can track the JS thread, UI thread and RAM usage on features you are developing.
+
+#### Deployed versions (Android only)
+
+Thanks to maestro and flashlight, we are able to have a measure for each version of the app in the CI.
+
+[Here are examples of runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_schedule_flashlight_android.yml).
+
+Additionally, you can add a tag `e2e perfs` to your PR to get the flashlight performance score of your feature.
+
+Here is an example of a flashlight performance report:
+
+```
+===== Aggregated Performance Summary =====
+  - Overall Score            82.00 / 100
+  - Successful Iterations    10 / 10
+
+===== Averaged Metrics (across all successful runs) =====
+  - Average FPS              39
+  - Average RAM Usage        250 MB
+  - Average Total CPU        51 %
+
+===== Average CPU Usage Per Thread =====
+  - UI Thread                4.45 %
+  - mqt_js                   0.00 %
+  - RenderThread             30.27 %
+```
+
+#### Production measurements
+
 Starting in the version v344, to measure performances, we have decided to measure the time to interactive of the home (see [adr](./doc/decision-records/DR007%20-%20mesure-performances.md))
+
+At the moment, it would seem that the measure is more reliable on iOS (between 10 and 20 seconds) than on Android (where we are getting ttis of more than 40 seconds). Because of the way we measure the tti (we trigger an event when the Home finishes loading) if any screen interposes itself between the start of the app and the Home, the time the user spends on that screen will be counted in the tti, thus producing erroneous measures. We are still investigating possible issues.
 
 You can find this measure on firebase performance monitor for the different environments:
 
@@ -167,3 +205,21 @@ You can find this measure on firebase performance monitor for the different envi
 - [staging Android](https://console.firebase.google.com/project/pc-native-staging/performance/app/android:app.passculture.staging/trends?hl=fr)
 - [production iOS](https://console.firebase.google.com/project/pc-native-production/performance/app/ios:app.passculture/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr&time=24h)
 - [production Android](https://console.firebase.google.com/project/pc-native-production/performance/app/android:app.passculture.webapp/troubleshooting/trace/DURATION_TRACE/home_time_to_interactive_container/counter/home_time_to_interactive_in_ms?hl=fr&time=24h)
+
+### Web performances
+
+We currently use lighthouse to measure performances on the web app. There is a job that runs lighthouse in the CI once a week, you can see the runs [here](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_schedule_lighthouse.yml).
+
+By running the performance test once a week, we have a measure for each version of the app. Here is an example of a report:
+
+```
+--- Lighthouse Performance Summary ---
+🟢 Performance Score: 48 / 100
+ FCP: 0.8 s
+ LCP: 16.6 s
+ TBT: 590 ms
+ CLS: 0.108
+------------------------------------
+
+You can also run lighthouse locally from your browser's dev tools (make sure to run them in incognito mode to avoid extensions degrading performances).
+```
