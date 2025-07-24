@@ -48,7 +48,7 @@ To run the storybook on your browser, follow the steps [here](./doc/development/
 
 #### 🍋 Allure report
 
-Access to the [Allure report](https://pass-culture.github.io/pass-culture-app-native/).
+Access to the [Allure report](https://special-goggles-reogzj6.pages.github.io/).
 
 ## Development
 
