@@ -64,7 +64,7 @@
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "jest": "^27.5.1",
     "msw": "^1.2.3",
-    "node-dev": "^7.4.2",
+    "node-dev": "^8.0.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
     "ts-jest": "^27.1.4",
