@@ -76,7 +76,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
     return hasReminder ? deleteReminder(reminder.id) : addReminder(offer.id)
   }
 
-  const isAComingSoonOffer = getIsAComingSoonOffer(offer)
+  const isAComingSoonOffer = getIsAComingSoonOffer(offer.bookingAllowedDatetime, offer.isReleased)
 
   if (showAccessScreeningButton && isButtonVisible) {
     return <CineContentCTA />

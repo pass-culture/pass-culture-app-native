@@ -17,8 +17,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 const offerFixture = offersFixture[0]
 
-const today = 1736870746 // 14/01/2025 - 17:05:46
-const tomorrow = today + 24 * 60 * 60
+const today = '2025-01-14T16:05:46+02:00'
+const tomorrow = '2025-01-15T16:05:46+02:00'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/home/api/useHighlightOffer')
@@ -38,7 +38,7 @@ jest.useFakeTimers()
 
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
-    mockdate.set(new Date(today * 1000))
+    mockdate.set(new Date(today))
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
       page: 1,
@@ -86,27 +86,27 @@ describe('HighlightOfferModule', () => {
     })
   })
 
-  it('should display publication date when displayPublicationDate is true and has a publicationDate in future', async () => {
+  it('should display booking allowed datetime when displayBookingAllowedDatetime is true and has a bookingAllowedDatetime in future', async () => {
     mockUseHighlightOffer.mockReturnValueOnce({
       ...offerFixture,
-      offer: { ...offerFixture.offer, publicationDate: tomorrow },
+      offer: { ...offerFixture.offer, bookingAllowedDatetime: tomorrow },
     })
-    const displayPublicationDate = true
-    renderHighlightModule(displayPublicationDate)
+    const displayBookingAllowedDatetime = true
+    renderHighlightModule(displayBookingAllowedDatetime)
 
     await act(async () => {
       expect(screen.getByText('Disponible le 15 janvier')).toBeOnTheScreen()
     })
   })
 
-  it('should not display publication date when displayPublicationDate is false and has a publicationDate in future', async () => {
+  it('should not display booking allowed datetime when displayBookingAllowedDatetime is false and has a bookingAllowedDatetime in future', async () => {
     mockUseHighlightOffer.mockReturnValueOnce({
       ...offerFixture,
-      offer: { ...offerFixture.offer, publicationDate: tomorrow },
+      offer: { ...offerFixture.offer, bookingAllowedDatetime: tomorrow },
     })
 
-    const displayPublicationDate = false
-    renderHighlightModule(displayPublicationDate)
+    const displayBookingAllowedDatetime = false
+    renderHighlightModule(displayBookingAllowedDatetime)
 
     await act(async () => {
       expect(screen.getByText('Bientôt disponible')).toBeOnTheScreen()
@@ -114,14 +114,14 @@ describe('HighlightOfferModule', () => {
   })
 })
 
-const renderHighlightModule = (displayPublicationDate = false) => {
+const renderHighlightModule = (displayBookingAllowedDatetime = false) => {
   return render(
     reactQueryProviderHOC(
       <HighlightOfferModule
         {...highlightOfferModuleFixture}
         index={0}
         homeEntryId="entryId"
-        displayPublicationDate={displayPublicationDate}
+        displayBookingAllowedDatetime={displayBookingAllowedDatetime}
       />
     )
   )

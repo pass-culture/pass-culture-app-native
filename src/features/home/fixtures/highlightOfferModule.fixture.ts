@@ -4,7 +4,7 @@ export const highlightOfferModuleFixture: HighlightOfferModule = {
   type: HomepageModuleType.HighlightOfferModule,
   id: 'fH2FmoYeTzZPjhbz4ZHUW',
   highlightTitle: 'L’offre du moment 💥',
-  displayPublicationDate: undefined,
+  displayBookingAllowedDatetime: undefined,
   offerTitle: 'We love green',
   offerId: '20859',
   offerEan: undefined,

@@ -18,7 +18,6 @@ type UseHightlightOfferParams = {
   offerTag?: string
   isGeolocated?: boolean
   aroundRadius?: number
-  publicationDate?: number
 }
 
 export const useHighlightOffer = ({

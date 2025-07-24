@@ -10,7 +10,7 @@ import {
   formatDateToISOStringWithoutTime,
   formatDates,
   formatGroupedDates,
-  formatPublicationDate,
+  formatBookingAllowedDatetime,
   formatReleaseDate,
   formatToCompleteFrenchDate,
   formatToFrenchDate,
@@ -543,7 +543,7 @@ describe('formatReleaseDate', () => {
   })
 })
 
-describe('formatPublicationDate', () => {
+describe('formatBookingAllowedDatetime', () => {
   const TODAY = OCTOBER_5_2020
   const AFTER_TODAY = NOVEMBER_12_2020
   const DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH = NOVEMBER_1_2020
@@ -553,17 +553,20 @@ describe('formatPublicationDate', () => {
   })
 
   it.each`
-    shouldDisplayPublicationDate | publicationDate                        | expected
-    ${true}                      | ${TODAY}                               | ${undefined}
-    ${true}                      | ${AFTER_TODAY}                         | ${`Disponible le 12 novembre`}
-    ${true}                      | ${DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH} | ${`Disponible le 1er novembre`}
-    ${false}                     | ${AFTER_TODAY}                         | ${`Bientôt disponible`}
+    shouldDisplayBookingAllowedDatetime | bookingAllowedDatetime                 | expected
+    ${true}                             | ${TODAY}                               | ${undefined}
+    ${true}                             | ${AFTER_TODAY}                         | ${`Disponible le 12 novembre`}
+    ${true}                             | ${DATE_IN_FUTURE_FIRST_DAY_OF_A_MONTH} | ${`Disponible le 1er novembre`}
+    ${false}                            | ${AFTER_TODAY}                         | ${`Bientôt disponible`}
   `(
-    'formatPublicationDate({ shouldDisplayPublicationDate: $shouldDisplayPublicationDate, publicationDate: $publicationDate }) \t= $expected',
-    ({ shouldDisplayPublicationDate, publicationDate, expected }) => {
-      expect(formatPublicationDate({ publicationDate, shouldDisplayPublicationDate })).toBe(
-        expected
-      )
+    'formatBookingAllowedDatetime({ shouldDisplayBookingAllowedDatetime: $shouldDisplayBookingAllowedDatetime, bookingAllowedDatetime: $bookingAllowedDatetime }) \t= $expected',
+    ({ shouldDisplayBookingAllowedDatetime, bookingAllowedDatetime, expected }) => {
+      expect(
+        formatBookingAllowedDatetime({
+          bookingAllowedDatetime,
+          shouldDisplayBookingAllowedDatetime,
+        })
+      ).toBe(expected)
     }
   )
 })

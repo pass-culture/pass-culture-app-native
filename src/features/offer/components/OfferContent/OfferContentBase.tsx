@@ -185,7 +185,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       if (typeof offer.id === 'number' && params) {
         const { from, moduleName, moduleId, searchId, playlistType } = params
         analytics.logHasAddedOfferToFavorites({
-          from: getIsAComingSoonOffer(offer) ? 'comingSoonOffer' : from,
+          from: getIsAComingSoonOffer(offer.bookingAllowedDatetime, offer.isReleased)
+            ? 'comingSoonOffer'
+            : from,
           offerId: offer.id,
           moduleName,
           moduleId,

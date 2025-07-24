@@ -6,7 +6,6 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
-import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { OfferTileProps } from 'features/offer/types'
 import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
@@ -61,7 +60,7 @@ export const OfferPlaylistItem = ({
       chroniclesCount: item.offer.chroniclesCount,
       headlinesCount: item.offer.headlineCount,
       hasSmallLayout,
-      isComingSoonOffer: offer ? getIsAComingSoonOffer(offer) : false,
+      isComingSoonOffer: item._tags?.includes('is_future'),
       subcategoryId: item.offer.subcategoryId,
     })
     return (
