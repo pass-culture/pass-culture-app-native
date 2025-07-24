@@ -82,17 +82,9 @@ The name `count-bears-store` is used to identify the store in the AsyncStore/Loc
 
 #### Native
 
-In order to use the devtools in a React Native app, we import `react-native-devsettings` in your `App.tsx` when in development mode:
+After RN 0.76, you can simply press `j` in metro to access dev tools.
 
-```tsx
-if (process.env.NODE_ENV === 'development') {
-  import('react-native-devsettings')
-}
-```
-
-Then, you can open React Native Debugger, shake your device and press `(*) Debug JS Remotely`.
-
-Once React Native Debugger is connected, you'll see your state in the Redux DevTools section.
+[Remote JS debugging was deprecated in 0.73](https://reactnative.dev/blog/2023/12/06/0.73-debugging-improvements-stable-symlinks#remote-javascript-debugging)
 
 #### Web
 
