@@ -14,7 +14,6 @@ type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
   aroundRadius?: number
-  shouldExcludeFutureOffers?: boolean
 }
 
 export const buildOfferSearchParameters = (

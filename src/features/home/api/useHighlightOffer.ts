@@ -55,7 +55,6 @@ export const useHighlightOffer = ({
     return fetchOffersByIds({
       objectIds: [offerId],
       isUserUnderage,
-      shouldExcludeFutureOffers: false,
     })
   }
   const { data } = useGetHighlightOfferQuery({ id, getHighlightOffer })
