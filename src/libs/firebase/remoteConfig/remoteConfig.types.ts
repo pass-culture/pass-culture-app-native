@@ -5,6 +5,7 @@ export type CustomRemoteConfig = {
   test_param: string
   aroundPrecision: Record<'from' | 'value', number>[] | number
   artistPageSubcategories: Record<'subcategories', SubcategoryIdEnum[]>
+  gridListLayoutRemoteConfig: string
   homeEntryIdBeneficiary: string
   homeEntryIdFreeBeneficiary: string
   homeEntryIdFreeOffers: string
