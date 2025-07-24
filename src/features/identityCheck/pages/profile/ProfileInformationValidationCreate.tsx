@@ -37,18 +37,23 @@ export const ProfileInformationValidationCreate = () => {
 
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
-  const type = params?.type
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
-  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
-  const pageInfos = isIdentityCheck
-    ? {
-        headerTitle: 'Profil',
-        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
-      }
-    : {
-        headerTitle: 'Informations personnelles',
-        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      }
+
+  const pageConfigByType = {
+    [ProfileTypes.IDENTITY_CHECK]: {
+      headerTitle: 'Profil',
+      subtitle: 'Tu valides que ces informations sont correctes&nbsp;?',
+    },
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: {
+      headerTitle: 'Informations personnelles',
+      subtitle: 'Tu valides que ces informations sont correctes&nbsp;?',
+    },
+    [ProfileTypes.RECAP_EXISTING_DATA]: {
+      headerTitle: 'Informations personnelles',
+      subtitle: 'Vérifie que ces informations sont correctes avant de continuer',
+    },
+  }
 
   const storedProfileInfos = useStoredProfileInfos()
   const saveStep = useSaveStep()
@@ -92,15 +97,14 @@ export const ProfileInformationValidationCreate = () => {
   }, [postProfile, saveStep, storedProfileInfos])
 
   const onSubmitProfile = () => submitProfileInfo()
-  const onChangeInformation = () =>
-    navigate(...getSubscriptionHookConfig('SetName', { type: pageInfos.navigateParamsType }))
+  const onChangeInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
 
   return (
     <PageWithHeader
-      title={pageInfos.headerTitle}
+      title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <Summary
-          title="Tu valides que ces informations sont correctes&nbsp;?"
+          title={pageConfigByType[type].subtitle}
           data={[
             {
               title: 'Ton prénom',
