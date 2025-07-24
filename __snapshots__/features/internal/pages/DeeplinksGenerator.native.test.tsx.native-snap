@@ -259,6 +259,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
                     "lineHeight": 27.2,
+                    "marginBottom": 24,
                     "textAlign": "center",
                   },
                 ]
@@ -266,16 +267,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             >
               Besoin d’un lien ?
             </Text>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -1897,127 +1888,127 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
-                  numberOfSpaces={2}
                   style={
                     [
                       {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  gap={0}
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
+                        "marginTop": 8,
                       },
                     ]
                   }
                 >
                   <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
+                    gap={0}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
+                          "alignItems": "flex-start",
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "gap": 0,
+                          "maxWidth": 500,
                           "width": "100%",
                         },
                       ]
                     }
-                    testID="styled-input-container"
                   >
-                    <TextInput
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="videoModuleId"
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
+                    <View
+                      height="small"
+                      isDisabled={false}
+                      isError={false}
+                      isFocus={false}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#90949d",
+                            "borderRadius": 22,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
                             "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
+                            "paddingLeft": 17,
+                            "paddingRight": 17,
                             "paddingTop": 0,
+                            "width": "100%",
                           },
                         ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="center"
-                    />
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="testUuidV4"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder="videoModuleId"
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-MediumItalic",
+                              "fontSize": 16,
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            },
+                          ]
+                        }
+                        testID="Champ de texte"
+                        textAlignVertical="center"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                         },
                       ]
                     }
                   >
-                    L’identifiant du module vidéo dont la modale sera affichée à l’ouverture du lien
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      L’identifiant du module vidéo dont la modale sera affichée à l’ouverture du lien
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#f1f1f4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
             <View
@@ -2170,616 +2161,616 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
-                  numberOfSpaces={2}
                   style={
                     [
                       {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  gap={0}
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
+                        "marginTop": 8,
                       },
                     ]
                   }
                 >
                   <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
+                    gap={0}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
+                          "alignItems": "flex-start",
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "gap": 0,
+                          "maxWidth": 500,
                           "width": "100%",
                         },
                       ]
                     }
-                    testID="styled-input-container"
                   >
-                    <TextInput
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="utm_campaign"
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
+                    <View
+                      height="small"
+                      isDisabled={false}
+                      isError={false}
+                      isFocus={false}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#90949d",
+                            "borderRadius": 22,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
                             "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
+                            "paddingLeft": 17,
+                            "paddingRight": 17,
                             "paddingTop": 0,
+                            "width": "100%",
                           },
                         ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="center"
-                    />
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="testUuidV4"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder="utm_campaign"
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-MediumItalic",
+                              "fontSize": 16,
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            },
+                          ]
+                        }
+                        testID="Champ de texte"
+                        textAlignVertical="center"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                         },
                       ]
                     }
                   >
-                    Nom de la campagne. Exemple : “festivals22”, “tempsfortJapon”, “LouisSan”... une campagne peut être menée sur différents canaux.
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      Nom de la campagne. Exemple : “festivals22”, “tempsfortJapon”, “LouisSan”... une campagne peut être menée sur différents canaux.
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#f1f1f4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <View
                   style={
                     [
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  gap={0}
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
+                        "marginTop": 8,
                       },
                     ]
                   }
                 >
                   <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
+                    gap={0}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
+                          "alignItems": "flex-start",
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "gap": 0,
+                          "maxWidth": 500,
                           "width": "100%",
                         },
                       ]
                     }
-                    testID="styled-input-container"
                   >
-                    <TextInput
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="utm_source"
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
+                    <View
+                      height="small"
+                      isDisabled={false}
+                      isError={false}
+                      isFocus={false}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#90949d",
+                            "borderRadius": 22,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
                             "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
+                            "paddingLeft": 17,
+                            "paddingRight": 17,
                             "paddingTop": 0,
+                            "width": "100%",
                           },
                         ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="center"
-                    />
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="testUuidV4"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder="utm_source"
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-MediumItalic",
+                              "fontSize": 16,
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            },
+                          ]
+                        }
+                        testID="Champ de texte"
+                        textAlignVertical="center"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                         },
                       ]
                     }
                   >
-                    Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok.
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok.
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#f1f1f4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <View
                   style={
                     [
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  gap={0}
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
+                        "marginTop": 8,
                       },
                     ]
                   }
                 >
                   <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
+                    gap={0}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
+                          "alignItems": "flex-start",
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "gap": 0,
+                          "maxWidth": 500,
                           "width": "100%",
                         },
                       ]
                     }
-                    testID="styled-input-container"
                   >
-                    <TextInput
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="utm_medium"
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
+                    <View
+                      height="small"
+                      isDisabled={false}
+                      isError={false}
+                      isFocus={false}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#90949d",
+                            "borderRadius": 22,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
                             "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
+                            "paddingLeft": 17,
+                            "paddingRight": 17,
                             "paddingTop": 0,
+                            "width": "100%",
                           },
                         ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="center"
-                    />
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="testUuidV4"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder="utm_medium"
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-MediumItalic",
+                              "fontSize": 16,
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            },
+                          ]
+                        }
+                        testID="Champ de texte"
+                        textAlignVertical="center"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                         },
                       ]
                     }
                   >
-                    Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press, partner (partenaires, influenceurs...).
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press, partner (partenaires, influenceurs...).
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#f1f1f4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <View
                   style={
                     [
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  gap={0}
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
+                        "marginTop": 8,
                       },
                     ]
                   }
                 >
                   <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
+                    gap={0}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
+                          "alignItems": "flex-start",
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "gap": 0,
+                          "maxWidth": 500,
                           "width": "100%",
                         },
                       ]
                     }
-                    testID="styled-input-container"
                   >
-                    <TextInput
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="utm_content"
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
+                    <View
+                      height="small"
+                      isDisabled={false}
+                      isError={false}
+                      isFocus={false}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#90949d",
+                            "borderRadius": 22,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
                             "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
+                            "paddingLeft": 17,
+                            "paddingRight": 17,
                             "paddingTop": 0,
+                            "width": "100%",
                           },
                         ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="center"
-                    />
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="testUuidV4"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder="utm_content"
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-MediumItalic",
+                              "fontSize": 16,
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            },
+                          ]
+                        }
+                        testID="Champ de texte"
+                        textAlignVertical="center"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                         },
                       ]
                     }
                   >
-                    Visuel de la campagne si elle en compte plusieurs (1, 2, 3, a , b, c...).
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      Visuel de la campagne si elle en compte plusieurs (1, 2, 3, a , b, c...).
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#f1f1f4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <View
                   style={
                     [
                       {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  gap={0}
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
+                        "marginTop": 8,
                       },
                     ]
                   }
                 >
                   <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
+                    gap={0}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
+                          "alignItems": "flex-start",
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "gap": 0,
+                          "maxWidth": 500,
                           "width": "100%",
                         },
                       ]
                     }
-                    testID="styled-input-container"
                   >
-                    <TextInput
-                      defaultValue="marketing"
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="utm_gen (*)"
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
+                    <View
+                      height="small"
+                      isDisabled={false}
+                      isError={false}
+                      isFocus={false}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#90949d",
+                            "borderRadius": 22,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
                             "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
+                            "paddingLeft": 17,
+                            "paddingRight": 17,
                             "paddingTop": 0,
+                            "width": "100%",
                           },
                         ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="center"
-                    />
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        defaultValue="marketing"
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="testUuidV4"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder="utm_gen (*)"
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-MediumItalic",
+                              "fontSize": 16,
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            },
+                          ]
+                        }
+                        testID="Champ de texte"
+                        textAlignVertical="center"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                         },
                       ]
                     }
                   >
-                    Type de campagne : marketing ou product.
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      Type de campagne : marketing ou product.
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#f1f1f4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
             <View
@@ -2932,127 +2923,127 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
-                  numberOfSpaces={2}
                   style={
                     [
                       {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  gap={0}
-                  style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
+                        "marginTop": 8,
                       },
                     ]
                   }
                 >
                   <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
+                    gap={0}
                     style={
                       [
                         {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
+                          "alignItems": "flex-start",
+                          "display": "flex",
+                          "flexDirection": "column",
+                          "gap": 0,
+                          "maxWidth": 500,
                           "width": "100%",
                         },
                       ]
                     }
-                    testID="styled-input-container"
                   >
-                    <TextInput
-                      editable={true}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="amv"
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
+                    <View
+                      height="small"
+                      isDisabled={false}
+                      isError={false}
+                      isFocus={false}
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderColor": "#90949d",
+                            "borderRadius": 22,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "height": 40,
                             "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
+                            "paddingLeft": 17,
+                            "paddingRight": 17,
                             "paddingTop": 0,
+                            "width": "100%",
                           },
                         ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="center"
-                    />
+                      testID="styled-input-container"
+                    >
+                      <TextInput
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="testUuidV4"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder="amv"
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="next"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-MediumItalic",
+                              "fontSize": 16,
+                              "height": "100%",
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                            },
+                          ]
+                        }
+                        testID="Champ de texte"
+                        textAlignVertical="center"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                         },
                       ]
                     }
                   >
-                    Version minimale de l’application Android qui peut ouvrir le lien (ex : 1001005). Si l’application installée est une version plus ancienne, l’utilisateur est redirigé vers le Play Store pour mettre à niveau l’application.
-                  </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      Version minimale de l’application Android qui peut ouvrir le lien (ex : 1001005). Si l’application installée est une version plus ancienne, l’utilisateur est redirigé vers le Play Store pour mettre à niveau l’application.
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#f1f1f4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
