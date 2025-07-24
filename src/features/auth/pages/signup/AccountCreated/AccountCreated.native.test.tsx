@@ -9,8 +9,8 @@ import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -18,7 +18,9 @@ import { AccountCreated } from './AccountCreated'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
 jest.mock('features/navigation/helpers/navigateToHome')

@@ -6,6 +6,7 @@ import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { AsyncError, LogTypeEnum, MonitoringError, ScreenError } from 'libs/monitoring/errors'
@@ -23,7 +24,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -107,13 +108,16 @@ describe('AsyncErrorBoundary component', () => {
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: true,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: true,
+        },
       })
     })
 
     afterAll(() => {
-      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
     })
 
     it('should capture info when error is ApiError and error code is 401', () => {
@@ -132,8 +136,11 @@ describe('AsyncErrorBoundary component', () => {
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: false,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: false,
+        },
       })
     })
 

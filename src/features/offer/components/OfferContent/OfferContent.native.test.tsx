@@ -36,6 +36,7 @@ import {
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Position } from 'libs/location'
@@ -146,19 +147,22 @@ const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor'
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({
-    ...DEFAULT_REMOTE_CONFIG,
-    sameAuthorPlaylist: 'withPlaylistAsFirst',
-    reactionFakeDoorCategories: {
-      categories: [
-        NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-        NativeCategoryIdEnumv2.CD,
-        NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
-        NativeCategoryIdEnumv2.VINYLES,
-        NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
-        NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
-        NativeCategoryIdEnumv2.LIVRES_PAPIER,
-        NativeCategoryIdEnumv2.DVD_BLU_RAY,
-      ],
+    ...remoteConfigResponseFixture,
+    data: {
+      ...DEFAULT_REMOTE_CONFIG,
+      sameAuthorPlaylist: 'withPlaylistAsFirst',
+      reactionFakeDoorCategories: {
+        categories: [
+          NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+          NativeCategoryIdEnumv2.CD,
+          NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
+          NativeCategoryIdEnumv2.VINYLES,
+          NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
+          NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
+          NativeCategoryIdEnumv2.LIVRES_PAPIER,
+          NativeCategoryIdEnumv2.DVD_BLU_RAY,
+        ],
+      },
     },
   })
 
@@ -656,8 +660,11 @@ describe('<OfferContent />', () => {
     describe('with remote config activated', () => {
       beforeAll(() => {
         useRemoteConfigSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          showAccessScreeningButton: true,
+          ...remoteConfigResponseFixture,
+          data: {
+            ...DEFAULT_REMOTE_CONFIG,
+            showAccessScreeningButton: true,
+          },
         })
       })
 
@@ -709,8 +716,11 @@ describe('<OfferContent />', () => {
     describe('with remote config deactivated', () => {
       beforeAll(() => {
         useRemoteConfigSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          showAccessScreeningButton: false,
+          ...remoteConfigResponseFixture,
+          data: {
+            ...DEFAULT_REMOTE_CONFIG,
+            showAccessScreeningButton: false,
+          },
         })
       })
 

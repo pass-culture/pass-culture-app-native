@@ -8,13 +8,14 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { beneficiaryUser } from 'fixtures/user'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
@@ -462,8 +463,11 @@ describe.skip('useCookies', () => {
       describe('When shouldLogInfo remote config is false', () => {
         beforeAll(() => {
           useRemoteConfigSpy.mockReturnValue({
-            ...DEFAULT_REMOTE_CONFIG,
-            shouldLogInfo: false,
+            ...remoteConfigResponseFixture,
+            data: {
+              ...DEFAULT_REMOTE_CONFIG,
+              shouldLogInfo: false,
+            },
           })
         })
 
@@ -486,13 +490,13 @@ describe.skip('useCookies', () => {
       describe('When shouldLogInfo remote config is true', () => {
         beforeAll(() => {
           useRemoteConfigSpy.mockReturnValue({
-            ...DEFAULT_REMOTE_CONFIG,
-            shouldLogInfo: true,
+            ...remoteConfigResponseFixture,
+            data: { ...DEFAULT_REMOTE_CONFIG, shouldLogInfo: true },
           })
         })
 
         afterAll(() => {
-          useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+          useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
         })
 
         it('should notify sentry', async () => {

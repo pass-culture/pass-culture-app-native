@@ -18,7 +18,9 @@ export const useShareAppModalViewmodel = ({
   showModal,
   setType,
 }: ShareAppModalSelectorViewmodelParams) => {
-  const { shareAppModalVersion: version } = useRemoteConfigQuery()
+  const {
+    data: { shareAppModalVersion: version },
+  } = useRemoteConfigQuery()
 
   const close = useCallback(() => {
     analytics.logDismissShareApp(type)

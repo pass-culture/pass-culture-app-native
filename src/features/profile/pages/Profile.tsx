@@ -75,7 +75,9 @@ const OnlineProfile: React.FC = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
   const userAge = getAge(user?.birthDate)
-  const { displayInAppFeedback } = useRemoteConfigQuery()
+  const {
+    data: { displayInAppFeedback },
+  } = useRemoteConfigQuery()
   const {
     geolocPositionError,
     permissionState,
