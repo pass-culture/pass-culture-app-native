@@ -13,6 +13,7 @@ export function getTagIcon(
     TagVariant.CINECLUB,
     TagVariant.HEADLINE,
     TagVariant.LIKE,
+    TagVariant.COMINGSOON,
   ]
   return forcedVariants.includes(variant) ? variantIcons[variant] : icon
 }

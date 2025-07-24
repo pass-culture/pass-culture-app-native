@@ -60,7 +60,7 @@ describe('getTagProps', () => {
   it('should return "Bientôt dispo" tag when isComingSoonOffer is true', () => {
     expect(getTagProps({ theme, isComingSoonOffer: true, subcategoryId })).toEqual({
       label: 'Bientôt dispo',
-      variant: TagVariant.WARNING,
+      variant: TagVariant.COMINGSOON,
     })
   })
 
@@ -69,7 +69,7 @@ describe('getTagProps', () => {
       getTagProps({ theme, isComingSoonOffer: true, hasSmallLayout: true, subcategoryId })
     ).toEqual({
       label: 'Bientôt',
-      variant: TagVariant.WARNING,
+      variant: TagVariant.COMINGSOON,
     })
   })
 

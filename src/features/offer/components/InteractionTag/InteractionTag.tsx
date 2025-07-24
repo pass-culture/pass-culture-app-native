@@ -15,11 +15,13 @@ type InteractionTagParams = {
   headlinesCount?: number
   hasSmallLayout?: boolean
   isComingSoonOffer?: boolean
+  withColor?: boolean
 }
 
 type TagProps = {
   label: string
   variant: TagVariant
+  withColor?: boolean
 }
 
 export const renderInteractionTag = (params: InteractionTagParams): ReactElement | undefined => {
@@ -36,11 +38,13 @@ export const getTagProps = ({
   hasSmallLayout,
   isComingSoonOffer,
   subcategoryId,
+  withColor,
 }: InteractionTagParams): TagProps | null => {
   if (isComingSoonOffer) {
     return {
       label: hasSmallLayout ? 'Bientôt' : 'Bientôt dispo',
-      variant: TagVariant.WARNING,
+      variant: TagVariant.COMINGSOON,
+      withColor,
     }
   }
 

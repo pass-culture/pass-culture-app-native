@@ -46,4 +46,14 @@ describe('<Tag />', () => {
 
     expect(styles.backgroundColor).toEqual(expectedColor)
   })
+
+  it('should use default backgroundColor when withColor prop is false', () => {
+    render(<Tag label="Club" variant={TagVariant.COMINGSOON} withColor={false} />)
+
+    const expectedColor = theme.designSystem.color.background.default
+
+    const styles = Object.assign({}, ...screen.getByTestId('tagWrapper').props.style)
+
+    expect(styles.backgroundColor).toEqual(expectedColor)
+  })
 })
