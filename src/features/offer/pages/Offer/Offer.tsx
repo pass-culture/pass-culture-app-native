@@ -7,7 +7,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
-import { videoDataFixture } from 'features/offer/fixtures/videoDataFixture'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
@@ -34,7 +33,6 @@ export function Offer() {
     RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   const { isLoggedIn } = useAuthContext()
   const { data: offer, isInitialLoading: isLoading } = useOfferQuery({
@@ -53,8 +51,6 @@ export function Offer() {
     enabled: isLoggedIn && isReactionEnabled && !!offer?.id,
   })
   const { mutate: saveReaction } = useReactionMutation()
-
-  const videoData = isVideoSectionEnabled ? videoDataFixture : undefined
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
@@ -103,7 +99,6 @@ export function Offer() {
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
-        videoData={videoData}
         onReactionButtonPress={booking?.canReact ? showModal : undefined}
       />
     </Page>

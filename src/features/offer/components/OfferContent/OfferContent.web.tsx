@@ -21,7 +21,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   chronicles,
   chronicleVariantInfo,
   defaultReaction,
-  videoData,
   onReactionButtonPress,
   headlineOffersCount,
 }) => {
@@ -74,9 +73,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
-          onSeeVideoPress={videoData ? handleVideoPress : undefined}
+          onSeeVideoPress={offer.videoUrl ? handleVideoPress : undefined}
           BodyWrapper={BodyWrapper}
-          videoData={videoData}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}

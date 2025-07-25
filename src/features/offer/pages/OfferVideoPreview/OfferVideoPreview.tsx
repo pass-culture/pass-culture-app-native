@@ -7,7 +7,7 @@ import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensi
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { videoDataFixture } from 'features/offer/fixtures/videoDataFixture'
+import { extractYoutubeVideoId } from 'features/offer/helpers/extractYoutubeVideoId/extractYoutubeVideoId'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -36,13 +36,15 @@ export const OfferVideoPreview: FunctionComponent = () => {
         onBackPress={goBack}
       />
 
-      <YoutubePlayer
-        videoId={videoDataFixture.videoId}
-        height={videoHeight}
-        width={viewportWidth < MAX_WIDTH ? undefined : MAX_WIDTH}
-        initialPlayerParams={{ autoplay: true }}
-        thumbnail={<VideoThumbnailImage url={videoDataFixture.thumbnailUri} resizeMode="cover" />}
-      />
+      {offer?.videoUrl ? (
+        <YoutubePlayer
+          videoId={extractYoutubeVideoId(offer.videoUrl)}
+          height={videoHeight}
+          width={viewportWidth < MAX_WIDTH ? undefined : MAX_WIDTH}
+          initialPlayerParams={{ autoplay: true }}
+          thumbnail={<VideoThumbnailImage url={offer?.videoUrl} resizeMode="cover" />}
+        />
+      ) : null}
     </Container>
   )
 }
