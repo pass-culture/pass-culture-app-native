@@ -42,7 +42,6 @@ interface Props extends Partial<HorizontalTileProps> {
   style?: StyleProp<ViewStyle>
   price?: string
   withRightArrow?: boolean
-  hasSmallLayout?: boolean
 }
 
 export const HorizontalOfferTile = ({
@@ -53,7 +52,6 @@ export const HorizontalOfferTile = ({
   subtitles,
   price,
   withRightArrow,
-  hasSmallLayout,
   ...horizontalTileProps
 }: Props) => {
   const theme = useTheme()
@@ -68,9 +66,6 @@ export const HorizontalOfferTile = ({
     releaseDate,
     isDuo,
     bookingAllowedDatetime,
-    likes,
-    chroniclesCount,
-    headlineCount,
   } = offerDetails
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
@@ -151,10 +146,6 @@ export const HorizontalOfferTile = ({
 
   const interactionTag = renderInteractionTag({
     theme,
-    hasSmallLayout,
-    likesCount: likes,
-    chroniclesCount,
-    headlinesCount: headlineCount,
     isComingSoonOffer: isAComingSoonOffer,
     subcategoryId,
     withColor: !isAComingSoonOffer,
