@@ -64,7 +64,6 @@ type OfferContentBaseProps = OfferContentProps &
     onOfferPreviewPress: (index?: number) => void
     onSeeVideoPress?: () => void
     chronicles?: ChronicleCardData[]
-    videoData?: { videoId: string; thumbnailUri: string }
     likesCount?: number
     headlineOffersCount?: number
     defaultReaction?: ReactionTypeEnum | null
@@ -90,7 +89,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onReactionButtonPress,
   BodyWrapper = React.Fragment,
   onLayout,
-  videoData,
   children,
 }) => {
   const theme = useTheme()
@@ -284,7 +282,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               chronicles={chronicles}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
-              videoData={videoData}
               chronicleVariantInfo={chronicleVariantInfo}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>

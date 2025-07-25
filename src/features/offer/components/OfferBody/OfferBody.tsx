@@ -17,6 +17,7 @@ import { OfferReactionSection } from 'features/offer/components/OfferReactionSec
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
+import { extractYoutubeVideoId } from 'features/offer/helpers/extractYoutubeVideoId/extractYoutubeVideoId'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
@@ -51,7 +52,6 @@ type Props = {
   chroniclesCount?: number | null
   distance?: string | null
   headlineOffersCount?: number
-  videoData?: { videoId: string; thumbnailUri: string }
   chronicles?: ChronicleCardData[]
 }
 
@@ -63,13 +63,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   chroniclesCount,
   distance,
   headlineOffersCount,
-  videoData,
   chronicleVariantInfo,
   chronicles,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -189,10 +189,10 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      {videoData ? (
+      {offer.videoUrl && isVideoSectionEnabled ? (
         <VideoSection
-          videoId={videoData.videoId}
-          videoThumbnail={<VideoThumbnailImage url={videoData.thumbnailUri} resizeMode="cover" />}
+          videoId={extractYoutubeVideoId(offer.videoUrl)}
+          videoThumbnail={<VideoThumbnailImage url={offer.videoUrl} resizeMode="cover" />}
           title="Vidéo"
           offerId={offer.id}
         />

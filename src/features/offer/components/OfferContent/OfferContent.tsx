@@ -18,7 +18,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
   chronicles,
   chronicleVariantInfo,
-  videoData,
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
@@ -43,14 +42,13 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        onSeeVideoPress={videoData ? handleVideoPress : undefined}
+        onSeeVideoPress={offer.videoUrl ? handleVideoPress : undefined}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
         chronicleVariantInfo={chronicleVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}
-        videoData={videoData}
         onReactionButtonPress={onReactionButtonPress}
         onLayout={onLayout}>
         {comingSoonFooterHeight ? (

@@ -131,4 +131,5 @@ export const offerResponseSnap = toMutable({
   },
   isExternalBookingsDisabled: false,
   artists: [],
+  videoUrl: 'https://www.youtube.com/watch?v=hWdLhB2okqA',
 } as const satisfies ReadonlyDeep<OfferResponseV2>)

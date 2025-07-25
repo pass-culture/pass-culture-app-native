@@ -75,7 +75,6 @@ export type OfferContentProps = {
   chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory
   chronicles?: ChronicleCardData[]
-  videoData?: { videoId: string; thumbnailUri: string }
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
