@@ -167,17 +167,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-      - name: Cache the node_modules
-        id: yarn-modules-cache
-        uses: pass-culture-github-actions/cache@v1.0.0
-        with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: 'Authentification to Google'
         uses: 'google-github-actions/auth@v2'
