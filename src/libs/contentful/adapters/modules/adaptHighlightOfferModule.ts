@@ -25,6 +25,6 @@ export const adaptHighlightOfferModule = (
     color: module.fields.color,
     isGeolocated: module.fields.isGeolocated,
     aroundRadius: module.fields.aroundRadius,
-    displayPublicationDate: module.fields.displayPublicationDate,
+    displayBookingAllowedDatetime: module.fields.displayBookingAllowedDatetime,
   }
 }

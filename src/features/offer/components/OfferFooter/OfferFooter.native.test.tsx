@@ -83,7 +83,7 @@ describe('OfferFooter', () => {
     const offerWithPublicationDate = {
       ...offerResponseSnap,
       isReleased: false,
-      publicationDate: addDays(CURRENT_DATE, 20).toString(),
+      bookingAllowedDatetime: addDays(CURRENT_DATE, 20).toString(),
     }
 
     beforeEach(() => {
@@ -261,13 +261,13 @@ describe('OfferFooter', () => {
     })
   })
 
-  describe('Content when offer is not a movie screening and does not have a publicationDate in the future', () => {
-    const CURRENT_DATE = new Date('2025-04-01T14:15:00Z')
+  describe('Content when offer is not a movie screening and does not have a bookingAllowedDatetime in the future', () => {
+    const CURRENT_DATE = '2025-04-01T14:15:00Z'
 
     const offerWithPublicationDate = {
       ...offerResponseSnap,
       isReleased: false,
-      publicationDate: CURRENT_DATE.toString(),
+      bookingAllowedDatetime: CURRENT_DATE,
     }
 
     beforeEach(() => {
@@ -284,7 +284,7 @@ describe('OfferFooter', () => {
     })
   })
 
-  describe('Content when offer is not a movie screening, does not have a publicationDate in the future and viewport is desktop', () => {
+  describe('Content when offer is not a movie screening, does not have a bookingAllowedDatetime in the future and viewport is desktop', () => {
     it('should return null', async () => {
       renderOfferFooter({
         children: <Button title="Réserver l’offre" />,

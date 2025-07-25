@@ -12,7 +12,7 @@ export const offerAttributesToRetrieve = [
   'offer.subcategoryId',
   'offer.thumbUrl',
   'offer.bookFormat',
-  'offer.publicationDate',
+  'offer.bookingAllowedDatetime',
   'objectID',
   '_geoloc',
   'venue',

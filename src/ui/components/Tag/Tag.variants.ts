@@ -1,6 +1,7 @@
 import { TagVariant } from 'ui/components/Tag/types'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Star } from 'ui/svg/Star'
 
@@ -14,6 +15,7 @@ export const variantBackground = {
   [TagVariant.CINECLUB]: 'cineclub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'subtle',
+  [TagVariant.COMING_SOON]: 'warning',
 }
 
 export const variantIconColor = {
@@ -25,6 +27,7 @@ export const variantIconColor = {
   [TagVariant.CINECLUB]: 'cineclub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'brandPrimary',
+  [TagVariant.COMING_SOON]: 'warning',
 }
 
 export const variantLabelColor = {
@@ -36,4 +39,5 @@ export const variantIcons = {
   [TagVariant.CINECLUB]: CineClubCertification,
   [TagVariant.HEADLINE]: Star,
   [TagVariant.LIKE]: ThumbUpFilled,
+  [TagVariant.COMING_SOON]: ClockFilled,
 }

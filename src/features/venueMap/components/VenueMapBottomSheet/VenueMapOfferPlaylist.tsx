@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -49,7 +50,7 @@ export const VenueMapOfferPlaylist = ({
         chroniclesCount: item.offer.chroniclesCount,
         headlinesCount: item.offer.headlineCount,
         hasSmallLayout: true,
-        isComingSoonOffer: item._tags?.includes('is_future'),
+        isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
         subcategoryId: item.offer.subcategoryId,
       })
       return (

@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { OfferTileProps } from 'features/offer/types'
 import {
   formatPrice,
@@ -67,7 +68,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     chroniclesCount: chroniclesCount,
     headlinesCount: headlineCount,
     hasSmallLayout,
-    isComingSoonOffer: item._tags?.includes('is_future'),
+    isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,
   })
 
