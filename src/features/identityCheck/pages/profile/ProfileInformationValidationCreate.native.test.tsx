@@ -11,8 +11,10 @@ import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
+import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -178,6 +180,28 @@ describe('ProfileInformationValidationCreate', () => {
         },
       ],
     })
+  })
+
+  it('should show data from auth context for "recapExistingData" screen variant', () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        type: ProfileTypes.RECAP_EXISTING_DATA,
+      },
+    })
+
+    mockAuthContextWithUser({
+      ...nonBeneficiaryUser,
+      firstName: 'Bernard',
+      lastName: 'Carpet',
+      city: 'Marseille',
+      postalCode: '31000',
+    })
+
+    renderProfileInformationValidation()
+
+    expect(screen.getByText('Bernard')).toBeOnTheScreen()
+    expect(screen.getByText('Carpet')).toBeOnTheScreen()
+    expect(screen.getByText('Marseille 31000')).toBeOnTheScreen()
   })
 })
 
