@@ -143,18 +143,18 @@ export const formatReleaseDate = ({
 }
 
 /**
- * @param publicationDate: Date
+ * @param BookingAllowedDatetime: Date
  */
-export const formatPublicationDate = ({
-  publicationDate,
-  shouldDisplayPublicationDate,
+export const formatBookingAllowedDatetime = ({
+  bookingAllowedDatetime,
+  shouldDisplayBookingAllowedDatetime,
 }: {
-  publicationDate: Date
-  shouldDisplayPublicationDate?: boolean
+  bookingAllowedDatetime: Date
+  shouldDisplayBookingAllowedDatetime?: boolean
 }): string | undefined => {
-  if (isAfter(publicationDate, new Date())) {
-    return shouldDisplayPublicationDate
-      ? `Disponible le ${formatToFrenchDateWithoutYear({ date: publicationDate })}`
+  if (isAfter(bookingAllowedDatetime, new Date())) {
+    return shouldDisplayBookingAllowedDatetime
+      ? `Disponible le ${formatToFrenchDateWithoutYear({ date: bookingAllowedDatetime })}`
       : 'Bientôt disponible'
   }
 

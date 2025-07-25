@@ -18,7 +18,6 @@ type UseHightlightOfferParams = {
   offerTag?: string
   isGeolocated?: boolean
   aroundRadius?: number
-  publicationDate?: number
 }
 
 export const useHighlightOffer = ({
@@ -56,7 +55,6 @@ export const useHighlightOffer = ({
     return fetchOffersByIds({
       objectIds: [offerId],
       isUserUnderage,
-      shouldExcludeFutureOffers: false,
     })
   }
   const { data } = useGetHighlightOfferQuery({ id, getHighlightOffer })

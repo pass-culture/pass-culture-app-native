@@ -14,12 +14,14 @@ export enum TagVariant {
   CINECLUB = 'cineclub',
   HEADLINE = 'headline',
   LIKE = 'like',
+  COMING_SOON = 'coming_soon',
 }
 
 export type TagProps = ViewProps & {
   label: string
   variant?: TagVariant
   Icon?: FunctionComponent<AccessibleIcon> | ReactElement
+  withColor?: boolean
 }
 
 export type TagColorStyles = {

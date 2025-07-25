@@ -9,6 +9,7 @@ import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics/provider'
@@ -80,7 +81,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
       headlinesCount: item.offer.headlineCount,
-      isComingSoonOffer: item._tags?.includes('is_future'),
+      isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
     })
 

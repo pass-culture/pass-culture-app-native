@@ -18,6 +18,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   label,
   variant = TagVariant.DEFAULT,
   Icon,
+  withColor = true,
   ...props
 }) => {
   const theme = useTheme()
@@ -33,24 +34,36 @@ export const Tag: FunctionComponent<TagProps> = ({
   })
 
   return (
-    <Wrapper backgroundColor={backgroundColor} testID="tagWrapper" {...props}>
+    <Wrapper
+      backgroundColor={withColor ? backgroundColor : theme.designSystem.color.background.default}
+      withColor={withColor}
+      testID="tagWrapper"
+      {...props}>
       {FinalIcon ? (
-        <IconContainer>{renderTagIcon(iconColor, iconSize, FinalIcon)}</IconContainer>
+        <IconContainer>
+          {renderTagIcon(
+            withColor ? iconColor : theme.designSystem.color.icon.default,
+            iconSize,
+            FinalIcon
+          )}
+        </IconContainer>
       ) : null}
       <LabelText color={labelColor}>{label}</LabelText>
     </Wrapper>
   )
 }
 
-const Wrapper = styled(View)<{ backgroundColor: string }>(({ backgroundColor }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  alignSelf: 'flex-start',
-  borderRadius: getSpacing(1),
-  backgroundColor,
-  paddingVertical: PADDING_VERTICAL,
-  paddingHorizontal: getSpacing(2),
-}))
+const Wrapper = styled(View)<{ backgroundColor: string; withColor?: boolean }>(
+  ({ backgroundColor, withColor }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    borderRadius: getSpacing(1),
+    backgroundColor,
+    paddingVertical: PADDING_VERTICAL,
+    ...(withColor ? { paddingHorizontal: getSpacing(2) } : undefined),
+  })
+)
 
 const LabelText = styled(Typo.BodyAccentXs)({
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
