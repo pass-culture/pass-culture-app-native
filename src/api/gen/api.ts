@@ -2944,6 +2944,11 @@ export interface OfferResponse {
    * @type {string}
    * @memberof OfferResponse
    */
+  videoUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferResponse
+   */
   withdrawalDetails?: string | null
 }
 /**
@@ -3096,6 +3101,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   venue: OfferVenueResponse
+  /**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
+  videoUrl?: string | null
   /**
    * @type {string}
    * @memberof OfferResponseV2
