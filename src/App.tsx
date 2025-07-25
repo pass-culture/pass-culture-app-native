@@ -9,9 +9,6 @@ import 'react-native-get-random-values' // required for `uuid` module to work
 
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
-if (process.env.NODE_ENV === 'development') {
-  import('react-native-devsettings')
-}
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'

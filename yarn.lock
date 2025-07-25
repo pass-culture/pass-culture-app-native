@@ -11167,7 +11167,6 @@ __metadata:
     react-native-date-picker: ^5.0.13
     react-native-detector: ^0.2.3
     react-native-device-info: ^11.1.0
-    react-native-devsettings: ^1.0.5
     react-native-email-link: ^1.10.0
     react-native-fast-image: ^8.6.3
     react-native-geolocation-service: 5.3.1
@@ -24939,13 +24938,6 @@ __metadata:
   peerDependencies:
     react-native: "*"
   checksum: 272cab82573933a1f3a9bc394b82a387ccbdf9fbef131fc1f04b8ff78b36f581931b5c643f5aa278f28577cbc320ef2ac588cafdb73292e9b0cf4427d54c44ce
-  languageName: node
-  linkType: hard
-
-"react-native-devsettings@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "react-native-devsettings@npm:1.0.5"
-  checksum: a59be2a07a94d16e8cd6443636ef44ebad15a8ddf6dcb742b737949c9029a9ff295894198e81a5ffd89f5714708be4b02b54b544566656e466e87982ffc89166
   languageName: node
   linkType: hard
 
