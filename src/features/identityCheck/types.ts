@@ -1,3 +1,4 @@
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { StepDetails } from 'ui/components/StepButton/types'
 
@@ -32,6 +33,10 @@ export type SubscriptionScreen = keyof SubscriptionStackParamList
 export type StepConfig = Pick<StepDetails, 'icon'> & {
   name: IdentityCheckStep
   firstScreen: SubscriptionScreen
+  firstScreenType:
+    | ProfileTypes.IDENTITY_CHECK
+    | ProfileTypes.BOOKING_FREE_OFFER_15_16
+    | ProfileTypes.RECAP_EXISTING_DATA
 }
 
 export type StepExtendedDetails = StepConfig & StepDetails

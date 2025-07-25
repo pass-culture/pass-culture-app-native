@@ -10,7 +10,6 @@ import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
@@ -100,7 +99,7 @@ export const Stepper = () => {
           <StepButton
             step={step}
             navigateTo={getSubscriptionPropConfig(step.firstScreen, {
-              type: ProfileTypes.IDENTITY_CHECK,
+              type: step.firstScreenType,
             })}
             onPress={() => {
               analytics.logIdentityCheckStep(step.name)
