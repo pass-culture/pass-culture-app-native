@@ -8,8 +8,8 @@ import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -38,7 +38,9 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 describe('AuthContext', () => {
   beforeEach(async () => {

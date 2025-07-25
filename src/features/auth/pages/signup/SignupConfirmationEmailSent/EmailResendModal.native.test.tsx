@@ -3,6 +3,7 @@ import React from 'react'
 import { api } from 'api/api'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { analytics } from 'libs/analytics/provider'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -19,7 +20,7 @@ const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidat
 
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -159,8 +160,11 @@ describe('<EmailResendModal />', () => {
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: false,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: false,
+        },
       })
     })
 
@@ -179,13 +183,16 @@ describe('<EmailResendModal />', () => {
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: true,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: true,
+        },
       })
     })
 
     afterAll(() => {
-      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
     })
 
     it('should log to Sentry on error', async () => {

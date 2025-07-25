@@ -8,14 +8,15 @@ import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntr
 import { Homepage, HomepageTag } from 'features/home/types'
 import { UserOnboardingRole } from 'features/onboarding/enums'
 import * as OnboardingRoleAPI from 'features/onboarding/helpers/useUserRoleFromOnboarding'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useBookingsQuery, useUserHasBookingsQuery } from 'queries/bookings'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
-  mockAuthContextWithoutUser,
   mockAuthContextWithUser,
+  mockAuthContextWithoutUser,
   mockUseAuthContext,
 } from 'tests/AuthContextUtils'
 import { renderHook, waitFor } from 'tests/utils'
@@ -122,7 +123,10 @@ const defaultRemoteConfig: CustomRemoteConfig = {
 
 describe('useSelectHomepageEntry', () => {
   it('should not return anything when no homepageEntries retrieved from contentful', () => {
-    useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
+    useRemoteConfigSpy.mockReturnValueOnce({
+      ...remoteConfigResponseFixture,
+      data: defaultRemoteConfig,
+    })
     const { result } = renderHook(() => useSelectHomepageEntry())
     const Homepage = result.current([])
 
@@ -130,7 +134,10 @@ describe('useSelectHomepageEntry', () => {
   })
 
   it('should return home entry corresponding to id provided', () => {
-    useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
+    useRemoteConfigSpy.mockReturnValueOnce({
+      ...remoteConfigResponseFixture,
+      data: defaultRemoteConfig,
+    })
     const { result } = renderHook(() => useSelectHomepageEntry(homeEntryId))
     const Homepage = result.current(shuffle(homepageEntries))
 
@@ -152,7 +159,10 @@ describe('useSelectHomepageEntry', () => {
         onboardingRole: UserOnboardingRole
         expectedHomepage: Homepage
       }) => {
-        useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
+        useRemoteConfigSpy.mockReturnValueOnce({
+          ...remoteConfigResponseFixture,
+          data: defaultRemoteConfig,
+        })
         mockAuthContextWithoutUser()
         mockUseUserRoleFromOnboarding.mockReturnValueOnce(onboardingRole)
         mockedUseUserHasBookings.mockReturnValueOnce(false)
@@ -167,7 +177,10 @@ describe('useSelectHomepageEntry', () => {
     )
 
     it('should return general home entry when user is logged in but undefined', () => {
-      useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
+      useRemoteConfigSpy.mockReturnValueOnce({
+        ...remoteConfigResponseFixture,
+        data: defaultRemoteConfig,
+      })
       mockUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
         user: undefined,
@@ -206,7 +219,10 @@ describe('useSelectHomepageEntry', () => {
         credit: Credit
         expectedHomepage: Homepage
       }) => {
-        useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
+        useRemoteConfigSpy.mockReturnValueOnce({
+          ...remoteConfigResponseFixture,
+          data: defaultRemoteConfig,
+        })
         mockAuthContextWithUser(user)
 
         mockUseUserRoleFromOnboarding.mockReturnValueOnce(onboardingRole)
@@ -228,12 +244,15 @@ describe('useSelectHomepageEntry', () => {
   describe('default home entry when no remote config available', () => {
     beforeEach(() => {
       useRemoteConfigSpy.mockReturnValueOnce({
-        ...defaultRemoteConfig,
-        test_param: 'A',
-        homeEntryIdGeneral: '',
-        homeEntryIdWithoutBooking: '',
-        homeEntryIdBeneficiary: '',
-        homeEntryIdFreeBeneficiary: '',
+        ...remoteConfigResponseFixture,
+        data: {
+          ...defaultRemoteConfig,
+          test_param: 'A',
+          homeEntryIdGeneral: '',
+          homeEntryIdWithoutBooking: '',
+          homeEntryIdBeneficiary: '',
+          homeEntryIdFreeBeneficiary: '',
+        },
       })
     })
 

@@ -16,14 +16,15 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import {
-  GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-  GeolocationError,
+  GeoCoordinates,
   GeolocPermissionState,
   GeolocPositionError,
+  GeolocationError,
 } from 'libs/location'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
@@ -113,8 +114,11 @@ describe('Profile component', () => {
 
   beforeAll(() => {
     useRemoteConfigSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      displayInAppFeedback: true,
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        displayInAppFeedback: true,
+      },
     })
   })
 

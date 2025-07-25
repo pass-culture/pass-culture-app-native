@@ -1,6 +1,7 @@
 import * as shareApp from 'features/share/helpers/shareApp'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics/__mocks__/provider'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
@@ -39,8 +40,11 @@ const givenRemoteConfigShareAppModalVersion = (
   version: CustomRemoteConfig['shareAppModalVersion']
 ) => {
   useRemoteConfigSpy.mockReturnValue({
-    ...DEFAULT_REMOTE_CONFIG,
-    shareAppModalVersion: version,
+    ...remoteConfigResponseFixture,
+    data: {
+      ...DEFAULT_REMOTE_CONFIG,
+      shareAppModalVersion: version,
+    },
   })
 }
 

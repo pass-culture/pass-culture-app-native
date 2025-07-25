@@ -4,6 +4,7 @@ import {
   RemoteStoreDocuments,
   RemoteStoreFeatureFlags,
 } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import firestore from 'libs/firebase/shims/firestore'
@@ -24,7 +25,7 @@ const mockGet = jest.fn()
 const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
+  .mockReturnValue(remoteConfigResponseFixture)
 
 //TODO(PC-35000): unskip this test
 describe.skip('useFeatureFlagOptions', () => {
@@ -184,8 +185,11 @@ describe.skip('useFeatureFlagOptions', () => {
     describe('When shouldLogInfo remote config is false', () => {
       beforeAll(() => {
         useRemoteConfigSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          shouldLogInfo: false,
+          ...remoteConfigResponseFixture,
+          data: {
+            ...DEFAULT_REMOTE_CONFIG,
+            shouldLogInfo: false,
+          },
         })
       })
 
@@ -207,13 +211,16 @@ describe.skip('useFeatureFlagOptions', () => {
     describe('When shouldLogInfo remote config is true', () => {
       beforeAll(() => {
         useRemoteConfigSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          shouldLogInfo: true,
+          ...remoteConfigResponseFixture,
+          data: {
+            ...DEFAULT_REMOTE_CONFIG,
+            shouldLogInfo: true,
+          },
         })
       })
 
       afterAll(() => {
-        useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+        useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
       })
 
       it('should log to sentry when minimalBuildNumber is greater than maximalBuildNumber', async () => {

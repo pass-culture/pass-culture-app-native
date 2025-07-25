@@ -28,7 +28,9 @@ export const IdentificationFork: FunctionComponent = () => {
 }
 
 const IdentificationForkEduconnectContent: FunctionComponent = () => {
-  const { shouldDisplayReassuranceMention } = useRemoteConfigQuery()
+  const {
+    data: { shouldDisplayReassuranceMention },
+  } = useRemoteConfigQuery()
   return (
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />

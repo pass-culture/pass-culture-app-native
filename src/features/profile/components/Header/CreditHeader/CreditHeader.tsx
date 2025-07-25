@@ -38,7 +38,9 @@ export function CreditHeader({
   eligibility,
 }: CreditHeaderProps) {
   const { designSystem } = useTheme()
-  const { homeEntryIdFreeOffers } = useRemoteConfigQuery()
+  const {
+    data: { homeEntryIdFreeOffers },
+  } = useRemoteConfigQuery()
   const depositAmount = useDepositAmountsByAge()
 
   const sixteenYearsOldIncomingDeposit = {

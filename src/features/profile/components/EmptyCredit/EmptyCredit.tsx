@@ -17,7 +17,9 @@ export const EmptyCredit = ({
   age: number
   eligibility?: EligibilityType | null
 }) => {
-  const { homeEntryIdFreeOffers } = useRemoteConfigQuery()
+  const {
+    data: { homeEntryIdFreeOffers },
+  } = useRemoteConfigQuery()
   const { sixteenYearsOldDeposit, seventeenYearsOldDeposit, eighteenYearsOldDeposit } =
     useDepositAmountsByAge()
 

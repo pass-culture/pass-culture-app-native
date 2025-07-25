@@ -45,7 +45,9 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
-  const { aroundPrecision } = useRemoteConfigQuery()
+  const {
+    data: { aroundPrecision },
+  } = useRemoteConfigQuery()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [

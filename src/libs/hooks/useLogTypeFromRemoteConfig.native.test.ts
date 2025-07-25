@@ -1,3 +1,4 @@
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -10,13 +11,16 @@ describe('useLogTypeFromRemoteConfig', () => {
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: false,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: false,
+        },
       })
     })
 
     afterAll(() => {
-      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
     })
 
     it('should return ignored as log type', () => {
@@ -29,13 +33,16 @@ describe('useLogTypeFromRemoteConfig', () => {
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: true,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: true,
+        },
       })
     })
 
     afterAll(() => {
-      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
     })
 
     it('should return info as log type', () => {

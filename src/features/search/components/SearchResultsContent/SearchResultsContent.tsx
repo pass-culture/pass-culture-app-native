@@ -128,7 +128,9 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   )
   const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
   const shouldDisplayGridList = enableGridList && !isWeb
-  const { gridListLayoutRemoteConfig } = useRemoteConfigQuery()
+  const {
+    data: { gridListLayoutRemoteConfig },
+  } = useRemoteConfigQuery()
   const initialGridListLayout =
     gridListLayoutRemoteConfig === 'Grille' ? GridListLayout.GRID : GridListLayout.LIST
   const [gridListLayout, setGridListLayout] = useState(initialGridListLayout)

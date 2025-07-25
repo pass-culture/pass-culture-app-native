@@ -35,10 +35,12 @@ export const useSelectHomepageEntry = (
   const userHasBookings = useUserHasBookingsQuery()
   const onboardingRole = useUserRoleFromOnboarding()
   const {
-    homeEntryIdGeneral,
-    homeEntryIdBeneficiary,
-    homeEntryIdFreeBeneficiary,
-    homeEntryIdWithoutBooking,
+    data: {
+      homeEntryIdGeneral,
+      homeEntryIdBeneficiary,
+      homeEntryIdFreeBeneficiary,
+      homeEntryIdWithoutBooking,
+    },
   } = useRemoteConfigQuery()
 
   return useCallback(

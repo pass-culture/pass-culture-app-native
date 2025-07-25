@@ -5,6 +5,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { FetchError, MonitoringError } from 'libs/monitoring/errors'
@@ -79,8 +80,11 @@ describe('<SuspensionChoice/>', () => {
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: false,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: false,
+        },
       })
     })
 
@@ -99,13 +103,16 @@ describe('<SuspensionChoice/>', () => {
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: true,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: true,
+        },
       })
     })
 
     afterAll(() => {
-      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
     })
 
     it('should capture an info in Sentry on suspension error', async () => {

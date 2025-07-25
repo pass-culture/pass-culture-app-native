@@ -20,7 +20,9 @@ type UseArtistResultsProps = {
 export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResultsProps) => {
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
-  const { artistPageSubcategories } = useRemoteConfigQuery()
+  const {
+    data: { artistPageSubcategories },
+  } = useRemoteConfigQuery()
 
   const { data } = useQuery({
     queryKey: [QueryKeys.ARTIST_PLAYLIST, artistId],

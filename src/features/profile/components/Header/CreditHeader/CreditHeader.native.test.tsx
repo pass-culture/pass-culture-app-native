@@ -15,15 +15,17 @@ import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBenefic
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
 
-jest
-  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG, homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' })
+jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue({
+  ...remoteConfigResponseFixture,
+  data: { ...DEFAULT_REMOTE_CONFIG, homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' },
+})
 
 const mockUseIsUserUnderageBeneficiary = jest
   .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')

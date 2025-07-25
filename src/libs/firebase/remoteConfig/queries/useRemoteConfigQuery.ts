@@ -23,14 +23,13 @@ const fetchRemoteConfig = async (): Promise<CustomRemoteConfig> => {
 }
 
 export function useRemoteConfigQuery() {
-  const { data = DEFAULT_REMOTE_CONFIG } = useQuery<CustomRemoteConfig>(
-    [QueryKeys.REMOTE_CONFIG],
-    fetchRemoteConfig,
-    {
-      placeholderData: DEFAULT_REMOTE_CONFIG,
-      staleTime: 1000 * 60 * 5,
-      useErrorBoundary: false,
-    }
-  )
-  return data
+  const query = useQuery<CustomRemoteConfig>([QueryKeys.REMOTE_CONFIG], fetchRemoteConfig, {
+    placeholderData: DEFAULT_REMOTE_CONFIG,
+    staleTime: 1000 * 60 * 5,
+    useErrorBoundary: false,
+  })
+  return {
+    ...query,
+    data: query.data ?? DEFAULT_REMOTE_CONFIG,
+  }
 }

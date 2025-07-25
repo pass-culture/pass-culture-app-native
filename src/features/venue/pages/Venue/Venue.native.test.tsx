@@ -24,6 +24,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Network } from 'libs/share/types'
@@ -231,8 +232,11 @@ describe('<Venue />', () => {
   describe('movie screening access button', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: true,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          showAccessScreeningButton: true,
+        },
       })
 
       mockUseVenueOffers.mockReturnValue({
@@ -296,8 +300,11 @@ describe('<Venue />', () => {
     describe('remote config flag is deactivated', () => {
       beforeAll(() => {
         useRemoteConfigSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          showAccessScreeningButton: false,
+          ...remoteConfigResponseFixture,
+          data: {
+            ...DEFAULT_REMOTE_CONFIG,
+            showAccessScreeningButton: false,
+          },
         })
       })
 
