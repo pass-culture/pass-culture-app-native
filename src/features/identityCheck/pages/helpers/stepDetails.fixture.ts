@@ -1,3 +1,4 @@
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { StepExtendedDetails, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -16,6 +17,7 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
     firstScreen: 'SetPhoneNumber',
     title: 'Numéro de téléphone',
     stepState: StepButtonState.COMPLETED,
+    firstScreenType: ProfileTypes.IDENTITY_CHECK,
   },
   {
     name: IdentityCheckStep.IDENTIFICATION,
@@ -29,6 +31,7 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
     title: 'Identification',
     subtitle: 'Confirme tes informations',
     stepState: StepButtonState.CURRENT,
+    firstScreenType: ProfileTypes.IDENTITY_CHECK,
   },
   {
     name: IdentityCheckStep.PROFILE,
@@ -41,6 +44,7 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
     },
     firstScreen: 'SetName',
     stepState: StepButtonState.DISABLED,
+    firstScreenType: ProfileTypes.IDENTITY_CHECK,
   },
   {
     name: IdentityCheckStep.CONFIRMATION,
@@ -53,5 +57,6 @@ export const stepsDetailsFixture: StepExtendedDetails[] = [
     },
     firstScreen: 'IdentityCheckEnd',
     stepState: StepButtonState.DISABLED,
+    firstScreenType: ProfileTypes.IDENTITY_CHECK,
   },
 ]
