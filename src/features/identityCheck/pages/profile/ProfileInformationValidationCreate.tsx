@@ -31,7 +31,7 @@ export const ProfileInformationValidationCreate = () => {
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
-  const { refetchUser } = useAuthContext()
+  const { refetchUser, user } = useAuthContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const { showErrorSnackBar } = useSnackBarContext()
 
@@ -40,27 +40,32 @@ export const ProfileInformationValidationCreate = () => {
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
 
+  enum DataSources {
+    LOCAL_STORAGE = 'localStorage',
+    AUTH_CONTEXT = 'authContext',
+  }
+
   const pageConfigByType = {
     [ProfileTypes.IDENTITY_CHECK]: {
       headerTitle: 'Profil',
-      subtitle: 'Tu valides que ces informations sont correctes&nbsp;?',
+      subtitle: 'Tu valides que ces informations sont correctes\u00a0?',
+      formDataSource: DataSources.LOCAL_STORAGE,
     },
     [ProfileTypes.BOOKING_FREE_OFFER_15_16]: {
       headerTitle: 'Informations personnelles',
-      subtitle: 'Tu valides que ces informations sont correctes&nbsp;?',
+      subtitle: 'Tu valides que ces informations sont correctes\u00a0?',
+      formDataSource: DataSources.LOCAL_STORAGE,
     },
     [ProfileTypes.RECAP_EXISTING_DATA]: {
       headerTitle: 'Informations personnelles',
       subtitle: 'Vérifie que ces informations sont correctes avant de continuer',
+      formDataSource: DataSources.AUTH_CONTEXT,
     },
   }
 
   const storedProfileInfos = useStoredProfileInfos()
   const saveStep = useSaveStep()
   const storedFreeOfferId = useFreeOfferId()
-  const fullStoredCity = storedProfileInfos?.city
-    ? `${storedProfileInfos.city.name} ${storedProfileInfos.city.postalCode}`
-    : undefined
 
   const { mutateAsync: postProfile } = usePostProfileMutation({
     onSuccess: () =>
@@ -99,6 +104,27 @@ export const ProfileInformationValidationCreate = () => {
   const onSubmitProfile = () => submitProfileInfo()
   const onChangeInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
 
+  const shouldGetDataFromLocalStorage =
+    pageConfigByType[type].formDataSource === DataSources.LOCAL_STORAGE
+  const firstName = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.name.firstName
+    : user?.firstName
+  const lastName = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.name.lastName
+    : user?.lastName
+  const address = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.address
+    : 'Not Available in AuthContext'
+  const fullCityLocalStorage = storedProfileInfos?.city
+    ? `${storedProfileInfos.city.name} ${storedProfileInfos.city.postalCode}`
+    : undefined
+  const fullCityAuthContext =
+    user?.city && user?.postalCode ? `${user.city} ${user.postalCode}` : undefined
+  const city = shouldGetDataFromLocalStorage ? fullCityLocalStorage : fullCityAuthContext
+  const activity = shouldGetDataFromLocalStorage
+    ? getActivityLabel(storedProfileInfos?.status)
+    : user?.status && getActivityLabel(user?.activityId)
+
   return (
     <PageWithHeader
       title={pageConfigByType[type].headerTitle}
@@ -109,20 +135,26 @@ export const ProfileInformationValidationCreate = () => {
             {
               title: 'Ton prénom',
               testID: 'validation-first-name',
-              value: storedProfileInfos?.name.firstName,
+              value: firstName,
             },
             {
               title: 'Ton nom de famille',
               testID: 'validation-name',
-              value: storedProfileInfos?.name.lastName,
+              value: lastName,
             },
-            { title: 'Adresse', value: storedProfileInfos?.address },
+            {
+              title: 'Adresse',
+              value: address,
+            },
             {
               title: 'Ville de résidence',
               testID: 'validation-birth-date',
-              value: fullStoredCity,
+              value: city,
             },
-            { title: 'Statut', value: getActivityLabel(storedProfileInfos?.status) },
+            {
+              title: 'Statut',
+              value: activity,
+            },
           ]}
         />
       }
