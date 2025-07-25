@@ -217,6 +217,10 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   ]
 
   const onDayPress = (date: DateData) => {
+    if (selectedFilterMode) {
+      setValueWithValidation('selectedFilterMode', undefined)
+    }
+
     const selectedDate = new Date(date.dateString)
 
     if (!selectedStartDate || selectedEndDate || selectedDate < selectedStartDate) {
