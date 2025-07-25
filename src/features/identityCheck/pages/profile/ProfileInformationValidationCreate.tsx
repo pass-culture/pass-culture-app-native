@@ -1,6 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 
+import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Summary } from 'features/identityCheck/components/Summary'
 import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
@@ -19,6 +20,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -67,6 +69,24 @@ export const ProfileInformationValidationCreate = () => {
   const saveStep = useSaveStep()
   const storedFreeOfferId = useFreeOfferId()
 
+  const shouldGetDataFromLocalStorage =
+    pageConfigByType[type].formDataSource === DataSources.LOCAL_STORAGE
+  const firstName = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.name.firstName
+    : user?.firstName
+  const lastName = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.name.lastName
+    : user?.lastName
+  const storedAddress = storedProfileInfos?.address ?? null
+  const address = shouldGetDataFromLocalStorage ? storedAddress : 'Not Available in AuthContext'
+  const city = shouldGetDataFromLocalStorage ? storedProfileInfos?.city.name : user?.city
+  const postalCode = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.city.postalCode
+    : user?.postalCode
+  const activityId: ActivityIdEnum | null | undefined = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.status
+    : user?.activityId
+
   const { mutateAsync: postProfile } = usePostProfileMutation({
     onSuccess: () =>
       handlePostProfileSuccess({
@@ -92,38 +112,33 @@ export const ProfileInformationValidationCreate = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const submitProfileInfo = useCallback(async () => {
-    if (!storedProfileInfos) return
+    if (!firstName || !lastName || !city || !postalCode || !address || !activityId) return
 
-    const profile = { ...storedProfileInfos, hasSchoolTypes: false, schoolType: null }
+    // What is 'code' in SuggestedCity? Should we get it from the backend?
+    const cityForPost: SuggestedCity = { name: city, code: postalCode, postalCode }
+    const profile = {
+      name: {
+        firstName,
+        lastName,
+      },
+      city: cityForPost,
+      address: address,
+      status: activityId,
+      hasSchoolTypes: false,
+      schoolType: null,
+    }
+
     setIsLoading(true)
     await postProfile(profile)
     await saveStep(IdentityCheckStep.PROFILE)
     setIsLoading(false)
-  }, [postProfile, saveStep, storedProfileInfos])
+  }, [activityId, address, city, firstName, lastName, postProfile, postalCode, saveStep])
 
   const onSubmitProfile = () => submitProfileInfo()
   const onChangeInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
 
-  const shouldGetDataFromLocalStorage =
-    pageConfigByType[type].formDataSource === DataSources.LOCAL_STORAGE
-  const firstName = shouldGetDataFromLocalStorage
-    ? storedProfileInfos?.name.firstName
-    : user?.firstName
-  const lastName = shouldGetDataFromLocalStorage
-    ? storedProfileInfos?.name.lastName
-    : user?.lastName
-  const address = shouldGetDataFromLocalStorage
-    ? storedProfileInfos?.address
-    : 'Not Available in AuthContext'
-  const fullCityLocalStorage = storedProfileInfos?.city
-    ? `${storedProfileInfos.city.name} ${storedProfileInfos.city.postalCode}`
-    : undefined
-  const fullCityAuthContext =
-    user?.city && user?.postalCode ? `${user.city} ${user.postalCode}` : undefined
-  const city = shouldGetDataFromLocalStorage ? fullCityLocalStorage : fullCityAuthContext
-  const activity = shouldGetDataFromLocalStorage
-    ? getActivityLabel(storedProfileInfos?.status)
-    : user?.status && getActivityLabel(user?.activityId)
+  const cityLabel = city && postalCode ? `${city} ${postalCode}` : undefined
+  const activityLabel = activityId ? getActivityLabel(activityId) : undefined
 
   return (
     <PageWithHeader
@@ -149,11 +164,11 @@ export const ProfileInformationValidationCreate = () => {
             {
               title: 'Ville de résidence',
               testID: 'validation-birth-date',
-              value: city,
+              value: cityLabel,
             },
             {
               title: 'Statut',
-              value: activity,
+              value: activityLabel,
             },
           ]}
         />
