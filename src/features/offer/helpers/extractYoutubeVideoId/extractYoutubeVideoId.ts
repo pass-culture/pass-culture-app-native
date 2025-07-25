@@ -1,4 +1,5 @@
 export function extractYoutubeVideoId(url: string): string | undefined {
-  const match = url.match(/[?&]v=([^&]+)/)
+  const regex = /[?&]v=([^&]+)/
+  const match = regex.exec(url)
   return match?.[1]
 }
