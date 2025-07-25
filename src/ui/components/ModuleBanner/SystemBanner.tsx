@@ -95,13 +95,18 @@ export const SystemBanner: FunctionComponent<Props> = ({
       }))``
     : undefined
 
-  const getTouchableComponent = (props: TouchableProps) => {
-    if ('navigateTo' in props) return StyledInternalTouchableLink
-    if ('externalNav' in props) return StyledExternalTouchableLink
-    return StyledTouchableOpacity
+  let TouchableComponent: React.ComponentType<
+    | React.ComponentProps<typeof StyledInternalTouchableLink>
+    | React.ComponentProps<typeof StyledExternalTouchableLink>
+    | React.ComponentProps<typeof StyledTouchableOpacity>
+  >
+  if ('navigateTo' in touchableProps) {
+    TouchableComponent = StyledInternalTouchableLink
+  } else if ('externalNav' in touchableProps) {
+    TouchableComponent = StyledExternalTouchableLink
+  } else {
+    TouchableComponent = StyledTouchableOpacity
   }
-
-  const TouchableComponent = getTouchableComponent(touchableProps)
 
   return (
     <TouchableComponent

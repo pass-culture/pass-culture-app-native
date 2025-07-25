@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { StoryFn } from '@storybook/react'
 import React, { useState } from 'react'
-import styled from 'styled-components/native'
+import styled from 'styled-components'
 
 import LottieView from 'libs/lottie'
 import achievements_success from 'ui/animations/achievements_success.json'
@@ -129,7 +129,7 @@ export const AllAnimations = {
   render: Template,
 }
 
-const AnimationContainer = styled.View<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
+const AnimationContainer = styled.div<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
   margin: getSpacing(2),
   padding: getSpacing(2),
   alignItems: 'center',
@@ -147,7 +147,7 @@ const Name = styled(Typo.Button)<{ hasBackground: boolean }>(({ theme, hasBackgr
     : theme.designSystem.color.text.default,
 }))
 
-const GridContainer = styled.View({
+const GridContainer = styled.div({
   flexDirection: 'row',
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
@@ -158,7 +158,7 @@ const Animation = styled(LottieView)<{ isSmallAnimation: boolean }>(({ isSmallAn
   height: isSmallAnimation ? getSpacing(15) : getSpacing(37.5),
 }))
 
-const Cover = styled.View<{ isHovered: boolean }>(({ theme, isHovered }) => ({
+const Cover = styled.div<{ isHovered: boolean }>(({ theme, isHovered }) => ({
   position: 'absolute',
   width: '100%',
   height: '100%',

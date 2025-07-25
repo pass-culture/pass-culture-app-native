@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const StyledTouchableWithoutFeedback = styled.button.attrs<TouchableWithoutFeedbackProps>(
   ({ onClick, testID, accessibilityLabel, ...rest }) => ({
-    tabIndex: '-1',
+    tabIndex: -1,
     onClick,
     'data-testid': accessibilityLabel || testID,
     'aria-label': accessibilityLabel,

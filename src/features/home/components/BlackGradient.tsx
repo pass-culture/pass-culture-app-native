@@ -21,7 +21,7 @@ const parseHeight = (height?: number | string): number | string => {
   return getSpacing(8)
 }
 
-export const BlackGradient = styled(LinearGradient).attrs(({ theme }) => ({
+export const BlackGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
     colorAlpha(theme.designSystem.color.background.lockedInverted, TEXT_BACKGROUND_OPACITY),

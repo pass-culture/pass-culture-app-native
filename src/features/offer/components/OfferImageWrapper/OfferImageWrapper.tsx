@@ -65,7 +65,7 @@ const Container = styled(View)<{
     : {}),
 }))
 
-const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   useAngle: true,
   angle: 180,
   locations: [0.362, 0.6356, 1],

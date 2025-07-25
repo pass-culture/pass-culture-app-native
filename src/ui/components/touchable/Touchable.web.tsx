@@ -7,7 +7,7 @@ import { TouchableProps } from './types'
 
 const StyledTouchable = styled.button.attrs<TouchableProps>(
   ({ onClick, type, testID, accessibilityLabel, ...rest }) => ({
-    tabIndex: '0',
+    tabIndex: 0,
     type: type || 'button',
     onClick,
     'data-testid': accessibilityLabel || testID,

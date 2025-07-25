@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import { LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -13,7 +13,7 @@ interface SectionProps {
   style?: StyleProp<ViewStyle>
 }
 
-export const SectionWithDivider = ({
+export const SectionWithDivider: FC<PropsWithChildren<SectionProps>> = ({
   visible,
   children,
   margin = false,
@@ -21,7 +21,7 @@ export const SectionWithDivider = ({
   testID,
   style,
   gap,
-}: PropsWithChildren<SectionProps>) => {
+}) => {
   if (!visible) return null
 
   return (

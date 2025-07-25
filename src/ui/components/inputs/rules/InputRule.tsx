@@ -54,7 +54,7 @@ export const InputRule: FunctionComponent<Props> = ({
         {title}
       </StyledCaption>
       <IconContainer>
-        <Icon testID={testIdSuffix ? `rule-icon-${testIdSuffix}` : undefined} />
+        <Icon testID={`rule-icon-${testIdSuffix ?? ''}`} />
       </IconContainer>
     </StyledView>
   )

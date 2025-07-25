@@ -66,7 +66,10 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
   )
 }
 
-const StyledSectionWithDivider = styled(SectionWithDivider).attrs({
+const StyledSectionWithDivider = styled(SectionWithDivider).attrs<{
+  gap?: number
+  visible?: boolean
+}>({
   visible: true,
   margin: true,
   gap: 8,

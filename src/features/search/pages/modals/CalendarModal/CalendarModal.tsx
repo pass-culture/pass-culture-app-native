@@ -312,7 +312,7 @@ const StyledCalendarList = styled(CalendarList).attrs(({ theme }) => ({
   marginTop: getSpacing(4),
 })
 
-const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
+const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     colorAlpha(theme.designSystem.color.background.default, 0),
     colorAlpha(theme.designSystem.color.background.default, 0.5),
