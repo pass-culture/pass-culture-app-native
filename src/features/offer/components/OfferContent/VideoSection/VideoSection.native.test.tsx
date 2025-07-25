@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { render, screen } from 'tests/utils'
 
@@ -7,6 +8,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const defaultProps = {
   offerId: 123,
+  offerSubcategory: SubcategoryIdEnum.SEANCE_CINE,
   videoId: 'abc123',
   title: 'Peppa Pig',
   subtitle: 'le cochon rose',

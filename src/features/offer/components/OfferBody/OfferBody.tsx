@@ -195,6 +195,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           videoThumbnail={<VideoThumbnailImage url={offer.videoUrl} resizeMode="cover" />}
           title="Vidéo"
           offerId={offer.id}
+          offerSubcategory={offer.subcategoryId}
         />
       ) : null}
 
