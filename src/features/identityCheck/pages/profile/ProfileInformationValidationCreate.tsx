@@ -78,7 +78,7 @@ export const ProfileInformationValidationCreate = () => {
     ? storedProfileInfos?.name.lastName
     : user?.lastName
   const storedAddress = storedProfileInfos?.address ?? null
-  const address = shouldGetDataFromLocalStorage ? storedAddress : 'Not Available in AuthContext'
+  const address = shouldGetDataFromLocalStorage ? storedAddress : user?.street
   const city = shouldGetDataFromLocalStorage ? storedProfileInfos?.city.name : user?.city
   const postalCode = shouldGetDataFromLocalStorage
     ? storedProfileInfos?.city.postalCode
