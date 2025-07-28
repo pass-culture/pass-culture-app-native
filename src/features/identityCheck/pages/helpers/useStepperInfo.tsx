@@ -75,7 +75,12 @@ export const useStepperInfo = (): StepperInfo => {
   }
 
   const hasUserCompletedInfo =
-    !!user?.firstName && !!user?.lastName && !!user?.street && !!user?.postalCode && !!user?.city
+    !!user?.firstName &&
+    !!user?.lastName &&
+    !!user?.street &&
+    !!user?.postalCode &&
+    !!user?.city &&
+    !!user?.activityId
 
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
