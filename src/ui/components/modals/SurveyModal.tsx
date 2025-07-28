@@ -57,17 +57,15 @@ export const SurveyModal = ({
         {complementaryDescription ? <StyledBody>{complementaryDescription}</StyledBody> : null}
 
         {surveyUrl ? (
-          <React.Fragment>
-            <ExternalTouchableLink
-              onBeforeNavigate={hideModal}
-              as={ButtonPrimary}
-              icon={ExternalSite}
-              wording="Répondre au questionnaire"
-              externalNav={{
-                url: surveyUrl,
-              }}
-            />
-          </React.Fragment>
+          <ExternalTouchableLink
+            onBeforeNavigate={hideModal}
+            as={ButtonPrimary}
+            icon={ExternalSite}
+            wording="Répondre au questionnaire"
+            externalNav={{
+              url: surveyUrl,
+            }}
+          />
         ) : null}
       </ContentContainer>
     </AppModal>
