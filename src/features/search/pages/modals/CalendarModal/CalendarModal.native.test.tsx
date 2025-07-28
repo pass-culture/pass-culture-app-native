@@ -253,6 +253,37 @@ describe('CalendarModal', () => {
       })
     )
   })
+
+  it('should remove selected filter when pressing a date', async () => {
+    mockUseSearch.mockReturnValueOnce({
+      ...initialMockUseSearch,
+      searchState: {
+        ...initialSearchState,
+        beginningDatetime: '2025-05-01',
+        endingDatetime: '2025-05-05',
+        calendarFilterId: 'thisWeek',
+      },
+    })
+
+    renderCalendarModal()
+
+    const dateButton = screen.getByLabelText(/ 1 Juin 2025/)
+
+    await user.press(dateButton)
+
+    await user.press(screen.getByLabelText('Rechercher'))
+
+    expect(mockDispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'SET_STATE',
+        payload: expect.objectContaining({
+          beginningDatetime: '2025-06-01T00:00:00.000Z',
+          endingDatetime: undefined,
+          calendarFilterId: undefined,
+        }),
+      })
+    )
+  })
 })
 
 function renderCalendarModal({
