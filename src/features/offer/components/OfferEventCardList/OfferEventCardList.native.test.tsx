@@ -99,6 +99,10 @@ describe('OfferEventCardList', () => {
       onPress: jest.fn(),
       CTAOfferModal: null,
       movieScreeningUserData: {},
+      onPressSecondary: jest.fn(),
+      secondaryCtaWordingAndAction: undefined,
+      secondaryCTAOfferModal: null,
+      secondaryShowOfferModal: jest.fn(),
     })
     mockUseSubcategoriesMapping.mockReturnValueOnce({
       [subcategoryId]: object,

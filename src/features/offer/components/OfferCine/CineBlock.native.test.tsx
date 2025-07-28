@@ -85,6 +85,10 @@ describe('CineBlock', () => {
       onPress: mockOnPressOfferCTA,
       CTAOfferModal: null,
       movieScreeningUserData: {},
+      onPressSecondary: jest.fn(),
+      secondaryCtaWordingAndAction: undefined,
+      secondaryCTAOfferModal: null,
+      secondaryShowOfferModal: jest.fn(),
     })
   })
 
