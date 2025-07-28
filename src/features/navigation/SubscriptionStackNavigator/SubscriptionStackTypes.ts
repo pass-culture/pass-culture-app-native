@@ -1,4 +1,4 @@
-import { ProfileType } from 'features/identityCheck/pages/profile/types'
+import { ProfileScreenType } from 'features/identityCheck/pages/profile/types'
 import {
   CulturalSurveyRootStackParamList,
   StepperOrigin,
@@ -17,13 +17,13 @@ export type SubscriptionStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   NewSignup: undefined
   // Profile
-  ProfileInformationValidationCreate?: ProfileType
+  ProfileInformationValidationCreate?: ProfileScreenType
   ProfileInformationValidationUpdate: undefined
   SetEmail: undefined
-  SetName?: ProfileType
-  SetCity?: ProfileType
-  SetAddress?: ProfileType
-  SetStatus?: ProfileType
+  SetName?: ProfileScreenType
+  SetCity?: ProfileScreenType
+  SetAddress?: ProfileScreenType
+  SetStatus?: ProfileScreenType
   SetProfileBookingError?: { offerId?: number }
   // Identification
   ComeBackLater: undefined
