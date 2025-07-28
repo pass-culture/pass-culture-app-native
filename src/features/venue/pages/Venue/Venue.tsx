@@ -64,7 +64,9 @@ export const Venue: FunctionComponent = () => {
     transformHits,
     venue,
   })
-  const { artistPageSubcategories } = useRemoteConfigQuery()
+  const {
+    data: { artistPageSubcategories },
+  } = useRemoteConfigQuery()
   const { data: venueArtists } = getVenueOffersArtists(
     artistPageSubcategories.subcategories,
     venueOffers?.hits

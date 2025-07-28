@@ -6,6 +6,7 @@ import { HISTORY_KEY, MAX_HISTORY_RESULTS } from 'features/search/constants'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -33,7 +34,7 @@ const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuer
 
 describe('useSearchHistory', () => {
   beforeAll(() => {
-    useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
   })
 
   beforeEach(async () => {
@@ -125,13 +126,16 @@ describe('useSearchHistory', () => {
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: true,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: true,
+        },
       })
     })
 
     afterAll(() => {
-      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
     })
 
     it('should capture a message in Sentry when adding to history fails', async () => {
@@ -165,8 +169,11 @@ describe('useSearchHistory', () => {
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        shouldLogInfo: false,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: false,
+        },
       })
     })
 

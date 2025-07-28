@@ -10,6 +10,8 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaOffer, AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GeoCoordinates, Position } from 'libs/location'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -82,6 +84,10 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 describe('SearchResultsContent component', () => {
   beforeEach(() => {

@@ -39,7 +39,9 @@ export const OfferFooter: FC<OfferFooterProps> = ({
 
   const { isDesktopViewport } = useTheme()
   const { isButtonVisible } = useOfferCTA()
-  const { showAccessScreeningButton } = useRemoteConfigQuery()
+  const {
+    data: { showAccessScreeningButton },
+  } = useRemoteConfigQuery()
 
   const { data: reminder } = useGetRemindersQuery((data) => selectReminderByOfferId(data, offer.id))
   const hasReminder = !!reminder

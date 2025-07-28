@@ -22,6 +22,7 @@ import { AlgoliaOffer, AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { GeolocPermissionState, Position } from 'libs/location'
@@ -224,9 +225,7 @@ const initSearchResultsFlashlist = async () => {
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     setFeatureFlags()
-    useRemoteConfigSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-    })
+    useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
   })
 
   const user = userEvent.setup()
@@ -946,8 +945,11 @@ describe('SearchResultsContent component', () => {
       describe('gridListLayout remote config is grid', () => {
         it('should display results as grid', async () => {
           useRemoteConfigSpy.mockReturnValueOnce({
-            ...DEFAULT_REMOTE_CONFIG,
-            gridListLayoutRemoteConfig: 'Grille',
+            ...remoteConfigResponseFixture,
+            data: {
+              ...DEFAULT_REMOTE_CONFIG,
+              gridListLayoutRemoteConfig: 'Grille',
+            },
           })
 
           renderSearchResultContent()

@@ -37,7 +37,9 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
-  const { showAccessScreeningButton } = useRemoteConfigQuery()
+  const {
+    data: { showAccessScreeningButton },
+  } = useRemoteConfigQuery()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

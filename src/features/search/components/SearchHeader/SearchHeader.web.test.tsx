@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
@@ -40,7 +40,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 describe('SearchHeader component', () => {
   beforeEach(() => {

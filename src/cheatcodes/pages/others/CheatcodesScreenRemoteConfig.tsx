@@ -21,7 +21,7 @@ const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfi
 )
 
 export const CheatcodesScreenRemoteConfig = () => {
-  const remoteConfig = useRemoteConfigQuery()
+  const { data: remoteConfig } = useRemoteConfigQuery()
 
   const sortedRemoteConfigEntries = Object.entries(remoteConfig).sort(([keyA], [keyB]) =>
     keyA.localeCompare(keyB)

@@ -1,5 +1,6 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQueryAPI from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Position } from 'libs/location/types'
@@ -34,8 +35,11 @@ jest.useFakeTimers()
 describe('useArtistResultsQuery', () => {
   beforeAll(() => {
     useRemoteConfigSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      artistPageSubcategories: { subcategories: [SubcategoryIdEnum.LIVRE_PAPIER] },
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        artistPageSubcategories: { subcategories: [SubcategoryIdEnum.LIVRE_PAPIER] },
+      },
     })
   })
 

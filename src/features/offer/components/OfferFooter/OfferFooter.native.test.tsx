@@ -7,15 +7,16 @@ import { api } from 'api/api'
 import { GetRemindersResponse } from 'api/gen'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFooter/OfferFooter'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reminder, remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { beneficiaryUser } from 'fixtures/user'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -52,7 +53,7 @@ const user = userEvent.setup()
 
 describe('OfferFooter', () => {
   beforeAll(() => {
-    useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
     useOfferCTASpy.mockReturnValue(mockUseOfferCTAReturnValue)
   })
 
@@ -61,8 +62,11 @@ describe('OfferFooter', () => {
   describe('Content when offer is a movie screening', () => {
     beforeEach(() => {
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: true,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          showAccessScreeningButton: true,
+        },
       })
       useOfferCTASpy.mockReturnValue({
         ...mockUseOfferCTAReturnValue,
@@ -89,8 +93,11 @@ describe('OfferFooter', () => {
     beforeEach(() => {
       mockDate.set(CURRENT_DATE)
       useRemoteConfigSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: false,
+        ...remoteConfigResponseFixture,
+        data: {
+          ...DEFAULT_REMOTE_CONFIG,
+          showAccessScreeningButton: false,
+        },
       })
     })
 
