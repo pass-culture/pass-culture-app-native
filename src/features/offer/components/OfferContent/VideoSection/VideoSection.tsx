@@ -22,6 +22,7 @@ type VideoSectionProps = {
   style?: StyleProp<ViewStyle>
   maxWidth?: number
   playerRatio?: number
+  userId?: number
 }
 
 export const VideoSection = ({
@@ -34,6 +35,7 @@ export const VideoSection = ({
   playerRatio = RATIO169,
   offerId,
   offerSubcategory,
+  userId,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
@@ -51,7 +53,7 @@ export const VideoSection = ({
           width={viewportWidth < maxWidth ? undefined : maxWidth}
           initialPlayerParams={{ autoplay: true }}
         />
-        <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} />
+        <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} userId={userId} />
       </React.Fragment>
     )
   }, [
@@ -60,6 +62,7 @@ export const VideoSection = ({
     offerSubcategory,
     subtitle,
     title,
+    userId,
     videoHeight,
     videoId,
     videoThumbnail,

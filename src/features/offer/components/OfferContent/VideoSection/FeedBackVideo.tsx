@@ -7,6 +7,8 @@ import styled from 'styled-components/native'
 import { ReactionTypeEnum, SubcategoryIdEnum } from 'api/gen'
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
+import { ReactionFromEnum } from 'features/reactions/enum'
+import { analytics } from 'libs/analytics/provider'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -18,9 +20,10 @@ const getStorageKey = (offerId: number) => `feedback_reaction_${offerId}`
 type Props = {
   offerId: number
   offerSubcategory: SubcategoryIdEnum
+  userId?: number
 }
 
-export function FeedBackVideo({ offerId, offerSubcategory }: Props) {
+export function FeedBackVideo({ offerId, offerSubcategory, userId }: Props) {
   const [reaction, setReaction] = useState<ReactionTypeEnum | null>(null)
   const [hasJustReacted, setHasJustReacted] = useState(false)
 
@@ -44,11 +47,18 @@ export function FeedBackVideo({ offerId, offerSubcategory }: Props) {
     async (type: ReactionTypeEnum) => {
       if (type !== ReactionTypeEnum.LIKE && type !== ReactionTypeEnum.DISLIKE) return
 
+      analytics.logValidateReaction({
+        offerId,
+        reactionType: type,
+        from: ReactionFromEnum.OFFER_VIDEO_SURVEY,
+        userId,
+      })
+
       setReaction(type)
       setHasJustReacted(true)
       await AsyncStorage.setItem(getStorageKey(offerId), type)
     },
-    [offerId]
+    [offerId, userId]
   )
 
   // When navigating away from the screen, hide the questionnaire invitation.

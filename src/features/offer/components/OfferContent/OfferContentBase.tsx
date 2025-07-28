@@ -89,6 +89,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onReactionButtonPress,
   BodyWrapper = React.Fragment,
   onLayout,
+  userId,
   children,
 }) => {
   const theme = useTheme()
@@ -280,7 +281,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               chronicles={chronicles}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
-              chronicleVariantInfo={chronicleVariantInfo}>
+              chronicleVariantInfo={chronicleVariantInfo}
+              userId={userId}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>
