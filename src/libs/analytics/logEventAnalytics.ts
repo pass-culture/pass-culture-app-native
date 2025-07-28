@@ -24,6 +24,7 @@ import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/S
 import { PlaylistType } from 'features/offer/enums'
 import { NonEligible } from 'features/onboarding/enums'
 import { EligibleAges } from 'features/onboarding/types'
+import { ReactionFromEnum } from 'features/reactions/enum'
 import {
   RemoteBannerOrigin,
   RemoteBannerType,
@@ -652,6 +653,7 @@ export const logEventAnalytics = {
   logValidateReaction: (params: {
     offerId: number
     reactionType: ReactionTypeEnum
+    from: ReactionFromEnum
     userId?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>

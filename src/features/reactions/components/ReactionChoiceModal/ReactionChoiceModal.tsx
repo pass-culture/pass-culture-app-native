@@ -80,10 +80,12 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       offerId: offer.id,
       reactionType: reactionStatus,
     })
+
     analytics.logValidateReaction({
       offerId: offer.id,
       reactionType: reactionStatus,
       userId: profile?.id,
+      from,
     })
   }
 

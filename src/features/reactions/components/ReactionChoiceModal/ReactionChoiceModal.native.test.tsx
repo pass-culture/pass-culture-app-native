@@ -241,6 +241,7 @@ describe('ReactionChoiceModal', () => {
         offerId: mockOffer.id,
         reactionType: ReactionTypeEnum.LIKE,
         userId: 1234,
+        from: ReactionFromEnum.ENDED_BOOKING,
       })
     })
   })
