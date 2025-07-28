@@ -6,6 +6,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
+import { analytics } from 'libs/analytics/provider'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -43,6 +44,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   }
 
   const handleVideoPress = () => {
+    analytics.logConsultVideo({ from: 'offer' })
     navigate('OfferVideoPreview', { id: offer.id })
   }
 

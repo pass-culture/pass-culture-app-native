@@ -25,8 +25,8 @@ import { PlaylistType } from 'features/offer/enums'
 import { NonEligible } from 'features/onboarding/enums'
 import { EligibleAges } from 'features/onboarding/types'
 import {
-  RemoteBannerType,
   RemoteBannerOrigin,
+  RemoteBannerType,
 } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { GridListLayout, SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
@@ -260,8 +260,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_VIDEO_FAKE_DOOR }, { venueType }),
   logConsultVideo: (params: {
     from: Referrals
-    moduleId: string
-    homeEntryId: string
+    moduleId?: string
+    homeEntryId?: string
     youtubeId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
   logConsultWholeOffer: (offerId: number) =>
