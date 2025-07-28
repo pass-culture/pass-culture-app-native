@@ -3,7 +3,7 @@ import React from 'react'
 import { useGetCulturalSurveyContent } from 'features/culturalSurvey/helpers/useGetCulturalSurveyContent'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import QpiThanks from 'ui/animations/qpi_thanks.json'
+import QpiThanks from 'ui/animations/geolocalisation.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const CulturalSurveyThanks: React.FC = () => {
