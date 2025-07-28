@@ -8,7 +8,9 @@ import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 import { OfferModal } from 'shared/offer/enums'
+import { SurveyModal } from 'ui/components/modals/SurveyModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { Clock } from 'ui/svg/icons/Clock'
 
 export type OfferModalProps = {
   modalToDisplay?: OfferModal
@@ -79,6 +81,22 @@ export const useBookOfferModal = ({
     case OfferModal.FINISH_SUBSCRIPTION:
       return {
         OfferModal: <FinishSubscriptionModal visible={visible} hideModal={hideModal} from={from} />,
+        showModal,
+      }
+
+    case OfferModal.SURVEY:
+      return {
+        OfferModal: (
+          <SurveyModal
+            visible={visible}
+            hideModal={hideModal}
+            title="Encore un peu de patience..."
+            surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_e3SRK0UKgVgJasu"
+            Icon={Clock}
+            complementaryDescription="Tu peux toujours emprunter un livre en te rendant à la bibliothèque la plus proche de chez toi&nbsp;!"
+            surveyDescription="Cette fonctionnalité n’est pas encore disponible. Aide-nous à la mettre en place en répondant au questionnaire. "
+          />
+        ),
         showModal,
       }
 

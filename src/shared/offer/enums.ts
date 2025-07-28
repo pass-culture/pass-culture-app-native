@@ -4,4 +4,5 @@ export enum OfferModal {
   BOOKING,
   ERROR_APPLICATION,
   FINISH_SUBSCRIPTION,
+  SURVEY,
 }
