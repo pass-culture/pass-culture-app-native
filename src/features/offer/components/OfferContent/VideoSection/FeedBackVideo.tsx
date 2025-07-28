@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { AppState, AppStateStatus } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ReactionTypeEnum } from 'api/gen'
+import { ReactionTypeEnum, SubcategoryIdEnum } from 'api/gen'
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -17,9 +17,10 @@ const getStorageKey = (offerId: number) => `feedback_reaction_${offerId}`
 
 type Props = {
   offerId: number
+  offerSubcategory: SubcategoryIdEnum
 }
 
-export function FeedBackVideo({ offerId }: Props) {
+export function FeedBackVideo({ offerId, offerSubcategory }: Props) {
   const [reaction, setReaction] = useState<ReactionTypeEnum | null>(null)
   const [hasJustReacted, setHasJustReacted] = useState(false)
 
@@ -73,8 +74,8 @@ export function FeedBackVideo({ offerId }: Props) {
 
   const url =
     reaction === ReactionTypeEnum.LIKE
-      ? 'https://passculture.qualtrics.com/jfe/form/SV_238Dd248lT6UuJE'
-      : 'https://passculture.qualtrics.com/jfe/form/SV_3lb1IPodkGiMzWe'
+      ? `https://passculture.qualtrics.com/jfe/form/SV_238Dd248lT6UuJE?subcategory=${offerSubcategory}`
+      : `https://passculture.qualtrics.com/jfe/form/SV_3lb1IPodkGiMzWe?subcategory=${offerSubcategory}`
 
   if (reaction && hasJustReacted) {
     return (
