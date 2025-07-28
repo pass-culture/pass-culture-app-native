@@ -114,8 +114,11 @@ export const ProfileInformationValidationCreate = () => {
   const submitProfileInfo = useCallback(async () => {
     if (!firstName || !lastName || !city || !postalCode || !address || !activityId) return
 
-    // What is 'code' in SuggestedCity? Should we get it from the backend?
-    const cityForPost: SuggestedCity = { name: city, code: postalCode, postalCode }
+    const cityForPost: SuggestedCity = {
+      name: city,
+      postalCode,
+      code: '', // not used in usePostProfileMutation but needed by typing
+    }
     const profile = {
       name: {
         firstName,
