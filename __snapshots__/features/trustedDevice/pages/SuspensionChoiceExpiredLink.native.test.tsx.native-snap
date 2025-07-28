@@ -3,14 +3,12 @@
 exports[`<SuspensionChoiceExpiredLink/> should match snapshot 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
@@ -37,69 +35,59 @@ exports[`<SuspensionChoiceExpiredLink/> should match snapshot 1`] = `
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         />
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -107,53 +95,44 @@ exports[`<SuspensionChoiceExpiredLink/> should match snapshot 1`] = `
     </View>
   </View>
   <View
-    bottom={16}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "overflow": "scroll",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+      }
     }
   >
     <View
       height={16}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       animation={false}
       style={
-        [
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "marginBottom": 24,
+        }
       }
     >
       <View
@@ -168,41 +147,35 @@ exports[`<SuspensionChoiceExpiredLink/> should match snapshot 1`] = `
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
       >
         Oups !
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
       >
         Le lien que tu reçois par e-mail expire 7 jours après sa réception.
@@ -213,24 +186,20 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+        }
       }
     >
       <View
@@ -270,7 +239,10 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
               {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -292,23 +264,19 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+                "marginRight": 8,
+              }
             }
           >
             <View
@@ -326,15 +294,13 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Contacter le service fraude
@@ -377,7 +343,10 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
               },
               {
                 "alignItems": "center",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -401,23 +370,19 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+                "marginRight": 8,
+              }
             }
           >
             <View
@@ -434,15 +399,13 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Retourner à l’accueil

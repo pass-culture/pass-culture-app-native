@@ -72,7 +72,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         </RightColumn>
       </Container>
       {bottomBannerText ? (
-        <BottomBanner testID="bottom-banner">
+        <BottomBanner>
           <ClockFilled />
           <Typo.BodyAccentXs>{bottomBannerText}</Typo.BodyAccentXs>
         </BottomBanner>

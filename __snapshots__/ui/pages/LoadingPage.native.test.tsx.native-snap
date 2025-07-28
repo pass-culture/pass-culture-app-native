@@ -3,19 +3,17 @@
 exports[`<LoadingPage /> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "justifyContent": "center",
-        "width": "100%",
-      },
-    ]
+    {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexDirection": "column",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "justifyContent": "center",
+      "width": "100%",
+    }
   }
 >
   <View>
@@ -23,16 +21,14 @@ exports[`<LoadingPage /> should render correctly 1`] = `
   </View>
   <Text
     style={
-      [
-        {
-          "color": "#eb0055",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-          "textAlign": "center",
-          "top": -16,
-        },
-      ]
+      {
+        "color": "#eb0055",
+        "fontFamily": "Montserrat-Medium",
+        "fontSize": 16,
+        "lineHeight": 25.6,
+        "textAlign": "center",
+        "top": -16,
+      }
     }
   >
     Chargement en cours...

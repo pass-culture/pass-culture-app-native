@@ -9,6 +9,7 @@ import React, { ReactNode } from 'react'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
+import { StylesheetManagerWrapper } from 'libs/styled/StyleSheetManagerWrapper'
 import { computedTheme } from 'tests/computedTheme'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 
@@ -22,7 +23,9 @@ const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
   return (
     <ThemeProviderWeb theme={innerTheme}>
       <ThemeProvider theme={innerTheme}>
-        <IconFactoryProvider>{children}</IconFactoryProvider>
+        <StylesheetManagerWrapper>
+          <IconFactoryProvider>{children}</IconFactoryProvider>
+        </StylesheetManagerWrapper>
       </ThemeProvider>
     </ThemeProviderWeb>
   )

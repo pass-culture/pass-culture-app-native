@@ -3,14 +3,12 @@
 exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <RCTScrollView
@@ -24,44 +22,34 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
     }
     onScroll={[Function]}
     scrollEventThrottle={16}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         numberOfSpaces={7}
         style={
-          [
-            {
-              "height": 28,
-            },
-          ]
+          {
+            "height": 28,
+          }
         }
       />
       <Text
         numberOfLines={3}
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 19,
+            "lineHeight": 30.4,
+          }
         }
       >
         Comment ça marche ?
@@ -69,24 +57,20 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          [
-            {
-              "height": 24,
-            },
-          ]
+          {
+            "height": 24,
+          }
         }
       />
       <Text
         numberOfLines={3}
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 14,
+            "lineHeight": 22.4,
+          }
         }
       >
         De 17 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des activités culturelles.
@@ -94,46 +78,38 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          [
-            {
-              "height": 24,
-            },
-          ]
+          {
+            "height": 24,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "flexDirection": "column",
-              "flexGrow": 1,
-            },
-          ]
+          {
+            "flexDirection": "column",
+            "flexGrow": 1,
+          }
         }
         testID="seventeen-timeline"
       >
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-                "flexGrow": 1,
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "flexGrow": 1,
+            }
           }
         >
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "overflow": "hidden",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "overflow": "hidden",
+                }
               }
               testID="vertical-stepper-complete"
             >
@@ -141,29 +117,26 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 isFirst={true}
                 isLast={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "width": 2,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#90949d",
+                    "borderBottomLeftRadius": 2,
+                    "borderBottomRightRadius": 2,
+                    "borderTopLeftRadius": 2,
+                    "borderTopRightRadius": 2,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "width": 2,
+                  }
                 }
                 testID="top-line"
               />
               <View
                 addMoreSpacingToIcons={true}
                 style={
-                  [
-                    {
-                      "marginVertical": 10,
-                    },
-                  ]
+                  {
+                    "marginVertical": 10,
+                  }
                 }
               >
                 <View
@@ -179,17 +152,18 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 isFirst={true}
                 isLast={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderRadius": 2,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "opacity": 1,
-                      "width": 2,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#90949d",
+                    "borderBottomLeftRadius": 2,
+                    "borderBottomRightRadius": 2,
+                    "borderTopLeftRadius": 2,
+                    "borderTopRightRadius": 2,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "opacity": 1,
+                    "width": 2,
+                  }
                 }
                 testID="bottom-line"
               />
@@ -197,24 +171,20 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
           </View>
           <View
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginHorizontal": 8,
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginHorizontal": 8,
+              }
             }
           >
             <View
               numberOfSpaces={3}
               style={
-                [
-                  {
-                    "height": 12,
-                  },
-                ]
+                {
+                  "height": 12,
+                }
               }
             />
             <RNGestureHandlerButton
@@ -246,8 +216,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderColor": "#90949d",
-                      "borderRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "borderWidth": 1,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -265,14 +238,12 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   <View>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       à 17 ans
@@ -280,38 +251,32 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                     <View
                       numberOfSpaces={1}
                       style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
+                        {
+                          "height": 4,
+                        }
                       }
                     />
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
-                            "marginBottom": 8,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                          "marginBottom": 8,
+                        }
                       }
                     >
                       Tu reçois
                        
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#320096",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 19,
-                              "lineHeight": 30.4,
-                            },
-                          ]
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
+                          }
                         }
                       >
                         50 €
@@ -319,59 +284,63 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                     </Text>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "borderRadius": 48,
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "borderBottomLeftRadius": 48,
+                          "borderBottomRightRadius": 48,
+                          "borderTopLeftRadius": 48,
+                          "borderTopRightRadius": 48,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                        }
                       }
                     >
                       <View
                         height="normal"
                         style={
-                          [
-                            {
-                              "backgroundColor": "#ffffff",
-                              "borderRadius": 48,
-                              "flexDirection": "row",
-                              "height": 18,
-                              "width": "100%",
-                              "zIndex": 1,
-                            },
-                          ]
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 48,
+                            "borderBottomRightRadius": 48,
+                            "borderTopLeftRadius": 48,
+                            "borderTopRightRadius": 48,
+                            "flexDirection": "row",
+                            "height": 18,
+                            "width": "100%",
+                            "zIndex": 1,
+                          }
                         }
                       >
                         <View
                           style={
-                            [
-                              {
-                                "backgroundColor": "#f1f1f4",
-                                "borderRadius": 48,
-                                "height": "100%",
-                                "left": 0,
-                                "position": "absolute",
-                                "top": 0,
-                                "width": "100%",
-                              },
-                            ]
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 48,
+                              "borderBottomRightRadius": 48,
+                              "borderTopLeftRadius": 48,
+                              "borderTopRightRadius": 48,
+                              "height": "100%",
+                              "left": 0,
+                              "position": "absolute",
+                              "top": 0,
+                              "width": "100%",
+                            }
                           }
                         />
                         <View
                           color="#eb0055"
                           progress={0.5}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#eb0055",
-                                "borderRadius": 48,
-                                "flexBasis": 0,
-                                "flexGrow": 0.5,
-                                "flexShrink": 1,
-                              },
-                            ]
+                            {
+                              "backgroundColor": "#eb0055",
+                              "borderBottomLeftRadius": 48,
+                              "borderBottomRightRadius": 48,
+                              "borderTopLeftRadius": 48,
+                              "borderTopRightRadius": 48,
+                              "flexBasis": 0,
+                              "flexGrow": 0.5,
+                              "flexShrink": 1,
+                            }
                           }
                           testID="progress-bar"
                         />
@@ -380,33 +349,27 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
+                        {
+                          "height": 16,
+                        }
                       }
                     />
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "height": 16,
-                              "marginRight": 8,
-                              "width": 16,
-                            },
-                          ]
+                          {
+                            "height": 16,
+                            "marginRight": 8,
+                            "width": 16,
+                          }
                         }
                       >
                         <View
@@ -420,15 +383,13 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       </View>
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
                         }
                       >
                         Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit.
@@ -441,37 +402,31 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
             <View
               numberOfSpaces={3}
               style={
-                [
-                  {
-                    "height": 12,
-                  },
-                ]
+                {
+                  "height": 12,
+                }
               }
             />
           </View>
         </View>
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-                "flexGrow": 1,
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "flexGrow": 1,
+            }
           }
         >
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "overflow": "hidden",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "overflow": "hidden",
+                }
               }
               testID="vertical-stepper-complete"
             >
@@ -479,29 +434,26 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 isFirst={false}
                 isLast={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderRadius": 2,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "width": 2,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#90949d",
+                    "borderBottomLeftRadius": 2,
+                    "borderBottomRightRadius": 2,
+                    "borderTopLeftRadius": 0,
+                    "borderTopRightRadius": 0,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "width": 2,
+                  }
                 }
                 testID="top-line"
               />
               <View
                 addMoreSpacingToIcons={true}
                 style={
-                  [
-                    {
-                      "marginVertical": 10,
-                    },
-                  ]
+                  {
+                    "marginVertical": 10,
+                  }
                 }
               >
                 <View
@@ -517,17 +469,18 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 isFirst={false}
                 isLast={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderRadius": 2,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "opacity": 1,
-                      "width": 2,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#90949d",
+                    "borderBottomLeftRadius": 2,
+                    "borderBottomRightRadius": 2,
+                    "borderTopLeftRadius": 2,
+                    "borderTopRightRadius": 2,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "opacity": 1,
+                    "width": 2,
+                  }
                 }
                 testID="bottom-line"
               />
@@ -535,24 +488,20 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
           </View>
           <View
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginHorizontal": 8,
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginHorizontal": 8,
+              }
             }
           >
             <View
               numberOfSpaces={3}
               style={
-                [
-                  {
-                    "height": 12,
-                  },
-                ]
+                {
+                  "height": 12,
+                }
               }
             />
             <RNGestureHandlerButton
@@ -584,8 +533,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderColor": "#90949d",
-                      "borderRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "borderWidth": 1,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -603,14 +555,12 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   <View>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       à 18 ans
@@ -618,38 +568,32 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                     <View
                       numberOfSpaces={1}
                       style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
+                        {
+                          "height": 4,
+                        }
                       }
                     />
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
-                            "marginBottom": 8,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                          "marginBottom": 8,
+                        }
                       }
                     >
                       Tu reçois
                        
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#320096",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 19,
-                              "lineHeight": 30.4,
-                            },
-                          ]
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 19,
+                            "lineHeight": 30.4,
+                          }
                         }
                       >
                         150 €
@@ -657,59 +601,63 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                     </Text>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "borderRadius": 48,
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "borderBottomLeftRadius": 48,
+                          "borderBottomRightRadius": 48,
+                          "borderTopLeftRadius": 48,
+                          "borderTopRightRadius": 48,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                        }
                       }
                     >
                       <View
                         height="normal"
                         style={
-                          [
-                            {
-                              "backgroundColor": "#ffffff",
-                              "borderRadius": 48,
-                              "flexDirection": "row",
-                              "height": 18,
-                              "width": "100%",
-                              "zIndex": 1,
-                            },
-                          ]
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 48,
+                            "borderBottomRightRadius": 48,
+                            "borderTopLeftRadius": 48,
+                            "borderTopRightRadius": 48,
+                            "flexDirection": "row",
+                            "height": 18,
+                            "width": "100%",
+                            "zIndex": 1,
+                          }
                         }
                       >
                         <View
                           style={
-                            [
-                              {
-                                "backgroundColor": "#f1f1f4",
-                                "borderRadius": 48,
-                                "height": "100%",
-                                "left": 0,
-                                "position": "absolute",
-                                "top": 0,
-                                "width": "100%",
-                              },
-                            ]
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 48,
+                              "borderBottomRightRadius": 48,
+                              "borderTopLeftRadius": 48,
+                              "borderTopRightRadius": 48,
+                              "height": "100%",
+                              "left": 0,
+                              "position": "absolute",
+                              "top": 0,
+                              "width": "100%",
+                            }
                           }
                         />
                         <View
                           color="#eb0055"
                           progress={1}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#eb0055",
-                                "borderRadius": 48,
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
+                            {
+                              "backgroundColor": "#eb0055",
+                              "borderBottomLeftRadius": 48,
+                              "borderBottomRightRadius": 48,
+                              "borderTopLeftRadius": 48,
+                              "borderTopRightRadius": 48,
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            }
                           }
                           testID="progress-bar"
                         />
@@ -718,58 +666,48 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                     <View
                       numberOfSpaces={6}
                       style={
-                        [
-                          {
-                            "height": 24,
-                          },
-                        ]
+                        {
+                          "height": 24,
+                        }
                       }
                     />
                     <View
                       accessibilityRole="list"
                       style={
-                        [
-                          {
-                            "flexDirection": "column",
-                            "paddingBottom": 4,
-                            "paddingLeft": 4,
-                            "paddingRight": 4,
-                            "paddingTop": 4,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "flexDirection": "column",
+                          "paddingBottom": 4,
+                          "paddingLeft": 4,
+                          "paddingRight": 4,
+                          "paddingTop": 4,
+                          "width": "100%",
+                        }
                       }
                     >
                       <View
                         accessibilityRole="none"
                         style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
+                          {
+                            "display": "flex",
+                          }
                         }
                       >
                         <View
                           style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "flexShrink": 1,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                            }
                           }
                         >
                           <View
                             style={
-                              [
-                                {
-                                  "height": 16,
-                                  "marginRight": 8,
-                                  "width": 16,
-                                },
-                              ]
+                              {
+                                "height": 16,
+                                "marginRight": 8,
+                                "width": 16,
+                              }
                             }
                           >
                             <View
@@ -783,15 +721,13 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           </View>
                           <Text
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "flexShrink": 1,
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 19.2,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
                             }
                           >
                             Tu as jusqu’à la veille de tes 19 ans pour confirmer ton identité et activer ton crédit.
@@ -800,44 +736,36 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         <View
                           numberOfSpaces={4}
                           style={
-                            [
-                              {
-                                "height": 16,
-                              },
-                            ]
+                            {
+                              "height": 16,
+                            }
                           }
                         />
                       </View>
                       <View
                         accessibilityRole="none"
                         style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
+                          {
+                            "display": "flex",
+                          }
                         }
                       >
                         <View
                           style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "flexShrink": 1,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                            }
                           }
                         >
                           <View
                             style={
-                              [
-                                {
-                                  "height": 16,
-                                  "marginRight": 8,
-                                  "width": 16,
-                                },
-                              ]
+                              {
+                                "height": 16,
+                                "marginRight": 8,
+                                "width": 16,
+                              }
                             }
                           >
                             <View
@@ -851,15 +779,13 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           </View>
                           <Text
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "flexShrink": 1,
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 19.2,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
                             }
                           >
                             Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire.
@@ -874,66 +800,57 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
             <View
               numberOfSpaces={3}
               style={
-                [
-                  {
-                    "height": 12,
-                  },
-                ]
+                {
+                  "height": 12,
+                }
               }
             />
           </View>
         </View>
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-                "flexGrow": 1,
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "flexGrow": 1,
+            }
           }
         >
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "overflow": "hidden",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "overflow": "hidden",
+                }
               }
               testID="vertical-stepper-complete"
             >
               <View
                 isLast={true}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderRadius": 2,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "width": 2,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#90949d",
+                    "borderBottomLeftRadius": 2,
+                    "borderBottomRightRadius": 2,
+                    "borderTopLeftRadius": 0,
+                    "borderTopRightRadius": 0,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "width": 2,
+                  }
                 }
                 testID="top-line"
               />
               <View
                 addMoreSpacingToIcons={true}
                 style={
-                  [
-                    {
-                      "marginVertical": 10,
-                    },
-                  ]
+                  {
+                    "marginVertical": 10,
+                  }
                 }
               >
                 <View
@@ -948,82 +865,73 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
               <View
                 isLast={true}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#90949d",
-                      "borderRadius": 2,
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "opacity": 0,
-                      "width": 2,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#90949d",
+                    "borderBottomLeftRadius": 2,
+                    "borderBottomRightRadius": 2,
+                    "borderTopLeftRadius": 2,
+                    "borderTopRightRadius": 2,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "opacity": 0,
+                    "width": 2,
+                  }
                 }
               />
             </View>
           </View>
           <View
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginHorizontal": 8,
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginHorizontal": 8,
+              }
             }
           >
             <View
               numberOfSpaces={3}
               style={
-                [
-                  {
-                    "height": 12,
-                  },
-                ]
+                {
+                  "height": 12,
+                }
               }
             />
             <View
               gap={1}
               style={
-                [
-                  {
-                    "gap": 4,
-                  },
-                ]
+                {
+                  "gap": 4,
+                }
               }
             >
               <Text
                 numberOfLines={3}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "justifyContent": "center",
-                      "lineHeight": 25.6,
-                      "marginLeft": 6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "justifyContent": "center",
+                    "lineHeight": 25.6,
+                    "marginLeft": 6,
+                  }
                 }
               >
                 Explore tout ce que la culture peut offrir, avec ou sans crédit !
               </Text>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "justifyContent": "center",
-                      "lineHeight": 19.2,
-                      "marginLeft": 6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "justifyContent": "center",
+                    "lineHeight": 19.2,
+                    "marginLeft": 6,
+                  }
                 }
               >
                 Tu peux continuer à réserver des offres gratuites autour de chez toi.
@@ -1032,11 +940,9 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
             <View
               numberOfSpaces={3}
               style={
-                [
-                  {
-                    "height": 12,
-                  },
-                ]
+                {
+                  "height": 12,
+                }
               }
             />
           </View>
@@ -1045,52 +951,47 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          [
-            {
-              "height": 16,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
       />
       <View
         backgroundColor="#f3edff"
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#f3edff",
-              "borderRadius": 8,
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#f3edff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "paddingBottom": 16,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 16,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
           }
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
+              }
             }
             textColor="#161617"
           >
@@ -1100,11 +1001,9 @@ Les récents ajustements du dispositif peuvent en être la raison.
           <View
             numberOfSpaces={2}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
           <View
@@ -1140,7 +1039,10 @@ Les récents ajustements du dispositif peuvent en être la raison.
               {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
-                "borderRadius": 0,
+                "borderBottomLeftRadius": 0,
+                "borderBottomRightRadius": 0,
+                "borderTopLeftRadius": 0,
+                "borderTopRightRadius": 0,
                 "borderWidth": 0,
                 "flexDirection": "row",
                 "justifyContent": "flex-start",
@@ -1160,23 +1062,19 @@ Les récents ajustements du dispositif peuvent en être la raison.
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "marginRight": 8,
+                  }
                 }
               >
                 <View
@@ -1194,15 +1092,13 @@ Les récents ajustements du dispositif peuvent en être la raison.
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#320096",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#320096",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Plus d’infos dans notre FAQ
@@ -1214,11 +1110,9 @@ Les récents ajustements du dispositif peuvent en être la raison.
       <View
         numberOfSpaces={12}
         style={
-          [
-            {
-              "height": 48,
-            },
-          ]
+          {
+            "height": 48,
+          }
         }
       />
     </View>
@@ -1264,13 +1158,11 @@ Les récents ajustements du dispositif peuvent en être la raison.
             {
               "backgroundColor": "transparent",
             },
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ],
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
           ]
         }
       />
@@ -1279,17 +1171,15 @@ Les récents ajustements du dispositif peuvent en être la raison.
       marginRight={64}
       marginTop={16}
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginBottom": 8,
-            "marginLeft": 24,
-            "marginRight": 64,
-            "marginTop": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginBottom": 8,
+          "marginLeft": 24,
+          "marginRight": 64,
+          "marginTop": 16,
+        }
       }
     >
       <View
@@ -1324,7 +1214,10 @@ Les récents ajustements du dispositif peuvent en être la raison.
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderRadius": 40,
+            "borderBottomLeftRadius": 40,
+            "borderBottomRightRadius": 40,
+            "borderTopLeftRadius": 40,
+            "borderTopRightRadius": 40,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1338,9 +1231,12 @@ Les récents ajustements du dispositif peuvent en être la raison.
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderBottomLeftRadius": 40,
+              "borderBottomRightRadius": 40,
               "borderColor": "rgba(255, 255, 255, 1)",
-              "borderRadius": 40,
               "borderStyle": "solid",
+              "borderTopLeftRadius": 40,
+              "borderTopRightRadius": 40,
               "borderWidth": 1,
               "height": 40,
               "justifyContent": "center",
@@ -1353,12 +1249,10 @@ Les récents ajustements du dispositif peuvent en être la raison.
           <View
             size={24}
             style={
-              [
-                {
-                  "height": 24,
-                  "width": 24,
-                },
-              ]
+              {
+                "height": 24,
+                "width": 24,
+              }
             }
           >
             <View
@@ -1406,15 +1300,13 @@ Les récents ajustements du dispositif peuvent en être la raison.
       </View>
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          }
         }
       >
         <Text
@@ -1431,14 +1323,12 @@ Les récents ajustements du dispositif peuvent en être la raison.
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Comment ça marche ?

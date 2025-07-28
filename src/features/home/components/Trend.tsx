@@ -13,15 +13,10 @@ type TrendProps = TrendBlock &
 const DESKTOP_BUTTON_SIZE = getSpacing(20)
 const MOBILE_BUTTON_SIZE = getSpacing(14)
 
-export const Trend = ({ image, title, navigateTo, ...rest }: TrendProps) => {
-  if (!navigateTo?.screen) return null
-
+export const Trend = ({ image, title, ...rest }: TrendProps) => {
   return (
-    <Item
-      key={title}
-      navigateTo={{ screen: navigateTo.screen, params: navigateTo.params }}
-      {...rest}>
-      <ItemIcon source={'testUri' in image ? { uri: image.testUri } : image} />
+    <Item key={title} {...rest}>
+      <ItemIcon source={image} />
       <StyledText>{title}</StyledText>
     </Item>
   )
@@ -40,7 +35,7 @@ const StyledText = styled(Typo.BodyAccentXs).attrs({
   width: theme.isDesktopViewport ? getSpacing(29) : getSpacing(19),
 }))
 
-const ItemIcon = styled.Image(({ theme }) => ({
+const ItemIcon = styled.Image<{ source: { uri?: string; testUri?: string } }>(({ theme }) => ({
   width: theme.isDesktopViewport ? DESKTOP_BUTTON_SIZE : MOBILE_BUTTON_SIZE,
   height: theme.isDesktopViewport ? DESKTOP_BUTTON_SIZE : MOBILE_BUTTON_SIZE,
 }))

@@ -3,24 +3,20 @@
 exports[`<AcceptCgu/> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "maxWidth": 500,
-        "width": "100%",
-      },
-    ]
+    {
+      "maxWidth": 500,
+      "width": "100%",
+    }
   }
 >
   <Text
     style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 19,
-          "lineHeight": 30.4,
-        },
-      ]
+      {
+        "color": "#161617",
+        "fontFamily": "Montserrat-Bold",
+        "fontSize": 19,
+        "lineHeight": 30.4,
+      }
     }
   >
     CGU & Données
@@ -28,11 +24,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   <View
     numberOfSpaces={10}
     style={
-      [
-        {
-          "height": 40,
-        },
-      ]
+      {
+        "height": 40,
+      }
     }
   />
   <View
@@ -72,7 +66,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           },
           {
             "cursor": "pointer",
-            "width": "fit-content",
           },
         ],
         {
@@ -84,13 +77,11 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "columnGap": 12,
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "columnGap": 12,
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -104,31 +95,30 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           ]
         }
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#90949d",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 2,
-              "height": 20,
-              "justifyContent": "center",
-              "width": 20,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 4,
+            "borderBottomRightRadius": 4,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 4,
+            "borderTopRightRadius": 4,
+            "borderWidth": 2,
+            "height": 20,
+            "justifyContent": "center",
+            "width": 20,
+          }
         }
         variant="default"
       />
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <Text
@@ -141,14 +131,12 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             ]
           }
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           J’ai lu et j’accepte les conditions générales d’utilisation
@@ -160,11 +148,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      [
-        {
-          "height": 24,
-        },
-      ]
+      {
+        "height": 24,
+      }
     }
   />
   <View
@@ -204,7 +190,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           },
           {
             "cursor": "pointer",
-            "width": "fit-content",
           },
         ],
         {
@@ -216,13 +201,11 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "columnGap": 12,
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "columnGap": 12,
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -236,31 +219,30 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           ]
         }
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#90949d",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 2,
-              "height": 20,
-              "justifyContent": "center",
-              "width": 20,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 4,
+            "borderBottomRightRadius": 4,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 4,
+            "borderTopRightRadius": 4,
+            "borderWidth": 2,
+            "height": 20,
+            "justifyContent": "center",
+            "width": 20,
+          }
         }
         variant="default"
       />
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <Text
@@ -273,14 +255,12 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             ]
           }
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           J’ai lu la charte des données personnelles
@@ -292,36 +272,30 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      [
-        {
-          "height": 24,
-        },
-      ]
+      {
+        "height": 24,
+      }
     }
   />
   <Text
     style={
-      [
-        {
-          "color": "#696a6f",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 19.2,
-        },
-      ]
+      {
+        "color": "#696a6f",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": 12,
+        "lineHeight": 19.2,
+      }
     }
   >
     <Text
       accessibilityHidden={true}
       style={
-        [
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          },
-        ]
+        {
+          "color": "#696a6f",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 19.2,
+        }
       }
     >
       *obligatoires pour créer ton compte.
@@ -332,11 +306,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   <View
     numberOfSpaces={2}
     style={
-      [
-        {
-          "height": 8,
-        },
-      ]
+      {
+        "height": 8,
+      }
     }
   />
   <View
@@ -375,7 +347,10 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           },
           {
             "alignItems": "center",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "height": "auto",
             "justifyContent": "flex-start",
@@ -400,23 +375,19 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "marginRight": 8,
+          }
         }
       >
         <View
@@ -434,15 +405,13 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+            "maxWidth": "100%",
+          }
         }
       >
         Nos conditions générales d’utilisation
@@ -485,7 +454,10 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           },
           {
             "alignItems": "center",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "height": "auto",
             "justifyContent": "flex-start",
@@ -510,23 +482,19 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "marginRight": 8,
+          }
         }
       >
         <View
@@ -544,15 +512,13 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+            "maxWidth": "100%",
+          }
         }
       >
         La charte des données personnelles
@@ -562,11 +528,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   <View
     numberOfSpaces={10}
     style={
-      [
-        {
-          "height": 40,
-        },
-      ]
+      {
+        "height": 40,
+      }
     }
   />
   <View
@@ -607,7 +571,10 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           {
             "alignItems": "center",
             "backgroundColor": "#f1f1f4",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
             "maxWidth": 500,
@@ -629,27 +596,23 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <Text
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "maxWidth": "100%",
+          }
         }
       >
         S’inscrire
@@ -659,23 +622,19 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   <View
     numberOfSpaces={4}
     style={
-      [
-        {
-          "height": 16,
-        },
-      ]
+      {
+        "height": 16,
+      }
     }
   />
   <Text
     style={
-      [
-        {
-          "color": "#696a6f",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 19.2,
-        },
-      ]
+      {
+        "color": "#696a6f",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": 12,
+        "lineHeight": 19.2,
+      }
     }
   >
     Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
@@ -683,11 +642,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   <View
     numberOfSpaces={5}
     style={
-      [
-        {
-          "height": 20,
-        },
-      ]
+      {
+        "height": 20,
+      }
     }
   />
 </View>
@@ -696,24 +653,20 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
 exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
 <View
   style={
-    [
-      {
-        "maxWidth": 500,
-        "width": "100%",
-      },
-    ]
+    {
+      "maxWidth": 500,
+      "width": "100%",
+    }
   }
 >
   <Text
     style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 19,
-          "lineHeight": 30.4,
-        },
-      ]
+      {
+        "color": "#161617",
+        "fontFamily": "Montserrat-Bold",
+        "fontSize": 19,
+        "lineHeight": 30.4,
+      }
     }
   >
     CGU & Données
@@ -721,11 +674,9 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={10}
     style={
-      [
-        {
-          "height": 40,
-        },
-      ]
+      {
+        "height": 40,
+      }
     }
   />
   <View
@@ -765,7 +716,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           },
           {
             "cursor": "pointer",
-            "width": "fit-content",
           },
         ],
         {
@@ -777,13 +727,11 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "columnGap": 12,
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "columnGap": 12,
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -797,31 +745,30 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           ]
         }
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#90949d",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 2,
-              "height": 20,
-              "justifyContent": "center",
-              "width": 20,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 4,
+            "borderBottomRightRadius": 4,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 4,
+            "borderTopRightRadius": 4,
+            "borderWidth": 2,
+            "height": 20,
+            "justifyContent": "center",
+            "width": 20,
+          }
         }
         variant="default"
       />
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <Text
@@ -834,14 +781,12 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             ]
           }
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
@@ -852,32 +797,26 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      [
-        {
-          "height": 24,
-        },
-      ]
+      {
+        "height": 24,
+      }
     }
   />
   <View
     style={
-      [
-        {
-          "backgroundColor": "#f1f1f4",
-          "height": 1,
-          "width": "100%",
-        },
-      ]
+      {
+        "backgroundColor": "#f1f1f4",
+        "height": 1,
+        "width": "100%",
+      }
     }
   />
   <View
     numberOfSpaces={6}
     style={
-      [
-        {
-          "height": 24,
-        },
-      ]
+      {
+        "height": 24,
+      }
     }
   />
   <View
@@ -917,7 +856,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           },
           {
             "cursor": "pointer",
-            "width": "fit-content",
           },
         ],
         {
@@ -929,13 +867,11 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "columnGap": 12,
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "columnGap": 12,
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -949,31 +885,30 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           ]
         }
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#90949d",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 2,
-              "height": 20,
-              "justifyContent": "center",
-              "width": 20,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 4,
+            "borderBottomRightRadius": 4,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 4,
+            "borderTopRightRadius": 4,
+            "borderWidth": 2,
+            "height": 20,
+            "justifyContent": "center",
+            "width": 20,
+          }
         }
         variant="default"
       />
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <Text
@@ -986,14 +921,12 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             ]
           }
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           J’ai lu et j’accepte les conditions générales d’utilisation
@@ -1005,11 +938,9 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      [
-        {
-          "height": 24,
-        },
-      ]
+      {
+        "height": 24,
+      }
     }
   />
   <View
@@ -1049,7 +980,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           },
           {
             "cursor": "pointer",
-            "width": "fit-content",
           },
         ],
         {
@@ -1061,13 +991,11 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "columnGap": 12,
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "columnGap": 12,
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -1081,31 +1009,30 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           ]
         }
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#90949d",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 2,
-              "height": 20,
-              "justifyContent": "center",
-              "width": 20,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomLeftRadius": 4,
+            "borderBottomRightRadius": 4,
+            "borderColor": "#90949d",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 4,
+            "borderTopRightRadius": 4,
+            "borderWidth": 2,
+            "height": 20,
+            "justifyContent": "center",
+            "width": 20,
+          }
         }
         variant="default"
       />
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <Text
@@ -1118,14 +1045,12 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             ]
           }
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           J’ai lu la charte des données personnelles
@@ -1137,36 +1062,30 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      [
-        {
-          "height": 24,
-        },
-      ]
+      {
+        "height": 24,
+      }
     }
   />
   <Text
     style={
-      [
-        {
-          "color": "#696a6f",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 19.2,
-        },
-      ]
+      {
+        "color": "#696a6f",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": 12,
+        "lineHeight": 19.2,
+      }
     }
   >
     <Text
       accessibilityHidden={true}
       style={
-        [
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          },
-        ]
+        {
+          "color": "#696a6f",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 19.2,
+        }
       }
     >
       *obligatoires pour créer ton compte.
@@ -1177,11 +1096,9 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={2}
     style={
-      [
-        {
-          "height": 8,
-        },
-      ]
+      {
+        "height": 8,
+      }
     }
   />
   <View
@@ -1220,7 +1137,10 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           },
           {
             "alignItems": "center",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "height": "auto",
             "justifyContent": "flex-start",
@@ -1245,23 +1165,19 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "marginRight": 8,
+          }
         }
       >
         <View
@@ -1279,15 +1195,13 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+            "maxWidth": "100%",
+          }
         }
       >
         Nos conditions générales d’utilisation
@@ -1330,7 +1244,10 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           },
           {
             "alignItems": "center",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "height": "auto",
             "justifyContent": "flex-start",
@@ -1355,23 +1272,19 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "marginRight": 8,
+          }
         }
       >
         <View
@@ -1389,15 +1302,13 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "maxWidth": "100%",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+            "maxWidth": "100%",
+          }
         }
       >
         La charte des données personnelles
@@ -1407,11 +1318,9 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={10}
     style={
-      [
-        {
-          "height": 40,
-        },
-      ]
+      {
+        "height": 40,
+      }
     }
   />
   <View
@@ -1452,7 +1361,10 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           {
             "alignItems": "center",
             "backgroundColor": "#f1f1f4",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
             "maxWidth": 500,
@@ -1474,27 +1386,23 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <Text
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "maxWidth": "100%",
+          }
         }
       >
         S’inscrire
@@ -1504,23 +1412,19 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={4}
     style={
-      [
-        {
-          "height": 16,
-        },
-      ]
+      {
+        "height": 16,
+      }
     }
   />
   <Text
     style={
-      [
-        {
-          "color": "#696a6f",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 19.2,
-        },
-      ]
+      {
+        "color": "#696a6f",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": 12,
+        "lineHeight": 19.2,
+      }
     }
   >
     Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
@@ -1528,11 +1432,9 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   <View
     numberOfSpaces={5}
     style={
-      [
-        {
-          "height": 20,
-        },
-      ]
+      {
+        "height": 20,
+      }
     }
   />
 </View>

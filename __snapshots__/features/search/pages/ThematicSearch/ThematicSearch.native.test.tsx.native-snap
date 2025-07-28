@@ -3,105 +3,87 @@
 exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     customHeight={16}
     enable={true}
     style={
-      [
-        {
-          "height": 16,
-        },
-      ]
+      {
+        "height": 16,
+      }
     }
   />
   <View
     style={
-      [
-        {
-          "marginTop": 24,
-          "paddingHorizontal": 24,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "marginTop": 24,
+        "paddingHorizontal": 24,
+        "zIndex": 1,
+      }
     }
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "paddingBottom": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingBottom": 16,
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "flexShrink": 1,
-                "width": "100%",
-              },
-            ]
+            {
+              "flexShrink": 1,
+              "width": "100%",
+            }
           }
           testID="SearchHeaderTitleContainer"
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "flex-start",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                },
-              ]
+              {
+                "alignItems": "flex-start",
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexWrap": "wrap",
-                    "justifyContent": "flex-start",
-                    "maxWidth": "75%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "flex-start",
+                  "maxWidth": "75%",
+                }
               }
             >
               <Text
                 htmlFor="testUuidV4"
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 28,
-                      "lineHeight": 44.8,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 28,
+                    "lineHeight": 44.8,
+                  }
                 }
               >
                 Livres
@@ -117,52 +99,44 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
     <View>
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "flexDirection": "row",
+          }
         }
       >
         <View
           style={
-            [
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            style={
               {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "justifyContent": "center",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "width": 40,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "width": 40,
+                }
               }
             >
               <View
@@ -226,11 +200,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "display": "none",
-                      },
-                    ]
+                    {
+                      "display": "none",
+                    }
                   }
                 >
                   Retour
@@ -239,14 +211,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                }
               }
             >
               <View
@@ -259,9 +229,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 22,
+                      "borderBottomRightRadius": 22,
                       "borderColor": "#90949d",
-                      "borderRadius": 22,
                       "borderStyle": "solid",
+                      "borderTopLeftRadius": 22,
+                      "borderTopRightRadius": 22,
                       "borderWidth": 1,
                       "flexDirection": "row",
                       "height": 48,
@@ -272,7 +245,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       "width": "100%",
                     },
                     {
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "outlineOffset": 0,
                     },
                     {
@@ -284,12 +260,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      },
-                    ]
+                    {
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
                   }
                 >
                   <View
@@ -344,24 +318,20 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 />
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "height": 32,
-                        "marginLeft": 4,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "height": 32,
+                      "marginLeft": 4,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#f1f1f4",
-                          "height": "100%",
-                          "width": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": "100%",
+                        "width": 1,
+                      }
                     }
                   />
                   <View
@@ -422,16 +392,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <Text
                       numberOfLines={1}
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                            "marginLeft": 4,
-                            "maxWidth": 100,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "marginLeft": 4,
+                          "maxWidth": 100,
+                        }
                       }
                     >
                       France entière
@@ -445,11 +413,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         <Text
           nativeID="testUuidV4"
           style={
-            [
-              {
-                "display": "none",
-              },
-            ]
+            {
+              "display": "none",
+            }
           }
         >
           Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
@@ -460,11 +426,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
   <View
     numberOfSpaces={2}
     style={
-      [
-        {
-          "height": 8,
-        },
-      ]
+      {
+        "height": 8,
+      }
     }
   />
   <RCTScrollView
@@ -474,12 +438,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
     style={
-      [
-        {
-          "marginBottom": 24,
-          "paddingBottom": 24,
-        },
-      ]
+      {
+        "marginBottom": 24,
+        "paddingBottom": 24,
+      }
     }
   >
     <View>
@@ -496,11 +458,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         horizontal={true}
         itemsNumber={13}
         showsHorizontalScrollIndicator={false}
-        style={
-          [
-            {},
-          ]
-        }
+        style={{}}
       >
         <View>
           <View
@@ -542,9 +500,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -575,14 +536,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Romans et littérature
@@ -627,9 +586,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -660,14 +622,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Mangas
@@ -712,9 +672,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -745,14 +708,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               BD & Comics
@@ -797,9 +758,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -830,14 +794,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Loisirs & Bien-être
@@ -882,9 +844,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -915,14 +880,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Société & Politique
@@ -967,9 +930,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1000,14 +966,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Théâtre, Poésie & Essais
@@ -1052,9 +1016,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1085,14 +1052,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Compétences générales
@@ -1137,9 +1102,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1170,14 +1138,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Mode et Art
@@ -1222,9 +1188,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1255,14 +1224,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Tourisme & Voyages
@@ -1307,9 +1274,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1340,14 +1310,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Abonnements aux médiathèques et bibliothèques
@@ -1392,9 +1360,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1425,14 +1396,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               E-books
@@ -1477,9 +1446,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1510,14 +1482,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Évènements autour du livre
@@ -1562,9 +1532,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffa5c0",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#eb0055",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
                     "height": 56,
@@ -1595,14 +1568,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               numberOfLines={2}
               paddingRight={16}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Livres audio
@@ -1613,35 +1584,29 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
       <View
         gap={6}
         style={
-          [
-            {
-              "gap": 24,
-            },
-          ]
+          {
+            "gap": 24,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "position": "relative",
-              },
-            ]
+            {
+              "position": "relative",
+            }
           }
         >
           <View
             onChange={[Function]}
             onLayout={[Function]}
             style={
-              [
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": "50%",
-                },
-              ]
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "50%",
+              }
             }
             testID="intersectionObserver"
             threshold="50%"
@@ -1651,40 +1616,32 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             gap={4}
             noMarginBottom={true}
             style={
-              [
-                {
-                  "gap": 16,
-                  "paddingBottom": 0,
-                },
-              ]
+              {
+                "gap": 16,
+                "paddingBottom": 0,
+              }
             }
           >
             <View
               gap={1}
               style={
-                [
-                  {
-                    "gap": 4,
-                  },
-                ]
+                {
+                  "gap": 4,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "marginHorizontal": 24,
-                      },
-                    ]
+                    {
+                      "marginHorizontal": 24,
+                    }
                   }
                   testID="playlistTitle"
                 >
@@ -1693,14 +1650,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     accessibilityLabel="GTL playlist"
                     numberOfLines={2}
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 19,
-                          "lineHeight": 30.4,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
+                      }
                     }
                   >
                     GTL playlist
@@ -1711,12 +1666,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             <View
               onLayout={[Function]}
               style={
-                [
-                  {
-                    "position": "relative",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "position": "relative",
+                  "width": "100%",
+                }
               }
             >
               <RCTScrollView
@@ -1728,17 +1681,15 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "width": 16,
                       },
                     ],
-                    "inlineStyle": InlineStyle {
+                    "inlineStyle": e {
                       "rules": [
                         [Function],
-                        "",
                       ],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   }
                 }
                 ListFooterComponent={
@@ -1749,17 +1700,15 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "width": 24,
                       },
                     ],
-                    "inlineStyle": InlineStyle {
+                    "inlineStyle": e {
                       "rules": [
                         [Function],
-                        "",
                       ],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   }
                 }
                 ListHeaderComponent={
@@ -1770,17 +1719,15 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "width": 24,
                       },
                     ],
-                    "inlineStyle": InlineStyle {
+                    "inlineStyle": e {
                       "rules": [
                         [Function],
-                        "",
                       ],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   }
                 }
                 collapsable={false}
@@ -2520,11 +2467,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   >
                     <View
                       style={
-                        [
-                          {
-                            "width": 24,
-                          },
-                        ]
+                        {
+                          "width": 24,
+                        }
                       }
                       width={24}
                     />
@@ -2543,11 +2488,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
-                      style={
-                        [
-                          {},
-                        ]
-                      }
+                      style={{}}
                       testID="OfferTile"
                     >
                       <View
@@ -2578,7 +2519,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "textDecorationStyle": "solid",
                             },
                             {
-                              "borderRadius": 8,
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
                               "marginVertical": 4,
                             },
                           ]
@@ -2589,24 +2533,20 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           gap={2}
                           maxWidth={280}
                           style={
-                            [
-                              {
-                                "gap": 8,
-                                "maxWidth": 280,
-                              },
-                            ]
+                            {
+                              "gap": 8,
+                              "maxWidth": 280,
+                            }
                           }
                           testID="playlistCardOffer"
                         >
                           <View
                             height={420}
                             style={
-                              [
-                                {
-                                  "height": 420,
-                                  "width": 280,
-                                },
-                              ]
+                              {
+                                "height": 420,
+                                "width": 280,
+                              }
                             }
                             width={280}
                           >
@@ -2618,13 +2558,17 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   {
                                     "alignItems": "center",
                                     "backgroundColor": "#f1f1f4",
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
+                                    "borderTopLeftRadius": 8,
+                                    "borderTopRightRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
                                     "width": "100%",
                                   },
                                   {
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                   },
@@ -2647,14 +2591,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={1}
                               style={
-                                [
-                                  {
-                                    "color": "#696a6f",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#696a6f",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Livre
@@ -2662,14 +2604,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={2}
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Mon abonnement bibliothèque
@@ -2678,14 +2618,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           <View>
                             <Text
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                               testID="priceIsDuo"
                             />
@@ -2812,11 +2750,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         }
                       }
                       style={
-                        [
-                          {
-                            "width": 16,
-                          },
-                        ]
+                        {
+                          "width": 16,
+                        }
                       }
                       width={16}
                     />
@@ -2835,11 +2771,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
-                      style={
-                        [
-                          {},
-                        ]
-                      }
+                      style={{}}
                       testID="OfferTile"
                     >
                       <View
@@ -2870,7 +2802,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "textDecorationStyle": "solid",
                             },
                             {
-                              "borderRadius": 8,
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
                               "marginVertical": 4,
                             },
                           ]
@@ -2881,24 +2816,20 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           gap={2}
                           maxWidth={280}
                           style={
-                            [
-                              {
-                                "gap": 8,
-                                "maxWidth": 280,
-                              },
-                            ]
+                            {
+                              "gap": 8,
+                              "maxWidth": 280,
+                            }
                           }
                           testID="playlistCardOffer"
                         >
                           <View
                             height={420}
                             style={
-                              [
-                                {
-                                  "height": 420,
-                                  "width": 280,
-                                },
-                              ]
+                              {
+                                "height": 420,
+                                "width": 280,
+                              }
                             }
                             width={280}
                           >
@@ -2910,13 +2841,17 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   {
                                     "alignItems": "center",
                                     "backgroundColor": "#f1f1f4",
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
+                                    "borderTopLeftRadius": 8,
+                                    "borderTopRightRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
                                     "width": "100%",
                                   },
                                   {
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                   },
@@ -2939,14 +2874,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={1}
                               style={
-                                [
-                                  {
-                                    "color": "#696a6f",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#696a6f",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Films
@@ -2954,14 +2887,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={2}
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Mon abonnement médiathèque
@@ -2970,14 +2901,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           <View>
                             <Text
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                               testID="priceIsDuo"
                             />
@@ -3104,11 +3033,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         }
                       }
                       style={
-                        [
-                          {
-                            "width": 16,
-                          },
-                        ]
+                        {
+                          "width": 16,
+                        }
                       }
                       width={16}
                     />
@@ -3127,11 +3054,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
-                      style={
-                        [
-                          {},
-                        ]
-                      }
+                      style={{}}
                       testID="OfferTile"
                     >
                       <View
@@ -3162,7 +3085,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "textDecorationStyle": "solid",
                             },
                             {
-                              "borderRadius": 8,
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
                               "marginVertical": 4,
                             },
                           ]
@@ -3173,24 +3099,20 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           gap={2}
                           maxWidth={280}
                           style={
-                            [
-                              {
-                                "gap": 8,
-                                "maxWidth": 280,
-                              },
-                            ]
+                            {
+                              "gap": 8,
+                              "maxWidth": 280,
+                            }
                           }
                           testID="playlistCardOffer"
                         >
                           <View
                             height={420}
                             style={
-                              [
-                                {
-                                  "height": 420,
-                                  "width": 280,
-                                },
-                              ]
+                              {
+                                "height": 420,
+                                "width": 280,
+                              }
                             }
                             width={280}
                           >
@@ -3202,13 +3124,17 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   {
                                     "alignItems": "center",
                                     "backgroundColor": "#f1f1f4",
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
+                                    "borderTopLeftRadius": 8,
+                                    "borderTopRightRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
                                     "width": "100%",
                                   },
                                   {
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                   },
@@ -3231,14 +3157,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={1}
                               style={
-                                [
-                                  {
-                                    "color": "#696a6f",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#696a6f",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Livre
@@ -3246,14 +3170,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={2}
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Mon abonnement livres numériques
@@ -3262,14 +3184,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           <View>
                             <Text
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                               testID="priceIsDuo"
                             />
@@ -3396,11 +3316,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         }
                       }
                       style={
-                        [
-                          {
-                            "width": 16,
-                          },
-                        ]
+                        {
+                          "width": 16,
+                        }
                       }
                       width={16}
                     />
@@ -3419,11 +3337,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
-                      style={
-                        [
-                          {},
-                        ]
-                      }
+                      style={{}}
                       testID="OfferTile"
                     >
                       <View
@@ -3454,7 +3368,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "textDecorationStyle": "solid",
                             },
                             {
-                              "borderRadius": 8,
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
                               "marginVertical": 4,
                             },
                           ]
@@ -3465,24 +3382,20 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           gap={2}
                           maxWidth={280}
                           style={
-                            [
-                              {
-                                "gap": 8,
-                                "maxWidth": 280,
-                              },
-                            ]
+                            {
+                              "gap": 8,
+                              "maxWidth": 280,
+                            }
                           }
                           testID="playlistCardOffer"
                         >
                           <View
                             height={420}
                             style={
-                              [
-                                {
-                                  "height": 420,
-                                  "width": 280,
-                                },
-                              ]
+                              {
+                                "height": 420,
+                                "width": 280,
+                              }
                             }
                             width={280}
                           >
@@ -3494,13 +3407,17 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   {
                                     "alignItems": "center",
                                     "backgroundColor": "#f1f1f4",
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
+                                    "borderTopLeftRadius": 8,
+                                    "borderTopRightRadius": 8,
                                     "height": "100%",
                                     "justifyContent": "center",
                                     "width": "100%",
                                   },
                                   {
-                                    "borderRadius": 8,
+                                    "borderBottomLeftRadius": 8,
+                                    "borderBottomRightRadius": 8,
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                   },
@@ -3523,14 +3440,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={1}
                               style={
-                                [
-                                  {
-                                    "color": "#696a6f",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#696a6f",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Jeux
@@ -3538,14 +3453,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             <Text
                               numberOfLines={2}
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                             >
                               Mon abonnement ludothèque
@@ -3554,14 +3467,12 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           <View>
                             <Text
                               style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 12,
-                                    "lineHeight": 19.2,
-                                  },
-                                ]
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 12,
+                                  "lineHeight": 19.2,
+                                }
                               }
                               testID="priceIsDuo"
                             />
@@ -3688,11 +3599,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         }
                       }
                       style={
-                        [
-                          {
-                            "width": 16,
-                          },
-                        ]
+                        {
+                          "width": 16,
+                        }
                       }
                       width={16}
                     />
@@ -3709,11 +3618,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   >
                     <View
                       style={
-                        [
-                          {
-                            "width": 24,
-                          },
-                        ]
+                        {
+                          "width": 24,
+                        }
                       }
                       width={24}
                     />

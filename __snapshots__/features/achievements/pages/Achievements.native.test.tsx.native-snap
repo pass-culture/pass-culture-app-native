@@ -3,82 +3,70 @@
 exports[`<Achievements/> should match snapshot 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -136,11 +124,9 @@ exports[`<Achievements/> should match snapshot 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -150,15 +136,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Mes succès
@@ -166,18 +150,16 @@ exports[`<Achievements/> should match snapshot 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -196,79 +178,63 @@ exports[`<Achievements/> should match snapshot 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         gap={4}
         style={
-          [
-            {
-              "gap": 16,
-            },
-          ]
+          {
+            "gap": 16,
+          }
         }
       >
         <View
           gap={4}
           style={
-            [
-              {
-                "gap": 16,
-              },
-            ]
+            {
+              "gap": 16,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+              }
             }
           >
             <View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
                 }
               >
                 Premières réservations
               </Text>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 6 succès restants
@@ -277,71 +243,64 @@ exports[`<Achievements/> should match snapshot 1`] = `
             <View
               gap={2}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "gap": 8,
-                    "justifyContent": "flex-end",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "gap": 8,
+                  "justifyContent": "flex-end",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "maxWidth": 80,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": 80,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "maxHeight": 40,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "maxHeight": 40,
+                    }
                   }
                 >
                   <View
                     height={2.5}
                     style={
-                      [
-                        {
-                          "borderColor": "#cbcdd2",
-                          "borderRadius": 48,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "height": 10,
-                          "zIndex": 1,
-                        },
-                      ]
+                      {
+                        "borderBottomLeftRadius": 48,
+                        "borderBottomRightRadius": 48,
+                        "borderColor": "#cbcdd2",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 48,
+                        "borderTopRightRadius": 48,
+                        "borderWidth": 1,
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 10,
+                        "zIndex": 1,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "backgroundColor": "#eb0055",
-                            "flexBasis": 0,
-                            "flexGrow": 0.3333333333333333,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#eb0055",
+                          "flexBasis": 0,
+                          "flexGrow": 0.3333333333333333,
+                          "flexShrink": 1,
+                        }
                       }
                       testID="progress-bar"
                     />
@@ -350,14 +309,12 @@ exports[`<Achievements/> should match snapshot 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                  }
                 }
               >
                 3/9
@@ -381,16 +338,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": true,
                   "name": "FIRST_ART_LESSON_BOOKING",
@@ -402,16 +356,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": true,
                   "name": "FIRST_BOOK_BOOKING",
@@ -423,16 +374,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": true,
                   "name": "FIRST_MOVIE_BOOKING",
@@ -444,16 +392,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": false,
                   "name": "FIRST_RECORDED_MUSIC_BOOKING",
@@ -465,16 +410,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": false,
                   "name": "FIRST_SHOW_BOOKING",
@@ -486,16 +428,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": false,
                   "name": "FIRST_MUSEUM_BOOKING",
@@ -507,16 +446,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": false,
                   "name": "FIRST_LIVE_MUSIC_BOOKING",
@@ -528,16 +464,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": false,
                   "name": "FIRST_NEWS_BOOKING",
@@ -549,16 +482,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     "attrs": [
                       [Function],
                     ],
-                    "inlineStyle": InlineStyle {
-                      "rules": [
-                        "",
-                      ],
+                    "inlineStyle": e {
+                      "rules": [],
                     },
                     "render": [Function],
                     "shouldForwardProp": undefined,
-                    "styledComponentId": "StyledNativeComponent",
+                    "styledComponentId": true,
                     "target": [Function],
-                    "withComponent": [Function],
                   },
                   "isCompleted": false,
                   "name": "FIRST_INSTRUMENT_BOOKING",
@@ -654,33 +584,32 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     <View
                       isCompleted={true}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
                         }
                       >
                         <View
@@ -696,15 +625,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                         isCompleted={true}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
                         }
                       >
                         Apprenti artiste
@@ -753,33 +680,32 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     <View
                       isCompleted={true}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
                         }
                       >
                         <View
@@ -795,15 +721,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                         isCompleted={true}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
                         }
                       >
                         Rat de bibliothèque
@@ -871,33 +795,32 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     <View
                       isCompleted={true}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
                         }
                       >
                         <View
@@ -913,15 +836,13 @@ exports[`<Achievements/> should match snapshot 1`] = `
                         isCompleted={true}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
                         }
                       >
                         Mangeur de popcorns
@@ -970,625 +891,605 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     <View
                       isCompleted={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#f1f1f4",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={100}
-                          width={100}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        isCompleted={false}
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Succès non débloqué
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <View
-                onFocusCapture={[Function]}
-                onLayout={[Function]}
-                style={null}
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                      },
-                      {
-                        "gap": 24,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                        "height": 220,
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                  >
-                    <View
-                      isCompleted={false}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#f1f1f4",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={100}
-                          width={100}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        isCompleted={false}
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Succès non débloqué
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                        "height": 220,
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                  >
-                    <View
-                      isCompleted={false}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#f1f1f4",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={100}
-                          width={100}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        isCompleted={false}
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Succès non débloqué
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <View
-                onFocusCapture={[Function]}
-                onLayout={[Function]}
-                style={null}
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                      },
-                      {
-                        "gap": 24,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                        "height": 220,
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                  >
-                    <View
-                      isCompleted={false}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#f1f1f4",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={100}
-                          width={100}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        isCompleted={false}
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Succès non débloqué
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                        "height": 220,
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                  >
-                    <View
-                      isCompleted={false}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#f1f1f4",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={100}
-                          width={100}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        isCompleted={false}
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Succès non débloqué
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <View
-                onFocusCapture={[Function]}
-                onLayout={[Function]}
-                style={null}
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                      },
-                      {
-                        "gap": 24,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                        "height": 220,
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                  >
-                    <View
-                      isCompleted={false}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#f1f1f4",
-                            "borderColor": "#90949d",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 24,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 100,
-                              "marginBottom": 8,
-                              "width": 100,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={100}
-                          width={100}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        isCompleted={false}
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Succès non débloqué
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    accessible={false}
-                    style={
-                      [
                         {
+                          "alignItems": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
                           "flexBasis": 0,
-                          "flexGrow": 0.5,
+                          "flexGrow": 1,
                           "flexShrink": 1,
-                        },
-                      ]
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Succès non débloqué
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Succès non débloqué
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Succès non débloqué
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Succès non débloqué
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Succès non débloqué
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                      {
+                        "gap": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "height": 220,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      isCompleted={false}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "borderWidth": 1,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 24,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "height": 100,
+                            "marginBottom": 8,
+                            "width": 100,
+                          }
+                        }
+                      >
+                        <View
+                          height={100}
+                          width={100}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        isCompleted={false}
+                        numberOfLines={2}
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Succès non débloqué
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessible={false}
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                      }
                     }
                   />
                 </View>
@@ -1602,17 +1503,15 @@ exports[`<Achievements/> should match snapshot 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -1623,13 +1522,11 @@ exports[`<Achievements/> should match snapshot 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

@@ -3,14 +3,12 @@
 exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
@@ -37,51 +35,43 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -139,11 +129,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -153,18 +141,16 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -172,53 +158,44 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     </View>
   </View>
   <View
-    bottom={16}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "overflow": "scroll",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+      }
     }
   >
     <View
       height={65}
       style={
-        [
-          {
-            "height": 65,
-          },
-        ]
+        {
+          "height": 65,
+        }
       }
     />
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       animation={false}
       style={
-        [
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "marginBottom": 24,
+        }
       }
     >
       <View
@@ -233,26 +210,22 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
       >
         Souhaites-tu suspendre ton compte pass Culture ?
@@ -260,23 +233,19 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     </View>
     <View
       style={
-        [
-          {
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "marginBottom": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Les conséquences :
@@ -284,43 +253,35 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       <View
         accessibilityRole="list"
         style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
+          {
+            "flexDirection": "column",
+            "paddingLeft": 0,
+          }
         }
       >
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -336,30 +297,26 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 tes réservations seront annulées sauf pour certains cas précisés dans les
@@ -408,14 +365,12 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                       gap={1}
                       paddingForIcon={0}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "gap": 4,
-                            "top": 0,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 4,
+                          "top": 0,
+                        }
                       }
                     >
                       <View
@@ -431,14 +386,12 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                       <Text
                         color="#161617"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                         typography="Button"
                       >
@@ -454,32 +407,26 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -495,18 +442,16 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau.
@@ -516,32 +461,26 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -557,18 +496,16 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               tu n’auras plus accès au catalogue.
@@ -578,29 +515,25 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginTop": 16,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "marginTop": 16,
+          }
         }
       >
         Les données que nous conservons :
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.
@@ -609,24 +542,20 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+        }
       }
     >
       <View
@@ -662,7 +591,10 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
             "maxWidth": 500,
@@ -680,27 +612,23 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Oui, suspendre mon compte
@@ -740,7 +668,10 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           {
             "alignItems": "center",
             "backgroundColor": "transparent",
-            "borderRadius": 24,
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
             "maxWidth": 500,
@@ -758,23 +689,19 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+                "marginRight": 8,
+              }
             }
           >
             <View
@@ -792,15 +719,13 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Contacter le service fraude

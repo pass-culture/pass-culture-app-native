@@ -2,16 +2,8 @@
 
 exports[`AsyncErrorBoundary component should render correctly 1`] = `
 .c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -24,12 +16,8 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -40,14 +28,11 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
 }
 
 .c2:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c2:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -56,14 +41,9 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
 }
 
 .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -83,14 +63,11 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
 .c0:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -107,7 +84,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
   >
     <button
       aria-label="Revenir en arrière"
-      class="c0 c1 sc-iGgWBj c1"
+      class="c0 c1"
       data-testid="Revenir en arrière"
       tabindex="0"
       title="Revenir en arrière"

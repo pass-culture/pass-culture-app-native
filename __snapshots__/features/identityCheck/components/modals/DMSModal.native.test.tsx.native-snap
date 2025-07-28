@@ -147,88 +147,78 @@ exports[`<DMSModal/> should render correctly 1`] = `
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -238,15 +228,13 @@ exports[`<DMSModal/> should render correctly 1`] = `
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -312,11 +300,9 @@ exports[`<DMSModal/> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -324,14 +310,12 @@ exports[`<DMSModal/> should render correctly 1`] = `
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -343,14 +327,12 @@ exports[`<DMSModal/> should render correctly 1`] = `
           <View>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
@@ -358,11 +340,9 @@ exports[`<DMSModal/> should render correctly 1`] = `
             <View
               numberOfSpaces={8}
               style={
-                [
-                  {
-                    "height": 32,
-                  },
-                ]
+                {
+                  "height": 32,
+                }
               }
             />
             <View
@@ -401,7 +381,10 @@ exports[`<DMSModal/> should render correctly 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "flex-start",
                       "maxWidth": 500,
@@ -425,23 +408,19 @@ exports[`<DMSModal/> should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
                   }
                 >
                   <View
@@ -459,15 +438,13 @@ exports[`<DMSModal/> should render correctly 1`] = `
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Je suis de nationalité française
@@ -476,14 +453,12 @@ exports[`<DMSModal/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Carte d’identité ou passeport.
@@ -491,11 +466,9 @@ exports[`<DMSModal/> should render correctly 1`] = `
             <View
               numberOfSpaces={8}
               style={
-                [
-                  {
-                    "height": 32,
-                  },
-                ]
+                {
+                  "height": 32,
+                }
               }
             />
             <View
@@ -534,7 +507,10 @@ exports[`<DMSModal/> should render correctly 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "flex-start",
                       "maxWidth": 500,
@@ -558,23 +534,19 @@ exports[`<DMSModal/> should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
                   }
                 >
                   <View
@@ -592,15 +564,13 @@ exports[`<DMSModal/> should render correctly 1`] = `
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Je suis de nationalité étrangère
@@ -609,14 +579,12 @@ exports[`<DMSModal/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Titre de séjour, carte d’identité, ou passeport.
@@ -624,11 +592,9 @@ exports[`<DMSModal/> should render correctly 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
+                {
+                  "height": 16,
+                }
               }
             />
           </View>

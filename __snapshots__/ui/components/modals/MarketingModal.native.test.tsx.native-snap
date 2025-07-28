@@ -62,61 +62,54 @@ exports[`MarketingModal should render correctly 1`] = `
   />
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "zIndex": -1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "zIndex": -1,
+      }
     }
   />
   <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#ffffff",
-          "borderRadius": 16,
-          "maxHeight": 650,
-          "minHeight": 360,
-          "overflow": "hidden",
-          "width": 928,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "#ffffff",
+        "borderBottomLeftRadius": 16,
+        "borderBottomRightRadius": 16,
+        "borderTopLeftRadius": 16,
+        "borderTopRightRadius": 16,
+        "maxHeight": 650,
+        "minHeight": 360,
+        "overflow": "hidden",
+        "width": 928,
+      }
     }
   >
     <View
       style={
-        [
-          {
-            "flexGrow": 1,
-            "width": "100%",
-          },
-        ]
+        {
+          "flexGrow": 1,
+          "width": "100%",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexGrow": 0.5,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexGrow": 0.5,
+          }
         }
       >
         <View
           accessibilityIgnoresInvertColors={true}
           style={
-            [
-              {
-                "height": 252,
-                "width": "100%",
-              },
-            ]
+            {
+              "height": 252,
+              "width": "100%",
+            }
           }
         >
           <Image
@@ -170,53 +163,45 @@ exports[`MarketingModal should render correctly 1`] = `
           }
         }
         style={
-          [
-            {
-              "height": 72,
-              "marginTop": -72,
-            },
-          ]
+          {
+            "height": 72,
+            "marginTop": -72,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexGrow": 0.5,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexGrow": 0.5,
+          }
         }
       >
         <View
           gap={6}
           style={
-            [
-              {
-                "alignItems": "center",
-                "gap": 24,
-                "maxWidth": 500,
-                "paddingBottom": 32,
-                "paddingLeft": 24,
-                "paddingRight": 24,
-                "paddingTop": 24,
-                "width": "100%",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "gap": 24,
+              "maxWidth": 500,
+              "paddingBottom": 32,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "width": "100%",
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 19,
-                  "lineHeight": 30.4,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 19,
+                "lineHeight": 30.4,
+                "textAlign": "center",
+              }
             }
           >
             Titre
@@ -227,14 +212,12 @@ exports[`MarketingModal should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "zIndex": -1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "zIndex": -1,
+      }
     }
   />
 </Modal>

@@ -169,76 +169,64 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
       noPadding={true}
       noPaddingBottom={true}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 1318,
-            "justifyContent": "center",
-            "maxHeight": 1334,
-            "maxWidth": 960,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 1318,
+          "justifyContent": "center",
+          "maxHeight": 1334,
+          "maxWidth": 960,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         nativeID="testUuidV4"
         style={
-          [
-            {
-              "flexDirection": "row",
-              "width": "100%",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "width": "100%",
+          }
         }
         testID="customModalHeader"
       />
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "width": "100%",
+          }
         }
         testID="fullscreenModalView"
       >
         <View
           style={
-            [
-              {
-                "backgroundColor": "#161617",
-                "borderTopLeftRadius": 16,
-                "borderTopRightRadius": 16,
-                "overflow": "hidden",
-              },
-            ]
+            {
+              "backgroundColor": "#161617",
+              "borderTopLeftRadius": 16,
+              "borderTopRightRadius": 16,
+              "overflow": "hidden",
+            }
           }
         >
           <View
             height={421.875}
             style={
-              [
-                {
-                  "backgroundColor": "#161617",
-                  "height": 421.875,
-                  "width": 750,
-                },
-              ]
+              {
+                "backgroundColor": "#161617",
+              }
             }
             width={750}
           >
@@ -275,61 +263,54 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
         </View>
         <RCTScrollView
           style={
-            [
-              {
-                "paddingHorizontal": 24,
-              },
-            ]
+            {
+              "paddingHorizontal": 24,
+            }
           }
         >
           <View>
             <View
               numberOfSpaces={4}
               style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
+                {
+                  "height": 16,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "flex-start",
+                }
               }
             >
               <View
                 backgroundColor="#f1f1f4"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "alignSelf": "flex-start",
-                      "backgroundColor": "#f1f1f4",
-                      "borderRadius": 4,
-                      "flexDirection": "row",
-                      "paddingHorizontal": 8,
-                      "paddingVertical": 4,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "backgroundColor": "#f1f1f4",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "flexDirection": "row",
+                    "paddingHorizontal": 8,
+                    "paddingVertical": 4,
+                  }
                 }
                 testID="tagWrapper"
                 withColor={true}
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    }
                   }
                 >
                   FAQ
@@ -339,23 +320,19 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
+                {
+                  "height": 8,
+                }
               }
             />
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 19,
-                    "lineHeight": 30.4,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 19,
+                  "lineHeight": 30.4,
+                }
               }
             >
               Découvre Lujipeka
@@ -363,23 +340,19 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
+                {
+                  "height": 8,
+                }
               }
             />
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Publiée le 16 juin 2023
@@ -387,23 +360,19 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
+                {
+                  "height": 8,
+                }
               }
             />
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Lujipeka répond à vos questions sur sa tournée, sa musique, ses inspirations et pleins d’autres questions&nbsp;!
@@ -411,23 +380,19 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             <View
               numberOfSpaces={6}
               style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
+                {
+                  "height": 24,
+                }
               }
             />
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                }
               }
             >
               Pour aller plus loin…
@@ -435,11 +400,9 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
+                {
+                  "height": 16,
+                }
               }
             />
             <View
@@ -478,7 +441,10 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     },
                     {},
                     {
-                      "borderRadius": 12,
+                      "borderBottomLeftRadius": 12,
+                      "borderBottomRightRadius": 12,
+                      "borderTopLeftRadius": 12,
+                      "borderTopRightRadius": 12,
                       "shadowColor": "#161617",
                       "shadowOffset": {
                         "height": 12,
@@ -497,58 +463,56 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             >
               <View
                 accessibilityLabel="Découvre l’offre exclusive "La nuit des temps" de la catégorie "Livre". Prix : 0,28 €."
+                bottomBannerText=""
                 shouldFixHeight={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 12,
-                      "borderBottomRightRadius": 12,
-                      "borderColor": "#cbcdd2",
-                      "borderTopLeftRadius": 12,
-                      "borderTopRightRadius": 12,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 8,
-                      "height": "auto",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 12,
+                    "borderBottomRightRadius": 12,
+                    "borderColor": "#cbcdd2",
+                    "borderTopLeftRadius": 12,
+                    "borderTopRightRadius": 12,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                    "height": "auto",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "column",
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "flexDirection": "column",
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
                     borderRadius={5}
                     size="small"
                     style={
-                      [
-                        {
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 5,
-                          "height": 96,
-                          "shadowColor": "#696A6F",
-                          "shadowOffset": {
-                            "height": 4,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 4,
-                          "width": 64,
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 5,
+                        "borderBottomRightRadius": 5,
+                        "borderTopLeftRadius": 5,
+                        "borderTopRightRadius": 5,
+                        "height": 96,
+                        "shadowColor": "#696A6F",
+                        "shadowOffset": {
+                          "height": 4,
+                          "width": 0,
                         },
-                      ]
+                        "shadowOpacity": 0.2,
+                        "shadowRadius": 4,
+                        "width": 64,
+                      }
                     }
                     withShadow={true}
                   >
@@ -558,16 +522,17 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           {
                             "overflow": "hidden",
                           },
-                          [
-                            {
-                              "backgroundColor": "#f1f1f4",
-                              "borderColor": "#90949d",
-                              "borderRadius": 5,
-                              "borderWidth": 1,
-                              "height": 96,
-                              "width": 64,
-                            },
-                          ],
+                          {
+                            "backgroundColor": "#f1f1f4",
+                            "borderBottomLeftRadius": 5,
+                            "borderBottomRightRadius": 5,
+                            "borderColor": "#90949d",
+                            "borderTopLeftRadius": 5,
+                            "borderTopRightRadius": 5,
+                            "borderWidth": 1,
+                            "height": 96,
+                            "width": 64,
+                          },
                         ]
                       }
                     >
@@ -597,30 +562,26 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "gap": 4,
-                        "justifyContent": "center",
-                        "textAlign": "left",
-                        "wordWrap": "break-word",
-                      },
-                    ]
+                    {
+                      "flexBasis": 0,
+                      "flexDirection": "column",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "textAlign": "left",
+                      "wordWrap": "break-word",
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
                     }
                   >
                     Livre
@@ -628,28 +589,24 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   <Text
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     La nuit des temps
                   </Text>
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
                     }
                   >
                     0,28 €
@@ -659,13 +616,11 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   hasBottomRightElement={false}
                   hasRightTagLabel={false}
                   style={
-                    [
-                      {
-                        "alignItems": "flex-end",
-                        "justifyContent": "flex-end",
-                        "marginVertical": 1,
-                      },
-                    ]
+                    {
+                      "alignItems": "flex-end",
+                      "justifyContent": "flex-end",
+                      "marginVertical": 1,
+                    }
                   }
                 />
               </View>
@@ -673,11 +628,9 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             <View
               numberOfSpaces={8}
               style={
-                [
-                  {
-                    "height": 32,
-                  },
-                ]
+                {
+                  "height": 32,
+                }
               }
             />
           </View>
@@ -719,7 +672,10 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 },
                 {
                   "backgroundColor": "#ffffff",
-                  "borderRadius": 40,
+                  "borderBottomLeftRadius": 40,
+                  "borderBottomRightRadius": 40,
+                  "borderTopLeftRadius": 40,
+                  "borderTopRightRadius": 40,
                   "paddingBottom": 10,
                   "paddingLeft": 10,
                   "paddingRight": 10,

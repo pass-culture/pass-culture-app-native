@@ -9,14 +9,9 @@ exports[`<WebShareModal/> should render correctly when hidden 1`] = `
 
 exports[`<WebShareModal/> should render correctly when shown 1`] = `
 .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -36,28 +31,17 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
 .c0:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -69,12 +53,8 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -85,28 +65,17 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 }
 
 .c2:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
 .c2:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c5 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -119,12 +88,8 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -135,28 +100,17 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 }
 
 .c5:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c5:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c4 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -168,12 +122,8 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -184,14 +134,11 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 }
 
 .c4:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
 .c4:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -272,7 +219,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <button
                       aria-label="Fermer la modale"
-                      class="c0 c1 sc-iGgWBj c1"
+                      class="c0 c1"
                       data-testid="Fermer la modale"
                       tabindex="0"
                       title="Fermer la modale"

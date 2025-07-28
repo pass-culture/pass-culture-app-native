@@ -3,82 +3,70 @@
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Envie de tout envie de lien ?
@@ -173,18 +157,16 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -194,87 +176,73 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "height": 65,
-        },
-      ]
+      {
+        "height": 65,
+      }
     }
   />
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "paddingBottom": 16,
-          "paddingTop": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "paddingBottom": 16,
+        "paddingTop": 24,
+      }
     }
   >
     <View
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <RCTScrollView
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "flexBasis": 0,
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "flexBasis": 0,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
           }
         >
           <View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "marginBottom": 24,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "marginBottom": 24,
+                  "textAlign": "center",
+                }
               }
             >
               Besoin d’un lien ?
             </Text>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -341,15 +309,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                      }
                     }
                   >
                     Pages
@@ -402,17 +368,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 nativeID="testUuidV4"
                 onLayout={[Function]}
                 style={
-                  [
-                    {
-                      "bottom": 0,
-                      "display": "flex",
-                      "paddingBottom": 24,
-                      "paddingHorizontal": 24,
-                      "paddingTop": 0,
-                      "position": "absolute",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "bottom": 0,
+                    "display": "flex",
+                    "paddingBottom": 24,
+                    "paddingHorizontal": 24,
+                    "paddingTop": 0,
+                    "position": "absolute",
+                    "width": "100%",
+                  }
                 }
                 testID="accordionBodyContainer"
               >
@@ -467,44 +431,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="Offer"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Offer
@@ -513,17 +468,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -539,13 +492,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -599,44 +550,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="VenueMap"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         VenueMap
@@ -645,17 +587,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -671,13 +611,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -731,44 +669,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="Venue"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Venue
@@ -777,17 +706,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -803,13 +730,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -863,44 +788,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="Home"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={true}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#eb0055",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#eb0055",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Home
@@ -909,17 +825,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -935,13 +849,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -995,44 +907,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="ThematicHome"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         ThematicHome
@@ -1041,17 +944,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -1067,13 +968,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -1127,44 +1026,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="SearchResults"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         SearchResults
@@ -1173,17 +1063,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -1199,13 +1087,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -1259,44 +1145,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="ThematicSearch"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         ThematicSearch
@@ -1305,17 +1182,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -1331,13 +1206,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -1391,44 +1264,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="Profile"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Profile
@@ -1437,17 +1301,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -1463,13 +1325,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -1523,44 +1383,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="SignupForm"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         SignupForm
@@ -1569,17 +1420,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -1595,13 +1444,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <View
@@ -1655,44 +1502,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   testID="Stepper"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Stepper
@@ -1701,17 +1539,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -1727,25 +1563,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
               </View>
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1812,15 +1644,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                      }
                     }
                   >
                     Paramètres applicatifs (1)
@@ -1873,42 +1703,36 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 nativeID="testUuidV4"
                 onLayout={[Function]}
                 style={
-                  [
-                    {
-                      "bottom": 0,
-                      "display": "flex",
-                      "paddingBottom": 24,
-                      "paddingHorizontal": 24,
-                      "paddingTop": 0,
-                      "position": "absolute",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "bottom": 0,
+                    "display": "flex",
+                    "paddingBottom": 24,
+                    "paddingHorizontal": 24,
+                    "paddingTop": 0,
+                    "position": "absolute",
+                    "width": "100%",
+                  }
                 }
                 testID="accordionBodyContainer"
               >
                 <View
                   style={
-                    [
-                      {
-                        "marginTop": 8,
-                      },
-                    ]
+                    {
+                      "marginTop": 8,
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View
@@ -1917,23 +1741,24 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
@@ -1949,21 +1774,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Champ de texte"
                         textAlignVertical="center"
@@ -1972,26 +1795,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 20,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 20,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 20,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 20,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       L’identifiant du module vidéo dont la modale sera affichée à l’ouverture du lien
@@ -1999,13 +1818,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#f1f1f4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
                   />
                 </View>
@@ -2013,12 +1830,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -2085,15 +1900,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 17,
+                        "lineHeight": 27.2,
+                      }
                     }
                   >
                     Paramètres marketing
@@ -2146,42 +1959,36 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 nativeID="testUuidV4"
                 onLayout={[Function]}
                 style={
-                  [
-                    {
-                      "bottom": 0,
-                      "display": "flex",
-                      "paddingBottom": 24,
-                      "paddingHorizontal": 24,
-                      "paddingTop": 0,
-                      "position": "absolute",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "bottom": 0,
+                    "display": "flex",
+                    "paddingBottom": 24,
+                    "paddingHorizontal": 24,
+                    "paddingTop": 0,
+                    "position": "absolute",
+                    "width": "100%",
+                  }
                 }
                 testID="accordionBodyContainer"
               >
                 <View
                   style={
-                    [
-                      {
-                        "marginTop": 8,
-                      },
-                    ]
+                    {
+                      "marginTop": 8,
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View
@@ -2190,23 +1997,24 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
@@ -2222,21 +2030,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Champ de texte"
                         textAlignVertical="center"
@@ -2245,26 +2051,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 20,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 20,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 20,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 20,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       Nom de la campagne. Exemple : “festivals22”, “tempsfortJapon”, “LouisSan”... une campagne peut être menée sur différents canaux.
@@ -2272,38 +2074,32 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#f1f1f4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
                   />
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "marginTop": 8,
-                      },
-                    ]
+                    {
+                      "marginTop": 8,
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View
@@ -2312,23 +2108,24 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
@@ -2344,21 +2141,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Champ de texte"
                         textAlignVertical="center"
@@ -2367,26 +2162,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 20,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 20,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 20,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 20,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok.
@@ -2394,38 +2185,32 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#f1f1f4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
                   />
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "marginTop": 8,
-                      },
-                    ]
+                    {
+                      "marginTop": 8,
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View
@@ -2434,23 +2219,24 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
@@ -2466,21 +2252,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Champ de texte"
                         textAlignVertical="center"
@@ -2489,26 +2273,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 20,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 20,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 20,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 20,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press, partner (partenaires, influenceurs...).
@@ -2516,38 +2296,32 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#f1f1f4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
                   />
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "marginTop": 8,
-                      },
-                    ]
+                    {
+                      "marginTop": 8,
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View
@@ -2556,23 +2330,24 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
@@ -2588,21 +2363,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Champ de texte"
                         textAlignVertical="center"
@@ -2611,26 +2384,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 20,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 20,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 20,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 20,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       Visuel de la campagne si elle en compte plusieurs (1, 2, 3, a , b, c...).
@@ -2638,38 +2407,32 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#f1f1f4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
                   />
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "marginTop": 8,
-                      },
-                    ]
+                    {
+                      "marginTop": 8,
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View
@@ -2678,23 +2441,24 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
@@ -2711,21 +2475,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Champ de texte"
                         textAlignVertical="center"
@@ -2734,26 +2496,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 20,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 20,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 20,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 20,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       Type de campagne : marketing ou product.
@@ -2761,13 +2519,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#f1f1f4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "width": "100%",
+                      }
                     }
                   />
                 </View>
@@ -2777,25 +2533,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         </RCTScrollView>
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "paddingHorizontal": 20,
-                "paddingVertical": 16,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "paddingHorizontal": 20,
+              "paddingVertical": 16,
+            }
           }
         >
           <View
             gap={2}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 8,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 8,
+              }
             }
           >
             <View
@@ -2808,15 +2560,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#a20121",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "paddingVertical": 6,
-                  },
-                ]
+                {
+                  "color": "#a20121",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "paddingVertical": 6,
+                }
               }
             >
               Seulement les "ids" disposent de validation !
@@ -2859,7 +2609,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   {
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -2881,27 +2634,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Générer le lien
@@ -2912,13 +2661,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <RCTScrollView
@@ -2928,27 +2675,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             }
           }
           style={
-            [
-              {
-                "maxHeight": 300,
-                "paddingHorizontal": 8,
-                "paddingVertical": 16,
-              },
-            ]
+            {
+              "maxHeight": 300,
+              "paddingHorizontal": 8,
+              "paddingVertical": 16,
+            }
           }
         >
           <View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "textAlign": "center",
+                }
               }
             >
               Votre lien
@@ -2960,52 +2703,44 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 }
               }
               style={
-                [
-                  {
-                    "maxHeight": 300,
-                    "paddingHorizontal": 8,
-                    "paddingVertical": 16,
-                  },
-                ]
+                {
+                  "maxHeight": 300,
+                  "paddingHorizontal": 8,
+                  "paddingVertical": 16,
+                }
               }
             >
               <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    {
+                      "alignItems": "flex-start",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "width": "100%",
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Vous devez d’abord générer un lien
@@ -3018,40 +2753,34 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         </RCTScrollView>
         <View
           style={
-            [
-              {
-                "backgroundColor": "#f1f1f4",
-                "height": 8,
-              },
-            ]
+            {
+              "backgroundColor": "#f1f1f4",
+              "height": 8,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "paddingBottom": 8,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-                "paddingTop": 8,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            }
           }
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
           >
             Historique
@@ -3061,16 +2790,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               {
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": [],
-                "inlineStyle": InlineStyle {
+                "inlineStyle": e {
                   "rules": [
                     [Function],
                   ],
                 },
                 "render": [Function],
                 "shouldForwardProp": undefined,
-                "styledComponentId": "StyledNativeComponent",
+                "styledComponentId": true,
                 "target": [Function],
-                "withComponent": [Function],
               }
             }
             data={[]}
@@ -3099,20 +2827,18 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           </RCTScrollView>
           <View
             style={
-              [
-                {
-                  "backgroundColor": "#ffffff",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "marginTop": 40,
-                  "paddingBottom": 8,
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
-                  "paddingTop": 8,
-                },
-              ]
+              {
+                "backgroundColor": "#ffffff",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "marginTop": 40,
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              }
             }
           >
             <View
@@ -3198,7 +2924,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       },
                       {
                         "cursor": "pointer",
-                        "width": "fit-content",
                       },
                     ],
                     {
@@ -3210,13 +2935,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "columnGap": 12,
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "columnGap": 12,
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <View
@@ -3230,31 +2953,30 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       ]
                     }
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 2,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
+                        "borderWidth": 2,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                     variant="default"
                   />
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <Text
@@ -3267,14 +2989,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         ]
                       }
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Conserver l’historique
@@ -3291,17 +3011,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -3312,13 +3030,11 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

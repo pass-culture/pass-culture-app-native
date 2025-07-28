@@ -3,71 +3,59 @@
 exports[`<GenericOfficialPage /> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "overflowY": "auto",
-        },
-      ]
+      {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "overflowY": "auto",
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "maxWidth": 400,
-            "paddingHorizontal": 24,
-            "paddingTop": 16,
-            "width": "100%",
-          },
-        ]
+        {
+          "maxWidth": 400,
+          "paddingHorizontal": 24,
+          "paddingTop": 16,
+          "width": "100%",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignSelf": "stretch",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
+          {
+            "alignSelf": "stretch",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "height": 88,
-                "width": 132,
-              },
-            ]
+            {
+              "height": 88,
+              "width": 132,
+            }
           }
         >
           <View
@@ -83,11 +71,9 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
         </View>
         <View
           style={
-            [
-              {
-                "justifyContent": "center",
-              },
-            ]
+            {
+              "justifyContent": "center",
+            }
           }
         >
           <View
@@ -103,63 +89,53 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "borderBottomColor": "#90949d",
-              "borderBottomWidth": 1,
-              "paddingVertical": 12,
-            },
-          ]
+          {
+            "borderBottomColor": "#90949d",
+            "borderBottomWidth": 1,
+            "paddingVertical": 12,
+          }
         }
       />
     </View>
     <View
       style={
-        [
-          {
-            "flexBasis": "auto",
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "maxWidth": 400,
-            "paddingHorizontal": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "flexBasis": "auto",
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 400,
+          "paddingHorizontal": 24,
+          "width": "100%",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       />
       <View
         numberOfSpaces={10}
         style={
-          [
-            {
-              "height": 40,
-            },
-          ]
+          {
+            "height": 40,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+          }
         }
       >
         Title
@@ -167,23 +143,19 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Children...
@@ -191,50 +163,42 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
       <View
         numberOfSpaces={10}
         style={
-          [
-            {
-              "height": 40,
-            },
-          ]
+          {
+            "height": 40,
+          }
         }
       />
       <View
         flex={0.5}
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 0.5,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          }
         }
       />
     </View>
     <View
       style={
-        [
-          {
-            "flexBasis": "auto",
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "maxWidth": 400,
-            "paddingHorizontal": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "flexBasis": "auto",
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "maxWidth": 400,
+          "paddingHorizontal": 24,
+          "width": "100%",
+        }
       }
     >
       <View
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>

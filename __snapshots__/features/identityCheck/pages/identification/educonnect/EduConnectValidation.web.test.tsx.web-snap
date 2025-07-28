@@ -2,16 +2,8 @@
 
 exports[`<EduConnectValidation /> should render EduConnectValidation component correctly 1`] = `
 .c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -24,12 +16,8 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -40,14 +28,11 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
 }
 
 .c2:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c2:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -56,14 +41,9 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
 }
 
 .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -83,31 +63,19 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
 .c0:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c1 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
   max-width: 40px;
   height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -134,7 +102,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
           >
             <button
               aria-label="Revenir en arrière"
-              class="c0 c1 sc-dcJsrY c1"
+              class="c0 c1"
               data-testid="Revenir en arrière"
               tabindex="0"
               title="Revenir en arrière"
@@ -204,7 +172,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                   Tu valides que ces informations sont correctes ?
                 </div>
                 <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-gap-1fdih9r r-paddingBlock-nj0m1c r-paddingInline-cxgwc0"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-gap-1fdih9r r-paddingBlock-nj0m1c r-paddingInline-cxgwc0"
                 >
                   <div
                     class="css-view-175oi2r r-gap-9aw3ui"

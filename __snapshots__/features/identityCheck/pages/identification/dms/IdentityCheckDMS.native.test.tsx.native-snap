@@ -3,82 +3,70 @@
 exports[`<IdentityCheckDMS /> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Identification
@@ -173,18 +157,16 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -193,34 +175,30 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -229,15 +207,13 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -253,11 +229,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -269,22 +241,18 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             />
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "height": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "height": "100%",
+                }
               }
             >
               <View
                 numberOfSpaces={5}
                 style={
-                  [
-                    {
-                      "height": 20,
-                    },
-                  ]
+                  {
+                    "height": 20,
+                  }
                 }
               />
               <View
@@ -299,34 +267,28 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               <View
                 numberOfSpaces={5}
                 style={
-                  [
-                    {
-                      "height": 20,
-                    },
-                  ]
+                  {
+                    "height": 20,
+                  }
                 }
               />
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 17,
-                        "lineHeight": 27.2,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 17,
+                      "lineHeight": 27.2,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Créer un dossier sur le site des Démarches Simplifiées
@@ -335,38 +297,32 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               <View
                 numberOfSpaces={5}
                 style={
-                  [
-                    {
-                      "height": 20,
-                    },
-                  ]
+                  {
+                    "height": 20,
+                  }
                 }
               />
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "textAlign": "center",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "textAlign": "center",
+                  }
                 }
               >
                 La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "paddingBottom": 40,
-                      "paddingLeft": 40,
-                      "paddingRight": 40,
-                      "paddingTop": 40,
-                    },
-                  ]
+                  {
+                    "paddingBottom": 40,
+                    "paddingLeft": 40,
+                    "paddingRight": 40,
+                    "paddingTop": 40,
+                  }
                 }
               >
                 <View
@@ -405,7 +361,10 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                         },
                         {
                           "alignItems": "center",
-                          "borderRadius": 24,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "center",
                           "maxWidth": 500,
@@ -429,23 +388,19 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                            "marginRight": 8,
-                          },
-                        ]
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
                       }
                     >
                       <View
@@ -463,15 +418,13 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "maxWidth": "100%",
+                        }
                       }
                     >
                       Je suis de nationalité française
@@ -480,80 +433,68 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Carte d’identité ou passeport.
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "marginVertical": 24,
-                      },
-                    ]
+                    {
+                      "marginVertical": 24,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "paddingHorizontal": 4,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "paddingHorizontal": 4,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "backgroundColor": "#cbcdd2",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#cbcdd2",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "height": 1,
+                          "width": "100%",
+                        }
                       }
                     />
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                            "marginHorizontal": 10,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "marginHorizontal": 10,
+                        }
                       }
                     >
                       ou
                     </Text>
                     <View
                       style={
-                        [
-                          {
-                            "backgroundColor": "#cbcdd2",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#cbcdd2",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "height": 1,
+                          "width": "100%",
+                        }
                       }
                     />
                   </View>
@@ -594,7 +535,10 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                         },
                         {
                           "alignItems": "center",
-                          "borderRadius": 24,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "center",
                           "maxWidth": 500,
@@ -618,23 +562,19 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                            "marginRight": 8,
-                          },
-                        ]
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
                       }
                     >
                       <View
@@ -652,15 +592,13 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "maxWidth": "100%",
+                        }
                       }
                     >
                       Je suis de nationalité étrangère
@@ -669,15 +607,13 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Titre de séjour, carte d’identité ou passeport.
@@ -687,11 +623,9 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 customHeight={8}
                 enable={true}
                 style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
+                  {
+                    "height": 8,
+                  }
                 }
               />
             </View>
@@ -703,17 +637,15 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -724,13 +656,11 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

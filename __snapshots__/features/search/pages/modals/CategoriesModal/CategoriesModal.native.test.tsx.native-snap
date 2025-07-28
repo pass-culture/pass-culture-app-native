@@ -149,83 +149,73 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
       maxHeight={1334}
       noPadding={true}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 1318,
-            "justifyContent": "center",
-            "maxHeight": 1334,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 1318,
+          "justifyContent": "center",
+          "maxHeight": 1334,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         nativeID="testUuidV4"
         style={
-          [
-            {
-              "flexDirection": "row",
-              "width": "100%",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "width": "100%",
+          }
         }
         testID="customModalHeader"
       >
         <View
           accessibilityRole="header"
           style={
-            [
-              {
-                "width": "100%",
-              },
-            ]
+            {
+              "width": "100%",
+            }
           }
         >
           <View
             height={72}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "height": 72,
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                  "zIndex": 1,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": 72,
+                "justifyContent": "space-between",
+                "width": "100%",
+                "zIndex": 1,
+              }
             }
             testID="pageHeader"
           >
             <View
               positionInHeader="left"
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-start",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                }
               }
               testID="back-button-container"
             />
@@ -233,15 +223,13 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               nativeID="testUuidV4"
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "textAlign": "center",
+                }
               }
             >
               Catégories
@@ -249,18 +237,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             <View
               positionInHeader="right"
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-end",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                }
               }
               testID="close-button-container"
             >
@@ -327,11 +313,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "display": "none",
-                      },
-                    ]
+                    {
+                      "display": "none",
+                    }
                   }
                 >
                   Retour
@@ -346,12 +330,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         onContentSizeChange={[Function]}
         scrollEnabled={true}
         style={
-          [
-            {
-              "paddingHorizontal": 24,
-              "width": "100%",
-            },
-          ]
+          {
+            "paddingHorizontal": 24,
+            "width": "100%",
+          }
         }
         testID="fullscreenModalScrollView"
       >
@@ -359,34 +341,28 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           <View
             marginTop={12}
             style={
-              [
-                {
-                  "marginTop": 12,
-                  "maxWidth": 500,
-                  "width": "100%",
-                },
-              ]
+              {
+                "marginTop": 12,
+                "maxWidth": 500,
+                "width": "100%",
+              }
             }
           >
             <View
               accessibilityRole="list"
               style={
-                [
-                  {
-                    "flexDirection": "column",
-                    "paddingLeft": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "column",
+                  "paddingLeft": 0,
+                }
               }
             >
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
@@ -440,27 +416,20 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="Toutes les catégories"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexShrink": 0,
-                            "marginRight": 8,
-                          },
-                        ]
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
                       }
                     >
                       <View
@@ -474,29 +443,25 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={true}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#eb0055",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#eb0055",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Toutes les catégories
@@ -505,17 +470,15 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -533,20 +496,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -597,11 +556,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -615,38 +572,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Concerts & festivals
@@ -668,20 +619,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -732,11 +679,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -750,38 +695,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Cinéma
@@ -803,20 +742,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -867,11 +802,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -885,38 +818,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Films, séries et documentaires
@@ -938,20 +865,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -1002,11 +925,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -1020,38 +941,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Livres
@@ -1073,20 +988,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -1137,11 +1048,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -1155,38 +1064,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Musique
@@ -1208,20 +1111,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -1272,11 +1171,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -1290,38 +1187,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Arts & loisirs créatifs
@@ -1343,20 +1234,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -1407,11 +1294,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -1425,38 +1310,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Spectacles
@@ -1478,20 +1357,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -1542,11 +1417,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -1560,38 +1433,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Musées & visites culturelles
@@ -1613,20 +1480,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -1677,11 +1540,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -1695,38 +1556,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Jeux & jeux vidéos
@@ -1748,20 +1603,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -1812,11 +1663,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -1830,38 +1679,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Médias & presse
@@ -1883,11 +1726,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
@@ -1941,27 +1782,20 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   testID="Cartes jeunes"
                 >
                   <View
-                    flex={0.9}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 0.9,
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexShrink": 0,
-                            "marginRight": 8,
-                          },
-                        ]
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
                       }
                     >
                       <View
@@ -1975,29 +1809,25 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Cartes jeunes
@@ -2006,17 +1836,15 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexBasis": 0,
-                          "flexGrow": 0.1,
-                          "flexShrink": 1,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      }
                     }
                   >
                     <View
@@ -2034,20 +1862,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -2098,11 +1922,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -2116,38 +1938,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Conférences & rencontres
@@ -2169,20 +1985,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingVertical": 12,
-                      },
-                    ]
+                    {
+                      "paddingVertical": 12,
+                    }
                   }
                 >
                   <View
@@ -2233,11 +2045,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -2251,38 +2061,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-start",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Évènements en ligne
@@ -2307,38 +2111,32 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
       </RCTScrollView>
       <View
         style={
-          [
-            {
-              "width": "100%",
-            },
-          ]
+          {
+            "width": "100%",
+          }
         }
         testID="fixedModalBottom"
       >
         <View
           paddingBottom={0}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "paddingBottom": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "paddingBottom": 0,
+            }
           }
         >
           <View
             gap={4}
             isModal={true}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "justifyContent": "center",
-                  "paddingHorizontal": 24,
-                  "paddingTop": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 16,
+                "justifyContent": "center",
+                "paddingHorizontal": 24,
+                "paddingTop": 8,
+              }
             }
           >
             <View
@@ -2377,7 +2175,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -2402,23 +2203,19 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
                   }
                 >
                   <View
@@ -2435,15 +2232,13 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Réinitialiser
@@ -2487,7 +2282,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#eb0055",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -2512,27 +2310,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <Text
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Rechercher
@@ -2546,11 +2340,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>

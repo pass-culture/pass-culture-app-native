@@ -3,82 +3,70 @@
 exports[`ChangeCity from mandatory udpate personal data screen should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Modifier ma ville de résidence
@@ -173,18 +157,16 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -193,34 +175,30 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -229,15 +207,13 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -253,11 +229,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -269,23 +241,19 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
             />
             <View
               style={
-                [
-                  {
-                    "marginBottom": 20,
-                  },
-                ]
+                {
+                  "marginBottom": 20,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  }
                 }
               >
                 Renseigne ta ville de résidence
@@ -293,55 +261,45 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
+                    {
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   <View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-end",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Indique ton code postal et choisis ta ville
@@ -351,23 +309,19 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
+                    {
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
                     }
                   >
                     Exemple : 75017
@@ -383,9 +337,12 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 22,
+                        "borderBottomRightRadius": 22,
                         "borderColor": "#90949d",
-                        "borderRadius": 22,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 22,
+                        "borderTopRightRadius": 22,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
@@ -396,7 +353,10 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                         "width": "100%",
                       },
                       {
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "outlineOffset": 0,
                       },
                     ]
@@ -484,11 +444,9 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -511,11 +469,9 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                }
               }
             >
               <View
@@ -543,23 +499,19 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
             <View
               accessibilityRole="radiogroup"
               style={
-                [
-                  {
-                    "flexGrow": 1,
-                    "overflowY": "scroll",
-                  },
-                ]
+                {
+                  "flexGrow": 1,
+                  "overflowY": "scroll",
+                }
               }
             >
               <View
                 accessibilityRole="list"
                 style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
                 }
               />
             </View>
@@ -568,18 +520,16 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <View
@@ -619,7 +569,10 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -641,27 +594,23 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Continuer
@@ -672,11 +621,9 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>
@@ -686,17 +633,15 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -707,13 +652,11 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />
@@ -724,82 +667,70 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
 exports[`ChangeCity from profil personal data screen should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -864,11 +795,9 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -878,15 +807,13 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Modifier ma ville de résidence
@@ -894,18 +821,16 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -914,34 +839,30 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -950,15 +871,13 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -974,11 +893,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -990,23 +905,19 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
             />
             <View
               style={
-                [
-                  {
-                    "marginBottom": 20,
-                  },
-                ]
+                {
+                  "marginBottom": 20,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  }
                 }
               >
                 Renseigne ta ville de résidence
@@ -1014,55 +925,45 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
+                    {
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   <View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-end",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Indique ton code postal et choisis ta ville
@@ -1072,23 +973,19 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
+                    {
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
                     }
                   >
                     Exemple : 75017
@@ -1104,9 +1001,12 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 22,
+                        "borderBottomRightRadius": 22,
                         "borderColor": "#90949d",
-                        "borderRadius": 22,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 22,
+                        "borderTopRightRadius": 22,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
@@ -1117,7 +1017,10 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                         "width": "100%",
                       },
                       {
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "outlineOffset": 0,
                       },
                     ]
@@ -1205,11 +1108,9 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -1232,11 +1133,9 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                }
               }
             >
               <View
@@ -1264,23 +1163,19 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
             <View
               accessibilityRole="radiogroup"
               style={
-                [
-                  {
-                    "flexGrow": 1,
-                    "overflowY": "scroll",
-                  },
-                ]
+                {
+                  "flexGrow": 1,
+                  "overflowY": "scroll",
+                }
               }
             >
               <View
                 accessibilityRole="list"
                 style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
                 }
               />
             </View>
@@ -1289,18 +1184,16 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <View
@@ -1340,7 +1233,10 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -1362,27 +1258,23 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Continuer
@@ -1393,11 +1285,9 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>
@@ -1407,17 +1297,15 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -1428,13 +1316,11 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />
@@ -1445,82 +1331,70 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
 exports[`ChangeCity without previous screen should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -1585,11 +1459,9 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -1599,15 +1471,13 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Modifier ma ville de résidence
@@ -1615,18 +1485,16 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -1635,34 +1503,30 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -1671,15 +1535,13 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -1695,11 +1557,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -1711,23 +1569,19 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
             />
             <View
               style={
-                [
-                  {
-                    "marginBottom": 20,
-                  },
-                ]
+                {
+                  "marginBottom": 20,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  }
                 }
               >
                 Renseigne ta ville de résidence
@@ -1735,55 +1589,45 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
+                    {
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   <View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-end",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Indique ton code postal et choisis ta ville
@@ -1793,23 +1637,19 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
+                    {
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
                     }
                   >
                     Exemple : 75017
@@ -1825,9 +1665,12 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 22,
+                        "borderBottomRightRadius": 22,
                         "borderColor": "#90949d",
-                        "borderRadius": 22,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 22,
+                        "borderTopRightRadius": 22,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
@@ -1838,7 +1681,10 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                         "width": "100%",
                       },
                       {
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "outlineOffset": 0,
                       },
                     ]
@@ -1926,11 +1772,9 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -1953,11 +1797,9 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                }
               }
             >
               <View
@@ -1985,23 +1827,19 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
             <View
               accessibilityRole="radiogroup"
               style={
-                [
-                  {
-                    "flexGrow": 1,
-                    "overflowY": "scroll",
-                  },
-                ]
+                {
+                  "flexGrow": 1,
+                  "overflowY": "scroll",
+                }
               }
             >
               <View
                 accessibilityRole="list"
                 style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
                 }
               />
             </View>
@@ -2010,18 +1848,16 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <View
@@ -2061,7 +1897,10 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -2083,27 +1922,23 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Valider ma ville de résidence
@@ -2114,11 +1949,9 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>
@@ -2128,17 +1961,15 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -2149,13 +1980,11 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

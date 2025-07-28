@@ -3,125 +3,103 @@
 exports[`<SearchLanding /> should render SearchLanding 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       style={
-        [
-          {
-            "marginBottom": 8,
-          },
-        ]
+        {
+          "marginBottom": 8,
+        }
       }
     >
       <View
         customHeight={16}
         enable={true}
         style={
-          [
-            {
-              "height": 16,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "marginTop": 24,
-              "paddingHorizontal": 24,
-              "zIndex": 1,
-            },
-          ]
+          {
+            "marginTop": 24,
+            "paddingHorizontal": 24,
+            "zIndex": 1,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "paddingBottom": 16,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "paddingBottom": 16,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "width": "100%",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexShrink": 1,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "flexShrink": 1,
+                  "width": "100%",
+                }
               }
               testID="SearchHeaderTitleContainer"
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexWrap": "wrap",
-                        "justifyContent": "flex-start",
-                        "maxWidth": "75%",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexWrap": "wrap",
+                      "justifyContent": "flex-start",
+                      "maxWidth": "75%",
+                    }
                   }
                 >
                   <Text
                     htmlFor="testUuidV4"
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 28,
-                          "lineHeight": 44.8,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 28,
+                        "lineHeight": 44.8,
+                      }
                     }
                   >
                     Rechercher
@@ -130,15 +108,13 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginTop": 4,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "marginTop": 4,
+                  }
                 }
               >
                 Toutes les offres à portée de main
@@ -198,19 +174,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 <View
                   isActive={true}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#90949d",
-                        "borderRadius": 40,
-                        "borderStyle": "solid",
-                        "borderWidth": 2,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "width": 40,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 40,
+                      "borderBottomRightRadius": 40,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 40,
+                      "borderTopRightRadius": 40,
+                      "borderWidth": 2,
+                      "height": 40,
+                      "justifyContent": "center",
+                      "width": 40,
+                    }
                   }
                 >
                   <View
@@ -225,16 +202,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 <Text
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "maxWidth": 100,
-                        "paddingTop": 4,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": 100,
+                      "paddingTop": 4,
+                    }
                   }
                 >
                   Ma position
@@ -246,50 +221,42 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
         <View>
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                style={
                   {
                     "alignItems": "center",
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    {
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
                   }
                 >
                   <View
@@ -302,9 +269,12 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
                           "borderColor": "#90949d",
-                          "borderRadius": 22,
                           "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 48,
@@ -315,7 +285,10 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                           "width": "100%",
                         },
                         {
-                          "borderRadius": 24,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "outlineOffset": 0,
                         },
                         {
@@ -327,12 +300,10 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexShrink": 0,
-                            "marginRight": 8,
-                          },
-                        ]
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
                       }
                     >
                       <View
@@ -392,11 +363,9 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             <Text
               nativeID="testUuidV4"
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
@@ -407,59 +376,50 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "marginBottom": 64,
-            "overflowY": "auto",
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "marginBottom": 64,
+          "overflowY": "auto",
+        }
       }
     >
       <RCTScrollView
         showsHorizontalScrollIndicator={false}
         style={
-          [
-            {
-              "marginTop": 0,
-              "paddingHorizontal": 24,
-            },
-          ]
+          {
+            "marginTop": 0,
+            "paddingHorizontal": 24,
+          }
         }
         testID="categoriesButtons"
-        vertical={true}
       >
         <View>
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "marginTop": 16,
-                  "width": "100%",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "marginTop": 16,
+                "width": "100%",
+              }
             }
           >
             Parcours les catégories
           </Text>
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 8,
-                  "marginTop": 8,
-                  "paddingVertical": 8,
-                  "width": "100%",
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 8,
+                "marginTop": 8,
+                "paddingVertical": 8,
+                "width": "100%",
+              }
             }
           >
             <View
@@ -500,8 +460,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#94f0d6",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#0e8474",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -526,30 +489,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   CONCERTS & FESTIVALS
@@ -594,8 +553,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#ffeae2",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#d63d00",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -620,30 +582,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   CINÉMA
@@ -688,8 +646,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#9be3f3",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#14a0be",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -714,30 +675,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   FILMS, SÉRIES ET DOCUMENTAIRES
@@ -782,8 +739,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#ffa5c0",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#eb0055",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -808,30 +768,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   LIVRES
@@ -876,8 +832,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#c1a3ff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#320096",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -902,30 +861,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   MUSIQUE
@@ -970,8 +925,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#ffeae2",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#d63d00",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -996,30 +954,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   ARTS & LOISIRS CRÉATIFS
@@ -1064,8 +1018,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#ffa5c0",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#eb0055",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -1090,30 +1047,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   SPECTACLES
@@ -1158,8 +1111,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#94f0d6",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#0e8474",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -1184,30 +1140,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   MUSÉES & VISITES CULTURELLES
@@ -1252,8 +1204,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#c1a3ff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#320096",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -1278,30 +1233,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   JEUX & JEUX VIDÉOS
@@ -1346,8 +1297,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#9be3f3",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#14a0be",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -1372,30 +1326,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   MÉDIAS & PRESSE
@@ -1440,8 +1390,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#94f0d6",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#0e8474",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -1466,30 +1419,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   CARTES JEUNES
@@ -1534,8 +1483,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#ffeae2",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#d63d00",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -1560,30 +1512,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   CONFÉRENCES & RENCONTRES
@@ -1628,8 +1576,11 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {},
                     {
                       "backgroundColor": "#9be3f3",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#14a0be",
-                      "borderRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
@@ -1654,30 +1605,26 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   numberOfLines={3}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                        "textAlign": "left",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
                   }
                 >
                   ÉVÈNEMENTS EN LIGNE

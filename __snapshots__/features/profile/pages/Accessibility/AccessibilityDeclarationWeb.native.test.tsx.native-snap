@@ -3,82 +3,70 @@
 exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Déclaration d’accessibilité web
@@ -173,18 +157,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,87 +185,69 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
     }
     enableMaxWidth={false}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les actions suivantes :
       </Text>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -299,30 +263,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -376,14 +336,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -397,14 +355,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -420,32 +376,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -461,30 +411,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -538,14 +484,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -559,14 +503,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -582,32 +524,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -623,30 +559,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -700,14 +632,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -721,14 +651,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -745,14 +673,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Cette déclaration d’accessibilité s’applique au site internet
@@ -808,14 +734,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               gap={1}
               paddingForIcon={0}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                  "top": 0,
+                }
               }
             >
               <View
@@ -830,14 +754,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
                 typography="Button"
               >
@@ -849,64 +771,54 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </Text>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 24,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 24,
+            "width": "100%",
+          }
         }
       />
       <View
         gap={6}
         style={
-          [
-            {
-              "gap": 24,
-            },
-          ]
+          {
+            "gap": 24,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+            }
           }
         >
           État de conformité
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Le site pass Culture est partiellement conforme avec le référentiel général d’amélioration de l’accessibilité.
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Résultats des tests
@@ -915,14 +827,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
 
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             L’audit de conformité réalisé par la société Tanaguru révèle que :
@@ -931,54 +841,44 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -994,18 +894,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 85 % des critères RGAA version 4.1 sont respectés.
@@ -1015,32 +913,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1056,18 +948,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Le taux moyen de conformité du service en ligne s’élève à 93 %.
@@ -1077,26 +967,22 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         </View>
         <View
           style={
-            [
-              {
-                "backgroundColor": "#f1f1f4",
-                "height": 1,
-                "marginVertical": 24,
-                "width": "100%",
-              },
-            ]
+            {
+              "backgroundColor": "#f1f1f4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            }
           }
         />
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+            }
           }
         >
           Contenus non accessibles
@@ -1105,37 +991,31 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         gap={6}
         style={
-          [
-            {
-              "gap": 24,
-            },
-          ]
+          {
+            "gap": 24,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Non conformité
@@ -1143,54 +1023,44 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1206,18 +1076,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Certains intitulés de lien ne sont pas pertinents.
@@ -1227,32 +1095,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1268,18 +1130,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes.
@@ -1289,32 +1149,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1330,18 +1184,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 En version mobile ou lors d’un zoom 200 %, le menu de navigation n’est plus disponible sur plusieurs pages de l’application.
@@ -1351,32 +1203,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1392,18 +1238,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Sur les pages de la recherche (recherche, résultats et filtres) :
@@ -1412,44 +1256,36 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             <View
               accessibilityRole="list"
               style={
-                [
-                  {
-                    "flexDirection": "column",
-                    "marginVertical": 4,
-                    "paddingLeft": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "column",
+                  "marginVertical": 4,
+                  "paddingLeft": 0,
+                }
               }
             >
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 28,
-                        "marginTop": 0,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "marginLeft": 28,
+                      "marginTop": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        },
-                      ]
+                      {
+                        "height": 25.6,
+                        "justifyContent": "center",
+                      }
                     }
                   >
                     <View
@@ -1465,18 +1301,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   </View>
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "marginLeft": 12,
+                      }
                     }
                   >
                     Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS.
@@ -1488,32 +1322,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1529,18 +1357,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Sur la page des résultats de recherche :
@@ -1549,44 +1375,36 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             <View
               accessibilityRole="list"
               style={
-                [
-                  {
-                    "flexDirection": "column",
-                    "marginVertical": 4,
-                    "paddingLeft": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "column",
+                  "marginVertical": 4,
+                  "paddingLeft": 0,
+                }
               }
             >
               <View
                 accessibilityRole="none"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 28,
-                        "marginTop": 0,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "marginLeft": 28,
+                      "marginTop": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        },
-                      ]
+                      {
+                        "height": 25.6,
+                        "justifyContent": "center",
+                      }
                     }
                   >
                     <View
@@ -1602,18 +1420,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   </View>
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "marginLeft": 12,
+                      }
                     }
                   >
                     La liste des filtres placée sous le champ de recherche est tronquée sur un écran de 320px de large.
@@ -1625,32 +1441,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1666,18 +1476,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue.
@@ -1687,32 +1495,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1728,18 +1530,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 La modale d’information sur la géolocalisation n’est pas restituée comme telle.
@@ -1749,32 +1549,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1790,18 +1584,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page.
@@ -1812,68 +1604,56 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Dérogations pour charge disproportionnée
       </Text>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1889,18 +1669,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Le lecteur Youtube, utilisé pour diffuser les contenus vidéo.
@@ -1910,32 +1688,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1951,18 +1723,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte.
@@ -1972,32 +1742,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2013,18 +1777,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 La carte des lieux culturels, utilisée dans la recherche.
@@ -2035,68 +1797,56 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Contenus non soumis à l’obligation d’accessibilité
       </Text>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2112,18 +1862,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Aucun
@@ -2133,26 +1881,22 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         </View>
         <View
           style={
-            [
-              {
-                "backgroundColor": "#f1f1f4",
-                "height": 1,
-                "marginVertical": 24,
-                "width": "100%",
-              },
-            ]
+            {
+              "backgroundColor": "#f1f1f4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            }
           }
         />
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+            }
           }
         >
           Établissement de cette déclaration d’accessibilité
@@ -2161,37 +1905,31 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         gap={6}
         style={
-          [
-            {
-              "gap": 24,
-            },
-          ]
+          {
+            "gap": 24,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-MediumItalic",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-MediumItalic",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février 2023.
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Technologies utilisées pour la réalisation du site pass Culture
@@ -2199,54 +1937,44 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2262,18 +1990,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 HTML5
@@ -2283,32 +2009,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2324,18 +2044,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 CSS
@@ -2345,32 +2063,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2386,18 +2098,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 JavaScript
@@ -2408,14 +2118,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Environnement de test
@@ -2424,14 +2132,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
 
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Les vérifications de restitution de contenus ont été réalisées sur la base de la combinaison fournie par la base de référence du RGAA 4.1, avec les versions suivantes :
@@ -2439,54 +2145,44 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </Text>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2502,18 +2198,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Firefox et NVDA
@@ -2523,32 +2217,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2564,18 +2252,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Chrome et NVDA
@@ -2585,32 +2271,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2626,18 +2306,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Safari et VoiceOver
@@ -2648,68 +2326,56 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Les outils utilisés lors de l’évaluation
       </Text>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2725,18 +2391,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Extension HeadingsMap
@@ -2746,32 +2410,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2787,18 +2445,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Extension Web Developer
@@ -2808,32 +2464,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2849,18 +2499,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Extension Stylus
@@ -2870,32 +2518,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2911,18 +2553,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Validateur HTML W3C
@@ -2932,32 +2572,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2973,18 +2607,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Tanaguru Contrast-Finder
@@ -2994,32 +2626,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -3035,18 +2661,16 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 Outils de développement (navigateur)
@@ -3057,68 +2681,56 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Pages du site ayant fait l’objet de la vérification de conformité
       </Text>
       <View
         style={
-          [
-            {
-              "marginBottom": 24,
-              "marginTop": 20,
-            },
-          ]
+          {
+            "marginBottom": 24,
+            "marginTop": 20,
+          }
         }
       >
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingLeft": 0,
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -3134,30 +2746,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -3211,14 +2819,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -3233,14 +2839,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -3256,32 +2860,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -3297,30 +2895,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -3374,14 +2968,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -3396,14 +2988,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -3419,32 +3009,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -3460,30 +3044,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -3537,14 +3117,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -3559,14 +3137,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -3582,32 +3158,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -3623,30 +3193,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -3700,14 +3266,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -3722,14 +3286,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -3745,32 +3307,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -3786,30 +3342,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -3863,14 +3415,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -3885,14 +3435,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -3908,32 +3456,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -3949,30 +3491,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -4026,14 +3564,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -4048,14 +3584,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -4071,32 +3605,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -4112,30 +3640,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -4189,14 +3713,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -4211,14 +3733,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -4234,32 +3754,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -4275,30 +3789,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -4352,14 +3862,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -4374,14 +3882,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -4397,32 +3903,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -4438,30 +3938,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -4515,14 +4011,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -4537,14 +4031,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -4560,32 +4052,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -4601,30 +4087,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -4678,14 +4160,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -4700,14 +4180,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -4723,32 +4201,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -4764,30 +4236,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -4841,14 +4309,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -4863,14 +4329,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -4886,32 +4350,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginLeft": 12,
-                    "marginTop": 0,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "height": 25.6,
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -4927,30 +4385,26 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "marginLeft": 12,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   <View>
@@ -5004,14 +4458,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <View
@@ -5026,14 +4478,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </View>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                           typography="Button"
                         >
@@ -5050,26 +4500,22 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 24,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 24,
+            "width": "100%",
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 17,
+            "lineHeight": 27.2,
+          }
         }
       >
         Retour d’information et contact
@@ -5078,14 +4524,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
 
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de l’application pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.
@@ -5093,14 +4537,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Contacter l’équipe support à l’adresse
@@ -5156,14 +4598,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               gap={1}
               paddingForIcon={0}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                  "top": 0,
+                }
               }
             >
               <View
@@ -5177,14 +4617,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
                 typography="Button"
               >
@@ -5196,50 +4634,42 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       </Text>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 24,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 24,
+            "width": "100%",
+          }
         }
       />
       <View
         gap={6}
         style={
-          [
-            {
-              "gap": 24,
-            },
-          ]
+          {
+            "gap": 24,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+            }
           }
         >
           Voie de recours
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Cette procédure est à utiliser dans le cas suivant :
@@ -5251,23 +4681,19 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         <View
           gap={3}
           style={
-            [
-              {
-                "gap": 12,
-              },
-            ]
+            {
+              "gap": 12,
+            }
           }
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Écrire un message au
@@ -5323,14 +4749,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   gap={1}
                   paddingForIcon={0}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "gap": 4,
-                        "top": 0,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
+                      "top": 0,
+                    }
                   }
                 >
                   <View
@@ -5345,14 +4769,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   </View>
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                     typography="Button"
                   >
@@ -5364,14 +4786,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           </Text>
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Contacter le délégué du
@@ -5427,14 +4847,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   gap={1}
                   paddingForIcon={0}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "gap": 4,
-                        "top": 0,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
+                      "top": 0,
+                    }
                   }
                 >
                   <View
@@ -5449,14 +4867,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   </View>
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                     typography="Button"
                   >
@@ -5468,14 +4884,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           </Text>
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
@@ -5486,11 +4900,9 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>
@@ -5498,17 +4910,15 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -5519,13 +4929,11 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

@@ -63,7 +63,7 @@ const GreyContainer = styled.View<{ withGreyContainer: boolean }>(
     backgroundColor: withGreyContainer ? theme.designSystem.color.background.subtle : undefined,
     marginHorizontal: theme.contentPage.marginHorizontal,
     marginBottom: getSpacing(2),
-    width: theme.isDesktopViewport ? 'fit-content' : undefined,
+    alignSelf: theme.isDesktopViewport ? 'flex-start' : undefined,
     minWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
   })
 )

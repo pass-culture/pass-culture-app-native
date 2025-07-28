@@ -3,58 +3,48 @@
 exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "height": 64,
-        },
-      ]
+      {
+        "height": 64,
+      }
     }
     top={16}
   />
   <View
     style={
-      [
-        {
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-          "zIndex": 1,
-        },
-      ]
+      {
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "height": 48,
-            "justifyContent": "center",
-            "paddingHorizontal": 12,
-          },
-        ]
+        {
+          "height": 48,
+          "justifyContent": "center",
+          "paddingHorizontal": 12,
+        }
       }
     >
       <View
@@ -111,11 +101,9 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
         </View>
         <Text
           style={
-            [
-              {
-                "display": "none",
-              },
-            ]
+            {
+              "display": "none",
+            }
           }
         >
           Retour
@@ -131,43 +119,33 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
         "width": "100%",
       }
     }
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         style={
-          [
-            {
-              "marginHorizontal": 24,
-            },
-          ]
+          {
+            "marginHorizontal": 24,
+          }
         }
       >
         <View
           numberOfSpaces={6}
           style={
-            [
-              {
-                "height": 24,
-              },
-            ]
+            {
+              "height": 24,
+            }
           }
         />
         <Text
           numberOfLines={3}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 19,
-                "lineHeight": 30.4,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 19,
+              "lineHeight": 30.4,
+            }
           }
         >
           Pour commencer, peux-tu nous dire ton âge ?
@@ -175,36 +153,30 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View
           accessibilityRole="list"
           style={
-            [
-              {
-                "flexDirection": "column",
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "width": "100%",
-              },
-            ]
+            {
+              "flexDirection": "column",
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "width": "100%",
+            }
           }
         >
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
@@ -258,49 +230,41 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                       "padding": 16,
                       "width": "100%",
                     },
-                    [
-                      {
-                        "paddingVertical": 24,
-                      },
-                    ],
+                    {
+                      "paddingVertical": 24,
+                    },
                   ]
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
-                      },
-                    ]
+                    {
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 16,
+                      "textAlign": "start",
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#320096",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     J’ai 
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 17,
-                            "lineHeight": 27.2,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        }
                       }
                     >
                       16 ans
@@ -323,22 +287,18 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
+                {
+                  "height": 16,
+                }
               }
             />
           </View>
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
@@ -392,49 +352,41 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                       "padding": 16,
                       "width": "100%",
                     },
-                    [
-                      {
-                        "paddingVertical": 24,
-                      },
-                    ],
+                    {
+                      "paddingVertical": 24,
+                    },
                   ]
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
-                      },
-                    ]
+                    {
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 16,
+                      "textAlign": "start",
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#320096",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     J’ai 
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 17,
-                            "lineHeight": 27.2,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        }
                       }
                     >
                       17 ans
@@ -456,22 +408,18 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
+                {
+                  "height": 16,
+                }
               }
             />
           </View>
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
@@ -525,49 +473,41 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                       "padding": 16,
                       "width": "100%",
                     },
-                    [
-                      {
-                        "paddingVertical": 24,
-                      },
-                    ],
+                    {
+                      "paddingVertical": 24,
+                    },
                   ]
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
-                      },
-                    ]
+                    {
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 16,
+                      "textAlign": "start",
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#320096",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     J’ai 
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 17,
-                            "lineHeight": 27.2,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        }
                       }
                     >
                       18 ans
@@ -589,22 +529,18 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
+                {
+                  "height": 16,
+                }
               }
             />
           </View>
           <View
             accessibilityRole="none"
             style={
-              [
-                {
-                  "display": "flex",
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
           >
             <View
@@ -658,49 +594,41 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                       "padding": 16,
                       "width": "100%",
                     },
-                    [
-                      {
-                        "paddingVertical": 24,
-                      },
-                    ],
+                    {
+                      "paddingVertical": 24,
+                    },
                   ]
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                        "textAlign": "start",
-                      },
-                    ]
+                    {
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 16,
+                      "textAlign": "start",
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#320096",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     J’ai 
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 17,
-                            "lineHeight": 27.2,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 17,
+                          "lineHeight": 27.2,
+                        }
                       }
                     >
                       19 ans
@@ -726,11 +654,9 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          [
-            {
-              "height": 24,
-            },
-          ]
+          {
+            "height": 24,
+          }
         }
       />
     </View>
@@ -739,11 +665,9 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
     customHeight={8}
     enable={true}
     style={
-      [
-        {
-          "height": 8,
-        },
-      ]
+      {
+        "height": 8,
+      }
     }
   />
 </View>

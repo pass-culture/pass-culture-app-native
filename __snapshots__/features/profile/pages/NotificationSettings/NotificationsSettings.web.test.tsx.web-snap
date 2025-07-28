@@ -2,16 +2,8 @@
 
 exports[`NotificationsSettings should render correctly 1`] = `
 .c4 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -24,12 +16,8 @@ exports[`NotificationsSettings should render correctly 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -40,14 +28,11 @@ exports[`NotificationsSettings should render correctly 1`] = `
 }
 
 .c4:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c4:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -56,14 +41,9 @@ exports[`NotificationsSettings should render correctly 1`] = `
 }
 
 .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -83,14 +63,11 @@ exports[`NotificationsSettings should render correctly 1`] = `
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
 .c0:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -102,32 +79,16 @@ exports[`NotificationsSettings should render correctly 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex: 1;
-  -ms-flex: 1;
   flex: 1;
 }
 
 .c1 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
   max-width: 40px;
   height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -154,7 +115,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              class="c0 c1 sc-dhKdcB c1"
+              class="c0 c1"
               data-testid="Revenir en arrière"
               tabindex="0"
               title="Revenir en arrière"
@@ -208,7 +169,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           class="css-view-175oi2r r-alignSelf-1kihuf0 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
           >
             <div
               class="css-view-175oi2r r-paddingRight-i023vh"
@@ -307,10 +268,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
@@ -403,10 +364,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
@@ -482,10 +443,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
@@ -558,10 +519,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
@@ -634,10 +595,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
@@ -710,10 +671,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
@@ -786,10 +747,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
@@ -862,10 +823,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       tabindex="-1"
                     >
                       <div
-                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                        class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div

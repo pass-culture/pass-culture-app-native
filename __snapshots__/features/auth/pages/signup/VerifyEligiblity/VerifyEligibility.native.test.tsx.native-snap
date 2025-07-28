@@ -3,71 +3,59 @@
 exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "overflowY": "auto",
-        },
-      ]
+      {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "overflowY": "auto",
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "maxWidth": 400,
-            "paddingHorizontal": 24,
-            "paddingTop": 16,
-            "width": "100%",
-          },
-        ]
+        {
+          "maxWidth": 400,
+          "paddingHorizontal": 24,
+          "paddingTop": 16,
+          "width": "100%",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignSelf": "stretch",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
+          {
+            "alignSelf": "stretch",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "height": 88,
-                "width": 132,
-              },
-            ]
+            {
+              "height": 88,
+              "width": 132,
+            }
           }
         >
           <View
@@ -83,11 +71,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         </View>
         <View
           style={
-            [
-              {
-                "justifyContent": "center",
-              },
-            ]
+            {
+              "justifyContent": "center",
+            }
           }
         >
           <View
@@ -103,63 +89,53 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "borderBottomColor": "#90949d",
-              "borderBottomWidth": 1,
-              "paddingVertical": 12,
-            },
-          ]
+          {
+            "borderBottomColor": "#90949d",
+            "borderBottomWidth": 1,
+            "paddingVertical": 12,
+          }
         }
       />
     </View>
     <View
       style={
-        [
-          {
-            "flexBasis": "auto",
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "maxWidth": 400,
-            "paddingHorizontal": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "flexBasis": "auto",
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 400,
+          "paddingHorizontal": 24,
+          "width": "100%",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       />
       <View
         numberOfSpaces={10}
         style={
-          [
-            {
-              "height": 40,
-            },
-          ]
+          {
+            "height": 40,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+          }
         }
       >
         Vérifie ton identité pour débloquer ton crédit
@@ -167,39 +143,33 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
       />
       <View>
         <Text
           style={
-            [
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginBottom": 16,
-              },
-            ]
+            {
+              "color": "#696a6f",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginBottom": 16,
+            }
           }
         >
           Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière de l’État.
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
@@ -208,53 +178,45 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       <View
         numberOfSpaces={30}
         style={
-          [
-            {
-              "height": 120,
-            },
-          ]
+          {
+            "height": 120,
+          }
         }
       />
       <View
         flex={0.5}
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 0.5,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          }
         }
       />
     </View>
     <View
       style={
-        [
-          {
-            "flexBasis": "auto",
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "maxWidth": 400,
-            "paddingHorizontal": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "flexBasis": "auto",
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "maxWidth": 400,
+          "paddingHorizontal": 24,
+          "width": "100%",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignSelf": "stretch",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "marginBottom": 16,
-            },
-          ]
+          {
+            "alignSelf": "stretch",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 16,
+          }
         }
       >
         <View
@@ -294,7 +256,10 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "maxWidth": 500,
@@ -316,27 +281,23 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <Text
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
               }
             >
               Commencer la vérification
@@ -346,11 +307,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View
@@ -389,7 +348,10 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderRadius": 24,
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "maxWidth": 500,
@@ -413,23 +375,19 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -446,15 +404,13 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
               }
             >
               Vérifier mon identité plus tard
@@ -466,11 +422,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>

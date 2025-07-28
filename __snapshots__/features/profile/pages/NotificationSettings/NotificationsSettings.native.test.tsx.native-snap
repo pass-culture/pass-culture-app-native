@@ -3,82 +3,70 @@
 exports[`NotificationsSettings should render correctly when user is logged in 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Suivi et notifications
@@ -173,18 +157,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,44 +185,34 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "alignSelf": "center",
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "alignSelf": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+            }
           }
         >
           Type d’alerte
@@ -248,23 +220,19 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
@@ -272,86 +240,72 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         <View
           numberOfSpaces={2}
           style={
-            [
-              {
-                "height": 8,
-              },
-            ]
+            {
+              "height": 8,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Autoriser l’envoi d’e-mails
@@ -361,33 +315,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -423,11 +371,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -438,15 +384,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -457,7 +404,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "shadowColor": "#161617",
@@ -483,80 +433,68 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
+              }
             }
           >
             Tu continueras à recevoir par e-mail des informations essentielles concernant ton compte.
           </Text>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Autoriser les notifications
@@ -566,33 +504,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -628,11 +560,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -643,15 +573,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -662,7 +593,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "shadowColor": "#161617",
@@ -689,44 +623,36 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           <View
             numberOfSpaces={4}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "width": "100%",
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 1,
+                "width": "100%",
+              }
             }
           />
           <View
             numberOfSpaces={8}
             style={
-              [
-                {
-                  "height": 32,
-                },
-              ]
+              {
+                "height": 32,
+              }
             }
           />
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             Tes thèmes suivis
@@ -734,38 +660,35 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           <View
             numberOfSpaces={4}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View
             backgroundColor="#f3edff"
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#f3edff",
-                  "borderRadius": 8,
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "backgroundColor": "#f3edff",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingBottom": 16,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 16,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "paddingRight": 16,
-                  },
-                ]
+                {
+                  "paddingRight": 16,
+                }
               }
             >
               <View
@@ -779,25 +702,21 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
                 textColor="#161617"
               >
@@ -808,75 +727,63 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           <View
             numberOfSpaces={6}
             style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
+              {
+                "height": 24,
+              }
             }
           />
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Suivre tous les thèmes
@@ -886,33 +793,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -948,11 +849,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -963,15 +862,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -982,7 +882,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1012,75 +915,63 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           <View
             numberOfSpaces={2}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Cinéma
@@ -1090,33 +981,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -1152,11 +1037,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -1167,15 +1050,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -1186,7 +1070,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1215,66 +1102,56 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Lecture
@@ -1284,33 +1161,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -1346,11 +1217,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -1361,15 +1230,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -1380,7 +1250,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1409,66 +1282,56 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Musique
@@ -1478,33 +1341,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -1540,11 +1397,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -1555,15 +1410,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -1574,7 +1430,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1603,66 +1462,56 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Spectacles
@@ -1672,33 +1521,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -1734,11 +1577,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -1749,15 +1590,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -1768,7 +1610,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1797,66 +1642,56 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Activités créatives
@@ -1866,33 +1701,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -1928,11 +1757,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -1943,15 +1770,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -1962,7 +1790,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1991,66 +1822,56 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Visites et sorties
@@ -2060,33 +1881,27 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -2122,11 +1937,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -2137,15 +1950,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -2156,7 +1970,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -2186,11 +2003,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           <View
             numberOfSpaces={2}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
           <View
@@ -2230,7 +2045,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -2252,27 +2070,23 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Enregistrer
@@ -2286,17 +2100,15 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -2307,13 +2119,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />
@@ -2324,82 +2134,70 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
 exports[`NotificationsSettings should render correctly when user is not logged in 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -2464,11 +2262,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -2478,15 +2274,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Suivi et notifications
@@ -2494,18 +2288,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -2524,59 +2316,50 @@ exports[`NotificationsSettings should render correctly when user is not logged i
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "alignSelf": "center",
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "alignSelf": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <View
           backgroundColor="#f3edff"
           style={
-            [
-              {
-                "alignItems": "center",
-                "backgroundColor": "#f3edff",
-                "borderRadius": 8,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3edff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "paddingRight": 16,
-                },
-              ]
+              {
+                "paddingRight": 16,
+              }
             }
           >
             <View
@@ -2590,25 +2373,21 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
           <View
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
               textColor="#161617"
             >
@@ -2619,23 +2398,19 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         <View
           numberOfSpaces={6}
           style={
-            [
-              {
-                "height": 24,
-              },
-            ]
+            {
+              "height": 24,
+            }
           }
         />
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+            }
           }
         >
           Type d’alerte
@@ -2643,23 +2418,19 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
@@ -2667,86 +2438,72 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         <View
           numberOfSpaces={2}
           style={
-            [
-              {
-                "height": 8,
-              },
-            ]
+            {
+              "height": 8,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Autoriser l’envoi d’e-mails
@@ -2756,33 +2513,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -2818,11 +2569,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -2833,15 +2582,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -2852,7 +2602,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -2881,66 +2634,56 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Autoriser les notifications
@@ -2950,33 +2693,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -3012,11 +2749,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -3027,15 +2762,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -3046,7 +2782,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3076,44 +2815,36 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           <View
             numberOfSpaces={4}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "width": "100%",
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 1,
+                "width": "100%",
+              }
             }
           />
           <View
             numberOfSpaces={8}
             style={
-              [
-                {
-                  "height": 32,
-                },
-              ]
+              {
+                "height": 32,
+              }
             }
           />
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             Tes thèmes suivis
@@ -3121,75 +2852,63 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           <View
             numberOfSpaces={6}
             style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
+              {
+                "height": 24,
+              }
             }
           />
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Suivre tous les thèmes
@@ -3199,33 +2918,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -3261,11 +2974,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -3276,15 +2987,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -3295,7 +3007,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3325,75 +3040,63 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           <View
             numberOfSpaces={2}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Cinéma
@@ -3403,33 +3106,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -3465,11 +3162,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -3480,15 +3175,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -3499,7 +3195,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3528,66 +3227,56 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Lecture
@@ -3597,33 +3286,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -3659,11 +3342,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -3674,15 +3355,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -3693,7 +3375,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3722,66 +3407,56 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Musique
@@ -3791,33 +3466,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -3853,11 +3522,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -3868,15 +3535,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -3887,7 +3555,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3916,66 +3587,56 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Spectacles
@@ -3985,33 +3646,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -4047,11 +3702,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -4062,15 +3715,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -4081,7 +3735,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -4110,66 +3767,56 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Activités créatives
@@ -4179,33 +3826,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -4241,11 +3882,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -4256,15 +3895,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -4275,7 +3915,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -4304,66 +3947,56 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
           <View
             style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-              ]
+              {
+                "paddingVertical": 16,
+              }
             }
           >
             <View
               gap={4}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "flex-start",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "flex-start",
+                }
               }
               toggleLabel={false}
             >
               <View
                 gap={2}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 8,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 8,
+                  }
                 }
                 toggleLabel={false}
               >
                 <Text
                   htmlFor="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Visites et sorties
@@ -4373,33 +4006,27 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -4435,11 +4062,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -4450,15 +4075,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -4469,7 +4095,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -4499,11 +4128,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           <View
             numberOfSpaces={2}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
           <View
@@ -4543,7 +4170,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -4565,27 +4195,23 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Enregistrer
@@ -4599,17 +4225,15 @@ exports[`NotificationsSettings should render correctly when user is not logged i
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -4620,13 +4244,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

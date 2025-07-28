@@ -26,25 +26,28 @@ describe('ButtonInsideText Component', () => {
   describe('* typography property', () => {
     it('should display ButtonText font family when not provided', () => {
       render(<ButtonInsideText wording={wording} />)
-      const buttonFontFamily = screen.getByText(wording).props.style[0].fontFamily
 
-      expect(buttonFontFamily).toBe(theme.designSystem.typography.button.fontFamily)
+      expect(screen.getByText(wording)).toHaveStyle({
+        fontFamily: theme.designSystem.typography.button.fontFamily,
+      })
     })
 
     it('should display Caption font family when Caption provided', () => {
       render(<ButtonInsideText wording={wording} typography="BodyAccentXs" />)
-      const buttonFontFamily = screen.getByText(wording).props.style[0].fontFamily
 
-      expect(buttonFontFamily).toBe(theme.designSystem.typography.bodyAccentXs.fontFamily)
+      expect(screen.getByText(wording)).toHaveStyle({
+        fontFamily: theme.designSystem.typography.bodyAccentXs.fontFamily,
+      })
     })
   })
 
   describe('* color property', () => {
     it('should display primary color when not provided', () => {
       render(<ButtonInsideText wording={wording} />)
-      const buttonColor = screen.getByText(wording).props.style[0].color
 
-      expect(buttonColor).toBe(theme.designSystem.color.background.brandPrimary)
+      expect(screen.getByText(wording)).toHaveStyle({
+        color: theme.designSystem.color.background.brandPrimary,
+      })
     })
 
     it('should display custom color when color provided', () => {
@@ -55,9 +58,9 @@ describe('ButtonInsideText Component', () => {
         />
       )
 
-      const buttonColor = screen.getByText(wording).props.style[0].color
-
-      expect(buttonColor).toBe(theme.designSystem.color.background.success)
+      expect(screen.getByText(wording)).toHaveStyle({
+        color: theme.designSystem.color.background.success,
+      })
     })
   })
 })

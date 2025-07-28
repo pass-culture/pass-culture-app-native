@@ -3,82 +3,70 @@
 exports[`<DeleteProfileReason /> should match snapshot 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Suppression de compte
@@ -173,18 +157,16 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,21 +185,15 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <RCTScrollView
@@ -355,12 +331,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "paddingBottom": 8,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "paddingBottom": 8,
+                }
               }
             >
               <View
@@ -373,39 +347,33 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "gap": 16,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "gap": 16,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 19,
-                        "lineHeight": 30.4,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                    }
                   }
                 >
                   Pourquoi souhaites-tu supprimer ton compte ?
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Triste de te voir partir ! Dis-nous pourquoi pour nous aider à améliorer l’application.
@@ -420,11 +388,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "paddingBottom": 0,
-                  },
-                ]
+                {
+                  "paddingBottom": 0,
+                }
               }
             >
               <View
@@ -464,7 +430,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ],
                     {
@@ -493,36 +462,30 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                            "minHeight": 58,
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                          "minHeight": 58,
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         J’aimerais créer un compte avec une adresse e-mail différente
@@ -550,11 +513,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "paddingBottom": 0,
-                  },
-                ]
+                {
+                  "paddingBottom": 0,
+                }
               }
             >
               <View
@@ -594,7 +555,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ],
                     {
@@ -623,36 +587,30 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                            "minHeight": 58,
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                          "minHeight": 58,
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Je n’utilise plus l’application
@@ -680,11 +638,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "paddingBottom": 0,
-                  },
-                ]
+                {
+                  "paddingBottom": 0,
+                }
               }
             >
               <View
@@ -724,7 +680,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ],
                     {
@@ -753,36 +712,30 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                            "minHeight": 58,
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                          "minHeight": 58,
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Je n’ai plus de crédit ou très peu de crédit restant
@@ -810,11 +763,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "paddingBottom": 0,
-                  },
-                ]
+                {
+                  "paddingBottom": 0,
+                }
               }
             >
               <View
@@ -854,7 +805,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ],
                     {
@@ -883,36 +837,30 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                            "minHeight": 58,
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                          "minHeight": 58,
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Je souhaite supprimer mes données personnelles
@@ -940,11 +888,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "paddingBottom": 0,
-                  },
-                ]
+                {
+                  "paddingBottom": 0,
+                }
               }
             >
               <View
@@ -984,7 +930,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ],
                     {
@@ -1013,36 +962,30 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                            "minHeight": 58,
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                          "minHeight": 58,
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Je pense que quelqu’un d’autre a accès à mon compte
@@ -1070,11 +1013,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "paddingBottom": 0,
-                  },
-                ]
+                {
+                  "paddingBottom": 0,
+                }
               }
             >
               <View
@@ -1114,7 +1055,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ],
                     {
@@ -1143,36 +1087,30 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                            "minHeight": 58,
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                          "minHeight": 58,
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Autre
@@ -1200,11 +1138,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
               customHeight={8}
               enable={true}
               style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
+                {
+                  "height": 8,
+                }
               }
             />
           </View>
@@ -1215,17 +1151,15 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -1236,13 +1170,11 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

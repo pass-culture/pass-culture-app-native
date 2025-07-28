@@ -3,14 +3,12 @@
 exports[`DMSIntroduction foreign version should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
@@ -37,51 +35,43 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -146,11 +136,9 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -160,18 +148,16 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -179,53 +165,44 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
     </View>
   </View>
   <View
-    bottom={16}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "overflow": "scroll",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+      }
     }
   >
     <View
       height={65}
       style={
-        [
-          {
-            "height": 65,
-          },
-        ]
+        {
+          "height": 65,
+        }
       }
     />
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       animation={false}
       style={
-        [
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "marginBottom": 24,
+        }
       }
     >
       <View
@@ -242,26 +219,22 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
       >
         Identifie-toi sur le site demarches-simplifiees.fr
@@ -269,24 +242,20 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "marginBottom": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginBottom": 20,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "marginBottom": 20,
+          }
         }
       >
         Pour t’identifier tu vas avoir besoin de : 
@@ -294,34 +263,28 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       <View
         accessibilityRole="list"
         style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
+          {
+            "flexDirection": "column",
+            "paddingLeft": 0,
+          }
         }
       >
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             gap={3.75}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 15,
+              }
             }
           >
             <View
@@ -334,17 +297,15 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               10 minutes de ton temps
@@ -353,34 +314,28 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           <View
             numberOfSpaces={4.5}
             style={
-              [
-                {
-                  "height": 18,
-                },
-              ]
+              {
+                "height": 18,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             gap={3.75}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 15,
+              }
             }
           >
             <View
@@ -393,17 +348,15 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
@@ -412,34 +365,28 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           <View
             numberOfSpaces={4.5}
             style={
-              [
-                {
-                  "height": 18,
-                },
-              ]
+              {
+                "height": 18,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             gap={3.75}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 15,
+              }
             }
           >
             <View
@@ -452,17 +399,15 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Un justificatif de domicile
@@ -471,34 +416,28 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           <View
             numberOfSpaces={4.5}
             style={
-              [
-                {
-                  "height": 18,
-                },
-              ]
+              {
+                "height": 18,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             gap={3.75}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 15,
+              }
             }
           >
             <View
@@ -512,17 +451,15 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Un selfie avec ta pièce d’identité
@@ -531,25 +468,21 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           <View
             numberOfSpaces={4.5}
             style={
-              [
-                {
-                  "height": 18,
-                },
-              ]
+              {
+                "height": 18,
+              }
             }
           />
         </View>
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Le traitement de ton dossier peut prendre jusqu’à 5 jours.
@@ -558,24 +491,20 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+        }
       }
     >
       <View
@@ -615,7 +544,10 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -637,23 +569,19 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+                "marginRight": 8,
+              }
             }
           >
             <View
@@ -671,15 +599,13 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Aller sur demarches-simplifiees.fr
@@ -694,14 +620,12 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
 exports[`DMSIntroduction french version should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
@@ -728,51 +652,43 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -837,11 +753,9 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -851,18 +765,16 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -870,53 +782,44 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
     </View>
   </View>
   <View
-    bottom={16}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "overflow": "scroll",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+      }
     }
   >
     <View
       height={65}
       style={
-        [
-          {
-            "height": 65,
-          },
-        ]
+        {
+          "height": 65,
+        }
       }
     />
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       animation={false}
       style={
-        [
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "marginBottom": 24,
+        }
       }
     >
       <View
@@ -933,26 +836,22 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
       >
         Identifie-toi sur le site demarches-simplifiees.fr
@@ -960,24 +859,20 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "marginBottom": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginBottom": 20,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "marginBottom": 20,
+          }
         }
       >
         Pour t’identifier tu vas avoir besoin de : 
@@ -985,34 +880,28 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       <View
         accessibilityRole="list"
         style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
+          {
+            "flexDirection": "column",
+            "paddingLeft": 0,
+          }
         }
       >
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             gap={3.75}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 15,
+              }
             }
           >
             <View
@@ -1025,17 +914,15 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               10 minutes de ton temps
@@ -1044,34 +931,28 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           <View
             numberOfSpaces={4.5}
             style={
-              [
-                {
-                  "height": 18,
-                },
-              ]
+              {
+                "height": 18,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             gap={3.75}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 15,
+              }
             }
           >
             <View
@@ -1084,17 +965,15 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Ta pièce d’identité française en cours de validité
@@ -1103,34 +982,28 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           <View
             numberOfSpaces={4.5}
             style={
-              [
-                {
-                  "height": 18,
-                },
-              ]
+              {
+                "height": 18,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             gap={3.75}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 15,
+              }
             }
           >
             <View
@@ -1144,17 +1017,15 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Un selfie avec ta pièce d’identité
@@ -1163,25 +1034,21 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           <View
             numberOfSpaces={4.5}
             style={
-              [
-                {
-                  "height": 18,
-                },
-              ]
+              {
+                "height": 18,
+              }
             }
           />
         </View>
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Le traitement de ton dossier peut prendre jusqu’à 5 jours.
@@ -1190,24 +1057,20 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+        }
       }
     >
       <View
@@ -1247,7 +1110,10 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -1269,23 +1135,19 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+                "marginRight": 8,
+              }
             }
           >
             <View
@@ -1303,15 +1165,13 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Aller sur demarches-simplifiees.fr

@@ -3,82 +3,70 @@
 exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Connexion
@@ -173,18 +157,16 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,42 +185,32 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "marginBottom": 8,
-            },
-          ]
+          {
+            "marginBottom": 8,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 19,
-                "lineHeight": 30.4,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 19,
+              "lineHeight": 30.4,
+            }
           }
         >
           Connecte-toi
@@ -246,77 +218,65 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "marginBottom": 24,
-                "marginTop": 28,
-              },
-            ]
+            {
+              "marginBottom": 24,
+              "marginTop": 28,
+            }
           }
         >
           <View
             gap={0}
             style={
-              [
-                {
-                  "alignItems": "flex-start",
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "gap": 0,
-                  "maxWidth": 500,
-                  "width": "100%",
-                },
-              ]
+              {
+                "alignItems": "flex-start",
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 0,
+                "maxWidth": 500,
+                "width": "100%",
+              }
             }
           >
             <View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "flex-end",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "marginBottom": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginBottom": 8,
+                    "width": "100%",
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Adresse e-mail
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   Obligatoire
@@ -325,23 +285,19 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "marginBottom": 8,
-                  },
-                ]
+                {
+                  "marginBottom": 8,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Exemple : tonadresse@email.com
@@ -353,23 +309,24 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               isError={false}
               isFocus={false}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949d",
-                    "borderRadius": 22,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "paddingBottom": 0,
-                    "paddingLeft": 17,
-                    "paddingRight": 17,
-                    "paddingTop": 0,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 22,
+                  "borderBottomRightRadius": 22,
+                  "borderColor": "#90949d",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 22,
+                  "borderTopRightRadius": 22,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "paddingBottom": 0,
+                  "paddingLeft": 17,
+                  "paddingRight": 17,
+                  "paddingTop": 0,
+                  "width": "100%",
+                }
               }
               testID="styled-input-container"
             >
@@ -391,21 +348,19 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 placeholderTextColor="#696a6f"
                 returnKeyType="next"
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-MediumItalic",
-                      "fontSize": 16,
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-MediumItalic",
+                    "fontSize": 16,
+                    "height": "100%",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  }
                 }
                 testID="Entrée pour l’email"
                 textAlignVertical="center"
@@ -418,56 +373,48 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         <View
           gap={0}
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 0,
-                "maxWidth": 500,
-                "width": "100%",
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 0,
+              "maxWidth": 500,
+              "width": "100%",
+            }
           }
         >
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginBottom": 8,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "flex-end",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginBottom": 8,
+                  "width": "100%",
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Mot de passe
               </Text>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Obligatoire
@@ -480,23 +427,24 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             isError={false}
             isFocus={false}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949d",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
-                  "width": "100%",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderBottomLeftRadius": 22,
+                "borderBottomRightRadius": 22,
+                "borderColor": "#90949d",
+                "borderStyle": "solid",
+                "borderTopLeftRadius": 22,
+                "borderTopRightRadius": 22,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "height": 40,
+                "paddingBottom": 0,
+                "paddingLeft": 17,
+                "paddingRight": 17,
+                "paddingTop": 0,
+                "width": "100%",
+              }
             }
             testID="styled-input-container"
           >
@@ -517,21 +465,19 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               returnKeyType="next"
               secureTextEntry={true}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-MediumItalic",
-                    "fontSize": 16,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-MediumItalic",
+                  "fontSize": 16,
+                  "height": "100%",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                }
               }
               testID="Mot de passe"
               textAlignVertical="center"
@@ -540,11 +486,9 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             />
             <View
               style={
-                [
-                  {
-                    "marginTop": 8,
-                  },
-                ]
+                {
+                  "marginTop": 8,
+                }
               }
             >
               <View
@@ -608,15 +552,13 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         </View>
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-                "marginBottom": 32,
-                "marginTop": 20,
-                "maxWidth": 500,
-                "width": "100%",
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "marginBottom": 32,
+              "marginTop": 20,
+              "maxWidth": 500,
+              "width": "100%",
+            }
           }
         >
           <View
@@ -655,7 +597,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "borderRadius": 0,
+                    "borderBottomLeftRadius": 0,
+                    "borderBottomRightRadius": 0,
+                    "borderTopLeftRadius": 0,
+                    "borderTopRightRadius": 0,
                     "borderWidth": 0,
                     "flexDirection": "row",
                     "justifyContent": "center",
@@ -681,23 +626,19 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "marginRight": 8,
+                  }
                 }
               >
                 <View
@@ -714,15 +655,13 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Mot de passe oublié ?
@@ -767,7 +706,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#f1f1f4",
-                  "borderRadius": 24,
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "maxWidth": 500,
@@ -789,27 +731,23 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <Text
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
               }
             >
               Se connecter
@@ -819,67 +757,57 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         <View
           gap={4}
           style={
-            [
-              {
-                "gap": 16,
-                "marginBottom": 40,
-                "marginTop": 16,
-              },
-            ]
+            {
+              "gap": 16,
+              "marginBottom": 40,
+              "marginTop": 16,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "paddingHorizontal": 4,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingHorizontal": 4,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "backgroundColor": "#cbcdd2",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 1,
+                  "width": "100%",
+                }
               }
             />
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "marginHorizontal": 10,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "marginHorizontal": 10,
+                }
               }
             >
               ou
             </Text>
             <View
               style={
-                [
-                  {
-                    "backgroundColor": "#cbcdd2",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 1,
+                  "width": "100%",
+                }
               }
             />
           </View>
@@ -920,7 +848,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -946,23 +877,19 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "marginRight": 8,
+                  }
                 }
               >
                 <View
@@ -979,15 +906,13 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Se connecter avec Google
@@ -998,28 +923,24 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": "wrap",
-              "gap": 4,
-              "justifyContent": "center",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+            "justifyContent": "center",
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            }
           }
         >
           Pas de compte ?
@@ -1055,11 +976,9 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             [
-              [
-                {
-                  "userSelect": "auto",
-                },
-              ],
+              {
+                "userSelect": "auto",
+              },
               {
                 "opacity": 1,
               },
@@ -1071,14 +990,12 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             gap={1}
             paddingForIcon={0}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 4,
-                  "top": 0,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 4,
+                "top": 0,
+              }
             }
           >
             <View
@@ -1094,14 +1011,12 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             <Text
               color="#320096"
               style={
-                [
-                  {
-                    "color": "#320096",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#320096",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
               typography="Button"
             >
@@ -1115,17 +1030,15 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -1136,13 +1049,11 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

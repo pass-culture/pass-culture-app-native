@@ -3,26 +3,22 @@
 exports[`Home page should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 1,
-        "flexGrow": 1,
-        "flexShrink": 0,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 1,
+      "flexGrow": 1,
+      "flexShrink": 0,
+    }
   }
 >
   <View
     hide={false}
     style={
-      [
-        {
-          "height": "100%",
-          "marginVertical": 24,
-          "overflow": "hidden",
-        },
-      ]
+      {
+        "height": "100%",
+        "marginVertical": 24,
+        "overflow": "hidden",
+      }
     }
   >
     <RCTScrollView
@@ -110,11 +106,9 @@ exports[`Home page should render correctly 1`] = `
       scrollEventThrottle={16}
       stickyHeaderIndices={[]}
       style={
-        [
-          {
-            "overflow": "visible",
-          },
-        ]
+        {
+          "overflow": "visible",
+        }
       }
       testID="homeBodyScrollView"
       updateCellsBatchingPeriod={200}
@@ -136,75 +130,62 @@ exports[`Home page should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "flexGrow": 1,
-                    "flexShrink": 0,
-                    "zIndex": 1,
-                  },
-                ]
+                {
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                  "zIndex": 1,
+                }
               }
             >
               <View
                 customHeight={16}
                 enable={true}
                 style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
+                  {
+                    "height": 16,
+                  }
                 }
               />
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "marginHorizontal": 24,
-                      "marginTop": 24,
-                      "zIndex": 1,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginHorizontal": 24,
+                    "marginTop": 24,
+                    "zIndex": 1,
+                  }
                 }
               >
                 <View
-                  gap={1}
                   style={
-                    [
-                      {
-                        "flexShrink": 1,
-                      },
-                    ]
+                    {
+                      "flexShrink": 1,
+                    }
                   }
                 >
                   <Text
                     numberOfLines={2}
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 28,
-                          "lineHeight": 44.8,
-                          "marginBottom": 4,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 28,
+                        "lineHeight": 44.8,
+                        "marginBottom": 4,
+                      }
                     }
                   >
                     Bienvenue !
                   </Text>
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
                     }
                   >
                     Toute la culture à portée de main
@@ -261,19 +242,20 @@ exports[`Home page should render correctly 1`] = `
                   <View
                     isActive={true}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 40,
-                          "borderStyle": "solid",
-                          "borderWidth": 2,
-                          "height": 40,
-                          "justifyContent": "center",
-                          "width": 40,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 40,
+                        "borderBottomRightRadius": 40,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 40,
+                        "borderTopRightRadius": 40,
+                        "borderWidth": 2,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "width": 40,
+                      }
                     }
                   >
                     <View
@@ -288,16 +270,14 @@ exports[`Home page should render correctly 1`] = `
                   <Text
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "maxWidth": 100,
-                          "paddingTop": 4,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "maxWidth": 100,
+                        "paddingTop": 4,
+                      }
                     }
                   >
                     Ma position
@@ -308,29 +288,23 @@ exports[`Home page should render correctly 1`] = `
             <View
               numberOfSpaces={6}
               style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
+                {
+                  "height": 24,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "marginHorizontal": 24,
-                  },
-                ]
+                {
+                  "marginHorizontal": 24,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 32,
-                    },
-                  ]
+                  {
+                    "marginBottom": 32,
+                  }
                 }
               >
                 <View
@@ -368,7 +342,10 @@ exports[`Home page should render correctly 1`] = `
                           "userSelect": "auto",
                         },
                         {
-                          "borderRadius": 8,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                         },
                       ],
                       {
@@ -382,33 +359,32 @@ exports[`Home page should render correctly 1`] = `
                     backgroundColor="#ffffff"
                     borderColor="#320096"
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#320096",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#320096",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                        "width": "100%",
+                      }
                     }
                     testID="systemBanner"
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignContent": "center",
-                            "marginRight": 16,
-                          },
-                        ]
+                        {
+                          "alignContent": "center",
+                          "marginRight": 16,
+                        }
                       }
                     >
                       <View
@@ -424,28 +400,24 @@ exports[`Home page should render correctly 1`] = `
                     <View
                       gap={1}
                       style={
-                        [
-                          {
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "gap": 4,
-                            "marginRight": 16,
-                            "textAlign": "start",
-                          },
-                        ]
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 4,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        }
                       }
                     >
                       <Text
                         color="default"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Débloque ton crédit
@@ -453,14 +425,12 @@ exports[`Home page should render correctly 1`] = `
                       <Text
                         color="default"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Crée ton compte si tu as 17 ou 18 ans !
@@ -494,11 +464,9 @@ exports[`Home page should render correctly 1`] = `
             customHeight={72}
             enable={true}
             style={
-              [
-                {
-                  "height": 72,
-                },
-              ]
+              {
+                "height": 72,
+              }
             }
           />
         </View>
@@ -508,16 +476,14 @@ exports[`Home page should render correctly 1`] = `
   <View
     height={16}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 16,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 16,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+      }
     }
   >
     <BlurView
@@ -528,13 +494,11 @@ exports[`Home page should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

@@ -2,16 +2,8 @@
 
 exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 .c8 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -24,12 +16,8 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -40,14 +28,11 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c8:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c8:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -74,13 +59,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c5 {
   padding-right: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   height: 100%;
   right: 0;
@@ -106,8 +85,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   border: solid 1px #90949d;
   cursor: pointer;
   background-color: #ffffff;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 }
 
@@ -132,8 +109,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   border: solid 1px #90949d;
   cursor: pointer;
   background-color: #ffffff;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 }
 
@@ -158,8 +133,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   border: solid 1px #90949d;
   cursor: pointer;
   background-color: #ffffff;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 }
 
@@ -191,7 +164,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
       class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
       >
         <div
           class="css-view-175oi2r r-paddingRight-i023vh"
@@ -1444,16 +1417,8 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 exports[`<SetBirthday /> touch device should render correctly 1`] = `
 .c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -1466,12 +1431,8 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -1482,14 +1443,11 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
 }
 
 .c2:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c2:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -1528,7 +1486,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
       class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
       >
         <div
           class="css-view-175oi2r r-paddingRight-i023vh"
@@ -1572,7 +1530,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           </label>
         </div>
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-16uyjmq r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5kex9v r-borderBottomRightRadius-1inxgn4 r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
           data-testid="styled-input-container"
         >
           <div

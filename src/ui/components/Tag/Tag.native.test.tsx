@@ -42,9 +42,7 @@ describe('<Tag />', () => {
 
     const expectedColor = theme.designSystem.color.background.bookclub
 
-    const styles = Object.assign({}, ...screen.getByTestId('tagWrapper').props.style)
-
-    expect(styles.backgroundColor).toEqual(expectedColor)
+    expect(screen.getByTestId('tagWrapper')).toHaveStyle({ backgroundColor: expectedColor })
   })
 
   it('should use default backgroundColor when withColor prop is false', () => {
@@ -52,8 +50,6 @@ describe('<Tag />', () => {
 
     const expectedColor = theme.designSystem.color.background.default
 
-    const styles = Object.assign({}, ...screen.getByTestId('tagWrapper').props.style)
-
-    expect(styles.backgroundColor).toEqual(expectedColor)
+    expect(screen.getByTestId('tagWrapper')).toHaveStyle({ backgroundColor: expectedColor })
   })
 })

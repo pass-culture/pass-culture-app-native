@@ -162,7 +162,7 @@ describe('SnackBar Component', () => {
 
       const container = screen.getByTestId('snackbar-container')
 
-      expect(container.props.style[0].display).toEqual('flex')
+      expect(container).toHaveStyle({ display: 'flex' })
 
       /**
        * It's called twice because of the following function being triggered
@@ -200,7 +200,7 @@ describe('SnackBar Component', () => {
       expect(timing).toHaveBeenCalledTimes(2)
 
       await waitFor(() => {
-        expect(container.props.style[0].display).toEqual('none')
+        expect(container).toHaveStyle({ display: 'none' })
       })
     })
 

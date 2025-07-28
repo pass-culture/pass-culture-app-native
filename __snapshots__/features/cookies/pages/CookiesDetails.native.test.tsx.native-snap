@@ -3,31 +3,28 @@
 exports[`<CookiesDetails/> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "marginBottom": 32,
-      },
-    ]
+    {
+      "marginBottom": 32,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "borderRadius": 8,
-          "overflow": "hidden",
-        },
-      ]
+      {
+        "borderBottomLeftRadius": 8,
+        "borderBottomRightRadius": 8,
+        "borderTopLeftRadius": 8,
+        "borderTopRightRadius": 8,
+        "overflow": "hidden",
+      }
     }
   >
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -97,27 +94,23 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Qu’est-ce que les cookies ?
@@ -191,14 +184,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
@@ -208,50 +199,42 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "paddingVertical": 32,
-        },
-      ]
+      {
+        "paddingVertical": 32,
+      }
     }
   >
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 17,
-            "lineHeight": 27.2,
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 17,
+          "lineHeight": 27.2,
+        }
       }
     >
       À quoi servent tes cookies et tes données ?
     </Text>
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginTop": 24,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Je choisis mes cookies
@@ -259,49 +242,41 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       <View
         gap={2}
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "gap": 8,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 8,
+          }
         }
       >
         <Text
           htmlFor="testUuidV4"
           id="testUuidV4"
           style={
-            [
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
+            {
+              "color": "#696a6f",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            }
           }
         >
           Tout accepter
         </Text>
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             accessibilityHidden={true}
             style={
-              [
-                {
-                  "display": "none",
-                },
-              ]
+              {
+                "display": "none",
+              }
             }
           >
             Case à cocher - 
@@ -337,11 +312,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
+                {
+                  "userSelect": "auto",
+                },
                 {
                   "opacity": 1,
                 },
@@ -352,15 +325,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             <View
               active={false}
               style={
-                [
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
-                  },
-                ]
+                {
+                  "backgroundColor": "#696a6f",
+                  "borderBottomLeftRadius": 16,
+                  "borderBottomRightRadius": 16,
+                  "borderTopLeftRadius": 16,
+                  "borderTopRightRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
+                }
               }
             >
               <View
@@ -371,7 +345,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
+                      "borderBottomLeftRadius": 28,
+                      "borderBottomRightRadius": 28,
+                      "borderTopLeftRadius": 28,
+                      "borderTopRightRadius": 28,
                       "height": 28,
                       "justifyContent": "center",
                       "shadowColor": "#161617",
@@ -396,12 +373,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -426,22 +401,18 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             accessibilityHidden={true}
             style={
-              [
-                {
-                  "display": "none",
-                },
-              ]
+              {
+                "display": "none",
+              }
             }
           >
             Case à cocher - 
@@ -477,11 +448,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
+                {
+                  "userSelect": "auto",
+                },
                 {
                   "opacity": 1,
                 },
@@ -492,15 +461,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             <View
               active={false}
               style={
-                [
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
-                  },
-                ]
+                {
+                  "backgroundColor": "#696a6f",
+                  "borderBottomLeftRadius": 16,
+                  "borderBottomRightRadius": 16,
+                  "borderTopLeftRadius": 16,
+                  "borderTopRightRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
+                }
               }
             >
               <View
@@ -511,7 +481,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
+                      "borderBottomLeftRadius": 28,
+                      "borderBottomRightRadius": 28,
+                      "borderTopLeftRadius": 28,
+                      "borderTopRightRadius": 28,
                       "height": 28,
                       "justifyContent": "center",
                       "shadowColor": "#161617",
@@ -600,27 +573,23 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Personnaliser ta navigation
@@ -694,14 +663,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
@@ -709,21 +676,17 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View>
           <View
             style={
-              [
-                {
-                  "position": "absolute",
-                },
-              ]
+              {
+                "position": "absolute",
+              }
             }
           >
             <View
@@ -738,23 +701,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           </View>
           <Text
             style={
-              [
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
+                {
+                  "width": 20,
+                }
               }
             />
             Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
@@ -764,23 +723,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          },
-        ]
+        {
+          "backgroundColor": "#f1f1f4",
+          "height": 1,
+          "width": "100%",
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -805,22 +760,18 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             accessibilityHidden={true}
             style={
-              [
-                {
-                  "display": "none",
-                },
-              ]
+              {
+                "display": "none",
+              }
             }
           >
             Case à cocher - 
@@ -856,11 +807,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
+                {
+                  "userSelect": "auto",
+                },
                 {
                   "opacity": 1,
                 },
@@ -871,15 +820,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             <View
               active={false}
               style={
-                [
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
-                  },
-                ]
+                {
+                  "backgroundColor": "#696a6f",
+                  "borderBottomLeftRadius": 16,
+                  "borderBottomRightRadius": 16,
+                  "borderTopLeftRadius": 16,
+                  "borderTopRightRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
+                }
               }
             >
               <View
@@ -890,7 +840,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
+                      "borderBottomLeftRadius": 28,
+                      "borderBottomRightRadius": 28,
+                      "borderTopLeftRadius": 28,
+                      "borderTopRightRadius": 28,
                       "height": 28,
                       "justifyContent": "center",
                       "shadowColor": "#161617",
@@ -979,27 +932,23 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Enregistrer des statistiques de navigation
@@ -1073,14 +1022,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
@@ -1088,21 +1035,17 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View>
           <View
             style={
-              [
-                {
-                  "position": "absolute",
-                },
-              ]
+              {
+                "position": "absolute",
+              }
             }
           >
             <View
@@ -1117,23 +1060,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           </View>
           <Text
             style={
-              [
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
+                {
+                  "width": 20,
+                }
               }
             />
             Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
@@ -1143,23 +1082,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          },
-        ]
+        {
+          "backgroundColor": "#f1f1f4",
+          "height": 1,
+          "width": "100%",
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -1184,22 +1119,18 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             accessibilityHidden={true}
             style={
-              [
-                {
-                  "display": "none",
-                },
-              ]
+              {
+                "display": "none",
+              }
             }
           >
             Case à cocher - 
@@ -1235,11 +1166,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
+                {
+                  "userSelect": "auto",
+                },
                 {
                   "opacity": 1,
                 },
@@ -1250,15 +1179,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             <View
               active={false}
               style={
-                [
-                  {
-                    "backgroundColor": "#696a6f",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
-                  },
-                ]
+                {
+                  "backgroundColor": "#696a6f",
+                  "borderBottomLeftRadius": 16,
+                  "borderBottomRightRadius": 16,
+                  "borderTopLeftRadius": 16,
+                  "borderTopRightRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
+                }
               }
             >
               <View
@@ -1269,7 +1199,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
+                      "borderBottomLeftRadius": 28,
+                      "borderBottomRightRadius": 28,
+                      "borderTopLeftRadius": 28,
+                      "borderTopRightRadius": 28,
                       "height": 28,
                       "justifyContent": "center",
                       "shadowColor": "#161617",
@@ -1358,27 +1291,23 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Mesurer l’efficacité de nos publicités
@@ -1452,14 +1381,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
@@ -1467,21 +1394,17 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View>
           <View
             style={
-              [
-                {
-                  "position": "absolute",
-                },
-              ]
+              {
+                "position": "absolute",
+              }
             }
           >
             <View
@@ -1496,23 +1419,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           </View>
           <Text
             style={
-              [
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
+                {
+                  "width": 20,
+                }
               }
             />
             En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
@@ -1522,23 +1441,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          },
-        ]
+        {
+          "backgroundColor": "#f1f1f4",
+          "height": 1,
+          "width": "100%",
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
     >
       <View
@@ -1563,22 +1478,18 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             accessibilityHidden={true}
             style={
-              [
-                {
-                  "display": "none",
-                },
-              ]
+              {
+                "display": "none",
+              }
             }
           >
             Case à cocher - 
@@ -1614,11 +1525,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
+                {
+                  "userSelect": "auto",
+                },
                 {
                   "opacity": 1,
                 },
@@ -1629,15 +1538,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             <View
               active={true}
               style={
-                [
-                  {
-                    "backgroundColor": "#15884f",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
-                  },
-                ]
+                {
+                  "backgroundColor": "#15884f",
+                  "borderBottomLeftRadius": 16,
+                  "borderBottomRightRadius": 16,
+                  "borderTopLeftRadius": 16,
+                  "borderTopRightRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
+                }
               }
             >
               <View
@@ -1648,7 +1558,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
+                      "borderBottomLeftRadius": 28,
+                      "borderBottomRightRadius": 28,
+                      "borderTopLeftRadius": 28,
+                      "borderTopRightRadius": 28,
                       "height": 28,
                       "justifyContent": "center",
                       "width": 28,
@@ -1740,27 +1653,23 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Assurer la sécurité, prévenir la fraude et corriger les bugs
@@ -1834,14 +1743,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application.
@@ -1851,11 +1758,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     <View>
       <View
         style={
-          [
-            {
-              "position": "absolute",
-            },
-          ]
+          {
+            "position": "absolute",
+          }
         }
       >
         <View
@@ -1870,23 +1775,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       </View>
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "width": 20,
-              },
-            ]
+            {
+              "width": 20,
+            }
           }
         />
         Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
@@ -1895,98 +1796,82 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "width": "100%",
-          },
-        ]
+        {
+          "backgroundColor": "#f1f1f4",
+          "height": 1,
+          "width": "100%",
+        }
       }
     />
   </View>
   <View
     gap={4}
     style={
-      [
-        {
-          "gap": 16,
-        },
-      ]
+      {
+        "gap": 16,
+      }
     }
   >
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 17,
-            "lineHeight": 27.2,
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 17,
+          "lineHeight": 27.2,
+        }
       }
     >
       Tu as la main dessus
     </Text>
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+        }
       }
     >
       Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
     </Text>
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+        }
       }
     >
       On te redemandera bien sûr ton consentement si notre politique évolue.
     </Text>
     <Text
       style={
-        [
-          {
-            "color": "#696a6f",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          },
-        ]
+        {
+          "color": "#696a6f",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 19.2,
+        }
       }
     >
       Pour plus d’informations, nous t’invitons à consulter notre
       <View
         numberOfSpaces={1}
         style={
-          [
-            {
-              "width": 4,
-            },
-          ]
+          {
+            "width": 4,
+          }
         }
       />
       <View>
@@ -2040,14 +1925,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             gap={1}
             paddingForIcon={0}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 4,
-                  "top": 0,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 4,
+                "top": 0,
+              }
             }
           >
             <View
@@ -2062,14 +1945,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
               typography="BodyAccentXs"
             >

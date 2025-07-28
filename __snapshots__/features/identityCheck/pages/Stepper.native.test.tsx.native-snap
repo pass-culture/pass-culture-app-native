@@ -3,14 +3,12 @@
 exports[`Stepper navigation should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <RCTScrollView
@@ -24,44 +22,34 @@ exports[`Stepper navigation should render correctly 1`] = `
         "width": "100%",
       }
     }
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         customHeight={16}
         enable={true}
         style={
-          [
-            {
-              "height": 16,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
       />
       <View
         numberOfSpaces={4}
         style={
-          [
-            {
-              "height": 16,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 28,
-              "lineHeight": 44.8,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 28,
+            "lineHeight": 44.8,
+          }
         }
       >
         Vas-y
@@ -69,33 +57,27 @@ exports[`Stepper navigation should render correctly 1`] = `
       <View
         numberOfSpaces={2}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
       <View
         numberOfSpaces={2}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         Débloque ton crédit
@@ -103,66 +85,54 @@ exports[`Stepper navigation should render correctly 1`] = `
       <View
         numberOfSpaces={8}
         style={
-          [
-            {
-              "height": 32,
-            },
-          ]
+          {
+            "height": 32,
+          }
         }
       />
       <View
         numberOfSpaces={2}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
       <View
         accessibilityRole="list"
         style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
+          {
+            "flexDirection": "column",
+            "paddingLeft": 0,
+          }
         }
       >
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexGrow": 1,
+              }
             }
           >
             <View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "overflow": "hidden",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "overflow": "hidden",
+                  }
                 }
                 testID="vertical-stepper-complete"
               >
@@ -170,29 +140,26 @@ exports[`Stepper navigation should render correctly 1`] = `
                   isFirst={true}
                   isLast={false}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#90949d",
-                        "borderRadius": 2,
-                        "borderTopLeftRadius": 2,
-                        "borderTopRightRadius": 2,
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "width": 2,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#90949d",
+                      "borderBottomLeftRadius": 2,
+                      "borderBottomRightRadius": 2,
+                      "borderTopLeftRadius": 2,
+                      "borderTopRightRadius": 2,
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "width": 2,
+                    }
                   }
                   testID="top-line"
                 />
                 <View
                   addMoreSpacingToIcons={false}
                   style={
-                    [
-                      {
-                        "marginVertical": 2,
-                      },
-                    ]
+                    {
+                      "marginVertical": 2,
+                    }
                   }
                 >
                   <View
@@ -210,17 +177,18 @@ exports[`Stepper navigation should render correctly 1`] = `
                   isFirst={true}
                   isLast={false}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#90949d",
-                        "borderRadius": 2,
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "opacity": 1,
-                        "width": 2,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#90949d",
+                      "borderBottomLeftRadius": 2,
+                      "borderBottomRightRadius": 2,
+                      "borderTopLeftRadius": 2,
+                      "borderTopRightRadius": 2,
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "opacity": 1,
+                      "width": 2,
+                    }
                   }
                   testID="bottom-line"
                 />
@@ -228,14 +196,12 @@ exports[`Stepper navigation should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "marginHorizontal": 8,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginHorizontal": 8,
+                }
               }
             >
               <View
@@ -275,7 +241,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -294,7 +263,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "marginTop": 8,
@@ -312,14 +284,12 @@ exports[`Stepper navigation should render correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      }
                     }
                   >
                     <View
@@ -334,28 +304,24 @@ exports[`Stepper navigation should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexDirection": "column",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "paddingRight": 16,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "paddingRight": 16,
+                      }
                     }
                   >
                     <Text
                       stepState="completed"
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Numéro de téléphone
@@ -366,11 +332,9 @@ exports[`Stepper navigation should render correctly 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
+                  {
+                    "height": 8,
+                  }
                 }
               />
             </View>
@@ -379,35 +343,29 @@ exports[`Stepper navigation should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexGrow": 1,
+              }
             }
           >
             <View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "overflow": "hidden",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "overflow": "hidden",
+                  }
                 }
                 testID="vertical-stepper-in_progress"
               >
@@ -415,44 +373,42 @@ exports[`Stepper navigation should render correctly 1`] = `
                   isFirst={false}
                   isLast={false}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#90949d",
-                        "borderRadius": 2,
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "width": 2,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#90949d",
+                      "borderBottomLeftRadius": 2,
+                      "borderBottomRightRadius": 2,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "width": 2,
+                    }
                   }
                   testID="top-line"
                 />
                 <View
                   addMoreSpacingToIcons={false}
                   style={
-                    [
-                      {
-                        "marginVertical": 2,
-                      },
-                    ]
+                    {
+                      "marginVertical": 2,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#161617",
-                          "borderColor": "#ffffff",
-                          "borderRadius": 6,
-                          "borderWidth": 2,
-                          "height": 12,
-                          "marginHorizontal": 4,
-                          "width": 12,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#161617",
+                        "borderBottomLeftRadius": 6,
+                        "borderBottomRightRadius": 6,
+                        "borderColor": "#ffffff",
+                        "borderTopLeftRadius": 6,
+                        "borderTopRightRadius": 6,
+                        "borderWidth": 2,
+                        "height": 12,
+                        "marginHorizontal": 4,
+                        "width": 12,
+                      }
                     }
                     testID="icon"
                   />
@@ -460,24 +416,20 @@ exports[`Stepper navigation should render correctly 1`] = `
                 <View
                   onLayout={[Function]}
                   style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "height": 0,
-                      },
-                    ]
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "justifyContent": "space-between",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "justifyContent": "space-between",
+                      }
                     }
                     testID="bottom-line"
                   />
@@ -486,14 +438,12 @@ exports[`Stepper navigation should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "marginHorizontal": 8,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginHorizontal": 8,
+                }
               }
             >
               <View
@@ -533,7 +483,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -559,23 +512,19 @@ exports[`Stepper navigation should render correctly 1`] = `
                         "padding": 16,
                         "width": "100%",
                       },
-                      [
-                        {
-                          "borderColor": "#90949d",
-                          "minHeight": 92,
-                        },
-                      ],
+                      {
+                        "borderColor": "#90949d",
+                        "minHeight": 92,
+                      },
                     ]
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignContent": "center",
-                          "marginRight": 16,
-                        },
-                      ]
+                      {
+                        "alignContent": "center",
+                        "marginRight": 16,
+                      }
                     }
                   >
                     <View
@@ -589,27 +538,23 @@ exports[`Stepper navigation should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <Text
                       stepState="current"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Identification
@@ -617,14 +562,12 @@ exports[`Stepper navigation should render correctly 1`] = `
                     <Text
                       stepState="current"
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       Confirme tes informations
@@ -645,11 +588,9 @@ exports[`Stepper navigation should render correctly 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
+                  {
+                    "height": 8,
+                  }
                 }
               />
             </View>
@@ -658,59 +599,49 @@ exports[`Stepper navigation should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexGrow": 1,
+              }
             }
           >
             <View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "overflow": "hidden",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "overflow": "hidden",
+                  }
                 }
                 testID="vertical-stepper-future"
               >
                 <View
                   onLayout={[Function]}
                   style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "height": 0,
-                      },
-                    ]
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "justifyContent": "space-between",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "justifyContent": "space-between",
+                      }
                     }
                     testID="top-line"
                   />
@@ -718,26 +649,25 @@ exports[`Stepper navigation should render correctly 1`] = `
                 <View
                   addMoreSpacingToIcons={false}
                   style={
-                    [
-                      {
-                        "marginVertical": 2,
-                      },
-                    ]
+                    {
+                      "marginVertical": 2,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderColor": "#ffffff",
-                          "borderRadius": 6,
-                          "borderWidth": 2,
-                          "height": 12,
-                          "marginHorizontal": 4,
-                          "width": 12,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 6,
+                        "borderBottomRightRadius": 6,
+                        "borderColor": "#ffffff",
+                        "borderTopLeftRadius": 6,
+                        "borderTopRightRadius": 6,
+                        "borderWidth": 2,
+                        "height": 12,
+                        "marginHorizontal": 4,
+                        "width": 12,
+                      }
                     }
                     testID="icon"
                   />
@@ -745,24 +675,20 @@ exports[`Stepper navigation should render correctly 1`] = `
                 <View
                   onLayout={[Function]}
                   style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "height": 0,
-                      },
-                    ]
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "justifyContent": "space-between",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "justifyContent": "space-between",
+                      }
                     }
                     testID="bottom-line"
                   />
@@ -771,14 +697,12 @@ exports[`Stepper navigation should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "marginHorizontal": 8,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginHorizontal": 8,
+                }
               }
             >
               <View
@@ -818,7 +742,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -837,7 +764,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "marginTop": 8,
@@ -854,14 +784,12 @@ exports[`Stepper navigation should render correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      }
                     }
                   >
                     <View
@@ -876,28 +804,24 @@ exports[`Stepper navigation should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexDirection": "column",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "paddingRight": 16,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "paddingRight": 16,
+                      }
                     }
                   >
                     <Text
                       stepState="disabled"
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Profil
@@ -908,11 +832,9 @@ exports[`Stepper navigation should render correctly 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
+                  {
+                    "height": 8,
+                  }
                 }
               />
             </View>
@@ -921,59 +843,49 @@ exports[`Stepper navigation should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "flexGrow": 1,
+              }
             }
           >
             <View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "overflow": "hidden",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "overflow": "hidden",
+                  }
                 }
                 testID="vertical-stepper-future"
               >
                 <View
                   onLayout={[Function]}
                   style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "height": 0,
-                      },
-                    ]
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "justifyContent": "space-between",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "justifyContent": "space-between",
+                      }
                     }
                     testID="top-line"
                   />
@@ -981,26 +893,25 @@ exports[`Stepper navigation should render correctly 1`] = `
                 <View
                   addMoreSpacingToIcons={false}
                   style={
-                    [
-                      {
-                        "marginVertical": 2,
-                      },
-                    ]
+                    {
+                      "marginVertical": 2,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderColor": "#ffffff",
-                          "borderRadius": 6,
-                          "borderWidth": 2,
-                          "height": 12,
-                          "marginHorizontal": 4,
-                          "width": 12,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 6,
+                        "borderBottomRightRadius": 6,
+                        "borderColor": "#ffffff",
+                        "borderTopLeftRadius": 6,
+                        "borderTopRightRadius": 6,
+                        "borderWidth": 2,
+                        "height": 12,
+                        "marginHorizontal": 4,
+                        "width": 12,
+                      }
                     }
                     testID="icon"
                   />
@@ -1008,31 +919,30 @@ exports[`Stepper navigation should render correctly 1`] = `
                 <View
                   isLast={true}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#90949d",
-                        "borderRadius": 2,
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "opacity": 0,
-                        "width": 2,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#90949d",
+                      "borderBottomLeftRadius": 2,
+                      "borderBottomRightRadius": 2,
+                      "borderTopLeftRadius": 2,
+                      "borderTopRightRadius": 2,
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "opacity": 0,
+                      "width": 2,
+                    }
                   }
                 />
               </View>
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "marginHorizontal": 8,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginHorizontal": 8,
+                }
               }
             >
               <View
@@ -1072,7 +982,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -1091,7 +1004,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "marginTop": 8,
@@ -1108,14 +1024,12 @@ exports[`Stepper navigation should render correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                        },
-                      ]
+                      {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      }
                     }
                   >
                     <View
@@ -1130,28 +1044,24 @@ exports[`Stepper navigation should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexDirection": "column",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "paddingRight": 16,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "paddingRight": 16,
+                      }
                     }
                   >
                     <Text
                       stepState="disabled"
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Confirmation
@@ -1166,23 +1076,19 @@ exports[`Stepper navigation should render correctly 1`] = `
       <View
         flex={1}
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "justifyContent": "center",
-              "minHeight": 60,
-            },
-          ]
+          {
+            "justifyContent": "center",
+            "minHeight": 60,
+          }
         }
       >
         <View
@@ -1221,7 +1127,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderRadius": 24,
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "maxWidth": 500,
@@ -1245,23 +1154,19 @@ exports[`Stepper navigation should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -1279,15 +1184,13 @@ exports[`Stepper navigation should render correctly 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
               }
             >
               Abandonner

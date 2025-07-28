@@ -42,7 +42,7 @@ jest.useFakeTimers()
 
 describe('MarketingBlockExclusivity', () => {
   beforeEach(() => {
-    mockdate.set(new Date(today))
+    mockdate.set(new Date(today * 1000))
     setFeatureFlags()
   })
 

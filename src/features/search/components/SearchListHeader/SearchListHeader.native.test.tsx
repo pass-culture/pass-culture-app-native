@@ -219,7 +219,7 @@ describe('<SearchListHeader />', () => {
       )
       const bannerContainer = screen.getByTestId('banner-container')
 
-      expect(bannerContainer.props.style).toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
+      expect(bannerContainer).toHaveStyle({ paddingBottom: 16, paddingHorizontal: 24 })
     })
 
     it('should not display paddingBottom when nbHits is equal to 0', () => {

@@ -149,83 +149,73 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       maxHeight={1334}
       noPadding={true}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 1318,
-            "justifyContent": "center",
-            "maxHeight": 1334,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 1318,
+          "justifyContent": "center",
+          "maxHeight": 1334,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         nativeID="testUuidV4"
         style={
-          [
-            {
-              "flexDirection": "row",
-              "width": "100%",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "width": "100%",
+          }
         }
         testID="customModalHeader"
       >
         <View
           accessibilityRole="header"
           style={
-            [
-              {
-                "width": "100%",
-              },
-            ]
+            {
+              "width": "100%",
+            }
           }
         >
           <View
             height={72}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "height": 72,
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                  "zIndex": 1,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": 72,
+                "justifyContent": "space-between",
+                "width": "100%",
+                "zIndex": 1,
+              }
             }
             testID="pageHeader"
           >
             <View
               positionInHeader="left"
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-start",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                }
               }
               testID="back-button-container"
             />
@@ -233,15 +223,13 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               nativeID="testUuidV4"
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "textAlign": "center",
+                }
               }
             >
               Prix
@@ -249,18 +237,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               positionInHeader="right"
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-end",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                }
               }
               testID="close-button-container"
             >
@@ -327,11 +313,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "display": "none",
-                      },
-                    ]
+                    {
+                      "display": "none",
+                    }
                   }
                 >
                   Retour
@@ -346,12 +330,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         onContentSizeChange={[Function]}
         scrollEnabled={true}
         style={
-          [
-            {
-              "paddingHorizontal": 24,
-              "width": "100%",
-            },
-          ]
+          {
+            "paddingHorizontal": 24,
+            "width": "100%",
+          }
         }
         testID="fullscreenModalScrollView"
       >
@@ -359,59 +341,52 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           <View
             isKeyboardOpen={false}
             style={
-              [
-                {
-                  "marginBottom": 0,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "marginBottom": 0,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 24,
-                    },
-                  ]
+                  {
+                    "marginBottom": 24,
+                  }
                 }
               >
                 <View
                   backgroundColor="#f3edff"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#f3edff",
-                        "borderRadius": 8,
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#f3edff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    }
                   }
                   testID="creditBanner"
                 >
                   <View
                     style={
-                      [
-                        {
-                          "paddingRight": 16,
-                        },
-                      ]
+                      {
+                        "paddingRight": 16,
+                      }
                     }
                   >
                     <View
@@ -425,25 +400,21 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                       textColor="#161617"
                     >
@@ -455,24 +426,20 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 inverseLayout={false}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 8,
-                        "marginRight": 24,
-                      },
-                    ]
+                    {
+                      "flexShrink": 1,
+                      "marginLeft": 8,
+                      "marginRight": 24,
+                    }
                   }
                 >
                   <Text
@@ -480,14 +447,12 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     htmlFor="testUuidV4"
                     id="testUuidV4"
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Uniquement les offres gratuites
@@ -495,31 +460,25 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
+                    {
+                      "flexShrink": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       accessibilityHidden={true}
                       style={
-                        [
-                          {
-                            "display": "none",
-                          },
-                        ]
+                        {
+                          "display": "none",
+                        }
                       }
                     >
                       Case à cocher - 
@@ -555,11 +514,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                          ],
+                          {
+                            "userSelect": "auto",
+                          },
                           {
                             "opacity": 1,
                           },
@@ -570,15 +527,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       <View
                         active={false}
                         style={
-                          [
-                            {
-                              "backgroundColor": "#696a6f",
-                              "borderRadius": 16,
-                              "height": 32,
-                              "justifyContent": "center",
-                              "width": 56,
-                            },
-                          ]
+                          {
+                            "backgroundColor": "#696a6f",
+                            "borderBottomLeftRadius": 16,
+                            "borderBottomRightRadius": 16,
+                            "borderTopLeftRadius": 16,
+                            "borderTopRightRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          }
                         }
                       >
                         <View
@@ -589,7 +547,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "alignItems": "center",
                                 "aspectRatio": 1,
                                 "backgroundColor": "#ffffff",
-                                "borderRadius": 28,
+                                "borderBottomLeftRadius": 28,
+                                "borderBottomRightRadius": 28,
+                                "borderTopLeftRadius": 28,
+                                "borderTopRightRadius": 28,
                                 "height": 28,
                                 "justifyContent": "center",
                                 "shadowColor": "#161617",
@@ -614,37 +575,31 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               </View>
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginVertical": 24,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginVertical": 24,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 inverseLayout={false}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexShrink": 1,
-                        "marginLeft": 8,
-                        "marginRight": 24,
-                      },
-                    ]
+                    {
+                      "flexShrink": 1,
+                      "marginLeft": 8,
+                      "marginRight": 24,
+                    }
                   }
                 >
                   <Text
@@ -652,14 +607,12 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     htmlFor="testUuidV4"
                     id="testUuidV4"
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Limiter la recherche à mon crédit
@@ -667,31 +620,25 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
+                    {
+                      "flexShrink": 0,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       accessibilityHidden={true}
                       style={
-                        [
-                          {
-                            "display": "none",
-                          },
-                        ]
+                        {
+                          "display": "none",
+                        }
                       }
                     >
                       Case à cocher - 
@@ -727,11 +674,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                          ],
+                          {
+                            "userSelect": "auto",
+                          },
                           {
                             "opacity": 1,
                           },
@@ -742,15 +687,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       <View
                         active={false}
                         style={
-                          [
-                            {
-                              "backgroundColor": "#696a6f",
-                              "borderRadius": 16,
-                              "height": 32,
-                              "justifyContent": "center",
-                              "width": 56,
-                            },
-                          ]
+                          {
+                            "backgroundColor": "#696a6f",
+                            "borderBottomLeftRadius": 16,
+                            "borderBottomRightRadius": 16,
+                            "borderTopLeftRadius": 16,
+                            "borderTopRightRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          }
                         }
                       >
                         <View
@@ -761,7 +707,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "alignItems": "center",
                                 "aspectRatio": 1,
                                 "backgroundColor": "#ffffff",
-                                "borderRadius": 28,
+                                "borderBottomLeftRadius": 28,
+                                "borderBottomRightRadius": 28,
+                                "borderTopLeftRadius": 28,
+                                "borderTopRightRadius": 28,
                                 "height": 28,
                                 "justifyContent": "center",
                                 "shadowColor": "#161617",
@@ -786,64 +735,54 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               </View>
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginVertical": 24,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginVertical": 24,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 24,
-                    },
-                  ]
+                  {
+                    "marginBottom": 24,
+                  }
                 }
               >
                 <View
                   gap={0}
                   style={
-                    [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "gap": 0,
+                      "maxWidth": 500,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View>
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "flex-end",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "marginBottom": 8,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "marginBottom": 8,
+                          "width": "100%",
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Prix minimum (en €)
@@ -856,23 +795,24 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     isError={false}
                     isFocus={false}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949d",
-                          "borderRadius": 22,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 22,
+                        "borderBottomRightRadius": 22,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 22,
+                        "borderTopRightRadius": 22,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 0,
+                        "paddingLeft": 17,
+                        "paddingRight": 17,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      }
                     }
                     testID="styled-input-container"
                   >
@@ -893,21 +833,19 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
-                            "fontSize": 16,
-                            "height": "100%",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        }
                       }
                       testID="Entrée pour le prix minimum"
                       textAlignVertical="center"
@@ -920,56 +858,48 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 gap={0}
                 style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "display": "flex",
-                      "flexDirection": "column",
-                      "gap": 0,
-                      "maxWidth": 500,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "gap": 0,
+                    "maxWidth": 500,
+                    "width": "100%",
+                  }
                 }
               >
                 <View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "marginBottom": 8,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "marginBottom": 8,
+                        "width": "100%",
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Prix maximum (en €)
                     </Text>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       max : 80 €
@@ -982,23 +912,24 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   isError={false}
                   isFocus={false}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#90949d",
-                        "borderRadius": 22,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
-                        "paddingTop": 0,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 22,
+                      "borderBottomRightRadius": 22,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 22,
+                      "borderTopRightRadius": 22,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 40,
+                      "paddingBottom": 0,
+                      "paddingLeft": 17,
+                      "paddingRight": 17,
+                      "paddingTop": 0,
+                      "width": "100%",
+                    }
                   }
                   testID="styled-input-container"
                 >
@@ -1019,21 +950,19 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     placeholderTextColor="#696a6f"
                     returnKeyType="next"
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
-                          "fontSize": 16,
-                          "height": "100%",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontSize": 16,
+                        "height": "100%",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      }
                     }
                     testID="Entrée pour le prix maximum"
                     textAlignVertical="center"
@@ -1048,38 +977,32 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       </RCTScrollView>
       <View
         style={
-          [
-            {
-              "width": "100%",
-            },
-          ]
+          {
+            "width": "100%",
+          }
         }
         testID="fixedModalBottom"
       >
         <View
           paddingBottom={0}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "paddingBottom": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "paddingBottom": 0,
+            }
           }
         >
           <View
             gap={4}
             isModal={true}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "justifyContent": "center",
-                  "paddingHorizontal": 24,
-                  "paddingTop": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 16,
+                "justifyContent": "center",
+                "paddingHorizontal": 24,
+                "paddingTop": 8,
+              }
             }
           >
             <View
@@ -1118,7 +1041,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     },
                     {
                       "alignItems": "center",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -1143,23 +1069,19 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
                   }
                 >
                   <View
@@ -1176,15 +1098,13 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Réinitialiser
@@ -1228,7 +1148,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     {
                       "alignItems": "center",
                       "backgroundColor": "#eb0055",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -1253,27 +1176,23 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <Text
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Rechercher
@@ -1287,11 +1206,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>

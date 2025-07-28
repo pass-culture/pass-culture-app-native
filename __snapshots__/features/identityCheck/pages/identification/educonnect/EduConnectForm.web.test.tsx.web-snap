@@ -2,16 +2,8 @@
 
 exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
 .c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -24,12 +16,8 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -40,14 +28,11 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
 }
 
 .c2:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c2:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -56,14 +41,9 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
 }
 
 .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
   cursor: pointer;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -83,31 +63,19 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
 .c0:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c1 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
   max-width: 40px;
   height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -134,7 +102,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              class="c0 c1 sc-kAyceB c1"
+              class="c0 c1"
               data-testid="Revenir en arrière"
               tabindex="0"
               title="Revenir en arrière"
@@ -227,7 +195,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                 class="css-view-175oi2r r-height-10ptun7"
               />
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
               >
                 <div
                   class="css-view-175oi2r r-paddingRight-i023vh"
