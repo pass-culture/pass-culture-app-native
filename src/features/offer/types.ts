@@ -78,6 +78,7 @@ export type OfferContentProps = {
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
+  userId?: number
 }
 
 export type OfferImageContainerDimensions = {

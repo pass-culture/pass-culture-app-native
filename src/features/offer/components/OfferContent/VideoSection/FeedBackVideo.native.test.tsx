@@ -3,6 +3,8 @@ import React from 'react'
 
 import { ReactionTypeEnum, SubcategoryIdEnum } from 'api/gen'
 import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
+import { ReactionFromEnum } from 'features/reactions/enum'
+import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -81,5 +83,20 @@ describe('<FeedBackVideo />', () => {
       'feedback_reaction_123',
       ReactionTypeEnum.DISLIKE
     )
+  })
+
+  it('should trigger ValidateReaction log when user clicks on a reaction', async () => {
+    asyncStorageSpyOn.mockResolvedValueOnce(null)
+
+    render(<FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} />)
+
+    const yesButton = await screen.findByText('Oui')
+    await user.press(yesButton)
+
+    expect(analytics.logValidateReaction).toHaveBeenCalledWith({
+      offerId,
+      reactionType: ReactionTypeEnum.LIKE,
+      from: ReactionFromEnum.OFFER_VIDEO_SURVEY,
+    })
   })
 })

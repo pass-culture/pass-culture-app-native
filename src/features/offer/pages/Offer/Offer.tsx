@@ -34,7 +34,7 @@ export function Offer() {
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const { data: offer, isInitialLoading: isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({
@@ -100,6 +100,7 @@ export function Offer() {
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
         onReactionButtonPress={booking?.canReact ? showModal : undefined}
+        userId={user?.id}
       />
     </Page>
   )

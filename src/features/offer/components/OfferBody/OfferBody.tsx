@@ -53,6 +53,7 @@ type Props = {
   distance?: string | null
   headlineOffersCount?: number
   chronicles?: ChronicleCardData[]
+  userId?: number
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -65,6 +66,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   headlineOffersCount,
   chronicleVariantInfo,
   chronicles,
+  userId,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -196,6 +198,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           title="Vidéo"
           offerId={offer.id}
           offerSubcategory={offer.subcategoryId}
+          userId={userId}
         />
       ) : null}
 

@@ -22,6 +22,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
+  userId,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -52,7 +53,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         subcategory={subcategory}
         defaultReaction={defaultReaction}
         onReactionButtonPress={onReactionButtonPress}
-        onLayout={onLayout}>
+        onLayout={onLayout}
+        userId={userId}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"
