@@ -9,6 +9,7 @@ import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
@@ -25,10 +26,7 @@ type StepperInfo = {
   title: string
   subtitle?: string | null
   errorMessage?: string | null
-  firstScreenType?:
-    | ProfileTypes.IDENTITY_CHECK
-    | ProfileTypes.BOOKING_FREE_OFFER_15_16
-    | ProfileTypes.RECAP_EXISTING_DATA
+  firstScreenType?: ProfileType
 }
 
 type PartialIdentityCheckStep = Exclude<IdentityCheckStep, IdentityCheckStep.END>
