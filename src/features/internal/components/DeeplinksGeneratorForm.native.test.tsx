@@ -7,7 +7,7 @@ import {
 } from 'features/internal/components/DeeplinksGeneratorForm'
 import { ScreensUsedByMarketing } from 'features/internal/config/deeplinksExportConfig'
 import { LocationMode } from 'libs/location/types'
-import { render, screen, userEvent, fireEvent } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -38,8 +38,6 @@ describe('<DeeplinksGeneratorForm />', () => {
     await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
-      firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Ffrom%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink: 'https://webapp-v2.example.com/accueil?from=deeplink&utm_gen=marketing',
     })
 
@@ -48,8 +46,6 @@ describe('<DeeplinksGeneratorForm />', () => {
     await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {
-      firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Fprofil%3Ffrom%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink: 'https://webapp-v2.example.com/profil?from=deeplink&utm_gen=marketing',
     })
   })
@@ -65,8 +61,6 @@ describe('<DeeplinksGeneratorForm />', () => {
     await user.press(screen.getByText('Générer le lien'))
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
-      firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Futm_gen%3Dproduct%26utm_campaign%3Dcampaign%26utm_source%3Dsource%26utm_medium%3Dmedium&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
         'https://webapp-v2.example.com/accueil?utm_gen=product&utm_campaign=campaign&utm_source=source&utm_medium=medium',
     })
@@ -83,8 +77,6 @@ describe('<DeeplinksGeneratorForm />', () => {
     await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
-      firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fresultats%3FlocationFilter%3D%257B%2522locationType%2522%253A%2522AROUND_ME%2522%252C%2522aroundRadius%2522%253A%2522all%2522%257D%26from%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
         'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&utm_gen=marketing',
     })
@@ -107,8 +99,6 @@ describe('<DeeplinksGeneratorForm />', () => {
     await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
-      firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fresultats%3FlocationFilter%3D%257B%2522locationType%2522%253A%2522AROUND_ME%2522%252C%2522aroundRadius%2522%253A%2522all%2522%257D%26from%3Ddeeplink%26offerCategories%3D%255B%2522ARTS_LOISIRS_CREATIFS%2522%255D%26offerNativeCategories%3D%255B%2522ARTS_VISUELS%2522%255D%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
         'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing',
     })
@@ -120,8 +110,6 @@ describe('<DeeplinksGeneratorForm />', () => {
     await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {
-      firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fresultats%3FlocationFilter%3D%257B%2522locationType%2522%253A%2522AROUND_ME%2522%252C%2522aroundRadius%2522%253A%2522all%2522%257D%26from%3Ddeeplink%26offerCategories%3D%255B%2522CONCERTS_FESTIVALS%2522%255D%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
         'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D&utm_gen=marketing',
     })
@@ -152,8 +140,6 @@ describe('<DeeplinksGeneratorForm />', () => {
     await user.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
-      firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fthematique%3Ffrom%3Ddeeplink%26offerCategories%3D%255B%2522CINEMA%2522%255D%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
         'https://webapp-v2.example.com/recherche/thematique?from=deeplink&offerCategories=%5B%22CINEMA%22%5D&utm_gen=marketing',
     })

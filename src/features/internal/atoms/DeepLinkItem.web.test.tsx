@@ -25,7 +25,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<DeeplinkItem />', () => {
   const deeplink: GeneratedDeeplink = {
-    firebaseLink: 'https://firebaseLink',
     universalLink: 'https://universalLink',
   }
 
@@ -35,18 +34,6 @@ describe('<DeeplinkItem />', () => {
     await act(() => fireEvent.click(screen.getByLabelText('Copier')))
 
     expect(writeText).toHaveBeenCalledWith(deeplink.universalLink)
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Copié\u00a0!',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-  })
-
-  it('should copy the firebase link to clipboard', async () => {
-    render(<DeeplinkItem deeplink={deeplink} />)
-
-    await act(() => fireEvent.click(screen.getByLabelText('Copier dans le presse-papier')))
-
-    expect(writeText).toHaveBeenCalledWith(deeplink.firebaseLink)
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Copié\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,

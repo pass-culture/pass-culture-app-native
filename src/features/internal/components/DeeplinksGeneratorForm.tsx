@@ -3,7 +3,6 @@ import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks/helpers'
 import { ControlledFilterSwitch } from 'features/internal/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/internal/atoms/DateChoice'
 import { LocationFilterChoice } from 'features/internal/atoms/LocationFilterChoice'
@@ -13,7 +12,6 @@ import {
 } from 'features/internal/atoms/OfferCategoryChoices'
 import { OfferNativeCategoryChoices } from 'features/internal/atoms/OfferNativeCategoryChoices'
 import {
-  FDL_CONFIG,
   MARKETING_CONFIG,
   ParamConfig,
   SCREENS_CONFIG,
@@ -45,7 +43,6 @@ import { getSpacing, Typo } from 'ui/theme'
 
 export interface GeneratedDeeplink {
   universalLink: string
-  firebaseLink: string
 }
 
 interface Props {
@@ -284,7 +281,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   function onPress() {
     if (!areAllParamsValid()) return
 
-    const { appParams, marketingParams, fdlParams } = extractParams(screenParams)
+    const { appParams, marketingParams } = extractParams(screenParams)
 
     if (appParams.offerIsFree) {
       appParams.priceRange = null
@@ -312,14 +309,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     }
 
     let universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
-    let firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
-
     if (selectedScreen === 'SearchResults' && appParams.URL) {
       universalLink = appParams.URL as string
-      firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
     }
 
-    onCreate({ universalLink, firebaseLink })
+    onCreate({ universalLink })
   }
 
   const paramsCount = useMemo(() => {
@@ -364,17 +358,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             </React.Fragment>
           ))}
         </Accordion>
-        <Accordion title="Paramètres firebase dynamic link">
-          {Object.keys(SCREENS_CONFIG).map((page) => (
-            <React.Fragment key={page}>
-              {page === selectedScreen
-                ? Object.entries(FDL_CONFIG).map(([name, config]) =>
-                    renderScreenParam(name, config)
-                  )
-                : null}
-            </React.Fragment>
-          ))}
-        </Accordion>
       </Container>
       <BottomContainer>
         <ErrorContainer gap={2}>
@@ -390,17 +373,15 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 function extractParams(params: Record<string, unknown>) {
   const appParams: DeeplinksAppParams = {}
   const marketingParams: Record<string, unknown> = {}
-  const fdlParams: Record<string, unknown> = {}
   for (const [paramName, paramValue] of Object.entries(params)) {
-    if (paramName in FDL_CONFIG) fdlParams[paramName] = paramValue
-    else if (paramName in MARKETING_CONFIG) marketingParams[paramName] = paramValue
+    if (paramName in MARKETING_CONFIG) marketingParams[paramName] = paramValue
     else {
       appParams[paramName] = paramValue
       // Force showResults for old versions compatibility
       if (paramName === 'view') appParams['showResults'] = 'true'
     }
   }
-  return { appParams, marketingParams, fdlParams }
+  return { appParams, marketingParams }
 }
 
 const Container = styled.ScrollView(({ theme }) => ({

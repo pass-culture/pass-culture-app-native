@@ -1,6 +1,5 @@
 import { api } from 'api/api'
 import { AllNavParamList, ScreenNames } from 'features/navigation/RootNavigator/types'
-import { getAppBuildVersion } from 'libs/packageJson'
 
 export type ScreensUsedByMarketing = Extract<
   ScreenNames,
@@ -173,18 +172,5 @@ export const MARKETING_CONFIG: MarketingConfig = {
     type: 'string',
     description: 'Type de campagne\u00a0: marketing ou product.',
     required: true,
-  },
-}
-
-type FirebaseDynamicLinkParams = 'amv'
-
-type FirebaseDynamicLinkConfig = {
-  [Param in FirebaseDynamicLinkParams]: ParamConfig
-}
-
-export const FDL_CONFIG: FirebaseDynamicLinkConfig = {
-  amv: {
-    type: 'string',
-    description: `Version minimale de l’application Android qui peut ouvrir le lien (ex\u00a0: ${getAppBuildVersion()}). Si l’application installée est une version plus ancienne, l’utilisateur est redirigé vers le Play Store pour mettre à niveau l’application.`,
   },
 }
