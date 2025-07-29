@@ -7,7 +7,7 @@ import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
+import { getSpacing, padding, Typo } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
   history: Readonly<string[]>
@@ -86,7 +86,6 @@ export const DeeplinksHistory = ({
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={Separator}
-        ListFooterComponent={HorizontalMargin}
       />
       <BottomContainer>
         <StyledCheckBox>
@@ -109,8 +108,6 @@ const renderItem = ({ item, index }: { item: string; index: number }) => {
 }
 
 const flatListStyle = { marginVertical: getSpacing(4) }
-
-const HorizontalMargin = () => <Spacer.Column numberOfSpaces={10} />
 
 const StyledCheckBox = styled(TouchableOpacity)({
   display: 'flex',
@@ -139,4 +136,5 @@ const BottomContainer = styled.View(({ theme }) => ({
   justifyContent: 'flex-end',
   ...padding(2),
   backgroundColor: theme.designSystem.color.background.default,
+  marginTop: theme.designSystem.size.spacing.xxxl,
 }))

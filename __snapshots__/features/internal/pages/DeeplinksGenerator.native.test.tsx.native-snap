@@ -3073,7 +3073,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 "withComponent": [Function],
               }
             }
-            ListFooterComponent={[Function]}
             data={[]}
             getItem={[Function]}
             getItemCount={[Function]}
@@ -3096,22 +3095,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             }
             viewabilityConfigCallbackPairs={[]}
           >
-            <View>
-              <View
-                onLayout={[Function]}
-              >
-                <View
-                  numberOfSpaces={10}
-                  style={
-                    [
-                      {
-                        "height": 40,
-                      },
-                    ]
-                  }
-                />
-              </View>
-            </View>
+            <View />
           </RCTScrollView>
           <View
             style={
@@ -3122,6 +3106,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "flexGrow": 1,
                   "flexShrink": 1,
                   "justifyContent": "flex-end",
+                  "marginTop": 40,
                   "paddingBottom": 8,
                   "paddingLeft": 8,
                   "paddingRight": 8,

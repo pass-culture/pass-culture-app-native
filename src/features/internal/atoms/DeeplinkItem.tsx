@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   universalLink: string
@@ -16,27 +16,22 @@ export const DeeplinkItem: FC<Props> = ({ universalLink, before }) => {
 
   return (
     <React.Fragment>
-      {before ? (
-        <Container>
-          {before}
-          <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
-        </Container>
-      ) : null}
+      {before ? <Container>{before}</Container> : null}
       <Container>
-        <Spacer.Flex flex={0.85}>
+        <LinkWrapper>
           <ExternalTouchableLink
             externalNav={{ url: universalLink, params: { shouldLogEvent: false } }}>
             <Typo.BodyAccentXs>{universalLink}</Typo.BodyAccentXs>
           </ExternalTouchableLink>
-        </Spacer.Flex>
+        </LinkWrapper>
 
-        <Spacer.Flex flex={0.15}>
+        <IconWrapper>
           <StyledTouchableOpacity
             onPress={copyToClipboardUniversalLink}
             accessibilityLabel="Copier">
             <Share />
           </StyledTouchableOpacity>
-        </Spacer.Flex>
+        </IconWrapper>
       </Container>
     </React.Fragment>
   )
@@ -53,5 +48,8 @@ const Container = styled.View({
   justifyContent: 'space-between',
   overflow: 'hidden',
 })
+
+const LinkWrapper = styled.View({ flex: 0.85 })
+const IconWrapper = styled.View({ flex: 0.15 })
 
 const Share = styled(DefaultShare).attrs(({ theme }) => ({ size: theme.icons.sizes.small }))``
