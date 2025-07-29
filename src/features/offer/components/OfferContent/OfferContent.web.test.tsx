@@ -79,7 +79,7 @@ describe('<OfferContent />', () => {
   })
 
   it('should display sticky booking button on mobile', async () => {
-    const { unmount } = renderOfferContent({ isDesktopViewport: false })
+    const { unmount } = renderOfferContent({ isDesktopViewport: false, isMobileViewport: true })
     await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('sticky-booking-button')).toBeInTheDocument()
@@ -98,7 +98,7 @@ describe('<OfferContent />', () => {
   })
 
   it('should display mobile body on mobile', async () => {
-    const { unmount } = renderOfferContent({ isDesktopViewport: false })
+    const { unmount } = renderOfferContent({ isDesktopViewport: false, isMobileViewport: true })
 
     await screen.findByText('Réserver l’offre')
 
@@ -160,12 +160,14 @@ describe('<OfferContent />', () => {
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
   isDesktopViewport?: boolean
+  isMobileViewport?: boolean
 }
 
 const renderOfferContent = ({
   offer = offerResponseSnap,
   subcategory = mockSubcategory,
   isDesktopViewport = false,
+  isMobileViewport = false,
 }: RenderOfferContentType) => {
   return render(
     reactQueryProviderHOC(
@@ -177,7 +179,7 @@ const renderOfferContent = ({
       />
     ),
     {
-      theme: { isDesktopViewport },
+      theme: { isDesktopViewport, isMobileViewport },
     }
   )
 }

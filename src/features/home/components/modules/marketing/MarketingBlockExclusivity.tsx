@@ -34,7 +34,7 @@ const UnmemoizedMarketingBlockExclusivity = ({
   const bookingAllowedDatetime = offer.offer.bookingAllowedDatetime
   const comingSoon = bookingAllowedDatetime
     ? formatBookingAllowedDatetime({
-        bookingAllowedDatetime: new Date(bookingAllowedDatetime),
+        bookingAllowedDatetime: new Date(bookingAllowedDatetime * 1000),
         shouldDisplayBookingAllowedDatetime,
       })
     : undefined

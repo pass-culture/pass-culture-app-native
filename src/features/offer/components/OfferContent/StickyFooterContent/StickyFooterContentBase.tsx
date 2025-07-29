@@ -2,15 +2,11 @@ import React, { FC, PropsWithChildren } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
+import { FavoritesCTA } from 'features/offer/components/OfferContent/ComingSoonCTAs/FavoritesCTA'
 import { FavoriteProps } from 'features/offer/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
-import { Favorite } from 'ui/svg/icons/Favorite'
-import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { getShadow, getSpacing, Typo } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 
 export type StickyFooterContentProps = {
   offerId: number
@@ -22,50 +18,17 @@ export type StickyFooterContentProps = {
 type StickyFooterContentBaseProps = StickyFooterContentProps & PropsWithChildren
 
 export const StickyFooterContentBase: FC<StickyFooterContentBaseProps> = ({
-  offerId,
-  isAddFavoriteLoading,
-  isRemoveFavoriteLoading,
-  favorite,
-  onPressFavoriteCTA,
-  favoriteAuthModal,
   onLayout,
   children,
+  ...props
 }) => {
   return (
     <StickyFooterWrapper onLayout={onLayout}>
-      <Caption>Cette offre sera bientôt disponible</Caption>
-      {favorite ? (
-        <ButtonContainer>
-          <ButtonSecondary
-            wording="Retirer des favoris"
-            onPress={onPressFavoriteCTA}
-            icon={FavoriteFilled}
-            isLoading={isRemoveFavoriteLoading}
-          />
-        </ButtonContainer>
-      ) : (
-        <ButtonContainer>
-          <ButtonPrimary
-            wording="Mettre en favori"
-            onPress={onPressFavoriteCTA}
-            icon={Favorite}
-            isLoading={isAddFavoriteLoading}
-          />
-          <FavoriteAuthModal
-            visible={favoriteAuthModal.visible}
-            offerId={offerId}
-            dismissModal={favoriteAuthModal.hideModal}
-          />
-        </ButtonContainer>
-      )}
+      <FavoritesCTA {...props} caption="Cette offre sera bientôt disponible" />
       {children}
     </StickyFooterWrapper>
   )
 }
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
 
 const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
@@ -76,11 +39,7 @@ const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(1) },
     shadowRadius: getSpacing(5),
-    shadowColor: theme.colors.black,
+    shadowColor: theme.designSystem.color.background.lockedInverted,
     shadowOpacity: 0.25,
   }),
 }))
-
-const Caption = styled(Typo.BodyAccentXs)({
-  textAlign: 'center',
-})

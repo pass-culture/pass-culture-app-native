@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components/native'
 import { OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
+import { FavoritesCTA } from 'features/offer/components/OfferContent/ComingSoonCTAs/FavoritesCTA'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { StickyFooterContent } from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContent'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -17,13 +18,13 @@ import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemo
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export type OfferFooterProps = PropsWithChildren<{
+export type Props = PropsWithChildren<{
   offer: OfferResponseV2
   onLayout?: (params: LayoutChangeEvent) => void
 }> &
   FavoriteProps
 
-export const OfferFooter: FC<OfferFooterProps> = ({
+export const OfferContentCTAs: FC<Props> = ({
   offer,
   addFavorite,
   isAddFavoriteLoading,
@@ -37,7 +38,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
 
   const { isLoggedIn } = useAuthContext()
 
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, isMobileViewport } = useTheme()
   const { isButtonVisible } = useOfferCTA()
   const {
     data: { showAccessScreeningButton },
@@ -80,26 +81,42 @@ export const OfferFooter: FC<OfferFooterProps> = ({
 
   const isAComingSoonOffer = getIsAComingSoonOffer(offer.bookingAllowedDatetime)
 
-  if (showAccessScreeningButton && isButtonVisible) {
-    return <CineContentCTA />
-  }
-
-  if (isAComingSoonOffer && !isDesktopViewport) {
+  if (isDesktopViewport && isAComingSoonOffer) {
     return (
-      <StickyFooterContent
+      <FavoritesCTA
         offerId={offer.id}
         favorite={favorite}
         onPressFavoriteCTA={onPressFavoriteCTA}
         isAddFavoriteLoading={isAddFavoriteLoading}
         isRemoveFavoriteLoading={isRemoveFavoriteLoading}
-        hasReminder={hasReminder}
-        onPressReminderCTA={onPressReminderCTA}
         favoriteAuthModal={favoriteAuthModal}
-        reminderAuthModal={reminderAuthModal}
-        onLayout={onLayout}
+        caption="Cette offre sera bientôt disponible"
       />
     )
   }
 
-  return <React.Fragment>{isDesktopViewport ? null : children}</React.Fragment>
+  if (isMobileViewport) {
+    if (showAccessScreeningButton && isButtonVisible) {
+      return <CineContentCTA />
+    }
+
+    if (isAComingSoonOffer) {
+      return (
+        <StickyFooterContent
+          offerId={offer.id}
+          favorite={favorite}
+          onPressFavoriteCTA={onPressFavoriteCTA}
+          isAddFavoriteLoading={isAddFavoriteLoading}
+          isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+          hasReminder={hasReminder}
+          onPressReminderCTA={onPressReminderCTA}
+          favoriteAuthModal={favoriteAuthModal}
+          reminderAuthModal={reminderAuthModal}
+          onLayout={onLayout}
+        />
+      )
+    }
+  }
+
+  return <React.Fragment>{children}</React.Fragment>
 }

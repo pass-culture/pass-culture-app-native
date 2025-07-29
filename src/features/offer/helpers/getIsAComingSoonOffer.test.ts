@@ -25,4 +25,14 @@ describe('getIsAComingSoonOffer', () => {
     expect(getIsAComingSoonOffer(null)).toBe(false)
     expect(getIsAComingSoonOffer(undefined)).toBe(false)
   })
+
+  it('should handle timestamp (in seconds) correctly', () => {
+    const futureTimestampSeconds = Math.floor(new Date('2025-07-28T12:30:00Z').getTime() / 1000)
+
+    expect(getIsAComingSoonOffer(futureTimestampSeconds)).toBe(true)
+
+    const pastTimestampSeconds = Math.floor(new Date('2025-07-28T11:30:00Z').getTime() / 1000)
+
+    expect(getIsAComingSoonOffer(pastTimestampSeconds)).toBe(false)
+  })
 })

@@ -27,7 +27,7 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { OfferFooter } from 'features/offer/components/OfferFooter/OfferFooter'
+import { OfferContentCTAs } from 'features/offer/components/OfferFooter/OfferContentCTAs'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferReactionHeaderButton } from 'features/offer/components/OfferHeader/OfferReactionHeaderButton'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
@@ -283,7 +283,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               headlineOffersCount={headlineOffersCount}
               chronicleVariantInfo={chronicleVariantInfo}
               userId={userId}>
-              {theme.isDesktopViewport ? offerCtaButton : null}
+              {theme.isDesktopViewport ? (
+                <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
+                  {offerCtaButton}
+                </OfferContentCTAs>
+              ) : null}
             </OfferBody>
           </BodyWrapper>
 
@@ -320,11 +324,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           />
           {children}
         </ScrollViewContainer>
-        <FooterContainer>
-          <OfferFooter offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
-            {offerCtaButton}
-          </OfferFooter>
-        </FooterContainer>
+        {theme.isMobileViewport ? (
+          <FooterContainer>
+            <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
+              {offerCtaButton}
+            </OfferContentCTAs>
+          </FooterContainer>
+        ) : null}
       </AnchorProvider>
     </Container>
   )
