@@ -77,8 +77,8 @@ const genericStyle = ({ theme, fitContentWidth }: GenericStyleProps) => {
     ['&:disabled']: {
       cursor: 'initial',
       background: 'none',
-      color: theme.buttons.disabled.linearGradient.textColor,
-      backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
+      color: theme.designSystem.color.text.disabled,
+      backgroundColor: theme.designSystem.color.background.disabled,
     },
     ...customFocusOutline({}),
     ...getHoverStyle({ underlineColor: theme.designSystem.color.text.inverted }),

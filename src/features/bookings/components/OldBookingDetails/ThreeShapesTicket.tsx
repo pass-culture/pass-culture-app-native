@@ -55,6 +55,6 @@ const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
     padding: getSpacing(2),
     borderLeftWidth: 2,
     borderRightWidth: 2,
-    borderColor: theme.ticket.borderColor,
+    borderColor: theme.designSystem.color.border.default,
   }
 })

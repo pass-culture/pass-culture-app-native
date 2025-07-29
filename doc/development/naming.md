@@ -7,23 +7,21 @@
 ### Key points
 
 - **No reference to variable type with TypeScript's enums, interfaces and types:**
-  - ✅ Good: no reference to type in name
+  
+  ✅ Good: no reference to type in name
     ```tsx
-    export enum Colors {
-        ACCENT = '#0066ff',
-        ATTENTION = '#ffea00',
+    export enum BookingsTab {
+        CURRENT = 'En cours',
+        COMPLETED = 'Terminées',
     //  ...
     }
     ```
-  - ❌ Bad:
+  
+  ❌ Bad:
     ```tsx
-    export enum ColorsEnum {
-        ACCENT = '#0066ff',
-        ATTENTION = '#ffea00',
+    export enum BookingsTabEnum {
+        CURRENT = 'En cours',
+        COMPLETED = 'Terminées',
     //  ...
     }
     ```
-
-### Mistakes to avoid when following the standard
-
-### Resources

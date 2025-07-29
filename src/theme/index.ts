@@ -83,7 +83,6 @@ export const theme = {
   },
   outline: {
     width: getSpacing(0.5),
-    color: ColorsEnum.PRIMARY,
     style: 'solid',
     offSet: getSpacing(0.5),
   },
@@ -99,8 +98,6 @@ export const theme = {
     maxWidth: 300,
     minHeight: 192,
     qrCodeSize: 170,
-    backgroundColor: ColorsEnum.WHITE,
-    borderColor: ColorsEnum.GREY_LIGHT,
     sizeRatio: 0.755, // 0.05 is a hack to fit header and footer ThreeShapesTicket shadow
   },
   tiles: {
@@ -136,53 +133,25 @@ export const theme = {
   },
   designSystem: designTokensLight,
   colors: {
-    accent: ColorsEnum.ACCENT,
-    attention: ColorsEnum.ATTENTION,
-    attentionLight: ColorsEnum.ATTENTION_LIGHT,
-    black: ColorsEnum.BLACK,
-    error: ColorsEnum.ERROR,
-    errorLight: ColorsEnum.ERROR_LIGHT,
-    greenValid: ColorsEnum.GREEN_VALID,
-    greenLight: ColorsEnum.GREEN_LIGHT,
-    greyDark: ColorsEnum.GREY_DARK,
-    greySemiDark: ColorsEnum.GREY_SEMI_DARK,
-    greyMedium: ColorsEnum.GREY_MEDIUM,
-    greyLight: ColorsEnum.GREY_LIGHT,
-    brownLight: ColorsEnum.BROWN_LIGHT,
-    primary: ColorsEnum.PRIMARY,
-    primaryDisabled: ColorsEnum.PRIMARY_DISABLED,
-    primaryDark: ColorsEnum.PRIMARY_DARK,
-    secondary: ColorsEnum.SECONDARY,
-    secondaryLight100: ColorsEnum.SECONDARY_LIGHT_100,
-    secondaryLight200: ColorsEnum.SECONDARY_LIGHT_200,
-    secondaryDark: ColorsEnum.SECONDARY_DARK,
-    tertiary: ColorsEnum.TERTIARY,
-    transparent: ColorsEnum.TRANSPARENT,
-    white: ColorsEnum.WHITE,
-    goldDark: ColorsEnum.GOLD_DARK,
-    gold: ColorsEnum.GOLD,
-    goldLight200: ColorsEnum.GOLD_LIGHT_200,
-    goldLight100: ColorsEnum.GOLD_LIGHT_100,
-    aquamarineDark: ColorsEnum.AQUAMARINE_DARK,
-    aquamarine: ColorsEnum.AQUAMARINE,
     aquamarineLight: ColorsEnum.AQUAMARINE_LIGHT,
-    skyBlueDark: ColorsEnum.SKY_BLUE_DARK,
-    skyBlue: ColorsEnum.SKY_BLUE,
-    skyBlueLight: ColorsEnum.SKY_BLUE_LIGHT,
-    deepPinkDark: ColorsEnum.DEEP_PINK_DARK,
-    deepPink: ColorsEnum.DEEP_PINK,
-    deepPinkLight: ColorsEnum.DEEP_PINK_LIGHT,
-    coralDark: ColorsEnum.CORAL_DARK,
+    black: ColorsEnum.BLACK,
     coral: ColorsEnum.CORAL,
     coralLight: ColorsEnum.CORAL_LIGHT,
-    lilacDark: ColorsEnum.LILAC_DARK,
-    lilac: ColorsEnum.LILAC,
+    deepPinkLight: ColorsEnum.DEEP_PINK_LIGHT,
+    goldLight100: ColorsEnum.GOLD_LIGHT_100,
+    greyDark: ColorsEnum.GREY_DARK,
+    greyMedium: ColorsEnum.GREY_MEDIUM,
     lilacLight: ColorsEnum.LILAC_LIGHT,
+    primary: ColorsEnum.PRIMARY,
+    primaryDark: ColorsEnum.PRIMARY_DARK,
+    secondaryDark: ColorsEnum.SECONDARY_DARK,
+    skyBlue: ColorsEnum.SKY_BLUE,
+    skyBlueLight: ColorsEnum.SKY_BLUE_LIGHT,
+    white: ColorsEnum.WHITE,
   },
   uniqueColors: {
     backgroundColor: UniqueColors.BACKGROUND_COLOR,
     foregroundColor: UniqueColors.FOREGROUND_COLOR,
-    brand: UniqueColors.BRAND,
   },
   breakpoints: {
     xxs: Breakpoints.XXS,
@@ -216,12 +185,6 @@ export const theme = {
     snackbar: zIndex.snackbar,
     bottomSheet: zIndex.bottomSheet,
   },
-  offlineMode: {
-    banner: {
-      backgroundColor: ColorsEnum.BLACK,
-      textColor: ColorsEnum.WHITE,
-    },
-  },
   contentPage: {
     marginHorizontal: MARGIN_HORIZONTAL,
     marginVertical: MARGIN_VERTICAL,
@@ -238,98 +201,6 @@ export const theme = {
       tall: buttonHeights.tall,
       inline: buttonHeights.inline,
       extraSmall: buttonHeights.extraSmall,
-    },
-    outlineColor: ColorsEnum.ACCENT,
-    loading: {
-      primary: {
-        backgroundColor: ColorsEnum.PRIMARY_DARK,
-      },
-      secondary: {
-        borderColor: ColorsEnum.PRIMARY_DARK,
-      },
-      secondaryWhite: {
-        borderColor: ColorsEnum.GREY_LIGHT,
-      },
-      secondaryBlack: {
-        borderColor: ColorsEnum.GREY_DARK,
-      },
-    },
-    disabled: {
-      primary: {
-        backgroundColor: ColorsEnum.GREY_LIGHT,
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
-      primaryWhite: {
-        iconColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.GREY_DARK,
-      },
-      primaryBlack: {
-        iconColor: ColorsEnum.BLACK,
-        textColor: ColorsEnum.BLACK,
-      },
-      secondary: {
-        borderColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
-      secondaryWhite: {
-        backgroundColor: ColorsEnum.GREY_LIGHT,
-        borderColor: ColorsEnum.GREY_LIGHT,
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_MEDIUM,
-      },
-      secondaryBlack: {
-        backgroundColor: ColorsEnum.GREY_DARK,
-        borderColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.BLACK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
-      tertiary: {
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
-      tertiaryBlack: {
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
-      tertiaryWhite: {
-        textColor: ColorsEnum.PRIMARY_DISABLED,
-        iconColor: ColorsEnum.PRIMARY_DISABLED,
-      },
-      tertiaryNeutralInfo: {
-        textColor: ColorsEnum.GREY_MEDIUM,
-        iconColor: ColorsEnum.GREY_MEDIUM,
-      },
-      tertiarySecondary: {
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
-      quaternaryPrimary: {
-        iconColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.GREY_DARK,
-      },
-      quaternaryBlack: {
-        iconColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.GREY_DARK,
-      },
-      quaternaryGrey: {
-        iconColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.GREY_DARK,
-      },
-      quaternarySecondary: {
-        iconColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.GREY_DARK,
-      },
-      quaternaryNeutralInfo: {
-        iconColor: ColorsEnum.GREY_DARK,
-        textColor: ColorsEnum.GREY_DARK,
-      },
-      linearGradient: {
-        backgroundColor: ColorsEnum.GREY_LIGHT,
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
     },
     primary: {
       marginLeft: 0,
@@ -362,7 +233,6 @@ export const theme = {
       marginLeft: 0,
       marginLeftWithIcon: getSpacing(2),
       iconSize: iconSizes.smaller,
-      borderColor: ColorsEnum.BLACK,
       borderWidth: getSpacing(0.5),
     },
     tertiary: {
@@ -440,15 +310,7 @@ export const theme = {
   checkbox: {
     size: getSpacing(5),
     border: {
-      color: {
-        default: ColorsEnum.GREY_DARK,
-        selected: ColorsEnum.PRIMARY,
-      },
       size: 2,
-    },
-    backgroundColor: {
-      default: ColorsEnum.WHITE,
-      selected: ColorsEnum.PRIMARY,
     },
   },
 } as const
