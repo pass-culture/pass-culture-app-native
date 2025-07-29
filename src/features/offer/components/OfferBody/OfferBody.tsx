@@ -190,7 +190,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      {offer.video && isVideoSectionEnabled ? (
+      {offer.video?.id && isVideoSectionEnabled ? (
         <VideoSection
           videoId={offer.video.id ?? ''}
           videoThumbnail={

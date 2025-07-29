@@ -38,7 +38,7 @@ export const OfferVideoPreview: FunctionComponent = () => {
         onBackPress={goBack}
       />
 
-      {offer?.video && isVideoSectionEnabled ? (
+      {offer?.video?.id && isVideoSectionEnabled ? (
         <YoutubePlayer
           videoId={offer.video.id ?? ''}
           height={videoHeight}
