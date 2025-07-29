@@ -1,10 +1,16 @@
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { SubscribeButton } from 'features/subscription/components/buttons/SubscribeButton'
-import OnboardingUnlock from 'ui/animations/geolocalisation.json'
+import achievement from 'ui/animations/achievements_success.json'
+import geo from 'ui/animations/geolocalisation.json'
+import loading from 'ui/animations/lottie_loading.json'
+import cake from 'ui/animations/onboarding_birthday_cake.json'
+import qpi from 'ui/animations/qpi_thanks.json'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
+import logo from 'ui/animations/tutorial_pass_logo.json'
 import { getSpacing } from 'ui/theme'
 
 const Header = () => (
@@ -21,13 +27,52 @@ export const Home: FunctionComponent = () => {
         active={false}
         label={{ active: 'Thème suivi', inactive: 'Suivre le thème' }}
       />
-      <ThemedStyledLottieView
-        height={getSpacing(8)}
-        width={getSpacing(8)}
-        source={OnboardingUnlock}
-        autoPlay
-        loop={false}
-      />
+      <View style={{ flexDirection: 'row' }}>
+        <ThemedStyledLottieView
+          height={getSpacing(80)}
+          width={getSpacing(80)}
+          source={geo}
+          autoPlay
+          loop={false}
+        />
+        <ThemedStyledLottieView
+          height={getSpacing(80)}
+          width={getSpacing(80)}
+          source={qpi}
+          autoPlay
+          loop={false}
+        />
+        <ThemedStyledLottieView
+          height={getSpacing(80)}
+          width={getSpacing(80)}
+          source={achievement}
+          autoPlay
+          loop={false}
+        />
+      </View>
+      <View style={{ flexDirection: 'row' }}>
+        <ThemedStyledLottieView
+          height={getSpacing(80)}
+          width={getSpacing(80)}
+          source={cake}
+          autoPlay
+          loop={false}
+        />
+        <ThemedStyledLottieView
+          height={getSpacing(80)}
+          width={getSpacing(80)}
+          source={logo}
+          autoPlay
+          loop={false}
+        />
+        <ThemedStyledLottieView
+          height={getSpacing(80)}
+          width={getSpacing(80)}
+          source={loading}
+          autoPlay
+          loop={false}
+        />
+      </View>
     </React.Fragment>
   )
 }
