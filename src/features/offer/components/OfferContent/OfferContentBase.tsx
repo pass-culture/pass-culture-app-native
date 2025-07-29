@@ -71,6 +71,7 @@ type OfferContentBaseProps = OfferContentProps &
     contentContainerStyle?: StyleProp<ViewStyle>
     onLayout?: (params: LayoutChangeEvent) => void
     chronicleVariantInfo?: ChronicleVariantInfo
+    isVideoSectionEnabled?: boolean
   }>
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
@@ -87,6 +88,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   contentContainerStyle,
   defaultReaction,
   onReactionButtonPress,
+  isVideoSectionEnabled,
   BodyWrapper = React.Fragment,
   onLayout,
   userId,
@@ -282,7 +284,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               distance={distance}
               headlineOffersCount={headlineOffersCount}
               chronicleVariantInfo={chronicleVariantInfo}
-              userId={userId}>
+              userId={userId}
+              isVideoSectionEnabled={isVideoSectionEnabled}>
               {theme.isDesktopViewport ? (
                 <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
                   {offerCtaButton}

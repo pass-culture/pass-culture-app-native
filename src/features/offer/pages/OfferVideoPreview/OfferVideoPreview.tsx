@@ -40,7 +40,7 @@ export const OfferVideoPreview: FunctionComponent = () => {
 
       {offer?.video?.id && isVideoSectionEnabled ? (
         <YoutubePlayer
-          videoId={offer.video.id ?? ''}
+          videoId={offer.video.id}
           height={videoHeight}
           width={viewportWidth < MAX_WIDTH ? undefined : MAX_WIDTH}
           initialPlayerParams={{ autoplay: true }}

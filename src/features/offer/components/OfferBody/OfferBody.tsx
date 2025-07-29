@@ -53,6 +53,7 @@ type Props = {
   headlineOffersCount?: number
   chronicles?: ChronicleCardData[]
   userId?: number
+  isVideoSectionEnabled?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -66,11 +67,11 @@ export const OfferBody: FunctionComponent<Props> = ({
   chronicleVariantInfo,
   chronicles,
   userId,
+  isVideoSectionEnabled,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -192,7 +193,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
       {offer.video?.id && isVideoSectionEnabled ? (
         <VideoSection
-          videoId={offer.video.id ?? ''}
+          videoId={offer.video.id}
           videoThumbnail={
             <VideoThumbnailImage url={offer.video.thumbUrl ?? ''} resizeMode="cover" />
           }
