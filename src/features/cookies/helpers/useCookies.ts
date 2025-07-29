@@ -1,11 +1,12 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ConsentState } from 'features/cookies/enums'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, ConsentStatus, CookiesConsent } from 'features/cookies/types'
 import { getAppBuildVersion } from 'libs/packageJson'
+import { BatchPush } from 'libs/react-native-batch'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 
@@ -55,6 +56,9 @@ export const useCookies = () => {
     }
 
     await persist(newCookiesChoice)
+    if (cookiesConsent.accepted.includes(CookieNameEnum.BATCH)) {
+      BatchPush.requestNotificationAuthorization()
+    }
   }
 
   const setUserId = async (userId: number): Promise<void> => {
