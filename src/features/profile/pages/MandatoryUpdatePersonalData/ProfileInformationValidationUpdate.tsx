@@ -91,6 +91,7 @@ export const ProfileInformationValidationUpdate = () => {
         />
       }
       fixedBottomChildren={fixedBottomChildren}
+      shouldDisplayBackButton={false}
     />
   )
 }
