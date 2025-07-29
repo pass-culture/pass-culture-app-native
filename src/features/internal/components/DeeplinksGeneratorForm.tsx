@@ -17,11 +17,7 @@ import {
   SCREENS_CONFIG,
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
-import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
-import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/isSearchStackScreen'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
-import { isTabNavigatorScreen } from 'features/navigation/TabBar/isTabNavigatorScreen'
+import { getUniversalLink } from 'features/navigation/RootNavigator/linking/getUniversalLink'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment/env'
@@ -290,21 +286,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     const appAndMarketingParams = { ...appParams, ...marketingParams }
 
-    let screenPath = getScreenPath(selectedScreen, appAndMarketingParams)
-    if (isTabNavigatorScreen(selectedScreen)) {
-      const tabNavigationConfig = getTabHookConfig(
-        selectedScreen,
-        appAndMarketingParams as Record<string, unknown>
-      )
-
-      screenPath = getScreenPath(...tabNavigationConfig)
-    }
-    if (isSearchStackScreen(selectedScreen)) {
-      const searchStackConfig = getSearchHookConfig(selectedScreen, appAndMarketingParams)
-      screenPath = getScreenPath(...searchStackConfig)
-    }
-
-    let universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
+    let universalLink = getUniversalLink(
+      selectedScreen,
+      appAndMarketingParams,
+      env.WEBAPP_V2_DOMAIN
+    )
     if (selectedScreen === 'SearchResults' && appParams.URL) {
       universalLink = appParams.URL as string
     }
