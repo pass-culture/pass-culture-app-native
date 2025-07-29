@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
-    element: 'Confidentialité'
+    element: 'Partager le pass Culture"'
 
 - tapOn:
     text: 'Informations légales'

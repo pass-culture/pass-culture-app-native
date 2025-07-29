@@ -1,8 +1,20 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- openLink:
-    link: ${output.links.staging.profile}
-    autoVerify: true
+- runFlow:
+    when:
+        platform: iOS
+    commands:
+    - openLink:
+        link: ${output.links.iOS.staging.profil}
+        autoVerify: true
+
+- runFlow:
+    when:
+        platform: Android
+    commands:
+    - openLink:
+        link: ${output.links.Android.staging.profil}
+        autoVerify: true
 - waitForAnimationToEnd
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
 - assertVisible: 'Mon profil'

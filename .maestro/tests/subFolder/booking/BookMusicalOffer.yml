@@ -7,6 +7,15 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn: 'Ma position'
       - tapOn: 'France entière'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          start: 50%, 49%
+          end: 50%, 37%
+
 - tapOn:
     label: 'Sélection de la 1ère offre disponible'
     below:
