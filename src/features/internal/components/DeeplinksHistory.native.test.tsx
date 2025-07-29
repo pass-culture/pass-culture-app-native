@@ -11,14 +11,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<DeeplinksHistory />', () => {
   const history = [
-    {
-      universalLink:
-        'https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Frecherche&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1',
-    },
-    {
-      universalLink:
-        'https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Flieu%2F34323&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1',
-    },
+    'https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Frecherche&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1',
+    'https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Flieu%2F34323&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1',
   ] as const
 
   it('should display deeplinks history', () => {
@@ -30,10 +24,10 @@ describe('<DeeplinksHistory />', () => {
     })
 
     expect(screen.getByText('#0')).toBeOnTheScreen()
-    expect(screen.getByText(history[0].universalLink)).toBeOnTheScreen()
+    expect(screen.getByText(history[0])).toBeOnTheScreen()
 
     expect(screen.getByText('#1')).toBeOnTheScreen()
-    expect(screen.getByText(history[1].universalLink)).toBeOnTheScreen()
+    expect(screen.getByText(history[1])).toBeOnTheScreen()
   })
 
   it('should purge history when mac_persist is not true', async () => {

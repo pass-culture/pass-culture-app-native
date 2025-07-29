@@ -37,17 +37,19 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     await user.press(generateButton)
 
-    expect(onCreate).toHaveBeenNthCalledWith(1, {
-      universalLink: 'https://webapp-v2.example.com/accueil?from=deeplink&utm_gen=marketing',
-    })
+    expect(onCreate).toHaveBeenNthCalledWith(
+      1,
+      'https://webapp-v2.example.com/accueil?from=deeplink&utm_gen=marketing'
+    )
 
     await user.press(profile)
 
     await user.press(generateButton)
 
-    expect(onCreate).toHaveBeenNthCalledWith(2, {
-      universalLink: 'https://webapp-v2.example.com/profil?from=deeplink&utm_gen=marketing',
-    })
+    expect(onCreate).toHaveBeenNthCalledWith(
+      2,
+      'https://webapp-v2.example.com/profil?from=deeplink&utm_gen=marketing'
+    )
   })
 
   it('should create url with utm params', async () => {
@@ -60,10 +62,10 @@ describe('<DeeplinksGeneratorForm />', () => {
     fireEvent.changeText(screen.getByPlaceholderText('utm_medium'), 'medium')
     await user.press(screen.getByText('Générer le lien'))
 
-    expect(onCreate).toHaveBeenNthCalledWith(1, {
-      universalLink:
-        'https://webapp-v2.example.com/accueil?utm_gen=product&utm_campaign=campaign&utm_source=source&utm_medium=medium',
-    })
+    expect(onCreate).toHaveBeenNthCalledWith(
+      1,
+      'https://webapp-v2.example.com/accueil?utm_gen=product&utm_campaign=campaign&utm_source=source&utm_medium=medium'
+    )
   })
 
   it('should add showResults param when the user generate a search link', async () => {
@@ -76,10 +78,10 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     await user.press(generateButton)
 
-    expect(onCreate).toHaveBeenNthCalledWith(1, {
-      universalLink:
-        'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&utm_gen=marketing',
-    })
+    expect(onCreate).toHaveBeenNthCalledWith(
+      1,
+      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&utm_gen=marketing'
+    )
   })
 
   it('should remove subcategory param when the user change the category and generate a search link', async () => {
@@ -98,10 +100,10 @@ describe('<DeeplinksGeneratorForm />', () => {
     let generateButton = screen.getByText('Générer le lien')
     await user.press(generateButton)
 
-    expect(onCreate).toHaveBeenNthCalledWith(1, {
-      universalLink:
-        'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing',
-    })
+    expect(onCreate).toHaveBeenNthCalledWith(
+      1,
+      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing'
+    )
 
     categoryButton = screen.getByText('Concerts & festivals')
     await user.press(categoryButton)
@@ -109,10 +111,10 @@ describe('<DeeplinksGeneratorForm />', () => {
     generateButton = screen.getByText('Générer le lien')
     await user.press(generateButton)
 
-    expect(onCreate).toHaveBeenNthCalledWith(2, {
-      universalLink:
-        'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D&utm_gen=marketing',
-    })
+    expect(onCreate).toHaveBeenNthCalledWith(
+      2,
+      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D&utm_gen=marketing'
+    )
   })
 
   it("should have disabled button when a category isn't selected in ThematicSearch", async () => {
@@ -139,10 +141,10 @@ describe('<DeeplinksGeneratorForm />', () => {
     const generateButton = screen.getByText('Générer le lien')
     await user.press(generateButton)
 
-    expect(onCreate).toHaveBeenNthCalledWith(1, {
-      universalLink:
-        'https://webapp-v2.example.com/recherche/thematique?from=deeplink&offerCategories=%5B%22CINEMA%22%5D&utm_gen=marketing',
-    })
+    expect(onCreate).toHaveBeenNthCalledWith(
+      1,
+      'https://webapp-v2.example.com/recherche/thematique?from=deeplink&offerCategories=%5B%22CINEMA%22%5D&utm_gen=marketing'
+    )
   })
 })
 

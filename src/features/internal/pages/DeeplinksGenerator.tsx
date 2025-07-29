@@ -2,10 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
-import {
-  DeeplinksGeneratorForm,
-  GeneratedDeeplink,
-} from 'features/internal/components/DeeplinksGeneratorForm'
+import { DeeplinksGeneratorForm } from 'features/internal/components/DeeplinksGeneratorForm'
 import { DeeplinksHistory } from 'features/internal/components/DeeplinksHistory'
 import { DeeplinksResult } from 'features/internal/components/DeeplinksResult'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -17,17 +14,17 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'
 
-const linksInitialState: Array<GeneratedDeeplink> = []
+const linksInitialState: Array<string> = []
 
 export const DeeplinksGenerator = () => {
   const [result, setResult] = useState(linksInitialState[0])
-  const [links, setLinks] = useState<Array<GeneratedDeeplink>>(linksInitialState)
+  const [links, setLinks] = useState<Array<string>>(linksInitialState)
   const [keepHistory, setKeepHistory] = useState(false)
   const { showErrorSnackBar } = useSnackBarContext()
   const headerHeight = useGetHeaderHeight()
 
   const onGenerate = useCallback(
-    (generatedDeeplink: GeneratedDeeplink) => {
+    (generatedDeeplink: string) => {
       async function add() {
         setLinks((previousGeneratedLinks) => [generatedDeeplink, ...previousGeneratedLinks])
         setResult(generatedDeeplink)
@@ -41,7 +38,7 @@ export const DeeplinksGenerator = () => {
           } catch (error) {
             if (error instanceof Error)
               showErrorSnackBar({
-                message: `Le lien ${generatedDeeplink.universalLink} n’a pas été ajouté à l’historique\u00a0: ${error.message}`,
+                message: `Le lien ${generatedDeeplink} n’a pas été ajouté à l’historique\u00a0: ${error.message}`,
                 timeout: SNACK_BAR_TIME_OUT,
               })
           }
@@ -53,7 +50,7 @@ export const DeeplinksGenerator = () => {
     [keepHistory]
   )
 
-  const rehydratedHistory = useCallback((history: GeneratedDeeplink[]) => {
+  const rehydratedHistory = useCallback((history: string[]) => {
     setLinks(history)
   }, [])
 

@@ -41,12 +41,8 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
 import { getSpacing, Typo } from 'ui/theme'
 
-export interface GeneratedDeeplink {
-  universalLink: string
-}
-
 interface Props {
-  onCreate: (generatedDeeplink: GeneratedDeeplink) => void
+  onCreate: (universalLink: string) => void
 }
 
 type DeeplinksAppParams = Record<string, unknown> & {
@@ -313,7 +309,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       universalLink = appParams.URL as string
     }
 
-    onCreate({ universalLink })
+    onCreate(universalLink)
   }
 
   const paramsCount = useMemo(() => {

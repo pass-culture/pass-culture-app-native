@@ -4,20 +4,19 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
-import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
-  history: Readonly<GeneratedDeeplink[]>
+  history: Readonly<string[]>
   keepHistory: boolean
   setKeepHistory: (keepHistory: boolean) => void
-  rehydrateHistory: (history: GeneratedDeeplink[]) => void
+  rehydrateHistory: (history: string[]) => void
 }
 
-const keyExtractor = (item: GeneratedDeeplink, index: number) => `${item.universalLink}_#${index}`
+const keyExtractor = (item: string, index: number) => `${item}_#${index}`
 
 export const DeeplinksHistory = ({
   history,
@@ -102,9 +101,11 @@ export const DeeplinksHistory = ({
   )
 }
 
-const renderItem = ({ item, index }: { item: GeneratedDeeplink; index: number }) => {
+const renderItem = ({ item, index }: { item: string; index: number }) => {
   const indice = `#${index}`
-  return <DeeplinkItem before={<Typo.BodyAccentXs>{indice}</Typo.BodyAccentXs>} deeplink={item} />
+  return (
+    <DeeplinkItem before={<Typo.BodyAccentXs>{indice}</Typo.BodyAccentXs>} universalLink={item} />
+  )
 }
 
 const flatListStyle = { marginVertical: getSpacing(4) }

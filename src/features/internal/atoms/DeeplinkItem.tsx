@@ -1,19 +1,18 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  deeplink: GeneratedDeeplink
+  universalLink: string
   before?: React.JSX.Element | React.JSX.Element[]
 }
 
-export const DeeplinkItem: FC<Props> = ({ deeplink, before }) => {
-  const copyToClipboardUniversalLink = useCopyToClipboard({ textToCopy: deeplink.universalLink })
+export const DeeplinkItem: FC<Props> = ({ universalLink, before }) => {
+  const copyToClipboardUniversalLink = useCopyToClipboard({ textToCopy: universalLink })
 
   return (
     <React.Fragment>
@@ -26,8 +25,8 @@ export const DeeplinkItem: FC<Props> = ({ deeplink, before }) => {
       <Container>
         <Spacer.Flex flex={0.85}>
           <ExternalTouchableLink
-            externalNav={{ url: deeplink.universalLink, params: { shouldLogEvent: false } }}>
-            <Typo.BodyAccentXs>{deeplink.universalLink}</Typo.BodyAccentXs>
+            externalNav={{ url: universalLink, params: { shouldLogEvent: false } }}>
+            <Typo.BodyAccentXs>{universalLink}</Typo.BodyAccentXs>
           </ExternalTouchableLink>
         </Spacer.Flex>
 
