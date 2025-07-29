@@ -10,9 +10,9 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
-const today = '2025-01-14T16:05:46+02:00'
-const tomorrow = '2025-01-15T16:05:46+02:00'
-const yesterday = '2025-01-13T16:05:46+02:00'
+const today = 1736853946 //'2025-01-14T16:05:46+02:00'
+const tomorrow = 1736940346 //'2025-01-15T16:05:46+02:00'
+const yesterday = 1736767546 //'2025-01-13T16:05:46+02:00'
 
 const props = {
   moduleId: '1',

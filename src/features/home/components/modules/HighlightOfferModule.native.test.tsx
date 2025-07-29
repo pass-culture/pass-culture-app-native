@@ -17,8 +17,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 const offerFixture = offersFixture[0]
 
-const today = '2025-01-14T16:05:46+02:00'
-const tomorrow = '2025-01-15T16:05:46+02:00'
+const today = 1736861146 //'2025-01-14T16:05:46+02:00'
+const tomorrow = 1736947546 //'2025-01-15T16:05:46+02:00'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/home/api/useHighlightOffer')

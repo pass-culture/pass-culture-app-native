@@ -7,9 +7,9 @@ import { api } from 'api/api'
 import { GetRemindersResponse } from 'api/gen'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFooter/OfferFooter'
+import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { OfferContentCTAs, Props } from 'features/offer/components/OfferFooter/OfferContentCTAs'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reminder, remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { beneficiaryUser } from 'fixtures/user'
@@ -50,7 +50,7 @@ const mockUseOfferCTAReturnValue = {
 jest.useFakeTimers()
 const user = userEvent.setup()
 
-describe('OfferFooter', () => {
+describe('OfferContentCTAs', () => {
   beforeAll(() => {
     useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     useOfferCTASpy.mockReturnValue(mockUseOfferCTAReturnValue)
@@ -71,7 +71,7 @@ describe('OfferFooter', () => {
     })
 
     it('should display cineContentCTA when remote config is on', async () => {
-      renderOfferFooter({})
+      renderOfferContentCTAs({})
 
       expect(await screen.findByText('Cine content CTA')).toBeOnTheScreen()
     })
@@ -95,20 +95,20 @@ describe('OfferFooter', () => {
     })
 
     it('should display coming soon banner', async () => {
-      renderOfferFooter({ offer: offerWithPublicationDate })
+      renderOfferContentCTAs({ offer: offerWithPublicationDate })
 
       expect(await screen.findByText('Cette offre sera bientôt disponible')).toBeOnTheScreen()
     })
 
     it('should display addToFavorites button when offer has not been added to favorites', async () => {
-      renderOfferFooter({ offer: offerWithPublicationDate, favorite: null })
+      renderOfferContentCTAs({ offer: offerWithPublicationDate, favorite: null })
       await screen.findByText('Cette offre sera bientôt disponible')
 
       expect(await screen.findByText('Mettre en favori')).toBeOnTheScreen()
     })
 
     it('should display removeFromFavorites button when offer has been added to favorites', async () => {
-      renderOfferFooter({
+      renderOfferContentCTAs({
         offer: offerWithPublicationDate,
         favorite: { id: favoriteOfferResponseSnap.id, offer: favoriteOfferResponseSnap },
       })
@@ -119,7 +119,7 @@ describe('OfferFooter', () => {
     })
 
     it('should display addReminder button', async () => {
-      renderOfferFooter({ offer: offerWithPublicationDate })
+      renderOfferContentCTAs({ offer: offerWithPublicationDate })
 
       await screen.findByText('Cette offre sera bientôt disponible')
 
@@ -129,7 +129,7 @@ describe('OfferFooter', () => {
     it('should display disableReminder button', async () => {
       mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
-      renderOfferFooter({
+      renderOfferContentCTAs({
         offer: {
           ...offerWithPublicationDate,
 
@@ -145,7 +145,7 @@ describe('OfferFooter', () => {
     it('should display signinModal when user presses favorite button but is not logged in', async () => {
       mockAuthContextWithoutUser({ persist: true })
 
-      renderOfferFooter({ offer: offerWithPublicationDate })
+      renderOfferContentCTAs({ offer: offerWithPublicationDate })
 
       await screen.findByText('Cette offre sera bientôt disponible')
 
@@ -157,7 +157,7 @@ describe('OfferFooter', () => {
     it('should add offer to favorites when user is logged in and presses addTofavorite button', async () => {
       mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
-      const { addFavorite } = renderOfferFooter({ offer: offerWithPublicationDate })
+      const { addFavorite } = renderOfferContentCTAs({ offer: offerWithPublicationDate })
 
       await screen.findByText('Cette offre sera bientôt disponible')
 
@@ -169,7 +169,7 @@ describe('OfferFooter', () => {
     it('should remove offer from favorites when user is logged in and presses removeFromfavorite button', async () => {
       mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
-      const { removeFavorite, favorite } = renderOfferFooter({
+      const { removeFavorite, favorite } = renderOfferContentCTAs({
         offer: offerWithPublicationDate,
         favorite: { id: favoriteResponseSnap.id, offer: favoriteResponseSnap.offer },
       })
@@ -182,7 +182,7 @@ describe('OfferFooter', () => {
     })
 
     it('should display loader when addToFavorite button is loading', async () => {
-      renderOfferFooter({ offer: offerWithPublicationDate, isAddFavoriteLoading: true })
+      renderOfferContentCTAs({ offer: offerWithPublicationDate, isAddFavoriteLoading: true })
 
       await screen.findByText('Cette offre sera bientôt disponible')
 
@@ -196,7 +196,7 @@ describe('OfferFooter', () => {
 
       addReminderMutationSpy.mockRejectedValueOnce({ status: 400 })
 
-      renderOfferFooter({
+      renderOfferContentCTAs({
         offer: offerWithPublicationDate,
       })
 
@@ -214,7 +214,7 @@ describe('OfferFooter', () => {
       mockAuthContextWithoutUser({ persist: true })
 
       mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
-      renderOfferFooter({ offer: offerWithPublicationDate })
+      renderOfferContentCTAs({ offer: offerWithPublicationDate })
 
       await screen.findByText('Cette offre sera bientôt disponible')
 
@@ -231,7 +231,7 @@ describe('OfferFooter', () => {
         responseOptions: { statusCode: 201, data: {} },
       })
 
-      renderOfferFooter({
+      renderOfferContentCTAs({
         offer: offerWithPublicationDate,
       })
 
@@ -249,7 +249,7 @@ describe('OfferFooter', () => {
         responseOptions: { statusCode: 201, data: {} },
       })
 
-      renderOfferFooter({
+      renderOfferContentCTAs({
         offer: { ...offerWithPublicationDate, id: reminder.offer.id },
       })
 
@@ -275,7 +275,7 @@ describe('OfferFooter', () => {
     })
 
     it('should display CTA received as props', async () => {
-      renderOfferFooter({
+      renderOfferContentCTAs({
         offer: offerWithPublicationDate,
         children: <Button title="Réserver l’offre" />,
       })
@@ -286,7 +286,7 @@ describe('OfferFooter', () => {
 
   describe('Content when offer is not a movie screening, does not have a bookingAllowedDatetime in the future and viewport is desktop', () => {
     it('should return null', async () => {
-      renderOfferFooter({
+      renderOfferContentCTAs({
         children: <Button title="Réserver l’offre" />,
         isDesktopViewport: true,
       })
@@ -298,11 +298,11 @@ describe('OfferFooter', () => {
   })
 })
 
-type RenderOfferFooterType = Partial<OfferFooterProps> & {
+type RenderOfferFooterType = Partial<Props> & {
   isDesktopViewport?: boolean
 }
 
-const renderOfferFooter = ({
+const renderOfferContentCTAs = ({
   offer = offerResponseSnap,
   children,
   addFavorite = jest.fn(),
@@ -315,7 +315,7 @@ const renderOfferFooter = ({
   render(
     reactQueryProviderHOC(
       <OfferCTAProvider>
-        <OfferFooter
+        <OfferContentCTAs
           offer={offer}
           addFavorite={addFavorite}
           isAddFavoriteLoading={isAddFavoriteLoading}
@@ -323,7 +323,7 @@ const renderOfferFooter = ({
           isRemoveFavoriteLoading={isRemoveFavoriteLoading}
           favorite={favorite}>
           {children}
-        </OfferFooter>
+        </OfferContentCTAs>
       </OfferCTAProvider>
     ),
     {

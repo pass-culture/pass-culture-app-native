@@ -319,9 +319,10 @@ describe('HorizontalOfferTile component', () => {
     })
 
     describe('coming soon offer', () => {
+      const bookingAllowedDatetime = 1753886400 // '2025-07-30T14:00:00+02:00'
       const mockComingSoonOffer = {
         ...mockOffer,
-        offer: { ...mockOffer.offer, bookingAllowedDatetime: '2025-07-30T14:00:00+02:00' },
+        offer: { ...mockOffer.offer, bookingAllowedDatetime },
       }
 
       beforeEach(jest.fn())
