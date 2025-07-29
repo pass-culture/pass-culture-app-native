@@ -57,7 +57,7 @@ export const useCookies = () => {
 
     await persist(newCookiesChoice)
     if (cookiesConsent.accepted.includes(CookieNameEnum.BATCH)) {
-      BatchPush.requestNotificationAuthorization()
+      BatchPush.requestNotificationAuthorization() // For iOS and Android 13
     }
   }
 
