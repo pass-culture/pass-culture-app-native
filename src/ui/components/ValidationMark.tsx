@@ -10,13 +10,15 @@ interface Props extends Omit<AccessibleIcon, 'testID'> {
 }
 
 export const ValidationMark: React.FC<Props> = ({ isValid, size }) => {
-  const {
-    colors: { white },
-  } = useTheme()
+  const { designSystem } = useTheme()
   return isValid ? (
     <ValidateGreenValid size={size} testID="valid-icon" />
   ) : (
-    <InvalidateGreyDark size={size} testID="invalid-icon" backgroundColor={white} />
+    <InvalidateGreyDark
+      size={size}
+      testID="invalid-icon"
+      backgroundColor={designSystem.color.background.default}
+    />
   )
 }
 

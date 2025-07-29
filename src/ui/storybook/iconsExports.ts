@@ -1,5 +1,7 @@
 import styled from 'styled-components/native'
 
+import { BookClubCertification } from 'ui/svg/BookClubCertification'
+import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { Again } from 'ui/svg/icons/Again'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
@@ -278,6 +280,8 @@ const LogoPassCulture = styled(PassCultureIcon).attrs(({ theme }) => ({
 }))``
 
 export const UnconventionalIcons = {
+  BookClubCertification,
+  CineClubCertification,
   DarkThemeIllustration,
   DefaultThemeIllustration,
   LogoDMS,

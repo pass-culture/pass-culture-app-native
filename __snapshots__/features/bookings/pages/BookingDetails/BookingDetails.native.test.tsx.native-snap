@@ -266,7 +266,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#F1F1F4",
+                        "borderColor": "#90949d",
                         "borderLeftWidth": 2,
                         "borderRightWidth": 2,
                         "maxWidth": "100%",

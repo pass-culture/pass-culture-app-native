@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { ExpandingFlatList } from './ExpandingFlatList'
@@ -58,8 +59,8 @@ export const Template: VariantsStory<typeof ExpandingFlatList> = {
 }
 
 const StyledItem = styled.View({
-  borderColor: 'black',
-  backgroundColor: 'lightgrey',
+  borderColor: theme.designSystem.color.border.default,
+  backgroundColor: theme.designSystem.color.background.subtle,
   borderWidth: 1,
   height: 50,
   width: 200,

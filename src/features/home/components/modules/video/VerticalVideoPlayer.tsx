@@ -85,7 +85,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     homeEntryId,
   })
 
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(
     isDesktopViewport,
@@ -189,7 +189,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           ref={playerRef}
           initialPlayerParams={{
             modestbranding: true,
-            color: 'white',
+            color: designSystem.color.icon.lockedInverted,
             showClosedCaptions: false,
             controls: false,
           }}
