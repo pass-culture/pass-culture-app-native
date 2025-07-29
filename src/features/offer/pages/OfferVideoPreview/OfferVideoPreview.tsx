@@ -7,7 +7,8 @@ import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensi
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { extractYoutubeVideoId } from 'features/offer/helpers/extractYoutubeVideoId/extractYoutubeVideoId'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -26,6 +27,7 @@ export const OfferVideoPreview: FunctionComponent = () => {
   const { width: viewportWidth } = useWindowDimensions()
   const videoHeight = Math.min(viewportWidth, MAX_WIDTH) * RATIO169
   const { data: offer } = useOfferQuery({ offerId: params.id })
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   return (
     <Container>
@@ -36,13 +38,13 @@ export const OfferVideoPreview: FunctionComponent = () => {
         onBackPress={goBack}
       />
 
-      {offer?.videoUrl ? (
+      {offer?.video?.id && isVideoSectionEnabled ? (
         <YoutubePlayer
-          videoId={extractYoutubeVideoId(offer.videoUrl)}
+          videoId={offer.video.id}
           height={videoHeight}
           width={viewportWidth < MAX_WIDTH ? undefined : MAX_WIDTH}
           initialPlayerParams={{ autoplay: true }}
-          thumbnail={<VideoThumbnailImage url={offer?.videoUrl} resizeMode="cover" />}
+          thumbnail={<VideoThumbnailImage url={offer?.video.thumbUrl ?? ''} resizeMode="cover" />}
         />
       ) : null}
     </Container>

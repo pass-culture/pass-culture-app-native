@@ -17,7 +17,6 @@ import { OfferReactionSection } from 'features/offer/components/OfferReactionSec
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
-import { extractYoutubeVideoId } from 'features/offer/helpers/extractYoutubeVideoId/extractYoutubeVideoId'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
@@ -54,6 +53,7 @@ type Props = {
   headlineOffersCount?: number
   chronicles?: ChronicleCardData[]
   userId?: number
+  isVideoSectionEnabled?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -67,11 +67,11 @@ export const OfferBody: FunctionComponent<Props> = ({
   chronicleVariantInfo,
   chronicles,
   userId,
+  isVideoSectionEnabled,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -191,10 +191,12 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      {offer.videoUrl && isVideoSectionEnabled ? (
+      {offer.video?.id && isVideoSectionEnabled ? (
         <VideoSection
-          videoId={extractYoutubeVideoId(offer.videoUrl)}
-          videoThumbnail={<VideoThumbnailImage url={offer.videoUrl} resizeMode="cover" />}
+          videoId={offer.video.id}
+          videoThumbnail={
+            <VideoThumbnailImage url={offer.video.thumbUrl ?? ''} resizeMode="cover" />
+          }
           title="Vidéo"
           offerId={offer.id}
           offerSubcategory={offer.subcategoryId}

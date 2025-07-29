@@ -7,6 +7,8 @@ import { OfferContentBase } from 'features/offer/components/OfferContent/OfferCo
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useLayout } from 'ui/hooks/useLayout'
 import { getSpacing } from 'ui/theme'
@@ -25,6 +27,9 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   userId,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const shouldShowVideoSection = offer.video?.id && isVideoSectionEnabled
 
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
@@ -45,7 +50,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        onSeeVideoPress={offer.videoUrl ? handleVideoPress : undefined}
+        onSeeVideoPress={shouldShowVideoSection ? handleVideoPress : undefined}
+        isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
         chronicleVariantInfo={chronicleVariantInfo}

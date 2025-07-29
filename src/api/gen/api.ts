@@ -2941,10 +2941,10 @@ export interface OfferResponse {
    */
   venue: OfferVenueResponse
   /**
-   * @type {string}
+   * @type {OfferVideo}
    * @memberof OfferResponse
    */
-  videoUrl?: string | null
+  video?: OfferVideo | null
   /**
    * @type {string}
    * @memberof OfferResponse
@@ -3102,10 +3102,10 @@ export interface OfferResponseV2 {
    */
   venue: OfferVenueResponse
   /**
-   * @type {string}
+   * @type {OfferVideo}
    * @memberof OfferResponseV2
    */
-  videoUrl?: string | null
+  video?: OfferVideo | null
   /**
    * @type {string}
    * @memberof OfferResponseV2
@@ -3259,6 +3259,22 @@ export interface OfferVenueResponse {
    * @memberof OfferVenueResponse
    */
   timezone: string
+}
+/**
+ * @export
+ * @interface OfferVideo
+ */
+export interface OfferVideo {
+  /**
+   * @type {string}
+   * @memberof OfferVideo
+   */
+  id?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferVideo
+   */
+  thumbUrl?: string | null
 }
 /**
  * @export
