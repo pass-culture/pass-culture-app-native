@@ -851,7 +851,7 @@ describe('<OfferContent />', () => {
 
   describe('See video button', () => {
     it('should not display see video button when video data not defined', async () => {
-      renderOfferContent({ offer: { ...offerResponseSnap, videoUrl: undefined } })
+      renderOfferContent({ offer: { ...offerResponseSnap, video: undefined } })
 
       await screen.findByText('Réserver l’offre')
 

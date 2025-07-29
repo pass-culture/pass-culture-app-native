@@ -17,7 +17,6 @@ import { OfferReactionSection } from 'features/offer/components/OfferReactionSec
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
-import { extractYoutubeVideoId } from 'features/offer/helpers/extractYoutubeVideoId/extractYoutubeVideoId'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
@@ -191,10 +190,12 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      {offer.videoUrl && isVideoSectionEnabled ? (
+      {offer.video && isVideoSectionEnabled ? (
         <VideoSection
-          videoId={extractYoutubeVideoId(offer.videoUrl)}
-          videoThumbnail={<VideoThumbnailImage url={offer.videoUrl} resizeMode="cover" />}
+          videoId={offer.video.id ?? ''}
+          videoThumbnail={
+            <VideoThumbnailImage url={offer.video.thumbUrl ?? ''} resizeMode="cover" />
+          }
           title="Vidéo"
           offerId={offer.id}
           offerSubcategory={offer.subcategoryId}
