@@ -15,6 +15,7 @@ const noQueriesOutsideQueryFiles = require('./eslint-custom-rules/no-queries-out
 const queriesOnlyInUseQueryFunctions = require('./eslint-custom-rules/queries-only-in-use-query-functions.js')
 const queriesMustBeInQueriesFolder = require('./eslint-custom-rules/queries-must-be-in-queries-folder.js')
 const noFireEvent = require('./eslint-custom-rules/no-fireEvent')
+const noGetSpacing = require('./eslint-custom-rules/no-get-spacing')
 const noSpacer = require('./eslint-custom-rules/no-spacer')
 const noThemeColors = require('./eslint-custom-rules/no-theme-colors')
 const noThemeFromTheme = require('./eslint-custom-rules/no-theme-from-theme')
@@ -40,6 +41,7 @@ module.exports = {
   'queries-only-in-use-query-functions': queriesOnlyInUseQueryFunctions,
   'queries-must-be-in-queries-folder': queriesMustBeInQueriesFolder,
   'no-fireEvent': noFireEvent,
+  'no-get-spacing': noGetSpacing,
   'no-spacer': noSpacer,
   'no-theme-colors': noThemeColors,
   'no-theme-from-theme': noThemeFromTheme,
