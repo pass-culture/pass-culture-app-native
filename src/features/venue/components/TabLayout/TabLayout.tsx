@@ -5,7 +5,6 @@ import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTa
 import { TabType } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 
 import { InfoTab } from './InfoTab'
 
@@ -73,15 +72,18 @@ const Container = styled.View({
   width: '100%',
 })
 
-const TabContainer = styled(ViewGap)({
+const TabContainer = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
-})
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  position: 'relative',
+}))
 
 const GreyBar = styled.View(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
-  height: getSpacing(1),
-  width: '100%',
+  left: 0,
+  right: 0,
+  height: theme.designSystem.size.spacing.xs,
   backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
