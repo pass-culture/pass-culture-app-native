@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -18,12 +17,10 @@ export const Summary: FC<{ title: string; data: InfoListItemProps[] }> = ({ data
   return (
     <ViewGap gap={5}>
       <AccessibleTitle3>{title}</AccessibleTitle3>
-      <BodyContainer>
-        <FlatList
-          data={filteredData}
-          contentContainerStyle={{ gap: getSpacing(6) }}
-          renderItem={({ item }) => <SummaryItem {...item} />}
-        />
+      <BodyContainer gap={6}>
+        {filteredData.map((item) => (
+          <SummaryItem key={item.title} {...item} />
+        ))}
       </BodyContainer>
     </ViewGap>
   )
@@ -42,7 +39,7 @@ const SummaryItem: FC<InfoListItemProps> = ({ testID, title, value }) => {
 
 const AccessibleTitle3 = styled(Typo.Title3).attrs(getNoHeadingAttrs())``
 
-const BodyContainer = styled.View(({ theme }) => ({
+const BodyContainer = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
   paddingHorizontal: getSpacing(6),
   paddingVertical: getSpacing(8),
