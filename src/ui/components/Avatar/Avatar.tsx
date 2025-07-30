@@ -36,13 +36,6 @@ export const Avatar = ({
   const backgroundColorFromTheme = backgroundColor ?? designSystem.color.background.default
   const borderColorFromTheme = borderColor ?? designSystem.color.border.inverted
 
-  const SHADOW = getShadow({
-    shadowOffset: { width: 0, height: getSpacing(1) },
-    shadowRadius: getSpacing(2),
-    shadowColor: theme.colors.greyDark,
-    shadowOpacity: 0.3,
-  })
-
   const ContainerComponent = (
     <Container
       rounded={rounded}
@@ -50,8 +43,7 @@ export const Avatar = ({
       testID="Avatar"
       borderWidth={borderWidth}
       borderColor={borderColorFromTheme}
-      borderRadius={borderRadius}
-      shadow={SHADOW}>
+      borderRadius={borderRadius}>
       <AvatarBody size={size} backgroundColor={backgroundColorFromTheme} borderWidth={borderWidth}>
         {children}
       </AvatarBody>
@@ -59,7 +51,8 @@ export const Avatar = ({
   )
 
   if (Platform.OS === 'ios') {
-    return <ShadowWrapper shadow={SHADOW}>{ContainerComponent}</ShadowWrapper>
+    // Fix for iOS wich crop shadows when container has "overflow:hidden"
+    return <ShadowWrapper>{ContainerComponent}</ShadowWrapper>
   }
   return ContainerComponent
 }
