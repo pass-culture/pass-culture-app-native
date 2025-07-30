@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { ConsentState } from 'features/cookies/enums'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
@@ -13,6 +13,7 @@ import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRem
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
+import { BatchPush } from 'libs/react-native-batch'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
@@ -562,6 +563,36 @@ describe('useCookies', () => {
         accepted: [],
         refused: ALL_OPTIONAL_COOKIES,
       },
+    })
+  })
+
+  describe('Batch permissions', () => {
+    it('should request notification authorization when Batch cookie is accepted', async () => {
+      const { result } = renderUseCookies()
+
+      await act(async () => {
+        await result.current.setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [CookieNameEnum.BATCH],
+          refused: [],
+        })
+      })
+
+      expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
+    })
+
+    it('should NOT request notification authorization when Batch cookie is refused', async () => {
+      const { result } = renderUseCookies()
+
+      await act(async () => {
+        await result.current.setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [],
+          refused: [CookieNameEnum.BATCH],
+        })
+      })
+
+      expect(BatchPush.requestNotificationAuthorization).not.toHaveBeenCalled()
     })
   })
 })

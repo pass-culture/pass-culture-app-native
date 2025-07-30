@@ -3,7 +3,7 @@ import { LogBox, Platform, StatusBar } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
+import { BatchMessaging } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { render, waitFor } from 'tests/utils'
 
@@ -39,12 +39,6 @@ describe('<App /> with mocked RootNavigator', () => {
     renderApp()
 
     expect(BatchMessaging.setFontOverride).toHaveBeenCalledTimes(1)
-  })
-
-  it('should request push notifications permission', () => {
-    renderApp()
-
-    expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
   })
 
   it('should not init AppsFlyer on launch', () => {
