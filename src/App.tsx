@@ -31,7 +31,7 @@ import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
-import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
+import { BatchMessaging } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -70,7 +70,6 @@ const App: FunctionComponent = function () {
 
   useEffect(() => {
     initAlgoliaAnalytics()
-    BatchPush.requestNotificationAuthorization() //  For iOS and Android 13
     BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
     configureGoogleSignin({
       webClientId: env.GOOGLE_CLIENT_ID,
