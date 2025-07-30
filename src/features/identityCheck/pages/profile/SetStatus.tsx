@@ -46,10 +46,16 @@ export const SetStatus = () => {
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
-  const type = params?.type
-  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
-  const title = isIdentityCheck ? 'Profil' : 'Informations personnelles'
+
+  const identityCheckAndRecapExistingDataConfig = 'Profil'
+  const pageConfigByType = {
+    [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: 'Informations personnelles',
+    [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
+  }
 
   const saveStep = useSaveStep()
   const storedName = useName()
@@ -125,7 +131,7 @@ export const SetStatus = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder title={title} />
+      <PageHeaderWithoutPlaceholder title={pageConfigByType[type]} />
       <StatusFlatList
         handleSubmit={handleSubmit}
         isLoading={isLoading}

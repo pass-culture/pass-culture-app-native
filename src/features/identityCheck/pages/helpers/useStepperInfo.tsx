@@ -95,6 +95,7 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreenType: hasUserCompletedInfo
         ? ProfileTypes.RECAP_EXISTING_DATA
         : ProfileTypes.IDENTITY_CHECK,
+      subtitle: hasUserCompletedInfo ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,
@@ -145,7 +146,7 @@ export const useStepperInfo = (): StepperInfo => {
         const stepDetails: StepExtendedDetails = {
           name: currentStepConfig.name,
           title: step.title,
-          subtitle: step.subtitle ?? undefined,
+          subtitle: step.subtitle ?? currentStepConfig.subtitle,
           icon: currentStepConfig.icon,
           stepState: mapCompletionState(step.completionState),
           firstScreen: currentStepConfig.firstScreen,
