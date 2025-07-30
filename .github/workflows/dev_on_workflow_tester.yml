@@ -151,7 +151,8 @@ jobs:
 
   allure-report:
     name: Update Allure report
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    # Temporairement désactivé
+    if: ${{ always() && github.ref == 'refs/heads/master' && false }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     permissions:
