@@ -41,7 +41,7 @@ describe('<App /> with mocked RootNavigator', () => {
     expect(BatchMessaging.setFontOverride).toHaveBeenCalledTimes(1)
   })
 
-  it('should request push notifications permission', () => {
+  it('should refresh batch token at app start', () => {
     renderApp()
 
     expect(BatchPush.refreshToken).toHaveBeenCalledTimes(1)
