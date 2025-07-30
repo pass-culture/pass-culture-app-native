@@ -62,6 +62,6 @@ export const VenueBlock: FunctionComponent<Props> = ({
   )
 }
 
-const StyledTag = styled(Tag)({
-  marginBottom: getSpacing(4),
-})
+const StyledTag = styled(Tag)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))

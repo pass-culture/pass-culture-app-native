@@ -4,7 +4,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 import { useAppStateChange } from 'libs/appState'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import {
   getOpeningHoursStatus,
@@ -93,9 +93,9 @@ const StyledText = styled(Typo.BodyAccentXs)<{ state: OpeningHoursStatusState }>
   })
 )
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: getSpacing(1),
-})
+  gap: theme.designSystem.size.spacing.xs,
+}))

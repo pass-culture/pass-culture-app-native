@@ -297,9 +297,9 @@ export const FavoriteButtonsContainer = styled(ViewGap)(({ theme }) => {
   }
 })
 
-const OfferName = styled(Typo.BodyAccent)({
-  marginBottom: getSpacing(1),
-})
+const OfferName = styled(Typo.BodyAccent)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
@@ -310,6 +310,6 @@ const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const Price = styled(Typo.BodyAccentXs)({
-  marginTop: getSpacing(1),
-})
+const Price = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xs,
+}))

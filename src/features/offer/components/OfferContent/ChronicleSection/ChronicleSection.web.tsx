@@ -65,7 +65,7 @@ const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   borderRightWidth: StyleSheet.hairlineWidth,
   borderRightColor: theme.designSystem.color.border.default,
-  paddingRight: getSpacing(2),
+  paddingRight: theme.designSystem.size.spacing.s,
 }))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({

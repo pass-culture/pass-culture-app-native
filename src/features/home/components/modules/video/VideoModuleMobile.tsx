@@ -89,7 +89,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   )
 }
 
-const StyledView = styled.View({ paddingTop: getSpacing(4) })
+const StyledView = styled.View(({ theme }) => ({ paddingTop: theme.designSystem.size.spacing.l }))
 const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
@@ -129,7 +129,7 @@ const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
   textAlign: 'center',
   textTransform: 'uppercase',
   fontSize: getSpacing(6.5),
-  padding: getSpacing(4),
+  padding: theme.designSystem.size.spacing.l,
 }))
 
 const PlayerContainer = styled.View({
@@ -158,9 +158,9 @@ const ColorCategoryBackground = styled.View<{
   zIndex: theme.zIndex.background,
 }))
 
-const VideoOfferContainer = styled.View({
-  marginBottom: getSpacing(8),
-})
+const VideoOfferContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
 const VideoMonoOfferTileWrapper = styled(View)(({ theme }) => ({
   flexGrow: 1,

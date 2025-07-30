@@ -5,7 +5,6 @@ import {
   OfferMetadataItem,
   OfferMetadataItemProps,
 } from 'features/offer/components/OfferMetadataItem/OfferMetadataItem'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   metadata: OfferMetadataItemProps[]
@@ -21,6 +20,6 @@ export function OfferMetadataList({ metadata }: Readonly<Props>) {
   )
 }
 
-const Container = styled.View({
-  gap: getSpacing(2),
-})
+const Container = styled.View(({ theme }) => ({
+  gap: theme.designSystem.size.spacing.s,
+}))

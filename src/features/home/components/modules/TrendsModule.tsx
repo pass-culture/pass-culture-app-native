@@ -101,10 +101,12 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
 const ScrollContainer = styled.ScrollView<{ isSmallScreen: boolean }>(
   ({ isSmallScreen, theme }) => {
-    const mobileGap = isSmallScreen ? getSpacing(1) : getSpacing(2)
+    const mobileGap = isSmallScreen
+      ? theme.designSystem.size.spacing.xs
+      : theme.designSystem.size.spacing.s
     return {
       flexDirection: 'row',
-      gap: theme.isDesktopViewport ? getSpacing(4) : mobileGap,
+      gap: theme.isDesktopViewport ? theme.designSystem.size.spacing.l : mobileGap,
       paddingBottom: theme.home.spaceBetweenModules,
     }
   }

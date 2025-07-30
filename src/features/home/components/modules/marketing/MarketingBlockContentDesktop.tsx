@@ -110,19 +110,19 @@ const AttachedOfferCardContainer = styled.View({
   width: getSpacing(94),
 })
 
-const StyledTouchableLink = styled(InternalTouchableLink)({
-  marginLeft: getSpacing(10),
+const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xxxl,
   flex: 1,
-})
+}))
 
-const BackgroundContainer = styled.View({
+const BackgroundContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   width: '100%',
   height: '100%',
   top: 0,
-  paddingVertical: getSpacing(10),
+  paddingVertical: theme.designSystem.size.spacing.xxxl,
   zIndex: -5,
-})
+}))
 
 const StyledAll = styled(All).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.small,

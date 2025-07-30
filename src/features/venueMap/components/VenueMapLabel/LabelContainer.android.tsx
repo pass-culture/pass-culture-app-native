@@ -9,8 +9,8 @@ export const LabelContainer = styled.View(({ theme }) => {
     borderRadius: theme.borderRadius.checkbox,
     borderWidth: 0,
     maxWidth: getSpacing(40),
-    paddingHorizontal: getSpacing(2),
-    paddingVertical: getSpacing(1),
+    paddingHorizontal: theme.designSystem.size.spacing.s,
+    paddingVertical: theme.designSystem.size.spacing.xs,
     marginTop: MARKER_LABEL_MARGIN_TOP,
   }
 })

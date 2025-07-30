@@ -66,7 +66,7 @@ const unselectedStyles = (theme: DefaultTheme, disabled?: boolean): CSSPropertie
   borderColor: disabled
     ? theme.designSystem.color.border.disabled
     : theme.designSystem.color.border.subtle,
-  padding: getSpacing(4),
+  padding: theme.designSystem.size.spacing.l,
 })
 
 const Wrapper = styled(TouchableOpacity)<{
@@ -97,8 +97,8 @@ const InnerWrapper = styled.View<{
 }))
 
 const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
-  width: getSpacing(4),
-  height: getSpacing(4),
+  width: theme.designSystem.size.spacing.l,
+  height: theme.designSystem.size.spacing.l,
   borderRadius: getSpacing(2),
   alignItems: 'center',
   justifyContent: 'center',
@@ -107,13 +107,13 @@ const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected 
   borderColor: isSelected
     ? theme.designSystem.color.border.brandPrimary
     : theme.designSystem.color.border.subtle,
-  marginRight: getSpacing(4),
+  marginRight: theme.designSystem.size.spacing.l,
 }))
 
 const RadioInner = styled.View<{ isSelected?: boolean; disabled?: boolean }>(
   ({ theme, isSelected, disabled }) => ({
-    width: disabled ? getSpacing(4) : getSpacing(2),
-    height: disabled ? getSpacing(4) : getSpacing(2),
+    width: disabled ? theme.designSystem.size.spacing.l : theme.designSystem.size.spacing.s,
+    height: disabled ? theme.designSystem.size.spacing.l : theme.designSystem.size.spacing.s,
     backgroundColor: getRadioInnerBackgroundColor(theme, isSelected, disabled),
     borderRadius: getSpacing(4),
   })

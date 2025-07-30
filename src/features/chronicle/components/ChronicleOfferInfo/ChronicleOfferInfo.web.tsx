@@ -6,7 +6,7 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type ChronicleOfferInfoProps = PropsWithChildren<{
   imageUrl: string
@@ -52,6 +52,6 @@ const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const TextWrapper = styled.View({
-  paddingVertical: getSpacing(4),
-})
+const TextWrapper = styled.View(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.l,
+}))

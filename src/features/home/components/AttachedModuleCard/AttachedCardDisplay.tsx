@@ -82,10 +82,10 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
 }
 
 const BottomBanner = styled.View(({ theme }) => ({
-  paddingHorizontal: getSpacing(4),
-  paddingVertical: getSpacing(2),
-  height: getSpacing(10),
-  gap: getSpacing(2),
+  paddingHorizontal: theme.designSystem.size.spacing.l,
+  paddingVertical: theme.designSystem.size.spacing.s,
+  height: theme.designSystem.size.spacing.xxxl,
+  gap: theme.designSystem.size.spacing.s,
   backgroundColor: theme.designSystem.color.background.warning,
   borderBottomLeftRadius: BORDER_RADIUS,
   borderBottomRightRadius: BORDER_RADIUS,
@@ -93,14 +93,14 @@ const BottomBanner = styled.View(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const CentralColumn = styled.View({
+const CentralColumn = styled.View(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
   textAlign: 'left',
-  gap: getSpacing(1),
+  gap: theme.designSystem.size.spacing.xs,
   wordWrap: 'break-word',
   justifyContent: 'center',
-})
+}))
 
 const RightColumn = styled.View<{ hasRightTagLabel: boolean; hasBottomRightElement: boolean }>(
   ({ hasRightTagLabel, hasBottomRightElement }) => {

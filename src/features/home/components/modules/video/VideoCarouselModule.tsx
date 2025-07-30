@@ -208,9 +208,9 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   )
 }
 
-const Container = styled.View({
-  marginBottom: getSpacing(6),
-})
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const ColoredAttachedTileContainer = styled.View<{
   color: Color
@@ -227,7 +227,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
     theme.designSystem.color.background[colorMapping[color].fill ?? 'default'] ||
     colorMapping[color].fill,
   borderRadius: getSpacing(3),
-  marginHorizontal: getSpacing(1),
+  marginHorizontal: theme.designSystem.size.spacing.xs,
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(3) },
     shadowRadius: getSpacing(12),
@@ -236,17 +236,17 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
   }),
 }))
 
-const SingleItemContainer = styled.View({
+const SingleItemContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(5),
-  marginVertical: getSpacing(4),
-})
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
 
-const DotContainer = styled.View({
+const DotContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   left: 0,
   right: 0,
   flexDirection: 'row',
   justifyContent: 'center',
-  paddingBottom: getSpacing(1),
-})
+  paddingBottom: theme.designSystem.size.spacing.xs,
+}))

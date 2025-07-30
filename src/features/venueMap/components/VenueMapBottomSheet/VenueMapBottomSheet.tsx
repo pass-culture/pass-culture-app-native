@@ -141,19 +141,19 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
   }
 )
 
-const StyledBottomSheetView = styled(BottomSheetView)({
-  paddingTop: getSpacing(2),
+const StyledBottomSheetView = styled(BottomSheetView)(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.s,
   flex: 1,
-})
+}))
 
 const StyledBottomSheet = styled(BottomSheet).attrs<VenueMapBottomSheetProps>(({ theme }) => ({
   containerStyle: { zIndex: theme.zIndex.bottomSheet },
 }))``
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginTop: getSpacing(4),
-  marginBottom: getSpacing(3),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.m,
+}))
 
 const StyledView = styled.View({
   paddingHorizontal: 16,

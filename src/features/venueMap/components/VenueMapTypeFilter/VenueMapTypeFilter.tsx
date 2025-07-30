@@ -102,7 +102,7 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
   )
 }
 
-const Container = styled(ViewGap)({
-  paddingTop: getSpacing(6),
+const Container = styled(ViewGap)(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.xl,
   paddingBottom: getSpacing(26),
-})
+}))

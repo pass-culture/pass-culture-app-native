@@ -63,10 +63,10 @@ const SelectedBottomBar = styled(MovieCalendarBottomBar)<{ disabled?: boolean }>
   })
 )
 
-const CalendarTextView = styled(View)({
-  marginHorizontal: getSpacing(4),
-  marginBottom: getSpacing(2),
-})
+const CalendarTextView = styled(View)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const CalendarCell = styled(TouchableOpacity)({
   justifyContent: 'center',

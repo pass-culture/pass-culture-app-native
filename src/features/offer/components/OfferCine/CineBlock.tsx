@@ -11,7 +11,6 @@ import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenu
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { getSpacing } from 'ui/theme'
 
 export type CineBlockProps = {
   offer: OfferResponseV2
@@ -81,13 +80,15 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
 
 const CineBlockContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
-  paddingTop: getSpacing(6),
-  gap: getSpacing(4),
+  paddingTop: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.l,
 }))
 
 const Divider = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.designSystem.color.background.subtle,
   marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
-  marginTop: getSpacing(theme.isDesktopViewport ? 6 : 4),
+  marginTop: theme.isDesktopViewport
+    ? theme.designSystem.size.spacing.xl
+    : theme.designSystem.size.spacing.l,
 }))

@@ -29,12 +29,12 @@ const VideoPlayerErrorViewContainer = styled(View)({
   overflow: 'hidden',
 })
 
-const ErrorMessageContainer = styled(ViewGap)({
+const ErrorMessageContainer = styled(ViewGap)(({ theme }) => ({
   flex: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  padding: getSpacing(6),
-})
+  padding: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { plural } from 'libs/plural'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites }) => {
@@ -19,10 +19,10 @@ export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites
   )
 }
 
-const Container = styled.View({
-  marginHorizontal: getSpacing(6),
-  marginBottom: getSpacing(4),
-})
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const Caption = styled(Typo.BodyAccentXs).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

@@ -32,7 +32,7 @@ const Container = styled(ViewGap)<{ paddingBottom: number }>(({ paddingBottom, t
   borderTopColor: theme.designSystem.color.border.subtle,
   borderTopWidth: getSpacing(0.25),
   paddingVertical: PADDING_VERTICAL,
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   flexDirection: 'row',
   alignItems: 'center',
   backgroundColor: theme.designSystem.color.background.default,

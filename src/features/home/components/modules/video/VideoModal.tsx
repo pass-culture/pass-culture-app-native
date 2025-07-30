@@ -128,8 +128,8 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   position: 'absolute',
-  top: getSpacing(4),
-  right: getSpacing(4),
+  top: theme.designSystem.size.spacing.l,
+  right: theme.designSystem.size.spacing.l,
   borderRadius: theme.buttons.roundedButton.size,
   padding: getSpacing(2.5),
   backgroundColor: theme.designSystem.color.background.default,
@@ -147,9 +147,9 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledScrollView = styled.ScrollView({
-  paddingHorizontal: getSpacing(6),
-})
+const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

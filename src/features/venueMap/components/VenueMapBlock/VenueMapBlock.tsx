@@ -49,7 +49,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: bo
     borderRadius: theme.borderRadius.radius,
     borderColor: theme.designSystem.color.border.default,
     borderWidth: 1,
-    marginTop: getSpacing(2),
+    marginTop: theme.designSystem.size.spacing.s,
     ...customFocusOutline({ isFocus }),
   })
 )
@@ -59,7 +59,7 @@ const StyledTouchable = styled(Touchable)<{ isFocus?: boolean }>(({ theme, isFoc
   borderRadius: theme.borderRadius.radius,
   borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
-  marginTop: getSpacing(2),
+  marginTop: theme.designSystem.size.spacing.s,
   ...customFocusOutline({ isFocus }),
 }))
 
@@ -75,6 +75,6 @@ const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
 const CardText = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.designSystem.color.text.locked,
   position: 'absolute',
-  left: getSpacing(4),
-  bottom: getSpacing(4),
+  left: theme.designSystem.size.spacing.l,
+  bottom: theme.designSystem.size.spacing.l,
 }))

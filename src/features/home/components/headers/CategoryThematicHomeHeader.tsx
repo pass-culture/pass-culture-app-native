@@ -73,10 +73,10 @@ const Gradient = styled(LinearGradient).attrs(() => ({
   width: '100%',
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   height: HEADER_HEIGHT,
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const TextContainer = styled.View({
   position: 'absolute',
@@ -87,7 +87,7 @@ const TextContainer = styled.View({
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
-  marginBottom: getSpacing(1),
+  marginBottom: theme.designSystem.size.spacing.xs,
 }))
 
 const Background = styled(BlackBackground)(({ theme }) => ({

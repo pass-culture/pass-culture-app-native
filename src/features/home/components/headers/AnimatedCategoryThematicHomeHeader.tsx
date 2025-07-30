@@ -72,15 +72,15 @@ const Container = styled.View({
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
-const SubscribeButtonContainer = styled.View({
+const SubscribeButtonContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  bottom: getSpacing(4),
-  right: getSpacing(6),
-})
+  bottom: theme.designSystem.size.spacing.l,
+  right: theme.designSystem.size.spacing.xl,
+}))
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
-  marginBottom: getSpacing(1),
+  marginBottom: theme.designSystem.size.spacing.xs,
 }))
 
 const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)

@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 
 type IntroductionProps = {
   title: string
@@ -10,22 +11,20 @@ type IntroductionProps = {
 
 export const Introduction = ({ title, paragraph }: IntroductionProps) => (
   <React.Fragment>
-    <IntroductionContainer>
+    <IntroductionContainer gap={4}>
       <Typo.Title4 numberOfLines={3}>{title}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>{paragraph}</Typo.Body>
     </IntroductionContainer>
-    <Spacer.Column numberOfSpaces={6} />
     <Divider />
-    <Spacer.Column numberOfSpaces={6} />
   </React.Fragment>
 )
 
-const IntroductionContainer = styled.View({
-  paddingHorizontal: getSpacing(6),
-})
+const IntroductionContainer = styled(ViewGap)(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
 const Divider = styled.View(({ theme }) => ({
-  height: getSpacing(1),
+  height: theme.designSystem.size.spacing.xs,
   backgroundColor: theme.designSystem.color.background.subtle,
+  marginVertical: theme.designSystem.size.spacing.xl,
 }))

@@ -10,7 +10,7 @@ import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse | BookingOfferResponse
@@ -60,9 +60,9 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
   )
 }
 
-const Container = styled(ViewGap)({
-  marginTop: getSpacing(6),
-})
+const Container = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
 const HorizontalTileContainer = styled(ViewGap)({
   flexDirection: 'row',
@@ -82,9 +82,9 @@ const DateUsedText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledReactionChoiceValidation = styled(ReactionChoiceValidation)({
-  marginBottom: getSpacing(12),
-})
+const StyledReactionChoiceValidation = styled(ReactionChoiceValidation)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxxxl,
+}))
 
 const Flex = styled.View<FlexStyle>(({ flex, justifyContent, alignItems, gap, flexDirection }) => ({
   flexDirection,

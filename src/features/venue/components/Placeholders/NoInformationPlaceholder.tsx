@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { CircledClock } from 'ui/svg/icons/CircledClock'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const NoInformationPlaceholder = () => (
   <Container gap={2}>
@@ -12,16 +12,16 @@ export const NoInformationPlaceholder = () => (
   </Container>
 )
 
-const Container = styled(ViewGap)({
+const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginHorizontal: getSpacing(8),
-})
+  marginHorizontal: theme.designSystem.size.spacing.xxl,
+}))
 
 const NoInfoIllustration = styled(CircledClock).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
 }))``
 
-const Text = styled(Typo.Title4)({
+const Text = styled(Typo.Title4)(({ theme }) => ({
   textAlign: 'center',
-  marginVertical: getSpacing(6),
-})
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))

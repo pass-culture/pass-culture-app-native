@@ -12,12 +12,12 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
@@ -56,7 +56,7 @@ export const HomeHeader: FunctionComponent = function () {
             <TitleContainer>
               <Title testID="web-location-widget">
                 <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
-                <StyledSeparator height={getSpacing(6)} />
+                <StyledSeparator height={designSystem.size.spacing.xl} />
                 <LocationWidgetDesktop />
               </Title>
               <Subtitle>{getSubtitle()}</Subtitle>
@@ -70,14 +70,22 @@ export const HomeHeader: FunctionComponent = function () {
         {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )
-  }, [user, isLoggedIn, isDesktopViewport, availableCredit, currency, euroToPacificFrancRate])
+  }, [
+    user,
+    isLoggedIn,
+    isDesktopViewport,
+    availableCredit,
+    currency,
+    euroToPacificFrancRate,
+    designSystem.size.spacing.xl,
+  ])
 
   return Header
 }
 
 const HeaderContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  marginTop: getSpacing(6),
+  marginTop: theme.designSystem.size.spacing.xl,
   marginHorizontal: theme.contentPage.marginHorizontal,
   zIndex: theme.zIndex.header,
 }))
@@ -88,7 +96,7 @@ const TitleContainer = styled.View({
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
 
 const TitleLabel = styled(Typo.Title1)({
@@ -101,7 +109,7 @@ const Title = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.locationWidget,
 }))
 
-const StyledSeparator = styled(Separator.Vertical)({
-  marginLeft: getSpacing(6),
-  marginRight: getSpacing(4),
-})
+const StyledSeparator = styled(Separator.Vertical)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xl,
+  marginRight: theme.designSystem.size.spacing.l,
+}))

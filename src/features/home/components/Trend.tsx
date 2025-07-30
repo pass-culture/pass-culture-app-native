@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type TrendProps = TrendBlock &
   TrendNavigationProps & {
@@ -23,7 +23,7 @@ export const Trend = ({ image, title, ...rest }: TrendProps) => {
 }
 
 const Item = styled(InternalTouchableLink)(({ theme }) => ({
-  gap: getSpacing(2),
+  gap: theme.designSystem.size.spacing.s,
   padding: theme.isDesktopViewport ? getSpacing(1.5) : getSpacing(0.75),
   alignItems: 'center',
 }))

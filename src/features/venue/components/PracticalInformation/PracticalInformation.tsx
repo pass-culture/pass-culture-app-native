@@ -8,7 +8,7 @@ import { isSectionWithBody } from 'features/venue/helpers/isSectionWithBody/isSe
 import { BasicAccessibilityInfo } from 'ui/components/accessibility/BasicAccessibilityInfo'
 import { DetailedAccessibilityInfo } from 'ui/components/accessibility/DetailedAccessibilityInfo'
 import { Separator } from 'ui/components/Separator'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
@@ -116,7 +116,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
-  marginVertical: getSpacing(2),
+  marginVertical: theme.designSystem.size.spacing.s,
 }))
 
 const SectionComponent: FunctionComponent<{ title: string; children?: ReactNode }> = ({
@@ -129,7 +129,7 @@ const SectionComponent: FunctionComponent<{ title: string; children?: ReactNode 
   </StyledViewGap>
 )
 
-const StyledViewGap = styled.View({
-  marginVertical: getSpacing(4),
-  gap: getSpacing(4),
-})
+const StyledViewGap = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+  gap: theme.designSystem.size.spacing.l,
+}))

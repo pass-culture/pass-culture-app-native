@@ -109,17 +109,19 @@ const TopContainer = styled.View(({ theme }) => {
   const isLargeScreen = theme.isDesktopViewport || theme.isTabletViewport
   return {
     flexDirection: isLargeScreen ? 'row' : 'column',
-    marginTop: isLargeScreen ? getSpacing(8) : 0,
+    marginTop: isLargeScreen ? theme.designSystem.size.spacing.xxl : 0,
     marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
-    marginBottom: isLargeScreen ? getSpacing(10) : getSpacing(6),
+    marginBottom: isLargeScreen
+      ? theme.designSystem.size.spacing.xxxl
+      : theme.designSystem.size.spacing.xl,
   }
 })
 
 const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
 const MarginContainer = styled.View(({ theme }) => ({
-  marginLeft: theme.isDesktopViewport ? getSpacing(13.5) : getSpacing(6),
-  marginRight: getSpacing(6),
+  marginLeft: theme.isDesktopViewport ? getSpacing(13.5) : theme.designSystem.size.spacing.xl,
+  marginRight: theme.designSystem.size.spacing.xl,
   flexShrink: 1,
   justifyContent: 'center',
 }))

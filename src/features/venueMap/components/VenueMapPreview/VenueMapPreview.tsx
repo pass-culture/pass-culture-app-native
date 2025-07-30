@@ -54,7 +54,7 @@ const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
   borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
-  padding: getSpacing(4),
+  padding: theme.designSystem.size.spacing.l,
   ...getShadow({
     shadowOffset: {
       width: 0,
@@ -71,9 +71,9 @@ const Row = styled.View({
   justifyContent: 'space-between',
 })
 
-const StyledVenueInfoHeader = styled(VenueInfoHeader)({
-  marginTop: getSpacing(2),
-})
+const StyledVenueInfoHeader = styled(VenueInfoHeader)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))
 
 const StyledCloseButton = styledButton(CloseButton)({
   justifyContent: 'flex-start',

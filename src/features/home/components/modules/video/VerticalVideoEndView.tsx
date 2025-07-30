@@ -52,12 +52,12 @@ const ButtonsWrapper = styled.View({
   justifyContent: 'center',
 })
 
-const ButtonsContainer = styled.View({
+const ButtonsContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
   maxWidth: getSpacing(20),
-  marginHorizontal: getSpacing(4),
-})
+  marginHorizontal: theme.designSystem.size.spacing.l,
+}))
 
 const StyledReplayIcon = styled(ArrowAgain).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,

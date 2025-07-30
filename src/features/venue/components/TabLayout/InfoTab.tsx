@@ -63,13 +63,13 @@ const StyledTouchableTab = styled(TouchableTab)({
   maxWidth: getSpacing(45),
 })
 
-const TabTitleContainer = styled(ViewGap)({
+const TabTitleContainer = styled(ViewGap)(({ theme }) => ({
   flexGrow: 1,
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
-  marginBottom: getSpacing(2),
-})
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const TabTitle = styled(Typo.BodyAccent)<{ isSelected: boolean; isHover: boolean }>(
   ({ isSelected, isHover, theme }) => ({
@@ -83,7 +83,7 @@ const TabTitle = styled(Typo.BodyAccent)<{ isSelected: boolean; isHover: boolean
 
 const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelected }) => ({
   bottom: 0,
-  height: getSpacing(1),
+  height: theme.designSystem.size.spacing.xs,
   width: '100%',
   backgroundColor: isSelected ? theme.designSystem.color.background.brandPrimary : 'transparent',
   borderRadius: getSpacing(1),
@@ -92,7 +92,7 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
 const PastilleContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
   borderRadius: getSpacing(3.25),
-  paddingHorizontal: getSpacing(1),
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({

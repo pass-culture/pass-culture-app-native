@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradientDeprecated'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
-import { getSpacing } from 'ui/theme'
 
 export const CineContentCTAID = 'cine-content-cta'
 
@@ -26,5 +25,5 @@ const CallToActionContainer = styled.View(({ theme }) => ({
   ...(!theme.isMobileViewport && {
     maxWidth: theme.contentPage.maxWidth,
   }),
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))

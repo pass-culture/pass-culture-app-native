@@ -6,7 +6,7 @@ import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
-import { Spacer, getSpacing } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
@@ -79,19 +79,19 @@ const StyledStickyBottomWrapper = styled(StickyBottomWrapper)<{ bottom: number }
   bottom,
 }))
 
-const CallToActionContainer = styled.View({
-  paddingHorizontal: getSpacing(4),
-  marginTop: getSpacing(4),
-  marginBottom: getSpacing(8),
+const CallToActionContainer = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.l,
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxl,
   flexDirection: 'row',
   width: '100%',
-})
+}))
 
 const StyledBottomBanner = styled(BottomBanner)({
   width: '100%',
 })
 
-const ButtonWrapper = styled.View({
+const ButtonWrapper = styled.View(({ theme }) => ({
   flex: 1,
-  marginHorizontal: getSpacing(1),
-})
+  marginHorizontal: theme.designSystem.size.spacing.xs,
+}))

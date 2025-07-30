@@ -12,7 +12,6 @@ import { useVenuesFilter } from 'features/venueMap/store/venuesFilterStore'
 import { FilterGroupData } from 'features/venueMap/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing } from 'ui/theme'
 
 type Props = StackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapFiltersList'>
 
@@ -55,9 +54,9 @@ export const VenueMapFiltersList: FunctionComponent<Props> = ({ navigation }) =>
   )
 }
 
-const StyledUl = styled(VerticalUl)({
-  paddingTop: getSpacing(6),
-})
+const StyledUl = styled(VerticalUl)(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledLi = styled(Li)({
   display: 'flex',
@@ -67,5 +66,5 @@ const Separator = styled.View(({ theme }) => ({
   width: '100%',
   height: 2,
   backgroundColor: theme.designSystem.color.background.subtle,
-  marginVertical: getSpacing(6),
+  marginVertical: theme.designSystem.size.spacing.xl,
 }))

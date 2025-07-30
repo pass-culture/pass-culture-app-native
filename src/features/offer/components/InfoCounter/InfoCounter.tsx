@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type InfoCounterProps = {
   icon: ReactNode
@@ -18,8 +18,8 @@ export const InfoCounter: FunctionComponent<InfoCounterProps> = ({ icon, text })
   )
 }
 
-const Container = styled(ViewGap)({
+const Container = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingVertical: getSpacing(1),
-})
+  paddingVertical: theme.designSystem.size.spacing.xs,
+}))

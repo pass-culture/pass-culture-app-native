@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const Sort: FunctionComponent = () => {
   return (
@@ -32,11 +32,11 @@ const StyledView = styled.View(({ theme }) => ({
   alignItems: 'center',
   flexDirection: 'row',
   overflow: 'hidden',
-  paddingHorizontal: getSpacing(3),
-  height: getSpacing(10),
+  paddingHorizontal: theme.designSystem.size.spacing.m,
+  height: theme.designSystem.size.spacing.xxxl,
 }))
 
 const StyledButtonText = styled(Typo.Button)(({ theme }) => ({
   color: theme.designSystem.color.text.inverted,
-  paddingHorizontal: getSpacing(2),
+  paddingHorizontal: theme.designSystem.size.spacing.s,
 }))

@@ -9,7 +9,6 @@ import {
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Tag } from 'ui/components/Tag/Tag'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
-import { getSpacing } from 'ui/theme'
 
 export const HeadlineOfferSmallViewport: FunctionComponent<HeadlineOfferData> = ({
   imageUrl,
@@ -36,11 +35,11 @@ export const HeadlineOfferSmallViewport: FunctionComponent<HeadlineOfferData> = 
   </Container>
 )
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  padding: getSpacing(4),
+  padding: theme.designSystem.size.spacing.l,
   flex: 1,
-})
+}))
 
 const StyledHorizontalTile = styled(HorizontalTile)({
   marginTop: 'auto',

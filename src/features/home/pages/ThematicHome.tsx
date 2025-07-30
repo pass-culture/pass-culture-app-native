@@ -228,6 +228,6 @@ const ListHeaderContainer = styled.View({
 })
 
 const GeolocationBannerContainer = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(6),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: theme.home.spaceBetweenModules,
 }))

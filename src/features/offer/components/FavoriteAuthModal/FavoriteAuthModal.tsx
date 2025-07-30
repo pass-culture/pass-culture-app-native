@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -67,11 +67,11 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
   linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
-const StyledButtonContainer = styled.View({
+const StyledButtonContainer = styled.View(({ theme }) => ({
   width: '100%',
-  marginTop: getSpacing(6),
-  marginBottom: getSpacing(4),
-})
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

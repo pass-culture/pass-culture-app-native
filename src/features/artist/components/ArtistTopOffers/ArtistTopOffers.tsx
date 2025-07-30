@@ -51,9 +51,9 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
   ) : null
 }
 
-const StyledTitle3 = styled(Typo.Title3)({
-  marginBottom: getSpacing(4),
-})
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),
