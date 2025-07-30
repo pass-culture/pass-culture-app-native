@@ -34,6 +34,7 @@ export type StepConfig = Pick<StepDetails, 'icon'> & {
   name: IdentityCheckStep
   firstScreen: SubscriptionScreen
   firstScreenType: ProfileType
+  subtitle?: string
 }
 
 export type StepExtendedDetails = StepConfig & StepDetails
