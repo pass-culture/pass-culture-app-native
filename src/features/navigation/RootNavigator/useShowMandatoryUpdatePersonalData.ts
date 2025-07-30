@@ -1,15 +1,13 @@
-import { useNavigation } from '@react-navigation/native'
 import { useEffect, useCallback } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { useAppStateChange } from 'libs/appState'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 
 export function useShowMandatoryUpdatePersonalData() {
-  const { reset } = useNavigation<UseNavigationType>()
   const { isLoggedIn, user } = useAuthContext()
   const { data } = useRemoteConfigQuery()
   const displayMandatoryUpdatePersonalData = data?.displayMandatoryUpdatePersonalData
@@ -21,8 +19,10 @@ export function useShowMandatoryUpdatePersonalData() {
     user && isLoggedIn && enableMandatoryUpdatePersonalData && displayMandatoryUpdatePersonalData
 
   const navigateToMandatoryUpdate = useCallback(() => {
-    reset({ index: 0, routes: [{ name: 'MandatoryUpdatePersonalData' }] })
-  }, [reset])
+    if (navigationRef.isReady()) {
+      navigationRef.current?.reset({ index: 0, routes: [{ name: 'MandatoryUpdatePersonalData' }] })
+    }
+  }, [])
 
   // Background → Foreground transition handler
   useAppStateChange(
