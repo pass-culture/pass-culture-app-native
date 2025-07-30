@@ -31,17 +31,18 @@ export const cityResolver = object().shape({
 
 export const SetCity = () => {
   const { params } = useRoute<UseRouteType<'SetCity'>>()
-  const type = params?.type
-  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
-  const pageInfos = isIdentityCheck
-    ? {
-        headerTitle: 'Profil',
-        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
-      }
-    : {
-        headerTitle: 'Informations personnelles',
-        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      }
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+
+  const identityCheckAndRecapExistingDataConfig = {
+    headerTitle: 'Profil',
+  }
+  const pageConfigByType = {
+    [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: {
+      headerTitle: 'Informations personnelles',
+    },
+    [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
+  }
 
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
   const storedCity = useCity()
@@ -58,12 +59,12 @@ export const SetCity = () => {
 
   const onSubmit = ({ city }: CityForm) => {
     setStoreCity(city)
-    navigate('SetAddress', { type: pageInfos.navigateParamsType })
+    navigate('SetAddress', { type })
   }
 
   return (
     <PageWithHeader
-      title={pageInfos.headerTitle}
+      title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <ViewGap gap={5}>
           <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>

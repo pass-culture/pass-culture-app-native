@@ -35,19 +35,20 @@ const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.
 
 export const SetAddress = () => {
   const { params } = useRoute<UseRouteType<'SetAddress'>>()
-  const type = params?.type
-  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
-  const pageInfos = isIdentityCheck
-    ? {
-        headerTitle: 'Profil',
-        title: 'Quelle est ton adresse\u00a0?',
-        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
-      }
-    : {
-        headerTitle: 'Informations personnelles',
-        title: 'Saisis ton adresse postale',
-        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      }
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+
+  const identityCheckAndRecapExistingDataConfig = {
+    headerTitle: 'Profil',
+    title: 'Quelle est ton adresse\u00a0?',
+  }
+  const pageConfigByType = {
+    [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: {
+      headerTitle: 'Informations personnelles',
+      title: 'Saisis ton adresse postale',
+    },
+    [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
+  }
 
   const { data: settings } = useSettingsContext()
   const storedAddress = useAddress()
@@ -112,18 +113,18 @@ export const SetAddress = () => {
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    navigate('SetStatus', { type: pageInfos.navigateParamsType })
+    navigate('SetStatus', { type })
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)
 
   return (
     <PageWithHeader
-      title={pageInfos.headerTitle}
+      title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
             <Container>
               <SearchInput
                 autoFocus
