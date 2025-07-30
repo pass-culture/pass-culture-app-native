@@ -68,7 +68,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   alignItems: 'center',
   alignSelf: 'center',
-  borderRadius: getSpacing(4),
+  borderRadius: theme.designSystem.size.borderRadius.s,
   padding: getSpacing(6),
   paddingBottom: getSpacing(8),
   width: theme.isMobileViewport

@@ -59,7 +59,7 @@ const SelectedBottomBar = styled(MovieCalendarBottomBar)<{ disabled?: boolean }>
     backgroundColor: disabled
       ? theme.designSystem.color.background.disabled
       : theme.designSystem.color.background.brandPrimary,
-    borderRadius: getSpacing(1),
+    borderRadius: theme.designSystem.size.borderRadius.s,
   })
 )
 

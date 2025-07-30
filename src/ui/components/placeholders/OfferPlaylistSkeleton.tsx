@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { getSpacing, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export enum TileSize {
   MEDIUM = 'Medium',
@@ -48,9 +47,16 @@ export const OfferPlaylistSkeleton: React.FC<{
   )
 }
 
-export const ModuleTitlePlaceholder = () => (
-  <SkeletonTile width={getSpacing(50)} height={getSpacing(4)} borderRadius={2} />
-)
+export const ModuleTitlePlaceholder = () => {
+  const { designSystem } = useTheme()
+  return (
+    <SkeletonTile
+      width={getSpacing(50)}
+      height={getSpacing(4)}
+      borderRadius={designSystem.size.borderRadius.m}
+    />
+  )
+}
 
 const OfferTilePlaceholder = ({ size }: { size: number }) => {
   const width = size * RATIO_HOME_IMAGE
@@ -65,13 +71,23 @@ const OfferTilePlaceholder = ({ size }: { size: number }) => {
   )
 }
 
-const BasePlaceholder = ({ height, width }: { height: number; width: number }) => (
-  <SkeletonTile borderRadius={BorderRadiusEnum.BORDER_RADIUS} height={height} width={width} />
-)
+const BasePlaceholder = ({ height, width }: { height: number; width: number }) => {
+  const { designSystem } = useTheme()
+  return (
+    <SkeletonTile borderRadius={designSystem.size.borderRadius.m} height={height} width={width} />
+  )
+}
 
-export const TextPlaceholder = ({ width, height }: { width: number; height?: number }) => (
-  <SkeletonTile height={height ?? getSpacing(3)} width={width} borderRadius={2} />
-)
+export const TextPlaceholder = ({ width, height }: { width: number; height?: number }) => {
+  const { designSystem } = useTheme()
+  return (
+    <SkeletonTile
+      height={height ?? getSpacing(3)}
+      width={width}
+      borderRadius={designSystem.size.borderRadius.m}
+    />
+  )
+}
 
 const Container = styled.View({
   flexDirection: 'column',

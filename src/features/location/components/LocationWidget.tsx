@@ -101,7 +101,7 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isActive }) => ({
   width: theme.buttons.roundedButton.size,
   height: theme.buttons.roundedButton.size,
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   border: isActive ? 2 : 1,
   justifyContent: 'center',
   alignItems: 'center',

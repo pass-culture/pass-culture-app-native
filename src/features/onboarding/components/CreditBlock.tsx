@@ -56,7 +56,7 @@ const Container = styled.View<{
       ? theme.designSystem.color.border.selected
       : theme.designSystem.color.border.disabled,
   borderWidth: getSpacing(0.25),
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
   padding: getSpacing(4),
   overflow: 'hidden',
   marginHorizontal: status === CreditStatus.ONGOING ? 0 : getSpacing(1),

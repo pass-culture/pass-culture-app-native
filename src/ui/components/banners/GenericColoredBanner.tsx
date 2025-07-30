@@ -47,7 +47,7 @@ const Container = styled.View<{ backgroundColor?: string }>(({ theme, background
   alignItems: 'center',
   justifyContent: 'space-between',
   backgroundColor: backgroundColor || theme.designSystem.color.background.info,
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   padding: getSpacing(4),
 }))
 

@@ -19,7 +19,6 @@ interface CreditProgressBarProps {
 const MINIMUM_PROGRESS_BAR_SIZE = 0.02
 const MINIMUM_PROGRESS_BAR_SIZE_SM = 0.07
 const MINIMUM_PROGRESS_BAR_SIZE_MD = 0.03
-const PROGRESS_BAR_BORDER_RADIUS = getSpacing(12)
 
 const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   color,
@@ -61,7 +60,7 @@ const LinearGradientBar = styled.View.attrs<CreditProgressBarProps>(({ color }) 
   return {
     flex,
     backgroundColor: color,
-    borderRadius: PROGRESS_BAR_BORDER_RADIUS,
+    borderRadius: theme.designSystem.size.borderRadius.pill,
   }
 })
 
@@ -71,21 +70,21 @@ const BaseShadowGradient = styled.View(({ theme }) => ({
   left: 0,
   width: '100%',
   height: '100%',
-  borderRadius: PROGRESS_BAR_BORDER_RADIUS,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: PROGRESS_BAR_BORDER_RADIUS,
-})
+  borderRadius: theme.designSystem.size.borderRadius.pill,
+}))
 
 const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>(
   ({ theme, height }) => ({
     flexDirection: 'row',
-    borderRadius: PROGRESS_BAR_BORDER_RADIUS,
+    borderRadius: theme.designSystem.size.borderRadius.pill,
     height: getSpacing(height ? BarHeight[height] : BarHeight.normal),
     width: '100%',
     zIndex: theme.zIndex.progressbar,

@@ -53,7 +53,6 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
   )
 }
 
-const ACCORDION_BORDER_RADIUS = getSpacing(2)
 const StyledAccordionItem = styled(Accordion).attrs<{ title?: React.JSX.Element }>(({ theme }) => ({
   title: <Typo.BodyAccent>Qu’est-ce que les cookies&nbsp;?</Typo.BodyAccent>,
   titleStyle: {
@@ -66,10 +65,10 @@ const StyledAccordionItem = styled(Accordion).attrs<{ title?: React.JSX.Element 
   },
 }))``
 
-const AccordionContainer = styled.View({
-  borderRadius: ACCORDION_BORDER_RADIUS,
+const AccordionContainer = styled.View(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.m,
   overflow: 'hidden',
-})
+}))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

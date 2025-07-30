@@ -6,7 +6,6 @@ import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/Offe
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { MARGIN_DP, RATIO_BUSINESS } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const HomeBodyPlaceholder = () => (
   <ViewGap gap={6}>
@@ -21,11 +20,11 @@ export const HomeBodyPlaceholder = () => (
 )
 
 const BusinessModulePlaceholder = () => {
-  const { appContentWidth } = useTheme()
+  const { appContentWidth, designSystem } = useTheme()
   const width = appContentWidth - 2 * MARGIN_DP
   const height = PixelRatio.roundToNearestPixel(width * RATIO_BUSINESS)
   return (
-    <SkeletonTile height={height} width={width} borderRadius={BorderRadiusEnum.BORDER_RADIUS} />
+    <SkeletonTile height={height} width={width} borderRadius={designSystem.size.borderRadius.m} />
   )
 }
 

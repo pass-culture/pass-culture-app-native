@@ -104,7 +104,7 @@ const ButtonContent: FunctionComponent<ButtonContentProps> = ({
 
 const BaseStyleComponent = styled(View)(({ theme }) => ({
   marginTop: getSpacing(2),
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   flexDirection: 'row',
   alignItems: 'center',
   borderWidth: '1px',
@@ -171,7 +171,7 @@ const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(
   width: '100%',
   justifyContent: 'center',
   flexDirection: 'row',
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
 }))
 
@@ -179,7 +179,7 @@ const StyledTouchableOpacity = styledButton(Touchable)(({ theme }) => ({
   width: '100%',
   justifyContent: 'center',
   flexDirection: 'row',
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({}),
 }))
 
