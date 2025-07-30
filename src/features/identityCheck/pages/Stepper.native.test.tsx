@@ -15,7 +15,8 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 import { StepButtonState } from 'ui/components/StepButton/types'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -273,11 +274,3 @@ describe('Stepper navigation', () => {
     await waitFor(() => expect(analytics.logStepperDisplayed).not.toHaveBeenCalled())
   })
 })
-
-// Function to ensure that all background promises and state updates have a chance to complete before your test makes its assertions.
-// `new Promise((resolve) => setTimeout(resolve, 0))`: trick to "yield to the event loop."
-async function waitForPromiseResolution() {
-  await act(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 0))
-  })
-}

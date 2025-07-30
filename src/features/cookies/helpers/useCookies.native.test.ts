@@ -18,6 +18,7 @@ import { storage } from 'libs/storage'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
+import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
@@ -47,8 +48,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
-//TODO(PC-36587): unskip this test
-describe.skip('useCookies', () => {
+describe('useCookies', () => {
   beforeAll(() => {
     mockAuthContextWithoutUser({ persist: true })
   })
@@ -245,6 +245,8 @@ describe.skip('useCookies', () => {
           await setUserId(FAKE_USER_ID)
         })
 
+        await waitForPromiseResolution()
+
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
         expect(cookiesConsent).toEqual({
@@ -277,6 +279,8 @@ describe.skip('useCookies', () => {
         })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
+        await waitForPromiseResolution()
 
         expect(cookiesConsent).toEqual({
           buildVersion,
@@ -341,6 +345,8 @@ describe.skip('useCookies', () => {
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
+        await waitForPromiseResolution()
+
         expect(cookiesConsent).toEqual({
           buildVersion,
           userId: secondUserId,
@@ -395,6 +401,8 @@ describe.skip('useCookies', () => {
         await setUserId(FAKE_USER_ID)
       })
 
+      await waitForPromiseResolution()
+
       expect(api.postNativeV1CookiesConsent).toHaveBeenCalledWith({
         userId: FAKE_USER_ID,
         deviceId,
@@ -429,6 +437,8 @@ describe.skip('useCookies', () => {
       const SET_COOKIE_CONSENT = 1
       const SET_USER_ID_AFTERLOGIN = 1
       const API_CALLED_TIMES = SET_COOKIE_CONSENT + SET_USER_ID_AFTERLOGIN
+
+      await waitForPromiseResolution()
 
       expect(api.postNativeV1CookiesConsent).toHaveBeenCalledTimes(API_CALLED_TIMES)
     })
@@ -540,6 +550,8 @@ describe.skip('useCookies', () => {
     })
 
     const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
+    await waitForPromiseResolution()
 
     expect(cookiesConsent).toEqual({
       buildVersion,
