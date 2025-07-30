@@ -61,9 +61,9 @@ const ButtonsContainer = styled.View({
 
 const ColoredGradientBullet = styled(LinearGradient).attrs(({ color }: { color: string }) => ({
   colors: [color, colorAlpha(color, 0.7)],
-}))<{ color: string }>({
+}))<{ color: string }>(({ theme }) => ({
   backgroundColor: 'black',
   width: BULLET_SIZE,
   height: BULLET_SIZE,
-  borderRadius: BULLET_SIZE * 0.5,
-})
+  borderRadius: theme.designSystem.size.borderRadius.m,
+}))

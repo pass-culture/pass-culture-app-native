@@ -75,7 +75,7 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderColor,
   borderWidth: 1.6,
   borderStyle: 'solid',
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(1) },
     shadowRadius: getSpacing(1),

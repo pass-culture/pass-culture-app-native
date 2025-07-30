@@ -55,7 +55,7 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
     ? theme.designSystem.color.border.selected
     : theme.designSystem.color.border.default,
   borderWidth: isSelected ? 2 : 1,
-  borderRadius: theme.borderRadius.button,
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   ...customFocusOutline({}),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default }),
 }))

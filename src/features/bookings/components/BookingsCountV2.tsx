@@ -42,7 +42,7 @@ const StyledAnimatedView = styled(Animated.View)({
 const PastilleContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: getSpacing(3.25),
+  borderRadius: theme.designSystem.size.borderRadius.l,
   paddingHorizontal: getSpacing(1),
 }))
 

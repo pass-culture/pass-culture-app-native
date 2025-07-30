@@ -50,7 +50,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
 }>(({ color }) => ({
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
 }))
 

@@ -32,7 +32,7 @@ const Icon = () => (
 const IconWrapper = styled.View(({ theme }) => ({
   borderColor: theme.designSystem.color.border.subtle,
   borderWidth: 1,
-  borderRadius: theme.buttons.buttonHeights.tall / 2,
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   width: theme.buttons.buttonHeights.tall,
   height: theme.buttons.buttonHeights.tall,
   justifyContent: 'center',

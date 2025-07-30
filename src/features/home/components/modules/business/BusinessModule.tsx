@@ -169,7 +169,7 @@ export const BusinessModule = memo(UnmemoizedBusinessModule)
 const BlankSpace = styled.View({ height: getSpacing(4) })
 
 const FlexRow = styled.View(({ theme }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   flexDirection: 'row',
   width: theme.appContentWidth - 2 * MAIN_MARGIN,
   ...FULL_HEIGHT,
@@ -192,7 +192,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({
   textDecoration: 'none',
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   height: FIXED_SIZE,
   width: theme.appContentWidth - 2 * MAIN_MARGIN,
   flexWrap: 'wrap',
@@ -219,17 +219,17 @@ const Column = styled.View({
   paddingHorizontal: getSpacing(4),
 })
 
-const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ height }) => ({
+const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ theme, height }) => ({
   height,
   ...FULL_WIDTH,
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 
 const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(
   ({ height, theme }) => ({
     height,
     width: (theme.appContentWidth - 2 * MAIN_MARGIN) / 2,
-    borderRadius: getSpacing(2),
+    borderRadius: theme.designSystem.size.borderRadius.s,
   })
 )
 

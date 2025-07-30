@@ -46,5 +46,5 @@ const BodyContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
   paddingHorizontal: getSpacing(6),
   paddingVertical: getSpacing(8),
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))

@@ -28,7 +28,7 @@ const Container = styled(InternalTouchableLink).attrs(({ theme }) => ({
 
 const StyledView = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: theme.borderRadius.button,
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   alignItems: 'center',
   flexDirection: 'row',
   overflow: 'hidden',

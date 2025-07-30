@@ -82,7 +82,7 @@ const BackgroundImageContainer = styled.View(({ theme }) => ({
   width: getSpacing(93.75),
   backgroundColor: theme.designSystem.color.background.subtle,
   overflow: 'hidden',
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 
 const ImagePlaceholder = styled.View({
@@ -97,9 +97,9 @@ const BigImageBackground = styled.ImageBackground({
   overflow: 'hidden',
 })
 
-const SmallImageBackground = styled(BigImageBackground)({
-  borderRadius: getSpacing(2),
-})
+const SmallImageBackground = styled(BigImageBackground)(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.s,
+}))
 
 const BackgroundImagePlaceholder = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,

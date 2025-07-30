@@ -33,5 +33,5 @@ const StyledTouchable = styledButton(Touchable).attrs(({ theme }) => ({
   borderColor: theme.designSystem.color.border.brandPrimary,
   borderWidth: '1px',
   borderStyle: 'dashed',
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))

@@ -49,7 +49,7 @@ const renderSubcategoryButtonSkeleton = (theme: DefaultTheme) => {
       <SkeletonTile
         width={SUBCATEGORY_BUTTON_WIDTH}
         height={SUBCATEGORY_BUTTON_HEIGHT}
-        borderRadius={theme.borderRadius.radius}
+        borderRadius={theme.designSystem.size.borderRadius.m}
       />
     </SkeletonTileContainer>
   )
@@ -60,7 +60,7 @@ const renderVenuePlaylistSkeleton = (theme: DefaultTheme) => {
       <VenuePlaylistSkeletonTile
         width={VENUE_ITEM_WIDTH}
         height={VENUE_ITEM_HEIGHT}
-        borderRadius={theme.borderRadius.radius}
+        borderRadius={theme.designSystem.size.borderRadius.m}
       />
       <TextPlaceholder width={VENUE_ITEM_WIDTH * 0.9} />
       <TextPlaceholder width={VENUE_ITEM_WIDTH * 0.4} />

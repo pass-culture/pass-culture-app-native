@@ -229,7 +229,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
   backgroundColor:
     theme.designSystem.color.background[colorMapping[color].fill ?? 'default'] ||
     colorMapping[color].fill,
-  borderRadius: getSpacing(3),
+  borderRadius: theme.designSystem.size.borderRadius.l,
   marginHorizontal: getSpacing(1),
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(3) },

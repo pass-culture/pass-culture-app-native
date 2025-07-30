@@ -130,7 +130,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   position: 'absolute',
   top: getSpacing(4),
   right: getSpacing(4),
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   padding: getSpacing(2.5),
   backgroundColor: theme.designSystem.color.background.default,
 }))

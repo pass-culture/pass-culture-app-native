@@ -86,12 +86,12 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
   height: getSpacing(1),
   width: '100%',
   backgroundColor: isSelected ? theme.designSystem.color.background.brandPrimary : 'transparent',
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 
 const PastilleContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: getSpacing(3.25),
+  borderRadius: theme.designSystem.size.borderRadius.l,
   paddingHorizontal: getSpacing(1),
 }))
 

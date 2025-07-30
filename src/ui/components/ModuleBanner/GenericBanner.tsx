@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderStyle: 'solid',
     borderWidth: BANNER_BORDER_WIDTH,
-    borderRadius: getSpacing(1.8),
+    borderRadius: theme.designSystem.size.borderRadius.m,
     borderColor: theme.designSystem.color.border.default,
     padding: getSpacing(4),
     width: '100%',

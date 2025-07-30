@@ -86,7 +86,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
 }))({})
 
 const ImageContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.borderRadius.radius - BANNER_BORDER_WIDTH,
+  borderRadius: theme.designSystem.size.borderRadius.m - BANNER_BORDER_WIDTH,
   overflow: 'hidden',
 }))
 

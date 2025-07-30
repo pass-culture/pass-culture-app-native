@@ -92,7 +92,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledYoutubePlayer = styled(YoutubePlayer)({
-  borderRadius: 25,
+const StyledYoutubePlayer = styled(YoutubePlayer)(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   overflow: 'hidden',
-})
+}))

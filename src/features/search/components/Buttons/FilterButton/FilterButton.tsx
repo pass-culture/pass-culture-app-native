@@ -49,7 +49,7 @@ const RoundContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
   width: getSpacing(8),
   height: getSpacing(8),
-  borderRadius: getSpacing(4),
+  borderRadius: theme.designSystem.size.borderRadius.l,
   borderWidth: 1,
   borderColor: theme.designSystem.color.border.default,
 }))

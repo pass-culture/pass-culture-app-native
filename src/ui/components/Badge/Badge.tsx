@@ -24,7 +24,7 @@ const Container = styled.View(({ theme }) => ({
   borderWidth: getSpacing(0.25),
   borderStyle: 'solid',
   borderColor: theme.designSystem.color.border.inverted,
-  borderRadius: BADGE_SIZE,
+  borderRadius: theme.designSystem.size.borderRadius.l,
   backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 

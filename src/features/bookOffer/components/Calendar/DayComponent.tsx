@@ -90,7 +90,7 @@ const Day = styled(Typo.Button)<{ status: OfferStatus }>(({ theme, status }) => 
 
 const SelectedDay = styled(View)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: getSpacing(3),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   width: getSpacing(6),
   height: getSpacing(6),
   alignSelf: 'center',

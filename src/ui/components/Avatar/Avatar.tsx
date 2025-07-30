@@ -22,6 +22,7 @@ export type AvatarProps = {
   rounded?: boolean
   borderRadius?: number
 }
+
 export const Avatar = ({
   size = AVATAR_SMALL,
   backgroundColor = 'white',
