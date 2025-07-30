@@ -39,19 +39,19 @@ export const ButtonSecondaryBlack = styledButton(AppButton).attrs<BaseButtonProp
   }
 )(({ theme, isLoading, disabled }) => {
   const borderWidth = theme.buttons.secondaryBlack.borderWidth
-  let borderColor: string = theme.buttons.secondaryBlack.borderColor
+  let borderColor: string = theme.designSystem.color.border.default
 
   if (isLoading) {
-    borderColor = theme.buttons.loading.secondaryBlack.borderColor
+    borderColor = theme.designSystem.color.border.default
   } else if (disabled) {
-    borderColor = theme.buttons.disabled.secondaryBlack.borderColor
+    borderColor = theme.designSystem.color.border.disabled
   }
 
   const webOnly =
     Platform.OS === 'web'
       ? {
           ['&:disabled']: {
-            borderColor: theme.buttons.disabled.secondaryBlack.borderColor,
+            borderColor: theme.designSystem.color.border.disabled,
           },
         }
       : {}

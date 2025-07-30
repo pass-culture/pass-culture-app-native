@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import { Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
@@ -22,28 +22,34 @@ export type AvatarProps = {
   rounded?: boolean
   borderRadius?: number
 }
+
 export const Avatar = ({
   size = AVATAR_SMALL,
-  backgroundColor = 'white',
-  borderColor = 'white',
+  backgroundColor,
+  borderColor,
   borderWidth = 0,
   rounded = true,
   borderRadius,
   children,
 }: PropsWithChildren<AvatarProps>) => {
+  const { designSystem } = useTheme()
+  const backgroundColorFromTheme = backgroundColor ?? designSystem.color.background.default
+  const borderColorFromTheme = borderColor ?? designSystem.color.border.inverted
+
   const ContainerComponent = (
     <Container
       rounded={rounded}
       size={size}
       testID="Avatar"
       borderWidth={borderWidth}
-      borderColor={borderColor}
+      borderColor={borderColorFromTheme}
       borderRadius={borderRadius}>
-      <AvatarBody size={size} backgroundColor={backgroundColor} borderWidth={borderWidth}>
+      <AvatarBody size={size} backgroundColor={backgroundColorFromTheme} borderWidth={borderWidth}>
         {children}
       </AvatarBody>
     </Container>
   )
+
   if (Platform.OS === 'ios') {
     // Fix for iOS wich crop shadows when container has "overflow:hidden"
     return <ShadowWrapper>{ContainerComponent}</ShadowWrapper>

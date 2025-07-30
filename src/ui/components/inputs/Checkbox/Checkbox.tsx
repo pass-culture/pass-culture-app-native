@@ -239,6 +239,7 @@ type LabelColorParams = {
   state: CheckboxState[]
 }
 
+// FIXME(PC-37256): designSystem does not work
 const getLabelColor = ({ state, theme }: LabelColorParams) => {
   const isDisabled = state.includes('disabled')
   return isDisabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default
