@@ -9,7 +9,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const OfferContentPlaceholder: FunctionComponent = () => {
-  const { borderRadius } = useTheme()
+  const { designSystem } = useTheme()
   return (
     <View testID="OfferContentPlaceholder">
       <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
@@ -60,7 +60,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
       </SectionWithDivider>
       <BodyContainer>
         <SkeletonTile
-          borderRadius={borderRadius.button}
+          borderRadius={designSystem.size.borderRadius.xl}
           width={getSpacing(82)}
           height={getSpacing(10)}
           fullWidth

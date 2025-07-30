@@ -74,7 +74,7 @@ const ChoiceContainer = styled(TouchableOpacity)(({ theme }) => ({
 
 const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
   ({ theme, selected, disabled }) => ({
-    borderRadius: theme.borderRadius.checkbox,
+    borderRadius: theme.designSystem.size.borderRadius.s,
     border: `solid 1px`,
     borderColor: getBorderColor(theme, selected, disabled),
     overflow: 'hidden',
@@ -95,7 +95,7 @@ const StrikeLine = styled.View<{ parentWidth: number }>(({ parentWidth, theme })
     height: `${LINE_THICKNESS}px`,
     width: `${parentWidth + getSpacing(6)}px`,
     backgroundColor: theme.designSystem.color.background.subtle,
-    borderRadius: `${LINE_THICKNESS / 2}px`,
+    borderRadius: theme.designSystem.size.borderRadius.s,
     position: 'absolute',
   }
 })

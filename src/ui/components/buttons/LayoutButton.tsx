@@ -44,7 +44,7 @@ const TitleContainer = styled(ViewGap)<{ isSelected: boolean }>(({ isSelected, t
     ? theme.designSystem.color.background.brandPrimarySelected
     : undefined,
   padding: getSpacing(2),
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
 const IconsContainer = styled(ViewGap)({

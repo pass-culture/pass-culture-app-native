@@ -122,10 +122,9 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
   selectionColor: theme.designSystem.color.text.subtle,
 }))``
 
-const StyledInputContainer = styled(InputContainer)({
-  outlineOffset: 0,
-  borderRadius: getSpacing(6),
-})
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.xl,
+}))
 
 const StyledView = styled.View({
   marginBottom: getSpacing(2),

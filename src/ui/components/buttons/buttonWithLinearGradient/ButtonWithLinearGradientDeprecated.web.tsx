@@ -66,7 +66,7 @@ const genericStyle = ({ theme, fitContentWidth }: GenericStyleProps) => {
     overflow: 'hidden',
     cursor: 'pointer',
     height: theme.buttons.buttonHeights.tall,
-    borderRadius: theme.borderRadius.button,
+    borderRadius: theme.designSystem.size.borderRadius.xl,
     backgroundColor: theme.designSystem.color.background.brandPrimary,
     backgroundImage: `linear-gradient(0.25turn, ${theme.designSystem.color.background.brandPrimary}, ${theme.designSystem.color.background.brandPrimary})`,
     padding: 0,

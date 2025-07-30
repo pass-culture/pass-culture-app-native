@@ -114,7 +114,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
   width,
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
 }))
 
@@ -123,7 +123,7 @@ const VenueTypeTile = styled.View<{ width: number; height: number }>(
     backgroundColor: theme.designSystem.color.background.subtle,
     width: width,
     height: height,
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
     border: `1px solid ${theme.designSystem.color.border.default}`,
     alignItems: 'center',
     justifyContent: 'center',

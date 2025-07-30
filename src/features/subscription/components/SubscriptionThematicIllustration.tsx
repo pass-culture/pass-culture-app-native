@@ -25,10 +25,13 @@ export const SubscriptionThematicIllustration = ({ thematic, size = 'medium' }: 
   )
 }
 
-const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ size }) => ({
+const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ theme, size }) => ({
   height: size === 'medium' ? getSpacing(12) : getSpacing(8),
   width: size === 'medium' ? getSpacing(12) : getSpacing(8),
-  borderRadius: size === 'medium' ? getSpacing(2) : getSpacing(1),
+  borderRadius:
+    size === 'medium'
+      ? theme.designSystem.size.borderRadius.m
+      : theme.designSystem.size.borderRadius.s,
   overflow: 'hidden',
 }))
 

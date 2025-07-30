@@ -226,8 +226,8 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
   backgroundColor:
     theme.designSystem.color.background[colorMapping[color].fill ?? 'default'] ||
     colorMapping[color].fill,
-  borderRadius: getSpacing(3),
   marginHorizontal: theme.designSystem.size.spacing.xs,
+  borderRadius: theme.designSystem.size.borderRadius.l,
 }))
 
 const SingleItemContainer = styled.View(({ theme }) => ({

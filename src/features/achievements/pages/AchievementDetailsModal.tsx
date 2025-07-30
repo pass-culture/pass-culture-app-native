@@ -72,7 +72,7 @@ const BodyWrapper = styled.View<{ isCompleted: boolean }>(({ isCompleted, theme 
     : theme.designSystem.color.background.disabled,
   paddingHorizontal: getSpacing(2),
   paddingVertical: getSpacing(1),
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

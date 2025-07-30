@@ -114,7 +114,7 @@ const Container = styled.View(({ theme }) => {
     backgroundColor: theme.designSystem.color.background.default,
     alignItems: 'center',
     alignSelf: 'center',
-    borderRadius: getSpacing(4),
+    borderRadius: theme.designSystem.size.borderRadius.s,
     overflow: 'hidden',
     maxHeight: MAX_MODAL_HEIGHT,
     minHeight: MIN_MODAL_HEIGHT,

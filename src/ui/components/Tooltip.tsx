@@ -100,7 +100,7 @@ const Background = styled.View(({ theme }) => ({
   width: '100%',
   padding: getSpacing(2),
   paddingLeft: getSpacing(4),
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   backgroundColor: theme.designSystem.color.background.inverted,
 }))
 

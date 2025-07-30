@@ -63,7 +63,7 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
 }>(({ theme, isFocus, isHover, baseColor, borderColor, height }) => ({
   height,
   overflow: 'hidden',
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
   backgroundColor: baseColor,

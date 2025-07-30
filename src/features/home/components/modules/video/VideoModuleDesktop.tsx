@@ -137,7 +137,7 @@ const Thumbnail = styled(ImageBackground)(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
   // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
   overflow: 'hidden',
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   flex: 1,
 }))
 
