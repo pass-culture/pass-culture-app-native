@@ -29,7 +29,8 @@ export const reactQueryProviderHOC = (
     },
   })
 
-  if (setup) setup(queryClient)
+  setup?.(queryClient)
 
+  // @ts-ignore - type incompatibility with React 19
   return <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
 }

@@ -45,6 +45,7 @@ const Image = styled(FastImage).attrs({ resizeMode: 'contain' })({
   height: '100%',
 })
 
+// @ts-ignore - type incompatibility with React 19
 const ZoomableView = styled(ReactNativeZoomableView)({
   flex: 1,
 })

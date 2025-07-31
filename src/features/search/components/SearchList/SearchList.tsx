@@ -37,6 +37,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
   ) => {
     const { tabBar } = useTheme()
     return (
+      // @ts-ignore - type incompatibility with React 19
       <FlashList
         estimatedItemSize={LIST_ITEM_HEIGHT}
         ref={ref}

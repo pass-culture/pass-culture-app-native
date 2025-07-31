@@ -41,6 +41,7 @@ const Container = styled.View({
   position: 'relative',
 })
 
+// @ts-ignore - type incompatibility with React 19
 const StyledInView = styled(InView).attrs<{ testID?: string }>({})<{
   threshold: Percent | number
 }>(({ threshold }) => ({

@@ -95,6 +95,7 @@ export const ImagesCarouselModal = ({
             accessibilityLabel="Image précédente"
           />
           {carouselSize ? (
+            // @ts-ignore - type incompatibility with React 19
             <Carousel
               ref={carouselRef}
               testID="imagesCarouselContainer"

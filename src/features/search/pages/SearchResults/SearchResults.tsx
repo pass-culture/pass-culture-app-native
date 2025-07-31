@@ -96,6 +96,7 @@ export const SearchResults = () => {
     <Page>
       <StatusBar barStyle="dark-content" />
       <Form.Flex>
+        {/* @ts-ignore - type incompatibility with React 19 */}
         <InstantSearch
           searchClient={getSearchClient}
           indexName={suggestionsIndex}

@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react'
 import { StatusBar } from 'react-native'
 
 export const useWhiteStatusBar = () => {
-  const timeRef = useRef<NodeJS.Timeout>()
+  const timeRef = useRef<NodeJS.Timeout>(null)
   return useFocusEffect(
     useCallback(() => {
       StatusBar.setBarStyle('light-content', true)
@@ -31,7 +31,9 @@ export const useWhiteStatusBar = () => {
       })
 
       return () => {
-        clearTimeout(timeRef.current)
+        if (timeRef.current) {
+          clearTimeout(timeRef.current)
+        }
         StatusBar.setBarStyle('dark-content', true)
       }
     }, [])

@@ -174,6 +174,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
           top={scrollButtonOffsetY}
         />
       ) : null}
+      {/* @ts-ignore - type incompatibility with React 19 */}
       <FlatListComponent
         onScroll={onScroll}
         onContentSizeChange={onContentSizeChange}

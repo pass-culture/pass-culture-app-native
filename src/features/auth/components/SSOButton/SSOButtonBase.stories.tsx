@@ -13,6 +13,7 @@ const meta: Meta<typeof SSOButtonBase> = {
   component: SSOButtonBase,
   decorators: [
     (Story) => (
+      // @ts-ignore - type incompatibility with React 19
       <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
         <Story />
       </GoogleOAuthProvider>

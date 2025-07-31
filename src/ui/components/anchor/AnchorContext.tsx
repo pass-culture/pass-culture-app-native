@@ -6,14 +6,14 @@ import { useTheme } from 'styled-components/native'
 import { AnchorName } from 'ui/components/anchor/anchor-name'
 
 type AnchorContextType = {
-  registerAnchor: (name: AnchorName, ref: RefObject<View>) => void
+  registerAnchor: (name: AnchorName, ref: RefObject<View | null>) => void
   scrollToAnchor: (name: AnchorName) => void
 }
 
 const AnchorContext = createContext<AnchorContextType | undefined>(undefined)
 
 type AnchorProviderProps = {
-  scrollViewRef: RefObject<ScrollView>
+  scrollViewRef: RefObject<ScrollView | null>
   handleCheckScrollY(): number
   children: React.ReactNode
   offset?: number
@@ -28,9 +28,9 @@ export const AnchorProvider = ({
   const { top } = useSafeAreaInsets()
   const { appBarHeight, isDesktopViewport, navTopHeight, isTabletViewport } = useTheme()
 
-  const anchors = useRef<Partial<Record<AnchorName, RefObject<View>>>>({})
+  const anchors = useRef<Partial<Record<AnchorName, RefObject<View | null>>>>({})
 
-  const registerAnchor = useCallback((name: AnchorName, ref: RefObject<View>) => {
+  const registerAnchor = useCallback((name: AnchorName, ref: RefObject<View | null>) => {
     anchors.current[name] = ref
   }, [])
 
