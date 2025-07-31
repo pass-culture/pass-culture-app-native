@@ -24,7 +24,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Map } from 'ui/svg/icons/Map'
-import { getSpacing, LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
+import { LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
 
 export const VENUE_ITEM_HEIGHT = LENGTH_XXS
 export const VENUE_ITEM_WIDTH = LENGTH_XS
@@ -163,23 +163,23 @@ export const VenuePlaylist: React.FC<Props> = ({
   )
 }
 
-const Title = styled(Typo.Title3)({
-  marginHorizontal: getSpacing(6),
-})
+const Title = styled(Typo.Title3)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledSeparator = styled(Separator.Horizontal)({
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   width: 'auto',
-  marginLeft: getSpacing(6),
-  marginRight: getSpacing(6),
-  marginTop: getSpacing(3),
-})
+  marginLeft: theme.designSystem.size.spacing.xl,
+  marginRight: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.m,
+}))
 
-const ButtonContainer = styled.View({
-  marginLeft: getSpacing(6),
-  marginTop: getSpacing(1),
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xs,
   alignSelf: 'flex-start',
-})
+}))
 
-const Container = styled.View({
-  marginBottom: getSpacing(8),
-})
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))

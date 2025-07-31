@@ -1,6 +1,6 @@
 import { useNavigationState } from '@react-navigation/native'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
-import React, { useMemo, FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useMemo } from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -23,7 +23,7 @@ import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type AutocompleteOfferItemProps = {
   hit: AlgoliaSuggestionHit
@@ -239,20 +239,20 @@ const Suggestion: FunctionComponent<{ categoryToDisplay: string }> = ({ category
 
 const MagnifyingGlassIconContainer = styled.View({ flexShrink: 0 })
 
-const AutocompleteItemTouchable = styled.TouchableOpacity({
+const AutocompleteItemTouchable = styled.TouchableOpacity(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingBottom: getSpacing(4),
-})
+  paddingBottom: theme.designSystem.size.spacing.l,
+}))
 
 const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
   color: theme.designSystem.color.icon.subtle,
 }))``
 
-const StyledText = styled(Text)({
-  marginLeft: getSpacing(2),
-})
+const StyledText = styled(Text)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+}))
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,

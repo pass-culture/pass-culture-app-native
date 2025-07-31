@@ -22,7 +22,7 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -147,13 +147,13 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   )
 }
 
-const AccessibilityFiltersContainer = styled(ViewGap)({
-  marginTop: getSpacing(6),
-})
+const AccessibilityFiltersContainer = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledCheckBox = styled(Ul)({
+const StyledCheckBox = styled(Ul)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  gap: getSpacing(4),
-})
+  gap: theme.designSystem.size.spacing.l,
+}))

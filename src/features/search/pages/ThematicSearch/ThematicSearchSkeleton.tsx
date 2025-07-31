@@ -97,20 +97,22 @@ export const ThematicSearchSkeleton = () => {
   )
 }
 
-const FlatListContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+const FlatListContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
   flexDirection: 'column',
-  paddingTop: getSpacing(6),
-  paddingLeft: getSpacing(6),
+  paddingTop: theme.designSystem.size.spacing.xl,
+  paddingLeft: theme.designSystem.size.spacing.xl,
   paddingBottom,
 }))
 
-const VenuePlaylistSkeletonTile = styled(SkeletonTile)({ paddingBottom: getSpacing(2) })
+const VenuePlaylistSkeletonTile = styled(SkeletonTile)(({ theme }) => ({
+  paddingBottom: theme.designSystem.size.spacing.s,
+}))
 
-const VenuePlaylistTitlesContainer = styled.View({
+const VenuePlaylistTitlesContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  marginLeft: getSpacing(6),
+  marginLeft: theme.designSystem.size.spacing.xl,
   gap: getSpacing(5),
-})
+}))
 
 const SkeletonTileContainer = styled.View({
   paddingRight: getSpacing(2.5),

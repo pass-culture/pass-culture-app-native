@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -44,10 +44,10 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   boxSizing: 'border-box',
   justifyContent: 'center',
   alignItems: 'center',
-  paddingLeft: getSpacing(4),
-  paddingRight: getSpacing(4),
-  columnGap: getSpacing(1),
-  height: getSpacing(8),
+  paddingLeft: theme.designSystem.size.spacing.l,
+  paddingRight: theme.designSystem.size.spacing.l,
+  columnGap: theme.designSystem.size.spacing.xs,
+  height: theme.designSystem.size.spacing.xxl,
   backgroundColor: isSelected
     ? theme.designSystem.color.background.subtle
     : theme.designSystem.color.background.default,

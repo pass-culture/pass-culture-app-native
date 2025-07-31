@@ -20,7 +20,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -104,22 +104,22 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   )
 }
 
-const ModalContent = styled.View({
+const ModalContent = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(5.5),
   width: '100%',
-  marginBottom: getSpacing(1),
-})
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
 
 const OfferName = styled(Typo.BodyAccent)({
   textAlign: 'center',
 })
 
-const Refund = styled(Typo.Body)({
+const Refund = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginTop: getSpacing(2),
-})
+  marginTop: theme.designSystem.size.spacing.s,
+}))
 
-const CancelButtonContainer = styled.View({
-  marginTop: getSpacing(8),
+const CancelButtonContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxl,
   marginBottom: getSpacing(5),
-})
+}))

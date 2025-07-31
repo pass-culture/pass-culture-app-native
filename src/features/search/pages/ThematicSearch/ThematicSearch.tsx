@@ -24,7 +24,6 @@ import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Page } from 'ui/pages/Page'
-import { getSpacing } from 'ui/theme'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
   return { ...previousValue, [currentValue.name]: currentValue.value }
@@ -119,7 +118,7 @@ export const ThematicSearch: React.FC = () => {
   )
 }
 
-const StyledScrollView = styled(ScrollView)({
-  marginBottom: getSpacing(6),
-  paddingBottom: getSpacing(6),
-})
+const StyledScrollView = styled(ScrollView)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+  paddingBottom: theme.designSystem.size.spacing.xl,
+}))

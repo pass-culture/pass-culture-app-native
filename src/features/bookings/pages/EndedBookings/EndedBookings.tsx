@@ -160,4 +160,6 @@ const contentContainerStyle = {
   paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(8),
 }
 
-const StyledSeparator = styled(Separator.Horizontal)({ marginVertical: getSpacing(4) })
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))

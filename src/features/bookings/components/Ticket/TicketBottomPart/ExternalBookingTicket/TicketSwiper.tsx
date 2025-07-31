@@ -103,11 +103,11 @@ export const TicketSwiper = ({ data }: TicketsProps) => {
   )
 }
 
-const TicketsContainer = styled.View<{ width: number }>(({ width }) => ({
+const TicketsContainer = styled.View<{ width: number }>(({ width, theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
-  paddingTop: getSpacing(2),
-  paddingBottom: getSpacing(6),
+  paddingTop: theme.designSystem.size.spacing.s,
+  paddingBottom: theme.designSystem.size.spacing.xl,
   width,
 }))
 

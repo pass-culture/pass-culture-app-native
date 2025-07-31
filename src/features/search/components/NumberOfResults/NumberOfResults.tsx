@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { plural } from 'libs/plural'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -25,11 +25,11 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
   )
 }
 
-const Container = styled.View({
-  marginTop: getSpacing(1),
-  marginHorizontal: getSpacing(6),
-  marginBottom: getSpacing(4),
-})
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xs,
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

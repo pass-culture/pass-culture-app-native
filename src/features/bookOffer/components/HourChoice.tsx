@@ -5,7 +5,6 @@ import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookin
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
-import { getSpacing } from 'ui/theme'
 
 interface Props {
   hour: string
@@ -64,6 +63,6 @@ export function HourChoice({
   )
 }
 
-const Wrapper = styled.View<{ index?: number }>(({ index = 0 }) => ({
-  marginTop: index > 0 ? getSpacing(2) : undefined,
+const Wrapper = styled.View<{ index?: number }>(({ index = 0, theme }) => ({
+  marginTop: index > 0 ? theme.designSystem.size.spacing.s : undefined,
 }))

@@ -86,18 +86,18 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const FullContainer = styled(Container)({
-  gap: getSpacing(4),
+const FullContainer = styled(Container)(({ theme }) => ({
+  gap: theme.designSystem.size.spacing.l,
   width: '100%',
-})
+}))
 
-const Column = styled.View({
+const Column = styled.View(({ theme }) => ({
   flex: 1,
   flexDirection: 'column',
-  gap: getSpacing(1),
-  marginRight: getSpacing(6),
+  gap: theme.designSystem.size.spacing.xs,
+  marginRight: theme.designSystem.size.spacing.xl,
   justifyContent: 'center',
-})
+}))
 
 const ContentContainer = styled.View(({ theme }) => ({
   height: getSpacing(36.3),
@@ -113,19 +113,19 @@ const LeftContainer = styled(ContentContainer)({
   borderBottomLeftRadius: getSpacing(2.1),
 })
 
-const RightContainer = styled(ContentContainer)({
+const RightContainer = styled(ContentContainer)(({ theme }) => ({
   borderRightWidth: 1,
   borderTopRightRadius: getSpacing(2.1),
   borderBottomRightRadius: getSpacing(2.1),
   flex: 1,
-  paddingLeft: getSpacing(1),
-})
+  paddingLeft: theme.designSystem.size.spacing.xs,
+}))
 
-const MiddleBlock = styled.View({
+const MiddleBlock = styled.View(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
   alignItems: 'center',
   height: '100%',
-  width: getSpacing(6),
+  width: theme.designSystem.size.spacing.xl,
   marginLeft: getSpacing(-3),
-})
+}))

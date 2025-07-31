@@ -546,15 +546,15 @@ const Footer = styled.View(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
-  marginHorizontal: getSpacing(6),
-})
+const StyledHorizontalOfferTile = styled(HorizontalOfferTile)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledLi = styled(Li)({
-  marginLeft: getSpacing(1),
-  marginTop: getSpacing(1),
-  marginBottom: getSpacing(1),
-})
+const StyledLi = styled(Li)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xs,
+  marginTop: theme.designSystem.size.spacing.xs,
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',

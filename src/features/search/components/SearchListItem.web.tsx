@@ -10,7 +10,6 @@ import { AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { getSpacing } from 'ui/theme'
 
 export const headerPlaceholder = {} as const
 export const footerPlaceholder = {} as const
@@ -85,6 +84,6 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
   )
 }
 
-const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
-  marginHorizontal: getSpacing(6),
-})
+const StyledHorizontalOfferTile = styled(HorizontalOfferTile)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))

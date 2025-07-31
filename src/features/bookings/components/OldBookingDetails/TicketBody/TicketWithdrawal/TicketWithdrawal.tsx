@@ -7,7 +7,7 @@ import {
   getStartMessage,
 } from 'features/bookings/components/OldBookingDetails/TicketBody/ticketBodyMessages'
 import { EmailSent as InitialEmailSent } from 'ui/svg/icons/EmailSent'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   withdrawalType: Exclude<WithdrawalTypeEnum, WithdrawalTypeEnum.no_ticket>
@@ -39,22 +39,22 @@ export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, wit
   )
 }
 
-const IconContainer = styled.View({
+const IconContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   width: '100%',
   marginTop: -getSpacing(4),
-  marginBottom: getSpacing(3),
-})
+  marginBottom: theme.designSystem.size.spacing.m,
+}))
 
 const StyledEmailSent = styled(InitialEmailSent).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const WithDrawalContainer = styled(Typo.Body)({
+const WithDrawalContainer = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   maxWidth: '100%',
-  paddingBottom: getSpacing(6),
-})
+  paddingBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const TicketWithdrawalDelay = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.bold,

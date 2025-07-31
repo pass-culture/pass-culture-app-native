@@ -17,7 +17,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
-import { getSpacing } from 'ui/theme'
 
 type LocationModalProps = {
   visible: boolean
@@ -178,25 +177,25 @@ export const LocationModal = ({
   )
 }
 
-const StyledScrollView = styled.ScrollView({
-  paddingHorizontal: getSpacing(6),
-  marginTop: getSpacing(6),
-})
+const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
-const HeaderContainer = styled.View({
-  padding: getSpacing(4),
+const HeaderContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.l,
   width: '100%',
-})
+}))
 
-const StyledView = styled(View)({
-  marginTop: getSpacing(6),
-  gap: getSpacing(6),
-})
+const StyledView = styled(View)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.xl,
+}))
 
-const SliderContainer = styled.View({
-  marginTop: getSpacing(4),
-})
+const SliderContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(6),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))

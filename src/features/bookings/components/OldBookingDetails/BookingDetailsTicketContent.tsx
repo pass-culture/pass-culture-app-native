@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, BookingReponse } from 'api/gen'
+import { BookingReponse, CategoryIdEnum } from 'api/gen'
 import { BookingComplementaryInfo } from 'features/bookings/components/OldBookingDetails/TicketBody/BookingComplementaryInfo/BookingComplementaryInfo'
 import { QrCodeWithSeatProps } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 import { TicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody/TicketBody'
@@ -13,7 +13,7 @@ import { ButtonWithLinearGradientDeprecated } from 'ui/components/buttons/button
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type BookingDetailsTicketContentProps = {
@@ -113,13 +113,13 @@ const Container = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
+const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))(({ theme }) => ({
   textAlign: 'center',
   maxWidth: '100%',
-  paddingHorizontal: getSpacing(2),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.s,
+}))
 
-const TicketContent = styled.View({
-  paddingHorizontal: getSpacing(2),
-  paddingVertical: getSpacing(3),
-})
+const TicketContent = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.s,
+  paddingVertical: theme.designSystem.size.spacing.m,
+}))

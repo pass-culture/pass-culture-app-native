@@ -22,10 +22,10 @@ export const BookingDetailsContentDesktop = ({
   )
 }
 
-const LeftBlock = styled.View({
+const LeftBlock = styled.View(({ theme }) => ({
   maxWidth: MAX_WIDTH_BLOCKS,
-  marginBottom: getSpacing(10),
-})
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
 const StyledContainer = styled.View({
   flexDirection: 'row',
@@ -37,9 +37,9 @@ const StyledContainer = styled.View({
 
 const RightBlock = styled.View<{
   headerImageHeight: number
-}>(({ headerImageHeight }) => ({
+}>(({ headerImageHeight, theme }) => ({
   marginTop: headerImageHeight - getSpacing(24),
   maxWidth: MAX_WIDTH_BLOCKS,
-  gap: getSpacing(4),
-  paddingTop: getSpacing(10),
+  gap: theme.designSystem.size.spacing.l,
+  paddingTop: theme.designSystem.size.spacing.xxxl,
 }))

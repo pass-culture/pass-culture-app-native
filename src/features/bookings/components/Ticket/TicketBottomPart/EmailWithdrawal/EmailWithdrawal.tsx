@@ -30,10 +30,10 @@ export const EmailWithdrawal = ({ hasEmailBeenSent, withdrawalDelay, isDuo, user
   )
 }
 
-const TicketContainer = styled.View({
+const TicketContainer = styled.View(({ theme }) => ({
   width: '100%',
-  gap: getSpacing(4),
-})
+  gap: theme.designSystem.size.spacing.l,
+}))
 
 const StyledEmailSent = styled(EmailSent).attrs({
   size: getSpacing(24),

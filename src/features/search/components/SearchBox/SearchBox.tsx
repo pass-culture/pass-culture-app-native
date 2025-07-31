@@ -22,12 +22,11 @@ import { SearchMainInput } from 'features/search/components/SearchMainInput/Sear
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
+import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SEARCH_DEBOUNCE_MS = 500
@@ -359,14 +358,14 @@ const SearchInputA11yContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledView = styled.View({
+const StyledView = styled.View(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  width: getSpacing(10),
-  height: getSpacing(10),
-})
+  width: theme.designSystem.size.spacing.xxxl,
+  height: theme.designSystem.size.spacing.xxxl,
+}))
 
 const FlexView = styled.View({
   flex: 1,

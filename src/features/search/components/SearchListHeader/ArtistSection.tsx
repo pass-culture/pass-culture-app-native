@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { Artist } from 'features/venue/types'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { AVATAR_MEDIUM } from 'ui/theme/constants'
 
 const TITLE = 'Les artistes'
@@ -30,6 +30,6 @@ export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProp
   )
 }
 
-const Title = styled(Typo.Title3)({
-  marginHorizontal: getSpacing(6),
-})
+const Title = styled(Typo.Title3)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))

@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
 import { TicketVisual } from 'features/bookings/components/Ticket/TicketBottomPart/TicketVisual'
 import { CircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/CircledCheck'
-import { getSpacing } from 'ui/theme'
 
 export const NoTicket: FunctionComponent = () => (
   <TicketContainer testID="withdrawal-info-no-ticket">
@@ -19,8 +18,8 @@ const BicolorCircledCheck = styled(InitialBicolorCircledCheck).attrs(({ theme })
   size: theme.illustrations.sizes.small,
 }))``
 
-const TicketContainer = styled.View({
+const TicketContainer = styled.View(({ theme }) => ({
   width: '100%',
-  gap: getSpacing(4),
+  gap: theme.designSystem.size.spacing.l,
   flexDirection: 'column',
-})
+}))

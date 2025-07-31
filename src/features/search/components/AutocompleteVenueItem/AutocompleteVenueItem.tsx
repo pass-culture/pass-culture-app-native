@@ -6,7 +6,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueHitHighlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type AutocompleteVenueItemProps = {
   hit: AlgoliaVenue
@@ -39,17 +39,17 @@ export function AutocompleteVenueItem({ hit, onPress }: AutocompleteVenueItemPro
 
 const LocationBuildingIconContainer = styled.View({ flexShrink: 0 })
 
-const AutocompleteItemTouchable = styled.TouchableOpacity({
+const AutocompleteItemTouchable = styled.TouchableOpacity(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingBottom: getSpacing(4),
-})
+  paddingBottom: theme.designSystem.size.spacing.l,
+}))
 
 const LocationBuildingFilledIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
   color: theme.designSystem.color.icon.subtle,
 }))``
 
-const StyledText = styled(Typo.Body)({
-  marginLeft: getSpacing(2),
-})
+const StyledText = styled(Typo.Body)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+}))

@@ -6,7 +6,7 @@ import { IconColorKey, TextColorKey } from 'theme/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface LocationModalButtonProps {
   icon: FunctionComponent<AccessibleIcon>
@@ -42,5 +42,5 @@ const TopContainer = styled(ViewGap)({
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
 }))

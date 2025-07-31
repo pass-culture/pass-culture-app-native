@@ -38,7 +38,7 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
   )
 }
 
-const ModalBodyText = styled(Typo.Body)({
+const ModalBodyText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginVertical: getSpacing(8),
-})
+  marginVertical: theme.designSystem.size.spacing.xxl,
+}))

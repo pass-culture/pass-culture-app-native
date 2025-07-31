@@ -33,17 +33,17 @@ const Container = styled.View({
   position: 'relative',
 })
 
-const StyledAnimatedView = styled(Animated.View)({
+const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
-  right: getSpacing(2),
+  right: theme.designSystem.size.spacing.s,
   top: 0,
-})
+}))
 
 const PastilleContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   backgroundColor: theme.designSystem.color.background.brandPrimary,
   borderRadius: getSpacing(3.25),
-  paddingHorizontal: getSpacing(1),
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({

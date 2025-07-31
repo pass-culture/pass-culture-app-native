@@ -29,7 +29,7 @@ const StyledTouchable = styledButton(Touchable).attrs(({ theme }) => ({
 }))(({ theme }) => ({
   alignSelf: 'center',
   justifyItems: 'center',
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
   borderColor: theme.designSystem.color.border.brandPrimary,
   borderWidth: '1px',
   borderStyle: 'dashed',

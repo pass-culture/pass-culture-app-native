@@ -6,7 +6,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 import { DiagonalStripe } from 'features/bookOffer/components/Calendar/DiagonalStripe'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   status: OfferStatus
@@ -84,15 +84,15 @@ const Body = styled(Typo.Body)(({ theme }) => ({
 
 const Day = styled(Typo.Button)<{ status: OfferStatus }>(({ theme, status }) => ({
   textAlign: 'center',
-  minWidth: getSpacing(6),
+  minWidth: theme.designSystem.size.spacing.xl,
   color: getStatusColor(theme, status),
 }))
 
 const SelectedDay = styled(View)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: getSpacing(3),
-  width: getSpacing(6),
-  height: getSpacing(6),
+  borderRadius: theme.designSystem.size.spacing.m,
+  width: theme.designSystem.size.spacing.xl,
+  height: theme.designSystem.size.spacing.xl,
   alignSelf: 'center',
   justifyContent: 'center',
 }))
@@ -102,7 +102,7 @@ const SelectedDayNumber = styled(Typo.Button)(({ theme }) => ({
   color: theme.designSystem.color.text.inverted,
 }))
 
-const DayContainer = styled(View)({
-  height: getSpacing(6),
+const DayContainer = styled(View)(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
   justifyContent: 'center',
-})
+}))

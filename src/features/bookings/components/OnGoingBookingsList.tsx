@@ -122,10 +122,11 @@ function BookingsPlaceholder() {
 }
 const LoadingContainer = styled.View({ flex: 1 })
 
-const ItemSeparatorContainer = styled.View({
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
-})
+const ItemSeparatorContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
+
 function ItemSeparatorComponent() {
   return (
     <ItemSeparatorContainer>

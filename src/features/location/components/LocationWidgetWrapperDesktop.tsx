@@ -105,12 +105,12 @@ const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ theme, widget
   width: TOOLTIP_WIDTH,
 }))
 
-const LocationButton = styledButton(Touchable)({
+const LocationButton = styledButton(Touchable)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  height: getSpacing(8),
+  height: theme.designSystem.size.spacing.xxl,
   flexShrink: 1,
-})
+}))
 
 const NotShrunk = styled.View({
   // We set to undefined to avoid shrink to be applied on the icons - otherwise their size is modified
@@ -129,8 +129,8 @@ const LocationPointerNotFilled = styled(LocationPointerAppV2).attrs(({ theme }) 
 
 const LocationTitle = styled(Typo.BodyAccent).attrs({
   numberOfLines: 1,
-})({
+})(({ theme }) => ({
   flexShrink: 1,
-  marginLeft: getSpacing(1),
-  marginRight: getSpacing(2),
-})
+  marginLeft: theme.designSystem.size.spacing.xs,
+  marginRight: theme.designSystem.size.spacing.s,
+}))

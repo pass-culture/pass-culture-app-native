@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { HistoryItemHighlight } from 'features/search/components/Highlight/Highlight'
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   item: Highlighted<HistoryItem>
@@ -56,10 +56,10 @@ const HistoryItemTouchable = styled.TouchableOpacity({
   alignItems: 'center',
 })
 
-const StyledText = styled(Typo.Body)({
-  marginLeft: getSpacing(2),
+const StyledText = styled(Typo.Body)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
   flex: 1,
-})
+}))
 
 const ClockIconContainer = styled.View({ flexShrink: 0 })
 

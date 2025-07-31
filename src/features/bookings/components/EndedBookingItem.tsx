@@ -20,7 +20,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   booking: Booking
@@ -141,10 +141,10 @@ const ContentContainerGap = styled(ViewGap)({
   flex: 1,
 })
 
-const AttributesView = styled.View({
+const AttributesView = styled.View(({ theme }) => ({
   flex: 1,
-  paddingRight: getSpacing(1),
-})
+  paddingRight: theme.designSystem.size.spacing.xs,
+}))
 
 const EndedReasonAndDate = styled(ViewGap)({
   flexDirection: 'row',

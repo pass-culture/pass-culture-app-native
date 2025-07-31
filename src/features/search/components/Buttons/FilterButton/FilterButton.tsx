@@ -40,17 +40,17 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters = 0, navi
 
 const StyledTouchableLink = styled(InternalTouchableLink)<{
   navigateTo?: InternalTouchableLinkProps['navigateTo']
-}>({
+}>(({ theme }) => ({
   display: 'flex',
-  width: getSpacing(8),
-  height: getSpacing(8),
-})
+  width: theme.designSystem.size.spacing.xxl,
+  height: theme.designSystem.size.spacing.xxl,
+}))
 
 const RoundContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  width: getSpacing(8),
-  height: getSpacing(8),
+  width: theme.designSystem.size.spacing.xxl,
+  height: theme.designSystem.size.spacing.xxl,
   borderRadius: getSpacing(4),
   borderWidth: 1,
   borderColor: theme.designSystem.color.border.default,

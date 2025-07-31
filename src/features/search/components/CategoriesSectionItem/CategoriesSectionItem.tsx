@@ -15,7 +15,6 @@ import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 
 type CategoriesMappingItem = {
   label: string
@@ -80,6 +79,6 @@ const ListItem = styled(Li)({
   display: 'flex',
 })
 
-const FilterRowContainer = styled.View({
-  paddingVertical: getSpacing(3),
-})
+const FilterRowContainer = styled.View(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.m,
+}))

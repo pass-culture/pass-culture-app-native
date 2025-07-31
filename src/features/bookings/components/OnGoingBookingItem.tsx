@@ -22,7 +22,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { Clock as InitialClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   booking: Booking
@@ -127,16 +127,16 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
 }
 
 const ContentContainer = styled(InternalTouchableLink)(({ theme }) => ({
-  marginHorizontal: getSpacing(6),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
   flexDirection: 'row',
   paddingRight: theme.buttons.roundedButton.size,
 }))
 
-const AttributesView = styled.View({
+const AttributesView = styled.View(({ theme }) => ({
   flex: 1,
-  paddingLeft: getSpacing(4),
-  paddingRight: getSpacing(1),
-})
+  paddingLeft: theme.designSystem.size.spacing.l,
+  paddingRight: theme.designSystem.size.spacing.xs,
+}))
 
 const WithdrawContainer = styled.View({
   flex: 1,
@@ -149,14 +149,14 @@ const DateLabel = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const WithdrawCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  marginTop: getSpacing(1),
-  marginRight: getSpacing(4),
+  marginTop: theme.designSystem.size.spacing.xs,
+  marginRight: theme.designSystem.size.spacing.l,
   color: theme.designSystem.color.text.brandPrimary,
 }))
 
 const OnSiteWithdrawalCaption = styled(WithdrawCaption)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
 
 const Clock = styled(InitialClock).attrs(({ theme }) => ({
@@ -177,8 +177,8 @@ const ExpirationBookingContainer = styled.View({
 
 const ExpirationBookingLabel = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
-  marginTop: getSpacing(1),
-  marginRight: getSpacing(4),
+  marginTop: theme.designSystem.size.spacing.xs,
+  marginRight: theme.designSystem.size.spacing.l,
 }))
 
 const ShareContainer = styled.View(({ theme }) => ({

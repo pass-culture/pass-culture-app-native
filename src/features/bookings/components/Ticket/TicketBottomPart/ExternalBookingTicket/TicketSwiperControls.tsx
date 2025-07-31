@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { ControlComponent } from 'features/bookings/components/OldBookingDetails/Ticket/ControlComponent'
 import { StepDots } from 'ui/components/StepDots'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   numberOfSteps: number
@@ -47,10 +46,10 @@ export function TicketSwiperControls({
   )
 }
 
-const DotsContainer = styled(ViewGap)({
-  marginTop: getSpacing(3),
+const DotsContainer = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
   flexDirection: 'row',
-})
+}))
 
 const ControlComponentSpacing = styled.View(({ theme }) => ({
   width: theme.controlComponent.size,

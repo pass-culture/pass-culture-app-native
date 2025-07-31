@@ -24,7 +24,6 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
-import { getSpacing } from 'ui/theme'
 
 const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
@@ -136,4 +135,4 @@ export const SearchResults = () => {
   )
 }
 
-const Container = styled.View({ marginBottom: getSpacing(2) })
+const Container = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.s }))

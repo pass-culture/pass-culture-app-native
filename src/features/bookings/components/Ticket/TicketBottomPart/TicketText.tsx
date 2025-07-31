@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const TicketText = ({ children, testID }: { children: string; testID?: string }) => {
   return (
@@ -11,11 +11,11 @@ export const TicketText = ({ children, testID }: { children: string; testID?: st
   )
 }
 
-const TicketContainer = styled.View({
+const TicketContainer = styled.View(({ theme }) => ({
   width: '100%',
-  gap: getSpacing(4),
+  gap: theme.designSystem.size.spacing.l,
   flexDirection: 'column',
-})
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

@@ -4,7 +4,6 @@ import { Platform } from 'react-native'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { getSpacing } from 'ui/theme'
 import { displayOnFocus } from 'ui/web/displayOnFocus/displayOnFocus'
 
 export const HiddenSuggestionsButton = () => {
@@ -17,9 +16,9 @@ const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary
   onPress: () => void
   wording: string
 }>(({ theme }) => ({
-  margin: getSpacing(1),
-  paddingLeft: getSpacing(4),
-  paddingRight: getSpacing(4),
+  margin: theme.designSystem.size.spacing.xs,
+  paddingLeft: theme.designSystem.size.spacing.l,
+  paddingRight: theme.designSystem.size.spacing.l,
   backgroundColor: theme.designSystem.color.background.default,
   ...Platform.select({
     web: { '&:focus-visible': { outlineOffset: -2 } },

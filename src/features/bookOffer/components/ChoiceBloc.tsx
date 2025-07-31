@@ -56,21 +56,21 @@ export const ChoiceBloc: React.FC<Props> = ({
     </ChoiceContainer>
   )
 }
-const IconContainer = styled.View({
+const IconContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  top: getSpacing(0.5),
-  right: getSpacing(0.5),
-})
+  top: theme.designSystem.size.spacing.xxs,
+  right: theme.designSystem.size.spacing.xxs,
+}))
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const ChoiceContainer = styled(TouchableOpacity)({
+const ChoiceContainer = styled(TouchableOpacity)(({ theme }) => ({
   width: '33%',
-  padding: getSpacing(2),
-})
+  padding: theme.designSystem.size.spacing.s,
+}))
 
 const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
   ({ theme, selected, disabled }) => ({

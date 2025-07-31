@@ -10,7 +10,7 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   onPress?: () => void
@@ -74,12 +74,12 @@ export const LocationChoice: React.FC<Props> = ({
   )
 }
 
-const Container = styled(TouchableOpacity)({
+const Container = styled(TouchableOpacity)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  marginHorizontal: getSpacing(4),
-})
+  marginHorizontal: theme.designSystem.size.spacing.l,
+}))
 
 const FirstPart = styled(View)({
   flexDirection: 'row',
@@ -89,8 +89,8 @@ const FirstPart = styled(View)({
 
 const TextContainer = styled.View(({ theme }) => ({
   flex: theme.isMobileViewport ? 1 : undefined,
-  paddingHorizontal: getSpacing(2),
-  marginRight: theme.isMobileViewport ? 0 : getSpacing(4),
+  paddingHorizontal: theme.designSystem.size.spacing.s,
+  marginRight: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.l,
 }))
 
 const SecondPart = styled.View({

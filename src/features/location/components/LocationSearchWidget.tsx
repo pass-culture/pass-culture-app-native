@@ -11,7 +11,7 @@ import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
   const { place, selectedLocationMode } = useLocation()
@@ -44,11 +44,11 @@ export const LocationSearchWidget = () => {
     </Container>
   )
 }
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  height: getSpacing(8),
-  marginLeft: getSpacing(1),
-})
+  height: theme.designSystem.size.spacing.xxl,
+  marginLeft: theme.designSystem.size.spacing.xs,
+}))
 
 const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
@@ -61,13 +61,13 @@ const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ 
 
 const LocationTitle = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 1,
-})({
-  marginLeft: getSpacing(1),
+})(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xs,
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
-})
+}))
 
-const LocationButton = styled(TouchableOpacity)({
+const LocationButton = styled(TouchableOpacity)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  marginLeft: getSpacing(1),
-})
+  marginLeft: theme.designSystem.size.spacing.xs,
+}))
