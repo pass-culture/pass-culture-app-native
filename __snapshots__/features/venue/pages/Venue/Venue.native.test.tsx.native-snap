@@ -40,7 +40,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       >
         <View
-          defaultMarginBottom="24px"
+          defaultMarginBottom={24}
           hasGoogleCredit={null}
           style={
             {
@@ -2778,7 +2778,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
         }
       >
         <View
-          defaultMarginBottom="24px"
+          defaultMarginBottom={24}
           hasGoogleCredit={null}
           style={
             {
@@ -5833,7 +5833,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
         }
       >
         <View
-          defaultMarginBottom="24px"
+          defaultMarginBottom={24}
           hasGoogleCredit={null}
           style={
             {
