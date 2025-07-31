@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils/web'
 
 import { ForceUpdateInfos } from './ForceUpdateInfos'
@@ -9,6 +10,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 
 describe('<ForceUpdateInfos/>', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should not display the web app button', () => {
     render(<ForceUpdateInfos />)
 

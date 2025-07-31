@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { Typo } from 'ui/theme'
@@ -16,6 +17,8 @@ jest.unmock('@react-navigation/bottom-tabs')
 jest.unmock('features/navigation/useGoBack')
 
 describe('<GenericErrorPage />', () => {
+  beforeEach(() => setFeatureFlags())
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(

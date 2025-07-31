@@ -2,6 +2,7 @@ import React from 'react'
 
 import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
@@ -23,6 +24,8 @@ jest
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('AsyncErrorBoundary component', () => {
+  beforeEach(() => setFeatureFlags())
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(

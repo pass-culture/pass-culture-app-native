@@ -1,8 +1,10 @@
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
+import { StatusBar } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
+import { useColorScheme } from 'libs/styled/useColorScheme'
 import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -49,6 +51,8 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   children,
 }) => {
   const { top } = useSafeAreaInsets()
+  const { designSystem } = useTheme()
+  const colorScheme = useColorScheme()
   const Illustration = getPrimaryIllustration(illustration)
 
   return (
@@ -63,6 +67,14 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       ) : null}
+      <StatusBar
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+        backgroundColor={
+          colorScheme === 'dark'
+            ? designSystem.color.background.lockedInverted
+            : designSystem.color.background.locked
+        }
+      />
       <Page>
         {header}
         <Container>

@@ -5,13 +5,14 @@ import {
   Theme,
 } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
-import { Platform } from 'react-native'
+import { Platform, StatusBar } from 'react-native'
 import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
+import { useColorScheme } from 'libs/styled/useColorScheme'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 import { author } from '../../../../package.json'
@@ -33,6 +34,7 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 }
 
 export const AppNavigationContainer = () => {
+  const colorScheme = useColorScheme()
   const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
 
@@ -75,6 +77,14 @@ export const AppNavigationContainer = () => {
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={getNavThemeConfig(theme)}>
+      <StatusBar
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+        backgroundColor={
+          colorScheme === 'dark'
+            ? theme.designSystem.color.background.lockedInverted
+            : theme.designSystem.color.background.locked
+        }
+      />
       <RootNavigator />
     </NavigationContainer>
   )

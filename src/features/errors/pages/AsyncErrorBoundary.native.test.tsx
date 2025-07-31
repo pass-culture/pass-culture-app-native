@@ -6,6 +6,7 @@ import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -39,6 +40,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('AsyncErrorBoundary component', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should render', () => {
     render(<AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />)
 
