@@ -51,7 +51,6 @@ const YouTubePlayerMock = React.forwardRef(function Component(
       forceUpdate: jest.fn(),
       state: mockState,
       props,
-      refs: {},
     }
   }
   // @ts-ignore avoid internal typing complexity

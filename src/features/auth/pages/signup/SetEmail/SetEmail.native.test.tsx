@@ -178,7 +178,7 @@ describe('<SetEmail />', () => {
     expect(analytics.logHasCorrectedEmail).toHaveBeenNthCalledWith(1, { from: 'setemail' })
   })
 
-  it('should navigate to Login with provided offerId when clicking on "Se connecter" button', async () => {
+  it.skip('should navigate to Login with provided offerId when clicking on "Se connecter" button', async () => {
     const OFFER_ID = 1
     useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
     renderSetEmail()

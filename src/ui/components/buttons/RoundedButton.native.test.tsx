@@ -73,7 +73,7 @@ describe('RoundedButton', () => {
     it('should display final colors after animation', async () => {
       render(<DummyComponent />)
 
-      user.press(screen.getByTestId('dummyPressable'))
+      await user.press(screen.getByTestId('dummyPressable'))
 
       const roundContainer = screen.getByTestId('AnimatedHeaderIconRoundContainer')
       await waitFor(() => {

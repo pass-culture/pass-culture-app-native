@@ -10,7 +10,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
 
@@ -57,9 +57,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => {
-      user.press(screen.getByLabelText('Demander un nouveau lien'))
-    })
+    await user.press(screen.getByLabelText('Demander un nouveau lien'))
 
     expect(analytics.logResendEmailValidation).toHaveBeenCalledTimes(1)
   })
@@ -70,7 +68,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => user.press(screen.getByText('Demander un nouveau lien')))
+    await user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(resendEmailValidationSpy).toHaveBeenCalledTimes(1)
   })
@@ -115,7 +113,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    user.press(screen.getByText('Demander un nouveau lien'))
+    await user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
       await screen.findByText('Tu as dépassé le nombre de renvois autorisés.')
@@ -131,7 +129,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => user.press(screen.getByText('Demander un nouveau lien')))
+    await user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
       screen.queryByText(

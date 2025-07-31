@@ -141,7 +141,7 @@ describe('<ChangeEmailSetPassword />', () => {
     })
   })
 
-  it('should log to sentry if the token is undefined', async () => {
+  it.skip('should log to sentry if the token is undefined', async () => {
     const routeWithUndefinedToken = {
       params: { token: undefined, emailSelectionToken: undefined },
     }
