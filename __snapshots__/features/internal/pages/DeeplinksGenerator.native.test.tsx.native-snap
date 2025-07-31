@@ -2923,6 +2923,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         "userSelect": "auto",
                       },
                       {
+                        "alignSelf": "flex-start",
                         "cursor": "pointer",
                       },
                     ],

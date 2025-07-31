@@ -47,7 +47,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
       <Container
         accessibilityLabel={accessibilityLabel}
         shouldFixHeight={shouldFixHeight}
-        bottomBannerText={bottomBannerText ?? ''}>
+        bottomBannerText={bottomBannerText}>
         {LeftImageComponent ? (
           <ImageContainer>
             <LeftImageComponent {...leftImageProps} />
@@ -127,7 +127,7 @@ const ImageContainer = styled.View({
   flexDirection: 'column',
 })
 
-const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: string }>(
+const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText?: string }>(
   ({ theme, shouldFixHeight, bottomBannerText }) => ({
     backgroundColor: theme.designSystem.color.background.default,
     borderTopLeftRadius: BORDER_RADIUS,

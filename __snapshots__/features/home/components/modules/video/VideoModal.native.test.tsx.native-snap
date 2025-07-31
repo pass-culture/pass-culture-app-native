@@ -463,7 +463,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             >
               <View
                 accessibilityLabel="Découvre l’offre exclusive "La nuit des temps" de la catégorie "Livre". Prix : 0,28 €."
-                bottomBannerText=""
                 shouldFixHeight={false}
                 style={
                   {

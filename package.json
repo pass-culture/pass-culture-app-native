@@ -193,7 +193,7 @@
     "reset-css": "^5.0.2",
     "resize-observer-polyfill": "^1.5.1",
     "search-insights": "^2.13.0",
-    "styled-components": "^6.0.0",
+    "styled-components": "^6.1.19",
     "supercluster": "^8.0.1",
     "uuid": "^8.3.2",
     "yup": "^0.32.11",

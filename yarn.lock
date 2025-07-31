@@ -11175,7 +11175,7 @@ __metadata:
     search-insights: ^2.13.0
     storybook: ^8.6.4
     style-loader: ^2.0.0
-    styled-components: ^6.0.0
+    styled-components: ^6.1.19
     supercluster: ^8.0.1
     timezone-mock: ^1.2.1
     ts-node: ^10.8.0
@@ -27468,7 +27468,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.0.0":
+"styled-components@npm:^6.1.19":
   version: 6.1.19
   resolution: "styled-components@npm:6.1.19"
   dependencies:

@@ -182,12 +182,12 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
     componentType: 'container',
   })
   const isDetailed = variant === 'detailed'
-  const isFilled = display === 'fill'
   const isDisabled = state.includes('disabled')
 
   return {
     cursor: isDisabled ? 'default' : 'pointer',
-    width: isFilled ? '100%' : 'fit-content',
+    width: display === 'fill' ? '100%' : undefined,
+    alignSelf: display === 'hug' ? 'flex-start' : undefined,
     ...(isDetailed && {
       backgroundColor,
       border: 1,
