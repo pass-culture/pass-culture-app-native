@@ -24,6 +24,6 @@ const Container = styled(ViewGap)({
   maxWidth: 500,
 })
 
-const TilesContainer = styled(ViewGap)({
-  marginTop: getSpacing(2),
-})
+const TilesContainer = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))

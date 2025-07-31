@@ -55,7 +55,7 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
 
 const ImageBackground = styled.ImageBackground(({ theme }) => ({
   height: theme.isDesktopViewport ? DESKTOP_HEADER_HEIGHT : MOBILE_HEADER_HEIGHT,
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
 const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
@@ -63,7 +63,7 @@ const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
     position: 'absolute',
     zIndex: theme.zIndex.header,
     top: statusBarHeight + getSpacing(6),
-    right: getSpacing(6),
+    right: theme.designSystem.size.spacing.xl,
   })
 )
 
@@ -71,7 +71,7 @@ const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, ri
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
-  marginBottom: getSpacing(1),
+  marginBottom: theme.designSystem.size.spacing.xs,
 }))
 
 const Title = styled(Typo.Title1)(({ theme }) => ({

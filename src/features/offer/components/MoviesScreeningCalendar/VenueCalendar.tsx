@@ -10,7 +10,6 @@ import {
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { VenueOffers } from 'features/venue/types'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   venueOffers: VenueOffers
@@ -54,5 +53,5 @@ export const VenueCalendar: FunctionComponent<Props> = ({ venueOffers, offerIds 
 
 const Container = styled(View)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
-  paddingTop: getSpacing(4),
+  paddingTop: theme.designSystem.size.spacing.l,
 }))

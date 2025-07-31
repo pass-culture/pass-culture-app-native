@@ -1,6 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React from 'react'
-import { useWindowDimensions, Platform } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Animated, {
   cancelAnimation,
@@ -297,11 +297,11 @@ const ButtonsContainer = styled.View({
   maxWidth: getSpacing(20),
 })
 
-const ControlsContainer = styled.View({
+const ControlsContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
-  marginHorizontal: getSpacing(2),
-})
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))
 
 const StyledPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.locked,

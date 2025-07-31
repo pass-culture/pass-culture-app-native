@@ -13,7 +13,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -102,19 +102,19 @@ export function OfferVenueBlock({
 }
 
 const Wrapper = styled(View)(({ theme }) => ({
-  marginHorizontal: theme.isDesktopViewport ? undefined : getSpacing(6),
+  marginHorizontal: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing.xl,
 }))
 
 const TertiaryButtonWrapper = styled.View({
   alignItems: 'flex-start',
 })
 
-const ItineraryContainer = styled.View({
-  marginTop: getSpacing(6),
-})
+const ItineraryContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledHorizontalSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(6),
-})
+const StyledHorizontalSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
 
-const Container = styled.View({ marginTop: getSpacing(4) })
+const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.l }))

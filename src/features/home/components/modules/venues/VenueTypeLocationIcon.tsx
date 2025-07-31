@@ -23,7 +23,7 @@ export const VenueTypeLocationIcon = ({
   const StyledLocationPointerWithBorder = styled(LocationPointerWithBorder).attrs(({ theme }) => ({
     color: iconColor ?? theme.designSystem.color.icon.default,
     color2: backgroundColor ?? theme.designSystem.color.icon.inverted,
-    size: getSpacing(10),
+    size: theme.designSystem.size.spacing.xxxl,
   }))``
 
   return (

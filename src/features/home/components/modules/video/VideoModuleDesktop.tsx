@@ -107,11 +107,11 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   )
 }
 
-const VideoMonoOfferTileWrapper = styled(View)({
+const VideoMonoOfferTileWrapper = styled(View)(({ theme }) => ({
   flexGrow: 1,
-  marginHorizontal: getSpacing(8),
+  marginHorizontal: theme.designSystem.size.spacing.xxl,
   justifyContent: 'center',
-})
+}))
 
 const StyledView = styled.View({
   flex: 1,
@@ -182,7 +182,7 @@ const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
   textAlign: 'center',
   textTransform: 'uppercase',
   fontSize: getSpacing(6.5),
-  padding: getSpacing(4),
+  padding: theme.designSystem.size.spacing.l,
 }))
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
@@ -200,17 +200,17 @@ const StyledTitleContainer = styled.View({
 
 const StyledMultiOfferList = styled(View)<{
   hasOnlyTwoOffers: boolean
-}>(({ hasOnlyTwoOffers }) => ({
-  marginLeft: getSpacing(10),
+}>(({ hasOnlyTwoOffers, theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xxxl,
   justifyContent: hasOnlyTwoOffers ? 'flex-start' : 'space-between',
   height: '100%',
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)<{
   hasOnlyTwoOffers: boolean
-}>(({ hasOnlyTwoOffers }) => ({
+}>(({ hasOnlyTwoOffers, theme }) => ({
   height: 2,
-  marginVertical: hasOnlyTwoOffers ? getSpacing(6) : 0,
+  marginVertical: hasOnlyTwoOffers ? theme.designSystem.size.spacing.xl : 0,
 }))
 
 const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({

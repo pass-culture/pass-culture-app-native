@@ -17,7 +17,6 @@ import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Unlock } from 'ui/svg/icons/Unlock'
-import { getSpacing } from 'ui/theme'
 
 type HomeBannerProps = {
   isLoggedIn: boolean
@@ -147,10 +146,10 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   )
 }
 
-const BannerContainer = styled.View({
-  marginBottom: getSpacing(8),
-})
+const BannerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
-const RemoteGenericBannerContainer = styled.View({
-  marginBottom: getSpacing(6),
-})
+const RemoteGenericBannerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

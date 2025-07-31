@@ -103,18 +103,18 @@ const StyledOfferContentBase = styled(OfferContentBase).attrs(
 )``
 
 const StyledWrapper = styled.View<{ headerHeight: number }>(
-  ({ headerHeight, theme: { isDesktopViewport } }) => {
+  ({ headerHeight, theme: { isDesktopViewport, designSystem } }) => {
     if (isDesktopViewport) {
       return {
         flexDirection: 'row',
         paddingHorizontal: getSpacing(16),
         paddingTop: getSpacing(12) + headerHeight,
-        paddingBottom: getSpacing(12),
+        paddingBottom: designSystem.size.spacing.xxxxl,
         gap: getSpacing(16),
       }
     }
     return {
-      gap: getSpacing(8),
+      gap: designSystem.size.spacing.xxl,
     }
   }
 )

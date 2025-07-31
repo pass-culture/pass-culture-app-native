@@ -164,13 +164,13 @@ export function VenueSelectionModal({
 }
 
 const BottomWrapper = styled.View(({ theme }) => ({
-  paddingTop: getSpacing(4),
+  paddingTop: theme.designSystem.size.spacing.l,
   paddingHorizontal: theme.modal.spacing.MD,
   alignItems: 'center',
 }))
 
-const ModalHeaderContainer = styled.View({
+const ModalHeaderContainer = styled.View(({ theme }) => ({
   width: '100%',
-  paddingHorizontal: getSpacing(6),
-  marginBottom: getSpacing(6),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

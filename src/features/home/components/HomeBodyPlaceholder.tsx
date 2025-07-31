@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, MARGIN_DP, RATIO_BUSINESS } from 'ui/theme'
+import { MARGIN_DP, RATIO_BUSINESS } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const HomeBodyPlaceholder = () => (
@@ -29,8 +29,8 @@ const BusinessModulePlaceholder = () => {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  paddingBottom: getSpacing(6),
-  paddingLeft: getSpacing(6),
-})
+  paddingBottom: theme.designSystem.size.spacing.xl,
+  paddingLeft: theme.designSystem.size.spacing.xl,
+}))

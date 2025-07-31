@@ -9,7 +9,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   offerId: number
@@ -66,7 +66,7 @@ const Container = styled(View)(({ theme }) => ({
         alignItems: 'center',
       }
     : {}),
-  gap: getSpacing(2),
+  gap: theme.designSystem.size.spacing.s,
 }))
 const ButtonContainer = styled.View(({ theme }) => ({
   alignItems: 'center',

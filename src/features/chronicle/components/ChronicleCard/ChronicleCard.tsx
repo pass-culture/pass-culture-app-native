@@ -82,7 +82,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
 
 const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
   ({ theme, width, shouldTruncate }) => ({
-    padding: getSpacing(6),
+    padding: theme.designSystem.size.spacing.xl,
     borderRadius: getSpacing(2),
     border: 1,
     borderColor: theme.designSystem.color.border.subtle,

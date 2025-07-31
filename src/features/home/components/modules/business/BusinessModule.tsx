@@ -166,7 +166,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
 export const BusinessModule = memo(UnmemoizedBusinessModule)
 
-const BlankSpace = styled.View({ height: getSpacing(4) })
+const BlankSpace = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.l }))
 
 const FlexRow = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
@@ -210,16 +210,16 @@ const ColumnLargeScreen = styled.View(({ theme }) => ({
   flexDirection: 'column',
   ...FULL_HEIGHT,
   justifyContent: 'flex-end',
-  paddingHorizontal: getSpacing(4),
+  paddingHorizontal: theme.designSystem.size.spacing.l,
 }))
 
-const Column = styled.View({
+const Column = styled.View(({ theme }) => ({
   ...FULL_WIDTH,
   flexDirection: 'column',
   ...FULL_HEIGHT,
   justifyContent: 'flex-end',
-  paddingHorizontal: getSpacing(4),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.l,
+}))
 
 const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ height }) => ({
   height,
@@ -235,12 +235,12 @@ const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: numbe
   })
 )
 
-const Row = styled.View({
+const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
   paddingTop: getSpacing(4.5),
-  gap: getSpacing(2),
-  marginBottom: getSpacing(6),
-})
+  gap: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,

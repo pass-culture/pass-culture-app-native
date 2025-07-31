@@ -7,7 +7,6 @@ import { VenueSelectionListItem } from 'features/offer/components/VenueSelection
 import { VenueDetail } from 'features/offer/types'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
-import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
@@ -123,7 +122,7 @@ VenueSelectionList.displayName = 'VenueSelectionList'
  *
  * So I have to add a padding so it's visible again.
  */
-const ItemWrapper = styled(View)({
-  paddingHorizontal: getSpacing(1),
-  paddingTop: getSpacing(2),
-})
+const ItemWrapper = styled(View)(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
+  paddingTop: theme.designSystem.size.spacing.s,
+}))

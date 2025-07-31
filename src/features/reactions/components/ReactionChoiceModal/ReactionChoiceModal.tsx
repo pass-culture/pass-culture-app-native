@@ -23,7 +23,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
@@ -148,7 +147,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   )
 }
 
-const ButtonsContainer = styled(ViewGap)({
+const ButtonsContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginTop: getSpacing(2),
-})
+  marginTop: theme.designSystem.size.spacing.s,
+}))

@@ -22,7 +22,6 @@ import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import MapView, { Map, MapViewProps } from 'libs/maps/maps'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { getSpacing } from 'ui/theme'
 
 import { Marker } from './Marker/Marker'
 
@@ -164,11 +163,11 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
   )
 })
 
-const ButtonContainer = styled.View({
+const ButtonContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   alignSelf: 'center',
-  top: getSpacing(4),
-})
+  top: theme.designSystem.size.spacing.l,
+}))
 
 const StyledMapView = styled(MapView)<{ height?: number }>({
   flex: 1,

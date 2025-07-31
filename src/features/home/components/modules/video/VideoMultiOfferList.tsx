@@ -6,7 +6,7 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Spacer, getSpacing } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 interface OfferListProps {
   offers: Offer[]
@@ -39,10 +39,10 @@ export const VideoMultiOfferList: React.FC<OfferListProps> = ({
   )
 }
 
-const ItemSeparatorContainer = styled.View({
+const ItemSeparatorContainer = styled.View(({ theme }) => ({
   height: 2,
-  marginVertical: getSpacing(4),
-})
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
 
 function ItemSeparatorComponent() {
   return (

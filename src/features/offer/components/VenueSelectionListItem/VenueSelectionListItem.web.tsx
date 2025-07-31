@@ -10,7 +10,6 @@ import {
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
-import { getSpacing } from 'ui/theme'
 
 export type RowData = {
   items: VenueListItem[]
@@ -93,9 +92,9 @@ export function VenueSelectionListItem({ index, style, data }: Readonly<RowProps
   )
 }
 
-const ItemWrapper = styled(View)({
-  paddingTop: getSpacing(2),
-})
+const ItemWrapper = styled(View)(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.s,
+}))
 
 const Wrapper = styled(View)(({ theme }) => ({
   paddingLeft: theme.modal.spacing.MD,

@@ -19,7 +19,7 @@ import { useListExpander } from 'features/offer/helpers/useListExpander/useListE
 import { useOffersStocksFromOfferQuery } from 'features/offer/queries/useOffersStocksFromOfferQuery'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   offer: OfferResponseV2
@@ -79,8 +79,8 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress, distance }
 
 const SeeMoreContainer = styled.View(({ theme }) => ({
   alignItems: theme.isMobileViewport ? 'center' : undefined,
-  marginTop: getSpacing(6),
-  gap: getSpacing(4),
+  marginTop: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.l,
 }))
 
 const Text = styled(Typo.Body)(({ theme }) => ({

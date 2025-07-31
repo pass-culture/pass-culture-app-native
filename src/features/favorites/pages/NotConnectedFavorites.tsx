@@ -10,7 +10,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotConnectedFavorites = () => {
@@ -65,11 +65,11 @@ const Container = styled(Page)<{ bottom: number }>(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const IllustrationContainer = styled.View({
+const IllustrationContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const Illustration = styled(UserFavorite).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
@@ -85,10 +85,10 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
   linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
-const TextContainer = styled(ViewGap)({
+const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: getSpacing(12),
-})
+  marginBottom: theme.designSystem.size.spacing.xxxxl,
+}))
 
 const StyledTitle2 = styled(Typo.Title2)({
   textAlign: 'center',

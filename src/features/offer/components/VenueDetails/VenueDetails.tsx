@@ -65,6 +65,6 @@ const VenueAddress = styled(Typo.BodyAccentXs).attrs({
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.subtle, isHover }),
 }))
 
-const StyledTag = styled(Tag)({
-  marginTop: getSpacing(4),
-})
+const StyledTag = styled(Tag)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

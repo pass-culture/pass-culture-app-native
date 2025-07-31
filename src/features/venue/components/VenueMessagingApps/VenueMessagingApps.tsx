@@ -7,7 +7,6 @@ import { MessagingApps } from 'features/share/components/MessagingApps/Messaging
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { analytics } from 'libs/analytics/provider'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { getSpacing } from 'ui/theme'
 
 type MessagingAppsProps = {
   venue: VenueResponse
@@ -38,4 +37,4 @@ export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {
   )
 }
 
-const Container = styled.View({ marginBottom: getSpacing(4) })
+const Container = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.l }))

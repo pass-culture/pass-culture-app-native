@@ -155,12 +155,12 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   )
 }
 
-const Container = styled.View({ marginTop: getSpacing(6) })
+const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.xl }))
 
 const ArtistsPlaylistContainer = styled(ViewGap)({
   paddingBottom: OFFERS_PLAYLIST_SIMILAR_SPACING,
 })
 
-const ArtistsPlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
-  marginHorizontal: getSpacing(6),
-})
+const ArtistsPlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))

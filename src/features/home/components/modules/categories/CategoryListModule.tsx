@@ -97,9 +97,9 @@ const StyledView = styled.View(({ theme }) => ({
       }),
 }))
 
-const Container = styled.View({
-  marginBottom: getSpacing(6),
-})
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
   flexGrow: 1,

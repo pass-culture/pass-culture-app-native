@@ -7,7 +7,7 @@ import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProv
 import type { VenueOffers } from 'features/venue/types'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const cinemaCTAButtonName = 'Accéder aux séances'
@@ -43,10 +43,14 @@ export const VenueMovies: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffer
 }
 
 const Container = styled.View(({ theme }) => ({
-  paddingTop: theme.isDesktopViewport ? getSpacing(10) : getSpacing(6),
-  gap: theme.isDesktopViewport ? getSpacing(10) : getSpacing(6),
+  paddingTop: theme.isDesktopViewport
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.xl,
+  gap: theme.isDesktopViewport
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.xl,
 }))
 
-const MoviesTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
-  marginLeft: getSpacing(6),
-})
+const MoviesTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xl,
+}))

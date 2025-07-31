@@ -18,7 +18,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -109,7 +109,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   )
 }
 
-const MarginContainer = styled(ViewGap)({
-  marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(10),
-})
+const MarginContainer = styled(ViewGap)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xxxl,
+}))

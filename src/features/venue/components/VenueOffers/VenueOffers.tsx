@@ -16,7 +16,6 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
-import { getSpacing } from 'ui/theme'
 
 export interface VenueOffersProps {
   venue: VenueResponse
@@ -91,6 +90,6 @@ export function VenueOffers({
   )
 }
 
-const StyledOfferPlaylistSkeleton = styled(OfferPlaylistSkeleton)({
-  marginTop: getSpacing(6),
-})
+const StyledOfferPlaylistSkeleton = styled(OfferPlaylistSkeleton)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))

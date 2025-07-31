@@ -11,7 +11,7 @@ import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Tag } from 'ui/components/Tag/Tag'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const HeadlineOfferLargeViewport: FunctionComponent<HeadlineOfferData> = ({
   imageUrl,
@@ -39,11 +39,11 @@ export const HeadlineOfferLargeViewport: FunctionComponent<HeadlineOfferData> = 
   </Container>
 )
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   justifyContent: 'center',
-  padding: getSpacing(8),
+  padding: theme.designSystem.size.spacing.xxl,
   height: '100%',
-})
+}))
 
 const InfoContainer = styled(ViewGap)({
   flex: 1,

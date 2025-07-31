@@ -9,7 +9,6 @@ import { FILTER_BANNER_HEIGHT, filterGroups } from 'features/venueMap/constant'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
 import { FilterGroupKey } from 'features/venueMap/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { getSpacing } from 'ui/theme'
 
 const BULLET_SIZE = 12
 
@@ -45,19 +44,19 @@ export const FilterCategoriesBannerContainer = () => {
   )
 }
 
-const Container = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
+const Container = styled.View<{ headerHeight: number }>(({ headerHeight, theme }) => ({
   height: FILTER_BANNER_HEIGHT,
   marginTop: headerHeight,
-  paddingHorizontal: getSpacing(6),
-  paddingVertical: getSpacing(1),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  paddingVertical: theme.designSystem.size.spacing.xs,
 }))
 
-const ButtonsContainer = styled.View({
+const ButtonsContainer = styled.View(({ theme }) => ({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
-  columnGap: getSpacing(1),
-})
+  columnGap: theme.designSystem.size.spacing.xs,
+}))
 
 const ColoredGradientBullet = styled(LinearGradient).attrs<{ color: string; colors?: string[] }>(
   ({ color }) => ({

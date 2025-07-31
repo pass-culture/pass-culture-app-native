@@ -55,7 +55,10 @@ export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bann
 const HeaderContainer = styled.View<{ hasGoogleCredit: boolean; defaultMarginBottom?: number }>(
   ({ hasGoogleCredit, defaultMarginBottom, theme }) => ({
     alignItems: 'center',
-    marginBottom: hasGoogleCredit && theme.isMobileViewport ? getSpacing(2) : defaultMarginBottom,
+    marginBottom:
+      hasGoogleCredit && theme.isMobileViewport
+        ? theme.designSystem.size.spacing.s
+        : defaultMarginBottom,
   })
 )
 
@@ -95,19 +98,19 @@ const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>
   borderRadius: theme.isDesktopViewport ? theme.borderRadius.radius : undefined,
 }))
 
-const GoogleLogo = styled.Image({
+const GoogleLogo = styled.Image(({ theme }) => ({
   height: GOOGLE_LOGO_HEIGHT,
   width: GOOGLE_LOGO_WIDTH,
   position: 'absolute',
-  left: getSpacing(4),
-  bottom: getSpacing(4),
+  left: theme.designSystem.size.spacing.l,
+  bottom: theme.designSystem.size.spacing.l,
   zIndex: 2,
-})
+}))
 
 const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
   textAlign: 'right',
-  marginRight: theme.isMobileViewport ? getSpacing(4) : 0,
+  marginRight: theme.isMobileViewport ? theme.designSystem.size.spacing.l : 0,
 }))
 
 const EmptyVenueBackground = styled.View(({ theme }) => ({

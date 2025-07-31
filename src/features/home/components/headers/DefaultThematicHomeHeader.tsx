@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetThematicHeaderHeight } from 'features/home/api/helpers/useGetThematicHeaderHeight'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface DefaultThematicHomeHeaderProps {
   headerTitle?: string
@@ -40,7 +40,8 @@ const HeaderPlaceholder = styled.View<{ headerHeight: number }>(({ headerHeight 
 }))
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: Platform.OS == 'web' ? getSpacing(6) : getSpacing(2),
+  marginTop:
+    Platform.OS == 'web' ? theme.designSystem.size.spacing.xl : theme.designSystem.size.spacing.s,
   marginHorizontal: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(2),
+  marginBottom: theme.designSystem.size.spacing.s,
 }))

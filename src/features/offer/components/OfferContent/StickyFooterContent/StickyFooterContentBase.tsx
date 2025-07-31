@@ -32,10 +32,10 @@ export const StickyFooterContentBase: FC<StickyFooterContentBaseProps> = ({
 
 const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
-  paddingTop: getSpacing(4),
-  paddingHorizontal: getSpacing(6),
-  paddingBottom: getSpacing(6),
-  gap: getSpacing(2),
+  paddingTop: theme.designSystem.size.spacing.l,
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  paddingBottom: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.s,
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(1) },
     shadowRadius: getSpacing(5),

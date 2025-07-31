@@ -11,7 +11,6 @@ import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   categoryId: CategoryIdEnum | null
@@ -83,7 +82,7 @@ const AnimatedImageContainer = styled(Animated.View)({
   left: 0,
 })
 
-const ButtonContainer = styled.View({
+const ButtonContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  marginTop: getSpacing(4),
-})
+  marginTop: theme.designSystem.size.spacing.l,
+}))

@@ -4,7 +4,7 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   onPressMoreInfo: VoidFunction
@@ -23,7 +23,7 @@ export const ChronicleCardListHeader: FunctionComponent<Props> = ({ onPressMoreI
   )
 }
 
-const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack)({
+const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack)(({ theme }) => ({
   width: getSpacing(34),
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

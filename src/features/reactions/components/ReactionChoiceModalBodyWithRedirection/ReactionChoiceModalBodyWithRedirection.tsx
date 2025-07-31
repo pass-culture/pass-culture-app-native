@@ -9,7 +9,7 @@ import thumbs from 'features/reactions/images/thumbs.png'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -53,14 +53,14 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
   )
 }
 
-const Container = styled(ViewGap)({
-  marginBottom: getSpacing(6),
-})
+const Container = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
-const GradientContainer = styled.View({
+const GradientContainer = styled.View(({ theme }) => ({
   width: '100%',
-  marginTop: getSpacing(6),
-})
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
 const ImagesContainer = styled(ViewGap)({
   flexDirection: 'row',
@@ -96,11 +96,11 @@ const ThumbsImageContainer = styled.View({
   alignItems: 'center',
 })
 
-const ThumbsImage = styled(Image)({
+const ThumbsImage = styled(Image)(({ theme }) => ({
   width: 210,
   height: '100%',
-  marginTop: getSpacing(4),
-})
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const StyledTitle3 = styled(Typo.Title3)({
   textAlign: 'center',

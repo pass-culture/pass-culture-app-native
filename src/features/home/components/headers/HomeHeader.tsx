@@ -77,7 +77,7 @@ export const HomeHeader: FunctionComponent = function () {
 
 const HeaderContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  marginTop: getSpacing(6),
+  marginTop: theme.designSystem.size.spacing.xl,
   marginHorizontal: theme.contentPage.marginHorizontal,
   zIndex: theme.zIndex.header,
 }))
@@ -88,7 +88,7 @@ const TitleContainer = styled.View({
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
 
 const TitleLabel = styled(Typo.Title1)({
@@ -101,7 +101,7 @@ const Title = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.locationWidget,
 }))
 
-const StyledSeparator = styled(Separator.Vertical)({
-  marginLeft: getSpacing(6),
-  marginRight: getSpacing(4),
-})
+const StyledSeparator = styled(Separator.Vertical)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xl,
+  marginRight: theme.designSystem.size.spacing.l,
+}))

@@ -74,7 +74,7 @@ const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
     position: 'absolute',
     zIndex: theme.zIndex.header,
     top: statusBarHeight + getSpacing(6),
-    right: getSpacing(6),
+    right: theme.designSystem.size.spacing.xl,
   })
 )
 
@@ -87,7 +87,7 @@ const TextContainer = styled.View({
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
-  marginBottom: getSpacing(1),
+  marginBottom: theme.designSystem.size.spacing.xs,
 }))
 
 const Title = styled(Typo.Title1)(({ theme }) => ({

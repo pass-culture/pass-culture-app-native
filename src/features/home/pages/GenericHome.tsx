@@ -59,7 +59,7 @@ import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { createInMemoryScreenSeenCountTriggerStorage } from '../api/inMemoryScreenSeenTriggerStorage'
-import { ScreenSeenCount, getScreenSeenCount } from '../helpers/getScreenSeenCount'
+import { getScreenSeenCount, ScreenSeenCount } from '../helpers/getScreenSeenCount'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
@@ -382,10 +382,10 @@ export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
   return <OfflinePage />
 }
 
-const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
+const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide, theme }) => ({
   height: hide ? 0 : '100%',
   overflow: 'hidden',
-  marginVertical: getSpacing(6),
+  marginVertical: theme.designSystem.size.spacing.xl,
 }))
 
 const Container = styled(Page)({
@@ -394,10 +394,10 @@ const Container = styled(Page)({
   flexShrink: 0,
 })
 
-const FooterContainer = styled.View({
-  paddingTop: getSpacing(2),
-  paddingBottom: getSpacing(10),
-})
+const FooterContainer = styled.View(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.s,
+  paddingBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   position: 'absolute',
@@ -410,6 +410,6 @@ const FlatListContainer = styled(IntersectionObserverFlatlist<HomepageModule>)({
   overflow: 'visible',
 })
 
-const PageContent = styled.View({
-  marginHorizontal: getSpacing(6),
-})
+const PageContent = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
