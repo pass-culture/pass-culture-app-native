@@ -87,6 +87,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logHasChosenPrice: jest.fn(),
   logHasChosenTime: jest.fn(),
   logHasClickedDuoStep: jest.fn(),
+  logHasClickedFakeDoorCTA: jest.fn(),
   logHasClickedGridListToggle: jest.fn(),
   logHasClickedMissingCode: jest.fn(),
   logHasClickedRemoteActivationBanner: jest.fn(),
