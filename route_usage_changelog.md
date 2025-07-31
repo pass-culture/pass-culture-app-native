@@ -1,13 +1,13 @@
-# v1.351.0
+# v1.352.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
 - /native/v1/me/reminders/{reminder_id}
 - /native/v1/account/suspend/token_validation/{token}
 - /native/v1/account/suspension_date
-Pathname not found for getNativeV1AccountSuspensionStatus
+- /native/v1/account/suspension_status
 - /native/v1/artists/{artist_id}
-- /native/v1/banner
+Pathname not found for getNativeV1Banner
 - /native/v1/bookings
 - /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
@@ -79,11 +79,6 @@ Pathname not found for getNativeV1AccountSuspensionStatus
 - /native/v1/offer/report/reasons
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offers/reports
-- /native/v1/profile/email_update/status
-- /native/v1/subscription/next_step
-- /native/v1/subscription/stepper
 - /native/v1/offer/{offer_id}/report
 - /native/v1/offers/stocks
-- /native/v1/profile/email_update/confirm
-- /native/v1/profile/update_email
 
