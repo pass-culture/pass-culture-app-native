@@ -7,7 +7,7 @@ import { SearchLocationWidgetDesktopView } from 'features/location/components/Se
 import { ScreenOrigin } from 'features/location/enums'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -53,7 +53,7 @@ const StyledTitleMainText = styledInputLabel(InputLabel)(({ theme }) => ({
 }))
 
 const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
   color: theme.designSystem.color.text.subtle,
 }))
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -20,6 +20,6 @@ const BodyAccent = styled(Typo.BodyAccent).attrs(() => ({
   shrink: true,
 }))``
 
-const TitleContainer = styled.View({
-  paddingBottom: getSpacing(1),
-})
+const TitleContainer = styled.View(({ theme }) => ({
+  paddingBottom: theme.designSystem.size.spacing.xs,
+}))

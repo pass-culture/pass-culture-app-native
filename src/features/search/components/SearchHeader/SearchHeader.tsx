@@ -10,7 +10,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { CreateHistoryItem } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type Props = {
   searchInputID: string
@@ -75,22 +75,22 @@ export const SearchHeader = memo(function SearchHeader({
 })
 
 const HeaderContainer = styled.View(({ theme }) => ({
-  marginTop: getSpacing(6),
+  marginTop: theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.header,
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))
 
-const StyledView = styled.View({
+const StyledView = styled.View(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  width: getSpacing(10),
-  height: getSpacing(10),
-})
+  width: theme.designSystem.size.spacing.xxxl,
+  height: theme.designSystem.size.spacing.xxxl,
+}))
 
-const RowContainer = styled.View({
+const RowContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingBottom: getSpacing(4),
-})
+  paddingBottom: theme.designSystem.size.spacing.l,
+}))

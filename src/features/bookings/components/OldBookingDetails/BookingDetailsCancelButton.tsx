@@ -13,7 +13,7 @@ import { getCancelMessage } from 'features/bookings/helpers/getCancelMessage'
 import { Booking } from 'features/bookings/types'
 import { useSubcategory } from 'libs/subcategories'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export type BookingDetailsCancelButtonProps = BookingDetailsButtonProps & {
   booking: Booking
@@ -71,6 +71,6 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledViewGap = styled(ViewGap)({
-  marginBottom: getSpacing(10),
-})
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))

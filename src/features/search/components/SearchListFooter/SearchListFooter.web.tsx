@@ -58,10 +58,10 @@ const Footer = styled.View(({ theme }) => ({
 const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.designSystem.color.background.subtle,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginVertical: theme.designSystem.size.spacing.l,
 }))
 
-const StyledActivityIndicator = styled(ActivityIndicator)({
-  marginVertical: getSpacing(4),
-})
+const StyledActivityIndicator = styled(ActivityIndicator)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))

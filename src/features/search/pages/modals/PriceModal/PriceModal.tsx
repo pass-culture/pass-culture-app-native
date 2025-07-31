@@ -28,7 +28,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { Error } from 'ui/svg/icons/Error'
-import { getSpacing } from 'ui/theme'
 
 type PriceModalFormData = {
   minPrice: string
@@ -372,13 +371,13 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   )
 }
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(6),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
 
-const Container = styled.View({ marginBottom: getSpacing(6) })
+const Container = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.xl }))
 
-const FormContainer = styled.View<{ isKeyboardOpen: boolean }>(({ isKeyboardOpen }) => ({
-  marginTop: getSpacing(6),
-  marginBottom: isKeyboardOpen ? getSpacing(8) : 0,
+const FormContainer = styled.View<{ isKeyboardOpen: boolean }>(({ isKeyboardOpen, theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: isKeyboardOpen ? theme.designSystem.size.spacing.xxl : 0,
 }))

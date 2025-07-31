@@ -22,7 +22,7 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
 import { Error } from 'ui/svg/icons/Error'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
@@ -140,12 +140,12 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   )
 }
 
-const GridListMenu = styled(View)({
+const GridListMenu = styled(View)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-end',
   alignItems: 'center',
-  marginRight: getSpacing(6),
-})
+  marginRight: theme.designSystem.size.spacing.xl,
+}))
 
 const HeaderSectionContainer = styled.View({
   flexDirection: 'row',
@@ -157,20 +157,20 @@ const TitleContainer = styled.View({
 })
 
 const GeolocationBannerContainer = styled.View(({ theme }) => ({
-  marginVertical: getSpacing(4),
+  marginVertical: theme.designSystem.size.spacing.l,
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
-  paddingHorizontal: getSpacing(6),
-  ...(nbHits > 0 && { paddingBottom: getSpacing(4) }),
+const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits, theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  ...(nbHits > 0 && { paddingBottom: theme.designSystem.size.spacing.l }),
 }))
 
-const Title = styled(Typo.Title3)({
-  marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(4),
-})
+const Title = styled(Typo.Title3)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
-const StyledVenuePlaylist = styled(VenuePlaylist)({
-  marginTop: getSpacing(4),
-})
+const StyledVenuePlaylist = styled(VenuePlaylist)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

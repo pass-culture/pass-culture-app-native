@@ -9,7 +9,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getDistinctPricesFromAllStock } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -57,6 +57,6 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
   )
 }
 
-const StyledView = styled(View)({
-  marginTop: getSpacing(6),
-})
+const StyledView = styled(View)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))

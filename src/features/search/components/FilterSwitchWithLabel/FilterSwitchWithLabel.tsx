@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { HeadingLevel, getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -75,11 +75,11 @@ const Container = styled.View<{ inverseLayout?: boolean }>(({ inverseLayout }) =
   ...(!inverseLayout && { justifyContent: 'space-between' }),
 }))
 
-const TitleWrapper = styled.View({
+const TitleWrapper = styled.View(({ theme }) => ({
   flexShrink: 1,
-  marginRight: getSpacing(6),
-  marginLeft: getSpacing(2),
-})
+  marginRight: theme.designSystem.size.spacing.xl,
+  marginLeft: theme.designSystem.size.spacing.s,
+}))
 
 const SwitchWrapper = styled.View({
   flexShrink: 0,

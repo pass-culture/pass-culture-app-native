@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getShadow } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   testID?: string
@@ -52,7 +52,7 @@ const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
     width,
     alignItems: 'center',
     maxWidth: '100%',
-    padding: getSpacing(2),
+    padding: theme.designSystem.size.spacing.s,
     borderLeftWidth: 2,
     borderRightWidth: 2,
     borderColor: theme.designSystem.color.border.subtle,

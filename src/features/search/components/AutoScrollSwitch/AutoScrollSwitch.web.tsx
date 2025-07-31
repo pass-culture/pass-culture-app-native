@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const AutoScrollSwitch = ({
   title,
@@ -37,21 +37,21 @@ export const AutoScrollSwitch = ({
   )
 }
 
-const Container = styled.div({
+const Container = styled.div(({ theme }) => ({
   overflow: 'hidden',
-  marginLeft: getSpacing(6),
-  marginRight: getSpacing(6),
+  marginLeft: theme.designSystem.size.spacing.xl,
+  marginRight: theme.designSystem.size.spacing.xl,
   width: '1px',
   height: '1px',
   '&:focus-within': {
     width: 'auto',
     height: 'auto',
   },
-})
+}))
 
-const FlexContainer = styled.div({
+const FlexContainer = styled.div(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  marginBottom: getSpacing(3),
-})
+  marginBottom: theme.designSystem.size.spacing.m,
+}))

@@ -12,7 +12,7 @@ import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export function BookCategoriesSection<
   T extends CategoriesMapping,
@@ -89,14 +89,14 @@ export function BookCategoriesSection<
   )
 }
 
-const Title = styled(Typo.Title1)({
-  marginVertical: getSpacing(3),
-})
+const Title = styled(Typo.Title1)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.m,
+}))
 
 const ListItem = styled(Li)({
   display: 'flex',
 })
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(3),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.m,
+}))

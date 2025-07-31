@@ -15,7 +15,7 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice as DefaultOrderPrice } from 'ui/svg/icons/OrderPrice'
 import { Profile as DefaultProfile } from 'ui/svg/icons/Profile'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BookingPropertiesSectionProps = {
@@ -103,11 +103,11 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
 const StyledViewGap = styled(ViewGap)({
   marginTop: getSpacing(4.5),
 })
-const TitleNameContainer = styled.View({
+const TitleNameContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  gap: getSpacing(2),
-})
+  gap: theme.designSystem.size.spacing.s,
+}))
 
 const IconDuoContainer = styled.View({
   // the Duo icon is wide so we increase the size and remove the margin
@@ -115,9 +115,9 @@ const IconDuoContainer = styled.View({
   marginVertical: -getSpacing(1.5),
 })
 
-const Title = styled(Typo.Body)({
-  marginRight: getSpacing(2),
-})
+const Title = styled(Typo.Body)(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.s,
+}))
 
 const Calendar = styled(DefaultCalendar).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

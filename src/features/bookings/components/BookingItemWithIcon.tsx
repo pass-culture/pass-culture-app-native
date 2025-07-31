@@ -26,15 +26,15 @@ const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   width: theme.appContentWidth - getSpacing(24),
-  paddingVertical: getSpacing(0.5),
+  paddingVertical: theme.designSystem.size.spacing.xxs,
 }))
 
-const IconWrapper = styled.View({
+const IconWrapper = styled.View(({ theme }) => ({
   flexShrink: 0,
-  marginRight: getSpacing(3),
-})
+  marginRight: theme.designSystem.size.spacing.m,
+}))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  marginLeft: getSpacing(2),
+  marginLeft: theme.designSystem.size.spacing.s,
 }))

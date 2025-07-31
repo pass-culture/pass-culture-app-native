@@ -9,7 +9,7 @@ exports[`EndedBookings should render correctly 1`] = `
       "inlineStyle": e {
         "rules": [
           [Function],
-          "margin-vertical: 16px;",
+          [Function],
         ],
       },
       "render": [Function],

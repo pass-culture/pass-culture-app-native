@@ -38,22 +38,22 @@ const ValidateWhite = styled(Validate).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const IconContainer = styled.View({
-  width: getSpacing(8),
-  paddingHorizontal: getSpacing(1),
-})
+const IconContainer = styled.View(({ theme }) => ({
+  width: theme.designSystem.size.spacing.xxl,
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
+}))
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
   ({ selected, theme }) => ({
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: getSpacing(10),
+    borderRadius: theme.designSystem.size.spacing.xxxl,
     borderWidth: 2,
     borderColor: selected
       ? theme.designSystem.color.border.brandPrimary
       : theme.designSystem.color.border.default,
-    marginBottom: getSpacing(3),
-    marginRight: getSpacing(3),
+    marginBottom: theme.designSystem.size.spacing.m,
+    marginRight: theme.designSystem.size.spacing.m,
     backgroundColor: selected
       ? theme.designSystem.color.background.brandPrimary
       : theme.designSystem.color.background.default,
@@ -64,7 +64,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
 
 const Label = styled(Typo.BodyAccent)<{ selected: boolean }>(({ theme, selected }) => ({
   marginLeft: selected ? undefined : getSpacing(5),
-  marginRight: selected ? getSpacing(2) : getSpacing(5),
+  marginRight: selected ? theme.designSystem.size.spacing.s : getSpacing(5),
   marginVertical: getSpacing(2.5),
   color: selected ? theme.designSystem.color.text.inverted : theme.designSystem.color.text.default,
 }))

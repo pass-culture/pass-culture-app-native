@@ -11,7 +11,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export interface ArchiveBookingModalProps {
   bookingId: number
@@ -81,7 +81,7 @@ const ModalContent = styled.View({
 const Title = styled(Typo.BodyAccent)({
   textAlign: 'center',
 })
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginTop: getSpacing(2),
-})
+  marginTop: theme.designSystem.size.spacing.s,
+}))

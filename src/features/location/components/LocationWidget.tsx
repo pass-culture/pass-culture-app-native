@@ -88,15 +88,15 @@ const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ widgetWidth }
   width: TOOLTIP_WIDTH,
 }))
 
-const StyledTouchable = styledButton(Touchable)({
+const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   alignItems: 'center',
-  marginLeft: getSpacing(2),
-})
+  marginLeft: theme.designSystem.size.spacing.s,
+}))
 
-const StyledCaption = styled(Typo.BodyAccentXs)({
-  paddingTop: getSpacing(1),
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.xs,
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
-})
+}))
 
 const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isActive }) => ({
   width: theme.buttons.roundedButton.size,

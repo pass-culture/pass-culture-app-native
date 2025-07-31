@@ -6,7 +6,7 @@ import { AutocompleteVenueItem } from 'features/search/components/AutocompleteVe
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AutocompleteVenueProps = UseInfiniteHitsProps & {
@@ -34,9 +34,9 @@ export function AutocompleteVenue({ onItemPress, ...props }: AutocompleteVenuePr
   ) : null
 }
 
-const StyledVerticalUl = styled(VerticalUl)({
-  marginTop: getSpacing(4),
-})
+const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const AutocompleteVenueTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(
   ({ theme }) => ({

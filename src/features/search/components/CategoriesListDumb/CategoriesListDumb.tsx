@@ -21,8 +21,6 @@ type Props = {
 
 const DESKTOP_CATEGORY_BUTTON_HEIGHT = getSpacing(42)
 const MOBILE_CATEGORY_BUTTON_HEIGHT = getSpacing(36)
-const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
-const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 
 export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
@@ -69,7 +67,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
-  marginTop: theme.isMobileViewport ? getSpacing(0) : getSpacing(8),
+  marginTop: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.xxl,
 }))
 
 const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
@@ -85,15 +83,15 @@ const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   width: '100%',
   ...(theme.isMobileViewport
     ? {
-        marginTop: MOBILE_GAPS_AND_PADDINGS,
+        marginTop: theme.designSystem.size.spacing.s,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        paddingVertical: MOBILE_GAPS_AND_PADDINGS,
-        gap: MOBILE_GAPS_AND_PADDINGS,
+        paddingVertical: theme.designSystem.size.spacing.s,
+        gap: theme.designSystem.size.spacing.s,
       }
     : {
-        paddingVertical: DESKTOP_GAPS_AND_PADDINGS,
-        gap: DESKTOP_GAPS_AND_PADDINGS,
+        paddingVertical: theme.designSystem.size.spacing.l,
+        gap: theme.designSystem.size.spacing.l,
         display: 'grid',
         gridTemplateColumns: `repeat(5, 1fr)`,
       }),
@@ -102,17 +100,17 @@ const CategoriesButtonsContainer = styled.View(({ theme }) => ({
 const CategoriesTitleV2 = styled(Typo.Title4).attrs({
   children: 'Parcours les catégories',
   ...getHeadingAttrs(2),
-})({
+})(({ theme }) => ({
   width: '100%',
-  marginTop: getSpacing(4),
-})
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   width: '100%',
-  marginBottom: getSpacing(2),
-})
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
-const ContainerVenueMapBlock = styled.View({
-  marginTop: getSpacing(4),
-  marginBottom: getSpacing(2),
-})
+const ContainerVenueMapBlock = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.s,
+}))

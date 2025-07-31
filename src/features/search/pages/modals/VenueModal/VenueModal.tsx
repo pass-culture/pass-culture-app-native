@@ -12,7 +12,6 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { getSpacing } from 'ui/theme'
 import { Typo } from 'ui/theme/typography'
 
 interface Props extends VenueModalHookProps {
@@ -87,11 +86,11 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
   )
 }
 
-const SubtitleContainer = styled.View({
+const SubtitleContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  gap: getSpacing(2),
-})
+  gap: theme.designSystem.size.spacing.s,
+}))
 
 const SearchIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
@@ -103,7 +102,7 @@ const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.modal.spacing.MD,
-  marginTop: getSpacing(6),
+  marginTop: theme.designSystem.size.spacing.xl,
 }))
 
 const HeaderContainer = styled.View(({ theme }) => ({
@@ -111,6 +110,6 @@ const HeaderContainer = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const Container = styled.View({
-  marginVertical: getSpacing(4),
-})
+const Container = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))

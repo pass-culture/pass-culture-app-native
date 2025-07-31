@@ -260,14 +260,14 @@ const OfferRules = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-const InfoContainer = styled(ViewGap)({
-  paddingHorizontal: getSpacing(6),
-})
+const InfoContainer = styled(ViewGap)(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
-const InfoButtonsContainer = styled(ViewGap)({
-  paddingHorizontal: getSpacing(6),
-  marginTop: getSpacing(2),
-})
+const InfoButtonsContainer = styled(ViewGap)(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.s,
+}))
 
 const SendEmailContainer = styled.View({
   alignItems: 'flex-start',

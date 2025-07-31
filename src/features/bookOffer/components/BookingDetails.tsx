@@ -36,7 +36,7 @@ import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface BookingDetailsProps {
@@ -315,7 +315,7 @@ const Separator = styled.View(({ theme }) => ({
 }))
 
 const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
   textAlign: 'center',
   color: theme.designSystem.color.text.subtle,
 }))

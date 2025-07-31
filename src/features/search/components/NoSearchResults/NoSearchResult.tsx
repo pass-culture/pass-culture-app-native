@@ -60,26 +60,26 @@ const Container = styled.View(({ theme }) => ({
   flex: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  ...(theme.isDesktopViewport ? {} : { marginHorizontal: getSpacing(6) }),
+  ...(theme.isDesktopViewport ? {} : { marginHorizontal: theme.designSystem.size.spacing.xl }),
 }))
 
 const ContainerText = styled.View(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
   maxWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
 }))
 
 const Title = styled(Typo.Title4).attrs({
   ...getHeadingAttrs(2),
-})({
-  marginTop: getSpacing(4),
-})
+})(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const ErrorDescription = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const ErrorDescriptionContainer = styled(Typo.Body)({
-  marginTop: getSpacing(6),
+const ErrorDescriptionContainer = styled(Typo.Body)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
   textAlign: 'center',
-})
+}))

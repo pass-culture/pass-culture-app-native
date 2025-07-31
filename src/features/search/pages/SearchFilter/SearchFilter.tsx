@@ -30,7 +30,6 @@ import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Page } from 'ui/pages/Page'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
   const currency = useGetCurrencyToDisplay()
@@ -177,15 +176,15 @@ const Separator = styled.View(({ theme }) => ({
   width: '100%',
   height: 2,
   backgroundColor: theme.designSystem.color.background.subtle,
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const StyledLi = styled(Li)<{ isFirstSectionItem?: boolean }>(({ isFirstSectionItem }) => ({
+const StyledLi = styled(Li)<{ isFirstSectionItem?: boolean }>(({ isFirstSectionItem, theme }) => ({
   display: 'flex',
-  marginBottom: getSpacing(6),
-  marginTop: isFirstSectionItem ? getSpacing(6) : undefined,
+  marginBottom: theme.designSystem.size.spacing.xl,
+  marginTop: isFirstSectionItem ? theme.designSystem.size.spacing.xl : undefined,
 }))
 
-const StyledSecondaryPageWithBlurHeader = styled(SecondaryPageWithBlurHeader)({
-  marginBottom: getSpacing(4),
-})
+const StyledSecondaryPageWithBlurHeader = styled(SecondaryPageWithBlurHeader)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))

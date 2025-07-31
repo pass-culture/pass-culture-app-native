@@ -67,13 +67,13 @@ const HeaderContent = styled.View<{ height: number }>(({ height, theme }) => ({
 }))
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
-  ({ positionInHeader = 'left' }) => ({
+  ({ positionInHeader = 'left', theme }) => ({
     alignItems: 'center',
     flex: 1,
     flexDirection: 'row',
     justifyContent: positionInHeader === 'left' ? 'flex-start' : 'flex-end',
-    paddingLeft: getSpacing(3),
-    paddingRight: getSpacing(3),
+    paddingLeft: theme.designSystem.size.spacing.m,
+    paddingRight: theme.designSystem.size.spacing.m,
   })
 )
 
@@ -81,7 +81,7 @@ const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
 })
 
-const StyledCloseButton = styledButton(CloseButton)({
-  width: getSpacing(10),
-  height: getSpacing(10),
-})
+const StyledCloseButton = styledButton(CloseButton)(({ theme }) => ({
+  width: theme.designSystem.size.spacing.xxxl,
+  height: theme.designSystem.size.spacing.xxxl,
+}))

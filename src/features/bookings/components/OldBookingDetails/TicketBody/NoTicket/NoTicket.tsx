@@ -24,12 +24,12 @@ const StyledBody = styled(Typo.Body)({
   maxWidth: '100%',
 })
 
-const IconContainer = styled.View({
+const IconContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   width: '100%',
   marginTop: -getSpacing(4),
-  marginBottom: getSpacing(3),
-})
+  marginBottom: theme.designSystem.size.spacing.m,
+}))
 
 const BicolorCircledCheck = styled(InitialBicolorCircledCheck).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,

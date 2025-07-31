@@ -9,7 +9,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -51,26 +51,28 @@ export function SearchHistory({ history, queryHistory, removeItem, onPress }: Pr
   ) : null
 }
 
-const StyledVerticalUl = styled(VerticalUl)({
-  marginTop: getSpacing(4),
-})
+const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const Container = styled.View<{ isEmptyQuery: boolean }>(({ isEmptyQuery }) => ({
+const Container = styled.View<{ isEmptyQuery: boolean }>(({ isEmptyQuery, theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  marginBottom: isEmptyQuery ? getSpacing(6) : getSpacing(4),
+  marginBottom: isEmptyQuery
+    ? theme.designSystem.size.spacing.xl
+    : theme.designSystem.size.spacing.l,
 }))
 
-const RemoveButton = styledButton(Touchable)({
-  maxWidth: getSpacing(10),
+const RemoveButton = styledButton(Touchable)(({ theme }) => ({
+  maxWidth: theme.designSystem.size.spacing.xxxl,
   justifyContent: 'center',
   alignItems: 'center',
-})
+}))
 
 const Close = styled(DefaultClose).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

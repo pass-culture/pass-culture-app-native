@@ -11,7 +11,7 @@ import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 const keyExtractor = (venue: Venue) => {
   const { label, info } = venue
@@ -80,10 +80,10 @@ const NoSuggestedVenues = ({ show }: { show: boolean }) =>
     </DescriptionErrorTextContainer>
   ) : null
 
-const DescriptionErrorTextContainer = styled(Typo.Body)({
-  marginTop: getSpacing(6),
+const DescriptionErrorTextContainer = styled(Typo.Body)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
   textAlign: 'center',
-})
+}))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
@@ -94,4 +94,4 @@ const BuildingIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
 }))``
 
-const StyledView = styled.View({ marginTop: getSpacing(4) })
+const StyledView = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.l }))

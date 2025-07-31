@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Stock } from 'ui/svg/icons/Stock'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type BookingListItemLabelProps = { alert?: boolean; text: string; icon: 'clock' | 'tickets' }
 
@@ -20,11 +20,11 @@ export const BookingListItemLabel = ({ alert, text, icon }: BookingListItemLabel
   )
 }
 
-const Row = styled.View({
+const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  gap: getSpacing(2),
-})
+  gap: theme.designSystem.size.spacing.s,
+}))
 
 const StyledText = styled(Typo.BodyAccentXs)<{ color }>(({ color }) => ({
   color,

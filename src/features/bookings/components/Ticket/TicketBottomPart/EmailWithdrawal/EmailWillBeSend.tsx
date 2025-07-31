@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
 import { getDelayMessage } from 'features/bookings/helpers/getDelayMessage'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const EmailWillBeSend = ({
   isDuo,
@@ -30,11 +30,11 @@ export const EmailWillBeSend = ({
   )
 }
 
-const WithDrawalContainer = styled(Typo.Body)({
+const WithDrawalContainer = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   maxWidth: '100%',
-  paddingBottom: getSpacing(6),
-})
+  paddingBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const TicketWithdrawalDelay = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.bold,

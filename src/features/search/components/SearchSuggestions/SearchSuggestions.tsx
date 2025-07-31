@@ -16,7 +16,6 @@ import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchR
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
-import { getSpacing } from 'ui/theme'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -122,10 +121,10 @@ export const SearchSuggestions = ({
 }
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
-  paddingTop: getSpacing(4),
-  paddingBottom: getSpacing(3),
+  paddingTop: theme.designSystem.size.spacing.l,
+  paddingBottom: theme.designSystem.size.spacing.m,
   flex: 1,
-  paddingLeft: getSpacing(6),
-  paddingRight: getSpacing(6),
+  paddingLeft: theme.designSystem.size.spacing.xl,
+  paddingRight: theme.designSystem.size.spacing.xl,
   ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
 }))

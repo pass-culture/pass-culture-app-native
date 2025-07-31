@@ -19,7 +19,6 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
-import { getSpacing } from 'ui/theme'
 
 const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
@@ -88,6 +87,6 @@ const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
 }))
 
-const Container = styled.View({
-  marginBottom: getSpacing(2),
-})
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))

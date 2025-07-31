@@ -57,4 +57,4 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
 }
 
 const Container = styled.View({ width: '100%', marginTop: -getSpacing(2) })
-const Wrapper = styled.View({ marginVertical: getSpacing(6) })
+const Wrapper = styled.View(({ theme }) => ({ marginVertical: theme.designSystem.size.spacing.xl }))

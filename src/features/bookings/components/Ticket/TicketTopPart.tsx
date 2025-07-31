@@ -9,7 +9,7 @@ import { BookFilled } from 'ui/svg/icons/BookFilled'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Stock } from 'ui/svg/icons/Stock'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type TicketTopPartProps = {
@@ -91,13 +91,13 @@ const StyledBook = styled(BookFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))({})
 
-const Row = styled.View({
+const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  gap: getSpacing(2),
+  gap: theme.designSystem.size.spacing.s,
   alignContent: 'center',
   justifyContent: 'flex-start',
-})
+}))
 
-const Container = styled.View({
-  marginLeft: getSpacing(1),
-})
+const Container = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xs,
+}))

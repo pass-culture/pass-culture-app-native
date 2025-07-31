@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type Props = {
   modalLeftIconProps: ModalLeftIconProps
@@ -27,9 +27,9 @@ export const BookingOfferModalHeader = ({ modalLeftIconProps, onClose, title }: 
   )
 }
 
-const HeaderContainer = styled.View({
-  paddingTop: getSpacing(6),
-  paddingBottom: getSpacing(2),
-  paddingHorizontal: getSpacing(6),
+const HeaderContainer = styled.View(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.xl,
+  paddingBottom: theme.designSystem.size.spacing.s,
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
-})
+}))

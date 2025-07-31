@@ -67,19 +67,17 @@ export const BookingDetailsContentMobile = ({
 }
 
 const MAX_CONTENT_WIDTH = getSpacing(100)
-const HORIZONTAL_PADDING = getSpacing(6)
-const VERTICAL_SPACING = getSpacing(8)
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: VERTICAL_SPACING,
-  height: getSpacing(2),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xxl,
+  height: theme.designSystem.size.spacing.s,
+}))
 
-const SectionContainer = styled.View({
+const SectionContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  paddingHorizontal: HORIZONTAL_PADDING,
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
-})
+}))
 
 const Container = styled.View({
   width: '100%',
@@ -92,8 +90,10 @@ const TicketCutoutContainer = styled.View({
   alignSelf: 'center',
 })
 
-const BookingDetailsCancelButtonContainer = styled(Container)({
-  marginBottom: getSpacing(10),
-})
+const BookingDetailsCancelButtonContainer = styled(Container)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
-const ErrorBannerContainer = styled(Container)({ marginTop: getSpacing(8) })
+const ErrorBannerContainer = styled(Container)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxl,
+}))

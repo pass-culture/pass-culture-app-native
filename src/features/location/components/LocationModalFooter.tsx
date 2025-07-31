@@ -4,7 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   onSubmit: () => void
@@ -30,8 +29,8 @@ export const LocationModalFooter = memo(function LocationModalFooter({
   )
 })
 
-const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
   ...(paddingBottom ? { paddingBottom } : {}),
   alignItems: 'center',
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))

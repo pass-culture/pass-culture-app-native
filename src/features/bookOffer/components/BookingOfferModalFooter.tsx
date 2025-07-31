@@ -9,7 +9,6 @@ import {
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { getSpacing } from 'ui/theme'
 
 type BookingOptions = {
   hasPricesStep?: boolean
@@ -80,8 +79,8 @@ const handleBookingSteps = (
   }
 }
 
-const FooterContainer = styled.View({
+const FooterContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  marginTop: getSpacing(6),
-  marginHorizontal: getSpacing(6),
-})
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
