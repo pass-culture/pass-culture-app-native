@@ -2,11 +2,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
-import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
-  result?: GeneratedDeeplink
+  result?: string
 }
 
 export const DeeplinksResult = ({ result }: Props) => {
@@ -16,7 +15,7 @@ export const DeeplinksResult = ({ result }: Props) => {
       <Container>
         <ResultContainer>
           {result ? (
-            <DeeplinkItem deeplink={result} />
+            <DeeplinkItem universalLink={result} />
           ) : (
             <CenteredContainer>
               <Typo.Body>Vous devez d’abord générer un lien</Typo.Body>
