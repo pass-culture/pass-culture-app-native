@@ -15,6 +15,7 @@ import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
@@ -44,6 +45,8 @@ export const useStepperInfo = (): StepperInfo => {
   const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
   const { data } = useGetStepperInfoQuery()
   const { data: settings } = useSettingsContext()
+  const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
+    useOverrideCreditActivationAmount()
 
   if (!data) {
     return {
@@ -158,10 +161,17 @@ export const useStepperInfo = (): StepperInfo => {
 
   const stepsDetails = stepDetailsList.filter((step): step is StepExtendedDetails => step != null)
 
+  let overridenSubtitle = subtitle
+  if (shouldCreditAmountBeOverriden) {
+    overridenSubtitle = overriddenCreditAmount
+      ? `Pour débloquer tes ${overriddenCreditAmount} tu dois suivre les étapes suivantes\u00a0:`
+      : 'Pour débloquer ton crédit tu dois suivre les étapes suivantes\u00a0:'
+  }
+
   return {
     stepsDetails,
     title,
-    subtitle,
+    subtitle: overridenSubtitle,
     errorMessage: subscriptionMessage?.messageSummary,
   }
 }
