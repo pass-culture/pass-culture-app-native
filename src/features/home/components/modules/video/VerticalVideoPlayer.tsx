@@ -256,7 +256,7 @@ const ProgressBarWrapper = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.locked,
 }))
 
-const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
+const ProgressBar = styled(AnimatedGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     theme.designSystem.color.background.brandPrimary,
     theme.designSystem.color.background.brandPrimary,

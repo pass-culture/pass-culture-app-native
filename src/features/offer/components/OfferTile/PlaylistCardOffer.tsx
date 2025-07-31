@@ -47,7 +47,7 @@ export const PlaylistCardOffer: FC<Props> = ({
   )
 }
 
-const Container = styled(ViewGap).attrs({
+const Container = styled(ViewGap).attrs<{ gap?: number }>({
   gap: 2,
 })<{ maxWidth: number }>(({ maxWidth }) => ({
   maxWidth,

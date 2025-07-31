@@ -3,82 +3,70 @@
 exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Inscription
@@ -173,18 +157,16 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,41 +185,31 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         gap={4}
         style={
-          [
-            {
-              "gap": 16,
-            },
-          ]
+          {
+            "gap": 16,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "width": "100%",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "width": "100%",
+            }
           }
         >
           <View
@@ -251,81 +223,69 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         </View>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 19,
-                "lineHeight": 30.4,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 19,
+              "lineHeight": 30.4,
+            }
           }
         >
           Confirme ton adresse e-mail
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Tu as reçu un lien à l’adresse :
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           john.doe@gmail.com
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           L’e-mail peut prendre quelques minutes pour arriver.
         </Text>
         <View
           style={
-            [
-              {
-                "backgroundColor": "#f1f1f4",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
+            {
+              "backgroundColor": "#f1f1f4",
+              "height": 1,
+              "width": "100%",
+            }
           }
         />
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Tu n‘as pas reçu de lien ? Tu peux :
@@ -366,7 +326,10 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderRadius": 24,
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
                   "maxWidth": 500,
@@ -390,23 +353,19 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -424,15 +383,13 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
               }
             >
               Consulter notre centre d’aide
@@ -442,11 +399,9 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         <View
           marginBottom={8}
           style={
-            [
-              {
-                "marginBottom": 8,
-              },
-            ]
+            {
+              "marginBottom": 8,
+            }
           }
         >
           <View
@@ -485,7 +440,10 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "flex-start",
                     "maxWidth": 500,
@@ -509,23 +467,19 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "marginRight": 8,
+                  }
                 }
               >
                 <View
@@ -542,15 +496,13 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Recevoir un nouveau lien
@@ -595,7 +547,10 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "maxWidth": 500,
@@ -617,23 +572,19 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -650,15 +601,13 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
               }
             >
               Consulter mes e-mails
@@ -671,17 +620,15 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -692,13 +639,11 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

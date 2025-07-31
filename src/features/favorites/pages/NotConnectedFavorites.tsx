@@ -57,7 +57,7 @@ export const NotConnectedFavorites = () => {
   )
 }
 
-const Container = styled(Page)<{ top: number; bottom: number }>(({ theme }) => ({
+const Container = styled(Page)<{ bottom: number }>(({ theme }) => ({
   justifyContent: 'space-between',
   paddingHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: theme.contentPage.marginVertical,

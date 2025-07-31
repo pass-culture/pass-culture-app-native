@@ -56,7 +56,7 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
       horizontal
       showsHorizontalScrollIndicator={false}
       testID="mobile-event-card-list">
-      {data.map((event, index) => {
+      {data.map((_event, index) => {
         if (index % 2 === 1) return null
         const topEventCardData = data[index]
         const bottomEventCardData = data[index + 1]
@@ -84,7 +84,7 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
   )
 }
 
-const EventCardContainer = styled(View)(({ isLast }: { isLast: boolean }) => ({
+const EventCardContainer = styled(View)<{ isLast: boolean }>(({ isLast }) => ({
   marginRight: isLast ? 0 : getSpacing(3),
 }))
 

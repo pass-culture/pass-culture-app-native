@@ -1,43 +1,17 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes, RefAttributes } from 'react'
-import { TouchableOpacityProps } from 'react-native'
-import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
 
 import { TouchableOpacityButtonProps } from 'ui/components/buttons/AppButton/types'
 import { getEffectiveBorderRadius } from 'ui/components/buttons/AppButton/utils'
-import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
 import { padding } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
-
-type ButtonStyles = InterpolationFunction<
-  ThemedStyledProps<
-    TouchableOpacityProps & RefAttributes<typeof RNTouchableOpacity> & TouchableOpacityButtonProps,
-    DefaultTheme
-  >
->
-
-type ButtonStylesWeb = InterpolationFunction<
-  ThemedStyledProps<
-    DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> &
-      TouchableOpacityButtonProps,
-    DefaultTheme
-  >
->
-
-type ElementStylesWeb = InterpolationFunction<
-  ThemedStyledProps<
-    DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & TouchableOpacityButtonProps,
-    DefaultTheme
-  >
->
 
 type ButtonStylesArgs = {
   theme: DefaultTheme
   activeOpacity?: number
 } & TouchableOpacityButtonProps
 
-export const appButtonStyles: ButtonStyles = ({
+export const appButtonStyles = ({
   theme,
   inline,
   buttonHeight,
@@ -91,10 +65,10 @@ export const appButtonStyles: ButtonStyles = ({
       : {}),
     ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
     ...(numberOfLines > 1 ? { height: 'auto' } : {}),
-  }
+  } as const
 }
 
-export const appButtonWebStyles: ElementStylesWeb = ({
+export const appButtonWebStyles = ({
   theme,
   focusOutlineColor,
   hoverUnderlineColor,
@@ -117,10 +91,10 @@ export const appButtonWebStyles: ElementStylesWeb = ({
     ...getHoverStyle({
       underlineColor: hoverUnderlineColor ?? theme.designSystem.color.text.default,
     }),
-  }
+  } as const
 }
 
-export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
+export const appTouchableOpacityWebStyles = ({
   theme,
   hoverUnderlineColor,
   activeOpacity,
@@ -145,5 +119,5 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
       cursor: 'initial',
     },
     ...getHoverStyle({ underlineColor: underlineColor ?? theme.designSystem.color.text.default }),
-  }
+  } as const
 }

@@ -147,88 +147,78 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -238,15 +228,13 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -312,11 +300,9 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -324,14 +310,12 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -344,24 +328,20 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
             <View
               gap={6}
               style={
-                [
-                  {
-                    "gap": 24,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "gap": 24,
+                  "width": "100%",
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Pour recevoir toute l’actu de ce thème, tu dois, au choix :
@@ -369,30 +349,26 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                      "justifyContent": "flex-start",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                    "justifyContent": "flex-start",
+                  }
                 }
                 toggleLabel={false}
               >
                 <View
                   gap={2}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "gap": 8,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "gap": 8,
+                    }
                   }
                   toggleLabel={false}
                 >
@@ -407,26 +383,22 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   <Text
                     htmlFor="testUuidV4"
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Autoriser l’envoi d’e-mails
@@ -436,33 +408,27 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 <View
                   gap={4}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "gap": 16,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 16,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       accessibilityHidden={true}
                       style={
-                        [
-                          {
-                            "display": "none",
-                          },
-                        ]
+                        {
+                          "display": "none",
+                        }
                       }
                     >
                       Case à cocher - 
@@ -498,11 +464,9 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                          ],
+                          {
+                            "userSelect": "auto",
+                          },
                           {
                             "opacity": 1,
                           },
@@ -513,15 +477,16 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       <View
                         active={false}
                         style={
-                          [
-                            {
-                              "backgroundColor": "#696a6f",
-                              "borderRadius": 16,
-                              "height": 32,
-                              "justifyContent": "center",
-                              "width": 56,
-                            },
-                          ]
+                          {
+                            "backgroundColor": "#696a6f",
+                            "borderBottomLeftRadius": 16,
+                            "borderBottomRightRadius": 16,
+                            "borderTopLeftRadius": 16,
+                            "borderTopRightRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          }
                         }
                       >
                         <View
@@ -532,7 +497,10 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "alignItems": "center",
                                 "aspectRatio": 1,
                                 "backgroundColor": "#ffffff",
-                                "borderRadius": 28,
+                                "borderBottomLeftRadius": 28,
+                                "borderBottomRightRadius": 28,
+                                "borderTopLeftRadius": 28,
+                                "borderTopRightRadius": 28,
                                 "height": 28,
                                 "justifyContent": "center",
                                 "shadowColor": "#161617",
@@ -558,30 +526,26 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 16,
-                      "justifyContent": "flex-start",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                    "justifyContent": "flex-start",
+                  }
                 }
                 toggleLabel={false}
               >
                 <View
                   gap={2}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "gap": 8,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "gap": 8,
+                    }
                   }
                   toggleLabel={false}
                 >
@@ -596,26 +560,22 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   <Text
                     htmlFor="testUuidV4"
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Autoriser les notifications
@@ -625,33 +585,27 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 <View
                   gap={4}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "gap": 16,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 16,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       accessibilityHidden={true}
                       style={
-                        [
-                          {
-                            "display": "none",
-                          },
-                        ]
+                        {
+                          "display": "none",
+                        }
                       }
                     >
                       Case à cocher - 
@@ -687,11 +641,9 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                          ],
+                          {
+                            "userSelect": "auto",
+                          },
                           {
                             "opacity": 1,
                           },
@@ -702,15 +654,16 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       <View
                         active={false}
                         style={
-                          [
-                            {
-                              "backgroundColor": "#696a6f",
-                              "borderRadius": 16,
-                              "height": 32,
-                              "justifyContent": "center",
-                              "width": 56,
-                            },
-                          ]
+                          {
+                            "backgroundColor": "#696a6f",
+                            "borderBottomLeftRadius": 16,
+                            "borderBottomRightRadius": 16,
+                            "borderTopLeftRadius": 16,
+                            "borderTopRightRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          }
                         }
                       >
                         <View
@@ -721,7 +674,10 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "alignItems": "center",
                                 "aspectRatio": 1,
                                 "backgroundColor": "#ffffff",
-                                "borderRadius": 28,
+                                "borderBottomLeftRadius": 28,
+                                "borderBottomRightRadius": 28,
+                                "borderTopLeftRadius": 28,
+                                "borderTopRightRadius": 28,
                                 "height": 28,
                                 "justifyContent": "center",
                                 "shadowColor": "#161617",
@@ -746,14 +702,12 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Tu pourras gérer tes alertes depuis ton profil.
@@ -795,7 +749,10 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#f1f1f4",
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "maxWidth": 500,
@@ -817,27 +774,23 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Valider
@@ -880,7 +833,10 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "borderRadius": 0,
+                        "borderBottomLeftRadius": 0,
+                        "borderBottomRightRadius": 0,
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "flexDirection": "row",
                         "justifyContent": "center",
@@ -906,23 +862,19 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
-                        },
-                      ]
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                        "marginRight": 8,
+                      }
                     }
                   >
                     <View
@@ -940,15 +892,13 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Tout refuser et ne pas recevoir d’actus

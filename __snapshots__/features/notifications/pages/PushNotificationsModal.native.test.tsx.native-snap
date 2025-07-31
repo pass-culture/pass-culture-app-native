@@ -61,90 +61,81 @@ exports[`PushNotificationsModal should render properly 1`] = `
   />
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "zIndex": -1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "zIndex": -1,
+      }
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     gap={6}
     style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#ffffff",
-          "borderRadius": 16,
-          "gap": 24,
-          "paddingBottom": 32,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
-          "width": 928,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "#ffffff",
+        "borderBottomLeftRadius": 16,
+        "borderBottomRightRadius": 16,
+        "borderTopLeftRadius": 16,
+        "borderTopRightRadius": 16,
+        "gap": 24,
+        "paddingBottom": 32,
+        "paddingLeft": 24,
+        "paddingRight": 24,
+        "paddingTop": 24,
+        "width": 928,
+      }
     }
   >
     <View
       style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "width": "100%",
-          },
-        ]
+        {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "width": "100%",
+        }
       }
       testID="modalHeader"
     >
       <View
         justifyContent="left"
         style={
-          [
-            {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-start",
-              "width": 28,
-            },
-          ]
+          {
+            "alignItems": "flex-start",
+            "flexDirection": "row",
+            "height": 28,
+            "justifyContent": "flex-start",
+            "width": 28,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
-              "zIndex": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "paddingHorizontal": 12,
+            "zIndex": 1,
+          }
         }
       >
         <Text
           nativeID="testUuidV4"
           numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
           testID="modalHeaderTitle"
         >
@@ -154,15 +145,13 @@ exports[`PushNotificationsModal should render properly 1`] = `
       <View
         justifyContent="right"
         style={
-          [
-            {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-end",
-              "width": 28,
-            },
-          ]
+          {
+            "alignItems": "flex-start",
+            "flexDirection": "row",
+            "height": 28,
+            "justifyContent": "flex-end",
+            "width": 28,
+          }
         }
       >
         <View
@@ -228,13 +217,11 @@ exports[`PushNotificationsModal should render properly 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "maxWidth": 500,
+          "width": "100%",
+        }
       }
     >
       <View
@@ -248,24 +235,20 @@ exports[`PushNotificationsModal should render properly 1`] = `
       <View
         numberOfSpaces={10}
         style={
-          [
-            {
-              "height": 40,
-            },
-          ]
+          {
+            "height": 40,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
       >
         Reste informé des actualités du pass Culture en activant les notifications.
@@ -273,24 +256,20 @@ exports[`PushNotificationsModal should render properly 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          [
-            {
-              "height": 16,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
       >
         Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
@@ -298,11 +277,9 @@ exports[`PushNotificationsModal should render properly 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          [
-            {
-              "height": 24,
-            },
-          ]
+          {
+            "height": 24,
+          }
         }
       />
       <View
@@ -342,7 +319,10 @@ exports[`PushNotificationsModal should render properly 1`] = `
               {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -364,27 +344,23 @@ exports[`PushNotificationsModal should render properly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Autoriser les notifications
@@ -395,14 +371,12 @@ exports[`PushNotificationsModal should render properly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "zIndex": -1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "zIndex": -1,
+      }
     }
   />
 </Modal>

@@ -54,16 +54,15 @@ export function VenueSelectionListItem({ index, style, data }: Readonly<RowProps
 
   if (isFooter) {
     return (
-      <Wrapper>
+      <li style={style}>
         <SearchListFooter
           isFetchingNextPage={data.isFetchingNextPage}
           nbLoadedHits={data.items.length}
           nbHits={data.nbHits}
           autoScrollEnabled={data.autoScrollEnabled}
           onPress={data.onPress}
-          style={style}
         />
-      </Wrapper>
+      </li>
     )
   }
 

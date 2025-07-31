@@ -3,82 +3,70 @@
 exports[`<ChangeEmail/> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Modifier mon e-mail
@@ -173,18 +157,16 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,158 +185,130 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "marginTop": 24,
-            },
-          ]
+          {
+            "marginTop": 24,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "marginBottom": 16,
-              },
-            ]
+            {
+              "marginBottom": 16,
+            }
           }
         >
           <View
             gap={4}
             style={
-              [
-                {
-                  "gap": 16,
-                },
-              ]
+              {
+                "gap": 16,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
             </Text>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
             </Text>
             <View
               style={
-                [
-                  {
-                    "backgroundColor": "#f1f1f4",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "backgroundColor": "#f1f1f4",
+                  "height": 1,
+                  "width": "100%",
+                }
               }
             />
           </View>
         </View>
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "marginBottom": 24,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "marginBottom": 24,
+            }
           }
         >
           <View
             flex={1}
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "maxWidth": 500,
-                  "width": "100%",
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "maxWidth": 500,
+                "width": "100%",
+              }
             }
           >
             <View
               gap={0}
               style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "gap": 0,
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "gap": 0,
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
               }
             >
               <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "flex-end",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "marginBottom": 8,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginBottom": 8,
+                      "width": "100%",
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
                   >
                     Adresse e-mail actuelle
@@ -363,23 +317,19 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   Exemple : tonadresse@email.com
@@ -391,23 +341,24 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 isError={false}
                 isFocus={false}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#f1f1f4",
-                      "borderColor": "#cbcdd2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#f1f1f4",
+                    "borderBottomLeftRadius": 22,
+                    "borderBottomRightRadius": 22,
+                    "borderColor": "#cbcdd2",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 22,
+                    "borderTopRightRadius": 22,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  }
                 }
                 testID="styled-input-container"
               >
@@ -428,21 +379,19 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   placeholderTextColor="#696a6f"
                   returnKeyType="next"
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    }
                   }
                   testID="Entrée pour l’email"
                   textAlignVertical="center"
@@ -453,39 +402,36 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "marginBottom": 48,
-                    "marginTop": 16,
-                  },
-                ]
+                {
+                  "marginBottom": 48,
+                  "marginTop": 16,
+                }
               }
             >
               <View
                 backgroundColor="#f3edff"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#f3edff",
-                      "borderRadius": 8,
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "paddingRight": 16,
-                      },
-                    ]
+                    {
+                      "paddingRight": 16,
+                    }
                   }
                 >
                   <View
@@ -499,25 +445,21 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
                   }
                 >
                   <Text
                     style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
                     }
                     textColor="#161617"
                   >
@@ -529,13 +471,11 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             <View
               paddingBottom={16}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "paddingBottom": 16,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "paddingBottom": 16,
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -575,7 +515,10 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "maxWidth": 500,
@@ -597,27 +540,23 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Envoyer la demande
@@ -633,17 +572,15 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -654,13 +591,11 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

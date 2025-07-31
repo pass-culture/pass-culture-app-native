@@ -38,7 +38,7 @@ export const TextPlaceholder = ({
   height?: number
   marginBottom?: number
 }) => (
-  <TextPlaceholderContainer marginBottom={marginBottom ?? undefined}>
+  <TextPlaceholderContainer marginBottom={marginBottom}>
     <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
   </TextPlaceholderContainer>
 )
@@ -148,8 +148,8 @@ const FirstButtonContainer = styled(ButtonContainer)({
   marginRight: getSpacing(5),
 })
 
-const TextPlaceholderContainer = styled.View<{ marginBottom: number }>(({ marginBottom }) => ({
-  marginBottom: getSpacing(marginBottom),
+const TextPlaceholderContainer = styled.View<{ marginBottom?: number }>(({ marginBottom }) => ({
+  marginBottom: marginBottom ? getSpacing(marginBottom) : undefined,
 }))
 
 const PillsContainer = styled(ViewGap)({

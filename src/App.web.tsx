@@ -25,6 +25,7 @@ import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
+import { StylesheetManagerWrapper } from 'libs/styled/StyleSheetManagerWrapper'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
@@ -55,40 +56,42 @@ export function App() {
   return (
     <ReactQueryClientProvider>
       <ThemeWrapper>
-        <SupportedBrowsersGate>
-          <SafeAreaProvider>
-            <SettingsWrapper>
-              <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-                <AuthWrapper>
-                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                    <LocationWrapper>
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <AppWebHead />
-                                    <ScreenErrorProvider>
-                                      <Suspense fallback={<LoadingPage />}>
-                                        <AppNavigationContainer />
-                                      </Suspense>
-                                    </ScreenErrorProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
-                    </LocationWrapper>
-                  </ErrorBoundary>
-                </AuthWrapper>
-              </GoogleOAuthProvider>
-            </SettingsWrapper>
-          </SafeAreaProvider>
-        </SupportedBrowsersGate>
+        <StylesheetManagerWrapper>
+          <SupportedBrowsersGate>
+            <SafeAreaProvider>
+              <SettingsWrapper>
+                <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+                  <AuthWrapper>
+                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                      <LocationWrapper>
+                        <AccessibilityFiltersWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <AppWebHead />
+                                      <ScreenErrorProvider>
+                                        <Suspense fallback={<LoadingPage />}>
+                                          <AppNavigationContainer />
+                                        </Suspense>
+                                      </ScreenErrorProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </AccessibilityFiltersWrapper>
+                      </LocationWrapper>
+                    </ErrorBoundary>
+                  </AuthWrapper>
+                </GoogleOAuthProvider>
+              </SettingsWrapper>
+            </SafeAreaProvider>
+          </SupportedBrowsersGate>
+        </StylesheetManagerWrapper>
       </ThemeWrapper>
     </ReactQueryClientProvider>
   )

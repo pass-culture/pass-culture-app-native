@@ -3,58 +3,48 @@
 exports[`OnboardingSubscription should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "height": 64,
-        },
-      ]
+      {
+        "height": 64,
+      }
     }
     top={16}
   />
   <View
     style={
-      [
-        {
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-          "zIndex": 1,
-        },
-      ]
+      {
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "height": 48,
-            "justifyContent": "center",
-            "paddingHorizontal": 12,
-          },
-        ]
+        {
+          "height": 48,
+          "justifyContent": "center",
+          "paddingHorizontal": 12,
+        }
       }
     >
       <View
@@ -118,11 +108,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         </View>
         <Text
           style={
-            [
-              {
-                "display": "none",
-              },
-            ]
+            {
+              "display": "none",
+            }
           }
         >
           Retour
@@ -198,30 +186,26 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 19,
-                "lineHeight": 30.4,
-                "marginBottom": 16,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 19,
+              "lineHeight": 30.4,
+              "marginBottom": 16,
+            }
           }
         >
           Choisis des thèmes à suivre
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginBottom": 24,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginBottom": 24,
+            }
           }
         >
           Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus !
@@ -234,11 +218,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "paddingVertical": 8,
-              },
-            ]
+            {
+              "paddingVertical": 8,
+            }
           }
         >
           <View
@@ -278,9 +260,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -299,13 +284,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -319,31 +302,30 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -356,14 +338,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Cinéma
@@ -371,48 +351,43 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
                   size="small"
                   style={
-                    [
-                      {
-                        "borderRadius": 4,
-                        "height": 32,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                 >
                   <View
                     fillColor="decorative01"
                     style={
-                      [
-                        {
-                          "backgroundColor": "#ffeae2",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#ffeae2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       size="small"
                       style={
-                        [
-                          {
-                            "position": "absolute",
-                            "top": -28,
-                          },
-                        ]
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        }
                       }
                     >
                       <View
@@ -439,11 +414,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "paddingVertical": 8,
-              },
-            ]
+            {
+              "paddingVertical": 8,
+            }
           }
         >
           <View
@@ -483,9 +456,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -504,13 +480,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -524,31 +498,30 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -561,14 +534,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Lecture
@@ -576,48 +547,43 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
                   size="small"
                   style={
-                    [
-                      {
-                        "borderRadius": 4,
-                        "height": 32,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                 >
                   <View
                     fillColor="decorative05"
                     style={
-                      [
-                        {
-                          "backgroundColor": "#ffa5c0",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#ffa5c0",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       size="small"
                       style={
-                        [
-                          {
-                            "position": "absolute",
-                            "top": -28,
-                          },
-                        ]
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        }
                       }
                     >
                       <View
@@ -644,11 +610,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "paddingVertical": 8,
-              },
-            ]
+            {
+              "paddingVertical": 8,
+            }
           }
         >
           <View
@@ -688,9 +652,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -709,13 +676,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -729,31 +694,30 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -766,14 +730,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Musique
@@ -781,48 +743,43 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
                   size="small"
                   style={
-                    [
-                      {
-                        "borderRadius": 4,
-                        "height": 32,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                 >
                   <View
                     fillColor="decorative03"
                     style={
-                      [
-                        {
-                          "backgroundColor": "#94f0d6",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#94f0d6",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       size="small"
                       style={
-                        [
-                          {
-                            "position": "absolute",
-                            "top": -28,
-                          },
-                        ]
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        }
                       }
                     >
                       <View
@@ -849,11 +806,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "paddingVertical": 8,
-              },
-            ]
+            {
+              "paddingVertical": 8,
+            }
           }
         >
           <View
@@ -893,9 +848,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -914,13 +872,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -934,31 +890,30 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -971,14 +926,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Spectacles
@@ -986,48 +939,43 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
                   size="small"
                   style={
-                    [
-                      {
-                        "borderRadius": 4,
-                        "height": 32,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                 >
                   <View
                     fillColor="decorative05"
                     style={
-                      [
-                        {
-                          "backgroundColor": "#ffa5c0",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#ffa5c0",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       size="small"
                       style={
-                        [
-                          {
-                            "position": "absolute",
-                            "top": -28,
-                          },
-                        ]
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        }
                       }
                     >
                       <View
@@ -1054,11 +1002,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "paddingVertical": 8,
-              },
-            ]
+            {
+              "paddingVertical": 8,
+            }
           }
         >
           <View
@@ -1098,9 +1044,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1119,13 +1068,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1139,31 +1086,30 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -1176,14 +1122,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Activités créatives
@@ -1191,48 +1135,43 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
                   size="small"
                   style={
-                    [
-                      {
-                        "borderRadius": 4,
-                        "height": 32,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                 >
                   <View
                     fillColor="decorative01"
                     style={
-                      [
-                        {
-                          "backgroundColor": "#ffeae2",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#ffeae2",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       size="small"
                       style={
-                        [
-                          {
-                            "position": "absolute",
-                            "top": -28,
-                          },
-                        ]
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        }
                       }
                     >
                       <View
@@ -1259,11 +1198,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "paddingVertical": 8,
-              },
-            ]
+            {
+              "paddingVertical": 8,
+            }
           }
         >
           <View
@@ -1303,9 +1240,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1324,13 +1264,11 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1344,31 +1282,30 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -1381,14 +1318,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Visites et sorties
@@ -1396,48 +1331,43 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
                   size="small"
                   style={
-                    [
-                      {
-                        "borderRadius": 4,
-                        "height": 32,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                 >
                   <View
                     fillColor="decorative03"
                     style={
-                      [
-                        {
-                          "backgroundColor": "#94f0d6",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#94f0d6",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       size="small"
                       style={
-                        [
-                          {
-                            "position": "absolute",
-                            "top": -28,
-                          },
-                        ]
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        }
                       }
                     >
                       <View
@@ -1487,15 +1417,13 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     }
     style={
       [
-        [
-          {
-            "bottom": 136,
-            "height": 120,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-          },
-        ],
+        {
+          "bottom": 136,
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        },
         {},
         {},
       ]
@@ -1503,17 +1431,15 @@ exports[`OnboardingSubscription should render correctly 1`] = `
   />
   <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "gap": 20,
-          "paddingBottom": 24,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 16,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "gap": 20,
+        "paddingBottom": 24,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+        "paddingTop": 16,
+      }
     }
   >
     <View
@@ -1553,7 +1479,10 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             {
               "alignItems": "center",
               "backgroundColor": "#f1f1f4",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "maxWidth": 500,
@@ -1575,27 +1504,23 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#696a6f",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Suivre la sélection
@@ -1638,7 +1563,10 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             },
             {
               "alignItems": "center",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "maxWidth": 500,
@@ -1662,23 +1590,19 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "marginRight": 8,
+            }
           }
         >
           <View
@@ -1696,15 +1620,13 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Non merci

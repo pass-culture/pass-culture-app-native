@@ -3,82 +3,70 @@
 exports[`LegalNotices should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`LegalNotices should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`LegalNotices should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Informations légales
@@ -173,18 +157,16 @@ exports[`LegalNotices should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,57 +185,45 @@ exports[`LegalNotices should render correctly 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         gap={4}
         style={
-          [
-            {
-              "gap": 16,
-            },
-          ]
+          {
+            "gap": 16,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           ÉDITEUR SAS pass Culture
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Éditeur du site :
@@ -309,14 +279,12 @@ exports[`LegalNotices should render correctly 1`] = `
                 gap={1}
                 paddingForIcon={0}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 4,
-                      "top": 0,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                    "top": 0,
+                  }
                 }
               >
                 <View
@@ -332,14 +300,12 @@ exports[`LegalNotices should render correctly 1`] = `
                 <Text
                   color="#161617"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                   typography="Button"
                 >
@@ -351,84 +317,72 @@ exports[`LegalNotices should render correctly 1`] = `
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Société par actions simplifiée au capital de 1 000 000 €
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Siège social : 35 Boulevard de Sébastopol – 75001 Paris - France
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Immatriculée au RCS de Paris sous le numéro : 853 318 459
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           N° TVA intracommunautaire : FR65853318459
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Directrice de la publication : Laurence Tison-Vuillaume
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Hébergeur : Google Cloud Platform
@@ -438,14 +392,12 @@ exports[`LegalNotices should render correctly 1`] = `
         </Text>
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            }
           }
         >
           Nous contacter :
@@ -501,14 +453,12 @@ exports[`LegalNotices should render correctly 1`] = `
                 gap={1}
                 paddingForIcon={0}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 4,
-                      "top": 0,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                    "top": 0,
+                  }
                 }
               >
                 <View
@@ -523,14 +473,12 @@ exports[`LegalNotices should render correctly 1`] = `
                 <Text
                   color="#161617"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                   typography="Button"
                 >
@@ -542,13 +490,11 @@ exports[`LegalNotices should render correctly 1`] = `
         </Text>
         <View
           style={
-            [
-              {
-                "backgroundColor": "#f1f1f4",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
+            {
+              "backgroundColor": "#f1f1f4",
+              "height": 1,
+              "width": "100%",
+            }
           }
         />
         <View
@@ -619,36 +565,30 @@ exports[`LegalNotices should render correctly 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
+                {
+                  "width": 8,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "textAlign": "left",
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "textAlign": "left",
+                }
               }
             >
               <Text
                 numberOfLines={2}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Conditions Générales d’Utilisation
@@ -658,13 +598,11 @@ exports[`LegalNotices should render correctly 1`] = `
         </View>
         <View
           style={
-            [
-              {
-                "backgroundColor": "#f1f1f4",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
+            {
+              "backgroundColor": "#f1f1f4",
+              "height": 1,
+              "width": "100%",
+            }
           }
         />
         <View
@@ -735,36 +673,30 @@ exports[`LegalNotices should render correctly 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
+                {
+                  "width": 8,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "textAlign": "left",
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "textAlign": "left",
+                }
               }
             >
               <Text
                 numberOfLines={2}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Charte de protection des données personnelles
@@ -778,17 +710,15 @@ exports[`LegalNotices should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -799,13 +729,11 @@ exports[`LegalNotices should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

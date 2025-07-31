@@ -5,69 +5,59 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -132,11 +122,9 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -146,15 +134,13 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Traitement des données utilisateurs
@@ -162,18 +148,16 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -183,11 +167,9 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "height": 65,
-        },
-      ]
+      {
+        "height": 65,
+      }
     }
   />,
   <View

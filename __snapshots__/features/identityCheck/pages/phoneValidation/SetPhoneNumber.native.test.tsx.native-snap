@@ -3,82 +3,70 @@
 exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Numéro de téléphone
@@ -173,18 +157,16 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -193,34 +175,30 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -229,15 +207,13 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -253,11 +229,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -269,14 +241,12 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
             />
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 19,
-                    "lineHeight": 30.4,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 19,
+                  "lineHeight": 30.4,
+                }
               }
             >
               Quel est ton numéro de téléphone ?
@@ -284,34 +254,28 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
             <View
               numberOfSpaces={6}
               style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
+                {
+                  "height": 24,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
               }
             >
               <View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Tu vas recevoir un code de validation pour confirmer ton numéro.
@@ -319,63 +283,53 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 <View
                   numberOfSpaces={6}
                   style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
+                    {
+                      "height": 24,
+                    }
                   }
                 />
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                              "flexDirection": "row",
-                              "justifyContent": "space-between",
-                              "marginBottom": 8,
-                              "width": "100%",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "marginBottom": 8,
+                            "width": "100%",
+                          }
                         }
                       >
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Numéro de téléphone
@@ -388,33 +342,32 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
                       <View
                         style={
-                          [
-                            {
-                              "marginBottom": 8,
-                            },
-                          ]
+                          {
+                            "marginBottom": 8,
+                          }
                         }
                       >
                         <View
@@ -467,16 +420,14 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         >
                           <Text
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Medium",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                  "marginLeft": -4,
-                                  "marginRight": 4,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                                "marginLeft": -4,
+                                "marginRight": 4,
+                              }
                             }
                           >
                             +33
@@ -493,22 +444,18 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                           <View
                             numberOfSpaces={2}
                             style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
+                              {
+                                "width": 8,
+                              }
                             }
                           />
                           <View
                             style={
-                              [
-                                {
-                                  "borderRightColor": "#90949d",
-                                  "borderRightWidth": 1,
-                                  "paddingVertical": 10,
-                                },
-                              ]
+                              {
+                                "borderRightColor": "#90949d",
+                                "borderRightWidth": 1,
+                                "paddingVertical": 10,
+                              }
                             }
                           />
                         </View>
@@ -530,21 +477,19 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Entrée pour le numéro de téléphone"
                         textAlignVertical="center"
@@ -557,11 +502,9 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 <View
                   numberOfSpaces={8}
                   style={
-                    [
-                      {
-                        "height": 32,
-                      },
-                    ]
+                    {
+                      "height": 32,
+                    }
                   }
                 />
               </View>
@@ -571,48 +514,40 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                },
-              ]
+              {
+                "alignItems": "center",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Il te reste 
@@ -620,28 +555,24 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               <Text
                 isLastAttempt={false}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 4 demandes 
               </Text>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 de code de validation
@@ -650,11 +581,9 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
+                {
+                  "height": 8,
+                }
               }
             />
             <View
@@ -694,7 +623,10 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#f1f1f4",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -716,27 +648,23 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <Text
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Continuer
@@ -748,11 +676,9 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>
@@ -762,17 +688,15 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -783,13 +707,11 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

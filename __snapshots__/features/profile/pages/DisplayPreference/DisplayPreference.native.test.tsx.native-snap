@@ -3,82 +3,70 @@
 exports[`DisplayPreference should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -136,11 +124,9 @@ exports[`DisplayPreference should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -150,15 +136,13 @@ exports[`DisplayPreference should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Préférences d’affichage
@@ -166,18 +150,16 @@ exports[`DisplayPreference should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -186,34 +168,30 @@ exports[`DisplayPreference should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -222,15 +200,13 @@ exports[`DisplayPreference should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -246,11 +222,7 @@ exports[`DisplayPreference should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -263,24 +235,20 @@ exports[`DisplayPreference should render correctly 1`] = `
             <View
               inverseLayout={false}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexShrink": 1,
-                      "marginLeft": 8,
-                      "marginRight": 24,
-                    },
-                  ]
+                  {
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                    "marginRight": 24,
+                  }
                 }
               >
                 <Text
@@ -288,14 +256,12 @@ exports[`DisplayPreference should render correctly 1`] = `
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Permettre l’orientation
@@ -303,14 +269,12 @@ exports[`DisplayPreference should render correctly 1`] = `
                 <Text
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   L’affichage en mode paysage peut être moins optimal
@@ -318,31 +282,25 @@ exports[`DisplayPreference should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
+                  {
+                    "flexShrink": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -388,15 +346,16 @@ exports[`DisplayPreference should render correctly 1`] = `
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -407,7 +366,10 @@ exports[`DisplayPreference should render correctly 1`] = `
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "backgroundColor": "#ffffff",
-                            "borderRadius": 28,
+                            "borderBottomLeftRadius": 28,
+                            "borderBottomRightRadius": 28,
+                            "borderTopLeftRadius": 28,
+                            "borderTopRightRadius": 28,
                             "height": 28,
                             "justifyContent": "center",
                             "marginLeft": 2,
@@ -429,48 +391,39 @@ exports[`DisplayPreference should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "marginVertical": 40,
-                  },
-                ]
+                {
+                  "marginVertical": 40,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                  }
                 }
               >
                 Thème
               </Text>
               <View
-                backgroundColor="#cbcdd2"
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 gap={5}
                 style={
-                  [
-                    {
-                      "gap": 20,
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "gap": 20,
+                    "marginTop": 24,
+                  }
                 }
               >
                 <View
@@ -507,9 +460,12 @@ exports[`DisplayPreference should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#90949d",
-                      "borderRadius": 8,
                       "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 2,
                       "flexDirection": "row",
                       "flexGrow": 1,
@@ -526,106 +482,94 @@ exports[`DisplayPreference should render correctly 1`] = `
                   <View
                     isSelected={true}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "borderColor": "#eb0055",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "height": 16,
-                          "justifyContent": "center",
-                          "marginRight": 16,
-                          "width": 16,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      }
                     }
                   >
                     <View
                       isSelected={true}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#eb0055",
-                            "borderRadius": 16,
-                            "height": 8,
-                            "width": 8,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#eb0055",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        }
                       }
                     />
                   </View>
                   <View
                     contentDirection="row"
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       gap={4}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "gap": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
                         }
                       >
                         <Text
                           isHover={false}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Mode clair
                         </Text>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#696a6f",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                                "marginTop": 4,
-                              },
-                            ]
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 4,
+                            }
                           }
                         >
                           Affichage classique
                         </Text>
                       </View>
                       <View
-                        style={
-                          [
-                            {},
-                          ]
-                        }
+                        style={{}}
                       >
                         <View
                           fill="none"
@@ -674,9 +618,12 @@ exports[`DisplayPreference should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#cbcdd2",
-                      "borderRadius": 8,
                       "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
                       "flexGrow": 1,
@@ -693,106 +640,94 @@ exports[`DisplayPreference should render correctly 1`] = `
                   <View
                     isSelected={false}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "borderColor": "#cbcdd2",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "height": 16,
-                          "justifyContent": "center",
-                          "marginRight": 16,
-                          "width": 16,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#cbcdd2",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      }
                     }
                   >
                     <View
                       isSelected={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderRadius": 16,
-                            "height": 8,
-                            "width": 8,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "transparent",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        }
                       }
                     />
                   </View>
                   <View
                     contentDirection="row"
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       gap={4}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "gap": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
                         }
                       >
                         <Text
                           isHover={false}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Mode sombre
                         </Text>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#696a6f",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                                "marginTop": 4,
-                              },
-                            ]
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 4,
+                            }
                           }
                         >
                           Réduit la fatigue visuelle
                         </Text>
                       </View>
                       <View
-                        style={
-                          [
-                            {},
-                          ]
-                        }
+                        style={{}}
                       >
                         <View
                           fill="none"
@@ -841,9 +776,12 @@ exports[`DisplayPreference should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#cbcdd2",
-                      "borderRadius": 8,
                       "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
                       "flexGrow": 1,
@@ -860,106 +798,94 @@ exports[`DisplayPreference should render correctly 1`] = `
                   <View
                     isSelected={false}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "borderColor": "#cbcdd2",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "height": 16,
-                          "justifyContent": "center",
-                          "marginRight": 16,
-                          "width": 16,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#cbcdd2",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginRight": 16,
+                        "width": 16,
+                      }
                     }
                   >
                     <View
                       isSelected={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderRadius": 16,
-                            "height": 8,
-                            "width": 8,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "transparent",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 8,
+                          "width": 8,
+                        }
                       }
                     />
                   </View>
                   <View
                     contentDirection="row"
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <View
                       gap={4}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "gap": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
                         }
                       >
                         <Text
                           isHover={false}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Réglages appareil
                         </Text>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#696a6f",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                                "marginTop": 4,
-                              },
-                            ]
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 4,
+                            }
                           }
                         >
                           Automatique selon les réglages de ton appareil
                         </Text>
                       </View>
                       <View
-                        style={
-                          [
-                            {},
-                          ]
-                        }
+                        style={{}}
                       >
                         <View
                           fill="none"
@@ -980,11 +906,9 @@ exports[`DisplayPreference should render correctly 1`] = `
               customHeight={8}
               enable={true}
               style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
+                {
+                  "height": 8,
+                }
               }
             />
           </View>
@@ -995,17 +919,15 @@ exports[`DisplayPreference should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -1016,13 +938,11 @@ exports[`DisplayPreference should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

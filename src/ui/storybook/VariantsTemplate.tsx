@@ -71,7 +71,7 @@ export type VariantsStory<
   Props extends Record<string, unknown> = ComponentProps<ComponentType>,
 > = StoryObj<ComponentType>
 
-const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: number }>(
+const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight?: number }>(
   ({ withBackground, minHeight, theme }) => ({
     backgroundColor: withBackground
       ? theme.designSystem.color.background.brandSecondary

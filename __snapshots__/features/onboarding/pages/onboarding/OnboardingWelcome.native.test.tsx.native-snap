@@ -3,28 +3,24 @@
 exports[`OnboardingWelcome should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityIgnoresInvertColors={true}
     style={
-      [
-        {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-        },
-      ]
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+      }
     }
   >
     <Image
@@ -57,22 +53,16 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         "flexGrow": 1,
       }
     }
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       />
       <BVLinearGradient
@@ -101,39 +91,33 @@ exports[`OnboardingWelcome should render correctly 1`] = `
           }
         }
         style={
-          [
-            {
-              "height": 200,
-            },
-          ]
+          {
+            "height": 200,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "alignSelf": "center",
-              "backgroundColor": "#ffffff",
-              "bottom": 0,
-              "paddingBottom": 32,
-              "paddingHorizontal": 24,
-              "position": "static",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignSelf": "center",
+            "backgroundColor": "#ffffff",
+            "bottom": 0,
+            "paddingBottom": 32,
+            "paddingHorizontal": 24,
+            "position": "static",
+            "width": "100%",
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 28,
-                "lineHeight": 44.8,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 28,
+              "lineHeight": 44.8,
+              "textAlign": "center",
+            }
           }
         >
           Bienvenue sur le pass Culture
@@ -141,24 +125,20 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <Text
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            }
           }
         >
           Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as 17 ou 18 ans.
@@ -166,11 +146,9 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            [
-              {
-                "height": 24,
-              },
-            ]
+            {
+              "height": 24,
+            }
           }
         />
         <View
@@ -210,7 +188,10 @@ exports[`OnboardingWelcome should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "maxWidth": 500,
@@ -232,23 +213,19 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -265,15 +242,13 @@ exports[`OnboardingWelcome should render correctly 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
               }
             >
               C’est parti !
@@ -283,37 +258,31 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-                "gap": 4,
-                "justifyContent": "center",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "gap": 4,
+              "justifyContent": "center",
+            }
           }
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
             }
           >
             Déjà un compte ?
@@ -349,11 +318,9 @@ exports[`OnboardingWelcome should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
+                {
+                  "userSelect": "auto",
+                },
                 {
                   "opacity": 1,
                 },
@@ -365,14 +332,12 @@ exports[`OnboardingWelcome should render correctly 1`] = `
               gap={1}
               paddingForIcon={0}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                  "top": 0,
+                }
               }
             >
               <View
@@ -388,14 +353,12 @@ exports[`OnboardingWelcome should render correctly 1`] = `
               <Text
                 color="#eb0055"
                 style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
                 typography="Button"
               >
@@ -408,11 +371,9 @@ exports[`OnboardingWelcome should render correctly 1`] = `
           customHeight={8}
           enable={true}
           style={
-            [
-              {
-                "height": 8,
-              },
-            ]
+            {
+              "height": 8,
+            }
           }
         />
       </View>

@@ -210,83 +210,73 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
         maxHeight={1334}
         noPadding={true}
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderBottomEndRadius": 0,
-              "borderBottomLeftRadius": 0,
-              "borderBottomRightRadius": 0,
-              "borderBottomStartRadius": 0,
-              "borderTopEndRadius": 16,
-              "borderTopLeftRadius": 20,
-              "borderTopRightRadius": 20,
-              "borderTopStartRadius": 16,
-              "flexDirection": "column",
-              "height": 1318,
-              "justifyContent": "center",
-              "maxHeight": 1334,
-              "maxWidth": 960,
-              "paddingBottom": 32,
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomEndRadius": 0,
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderBottomStartRadius": 0,
+            "borderTopEndRadius": 16,
+            "borderTopLeftRadius": 20,
+            "borderTopRightRadius": 20,
+            "borderTopStartRadius": 16,
+            "flexDirection": "column",
+            "height": 1318,
+            "justifyContent": "center",
+            "maxHeight": 1334,
+            "maxWidth": 960,
+            "paddingBottom": 32,
+            "width": "100%",
+          }
         }
         testID="modalContainer"
       >
         <View
           nativeID="testUuidV4"
           style={
-            [
-              {
-                "flexDirection": "row",
-                "width": "100%",
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "width": "100%",
+            }
           }
           testID="customModalHeader"
         >
           <View
             accessibilityRole="header"
             style={
-              [
-                {
-                  "width": "100%",
-                },
-              ]
+              {
+                "width": "100%",
+              }
             }
           >
             <View
               height={72}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "height": 72,
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                    "zIndex": 1,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 72,
+                  "justifyContent": "space-between",
+                  "width": "100%",
+                  "zIndex": 1,
+                }
               }
               testID="pageHeader"
             >
               <View
                 positionInHeader="left"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "flex-start",
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  }
                 }
                 testID="back-button-container"
               />
@@ -294,15 +284,13 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 nativeID="testUuidV4"
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
-                      "textAlign": "center",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                    "textAlign": "center",
+                  }
                 }
               >
                 Accessibilité
@@ -310,18 +298,16 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
               <View
                 positionInHeader="right"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "flex-end",
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-end",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  }
                 }
                 testID="close-button-container"
               >
@@ -388,11 +374,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   </View>
                   <Text
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Retour
@@ -407,12 +391,10 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           style={
-            [
-              {
-                "paddingHorizontal": 24,
-                "width": "100%",
-              },
-            ]
+            {
+              "paddingHorizontal": 24,
+              "width": "100%",
+            }
           }
           testID="fullscreenModalScrollView"
         >
@@ -420,24 +402,20 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
             <View
               gap={8}
               style={
-                [
-                  {
-                    "gap": 32,
-                    "marginTop": 24,
-                  },
-                ]
+                {
+                  "gap": 32,
+                  "marginTop": 24,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
@@ -445,15 +423,13 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
               <View
                 accessibilityRole="list"
                 style={
-                  [
-                    {
-                      "display": "flex",
-                      "flexDirection": "column",
-                      "gap": 16,
-                      "paddingLeft": 0,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "gap": 16,
+                    "paddingLeft": 0,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
@@ -493,9 +469,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                         {
                           "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
-                          "borderRadius": 8,
                           "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "paddingBottom": 16,
@@ -514,13 +493,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "columnGap": 12,
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
@@ -534,31 +511,30 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         ]
                       }
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 4,
-                            "borderStyle": "solid",
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        }
                       }
                       variant="detailed"
                     />
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
@@ -571,14 +547,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           ]
                         }
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Handicap visuel
@@ -586,11 +560,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                        }
                       }
                     >
                       <View
@@ -642,9 +614,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                         {
                           "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
-                          "borderRadius": 8,
                           "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "paddingBottom": 16,
@@ -663,13 +638,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "columnGap": 12,
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
@@ -683,31 +656,30 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         ]
                       }
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 4,
-                            "borderStyle": "solid",
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        }
                       }
                       variant="detailed"
                     />
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
@@ -720,14 +692,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           ]
                         }
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Handicap psychique ou cognitif
@@ -735,11 +705,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                        }
                       }
                     >
                       <View
@@ -791,9 +759,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                         {
                           "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
-                          "borderRadius": 8,
                           "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "paddingBottom": 16,
@@ -812,13 +783,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "columnGap": 12,
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
@@ -832,31 +801,30 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         ]
                       }
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 4,
-                            "borderStyle": "solid",
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        }
                       }
                       variant="detailed"
                     />
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
@@ -869,14 +837,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           ]
                         }
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Handicap moteur
@@ -884,11 +850,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                        }
                       }
                     >
                       <View
@@ -940,9 +904,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                         {
                           "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
-                          "borderRadius": 8,
                           "borderStyle": "solid",
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "paddingBottom": 16,
@@ -961,13 +928,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "columnGap": 12,
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <View
@@ -981,31 +946,30 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         ]
                       }
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 4,
-                            "borderStyle": "solid",
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "borderWidth": 2,
+                          "height": 20,
+                          "justifyContent": "center",
+                          "width": 20,
+                        }
                       }
                       variant="detailed"
                     />
                     <View
                       style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        }
                       }
                     >
                       <Text
@@ -1018,14 +982,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           ]
                         }
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         Handicap auditif
@@ -1033,11 +995,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                        }
                       }
                     >
                       <View
@@ -1058,38 +1018,32 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
         </RCTScrollView>
         <View
           style={
-            [
-              {
-                "width": "100%",
-              },
-            ]
+            {
+              "width": "100%",
+            }
           }
           testID="fixedModalBottom"
         >
           <View
             paddingBottom={0}
             style={
-              [
-                {
-                  "backgroundColor": "#ffffff",
-                  "paddingBottom": 0,
-                },
-              ]
+              {
+                "backgroundColor": "#ffffff",
+                "paddingBottom": 0,
+              }
             }
           >
             <View
               gap={4}
               isModal={true}
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "justifyContent": "center",
-                    "paddingHorizontal": 24,
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "center",
+                  "paddingHorizontal": 24,
+                  "paddingTop": 8,
+                }
               }
             >
               <View
@@ -1128,7 +1082,10 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "maxWidth": 500,
@@ -1153,23 +1110,19 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "flexDirection": "row",
-                          "flexShrink": 0,
-                          "marginRight": 8,
-                        },
-                      ]
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                        "marginRight": 8,
+                      }
                     }
                   >
                     <View
@@ -1186,15 +1139,13 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Réinitialiser
@@ -1238,7 +1189,10 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "maxWidth": 500,
@@ -1263,27 +1217,23 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Rechercher
@@ -1297,11 +1247,9 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
           customHeight={8}
           enable={true}
           style={
-            [
-              {
-                "height": 8,
-              },
-            ]
+            {
+              "height": 8,
+            }
           }
         />
       </View>

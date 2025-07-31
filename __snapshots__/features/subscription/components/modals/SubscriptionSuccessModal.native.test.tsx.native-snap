@@ -147,88 +147,78 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -238,15 +228,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -312,11 +300,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -324,14 +310,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -343,12 +327,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -361,54 +343,46 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu recevras nos bons plans et toute l’actu des ateliers, cours et masterclass près de chez toi !
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginBottom": 24,
-                        "marginTop": 16,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 16,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
@@ -448,7 +422,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                           {
                             "alignItems": "center",
                             "backgroundColor": "#eb0055",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -472,27 +449,23 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <Text
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Continuer sur l’app
@@ -535,7 +508,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                           },
                           {
                             "alignItems": "center",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -559,23 +535,19 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
                         }
                       >
                         <View
@@ -593,15 +565,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Voir mes préférences
@@ -766,88 +736,78 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -857,15 +817,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -931,11 +889,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -943,14 +899,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -962,12 +916,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -980,54 +932,46 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu recevras toute l’actu ciné (sorties, avant-premières…) et les bons plans !
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginBottom": 24,
-                        "marginTop": 16,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 16,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
@@ -1067,7 +1011,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "#eb0055",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -1091,27 +1038,23 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <Text
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Continuer sur l’app
@@ -1154,7 +1097,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                           },
                           {
                             "alignItems": "center",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -1178,23 +1124,19 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
                         }
                       >
                         <View
@@ -1212,15 +1154,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Voir mes préférences
@@ -1385,88 +1325,78 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -1476,15 +1406,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -1550,11 +1478,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -1562,14 +1488,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -1581,12 +1505,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -1599,54 +1521,46 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu recevras nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginBottom": 24,
-                        "marginTop": 16,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 16,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
@@ -1686,7 +1600,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                           {
                             "alignItems": "center",
                             "backgroundColor": "#eb0055",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -1710,27 +1627,23 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <Text
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Continuer sur l’app
@@ -1773,7 +1686,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                           },
                           {
                             "alignItems": "center",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -1797,23 +1713,19 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
                         }
                       >
                         <View
@@ -1831,15 +1743,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Voir mes préférences
@@ -2004,88 +1914,78 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -2095,15 +1995,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -2169,11 +2067,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -2181,14 +2077,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -2200,12 +2094,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -2218,54 +2110,46 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu recevras les bons plans musique et l’actu des événements près de chez toi !
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginBottom": 24,
-                        "marginTop": 16,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 16,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
@@ -2305,7 +2189,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                           {
                             "alignItems": "center",
                             "backgroundColor": "#eb0055",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -2329,27 +2216,23 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <Text
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Continuer sur l’app
@@ -2392,7 +2275,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                           },
                           {
                             "alignItems": "center",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -2416,23 +2302,19 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
                         }
                       >
                         <View
@@ -2450,15 +2332,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Voir mes préférences
@@ -2623,88 +2503,78 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -2714,15 +2584,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -2788,11 +2656,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -2800,14 +2666,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -2819,12 +2683,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -2837,54 +2699,46 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Stand-up, théâtre, comédies musicales... tu recevras toute l’actu des événements près de chez toi !
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginBottom": 24,
-                        "marginTop": 16,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 16,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
@@ -2924,7 +2778,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                           {
                             "alignItems": "center",
                             "backgroundColor": "#eb0055",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -2948,27 +2805,23 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <Text
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Continuer sur l’app
@@ -3011,7 +2864,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                           },
                           {
                             "alignItems": "center",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -3035,23 +2891,19 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
                         }
                       >
                         <View
@@ -3069,15 +2921,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Voir mes préférences
@@ -3242,88 +3092,78 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -3333,15 +3173,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -3407,11 +3245,9 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -3419,14 +3255,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -3438,12 +3272,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -3456,54 +3288,46 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu recevras les meilleurs plans de sorties, visites, expos et évènements près de chez toi !
                 </Text>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginBottom": 24,
-                        "marginTop": 16,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginBottom": 24,
+                      "marginTop": 16,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Tu pourras gérer tes alertes depuis ton profil.
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "marginBottom": 16,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "marginBottom": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
@@ -3543,7 +3367,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                           {
                             "alignItems": "center",
                             "backgroundColor": "#eb0055",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -3567,27 +3394,23 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <Text
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Continuer sur l’app
@@ -3630,7 +3453,10 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                           },
                           {
                             "alignItems": "center",
-                            "borderRadius": 24,
+                            "borderBottomLeftRadius": 24,
+                            "borderBottomRightRadius": 24,
+                            "borderTopLeftRadius": 24,
+                            "borderTopRightRadius": 24,
                             "flexDirection": "row",
                             "justifyContent": "center",
                             "maxWidth": 500,
@@ -3654,23 +3480,19 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   >
                     <View
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexDirection": "row",
-                              "flexShrink": 0,
-                              "marginRight": 8,
-                            },
-                          ]
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
                         }
                       >
                         <View
@@ -3688,15 +3510,13 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "maxWidth": "100%",
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          }
                         }
                       >
                         Voir mes préférences

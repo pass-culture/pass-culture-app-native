@@ -6,7 +6,7 @@ exports[`EndedBookings should render correctly 1`] = `
     {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": [],
-      "inlineStyle": InlineStyle {
+      "inlineStyle": e {
         "rules": [
           [Function],
           "margin-vertical: 16px;",
@@ -14,9 +14,8 @@ exports[`EndedBookings should render correctly 1`] = `
       },
       "render": [Function],
       "shouldForwardProp": undefined,
-      "styledComponentId": "StyledNativeComponent",
+      "styledComponentId": true,
       "target": [Function],
-      "withComponent": [Function],
     }
   }
   ListEmptyComponent={<NoBookingsView />}
@@ -180,11 +179,9 @@ exports[`EndedBookings should render correctly 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          [
-            {
-              "height": 24,
-            },
-          ]
+          {
+            "height": 24,
+          }
         }
       />
     </View>
@@ -195,12 +192,10 @@ exports[`EndedBookings should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
         }
       >
         <View
@@ -257,35 +252,34 @@ exports[`EndedBookings should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "gap": 16,
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 16,
+              }
             }
           >
             <View
               size="small"
               style={
-                [
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
-                    "width": 64,
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "shadowColor": "#696A6F",
+                  "shadowOffset": {
+                    "height": 4,
+                    "width": 0,
                   },
-                ]
+                  "shadowOpacity": 0.2,
+                  "shadowRadius": 4,
+                  "width": 64,
+                }
               }
               withShadow={true}
             >
@@ -296,7 +290,10 @@ exports[`EndedBookings should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#f1f1f4",
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "height": "100%",
                       "justifyContent": "center",
                       "width": "100%",
@@ -319,37 +316,31 @@ exports[`EndedBookings should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "paddingRight": 4,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingRight": 4,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "paddingBottom": 4,
-                    },
-                  ]
+                  {
+                    "paddingBottom": 4,
+                  }
                 }
               >
                 <Text
                   numberOfLines={2}
                   shrink={true}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Avez-vous déjà vu ?
@@ -358,79 +349,70 @@ exports[`EndedBookings should render correctly 1`] = `
               <View
                 gap={1}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 4,
+                  }
                 }
               >
                 <View
                   gap={1}
                   noFullWidth={true}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row-reverse",
-                        "gap": 4,
-                        "justifyContent": "flex-end",
-                        "maxWidth": 500,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row-reverse",
+                      "gap": 4,
+                      "justifyContent": "flex-end",
+                      "maxWidth": 500,
+                    }
                   }
                 >
                   <Text
                     color="error"
                     noFullWidth={true}
                     style={
-                      [
-                        {
-                          "color": "#a20121",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "paddingLeft": 4,
-                          "textAlign": "center",
-                        },
-                      ]
+                      {
+                        "color": "#a20121",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "paddingLeft": 4,
+                        "textAlign": "center",
+                      }
                     }
                   >
                     Réservation annulée
                   </Text>
                   <View
                     style={
-                      [
-                        {
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       height={20}
+                      testID="rule-icon-"
                       width={20}
                     >
                       <Text>
-                        undefined-SVG-Mock
+                        rule-icon--SVG-Mock
                       </Text>
                     </View>
                   </View>
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   le 15/03/2021
@@ -442,20 +424,19 @@ exports[`EndedBookings should render correctly 1`] = `
         <View
           gap={4}
           style={
-            [
-              {
-                "gap": 16,
-              },
-            ]
+            {
+              "gap": 16,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "borderRadius": 40,
-                },
-              ]
+              {
+                "borderBottomLeftRadius": 40,
+                "borderBottomRightRadius": 40,
+                "borderTopLeftRadius": 40,
+                "borderTopRightRadius": 40,
+              }
             }
           >
             <View
@@ -494,7 +475,10 @@ exports[`EndedBookings should render correctly 1`] = `
                       "userSelect": "auto",
                     },
                     {
-                      "borderRadius": 40,
+                      "borderBottomLeftRadius": 40,
+                      "borderBottomRightRadius": 40,
+                      "borderTopLeftRadius": 40,
+                      "borderTopRightRadius": 40,
                     },
                   ],
                   {
@@ -511,9 +495,12 @@ exports[`EndedBookings should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 40,
+                      "borderBottomRightRadius": 40,
                       "borderColor": "#90949d",
-                      "borderRadius": 40,
                       "borderStyle": "solid",
+                      "borderTopLeftRadius": 40,
+                      "borderTopRightRadius": 40,
                       "borderWidth": 1,
                       "height": 40,
                       "justifyContent": "center",
@@ -605,14 +592,12 @@ exports[`EndedBookings should render correctly 1`] = `
           }
         }
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
         }
       />
     </View>
@@ -623,12 +608,10 @@ exports[`EndedBookings should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
         }
       >
         <View
@@ -685,35 +668,34 @@ exports[`EndedBookings should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "gap": 16,
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 16,
+              }
             }
           >
             <View
               size="small"
               style={
-                [
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
-                    "width": 64,
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "shadowColor": "#696A6F",
+                  "shadowOffset": {
+                    "height": 4,
+                    "width": 0,
                   },
-                ]
+                  "shadowOpacity": 0.2,
+                  "shadowRadius": 4,
+                  "width": 64,
+                }
               }
               withShadow={true}
             >
@@ -724,7 +706,10 @@ exports[`EndedBookings should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#f1f1f4",
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "height": "100%",
                       "justifyContent": "center",
                       "width": "100%",
@@ -747,37 +732,31 @@ exports[`EndedBookings should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "paddingRight": 4,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingRight": 4,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "paddingBottom": 4,
-                    },
-                  ]
+                  {
+                    "paddingBottom": 4,
+                  }
                 }
               >
                 <Text
                   numberOfLines={2}
                   shrink={true}
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Avez-vous déjà vu ?
@@ -786,79 +765,70 @@ exports[`EndedBookings should render correctly 1`] = `
               <View
                 gap={1}
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                      "gap": 4,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 4,
+                  }
                 }
               >
                 <View
                   gap={1}
                   noFullWidth={true}
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row-reverse",
-                        "gap": 4,
-                        "justifyContent": "flex-end",
-                        "maxWidth": 500,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row-reverse",
+                      "gap": 4,
+                      "justifyContent": "flex-end",
+                      "maxWidth": 500,
+                    }
                   }
                 >
                   <Text
                     color="success"
                     noFullWidth={true}
                     style={
-                      [
-                        {
-                          "color": "#15884f",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "paddingLeft": 4,
-                          "textAlign": "center",
-                        },
-                      ]
+                      {
+                        "color": "#15884f",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "paddingLeft": 4,
+                        "textAlign": "center",
+                      }
                     }
                   >
                     Réservation utilisée
                   </Text>
                   <View
                     style={
-                      [
-                        {
-                          "flexShrink": 0,
-                        },
-                      ]
+                      {
+                        "flexShrink": 0,
+                      }
                     }
                   >
                     <View
                       height={20}
+                      testID="rule-icon-"
                       width={20}
                     >
                       <Text>
-                        undefined-SVG-Mock
+                        rule-icon--SVG-Mock
                       </Text>
                     </View>
                   </View>
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   le 15/03/2021
@@ -870,20 +840,19 @@ exports[`EndedBookings should render correctly 1`] = `
         <View
           gap={4}
           style={
-            [
-              {
-                "gap": 16,
-              },
-            ]
+            {
+              "gap": 16,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "borderRadius": 40,
-                },
-              ]
+              {
+                "borderBottomLeftRadius": 40,
+                "borderBottomRightRadius": 40,
+                "borderTopLeftRadius": 40,
+                "borderTopRightRadius": 40,
+              }
             }
           >
             <View
@@ -922,7 +891,10 @@ exports[`EndedBookings should render correctly 1`] = `
                       "userSelect": "auto",
                     },
                     {
-                      "borderRadius": 40,
+                      "borderBottomLeftRadius": 40,
+                      "borderBottomRightRadius": 40,
+                      "borderTopLeftRadius": 40,
+                      "borderTopRightRadius": 40,
                     },
                   ],
                   {
@@ -939,9 +911,12 @@ exports[`EndedBookings should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 40,
+                      "borderBottomRightRadius": 40,
                       "borderColor": "#90949d",
-                      "borderRadius": 40,
                       "borderStyle": "solid",
+                      "borderTopLeftRadius": 40,
+                      "borderTopRightRadius": 40,
                       "borderWidth": 1,
                       "height": 40,
                       "justifyContent": "center",

@@ -85,7 +85,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
 
   const headerHeight = useGetHeaderHeight()
-  const { top, bottom } = useSafeAreaInsets()
+  const { top } = useSafeAreaInsets()
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
 
@@ -98,7 +98,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         RightButton={<SkipButton withSkipAction={withSkipAction} />}
       />
 
-      <Container bottom={bottom}>
+      <Container>
         <Placeholder height={placeholderHeight} />
 
         <Spacer.Flex flex={1} />
@@ -257,7 +257,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'space-between',
   paddingHorizontal: theme.contentPage.marginHorizontal,

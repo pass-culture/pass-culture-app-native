@@ -50,7 +50,7 @@ export const IdentityCheckEnd: FC = () => {
   )
 }
 
-const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'space-between',
   paddingHorizontal: theme.contentPage.marginHorizontal,
@@ -58,7 +58,7 @@ const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
   overflow: 'scroll',
 }))
 
-const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation }) => ({
+const IllustrationContainer = styled.View<{ animation?: boolean }>(({ animation }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   marginBottom: getSpacing(6),

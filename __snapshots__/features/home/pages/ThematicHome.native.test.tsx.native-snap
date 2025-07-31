@@ -3,38 +3,32 @@
 exports[`ThematicHome should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 1,
-          "flexGrow": 1,
-          "flexShrink": 0,
-        },
-      ]
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      }
     }
   >
     <View
       hide={false}
       style={
-        [
-          {
-            "height": "100%",
-            "marginVertical": 24,
-            "overflow": "hidden",
-          },
-        ]
+        {
+          "height": "100%",
+          "marginVertical": 24,
+          "overflow": "hidden",
+        }
       }
     >
       <RCTScrollView
@@ -129,11 +123,9 @@ exports[`ThematicHome should render correctly 1`] = `
         scrollEventThrottle={16}
         stickyHeaderIndices={[]}
         style={
-          [
-            {
-              "overflow": "visible",
-            },
-          ]
+          {
+            "overflow": "visible",
+          }
         }
         testID="homeBodyScrollView"
         updateCellsBatchingPeriod={200}
@@ -156,30 +148,24 @@ exports[`ThematicHome should render correctly 1`] = `
               <View
                 numberOfSpaces={51}
                 style={
-                  [
-                    {
-                      "height": 204,
-                    },
-                  ]
+                  {
+                    "height": 204,
+                  }
                 }
               />
               <View
                 numberOfSpaces={6}
                 style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
+                  {
+                    "height": 24,
+                  }
                 }
               />
               <View
                 style={
-                  [
-                    {
-                      "marginHorizontal": 24,
-                    },
-                  ]
+                  {
+                    "marginHorizontal": 24,
+                  }
                 }
               />
             </View>
@@ -196,11 +182,9 @@ exports[`ThematicHome should render correctly 1`] = `
               customHeight={72}
               enable={true}
               style={
-                [
-                  {
-                    "height": 72,
-                  },
-                ]
+                {
+                  "height": 72,
+                }
               }
             />
           </View>
@@ -208,14 +192,12 @@ exports[`ThematicHome should render correctly 1`] = `
       </RCTScrollView>
       <View
         style={
-          [
-            {
-              "bottom": 88,
-              "position": "absolute",
-              "right": 28,
-              "zIndex": 1,
-            },
-          ]
+          {
+            "bottom": 88,
+            "position": "absolute",
+            "right": 28,
+            "zIndex": 1,
+          }
         }
       >
         <View
@@ -267,17 +249,18 @@ exports[`ThematicHome should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#320096",
-                    "borderRadius": 24,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "overflow": "hidden",
-                    "width": 40,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#320096",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "overflow": "hidden",
+                  "width": 40,
+                }
               }
             >
               <View
@@ -296,11 +279,9 @@ exports[`ThematicHome should render correctly 1`] = `
           customHeight={8}
           enable={true}
           style={
-            [
-              {
-                "height": 8,
-              },
-            ]
+            {
+              "height": 8,
+            }
           }
         />
       </View>
@@ -347,13 +328,11 @@ exports[`ThematicHome should render correctly 1`] = `
             {
               "backgroundColor": "transparent",
             },
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ],
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
           ]
         }
       />
@@ -362,17 +341,15 @@ exports[`ThematicHome should render correctly 1`] = `
       marginRight={24}
       marginTop={16}
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginBottom": 8,
-            "marginLeft": 24,
-            "marginRight": 24,
-            "marginTop": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginBottom": 8,
+          "marginLeft": 24,
+          "marginRight": 24,
+          "marginTop": 16,
+        }
       }
     >
       <View
@@ -407,7 +384,10 @@ exports[`ThematicHome should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderRadius": 40,
+            "borderBottomLeftRadius": 40,
+            "borderBottomRightRadius": 40,
+            "borderTopLeftRadius": 40,
+            "borderTopRightRadius": 40,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -421,9 +401,12 @@ exports[`ThematicHome should render correctly 1`] = `
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderBottomLeftRadius": 40,
+              "borderBottomRightRadius": 40,
               "borderColor": "rgba(255, 255, 255, 1)",
-              "borderRadius": 40,
               "borderStyle": "solid",
+              "borderTopLeftRadius": 40,
+              "borderTopRightRadius": 40,
               "borderWidth": 1,
               "height": 40,
               "justifyContent": "center",
@@ -436,12 +419,10 @@ exports[`ThematicHome should render correctly 1`] = `
           <View
             size={24}
             style={
-              [
-                {
-                  "height": 24,
-                  "width": 24,
-                },
-              ]
+              {
+                "height": 24,
+                "width": 24,
+              }
             }
           >
             <View
@@ -489,15 +470,13 @@ exports[`ThematicHome should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          }
         }
       >
         <Text
@@ -514,14 +493,12 @@ exports[`ThematicHome should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             HeaderTitle
@@ -572,8 +549,11 @@ exports[`ThematicHome should render correctly 1`] = `
                 "alignItems": "center",
                 "alignSelf": "flex-start",
                 "backgroundColor": "#ffffff",
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
                 "borderColor": "#90949d",
-                "borderRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "borderWidth": 1,
                 "flexDirection": "row",
                 "height": "auto",
@@ -592,15 +572,13 @@ exports[`ThematicHome should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "marginLeft": 8,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "marginLeft": 8,
+                }
               }
             >
               Suivre
@@ -632,15 +610,13 @@ exports[`ThematicHome should render correctly 1`] = `
   >
     <View
       style={
-        [
-          {
-            "height": 180,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-        ]
+        {
+          "height": 180,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
       }
     >
       <View
@@ -655,14 +631,12 @@ exports[`ThematicHome should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-            },
-          ]
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          }
         }
       >
         <View
@@ -689,25 +663,21 @@ exports[`ThematicHome should render correctly 1`] = `
           <View
             gap={1}
             style={
-              [
-                {
-                  "gap": 4,
-                },
-              ]
+              {
+                "gap": 4,
+              }
             }
           >
             <Text
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "marginBottom": 4,
-                  },
-                ]
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "marginBottom": 4,
+                }
               }
             >
               HeaderSubtitle
@@ -716,14 +686,12 @@ exports[`ThematicHome should render correctly 1`] = `
           <Text
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 28,
-                  "lineHeight": 44.8,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 28,
+                "lineHeight": 44.8,
+              }
             }
           >
             HeaderTitle

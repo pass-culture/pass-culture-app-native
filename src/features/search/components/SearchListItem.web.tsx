@@ -1,4 +1,5 @@
 import React, { CSSProperties, ReactNode } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
@@ -63,7 +64,7 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
         nbHits={data.nbHits}
         autoScrollEnabled={data.autoScrollEnabled}
         onPress={data.onPress}
-        style={style}
+        style={style as StyleProp<ViewStyle>}
       />
     )
   }

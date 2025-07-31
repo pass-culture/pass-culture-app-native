@@ -13,7 +13,7 @@ const meta: Meta<typeof SingleFilterButton> = {
 }
 export default meta
 
-const GradientBullet = styled(LinearGradient).attrs(({ theme }) => ({
+const GradientBullet = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     theme.designSystem.color.background.brandPrimary,
     theme.designSystem.color.background.brandPrimaryHover,

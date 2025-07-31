@@ -3,14 +3,12 @@
 exports[`<IdentityCheckHonor/> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <RCTScrollView
@@ -23,33 +21,25 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
         "width": "100%",
       }
     }
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         headerHeight={65}
         style={
-          [
-            {
-              "paddingTop": 65,
-            },
-          ]
+          {
+            "paddingTop": 65,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+          }
         }
       >
         Les informations que tu as renseignées sont-elles correctes ?
@@ -57,23 +47,19 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       <View
         numberOfSpaces={10}
         style={
-          [
-            {
-              "height": 40,
-            },
-          ]
+          {
+            "height": 40,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 17,
+            "lineHeight": 27.2,
+          }
         }
       >
         "Je déclare que l’ensemble des informations que j’ai renseignées durant mon inscription sont correctes."
@@ -81,23 +67,19 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          [
-            {
-              "height": 16,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 14,
+            "lineHeight": 22.4,
+          }
         }
       >
         Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
@@ -105,11 +87,9 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       <View
         numberOfSpaces={15}
         style={
-          [
-            {
-              "height": 60,
-            },
-          ]
+          {
+            "height": 60,
+          }
         }
       />
       <View
@@ -149,7 +129,10 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -171,27 +154,23 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Valider et continuer
@@ -201,22 +180,18 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
       />
       <View
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>

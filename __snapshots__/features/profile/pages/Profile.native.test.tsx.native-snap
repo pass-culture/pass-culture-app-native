@@ -3,14 +3,12 @@
 exports[`Profile component should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <RCTScrollView
@@ -22,14 +20,12 @@ exports[`Profile component should render correctly 1`] = `
     <View>
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
       >
         <View
@@ -37,19 +33,20 @@ exports[`Profile component should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "borderColor": "#90949d",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 2,
-                  "paddingHorizontal": 4,
-                  "position": "absolute",
-                  "right": 24,
-                  "top": 40,
-                  "zIndex": 50,
-                },
-              ]
+              {
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderColor": "#90949d",
+                "borderStyle": "solid",
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "borderWidth": 2,
+                "paddingHorizontal": 4,
+                "position": "absolute",
+                "right": 24,
+                "top": 40,
+                "zIndex": 50,
+              }
             }
             topSafeInsets={16}
           >
@@ -89,7 +86,10 @@ exports[`Profile component should render correctly 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -113,27 +113,23 @@ exports[`Profile component should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <Text
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Cheatcodes
@@ -145,48 +141,39 @@ exports[`Profile component should render correctly 1`] = `
             customHeight={16}
             enable={true}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "marginHorizontal": 24,
-                  "marginTop": 24,
-                  "zIndex": 1,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginHorizontal": 24,
+                "marginTop": 24,
+                "zIndex": 1,
+              }
             }
           >
             <View
-              gap={1}
               style={
-                [
-                  {
-                    "flexShrink": 1,
-                  },
-                ]
+                {
+                  "flexShrink": 1,
+                }
               }
             >
               <Text
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 28,
-                      "lineHeight": 44.8,
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 28,
+                    "lineHeight": 44.8,
+                    "marginBottom": 4,
+                  }
                 }
               >
                 Mon profil
@@ -195,79 +182,65 @@ exports[`Profile component should render correctly 1`] = `
           </View>
           <View
             style={
-              [
-                {
-                  "backgroundColor": "#ffffff",
-                  "flexDirection": "column",
-                  "paddingHorizontal": 24,
-                },
-              ]
+              {
+                "backgroundColor": "#ffffff",
+                "flexDirection": "column",
+                "paddingHorizontal": 24,
+              }
             }
           >
             <View
               numberOfSpaces={4}
               style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
+                {
+                  "height": 16,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "paddingTop": 8,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Paramètres du compte
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 accessibilityRole="list"
                 style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
                 }
               >
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -322,11 +295,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -342,36 +313,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Informations personnelles
@@ -379,11 +344,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -402,11 +365,9 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -461,11 +422,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -480,36 +439,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Notifications
@@ -517,11 +470,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -540,41 +491,35 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                        "marginVertical": 16,
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                      "marginVertical": 16,
+                    }
                   }
                 >
                   <View
                     gap={4}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 16,
-                          "justifyContent": "flex-start",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 16,
+                        "justifyContent": "flex-start",
+                      }
                     }
                     toggleLabel={true}
                   >
                     <View
                       gap={2}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexBasis": 0,
-                            "flexDirection": "row",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "gap": 8,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 8,
+                        }
                       }
                       toggleLabel={true}
                     >
@@ -589,26 +534,22 @@ exports[`Profile component should render correctly 1`] = `
                       <Text
                         htmlFor="testUuidV4"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
                       >
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Activer ma géolocalisation
@@ -618,33 +559,27 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       gap={4}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "gap": 16,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        }
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                          }
                         }
                       >
                         <Text
                           accessibilityHidden={true}
                           style={
-                            [
-                              {
-                                "display": "none",
-                              },
-                            ]
+                            {
+                              "display": "none",
+                            }
                           }
                         >
                           Case à cocher - 
@@ -680,11 +615,9 @@ exports[`Profile component should render correctly 1`] = `
                           onStartShouldSetResponder={[Function]}
                           style={
                             [
-                              [
-                                {
-                                  "userSelect": "auto",
-                                },
-                              ],
+                              {
+                                "userSelect": "auto",
+                              },
                               {
                                 "opacity": 1,
                               },
@@ -695,15 +628,16 @@ exports[`Profile component should render correctly 1`] = `
                           <View
                             active={true}
                             style={
-                              [
-                                {
-                                  "backgroundColor": "#15884f",
-                                  "borderRadius": 16,
-                                  "height": 32,
-                                  "justifyContent": "center",
-                                  "width": 56,
-                                },
-                              ]
+                              {
+                                "backgroundColor": "#15884f",
+                                "borderBottomLeftRadius": 16,
+                                "borderBottomRightRadius": 16,
+                                "borderTopLeftRadius": 16,
+                                "borderTopRightRadius": 16,
+                                "height": 32,
+                                "justifyContent": "center",
+                                "width": 56,
+                              }
                             }
                           >
                             <View
@@ -714,7 +648,10 @@ exports[`Profile component should render correctly 1`] = `
                                     "alignItems": "center",
                                     "aspectRatio": 1,
                                     "backgroundColor": "#ffffff",
-                                    "borderRadius": 28,
+                                    "borderBottomLeftRadius": 28,
+                                    "borderBottomRightRadius": 28,
+                                    "borderTopLeftRadius": 28,
+                                    "borderTopRightRadius": 28,
                                     "height": 28,
                                     "justifyContent": "center",
                                     "shadowColor": "#161617",
@@ -752,58 +689,48 @@ exports[`Profile component should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "paddingTop": 8,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Aides
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 accessibilityRole="list"
                 style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
                 }
               >
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -858,11 +785,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -877,36 +802,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Comment ça marche ?
@@ -914,11 +833,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -937,11 +854,9 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -996,11 +911,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -1016,36 +929,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Centre d’aide
@@ -1058,58 +965,48 @@ exports[`Profile component should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "paddingTop": 8,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Autres
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 accessibilityRole="list"
                 style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
                 }
               >
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -1164,11 +1061,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -1183,36 +1078,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Préférences d’affichage
@@ -1220,11 +1109,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -1243,11 +1130,9 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -1302,11 +1187,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -1322,36 +1205,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Accessibilité
@@ -1359,11 +1236,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -1382,11 +1257,9 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -1441,11 +1314,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -1460,36 +1331,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Faire une suggestion
@@ -1497,11 +1362,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -1520,11 +1383,9 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -1579,11 +1440,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -1598,36 +1457,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Informations légales
@@ -1635,11 +1488,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -1658,11 +1509,9 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityRole="none"
                   style={
-                    [
-                      {
-                        "display": "flex",
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
                 >
                   <View
@@ -1717,11 +1566,9 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          [
-                            {
-                              "paddingVertical": 16,
-                            },
-                          ],
+                          {
+                            "paddingVertical": 16,
+                          },
                         ]
                       }
                     >
@@ -1736,36 +1583,30 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         numberOfSpaces={2}
                         style={
-                          [
-                            {
-                              "width": 8,
-                            },
-                          ]
+                          {
+                            "width": 8,
+                          }
                         }
                       />
                       <View
                         style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "textAlign": "left",
+                          }
                         }
                       >
                         <Text
                           numberOfLines={2}
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Confidentialité
@@ -1773,11 +1614,9 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                          }
                         }
                       >
                         <View
@@ -1797,47 +1636,39 @@ exports[`Profile component should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "paddingTop": 8,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Partager le pass Culture
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 numberOfSpaces={4}
                 style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
+                  {
+                    "height": 16,
+                  }
                 }
               />
               <View
@@ -1869,11 +1700,9 @@ exports[`Profile component should render correctly 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                    ],
+                    {
+                      "userSelect": "auto",
+                    },
                     {
                       "opacity": 1,
                     },
@@ -1882,24 +1711,23 @@ exports[`Profile component should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "borderRadius": 7,
-                        "overflow": "hidden",
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 7,
+                      "borderBottomRightRadius": 7,
+                      "borderTopLeftRadius": 7,
+                      "borderTopRightRadius": 7,
+                      "overflow": "hidden",
+                    }
                   }
                 >
                   <View
                     accessibilityIgnoresInvertColors={true}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#eb0055",
-                          "justifyContent": "center",
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#eb0055",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      }
                     }
                   >
                     <Image
@@ -1939,61 +1767,51 @@ exports[`Profile component should render correctly 1`] = `
                             "padding": 16,
                             "width": "100%",
                           },
-                          [
-                            {
-                              "borderWidth": 0,
-                            },
-                          ],
+                          {
+                            "borderWidth": 0,
+                          },
                         ]
                       }
                     >
                       <View
                         style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "marginRight": 16,
-                              "textAlign": "start",
-                            },
-                          ]
+                          {
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginRight": 16,
+                            "textAlign": "start",
+                          }
                         }
                       >
                         <View
                           gap={1}
                           style={
-                            [
-                              {
-                                "gap": 4,
-                                "paddingRight": 32,
-                              },
-                            ]
+                            {
+                              "gap": 4,
+                              "paddingRight": 32,
+                            }
                           }
                         >
                           <Text
                             style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                },
-                              ]
+                              {
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
                           >
                             Partage le pass Culture
                           </Text>
                           <Text
                             style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-Medium",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                },
-                              ]
+                              {
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
                           >
                             Recommande le bon plan à tes amis !
@@ -2017,97 +1835,81 @@ exports[`Profile component should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
+                  {
+                    "height": 16,
+                  }
                 }
               />
             </View>
             <View
               style={
-                [
-                  {
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "paddingTop": 8,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Suivre le pass Culture
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": "auto",
-                      "marginLeft": "auto",
-                      "marginRight": "auto",
-                      "marginTop": "auto",
-                      "maxWidth": 500,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "marginBottom": "auto",
+                    "marginLeft": "auto",
+                    "marginRight": "auto",
+                    "marginTop": "auto",
+                    "maxWidth": 500,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingVertical": 16,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingVertical": 16,
+                    }
                   }
                 >
                   <View
                     accessibilityRole="list"
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "space-between",
-                          "paddingLeft": 0,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "space-between",
+                        "paddingLeft": 0,
+                      }
                     }
                   >
                     <View
                       accessibilityRole="none"
                       style={
-                        [
-                          {
-                            "display": "flex",
-                          },
-                        ]
+                        {
+                          "display": "flex",
+                        }
                       }
                     >
                       <View
@@ -2155,27 +1957,23 @@ exports[`Profile component should render correctly 1`] = `
                         <View
                           gap={1}
                           style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "column",
-                                "gap": 4,
-                                "justifyContent": "center",
-                                "maxWidth": 80,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "column",
+                              "gap": 4,
+                              "justifyContent": "center",
+                              "maxWidth": 80,
+                            }
                           }
                         >
                           <View
                             style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "height": 32,
-                                  "justifyContent": "center",
-                                  "width": 32,
-                                },
-                              ]
+                              {
+                                "alignItems": "center",
+                                "height": 32,
+                                "justifyContent": "center",
+                                "width": 32,
+                              }
                             }
                           >
                             <View
@@ -2190,14 +1988,12 @@ exports[`Profile component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 19.2,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
                             }
                           >
                             Instagram
@@ -2208,11 +2004,9 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       accessibilityRole="none"
                       style={
-                        [
-                          {
-                            "display": "flex",
-                          },
-                        ]
+                        {
+                          "display": "flex",
+                        }
                       }
                     >
                       <View
@@ -2260,27 +2054,23 @@ exports[`Profile component should render correctly 1`] = `
                         <View
                           gap={1}
                           style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "column",
-                                "gap": 4,
-                                "justifyContent": "center",
-                                "maxWidth": 80,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "column",
+                              "gap": 4,
+                              "justifyContent": "center",
+                              "maxWidth": 80,
+                            }
                           }
                         >
                           <View
                             style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "height": 32,
-                                  "justifyContent": "center",
-                                  "width": 32,
-                                },
-                              ]
+                              {
+                                "alignItems": "center",
+                                "height": 32,
+                                "justifyContent": "center",
+                                "width": 32,
+                              }
                             }
                           >
                             <View
@@ -2295,14 +2085,12 @@ exports[`Profile component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 19.2,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
                             }
                           >
                             X
@@ -2313,11 +2101,9 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       accessibilityRole="none"
                       style={
-                        [
-                          {
-                            "display": "flex",
-                          },
-                        ]
+                        {
+                          "display": "flex",
+                        }
                       }
                     >
                       <View
@@ -2365,27 +2151,23 @@ exports[`Profile component should render correctly 1`] = `
                         <View
                           gap={1}
                           style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "column",
-                                "gap": 4,
-                                "justifyContent": "center",
-                                "maxWidth": 80,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "column",
+                              "gap": 4,
+                              "justifyContent": "center",
+                              "maxWidth": 80,
+                            }
                           }
                         >
                           <View
                             style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "height": 32,
-                                  "justifyContent": "center",
-                                  "width": 32,
-                                },
-                              ]
+                              {
+                                "alignItems": "center",
+                                "height": 32,
+                                "justifyContent": "center",
+                                "width": 32,
+                              }
                             }
                           >
                             <View
@@ -2400,14 +2182,12 @@ exports[`Profile component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 19.2,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
                             }
                           >
                             Tiktok
@@ -2418,11 +2198,9 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       accessibilityRole="none"
                       style={
-                        [
-                          {
-                            "display": "flex",
-                          },
-                        ]
+                        {
+                          "display": "flex",
+                        }
                       }
                     >
                       <View
@@ -2470,27 +2248,23 @@ exports[`Profile component should render correctly 1`] = `
                         <View
                           gap={1}
                           style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "column",
-                                "gap": 4,
-                                "justifyContent": "center",
-                                "maxWidth": 80,
-                              },
-                            ]
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "column",
+                              "gap": 4,
+                              "justifyContent": "center",
+                              "maxWidth": 80,
+                            }
                           }
                         >
                           <View
                             style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "height": 32,
-                                  "justifyContent": "center",
-                                  "width": 32,
-                                },
-                              ]
+                              {
+                                "alignItems": "center",
+                                "height": 32,
+                                "justifyContent": "center",
+                                "width": 32,
+                              }
                             }
                           >
                             <View
@@ -2505,14 +2279,12 @@ exports[`Profile component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 19.2,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
                             }
                           >
                             Facebook
@@ -2526,33 +2298,27 @@ exports[`Profile component should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "paddingTop": 8,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
                 }
               />
               <View
                 numberOfSpaces={4}
                 style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
+                  {
+                    "height": 16,
+                  }
                 }
               />
               <View
@@ -2586,11 +2352,9 @@ exports[`Profile component should render correctly 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                    ],
+                    {
+                      "userSelect": "auto",
+                    },
                     {
                       "opacity": 1,
                     },
@@ -2621,36 +2385,30 @@ exports[`Profile component should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
+                      {
+                        "width": 8,
+                      }
                     }
                   />
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "textAlign": "left",
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "textAlign": "left",
+                      }
                     }
                   >
                     <Text
                       numberOfLines={2}
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       Déconnexion
@@ -2661,47 +2419,39 @@ exports[`Profile component should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "paddingTop": 8,
-                  },
-                ]
+                {
+                  "paddingTop": 8,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "marginTop": 8,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "marginTop": 8,
+                    "width": "100%",
+                  }
                 }
               />
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginVertical": 16,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "marginVertical": 16,
+                  }
                 }
               >
                 Version 1.10.5
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 16,
-                    },
-                  ]
+                  {
+                    "marginBottom": 16,
+                  }
                 }
               >
                 <View
@@ -2740,7 +2490,10 @@ exports[`Profile component should render correctly 1`] = `
                         },
                         {
                           "alignItems": "center",
-                          "borderRadius": 0,
+                          "borderBottomLeftRadius": 0,
+                          "borderBottomRightRadius": 0,
+                          "borderTopLeftRadius": 0,
+                          "borderTopRightRadius": 0,
                           "borderWidth": 0,
                           "flexDirection": "row",
                           "justifyContent": "flex-start",
@@ -2766,27 +2519,23 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                            "maxWidth": "100%",
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "maxWidth": "100%",
+                        }
                       }
                     >
                       Débuggage
@@ -2796,13 +2545,11 @@ exports[`Profile component should render correctly 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "height": 112,
-                      "marginBottom": 16,
-                      "width": 160,
-                    },
-                  ]
+                  {
+                    "height": 112,
+                    "marginBottom": 16,
+                    "width": 160,
+                  }
                 }
               >
                 <View
@@ -2821,11 +2568,9 @@ exports[`Profile component should render correctly 1`] = `
               customHeight={72}
               enable={true}
               style={
-                [
-                  {
-                    "height": 72,
-                  },
-                ]
+                {
+                  "height": 72,
+                }
               }
             />
           </View>
@@ -2836,16 +2581,14 @@ exports[`Profile component should render correctly 1`] = `
   <View
     height={16}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 16,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 16,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+      }
     }
   >
     <BlurView
@@ -2856,13 +2599,11 @@ exports[`Profile component should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

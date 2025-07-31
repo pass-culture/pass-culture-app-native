@@ -25,10 +25,9 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ progress, height = 1
 
 export const ProgressBar = memo(ProgressBarComponent)
 
-const Container = styled.View<{ height: number }>(({ height }) => ({
+const Container = styled.View(() => ({
   flexDirection: 'row',
   alignItems: 'center',
-  height,
   maxHeight: 40,
 }))
 

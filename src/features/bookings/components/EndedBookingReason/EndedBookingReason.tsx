@@ -32,6 +32,6 @@ export const EndedBookingReason: FunctionComponent<Props> = ({
   return <StyledInputRule title="Réservation annulée" icon={Wrong} type="Error" noFullWidth />
 }
 
-const StyledInputRule = styled(InputRule).attrs(({ theme }) => ({
+const StyledInputRule = styled(InputRule).attrs<{ iconSize?: number }>(({ theme }) => ({
   iconSize: theme.icons.sizes.smaller,
 }))``

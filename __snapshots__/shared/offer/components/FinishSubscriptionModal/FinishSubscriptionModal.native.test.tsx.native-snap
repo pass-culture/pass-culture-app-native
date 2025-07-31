@@ -147,88 +147,78 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -239,15 +229,13 @@ pour réserver cette offre
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -313,11 +301,9 @@ pour réserver cette offre
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -325,14 +311,12 @@ pour réserver cette offre
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -344,12 +328,10 @@ pour réserver cette offre
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -363,17 +345,27 @@ pour réserver cette offre
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginBottom": 24,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Vérifie ton identité pour débloquer
+                  <Text
+                    style={
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
@@ -381,37 +373,19 @@ pour réserver cette offre
                         "lineHeight": 25.6,
                         "marginBottom": 24,
                         "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Vérifie ton identité pour débloquer
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginBottom": 24,
-                          "textAlign": "center",
-                        },
-                      ]
+                      }
                     }
                   >
                      
                     tes 
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       300 €
@@ -457,7 +431,10 @@ pour réserver cette offre
                         {
                           "alignItems": "center",
                           "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "center",
                           "maxWidth": 500,
@@ -479,27 +456,23 @@ pour réserver cette offre
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
-                        [
-                          {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "maxWidth": "100%",
+                        }
                       }
                     >
                       Vérifier mon identité
@@ -663,88 +636,78 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -755,15 +718,13 @@ pour réserver cette offre
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -829,11 +790,9 @@ pour réserver cette offre
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -841,14 +800,12 @@ pour réserver cette offre
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -860,12 +817,10 @@ pour réserver cette offre
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -879,17 +834,27 @@ pour réserver cette offre
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginBottom": 24,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Confirme tes informations personnelles pour débloquer
+                  <Text
+                    style={
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
@@ -897,37 +862,19 @@ pour réserver cette offre
                         "lineHeight": 25.6,
                         "marginBottom": 24,
                         "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Confirme tes informations personnelles pour débloquer
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginBottom": 24,
-                          "textAlign": "center",
-                        },
-                      ]
+                      }
                     }
                   >
                      
                     tes 
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       300 €
@@ -973,7 +920,10 @@ pour réserver cette offre
                         {
                           "alignItems": "center",
                           "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "center",
                           "maxWidth": 500,
@@ -995,27 +945,23 @@ pour réserver cette offre
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
-                        [
-                          {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "maxWidth": "100%",
+                        }
                       }
                     >
                       Confirmer mes informations
@@ -1179,88 +1125,78 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -1271,15 +1207,13 @@ pour réserver cette offre
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -1345,11 +1279,9 @@ pour réserver cette offre
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -1357,14 +1289,12 @@ pour réserver cette offre
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -1376,12 +1306,10 @@ pour réserver cette offre
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <View
@@ -1395,26 +1323,22 @@ pour réserver cette offre
               </View>
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "marginTop": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "marginTop": 24,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginBottom": 24,
-                        "textAlign": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginBottom": 24,
+                      "textAlign": "center",
+                    }
                   }
                 >
                   Confirme tes informations personnelles pour débloquer
@@ -1458,7 +1382,10 @@ pour réserver cette offre
                         {
                           "alignItems": "center",
                           "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "flexDirection": "row",
                           "justifyContent": "center",
                           "maxWidth": 500,
@@ -1480,27 +1407,23 @@ pour réserver cette offre
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
                     }
                   >
                     <Text
                       adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
-                        [
-                          {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "maxWidth": "100%",
-                          },
-                        ]
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "maxWidth": "100%",
+                        }
                       }
                     >
                       Confirmer mes informations

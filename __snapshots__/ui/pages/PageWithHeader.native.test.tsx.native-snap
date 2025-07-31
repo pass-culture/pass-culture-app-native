@@ -3,82 +3,70 @@
 exports[`<PageWithHeader/> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Page with header title
@@ -173,18 +157,16 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -193,34 +175,30 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -229,15 +207,13 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -253,11 +229,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -275,18 +247,16 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <Text>
@@ -296,11 +266,9 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>
@@ -310,17 +278,15 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -331,13 +297,11 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />
@@ -348,82 +312,70 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
 exports[`<PageWithHeader/> should render correctly on Android, with white header 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -488,11 +440,9 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -502,15 +452,13 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Page with header title
@@ -518,18 +466,16 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -538,34 +484,30 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -574,15 +516,13 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -598,11 +538,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -620,18 +556,16 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <Text>
@@ -641,11 +575,9 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>

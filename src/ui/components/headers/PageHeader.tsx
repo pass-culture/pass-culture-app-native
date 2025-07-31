@@ -15,7 +15,7 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
     <React.Fragment>
       <Spacer.TopScreen />
       <HeaderContainer>
-        <TitleContainer gap={1}>
+        <TitleContainer>
           <TitleText numberOfLines={numberOfLines}>{title}</TitleText>
           {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
         </TitleContainer>

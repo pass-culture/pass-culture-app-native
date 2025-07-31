@@ -38,7 +38,7 @@ jest.useFakeTimers()
 
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
-    mockdate.set(new Date(today))
+    mockdate.set(new Date(today * 1000))
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
       page: 1,

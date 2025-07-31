@@ -148,106 +148,92 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       maxHeight={1318}
       noPadding={true}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "justifyContent": "center",
-            "maxHeight": 1318,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "justifyContent": "center",
+          "maxHeight": 1318,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         nativeID="testUuidV4"
         style={
-          [
-            {
-              "flexDirection": "row",
-              "width": "100%",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "width": "100%",
+          }
         }
         testID="customModalHeader"
       >
         <View
           style={
-            [
-              {
-                "paddingBottom": 20,
-                "paddingHorizontal": 24,
-                "paddingTop": 24,
-                "width": "100%",
-              },
-            ]
+            {
+              "paddingBottom": 20,
+              "paddingHorizontal": 24,
+              "paddingTop": 24,
+              "width": "100%",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "width": "100%",
-                },
-              ]
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
+              }
             }
             testID="modalHeader"
           >
             <View
               justifyContent="left"
               style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                    "flexDirection": "row",
-                    "height": 28,
-                    "justifyContent": "flex-start",
-                    "width": 28,
-                  },
-                ]
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "height": 28,
+                  "justifyContent": "flex-start",
+                  "width": 28,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "center",
-                    "paddingHorizontal": 12,
-                    "zIndex": 1,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                  "paddingHorizontal": 12,
+                  "zIndex": 1,
+                }
               }
             >
               <Text
                 numberOfLines={2}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
-                      "textAlign": "center",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                    "textAlign": "center",
+                  }
                 }
                 testID="modalHeaderTitle"
               >
@@ -257,15 +243,13 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             <View
               justifyContent="right"
               style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                    "flexDirection": "row",
-                    "height": 28,
-                    "justifyContent": "flex-end",
-                    "width": 28,
-                  },
-                ]
+                {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "height": 28,
+                  "justifyContent": "flex-end",
+                  "width": 28,
+                }
               }
             />
           </View>
@@ -276,64 +260,54 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         onContentSizeChange={[Function]}
         scrollEnabled={true}
         style={
-          [
-            {
-              "paddingHorizontal": 24,
-              "width": "100%",
-            },
-          ]
+          {
+            "paddingHorizontal": 24,
+            "width": "100%",
+          }
         }
         testID="fullscreenModalScrollView"
       >
         <View>
           <View
             style={
-              [
-                {
-                  "gap": 16,
-                  "paddingBottom": 16,
-                },
-              ]
+              {
+                "gap": 16,
+                "paddingBottom": 16,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
             </Text>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
               }
             >
               Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies.
             </Text>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
@@ -343,45 +317,37 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       </RCTScrollView>
       <View
         style={
-          [
-            {
-              "width": "100%",
-            },
-          ]
+          {
+            "width": "100%",
+          }
         }
         testID="fixedModalBottom"
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "marginTop": 20,
-                "paddingHorizontal": 24,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "marginTop": 20,
+              "paddingHorizontal": 24,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "maxWidth": 500,
-                  "width": "100%",
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "maxWidth": 500,
+                "width": "100%",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                }
               }
             >
               <View
@@ -421,7 +387,10 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "maxWidth": 500,
@@ -443,27 +412,23 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Tout refuser
@@ -473,23 +438,19 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "height": 0,
-                    "width": 8,
-                  },
-                ]
+                {
+                  "height": 0,
+                  "width": 8,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                }
               }
             >
               <View
@@ -529,7 +490,10 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "maxWidth": 500,
@@ -551,27 +515,23 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Tout accepter
@@ -583,11 +543,9 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View
@@ -627,7 +585,10 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -653,27 +614,23 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Choisir les cookies
@@ -686,11 +643,9 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>

@@ -109,13 +109,14 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
   )
 })
 
-const Container = styled.View<{ height: number; width?: number | string }>(
-  ({ height, width = '100%', theme }) => ({
+const Container = styled.View.attrs<{ height: number; width?: number | string }>(
+  ({ height, width = '100%' }) => ({
     height,
     width,
-    backgroundColor: theme.designSystem.color.background.lockedInverted,
   })
-)
+)<{ height: number; width?: number | string }>(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.lockedInverted,
+}))
 
 const ThumbnailOverlay = styled(View)({
   position: 'absolute',

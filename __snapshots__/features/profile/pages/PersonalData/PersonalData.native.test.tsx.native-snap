@@ -3,82 +3,70 @@
 exports[`PersonalData should render personal data success 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`PersonalData should render personal data success 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`PersonalData should render personal data success 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Informations personnelles
@@ -173,18 +157,16 @@ exports[`PersonalData should render personal data success 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,61 +185,49 @@ exports[`PersonalData should render personal data success 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Prénom et nom
       </Text>
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginTop": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 8,
+          }
         }
       >
         <Text
           numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "color": "#161617",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginRight": 8,
+            }
           }
         >
           Rosa Bonheur
@@ -265,54 +235,46 @@ exports[`PersonalData should render personal data success 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Adresse e-mail
       </Text>
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginTop": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 8,
+          }
         }
       >
         <Text
           numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "color": "#161617",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginRight": 8,
+            }
           }
         >
           rosa.bonheur@gmail.com
@@ -353,7 +315,10 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderRadius": 0,
+                  "borderBottomLeftRadius": 0,
+                  "borderBottomRightRadius": 0,
+                  "borderTopLeftRadius": 0,
+                  "borderTopRightRadius": 0,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -379,23 +344,19 @@ exports[`PersonalData should render personal data success 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -413,15 +374,13 @@ exports[`PersonalData should render personal data success 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "maxWidth": "100%",
+                }
               }
             >
               Modifier
@@ -431,54 +390,46 @@ exports[`PersonalData should render personal data success 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Numéro de téléphone
       </Text>
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginTop": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 8,
+          }
         }
       >
         <Text
           numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "color": "#161617",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginRight": 8,
+            }
           }
         >
           +33685974563
@@ -486,54 +437,46 @@ exports[`PersonalData should render personal data success 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Mot de passe
       </Text>
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginTop": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 8,
+          }
         }
       >
         <Text
           numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "color": "#161617",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginRight": 8,
+            }
           }
         >
           ************
@@ -574,7 +517,10 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderRadius": 0,
+                  "borderBottomLeftRadius": 0,
+                  "borderBottomRightRadius": 0,
+                  "borderTopLeftRadius": 0,
+                  "borderTopRightRadius": 0,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -600,23 +546,19 @@ exports[`PersonalData should render personal data success 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -634,15 +576,13 @@ exports[`PersonalData should render personal data success 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "maxWidth": "100%",
+                }
               }
             >
               Modifier
@@ -652,54 +592,46 @@ exports[`PersonalData should render personal data success 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Statut
       </Text>
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginTop": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 8,
+          }
         }
       >
         <Text
           numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "color": "#161617",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginRight": 8,
+            }
           }
         >
           Étudiant
@@ -740,7 +672,10 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderRadius": 0,
+                  "borderBottomLeftRadius": 0,
+                  "borderBottomRightRadius": 0,
+                  "borderTopLeftRadius": 0,
+                  "borderTopRightRadius": 0,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -766,23 +701,19 @@ exports[`PersonalData should render personal data success 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -800,15 +731,13 @@ exports[`PersonalData should render personal data success 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "maxWidth": "100%",
+                }
               }
             >
               Modifier
@@ -818,54 +747,46 @@ exports[`PersonalData should render personal data success 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+          }
         }
       >
         Adresse de résidence
       </Text>
       <View
         style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginTop": 8,
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 8,
+          }
         }
       >
         <Text
           numberOfLines={2}
           style={
-            [
-              {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "color": "#161617",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginRight": 8,
+            }
           }
         >
           10 rue de Bohneur, 75001, Paris
@@ -906,7 +827,10 @@ exports[`PersonalData should render personal data success 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "borderRadius": 0,
+                  "borderBottomLeftRadius": 0,
+                  "borderBottomRightRadius": 0,
+                  "borderTopLeftRadius": 0,
+                  "borderTopRightRadius": 0,
                   "borderWidth": 0,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -932,23 +856,19 @@ exports[`PersonalData should render personal data success 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "marginRight": 8,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
             >
               <View
@@ -966,15 +886,13 @@ exports[`PersonalData should render personal data success 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  },
-                ]
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                  "maxWidth": "100%",
+                }
               }
             >
               Modifier
@@ -984,65 +902,58 @@ exports[`PersonalData should render personal data success 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          }
         }
       />
       <View
         gap={8}
         style={
-          [
-            {
-              "gap": 32,
-            },
-          ]
+          {
+            "gap": 32,
+          }
         }
       >
         <View
           backgroundColor="#f3edff"
           style={
-            [
-              {
-                "alignItems": "center",
-                "backgroundColor": "#f3edff",
-                "borderRadius": 8,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3edff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              }
             }
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
               textColor="#161617"
             >
@@ -1051,11 +962,9 @@ exports[`PersonalData should render personal data success 1`] = `
             <View
               numberOfSpaces={3}
               style={
-                [
-                  {
-                    "height": 12,
-                  },
-                ]
+                {
+                  "height": 12,
+                }
               }
             />
             <View
@@ -1094,7 +1003,10 @@ exports[`PersonalData should render personal data success 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "borderRadius": 0,
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
                       "borderWidth": 0,
                       "flexDirection": "row",
                       "justifyContent": "flex-start",
@@ -1120,23 +1032,19 @@ exports[`PersonalData should render personal data success 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
                   }
                 >
                   <View
@@ -1154,15 +1062,13 @@ exports[`PersonalData should render personal data success 1`] = `
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Comment gérer tes données personnelles ?
@@ -1239,36 +1145,30 @@ exports[`PersonalData should render personal data success 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
+                {
+                  "width": 8,
+                }
               }
             />
             <View
               style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "textAlign": "left",
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "textAlign": "left",
+                }
               }
             >
               <Text
                 numberOfLines={2}
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Supprimer mon compte
@@ -1276,11 +1176,9 @@ exports[`PersonalData should render personal data success 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "flex-end",
-                  },
-                ]
+                {
+                  "alignItems": "flex-end",
+                }
               }
             >
               <View
@@ -1301,17 +1199,15 @@ exports[`PersonalData should render personal data success 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -1322,13 +1218,11 @@ exports[`PersonalData should render personal data success 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

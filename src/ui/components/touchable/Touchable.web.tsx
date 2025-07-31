@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import { DefaultTheme } from 'styled-components/native'
 
 import { appTouchableOpacityWebStyles } from 'ui/components/buttons/AppButton/styleUtils'
 
 import { TouchableProps } from './types'
 
+type TouchableStyleProps = TouchableProps & { theme: DefaultTheme }
+
 const StyledTouchable = styled.button.attrs<TouchableProps>(
   ({ onClick, type, testID, accessibilityLabel, ...rest }) => ({
-    tabIndex: '0',
+    tabIndex: 0,
     type: type || 'button',
     onClick,
     'data-testid': accessibilityLabel || testID,
@@ -15,7 +18,7 @@ const StyledTouchable = styled.button.attrs<TouchableProps>(
     title: accessibilityLabel,
     ...rest,
   })
-)(appTouchableOpacityWebStyles)
+)((props: TouchableStyleProps) => appTouchableOpacityWebStyles({ ...props, buttonHeight: 'tall' }))
 
 const TouchableWithoutRef: React.ForwardRefRenderFunction<HTMLButtonElement, TouchableProps> = (
   { onPress, ...rest },

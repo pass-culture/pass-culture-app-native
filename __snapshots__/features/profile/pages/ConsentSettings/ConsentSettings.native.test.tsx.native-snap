@@ -3,82 +3,70 @@
 exports[`<ConsentSettings/> should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Paramètres de confidentialité
@@ -173,18 +157,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -203,90 +185,74 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
     }
     enableMaxWidth={true}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation.
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "marginBottom": 32,
-              "marginTop": 16,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+            "marginBottom": 32,
+            "marginTop": 16,
+          }
         }
       >
         Tu peux choisir d’accepter ou non l’activation de leur suivi.
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 17,
+            "lineHeight": 27.2,
+          }
         }
       >
         À quoi servent tes cookies et tes données ?
       </Text>
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginTop": 24,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginTop": 24,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#696a6f",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
+            {
+              "color": "#696a6f",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            }
           }
         >
           Je choisis mes cookies
@@ -294,49 +260,41 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         <View
           gap={2}
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 8,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 8,
+            }
           }
         >
           <Text
             htmlFor="testUuidV4"
             id="testUuidV4"
             style={
-              [
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
+              }
             }
           >
             Tout accepter
           </Text>
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <Text
               accessibilityHidden={true}
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Case à cocher - 
@@ -372,11 +330,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
+                  {
+                    "userSelect": "auto",
+                  },
                   {
                     "opacity": 1,
                   },
@@ -387,15 +343,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               <View
                 active={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#696a6f",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#696a6f",
+                    "borderBottomLeftRadius": 16,
+                    "borderBottomRightRadius": 16,
+                    "borderTopLeftRadius": 16,
+                    "borderTopRightRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  }
                 }
               >
                 <View
@@ -406,7 +363,10 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "alignItems": "center",
                         "aspectRatio": 1,
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 28,
+                        "borderBottomLeftRadius": 28,
+                        "borderBottomRightRadius": 28,
+                        "borderTopLeftRadius": 28,
+                        "borderTopRightRadius": 28,
                         "height": 28,
                         "justifyContent": "center",
                         "shadowColor": "#161617",
@@ -431,12 +391,10 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <View
@@ -461,22 +419,18 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <Text
               accessibilityHidden={true}
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Case à cocher - 
@@ -512,11 +466,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
+                  {
+                    "userSelect": "auto",
+                  },
                   {
                     "opacity": 1,
                   },
@@ -527,15 +479,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               <View
                 active={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#696a6f",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#696a6f",
+                    "borderBottomLeftRadius": 16,
+                    "borderBottomRightRadius": 16,
+                    "borderTopLeftRadius": 16,
+                    "borderTopRightRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  }
                 }
               >
                 <View
@@ -546,7 +499,10 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "alignItems": "center",
                         "aspectRatio": 1,
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 28,
+                        "borderBottomLeftRadius": 28,
+                        "borderBottomRightRadius": 28,
+                        "borderTopLeftRadius": 28,
+                        "borderTopRightRadius": 28,
                         "height": 28,
                         "justifyContent": "center",
                         "shadowColor": "#161617",
@@ -635,27 +591,23 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Personnaliser ta navigation
@@ -729,14 +681,12 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.
@@ -744,21 +694,17 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View>
             <View
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                ]
+                {
+                  "position": "absolute",
+                }
               }
             >
               <View
@@ -773,23 +719,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "width": 20,
+                  }
                 }
               />
               Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
@@ -799,23 +741,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "width": "100%",
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <View
@@ -840,22 +778,18 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <Text
               accessibilityHidden={true}
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Case à cocher - 
@@ -891,11 +825,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
+                  {
+                    "userSelect": "auto",
+                  },
                   {
                     "opacity": 1,
                   },
@@ -906,15 +838,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               <View
                 active={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#696a6f",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#696a6f",
+                    "borderBottomLeftRadius": 16,
+                    "borderBottomRightRadius": 16,
+                    "borderTopLeftRadius": 16,
+                    "borderTopRightRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  }
                 }
               >
                 <View
@@ -925,7 +858,10 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "alignItems": "center",
                         "aspectRatio": 1,
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 28,
+                        "borderBottomLeftRadius": 28,
+                        "borderBottomRightRadius": 28,
+                        "borderTopLeftRadius": 28,
+                        "borderTopRightRadius": 28,
                         "height": 28,
                         "justifyContent": "center",
                         "shadowColor": "#161617",
@@ -1014,27 +950,23 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Enregistrer des statistiques de navigation
@@ -1108,14 +1040,12 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
@@ -1123,21 +1053,17 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View>
             <View
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                ]
+                {
+                  "position": "absolute",
+                }
               }
             >
               <View
@@ -1152,23 +1078,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "width": 20,
+                  }
                 }
               />
               Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
@@ -1178,23 +1100,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "width": "100%",
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <View
@@ -1219,22 +1137,18 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <Text
               accessibilityHidden={true}
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Case à cocher - 
@@ -1270,11 +1184,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
+                  {
+                    "userSelect": "auto",
+                  },
                   {
                     "opacity": 1,
                   },
@@ -1285,15 +1197,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               <View
                 active={false}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#696a6f",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#696a6f",
+                    "borderBottomLeftRadius": 16,
+                    "borderBottomRightRadius": 16,
+                    "borderTopLeftRadius": 16,
+                    "borderTopRightRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  }
                 }
               >
                 <View
@@ -1304,7 +1217,10 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "alignItems": "center",
                         "aspectRatio": 1,
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 28,
+                        "borderBottomLeftRadius": 28,
+                        "borderBottomRightRadius": 28,
+                        "borderTopLeftRadius": 28,
+                        "borderTopRightRadius": 28,
                         "height": 28,
                         "justifyContent": "center",
                         "shadowColor": "#161617",
@@ -1393,27 +1309,23 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Mesurer l’efficacité de nos publicités
@@ -1487,14 +1399,12 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Tu ne verras pas de publicité de tiers sur notre site ou sur notre application.
@@ -1502,21 +1412,17 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
+              {
+                "height": 16,
+              }
             }
           />
           <View>
             <View
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                ]
+                {
+                  "position": "absolute",
+                }
               }
             >
               <View
@@ -1531,23 +1437,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  },
-                ]
+                {
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "width": 20,
+                  }
                 }
               />
               En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
@@ -1557,23 +1459,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "width": "100%",
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <View
@@ -1598,22 +1496,18 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
             }
           >
             <Text
               accessibilityHidden={true}
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Case à cocher - 
@@ -1649,11 +1543,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
+                  {
+                    "userSelect": "auto",
+                  },
                   {
                     "opacity": 1,
                   },
@@ -1664,15 +1556,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               <View
                 active={true}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#15884f",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#15884f",
+                    "borderBottomLeftRadius": 16,
+                    "borderBottomRightRadius": 16,
+                    "borderTopLeftRadius": 16,
+                    "borderTopRightRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  }
                 }
               >
                 <View
@@ -1683,7 +1576,10 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "alignItems": "center",
                         "aspectRatio": 1,
                         "backgroundColor": "#ffffff",
-                        "borderRadius": 28,
+                        "borderBottomLeftRadius": 28,
+                        "borderBottomRightRadius": 28,
+                        "borderTopLeftRadius": 28,
+                        "borderTopRightRadius": 28,
                         "height": 28,
                         "justifyContent": "center",
                         "width": 28,
@@ -1775,27 +1671,23 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           >
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
               >
                 Assurer la sécurité, prévenir la fraude et corriger les bugs
@@ -1869,14 +1761,12 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
           >
             Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application.
@@ -1886,11 +1776,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       <View>
         <View
           style={
-            [
-              {
-                "position": "absolute",
-              },
-            ]
+            {
+              "position": "absolute",
+            }
           }
         >
           <View
@@ -1905,23 +1793,19 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         </View>
         <Text
           style={
-            [
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
+            {
+              "color": "#696a6f",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "width": 20,
-                },
-              ]
+              {
+                "width": 20,
+              }
             }
           />
           Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
@@ -1930,91 +1814,77 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          [
-            {
-              "height": 16,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
       />
       <View
         style={
-          [
-            {
-              "backgroundColor": "#f1f1f4",
-              "height": 1,
-              "width": "100%",
-            },
-          ]
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "width": "100%",
+          }
         }
       />
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-              "marginVertical": 16,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 17,
+            "lineHeight": 27.2,
+            "marginVertical": 16,
+          }
         }
       >
         Tu as la main dessus
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginBottom": 16,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "marginBottom": 16,
+          }
         }
       >
         Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          }
         }
       >
         On te redemandera bien sûr ton consentement si notre politique évolue.
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "marginBottom": 32,
-              "marginTop": 16,
-            },
-          ]
+          {
+            "color": "#696a6f",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+            "marginBottom": 32,
+            "marginTop": 16,
+          }
         }
       >
         Pour plus d’informations, nous t’invitons à consulter notre
         <View
           numberOfSpaces={1}
           style={
-            [
-              {
-                "width": 4,
-              },
-            ]
+            {
+              "width": 4,
+            }
           }
         />
         <View>
@@ -2068,14 +1938,12 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               gap={1}
               paddingForIcon={0}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                  "top": 0,
+                }
               }
             >
               <View
@@ -2090,14 +1958,12 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
                 typography="BodyAccentXs"
               >
@@ -2145,7 +2011,10 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 "alignItems": "center",
                 "alignSelf": "center",
                 "backgroundColor": "#eb0055",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -2169,27 +2038,23 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Enregistrer mes choix
@@ -2201,17 +2066,15 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -2222,13 +2085,11 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

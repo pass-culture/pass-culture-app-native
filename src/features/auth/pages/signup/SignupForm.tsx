@@ -31,7 +31,7 @@ import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
-export const SignupForm: FunctionComponent = () => {
+export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ currentStep = 0 }) => {
   const trustedDevice = useDeviceInfo()
 
   const { mutateAsync: googleSignup } = useGoogleSignupMutation()
@@ -42,7 +42,7 @@ export const SignupForm: FunctionComponent = () => {
   const { setParams } = useNavigation<UseNavigationType>()
   const accountCreationToken = params?.accountCreationToken
 
-  const [stepIndex, setStepIndex] = React.useState(0)
+  const [stepIndex, setStepIndex] = React.useState(currentStep)
   const [isSSOSubscription, setIsSSOSubscription] = React.useState(!!accountCreationToken)
   const signupStepConfig = isSSOSubscription ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
   const stepConfig = signupStepConfig[stepIndex]

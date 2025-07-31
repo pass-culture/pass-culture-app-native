@@ -32,7 +32,7 @@ export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bann
   const defaultMarginBottom = isMobileViewport ? getSpacing(6) : undefined
 
   return (
-    <HeaderContainer hasGoogleCredit={hasGoogleCredit} defaultMarginBottom={defaultMarginBottom}>
+    <HeaderContainer hasGoogleCredit={!!hasGoogleCredit} defaultMarginBottom={defaultMarginBottom}>
       {bannerUrl ? (
         <ViewGap gap={1}>
           <GoogleWatermarkWrapper
@@ -79,7 +79,7 @@ const GoogleWatermarkWrapper = ({
     </TouchableOpacity>
   )
 
-const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   useAngle: true,
   angle: 180,
   locations: [0.45, 1],

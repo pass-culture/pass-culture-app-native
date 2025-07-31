@@ -3,63 +3,52 @@
 exports[`<Maintenance /> should match snapshot with custom message 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
-    bottom={16}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "overflow": "scroll",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+      }
     }
   >
     <View
       height={16}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "marginBottom": 24,
+        }
       }
     >
       <View
@@ -74,41 +63,35 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 32,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 32,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
       >
         Maintenance en cours
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
       >
         C’est tout cassé ! Reviens plus tard
@@ -117,13 +100,11 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
   </View>
@@ -133,63 +114,52 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
 exports[`<Maintenance /> should match snapshot with default message 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
-    bottom={16}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "overflow": "scroll",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+      }
     }
   >
     <View
       height={16}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "marginBottom": 24,
+        }
       }
     >
       <View
@@ -204,41 +174,35 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 32,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 32,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
       >
         Maintenance en cours
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
       >
         L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
@@ -247,13 +211,11 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
   </View>

@@ -3,58 +3,48 @@
 exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "height": 64,
-        },
-      ]
+      {
+        "height": 64,
+      }
     }
     top={16}
   />
   <View
     style={
-      [
-        {
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-          "zIndex": 1,
-        },
-      ]
+      {
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "height": 48,
-            "justifyContent": "center",
-            "paddingHorizontal": 12,
-          },
-        ]
+        {
+          "height": 48,
+          "justifyContent": "center",
+          "paddingHorizontal": 12,
+        }
       }
     >
       <View
@@ -118,11 +108,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         </View>
         <Text
           style={
-            [
-              {
-                "display": "none",
-              },
-            ]
+            {
+              "display": "none",
+            }
           }
         >
           Retour
@@ -138,43 +126,33 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         "width": "100%",
       }
     }
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         style={
-          [
-            {
-              "marginHorizontal": 24,
-            },
-          ]
+          {
+            "marginHorizontal": 24,
+          }
         }
       >
         <View
           numberOfSpaces={6}
           style={
-            [
-              {
-                "height": 24,
-              },
-            ]
+            {
+              "height": 24,
+            }
           }
         />
         <Text
           numberOfLines={3}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 19,
-                "lineHeight": 30.4,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 19,
+              "lineHeight": 30.4,
+            }
           }
         >
           À 17 ans, profite de ton pass Culture !
@@ -182,69 +160,57 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View
           gap={2}
           style={
-            [
-              {
-                "gap": 8,
-              },
-            ]
+            {
+              "gap": 8,
+            }
           }
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             Comment ça marche ?
           </Text>
           <View
             style={
-              [
-                {
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "flexGrow": 1,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                }
               }
             >
               <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    }
                   }
                   testID="vertical-stepper-in_progress"
                 >
@@ -252,29 +218,26 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     isFirst={true}
                     isLast={false}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "width": 2,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 2,
+                        "borderBottomRightRadius": 2,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      }
                     }
                     testID="top-line"
                   />
                   <View
                     addMoreSpacingToIcons={false}
                     style={
-                      [
-                        {
-                          "marginVertical": 2,
-                        },
-                      ]
+                      {
+                        "marginVertical": 2,
+                      }
                     }
                   >
                     <View>
@@ -284,24 +247,20 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   <View
                     onLayout={[Function]}
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "height": 0,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexGrow": 1,
-                            "justifyContent": "space-between",
-                          },
-                        ]
+                        {
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        }
                       }
                       testID="bottom-line"
                     />
@@ -310,24 +269,20 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               </View>
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginHorizontal": 8,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginHorizontal": 8,
+                  }
                 }
               >
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
                 <View
@@ -352,19 +307,20 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   status="cette année"
                   style={
                     [
-                      [
-                        {
-                          "borderColor": "#161617",
-                          "borderRadius": 4,
-                          "borderWidth": 1,
-                          "marginHorizontal": 0,
-                          "overflow": "hidden",
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                        },
-                      ],
+                      {
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderColor": "#161617",
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
+                        "borderWidth": 1,
+                        "marginHorizontal": 0,
+                        "overflow": "hidden",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
                       {
                         "transform": [
                           {
@@ -379,14 +335,12 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   <View>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       à 17 ans
@@ -394,23 +348,19 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     <View
                       numberOfSpaces={1}
                       style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
+                        {
+                          "height": 4,
+                        }
                       }
                     />
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                        }
                       }
                     >
                       50 €
@@ -418,43 +368,40 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "position": "absolute",
-                          "right": 8,
-                          "top": 8,
-                        },
-                      ]
+                      {
+                        "position": "absolute",
+                        "right": 8,
+                        "top": 8,
+                      }
                     }
                   >
                     <View
                       backgroundColor="#91e1b5"
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "alignSelf": "flex-start",
-                            "backgroundColor": "#91e1b5",
-                            "borderRadius": 4,
-                            "flexDirection": "row",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 4,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "flex-start",
+                          "backgroundColor": "#91e1b5",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "flexDirection": "row",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 4,
+                        }
                       }
                       testID="tagWrapper"
                       withColor={true}
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          }
                         }
                       >
                         cette année
@@ -465,61 +412,51 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
               </View>
             </View>
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                }
               }
             >
               <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    }
                   }
                   testID="vertical-stepper-future"
                 >
                   <View
                     onLayout={[Function]}
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "height": 0,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 0,
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "flexGrow": 1,
-                            "justifyContent": "space-between",
-                          },
-                        ]
+                        {
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        }
                       }
                       testID="top-line"
                     />
@@ -527,11 +464,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   <View
                     addMoreSpacingToIcons={false}
                     style={
-                      [
-                        {
-                          "marginVertical": 2,
-                        },
-                      ]
+                      {
+                        "marginVertical": 2,
+                      }
                     }
                   >
                     <View
@@ -546,41 +481,38 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   <View
                     isLast={true}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderRadius": 2,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "opacity": 0,
-                          "width": 2,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 2,
+                        "borderBottomRightRadius": 2,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 0,
+                        "width": 2,
+                      }
                     }
                   />
                 </View>
               </View>
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginHorizontal": 8,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginHorizontal": 8,
+                  }
                 }
               >
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
                 <View
@@ -604,32 +536,31 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   onStartShouldSetResponder={[Function]}
                   status="à venir"
                   style={
-                    [
-                      {
-                        "borderColor": "#cbcdd2",
-                        "borderRadius": 4,
-                        "borderWidth": 1,
-                        "marginHorizontal": 4,
-                        "overflow": "hidden",
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#cbcdd2",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 1,
+                      "marginHorizontal": 4,
+                      "overflow": "hidden",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    }
                   }
                 >
                   <View>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       à 18 ans
@@ -637,38 +568,32 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     <View
                       numberOfSpaces={1}
                       style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
+                        {
+                          "height": 4,
+                        }
                       }
                     />
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       150 €
                     </Text>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 10,
-                            "lineHeight": 12,
-                            "marginTop": 4,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 10,
+                          "lineHeight": 12,
+                          "marginTop": 4,
+                        }
                       }
                     >
                       Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
@@ -676,43 +601,40 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "position": "absolute",
-                          "right": 8,
-                          "top": 8,
-                        },
-                      ]
+                      {
+                        "position": "absolute",
+                        "right": 8,
+                        "top": 8,
+                      }
                     }
                   >
                     <View
                       backgroundColor="#f9df81"
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "alignSelf": "flex-start",
-                            "backgroundColor": "#f9df81",
-                            "borderRadius": 4,
-                            "flexDirection": "row",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 4,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "flex-start",
+                          "backgroundColor": "#f9df81",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "flexDirection": "row",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 4,
+                        }
                       }
                       testID="tagWrapper"
                       withColor={true}
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          }
                         }
                       >
                         à venir
@@ -723,11 +645,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
               </View>
@@ -740,13 +660,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
   <View
     style={
       [
-        [
-          {
-            "backgroundColor": "#ffffff",
-            "marginHorizontal": 24,
-            "paddingVertical": 24,
-          },
-        ],
+        {
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
         {
           "opacity": 0,
           "transform": [
@@ -796,7 +714,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
             {
               "alignItems": "center",
               "backgroundColor": "#eb0055",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "maxWidth": 500,
@@ -818,27 +739,23 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Créer un compte
@@ -848,11 +765,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     <View
       numberOfSpaces={4}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
@@ -891,7 +806,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
             },
             {
               "alignItems": "center",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "minHeight": 40,
@@ -914,23 +832,19 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "marginRight": 8,
+            }
           }
         >
           <View
@@ -947,15 +861,13 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Plus tard
@@ -967,11 +879,9 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     customHeight={8}
     enable={true}
     style={
-      [
-        {
-          "height": 8,
-        },
-      ]
+      {
+        "height": 8,
+      }
     }
   />
 </View>
@@ -980,58 +890,48 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
 exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "height": 64,
-        },
-      ]
+      {
+        "height": 64,
+      }
     }
     top={16}
   />
   <View
     style={
-      [
-        {
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-          "zIndex": 1,
-        },
-      ]
+      {
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "height": 48,
-            "justifyContent": "center",
-            "paddingHorizontal": 12,
-          },
-        ]
+        {
+          "height": 48,
+          "justifyContent": "center",
+          "paddingHorizontal": 12,
+        }
       }
     >
       <View
@@ -1095,11 +995,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         </View>
         <Text
           style={
-            [
-              {
-                "display": "none",
-              },
-            ]
+            {
+              "display": "none",
+            }
           }
         >
           Retour
@@ -1115,43 +1013,33 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         "width": "100%",
       }
     }
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         style={
-          [
-            {
-              "marginHorizontal": 24,
-            },
-          ]
+          {
+            "marginHorizontal": 24,
+          }
         }
       >
         <View
           numberOfSpaces={6}
           style={
-            [
-              {
-                "height": 24,
-              },
-            ]
+            {
+              "height": 24,
+            }
           }
         />
         <Text
           numberOfLines={3}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 19,
-                "lineHeight": 30.4,
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 19,
+              "lineHeight": 30.4,
+            }
           }
         >
           À 18 ans, profite de ton pass Culture !
@@ -1159,69 +1047,57 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         <View
           numberOfSpaces={4}
           style={
-            [
-              {
-                "height": 16,
-              },
-            ]
+            {
+              "height": 16,
+            }
           }
         />
         <View
           gap={2}
           style={
-            [
-              {
-                "gap": 8,
-              },
-            ]
+            {
+              "gap": 8,
+            }
           }
         >
           <Text
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+              }
             }
           >
             Comment ça marche ?
           </Text>
           <View
             style={
-              [
-                {
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "flexGrow": 1,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                }
               }
             >
               <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    }
                   }
                   testID="vertical-stepper-complete"
                 >
@@ -1229,29 +1105,26 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     isFirst={true}
                     isLast={false}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "width": 2,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 2,
+                        "borderBottomRightRadius": 2,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      }
                     }
                     testID="top-line"
                   />
                   <View
                     addMoreSpacingToIcons={false}
                     style={
-                      [
-                        {
-                          "marginVertical": 2,
-                        },
-                      ]
+                      {
+                        "marginVertical": 2,
+                      }
                     }
                   >
                     <View
@@ -1267,17 +1140,18 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     isFirst={true}
                     isLast={false}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderRadius": 2,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "opacity": 1,
-                          "width": 2,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 2,
+                        "borderBottomRightRadius": 2,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 1,
+                        "width": 2,
+                      }
                     }
                     testID="bottom-line"
                   />
@@ -1285,24 +1159,20 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               </View>
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginHorizontal": 8,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginHorizontal": 8,
+                  }
                 }
               >
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
                 <View
@@ -1326,32 +1196,31 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   onStartShouldSetResponder={[Function]}
                   status="passé"
                   style={
-                    [
-                      {
-                        "borderColor": "#cbcdd2",
-                        "borderRadius": 4,
-                        "borderWidth": 1,
-                        "marginHorizontal": 4,
-                        "overflow": "hidden",
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#cbcdd2",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 1,
+                      "marginHorizontal": 4,
+                      "overflow": "hidden",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    }
                   }
                 >
                   <View>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       à 17 ans
@@ -1359,23 +1228,19 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     <View
                       numberOfSpaces={1}
                       style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
+                        {
+                          "height": 4,
+                        }
                       }
                     />
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       50 €
@@ -1383,43 +1248,40 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "position": "absolute",
-                          "right": 8,
-                          "top": 8,
-                        },
-                      ]
+                      {
+                        "position": "absolute",
+                        "right": 8,
+                        "top": 8,
+                      }
                     }
                   >
                     <View
                       backgroundColor="#f1f1f4"
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "alignSelf": "flex-start",
-                            "backgroundColor": "#f1f1f4",
-                            "borderRadius": 4,
-                            "flexDirection": "row",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 4,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "flex-start",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "flexDirection": "row",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 4,
+                        }
                       }
                       testID="tagWrapper"
                       withColor={true}
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          }
                         }
                       >
                         passé
@@ -1430,37 +1292,31 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
               </View>
             </View>
             <View
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                  },
-                ]
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                }
               }
             >
               <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    }
                   }
                   testID="vertical-stepper-in_progress"
                 >
@@ -1468,29 +1324,26 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     isFirst={false}
                     isLast={true}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderRadius": 2,
-                          "borderTopLeftRadius": 0,
-                          "borderTopRightRadius": 0,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "width": 2,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 2,
+                        "borderBottomRightRadius": 2,
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      }
                     }
                     testID="top-line"
                   />
                   <View
                     addMoreSpacingToIcons={false}
                     style={
-                      [
-                        {
-                          "marginVertical": 2,
-                        },
-                      ]
+                      {
+                        "marginVertical": 2,
+                      }
                     }
                   >
                     <View>
@@ -1500,41 +1353,38 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   <View
                     isLast={true}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#90949d",
-                          "borderRadius": 2,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "opacity": 0,
-                          "width": 2,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#90949d",
+                        "borderBottomLeftRadius": 2,
+                        "borderBottomRightRadius": 2,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 0,
+                        "width": 2,
+                      }
                     }
                   />
                 </View>
               </View>
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginHorizontal": 8,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginHorizontal": 8,
+                  }
                 }
               >
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
                 <View
@@ -1559,19 +1409,20 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   status="cette année"
                   style={
                     [
-                      [
-                        {
-                          "borderColor": "#161617",
-                          "borderRadius": 4,
-                          "borderWidth": 1,
-                          "marginHorizontal": 0,
-                          "overflow": "hidden",
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                        },
-                      ],
+                      {
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderColor": "#161617",
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
+                        "borderWidth": 1,
+                        "marginHorizontal": 0,
+                        "overflow": "hidden",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
                       {
                         "transform": [
                           {
@@ -1586,14 +1437,12 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   <View>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                     >
                       à 18 ans
@@ -1601,38 +1450,32 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     <View
                       numberOfSpaces={1}
                       style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
+                        {
+                          "height": 4,
+                        }
                       }
                     />
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
-                          },
-                        ]
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                        }
                       }
                     >
                       150 €
                     </Text>
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 10,
-                            "lineHeight": 12,
-                            "marginTop": 4,
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 10,
+                          "lineHeight": 12,
+                          "marginTop": 4,
+                        }
                       }
                     >
                       Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
@@ -1640,43 +1483,40 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "position": "absolute",
-                          "right": 8,
-                          "top": 8,
-                        },
-                      ]
+                      {
+                        "position": "absolute",
+                        "right": 8,
+                        "top": 8,
+                      }
                     }
                   >
                     <View
                       backgroundColor="#91e1b5"
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "alignSelf": "flex-start",
-                            "backgroundColor": "#91e1b5",
-                            "borderRadius": 4,
-                            "flexDirection": "row",
-                            "paddingHorizontal": 8,
-                            "paddingVertical": 4,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "flex-start",
+                          "backgroundColor": "#91e1b5",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "flexDirection": "row",
+                          "paddingHorizontal": 8,
+                          "paddingVertical": 4,
+                        }
                       }
                       testID="tagWrapper"
                       withColor={true}
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          }
                         }
                       >
                         cette année
@@ -1687,11 +1527,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 <View
                   numberOfSpaces={2}
                   style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
+                    {
+                      "height": 8,
+                    }
                   }
                 />
               </View>
@@ -1704,13 +1542,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
   <View
     style={
       [
-        [
-          {
-            "backgroundColor": "#ffffff",
-            "marginHorizontal": 24,
-            "paddingVertical": 24,
-          },
-        ],
+        {
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
         {
           "opacity": 0,
           "transform": [
@@ -1760,7 +1596,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
             {
               "alignItems": "center",
               "backgroundColor": "#eb0055",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "maxWidth": 500,
@@ -1782,27 +1621,23 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Créer un compte
@@ -1812,11 +1647,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     <View
       numberOfSpaces={4}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
@@ -1855,7 +1688,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
             },
             {
               "alignItems": "center",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "minHeight": 40,
@@ -1878,23 +1714,19 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "marginRight": 8,
+            }
           }
         >
           <View
@@ -1911,15 +1743,13 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Plus tard
@@ -1931,11 +1761,9 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     customHeight={8}
     enable={true}
     style={
-      [
-        {
-          "height": 8,
-        },
-      ]
+      {
+        "height": 8,
+      }
     }
   />
 </View>

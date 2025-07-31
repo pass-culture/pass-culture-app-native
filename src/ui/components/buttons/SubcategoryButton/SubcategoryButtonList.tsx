@@ -1,4 +1,5 @@
 import React from 'react'
+import { FlexStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -39,7 +40,7 @@ const StyledScrollView = styled.ScrollView.attrs<{ itemsNumber: number }>(
           padding: getSpacing(6),
           gap: getSpacing(4),
           width: '100%',
-          display: 'grid',
+          display: 'grid' as FlexStyle['display'],
           gridTemplateColumns: `repeat(${theme.isTabletViewport ? 4 : 5}, 1fr)`,
         },
   })

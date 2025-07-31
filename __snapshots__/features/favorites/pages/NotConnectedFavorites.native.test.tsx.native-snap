@@ -4,42 +4,36 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
 <View
   bottom={16}
   style={
-    [
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "justifyContent": "space-between",
-        "overflow": "scroll",
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-      },
-    ]
+    {
+      "alignItems": "center",
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "justifyContent": "space-between",
+      "overflow": "scroll",
+      "paddingHorizontal": 24,
+      "paddingVertical": 24,
+    }
   }
 >
   <View
     flex={1}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   />
   <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "marginBottom": 24,
+      }
     }
   >
     <View
@@ -54,41 +48,35 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   <View
     gap={4}
     style={
-      [
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 48,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "gap": 16,
+        "marginBottom": 48,
+      }
     }
   >
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 21,
+          "lineHeight": 33.6,
+          "textAlign": "center",
+        }
       }
     >
       Identifie-toi pour retrouver tes favoris
     </Text>
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+          "textAlign": "center",
+        }
       }
     >
       Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
@@ -97,13 +85,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   <View
     gap={4}
     style={
-      [
-        {
-          "gap": 16,
-          "maxWidth": 500,
-          "width": "100%",
-        },
-      ]
+      {
+        "gap": 16,
+        "maxWidth": 500,
+        "width": "100%",
+      }
     }
   >
     <View
@@ -143,7 +129,10 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             {
               "alignItems": "center",
               "backgroundColor": "#eb0055",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "maxWidth": 500,
@@ -165,27 +154,23 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Créer un compte
@@ -194,28 +179,24 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     </View>
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "flexWrap": "wrap",
-            "gap": 4,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "gap": 4,
+          "justifyContent": "center",
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
       >
         Déjà un compte ?
@@ -251,11 +232,9 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         onStartShouldSetResponder={[Function]}
         style={
           [
-            [
-              {
-                "userSelect": "auto",
-              },
-            ],
+            {
+              "userSelect": "auto",
+            },
             {
               "opacity": 1,
             },
@@ -267,14 +246,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           gap={1}
           paddingForIcon={0}
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 4,
-                "top": 0,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 4,
+              "top": 0,
+            }
           }
         >
           <View
@@ -290,14 +267,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           <Text
             color="#320096"
             style={
-              [
-                {
-                  "color": "#320096",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
+              {
+                "color": "#320096",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
             }
             typography="Button"
           >
@@ -310,13 +285,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   <View
     flex={1}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   />
 </View>

@@ -3,82 +3,70 @@
 exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -136,11 +124,9 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -150,15 +136,13 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Numéro de téléphone
@@ -166,18 +150,16 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -186,34 +168,30 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -222,15 +200,13 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -246,11 +222,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -263,33 +235,27 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
             <View
               gap={8}
               style={
-                [
-                  {
-                    "gap": 32,
-                  },
-                ]
+                {
+                  "gap": 32,
+                }
               }
             >
               <View
                 gap={4}
                 style={
-                  [
-                    {
-                      "gap": 16,
-                    },
-                  ]
+                  {
+                    "gap": 16,
+                  }
                 }
               >
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 19,
-                        "lineHeight": 30.4,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                    }
                   }
                 >
                   Saisis ton numéro de téléphone
@@ -297,28 +263,27 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                 <View
                   backgroundColor="#f3edff"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#f3edff",
-                        "borderRadius": 8,
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#f3edff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "paddingRight": 16,
-                        },
-                      ]
+                      {
+                        "paddingRight": 16,
+                      }
                     }
                   >
                     <View
@@ -332,25 +297,21 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                       textColor="#161617"
                     >
@@ -361,63 +322,53 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
               </View>
               <View
                 style={
-                  [
-                    {
-                      "maxWidth": 500,
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "maxWidth": 500,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
                   gap={2}
                   style={
-                    [
-                      {
-                        "gap": 8,
-                      },
-                    ]
+                    {
+                      "gap": 8,
+                    }
                   }
                 >
                   <View
                     gap={0}
                     style={
-                      [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "gap": 0,
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
+                      }
                     }
                   >
                     <View>
                       <View
                         style={
-                          [
-                            {
-                              "alignItems": "flex-end",
-                              "flexDirection": "row",
-                              "justifyContent": "space-between",
-                              "marginBottom": 8,
-                              "width": "100%",
-                            },
-                          ]
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "marginBottom": 8,
+                            "width": "100%",
+                          }
                         }
                       >
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           Numéro de téléphone
@@ -426,23 +377,19 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                     </View>
                     <View
                       style={
-                        [
-                          {
-                            "marginBottom": 8,
-                          },
-                        ]
+                        {
+                          "marginBottom": 8,
+                        }
                       }
                     >
                       <Text
                         style={
-                          [
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                            },
-                          ]
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
                         }
                       >
                         Exemple : 0639980123
@@ -454,33 +401,32 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       isError={false}
                       isFocus={false}
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949d",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 22,
+                          "borderBottomRightRadius": 22,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
+                          "borderTopLeftRadius": 22,
+                          "borderTopRightRadius": 22,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        }
                       }
                       testID="styled-input-container"
                     >
                       <View
                         style={
-                          [
-                            {
-                              "marginBottom": 8,
-                            },
-                          ]
+                          {
+                            "marginBottom": 8,
+                          }
                         }
                       >
                         <View
@@ -526,16 +472,14 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         >
                           <Text
                             style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Medium",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                  "marginLeft": -4,
-                                  "marginRight": 4,
-                                },
-                              ]
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                                "marginLeft": -4,
+                                "marginRight": 4,
+                              }
                             }
                           >
                             +33
@@ -552,22 +496,18 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                           <View
                             numberOfSpaces={2}
                             style={
-                              [
-                                {
-                                  "width": 8,
-                                },
-                              ]
+                              {
+                                "width": 8,
+                              }
                             }
                           />
                           <View
                             style={
-                              [
-                                {
-                                  "borderRightColor": "#90949d",
-                                  "borderRightWidth": 1,
-                                  "paddingVertical": 10,
-                                },
-                              ]
+                              {
+                                "borderRightColor": "#90949d",
+                                "borderRightWidth": 1,
+                                "paddingVertical": 10,
+                              }
                             }
                           />
                         </View>
@@ -589,21 +529,19 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-MediumItalic",
-                              "fontSize": 16,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                          ]
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          }
                         }
                         testID="Entrée pour le numéro de téléphone"
                         textAlignVertical="center"
@@ -619,18 +557,16 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <View
@@ -666,7 +602,10 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
               {
                 "alignItems": "center",
                 "backgroundColor": "#f1f1f4",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -684,27 +623,23 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Continuer
@@ -715,11 +650,9 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>
@@ -729,17 +662,15 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -750,13 +681,11 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

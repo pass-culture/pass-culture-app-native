@@ -3,37 +3,31 @@
 exports[`CulturalSurveyQuestions page should render the page with correct layout 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     customHeight={16}
     enable={true}
     style={
-      [
-        {
-          "height": 16,
-        },
-      ]
+      {
+        "height": 16,
+      }
     }
   />
   <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "height": 64,
-          "justifyContent": "center",
-        },
-      ]
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 64,
+        "justifyContent": "center",
+      }
     }
   >
     <View
@@ -94,103 +88,90 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
     </View>
     <View
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "space-between",
-            "marginLeft": 44,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "marginLeft": 44,
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginRight": 20,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "marginRight": 20,
+          }
         }
       >
         <View
           style={
-            [
-              {
-                "flexGrow": 1,
-              },
-            ]
+            {
+              "flexGrow": 1,
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "height": 24,
-                  "justifyContent": "flex-start",
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "height": 24,
+                "justifyContent": "flex-start",
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "alignSelf": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": 204,
-                  },
-                ]
+                {
+                  "alignSelf": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "maxWidth": 204,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "maxHeight": 40,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "maxHeight": 40,
+                  }
                 }
               >
                 <View
                   height={1.5}
                   style={
-                    [
-                      {
-                        "borderColor": "#cbcdd2",
-                        "borderRadius": 48,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "height": 6,
-                        "zIndex": 1,
-                      },
-                    ]
+                    {
+                      "borderBottomLeftRadius": 48,
+                      "borderBottomRightRadius": 48,
+                      "borderColor": "#cbcdd2",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 48,
+                      "borderTopRightRadius": 48,
+                      "borderWidth": 1,
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 6,
+                      "zIndex": 1,
+                    }
                   }
                 >
                   <View
                     style={
-                      [
-                        {
-                          "backgroundColor": "#eb0055",
-                          "flexBasis": 0,
-                          "flexGrow": 0,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      {
+                        "backgroundColor": "#eb0055",
+                        "flexBasis": 0,
+                        "flexGrow": 0,
+                        "flexShrink": 1,
+                      }
                     }
                     testID="progress-bar"
                   />
@@ -199,24 +180,20 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
             </View>
             <View
               style={
-                [
-                  {
-                    "alignSelf": "center",
-                  },
-                ]
+                {
+                  "alignSelf": "center",
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginLeft": 8,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "marginLeft": 8,
+                  }
                 }
               >
                 0%
@@ -228,19 +205,17 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
       <Text
         numberOfLines={1}
         style={
-          [
-            {
-              "color": "#161617",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-              "marginRight": 24,
-              "textAlign": "right",
-            },
-          ]
+          {
+            "color": "#161617",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 17,
+            "lineHeight": 27.2,
+            "marginRight": 24,
+            "textAlign": "right",
+          }
         }
       >
         Tes sorties
@@ -263,48 +238,38 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
     keyboardDismissMode="on-drag"
     keyboardShouldPersistTaps="handled"
     onScroll={[Function]}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
     testID="cultural-survey-questions-scrollview"
   >
     <View>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 19,
+            "lineHeight": 30.4,
+          }
         }
       >
         Au cours de l’année précédente, tu as/es au moins une fois ...
       </Text>
       <View
         style={
-          [
-            {
-              "paddingBottom": 32,
-              "paddingTop": 8,
-            },
-          ]
+          {
+            "paddingBottom": 32,
+            "paddingTop": 8,
+          }
         }
       >
         <Text
           style={
-            [
-              {
-                "color": "#696a6f",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
+            {
+              "color": "#696a6f",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            }
           }
         >
           Tu peux sélectionner une ou plusieurs réponses.
@@ -313,23 +278,19 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
       <View
         accessibilityRole="list"
         style={
-          [
-            {
-              "flexDirection": "column",
-              "gap": 12,
-              "paddingLeft": 0,
-            },
-          ]
+          {
+            "flexDirection": "column",
+            "gap": 12,
+            "paddingLeft": 0,
+          }
         }
       >
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -369,9 +330,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -390,13 +354,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -410,31 +372,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -447,14 +408,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Participé à un festival,
@@ -469,14 +428,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   à une avant-première
@@ -484,11 +441,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -507,11 +462,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -551,9 +504,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -572,13 +528,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -592,31 +546,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -629,14 +582,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Assisté à un spectacle
@@ -651,14 +602,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   Pièce de théâtre, cirque, danse...
@@ -666,11 +615,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -688,11 +635,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -732,9 +677,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -753,13 +701,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -773,31 +719,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -810,14 +755,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Allé à la bibliothèque
@@ -832,14 +775,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   ou à la médiathèque
@@ -847,11 +788,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -869,11 +808,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -913,9 +850,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -934,13 +874,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -954,31 +892,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -991,14 +928,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Participé à un jeu
@@ -1013,14 +948,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   escape game, jeu concours
@@ -1028,11 +961,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1050,11 +981,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -1094,9 +1023,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1115,13 +1047,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1135,31 +1065,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -1172,14 +1101,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Allé à un concert
@@ -1187,11 +1114,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1209,11 +1134,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -1253,9 +1176,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1274,13 +1200,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1294,31 +1218,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -1331,14 +1254,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Allé au cinéma
@@ -1346,11 +1267,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1368,11 +1287,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -1412,9 +1329,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1433,13 +1353,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1453,31 +1371,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -1490,14 +1407,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Visité un musée,
@@ -1512,14 +1427,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   un monument, une exposition...
@@ -1527,11 +1440,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1549,11 +1460,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -1593,9 +1502,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1614,13 +1526,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1634,31 +1544,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -1671,14 +1580,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Participé à une conférence,
@@ -1693,14 +1600,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   rencontre ou découverte des métiers de la culture
@@ -1708,11 +1613,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1730,11 +1633,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -1774,9 +1675,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1795,13 +1699,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1815,31 +1717,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -1852,14 +1753,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Pris un cours
@@ -1874,14 +1773,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   danse, théâtre, musique, dessin
@@ -1889,11 +1786,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -1911,11 +1806,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
@@ -1955,9 +1848,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   },
                   {
                     "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
-                    "borderRadius": 8,
                     "borderStyle": "solid",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "cursor": "pointer",
                     "paddingBottom": 16,
@@ -1976,13 +1872,11 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "columnGap": 12,
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
@@ -1996,31 +1890,30 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   ]
                 }
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 20,
-                      "justifyContent": "center",
-                      "width": 20,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
                 }
                 variant="detailed"
               />
               <View
                 style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
                 }
               >
                 <Text
@@ -2033,14 +1926,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     ]
                   }
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Aucune de ces sorties culturelles
@@ -2048,11 +1939,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
               <View
                 style={
-                  [
-                    {
-                      "justifyContent": "center",
-                    },
-                  ]
+                  {
+                    "justifyContent": "center",
+                  }
                 }
               >
                 <View
@@ -2073,20 +1962,18 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
   <View
     onLayout={[Function]}
     style={
-      [
-        {
-          "alignItems": "center",
-          "bottom": 0,
-          "left": 0,
-          "marginLeft": "auto",
-          "marginRight": "auto",
-          "paddingBottom": 20,
-          "paddingHorizontal": 24,
-          "paddingTop": 12,
-          "position": "absolute",
-          "right": 0,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "bottom": 0,
+        "left": 0,
+        "marginLeft": "auto",
+        "marginRight": "auto",
+        "paddingBottom": 20,
+        "paddingHorizontal": 24,
+        "paddingTop": 12,
+        "position": "absolute",
+        "right": 0,
+      }
     }
   >
     <View
@@ -2126,7 +2013,10 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
             {
               "alignItems": "center",
               "backgroundColor": "#eb0055",
-              "borderRadius": 24,
+              "borderBottomLeftRadius": 24,
+              "borderBottomRightRadius": 24,
+              "borderTopLeftRadius": 24,
+              "borderTopRightRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
               "maxWidth": 500,
@@ -2148,27 +2038,23 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
         }
       >
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "maxWidth": "100%",
+            }
           }
         >
           Continuer
@@ -2179,11 +2065,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
       customHeight={8}
       enable={true}
       style={
-        [
-          {
-            "height": 8,
-          },
-        ]
+        {
+          "height": 8,
+        }
       }
     />
   </View>

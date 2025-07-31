@@ -10,7 +10,7 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { Typo } from 'ui/theme/typography'
 
 interface RadioButtonProps {
@@ -104,8 +104,8 @@ export function RadioButton(props: RadioButtonProps) {
   )
 }
 
-const LabelContainerFlex = styled(Spacer.Flex).attrs({
-  flex: 0.9,
+const LabelContainerFlex = styled.View.attrs({
+  style: { flex: 0.9 },
 })({
   flexDirection: 'row',
   alignItems: 'center',

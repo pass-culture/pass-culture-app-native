@@ -3,82 +3,70 @@
 exports[`SiteMapScreen should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -136,11 +124,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -150,15 +136,13 @@ exports[`SiteMapScreen should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Plan du site
@@ -166,18 +150,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -196,63 +178,49 @@ exports[`SiteMapScreen should render correctly 1`] = `
     }
     enableMaxWidth={false}
     scrollEnabled={true}
-    style={
-      [
-        {},
-      ]
-    }
+    style={{}}
   >
     <View>
       <View
         height={65}
         style={
-          [
-            {
-              "height": 65,
-            },
-          ]
+          {
+            "height": 65,
+          }
         }
       />
       <View
         accessibilityRole="list"
         style={
-          [
-            {
-              "flexDirection": "column",
-              "paddingLeft": 0,
-            },
-          ]
+          {
+            "flexDirection": "column",
+            "paddingLeft": 0,
+          }
         }
       >
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -268,18 +236,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               <View>
@@ -326,27 +292,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     gap={1}
                     paddingForIcon={0}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 4,
+                        "top": 0,
+                      }
                     }
                   >
                     <Text
                       color="#161617"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                       typography="Button"
                     >
@@ -360,45 +322,37 @@ exports[`SiteMapScreen should render correctly 1`] = `
           <View
             accessibilityRole="list"
             style={
-              [
-                {
-                  "flexDirection": "column",
-                  "marginVertical": 4,
-                  "paddingLeft": 0,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "marginVertical": 4,
+                "paddingLeft": 0,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -414,18 +368,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               <View>
@@ -472,27 +424,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     gap={1}
                     paddingForIcon={0}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 4,
+                        "top": 0,
+                      }
                     }
                   >
                     <Text
                       color="#161617"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                       typography="Button"
                     >
@@ -506,44 +454,36 @@ exports[`SiteMapScreen should render correctly 1`] = `
           <View
             accessibilityRole="list"
             style={
-              [
-                {
-                  "flexDirection": "column",
-                  "marginVertical": 4,
-                  "paddingLeft": 0,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "marginVertical": 4,
+                "paddingLeft": 0,
+              }
             }
           >
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -559,18 +499,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -617,27 +555,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -652,32 +586,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -693,18 +621,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -751,27 +677,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -786,32 +708,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -827,18 +743,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -885,27 +799,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -920,32 +830,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -961,18 +865,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1019,27 +921,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1054,32 +952,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -1095,18 +987,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1153,27 +1043,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1188,32 +1074,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -1229,18 +1109,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1287,27 +1165,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1322,32 +1196,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -1363,18 +1231,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1421,27 +1287,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1456,32 +1318,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -1497,18 +1353,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1555,27 +1409,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1590,32 +1440,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -1631,18 +1475,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1689,27 +1531,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1724,32 +1562,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -1765,18 +1597,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1823,27 +1653,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1858,32 +1684,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -1899,18 +1719,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -1957,27 +1775,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -1992,32 +1806,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -2033,18 +1841,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -2091,27 +1897,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -2126,32 +1928,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -2167,18 +1963,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -2225,27 +2019,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -2260,32 +2050,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -2301,18 +2085,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -2359,27 +2141,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -2396,32 +2174,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -2437,18 +2209,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               <View>
@@ -2495,27 +2265,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     gap={1}
                     paddingForIcon={0}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 4,
+                        "top": 0,
+                      }
                     }
                   >
                     <Text
                       color="#161617"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                       typography="Button"
                     >
@@ -2529,45 +2295,37 @@ exports[`SiteMapScreen should render correctly 1`] = `
           <View
             accessibilityRole="list"
             style={
-              [
-                {
-                  "flexDirection": "column",
-                  "marginVertical": 4,
-                  "paddingLeft": 0,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "marginVertical": 4,
+                "paddingLeft": 0,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -2583,18 +2341,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               <View>
@@ -2641,27 +2397,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     gap={1}
                     paddingForIcon={0}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 4,
+                        "top": 0,
+                      }
                     }
                   >
                     <Text
                       color="#161617"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                       typography="Button"
                     >
@@ -2675,45 +2427,37 @@ exports[`SiteMapScreen should render correctly 1`] = `
           <View
             accessibilityRole="list"
             style={
-              [
-                {
-                  "flexDirection": "column",
-                  "marginVertical": 4,
-                  "paddingLeft": 0,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "marginVertical": 4,
+                "paddingLeft": 0,
+              }
             }
           />
         </View>
         <View
           accessibilityRole="none"
           style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
+            {
+              "display": "flex",
+            }
           }
         >
           <View
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "marginLeft": 12,
+                "marginTop": 0,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  },
-                ]
+                {
+                  "height": 25.6,
+                  "justifyContent": "center",
+                }
               }
             >
               <View
@@ -2729,18 +2473,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "marginLeft": 12,
+                }
               }
             >
               <View>
@@ -2787,27 +2529,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     gap={1}
                     paddingForIcon={0}
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "gap": 4,
+                        "top": 0,
+                      }
                     }
                   >
                     <Text
                       color="#161617"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
                       typography="Button"
                     >
@@ -2821,44 +2559,36 @@ exports[`SiteMapScreen should render correctly 1`] = `
           <View
             accessibilityRole="list"
             style={
-              [
-                {
-                  "flexDirection": "column",
-                  "marginVertical": 4,
-                  "paddingLeft": 0,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "marginVertical": 4,
+                "paddingLeft": 0,
+              }
             }
           >
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -2874,18 +2604,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -2932,27 +2660,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -2967,32 +2691,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3008,18 +2726,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -3066,27 +2782,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -3101,32 +2813,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3142,18 +2848,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -3200,27 +2904,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -3235,32 +2935,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3276,18 +2970,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -3334,27 +3026,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -3369,32 +3057,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3410,18 +3092,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -3468,27 +3148,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -3503,32 +3179,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3544,18 +3214,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -3602,27 +3270,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -3637,32 +3301,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3678,18 +3336,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -3736,27 +3392,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -3771,32 +3423,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3812,18 +3458,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -3870,27 +3514,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -3905,32 +3545,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -3946,18 +3580,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -4004,27 +3636,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -4039,32 +3667,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -4080,18 +3702,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -4138,27 +3758,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -4173,32 +3789,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -4214,18 +3824,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -4272,27 +3880,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -4307,32 +3911,26 @@ exports[`SiteMapScreen should render correctly 1`] = `
             <View
               accessibilityRole="none"
               style={
-                [
-                  {
-                    "display": "flex",
-                  },
-                ]
+                {
+                  "display": "flex",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
+                  {
+                    "flexDirection": "row",
+                    "marginLeft": 28,
+                    "marginTop": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "height": 25.6,
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "height": 25.6,
+                      "justifyContent": "center",
+                    }
                   }
                 >
                   <View
@@ -4348,18 +3946,16 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "marginLeft": 12,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "marginLeft": 12,
+                    }
                   }
                 >
                   <View>
@@ -4406,27 +4002,23 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         gap={1}
                         paddingForIcon={0}
                         style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "gap": 4,
-                              "top": 0,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
                         }
                       >
                         <Text
                           color="#161617"
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
                           }
                           typography="BodyAccentXs"
                         >
@@ -4446,17 +4038,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -4467,13 +4057,11 @@ exports[`SiteMapScreen should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

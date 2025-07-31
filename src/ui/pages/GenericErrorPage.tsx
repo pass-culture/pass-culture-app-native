@@ -48,7 +48,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttonTertiaryExternalNav,
   children,
 }) => {
-  const { top, bottom } = useSafeAreaInsets()
+  const { top } = useSafeAreaInsets()
   const Illustration = getPrimaryIllustration(illustration)
 
   return (
@@ -65,7 +65,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
       ) : null}
       <Page>
         {header}
-        <Container bottom={bottom}>
+        <Container>
           <Placeholder height={top} />
           <Spacer.Flex flex={1} />
           <IllustrationContainer>{Illustration ? <Illustration /> : null}</IllustrationContainer>
@@ -109,7 +109,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'space-between',
   paddingHorizontal: theme.contentPage.marginHorizontal,

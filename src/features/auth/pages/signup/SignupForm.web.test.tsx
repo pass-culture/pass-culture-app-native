@@ -27,9 +27,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
 
-const realUseState = React.useState
-const mockUseState = jest.spyOn(React, 'useState')
-
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     resetSearch: jest.fn(),
@@ -56,25 +53,14 @@ describe('<SignupForm/>', () => {
   })
 
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues for SetEmail', async () => {
-      const { container } = renderSignupForm()
-      await act(async () => {})
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
     it.each`
       stepIndex | component
+      ${0}      | ${'SetEmail'}
       ${1}      | ${'SetPassword'}
       ${2}      | ${'SetBirthday'}
       ${3}      | ${'AcceptCgu'}
     `('should not have basic accessibility issues for $component', async ({ stepIndex }) => {
-      mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-      mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-
-      const { container } = renderSignupForm()
+      const { container } = renderSignupForm(stepIndex)
 
       await act(async () => {})
 
@@ -85,12 +71,12 @@ describe('<SignupForm/>', () => {
   })
 })
 
-const renderSignupForm = () =>
+const renderSignupForm = (currentStep?: number) =>
   render(
     reactQueryProviderHOC(
       <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
         <SafeAreaProvider>
-          <SignupForm />
+          <SignupForm currentStep={currentStep} />
         </SafeAreaProvider>
       </GoogleOAuthProvider>
     )

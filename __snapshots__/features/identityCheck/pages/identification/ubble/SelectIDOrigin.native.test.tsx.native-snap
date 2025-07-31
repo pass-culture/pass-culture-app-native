@@ -3,82 +3,70 @@
 exports[`SelectIDOrigin should render correctly 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "height": 48,
+          "justifyContent": "center",
+        }
       }
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
         }
       >
         <View
           positionInHeader="left"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="back-button-container"
         >
@@ -143,11 +131,9 @@ exports[`SelectIDOrigin should render correctly 1`] = `
             </View>
             <Text
               style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
+                {
+                  "display": "none",
+                }
               }
             >
               Retour
@@ -157,15 +143,13 @@ exports[`SelectIDOrigin should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Identification
@@ -173,18 +157,16 @@ exports[`SelectIDOrigin should render correctly 1`] = `
         <View
           positionInHeader="right"
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            }
           }
           testID="close-button-container"
         />
@@ -193,34 +175,30 @@ exports[`SelectIDOrigin should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -229,15 +207,13 @@ exports[`SelectIDOrigin should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -253,11 +229,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -269,21 +241,17 @@ exports[`SelectIDOrigin should render correctly 1`] = `
             />
             <View
               style={
-                [
-                  {
-                    "marginHorizontal": 4,
-                    "marginVertical": 32,
-                  },
-                ]
+                {
+                  "marginHorizontal": 4,
+                  "marginVertical": 32,
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                  }
                 }
               >
                 <View
@@ -299,24 +267,20 @@ exports[`SelectIDOrigin should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
+                  {
+                    "height": 16,
+                  }
                 }
               />
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
-                      "textAlign": "center",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                    "textAlign": "center",
+                  }
                 }
               >
                 Munis-toi de ta pièce d’identité et débloque ton crédit !
@@ -324,24 +288,20 @@ exports[`SelectIDOrigin should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
+                  {
+                    "height": 16,
+                  }
                 }
               />
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "textAlign": "center",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "textAlign": "center",
+                  }
                 }
               >
                 Pour cela, nous avons besoin de vérifier ton identité.
@@ -349,11 +309,9 @@ exports[`SelectIDOrigin should render correctly 1`] = `
               <View
                 numberOfSpaces={8}
                 style={
-                  [
-                    {
-                      "height": 32,
-                    },
-                  ]
+                  {
+                    "height": 32,
+                  }
                 }
               />
               <View
@@ -393,7 +351,10 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                       },
                       {},
                       {
-                        "borderRadius": 8,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ],
                     {
@@ -422,12 +383,10 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 >
                   <View
                     style={
-                      [
-                        {
-                          "alignContent": "center",
-                          "marginRight": 16,
-                        },
-                      ]
+                      {
+                        "alignContent": "center",
+                        "marginRight": 16,
+                      }
                     }
                   >
                     <View
@@ -441,51 +400,43 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": 16,
-                          "textAlign": "start",
-                        },
-                      ]
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      }
                     }
                   >
                     <View
                       style={
-                        [
-                          {
-                            "justifyContent": "center",
-                            "minHeight": 58,
-                          },
-                        ]
+                        {
+                          "justifyContent": "center",
+                          "minHeight": 58,
+                        }
                       }
                     >
                       <Text>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           J’ai une carte d’identité ou un passeport 
                         </Text>
                         <Text
                           style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
                         >
                           français
@@ -508,76 +459,64 @@ exports[`SelectIDOrigin should render correctly 1`] = `
               <View
                 numberOfSpaces={7}
                 style={
-                  [
-                    {
-                      "height": 28,
-                    },
-                  ]
+                  {
+                    "height": 28,
+                  }
                 }
               />
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "paddingHorizontal": 4,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "paddingHorizontal": 4,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#cbcdd2",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginHorizontal": 10,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 10,
+                    }
                   }
                 >
                   ou
                 </Text>
                 <View
                   style={
-                    [
-                      {
-                        "backgroundColor": "#cbcdd2",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "height": 1,
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": 1,
+                      "width": "100%",
+                    }
                   }
                 />
               </View>
               <View
                 numberOfSpaces={7}
                 style={
-                  [
-                    {
-                      "height": 28,
-                    },
-                  ]
+                  {
+                    "height": 28,
+                  }
                 }
               />
               <View
@@ -647,35 +586,29 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
+                      {
+                        "width": 8,
+                      }
                     }
                   />
                   <View
                     style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "textAlign": "left",
-                        },
-                      ]
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "textAlign": "left",
+                      }
                     }
                   >
                     <Text
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
                       J’ai un titre de séjour, une carte d’identité ou un passeport étranger.
@@ -683,11 +616,9 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                        },
-                      ]
+                      {
+                        "alignItems": "flex-end",
+                      }
                     }
                   >
                     <View
@@ -711,17 +642,15 @@ exports[`SelectIDOrigin should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -732,13 +661,11 @@ exports[`SelectIDOrigin should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />

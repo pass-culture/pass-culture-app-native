@@ -147,88 +147,78 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
     <View
       height={428}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 428,
-            "justifyContent": "center",
-            "maxHeight": 650,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 428,
+          "justifyContent": "center",
+          "maxHeight": 650,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         onLayout={[Function]}
         style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
-            },
-          ]
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          }
         }
         testID="modalHeader"
       >
         <View
           justifyContent="left"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            }
           }
         />
         <View
           style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            }
           }
         >
           <Text
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
-                },
-              ]
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              }
             }
             testID="modalHeaderTitle"
           >
@@ -238,15 +228,13 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
         <View
           justifyContent="right"
           style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
-              },
-            ]
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            }
           }
         >
           <View
@@ -312,11 +300,9 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
       </View>
       <View
         style={
-          [
-            {
-              "height": 20,
-            },
-          ]
+          {
+            "height": 20,
+          }
         }
         testID="spacerBetweenHeaderAndContent"
       />
@@ -324,14 +310,12 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
         backdropColor="#24242429"
         paddingBottom={8}
         style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
+          {
+            "maxHeight": "100%",
+            "maxWidth": 480,
+            "paddingBottom": 8,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -343,25 +327,21 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                }
               }
             >
               <Text
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "textAlign": "center",
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "textAlign": "center",
+                  }
                 }
               >
                 Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en demander un nouveau.
@@ -369,37 +349,31 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
               <View
                 numberOfSpaces={6}
                 style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
+                  {
+                    "height": 24,
+                  }
                 }
               />
               <Text
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  }
                 }
               >
                 Attention, il te reste :
                  
                 <Text
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   3 demandes
@@ -408,11 +382,9 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
+                  {
+                    "height": 8,
+                  }
                 }
               />
               <View
@@ -452,7 +424,10 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "maxWidth": 500,
@@ -474,27 +449,23 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     adjustsFontSizeToFit={false}
                     numberOfLines={1}
                     style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "maxWidth": "100%",
-                        },
-                      ]
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
                     }
                   >
                     Demander un nouveau lien

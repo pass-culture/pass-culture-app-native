@@ -3,14 +3,12 @@
 exports[`AsyncErrorBoundary component should render 1`] = `
 <View
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
@@ -72,52 +70,43 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     </View>
   </View>
   <View
-    bottom={16}
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "overflow": "scroll",
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+      }
     }
   >
     <View
       height={16}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 24,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "marginBottom": 24,
+        }
       }
     >
       <View
@@ -132,41 +121,35 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-            "marginBottom": 32,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 32,
+        }
       }
     >
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          }
         }
       >
         Oups !
       </Text>
       <Text
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          }
         }
       >
         Une erreur s’est produite pendant le chargement.
@@ -175,12 +158,10 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     <View
       gap={4}
       style={
-        [
-          {
-            "alignItems": "center",
-            "gap": 16,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "gap": 16,
+        }
       }
     >
       <View
@@ -220,7 +201,10 @@ exports[`AsyncErrorBoundary component should render 1`] = `
               {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
-                "borderRadius": 24,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
@@ -242,27 +226,23 @@ exports[`AsyncErrorBoundary component should render 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
             }
           >
             Réessayer
@@ -273,13 +253,11 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     <View
       flex={1}
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
   </View>

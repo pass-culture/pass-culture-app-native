@@ -3,53 +3,45 @@
 exports[`<OfflinePage /> should match snapshot with default message 1`] = `
 <View
   style={
-    [
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "alignItems": "center",
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
   }
 >
   <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "paddingHorizontal": 16,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "maxWidth": 360,
+        "paddingHorizontal": 16,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
@@ -63,24 +55,20 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
     <View
       numberOfSpaces={5}
       style={
-        [
-          {
-            "height": 20,
-          },
-        ]
+        {
+          "height": 20,
+        }
       }
     />
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 21,
+          "lineHeight": 33.6,
+          "textAlign": "center",
+        }
       }
     >
       Pas de réseau internet
@@ -88,24 +76,20 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <Text
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+          "textAlign": "center",
+        }
       }
     >
       Tu n’es pas connecté à internet.
@@ -113,33 +97,27 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
     <View
       numberOfSpaces={5}
       style={
-        [
-          {
-            "height": 20,
-          },
-        ]
+        {
+          "height": 20,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
       }
     />
     <View
       customHeight={8}
       enable={true}
       style={
-        [
-          {
-            "height": 8,
-          },
-        ]
+        {
+          "height": 8,
+        }
       }
     />
   </View>

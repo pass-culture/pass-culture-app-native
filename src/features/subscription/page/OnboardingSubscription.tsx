@@ -210,7 +210,7 @@ const SubscriptionThematicButtonContainer = styled.View({
 })
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)
-const Gradient = styled(AnimatedGradient).attrs(({ theme }) => ({
+const Gradient = styled(AnimatedGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     colorAlpha(theme.designSystem.color.background.default, 0),
     theme.designSystem.color.background.default,

@@ -41,7 +41,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
     navigateTo: {
       screen: 'Offer',
       params: { id: +offer.objectID },
-    },
+    } as const,
     onBeforeNavigate: () => {
       hideModal()
       prePopulateOffer({

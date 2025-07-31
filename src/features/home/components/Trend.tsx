@@ -35,7 +35,7 @@ const StyledText = styled(Typo.BodyAccentXs).attrs({
   width: theme.isDesktopViewport ? getSpacing(29) : getSpacing(19),
 }))
 
-const ItemIcon = styled.Image(({ theme }) => ({
+const ItemIcon = styled.Image<{ source: { uri?: string; testUri?: string } }>(({ theme }) => ({
   width: theme.isDesktopViewport ? DESKTOP_BUTTON_SIZE : MOBILE_BUTTON_SIZE,
   height: theme.isDesktopViewport ? DESKTOP_BUTTON_SIZE : MOBILE_BUTTON_SIZE,
 }))

@@ -149,83 +149,73 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
       maxHeight={1334}
       noPadding={true}
       style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
-            "borderBottomLeftRadius": 0,
-            "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
-            "flexDirection": "column",
-            "height": 1318,
-            "justifyContent": "center",
-            "maxHeight": 1334,
-            "maxWidth": 960,
-            "paddingBottom": 32,
-            "width": "100%",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
+          "borderTopEndRadius": 16,
+          "borderTopLeftRadius": 20,
+          "borderTopRightRadius": 20,
+          "borderTopStartRadius": 16,
+          "flexDirection": "column",
+          "height": 1318,
+          "justifyContent": "center",
+          "maxHeight": 1334,
+          "maxWidth": 960,
+          "paddingBottom": 32,
+          "width": "100%",
+        }
       }
       testID="modalContainer"
     >
       <View
         nativeID="testUuidV4"
         style={
-          [
-            {
-              "flexDirection": "row",
-              "width": "100%",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "width": "100%",
+          }
         }
         testID="customModalHeader"
       >
         <View
           accessibilityRole="header"
           style={
-            [
-              {
-                "width": "100%",
-              },
-            ]
+            {
+              "width": "100%",
+            }
           }
         >
           <View
             height={72}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "height": 72,
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                  "zIndex": 1,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": 72,
+                "justifyContent": "space-between",
+                "width": "100%",
+                "zIndex": 1,
+              }
             }
             testID="pageHeader"
           >
             <View
               positionInHeader="left"
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-start",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                }
               }
               testID="back-button-container"
             />
@@ -233,15 +223,13 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               nativeID="testUuidV4"
               numberOfLines={1}
               style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "textAlign": "center",
-                  },
-                ]
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "textAlign": "center",
+                }
               }
             >
               Type d’offre
@@ -249,18 +237,16 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
             <View
               positionInHeader="right"
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-end",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                }
               }
               testID="close-button-container"
             >
@@ -327,11 +313,9 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 </View>
                 <Text
                   style={
-                    [
-                      {
-                        "display": "none",
-                      },
-                    ]
+                    {
+                      "display": "none",
+                    }
                   }
                 >
                   Retour
@@ -346,12 +330,10 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
         onContentSizeChange={[Function]}
         scrollEnabled={true}
         style={
-          [
-            {
-              "paddingHorizontal": 24,
-              "width": "100%",
-            },
-          ]
+          {
+            "paddingHorizontal": 24,
+            "width": "100%",
+          }
         }
         testID="fullscreenModalScrollView"
       >
@@ -359,36 +341,30 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
           <View
             marginTop={24}
             style={
-              [
-                {
-                  "marginTop": 24,
-                  "maxWidth": 500,
-                  "width": "100%",
-                },
-              ]
+              {
+                "marginTop": 24,
+                "maxWidth": 500,
+                "width": "100%",
+              }
             }
           >
             <View
               inverseLayout={false}
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                }
               }
             >
               <View
                 style={
-                  [
-                    {
-                      "flexShrink": 1,
-                      "marginLeft": 8,
-                      "marginRight": 24,
-                    },
-                  ]
+                  {
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                    "marginRight": 24,
+                  }
                 }
               >
                 <Text
@@ -396,14 +372,12 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
                 >
                   Uniquement les offres duo
@@ -411,14 +385,12 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 <Text
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    }
                   }
                 >
                   Seules les sorties seront affichées
@@ -426,31 +398,25 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               </View>
               <View
                 style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
+                  {
+                    "flexShrink": 0,
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
                   <Text
                     accessibilityHidden={true}
                     style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
+                      {
+                        "display": "none",
+                      }
                     }
                   >
                     Case à cocher - 
@@ -486,11 +452,9 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
+                        {
+                          "userSelect": "auto",
+                        },
                         {
                           "opacity": 1,
                         },
@@ -501,15 +465,16 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     <View
                       active={false}
                       style={
-                        [
-                          {
-                            "backgroundColor": "#696a6f",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
+                        {
+                          "backgroundColor": "#696a6f",
+                          "borderBottomLeftRadius": 16,
+                          "borderBottomRightRadius": 16,
+                          "borderTopLeftRadius": 16,
+                          "borderTopRightRadius": 16,
+                          "height": 32,
+                          "justifyContent": "center",
+                          "width": 56,
+                        }
                       }
                     >
                       <View
@@ -520,7 +485,10 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
+                              "borderBottomLeftRadius": 28,
+                              "borderBottomRightRadius": 28,
+                              "borderTopLeftRadius": 28,
+                              "borderTopRightRadius": 28,
                               "height": 28,
                               "justifyContent": "center",
                               "shadowColor": "#161617",
@@ -548,38 +516,32 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
       </RCTScrollView>
       <View
         style={
-          [
-            {
-              "width": "100%",
-            },
-          ]
+          {
+            "width": "100%",
+          }
         }
         testID="fixedModalBottom"
       >
         <View
           paddingBottom={0}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "paddingBottom": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "paddingBottom": 0,
+            }
           }
         >
           <View
             gap={4}
             isModal={true}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "justifyContent": "center",
-                  "paddingHorizontal": 24,
-                  "paddingTop": 8,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 16,
+                "justifyContent": "center",
+                "paddingHorizontal": 24,
+                "paddingTop": 8,
+              }
             }
           >
             <View
@@ -618,7 +580,10 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     },
                     {
                       "alignItems": "center",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -643,23 +608,19 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      },
-                    ]
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
                   }
                 >
                   <View
@@ -676,15 +637,13 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Réinitialiser
@@ -728,7 +687,10 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     {
                       "alignItems": "center",
                       "backgroundColor": "#eb0055",
-                      "borderRadius": 24,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "maxWidth": 500,
@@ -753,27 +715,23 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
                 }
               >
                 <Text
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    [
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
                   }
                 >
                   Rechercher
@@ -787,11 +745,9 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
         customHeight={8}
         enable={true}
         style={
-          [
-            {
-              "height": 8,
-            },
-          ]
+          {
+            "height": 8,
+          }
         }
       />
     </View>

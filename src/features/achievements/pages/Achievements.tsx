@@ -114,7 +114,7 @@ const AchievementsGroupeHeader = styled.View({
   alignItems: 'center',
 })
 
-const CompletionContainer = styled(ViewGap).attrs({ gap: 2 })({
+const CompletionContainer = styled(ViewGap).attrs<{ gap?: number }>({ gap: 2 })({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',

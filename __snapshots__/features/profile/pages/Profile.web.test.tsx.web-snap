@@ -2,16 +2,8 @@
 
 exports[`<Profile/> should render correctly on desktop 1`] = `
 .c0 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -23,12 +15,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -39,28 +27,17 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696a6f;
   text-decoration-color: #696a6f;
 }
 
 .c0:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -73,12 +50,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -89,28 +62,17 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 }
 
 .c2:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c2:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c5 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
   border-radius: 0;
   padding: 2px;
@@ -125,12 +87,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   padding-bottom: 0;
   cursor: pointer;
   outline: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -141,14 +99,11 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 }
 
 .c5:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696a6f;
   text-decoration-color: #696a6f;
 }
 
 .c5:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -190,7 +145,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderColor-w7parf r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
@@ -241,7 +196,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginInline-14mg64r r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-7xmw5f"
+              class="css-view-175oi2r r-alignSelf-k200y r-backgroundColor-14a9t8x r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-marginBottom-5oul0u r-marginInline-14mg64r r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
               <div
                 class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -453,10 +408,10 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                             tabindex="0"
                           >
                             <div
-                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                                 style="margin-left: 2px;"
                               />
                             </div>
@@ -1133,16 +1088,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 
 exports[`<Profile/> should render correctly on mobile browser 1`] = `
 .c0 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -1154,12 +1101,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -1170,28 +1113,17 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696a6f;
   text-decoration-color: #696a6f;
 }
 
 .c0:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
@@ -1204,12 +1136,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   cursor: pointer;
   outline: none;
   border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -1220,28 +1148,17 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 }
 
 .c2:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
 .c2:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c5 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
   border-radius: 0;
   padding: 2px;
@@ -1256,12 +1173,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   padding-bottom: 0;
   cursor: pointer;
   outline: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  -webkit-text-decoration: none;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -1272,14 +1185,11 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 }
 
 .c5:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696a6f;
   text-decoration-color: #696a6f;
 }
 
 .c5:hover:disabled {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -1321,7 +1231,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderColor-w7parf r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
@@ -1372,7 +1282,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-marginBottom-5oul0u r-marginInline-14mg64r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-marginBottom-5oul0u r-marginInline-14mg64r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
               <div
                 class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -1584,10 +1494,10 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                             tabindex="0"
                           >
                             <div
-                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderRadius-a1yn9n r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                                 style="margin-left: 2px;"
                               />
                             </div>

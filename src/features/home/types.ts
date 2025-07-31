@@ -283,8 +283,8 @@ export type TrendsModule = {
 
 export type TrendNavigationProps = {
   enableNavigate?: boolean // It is used by offline mode to prevent navigation
-  navigateTo?: {
-    screen?: 'VenueMap' | 'ThematicHome'
+  navigateTo: {
+    screen: 'VenueMap' | 'ThematicHome'
     params?: {
       homeId?: string
       moduleId?: string

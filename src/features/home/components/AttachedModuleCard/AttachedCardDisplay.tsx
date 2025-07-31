@@ -72,7 +72,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         </RightColumn>
       </Container>
       {bottomBannerText ? (
-        <BottomBanner testId="bottom-banner">
+        <BottomBanner>
           <ClockFilled />
           <Typo.BodyAccentXs>{bottomBannerText}</Typo.BodyAccentXs>
         </BottomBanner>
@@ -127,7 +127,7 @@ const ImageContainer = styled.View({
   flexDirection: 'column',
 })
 
-const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: string }>(
+const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText?: string }>(
   ({ theme, shouldFixHeight, bottomBannerText }) => ({
     backgroundColor: theme.designSystem.color.background.default,
     borderTopLeftRadius: BORDER_RADIUS,

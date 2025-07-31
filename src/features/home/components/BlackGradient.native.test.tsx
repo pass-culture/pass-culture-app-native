@@ -12,41 +12,41 @@ describe('BlackGradient', () => {
   it('should apply default height if no height is provided', () => {
     renderBlackGradient()
 
-    const gradientHeight = screen.getByTestId('gradient').props.style[0]
-
-    expect(gradientHeight).toEqual({ height: defaultHeight })
+    expect(screen.getByTestId('gradient')).toHaveStyle({
+      height: defaultHeight,
+    })
   })
 
   it('should apply a numeric height', () => {
     renderBlackGradient(50)
 
-    const gradientHeight = screen.getByTestId('gradient').props.style[0]
-
-    expect(gradientHeight).toEqual({ height: 50 })
+    expect(screen.getByTestId('gradient')).toHaveStyle({
+      height: 50,
+    })
   })
 
   it('should apply a valid percentage height', () => {
     renderBlackGradient('75%')
 
-    const gradientHeight = screen.getByTestId('gradient').props.style[0]
-
-    expect(gradientHeight).toEqual({ height: '75%' })
+    expect(screen.getByTestId('gradient')).toHaveStyle({
+      height: '75%',
+    })
   })
 
   it('should apply default height for an invalid percentage', () => {
     renderBlackGradient('110%')
 
-    const gradientHeight = screen.getByTestId('gradient').props.style[0]
-
-    expect(gradientHeight).toEqual({ height: defaultHeight })
+    expect(screen.getByTestId('gradient')).toHaveStyle({
+      height: defaultHeight,
+    })
   })
 
   it('should apply default height for a non-percentage string', () => {
     renderBlackGradient('invalid')
 
-    const gradientHeight = screen.getByTestId('gradient').props.style[0]
-
-    expect(gradientHeight).toEqual({ height: defaultHeight })
+    expect(screen.getByTestId('gradient')).toHaveStyle({
+      height: defaultHeight,
+    })
   })
 })
 
