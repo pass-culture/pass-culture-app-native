@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react'
+import { StoryFn } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 

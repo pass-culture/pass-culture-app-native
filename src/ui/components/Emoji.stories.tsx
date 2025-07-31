@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react'
+import { StoryFn } from '@storybook/react-vite'
 import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 

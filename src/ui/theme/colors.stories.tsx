@@ -1,5 +1,5 @@
 import Clipboard from '@react-native-clipboard/clipboard'
-import { StoryFn } from '@storybook/react'
+import { StoryFn } from '@storybook/react-vite'
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'

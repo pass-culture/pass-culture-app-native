@@ -1,15 +1,10 @@
-import type { StorybookConfig } from '@storybook/react-vite'
+import type { StorybookConfig } from '@storybook/react-native-web-vite'
 import { mergeConfig } from 'vite'
 import path from 'path'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    '@storybook/addon-interactions',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-a11y', '@storybook/addon-docs'],
   framework: {
     name:
       // @storybook/react-native-web-vite should be used for both production and developpment
@@ -17,7 +12,13 @@ const config: StorybookConfig = {
       process.env.NODE_ENV === 'production'
         ? '@storybook/react-native-web-vite'
         : '@storybook/react-vite',
-    options: {},
+    options: {
+      pluginBabelOptions: {
+        babelConfig: {
+          configFile: true
+        }
+      },
+    },
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',

@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { Meta } from '@storybook/react'
+import { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'

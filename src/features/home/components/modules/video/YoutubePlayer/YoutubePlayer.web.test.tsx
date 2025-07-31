@@ -2,7 +2,7 @@ import React, { createRef } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image, View } from 'react-native'
 
-import { render, userEvent, waitFor, screen } from 'tests/utils/web'
+import { render, userEvent, waitFor, screen, act } from 'tests/utils/web'
 
 import { YoutubePlayerRef } from './types'
 import { YoutubePlayer } from './YoutubePlayer'
@@ -45,7 +45,9 @@ describe('YoutubePlayer', () => {
       />
     )
 
-    await user.click(screen.getByLabelText('Jouer'))
+    await act(async () => {
+      await user.click(screen.getByLabelText('Jouer'))
+    })
 
     await waitFor(() => expect(handleOnReady).toHaveBeenCalledWith())
   })
