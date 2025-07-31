@@ -43,6 +43,10 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('features/navigation/RootNavigator/useShowMandatoryUpdatePersonalData', () => ({
+  useShowMandatoryUpdatePersonalData: jest.fn(),
+}))
+
 describe('<RootNavigator />', () => {
   beforeEach(() => {
     setFeatureFlags()

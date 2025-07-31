@@ -22,6 +22,7 @@ export const BatchUser = {
 
 export const BatchPush = {
   requestNotificationAuthorization: jest.fn(),
+  refreshToken: jest.fn(),
 }
 
 export const BatchMessaging = {

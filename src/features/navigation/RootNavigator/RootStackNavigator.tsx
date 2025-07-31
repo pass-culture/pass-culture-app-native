@@ -45,6 +45,7 @@ import { withAuthProtection } from 'features/navigation/RootNavigator/linking/wi
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
+import { useShowMandatoryUpdatePersonalData } from 'features/navigation/RootNavigator/useShowMandatoryUpdatePersonalData'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { SuspenseSubscriptionStackNavigator } from 'features/navigation/SubscriptionStackNavigator/SuspenseSubscriptionStackNavigator'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -54,6 +55,7 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
@@ -169,10 +171,6 @@ const rootScreens: RouteConfig[] = [
     component: SignupConfirmationEmailSentPage,
     options: { title: 'Email création de compte envoyé' },
   },
-  { name: 'Offer', component: Offer, options: { title: 'Offre' } },
-  { name: '_DeeplinkOnlyOffer1', component: Offer, options: { title: 'Offre' } },
-  { name: '_DeeplinkOnlyOffer2', component: Offer, options: { title: 'Offre' } },
-  { name: '_DeeplinkOnlyOffer3', component: Offer, options: { title: 'Offre' } },
   {
     name: 'OfferPreview',
     component: OfferPreview,
@@ -192,15 +190,6 @@ const rootScreens: RouteConfig[] = [
     name: '_DeeplinkOnlyOfferPreview3',
     component: OfferPreview,
     options: { title: 'Aperçu de l’offre' },
-  },
-  {
-    name: 'OfferVideoPreview',
-    component: OfferVideoPreview,
-    options: {
-      title: 'Vidéo de l’offre',
-      presentation: 'modal',
-      ...FILTERS_MODAL_NAV_OPTIONS,
-    },
   },
   { name: 'BookingDetails', component: withAuthProtection(BookingDetails) },
   {
@@ -338,7 +327,17 @@ const rootScreens: RouteConfig[] = [
     component: SuspiciousLoginSuspendedAccount,
     options: { title: 'Confirmation de suspension de compte' },
   },
+  {
+    name: 'MandatoryUpdatePersonalData',
+    component: MandatoryUpdatePersonalData,
+    options: { title: 'Confirmation de la validité de tes données personnelles' },
+  },
 ]
+
+// For some reason, inlining "withAsyncErrorBoundary" directly in the Screen's component prop causes unexpected behavior with a Youtube player when pressing fullscreen button
+// Youtube player in fullscreen opens and closes 1 second later automatically
+const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
+const OfferWithAsyncErrorBoundry = withAsyncErrorBoundary(Offer)
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
@@ -384,6 +383,30 @@ const RootStackNavigator = withWebWrapper(
               options={options}
             />
           ))}
+          <RootStackNavigatorBase.Screen
+            name="Offer"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="_DeeplinkOnlyOffer1"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="_DeeplinkOnlyOffer2"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="_DeeplinkOnlyOffer3"
+            component={OfferWithAsyncErrorBoundry}
+            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="OfferVideoPreview"
+            component={OfferVideoPreviewWithAsyncErrorBoundry}
+            options={{
+              title: 'Vidéo de l’offre',
+              presentation: 'modal',
+              ...FILTERS_MODAL_NAV_OPTIONS,
+            }}></RootStackNavigatorBase.Screen>
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )
@@ -396,6 +419,8 @@ export const RootNavigator: React.ComponentType = () => {
   const { showTabBar } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const { isSplashScreenHidden } = useSplashScreenContext()
+
+  useShowMandatoryUpdatePersonalData()
 
   const initialScreen = useInitialScreen()
 

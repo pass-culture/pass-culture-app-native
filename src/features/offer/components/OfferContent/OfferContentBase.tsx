@@ -27,7 +27,7 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { OfferFooter } from 'features/offer/components/OfferFooter/OfferFooter'
+import { OfferContentCTAs } from 'features/offer/components/OfferFooter/OfferContentCTAs'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferReactionHeaderButton } from 'features/offer/components/OfferHeader/OfferReactionHeaderButton'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
@@ -64,7 +64,6 @@ type OfferContentBaseProps = OfferContentProps &
     onOfferPreviewPress: (index?: number) => void
     onSeeVideoPress?: () => void
     chronicles?: ChronicleCardData[]
-    videoData?: { videoId: string; thumbnailUri: string }
     likesCount?: number
     headlineOffersCount?: number
     defaultReaction?: ReactionTypeEnum | null
@@ -72,6 +71,7 @@ type OfferContentBaseProps = OfferContentProps &
     contentContainerStyle?: StyleProp<ViewStyle>
     onLayout?: (params: LayoutChangeEvent) => void
     chronicleVariantInfo?: ChronicleVariantInfo
+    isVideoSectionEnabled?: boolean
   }>
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
@@ -88,9 +88,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   contentContainerStyle,
   defaultReaction,
   onReactionButtonPress,
+  isVideoSectionEnabled,
   BodyWrapper = React.Fragment,
   onLayout,
-  videoData,
+  userId,
   children,
 }) => {
   const theme = useTheme()
@@ -185,7 +186,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       if (typeof offer.id === 'number' && params) {
         const { from, moduleName, moduleId, searchId, playlistType } = params
         analytics.logHasAddedOfferToFavorites({
-          from: getIsAComingSoonOffer(offer) ? 'comingSoonOffer' : from,
+          from: getIsAComingSoonOffer(offer.bookingAllowedDatetime) ? 'comingSoonOffer' : from,
           offerId: offer.id,
           moduleName,
           moduleId,
@@ -282,9 +283,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               chronicles={chronicles}
               distance={distance}
               headlineOffersCount={headlineOffersCount}
-              videoData={videoData}
-              chronicleVariantInfo={chronicleVariantInfo}>
-              {theme.isDesktopViewport ? offerCtaButton : null}
+              chronicleVariantInfo={chronicleVariantInfo}
+              userId={userId}
+              isVideoSectionEnabled={isVideoSectionEnabled}>
+              {theme.isDesktopViewport ? (
+                <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
+                  {offerCtaButton}
+                </OfferContentCTAs>
+              ) : null}
             </OfferBody>
           </BodyWrapper>
 
@@ -321,9 +327,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           />
           {children}
         </ScrollViewContainer>
-        <OfferFooter offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
-          {offerCtaButton}
-        </OfferFooter>
+        {theme.isMobileViewport ? (
+          <FooterContainer>
+            <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
+              {offerCtaButton}
+            </OfferContentCTAs>
+          </FooterContainer>
+        ) : null}
       </AnchorProvider>
     </Container>
   )
@@ -340,6 +350,9 @@ const ScrollViewContainer = React.memo(
     overflow: 'visible',
   })
 )
+const FooterContainer = styled.View(({ theme }) => ({
+  marginTop: theme.isDesktopViewport ? 0 : getSpacing(18),
+}))
 
 const StyledSectionWithDivider = styled(SectionWithDivider)({
   paddingBottom: getSpacing(8),

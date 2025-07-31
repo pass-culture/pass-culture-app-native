@@ -8,9 +8,8 @@ import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -28,8 +27,6 @@ import { AuthWrapper } from './AuthWrapper'
 
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
-jest.mock('libs/amplitude/amplitude')
-
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 const navigateFromRefSpy = jest.spyOn(NavigationRef, 'navigateFromRef')
 
@@ -41,7 +38,9 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 describe('AuthContext', () => {
   beforeEach(async () => {
@@ -114,47 +113,6 @@ describe('AuthContext', () => {
       await act(async () => {})
 
       expect(result.current.refetchUser).toBeDefined()
-    })
-
-    it('should set user properties to Amplitude events when user is logged in', async () => {
-      await storage.saveString('access_token', 'access_token')
-      await saveRefreshToken('token')
-      mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
-
-      renderUseAuthContext()
-
-      await waitFor(() =>
-        expect(amplitude.setUserProperties).toHaveBeenCalledWith({
-          age: 18,
-          appVersion: '1.10.5',
-          depositType: 'GRANT_18',
-          eligibility: 'age-18',
-          eligibilityEndDatetime: '2023-11-19T11:00:00Z',
-          id: 1234,
-          isBeneficiary: true,
-          needsToFillCulturalSurvey: true,
-          status: 'beneficiary',
-        })
-      )
-    })
-
-    it('should not set user properties to Amplitude events when user is not logged in', async () => {
-      renderUseAuthContext()
-
-      await act(async () => {})
-
-      expect(amplitude.setUserProperties).not.toHaveBeenCalled()
-    })
-
-    it('should set user id when user is logged in', async () => {
-      await storage.saveString('access_token', 'access_token')
-      await saveRefreshToken('token')
-
-      renderUseAuthContext()
-
-      await waitFor(() =>
-        expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
-      )
     })
 
     it('should log out user when refresh token is no longer valid', async () => {

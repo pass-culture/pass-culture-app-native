@@ -9,9 +9,6 @@ import 'react-native-get-random-values' // required for `uuid` module to work
 
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
-if (process.env.NODE_ENV === 'development') {
-  import('react-native-devsettings')
-}
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
@@ -22,7 +19,6 @@ import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
-import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
@@ -74,7 +70,7 @@ const App: FunctionComponent = function () {
 
   useEffect(() => {
     initAlgoliaAnalytics()
-    BatchPush.requestNotificationAuthorization() //  For iOS and Android 13
+    BatchPush.refreshToken() //  Synchronizes the user's iOS token with Batch. Should be called at each app launch. No effect on Android.
     BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
     configureGoogleSignin({
       webClientId: env.GOOGLE_CLIENT_ID,
@@ -103,15 +99,13 @@ const App: FunctionComponent = function () {
                                 <CulturalSurveyContextProvider>
                                   <SubscriptionContextProvider>
                                     <SplashScreenProvider>
-                                      <PushNotificationsWrapper>
-                                        <ShareAppWrapper>
-                                          <OfflineModeContainer>
-                                            <ScreenErrorProvider>
-                                              <AppNavigationContainer />
-                                            </ScreenErrorProvider>
-                                          </OfflineModeContainer>
-                                        </ShareAppWrapper>
-                                      </PushNotificationsWrapper>
+                                      <ShareAppWrapper>
+                                        <OfflineModeContainer>
+                                          <ScreenErrorProvider>
+                                            <AppNavigationContainer />
+                                          </ScreenErrorProvider>
+                                        </OfflineModeContainer>
+                                      </ShareAppWrapper>
                                     </SplashScreenProvider>
                                   </SubscriptionContextProvider>
                                 </CulturalSurveyContextProvider>

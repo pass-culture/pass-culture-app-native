@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 import { debounce } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -11,10 +12,9 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddresses } from 'libs/place/useAddresses'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -35,26 +35,27 @@ const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.
 
 export const SetAddress = () => {
   const { params } = useRoute<UseRouteType<'SetAddress'>>()
-  const type = params?.type
-  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
-  const pageInfos = isIdentityCheck
-    ? {
-        headerTitle: 'Profil',
-        title: 'Quelle est ton adresse\u00a0?',
-        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
-      }
-    : {
-        headerTitle: 'Informations personnelles',
-        title: 'Saisis ton adresse postale',
-        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      }
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+
+  const identityCheckAndRecapExistingDataConfig = {
+    headerTitle: 'Profil',
+    title: 'Quelle est ton adresse\u00a0?',
+  }
+  const pageConfigByType = {
+    [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: {
+      headerTitle: 'Informations personnelles',
+      title: 'Saisis ton adresse postale',
+    },
+    [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
+  }
 
   const { data: settings } = useSettingsContext()
   const storedAddress = useAddress()
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
   const [query, setQuery] = useState<string>(storedAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
@@ -112,19 +113,18 @@ export const SetAddress = () => {
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    analytics.logSetAddressClicked()
-    navigate(...getSubscriptionHookConfig('SetStatus', { type: pageInfos.navigateParamsType }))
+    navigate('SetStatus', { type })
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)
 
   return (
     <PageWithHeader
-      title={pageInfos.headerTitle}
+      title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
             <Container>
               <SearchInput
                 autoFocus

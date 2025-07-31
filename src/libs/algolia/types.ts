@@ -34,7 +34,7 @@ export type HitOffer = {
   bookFormat?: string | null
   artist?: string
   ean?: string
-  publicationDate?: number
+  bookingAllowedDatetime?: number | null
   likes?: number
   chroniclesCount?: number
   headlineCount?: number

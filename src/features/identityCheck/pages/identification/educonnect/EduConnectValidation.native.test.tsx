@@ -2,7 +2,6 @@ import React from 'react'
 
 import { dispatch, useRoute } from '__mocks__/@react-navigation/native'
 import { EduconnectValidationPageButtonName } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
-import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { EduConnectValidation } from './EduConnectValidation'
@@ -75,13 +74,5 @@ describe('<EduConnectValidation />', () => {
     expect(screen.getByText('John')).toBeOnTheScreen()
     expect(screen.getByText('Doe')).toBeOnTheScreen()
     expect(screen.getByText('28/01/1993')).toBeOnTheScreen()
-  })
-
-  it(`should trigger tracker when the "${EduconnectValidationPageButtonName}" button is pressed`, async () => {
-    render(<EduConnectValidation />)
-
-    await user.press(screen.getByText(EduconnectValidationPageButtonName))
-
-    expect(analytics.logCheckEduconnectDataClicked).toHaveBeenCalledTimes(1)
   })
 })

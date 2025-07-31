@@ -29,9 +29,9 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 }) => {
   const mapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
-  const theme = useTheme()
+  const { isDesktopViewport } = useTheme()
 
-  const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
+  const offerHeight = isDesktopViewport ? getSpacing(45) : getSpacing(35)
 
   const categoryId = mapping[offer.offer.subcategoryId]
 

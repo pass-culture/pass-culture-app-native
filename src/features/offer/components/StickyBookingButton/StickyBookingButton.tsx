@@ -13,16 +13,25 @@ type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
+  secondaryCtaWordingAndAction?: ICTAWordingAndAction
 }
 
 export const StickyBookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,
+  secondaryCtaWordingAndAction,
 }) => {
   const { bottom } = useCustomSafeInsets()
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
+  const {
+    wording: secondaryWording,
+    onPress: onPressSecondary,
+    navigateTo: secondaryNavigateTo,
+    externalNav: secondaryExternalNav,
+    isDisabled: secondaryIsDisabled,
+  } = secondaryCtaWordingAndAction ?? {}
 
   if (!wording && !bottomBannerText) {
     return null
@@ -33,15 +42,30 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
       {wording ? (
         <BlurryWrapper>
           <CallToActionContainer testID="sticky-booking-button" accessible>
-            <CTAButton
-              wording={wording}
-              onPress={onPress}
-              navigateTo={navigateTo}
-              externalNav={externalNav}
-              isDisabled={isDisabled}
-              isFreeDigitalOffer={isFreeDigitalOffer}
-              isLoggedIn={isLoggedIn}
-            />
+            <ButtonWrapper>
+              <CTAButton
+                wording={wording}
+                onPress={onPress}
+                navigateTo={navigateTo}
+                externalNav={externalNav}
+                isDisabled={isDisabled}
+                isFreeDigitalOffer={isFreeDigitalOffer}
+                isLoggedIn={isLoggedIn}
+              />
+            </ButtonWrapper>
+            {secondaryCtaWordingAndAction ? (
+              <ButtonWrapper>
+                <CTAButton
+                  wording={secondaryWording ?? ''}
+                  onPress={onPressSecondary}
+                  navigateTo={secondaryNavigateTo}
+                  externalNav={secondaryExternalNav}
+                  isDisabled={secondaryIsDisabled}
+                  isFreeDigitalOffer={isFreeDigitalOffer}
+                  isLoggedIn={isLoggedIn}
+                />
+              </ButtonWrapper>
+            ) : null}
           </CallToActionContainer>
         </BlurryWrapper>
       ) : null}
@@ -57,9 +81,15 @@ const CallToActionContainer = styled.View({
   paddingHorizontal: getSpacing(4),
   marginTop: getSpacing(4),
   marginBottom: getSpacing(8),
+  flexDirection: 'row',
   width: '100%',
 })
 
 const StyledBottomBanner = styled(BottomBanner)({
   width: '100%',
+})
+
+const ButtonWrapper = styled.View({
+  flex: 1,
+  marginHorizontal: getSpacing(1),
 })

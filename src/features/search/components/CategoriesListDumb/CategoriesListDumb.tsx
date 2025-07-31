@@ -32,7 +32,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   venueMapLocationModalVisible,
   hideVenueMapLocationModal,
 }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   return (
     <StyledScrollView vertical showsHorizontalScrollIndicator={false} testID="categoriesButtons">
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
@@ -57,8 +57,8 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
             <StyledCategoryButton
               key={item.label}
               {...item}
-              fillColor={theme.designSystem.color.background[item.fillColor]}
-              borderColor={theme.designSystem.color.border[item.borderColor]}
+              fillColor={designSystem.color.background[item.fillColor]}
+              borderColor={designSystem.color.border[item.borderColor]}
             />
           )
         })}

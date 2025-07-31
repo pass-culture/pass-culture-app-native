@@ -21,7 +21,6 @@ import { usePostProfileMutation } from 'features/identityCheck/queries/usePostPr
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
-import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -47,10 +46,16 @@ export const SetStatus = () => {
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
-  const type = params?.type
-  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
+
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
-  const title = isIdentityCheck ? 'Profil' : 'Informations personnelles'
+
+  const identityCheckAndRecapExistingDataConfig = 'Profil'
+  const pageConfigByType = {
+    [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: 'Informations personnelles',
+    [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
+  }
 
   const saveStep = useSaveStep()
   const storedName = useName()
@@ -105,7 +110,6 @@ export const SetStatus = () => {
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
-      analytics.logSetStatusClicked()
 
       const profile = {
         name: storedName,
@@ -127,7 +131,7 @@ export const SetStatus = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder title={title} />
+      <PageHeaderWithoutPlaceholder title={pageConfigByType[type]} />
       <StatusFlatList
         handleSubmit={handleSubmit}
         isLoading={isLoading}

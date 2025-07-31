@@ -8,10 +8,9 @@ import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -19,7 +18,9 @@ import { AccountCreated } from './AccountCreated'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -101,14 +102,6 @@ describe('<AccountCreated />', () => {
     await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.NOT_ELIGIBLE)
-  })
-
-  it('should log analytics when "On y va !" button is clicked', async () => {
-    renderAccountCreated()
-
-    await user.press(await screen.findByLabelText('On y va\u00a0!'))
-
-    expect(analytics.logAccountCreatedStartClicked).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -4,20 +4,19 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
-import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
+import { getSpacing, padding, Typo } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
-  history: Readonly<GeneratedDeeplink[]>
+  history: Readonly<string[]>
   keepHistory: boolean
   setKeepHistory: (keepHistory: boolean) => void
-  rehydrateHistory: (history: GeneratedDeeplink[]) => void
+  rehydrateHistory: (history: string[]) => void
 }
 
-const keyExtractor = (item: GeneratedDeeplink, index: number) => `${item.universalLink}_#${index}`
+const keyExtractor = (item: string, index: number) => `${item}_#${index}`
 
 export const DeeplinksHistory = ({
   history,
@@ -87,7 +86,6 @@ export const DeeplinksHistory = ({
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={Separator}
-        ListFooterComponent={HorizontalMargin}
       />
       <BottomContainer>
         <StyledCheckBox>
@@ -102,14 +100,14 @@ export const DeeplinksHistory = ({
   )
 }
 
-const renderItem = ({ item, index }: { item: GeneratedDeeplink; index: number }) => {
+const renderItem = ({ item, index }: { item: string; index: number }) => {
   const indice = `#${index}`
-  return <DeeplinkItem before={<Typo.BodyAccentXs>{indice}</Typo.BodyAccentXs>} deeplink={item} />
+  return (
+    <DeeplinkItem before={<Typo.BodyAccentXs>{indice}</Typo.BodyAccentXs>} universalLink={item} />
+  )
 }
 
 const flatListStyle = { marginVertical: getSpacing(4) }
-
-const HorizontalMargin = () => <Spacer.Column numberOfSpaces={10} />
 
 const StyledCheckBox = styled(TouchableOpacity)({
   display: 'flex',
@@ -138,4 +136,5 @@ const BottomContainer = styled.View(({ theme }) => ({
   justifyContent: 'flex-end',
   ...padding(2),
   backgroundColor: theme.designSystem.color.background.default,
+  marginTop: theme.designSystem.size.spacing.xxxl,
 }))

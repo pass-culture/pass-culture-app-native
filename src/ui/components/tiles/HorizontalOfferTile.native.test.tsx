@@ -317,6 +317,23 @@ describe('HorizontalOfferTile component', () => {
         expect(screen.getByText('à 111 km')).toBeOnTheScreen()
       })
     })
+
+    describe('coming soon offer', () => {
+      const bookingAllowedDatetime = 1753886400 // '2025-07-30T14:00:00+02:00'
+      const mockComingSoonOffer = {
+        ...mockOffer,
+        offer: { ...mockOffer.offer, bookingAllowedDatetime },
+      }
+
+      beforeEach(jest.fn())
+
+      it('should display coming soon tag', async () => {
+        renderHorizontalOfferTile({ ...defaultProps, offer: mockComingSoonOffer })
+        await screen.findByText('La nuit des temps')
+
+        expect(await screen.findByText('Bientôt dispo')).toBeOnTheScreen()
+      })
+    })
   })
 })
 

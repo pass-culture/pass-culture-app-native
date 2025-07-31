@@ -3,23 +3,22 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { CustomRemoteConfig } from './remoteConfig.types'
 
 export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
-  test_param: 'A',
   aroundPrecision: 0,
-  artistPageSubcategories: {
-    subcategories: [],
-  },
+  artistPageSubcategories: { subcategories: [] },
+  displayInAppFeedback: false,
+  displayMandatoryUpdatePersonalData: false,
+  gridListLayoutRemoteConfig: 'Liste',
   homeEntryIdBeneficiary: '',
   homeEntryIdFreeBeneficiary: '',
   homeEntryIdFreeOffers: '',
   homeEntryIdGeneral: '',
   homeEntryIdWithoutBooking: '',
-  reactionFakeDoorCategories: {
-    categories: [],
-  },
+  reactionFakeDoorCategories: { categories: [] },
   sameAuthorPlaylist: '',
+  shareAppModalVersion: 'default',
   shouldDisplayReassuranceMention: false,
   shouldLogInfo: false,
-  displayInAppFeedback: false,
+  showAccessScreeningButton: false,
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: '',
     [SubscriptionTheme.MUSIQUE]: '',
@@ -28,6 +27,5 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
     [SubscriptionTheme.VISITES]: '',
     [SubscriptionTheme.ACTIVITES]: '',
   },
-  shareAppModalVersion: 'default',
-  showAccessScreeningButton: false,
+  test_param: 'A',
 }

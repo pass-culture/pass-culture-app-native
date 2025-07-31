@@ -6,6 +6,9 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
+import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useLayout } from 'ui/hooks/useLayout'
 import { getSpacing } from 'ui/theme'
@@ -18,12 +21,15 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
   chronicles,
   chronicleVariantInfo,
-  videoData,
   defaultReaction,
   headlineOffersCount,
   onReactionButtonPress,
+  userId,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const shouldShowVideoSection = offer.video?.id && isVideoSectionEnabled
 
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
@@ -31,6 +37,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   }
 
   const handleVideoPress = () => {
+    analytics.logConsultVideo({ from: 'offer' })
     navigate('OfferVideoPreview', { id: offer.id })
   }
 
@@ -43,16 +50,17 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        onSeeVideoPress={videoData ? handleVideoPress : undefined}
+        onSeeVideoPress={shouldShowVideoSection ? handleVideoPress : undefined}
+        isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
         chronicleVariantInfo={chronicleVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}
-        videoData={videoData}
         onReactionButtonPress={onReactionButtonPress}
-        onLayout={onLayout}>
+        onLayout={onLayout}
+        userId={userId}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

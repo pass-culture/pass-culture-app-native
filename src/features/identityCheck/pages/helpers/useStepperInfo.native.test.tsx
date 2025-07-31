@@ -85,6 +85,16 @@ describe('useStepperInfo', () => {
     expect(stepsDetails).toHaveLength(4)
   })
 
+  describe('profile step', () => {
+    it('should show subtitle if user has already filled their profile', () => {
+      mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: true })
+      const { stepsDetails } = useStepperInfo()
+      const confirmationStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
+
+      expect(confirmationStep?.subtitle).toEqual('Sous-titre Profil')
+    })
+  })
+
   describe('identification step', () => {
     it('should default return "SelectIDOrigin"', () => {
       const { stepsDetails } = useStepperInfo()

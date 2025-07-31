@@ -147,6 +147,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   ]
                 }
                 testID="tagWrapper"
+                withColor={true}
               >
                 <Text
                   style={
@@ -563,6 +564,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     {
                       "flexDirection": "row",
                       "gap": 24,
+                      "paddingHorizontal": 24,
+                      "position": "relative",
                     },
                   ]
                 }
@@ -574,8 +577,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "backgroundColor": "#f1f1f4",
                         "bottom": 0,
                         "height": 4,
+                        "left": 0,
                         "position": "absolute",
-                        "width": "100%",
+                        "right": 0,
                       },
                     ]
                   }
@@ -3079,6 +3083,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   ]
                 }
                 testID="tagWrapper"
+                withColor={true}
               >
                 <Text
                   style={
@@ -3495,6 +3500,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     {
                       "flexDirection": "row",
                       "gap": 24,
+                      "paddingHorizontal": 24,
+                      "position": "relative",
                     },
                   ]
                 }
@@ -3506,8 +3513,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "backgroundColor": "#f1f1f4",
                         "bottom": 0,
                         "height": 4,
+                        "left": 0,
                         "position": "absolute",
-                        "width": "100%",
+                        "right": 0,
                       },
                     ]
                   }
@@ -6347,6 +6355,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   ]
                 }
                 testID="tagWrapper"
+                withColor={true}
               >
                 <Text
                   style={
@@ -6763,6 +6772,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     {
                       "flexDirection": "row",
                       "gap": 24,
+                      "paddingHorizontal": 24,
+                      "position": "relative",
                     },
                   ]
                 }
@@ -6774,8 +6785,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "backgroundColor": "#f1f1f4",
                         "bottom": 0,
                         "height": 4,
+                        "left": 0,
                         "position": "absolute",
-                        "width": "100%",
+                        "right": 0,
                       },
                     ]
                   }

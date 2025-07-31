@@ -10,9 +10,9 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
-const today = 1736870746 // 14/01/2025 - 17:05:46
-const tomorrow = today + 24 * 60 * 60
-const yesterday = today - 24 * 60 * 60
+const today = 1736853946 //'2025-01-14T16:05:46+02:00'
+const tomorrow = 1736940346 //'2025-01-15T16:05:46+02:00'
+const yesterday = 1736767546 //'2025-01-13T16:05:46+02:00'
 
 const props = {
   moduleId: '1',
@@ -21,7 +21,10 @@ const props = {
 
 const propsWithPublicationDateTomorrow = {
   moduleId: '1',
-  offer: { ...offersFixture[0], offer: { ...offersFixture[0].offer, publicationDate: tomorrow } },
+  offer: {
+    ...offersFixture[0],
+    offer: { ...offersFixture[0].offer, bookingAllowedDatetime: tomorrow },
+  },
 }
 
 jest.mock('libs/subcategories/useSubcategory')
@@ -67,12 +70,12 @@ describe('MarketingBlockExclusivity', () => {
     })
   })
 
-  describe('publicationDate is after today', () => {
+  describe('bookingAllowedDatetime is after today', () => {
     it('should display a text with date when shouldDisplayPublicationDate is true', async () => {
       render(
         <MarketingBlockExclusivity
           {...propsWithPublicationDateTomorrow}
-          shouldDisplayPublicationDate
+          shouldDisplayBookingAllowedDatetime
         />
       )
       await screen.findByText('La nuit des temps')
@@ -84,7 +87,7 @@ describe('MarketingBlockExclusivity', () => {
       render(
         <MarketingBlockExclusivity
           {...propsWithPublicationDateTomorrow}
-          shouldDisplayPublicationDate={false}
+          shouldDisplayBookingAllowedDatetime={false}
         />
       )
 
@@ -94,7 +97,7 @@ describe('MarketingBlockExclusivity', () => {
     })
   })
 
-  describe('publicationDate is today', () => {
+  describe('bookingAllowedDatetime is today', () => {
     it('should not display bottomBanner with comingSoon information', () => {
       render(
         <MarketingBlockExclusivity
@@ -102,7 +105,7 @@ describe('MarketingBlockExclusivity', () => {
             ...props,
             offer: {
               ...offersFixture[0],
-              offer: { ...offersFixture[0].offer, publicationDate: today },
+              offer: { ...offersFixture[0].offer, bookingAllowedDatetime: today },
             },
           }}
         />
@@ -112,7 +115,7 @@ describe('MarketingBlockExclusivity', () => {
     })
   })
 
-  describe('publicationDate is yesterday', () => {
+  describe('bookingAllowedDatetime is yesterday', () => {
     it('should not display bottomBanner with comingSoon information', () => {
       render(
         <MarketingBlockExclusivity
@@ -120,7 +123,7 @@ describe('MarketingBlockExclusivity', () => {
             ...props,
             offer: {
               ...offersFixture[0],
-              offer: { ...offersFixture[0].offer, publicationDate: yesterday },
+              offer: { ...offersFixture[0].offer, bookingAllowedDatetime: yesterday },
             },
           }}
         />

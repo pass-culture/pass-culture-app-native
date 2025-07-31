@@ -26,7 +26,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { videoDataFixture } from 'features/offer/fixtures/videoDataFixture'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { beneficiaryUser } from 'fixtures/user'
 import {
@@ -36,6 +35,7 @@ import {
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Position } from 'libs/location'
@@ -146,19 +146,22 @@ const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor'
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({
-    ...DEFAULT_REMOTE_CONFIG,
-    sameAuthorPlaylist: 'withPlaylistAsFirst',
-    reactionFakeDoorCategories: {
-      categories: [
-        NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-        NativeCategoryIdEnumv2.CD,
-        NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
-        NativeCategoryIdEnumv2.VINYLES,
-        NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
-        NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
-        NativeCategoryIdEnumv2.LIVRES_PAPIER,
-        NativeCategoryIdEnumv2.DVD_BLU_RAY,
-      ],
+    ...remoteConfigResponseFixture,
+    data: {
+      ...DEFAULT_REMOTE_CONFIG,
+      sameAuthorPlaylist: 'withPlaylistAsFirst',
+      reactionFakeDoorCategories: {
+        categories: [
+          NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+          NativeCategoryIdEnumv2.CD,
+          NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
+          NativeCategoryIdEnumv2.VINYLES,
+          NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
+          NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
+          NativeCategoryIdEnumv2.LIVRES_PAPIER,
+          NativeCategoryIdEnumv2.DVD_BLU_RAY,
+        ],
+      },
     },
   })
 
@@ -478,7 +481,7 @@ describe('<OfferContent />', () => {
       const comingSoonOffer = {
         ...offerResponseSnap,
         isReleased: false,
-        publicationDate: addDays(new Date(), 20).toString(),
+        bookingAllowedDatetime: addDays(new Date(), 20).toString(),
       }
       mockdate.set(new Date('2025-03-31T10:00:00Z'))
 
@@ -656,8 +659,11 @@ describe('<OfferContent />', () => {
     describe('with remote config activated', () => {
       beforeAll(() => {
         useRemoteConfigSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          showAccessScreeningButton: true,
+          ...remoteConfigResponseFixture,
+          data: {
+            ...DEFAULT_REMOTE_CONFIG,
+            showAccessScreeningButton: true,
+          },
         })
       })
 
@@ -709,8 +715,11 @@ describe('<OfferContent />', () => {
     describe('with remote config deactivated', () => {
       beforeAll(() => {
         useRemoteConfigSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          showAccessScreeningButton: false,
+          ...remoteConfigResponseFixture,
+          data: {
+            ...DEFAULT_REMOTE_CONFIG,
+            showAccessScreeningButton: false,
+          },
         })
       })
 
@@ -842,7 +851,7 @@ describe('<OfferContent />', () => {
 
   describe('See video button', () => {
     it('should not display see video button when video data not defined', async () => {
-      renderOfferContent({})
+      renderOfferContent({ offer: { ...offerResponseSnap, video: undefined } })
 
       await screen.findByText('Réserver l’offre')
 
@@ -851,14 +860,14 @@ describe('<OfferContent />', () => {
 
     it('should display see video button when video data defined', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-      renderOfferContent({ videoData: videoDataFixture })
+      renderOfferContent({})
 
       expect(await screen.findByText('Voir la vidéo')).toBeOnTheScreen()
     })
 
     it('should navigate to OfferVideoPreview screen when pressing see video button', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-      renderOfferContent({ videoData: videoDataFixture })
+      renderOfferContent({})
 
       await screen.findByText('Réserver l’offre')
 
@@ -867,6 +876,17 @@ describe('<OfferContent />', () => {
       expect(mockNavigate).toHaveBeenCalledWith('OfferVideoPreview', {
         id: offerResponseSnap.id,
       })
+    })
+
+    it('should trigger ConsultVideo log when pressing see video button', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
+      renderOfferContent({})
+
+      await screen.findByText('Réserver l’offre')
+
+      await user.press(screen.getByText('Voir la vidéo'))
+
+      expect(analytics.logConsultVideo).toHaveBeenCalledWith({ from: 'offer' })
     })
   })
 })
@@ -880,7 +900,6 @@ function renderOfferContent({
   subcategory = mockSubcategory,
   isDesktopViewport,
   chronicles,
-  videoData,
 }: RenderOfferContentType) {
   const subtitle = 'Membre du Book Club'
   const chroniclesData =
@@ -895,7 +914,6 @@ function renderOfferContent({
           subcategory={subcategory}
           chronicles={chroniclesData}
           chronicleVariantInfo={chronicleVariantInfoFixture}
-          videoData={videoData}
         />
       </NavigationContainer>
     ),

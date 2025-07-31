@@ -2,9 +2,11 @@ import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export type CustomRemoteConfig = {
-  test_param: string
   aroundPrecision: Record<'from' | 'value', number>[] | number
   artistPageSubcategories: Record<'subcategories', SubcategoryIdEnum[]>
+  displayInAppFeedback: boolean
+  displayMandatoryUpdatePersonalData: boolean
+  gridListLayoutRemoteConfig: string
   homeEntryIdBeneficiary: string
   homeEntryIdFreeBeneficiary: string
   homeEntryIdFreeOffers: string
@@ -12,12 +14,12 @@ export type CustomRemoteConfig = {
   homeEntryIdWithoutBooking: string
   reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   sameAuthorPlaylist: string
+  shareAppModalVersion: 'default' | 'A' | 'B'
   shouldDisplayReassuranceMention: boolean
   shouldLogInfo: boolean
-  displayInAppFeedback: boolean
-  subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
-  shareAppModalVersion: 'default' | 'A' | 'B'
   showAccessScreeningButton: boolean
+  subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
+  test_param: string
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.

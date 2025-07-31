@@ -1,17 +1,21 @@
 import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 
 jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue({
-  ...DEFAULT_REMOTE_CONFIG,
-  subscriptionHomeEntryIds: {
-    [SubscriptionTheme.CINEMA]: 'cinemaId',
-    [SubscriptionTheme.MUSIQUE]: 'musiqueId',
-    [SubscriptionTheme.LECTURE]: 'lectureId',
-    [SubscriptionTheme.SPECTACLES]: 'spectaclesId',
-    [SubscriptionTheme.VISITES]: 'visiteId',
-    [SubscriptionTheme.ACTIVITES]: 'activitesId',
+  ...remoteConfigResponseFixture,
+  data: {
+    ...DEFAULT_REMOTE_CONFIG,
+    subscriptionHomeEntryIds: {
+      [SubscriptionTheme.CINEMA]: 'cinemaId',
+      [SubscriptionTheme.MUSIQUE]: 'musiqueId',
+      [SubscriptionTheme.LECTURE]: 'lectureId',
+      [SubscriptionTheme.SPECTACLES]: 'spectaclesId',
+      [SubscriptionTheme.VISITES]: 'visiteId',
+      [SubscriptionTheme.ACTIVITES]: 'activitesId',
+    },
   },
 })
 

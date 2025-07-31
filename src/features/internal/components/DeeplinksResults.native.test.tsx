@@ -1,23 +1,18 @@
 import React from 'react'
 
-import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
 import { DeeplinksResult } from 'features/internal/components/DeeplinksResult'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<DeeplinksResult />', () => {
-  const result: GeneratedDeeplink = {
-    firebaseLink: 'https://passculture.app/recherche',
-    universalLink:
-      'https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Frecherche&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1',
-  }
+  const universalLink =
+    'https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Frecherche&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1'
 
   it('should display deeplinks results', () => {
-    render(<DeeplinksResult result={result} />)
+    render(<DeeplinksResult result={universalLink} />)
 
-    expect(screen.getByText(result.firebaseLink)).toBeOnTheScreen()
-    expect(screen.getByText(result.universalLink)).toBeOnTheScreen()
+    expect(screen.getByText(universalLink)).toBeOnTheScreen()
   })
 
   it('should display message when no results are provided', async () => {

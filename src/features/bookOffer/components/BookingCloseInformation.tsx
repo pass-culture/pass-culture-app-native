@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
-  const theme = useTheme()
+  const { illustrations, designSystem } = useTheme()
   return (
     <AppInformationModal
       visible={visible}
@@ -22,10 +22,7 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
       onCloseIconPress={hideModal}>
       <React.Fragment>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
-        <Info
-          size={theme.illustrations.sizes.medium}
-          color={theme.designSystem.color.icon.brandPrimary}
-        />
+        <Info size={illustrations.sizes.medium} color={designSystem.color.icon.brandPrimary} />
         <ModalBodyText>
           En quittant la réservation, elle ne sera pas annulée{LINE_BREAK}
           {LINE_BREAK}Si elle est éligible à une annulation, tu pourras lʼannuler depuis lʼonglet

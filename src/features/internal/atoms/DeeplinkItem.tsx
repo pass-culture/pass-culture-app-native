@@ -1,61 +1,37 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
-  deeplink: GeneratedDeeplink
+  universalLink: string
   before?: React.JSX.Element | React.JSX.Element[]
 }
 
-export const DeeplinkItem: FC<Props> = ({ deeplink, before }) => {
-  const copyToClipboardUniversalLink = useCopyToClipboard({ textToCopy: deeplink.universalLink })
-  const copyToClipboardFirebaseLink = useCopyToClipboard({ textToCopy: deeplink.firebaseLink })
+export const DeeplinkItem: FC<Props> = ({ universalLink, before }) => {
+  const copyToClipboardUniversalLink = useCopyToClipboard({ textToCopy: universalLink })
 
   return (
     <React.Fragment>
-      {before ? (
-        <Container>
-          {before}
-          <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
-        </Container>
-      ) : null}
+      {before ? <Container>{before}</Container> : null}
       <Container>
-        <Spacer.Flex flex={0.85}>
+        <LinkWrapper>
           <ExternalTouchableLink
-            externalNav={{ url: deeplink.universalLink, params: { shouldLogEvent: false } }}>
-            <Typo.BodyAccentXs>{deeplink.universalLink}</Typo.BodyAccentXs>
+            externalNav={{ url: universalLink, params: { shouldLogEvent: false } }}>
+            <Typo.BodyAccentXs>{universalLink}</Typo.BodyAccentXs>
           </ExternalTouchableLink>
-        </Spacer.Flex>
+        </LinkWrapper>
 
-        <Spacer.Flex flex={0.15}>
+        <IconWrapper>
           <StyledTouchableOpacity
             onPress={copyToClipboardUniversalLink}
             accessibilityLabel="Copier">
             <Share />
           </StyledTouchableOpacity>
-        </Spacer.Flex>
-      </Container>
-      <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
-      <Container>
-        <Spacer.Flex flex={0.85}>
-          <ExternalTouchableLink
-            externalNav={{ url: deeplink.firebaseLink, params: { shouldLogEvent: false } }}>
-            <Typo.BodyAccentXs>{deeplink.firebaseLink}</Typo.BodyAccentXs>
-          </ExternalTouchableLink>
-        </Spacer.Flex>
-
-        <Spacer.Flex flex={0.15}>
-          <StyledTouchableOpacity
-            onPress={copyToClipboardFirebaseLink}
-            accessibilityLabel="Copier dans le presse-papier">
-            <Share />
-          </StyledTouchableOpacity>
-        </Spacer.Flex>
+        </IconWrapper>
       </Container>
     </React.Fragment>
   )
@@ -72,5 +48,8 @@ const Container = styled.View({
   justifyContent: 'space-between',
   overflow: 'hidden',
 })
+
+const LinkWrapper = styled.View({ flex: 0.85 })
+const IconWrapper = styled.View({ flex: 0.15 })
 
 const Share = styled(DefaultShare).attrs(({ theme }) => ({ size: theme.icons.sizes.small }))``

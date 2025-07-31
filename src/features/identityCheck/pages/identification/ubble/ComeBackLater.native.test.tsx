@@ -4,7 +4,6 @@ import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -51,13 +50,5 @@ describe('ComeBackLater', () => {
     await waitFor(() =>
       expect(BatchProfile.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.screenViewComeBackLater)
     )
-  })
-
-  it("should log analytics when the 'M'identifier plus tard' button is pressed", async () => {
-    render(<ComeBackLater />)
-
-    await user.press(screen.getByText('M’identifier plus tard'))
-
-    expect(analytics.logComeBackLaterClicked).toHaveBeenCalledTimes(1)
   })
 })

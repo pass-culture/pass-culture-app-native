@@ -14,11 +14,11 @@ interface IconStepRetryProps {
   testID?: string
 }
 export const IconStepRetry: FunctionComponent<IconStepRetryProps> = ({ Icon, testID }) => {
-  const theme = useTheme()
+  const { icons, designSystem } = useTheme()
 
   return (
     <Container testID={testID}>
-      <Icon size={theme.icons.sizes.standard} color={theme.designSystem.color.icon.brandPrimary} />
+      <Icon size={icons.sizes.standard} color={designSystem.color.icon.brandPrimary} />
       <IconContainer>
         <StyledTryAgain />
       </IconContainer>

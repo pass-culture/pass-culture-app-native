@@ -11,6 +11,10 @@ on:
         required: true
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
+      PASSCULTURE_GITHUB_ACTION_APP_ID:
+        required: true
+      PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY:
+        required: true
 
 concurrency:
   group: tester-${{ github.ref }}
@@ -147,7 +151,8 @@ jobs:
 
   allure-report:
     name: Update Allure report
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    # Temporairement désactivé
+    if: ${{ always() && github.ref == 'refs/heads/master' && false }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     permissions:
@@ -163,23 +168,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-      - name: Cache the node_modules
-        id: yarn-modules-cache
-        uses: pass-culture-github-actions/cache@v1.0.0
-        with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: 'Authentification to Google'
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Authenticate through github app ghactionci
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: github-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            allure-report-native
+          permission-contents: write
+
+      - uses: actions/checkout@v4
+        with:
+          repository: pass-culture/allure-report-native
+          token: ${{ steps.github-token.outputs.token }}
+          path: ./allure-report-native
+          ref: 'main'
 
       - name: Set up Cloud SDK to get gsutils
         uses: 'google-github-actions/setup-gcloud@v2'
@@ -194,44 +206,22 @@ jobs:
           for file in `ls allure-results/*tar`; do tar --use-compress-program='zstd --long=30' -xf $file; done
           rm -f allure-results/*.tar
           find . -maxdepth 1 -type d -name "allure-results-*" | while read dir; do
-          cp -r "$dir"/* allure-results
+          cp -r "$dir"/* allure-report-native/allure-results
           done
           rm -rf allure-results-*
-
-      - name: 'Retrieve previous Allure history from bucket'
-        run: |
-          mkdir -p allure-results/history
-          # Check if history exists and copy it directly
-          if gsutil ls 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-history/' >/dev/null 2>&1; then
-            gsutil cp -r 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-history/*' allure-results/history/ || true
-          fi
-
-      - name: Generate Allure Report
-        run: yarn generate:allure-report
-
-      - name: 'Save Allure history to bucket'
-        run: |
-          # Check if history was generated and save it
-          if [ -d "allure-report/history" ] && [ "$(ls -A allure-report/history)" ]; then
-            gsutil cp -r allure-report/history/* 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-history/' || true
-          else
-            echo "Warning: No history generated in allure-report/history"
-          fi
 
       - name: 'Author'
         run: |
           git config --global user.email PassCulture-SA@users.noreply.github.com
           git config --global user.name ${{ github.actor }}
+        working-directory: allure-report-native
 
-      - name: Deploy to GitHub Pages on gh
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          publish_branch: allure-report
-          force_orphan: true
-          user_name: ${{ github.actor }}
-          user_email: 'PassCulture-SA@users.noreply.github.com'
+      - name: 'Update Report'
+        run: |
+          git add .
+          git commit -m "feat: update report"
+          git push
+        working-directory: allure-report-native
 
   report-coverage:
     runs-on: ubuntu-24.04

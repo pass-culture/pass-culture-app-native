@@ -10,15 +10,15 @@ type Props = {
 }
 
 export const CarouselBar: React.FunctionComponent<Props> = ({ animValue, index }) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
 
   const animStyle = useAnimatedStyle(() => {
     const inputRange = [index - 1, index, index + 1]
 
     const colorOutputRange = [
-      theme.designSystem.color.background.disabled,
-      theme.designSystem.color.background.inverted,
-      theme.designSystem.color.background.disabled,
+      designSystem.color.background.disabled,
+      designSystem.color.background.inverted,
+      designSystem.color.background.disabled,
     ]
 
     return {

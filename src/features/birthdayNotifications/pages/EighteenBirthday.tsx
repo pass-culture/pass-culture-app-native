@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { storage } from 'libs/storage'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
+import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 
@@ -18,7 +18,7 @@ export function EighteenBirthday() {
 
   return (
     <GenericInfoPage
-      animation={TutorialPassLogo}
+      animation={BirthdayCake}
       title="Tu as 18 ans&nbsp;!"
       subtitle={pageWording.text}
       buttonPrimary={{

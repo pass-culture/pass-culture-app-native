@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Circle, ClipPath, Defs, FeFlood, FeGaussianBlur, Filter, G, Rect } from 'react-native-svg'
-import styled from 'styled-components/native'
+import { Circle, ClipPath, Defs, FeGaussianBlur, Filter, G, Rect } from 'react-native-svg'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -23,6 +23,7 @@ const HomeGradientSvg: React.FunctionComponent<HomeGradientProps> = ({
   const { id: clipPathId, fill: clipPath } = svgIdentifier()
   const { id: filterId1, fill: filterPath1 } = svgIdentifier()
   const { id: filterId2, fill: filterPath2 } = svgIdentifier()
+  const { colors: themeColors } = useTheme()
 
   return (
     <AccessibleSvg
@@ -35,10 +36,15 @@ const HomeGradientSvg: React.FunctionComponent<HomeGradientProps> = ({
       fill="none">
       <G clip-path={clipPath}>
         <G opacity="0.9" filter={filterPath1}>
-          <Circle cx="345.5" cy="-17.5" r="193.5" fill={colors[0]} />
+          <Circle
+            cx="345.5"
+            cy="-17.5"
+            r="193.5"
+            fill={colors ? colors[0] : themeColors.lilacLight}
+          />
         </G>
         <G opacity="0.9" filter={filterPath2}>
-          <Circle cx="53" cy="-56" r="164" fill={colors[1]} />
+          <Circle cx="53" cy="-56" r="164" fill={colors ? colors[1] : themeColors.goldLight100} />
         </G>
       </G>
       <Defs>
@@ -50,7 +56,6 @@ const HomeGradientSvg: React.FunctionComponent<HomeGradientProps> = ({
           height="687"
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB">
-          <FeFlood flood-opacity="0" result="BackgroundImageFix" />
           <FeGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_3901_37" />
         </Filter>
         <Filter
@@ -61,7 +66,6 @@ const HomeGradientSvg: React.FunctionComponent<HomeGradientProps> = ({
           height="628"
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB">
-          <FeFlood flood-opacity="0" result="BackgroundImageFix" />
           <FeGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_3901_37" />
         </Filter>
         <ClipPath id={clipPathId}>

@@ -6,7 +6,7 @@ import { YoutubeRendererProps, YoutubeRendererRef } from './types'
 
 export const YoutubeRenderer = forwardRef<YoutubeRendererRef, YoutubeRendererProps>(
   function YoutubeRenderer(playerProps, ref) {
-    const theme = useTheme()
+    const { designSystem } = useTheme()
     const _ref = ref as MutableRefObject<YoutubeIframeRef | null> // Cast ref to the correct type
 
     return (
@@ -18,7 +18,7 @@ export const YoutubeRenderer = forwardRef<YoutubeRendererRef, YoutubeRendererPro
           bounces: false,
           scrollEnabled: false,
           injectedJavaScript: `
-            document.querySelector("body").style.backgroundColor="${theme.designSystem.color.background.lockedInverted}";
+            document.querySelector("body").style.backgroundColor="${designSystem.color.background.lockedInverted}";
             var element = document.getElementsByClassName("container")[0];
             element.style.position = "unset";
             true;

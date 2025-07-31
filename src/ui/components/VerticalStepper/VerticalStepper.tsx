@@ -39,22 +39,20 @@ export const VerticalStepper = memo(function VerticalStepper({
   isLast,
   addMoreSpacingToIcons,
 }: VerticalStepperProps) {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
 
   const Icon = useCallback(
     (props: CustomComponentProps) => {
       if (iconComponent) return iconComponent
 
       if (variant === StepVariant.complete)
-        return (
-          <StepperValidate color={theme.designSystem.color.icon.success} size={20} {...props} />
-        )
+        return <StepperValidate color={designSystem.color.icon.success} size={20} {...props} />
 
       if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
 
       return <FutureIcon {...props} />
     },
-    [iconComponent, theme.designSystem.color.icon.success, variant]
+    [iconComponent, designSystem.color.icon.success, variant]
   )
 
   const TopLine = useCallback(

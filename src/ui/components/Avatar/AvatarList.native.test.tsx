@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { render, screen, userEvent } from 'tests/utils'
+import { theme } from 'theme'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { AVATAR_LARGE, AVATAR_SMALL } from 'ui/theme/constants'
 
@@ -24,7 +25,10 @@ describe('<AvatarsList />', () => {
     expect(screen.getByText('Lolo')).toBeOnTheScreen()
 
     expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp('size', AVATAR_LARGE)
-    expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp('borderColor', 'white')
+    expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp(
+      'borderColor',
+      theme.designSystem.color.border.inverted
+    )
   })
 
   it('should display items with custom avatar config', () => {

@@ -1,8 +1,14 @@
 import { isAfter } from 'date-fns'
 
-import { OfferResponseV2 } from 'api/gen'
+export const getIsAComingSoonOffer = (
+  bookingAllowedDatetime: string | number | null | undefined
+): boolean => {
+  if (!bookingAllowedDatetime) return false
 
-export const getIsAComingSoonOffer = (offer: OfferResponseV2): boolean =>
-  !offer.isReleased &&
-  !!offer.publicationDate &&
-  isAfter(new Date(offer.publicationDate), new Date())
+  const date =
+    typeof bookingAllowedDatetime === 'number'
+      ? new Date(bookingAllowedDatetime * 1000)
+      : new Date(bookingAllowedDatetime)
+
+  return isAfter(date, new Date())
+}

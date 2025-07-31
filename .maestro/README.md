@@ -277,27 +277,17 @@ Voici [une liste des commandes](https://maestro.mobile.dev/api-reference/command
 
 ## Tester des trackers
 
-Ajouter ceci dans le scenario de test
+Il faut ajouter le flow suivant dans le scenario de test pour tester un tracker
+En remplacant `NomDeVotreEvent` par le nom de l'event que vous souhaitez tester
 
 ```yaml
-- runScript:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Check tracking data'
-    file: subFolder/analytics/hasBeenCalled.js
-    env:
-      EXPECTED_ANALYTICS_CALL: 'HasAcceptedAllCookies'
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
-      label: 'Verify needed analytics is in the list'
-    commands:
-      - assertTrue: ${output.analyticsHasBeenCalled}
-- runScript:
-    when:
-      true: ${MAESTRO_RUN_TRACKING_TESTS}
-    label: 'Clear tracking storage'
-    file: subFolder/analytics/clear.js
+    file: subFolder/analytics/verifyTracking.yml
+    env:
+      EXPECTED_ANALYTICS_CALL: 'NomDeVotreEvent'
+      MAESTRO_MOCK_ANALYTICS_SERVER: ${MAESTRO_MOCK_ANALYTICS_SERVER}
 ```
 
 ### Limites

@@ -86,6 +86,8 @@ exports[`Bookings should render correctly 1`] = `
           {
             "flexDirection": "row",
             "gap": 24,
+            "paddingHorizontal": 24,
+            "position": "relative",
           },
         ]
       }
@@ -97,8 +99,9 @@ exports[`Bookings should render correctly 1`] = `
               "backgroundColor": "#f1f1f4",
               "bottom": 0,
               "height": 4,
+              "left": 0,
               "position": "absolute",
-              "width": "100%",
+              "right": 0,
             },
           ]
         }

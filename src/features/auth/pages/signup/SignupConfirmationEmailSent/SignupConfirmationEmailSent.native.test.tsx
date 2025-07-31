@@ -80,16 +80,6 @@ describe('<SignupConfirmationEmailSent />', () => {
     expect(checkEmailsButton).toBeNull()
   })
 
-  it('should log analytics when clicking on check email button', async () => {
-    renderSignupConfirmationEmailSent()
-    await screen.findByText('Confirme ton adresse e-mail')
-
-    const checkEmailsButton = screen.getByText('Consulter mes e-mails')
-    await act(async () => user.press(checkEmailsButton))
-
-    expect(analytics.logEmailConfirmationConsultEmailClicked).toHaveBeenCalledTimes(1)
-  })
-
   it('should display resend button', async () => {
     renderSignupConfirmationEmailSent()
     await screen.findByText('Confirme ton adresse e-mail')

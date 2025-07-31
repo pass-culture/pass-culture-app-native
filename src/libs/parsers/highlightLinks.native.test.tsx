@@ -30,8 +30,7 @@ describe('customFindUrlChunks', () => {
     })
 
     expect(highlightedChunks1).toHaveLength(1)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(description1.slice(0, highlightedChunks1[0].start)).toBe(description1WithoutUrl)
+    expect(description1.slice(0, highlightedChunks1[0]?.start)).toBe(description1WithoutUrl)
   })
 
   it('finds url chunks and mark them as highlited', () => {
@@ -41,6 +40,28 @@ describe('customFindUrlChunks', () => {
     })
 
     expect(highlightedChunks2).toHaveLength(5)
+  })
+
+  it('does not recognize unknown TLD as a URL', () => {
+    const text = 'Voici un exemple site.ra qui ne doit pas être un lien'
+
+    const highlightedChunks1 = customFindUrlChunks({
+      textToHighlight: text,
+      searchWords: [],
+    })
+
+    expect(highlightedChunks1).toHaveLength(0)
+  })
+
+  it('does recognize known TLD as a URL', () => {
+    const text = 'Voici un exemple site.fr qui doit être un lien'
+
+    const highlightedChunks1 = customFindUrlChunks({
+      textToHighlight: text,
+      searchWords: [],
+    })
+
+    expect(highlightedChunks1).toHaveLength(1)
   })
 })
 

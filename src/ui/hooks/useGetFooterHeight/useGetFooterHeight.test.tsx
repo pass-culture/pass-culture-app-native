@@ -1,15 +1,17 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { renderHook } from 'tests/utils'
 import { useGetFooterHeight } from 'ui/hooks/useGetFooterHeight/useGetFooterHeight'
 
-jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 describe('useGetFooterHeight', () => {
   beforeEach(() => {

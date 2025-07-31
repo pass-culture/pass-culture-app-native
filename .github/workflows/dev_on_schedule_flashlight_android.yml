@@ -1,8 +1,10 @@
-name: '[on_schedule] Flashlight Android Staging Performance test'
+name: 'Flashlight Android Performance Test'
 
 on:
   schedule:
     - cron: '0 22 * * 0' # At 10PM every Sunday
+  pull_request:
+    types: [labeled]
 
 permissions:
   contents: write
@@ -16,7 +18,8 @@ jobs:
   run-e2e-tests:
     name: 'Run Flashlight Android Performance Test'
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 120
+    if: github.event_name == 'schedule' || contains(github.event.pull_request.labels.*.name, 'e2e perfs')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -85,4 +88,54 @@ jobs:
         run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/staging.keystore
 
       - name: Run the full test script
-        run: ./scripts/run_flashlight_on_android.sh
+        id: run_test
+        run: |
+          set +e
+          ./scripts/run_flashlight_on_android.sh 2>&1 | tee test_output.log
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+          set -e
+
+          OVERALL_SCORE=$(grep -oP 'Overall Score\s+\x1b\[1;32m\K[0-9.]+' test_output.log | tail -1 || echo 'N/A')
+          AVG_FPS=$(grep -oP 'Average FPS\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')
+          AVG_RAM=$(grep -oP 'Average RAM Usage\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')
+          AVG_CPU=$(grep -oP 'Average Total CPU\s+\K[0-9]+' test_output.log | tail -1 || echo 'N/A')
+
+          BRANCH_NAME="${{ github.head_ref || github.ref_name }}"
+          BRANCH_NAME=${BRANCH_NAME#refs/heads/}
+
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          echo "overall_score=$OVERALL_SCORE" >> $GITHUB_OUTPUT
+          echo "avg_fps=$AVG_FPS" >> $GITHUB_OUTPUT
+          echo "avg_ram=$AVG_RAM" >> $GITHUB_OUTPUT
+          echo "avg_cpu=$AVG_CPU" >> $GITHUB_OUTPUT
+
+          echo "short_sha=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
+
+          if [ $TEST_EXIT_CODE -ne 0 ]; then
+            exit $TEST_EXIT_CODE
+          fi
+
+      - name: Send Slack notification
+        if: always()
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: 'C05MH81G9LY' # channel #equipe-e2e-jeunes
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[job.status == 'failure'] }}",
+                  "author_name": "${{github.actor}}",
+                  "author_link": "https://github.com/${{github.actor}}",
+                  "author_icon": "https://github.com/${{github.actor}}.png",
+                  "title": "PERFORMANCE TEST ANDROID",
+                  "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                  "text": "Le test de performance sur la branche `${{ steps.run_test.outputs.branch_name || github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[job.status == 'failure'] }}\n\n*Métriques :*\n*- Score:* ${{ steps.run_test.outputs.overall_score || 'N/A' }}\n*- FPS moyen:* ${{ steps.run_test.outputs.avg_fps || 'N/A' }}\n*- RAM moyenne:* ${{ steps.run_test.outputs.avg_ram || 'N/A' }} MB\n*- CPU moyen:* ${{ steps.run_test.outputs.avg_cpu || 'N/A' }}%"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

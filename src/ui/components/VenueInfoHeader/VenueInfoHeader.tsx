@@ -24,13 +24,13 @@ export const VenueInfoHeader: FunctionComponent<VenueInfoHeaderProps> = ({
   imageURL,
   style,
 }) => {
-  const theme = useTheme()
+  const { icons } = useTheme()
   return (
     <InfoHeader
       title={title}
       subtitle={subtitle}
       rightComponent={
-        showArrow ? <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" /> : null
+        showArrow ? <RightFilled size={icons.sizes.extraSmall} testID="RightFilled" /> : null
       }
       thumbnailComponent={
         imageURL ? (

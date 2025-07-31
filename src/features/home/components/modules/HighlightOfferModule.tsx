@@ -25,7 +25,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     aroundRadius,
     index,
     homeEntryId,
-    displayPublicationDate,
+    displayBookingAllowedDatetime,
   } = props
 
   const highlightOffer = useHighlightOffer({
@@ -57,7 +57,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
         homeEntryId={homeEntryId}
         backgroundImageUrl={props.image}
         moduleId={props.id}
-        shouldDisplayPublicationDate={displayPublicationDate}
+        shouldDisplayBookingAllowedDatetime={displayBookingAllowedDatetime}
       />
     </StyledViewGap>
   )

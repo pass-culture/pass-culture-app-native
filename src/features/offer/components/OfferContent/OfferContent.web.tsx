@@ -6,6 +6,9 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
+import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -21,7 +24,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   chronicles,
   chronicleVariantInfo,
   defaultReaction,
-  videoData,
   onReactionButtonPress,
   headlineOffersCount,
 }) => {
@@ -29,6 +31,9 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
+
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const shouldShowVideoSection = offer.video?.id && isVideoSectionEnabled
 
   const offerImages: ImageWithCredit[] = useMemo(
     () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
@@ -44,6 +49,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   }
 
   const handleVideoPress = () => {
+    analytics.logConsultVideo({ from: 'offer' })
     navigate('OfferVideoPreview', { id: offer.id })
   }
 
@@ -74,9 +80,9 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
-          onSeeVideoPress={videoData ? handleVideoPress : undefined}
+          onSeeVideoPress={shouldShowVideoSection ? handleVideoPress : undefined}
+          isVideoSectionEnabled={isVideoSectionEnabled}
           BodyWrapper={BodyWrapper}
-          videoData={videoData}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}

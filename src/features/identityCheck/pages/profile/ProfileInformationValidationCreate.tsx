@@ -1,6 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 
+import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Summary } from 'features/identityCheck/components/Summary'
 import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
@@ -19,6 +20,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -31,31 +33,59 @@ export const ProfileInformationValidationCreate = () => {
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
-  const { refetchUser } = useAuthContext()
+  const { refetchUser, user } = useAuthContext()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ProfileInformationValidationCreate'>>()
-  const type = params?.type
+  const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
   const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
-  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
-  const pageInfos = isIdentityCheck
-    ? {
-        headerTitle: 'Profil',
-        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
-      }
-    : {
-        headerTitle: 'Informations personnelles',
-        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      }
+
+  enum DataSources {
+    LOCAL_STORAGE = 'localStorage',
+    AUTH_CONTEXT = 'authContext',
+  }
+
+  const pageConfigByType = {
+    [ProfileTypes.IDENTITY_CHECK]: {
+      headerTitle: 'Profil',
+      subtitle: 'Tu valides que ces informations sont correctes\u00a0?',
+      formDataSource: DataSources.LOCAL_STORAGE,
+    },
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: {
+      headerTitle: 'Informations personnelles',
+      subtitle: 'Tu valides que ces informations sont correctes\u00a0?',
+      formDataSource: DataSources.LOCAL_STORAGE,
+    },
+    [ProfileTypes.RECAP_EXISTING_DATA]: {
+      headerTitle: 'Informations personnelles',
+      subtitle: 'Vérifie que ces informations sont correctes avant de continuer',
+      formDataSource: DataSources.AUTH_CONTEXT,
+    },
+  }
 
   const storedProfileInfos = useStoredProfileInfos()
   const saveStep = useSaveStep()
   const storedFreeOfferId = useFreeOfferId()
-  const fullStoredCity = storedProfileInfos?.city
-    ? `${storedProfileInfos.city.name} ${storedProfileInfos.city.postalCode}`
-    : undefined
+
+  const shouldGetDataFromLocalStorage =
+    pageConfigByType[type].formDataSource === DataSources.LOCAL_STORAGE
+  const firstName = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.name.firstName
+    : user?.firstName
+  const lastName = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.name.lastName
+    : user?.lastName
+  const storedAddress = storedProfileInfos?.address ?? null
+  const address = shouldGetDataFromLocalStorage ? storedAddress : user?.street
+  const city = shouldGetDataFromLocalStorage ? storedProfileInfos?.city.name : user?.city
+  const postalCode = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.city.postalCode
+    : user?.postalCode
+  const activityId: ActivityIdEnum | null | undefined = shouldGetDataFromLocalStorage
+    ? storedProfileInfos?.status
+    : user?.activityId
 
   const { mutateAsync: postProfile } = usePostProfileMutation({
     onSuccess: () =>
@@ -82,43 +112,67 @@ export const ProfileInformationValidationCreate = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const submitProfileInfo = useCallback(async () => {
-    if (!storedProfileInfos) return
+    if (!firstName || !lastName || !city || !postalCode || !address || !activityId) return
 
-    const profile = { ...storedProfileInfos, hasSchoolTypes: false, schoolType: null }
+    const cityForPost: SuggestedCity = {
+      name: city,
+      postalCode,
+      code: '', // not used in usePostProfileMutation but needed by typing
+    }
+    const profile = {
+      name: {
+        firstName,
+        lastName,
+      },
+      city: cityForPost,
+      address: address,
+      status: activityId,
+      hasSchoolTypes: false,
+      schoolType: null,
+    }
+
     setIsLoading(true)
     await postProfile(profile)
     await saveStep(IdentityCheckStep.PROFILE)
     setIsLoading(false)
-  }, [postProfile, saveStep, storedProfileInfos])
+  }, [activityId, address, city, firstName, lastName, postProfile, postalCode, saveStep])
 
   const onSubmitProfile = () => submitProfileInfo()
-  const onChangeInformation = () =>
-    navigate(...getSubscriptionHookConfig('SetName', { type: pageInfos.navigateParamsType }))
+  const onChangeInformation = () => navigate(...getSubscriptionHookConfig('SetName', { type }))
+
+  const cityLabel = city && postalCode ? `${city} ${postalCode}` : undefined
+  const activityLabel = activityId ? getActivityLabel(activityId) : undefined
 
   return (
     <PageWithHeader
-      title={pageInfos.headerTitle}
+      title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <Summary
-          title="Tu valides que ces informations sont correctes&nbsp;?"
+          title={pageConfigByType[type].subtitle}
           data={[
             {
               title: 'Ton prénom',
               testID: 'validation-first-name',
-              value: storedProfileInfos?.name.firstName,
+              value: firstName,
             },
             {
               title: 'Ton nom de famille',
               testID: 'validation-name',
-              value: storedProfileInfos?.name.lastName,
+              value: lastName,
             },
-            { title: 'Adresse', value: storedProfileInfos?.address },
+            {
+              title: 'Adresse',
+              value: address,
+            },
             {
               title: 'Ville de résidence',
               testID: 'validation-birth-date',
-              value: fullStoredCity,
+              value: cityLabel,
             },
-            { title: 'Statut', value: getActivityLabel(storedProfileInfos?.status) },
+            {
+              title: 'Statut',
+              value: activityLabel,
+            },
           ]}
         />
       }

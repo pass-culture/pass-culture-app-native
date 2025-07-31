@@ -24,7 +24,7 @@ describe('useRemoteConfigQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await waitFor(() => expect(result.current).toEqual(DEFAULT_REMOTE_CONFIG))
+    await waitFor(() => expect(result.current.data).toEqual(DEFAULT_REMOTE_CONFIG))
   })
 
   it('should capture Sentry exception when there is an error', async () => {

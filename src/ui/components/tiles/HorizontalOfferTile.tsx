@@ -1,9 +1,11 @@
 import { useNavigationState } from '@react-navigation/native'
 import React, { useMemo } from 'react'
 import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -25,6 +27,7 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { Tag } from 'ui/components/Tag/Tag'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getSpacing } from 'ui/theme'
 import { Typo } from 'ui/theme/typography'
@@ -51,9 +54,19 @@ export const HorizontalOfferTile = ({
   withRightArrow,
   ...horizontalTileProps
 }: Props) => {
+  const theme = useTheme()
   const { geolocPosition, userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { offer: offerDetails, objectID, _geoloc } = offer
-  const { subcategoryId, prices, thumbUrl, name, dates, releaseDate, isDuo } = offerDetails
+  const {
+    subcategoryId,
+    prices,
+    thumbUrl,
+    name,
+    dates,
+    releaseDate,
+    isDuo,
+    bookingAllowedDatetime,
+  } = offerDetails
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
 
@@ -129,6 +142,15 @@ export const HorizontalOfferTile = ({
       logClickOnOffer({ objectID, position: analyticsParams.index ?? 0 })
   }
 
+  const isAComingSoonOffer = getIsAComingSoonOffer(bookingAllowedDatetime)
+
+  const interactionTag = renderInteractionTag({
+    theme,
+    isComingSoonOffer: isAComingSoonOffer,
+    subcategoryId,
+    withColor: !isAComingSoonOffer,
+  })
+
   return (
     <Container
       navigateTo={{
@@ -164,7 +186,15 @@ export const HorizontalOfferTile = ({
                   {subtitle}
                 </Body>
               ))}
-            {price ? <Typo.BodyAccentS>{price}</Typo.BodyAccentS> : null}
+            <PriceAndComingSoonTagContainer gap={1}>
+              {price ? <Typo.BodyAccentS>{price}</Typo.BodyAccentS> : null}
+              {interactionTag ? (
+                <React.Fragment>
+                  {price ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
+                  {interactionTag}
+                </React.Fragment>
+              ) : null}
+            </PriceAndComingSoonTagContainer>
           </Column>
           {distanceToOffer ? (
             <DistanceTag testID="distance_tag" label={`à ${distanceToOffer}`} />
@@ -219,3 +249,7 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
 const DistanceTag = styled(Tag)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
 }))
+
+const PriceAndComingSoonTagContainer = styled(ViewGap)({
+  flexDirection: 'row',
+})

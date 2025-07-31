@@ -52,12 +52,12 @@ const FlexView = styled.View({
 })
 
 const OfflineModeBanner = styled.View(({ theme }) => ({
-  backgroundColor: theme.offlineMode.banner.backgroundColor,
+  backgroundColor: theme.designSystem.color.background.inverted,
   padding: getSpacing(1.5),
   justifyContent: 'center',
   alignItems: 'center',
 }))
 
 const OfflineModeBannerText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.offlineMode.banner.textColor,
+  color: theme.designSystem.color.text.inverted,
 }))

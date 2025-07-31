@@ -28,7 +28,9 @@ export const IdentificationFork: FunctionComponent = () => {
 }
 
 const IdentificationForkEduconnectContent: FunctionComponent = () => {
-  const { shouldDisplayReassuranceMention } = useRemoteConfigQuery()
+  const {
+    data: { shouldDisplayReassuranceMention },
+  } = useRemoteConfigQuery()
   return (
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />
@@ -44,7 +46,6 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
-          onBeforeNavigate={analytics.logEduconnectExplanationClicked}
           icon={ExternalSiteFilled}
           wording="C’est quoi ÉduConnect&nbsp;?"
           inline

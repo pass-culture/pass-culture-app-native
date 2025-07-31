@@ -6,9 +6,30 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 type ParsedDescription = Array<string | React.ReactNode>
 type ChunkType = { highlight: boolean; start: number; end: number }
 
+const tlds = [
+  'com',
+  'fr',
+  'org',
+  'net',
+  'io',
+  'app',
+  'dev',
+  'info',
+  'biz',
+  'gov',
+  'edu',
+  'ca',
+  'uk',
+  'us',
+  'de',
+  'be',
+  'ch',
+  'tv',
+  'ai',
+]
 const externalNavRegex = new RegExp(
-  /((^|\s)|https?:\/\/)[a-z]([-a-z0-9:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(\s|$)/,
-  'gmi'
+  `((^|\\s)|https?:\\/\\/)[a-z]([-a-z0-9:%._+~#=]*[a-z0-9])?\\.(${tlds.join('|')})([/?#]\\S*)?(\\s|$)`,
+  'gm'
 )
 
 export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[] => {
@@ -16,12 +37,10 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   const chunks: ChunkType[] = []
   let match: RegExpExecArray | null
   while ((match = externalNavRegex.exec(textToHighlight))) {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const startWithSpace = /\s/.test(textToHighlight[match.index])
+    const startWithSpace = /\s/.test(textToHighlight[match.index] ?? '')
     const startIndexSpaceAdjustment = startWithSpace ? 1 : 0
     const start = match.index + startIndexSpaceAdjustment
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const endWithSpace = /\s/.test(textToHighlight[externalNavRegex.lastIndex - 1])
+    const endWithSpace = /\s/.test(textToHighlight[externalNavRegex.lastIndex - 1] ?? '')
     const endIndexSpaceAdjustment = endWithSpace ? 1 : 0
     const end = externalNavRegex.lastIndex - endIndexSpaceAdjustment
     // We do not return zero-length matches

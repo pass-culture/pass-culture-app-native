@@ -3,7 +3,6 @@ import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks/helpers'
 import { ControlledFilterSwitch } from 'features/internal/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/internal/atoms/DateChoice'
 import { LocationFilterChoice } from 'features/internal/atoms/LocationFilterChoice'
@@ -13,17 +12,12 @@ import {
 } from 'features/internal/atoms/OfferCategoryChoices'
 import { OfferNativeCategoryChoices } from 'features/internal/atoms/OfferNativeCategoryChoices'
 import {
-  FDL_CONFIG,
   MARKETING_CONFIG,
   ParamConfig,
   SCREENS_CONFIG,
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
-import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
-import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/isSearchStackScreen'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
-import { isTabNavigatorScreen } from 'features/navigation/TabBar/isTabNavigatorScreen'
+import { getUniversalLink } from 'features/navigation/RootNavigator/linking/getUniversalLink'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment/env'
@@ -41,15 +35,10 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-export interface GeneratedDeeplink {
-  universalLink: string
-  firebaseLink: string
-}
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
-  onCreate: (generatedDeeplink: GeneratedDeeplink) => void
+  onCreate: (universalLink: string) => void
 }
 
 type DeeplinksAppParams = Record<string, unknown> & {
@@ -204,8 +193,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     const placeholder = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
     return (
-      <React.Fragment key={name}>
-        <Spacer.Column numberOfSpaces={2} />
+      <TextInputContainer key={name}>
         {config.type === 'string' ? (
           <TextInput
             placeholder={placeholder}
@@ -268,7 +256,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           </PaddingContainer>
         ) : null}
         <Separator.Horizontal />
-      </React.Fragment>
+      </TextInputContainer>
     )
   }
 
@@ -285,7 +273,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   function onPress() {
     if (!areAllParamsValid()) return
 
-    const { appParams, marketingParams, fdlParams } = extractParams(screenParams)
+    const { appParams, marketingParams } = extractParams(screenParams)
 
     if (appParams.offerIsFree) {
       appParams.priceRange = null
@@ -298,29 +286,16 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     const appAndMarketingParams = { ...appParams, ...marketingParams }
 
-    let screenPath = getScreenPath(selectedScreen, appAndMarketingParams)
-    if (isTabNavigatorScreen(selectedScreen)) {
-      const tabNavigationConfig = getTabHookConfig(
-        selectedScreen,
-        appAndMarketingParams as Record<string, unknown>
-      )
-
-      screenPath = getScreenPath(...tabNavigationConfig)
-    }
-    if (isSearchStackScreen(selectedScreen)) {
-      const searchStackConfig = getSearchHookConfig(selectedScreen, appAndMarketingParams)
-      screenPath = getScreenPath(...searchStackConfig)
-    }
-
-    let universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
-    let firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
-
+    let universalLink = getUniversalLink(
+      selectedScreen,
+      appAndMarketingParams,
+      env.WEBAPP_V2_DOMAIN
+    )
     if (selectedScreen === 'SearchResults' && appParams.URL) {
       universalLink = appParams.URL as string
-      firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
     }
 
-    onCreate({ universalLink, firebaseLink })
+    onCreate(universalLink)
   }
 
   const paramsCount = useMemo(() => {
@@ -338,7 +313,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     <React.Fragment>
       <Container>
         <StyledTitle4>Besoin d’un lien&nbsp;?</StyledTitle4>
-        <Spacer.Column numberOfSpaces={6} />
         <Accordion title="Pages" defaultOpen>
           {Object.keys(SCREENS_CONFIG).map((key) => renderScreenItem(key))}
         </Accordion>
@@ -366,17 +340,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             </React.Fragment>
           ))}
         </Accordion>
-        <Accordion title="Paramètres firebase dynamic link">
-          {Object.keys(SCREENS_CONFIG).map((page) => (
-            <React.Fragment key={page}>
-              {page === selectedScreen
-                ? Object.entries(FDL_CONFIG).map(([name, config]) =>
-                    renderScreenParam(name, config)
-                  )
-                : null}
-            </React.Fragment>
-          ))}
-        </Accordion>
       </Container>
       <BottomContainer>
         <ErrorContainer gap={2}>
@@ -392,17 +355,15 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 function extractParams(params: Record<string, unknown>) {
   const appParams: DeeplinksAppParams = {}
   const marketingParams: Record<string, unknown> = {}
-  const fdlParams: Record<string, unknown> = {}
   for (const [paramName, paramValue] of Object.entries(params)) {
-    if (paramName in FDL_CONFIG) fdlParams[paramName] = paramValue
-    else if (paramName in MARKETING_CONFIG) marketingParams[paramName] = paramValue
+    if (paramName in MARKETING_CONFIG) marketingParams[paramName] = paramValue
     else {
       appParams[paramName] = paramValue
       // Force showResults for old versions compatibility
       if (paramName === 'view') appParams['showResults'] = 'true'
     }
   }
-  return { appParams, marketingParams, fdlParams }
+  return { appParams, marketingParams }
 }
 
 const Container = styled.ScrollView(({ theme }) => ({
@@ -423,6 +384,7 @@ const ErrorText = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })
 
 const BottomContainer = styled.View({
@@ -443,3 +405,7 @@ const Warning = styled(WarningDefault).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
   size: theme.icons.sizes.extraSmall,
 }))``
+
+const TextInputContainer = styled.View({
+  marginTop: getSpacing(2),
+})

@@ -51,8 +51,9 @@ type Props = {
   chroniclesCount?: number | null
   distance?: string | null
   headlineOffersCount?: number
-  videoData?: { videoId: string; thumbnailUri: string }
   chronicles?: ChronicleCardData[]
+  userId?: number
+  isVideoSectionEnabled?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -63,9 +64,10 @@ export const OfferBody: FunctionComponent<Props> = ({
   chroniclesCount,
   distance,
   headlineOffersCount,
-  videoData,
   chronicleVariantInfo,
   chronicles,
+  userId,
+  isVideoSectionEnabled,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -189,12 +191,16 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      {videoData ? (
+      {offer.video?.id && isVideoSectionEnabled ? (
         <VideoSection
-          videoId={videoData.videoId}
-          videoThumbnail={<VideoThumbnailImage url={videoData.thumbnailUri} resizeMode="cover" />}
+          videoId={offer.video.id}
+          videoThumbnail={
+            <VideoThumbnailImage url={offer.video.thumbUrl ?? ''} resizeMode="cover" />
+          }
           title="Vidéo"
           offerId={offer.id}
+          offerSubcategory={offer.subcategoryId}
+          userId={userId}
         />
       ) : null}
 

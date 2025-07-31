@@ -16,17 +16,13 @@ export const HiddenSuggestionsButton = () => {
 const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary))<{
   onPress: () => void
   wording: string
-}>({
+}>(({ theme }) => ({
   margin: getSpacing(1),
   paddingLeft: getSpacing(4),
   paddingRight: getSpacing(4),
-  backgroundColor: 'white',
+  backgroundColor: theme.designSystem.color.background.default,
   ...Platform.select({
-    web: {
-      '&:focus-visible': {
-        outlineOffset: -2,
-      },
-    },
+    web: { '&:focus-visible': { outlineOffset: -2 } },
     default: {},
   }),
-})
+}))

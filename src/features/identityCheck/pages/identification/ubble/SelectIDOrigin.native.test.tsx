@@ -4,7 +4,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 // eslint-disable-next-line no-restricted-imports
-import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -60,27 +59,5 @@ describe('SelectIDOrigin', () => {
         isForeignDMSInformation: true,
       },
     })
-  })
-
-  it('should log analytics with french type on press french HeroButtonList', async () => {
-    render(<SelectIDOrigin />)
-
-    const HeroButtonListFrench = screen.getByTestId(
-      'J’ai une carte d’identité ou un passeport français'
-    )
-    await user.press(HeroButtonListFrench)
-
-    expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'France')
-  })
-
-  it('should log analytics with foregin type on press foreign HeroButtonList', async () => {
-    render(<SelectIDOrigin />)
-
-    const ButtonForeign = screen.getByText(
-      'J’ai un titre de séjour, une carte d’identité ou un passeport étranger.'
-    )
-    await user.press(ButtonForeign)
-
-    expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'Foreign')
   })
 })

@@ -2,21 +2,24 @@ import mockdate from 'mockdate'
 
 import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { ConsentState } from 'features/cookies/enums'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { beneficiaryUser } from 'fixtures/user'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
+import { BatchPush } from 'libs/react-native-batch'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
+import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
@@ -46,8 +49,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
-//TODO(PC-36587): unskip this test
-describe.skip('useCookies', () => {
+describe('useCookies', () => {
   beforeAll(() => {
     mockAuthContextWithoutUser({ persist: true })
   })
@@ -244,6 +246,8 @@ describe.skip('useCookies', () => {
           await setUserId(FAKE_USER_ID)
         })
 
+        await waitForPromiseResolution()
+
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
         expect(cookiesConsent).toEqual({
@@ -276,6 +280,8 @@ describe.skip('useCookies', () => {
         })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
+        await waitForPromiseResolution()
 
         expect(cookiesConsent).toEqual({
           buildVersion,
@@ -340,6 +346,8 @@ describe.skip('useCookies', () => {
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
+        await waitForPromiseResolution()
+
         expect(cookiesConsent).toEqual({
           buildVersion,
           userId: secondUserId,
@@ -394,6 +402,8 @@ describe.skip('useCookies', () => {
         await setUserId(FAKE_USER_ID)
       })
 
+      await waitForPromiseResolution()
+
       expect(api.postNativeV1CookiesConsent).toHaveBeenCalledWith({
         userId: FAKE_USER_ID,
         deviceId,
@@ -429,6 +439,8 @@ describe.skip('useCookies', () => {
       const SET_USER_ID_AFTERLOGIN = 1
       const API_CALLED_TIMES = SET_COOKIE_CONSENT + SET_USER_ID_AFTERLOGIN
 
+      await waitForPromiseResolution()
+
       expect(api.postNativeV1CookiesConsent).toHaveBeenCalledTimes(API_CALLED_TIMES)
     })
 
@@ -462,8 +474,11 @@ describe.skip('useCookies', () => {
       describe('When shouldLogInfo remote config is false', () => {
         beforeAll(() => {
           useRemoteConfigSpy.mockReturnValue({
-            ...DEFAULT_REMOTE_CONFIG,
-            shouldLogInfo: false,
+            ...remoteConfigResponseFixture,
+            data: {
+              ...DEFAULT_REMOTE_CONFIG,
+              shouldLogInfo: false,
+            },
           })
         })
 
@@ -486,13 +501,13 @@ describe.skip('useCookies', () => {
       describe('When shouldLogInfo remote config is true', () => {
         beforeAll(() => {
           useRemoteConfigSpy.mockReturnValue({
-            ...DEFAULT_REMOTE_CONFIG,
-            shouldLogInfo: true,
+            ...remoteConfigResponseFixture,
+            data: { ...DEFAULT_REMOTE_CONFIG, shouldLogInfo: true },
           })
         })
 
         afterAll(() => {
-          useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+          useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
         })
 
         it('should notify sentry', async () => {
@@ -537,6 +552,8 @@ describe.skip('useCookies', () => {
 
     const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
+    await waitForPromiseResolution()
+
     expect(cookiesConsent).toEqual({
       buildVersion,
       deviceId: 'device-id-first',
@@ -546,6 +563,36 @@ describe.skip('useCookies', () => {
         accepted: [],
         refused: ALL_OPTIONAL_COOKIES,
       },
+    })
+  })
+
+  describe('Batch permissions', () => {
+    it('should request notification authorization when Batch cookie is accepted', async () => {
+      const { result } = renderUseCookies()
+
+      await act(async () => {
+        await result.current.setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [CookieNameEnum.BATCH],
+          refused: [],
+        })
+      })
+
+      expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
+    })
+
+    it('should NOT request notification authorization when Batch cookie is refused', async () => {
+      const { result } = renderUseCookies()
+
+      await act(async () => {
+        await result.current.setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [],
+          refused: [CookieNameEnum.BATCH],
+        })
+      })
+
+      expect(BatchPush.requestNotificationAuthorization).not.toHaveBeenCalled()
     })
   })
 })

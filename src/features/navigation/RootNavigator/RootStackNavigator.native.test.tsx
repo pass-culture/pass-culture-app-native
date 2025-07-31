@@ -44,6 +44,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('features/navigation/RootNavigator/useShowMandatoryUpdatePersonalData', () => ({
+  useShowMandatoryUpdatePersonalData: jest.fn(),
+}))
+
 describe('<RootNavigator />', () => {
   beforeEach(() => {
     setFeatureFlags()

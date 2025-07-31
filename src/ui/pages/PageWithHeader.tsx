@@ -17,6 +17,7 @@ interface Props {
   scrollChildren?: ReactNode
   fixedBottomChildren?: ReactNode
   onGoBack?: () => void
+  shouldDisplayBackButton?: boolean
 }
 
 export const PageWithHeader: FunctionComponent<Props> = (props) => {
@@ -32,7 +33,11 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
 
   return (
     <Page>
-      <PageHeaderWithoutPlaceholder title={props.title} onGoBack={props.onGoBack} />
+      <PageHeaderWithoutPlaceholder
+        title={props.title}
+        onGoBack={props.onGoBack}
+        shouldDisplayBackButton={props.shouldDisplayBackButton}
+      />
       <CustomKeyboardAvoidingView>
         {props.scrollChildren ? (
           <ChildrenScrollView

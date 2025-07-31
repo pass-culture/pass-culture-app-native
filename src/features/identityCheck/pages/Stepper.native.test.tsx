@@ -16,6 +16,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 import { StepButtonState } from 'ui/components/StepButton/types'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -148,11 +149,12 @@ describe('Stepper navigation', () => {
 
     await screen.findByText('Vas-y')
 
+    await waitForPromiseResolution()
+
     await waitFor(() => expect(navigate).not.toHaveBeenCalled())
   })
 
-  //TODO(PC-36587): unskip this test
-  it.skip('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
+  it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
     mockUserProfileData = {
       ...mockUserProfileData,
       depositExpirationDate: '2021-11-01T00:00:00.000Z',
@@ -230,8 +232,7 @@ describe('Stepper navigation', () => {
     }
   )
 
-  //TODO(PC-36587): unskip this test
-  it.skip('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', async () => {
+  it('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', async () => {
     useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.HOME } })
 
     mockUseStepperInfo.mockReturnValueOnce({
@@ -242,6 +243,9 @@ describe('Stepper navigation', () => {
 
     render(reactQueryProviderHOC(<Stepper />))
 
+    await waitForPromiseResolution()
+    await waitForPromiseResolution()
+
     await screen.findByText('Vas-y')
 
     expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
@@ -251,8 +255,7 @@ describe('Stepper navigation', () => {
     )
   })
 
-  //TODO(PC-36587): unskip this test
-  it.skip('should not trigger StepperDisplayed tracker when route does not contain a from parameter', async () => {
+  it('should not trigger StepperDisplayed tracker when route does not contain a from parameter', async () => {
     useRoute.mockReturnValueOnce({ params: undefined })
 
     mockUseStepperInfo.mockReturnValueOnce({
@@ -262,6 +265,9 @@ describe('Stepper navigation', () => {
     })
 
     render(reactQueryProviderHOC(<Stepper />))
+
+    await waitForPromiseResolution()
+    await waitForPromiseResolution()
 
     await screen.findByText('Vas-y')
 

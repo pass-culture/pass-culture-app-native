@@ -24,7 +24,7 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT = getSpacing(55.5)
 const COLOR_CATEGORY_BACKGROUND_WIDTH = getSpacing(160)
 
 export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) => {
-  const theme = useTheme()
+  const { designSystem } = useTheme()
   const showSeeMore = props.offers.length > 3
   const hasOnlyTwoOffers = props.offers.length === 2
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
@@ -49,7 +49,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   }
 
   const fillFromDesignSystem =
-    theme.designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
+    designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
 
   return (
     <React.Fragment>

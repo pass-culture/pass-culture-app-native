@@ -8,6 +8,8 @@ import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisa
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
@@ -24,6 +26,7 @@ type StepperInfo = {
   title: string
   subtitle?: string | null
   errorMessage?: string | null
+  firstScreenType?: ProfileType
 }
 
 type PartialIdentityCheckStep = Exclude<IdentityCheckStep, IdentityCheckStep.END>
@@ -71,6 +74,14 @@ export const useStepperInfo = (): StepperInfo => {
     return 'IdentityCheckHonor'
   }
 
+  const hasUserCompletedInfo =
+    !!user?.firstName &&
+    !!user?.lastName &&
+    !!user?.street &&
+    !!user?.postalCode &&
+    !!user?.city &&
+    !!user?.activityId
+
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
@@ -80,7 +91,11 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Profile} testID="profile-step-done" />,
         retry: () => <IconStepRetry Icon={Profile} testID="profile-retry-step" />,
       },
-      firstScreen: 'SetName',
+      firstScreen: hasUserCompletedInfo ? 'ProfileInformationValidationCreate' : 'SetName',
+      firstScreenType: hasUserCompletedInfo
+        ? ProfileTypes.RECAP_EXISTING_DATA
+        : ProfileTypes.IDENTITY_CHECK,
+      subtitle: hasUserCompletedInfo ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,
@@ -94,6 +109,7 @@ export const useStepperInfo = (): StepperInfo => {
         isUserRegisteredInPacificFrancRegion,
         allowedIdentityCheckMethods
       ),
+      firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
     [IdentityCheckStep.CONFIRMATION]: {
       name: IdentityCheckStep.CONFIRMATION,
@@ -106,6 +122,7 @@ export const useStepperInfo = (): StepperInfo => {
         retry: () => <IconStepRetry Icon={LegalNotices} testID="confirmation-retry-step" />,
       },
       firstScreen: getConfirmationFirstScreen(),
+      firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
     [IdentityCheckStep.PHONE_VALIDATION]: {
       name: IdentityCheckStep.PHONE_VALIDATION,
@@ -118,6 +135,7 @@ export const useStepperInfo = (): StepperInfo => {
         retry: () => <IconStepRetry Icon={Smartphone} testID="phone-validation-retry-step" />,
       },
       firstScreen: getPhoneValidationFirstScreen(),
+      firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
   }
 
@@ -128,10 +146,11 @@ export const useStepperInfo = (): StepperInfo => {
         const stepDetails: StepExtendedDetails = {
           name: currentStepConfig.name,
           title: step.title,
-          subtitle: step.subtitle ?? undefined,
+          subtitle: step.subtitle ?? currentStepConfig.subtitle,
           icon: currentStepConfig.icon,
           stepState: mapCompletionState(step.completionState),
           firstScreen: currentStepConfig.firstScreen,
+          firstScreenType: currentStepConfig.firstScreenType,
         }
         return stepDetails
       })
