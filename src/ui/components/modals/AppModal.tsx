@@ -4,7 +4,6 @@ import {
   Platform,
   ScrollView,
   ScrollViewProps,
-  StatusBar,
   StyleSheet,
   useWindowDimensions,
   ViewProps,
@@ -233,7 +232,6 @@ export const AppModal: FunctionComponent<Props> = ({
       onSwipeComplete={onSwipe}
       swipeDirection={swipeDirection}
       propagateSwipe={propagateSwipe}>
-      <StatusBar barStyle="light-content" translucent />
       <ModalContainer
         height={maxHeight ? undefined : modalContainerHeight}
         testID="modalContainer"

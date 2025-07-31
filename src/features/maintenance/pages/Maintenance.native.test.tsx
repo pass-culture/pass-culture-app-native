@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 
 import { Maintenance } from './Maintenance'
@@ -7,6 +8,8 @@ import { Maintenance } from './Maintenance'
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<Maintenance />', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should match snapshot with default message', () => {
     render(<Maintenance />)
 

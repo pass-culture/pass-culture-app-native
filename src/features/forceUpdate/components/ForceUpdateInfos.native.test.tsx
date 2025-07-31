@@ -3,6 +3,7 @@ import { Linking } from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as PackageJson from 'libs/packageJson'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -23,6 +24,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ForceUpdateInfos/>', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should log click force update when pressing "Télécharger la dernière version" button', async () => {
     render(<ForceUpdateInfos />)
 

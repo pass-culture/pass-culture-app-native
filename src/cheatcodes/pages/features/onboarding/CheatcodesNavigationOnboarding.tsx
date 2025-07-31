@@ -1,6 +1,4 @@
-import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
-import { StatusBar } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
@@ -61,13 +59,6 @@ export const cheatcodesNavigationOnboardingButtons: CheatcodeCategory[] = [
 ]
 
 export function CheatcodesNavigationOnboarding(): React.JSX.Element {
-  useFocusEffect(
-    React.useCallback(() => {
-      StatusBar.setBarStyle('dark-content', true)
-      return () => StatusBar.setBarStyle('dark-content', true)
-    }, [])
-  )
-
   const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
 
   return (

@@ -1,7 +1,6 @@
 import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
-import { StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -94,7 +93,6 @@ export const SearchResults = () => {
 
   return (
     <Page>
-      <StatusBar barStyle="dark-content" />
       <Form.Flex>
         <InstantSearch
           searchClient={getSearchClient}

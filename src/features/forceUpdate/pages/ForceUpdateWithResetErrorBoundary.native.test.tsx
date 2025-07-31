@@ -1,6 +1,7 @@
 import React from 'react'
 
 import * as useMinimalBuildNumberModule from 'features/forceUpdate/helpers/useMinimalBuildNumber'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 
 import { ForceUpdateWithResetErrorBoundary } from './ForceUpdateWithResetErrorBoundary'
@@ -14,6 +15,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<ForceUpdateWithResetErrorBoundary/>', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should match snapshot', () => {
     jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
       minimalBuildNumber: 10_304_000,

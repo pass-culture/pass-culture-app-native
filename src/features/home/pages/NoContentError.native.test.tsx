@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { NoContentError } from 'features/home/pages/NoContentError'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -14,6 +15,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('NoContentError', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should render correctly', () => {
     render(<NoContentError />)
 

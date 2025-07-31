@@ -3,7 +3,7 @@ import 'intl/locale-data/jsonp/en'
 import { HotUpdater, getUpdateSource } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { LogBox, Platform, StatusBar } from 'react-native'
+import { LogBox } from 'react-native'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 
@@ -54,14 +54,6 @@ const App: FunctionComponent = function () {
   useLaunchPerformanceObserver()
 
   useOrientationLocked()
-
-  useEffect(() => {
-    StatusBar.setBarStyle('dark-content')
-    if (Platform.OS === 'android') {
-      StatusBar.setTranslucent(true)
-      StatusBar.setBackgroundColor('transparent', false)
-    }
-  }, [])
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
