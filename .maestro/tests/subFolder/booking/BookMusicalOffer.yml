@@ -7,6 +7,16 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn: 'Ma position'
       - tapOn: 'France entière'
+
+- runFlow:
+    label: 'Swipe vers les offres pour éviter tap sur la tabBar'
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          start: 50%, 49%
+          end: 50%, 37%
+          
 - tapOn:
     label: 'Sélection de la 1ère offre disponible'
     below:
