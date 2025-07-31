@@ -180,7 +180,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
-  const modulesIntervalId = useRef<NodeJS.Timeout>()
+  const modulesIntervalId = useRef<NodeJS.Timeout>(null)
   const { zIndex } = useTheme()
 
   const flatListHeaderStyle = { zIndex: zIndex.header }
@@ -258,8 +258,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }, MODULES_TIMEOUT_VALUE_IN_MS)
 
     return () => {
-      clearInterval(modulesIntervalId.current)
-      modulesIntervalId.current = undefined
+      if (modulesIntervalId.current) {
+        clearInterval(modulesIntervalId.current)
+        modulesIntervalId.current = null
+      }
     }
   }, [modules.length, isLoading, maxIndex])
 

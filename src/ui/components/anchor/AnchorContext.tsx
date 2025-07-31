@@ -13,7 +13,7 @@ type AnchorContextType = {
 const AnchorContext = createContext<AnchorContextType | undefined>(undefined)
 
 type AnchorProviderProps = {
-  scrollViewRef: RefObject<ScrollView>
+  scrollViewRef: RefObject<ScrollView | null>
   handleCheckScrollY(): number
   children: React.ReactNode
   offset?: number

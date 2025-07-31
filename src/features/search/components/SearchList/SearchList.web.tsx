@@ -226,6 +226,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
     return (
       <SearchResultList onLayout={onLayout} testID="searchResultsList">
         <React.Fragment>
+          {/* @ts-ignore - type incompatibility with React 19 */}
           <VariableSizeList
             ref={listRef}
             key={rerenderKey}

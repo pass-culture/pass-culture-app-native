@@ -74,6 +74,7 @@ describe('<SignupForm/>', () => {
 const renderSignupForm = (currentStep?: number) =>
   render(
     reactQueryProviderHOC(
+      // @ts-ignore - type incompatibility with React 19
       <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
         <SafeAreaProvider>
           <SignupForm currentStep={currentStep} />

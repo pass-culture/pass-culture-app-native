@@ -174,6 +174,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       <ColoredAttachedTileContainer color={color}>
         {itemsWithRelatedData.length > 1 ? (
           <React.Fragment>
+            {/* @ts-ignore - type incompatibility with React 19 */}
             <Carousel
               ref={carouselRef}
               mode="parallax"

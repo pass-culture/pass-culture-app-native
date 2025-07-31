@@ -45,6 +45,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       : []
 
   return (
+    // @ts-ignore - type incompatibility with React 19
     <InstantSearch
       searchClient={getSearchClient}
       indexName={suggestionsIndex}
