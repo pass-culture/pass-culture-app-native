@@ -14,6 +14,7 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 
 const mockIdentityCheckState = mockState
@@ -54,10 +55,29 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
+jest.mock('shared/user/useOverrideCreditActivationAmount')
+const mockOverrideCreditActivationAmount = jest.mocked(useOverrideCreditActivationAmount)
+mockOverrideCreditActivationAmount.mockReturnValue({
+  shouldBeOverriden: false,
+  amount: '150 €',
+})
+
 describe('useStepperInfo', () => {
   beforeEach(() => {
     setFeatureFlags()
     setSettings({ enablePhoneValidation: true })
+  })
+
+  it('should convert subtitle amount from € to CPF', () => {
+    mockOverrideCreditActivationAmount.mockReturnValueOnce({
+      shouldBeOverriden: true,
+      amount: '17 900 F',
+    })
+    const { subtitle } = useStepperInfo()
+
+    expect(subtitle).toEqual(
+      'Pour débloquer tes 17 900 F tu dois suivre les étapes suivantes\u00a0:'
+    )
   })
 
   it('should return title and subtitle', () => {
