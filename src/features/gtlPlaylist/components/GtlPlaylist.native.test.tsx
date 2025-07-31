@@ -57,7 +57,7 @@ describe('GtlPlaylist', () => {
 
       const item = await screen.findByText('Mon abonnement bibliothèque')
 
-      await act(async () => user.press(item))
+      await user.press(item)
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
         1,
@@ -127,7 +127,7 @@ describe('GtlPlaylist', () => {
 
       const item = await screen.findByText('Mon abonnement bibliothèque')
 
-      await act(async () => user.press(item))
+      await user.press(item)
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
         1,

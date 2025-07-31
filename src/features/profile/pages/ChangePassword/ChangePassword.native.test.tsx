@@ -56,11 +56,9 @@ describe('ChangePassword', () => {
     const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
     await act(async () => {
+      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    })
-    await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
 
@@ -111,11 +109,9 @@ describe('ChangePassword', () => {
     const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
     await act(async () => {
+      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    })
-    await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
 

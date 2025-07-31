@@ -127,7 +127,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(replace).toHaveBeenCalledTimes(1)
@@ -145,7 +145,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
+    await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     expect(captureMonitoringError).toHaveBeenCalledWith(
       'UnknownError someError',
@@ -160,7 +160,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
+    await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
 
     expect(captureMonitoringError).not.toHaveBeenCalled()
   })
@@ -172,7 +172,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
+    await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
 
     expect(
       screen.getByText(
@@ -207,7 +207,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(
@@ -233,7 +233,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     expect(eventMonitoring.captureException).not.toHaveBeenCalled()
   })

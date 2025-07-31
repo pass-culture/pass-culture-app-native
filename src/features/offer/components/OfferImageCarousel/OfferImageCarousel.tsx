@@ -65,6 +65,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
 
   return (
     <View style={style}>
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Carousel
         ref={carouselRef}
         testID="offerImageContainerCarousel"

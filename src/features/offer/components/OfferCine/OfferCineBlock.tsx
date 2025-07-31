@@ -53,6 +53,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer, dista
   return (
     <Container testID="offer-new-xp-cine-block" gap={4} onLayout={handleLayout}>
       <Anchor name="offer-cine-availabilities">
+        {/* @ts-expect-error - type incompatibility with React 19 */}
         <InView
           onChange={(inView) => {
             showButton(!inView)

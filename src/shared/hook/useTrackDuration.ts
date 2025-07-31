@@ -9,7 +9,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 export const useTrackDuration = (callback: (durationInSeconds: number) => void) => {
   const timeInBackground = useRef(0)
   const startTimeBackground = useRef<Date | null>(null)
-  const appStateChangeSubscription = useRef<NativeEventSubscription>()
+  const appStateChangeSubscription = useRef<NativeEventSubscription>(null)
 
   const onAppBecomeActive = () => {
     const endTimeBackground = new Date()

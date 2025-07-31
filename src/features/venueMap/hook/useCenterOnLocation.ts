@@ -8,7 +8,7 @@ const CENTER_PIN_THRESHOLD = getSpacing(4)
 
 type Params = {
   currentRegion?: Region
-  mapViewRef: RefObject<Map>
+  mapViewRef: RefObject<Map | null>
   mapHeight: number
 }
 

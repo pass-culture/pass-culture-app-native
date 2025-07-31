@@ -69,7 +69,7 @@ describe('<ChangeEmail/>', () => {
       renderChangeEmail()
 
       const closeButton = screen.getByLabelText('Fermer la modale')
-      user.press(closeButton)
+      await user.press(closeButton)
 
       await waitFor(() => {
         expect(screen.queryByText('Modifie ton adresse e-mail sur ce compte')).not.toBeOnTheScreen()

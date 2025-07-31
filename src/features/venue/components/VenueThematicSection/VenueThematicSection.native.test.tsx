@@ -14,6 +14,12 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
+jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
+  usePushPermission: () => ({
+    pushPermission: 'granted',
+    refreshPermission: jest.fn(),
+  }),
+}))
 
 const venueFixture = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
 
@@ -62,9 +68,12 @@ describe('<VenueThematicSection/>', () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
-    await waitFor(() => {
-      expect(screen.toJSON()).toBeNull()
-    })
+    await waitFor(
+      () => {
+        expect(screen.toJSON()).toBeNull()
+      },
+      { timeout: 1000 }
+    )
   })
 
   it('should render cinema block when venue is a movie theater', async () => {

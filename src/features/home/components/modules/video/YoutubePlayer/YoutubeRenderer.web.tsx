@@ -46,6 +46,7 @@ export const YoutubeRenderer = forwardRef<YoutubeRendererRef, YoutubeRendererPro
     }
 
     return (
+      // @ts-expect-error - type incompatibility with React 19
       <YouTube
         ref={videoRef}
         videoId={videoId}

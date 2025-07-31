@@ -16,7 +16,8 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils'
+import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -93,7 +94,7 @@ describe('MoviesScreeningCalendar', () => {
   it('should render MoviesScreeningCalendar correctly on mobile', async () => {
     renderMoviesScreeningCalendar({ isDesktopViewport: false, venueOffers: venueOffersMock })
 
-    await act(async () => {})
+    await waitForPromiseResolution()
 
     expect((await screen.findAllByText('Mer.'))[0]).toBeOnTheScreen()
     expect(screen.getByText('8')).toBeOnTheScreen()
@@ -103,7 +104,7 @@ describe('MoviesScreeningCalendar', () => {
   it('should render MoviesScreeningCalendar correctly on desktop', async () => {
     renderMoviesScreeningCalendar({ isDesktopViewport: true, venueOffers: venueOffersMock })
 
-    await act(async () => {})
+    await waitForPromiseResolution()
 
     expect((await screen.findAllByText('Mercredi'))[0]).toBeOnTheScreen()
     expect(screen.getByText('8')).toBeOnTheScreen()
