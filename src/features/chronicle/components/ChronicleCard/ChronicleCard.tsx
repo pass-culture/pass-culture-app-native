@@ -3,11 +3,11 @@ import { LayoutChangeEvent, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
+import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo, getShadow, getSpacing } from 'ui/theme'
-import { REM_TO_PX } from 'ui/theme/constants'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
 
@@ -39,10 +39,9 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   const [shouldDisplayButton, setShouldDisplayButton] = useState(false)
 
   // height depending on the platform
-  const DEFAULT_HEIGHT_WEB =
-    parseFloat(designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES * REM_TO_PX
-  const DEFAULT_HEIGHT_MOBILE =
-    parseFloat(designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES
+  const lineHeight = designSystem.typography.bodyAccentS.lineHeight
+  const DEFAULT_HEIGHT_WEB = getLineHeightPx(lineHeight, true) * MAX_LINES
+  const DEFAULT_HEIGHT_MOBILE = getLineHeightPx(lineHeight, false) * MAX_LINES
   const defaultHeight = Platform.OS === 'web' ? DEFAULT_HEIGHT_WEB : DEFAULT_HEIGHT_MOBILE
 
   const handleOnLayout = (event: LayoutChangeEvent) => {
