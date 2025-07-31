@@ -12,12 +12,12 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { isDesktopViewport, designSystem } = useTheme()
+  const { isDesktopViewport } = useTheme()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
@@ -56,7 +56,7 @@ export const HomeHeader: FunctionComponent = function () {
             <TitleContainer>
               <Title testID="web-location-widget">
                 <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
-                <StyledSeparator height={designSystem.size.spacing.xl} />
+                <StyledSeparator height={getSpacing(6)} />
                 <LocationWidgetDesktop />
               </Title>
               <Subtitle>{getSubtitle()}</Subtitle>
@@ -70,15 +70,7 @@ export const HomeHeader: FunctionComponent = function () {
         {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )
-  }, [
-    user,
-    isLoggedIn,
-    isDesktopViewport,
-    availableCredit,
-    currency,
-    euroToPacificFrancRate,
-    designSystem.size.spacing.xl,
-  ])
+  }, [user, isLoggedIn, isDesktopViewport, availableCredit, currency, euroToPacificFrancRate])
 
   return Header
 }

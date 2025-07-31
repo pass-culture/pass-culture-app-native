@@ -23,13 +23,13 @@ type Props = {
 
 export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bannerMeta }) => {
   const backgroundStyle = useVenueBackgroundStyle()
-  const { isMobileViewport, designSystem } = useTheme()
+  const { isMobileViewport } = useTheme()
   const { is_from_google: isFromGoogle, image_credit: imageCredit } = bannerMeta ?? {
     is_from_google: null,
     image_credit: null,
   }
   const hasGoogleCredit = isFromGoogle && imageCredit
-  const defaultMarginBottom = isMobileViewport ? designSystem.size.spacing.xl : undefined
+  const defaultMarginBottom = isMobileViewport ? getSpacing(6) : undefined
 
   return (
     <HeaderContainer hasGoogleCredit={!!hasGoogleCredit} defaultMarginBottom={defaultMarginBottom}>

@@ -41,7 +41,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           defaultMarginBottom={24}
-          hasGoogleCredit={null}
+          hasGoogleCredit={false}
           style={
             {
               "alignItems": "center",
@@ -2779,7 +2779,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
       >
         <View
           defaultMarginBottom={24}
-          hasGoogleCredit={null}
+          hasGoogleCredit={false}
           style={
             {
               "alignItems": "center",
@@ -5834,7 +5834,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
       >
         <View
           defaultMarginBottom={24}
-          hasGoogleCredit={null}
+          hasGoogleCredit={false}
           style={
             {
               "alignItems": "center",
