@@ -45,7 +45,7 @@ describe('AnimatedIcon', () => {
   it('should display only the last color after animation', async () => {
     render(<DummyComponent />)
 
-    user.press(screen.getByTestId('dummyPressable'))
+    await user.press(screen.getByTestId('dummyPressable'))
 
     const initialContainer = screen.getByTestId('initial-icon-container')
     const finalContainer = screen.getByTestId('final-icon-container')

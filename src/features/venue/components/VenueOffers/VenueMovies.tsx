@@ -29,6 +29,7 @@ export const VenueMovies: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffer
   return (
     <Container>
       <Anchor name="venue-cine-availabilities">
+        {/* @ts-expect-error - type incompatibility with React 19 */}
         <InView
           onChange={(inView) => {
             showButton(!inView)

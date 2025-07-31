@@ -4,7 +4,7 @@ import { ViewToken } from 'react-native'
 import { AnimatedViewRefType } from 'libs/react-native-animatable'
 
 export const useOnViewableItemsChanged = (
-  gradientRef: RefObject<AnimatedViewRefType>,
+  gradientRef: RefObject<AnimatedViewRefType | null>,
   listItems: Array<unknown>
 ) => {
   const onViewableItemsChanged = useCallback(

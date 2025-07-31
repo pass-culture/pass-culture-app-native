@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
 <View
@@ -831,7 +831,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               }
             }
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
