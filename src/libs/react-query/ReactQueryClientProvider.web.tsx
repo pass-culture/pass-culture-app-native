@@ -6,5 +6,7 @@ import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
 
 export const ReactQueryClientProvider = ({ children }: { children: React.JSX.Element }) => {
   usePrefetchQueries()
+
+  // @ts-expect-error - type incompatibility with React 19
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }

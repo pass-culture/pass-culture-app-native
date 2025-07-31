@@ -12,13 +12,13 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 
 ### 📊 État d'avancement (après que la CI soit verte)
 
-- [ ] 🌐 build web `yarn start:web:testing`
-- [ ] 🚀 dev web `yarn build:testing`
+- [ ] 🌐 build web `yarn build:testing`
+- [ ] 🚀 dev web `yarn start:web:testing`
 - [ ] 🤖 build android `./gradlew assembleDebug`
 - [ ] ⚡ dev android `yarn android:testing`
 - [ ] 🍎 dev ios `yarn ios:testing`
-- [ ] 📚 build storybook `yarn storybook`
-- [ ] 🎨 dev storybook `yarn build-storybook`
+- [ ] 📚 build storybook `yarn build-storybook`
+- [ ] 🎨 dev storybook `yarn storybook`
 - [ ] 🧪 tests e2e
 - [ ] 🚀 build environnement de test `yarn trigger:testing:deploy`
 - [ ] 🙊 mettre un message sur le canal slack `dev-mobile`
@@ -30,8 +30,8 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 | 🤖 build android                             | `./gradlew assembleDebug`                               | ✅ succès de la commande                                              |
 | ⚡ dev android                               | `yarn android:testing`                                  | ✅ succès de la commande + pas d'écran rouge                          |
 | 🍎 dev ios                                   | `yarn ios:testing`                                      | ✅ succès de la commande + pas d'écran rouge                          |
-| 📚 build storybook                           | `yarn storybook`                                        | ✅ succès de la commande + pas de message d'erreur sur les composants |
-| 🎨 dev storybook                             | `yarn build-storybook`                                  | ✅ succès de la commande + pas d'erreur en serveur local              |
+| 📚 build storybook                           | `yarn build-storybook`                                  | ✅ succès de la commande + pas de message d'erreur sur les composants |
+| 🎨 dev storybook                             | `yarn storybook`                                        | ✅ succès de la commande + pas d'erreur en serveur local              |
 | 🧪 tests e2e                                 | ajouter un tag `e2e` dans Github après chaque tentative | 👨‍💻 Le QA doit valider que c'est bon de son côté                       |
 | 🚀 build environnement de test (après merge) | `yarn trigger:testing:deploy`                           | ✅ Le job passe                                                       |
 

@@ -107,6 +107,7 @@ export const SearchSuggestions = ({
         onPress={onPressHistoryItem}
       />
       <AutocompleteOffer addSearchHistory={addToHistory} offerCategories={offerCategories} />
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Index indexName={currentVenuesIndex}>
         <Configure
           hitsPerPage={5}
