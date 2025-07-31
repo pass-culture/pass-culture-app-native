@@ -91,6 +91,7 @@ export enum AnalyticsEvent {
   HAS_CHOSEN_PRICE = 'HasChosenPrice',
   HAS_CHOSEN_TIME = 'HasChosenTime',
   HAS_CLICKED_DUO_STEP = 'HasClickedDuoStep',
+  HAS_CLICKED_FAKE_DOOR_CTA = 'HasClickedFakeDoorCTA',
   HAS_CLICKED_MISSING_CODE = 'HasClickedMissingCode',
   HAS_CLICKED_GRID_LIST_TOGGLE = 'HasClickedGridListToggle',
   HAS_CLICKED_REMOTE_ACTIVATION_BANNER = 'HasClickedRemoteActivationBanner',

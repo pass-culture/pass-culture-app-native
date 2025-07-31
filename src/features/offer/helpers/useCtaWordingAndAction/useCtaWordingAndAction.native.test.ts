@@ -14,6 +14,8 @@ import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Subcategory } from 'libs/subcategories/types'
 import { OfferModal } from 'shared/offer/enums'
@@ -1103,6 +1105,48 @@ describe('getCtaWordingAndAction', () => {
           movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
         },
       ])
+    })
+  })
+
+  describe('CTA - Fake door loan', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_LOAN_FAKEDOOR])
+    })
+
+    const getCta = (
+      partialOffer: Partial<OfferResponseV2>,
+      parameters?: Partial<Parameters<typeof getCtaWordingAndAction>[0]>,
+      partialSubcategory?: Partial<Subcategory>
+    ) =>
+      getCtaWordingAndAction({
+        ...defaultParameters,
+        user: { ...beneficiaryUser },
+        userStatus: { statusType: YoungStatusType.beneficiary },
+        isBeneficiary: true,
+        offer: buildOffer({ ...partialOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER }),
+        subcategory: buildSubcategory(partialSubcategory || {}),
+        hasEnoughCredit: true,
+        isUnderageBeneficiary: true,
+        featureFlags: { wipEnableLoanFakeDoor: true, enableBookingFreeOfferFifteenSixteen: false },
+        ...parameters,
+      })
+
+    it('should return two CTAs for the fake door loan when offer is a book and FF is enabled', async () => {
+      const result = getCta(baseOffer)
+
+      expect(result?.length).toEqual(2)
+    })
+
+    it('should trigger analytics event when user clicks on Emprunter CTA', async () => {
+      const result = getCta(baseOffer)
+
+      const { onPress } = result?.[1] || {}
+
+      onPress?.()
+
+      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenNthCalledWith(1, {
+        offerId: baseOffer.id,
+      })
     })
   })
 })
