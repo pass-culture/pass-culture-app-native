@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.352.0",
-  "build": 10352000,
+  "version": "1.352.1",
+  "build": 10352001,
   "private": true,
   "engines": {
     "node": ">=20.10"
