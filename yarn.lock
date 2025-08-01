@@ -7110,6 +7110,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lottiefiles/dotlottie-react@npm:^0.14.4":
+  version: 0.14.4
+  resolution: "@lottiefiles/dotlottie-react@npm:0.14.4"
+  dependencies:
+    "@lottiefiles/dotlottie-web": 0.49.0
+  peerDependencies:
+    react: ^17 || ^18 || ^19
+  checksum: 201d4f67eaab159103de0430bda4dd1163df4c241affc4bf2d4213c33934f96b0c49672e8c3aeef1037c1d2f0af86539f4954781a1bfe9b1e8ede4e4d485889d
+  languageName: node
+  linkType: hard
+
+"@lottiefiles/dotlottie-web@npm:0.49.0":
+  version: 0.49.0
+  resolution: "@lottiefiles/dotlottie-web@npm:0.49.0"
+  checksum: 5ba497a386542b3d3ff2fe379622fb819bc0b2779cbd78961afacb2d8dd6d59550dbcc2ad3b582e67806f19fdb7db0a6885a0b960ddf206a36e34c3195c1fecc
+  languageName: node
+  linkType: hard
+
 "@mapbox/geo-viewport@npm:^0.4.1":
   version: 0.4.1
   resolution: "@mapbox/geo-viewport@npm:0.4.1"
@@ -10802,6 +10820,7 @@ __metadata:
     "@hot-updater/firebase": 0.19.3
     "@hot-updater/react-native": 0.19.9
     "@lhci/cli": ^0.14.0
+    "@lottiefiles/dotlottie-react": ^0.14.4
     "@openspacelabs/react-native-zoomable-view": ^2.1.5
     "@pass-culture/design-system": 0.2.0
     "@ptomasroos/react-native-multi-slider": ^2.2.2
@@ -10942,7 +10961,7 @@ __metadata:
     knip: ^5.43.6
     libphonenumber-js: ^1.12.6
     lodash: ^4.17.21
-    lottie-react-native: 5.1.6
+    lottie-react-native: ^7.2.5
     mailparser: ^3.6.3
     mockdate: ^3.0.2
     msw: ^2.7.3
@@ -10997,7 +11016,6 @@ __metadata:
     react-native-url-polyfill: ^1.3.0
     react-native-web: ^0.19.13
     react-native-web-linear-gradient: ^1.1.2
-    react-native-web-lottie: ^1.4.4
     react-native-web-swiper: 2.2.4
     react-native-webview: ^13.15.0
     react-native-youtube-iframe: ^2.3.0
@@ -21312,7 +21330,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-react-native@npm:5.1.6, lottie-react-native@npm:^5.1.3":
+"lottie-react-native@npm:^5.1.3":
   version: 5.1.6
   resolution: "lottie-react-native@npm:5.1.6"
   dependencies:
@@ -21330,10 +21348,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.7.1":
-  version: 5.8.1
-  resolution: "lottie-web@npm:5.8.1"
-  checksum: 48c19ea7863310150dc9e46855b0f85179f3768ac0c0cf4f3ffb18944819079d3046c31ca04f2748291f3c413a855329a12ce9c3faae056a1a869776b6ed12a9
+"lottie-react-native@npm:^7.2.5":
+  version: 7.2.5
+  resolution: "lottie-react-native@npm:7.2.5"
+  peerDependencies:
+    "@lottiefiles/dotlottie-react": ^0.6.5
+    react: "*"
+    react-native: ">=0.46"
+    react-native-windows: ">=0.63.x"
+  peerDependenciesMeta:
+    "@lottiefiles/dotlottie-react":
+      optional: true
+    react-native-windows:
+      optional: true
+  checksum: da31334d3307e3e1286a3e640a4a3ef7f9dd6e6e896fb1124ede377eac4b17cd9bdb34a846a0edb7251b819e2a3db1c26f081928462fc039e7cf7da777ed9ba2
   languageName: node
   linkType: hard
 
@@ -25168,17 +25196,6 @@ __metadata:
   peerDependencies:
     react-native-web: "*"
   checksum: 633971331b3f3a1cf66eb59908ae0900dcd1cb2fbc3349ca57fac3ea0801f1a737eb1991bf0313a5609f2567f4862de2ec99d7496db2857d50d791f1004f973c
-  languageName: node
-  linkType: hard
-
-"react-native-web-lottie@npm:^1.4.4":
-  version: 1.4.4
-  resolution: "react-native-web-lottie@npm:1.4.4"
-  dependencies:
-    lottie-web: ^5.7.1
-  peerDependencies:
-    react-native-web: "*"
-  checksum: a9a55c5f0af2b16a278f5a6fd78067a6c4556dd8200747f958a896f5e2635a21b418902837b549f1338bef34abf942ff24aa50fc7cce88b96095cc8aa6a6bb29
   languageName: node
   linkType: hard
 
