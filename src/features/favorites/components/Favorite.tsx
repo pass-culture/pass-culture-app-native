@@ -33,6 +33,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Typo } from 'ui/theme'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 
 interface Props {
   favorite: FavoriteResponse
@@ -44,12 +45,12 @@ const SPACER_BETWEEN_IMAGE_AND_CONTENT = 4
 
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
+  const isAComingSoonOffer = getIsAComingSoonOffer(offer.bookingAllowedDatetime)
   const { onLayout, height } = useLayout()
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
   const prePopulateOffer = usePrePopulateOffer()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
-
   const distanceToOffer = getDistance(
     {
       lat: offer.coordinates?.latitude,
@@ -228,7 +229,7 @@ export const Favorite: React.FC<Props> = (props) => {
               disabled={isLoading}
             />
           </ButtonContainer>
-          <ButtonContainer>{BookingButton}</ButtonContainer>
+          {isAComingSoonOffer ? null : <ButtonContainer>{BookingButton}</ButtonContainer>}
         </FavoriteButtonsContainer>
         <LineSeparator />
       </Animated.View>
