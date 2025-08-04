@@ -7,6 +7,7 @@ import { getBookingButtonProperties } from 'features/favorites/helpers/getBookin
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/hooks/useFavoriteFormattedDate'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
@@ -33,7 +34,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Typo } from 'ui/theme'
-import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 
 interface Props {
   favorite: FavoriteResponse

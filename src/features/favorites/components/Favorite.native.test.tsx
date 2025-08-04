@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 import { Share } from 'react-native'
 
@@ -25,7 +26,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Favorite } from './Favorite'
-import mockdate from 'mockdate'
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -180,7 +180,9 @@ describe('<Favorite /> component', () => {
   describe('coming soon offer', () => {
     const TODAY = '2025-07-29T15:15:00Z'
     const TODAY_PLUS_ONE_MINUTE = '2025-07-29T15:16:00Z'
+
     beforeAll(() => mockdate.set(new Date(TODAY)))
+
     it('should not show booking button on an offer not yet bookable', async () => {
       renderFavorite({
         favorite: {
