@@ -1858,6 +1858,11 @@ export interface FavoriteMediationResponse {
  */
 export interface FavoriteOfferResponse {
   /**
+   * @type {string}
+   * @memberof FavoriteOfferResponse
+   */
+  bookingAllowedDatetime?: string | null
+  /**
    * @type {Coordinates}
    * @memberof FavoriteOfferResponse
    */

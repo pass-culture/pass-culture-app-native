@@ -7,6 +7,7 @@ import { getBookingButtonProperties } from 'features/favorites/helpers/getBookin
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/hooks/useFavoriteFormattedDate'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
@@ -44,12 +45,12 @@ const SPACER_BETWEEN_IMAGE_AND_CONTENT = 4
 
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
+  const isAComingSoonOffer = getIsAComingSoonOffer(offer.bookingAllowedDatetime)
   const { onLayout, height } = useLayout()
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
   const prePopulateOffer = usePrePopulateOffer()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
-
   const distanceToOffer = getDistance(
     {
       lat: offer.coordinates?.latitude,
@@ -228,7 +229,7 @@ export const Favorite: React.FC<Props> = (props) => {
               disabled={isLoading}
             />
           </ButtonContainer>
-          <ButtonContainer>{BookingButton}</ButtonContainer>
+          {isAComingSoonOffer ? null : <ButtonContainer>{BookingButton}</ButtonContainer>}
         </FavoriteButtonsContainer>
         <LineSeparator />
       </Animated.View>

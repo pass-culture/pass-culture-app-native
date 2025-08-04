@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 import { Share } from 'react-native'
 
@@ -173,6 +174,39 @@ describe('<Favorite /> component', () => {
       type: 'Offer',
       from: 'favorites',
       offerId: favorite.offer.id,
+    })
+  })
+
+  describe('coming soon offer', () => {
+    const TODAY = '2025-07-29T15:15:00Z'
+    const TODAY_PLUS_ONE_MINUTE = '2025-07-29T15:16:00Z'
+
+    beforeAll(() => mockdate.set(new Date(TODAY)))
+
+    it('should not show booking button on an offer not yet bookable', async () => {
+      renderFavorite({
+        favorite: {
+          ...favorite,
+          offer: { ...favorite.offer, bookingAllowedDatetime: TODAY_PLUS_ONE_MINUTE },
+        },
+      })
+
+      await screen.findByText(favorite.offer.name)
+
+      expect(screen.queryByText('Réserver')).not.toBeOnTheScreen()
+    })
+
+    it('should show booking button on a bookable offer', async () => {
+      renderFavorite({
+        favorite: {
+          ...favorite,
+          offer: { ...favorite.offer, bookingAllowedDatetime: TODAY },
+        },
+      })
+
+      await screen.findByText(favorite.offer.name)
+
+      expect(await screen.findByText('Réserver')).toBeOnTheScreen()
     })
   })
 })
