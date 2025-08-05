@@ -164,10 +164,16 @@ export const logEventAnalytics = {
     apiRecoParams?: RecommendationApiParams
     playlistType?: PlaylistType
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
+  logClickCopyDebugInfo: (userId?: number) => {
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_COPY_DEBUG_INFO }, { userId })
+  },
   logClickEmailOrganizer: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_EMAIL_ORGANIZER }),
   logClickForceUpdate: (appVersionId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
+  logClickMailDebugInfo: (userId?: number) => {
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
+  },
   logClickSeeMore: (params: {
     moduleName: string
     moduleId: string

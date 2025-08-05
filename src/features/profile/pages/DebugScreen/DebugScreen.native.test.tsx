@@ -1,6 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { DebugScreen } from './DebugScreen'
@@ -34,7 +35,10 @@ jest.mock('libs/environment/env', () => ({
 
 const mockCopyToClipboard = jest.fn()
 jest.mock('libs/useCopyToClipboard/useCopyToClipboard', () => ({
-  useCopyToClipboard: () => mockCopyToClipboard,
+  useCopyToClipboard: ({ onCopy }) => {
+    onCopy?.()
+    return mockCopyToClipboard
+  },
 }))
 
 jest.useFakeTimers()
@@ -73,5 +77,23 @@ describe('DebugScreen', () => {
     expect(decodedUrl).toContain('User ID : 1234')
     expect(decodedUrl).toContain('Device font scale : 1.5')
     expect(decodedUrl).not.toContain('Device zoom :')
+  })
+
+  it('should log ClickCopyDebugInfo event when press "Copier dans le press-papier" button', async () => {
+    render(<DebugScreen />)
+
+    const copyButton = screen.getByText('Copier dans le presse-papier')
+    await userEvent.press(copyButton)
+
+    expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, '1234')
+  })
+
+  it('should log ClickMailDebugInfo event when press "Contacter le support" button', async () => {
+    render(<DebugScreen />)
+
+    const copyButton = screen.getByText('Contacter le support')
+    await userEvent.press(copyButton)
+
+    expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, '1234')
   })
 })
