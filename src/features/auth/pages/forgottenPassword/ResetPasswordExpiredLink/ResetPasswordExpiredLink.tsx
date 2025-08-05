@@ -17,25 +17,36 @@ export function ResetPasswordExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { email } = props.route.params
-  const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
-    [QueryKeys.RESET_PASSWORD_EXPIRED_LINK],
-    () => {
+  const { refetch: resetPasswordEmailQuery, isFetching } = useQuery({
+    queryKey: [QueryKeys.RESET_PASSWORD_EXPIRED_LINK],
+    queryFn: () => {
       analytics.logResendEmailResetPasswordExpiredLink()
       return api.postNativeV1RequestPasswordReset({ email })
     },
-    {
-      onSuccess: () => {
-        navigate('ResetPasswordEmailSent', { email })
-      },
-      onError: () => {
-        throw new AsyncError('NETWORK_REQUEST_FAILED', {
-          retry: resetPasswordEmailQuery,
-          logType: LogTypeEnum.ERROR,
-        })
-      },
-      cacheTime: 0,
-      enabled: false,
-    }
+    onSuccess: () => {
+      navigate('ResetPasswordEmailSent', { email })
+    },
+    onError: () => {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', {
+        retry: resetPasswordEmailQuery,
+        logType: LogTypeEnum.ERROR,
+      })
+    },
+    enabled: false,
+  })
+    // {
+    //   onSuccess: () => {
+    //     navigate('ResetPasswordEmailSent', { email })
+    //   },
+    //   onError: () => {
+    //     throw new AsyncError('NETWORK_REQUEST_FAILED', {
+    //       retry: resetPasswordEmailQuery,
+    //       logType: LogTypeEnum.ERROR,
+    //     })
+    //   },
+    //   cacheTime: 0,
+    //   enabled: false,
+    // }
   )
 
   const renderCustomButton = {
