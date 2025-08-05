@@ -897,6 +897,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
       testID="searchResults"
     >
       <View
+        collapsable={false}
+        onLayout={[Function]}
         style={
           {
             "flex": 1,
@@ -905,676 +907,21 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         }
       >
         <RCTScrollView
-          ItemSeparatorComponent={
-            {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [],
-              "inlineStyle": e {
-                "rules": [
-                  [Function],
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": true,
-              "target": [Function],
-            }
-          }
-          ListHeaderComponent={
-            <SearchListHeader
-              nbHits={4}
-              selectedGridListLayout="Liste"
-              setGridListLayout={[Function]}
-              shouldDisplayGridList={false}
-              venues={
-                [
-                  {
-                    "_geoloc": {
-                      "lat": 48.94374,
-                      "lng": 2.48171,
-                    },
-                    "address": "1 rue de la paix",
-                    "city": "Paris",
-                    "id": 1,
-                    "name": "Lieu 1",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 1",
-                  },
-                  {
-                    "_geoloc": {
-                      "lat": 48.91265,
-                      "lng": 2.4513,
-                    },
-                    "address": "2 rue de la paix",
-                    "city": "Paris",
-                    "id": 2,
-                    "name": "Lieu 2",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 2",
-                  },
-                  {
-                    "_geoloc": {
-                      "lat": 4.90339,
-                      "lng": -52.31663,
-                    },
-                    "address": "3 rue de la paix",
-                    "city": "Paris",
-                    "id": 3,
-                    "name": "Lieu 3",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 3",
-                  },
-                  {
-                    "_geoloc": {
-                      "lat": 4.90339,
-                      "lng": -52.31663,
-                    },
-                    "address": "4 rue de la paix",
-                    "city": "Paris",
-                    "id": 4,
-                    "name": "Lieu 4",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 4",
-                  },
-                ]
-              }
-            />
-          }
-          applyWindowCorrection={[Function]}
-          canChangeSize={true}
           contentContainerStyle={
             {
-              "backgroundColor": undefined,
-              "minHeight": 1,
-              "minWidth": 1,
-              "paddingLeft": 0,
-              "paddingRight": 0,
+              "paddingBottom": 104,
             }
           }
-          contentHeight={0}
-          contentWidth={0}
-          data={
-            [
-              {
-                "_geoloc": {
-                  "lat": 48.94374,
-                  "lng": 2.48171,
-                },
-                "artists": [
-                  {
-                    "id": "1",
-                    "name": "Artist 1",
-                  },
-                ],
-                "objectID": "102280",
-                "offer": {
-                  "dates": [],
-                  "isDigital": false,
-                  "isDuo": false,
-                  "name": "La nuit des temps",
-                  "prices": [
-                    2800,
-                  ],
-                  "subcategoryId": "LIVRE_PAPIER",
-                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
-                },
-                "venue": {
-                  "address": "1 rue de la paix",
-                  "city": "Paris",
-                  "id": 1,
-                  "name": "Lieu 1",
-                  "postalCode": "75000",
-                  "publicName": "Lieu 1",
-                },
-              },
-              {
-                "_geoloc": {
-                  "lat": 48.91265,
-                  "lng": 2.4513,
-                },
-                "artists": [
-                  {
-                    "id": "2",
-                    "name": "Artist 2",
-                  },
-                  {
-                    "id": "3",
-                    "name": "Artist 3",
-                  },
-                ],
-                "objectID": "102272",
-                "offer": {
-                  "dates": [],
-                  "isDigital": false,
-                  "isDuo": false,
-                  "name": "I want something more",
-                  "prices": [
-                    2300,
-                  ],
-                  "subcategoryId": "CONCERT",
-                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
-                },
-                "venue": {
-                  "address": "2 rue de la paix",
-                  "city": "Paris",
-                  "id": 2,
-                  "name": "Lieu 2",
-                  "postalCode": "75000",
-                  "publicName": "Lieu 2",
-                },
-              },
-              {
-                "_geoloc": {
-                  "lat": 4.90339,
-                  "lng": -52.31663,
-                },
-                "objectID": "102249",
-                "offer": {
-                  "dates": [
-                    1605643200,
-                  ],
-                  "isDigital": false,
-                  "isDuo": true,
-                  "name": "Un lit sous une rivière",
-                  "prices": [
-                    3400,
-                  ],
-                  "subcategoryId": "CONCERT",
-                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
-                },
-                "venue": {
-                  "address": "3 rue de la paix",
-                  "city": "Paris",
-                  "id": 3,
-                  "name": "Lieu 3",
-                  "postalCode": "75000",
-                  "publicName": "Lieu 3",
-                },
-              },
-              {
-                "_geoloc": {
-                  "lat": 4.90339,
-                  "lng": -52.31663,
-                },
-                "artists": [
-                  {
-                    "id": "4",
-                    "name": "Artist 4",
-                  },
-                  {
-                    "id": "5",
-                    "name": "Artist 4",
-                  },
-                ],
-                "objectID": "102310",
-                "offer": {
-                  "dates": [],
-                  "isDigital": false,
-                  "isDuo": false,
-                  "name": "I want something more",
-                  "prices": [
-                    2800,
-                  ],
-                  "subcategoryId": "CONCERT",
-                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
-                },
-                "venue": {
-                  "address": "4 rue de la paix",
-                  "city": "Paris",
-                  "id": 4,
-                  "name": "Lieu 4",
-                  "postalCode": "75000",
-                  "publicName": "Lieu 4",
-                },
-              },
-            ]
-          }
-          dataProvider={
-            DataProvider {
-              "_data": [
-                {
-                  "_geoloc": {
-                    "lat": 48.94374,
-                    "lng": 2.48171,
-                  },
-                  "artists": [
-                    {
-                      "id": "1",
-                      "name": "Artist 1",
-                    },
-                  ],
-                  "objectID": "102280",
-                  "offer": {
-                    "dates": [],
-                    "isDigital": false,
-                    "isDuo": false,
-                    "name": "La nuit des temps",
-                    "prices": [
-                      2800,
-                    ],
-                    "subcategoryId": "LIVRE_PAPIER",
-                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
-                  },
-                  "venue": {
-                    "address": "1 rue de la paix",
-                    "city": "Paris",
-                    "id": 1,
-                    "name": "Lieu 1",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 1",
-                  },
-                },
-                {
-                  "_geoloc": {
-                    "lat": 48.91265,
-                    "lng": 2.4513,
-                  },
-                  "artists": [
-                    {
-                      "id": "2",
-                      "name": "Artist 2",
-                    },
-                    {
-                      "id": "3",
-                      "name": "Artist 3",
-                    },
-                  ],
-                  "objectID": "102272",
-                  "offer": {
-                    "dates": [],
-                    "isDigital": false,
-                    "isDuo": false,
-                    "name": "I want something more",
-                    "prices": [
-                      2300,
-                    ],
-                    "subcategoryId": "CONCERT",
-                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
-                  },
-                  "venue": {
-                    "address": "2 rue de la paix",
-                    "city": "Paris",
-                    "id": 2,
-                    "name": "Lieu 2",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 2",
-                  },
-                },
-                {
-                  "_geoloc": {
-                    "lat": 4.90339,
-                    "lng": -52.31663,
-                  },
-                  "objectID": "102249",
-                  "offer": {
-                    "dates": [
-                      1605643200,
-                    ],
-                    "isDigital": false,
-                    "isDuo": true,
-                    "name": "Un lit sous une rivière",
-                    "prices": [
-                      3400,
-                    ],
-                    "subcategoryId": "CONCERT",
-                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
-                  },
-                  "venue": {
-                    "address": "3 rue de la paix",
-                    "city": "Paris",
-                    "id": 3,
-                    "name": "Lieu 3",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 3",
-                  },
-                },
-                {
-                  "_geoloc": {
-                    "lat": 4.90339,
-                    "lng": -52.31663,
-                  },
-                  "artists": [
-                    {
-                      "id": "4",
-                      "name": "Artist 4",
-                    },
-                    {
-                      "id": "5",
-                      "name": "Artist 4",
-                    },
-                  ],
-                  "objectID": "102310",
-                  "offer": {
-                    "dates": [],
-                    "isDigital": false,
-                    "isDuo": false,
-                    "name": "I want something more",
-                    "prices": [
-                      2800,
-                    ],
-                    "subcategoryId": "CONCERT",
-                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
-                  },
-                  "venue": {
-                    "address": "4 rue de la paix",
-                    "city": "Paris",
-                    "id": 4,
-                    "name": "Lieu 4",
-                    "postalCode": "75000",
-                    "publicName": "Lieu 4",
-                  },
-                },
-              ],
-              "_firstIndexToProcess": 0,
-              "_hasStableIds": true,
-              "_requiresDataChangeHandling": false,
-              "_size": 4,
-              "getStableId": [Function],
-              "rowHasChanged": [Function],
-            }
-          }
-          disableRecycling={false}
-          estimatedItemSize={130}
-          extendedState={{}}
-          externalScrollView={[Function]}
-          finalRenderAheadOffset={250}
-          forceNonDeterministicRendering={true}
-          horizontal={false}
-          initialOffset={0}
-          initialRenderIndex={0}
-          isHorizontal={false}
           keyExtractor={[Function]}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps="handled"
-          layoutProvider={
-            GridLayoutProviderWithProps {
-              "_acceptableRelayoutDelta": 1,
-              "_getHeightOrWidth": [Function],
-              "_getLayoutTypeForIndex": [Function],
-              "_getSpan": [Function],
-              "_hasExpired": false,
-              "_maxSpan": 1,
-              "_setLayoutForType": [Function],
-              "_tempDim": {
-                "height": 0,
-                "width": 0,
-              },
-              "averageWindow": AverageWindow {
-                "currentAverage": 130,
-                "currentCount": 1,
-                "inputValues": [
-                  130,
-                ],
-                "nextIndex": 1,
-              },
-              "defaultEstimatedItemSize": 100,
-              "layoutObject": {
-                "size": undefined,
-                "span": undefined,
-              },
-              "props": {
-                "ItemSeparatorComponent": {
-                  "$$typeof": Symbol(react.forward_ref),
-                  "attrs": [],
-                  "inlineStyle": e {
-                    "rules": [
-                      [Function],
-                    ],
-                  },
-                  "render": [Function],
-                  "shouldForwardProp": undefined,
-                  "styledComponentId": true,
-                  "target": [Function],
-                },
-                "ListHeaderComponent": <SearchListHeader
-                  nbHits={4}
-                  selectedGridListLayout="Liste"
-                  setGridListLayout={[Function]}
-                  shouldDisplayGridList={false}
-                  venues={
-                    [
-                      {
-                        "_geoloc": {
-                          "lat": 48.94374,
-                          "lng": 2.48171,
-                        },
-                        "address": "1 rue de la paix",
-                        "city": "Paris",
-                        "id": 1,
-                        "name": "Lieu 1",
-                        "postalCode": "75000",
-                        "publicName": "Lieu 1",
-                      },
-                      {
-                        "_geoloc": {
-                          "lat": 48.91265,
-                          "lng": 2.4513,
-                        },
-                        "address": "2 rue de la paix",
-                        "city": "Paris",
-                        "id": 2,
-                        "name": "Lieu 2",
-                        "postalCode": "75000",
-                        "publicName": "Lieu 2",
-                      },
-                      {
-                        "_geoloc": {
-                          "lat": 4.90339,
-                          "lng": -52.31663,
-                        },
-                        "address": "3 rue de la paix",
-                        "city": "Paris",
-                        "id": 3,
-                        "name": "Lieu 3",
-                        "postalCode": "75000",
-                        "publicName": "Lieu 3",
-                      },
-                      {
-                        "_geoloc": {
-                          "lat": 4.90339,
-                          "lng": -52.31663,
-                        },
-                        "address": "4 rue de la paix",
-                        "city": "Paris",
-                        "id": 4,
-                        "name": "Lieu 4",
-                        "postalCode": "75000",
-                        "publicName": "Lieu 4",
-                      },
-                    ]
-                  }
-                />,
-                "contentContainerStyle": {
-                  "paddingBottom": 104,
-                },
-                "data": [
-                  {
-                    "_geoloc": {
-                      "lat": 48.94374,
-                      "lng": 2.48171,
-                    },
-                    "artists": [
-                      {
-                        "id": "1",
-                        "name": "Artist 1",
-                      },
-                    ],
-                    "objectID": "102280",
-                    "offer": {
-                      "dates": [],
-                      "isDigital": false,
-                      "isDuo": false,
-                      "name": "La nuit des temps",
-                      "prices": [
-                        2800,
-                      ],
-                      "subcategoryId": "LIVRE_PAPIER",
-                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
-                    },
-                    "venue": {
-                      "address": "1 rue de la paix",
-                      "city": "Paris",
-                      "id": 1,
-                      "name": "Lieu 1",
-                      "postalCode": "75000",
-                      "publicName": "Lieu 1",
-                    },
-                  },
-                  {
-                    "_geoloc": {
-                      "lat": 48.91265,
-                      "lng": 2.4513,
-                    },
-                    "artists": [
-                      {
-                        "id": "2",
-                        "name": "Artist 2",
-                      },
-                      {
-                        "id": "3",
-                        "name": "Artist 3",
-                      },
-                    ],
-                    "objectID": "102272",
-                    "offer": {
-                      "dates": [],
-                      "isDigital": false,
-                      "isDuo": false,
-                      "name": "I want something more",
-                      "prices": [
-                        2300,
-                      ],
-                      "subcategoryId": "CONCERT",
-                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
-                    },
-                    "venue": {
-                      "address": "2 rue de la paix",
-                      "city": "Paris",
-                      "id": 2,
-                      "name": "Lieu 2",
-                      "postalCode": "75000",
-                      "publicName": "Lieu 2",
-                    },
-                  },
-                  {
-                    "_geoloc": {
-                      "lat": 4.90339,
-                      "lng": -52.31663,
-                    },
-                    "objectID": "102249",
-                    "offer": {
-                      "dates": [
-                        1605643200,
-                      ],
-                      "isDigital": false,
-                      "isDuo": true,
-                      "name": "Un lit sous une rivière",
-                      "prices": [
-                        3400,
-                      ],
-                      "subcategoryId": "CONCERT",
-                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
-                    },
-                    "venue": {
-                      "address": "3 rue de la paix",
-                      "city": "Paris",
-                      "id": 3,
-                      "name": "Lieu 3",
-                      "postalCode": "75000",
-                      "publicName": "Lieu 3",
-                    },
-                  },
-                  {
-                    "_geoloc": {
-                      "lat": 4.90339,
-                      "lng": -52.31663,
-                    },
-                    "artists": [
-                      {
-                        "id": "4",
-                        "name": "Artist 4",
-                      },
-                      {
-                        "id": "5",
-                        "name": "Artist 4",
-                      },
-                    ],
-                    "objectID": "102310",
-                    "offer": {
-                      "dates": [],
-                      "isDigital": false,
-                      "isDuo": false,
-                      "name": "I want something more",
-                      "prices": [
-                        2800,
-                      ],
-                      "subcategoryId": "CONCERT",
-                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
-                    },
-                    "venue": {
-                      "address": "4 rue de la paix",
-                      "city": "Paris",
-                      "id": 4,
-                      "name": "Lieu 4",
-                      "postalCode": "75000",
-                      "publicName": "Lieu 4",
-                    },
-                  },
-                ],
-                "estimatedItemSize": 130,
-                "keyExtractor": [Function],
-                "keyboardDismissMode": "on-drag",
-                "keyboardShouldPersistTaps": "handled",
-                "numColumns": 1,
-                "onEndReached": [Function],
-                "onRefresh": [MockFunction] {
-                  "calls": [
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
-                "onScroll": [Function],
-                "refreshing": false,
-                "renderItem": [Function],
-                "scrollEnabled": true,
-                "testID": "searchResultsFlashlist",
-              },
-              "renderWindowInsets": {
-                "height": 0,
-                "width": 0,
-              },
-              "shouldRefreshWithAnchoring": true,
+          maintainVisibleContentPosition={
+            {
+              "minIndexForVisible": 0,
             }
           }
-          maxRenderAhead={750}
-          numColumns={1}
           onEndReached={[Function]}
-          onEndReachedThreshold={0}
-          onEndReachedThresholdRelative={0}
-          onItemLayout={[Function]}
-          onLayout={[Function]}
-          onRefresh={
-            [MockFunction] {
-              "calls": [
-                [],
-              ],
-              "results": [
-                {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
           onScroll={[Function]}
-          onScrollBeginDrag={[Function]}
-          onSizeChanged={[Function]}
-          onVisibleIndicesChanged={[Function]}
           refreshControl={
             <RefreshControlMock
               onRefresh={
@@ -1593,94 +940,1355 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               refreshing={false}
             />
           }
-          refreshing={false}
-          removeClippedSubviews={false}
-          renderAheadOffset={0}
-          renderAheadStep={250}
-          renderContentContainer={[Function]}
-          renderItem={[Function]}
-          renderItemContainer={[Function]}
-          rowRenderer={[Function]}
           scrollEnabled={true}
-          scrollEventThrottle={16}
-          scrollThrottle={16}
-          scrollViewProps={
-            {
-              "contentContainerStyle": {
-                "backgroundColor": undefined,
-                "minHeight": 1,
-                "minWidth": 1,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-              },
-              "onLayout": [Function],
-              "onScrollBeginDrag": [Function],
-              "refreshControl": <RefreshControlMock
-                onRefresh={
-                  [MockFunction] {
-                    "calls": [
-                      [],
-                    ],
-                    "results": [
-                      {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                    ],
-                  }
-                }
-                refreshing={false}
-              />,
-              "style": {
-                "minHeight": 1,
-                "minWidth": 1,
-              },
-            }
-          }
-          style={
-            {
-              "minHeight": 1,
-              "minWidth": 1,
-            }
-          }
-          suppressBoundedSizeException={true}
+          scrollEventThrottle={0.0001}
           testID="searchResultsFlashlist"
-          windowCorrectionConfig={
-            {
-              "applyToInitialOffset": true,
-              "applyToItemScroll": true,
-              "value": {
-                "endCorrection": 0,
-                "startCorrection": 0,
-                "windowShift": -1,
-              },
-            }
-          }
         >
           <RCTRefreshControl />
           <View>
             <View
               style={
                 {
-                  "flexDirection": "column",
+                  "height": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 1000000,
+                }
+              }
+            />
+            <View>
+              <View
+                testID="searchListHeader"
+              >
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "column",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                          "marginHorizontal": 24,
+                          "marginTop": 16,
+                        }
+                      }
+                    >
+                      Les offres
+                    </Text>
+                    <View
+                      accessibilityRole="none"
+                      style={
+                        {
+                          "marginBottom": 16,
+                          "marginHorizontal": 24,
+                          "marginTop": 4,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        4 résultats
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "height": 0,
+                  "width": undefined,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "height": 0,
+                  "marginLeft": undefined,
+                  "marginTop": 0,
+                  "opacity": 1,
+                  "width": undefined,
                 }
               }
             >
-              <AutoLayoutView
-                enableInstrumentation={false}
-                horizontal={false}
-                onBlankAreaEvent={[Function]}
+              <View
+                index={0}
                 onLayout={[Function]}
-                renderAheadOffset={0}
-                scrollOffset={0}
                 style={
                   {
-                    "height": 0,
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
                     "width": 0,
                   }
                 }
-                windowSize={0}
-              />
+              >
+                <View
+                  accessibilityLabel="Offre La nuit des temps de la catégorie Livre, à 900+ km,  prix 28 €. "
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre La nuit des temps de la catégorie Livre, à 900+ km,  prix 28 €. "
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "shadowColor": "#696A6F",
+                          "shadowOffset": {
+                            "height": 4,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0.2,
+                          "shadowRadius": 4,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          La nuit des temps
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Livre
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        />
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                        withColor={true}
+                      >
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 900+ km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.94374,
+                        "lng": 2.48171,
+                      },
+                      "artists": [
+                        {
+                          "id": "1",
+                          "name": "Artist 1",
+                        },
+                      ],
+                      "objectID": "102280",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "La nuit des temps",
+                        "prices": [
+                          2800,
+                        ],
+                        "subcategoryId": "LIVRE_PAPIER",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                      },
+                      "venue": {
+                        "address": "1 rue de la paix",
+                        "city": "Paris",
+                        "id": 1,
+                        "name": "Lieu 1",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 1",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 2,
+                      "marginHorizontal": 24,
+                      "marginVertical": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.91265,
+                        "lng": 2.4513,
+                      },
+                      "artists": [
+                        {
+                          "id": "2",
+                          "name": "Artist 2",
+                        },
+                        {
+                          "id": "3",
+                          "name": "Artist 3",
+                        },
+                      ],
+                      "objectID": "102272",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "I want something more",
+                        "prices": [
+                          2300,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                      },
+                      "venue": {
+                        "address": "2 rue de la paix",
+                        "city": "Paris",
+                        "id": 2,
+                        "name": "Lieu 2",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 2",
+                      },
+                    }
+                  }
+                />
+              </View>
+              <View
+                index={1}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Offre I want something more de la catégorie Concert, à 900+ km,  prix Dès 23 €. "
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre I want something more de la catégorie Concert, à 900+ km,  prix Dès 23 €. "
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "shadowColor": "#696A6F",
+                          "shadowOffset": {
+                            "height": 4,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0.2,
+                          "shadowRadius": 4,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          I want something more
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Concert
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        />
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                        withColor={true}
+                      >
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 900+ km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.91265,
+                        "lng": 2.4513,
+                      },
+                      "artists": [
+                        {
+                          "id": "2",
+                          "name": "Artist 2",
+                        },
+                        {
+                          "id": "3",
+                          "name": "Artist 3",
+                        },
+                      ],
+                      "objectID": "102272",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "I want something more",
+                        "prices": [
+                          2300,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                      },
+                      "venue": {
+                        "address": "2 rue de la paix",
+                        "city": "Paris",
+                        "id": 2,
+                        "name": "Lieu 2",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 2",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 2,
+                      "marginHorizontal": 24,
+                      "marginVertical": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 4.90339,
+                        "lng": -52.31663,
+                      },
+                      "objectID": "102249",
+                      "offer": {
+                        "dates": [
+                          1605643200,
+                        ],
+                        "isDigital": false,
+                        "isDuo": true,
+                        "name": "Un lit sous une rivière",
+                        "prices": [
+                          3400,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                      },
+                      "venue": {
+                        "address": "3 rue de la paix",
+                        "city": "Paris",
+                        "id": 3,
+                        "name": "Lieu 3",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 3",
+                      },
+                    }
+                  }
+                />
+              </View>
+              <View
+                index={2}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Offre Un lit sous une rivière de la catégorie Concert, à 49 km,  prix Dès 34 €. Possibilité de réserver 2 places."
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre Un lit sous une rivière de la catégorie Concert, à 49 km,  prix Dès 34 €. Possibilité de réserver 2 places."
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "shadowColor": "#696A6F",
+                          "shadowOffset": {
+                            "height": 4,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0.2,
+                          "shadowRadius": 4,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Un lit sous une rivière
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Concert
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        />
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                        withColor={true}
+                      >
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 49 km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 4.90339,
+                        "lng": -52.31663,
+                      },
+                      "objectID": "102249",
+                      "offer": {
+                        "dates": [
+                          1605643200,
+                        ],
+                        "isDigital": false,
+                        "isDuo": true,
+                        "name": "Un lit sous une rivière",
+                        "prices": [
+                          3400,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                      },
+                      "venue": {
+                        "address": "3 rue de la paix",
+                        "city": "Paris",
+                        "id": 3,
+                        "name": "Lieu 3",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 3",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 2,
+                      "marginHorizontal": 24,
+                      "marginVertical": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 4.90339,
+                        "lng": -52.31663,
+                      },
+                      "artists": [
+                        {
+                          "id": "4",
+                          "name": "Artist 4",
+                        },
+                        {
+                          "id": "5",
+                          "name": "Artist 4",
+                        },
+                      ],
+                      "objectID": "102310",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": false,
+                        "isDuo": false,
+                        "name": "I want something more",
+                        "prices": [
+                          2800,
+                        ],
+                        "subcategoryId": "CONCERT",
+                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                      },
+                      "venue": {
+                        "address": "4 rue de la paix",
+                        "city": "Paris",
+                        "id": 4,
+                        "name": "Lieu 4",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 4",
+                      },
+                    }
+                  }
+                />
+              </View>
+              <View
+                index={3}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Offre I want something more de la catégorie Concert, à 49 km,  prix Dès 28 €. "
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "marginHorizontal": 24,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Offre I want something more de la catégorie Concert, à 49 km,  prix Dès 28 €. "
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 16,
+                        },
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      size="small"
+                      style={
+                        {
+                          "backgroundColor": "#ffffff",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 96,
+                          "shadowColor": "#696A6F",
+                          "shadowOffset": {
+                            "height": 4,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0.2,
+                          "shadowRadius": 4,
+                          "width": 64,
+                        }
+                      }
+                      withShadow={true}
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 96,
+                              "width": 64,
+                            },
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          size="small"
+                          source={
+                            {
+                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                    <View
+                      alignItems="center"
+                      flex={1}
+                      flexDirection="row"
+                      gap={16}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "gap": 16,
+                        }
+                      }
+                      testID="horizontal_offer_tile"
+                    >
+                      <View
+                        flex={1}
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          I want something more
+                        </Text>
+                        <Text
+                          ellipsizeMode="tail"
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          testID="native-category-value"
+                        >
+                          Concert
+                        </Text>
+                        <View
+                          gap={1}
+                          style={
+                            {
+                              "flexDirection": "row",
+                              "gap": 4,
+                            }
+                          }
+                        />
+                      </View>
+                      <View
+                        backgroundColor="#f1f1f4"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "flex-start",
+                              "backgroundColor": "#f1f1f4",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "flexDirection": "row",
+                              "paddingHorizontal": 8,
+                              "paddingVertical": 4,
+                            },
+                            {
+                              "backgroundColor": "#f1f1f4",
+                            },
+                          ]
+                        }
+                        testID="distance_tag"
+                        withColor={true}
+                      >
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            }
+                          }
+                        >
+                          à 49 km
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
             </View>
           </View>
         </RCTScrollView>

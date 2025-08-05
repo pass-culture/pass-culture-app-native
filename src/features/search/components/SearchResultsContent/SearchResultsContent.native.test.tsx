@@ -384,7 +384,8 @@ describe('SearchResultsContent component', () => {
 
   describe('should not display geolocation incitation button', () => {
     it('when position is not null', async () => {
-      renderSearchResultContent()
+      mockUseLocation.mockReturnValueOnce(aroundMeUseLocation)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       await screen.findByText('Lieu culturel')
 
@@ -402,7 +403,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      renderSearchResultContent()
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       await screen.findByText('Lieu culturel')
 
@@ -411,7 +412,7 @@ describe('SearchResultsContent component', () => {
 
     it('when position is null and no results search', async () => {
       mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
-      renderSearchResultContent()
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       await screen.findByText('Lieu culturel')
 
@@ -859,7 +860,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      renderSearchResultContent()
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
       await screen.findByText('Lieu culturel')
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()

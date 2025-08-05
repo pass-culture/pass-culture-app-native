@@ -1,6 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
-import { FlashList } from '@shopify/flash-list'
-import React, { ReactNode, Ref } from 'react'
+import React, { ReactNode } from 'react'
 
 import {
   GenreType,
@@ -85,7 +84,6 @@ type VenueUserData = VenueUserTitleRule | undefined
 export type VenuesUserData = VenueUserData[] | undefined
 
 export interface SearchListProps {
-  ref?: Ref<FlashList<Offer>>
   nbHits: number
   hits: SearchOfferHits
   venuesUserData: VenuesUserData

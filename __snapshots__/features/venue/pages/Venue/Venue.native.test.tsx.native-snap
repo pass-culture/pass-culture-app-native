@@ -918,7 +918,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           ]
                         }
                         drawDistance={187.5}
-                        estimatedItemSize={160}
                         getItem={[Function]}
                         getItemCount={[Function]}
                         getItemLayout={[Function]}
@@ -3973,7 +3972,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           ]
                         }
                         drawDistance={187.5}
-                        estimatedItemSize={160}
                         getItem={[Function]}
                         getItemCount={[Function]}
                         getItemLayout={[Function]}

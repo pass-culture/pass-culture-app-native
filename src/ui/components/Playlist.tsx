@@ -78,7 +78,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
   const { isTouch, tiles } = useTheme()
   const { width } = useWindowDimensions()
 
-  const listRef = useRef<FlatList>(null)
+  const listRef = useRef<any>(null)
   const {
     handleScrollPrevious,
     handleScrollNext,
@@ -87,7 +87,10 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
     onContainerLayout,
     isEnd,
     isStart,
-  } = useHorizontalFlatListScroll({ ref: listRef, isActive: isWeb })
+  } = useHorizontalFlatListScroll({
+    ref: listRef,
+    isActive: isWeb,
+  })
 
   useImperativeHandle(ref, () => listRef.current as FlatList)
 
@@ -181,7 +184,6 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
         ref={listRef}
         scrollEnabled={isTouch}
         drawDistance={width / 4}
-        estimatedItemSize={itemWidth}
         data={dataWithHeaderAndFooter}
         renderItem={renderItemWithHeaderAndFooter}
         keyExtractor={keyExtractorWithHeaderAndFooter}
