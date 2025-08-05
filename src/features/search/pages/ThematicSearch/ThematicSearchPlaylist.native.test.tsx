@@ -9,21 +9,6 @@ import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-jest.mock('@shopify/flash-list', () => {
-  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
-  class MockFlashList extends ActualFlashList {
-    componentDidMount() {
-      super.componentDidMount()
-      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
-        nativeEvent: { layout: { height: 250, width: 800 } },
-      })
-    }
-  }
-  return {
-    ...jest.requireActual('@shopify/flash-list'),
-    FlashList: MockFlashList,
-  }
-})
 const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Titre de la playlist'
 const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }

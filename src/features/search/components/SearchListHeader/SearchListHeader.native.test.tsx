@@ -22,6 +22,7 @@ import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
 
+jest.useFakeTimers()
 jest.mock('libs/firebase/analytics/analytics')
 
 const searchId = uuidv4()
@@ -73,22 +74,6 @@ const mockUseSearch = jest.fn(() => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
-
-jest.mock('@shopify/flash-list', () => {
-  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
-  class MockFlashList extends ActualFlashList {
-    componentDidMount() {
-      super.componentDidMount()
-      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
-        nativeEvent: { layout: { height: 250, width: 800 } },
-      })
-    }
-  }
-  return {
-    ...jest.requireActual('@shopify/flash-list'),
-    FlashList: MockFlashList,
-  }
-})
 
 jest.mock('features/location/helpers/useLocationState', () => ({
   useLocationState: () => ({
