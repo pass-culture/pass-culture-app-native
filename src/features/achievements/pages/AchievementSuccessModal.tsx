@@ -24,7 +24,7 @@ interface Props {
 const ANIMATION_END_FRAME = 62
 
 export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow }: Props) => {
-  const logoRef = useRef<LottieView>(null)
+  const logoRef = useRef<LottieView | null>(null)
   const { mutate: markAchievementsAsSeen } = useAchievementsMarkAsSeenMutation()
 
   const achievementNames: AchievementEnum[] = achievementsToShow.map(
@@ -57,6 +57,7 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
       visible={visible}>
       <StyledViewGap gap={2}>
         <ThemedStyledLottieView
+          ref={logoRef}
           height={getSpacing(60)}
           source={success}
           autoPlay={false}
