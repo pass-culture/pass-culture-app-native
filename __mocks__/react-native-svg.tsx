@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
-const mockReactNativeSvg = jest.genMockFromModule('react-native-svg')
+const mockReactNativeSvg = jest.createMockFromModule('react-native-svg')
 
 const Svg = ({
   testID,
@@ -20,7 +20,7 @@ const Svg = ({
   width: number
   height: number
 }) => {
-  const displayNameForTest = `${testID}-SVG-Mock`
+  // const displayNameForTest = `${testID}-SVG-Mock`
   return (
     <View
       // @ts-expect-error : fill, fillColor, borderColor, width, height do not exists on View, but for test purposes setting the props can be useful
@@ -31,7 +31,7 @@ const Svg = ({
       height={height}
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <Text>{displayNameForTest}</Text>
+      {/* <Text>{displayNameForTest}</Text> */}
     </View>
   )
 }

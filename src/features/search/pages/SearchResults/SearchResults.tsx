@@ -93,6 +93,7 @@ export const SearchResults = () => {
   return (
     <Page>
       <Form.Flex>
+        {/* @ts-expect-error - type incompatibility with React 19 */}
         <InstantSearch
           searchClient={getSearchClient}
           indexName={suggestionsIndex}
