@@ -65,7 +65,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             "userSelect": "auto",
           },
           {
-            "alignSelf": "flex-start",
             "cursor": "pointer",
           },
         ],
@@ -190,7 +189,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             "userSelect": "auto",
           },
           {
-            "alignSelf": "flex-start",
             "cursor": "pointer",
           },
         ],
@@ -717,7 +715,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             "userSelect": "auto",
           },
           {
-            "alignSelf": "flex-start",
             "cursor": "pointer",
           },
         ],
@@ -858,7 +855,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             "userSelect": "auto",
           },
           {
-            "alignSelf": "flex-start",
             "cursor": "pointer",
           },
         ],
@@ -983,7 +979,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             "userSelect": "auto",
           },
           {
-            "alignSelf": "flex-start",
             "cursor": "pointer",
           },
         ],
