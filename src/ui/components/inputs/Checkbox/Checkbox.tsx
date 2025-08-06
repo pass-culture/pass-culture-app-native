@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react'
+import { Platform } from 'react-native'
 import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -20,6 +21,8 @@ import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminat
 import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
+
+const isWeb = Platform.OS === 'web'
 
 type CheckboxBaseCheckedOnly = {
   isChecked: boolean
@@ -187,7 +190,7 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
   return {
     cursor: isDisabled ? 'default' : 'pointer',
     width: display === 'fill' ? '100%' : undefined,
-    alignSelf: display === 'hug' ? 'flex-start' : undefined,
+    alignSelf: display === 'hug' && isWeb ? 'flex-start' : undefined,
     ...(isDetailed && {
       backgroundColor,
       border: 1,
@@ -239,7 +242,6 @@ type LabelColorParams = {
   state: CheckboxState[]
 }
 
-// FIXME(PC-37256): designSystem does not work
 const getLabelColor = ({ state, theme }: LabelColorParams) => {
   const isDisabled = state.includes('disabled')
   return isDisabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default
