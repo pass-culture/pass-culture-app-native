@@ -102,7 +102,6 @@ echo "Generating ${output} ..."
 	display_version ruby
 	display_version rvm && rvm list
 	display_version adb
-	display_version devbox version
 	heading_3 maestro
 	yes n | maestro --version # Enable analytics ? n
 

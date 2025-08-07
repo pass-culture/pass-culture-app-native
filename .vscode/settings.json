@@ -35,7 +35,6 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "devbox.autoShellOnTerminal": false,
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "nixEnvSelector.useFlakes": true,
   "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix"
