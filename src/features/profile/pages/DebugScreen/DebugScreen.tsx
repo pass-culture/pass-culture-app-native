@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,6 +49,7 @@ export const DebugScreen = () => {
   const copyToClipboard = useCopyToClipboard({
     textToCopy: debugText,
     snackBarMessage: 'Copié dans le presse-papier\u00a0!',
+    onCopy: () => analytics.logClickCopyDebugInfo(user?.id),
   })
 
   const subject = encodeURI(`Informations de débuggage\u00a0: ${String(user?.id)}`)
@@ -78,6 +80,7 @@ export const DebugScreen = () => {
             wording="Contacter le support"
             externalNav={{ url: mailtoUrl }}
             icon={EmailFilled}
+            onBeforeNavigate={() => analytics.logClickMailDebugInfo(user?.id)}
           />
         </ViewGap>
       }
