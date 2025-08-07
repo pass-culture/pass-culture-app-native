@@ -45,7 +45,10 @@ then in your terminal run :
 
 ```sh
 sudo xcodebuild -license # read and accept Apple license to be abble to use git inside Android Studio
+direnv allow
+direnv reload # both to be sure that password have been taken in account
 ./scripts/install_certificate_java.sh # this script ask root password
+./scripts/setup_android_create_emulators.sh # this can take several minutes (~4 minutes)
 direnv reload
 ```
 
