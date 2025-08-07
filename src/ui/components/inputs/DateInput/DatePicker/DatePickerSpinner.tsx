@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import DatePicker from 'react-native-date-picker'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
@@ -16,6 +16,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   minimumDate,
 }) => {
   const birthdateInputErrorId = uuidv4()
+  const theme = useTheme()
 
   return (
     <React.Fragment>
@@ -35,14 +36,16 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
         maximumDate={maximumDate}
         minimumDate={minimumDate}
         accessibilityDescribedBy={birthdateInputErrorId}
+        theme={theme.colorScheme} // DatePicker requires a theme prop that overrides the styled-component theme
+        appTheme={theme}
       />
     </React.Fragment>
   )
 }
+
 // This height will only show 3 rows of the spinner instead of 7
 const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
-const SpinnerDatePicker = styled(DatePicker)(({ theme }) => ({
-  height: theme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
+const SpinnerDatePicker = styled(DatePicker)<{ appTheme: DefaultTheme }>(({ appTheme }) => ({
+  height: appTheme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
   marginTop: getSpacing(5),
-  color: theme.designSystem.color.text.default,
 }))
