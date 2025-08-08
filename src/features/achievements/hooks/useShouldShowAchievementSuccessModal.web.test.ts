@@ -2,6 +2,7 @@ import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
 import { ModalDisplayState } from 'features/home/components/helpers/useBookingsReactionHelpers'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils/web'
 
@@ -18,6 +19,8 @@ const achievements: AchievementResponse[] = [
 ]
 
 describe('useShouldShowAchievementSuccessModal', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should return shouldNotShow if there are achievements to show to the user', () => {
     mockAuthContextWithUser({ ...beneficiaryUser, achievements })
 
