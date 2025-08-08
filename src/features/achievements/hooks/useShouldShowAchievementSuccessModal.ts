@@ -3,6 +3,8 @@ import { Platform } from 'react-native'
 import { AchievementResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ModalDisplayState } from 'features/home/components/helpers/useBookingsReactionHelpers'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 const isWeb = Platform.OS === 'web'
 
@@ -10,6 +12,9 @@ export const useShouldShowAchievementSuccessModal = (): {
   shouldShowAchievementSuccessModal: ModalDisplayState
   achievementsToShow: AchievementResponse[]
 } => {
+  const disableAchievementsSuccessModal = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_ACHIEVEMENTS_SUCCESS_MODAL
+  )
   const { user, isUserLoading } = useAuthContext()
 
   const unseenAchievements = user?.achievements?.filter((achievement) => !achievement.seenDate)
@@ -31,7 +36,11 @@ export const useShouldShowAchievementSuccessModal = (): {
       achievementsToShow: [],
     }
 
-  if (user?.achievements.length === 0 || !isThereAtLeastOneUnseenAchievement)
+  if (
+    disableAchievementsSuccessModal ||
+    user?.achievements.length === 0 ||
+    !isThereAtLeastOneUnseenAchievement
+  )
     return {
       shouldShowAchievementSuccessModal: ModalDisplayState.SHOULD_NOT_SHOW,
       achievementsToShow: [],
