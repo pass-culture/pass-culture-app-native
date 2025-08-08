@@ -35,3 +35,7 @@
 
 # react-native-keychain
 -keep class com.facebook.crypto.** { *; }
+
+# react-native
+-keep class com.facebook.react.views.modal.ReactModalHostView { *; }
+-keep class com.facebook.react.views.modal.ReactModalHostViewManager { *; }
