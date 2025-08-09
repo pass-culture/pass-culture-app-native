@@ -1,9 +1,9 @@
-import { FlashList } from '@shopify/flash-list'
+import { FlashListRef } from '@shopify/flash-list'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, LayoutChangeEvent, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 type UseFlatListScrollArgs = {
-  ref: React.MutableRefObject<FlatList | FlashList<unknown> | null>
+  ref: React.RefObject<FlatList | FlashListRef<unknown> | null>
   scrollRatio?: number
   isActive?: boolean
 }

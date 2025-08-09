@@ -1,9 +1,8 @@
-import { FlashList } from '@shopify/flash-list'
+import { FlashList, FlashListRef } from '@shopify/flash-list'
 import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
-import { LIST_ITEM_HEIGHT } from 'features/search/constants'
 import { GridListLayout, SearchListProps } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'ui/components/LineSeparator'
@@ -11,10 +10,7 @@ import { getSpacing } from 'ui/theme'
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export const SearchList: React.FC<SearchListProps> = React.forwardRef<
-  FlashList<Offer>,
-  SearchListProps
->(
+export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>(
   (
     {
       nbHits,
@@ -38,7 +34,6 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
     const { tabBar } = useTheme()
     return (
       <FlashList
-        estimatedItemSize={LIST_ITEM_HEIGHT}
         ref={ref}
         key={isGridLayout ? 'grid_search_results' : 'list_search_results'}
         testID="searchResultsFlashlist"
