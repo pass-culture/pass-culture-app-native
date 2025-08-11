@@ -2420,7 +2420,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   ]
                 }
                 drawDistance={187.5}
-                estimatedItemSize={280}
                 getItem={[Function]}
                 getItemCount={[Function]}
                 getItemLayout={[Function]}

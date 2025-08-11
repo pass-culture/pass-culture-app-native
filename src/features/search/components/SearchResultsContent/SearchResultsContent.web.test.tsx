@@ -28,7 +28,7 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
   onSearchResultsRefresh: jest.fn(),
   venuesUserData: [],
   facets: {} as FacetData,
-  offerVenues: [],
+  offerVenues: venuesFixture,
   hits: {
     offers: mockedAlgoliaResponse.hits.map(transformOfferHit('')),
     artists: uniqBy(
@@ -84,6 +84,10 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+
+jest.mock('features/navigation/helpers/usePreviousRoute', () => ({
+  usePreviousRoute: () => ({ name: 'ThematicSearch' }),
+}))
 
 jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')

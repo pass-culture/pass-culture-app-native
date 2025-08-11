@@ -8977,17 +8977,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@shopify/flash-list@npm:^1.6.4":
-  version: 1.6.4
-  resolution: "@shopify/flash-list@npm:1.6.4"
+"@shopify/flash-list@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@shopify/flash-list@npm:2.0.2"
   dependencies:
-    recyclerlistview: 4.2.0
-    tslib: 2.4.0
+    tslib: 2.8.1
   peerDependencies:
     "@babel/runtime": "*"
     react: "*"
     react-native: "*"
-  checksum: df4f15bfb105673ee1f0c116c58aa6affe132a71d2e113c8a08e68335beaeba48008ebd916da0cc9e63930aaa67c9e38febc533ac33f94c9d06b8a05526500cc
+  checksum: cfb3a6528eb123632218b68ecea881a2866d56183427a91a5454e57cd053ef28a4d40c8a6c9fc2d36ad3d1af997eaad0e4fcd632de538c3b335065cf4f3dd8dc
   languageName: node
   linkType: hard
 
@@ -10833,7 +10832,7 @@ __metadata:
     "@sentry/react-native": ^6.4.0
     "@sentry/types": ^8.55.0
     "@sentry/vite-plugin": ^2.22.0
-    "@shopify/flash-list": ^1.6.4
+    "@shopify/flash-list": ^2.0.2
     "@storybook/addon-a11y": ^9.0.18
     "@storybook/addon-docs": ^9.0.18
     "@storybook/addon-links": ^9.0.18
@@ -25531,9 +25530,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recyclerlistview@npm:4.1.2":
-  version: 4.1.2
-  resolution: "recyclerlistview@npm:4.1.2"
+"recyclerlistview@npm:^4.0.0":
+  version: 4.2.3
+  resolution: "recyclerlistview@npm:4.2.3"
   dependencies:
     lodash.debounce: 4.0.8
     prop-types: 15.8.1
@@ -25541,7 +25540,7 @@ __metadata:
   peerDependencies:
     react: ">= 15.2.1"
     react-native: ">= 0.30.0"
-  checksum: e18e36c0783b528b5244ed0b7eabf231c49ec7b0a97c947a6f596900165a4d7bbc3216b23084a8a2cb8d33b98fb38fc4a64254cf0b6431a0d0fa3ca2e7129fbc
+  checksum: 847c00bdc7e22178cc20b58b8da215fb2f3f69a4edffd41db97038d0f9eb1475340793e11025f6cc160d3452967ab5724db3896920ba77d2da5208276328254f
   languageName: node
   linkType: hard
 

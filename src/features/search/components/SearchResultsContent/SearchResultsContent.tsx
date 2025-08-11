@@ -1,5 +1,5 @@
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
-import { FlashList } from '@shopify/flash-list'
+import { FlashListRef } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, View } from 'react-native'
@@ -110,7 +110,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   offerVenues,
 }) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const searchListRef = useRef<FlashList<Offer> | null>(null)
+  const searchListRef = useRef<FlashListRef<Offer> | null>(null)
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()

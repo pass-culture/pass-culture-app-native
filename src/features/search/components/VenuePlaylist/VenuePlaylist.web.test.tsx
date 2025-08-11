@@ -17,6 +17,13 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
+jest.mock('@shopify/flash-list', () => {
+  return {
+    ...jest.requireActual('@shopify/flash-list'),
+    FlashList: jest.requireActual('react-native').FlatList,
+  }
+})
+
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
