@@ -10990,7 +10990,7 @@ __metadata:
     react-native-safe-area-context: ^5.5.1
     react-native-screens: ^4.11.1
     react-native-share: ^8.2.2
-    react-native-svg: ^15.12.0
+    react-native-svg: ^15.12.1
     react-native-svg-web: ^1.0.9
     react-native-tracking-transparency: ^0.1.2
     react-native-url-polyfill: ^1.3.0
@@ -25119,9 +25119,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-svg@npm:^15.12.0":
-  version: 15.12.0
-  resolution: "react-native-svg@npm:15.12.0"
+"react-native-svg@npm:^15.12.1":
+  version: 15.12.1
+  resolution: "react-native-svg@npm:15.12.1"
   dependencies:
     css-select: ^5.1.0
     css-tree: ^1.1.3
@@ -25129,7 +25129,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 0a78333ab4fb1aae38f190a22a1afcbfa2ae9192ccd2ac7a989f3108bd32afe1b84800b4dce0f92c68ad4eca6809046b5f997fbfcb072b872dd34ea04c8f44aa
+  checksum: 5761d3b37e5adb4e58945146b210009decf0a436c194fc3dc5c025581aa5c602b5698d7eea493ddf9d31b4d90433fa54eaf1ed0cec721ab820cf895e1cf9614a
   languageName: node
   linkType: hard
 
