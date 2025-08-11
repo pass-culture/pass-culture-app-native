@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SelectPhoneStatus should render correctly 1`] = `
 .c0 {
@@ -174,7 +174,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-borderBottomLeftRadius-44c749 r-borderBottomRightRadius-py1axk r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-bxaprw r-borderTopRightRadius-1ioqa4e r-borderWidth-rs99b7 r-flexDirection-18u37iz r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe r-width-13qz1uu"
                       >
                         <div
                           class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
@@ -236,7 +236,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-borderBottomLeftRadius-44c749 r-borderBottomRightRadius-py1axk r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-bxaprw r-borderTopRightRadius-1ioqa4e r-borderWidth-rs99b7 r-flexDirection-18u37iz r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe r-width-13qz1uu"
                       >
                         <div
                           class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"

@@ -1,18 +1,16 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Alert, Button, Text } from 'react-native'
+import { Alert } from 'react-native'
 
 import { api } from 'api/api'
-import { CodePushButton } from 'cheatcodes/components/CodePushButton'
-import { CrashTestButton } from 'cheatcodes/components/CrashTestButton'
-import { env } from 'libs/environment/env'
 import { decodeToken } from 'libs/jwt/jwt'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const oldAccesstoken =
   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDc1OTE1MzUsIm5iZiI6MTYwNzU5MTUzNSwianRpIjoiNjM' +
@@ -66,22 +64,21 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
 
   return (
     <SecondaryPageWithBlurHeader title="CheatCodes">
-      <CrashTestButton />
-      <Spacer.Flex />
-      <Button title="Utiliser un ancien token" onPress={setOldToken} />
-      <Button title="Invalider l’access token" onPress={setOldToken} />
-      <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
-      <Button title="/ME" onPress={fetchMe} />
-      <Text>{userEmail}</Text>
-      <Spacer.Flex />
-      <Text>Batch installation ID: {batchInstallationId}</Text>
-      <Text>User ID: {userId}</Text>
-      <Spacer.Flex />
+      <ButtonTertiaryBlack
+        wording="Crash the app"
+        onPress={() => {
+          throw new Error('Test crash')
+        }}
+      />
+      <ButtonTertiaryBlack wording="Utiliser un ancien token" onPress={setOldToken} />
+      <ButtonTertiaryBlack wording="Invalider l’access token" onPress={setOldToken} />
+      <ButtonTertiaryBlack wording="Invalider les 2 tokens" onPress={invalidateBothTokens} />
+      <ButtonTertiaryBlack wording="/ME" onPress={fetchMe} />
+      <Typo.Body>{userEmail}</Typo.Body>
+      <Typo.Body>Batch installation ID: {batchInstallationId}</Typo.Body>
+      <Typo.Body>User ID: {userId}</Typo.Body>
       <Typo.Body>{someOfferDescription}</Typo.Body>
-      <Spacer.Flex />
       <Typo.Body>{ParsedDescription}</Typo.Body>
-      <Spacer.Flex />
-      {env.ENV === 'testing' ? <CodePushButton /> : null}
     </SecondaryPageWithBlurHeader>
   )
 }

@@ -8,7 +8,6 @@ export type EligibleAges = EligibleAgesList[number]
 
 export interface AgeButtonProps {
   accessibilityLabel: string
-  dense?: boolean
   enableNavigate?: boolean
   Icon?: ReactElement
   navigateTo: InternalNavigationProps['navigateTo']

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<IdentificationFork /> should render correctly 1`] = `
 <View
@@ -314,19 +314,22 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 7,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "borderBottomLeftRadius": 7,
+                      "borderBottomRightRadius": 7,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 7,
+                      "borderTopRightRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View
@@ -627,19 +630,22 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "borderColor": "#90949d",
-                        "borderRadius": 7,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "padding": 16,
-                        "width": "100%",
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "borderBottomLeftRadius": 7,
+                      "borderBottomRightRadius": 7,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 7,
+                      "borderTopRightRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View

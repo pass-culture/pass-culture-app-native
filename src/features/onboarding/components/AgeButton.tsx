@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
-import { AgeButtonContainer } from 'features/onboarding/components/AgeButtonContainer'
 import { AgeButtonProps } from 'features/onboarding/types'
+import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { getSpacing } from 'ui/theme'
 
 export const AgeButton: FunctionComponent<AgeButtonProps> = ({
-  dense,
   Icon,
   navigateTo,
   accessibilityLabel,
@@ -19,9 +20,13 @@ export const AgeButton: FunctionComponent<AgeButtonProps> = ({
       onBeforeNavigate={onBeforeNavigate}
       navigateTo={navigateTo}
       accessibilityLabel={accessibilityLabel}>
-      <AgeButtonContainer dense={dense} LeftIcon={Icon}>
-        {children}
-      </AgeButtonContainer>
+      <GenericBanner LeftIcon={Icon}>
+        <PaddingVertical>{children}</PaddingVertical>
+      </GenericBanner>
     </InternalTouchableLink>
   )
 }
+
+const PaddingVertical = styled.View({
+  paddingVertical: getSpacing(6),
+})

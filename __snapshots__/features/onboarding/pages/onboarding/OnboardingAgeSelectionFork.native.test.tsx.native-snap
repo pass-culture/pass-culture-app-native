@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
 <View
@@ -219,21 +219,22 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949d",
-                      "borderRadius": 7,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "padding": 16,
-                      "width": "100%",
-                    },
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "borderBottomLeftRadius": 7,
+                    "borderBottomRightRadius": 7,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 7,
+                    "borderTopRightRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
@@ -246,31 +247,39 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "paddingVertical": 24,
                       }
                     }
                   >
-                    J’ai 
                     <Text
                       style={
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         }
                       }
                     >
-                      16 ans
+                      J’ai 
+                      <Text
+                        style={
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
+                          }
+                        }
+                      >
+                        16 ans
+                      </Text>
+                       ou moins
                     </Text>
-                     ou moins
-                  </Text>
+                  </View>
                 </View>
                 <View>
                   <View
@@ -341,21 +350,22 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949d",
-                      "borderRadius": 7,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "padding": 16,
-                      "width": "100%",
-                    },
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "borderBottomLeftRadius": 7,
+                    "borderBottomRightRadius": 7,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 7,
+                    "borderTopRightRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
@@ -368,30 +378,38 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "paddingVertical": 24,
                       }
                     }
                   >
-                    J’ai 
                     <Text
                       style={
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         }
                       }
                     >
-                      17 ans
+                      J’ai 
+                      <Text
+                        style={
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
+                          }
+                        }
+                      >
+                        17 ans
+                      </Text>
                     </Text>
-                  </Text>
+                  </View>
                 </View>
                 <View>
                   <View
@@ -462,21 +480,22 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949d",
-                      "borderRadius": 7,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "padding": 16,
-                      "width": "100%",
-                    },
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "borderBottomLeftRadius": 7,
+                    "borderBottomRightRadius": 7,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 7,
+                    "borderTopRightRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
@@ -489,30 +508,38 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "paddingVertical": 24,
                       }
                     }
                   >
-                    J’ai 
                     <Text
                       style={
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         }
                       }
                     >
-                      18 ans
+                      J’ai 
+                      <Text
+                        style={
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
+                          }
+                        }
+                      >
+                        18 ans
+                      </Text>
                     </Text>
-                  </Text>
+                  </View>
                 </View>
                 <View>
                   <View
@@ -583,21 +610,22 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             >
               <View
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949d",
-                      "borderRadius": 7,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "padding": 16,
-                      "width": "100%",
-                    },
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "borderBottomLeftRadius": 7,
+                    "borderBottomRightRadius": 7,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 7,
+                    "borderTopRightRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
@@ -610,31 +638,39 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "paddingVertical": 24,
                       }
                     }
                   >
-                    J’ai 
                     <Text
                       style={
                         {
                           "color": "#320096",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 17,
-                          "lineHeight": 27.2,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         }
                       }
                     >
-                      19 ans
+                      J’ai 
+                      <Text
+                        style={
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
+                          }
+                        }
+                      >
+                        19 ans
+                      </Text>
+                       ou plus
                     </Text>
-                     ou plus
-                  </Text>
+                  </View>
                 </View>
                 <View>
                   <View

@@ -78,26 +78,10 @@ const variantConfig: Variants<typeof AgeButton> = [
     },
   },
   {
-    label: 'AgeButton dense',
-    props: {
-      children: TextExample({}),
-      navigateTo: getOnboardingPropConfig('OnboardingAgeSelectionFork'),
-      dense: true,
-    },
-  },
-  {
     label: 'AgeButton with subtitle',
     props: {
       children: TextExample({ withSubtitle: true }),
       navigateTo: getOnboardingPropConfig('OnboardingAgeSelectionFork'),
-    },
-  },
-  {
-    label: 'AgeButton dense with subtitle',
-    props: {
-      children: TextExample({ withSubtitle: true }),
-      navigateTo: getOnboardingPropConfig('OnboardingAgeSelectionFork'),
-      dense: true,
     },
   },
   {
@@ -113,15 +97,6 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({ withSubtitle: true }),
       navigateTo: getOnboardingPropConfig('OnboardingAgeSelectionFork'),
-      Icon: <All />,
-    },
-  },
-  {
-    label: 'AgeButton dense with subtitle and icon',
-    props: {
-      children: TextExample({ withSubtitle: true }),
-      navigateTo: getOnboardingPropConfig('OnboardingAgeSelectionFork'),
-      dense: true,
       Icon: <All />,
     },
   },

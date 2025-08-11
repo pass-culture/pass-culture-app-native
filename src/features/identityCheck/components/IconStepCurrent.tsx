@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import { useTheme } from 'styled-components/native'
 
-// eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 interface IconStepDoneProps {
@@ -10,11 +9,13 @@ interface IconStepDoneProps {
 }
 
 export const IconStepCurrent: FunctionComponent<IconStepDoneProps> = ({ Icon, testID }) => {
+  const { designSystem, icons } = useTheme()
+
   return (
     <Icon
       testID={testID}
-      color={theme.designSystem.color.icon.brandPrimary}
-      size={theme.icons.sizes.standard}
+      color={designSystem.color.icon.brandPrimary}
+      size={icons.sizes.standard}
     />
   )
 }

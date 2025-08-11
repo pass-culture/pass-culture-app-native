@@ -1,9 +1,7 @@
 import React, { FunctionComponent, ReactElement } from 'react'
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-// eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
@@ -13,7 +11,6 @@ type GenericBannerProps = {
   RightIcon?: FunctionComponent<AccessibleIcon>
   noRightIcon?: boolean
   children: React.ReactNode
-  style?: StyleProp<ViewStyle>
   testID?: string
 }
 
@@ -21,16 +18,15 @@ export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
   LeftIcon,
   RightIcon,
   noRightIcon = false,
-  style,
   children,
   testID,
 }) => {
   return (
-    <View style={[styles.container, style]} testID={testID}>
+    <Container testID={testID}>
       {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
       <DescriptionContainer>{children}</DescriptionContainer>
       {noRightIcon ? null : <View>{RightIcon ? <RightIcon /> : <StyledArrowNextIcon />}</View>}
-    </View>
+    </Container>
   )
 }
 
@@ -40,18 +36,17 @@ const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
 }))``
 
 export const BANNER_BORDER_WIDTH = getSpacing(0.25)
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderStyle: 'solid',
-    borderWidth: BANNER_BORDER_WIDTH,
-    borderRadius: getSpacing(1.8),
-    borderColor: theme.designSystem.color.border.default,
-    padding: getSpacing(4),
-    width: '100%',
-  },
-})
+
+const Container = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderStyle: 'solid',
+  borderWidth: BANNER_BORDER_WIDTH,
+  borderRadius: getSpacing(1.8),
+  borderColor: theme.designSystem.color.border.default,
+  padding: getSpacing(4),
+  width: '100%',
+}))
 
 const DescriptionContainer = styled.View({
   flexShrink: 1,

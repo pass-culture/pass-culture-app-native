@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TrackEmailChange v2 account with password should render correctly when choose new email step is active 1`] = `
 <RCTScrollView
@@ -555,12 +555,18 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     [
                       {
                         "alignItems": "center",
+                        "borderBottomLeftRadius": 7,
+                        "borderBottomRightRadius": 7,
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 7,
+                        "borderTopRightRadius": 7,
                         "borderWidth": 1,
                         "flexDirection": "row",
-                        "padding": 16,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       },
                       {
@@ -1206,12 +1212,18 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     [
                       {
                         "alignItems": "center",
+                        "borderBottomLeftRadius": 7,
+                        "borderBottomRightRadius": 7,
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 7,
+                        "borderTopRightRadius": 7,
                         "borderWidth": 1,
                         "flexDirection": "row",
-                        "padding": 16,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       },
                       {
@@ -2537,12 +2549,18 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     [
                       {
                         "alignItems": "center",
+                        "borderBottomLeftRadius": 7,
+                        "borderBottomRightRadius": 7,
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 7,
+                        "borderTopRightRadius": 7,
                         "borderWidth": 1,
                         "flexDirection": "row",
-                        "padding": 16,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       },
                       {
@@ -3407,12 +3425,18 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
+                        "borderBottomLeftRadius": 7,
+                        "borderBottomRightRadius": 7,
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 7,
+                        "borderTopRightRadius": 7,
                         "borderWidth": 1,
                         "flexDirection": "row",
-                        "padding": 16,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       },
                       {
@@ -4058,12 +4082,18 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
+                        "borderBottomLeftRadius": 7,
+                        "borderBottomRightRadius": 7,
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 7,
+                        "borderTopRightRadius": 7,
                         "borderWidth": 1,
                         "flexDirection": "row",
-                        "padding": 16,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       },
                       {
@@ -5405,12 +5435,18 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
+                        "borderBottomLeftRadius": 7,
+                        "borderBottomRightRadius": 7,
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 7,
+                        "borderTopRightRadius": 7,
                         "borderWidth": 1,
                         "flexDirection": "row",
-                        "padding": 16,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       },
                       {
@@ -6959,12 +6995,18 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     [
                       {
                         "alignItems": "center",
+                        "borderBottomLeftRadius": 7,
+                        "borderBottomRightRadius": 7,
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 7,
+                        "borderTopRightRadius": 7,
                         "borderWidth": 1,
                         "flexDirection": "row",
-                        "padding": 16,
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                         "width": "100%",
                       },
                       {
