@@ -45,7 +45,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
-    "@babel/preset-typescript": "^7.25.7",
+    "@babel/preset-typescript": "^7.27.1",
     "@happy-dom/jest-environment": "^15.11.5",
     "@swc/core": "^1.12.7",
     "@types/express": "^4.17.13",
