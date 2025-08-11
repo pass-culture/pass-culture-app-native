@@ -46,6 +46,14 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 
 ## 🚀 Processus de mise à jour
 
+### 📝 Changelogs
+
+Lire la page web de la release note de cette version afin de :
+
+- comprendre les impacts de la nouvelle version
+- faire remonter en synchro tech les nouveautés utilisables par les développeurs
+- tester les nouveautés (rapidement) pour s'assurer que cela fonctionne
+
 ### 🔍 Les diffs
 
 - Ouvrir un onglet de [React Native Upgrade Helper](https://react-native-community.github.io/upgrade-helper/)
@@ -173,14 +181,6 @@ Pareil que pour Android.
 yarn storybook
 yarn build-storybook
 ```
-
-#### 📝 Changelogs
-
-Lire la page web de la release note de cette version afin de :
-
-- comprendre les impacts de la nouvelle version
-- faire remonter en synchro tech les nouveautés utilisables par les développeurs
-- tester les nouveautés (rapidement) pour s'assurer que cela fonctionne
 
 #### 🧪 QA
 
