@@ -12,8 +12,8 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 
 ### 📊 État d'avancement (après que la CI soit verte)
 
-- [ ] 🌐 build web `yarn start:web:testing`
-- [ ] 🚀 dev web `yarn build:testing`
+- [ ] 🌐 build web `yarn build:testing && yarn vite preview --mode=testing`
+- [ ] 🚀 dev web `yarn start:web:testing`
 - [ ] 🤖 build android `./gradlew assembleDebug`
 - [ ] ⚡ dev android `yarn android:testing`
 - [ ] 🍎 dev ios `yarn ios:testing`
@@ -23,17 +23,17 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 - [ ] 🚀 build environnement de test `yarn trigger:testing:deploy`
 - [ ] 🙊 mettre un message sur le canal slack `dev-mobile`
 
-| Tâche                                        | Commande                                                | Etat attendu                                                          |
-| -------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- |
-| 🌐 build web                                 | `yarn build:testing`                                    | ✅ succès de la commande                                              |
-| 🚀 dev web                                   | `yarn start:web:testing`                                | ✅ succès de la commande + pas d'écran blanc                          |
-| 🤖 build android                             | `./gradlew assembleDebug`                               | ✅ succès de la commande                                              |
-| ⚡ dev android                               | `yarn android:testing`                                  | ✅ succès de la commande + pas d'écran rouge                          |
-| 🍎 dev ios                                   | `yarn ios:testing`                                      | ✅ succès de la commande + pas d'écran rouge                          |
-| 📚 build storybook                           | `yarn storybook`                                        | ✅ succès de la commande + pas de message d'erreur sur les composants |
-| 🎨 dev storybook                             | `yarn build-storybook`                                  | ✅ succès de la commande + pas d'erreur en serveur local              |
-| 🧪 tests e2e                                 | ajouter un tag `e2e` dans Github après chaque tentative | 👨‍💻 Le QA doit valider que c'est bon de son côté                       |
-| 🚀 build environnement de test (après merge) | `yarn trigger:testing:deploy`                           | ✅ Le job passe                                                       |
+| Tâche                                        | Commande                                                  | Etat attendu                                                          |
+| -------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- |
+| 🌐 build web                                 | `yarn build:testing && yarn vite preview --mode=testing`  | ✅ succès de la commande + pas d'écran blanc                          |
+| 🚀 dev web                                   | `yarn start:web:testing`                                  | ✅ succès de la commande + pas d'écran blanc                          |
+| 🤖 build android                             | `./gradlew assembleDebug`                                 | ✅ succès de la commande                                              |
+| ⚡ dev android                               | `yarn android:testing`                                    | ✅ succès de la commande + pas d'écran rouge                          |
+| 🍎 dev ios                                   | `yarn ios:testing`                                        | ✅ succès de la commande + pas d'écran rouge                          |
+| 📚 build storybook                           | `yarn storybook`                                          | ✅ succès de la commande + pas de message d'erreur sur les composants |
+| 🎨 dev storybook                             | `yarn build-storybook`                                    | ✅ succès de la commande + pas d'erreur en serveur local              |
+| 🧪 tests e2e                                 | ajouter un label `e2e` dans Github après chaque tentative | 👨‍💻 Le QA doit valider que c'est bon de son côté                       |
+| 🚀 build environnement de test (après merge) | `yarn trigger:testing:deploy`                             | ✅ Le job passe                                                       |
 
 ### ⚠️ Difficultés
 
@@ -45,6 +45,14 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 Être sur une machine qui a déjà la capacité de faire tourner le projet dans sa version actuelle sur iOS, Android et web.
 
 ## 🚀 Processus de mise à jour
+
+### 📝 Changelogs
+
+Lire la page web de la release note de cette version afin de :
+
+- comprendre les impacts de la nouvelle version
+- faire remonter en synchro tech les nouveautés utilisables par les développeurs
+- tester les nouveautés (rapidement) pour s'assurer que cela fonctionne
 
 ### 🔍 Les diffs
 
@@ -90,6 +98,12 @@ yarn start:web:testing
 
 ```bash
 yarn build:testing
+```
+
+**Est-ce que le build fonctionne ?**
+
+```bash
+yarn vite preview --mode=testing
 ```
 
 #### 🤖 Android
@@ -149,7 +163,7 @@ bundle exec pod install
 Le `Podfile.lock` va poser plus de problème qu'autre chose. Il peut être supprimé et regénéré pour que tous les devs partent sur une nouvelle base.
 Il faut bien sûr, comme à chaque étape, s'attendre à des problèmes et les résoudre.
 
-###### 🔨 L'installation
+##### 🔨 L'installation
 
 ```bash
 yarn ios:testing
@@ -157,7 +171,7 @@ yarn ios:testing
 
 Si un message d'erreur n'est pas assez clair, build depuis Xcode, puis `View > Navigators > Report` et cliquer où il y a une croix rouge (souvent à côté de `build`).
 
-###### ⚡ Le runtime
+##### ⚡ Le runtime
 
 Pareil que pour Android.
 
@@ -168,29 +182,21 @@ yarn storybook
 yarn build-storybook
 ```
 
-#### 📝 Changelogs
-
-Lire la page web de la release note de cette version afin de :
-
-- comprendre les impacts de la nouvelle version
-- faire remonter en synchro tech les nouveautés utilisables par les développeurs
-- tester les nouveautés (rapidement) pour s'assurer que cela fonctionne
-
-#### 🧪 QA
+### 🧪 QA
 
 Les tests e2e doivent être lancés depuis la CI et la PR doit être approuvée par un membre de la QA.
 
-#### 🫃 La PR devient énorme
+### 🫃 La PR devient énorme
 
 Il est commun qu'un bump de react native demande des bumps d'autres libs.
 Si ces libs sont compatibles avec la version actuelle de l'app, préférer faire ce changement dans une PR différente.
 Ainsi le travail sera mieux suivi par les PM, mieux découpé et plus facile à relire par les pairs
 
-#### 🔀 Merge
+### 🔀 Merge
 
 À ce stade-là, après une validation d'un tech lead, de la QA et d'un autre développeur expérimenté, on peut merge mais ce n'est pas encore terminé.
 
-#### 📢 Surveiller le canal Slack
+### 📢 Surveiller le canal Slack
 
 Tout fonctionne chez nous mais ça ne marchera sûrement pas aussi facilement sur l'environnement d'un autre dev.
 Mettre un message dans dev-mobile pour informer la communauté avec :
@@ -207,7 +213,7 @@ Vous pouvez dès à présent :
 N'hésitez pas à laisser un petit message si quelque chose ne fonctionne pas chez vous 🚀
 ```
 
-#### 🚀 Déploiement en testing
+### 🚀 Déploiement en testing
 
 Déployer l'app en testing et s'assurer que tout fonctionne.
 En tant que dev responsable du bump, il faut également surveiller les deploiements staging et prod car il y a des petits diffs. On peut avoir un deploiement testing qui passe, mais pas staging/prod
