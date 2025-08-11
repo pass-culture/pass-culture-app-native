@@ -9,7 +9,7 @@ PODS:
     - AppsFlyerFramework/Main (= 6.16.2)
   - AppsFlyerFramework/Main (6.16.2)
   - Base64 (1.1.2)
-  - Batch (2.0.2)
+  - Batch (2.1.1)
   - BatchFirebaseDispatcher (3.2.0):
     - Batch (>= 1.19)
     - Firebase/Analytics
@@ -1920,8 +1920,28 @@ PODS:
     - React-perflogger (= 0.77.3)
     - React-utils (= 0.77.3)
   - RNBatchPush (1.0.0):
-    - Batch (~> 2.0.0)
+    - Batch (~> 2.1.0)
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNCAsyncStorage (1.17.11):
     - React-Core
   - RNCClipboard (1.16.2):
@@ -2269,7 +2289,6 @@ PODS:
   - Yoga (0.0.0)
 
 DEPENDENCIES:
-  - Batch (~> 2.0.0)
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
@@ -2658,12 +2677,12 @@ SPEC CHECKSUMS:
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   AppsFlyerFramework: fe5303bffcdfd941d5f570c2d21eaaea982e7bdc
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
-  Batch: 5910c05091914c3ca415ca8793e5ce6fcc36cfee
+  Batch: fe0c88b2182a8d0f6ca3b0ed725694206b2e3e44
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
-  boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
+  boost: 1dca942403ed9342f98334bf4c3621f011aa7946
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   CodePush: d892f13c5012e9e2cb36640f4929654b7be21fe5
-  DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
+  DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
   FBLazyVector: 23d8c5470c648a635893dc0956c6dbaead54b656
   Firebase: 3435bc66b4d494c2f22c79fd3aae4c1db6662327
@@ -2686,8 +2705,8 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfigInterop: 1c6135e8a094cc6368949f5faeeca7ee8948b8aa
   FirebaseSessions: eaa8ec037e7793769defe4201c20bd4d976f9677
   FirebaseSharedSwift: aca73668bc95e8efccb618e0167eab05d19d3a75
-  fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
-  glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
+  fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
+  glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   GoogleAppMeasurement: 0dfca1a4b534d123de3945e28f77869d10d0d600
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
@@ -2778,7 +2797,7 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: 9b3704075c2fe8fd7c739779655fb88700a1ca30
   ReactCodegen: 4ade497e5e62c9969da87fa6c845a7c301fe550a
   ReactCommon: 7f91538e91d390ebffd7238c8e47e3db8ee0f6a8
-  RNBatchPush: a6b97b7f58ddd26b1de82a0ab843bc6c947ffce4
+  RNBatchPush: 05ea7f247d971abea8a6464641b41b0f14c6e229
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNCClipboard: de1561c12ba8a15f143347993a382c6474c0d2d6
   RNDeviceInfo: b899ce37a403a4dea52b7cb85e16e49c04a5b88e
