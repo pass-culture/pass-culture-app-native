@@ -163,7 +163,7 @@ bundle exec pod install
 Le `Podfile.lock` va poser plus de problème qu'autre chose. Il peut être supprimé et regénéré pour que tous les devs partent sur une nouvelle base.
 Il faut bien sûr, comme à chaque étape, s'attendre à des problèmes et les résoudre.
 
-###### 🔨 L'installation
+##### 🔨 L'installation
 
 ```bash
 yarn ios:testing
@@ -171,7 +171,7 @@ yarn ios:testing
 
 Si un message d'erreur n'est pas assez clair, build depuis Xcode, puis `View > Navigators > Report` et cliquer où il y a une croix rouge (souvent à côté de `build`).
 
-###### ⚡ Le runtime
+##### ⚡ Le runtime
 
 Pareil que pour Android.
 
@@ -182,21 +182,21 @@ yarn storybook
 yarn build-storybook
 ```
 
-#### 🧪 QA
+### 🧪 QA
 
 Les tests e2e doivent être lancés depuis la CI et la PR doit être approuvée par un membre de la QA.
 
-#### 🫃 La PR devient énorme
+### 🫃 La PR devient énorme
 
 Il est commun qu'un bump de react native demande des bumps d'autres libs.
 Si ces libs sont compatibles avec la version actuelle de l'app, préférer faire ce changement dans une PR différente.
 Ainsi le travail sera mieux suivi par les PM, mieux découpé et plus facile à relire par les pairs
 
-#### 🔀 Merge
+### 🔀 Merge
 
 À ce stade-là, après une validation d'un tech lead, de la QA et d'un autre développeur expérimenté, on peut merge mais ce n'est pas encore terminé.
 
-#### 📢 Surveiller le canal Slack
+### 📢 Surveiller le canal Slack
 
 Tout fonctionne chez nous mais ça ne marchera sûrement pas aussi facilement sur l'environnement d'un autre dev.
 Mettre un message dans dev-mobile pour informer la communauté avec :
@@ -213,7 +213,7 @@ Vous pouvez dès à présent :
 N'hésitez pas à laisser un petit message si quelque chose ne fonctionne pas chez vous 🚀
 ```
 
-#### 🚀 Déploiement en testing
+### 🚀 Déploiement en testing
 
 Déployer l'app en testing et s'assurer que tout fonctionne.
 En tant que dev responsable du bump, il faut également surveiller les deploiements staging et prod car il y a des petits diffs. On peut avoir un deploiement testing qui passe, mais pas staging/prod
