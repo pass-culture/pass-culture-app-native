@@ -2,17 +2,53 @@ import React from 'react'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import {
+  ArtistHitHighlight,
+  HighlightText,
   HistoryItemHighlight,
   SuggestionHitHighlight,
   VenueHitHighlight,
-  HighlightHistoryItemPart,
-  HighlightPart,
 } from 'features/search/components/Highlight/Highlight'
-import { mockVenueHits } from 'features/search/fixtures/algolia'
+import { mockArtistHits, mockVenueHits } from 'features/search/fixtures/algolia'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { render, screen } from 'tests/utils'
+
+describe('HighlightText component', () => {
+  const children = 'guerre et'
+
+  it('should render highlighted history text', () => {
+    render(
+      <HighlightText variant="history" isHighlighted>
+        {children}
+      </HighlightText>
+    )
+
+    expect(screen.getByTestId('highlightedHistoryItemText')).toBeOnTheScreen()
+  })
+
+  it('should render non-highlighted history text', () => {
+    render(
+      <HighlightText isHighlighted={false} variant="history">
+        {children}
+      </HighlightText>
+    )
+
+    expect(screen.getByTestId('nonHighlightedHistoryItemText')).toBeOnTheScreen()
+  })
+
+  it('should render highlighted default text', () => {
+    render(<HighlightText isHighlighted>{children}</HighlightText>)
+
+    expect(screen.getByTestId('highlightedText')).toBeOnTheScreen()
+  })
+
+  it('should render non-highlighted default text', () => {
+    render(<HighlightText isHighlighted={false}>{children}</HighlightText>)
+
+    expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
+  })
+})
 
 describe('SuggestionHitHighlight for a offer suggestion', () => {
   const hit = {
@@ -56,103 +92,63 @@ describe('SuggestionHitHighlight for a offer suggestion', () => {
     },
   } as AlgoliaSuggestionHit
 
-  it('should use highlight part for display', () => {
+  it('should render highlighted default text', () => {
     render(<SuggestionHitHighlight suggestionHit={hit} attribute="query" />)
 
-    expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
+    expect(screen.getByTestId('highlightedText')).toBeOnTheScreen()
   })
 
-  it('should not use highlight history item part for display', () => {
+  it('should not render highlighted history text', () => {
     render(<SuggestionHitHighlight suggestionHit={hit} attribute="query" />)
 
-    expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('highlightedHistoryItemText')).not.toBeOnTheScreen()
   })
 })
 
 describe('VenueHitHighlight for a venue suggestion', () => {
-  const hit = mockVenueHits[0]
+  const venueHit = mockVenueHits[0]
 
-  it('should use highlight part for display', () => {
-    render(<VenueHitHighlight venueHit={hit} />)
+  it('should render highlighted default text', () => {
+    render(<VenueHitHighlight venueHit={venueHit} />)
 
-    expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
+    expect(screen.getByTestId('highlightedText')).toBeOnTheScreen()
   })
 
-  it('should not use highlight history item part for display', () => {
-    render(<VenueHitHighlight venueHit={hit} />)
+  it('should not render highlighted history text', () => {
+    render(<VenueHitHighlight venueHit={venueHit} />)
 
-    expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('highlightedHistoryItemText')).not.toBeOnTheScreen()
+  })
+})
+
+describe('ArtistHitHighlight for an artist suggestion', () => {
+  const artistHit = mockArtistHits[0]
+
+  it('should render highlighted default text', () => {
+    render(<ArtistHitHighlight artistHit={artistHit} />)
+
+    expect(screen.getByTestId('highlightedText')).toBeOnTheScreen()
+  })
+
+  it('should not render highlighted history text', () => {
+    render(<ArtistHitHighlight artistHit={artistHit} />)
+
+    expect(screen.queryByTestId('highlightedHistoryItemText')).not.toBeOnTheScreen()
   })
 })
 
 describe('HistoryItemHighlight for an history item', () => {
   const historyItem = { ...mockedSearchHistory[0], _highlightResult: { query: { value: 'manga' } } }
 
-  it('should use highlight history item part for display', () => {
+  it('should render non-highlighted history text', () => {
     render(<HistoryItemHighlight historyItem={historyItem} />)
 
     expect(screen.getByTestId('nonHighlightedHistoryItemText')).toBeOnTheScreen()
   })
 
-  it('should not use highlight part for display', () => {
+  it('should not render non-highlighted default text', () => {
     render(<HistoryItemHighlight historyItem={historyItem} />)
 
     expect(screen.queryByTestId('nonHighlightedText')).not.toBeOnTheScreen()
-  })
-})
-
-describe('HighlightPart component', () => {
-  const children = 'guerre et'
-
-  it('should use body typo when the part of the hit is highlighted', () => {
-    render(<HighlightPart isHighlighted>{children}</HighlightPart>)
-
-    expect(screen.getByTestId('highlightedText')).toBeOnTheScreen()
-  })
-
-  it('should not use body typo when the part of the hit is not highlighted', () => {
-    render(<HighlightPart isHighlighted={false}>{children}</HighlightPart>)
-
-    expect(screen.queryByTestId('highlightedText')).not.toBeOnTheScreen()
-  })
-
-  it('should use button text typo when the part of the hit is not highlighted', () => {
-    render(<HighlightPart isHighlighted={false}>{children}</HighlightPart>)
-
-    expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
-  })
-
-  it('should not use button text typo when the part of the hit is  highlighted', () => {
-    render(<HighlightPart isHighlighted>{children}</HighlightPart>)
-
-    expect(screen.queryByTestId('nonHighlightedText')).not.toBeOnTheScreen()
-  })
-})
-
-describe('HighlightHistoryItemPart component', () => {
-  const children = 'guerre et'
-
-  it('should use placeholder typo when the part of the hit is highlighted', () => {
-    render(<HighlightHistoryItemPart isHighlighted>{children}</HighlightHistoryItemPart>)
-
-    expect(screen.getByTestId('highlightedHistoryItemText')).toBeOnTheScreen()
-  })
-
-  it('should not use placeholder typo when the part of the hit is not highlighted', () => {
-    render(<HighlightHistoryItemPart isHighlighted={false}>{children}</HighlightHistoryItemPart>)
-
-    expect(screen.queryByTestId('highlightedHistoryItemText')).not.toBeOnTheScreen()
-  })
-
-  it('should use body bold italic typo when the part of the hit is not highlighted', () => {
-    render(<HighlightHistoryItemPart isHighlighted={false}>{children}</HighlightHistoryItemPart>)
-
-    expect(screen.getByTestId('nonHighlightedHistoryItemText')).toBeOnTheScreen()
-  })
-
-  it('should not use body bold italic typo when the part of the hit is highlighted', () => {
-    render(<HighlightHistoryItemPart isHighlighted>{children}</HighlightHistoryItemPart>)
-
-    expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()
   })
 })
