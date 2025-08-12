@@ -1995,8 +1995,6 @@ PODS:
     - Firebase/RemoteConfig (= 11.13.0)
     - React-Core
     - RNFBApp
-  - RNFlashList (1.6.4):
-    - React-Core
   - RNGestureHandler (2.26.0):
     - DoubleConversion
     - glog
@@ -2393,7 +2391,6 @@ DEPENDENCIES:
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
   - "RNFBPerf (from `../node_modules/@react-native-firebase/perf`)"
   - "RNFBRemoteConfig (from `../node_modules/@react-native-firebase/remote-config`)"
-  - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNKeychain (from `../node_modules/react-native-keychain`)
@@ -2648,8 +2645,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/perf"
   RNFBRemoteConfig:
     :path: "../node_modules/@react-native-firebase/remote-config"
-  RNFlashList:
-    :path: "../node_modules/@shopify/flash-list"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
@@ -2813,7 +2808,6 @@ SPEC CHECKSUMS:
   RNFBFirestore: fa1739cc4dc22aff2cc384808a963e809802d956
   RNFBPerf: c32ec64522c2e4d81d1562747809314e9050b75f
   RNFBRemoteConfig: 1bd86986a8372a52c95c00d83d73c44a3d61f31d
-  RNFlashList: b521ebdd7f9352673817f1d98e8bdc0c8cf8545b
   RNGestureHandler: 6bd728f386096ebb26670b4dd6a604a67b14f65d
   RNGoogleSignin: a6a612cce56a45ab701c5c5c6e36f5390522d100
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
