@@ -41,6 +41,13 @@ export type HitOffer = {
   tags?: string[]
 }
 
+export interface AlgoliaArtist {
+  objectID: string
+  name: string
+  description?: string
+  image?: string
+}
+
 export type AlgoliaOfferWithArtistAndEan = AlgoliaOffer<
   HitOffer & {
     artist: NonNullable<HitOffer['artist']>

@@ -13,10 +13,11 @@ import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types
 import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
+import { adaptAlgoliaArtists } from 'libs/algolia/fetchAlgolia/adaptAlgoliaArtists/adaptAlgoliaArtists'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
+import { AlgoliaArtist, AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
@@ -27,7 +28,7 @@ type SearchOfferResponse = {
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   facets: Pick<SearchResponse<Offer>, 'facets'>
   duplicatedOffers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
-  offerArtists: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
+  artists: Pick<SearchResponse<AlgoliaArtist>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
 }
 
 export type SearchOfferHits = {
@@ -65,7 +66,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         venuesResponse,
         facetsResponse,
         duplicatedOffersResponse,
-        offerArtistsResponse,
+        artistsResponse,
       } = await fetchSearchResults({
         parameters: { page, ...searchState },
         buildLocationParameterParams: {
@@ -89,7 +90,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         venues: venuesResponse,
         facets: facetsResponse,
         duplicatedOffers: duplicatedOffersResponse,
-        offerArtists: offerArtistsResponse,
+        artists: artistsResponse,
       }
     },
     // first page is 0
@@ -105,7 +106,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     const { pages = [] } = data ?? {}
 
     removeSelectedVenue()
-    const venues = flatten(pages[0]?.venues.hits)
+    const venues: AlgoliaVenue[] = flatten(pages[0]?.venues.hits)
     if (userLocation && venues.length) {
       setVenues(
         adaptAlgoliaVenues(venues).filter((venue): venue is GeolocatedVenue =>
@@ -120,11 +121,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       offers: flatten(pages.map((page) => page.offers.hits.map(transformHits))),
       venues,
       duplicatedOffers: flatten(pages.map((page) => page.duplicatedOffers.hits.map(transformHits))),
-      artists: uniqBy(
-        pages[0]?.offerArtists.hits
-          .filter((offer) => offer.artists?.length)
-          .flatMap((offer) => offer.artists ?? []),
-        (artist) => artist.name.toLowerCase()
+      artists: uniqBy(adaptAlgoliaArtists(flatten(pages[0]?.artists.hits)), (artist) =>
+        artist.name.toLowerCase()
       ),
     }
   }, [data, transformHits, userLocation])

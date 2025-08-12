@@ -10,7 +10,7 @@ import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchSearchResult
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
+import { AlgoliaArtist, AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { Offer } from 'shared/offer/types'
@@ -142,17 +142,9 @@ export const fetchSearchResults = async ({
     },
     // Artists in offers
     {
-      indexName: offersIndex,
-      query: '',
+      indexName: env.ALGOLIA_ARTISTS_INDEX_NAME,
+      query: parameters.query || '',
       params: {
-        ...buildOfferSearchParameters(
-          { ...parameters, artistName: parameters.query },
-          buildLocationParameterParams,
-          isUserUnderage,
-          disabilitiesProperties,
-          true
-        ),
-        attributesToRetrieve: ['artists'],
         ...buildHitsPerPage(100),
       },
     },
@@ -164,13 +156,13 @@ export const fetchSearchResults = async ({
       venuesResponse,
       facetsResponse,
       duplicatedOffersResponse,
-      offerArtistsResponse,
-    ] = (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
+      artistsResponse,
+    ] = (await multipleQueries<Offer | AlgoliaVenue | AlgoliaArtist>(queries)) as [
       SearchResponse<Offer>,
       SearchResponse<AlgoliaVenue>,
       SearchResponse<Offer>,
       SearchResponse<Offer>,
-      SearchResponse<Offer>,
+      SearchResponse<AlgoliaArtist>,
     ]
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
@@ -182,7 +174,7 @@ export const fetchSearchResults = async ({
       venuesResponse,
       facetsResponse,
       duplicatedOffersResponse,
-      offerArtistsResponse,
+      artistsResponse,
       redirectUrl,
     }
   } catch (error) {
@@ -191,7 +183,7 @@ export const fetchSearchResults = async ({
       offersResponse: getDefaultReponse<Offer>(),
       venuesResponse: getDefaultReponse<AlgoliaVenue>(),
       facetsResponse: {},
-      offerArtistsResponse: getDefaultReponse<Offer>(),
+      artistsResponse: getDefaultReponse<AlgoliaArtist>(),
       duplicatedOffersResponse: getDefaultReponse<Offer>(),
       redirectUrl: undefined,
     }
