@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SearchResults/> should render SearchResults 1`] = `
 <View
@@ -972,6 +972,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     style={
                       {
                         "flexDirection": "column",
+                        "marginHorizontal": 24,
                       }
                     }
                   >
@@ -982,7 +983,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 19,
                           "lineHeight": 30.4,
-                          "marginHorizontal": 24,
                           "marginTop": 16,
                         }
                       }
@@ -994,7 +994,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       style={
                         {
                           "marginBottom": 16,
-                          "marginHorizontal": 24,
                           "marginTop": 4,
                         }
                       }
