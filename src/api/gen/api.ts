@@ -4730,6 +4730,11 @@ export interface UserProfileResponse {
    */
   hasPassword: boolean
   /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  hasProfileExpired: boolean
+  /**
    * @type {number}
    * @memberof UserProfileResponse
    */
