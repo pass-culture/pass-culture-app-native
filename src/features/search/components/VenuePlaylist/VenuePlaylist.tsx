@@ -126,7 +126,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Container style={style}>
-        <Title numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Title>
+        <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
         {shouldDisplaySeeOnMapButton ? (
           <ButtonContainer>
             <ButtonTertiaryBlack
@@ -163,7 +163,8 @@ export const VenuePlaylist: React.FC<Props> = ({
   )
 }
 
-const Title = styled(Typo.Title3)(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
   marginHorizontal: theme.designSystem.size.spacing.xl,
 }))
 
@@ -175,11 +176,6 @@ const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.xs,
   alignSelf: 'flex-start',
-}))
-
-const Container = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
 }))

@@ -152,9 +152,10 @@ const HeaderSectionContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const TitleContainer = styled.View({
+const TitleContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
-})
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
 const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
@@ -167,7 +168,6 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
 }))
 
 const Title = styled(Typo.Title3)(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.l,
 }))
 

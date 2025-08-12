@@ -19,8 +19,10 @@ type ArtistSectionProps = {
 export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProps) => {
   return (
     <View style={style}>
-      <Title>{TITLE}</Title>
-      <NumberOfResults nbHits={artists.length} />
+      <Container>
+        <Typo.Title3>{TITLE}</Typo.Title3>
+        <NumberOfResults nbHits={artists.length} />
+      </Container>
       <AvatarList
         data={artists}
         avatarConfig={{ size: AVATAR_MEDIUM, borderWidth: 4 }}
@@ -30,6 +32,6 @@ export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProp
   )
 }
 
-const Title = styled(Typo.Title3)(({ theme }) => ({
+const Container = styled(View)(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
 }))
