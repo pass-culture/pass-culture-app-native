@@ -35,6 +35,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
   status: { statusType: YoungStatusType.non_eligible },
   currency: CurrencyEnum.EUR,
   achievements: [],
+  hasProfileExpired: false,
 }
 
 export const beneficiaryUser: UserProfileResponse = {
