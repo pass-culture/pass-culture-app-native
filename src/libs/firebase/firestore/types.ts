@@ -56,6 +56,7 @@ export enum RemoteStoreFeatureFlags {
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
   WIP_ARTIST_PAGE = 'wipArtistPage',
   WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
+  WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',
   WIP_ENABLE_ACCES_LIBRE = 'wipEnableAccesLibre',
