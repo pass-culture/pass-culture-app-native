@@ -20,7 +20,7 @@ export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProp
   return (
     <View style={style}>
       <Title>{TITLE}</Title>
-      <NumberOfResults nbHits={artists.length} />
+      <StyledNumberOfResults nbHits={artists.length} />
       <AvatarList
         data={artists}
         avatarConfig={{ size: AVATAR_MEDIUM, borderWidth: 4 }}
@@ -31,5 +31,9 @@ export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProp
 }
 
 const Title = styled(Typo.Title3)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
+
+const StyledNumberOfResults = styled(NumberOfResults)(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
 }))
