@@ -1,4 +1,4 @@
-android
+ios
 V. norme	EN 301-549		Statut
 2.1.2	5.2	Activation of accessibility features	NA
 2.1.2	5.3	Biometrics	NA
@@ -50,7 +50,7 @@ V. norme	EN 301-549		Statut
 2.1.2	11.1.4.5.1	Images of text	NA
 2.1.2	11.1.4.11	Non-text contrast	NC
 2.1.2	11.1.4.13	Content on hover or focus	NA
-2.1.2	11.2.1.1.1	Keyboard	C
+2.1.2	11.2.1.1.1	Keyboard	NC
 2.1.2	11.2.1.2	No keyboard trap	C
 2.1.2	11.2.1.4.1	Character key shortcuts	NA
 2.1.2	11.2.2.1	Timing adjustable	C
@@ -59,12 +59,12 @@ V. norme	EN 301-549		Statut
 2.1.2	11.2.4.3	Focus order	NC
 2.1.2	11.2.4.4	Link purpose (in context)	C
 2.1.2	11.2.4.6	Headings and labels	NC
-2.1.2	11.2.4.7	Focus visible	C
+2.1.2	11.2.4.7	Focus visible	NC
 2.1.2	11.2.5.1	Pointer gestures	NC
 2.1.2	11.2.5.2	Pointer cancellation	C
 2.1.2	11.2.5.3.1	Label in name	NC
 2.1.2	11.2.5.4	Motion actuation	NA
-2.1.2	11.3.1.1.1	Language of software	C
+2.1.2	11.3.1.1.1	Language of software	NC
 2.1.2	11.3.2.1	On focus	NA
 2.1.2	11.3.2.2	On input	NA
 2.1.2	11.3.3.1.1	Error identification	NC
@@ -81,12 +81,12 @@ V. norme	EN 301-549		Statut
 2.1.2	11.5.2.9	Parent-child relationships	NC
 2.1.2	11.5.2.10	Text	NC
 2.1.2	11.5.2.11	List of available actions	NC
-2.1.2	11.5.2.12	Execution of available actions	C
-2.1.2	11.5.2.13	Tracking of focus and selection attributes	C
-2.1.2	11.5.2.14	Modification of focus and selection attributes	C
+2.1.2	11.5.2.12	Execution of available actions	NC
+2.1.2	11.5.2.13	Tracking of focus and selection attributes	NC
+2.1.2	11.5.2.14	Modification of focus and selection attributes	NC
 2.1.2	11.5.2.15	Change notification	NC
 2.1.2	11.5.2.16	Modifications of states and properties	NC
-2.1.2	11.5.2.17	Modifications of values and text	C
+2.1.2	11.5.2.17	Modifications of values and text	NC
 2.1.2	11.6.2	No disruption of accessibility features	NA
 2.1.2	11.7	User preferences	NC
 2.1.2	11.8.1	Content technology	NA
