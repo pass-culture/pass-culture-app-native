@@ -152,3 +152,30 @@ export const mockVenueHits = toMutable([
     },
   },
 ] as const)
+
+export const mockArtistHits = toMutable([
+  {
+    objectID: 'fffff77d',
+    name: 'Damiano David',
+    _highlightResult: {
+      name: {
+        value: '<mark>Damian</mark>o David',
+        matchLevel: 'full',
+        fullyHighlighted: false,
+        matchedWords: ['Damian'],
+      },
+    },
+  },
+  {
+    objectID: 'fffff1ab',
+    name: 'Damian Marley',
+    _highlightResult: {
+      name: {
+        value: '<mark>Damian</mark> Marley',
+        matchLevel: 'full',
+        fullyHighlighted: false,
+        matchedWords: ['Damian'],
+      },
+    },
+  },
+] as const)

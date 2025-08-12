@@ -1,45 +1,44 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
-import styled from 'styled-components/native'
+import { styled } from 'styled-components/native'
 
-import { AutocompleteArtistItem } from 'features/search/components/AutocompleteArtistItem/AutocompleteArtistItem'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { AutocompleteItem } from 'features/search/components/AutocompleteItem/AutocompleteItem'
+import { AutocompleteSection } from 'features/search/components/AutocompleteSection/AutocompleteSection'
+import { ArtistHitHighlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaArtist } from 'libs/algolia/types'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
-import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 
-type AutocompleteArtistProps = UseInfiniteHitsProps & {
+type Props = {
   onItemPress: (artistName: string) => void
 }
 
-export function AutocompleteArtist({ onItemPress, ...props }: AutocompleteArtistProps) {
-  const { hits } = useInfiniteHits(props)
+export function AutocompleteArtist({ onItemPress }: Props) {
+  const { navigate } = useNavigation<UseNavigationType>()
 
-  return hits.length > 0 ? (
-    <React.Fragment>
-      <AutocompleteVenueTitleText>Artistes</AutocompleteVenueTitleText>
+  return (
+    <AutocompleteSection<AlgoliaArtist>
+      title="Artistes"
+      renderItem={(hit) => {
+        const handlePress = () => {
+          onItemPress(hit.objectID)
+          navigate('Artist', { id: hit.objectID })
+        }
 
-      <StyledVerticalUl>
-        {hits.map((item) => (
-          <Li key={item.objectID}>
-            <AutocompleteArtistItem
-              hit={item as unknown as AlgoliaArtist}
-              onPress={() => onItemPress(item.objectID)}
-            />
-          </Li>
-        ))}
-      </StyledVerticalUl>
-    </React.Fragment>
-  ) : null
+        return (
+          <AutocompleteItem
+            onPress={handlePress}
+            testID={`autocompleteArtistItem_${hit.objectID}`}
+            icon={<ProfileFilledIcon />}>
+            <ArtistHitHighlight artistHit={hit} />
+          </AutocompleteItem>
+        )
+      }}
+    />
+  )
 }
 
-const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const AutocompleteVenueTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(
-  ({ theme }) => ({
-    color: theme.designSystem.color.text.subtle,
-  })
-)
+const ProfileFilledIcon = styled(ProfileFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.subtle,
+}))``

@@ -1,55 +1,29 @@
 import React from 'react'
-import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
-import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
+import { AutocompleteSection } from 'features/search/components/AutocompleteSection/AutocompleteSection'
 import { CreateHistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
-import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type AutocompleteOfferProps = UseInfiniteHitsProps & {
+type Props = {
   addSearchHistory: (item: CreateHistoryItem) => void
   offerCategories?: SearchGroupNameEnumv2[]
-  shouldShowCategory?: boolean
 }
 
-export function AutocompleteOffer({
-  addSearchHistory,
-  offerCategories,
-  ...props
-}: AutocompleteOfferProps) {
-  const { hits, sendEvent } = useInfiniteHits(props)
-
-  return hits.length > 0 ? (
-    <React.Fragment>
-      <AutocompleteOfferTitleText>Suggestions</AutocompleteOfferTitleText>
-      <StyledVerticalUl>
-        {hits.map((item) => (
-          <Li key={item.objectID}>
-            <AutocompleteOfferItem
-              hit={item as unknown as AlgoliaSuggestionHit}
-              sendEvent={sendEvent}
-              addSearchHistory={addSearchHistory}
-              shouldShowCategory
-              offerCategories={offerCategories || []}
-            />
-          </Li>
-        ))}
-      </StyledVerticalUl>
-    </React.Fragment>
-  ) : null
+export function AutocompleteOffer({ addSearchHistory, offerCategories }: Props) {
+  return (
+    <AutocompleteSection<AlgoliaSuggestionHit>
+      title="Suggestions"
+      renderItem={(hit, sendEvent) => (
+        <AutocompleteOfferItem
+          hit={hit}
+          sendEvent={sendEvent}
+          addSearchHistory={addSearchHistory}
+          shouldShowCategory
+          offerCategories={offerCategories || []}
+        />
+      )}
+    />
+  )
 }
-
-const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const AutocompleteOfferTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(
-  ({ theme }) => ({
-    color: theme.designSystem.color.text.subtle,
-  })
-)

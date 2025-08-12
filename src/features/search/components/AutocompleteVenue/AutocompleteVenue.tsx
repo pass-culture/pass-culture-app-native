@@ -1,45 +1,46 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
-import styled from 'styled-components/native'
+import { styled } from 'styled-components/native'
 
-import { AutocompleteVenueItem } from 'features/search/components/AutocompleteVenueItem/AutocompleteVenueItem'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { AutocompleteItem } from 'features/search/components/AutocompleteItem/AutocompleteItem'
+import { AutocompleteSection } from 'features/search/components/AutocompleteSection/AutocompleteSection'
+import { VenueHitHighlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
+import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type AutocompleteVenueProps = UseInfiniteHitsProps & {
+type Props = {
   onItemPress: (venueId: number) => void
 }
 
-export function AutocompleteVenue({ onItemPress, ...props }: AutocompleteVenueProps) {
-  const { hits } = useInfiniteHits(props)
+export function AutocompleteVenue({ onItemPress }: Props) {
+  const { navigate } = useNavigation<UseNavigationType>()
 
-  return hits.length > 0 ? (
-    <React.Fragment>
-      <AutocompleteVenueTitleText>Lieux culturels</AutocompleteVenueTitleText>
+  return (
+    <AutocompleteSection<AlgoliaVenue>
+      title="Lieux culturels"
+      renderItem={(hit) => {
+        const handlePress = () => {
+          onItemPress(Number(hit.objectID))
+          navigate('Venue', { id: Number(hit.objectID) })
+        }
 
-      <StyledVerticalUl>
-        {hits.map((item) => (
-          <Li key={item.objectID}>
-            <AutocompleteVenueItem
-              hit={item as unknown as AlgoliaVenue}
-              onPress={() => onItemPress(Number(item.objectID))}
-            />
-          </Li>
-        ))}
-      </StyledVerticalUl>
-    </React.Fragment>
-  ) : null
+        return (
+          <AutocompleteItem
+            onPress={handlePress}
+            testID={`autocompleteVenueItem_${hit.objectID}`}
+            icon={<LocationBuildingFilledIcon />}>
+            <VenueHitHighlight venueHit={hit} />
+            <Typo.Body>{` ${hit.city}`}</Typo.Body>
+          </AutocompleteItem>
+        )
+      }}
+    />
+  )
 }
 
-const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const AutocompleteVenueTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(
-  ({ theme }) => ({
-    color: theme.designSystem.color.text.subtle,
-  })
-)
+const LocationBuildingFilledIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.subtle,
+}))``
