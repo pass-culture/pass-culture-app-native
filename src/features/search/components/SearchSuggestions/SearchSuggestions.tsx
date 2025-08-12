@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { AutocompleteArtist } from 'features/search/components/AutocompleteArtist/AutocompleteArtist'
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
@@ -15,6 +16,9 @@ import { CreateHistoryItem, Highlighted, HistoryItem, SearchState } from 'featur
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 
 type SearchSuggestionsParams = {
@@ -38,6 +42,9 @@ export const SearchSuggestions = ({
     useLocation()
   const { venue } = searchState
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
+  const shouldDisplayArtistsSuggestions = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
+  )
 
   const searchVenuePosition = buildSearchVenuePosition(
     { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius },
@@ -94,6 +101,11 @@ export const SearchSuggestions = ({
     analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
   }
 
+  const onArtistPress = (artistName: string) => {
+    hideSuggestions()
+    analytics.logConsultArtist({ artistName, from: 'searchAutoComplete' })
+  }
+
   return (
     <StyledScrollView
       testID="autocompleteScrollView"
@@ -107,6 +119,12 @@ export const SearchSuggestions = ({
         onPress={onPressHistoryItem}
       />
       <AutocompleteOffer addSearchHistory={addToHistory} offerCategories={offerCategories} />
+      {shouldDisplayArtistsSuggestions ? (
+        <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
+          <Configure hitsPerPage={5} clickAnalytics />
+          <AutocompleteArtist onItemPress={onArtistPress} />
+        </Index>
+      ) : null}
       <Index indexName={currentVenuesIndex}>
         <Configure
           hitsPerPage={5}

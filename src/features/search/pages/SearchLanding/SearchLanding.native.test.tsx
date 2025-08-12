@@ -13,6 +13,7 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
@@ -225,7 +226,7 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SearchLanding />', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     setFeatureFlags()
   })
 
@@ -270,6 +271,21 @@ describe('<SearchLanding />', () => {
 
       expect(await screen.findByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteVenueItem_2')).toBeOnTheScreen()
+    })
+
+    it('should display artists suggestions when wipArtistsSuggestionsInSearch FF activated', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH])
+      render(reactQueryProviderHOC(<SearchLanding />))
+
+      expect(await screen.findByText('Artistes')).toBeOnTheScreen()
+    })
+
+    it('should not display artists suggestions when wipArtistsSuggestionsInSearch FF deactivated', async () => {
+      render(reactQueryProviderHOC(<SearchLanding />))
+
+      await screen.findByPlaceholderText('Offre, artiste, lieu culturel...')
+
+      expect(screen.queryByText('Artistes')).not.toBeOnTheScreen()
     })
 
     it('should handle venue press', async () => {

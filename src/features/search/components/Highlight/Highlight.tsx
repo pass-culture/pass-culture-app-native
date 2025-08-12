@@ -3,7 +3,7 @@ import React from 'react'
 
 import { decodeHTMLValue } from 'features/search/helpers/decodeHTMLValue/decodeHTMLValue'
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaArtist, AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
 import { Typo } from 'ui/theme'
 
 // Inspired by https://www.algolia.com/doc/guides/building-search-ui/going-further/native/react-hooks/?client=Highlight.js#highlight-matches
@@ -38,6 +38,10 @@ type WithVenueHitProps = {
   venueHit: AlgoliaVenue
 }
 
+type WithArtistHitProps = {
+  artistHit: AlgoliaArtist
+}
+
 type WithHistoryItemProps = {
   historyItem: Highlighted<HistoryItem>
 }
@@ -51,6 +55,12 @@ export const SuggestionHitHighlight = ({ suggestionHit, attribute }: WithSuggest
 
 export const VenueHitHighlight = ({ venueHit }: WithVenueHitProps) => {
   const attributeValue = venueHit._highlightResult?.name?.value?.toString() ?? ''
+
+  return <Highlight attributeValue={attributeValue} />
+}
+
+export const ArtistHitHighlight = ({ artistHit }: WithArtistHitProps) => {
+  const attributeValue = artistHit._highlightResult?.name?.value?.toString() ?? ''
 
   return <Highlight attributeValue={attributeValue} />
 }
