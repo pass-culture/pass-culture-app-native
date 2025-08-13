@@ -16,12 +16,10 @@ export const AccessibleUnorderedList: FC<Props> = ({ items, Separator }) => {
     <StyledVerticalUl>
       {items.map((item, index) => {
         return (
-          <React.Fragment key={index}>
-            <Li>
-              {item}
-              {index < itemListLength - 1 && Separator}
-            </Li>
-          </React.Fragment>
+          <Li key={index}>
+            {item}
+            {index < itemListLength - 1 && Separator}
+          </Li>
         )
       })}
     </StyledVerticalUl>
