@@ -46,6 +46,7 @@ const user: UserProfileResponse = {
   currency: CurrencyEnum.EUR,
   achievements: [],
   street: '10 rue du Bohneur',
+  hasProfileExpired: false,
 }
 
 const exBeneficiaryUser: UserProfileResponse = {
