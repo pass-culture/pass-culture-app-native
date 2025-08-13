@@ -3665,12 +3665,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@batch.com/react-native-plugin@npm:9.0.2":
-  version: 9.0.2
-  resolution: "@batch.com/react-native-plugin@npm:9.0.2"
+"@batch.com/react-native-plugin@npm:10.1.2":
+  version: 10.1.2
+  resolution: "@batch.com/react-native-plugin@npm:10.1.2"
   peerDependencies:
     react-native: "*"
-  checksum: 895fa1539f48ffc44818b2ba93ca99346a49d5fa0296a292cee838178d9cd7a246fff30f7a43d2ef8b9ca6dc6d6f0a8ea59bf1b9b54b4adcaa1c1ffd8c664874
+  checksum: 9411b791814c8e829a60ccb6d89e32a19b491e28db1c049fa0e763dbf1dab9f325cc7b56ffe2b0f04b534eb1cc73d8167e692dfceb1119bc6b72fb29f8912ed7
   languageName: node
   linkType: hard
 
@@ -11091,7 +11091,7 @@ __metadata:
     "@babel/runtime": ^7.26.10
     "@bam.tech/eslint-plugin": ^1.0.1
     "@bam.tech/react-native-config": ^1.4.5
-    "@batch.com/react-native-plugin": 9.0.2
+    "@batch.com/react-native-plugin": 10.1.2
     "@chanzuckerberg/axe-storybook-testing": ^9.0.0
     "@chromatic-com/storybook": ^4.0.1
     "@emotion/is-prop-valid": ^1.3.1

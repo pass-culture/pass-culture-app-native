@@ -9,7 +9,7 @@ PODS:
     - AppsFlyerFramework/Main (= 6.16.2)
   - AppsFlyerFramework/Main (6.16.2)
   - Base64 (1.1.2)
-  - Batch (2.0.2)
+  - Batch (2.1.1)
   - BatchFirebaseDispatcher (3.2.0):
     - Batch (>= 1.19)
     - Firebase/Analytics
@@ -1920,8 +1920,28 @@ PODS:
     - React-perflogger (= 0.77.3)
     - React-utils (= 0.77.3)
   - RNBatchPush (1.0.0):
-    - Batch (~> 2.0.0)
+    - Batch (~> 2.1.0)
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNCAsyncStorage (1.17.11):
     - React-Core
   - RNCClipboard (1.16.2):
@@ -2269,7 +2289,6 @@ PODS:
   - Yoga (0.0.0)
 
 DEPENDENCIES:
-  - Batch (~> 2.0.0)
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
@@ -2658,7 +2677,7 @@ SPEC CHECKSUMS:
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   AppsFlyerFramework: fe5303bffcdfd941d5f570c2d21eaaea982e7bdc
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
-  Batch: 5910c05091914c3ca415ca8793e5ce6fcc36cfee
+  Batch: fe0c88b2182a8d0f6ca3b0ed725694206b2e3e44
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
@@ -2778,7 +2797,7 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: 9b3704075c2fe8fd7c739779655fb88700a1ca30
   ReactCodegen: 4ade497e5e62c9969da87fa6c845a7c301fe550a
   ReactCommon: 7f91538e91d390ebffd7238c8e47e3db8ee0f6a8
-  RNBatchPush: a6b97b7f58ddd26b1de82a0ab843bc6c947ffce4
+  RNBatchPush: 8986444edff758f9924a128af7a89f5893a39572
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNCClipboard: de1561c12ba8a15f143347993a382c6474c0d2d6
   RNDeviceInfo: b899ce37a403a4dea52b7cb85e16e49c04a5b88e
@@ -2806,6 +2825,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 1a10502f162e8fc40ff0907c82d01cfe555d00c2
 
-PODFILE CHECKSUM: 661a611925b4047df8157b602f04b6fd49fef2e6
+PODFILE CHECKSUM: 1867a18ae22d869eedc7a57c64c4f848b9d75a83
 
 COCOAPODS: 1.14.3
