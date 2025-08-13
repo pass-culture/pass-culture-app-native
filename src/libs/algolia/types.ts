@@ -48,6 +48,14 @@ export type AlgoliaOfferWithArtistAndEan = AlgoliaOffer<
   }
 >
 
+export interface AlgoliaArtist {
+  objectID: string
+  name: string
+  description?: string
+  image?: string
+  _highlightResult?: AlgoliaArtistHighlightResult
+}
+
 export interface AlgoliaGeoloc {
   lat?: number | null
   lng?: number | null
@@ -214,6 +222,10 @@ interface HighlightResult {
 }
 
 interface AlgoliaVenueHighlightResult {
+  name: HighlightResult
+}
+
+interface AlgoliaArtistHighlightResult {
   name: HighlightResult
 }
 
