@@ -9,7 +9,7 @@ import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from '../enums'
 const GET_POSITION_SETTINGS: GeoOptions = {
   enableHighAccuracy: false,
   timeout: 20000,
-  maximumAge: 300000,
+  maximumAge: 600000,
   showLocationDialog: false,
   forceRequestLocation: false,
 }
