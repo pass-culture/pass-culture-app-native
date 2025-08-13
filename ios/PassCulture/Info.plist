@@ -141,5 +141,7 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
 </dict>
 </plist>
