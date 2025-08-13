@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -20,11 +20,14 @@ const Header = () => (
 )
 
 export const Home: FunctionComponent = () => {
+  const [stateB, setstateB] = useState(false)
   return (
     <React.Fragment>
       <SubscribeButton
-        onPress={() => {}}
-        active={false}
+        onPress={() => {
+          setstateB((prev) => !prev)
+        }}
+        active={stateB}
         label={{ active: 'Thème suivi', inactive: 'Suivre le thème' }}
       />
       <View style={{ flexDirection: 'row' }}>
