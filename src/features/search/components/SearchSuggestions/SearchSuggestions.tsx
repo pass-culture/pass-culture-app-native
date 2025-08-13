@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { Configure, Index } from 'react-instantsearch-core'
 import { Keyboard } from 'react-native'
@@ -6,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AutocompleteArtist } from 'features/search/components/AutocompleteArtist/AutocompleteArtist'
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
@@ -37,6 +39,7 @@ export const SearchSuggestions = ({
   shouldNavigateToSearchResults,
   offerCategories,
 }: SearchSuggestionsParams) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius, geolocPosition } =
     useLocation()
@@ -99,11 +102,13 @@ export const SearchSuggestions = ({
   const onVenuePress = (venueId: number) => {
     hideSuggestions()
     analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
+    navigate('Venue', { id: venueId })
   }
 
-  const onArtistPress = (artistName: string) => {
+  const onArtistPress = (artistId: string, artistName: string) => {
     hideSuggestions()
     analytics.logConsultArtist({ artistName, from: 'searchAutoComplete' })
+    navigate('Artist', { id: artistId })
   }
 
   return (

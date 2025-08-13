@@ -2,7 +2,6 @@ import { Hit } from '@algolia/client-search'
 import { BaseHit } from 'instantsearch.js'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { render, screen, userEvent } from 'tests/utils'
@@ -35,14 +34,6 @@ describe('AutocompleteVenue component', () => {
       await user.press(screen.getByTestId('autocompleteVenueItem_9898'))
 
       expect(onItemPress).toHaveBeenCalledWith(9898)
-    })
-
-    it('should navigate to venue page when pressing item', async () => {
-      render(<AutocompleteVenue onItemPress={jest.fn()} />)
-
-      await user.press(screen.getByTestId('autocompleteVenueItem_9898'))
-
-      expect(navigate).toHaveBeenCalledWith('Venue', { id: 9898 })
     })
   })
 

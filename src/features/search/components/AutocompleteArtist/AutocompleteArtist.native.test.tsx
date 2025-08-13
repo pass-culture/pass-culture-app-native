@@ -2,7 +2,6 @@ import { Hit } from '@algolia/client-search'
 import { BaseHit } from 'instantsearch.js'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { AutocompleteArtist } from 'features/search/components/AutocompleteArtist/AutocompleteArtist'
 import { mockArtistHits } from 'features/search/fixtures/algolia'
 import { render, screen, userEvent } from 'tests/utils'
@@ -16,8 +15,8 @@ jest.mock('react-instantsearch-core', () => ({
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('AutocompleteVenue component', () => {
-  describe('With venue hits', () => {
+describe('AutocompleteArtist component', () => {
+  describe('With artist hits', () => {
     beforeEach(() => {
       mockHits = mockArtistHits
     })
@@ -34,15 +33,7 @@ describe('AutocompleteVenue component', () => {
 
       await user.press(screen.getByTestId('autocompleteArtistItem_fffff77d'))
 
-      expect(onItemPress).toHaveBeenCalledWith('fffff77d')
-    })
-
-    it('should navigate to artist page when pressing item', async () => {
-      render(<AutocompleteArtist onItemPress={jest.fn()} />)
-
-      await user.press(screen.getByTestId('autocompleteArtistItem_fffff77d'))
-
-      expect(navigate).toHaveBeenCalledWith('Artist', { id: 'fffff77d' })
+      expect(onItemPress).toHaveBeenCalledWith('fffff77d', 'Damiano David')
     })
   })
 

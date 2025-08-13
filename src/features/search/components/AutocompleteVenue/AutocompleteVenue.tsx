@@ -1,8 +1,6 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AutocompleteItem } from 'features/search/components/AutocompleteItem/AutocompleteItem'
 import { AutocompleteSection } from 'features/search/components/AutocompleteSection/AutocompleteSection'
 import { VenueHitHighlight } from 'features/search/components/Highlight/Highlight'
@@ -15,15 +13,12 @@ type Props = {
 }
 
 export function AutocompleteVenue({ onItemPress }: Props) {
-  const { navigate } = useNavigation<UseNavigationType>()
-
   return (
     <AutocompleteSection<AlgoliaVenue>
       title="Lieux culturels"
       renderItem={(hit) => {
         const handlePress = () => {
           onItemPress(Number(hit.objectID))
-          navigate('Venue', { id: Number(hit.objectID) })
         }
 
         return (
