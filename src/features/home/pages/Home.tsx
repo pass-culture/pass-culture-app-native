@@ -1,17 +1,27 @@
-import React, { FunctionComponent, useState } from 'react'
-import { View } from 'react-native'
+import { useRoute } from '@react-navigation/native'
+import { maxBy } from 'lodash'
+import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
-import { SubscribeButton } from 'features/subscription/components/buttons/SubscribeButton'
-import achievement from 'ui/animations/achievements_success.json'
-import geo from 'ui/animations/geolocalisation.json'
-import loading from 'ui/animations/lottie_loading.json'
-import cake from 'ui/animations/onboarding_birthday_cake.json'
-import qpi from 'ui/animations/qpi_thanks.json'
-import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
-import logo from 'ui/animations/tutorial_pass_logo.json'
-import { getSpacing } from 'ui/theme'
+import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
+import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
+import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
+import { GenericHome } from 'features/home/pages/GenericHome'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
+import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
+import { analytics } from 'libs/analytics/provider'
+import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
+import { getAppVersion } from 'libs/packageJson'
+import { BatchProfile } from 'libs/react-native-batch'
+import { useBookingsQuery } from 'queries/bookings'
+import { useModal } from 'ui/components/modals/useModal'
+import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
   <ListHeaderContainer>
@@ -20,62 +30,112 @@ const Header = () => (
 )
 
 export const Home: FunctionComponent = () => {
-  const [stateB, setstateB] = useState(false)
+  const { params } = useRoute<UseRouteType<'Home'>>()
+  const { modules, id } = useHomepageData() || {}
+  const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
+    useLocation()
+  const { isLoggedIn, user } = useAuthContext()
+
+  const {
+    visible: onboardingSubscriptionModalVisible,
+    showModal: showOnboardingSubscriptionModal,
+    hideModal: hideOnboardingSubscriptionModal,
+  } = useModal(false)
+  useOnboardingSubscriptionModal({
+    isLoggedIn,
+    userStatus: user?.status?.statusType,
+    showOnboardingSubscriptionModal,
+  })
+  const { data: bookings, isInitialLoading: isBookingsLoading } = useBookingsQuery()
+
+  const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
+    bookings,
+    isBookingsLoading
+  )
+
+  const {
+    visible: visibleAchievementModal,
+    showModal: showAchievementModal,
+    hideModal: hideAchievementModal,
+  } = useModal(false)
+
+  useEffect(() => {
+    if (modalToShow === ModalToShow.ACHIEVEMENT) {
+      showAchievementModal()
+    }
+  }, [showAchievementModal, modalToShow])
+
+  useEffect(() => {
+    if (id) {
+      analytics.logConsultHome({ homeEntryId: id })
+    }
+  }, [id])
+
+  // This effect was made for the use of the marketing team (internal usage)
+  useEffect(() => {
+    if (params?.latitude && params?.longitude) {
+      setPlace({
+        geolocation: { latitude: params.latitude, longitude: params.longitude },
+        label: 'Custom',
+        info: 'custom',
+        type: undefined,
+      })
+      setSelectedLocationMode(LocationMode.AROUND_PLACE)
+    }
+  }, [params?.latitude, params?.longitude, setPlace, setSelectedLocationMode])
+
+  useEffect(() => {
+    if (
+      selectedLocationMode === LocationMode.EVERYWHERE ||
+      selectedLocationMode === LocationMode.AROUND_ME
+    ) {
+      if (hasGeolocPosition) {
+        setSelectedLocationMode(LocationMode.AROUND_ME)
+      } else {
+        setSelectedLocationMode(LocationMode.EVERYWHERE)
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasGeolocPosition])
+
+  useEffect(() => {
+    const editor = BatchProfile.editor()
+    editor.setAttribute('app_version', getAppVersion())
+
+    const allBookings = [...(bookings?.ongoing_bookings || []), ...(bookings?.ended_bookings || [])]
+    const lastBooking = maxBy(allBookings, (booking) => booking?.dateCreated)
+    if (lastBooking) {
+      editor.setAttribute('last_booking_date', lastBooking.dateCreated)
+    }
+    if (user?.firstDepositActivationDate) {
+      editor.setAttribute('credit_activation_date', user.firstDepositActivationDate)
+    }
+
+    editor.save()
+  }, [bookings, user?.firstDepositActivationDate])
+
   return (
     <React.Fragment>
-      <SubscribeButton
-        onPress={() => {
-          setstateB((prev) => !prev)
-        }}
-        active={stateB}
-        label={{ active: 'Thème suivi', inactive: 'Suivre le thème' }}
+      <GenericHome
+        modules={modules}
+        homeId={id}
+        Header={<Header />}
+        HomeBanner={<HomeBanner isLoggedIn={isLoggedIn} />}
+        videoModuleId={params?.videoModuleId}
+        statusBar={<StatusBarBlurredBackground />}
       />
-      <View style={{ flexDirection: 'row' }}>
-        <ThemedStyledLottieView
-          height={getSpacing(80)}
-          width={getSpacing(80)}
-          source={geo}
-          autoPlay
-          loop={false}
-        />
-        <ThemedStyledLottieView
-          height={getSpacing(80)}
-          width={getSpacing(80)}
-          source={qpi}
-          autoPlay
-          loop={false}
-        />
-        <ThemedStyledLottieView
-          height={getSpacing(80)}
-          width={getSpacing(80)}
-          source={achievement}
-          autoPlay
-          loop={false}
-        />
-      </View>
-      <View style={{ flexDirection: 'row' }}>
-        <ThemedStyledLottieView
-          height={getSpacing(80)}
-          width={getSpacing(80)}
-          source={cake}
-          autoPlay
-          loop={false}
-        />
-        <ThemedStyledLottieView
-          height={getSpacing(80)}
-          width={getSpacing(80)}
-          source={logo}
-          autoPlay
-          loop={false}
-        />
-        <ThemedStyledLottieView
-          height={getSpacing(80)}
-          width={getSpacing(80)}
-          source={loading}
-          autoPlay
-          loop={false}
-        />
-      </View>
+      <OnboardingSubscriptionModal
+        visible={onboardingSubscriptionModalVisible}
+        dismissModal={hideOnboardingSubscriptionModal}
+      />
+      {modalToShow === ModalToShow.REACTION ? (
+        <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsEligibleToReaction} />
+      ) : null}
+      <AchievementSuccessModal
+        achievementsToShow={achievementsToShow}
+        visible={visibleAchievementModal}
+        hideModal={hideAchievementModal}
+      />
     </React.Fragment>
   )
 }
