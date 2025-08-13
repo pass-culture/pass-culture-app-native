@@ -2,6 +2,7 @@
 import { Platform } from 'react-native'
 import * as RNPermissions from 'react-native-permissions'
 
+import { GeolocPermissionState } from 'libs/location'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission.android'
 
 const permissionsCheckSpy = jest.spyOn(RNPermissions, 'check')
@@ -13,27 +14,27 @@ describe('checkGeolocPermission()', () => {
     permissionsCheckSpy.mockResolvedValueOnce('granted')
     const permission = await checkGeolocPermission()
 
-    expect(permission).toEqual('granted')
+    expect(permission).toEqual(GeolocPermissionState.GRANTED)
   })
 
   it('should return never_ask_again when COARSE_LOCATION permission is denied', async () => {
     permissionsCheckSpy.mockResolvedValueOnce('denied')
     const permission = await checkGeolocPermission()
 
-    expect(permission).toEqual('never_ask_again')
+    expect(permission).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
   })
 
   it('should return never_ask_again when COARSE_LOCATION permission is blocked', async () => {
     permissionsCheckSpy.mockResolvedValueOnce('blocked')
     const permission = await checkGeolocPermission()
 
-    expect(permission).toEqual('never_ask_again')
+    expect(permission).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
   })
 
   it('should return never_ask_again when COARSE_LOCATION permission is unavailable', async () => {
     permissionsCheckSpy.mockResolvedValueOnce('unavailable')
     const permission = await checkGeolocPermission()
 
-    expect(permission).toEqual('never_ask_again')
+    expect(permission).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
   })
 })
