@@ -5,7 +5,7 @@ import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from '../enums'
 const GET_POSITION_SETTINGS = {
   enableHighAccuracy: false,
   timeout: 20000,
-  maximumAge: 60000,
+  maximumAge: 600000,
 }
 
 // @ts-expect-error: older versions of Safari and Firefox may use the non-standard name of `PositionError`:
