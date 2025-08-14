@@ -10,8 +10,11 @@ export const profileStackNavigatorPathConfig = {
       AccessibilityActionPlan: {
         path: 'accessibilite/plan-d-actions',
       },
-      AccessibilityDeclarationMobile: {
-        path: 'accessibilite/declaration-accessibilite-mobile',
+      AccessibilityDeclarationMobileAndroid: {
+        path: 'accessibilite/declaration-accessibilite-mobile-android',
+      },
+      AccessibilityDeclarationMobileIOS: {
+        path: 'accessibilite/declaration-accessibilite-mobile-ios',
       },
       AccessibilityDeclarationWeb: {
         path: 'accessibilite/declaration-accessibilite-web',
