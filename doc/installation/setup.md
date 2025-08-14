@@ -77,7 +77,7 @@ Still wrong ?
 
 ```sh
 npx rn-game-over --all --no-install ; direnv deny # commands are concatenated with ; to prevent having a new prompt that will trigger direnv which will try to install stuff that we will remove in the next command
-rm -rf .direnv .devbox .venv ios/Pods
+rm -rf .direnv .venv ios/Pods
 direnv allow
 ```
 
