@@ -192,14 +192,16 @@ describe('VenueMapViewContainer', () => {
     const mapView = await screen.findByTestId('venue-map-view')
 
     // Simulate region change
-    fireEvent(mapView, 'onRegionChangeComplete', {
-      latitude: 1,
-      longitude: 1,
-      latitudeDelta: 1,
-      longitudeDelta: 1,
+    await act(async () => {
+      fireEvent(mapView, 'onRegionChangeComplete', {
+        latitude: 1,
+        longitude: 1,
+        latitudeDelta: 1,
+        longitudeDelta: 1,
+      })
     })
 
-    expect(screen.getByText('Rechercher dans cette zone')).toBeOnTheScreen()
+    expect(await screen.findByText('Rechercher dans cette zone')).toBeOnTheScreen()
   })
 
   it('should not display search button after search press', async () => {
@@ -228,17 +230,17 @@ describe('VenueMapViewContainer', () => {
     const setVenuesSpy = jest.spyOn(useVenueMapStore, 'setVenues')
 
     await act(async () => {
-      // Simulate region change
       fireEvent(mapView, 'onRegionChangeComplete', {
         latitude: 1,
         longitude: 1,
         latitudeDelta: 1,
         longitudeDelta: 1,
       })
-      await user.press(await screen.findByText('Rechercher dans cette zone'))
     })
 
-    expect(setVenuesSpy).toHaveBeenNthCalledWith(1, venuesFixture)
+    await user.press(await screen.findByText('Rechercher dans cette zone'))
+
+    await waitFor(() => expect(setVenuesSpy).toHaveBeenNthCalledWith(1, venuesFixture))
   })
 
   it('should display venueMapPreview + venueMapList in bottom sheet when marker is pressed', async () => {

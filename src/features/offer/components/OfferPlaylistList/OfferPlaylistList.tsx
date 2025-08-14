@@ -109,7 +109,7 @@ export function OfferPlaylistList({
       previous[current.title] = createRef<FlatList>()
       return previous
     },
-    {} as Record<string, RefObject<FlatList>>
+    {} as Record<string, RefObject<FlatList | null>>
   )
 
   const handleIntersectionObserverChange = (playlist: SimilarOfferPlaylist, isInView: boolean) => {

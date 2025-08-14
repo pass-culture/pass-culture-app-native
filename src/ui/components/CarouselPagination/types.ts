@@ -6,6 +6,6 @@ export type CarouselPaginationProps = {
   progressValue: SharedValue<number>
   elementsCount: number
   gap: number
-  carouselRef: React.RefObject<ICarouselInstance>
+  carouselRef: React.RefObject<ICarouselInstance | null>
   style?: StyleProp<ViewStyle>
 }
