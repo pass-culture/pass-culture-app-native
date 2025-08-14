@@ -11,10 +11,7 @@ on:
 permissions:
   contents: write
   id-token: write
-
-env:
-  GIT_CONFIG_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-  GIT_CONFIG_NAME: github-actions[bot]
+  actions: write
 
 jobs:
   create_and_push_staging_tag:
@@ -22,17 +19,40 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
+      - uses: actions/checkout@v4
+      - name: 'Authentification to Google'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Authenticate through github app ghactionci
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: github-app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            pass-culture-app-native
+          permission-contents: write
+          permission-actions: write
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.github-app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+      - run: |
+          git config --global user.name '${{ steps.github-app-token.outputs.app-slug }}[bot]'
+          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.github-app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ steps.github-app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
       - name: 'Checkout commit hash'
         uses: actions/checkout@v4
         with:
+          token: ${{ steps.github-app-token.outputs.token }}
           ref: ${{ inputs.commitHash }}
       - name: 'get package version'
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
-      - name: 'Author'
-        run: |
-          git config --global user.email "$GIT_CONFIG_EMAIL"
-          git config --global user.name "$GIT_CONFIG_NAME"
       - name: 'Create and push tag from package version'
         id: create_tag
         run: |
@@ -46,12 +66,35 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+      - name: 'Authentification to Google'
+        uses: 'google-github-actions/auth@v2'
         with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Authenticate through github app ghactionci
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: github-app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            pass-culture-app-native
+          permission-contents: write
+          permission-actions: write
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.github-app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+      - run: |
+          git config --global user.name '${{ steps.github-app-token.outputs.app-slug }}[bot]'
+          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.github-app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ steps.github-app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ steps.github-app-token.outputs.token }}
           ref: master
-      - name: 'Author'
-        run: |
-          git config --global user.email "$GIT_CONFIG_EMAIL"
-          git config --global user.name "$GIT_CONFIG_NAME"
       - name: 'Bump package version'
         uses: phips28/gh-action-bump-version@master
         env:
@@ -124,3 +167,5 @@ jobs:
           TAG_NAME=testing/v${TESTING_VERSION}
           git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
           git push origin "$TAG_NAME"
+        env:
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
