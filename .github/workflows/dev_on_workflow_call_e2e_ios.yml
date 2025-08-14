@@ -58,6 +58,14 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Select XCode version
+        run: |
+          XCODE_VERSION="$(cat ./.xcode_version)"
+          IOS_VERSION="$(cat ./.ios_version)"
+          sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app
+          xcodebuild -version
+          xcodebuild -downloadPlatform iOS -version ${IOS_VERSION}
+          xcodebuild -runFirstLaunch
       - name: Install cocoapods
         run: cd ios/ && bundle exec pod install
       - name: Authentification to Google
