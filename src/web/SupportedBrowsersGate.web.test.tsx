@@ -31,9 +31,7 @@ describe('SupportedBrowsersGate', () => {
       render(<SupportedBrowsersGate />)
 
       expect(
-        screen.queryByText(
-          `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${currentbrowserName} v${currentMinimalSupportedVersion}) n’est pas à jour`
-        )
+        screen.queryByText(`Oups ! ${currentbrowserName} n’est pas à jour`)
       ).not.toBeInTheDocument()
     })
 
@@ -43,11 +41,7 @@ describe('SupportedBrowsersGate', () => {
 
       render(<SupportedBrowsersGate />)
 
-      expect(
-        screen.getByText(
-          `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${currentbrowserName} v${unsupportedVersion}) n’est pas à jour`
-        )
-      ).toBeInTheDocument()
+      expect(screen.getByText(`Oups ! ${currentbrowserName} n’est pas à jour`)).toBeInTheDocument()
     })
   })
 })
