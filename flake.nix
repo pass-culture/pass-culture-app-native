@@ -17,7 +17,6 @@
           packages = [
             pkgs.devbox
             pkgs.jdk17 # needed by Android
-            pkgs.ios-deploy # needed to run the app on real iPhone
             pkgs.jq # needed by some scripts run in the pipeline
             pkgs.python3 # needed by scripts/add_tracker.py
             pkgs.maestro # needed to run end to end test locally
@@ -25,7 +24,11 @@
             pkgs.gh # needed to debug pipeline locally
             pkgs.podman # needed to debug pipeline locally
             pkgs.watchman # needed by Metro bundler
-          ];
+          ]
+          ++ (pkgs.lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+            pkgs.ios-deploy # needed to run the app on real iPhone
+            pkgs.xcbeautify # optional to build iOS app
+          ]);
         };
     });
 }
