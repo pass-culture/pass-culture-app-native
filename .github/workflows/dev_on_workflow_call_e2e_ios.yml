@@ -56,6 +56,9 @@ jobs:
         run: |
           XCODE_VERSION="$(cat ./.xcode_version)"
           sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app
+          xcodebuild -version
+          xcodebuild -downloadPlatform iOS -version ${XCODE_VERSION}
+          xcodebuild -runFirstLaunch
       - name: Install cocoapods
         run: cd ios/ && bundle exec pod install
       - name: Authentification to Google
