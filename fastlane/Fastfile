@@ -10,6 +10,10 @@ import("FastfileIOSSigning")
 # iOS
 
 platform :ios do
+  before_all do
+    setup_circle_ci
+  end
+
   lane :build do |options|
     gym(
       scheme: ENV['IOS_SCHEME'],

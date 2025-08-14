@@ -24,6 +24,6 @@ update_app_version() {
   fi
 }
 
-# $1 is the tag used to trigger the ci deployment
+# $1 is the tag used to trigger the ci deployment (see .circleci/config.yml)
 # $2 is upgrade level (major, minor or patch)
 update_app_version "$1" "$2"
