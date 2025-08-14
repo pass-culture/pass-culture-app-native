@@ -93,7 +93,7 @@ describe('<SearchResults/>', () => {
 
         expect(results).toHaveNoViolations()
       })
-    })
+    }, 15_000) // FIXME(PC-37458): we increase the timeout to 15s because axe-core can be slow on CI
 
     it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
@@ -106,6 +106,6 @@ describe('<SearchResults/>', () => {
 
         expect(results).toHaveNoViolations()
       })
-    })
+    }, 15_000) // FIXME(PC-37458): we increase the timeout to 15s because axe-core can be slow on CI
   })
 })
