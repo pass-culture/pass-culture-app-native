@@ -27,6 +27,7 @@
           ]
           ++ (pkgs.lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
             pkgs.ios-deploy # needed to run the app on real iPhone
+            pkgs.xcbeautify # optional to build iOS app
           ]);
         };
     });
