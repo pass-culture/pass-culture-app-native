@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
 <View
@@ -332,7 +332,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Confirmer"
+              accessibilityLabel="Modifier mes informations"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -381,7 +381,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Confirmer"
+              testID="Modifier mes informations"
             >
               <View
                 style={
@@ -404,12 +404,12 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                     }
                   }
                 >
-                  Confirmer
+                  Modifier mes informations
                 </Text>
               </View>
             </View>
             <View
-              accessibilityLabel="Modifier mes informations"
+              accessibilityLabel="Confirmer"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -443,22 +443,25 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                   "backgroundColor": "transparent",
                   "borderBottomLeftRadius": 24,
                   "borderBottomRightRadius": 24,
+                  "borderColor": "#eb0055",
+                  "borderStyle": "solid",
                   "borderTopLeftRadius": 24,
                   "borderTopRightRadius": 24,
+                  "borderWidth": 2,
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "maxWidth": 500,
                   "minHeight": 40,
                   "opacity": 1,
                   "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
                   "paddingTop": 2,
                   "userSelect": "auto",
                   "width": "100%",
                 }
               }
-              testID="Modifier mes informations"
+              testID="Confirmer"
             >
               <View
                 style={
@@ -468,31 +471,12 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                   }
                 }
               >
-                <View
-                  style={
-                    {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
-                    }
-                  }
-                >
-                  <View
-                    height={20}
-                    testID="button-icon-left"
-                    width={20}
-                  >
-                    <Text>
-                      button-icon-left-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
                 <Text
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#eb0055",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -500,7 +484,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                     }
                   }
                 >
-                  Modifier mes informations
+                  Confirmer
                 </Text>
               </View>
             </View>

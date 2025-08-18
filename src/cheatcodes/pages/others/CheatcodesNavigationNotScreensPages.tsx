@@ -8,7 +8,8 @@ import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesSc
 import { CheatcodeButton } from 'cheatcodes/types'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { BrowserNotSupportedPage, supportedBrowsers } from 'web/SupportedBrowsersGate.web'
+import { BrowserNotSupportedPage } from 'web/BrowserNotSupportedPage.web'
+import { supportedBrowsers } from 'web/supportedBrowsers'
 
 enum Page {
   BrowserNotSupportedPage = 'BrowserNotSupportedPage',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const mockReactNativeSvg = jest.genMockFromModule('react-native-svg')
+const mockReactNativeSvg = jest.createMockFromModule('react-native-svg')
 
 const Svg = ({
   testID,

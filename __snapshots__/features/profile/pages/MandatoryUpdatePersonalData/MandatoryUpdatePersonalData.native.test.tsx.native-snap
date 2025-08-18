@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<MandatoryUpdatePersonalData /> should render correctly 1`] = `
 <View
@@ -165,7 +165,7 @@ exports[`<MandatoryUpdatePersonalData /> should render correctly 1`] = `
           }
         }
       >
-        Une petite mise à jour de tes informations personnelles ?
+        Mets à jour ton profil
       </Text>
       <Text
         style={
@@ -178,8 +178,124 @@ exports[`<MandatoryUpdatePersonalData /> should render correctly 1`] = `
           }
         }
       >
-        Avant de continuer, assure-toi que tes informations personnelles sont toujours correctes. C’est rapide, promis.
+        Pour mieux t’accompagner, on a besoin de vérifier que tes informations personnelles sont toujours à jour.
+C’est rapide, promis.
       </Text>
+    </View>
+    <View
+      style={
+        {
+          "marginBottom": 24,
+        }
+      }
+    >
+      <View
+        accessibilityLabel="Charte des données personnelles"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
+                "flexDirection": "row",
+                "height": "auto",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "transparent",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Charte des données personnelles"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+                "marginRight": 8,
+              }
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={20}
+              testID="button-icon-left"
+              width={20}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={2}
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
+            }
+          >
+            Charte des données personnelles
+          </Text>
+        </View>
+      </View>
     </View>
     <View
       flex={1}

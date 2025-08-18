@@ -38,8 +38,12 @@ const sectionConfig: {
     screen: 'AccessibilityActionPlan',
   },
   {
-    title: 'Déclaration d’accessibilité des applications iOS et Android',
-    screen: 'AccessibilityDeclarationMobile',
+    title: 'Déclaration d’accessibilité mobile - Android',
+    screen: 'AccessibilityDeclarationMobileAndroid',
+  },
+  {
+    title: 'Déclaration d’accessibilité mobile - iOS',
+    screen: 'AccessibilityDeclarationMobileIOS',
   },
   {
     title: 'Déclaration d’accessibilité de la version web',

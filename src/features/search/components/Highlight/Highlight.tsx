@@ -3,17 +3,29 @@ import React from 'react'
 
 import { decodeHTMLValue } from 'features/search/helpers/decodeHTMLValue/decodeHTMLValue'
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaArtist, AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
 import { Typo } from 'ui/theme'
 
 // Inspired by https://www.algolia.com/doc/guides/building-search-ui/going-further/native/react-hooks/?client=Highlight.js#highlight-matches
 
-type HighlightPartProps = {
+type HighlightVariant = 'default' | 'history'
+
+type HighlightTextProps = {
   children: string
   isHighlighted: boolean
+  variant?: HighlightVariant
 }
 
-export const HighlightPart = ({ children, isHighlighted }: HighlightPartProps) => {
+export const HighlightText = ({ children, isHighlighted, variant }: HighlightTextProps) => {
+  if (variant === 'history') {
+    return (
+      <Typo.BodyItalic
+        testID={isHighlighted ? 'highlightedHistoryItemText' : 'nonHighlightedHistoryItemText'}>
+        {children}
+      </Typo.BodyItalic>
+    )
+  }
+
   return isHighlighted ? (
     <Typo.Body testID="highlightedText">{children}</Typo.Body>
   ) : (
@@ -21,11 +33,26 @@ export const HighlightPart = ({ children, isHighlighted }: HighlightPartProps) =
   )
 }
 
-export const HighlightHistoryItemPart = ({ children, isHighlighted }: HighlightPartProps) => {
-  return isHighlighted ? (
-    <Typo.BodyItalic testID="highlightedHistoryItemText">{children}</Typo.BodyItalic>
-  ) : (
-    <Typo.BodyItalic testID="nonHighlightedHistoryItemText">{children}</Typo.BodyItalic>
+type HighlightProps = {
+  attributeValue: string
+  variant?: HighlightVariant
+}
+
+const Highlight = ({ attributeValue, variant = 'default' }: HighlightProps) => {
+  // it is necessary to have a good display when a search was executed and autocomplete redisplayed in iOS and Android
+  const parts = getHighlightedParts(decodeHTMLValue(attributeValue))
+
+  return (
+    <React.Fragment>
+      {parts.map((part, index) => (
+        <HighlightText
+          key={`${part.value}-${index}`}
+          isHighlighted={part.isHighlighted}
+          variant={variant}>
+          {part.value}
+        </HighlightText>
+      ))}
+    </React.Fragment>
   )
 }
 
@@ -36,6 +63,10 @@ type WithSuggestionHitProps = {
 
 type WithVenueHitProps = {
   venueHit: AlgoliaVenue
+}
+
+type WithArtistHitProps = {
+  artistHit: AlgoliaArtist
 }
 
 type WithHistoryItemProps = {
@@ -55,31 +86,14 @@ export const VenueHitHighlight = ({ venueHit }: WithVenueHitProps) => {
   return <Highlight attributeValue={attributeValue} />
 }
 
+export const ArtistHitHighlight = ({ artistHit }: WithArtistHitProps) => {
+  const attributeValue = artistHit._highlightResult?.name?.value?.toString() ?? ''
+
+  return <Highlight attributeValue={attributeValue} />
+}
+
 export const HistoryItemHighlight = ({ historyItem }: WithHistoryItemProps) => {
   const attributeValue = historyItem._highlightResult?.query?.value?.toString() ?? ''
 
-  return <Highlight attributeValue={attributeValue} historyItem={!!historyItem} />
-}
-
-type HighlightProps = { attributeValue: string; historyItem?: boolean }
-
-const Highlight = ({ attributeValue, historyItem }: HighlightProps) => {
-  // it is necessary to have a good display when a search was executed and autocomplete redisplayed in iOS and Android
-  const parts = getHighlightedParts(decodeHTMLValue(attributeValue))
-
-  return (
-    <React.Fragment>
-      {parts.map((part) => {
-        return historyItem ? (
-          <HighlightHistoryItemPart key={part.value} isHighlighted={part.isHighlighted}>
-            {part.value}
-          </HighlightHistoryItemPart>
-        ) : (
-          <HighlightPart key={part.value} isHighlighted={part.isHighlighted}>
-            {part.value}
-          </HighlightPart>
-        )
-      })}
-    </React.Fragment>
-  )
+  return <Highlight attributeValue={attributeValue} variant="history" />
 }
