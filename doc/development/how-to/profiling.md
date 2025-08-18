@@ -25,12 +25,12 @@ Setup:
 
 - Attach the phone and make sure USB debugging is activated in the phone's settings.
 - Open the project's `android` folder in Android Studio,
-- Select your device in the top right pane,
-- Run your project as `profileable`.
-- Build a release build of app (so that `__DEV__` mode is off).
-- `View > Tool Windows > Build Variants`
-- Select `appTestingRelease`
+- Make sure your device is selected in the top bar,
+- Select the right variant: `View > Tool Windows > Build Variants`
+- In the pane that opened, select `appTestingRelease` for the `:app` module
+- In the top bar click on the 3 dots ⠇ to the right of the `app⌄` button.
 - Click `Profiler: Run 'app' as profileable (low overhead)`
+- When the build is over, make sure to accept the app installation on you device during the time window (10 seconds).
 
 Profiling:
 
@@ -88,3 +88,33 @@ Interpreting the results:
 - If the CPU usage is high for several seconds, there could be an issue.
 - In the article, they then use Hermes Debugger to figure out the issue.
 - I also see "hangs" that could be interesting to investigate.
+
+## Troubleshooting
+
+### Android Studio
+
+#### @react-native-community/cli config exited with error code: 126
+
+```sh
+> Task :gradle-plugin:settings-plugin:jar
+ERROR: autolinkLibrariesFromCommand: process npx @react-native-community/cli config exited with error code: 126
+```
+
+It is a permission issue:
+
+```sh
+chmod u+x node_modules/@react-native-community/cli/build/*.js
+```
+
+Source:
+https://github.com/react-native-community/cli/issues/2498
+
+#### Incompatible version of the Android Gradle plugin
+
+Error in Android Studio during the "Sync Phase" (at launch):
+
+```
+The project is using an incompatible version (AGP 8.7.2) of the Android Gradle plugin. Latest supported version is AGP 8.1.2
+```
+
+I updated my version of Android Studio, and the error disappeared.
