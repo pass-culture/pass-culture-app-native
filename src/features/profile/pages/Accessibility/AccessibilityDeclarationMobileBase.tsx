@@ -1,0 +1,226 @@
+import React from 'react'
+import styled from 'styled-components/native'
+
+import { contactSupport } from 'features/auth/helpers/contactSupport'
+import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
+import { BulletListItem } from 'ui/components/BulletListItem'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { Separator } from 'ui/components/Separator'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { VerticalUl } from 'ui/components/Ul'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { Spacer, Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+type Props = {
+  platformName: string
+  storeLink: { url: string }
+  conformityEN: string
+  conformityRAAM: string
+  nonAccessibleContent: string[]
+  osVersion: string
+  toolsUsed: string[]
+}
+
+const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
+const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
+
+export function AccessibilityDeclarationMobileBase({
+  platformName,
+  storeLink,
+  conformityEN,
+  conformityRAAM,
+  nonAccessibleContent,
+  osVersion,
+  toolsUsed,
+}: Props) {
+  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
+
+  return (
+    <SecondaryPageWithBlurHeader
+      onGoBack={goBack}
+      title={`Déclaration d’accessibilité mobile - ${platformName}`}
+      enableMaxWidth={false}>
+      <ViewGap gap={6}>
+        <Typo.Body>
+          Le pass Culture s’engage à rendre ses applications mobiles accessibles conformément à
+          l’article 47 de la loi n° 2005-102 du 11 février 2005.
+        </Typo.Body>
+        <Typo.Body>
+          La présente déclaration d’accessibilité s’applique à{SPACE}
+          <ExternalTouchableLink
+            as={ButtonInsideText}
+            wording={`l’application ${platformName}`}
+            icon={ExternalSiteFilled}
+            externalNav={storeLink}
+          />
+          {SPACE}version 1.348.8 du pass Culture.
+        </Typo.Body>
+      </ViewGap>
+
+      <StyledSeparator />
+
+      <ViewGap gap={6}>
+        <TitleText>État de conformité</TitleText>
+        <Typo.Body>
+          L’application pass Culture sur {platformName} est{SPACE}
+          <Typo.BodyAccent>non conforme</Typo.BodyAccent>
+          {SPACE}
+          avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et
+          en Europe, en raison des non-conformités énumérées dans la section «&nbsp;Résultats des
+          tests&nbsp;».
+        </Typo.Body>
+      </ViewGap>
+
+      <StyledSeparator />
+
+      <ViewGap gap={6}>
+        <TitleText>Résultats des tests</TitleText>
+        <Typo.Body>
+          L’audit de conformité réalisé le 17/07/2025 par la société Access42 révèle que
+          l’application est conforme à <Typo.BodyAccent>{conformityEN}</Typo.BodyAccent> à la norme
+          européenne EN 301 549 v.3.2.1.
+        </Typo.Body>
+        <Typo.Body>
+          L’application est conforme à <Typo.BodyAccent>{conformityRAAM}</Typo.BodyAccent> au
+          Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
+        </Typo.Body>
+      </ViewGap>
+
+      <StyledSeparator />
+
+      <ViewGap gap={6}>
+        <TitleText>Contenus inaccessibles</TitleText>
+        <Typo.Body>
+          Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
+        </Typo.Body>
+        <Typo.BodyAccent>Non conformité</Typo.BodyAccent>
+        <VerticalUl>
+          {nonAccessibleContent.map((item) => (
+            <BulletListItem key={item} text={item} />
+          ))}
+        </VerticalUl>
+
+        <Typo.BodyAccent>Dérogations pour charge disproportionnée</Typo.BodyAccent>
+        <Typo.Body>Aucune</Typo.Body>
+
+        <Typo.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</Typo.BodyAccent>
+        <Typo.Body>
+          Les contenus suivants n’entrent pas dans le calcul de la conformité ni dans le périmètre
+          des éléments à rendre accessible, ils sont dérogés&nbsp;:
+        </Typo.Body>
+        <VerticalUl>
+          <BulletListItem text="Les cartes Goggle Maps (motif&nbsp;: service externe)" />
+          <BulletListItem text="La vérification d’identité (webview d’un prestataire externe)" />
+        </VerticalUl>
+      </ViewGap>
+
+      <StyledSeparator />
+
+      <ViewGap gap={6}>
+        <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
+        <Typo.BodyItalic>Cette déclaration a été établie le jeudi 31 juillet 2025.</Typo.BodyItalic>
+        <Typo.BodyAccent>
+          Technologies utilisées pour la réalisation de l’application
+        </Typo.BodyAccent>
+        <VerticalUl>
+          <BulletListItem text="react" />
+          <BulletListItem text="react-native" />
+          <BulletListItem text="react-native-web" />
+        </VerticalUl>
+        <Typo.BodyAccent>
+          Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier
+          l’accessibilité
+        </Typo.BodyAccent>
+        <VerticalUl>
+          {toolsUsed.map((item) => (
+            <BulletListItem key={item} text={item} />
+          ))}
+        </VerticalUl>
+        <Typo.Body>
+          L’audit a été réalisé avec la version de système d’exploitation {platformName}&nbsp;:
+          version {osVersion}
+        </Typo.Body>
+      </ViewGap>
+
+      <StyledSeparator />
+
+      <ViewGap gap={6}>
+        <TitleText>Retour d’information et contact</TitleText>
+        <Typo.Body>
+          Il est important de rappeler qu’en vertu de l’article 11 de la loi de février 2005&nbsp;:
+          {SPACE}
+          <Typo.BodyItalic>
+            «&nbsp;la personne handicapée a droit à la compensation des conséquences de son
+            handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode
+            de vie.&nbsp;»
+          </Typo.BodyItalic>
+        </Typo.Body>
+        <Typo.Body>
+          Le pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un
+          délai raisonnable, aux informations et fonctionnalités recherchées par la personne
+          handicapée, que le contenu fasse l’objet d’une dérogation ou non.
+        </Typo.Body>
+        <Typo.Body>
+          Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter
+          afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
+          <ExternalTouchableLink
+            as={ButtonInsideText}
+            wording="support@passculture.app"
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+            justifyContent="flex-start"
+            externalNav={contactSupport.forGenericQuestion}
+            icon={EmailFilled}
+          />
+        </Typo.Body>
+      </ViewGap>
+
+      <StyledSeparator />
+
+      <ViewGap gap={6}>
+        <TitleText>Voie de recours</TitleText>
+        <Typo.Body>
+          Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une
+          fonctionnalité de l’application, que vous nous le signalez et que vous ne parvenez pas à
+          obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos doléances ou
+          une demande de saisine au Défenseur des droits.
+        </Typo.Body>
+        <ViewGap gap={3}>
+          <Typo.Body>
+            Écrire un message au{SPACE}
+            <ExternalTouchableLink
+              as={ButtonInsideText}
+              wording="Défenseur des droits"
+              icon={ExternalSiteFilled}
+              externalNav={rightsDefenderUrl}
+            />
+          </Typo.Body>
+          <Typo.Body>
+            Contacter le délégué du{SPACE}
+            <ExternalTouchableLink
+              as={ButtonInsideText}
+              wording="Défenseur des droits dans votre région"
+              icon={ExternalSiteFilled}
+              externalNav={rightsDelegateUrl}
+            />
+          </Typo.Body>
+          <Typo.Body>
+            Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits
+            Libre réponse 71120 75342 Paris CEDEX 07
+          </Typo.Body>
+        </ViewGap>
+      </ViewGap>
+      <Spacer.BottomScreen />
+    </SecondaryPageWithBlurHeader>
+  )
+}
+
+const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))

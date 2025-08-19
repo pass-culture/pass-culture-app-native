@@ -223,3 +223,7 @@ By running the performance test once a week, we have a measure for each version 
 
 You can also run lighthouse locally from your browser's dev tools (make sure to run them in incognito mode to avoid extensions degrading performances).
 ```
+
+### Profiling with Xcode and Android Studio
+
+[Go to the dedicated page](./doc/development/how-to/profiling.md)

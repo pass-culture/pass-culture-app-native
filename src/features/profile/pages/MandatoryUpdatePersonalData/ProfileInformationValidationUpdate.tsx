@@ -10,7 +10,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -63,16 +63,12 @@ export const ProfileInformationValidationUpdate = () => {
     />
   ) : (
     <ViewGap gap={4}>
-      <ButtonPrimary
+      <ButtonPrimary wording="Modifier mes informations" onPress={onChangeInformation} />
+      <ButtonSecondary
         type="submit"
         wording="Confirmer"
         onPress={onSubmitProfile}
         isLoading={isLoading}
-      />
-      <ButtonTertiaryBlack
-        wording="Modifier mes informations"
-        onPress={onChangeInformation}
-        icon={Again}
       />
     </ViewGap>
   )

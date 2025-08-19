@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { reset } from '__mocks__/@react-navigation/native'
+import { reset, goBack } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
@@ -23,12 +22,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-
-const mockGoBack = jest.fn()
-jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: mockGoBack,
-  canGoBack: jest.fn(() => true),
-})
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -99,7 +92,7 @@ describe('ConfirmDeleteProfile component', () => {
 
     await user.press(screen.getByTestId('Revenir en arrière'))
 
-    expect(mockGoBack).toHaveBeenCalledTimes(1)
+    expect(goBack).toHaveBeenCalledTimes(1)
   })
 
   it('should open CGU when clicking on "conditions générales d’utilisation"', async () => {

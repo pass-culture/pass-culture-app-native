@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
 import { render, userEvent, screen } from 'tests/utils'
 
@@ -23,19 +23,20 @@ describe('Accessibility', () => {
   })
 
   it.each`
-    route                               | title
-    ${'AccessibilityActionPlan'}        | ${'Schéma pluriannuel'}
-    ${'AccessibilityEngagement'}        | ${'Les engagements du pass Culture'}
-    ${'AccessibilityDeclarationMobile'} | ${'Déclaration d’accessibilité des applications iOS et Android'}
-    ${'AccessibilityDeclarationWeb'}    | ${'Déclaration d’accessibilité de la version web'}
-    ${'RecommendedPaths'}               | ${'Parcours recommandés de la version web'}
+    route                                      | title
+    ${'AccessibilityActionPlan'}               | ${'Schéma pluriannuel'}
+    ${'AccessibilityEngagement'}               | ${'Les engagements du pass Culture'}
+    ${'AccessibilityDeclarationMobileAndroid'} | ${'Déclaration d’accessibilité mobile - Android'}
+    ${'AccessibilityDeclarationMobileIOS'}     | ${'Déclaration d’accessibilité mobile - iOS'}
+    ${'AccessibilityDeclarationWeb'}           | ${'Déclaration d’accessibilité de la version web'}
+    ${'RecommendedPaths'}                      | ${'Parcours recommandés de la version web'}
   `('should navigate to $route when $title is clicked', async ({ route, title }) => {
     render(<Accessibility />)
 
     const row = screen.getByText(title)
     await user.press(row)
 
-    expect(push).toHaveBeenCalledWith('ProfileStackNavigator', {
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: route,
     })

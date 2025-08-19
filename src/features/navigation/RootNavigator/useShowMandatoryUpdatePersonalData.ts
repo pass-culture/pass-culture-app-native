@@ -16,7 +16,11 @@ export function useShowMandatoryUpdatePersonalData() {
   )
 
   const showEnableMandatoryUpdatePersonalData =
-    user && isLoggedIn && enableMandatoryUpdatePersonalData && displayMandatoryUpdatePersonalData
+    user &&
+    isLoggedIn &&
+    user.hasProfileExpired &&
+    enableMandatoryUpdatePersonalData &&
+    displayMandatoryUpdatePersonalData
 
   const navigateToMandatoryUpdate = useCallback(() => {
     if (navigationRef.isReady()) {

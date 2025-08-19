@@ -6,8 +6,6 @@ import {
   AccessibilityRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
@@ -38,8 +36,12 @@ const sectionConfig: {
     screen: 'AccessibilityActionPlan',
   },
   {
-    title: 'Déclaration d’accessibilité des applications iOS et Android',
-    screen: 'AccessibilityDeclarationMobile',
+    title: 'Déclaration d’accessibilité mobile - Android',
+    screen: 'AccessibilityDeclarationMobileAndroid',
+  },
+  {
+    title: 'Déclaration d’accessibilité mobile - iOS',
+    screen: 'AccessibilityDeclarationMobileIOS',
   },
   {
     title: 'Déclaration d’accessibilité de la version web',
@@ -52,11 +54,10 @@ const sectionConfig: {
 ]
 
 export function Accessibility() {
-  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
-  const { push } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   return (
-    <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false} onGoBack={goBack}>
+    <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false}>
       <AccessibleUnorderedList
         items={sectionConfig.map(({ title, screen, noTopMargin }) => (
           <StyledSectionRow
@@ -64,7 +65,7 @@ export function Accessibility() {
             title={title}
             type="navigable"
             onPress={() =>
-              push('ProfileStackNavigator', {
+              navigate('ProfileStackNavigator', {
                 screen: screen,
               })
             }

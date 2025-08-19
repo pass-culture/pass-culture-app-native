@@ -8,7 +8,8 @@ import { withAuthProtection } from 'features/navigation/RootNavigator/linking/wi
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
 import { AccessibilityActionPlan } from 'features/profile/pages/Accessibility/AccessibilityActionPlan'
-import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobile'
+import { AccessibilityDeclarationMobileAndroid } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileAndroid'
+import { AccessibilityDeclarationMobileIOS } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileIOS'
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
@@ -65,9 +66,14 @@ const profileScreens: ProfileRouteConfig[] = [
     options: { title: 'Plan d’actions' },
   },
   {
-    name: 'AccessibilityDeclarationMobile',
-    component: AccessibilityDeclarationMobile,
-    options: { title: 'Déclaration d’accessibilité des applications iOS et Android' },
+    name: 'AccessibilityDeclarationMobileAndroid',
+    component: AccessibilityDeclarationMobileAndroid,
+    options: { title: 'Déclaration d’accessibilité mobile - Android' },
+  },
+  {
+    name: 'AccessibilityDeclarationMobileIOS',
+    component: AccessibilityDeclarationMobileIOS,
+    options: { title: 'Déclaration d’accessibilité mobile - iOS' },
   },
   {
     name: 'AccessibilityDeclarationWeb',

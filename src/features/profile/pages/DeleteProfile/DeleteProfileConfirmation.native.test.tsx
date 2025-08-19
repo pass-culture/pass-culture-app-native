@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
-import * as useGoBack from 'features/navigation/useGoBack'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -14,12 +13,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-const mockGoBack = jest.fn()
-jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: mockGoBack,
-  canGoBack: jest.fn(() => true),
-})
 
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
@@ -67,7 +60,7 @@ describe('DeleteProfileConfirmation', () => {
     const goBackButton = screen.getByTestId('Revenir en arrière')
     await user.press(goBackButton)
 
-    expect(mockGoBack).toHaveBeenCalledTimes(1)
+    expect(goBack).toHaveBeenCalledTimes(1)
   })
 
   it('should open FAQ link when clicking on "Consultez notre FAQ" button', async () => {

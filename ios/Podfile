@@ -1,5 +1,3 @@
-ENV['RCT_NEW_ARCH_ENABLED'] = '0'
-
 # Transform this into a `node_require` generic function:
 def node_require(script)
   # Resolve script with node to allow for hoisting
@@ -69,7 +67,6 @@ target 'PassCulture' do
   pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '11.13.0'
   pod 'FirebaseCore', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true
-  pod 'Batch', '~> 2.0.0'
   pod 'BatchFirebaseDispatcher'
 
   post_install do |installer|

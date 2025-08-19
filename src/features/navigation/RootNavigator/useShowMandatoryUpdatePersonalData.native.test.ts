@@ -10,7 +10,9 @@ import { renderHook } from 'tests/utils'
 
 import { useShowMandatoryUpdatePersonalData } from './useShowMandatoryUpdatePersonalData'
 
-const mockUseAuthContext = jest.fn().mockReturnValue({ user: beneficiaryUser, isLoggedIn: true })
+const mockUseAuthContext = jest
+  .fn()
+  .mockReturnValue({ user: { ...beneficiaryUser, hasProfileExpired: true }, isLoggedIn: true })
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
 }))
@@ -67,6 +69,19 @@ describe('useShowMandatoryUpdatePersonalData', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       user: beneficiaryUser,
+    })
+
+    renderHook(() => useShowMandatoryUpdatePersonalData(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should not navigate when profile is not expired', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      user: { ...beneficiaryUser, hasProfileExpired: false },
     })
 
     renderHook(() => useShowMandatoryUpdatePersonalData(), {
