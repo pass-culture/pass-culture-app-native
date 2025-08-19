@@ -58,8 +58,8 @@ jobs:
         run: yarn install
       - name: Select XCode version
         run: |
-          XCODE_VERSION="$(cat ./.xcode_version)"
-          IOS_VERSION="$(cat ./.ios_version)"
+          XCODE_VERSION="$(cat ./.xcode-version)"
+          IOS_VERSION="$(cat ./.ios-version)"
           sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app
           xcodebuild -version
           xcodebuild -downloadPlatform iOS -version ${IOS_VERSION}
