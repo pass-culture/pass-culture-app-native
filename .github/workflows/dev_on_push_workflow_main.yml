@@ -1,7 +1,12 @@
-name: '2 [pull/pr] Initiate workflow'
+name: "2 [pull/pr] Initiate workflow"
 
 on:
-  workflow_call:
+  push:
+    branches:
+      - master
+    tags:
+      - "**"
+  pull_request:
 
 permissions:
   contents: write
@@ -119,7 +124,7 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-ios-staging:
-    needs: yarn-install
+    needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
@@ -203,7 +208,12 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-staging:
-    needs: [check-server-folder-changes-staging, deploy-web-staging, check-proxy-version-staging]
+    needs:
+      [
+        check-server-folder-changes-staging,
+        deploy-web-staging,
+        check-proxy-version-staging,
+      ]
     if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
