@@ -1,0 +1,2403 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<NearMePage /> should display NearMePage 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
+  }
+>
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      {
+        "height": 16,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginHorizontal": 24,
+        "marginTop": 24,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "flexShrink": 1,
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 28,
+            "lineHeight": 44.8,
+            "marginBottom": 4,
+          }
+        }
+      >
+        Autour de moi
+      </Text>
+    </View>
+  </View>
+  <View
+    gap={4}
+    style={
+      {
+        "gap": 16,
+        "paddingBottom": 24,
+      }
+    }
+  >
+    <View
+      gap={1}
+      style={
+        {
+          "gap": 4,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "marginHorizontal": 24,
+            }
+          }
+          testID="playlistTitle"
+        >
+          <Text
+            accessibilityHidden={true}
+            accessibilityLabel="Les offres autour de moi"
+            numberOfLines={2}
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 19,
+                "lineHeight": 30.4,
+              }
+            }
+          >
+            Les offres autour de moi
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={
+        {
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        collapsable={false}
+        onLayout={[Function]}
+        style={
+          {
+            "flex": undefined,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <RCTScrollView
+          collapsable={false}
+          drawDistance={187.5}
+          getItemLayout={[Function]}
+          horizontal={true}
+          initialNumToRender={4}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={6}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={0.2}
+          onScroll={[Function]}
+          removeClippedSubviews={true}
+          scrollEnabled={true}
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          testID="offersModuleList"
+          updateCellsBatchingPeriod={100}
+          viewabilityConfig={
+            {
+              "minimumViewTime": 300,
+              "viewAreaCoveragePercentThreshold": 20,
+              "waitForInteraction": true,
+            }
+          }
+          windowSize={7}
+        >
+          <View>
+            <View />
+            <View
+              style={
+                {
+                  "height": undefined,
+                  "width": 0,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "height": 0,
+                  "marginLeft": 0,
+                  "marginTop": undefined,
+                  "opacity": 1,
+                  "width": 0,
+                }
+              }
+            >
+              <View
+                index={0}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre A Made In France Selection By Sofiane Pamart de la catégorie Musique,   prix . "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre A Made In France Selection By Sofiane Pamart de la catégorie Musique,   prix . "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BJ688",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Musique
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          A Made In France Selection By Sofiane Pamart
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "81768105",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "A Made In France Selection By Sofiane Pamart",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "TELECHARGEMENT_MUSIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BJ688",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 49204,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 44.85155,
+                        "lng": -0.59213,
+                      },
+                      "objectID": "317604030",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Cérémonie d’ouverture du Festival de Cannes",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "VOD",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/36M76",
+                      },
+                      "venue": {
+                        "address": "136 Rue Ernest Renan",
+                        "city": "Bordeaux",
+                        "departmentCode": "33",
+                        "id": 118989,
+                        "isPermanent": true,
+                        "name": "France 3 Aquitaine",
+                        "postalCode": "33000",
+                        "publicName": "France 3 Aquitaine",
+                        "venue_type": "OTHER",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={1}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre Cérémonie d’ouverture du Festival de Cannes de la catégorie Films,   prix . "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre Cérémonie d’ouverture du Festival de Cannes de la catégorie Films,   prix . "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/36M76",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Films
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Cérémonie d’ouverture du Festival de Cannes
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 44.85155,
+                        "lng": -0.59213,
+                      },
+                      "objectID": "317604030",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Cérémonie d’ouverture du Festival de Cannes",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "VOD",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/36M76",
+                      },
+                      "venue": {
+                        "address": "136 Rue Ernest Renan",
+                        "city": "Bordeaux",
+                        "departmentCode": "33",
+                        "id": 118989,
+                        "isPermanent": true,
+                        "name": "France 3 Aquitaine",
+                        "postalCode": "33000",
+                        "publicName": "France 3 Aquitaine",
+                        "venue_type": "OTHER",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.88282,
+                        "lng": 2.33015,
+                      },
+                      "objectID": "1115",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Deezer Premium / 3 mois",
+                        "prices": [
+                          17.97,
+                        ],
+                        "subcategoryId": "TELECHARGEMENT_MUSIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/TA4HA",
+                      },
+                      "venue": {
+                        "address": "26 Rue de Calais",
+                        "city": "Paris",
+                        "departmentCode": "75",
+                        "id": 423,
+                        "isPermanent": true,
+                        "name": "DEEZER",
+                        "postalCode": "75009",
+                        "venue_type": "OTHER",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={2}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre Deezer Premium / 3 mois de la catégorie Musique,   prix Dès 0,18 €. "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre Deezer Premium / 3 mois de la catégorie Musique,   prix Dès 0,18 €. "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/TA4HA",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Musique
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Deezer Premium / 3 mois
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        >
+                          Dès 0,18 €
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.88282,
+                        "lng": 2.33015,
+                      },
+                      "objectID": "1115",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Deezer Premium / 3 mois",
+                        "prices": [
+                          17.97,
+                        ],
+                        "subcategoryId": "TELECHARGEMENT_MUSIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/TA4HA",
+                      },
+                      "venue": {
+                        "address": "26 Rue de Calais",
+                        "city": "Paris",
+                        "departmentCode": "75",
+                        "id": 423,
+                        "isPermanent": true,
+                        "name": "DEEZER",
+                        "postalCode": "75009",
+                        "venue_type": "OTHER",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "94662034",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Vidéo du président du Prix Joséphine des artistes, Eddy de Pretto",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "AUTRE_SUPPORT_NUMERIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BS8YY",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/rodion-kutsaiev-0VGG7cqTwCo-unsplash.png",
+                        "id": 5855,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={3}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre Vidéo du président du Prix Joséphine des artistes, Eddy de Pretto de la catégorie Films,   prix . "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre Vidéo du président du Prix Joséphine des artistes, Eddy de Pretto de la catégorie Films,   prix . "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BS8YY",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Films
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Vidéo du président du Prix Joséphine des artistes, Eddy de Pretto
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "94662034",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Vidéo du président du Prix Joséphine des artistes, Eddy de Pretto",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "AUTRE_SUPPORT_NUMERIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BS8YY",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/rodion-kutsaiev-0VGG7cqTwCo-unsplash.png",
+                        "id": 5855,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "93722598",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Le 1 hebdo - Offre découverte 1 mois ",
+                        "prices": [
+                          0.99,
+                        ],
+                        "subcategoryId": "ABO_PRESSE_EN_LIGNE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BRWXK",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 4628,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={4}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre Le 1 hebdo - Offre découverte 1 mois  de la catégorie Médias,   prix Dès 0,01 €. "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre Le 1 hebdo - Offre découverte 1 mois  de la catégorie Médias,   prix Dès 0,01 €. "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BRWXK",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Médias
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Le 1 hebdo - Offre découverte 1 mois 
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        >
+                          Dès 0,01 €
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "93722598",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Le 1 hebdo - Offre découverte 1 mois ",
+                        "prices": [
+                          0.99,
+                        ],
+                        "subcategoryId": "ABO_PRESSE_EN_LIGNE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BRWXK",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 4628,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "85095585",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "likes": 0,
+                        "name": ""Elles" les femmes à l’honneur",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "TELECHARGEMENT_MUSIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BMED9",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 49204,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={5}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre "Elles" les femmes à l’honneur de la catégorie Musique,   prix . "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre "Elles" les femmes à l’honneur de la catégorie Musique,   prix . "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BMED9",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Musique
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          "Elles" les femmes à l’honneur
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "85095585",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "likes": 0,
+                        "name": ""Elles" les femmes à l’honneur",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "TELECHARGEMENT_MUSIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BMED9",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 49204,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "65149056",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "likes": 0,
+                        "name": "A Made In France Selection By Voyou",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "TELECHARGEMENT_MUSIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/A6ZZ8",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 49204,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={6}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre A Made In France Selection By Voyou de la catégorie Musique,   prix . "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre A Made In France Selection By Voyou de la catégorie Musique,   prix . "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/A6ZZ8",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Musique
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          A Made In France Selection By Voyou
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "65149056",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "likes": 0,
+                        "name": "A Made In France Selection By Voyou",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "TELECHARGEMENT_MUSIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/A6ZZ8",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 49204,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "33909960",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "YouScribe Premium / 1 mois (livres, BD, mangas...)",
+                        "prices": [
+                          7.99,
+                        ],
+                        "subcategoryId": "LIVRE_NUMERIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BR7E4",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 4968,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={7}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre YouScribe Premium / 1 mois (livres, BD, mangas...) de la catégorie Livre,   prix Dès 0,08 €. "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre YouScribe Premium / 1 mois (livres, BD, mangas...) de la catégorie Livre,   prix Dès 0,08 €. "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BR7E4",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Livre
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          YouScribe Premium / 1 mois (livres, BD, mangas...)
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        >
+                          Dès 0,08 €
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 47.158459,
+                        "lng": 2.409289,
+                      },
+                      "objectID": "33909960",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "YouScribe Premium / 1 mois (livres, BD, mangas...)",
+                        "prices": [
+                          7.99,
+                        ],
+                        "subcategoryId": "LIVRE_NUMERIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/BR7E4",
+                      },
+                      "venue": {
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.png",
+                        "id": 4968,
+                        "isPermanent": false,
+                        "name": "Offre numérique",
+                        "venue_type": "DIGITAL",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.87179,
+                        "lng": 2.30848,
+                      },
+                      "objectID": "316104623",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Esclavage et cinéma 🎞️",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "AUTRE_SUPPORT_NUMERIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/3RFGM",
+                      },
+                      "venue": {
+                        "address": "87 Rue la Boétie",
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png",
+                        "city": "Paris",
+                        "departmentCode": "75",
+                        "id": 94207,
+                        "isPermanent": false,
+                        "name": "PASS CULTURE",
+                        "postalCode": "75008",
+                        "publicName": "",
+                        "venue_type": "MOVIE",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={8}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre Esclavage et cinéma 🎞️ de la catégorie Films,   prix . "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre Esclavage et cinéma 🎞️ de la catégorie Films,   prix . "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/3RFGM",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Films
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Esclavage et cinéma 🎞️
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  leadingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 48.87179,
+                        "lng": 2.30848,
+                      },
+                      "objectID": "316104623",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "name": "Esclavage et cinéma 🎞️",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "AUTRE_SUPPORT_NUMERIQUE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/3RFGM",
+                      },
+                      "venue": {
+                        "address": "87 Rue la Boétie",
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png",
+                        "city": "Paris",
+                        "departmentCode": "75",
+                        "id": 94207,
+                        "isPermanent": false,
+                        "name": "PASS CULTURE",
+                        "postalCode": "75008",
+                        "publicName": "",
+                        "venue_type": "MOVIE",
+                      },
+                    }
+                  }
+                  style={
+                    {
+                      "width": 16,
+                    }
+                  }
+                  trailingItem={
+                    {
+                      "_geoloc": {
+                        "lat": 49.18351,
+                        "lng": 6.49097,
+                      },
+                      "objectID": "316103939",
+                      "offer": {
+                        "dates": [],
+                        "isDigital": true,
+                        "isDuo": false,
+                        "isEducational": false,
+                        "likes": 0,
+                        "name": "Playlists musicales 🎵",
+                        "prices": [
+                          {
+                            "parsedValue": 0,
+                            "source": "0.0",
+                          },
+                        ],
+                        "subcategoryId": "APP_CULTURELLE",
+                        "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/3RFCU",
+                      },
+                      "venue": {
+                        "address": "20b Rue du Général de Gaulle",
+                        "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/jan-antonin-kolar-hN_zCni3ILg-unsplash_1.png",
+                        "city": "Boulay-Moselle",
+                        "departmentCode": "57",
+                        "id": 120590,
+                        "isPermanent": false,
+                        "name": "PASS CULTURE",
+                        "postalCode": "57220",
+                        "publicName": "",
+                        "venue_type": "CULTURAL_CENTRE",
+                      },
+                    }
+                  }
+                  width={16}
+                />
+              </View>
+              <View
+                index={9}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": undefined,
+                  }
+                }
+              >
+                <View
+                  renderToHardwareTextureAndroid={true}
+                  shouldRasterizeIOS={true}
+                  style={{}}
+                  testID="OfferTile"
+                >
+                  <View
+                    accessibilityLabel="Offre Playlists musicales 🎵 de la catégorie Médias,   prix . "
+                    accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "marginVertical": 4,
+                        },
+                      ]
+                    }
+                    testID="Offre Playlists musicales 🎵 de la catégorie Médias,   prix . "
+                  >
+                    <View
+                      gap={2}
+                      maxWidth={160}
+                      style={
+                        {
+                          "gap": 8,
+                          "maxWidth": 160,
+                        }
+                      }
+                      testID="playlistCardOffer"
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            [
+                              {
+                                "backgroundColor": "#f1f1f4",
+                              },
+                              {
+                                "borderRadius": 8,
+                                "height": 240,
+                                "width": 160,
+                              },
+                            ],
+                          ]
+                        }
+                      >
+                        <FastImageView
+                          defaultSource={null}
+                          resizeMode="cover"
+                          source={
+                            {
+                              "uri": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/3RFCU",
+                            }
+                          }
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          testID="tileImage"
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Médias
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Playlists musicales 🎵
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                          testID="priceIsDuo"
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View />
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</View>
+`;
