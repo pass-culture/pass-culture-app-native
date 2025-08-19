@@ -54,7 +54,7 @@ const sectionConfig: {
 ]
 
 export function Accessibility() {
-  const { push } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   return (
     <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false}>
@@ -65,7 +65,7 @@ export function Accessibility() {
             title={title}
             type="navigable"
             onPress={() =>
-              push('ProfileStackNavigator', {
+              navigate('ProfileStackNavigator', {
                 screen: screen,
               })
             }
