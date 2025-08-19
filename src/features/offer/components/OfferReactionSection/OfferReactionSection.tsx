@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { InfoCounter } from 'features/offer/components/InfoCounter/InfoCounter'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
+import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 import { getRecommendationText } from 'features/offer/helpers/getRecommendationText/getRecommendationText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
@@ -27,7 +28,9 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
   const hasPublishedChronicles = (chronicles?.length ?? 0) > 0
   const hasUnpublishedChronicles = (chroniclesCount ?? 0) - (chronicles?.length ?? 0) > 0
 
-  const likesCounterElement = likesCount ? <LikesInfoCounter text={`${likesCount} j’aime`} /> : null
+  const likesCounterElement = likesCount ? (
+    <LikesInfoCounter text={formatLikesCounter(likesCount)} />
+  ) : null
 
   const getChroniclesCounterElement = (): React.ReactNode => {
     if (hasPublishedChronicles) {
