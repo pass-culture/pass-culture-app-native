@@ -55,6 +55,9 @@ target 'PassCulture' do
   config = use_native_modules!
   use_frameworks! :linkage => :static # Required by react-native-firebase v15+
   $RNFirebaseAsStaticFramework = true # https://rnfirebase.io/#altering-cocoapods-to-use-frameworks
+  $RNFirebaseAnalyticsWithoutAdIdSupport=true # For kids apps Tracking publicitaire automatiquement désactivé (COPPA US + RGPD EU)
+
+  $RNAppsFlyerStrictMode=true # Use strict mode for AppsFlyer, required for Kids apps Tracking publicitaire automatiquement désactivé (COPPA US + RGPD EU)
   
   use_react_native!(
     :path => config[:reactNativePath],
