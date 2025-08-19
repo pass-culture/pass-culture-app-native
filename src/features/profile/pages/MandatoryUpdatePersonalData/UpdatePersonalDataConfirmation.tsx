@@ -8,7 +8,7 @@ export const UpdatePersonalDataConfirmation = () => (
   <GenericInfoPage
     illustration={HappyFace}
     title="C’est noté&nbsp;!"
-    subtitle="Merci, tes informations ont bien été prises en compte. Ça nous servira à mieux t’accompagner."
+    subtitle="Merci, tes informations ont bien été prises en compte."
     buttonPrimary={{
       wording: 'Terminer',
       navigateTo: navigateToHomeConfig,
