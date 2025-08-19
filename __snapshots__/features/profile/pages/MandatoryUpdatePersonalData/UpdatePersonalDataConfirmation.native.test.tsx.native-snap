@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<UpdatePersonalDataConfirmation /> should render correctly 1`] = `
 <View
@@ -178,7 +178,7 @@ exports[`<UpdatePersonalDataConfirmation /> should render correctly 1`] = `
           }
         }
       >
-        Merci, tes informations ont bien été prises en compte. Ça nous servira à mieux t’accompagner.
+        Merci, tes informations ont bien été prises en compte.
       </Text>
     </View>
     <View
