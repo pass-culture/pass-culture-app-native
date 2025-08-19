@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
 import { render, userEvent, screen } from 'tests/utils'
 
@@ -36,7 +36,7 @@ describe('Accessibility', () => {
     const row = screen.getByText(title)
     await user.press(row)
 
-    expect(push).toHaveBeenCalledWith('ProfileStackNavigator', {
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: route,
     })

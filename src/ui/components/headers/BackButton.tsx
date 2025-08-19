@@ -1,8 +1,8 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -16,7 +16,8 @@ interface HeaderIconProps {
 }
 
 export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
-  const { goBack } = useGoBack(...homeNavigationConfig)
+  const { goBack } = useNavigation<UseNavigationType>()
+
   return (
     <StyledTouchable onPress={onGoBack || goBack} accessibilityLabel="Revenir en arrière">
       <ArrowPrevious testID="icon-back" color={color} />
