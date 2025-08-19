@@ -541,6 +541,10 @@ const Container = styled.View({
   flex: 1,
 })
 
+const SkeletonContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.m,
+}))
+
 const Footer = styled.View(({ theme }) => ({
   height: theme.tabBar.height + getSpacing(10),
   alignItems: 'center',
@@ -573,7 +577,14 @@ const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => (
 }))
 
 const SearchResultsPlaceHolder = () => {
-  const renderItem = useCallback(() => <HitPlaceholder />, [])
+  const renderItem = useCallback(
+    () => (
+      <SkeletonContainer>
+        <HitPlaceholder />
+      </SkeletonContainer>
+    ),
+    []
+  )
 
   return (
     <Container>
