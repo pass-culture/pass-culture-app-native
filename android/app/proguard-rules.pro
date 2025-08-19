@@ -39,3 +39,8 @@
 # react-native
 -keep class com.facebook.react.views.modal.ReactModalHostView { *; }
 -keep class com.facebook.react.views.modal.ReactModalHostViewManager { *; }
+
+# AppsFlyer
+-keep class com.appsflyer.** { *; }
+-keep class kotlin.jvm.internal.** { *; }
+-keep public class com.android.installreferrer.** { *; }
