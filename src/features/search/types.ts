@@ -32,6 +32,7 @@ export enum SearchView {
   Landing = 'SearchLanding',
   Results = 'SearchResults',
   Thematic = 'ThematicSearch',
+  NearMe = 'NearMe',
 }
 
 export enum GridListLayout {

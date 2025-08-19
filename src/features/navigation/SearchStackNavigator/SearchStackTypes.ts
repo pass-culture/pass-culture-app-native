@@ -24,4 +24,5 @@ export type SearchStackParamList = {
       accessibilityFilter: Partial<DisabilitiesProperties>
     }
   >
+  NearMe: undefined
 }

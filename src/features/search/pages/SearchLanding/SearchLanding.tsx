@@ -5,6 +5,7 @@ import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
 import { CategoriesList } from 'features/search/components/CategoriesList/CategoriesList'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
@@ -12,12 +13,15 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
+import { SearchView } from 'features/search/types'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
@@ -61,6 +65,12 @@ export const SearchLanding = () => {
               searchInHistory={setQueryHistoryMemoized}
             />
           </Container>
+
+          <InternalTouchableLink
+            navigateTo={getSearchPropConfig(SearchView.NearMe)}
+            as={ButtonPrimary}
+            wording="Autour de moi"
+          />
 
           {isFocusOnSuggestions ? (
             <SearchSuggestions

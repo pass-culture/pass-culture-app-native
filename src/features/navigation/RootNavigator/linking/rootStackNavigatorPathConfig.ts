@@ -47,6 +47,9 @@ export const rootStackNavigatorPathConfig = {
             parse: screenParamsParser[SearchView.Thematic],
             stringify: screenParamsStringifier[SearchView.Thematic],
           },
+          NearMe: {
+            path: 'recherche/autour-de-moi',
+          },
         },
       },
     },
