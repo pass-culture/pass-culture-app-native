@@ -80,16 +80,31 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     }
   }
 
+  const renderTrends = (
+    items: TrendBlock[],
+    moduleId: string,
+    getNavigationProps: (props: TrendBlock) => TrendNavigationProps
+  ) =>
+    items.map((props) => (
+      <Trend key={props.title} moduleId={moduleId} {...props} {...getNavigationProps(props)} />
+    ))
+
   return (
     <React.Fragment>
-      <ScrollContainer
-        horizontal
-        isSmallScreen={isSmallScreen}
-        contentContainerStyle={{ paddingLeft: getSpacing(4) }}>
-        {items.map((props) => (
-          <Trend key={props.title} moduleId={moduleId} {...props} {...getNavigationProps(props)} />
-        ))}
-      </ScrollContainer>
+      {items.length <= 4 ? (
+        <Container isSmallScreen={isSmallScreen} testID="static-trends-module">
+          {renderTrends(items, moduleId, getNavigationProps)}
+        </Container>
+      ) : (
+        <ScrollContainer
+          horizontal
+          isSmallScreen={isSmallScreen}
+          contentContainerStyle={{ paddingLeft: getSpacing(4) }}
+          testID="scrollable-trends-module">
+          {renderTrends(items, moduleId, getNavigationProps)}
+        </ScrollContainer>
+      )}
+
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
         dismissModal={hideVenueMapLocationModal}
@@ -111,3 +126,15 @@ const ScrollContainer = styled.ScrollView<{ isSmallScreen: boolean }>(
     }
   }
 )
+
+const Container = styled.View<{ isSmallScreen: boolean }>(({ isSmallScreen, theme }) => {
+  const mobileGap = isSmallScreen
+    ? theme.designSystem.size.spacing.xs
+    : theme.designSystem.size.spacing.s
+  return {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: theme.isDesktopViewport ? theme.designSystem.size.spacing.l : mobileGap,
+    paddingBottom: theme.home.spaceBetweenModules,
+  }
+})

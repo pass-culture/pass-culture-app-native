@@ -5,6 +5,7 @@ import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
+import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -166,6 +167,37 @@ describe('TrendsModule', () => {
       moduleId: '6dn0unOv4tRBNfOebVHOOy',
       toEntryId: '7qcfqY5zFesLVO5fMb4cqm',
     })
+  })
+
+  it('should display static trends module when items length is less than or equal to 4', async () => {
+    renderTrendsModule()
+
+    expect(await screen.findByTestId('static-trends-module')).toBeOnTheScreen()
+  })
+
+  it('should display scrollable trends module when items length is more than 4', async () => {
+    render(
+      reactQueryProviderHOC(
+        <TrendsModule
+          {...formattedTrendsModule}
+          {...trackingProps}
+          items={[
+            ...formattedTrendsModule.items,
+            {
+              homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+              id: '16ZgVwnOXvVc0N8ko9Kius',
+              image: {
+                uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
+              },
+              title: 'Tendance 4',
+              type: ContentTypes.TREND_BLOCK,
+            },
+          ]}
+        />
+      )
+    )
+
+    expect(await screen.findByTestId('scrollable-trends-module')).toBeOnTheScreen()
   })
 })
 
