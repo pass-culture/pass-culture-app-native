@@ -971,7 +971,10 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   <View
                     style={
                       {
+                        "flexBasis": 0,
                         "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "marginHorizontal": 24,
                       }
                     }
