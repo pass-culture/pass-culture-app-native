@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
+import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { Tag } from 'ui/components/Tag/Tag'
@@ -70,7 +71,7 @@ export const getTagProps = ({
 
   if (likesCount > 0) {
     return {
-      label: `${likesCount} j’aime`,
+      label: formatLikesCounter(likesCount),
       variant: TagVariant.LIKE,
     }
   }
