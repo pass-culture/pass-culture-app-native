@@ -143,8 +143,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 const GridListMenu = styled(View)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-end',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   marginRight: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.l,
 }))
 
 const HeaderSectionContainer = styled.View({
@@ -153,6 +154,7 @@ const HeaderSectionContainer = styled.View({
 })
 
 const TitleContainer = styled.View(({ theme }) => ({
+  flex: 1,
   flexDirection: 'column',
   marginHorizontal: theme.designSystem.size.spacing.xl,
 }))
