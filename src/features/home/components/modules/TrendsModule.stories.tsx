@@ -6,6 +6,7 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
+import { ContentTypes } from 'libs/contentful/types'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { TrendsModule } from './TrendsModule'
@@ -33,6 +34,24 @@ const variantConfig: Variants<typeof TrendsModule> = [
   {
     label: 'TrendsModule with domain credit V3',
     props: { ...formattedTrendsModule },
+  },
+  {
+    label: 'TrendsModule with scroll view',
+    props: {
+      ...formattedTrendsModule,
+      items: [
+        ...formattedTrendsModule.items,
+        {
+          homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+          id: '16ZgVwnOXvVc0N8ko9Kius',
+          image: {
+            uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
+          },
+          title: 'Tendance 4',
+          type: ContentTypes.TREND_BLOCK,
+        },
+      ],
+    },
   },
 ]
 
