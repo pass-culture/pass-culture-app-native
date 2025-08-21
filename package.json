@@ -289,8 +289,6 @@
     "firebase-admin": "^13.4.0",
     "firebase-tools": "^14.7.0",
     "geckodriver": "^3.2.0",
-    "google-auth-library": "^9.14.1",
-    "googleapis": "^110.0.0",
     "hot-updater": "^0.19.9",
     "jest": "^30.0.5",
     "jest-axe": "^9.0.0",
