@@ -37,7 +37,6 @@ flowchart TB
     Firebase_Remote_Config["Firebase Remote Config : A/B test"]
     Google["Google Analytics : firebase traking"]
     Algolia["Algolia : recherche"]
-    Typeform["Typeform"]
     Batch["Batch : notification et modal in app"]
     Google_Maps["Google Maps"]
     Contentful["Contentful : gestion de contenu : home, home thématique, playlists"]
@@ -94,7 +93,6 @@ architecture-beta
   service Firebase_Remote_Config(cloud)[Firebase Remote Config AB test] in others
   service Google_Analytics(cloud)[Google Analytics firebase tracking] in others
   service Algolia(cloud)[Algolia recherche] in others
-  service typeform(cloud)[Typeform] in others
   service batch(cloud)[Batch notification et modal in app] in others
   service Google_Maps(cloud)[Google Maps] in others
   service Contentful(cloud)[Contentful gestion de contenu home et home thematique et playlists] in others
@@ -104,7 +102,6 @@ architecture-beta
   App:T --> B:Firebase_Remote_Config
   App:T --> B:Google_Analytics
   App:T --> B:Algolia
-  App:T --> B:typeform
   App:T --> B:batch
   App:T --> B:Google_Maps
   App:T --> B:Contentful

@@ -727,7 +727,6 @@ export const homepageEntriesAPIResponse = toMutable({
           firstLine: 'Donne ton avis...',
           secondLine: 'En répondant à notre rapide questionnaire',
           image: { sys: { type: 'Link', linkType: 'Asset', id: '6kgALLZ7PL6vYubjvE8s0c' } },
-          url: 'https://passculture.typeform.com/to/PYl2WwKC?email={email}',
           targetNotConnectedUsersOnly: undefined,
         },
       },
