@@ -11157,7 +11157,6 @@ __metadata:
     jest-silent-reporter: ^0.6.0
     jest-styled-components: ^7.0.8
     jetifier: ^1.6.5
-    json: ^11.0.0
     jwt-decode: ^3.1.2
     knip: ^5.43.6
     libphonenumber-js: ^1.12.6
@@ -20842,15 +20841,6 @@ __metadata:
   bin:
     json5: lib/cli.js
   checksum: 866458a8c58a95a49bef3adba929c625e82532bcff1fe93f01d29cb02cac7c3fe1f4b79951b7792c2da9de0b32871a8401a6e3c5b36778ad852bf5b8a61165d7
-  languageName: node
-  linkType: hard
-
-"json@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "json@npm:11.0.0"
-  bin:
-    json: lib/json.js
-  checksum: 0beb8689722fc30251638543caf791bedc1a25199c18eb0281de115a0dadb00a07d4d36cbd7ff7680e04157fcb2bba76f29ed940b1e4e92f60c6fbaa74523fce
   languageName: node
   linkType: hard
 
