@@ -351,7 +351,7 @@ export const logEventAnalytics = {
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
-  logHasClickedFakeDoorCTA: (params: { offerId: number }) =>
+  logHasClickedFakeDoorCTA: (params: { offerId: number; userId?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA }, params),
   logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),

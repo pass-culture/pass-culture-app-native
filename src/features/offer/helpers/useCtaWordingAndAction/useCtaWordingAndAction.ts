@@ -148,7 +148,7 @@ export const getCtaWordingAndAction = ({
     modalToDisplay: OfferModal.SURVEY,
     wording: 'Emprunter',
     isDisabled: false,
-    onPress: () => analytics.logHasClickedFakeDoorCTA({ offerId: offer.id }),
+    onPress: () => analytics.logHasClickedFakeDoorCTA({ offerId: offer.id, userId: user?.id }),
   }
 
   if (!isLoggedIn) {

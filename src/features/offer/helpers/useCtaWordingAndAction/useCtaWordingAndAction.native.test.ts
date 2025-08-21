@@ -1146,6 +1146,7 @@ describe('getCtaWordingAndAction', () => {
 
       expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenNthCalledWith(1, {
         offerId: baseOffer.id,
+        userId: nonBeneficiaryUser.id,
       })
     })
   })
