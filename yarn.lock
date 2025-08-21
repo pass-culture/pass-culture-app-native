@@ -6022,18 +6022,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/local-auth@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "@google-cloud/local-auth@npm:2.1.1"
-  dependencies:
-    arrify: ^2.0.1
-    google-auth-library: ^8.0.2
-    open: ^7.0.3
-    server-destroy: ^1.0.1
-  checksum: 8d1761faa73d34f6506772f99132399444af52d90a714f138d68fdba052dbbb83778404fbc8821467ff68c78ea0d12f3b43b362a5a93501c1ff268523b37e487
-  languageName: node
-  linkType: hard
-
 "@google-cloud/paginator@npm:^5.0.0":
   version: 5.0.2
   resolution: "@google-cloud/paginator@npm:5.0.2"
@@ -11069,7 +11057,6 @@ __metadata:
     "@chanzuckerberg/axe-storybook-testing": ^9.0.0
     "@chromatic-com/storybook": ^4.0.1
     "@emotion/is-prop-valid": ^1.3.1
-    "@google-cloud/local-auth": ^2.1.1
     "@gorhom/bottom-sheet": ^4
     "@hookform/resolvers": ^2.9.11
     "@hot-updater/bare": 0.19.3
@@ -11988,7 +11975,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arrify@npm:^2.0.0, arrify@npm:^2.0.1":
+"arrify@npm:^2.0.0":
   version: 2.0.1
   resolution: "arrify@npm:2.0.1"
   checksum: 067c4c1afd182806a82e4c1cb8acee16ab8b5284fbca1ce29408e6e91281c36bb5b612f6ddfbd40a0f7a7e0c75bf2696eb94c027f6e328d6e9c52465c98e4209
@@ -27014,13 +27001,6 @@ __metadata:
     parseurl: ^1.3.3
     send: ^1.2.0
   checksum: 74f39e88f0444aa6732aae3b9597739c47552adecdc83fa32aa42555e76f1daad480d791af73894655c27a2d378275a461e691cead33fb35d8b976f1e2d24665
-  languageName: node
-  linkType: hard
-
-"server-destroy@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "server-destroy@npm:1.0.1"
-  checksum: cbc19d4f92d25a0a34430c6a09faccbea77d1a69563560eefe883feb67c14c3fb3a1c5af1affae0e82d537886ea0f91d317e39e46b5d6425de3acf57a3ab13e3
   languageName: node
   linkType: hard
 

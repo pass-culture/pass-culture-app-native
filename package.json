@@ -209,7 +209,6 @@
     "@bam.tech/eslint-plugin": "^1.0.1",
     "@chanzuckerberg/axe-storybook-testing": "^9.0.0",
     "@chromatic-com/storybook": "^4.0.1",
-    "@google-cloud/local-auth": "^2.1.1",
     "@hot-updater/bare": "0.19.3",
     "@hot-updater/firebase": "0.19.3",
     "@lhci/cli": "^0.14.0",
