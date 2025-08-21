@@ -145,7 +145,6 @@ SHOULD HAVE:
 
 - Try to solve all warnings on `vite serve` and `vite build`
 - CSP: atm, we haven't added any. In the webpack config we had them.
-- Remove `deprecated-react-native-prop-types`
 
 COULD HAVE:
 
