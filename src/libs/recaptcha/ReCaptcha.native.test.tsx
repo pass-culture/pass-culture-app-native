@@ -23,47 +23,47 @@ describe('<ReCaptcha />', () => {
     expect(recaptchaWebview).not.toBeOnTheScreen()
   })
 
-  it("should call onSuccess() callback when webview's message is success", () => {
+  it("should call onSuccess() callback when webview's message is success", async () => {
     renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     expect(reCaptchaProps.onSuccess).toHaveBeenCalledWith('fakeToken')
   })
 
-  it('should call onError() callback when recaptcha raises an error', () => {
+  it('should call onError() callback when recaptcha raises an error', async () => {
     renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
+    await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     expect(reCaptchaProps.onError).toHaveBeenCalledWith('UnknownError', 'someError')
   })
 
-  it("should call onClose() callback when webview's message is close", () => {
+  it("should call onClose() callback when webview's message is close", async () => {
     renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "close" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "close" }')
 
     expect(reCaptchaProps.onClose).toHaveBeenCalledTimes(1)
   })
 
-  it("should call onExpire() callback when webview's message is expire", () => {
+  it("should call onExpire() callback when webview's message is expire", async () => {
     renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
     expect(reCaptchaProps.onExpire).toHaveBeenCalledTimes(1)
   })
 
-  it("should call onLoad() callback when webview's message is load", () => {
+  it("should call onLoad() callback when webview's message is load", async () => {
     renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "load" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "load" }')
 
     expect(reCaptchaProps.onLoad).toHaveBeenCalledTimes(1)
   })

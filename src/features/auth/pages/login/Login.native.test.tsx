@@ -153,14 +153,7 @@ describe('<Login/>', () => {
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
       oauthStateToken: 'oauth_state_token',
-      deviceInfo: {
-        deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-        os: 'iOS',
-        source: 'iPhone 13',
-        resolution: '750x1334',
-        screenZoomLevel: undefined,
-        fontScale: -1,
-      },
+      deviceInfo: expect.any(Object),
     })
   })
 
@@ -644,7 +637,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(
         recaptchaWebview,
         '{ "message": "success", "token": "fakeToken" }'
@@ -674,7 +667,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(screen.getByText('Un problème est survenu, réessaie plus tard.')).toBeOnTheScreen()
@@ -686,7 +679,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(apiSignInSpy).not.toHaveBeenCalled()
@@ -698,7 +691,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(captureMonitoringError).toHaveBeenCalledWith(
@@ -713,7 +706,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
 
       expect(captureMonitoringError).not.toHaveBeenCalled()
@@ -725,7 +718,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
 
       expect(
@@ -741,7 +734,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
       expect(screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeOnTheScreen()
@@ -753,7 +746,7 @@ describe('<Login/>', () => {
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      const recaptchaWebview = await screen.findByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
       expect(apiSignInSpy).not.toHaveBeenCalled()

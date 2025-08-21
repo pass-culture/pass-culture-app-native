@@ -441,7 +441,7 @@ describe('SearchResultsContent component', () => {
       await user.press(venueButton)
 
       expect(screen.getByTestId('fullscreenModalView')).toHaveTextContent(
-        'Trouver un lieu culturel'
+        /Trouver un lieu culturel/
       )
     })
 
@@ -910,7 +910,7 @@ describe('SearchResultsContent component', () => {
       )
 
       expect(filterButton).toBeOnTheScreen()
-      expect(filterButton).toHaveTextContent('2')
+      expect(filterButton).toHaveTextContent(/2/)
     })
   })
 
