@@ -288,7 +288,6 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "firebase-admin": "^13.4.0",
     "firebase-tools": "^14.7.0",
-    "fs-extra": "^9.1.0",
     "geckodriver": "^3.2.0",
     "google-auth-library": "^9.14.1",
     "googleapis": "^110.0.0",
