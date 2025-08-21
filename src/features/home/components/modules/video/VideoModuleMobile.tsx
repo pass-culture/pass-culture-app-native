@@ -89,7 +89,11 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   )
 }
 
-const StyledView = styled.View(({ theme }) => ({ paddingTop: theme.designSystem.size.spacing.l }))
+const StyledView = styled.View(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.l,
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
+
 const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))

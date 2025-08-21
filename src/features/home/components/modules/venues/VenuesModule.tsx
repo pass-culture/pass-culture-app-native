@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
+import styled from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { ModuleData } from 'features/home/types'
@@ -63,16 +64,23 @@ export const VenuesModule = ({
 
   if (!shouldModuleBeDisplayed) return null
   return (
-    <PassPlaylist
-      testID="offersModuleList"
-      title={displayParameters.title}
-      subtitle={displayParameters.subtitle}
-      data={playlistItems || []}
-      itemHeight={ITEM_HEIGHT}
-      itemWidth={ITEM_WIDTH}
-      renderItem={renderItem}
-      keyExtractor={keyExtractor}
-      tileType="venue"
-    />
+    <PlaylistContainer>
+      <PassPlaylist
+        testID="offersModuleList"
+        title={displayParameters.title}
+        subtitle={displayParameters.subtitle}
+        data={playlistItems || []}
+        itemHeight={ITEM_HEIGHT}
+        itemWidth={ITEM_WIDTH}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        tileType="venue"
+        withMargin={false}
+      />
+    </PlaylistContainer>
   )
 }
+
+const PlaylistContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))

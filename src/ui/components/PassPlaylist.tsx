@@ -34,6 +34,7 @@ type Props = Pick<
   titleSeeMoreLink?: InternalNavigationProps['navigateTo']
   playlistRef?: Ref<FlatList>
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
+  withMargin?: boolean
 }
 
 export const PassPlaylist = ({
@@ -55,6 +56,7 @@ export const PassPlaylist = ({
   testID: _testID,
   noMarginBottom,
   FlatListComponent,
+  withMargin = true,
   ...props
 }: Props) => {
   const { isTouch } = useTheme()
@@ -87,10 +89,15 @@ export const PassPlaylist = ({
     <StyledViewGap gap={4} noMarginBottom={noMarginBottom} {...props}>
       <ViewGap gap={1}>
         <StyledView>
-          <AccessibleTitle TitleComponent={TitleLevel2} testID="playlistTitle" title={title} />
+          <AccessibleTitle
+            withMargin={withMargin}
+            TitleComponent={TitleLevel2}
+            testID="playlistTitle"
+            title={title}
+          />
           {renderTitleSeeMore()}
         </StyledView>
-        {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
+        {subtitle ? <StyledSubtitle withMargin={withMargin}>{subtitle}</StyledSubtitle> : null}
       </ViewGap>
       <Playlist
         testID="offersModuleList"
@@ -120,10 +127,13 @@ const StyledViewGap = styled(ViewGap)<{ noMarginBottom?: boolean }>(
 
 const TitleLevel2 = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 
-const StyledSubtitle = styled(Typo.BodyAccentXs).attrs({
+const StyledSubtitle = styled(Typo.BodyAccentXs).attrs<{
+  windowWidth?: number
+  withMargin?: boolean
+}>({
   numberOfLines: 2,
-})(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
+})(({ withMargin, theme }) => ({
+  marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
   color: theme.designSystem.color.text.subtle,
 }))
 
