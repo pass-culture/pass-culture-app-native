@@ -11124,7 +11124,6 @@ __metadata:
     "@react-native/metro-config": 0.77.3
     "@react-native/typescript-config": 0.77.3
     "@react-navigation/bottom-tabs": ^6.6.1
-    "@react-navigation/core": 6.2.2
     "@react-navigation/native": ^6.1.17
     "@react-navigation/stack": ^6.4.1
     "@react-oauth/google": ^0.11.1
