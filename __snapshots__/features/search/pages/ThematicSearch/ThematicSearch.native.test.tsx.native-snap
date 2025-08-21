@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1`] = `
 <View
@@ -1638,11 +1638,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 }
               >
                 <View
-                  style={
-                    {
-                      "marginHorizontal": 24,
-                    }
-                  }
+                  style={{}}
                   testID="playlistTitle"
                 >
                   <Text
