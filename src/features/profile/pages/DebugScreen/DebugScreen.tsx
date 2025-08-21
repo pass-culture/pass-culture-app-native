@@ -74,7 +74,7 @@ export const DebugScreen = () => {
       }
       fixedBottomChildren={
         <ViewGap gap={4}>
-          <ButtonPrimary wording="Copier dans le presse-papier" onPress={copyToClipboard} />
+          <ButtonPrimary wording="copier dans le presse-papier" onPress={copyToClipboard} />
           <ExternalTouchableLink
             as={ButtonSecondary}
             wording="Contacter le support"
