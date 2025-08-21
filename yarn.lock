@@ -11279,7 +11279,6 @@ __metadata:
     uuid: ^8.3.2
     vite: ^6.3.5
     vite-bundle-analyzer: ^0.16.2
-    vite-plugin-commonjs: ^0.10.4
     vite-plugin-html: ^3.2.2
     yup: ^0.32.11
     zustand: ^4.5.2

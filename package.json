@@ -330,7 +330,6 @@
     "url-loader": "^4.1.1",
     "vite": "^6.3.5",
     "vite-bundle-analyzer": "^0.16.2",
-    "vite-plugin-commonjs": "^0.10.4",
     "vite-plugin-html": "^3.2.2"
   },
   "resolutions": {
