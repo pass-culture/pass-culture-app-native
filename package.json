@@ -286,7 +286,6 @@
     "eslint-plugin-testing-library": "^6.2.0",
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "file-loader": "^6.2.0",
     "firebase-admin": "^13.4.0",
     "firebase-tools": "^14.7.0",
     "fs-extra": "^9.1.0",
