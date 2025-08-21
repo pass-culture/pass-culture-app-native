@@ -1,6 +1,6 @@
 {
   "packages": [
-    "nodejs@20.10.0",
-    "ruby@2.7.5", // needed to run fastlane and to install iOS dependencies
-  ],
+    "nodejs@20.19.",
+    "ruby@2.7.5" // needed to run fastlane and to install iOS dependencies
+  ]
 }
