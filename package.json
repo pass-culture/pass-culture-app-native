@@ -219,7 +219,6 @@
     "@react-native/eslint-config": "0.77.3",
     "@react-native/metro-config": "0.77.3",
     "@react-native/typescript-config": "0.77.3",
-    "@rollup/plugin-commonjs": "^28.0.3",
     "@sentry/vite-plugin": "^2.22.0",
     "@storybook/addon-a11y": "^9.0.18",
     "@storybook/addon-docs": "^9.0.18",
