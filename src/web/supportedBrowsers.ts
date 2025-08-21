@@ -1,7 +1,7 @@
-// The following list was made manually using SauceLab. If it's been a while, feel free to make a new audit to update this list.
+// The following list comes from vite: https://vite.dev/guide/migration.html#default-browser-target-change
 export const supportedBrowsers = {
-  Chrome: 80,
-  Firefox: 80,
-  Edge: 80,
-  Safari: 14,
+  Chrome: 107,
+  Firefox: 104,
+  Edge: 107,
+  Safari: 16,
 } as const
