@@ -61,10 +61,7 @@ jobs:
           XCODE_VERSION="$(cat ./.xcode-version)"
           IOS_VERSION="$(cat ./.ios-version)"
           sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
-          xcodebuild -version
-          sudo xcodebuild -license accept || true
-          xcodebuild -downloadPlatform iOS -version ${IOS_VERSION}
-          xcodebuild -runFirstLaunch
+          xcodebuild -downloadPlatform iOS -buildVersion ${IOS_VERSION}
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
