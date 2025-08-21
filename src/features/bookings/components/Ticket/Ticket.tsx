@@ -59,7 +59,7 @@ export const Ticket = ({
   const venueBlockAddress = getAddress(offer.address)
 
   const handleOnSeeVenuePress = () => {
-    analytics.logConsultVenue({ venueId: offer.venue.id, from: 'bookings' })
+    analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'bookings' })
     navigate('Venue', { id: offer.venue.id })
   }
   const expirationDateFormated = ({ prefix }: { prefix: string }) => {

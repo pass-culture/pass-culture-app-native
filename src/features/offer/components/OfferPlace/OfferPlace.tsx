@@ -137,7 +137,7 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
   const handleOnSeeVenuePress = useCallback(() => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, offer.venue.id], mergeVenueData(offer.venue))
-    analytics.logConsultVenue({ venueId: offer.venue.id, from: 'offer' })
+    analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'offer' })
     navigate('Venue', { id: offer.venue.id })
   }, [navigate, queryClient, offer.venue])
 

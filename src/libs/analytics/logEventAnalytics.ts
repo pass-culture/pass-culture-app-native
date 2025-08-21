@@ -252,7 +252,7 @@ export const logEventAnalytics = {
   logConsultTutorial: (params: { from: string; age?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, params),
   logConsultVenue: (params: {
-    venueId: number
+    venueId: string
     from: Referrals
     moduleName?: string
     moduleId?: string

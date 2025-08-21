@@ -61,7 +61,7 @@ const UnmemoizedSearchVenueItem = ({
 
   const handlePressVenue = () => {
     analytics.logConsultVenue({
-      venueId: Number(venue.objectID),
+      venueId: venue.objectID,
       searchId,
       from: 'searchVenuePlaylist',
     })

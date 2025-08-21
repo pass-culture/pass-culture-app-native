@@ -417,7 +417,7 @@ describe('<OfferPlace />', () => {
       await user.press(screen.getByTestId('RightFilled'))
 
       expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-        venueId: mockOffer.venue.id,
+        venueId: mockOffer.venue.id.toString(),
         from: 'offer',
       })
     })

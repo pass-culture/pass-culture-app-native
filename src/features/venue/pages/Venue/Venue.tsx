@@ -96,7 +96,7 @@ export const Venue: FunctionComponent = () => {
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
-      analytics.logConsultVenue({ venueId: venue.id, from: params.from })
+      analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
     }
   }, [params.from, venue?.id])
 
