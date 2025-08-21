@@ -56,10 +56,6 @@ jobs:
         run: |
           XCODE_VERSION="$(cat ./.xcode-version)"
           sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
-      - name: Download iOS simulators
-        run: |
-          IOS_VERSION="$(cat ./.ios-version)"
-          xcodebuild -downloadPlatform iOS -buildVersion ${IOS_VERSION}
       - name: Show available XCode's SDKs
         run: xcodebuild -showsdks
       - name: Install cocoapods
