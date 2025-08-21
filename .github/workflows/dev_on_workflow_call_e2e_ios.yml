@@ -62,7 +62,7 @@ jobs:
         run: |
           XCODE_VERSION="$(cat ./.xcode-version)"
           IOS_VERSION="$(cat ./.ios-version)"
-          sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app
+          sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
           xcodebuild -version
           sudo xcodebuild -license accept || true
           xcodebuild -downloadPlatform iOS -version ${IOS_VERSION}
