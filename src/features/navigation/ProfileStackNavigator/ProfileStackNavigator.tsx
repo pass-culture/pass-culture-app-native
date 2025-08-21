@@ -118,7 +118,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'DebugScreen',
-    component: withAuthProtection(DebugScreen),
+    component: DebugScreen,
     options: { title: 'Débuggage' },
   },
   {
