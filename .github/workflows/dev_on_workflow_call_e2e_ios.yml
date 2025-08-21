@@ -29,12 +29,6 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 60
     steps:
-      - run: |
-          echo "This job fails"
-          echo "After many tries to fix it, none succeeded"
-          echo "Skip this job while this issue is open https://github.com/actions/runner-images/issues/12758"
-          echo "TODO(PC-37540): re-enable test end to end on iOS"
-          exit 1
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
