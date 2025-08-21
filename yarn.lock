@@ -11236,7 +11236,6 @@ __metadata:
     react-native-calendars: 1.1312.0
     react-native-code-push: ^8.3.1
     react-native-date-picker: ^5.0.13
-    react-native-detector: ^0.2.3
     react-native-device-info: ^11.1.0
     react-native-email-link: ^1.10.0
     react-native-fast-image: ^8.6.3
@@ -25310,16 +25309,6 @@ __metadata:
     react: ">= 17.0.1"
     react-native: ">= 0.64.3"
   checksum: 80a97687571d25cee8b40a9e1d471ccb303cd152d2db2edbc735b3280747e40f42ea626437d81bd5abeced7ed815414195929074295d54c0da54fc7da6e1011e
-  languageName: node
-  linkType: hard
-
-"react-native-detector@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "react-native-detector@npm:0.2.3"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: ac8e8f3932c5f986c3445e2ba865184eb5e6eae551c55a1611f02eaafc8cfa68f8671b3eee3c2665cd9eab8b378b69f2abb9dc99004dda7aa3c5cb2058789054
   languageName: node
   linkType: hard
 

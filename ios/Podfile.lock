@@ -1523,8 +1523,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-detector (0.2.3):
-    - React
   - react-native-geolocation-service (5.3.1):
     - React
   - react-native-get-random-values (1.7.1):
@@ -2358,7 +2356,6 @@ DEPENDENCIES:
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
-  - react-native-detector (from `../node_modules/react-native-detector`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-in-app-review (from `../node_modules/react-native-in-app-review`)
@@ -2560,8 +2557,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@bam.tech/react-native-config"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
-  react-native-detector:
-    :path: "../node_modules/react-native-detector"
   react-native-geolocation-service:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-get-random-values:
@@ -2775,7 +2770,6 @@ SPEC CHECKSUMS:
   react-native-blur: 6782cb12b39a0200ad2a782fb9a5529c2c83c33b
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 88d5c7fc7a0e9f27edd698e35b8365c8bc2a8fc6
-  react-native-detector: 751696a5534f6bbc11be87515cca3d8d32593d73
   react-native-geolocation-service: 608e1da71a1ac31b4de64d9ef2815f697978c55b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-in-app-review: db8bb167a5f238e7ceca5c242d6b36ce8c4404a4
