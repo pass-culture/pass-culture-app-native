@@ -46,7 +46,9 @@ export const CHRONICLE_VARIANT_CONFIG = [
     subtitleItem: 'Membre du Book Club',
     Icon: <BookClubIcon testID="bookClubIcon" />,
     SmallIcon: <SmallBookClubIcon />,
-    modalWording: 'Les avis du Book Club sont écrits par des jeunes passionnés de lecture.',
+    modalTitle: 'C’est quoi le Book Club\u00a0?',
+    modalWording:
+      'C’est un groupe de jeunes passionnés de lecture choisi par le pass Culture. \n\nChaque mois, ils lisent, donnent leur avis, partagent leurs coups de cœur... pour t’aider à choisir ton prochain livre\u00a0!',
     modalButtonLabel: 'Voir toutes les recos du Book Club',
   },
   {
@@ -57,7 +59,9 @@ export const CHRONICLE_VARIANT_CONFIG = [
     subtitleItem: 'Membre du Ciné Club',
     Icon: <CineClubIcon testID="cineClubIcon" />,
     SmallIcon: <SmallCineClubIcon />,
-    modalWording: 'Les avis du Ciné Club sont écrits par des jeunes passionnés de cinéma.',
+    modalTitle: 'C’est quoi le Ciné Club\u00a0?',
+    modalWording:
+      'C’est un groupe de jeunes cinéphiles choisi par le pass Culture. \n\nChaque mois, ils regardent des films, donnent leur avis et partagent ceux qui les ont fait vibrer… pour t’inspirer ta prochaine séance\u00a0!',
     modalButtonLabel: 'Voir toutes les recos du Ciné Club',
   },
 ] as const

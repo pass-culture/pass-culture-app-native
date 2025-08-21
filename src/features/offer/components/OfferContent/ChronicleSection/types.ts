@@ -22,6 +22,7 @@ export type ChronicleVariantInfo = {
   subtitleSection: string
   subtitleItem: string
   Icon?: React.ReactNode
+  modalTitle: string
   modalWording: string
   modalButtonLabel: string
   SmallIcon?: React.ReactNode

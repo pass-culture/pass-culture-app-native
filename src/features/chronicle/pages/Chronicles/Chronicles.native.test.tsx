@@ -95,6 +95,20 @@ describe('Chronicles', () => {
 
       await waitFor(() => expect(mockScrollToIndex).toHaveBeenCalledTimes(1))
     })
+
+    it('should open chronicle modal when pressing "C’est quoi le Ciné Club ?" button', async () => {
+      jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+      render(reactQueryProviderHOC(<Chronicles />))
+
+      await user.press(await screen.findByText('C’est quoi le Ciné Club ?'))
+
+      expect(mockShowModal).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('When chronicle id not defined', () => {
@@ -134,22 +148,6 @@ describe('Chronicles', () => {
       })
 
       expect(mockScrollToIndex).not.toHaveBeenCalled()
-    })
-
-    it('should open chronicle modal when pressing "Qui écrit les avis ?" button', async () => {
-      jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
-        visible: false,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
-      render(reactQueryProviderHOC(<Chronicles />))
-
-      await screen.findByText('Tous les avis')
-
-      await user.press(screen.getByText('Qui écrit les avis ?'))
-
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
 
     describe('When modal is open', () => {
