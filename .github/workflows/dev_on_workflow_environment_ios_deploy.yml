@@ -56,6 +56,10 @@ jobs:
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Yarn install
         run: yarn install
+      - name: Select XCode version
+        run: |
+          XCODE_VERSION="$(cat ./.xcode-version)"
+          sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
