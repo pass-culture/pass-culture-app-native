@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1`] = `
 <View
@@ -66,6 +66,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             }
           >
             <View
+              accessibilityRole="header"
               style={
                 {
                   "alignItems": "center",
@@ -1648,6 +1649,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   <Text
                     accessibilityHidden={true}
                     accessibilityLabel="GTL playlist"
+                    accessibilityRole="header"
                     numberOfLines={2}
                     style={
                       {
@@ -2485,6 +2487,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      accessibilityRole="header"
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
                       style={{}}
@@ -2768,6 +2771,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      accessibilityRole="header"
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
                       style={{}}
@@ -3051,6 +3055,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      accessibilityRole="header"
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
                       style={{}}
@@ -3334,6 +3339,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     }
                   >
                     <View
+                      accessibilityRole="header"
                       renderToHardwareTextureAndroid={true}
                       shouldRasterizeIOS={true}
                       style={{}}

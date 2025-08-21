@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`CulturalSurveyThanksPage page When FF is disabled should render the page with correct layout and content 1`] = `
 <View
@@ -151,6 +151,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -164,6 +165,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
         Un grand merci pour tes réponses !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -437,6 +439,7 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -450,6 +453,7 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
         Un grand merci pour tes réponses !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

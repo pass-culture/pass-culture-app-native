@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -240,6 +241,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               }
             />
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",

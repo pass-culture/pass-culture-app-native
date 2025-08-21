@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<GenericOfficialPage /> should render correctly 1`] = `
 <View
@@ -129,6 +129,7 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
         }
       />
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

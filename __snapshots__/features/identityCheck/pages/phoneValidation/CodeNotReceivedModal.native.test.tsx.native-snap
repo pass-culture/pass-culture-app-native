@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<CodeNotReceivedModal /> should have a different color if one attempt remaining 1`] = `
 <Modal
@@ -209,6 +209,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -697,6 +698,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<AccountSecurity/> with route params when user is connected and has a password should match snapshot with valid token 1`] = `
 <View
@@ -155,6 +155,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -810,6 +811,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -1376,6 +1378,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

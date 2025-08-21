@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<FinishSubscriptionModal /> should display correct body when user needs to verify his identity to activate his eighteen year old credit 1`] = `
 <Modal
@@ -209,6 +209,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -698,6 +699,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -1187,6 +1189,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={

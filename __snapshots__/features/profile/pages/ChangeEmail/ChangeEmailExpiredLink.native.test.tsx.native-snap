@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
 <View
@@ -155,6 +155,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -168,6 +169,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
         Oups !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -552,6 +554,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -565,6 +568,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
         Oups !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

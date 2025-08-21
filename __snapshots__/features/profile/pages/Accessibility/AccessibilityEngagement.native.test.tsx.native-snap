@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AccessibilityEngagement should render correctly 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`AccessibilityEngagement should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -231,6 +232,7 @@ exports[`AccessibilityEngagement should render correctly 1`] = `
         À cet égard et afin de pérenniser la démarche, un groupe de travail transversal a été créé en interne. Il est composé d’une personne en lien avec les publics, d’ingénieurs en informatique, d’une designeuse, et d’une personne dédiée à la conception du produit.
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -262,6 +264,7 @@ exports[`AccessibilityEngagement should render correctly 1`] = `
         Ce travail pour rendre et maintenir accessibles les parcours clé de l’application web est le socle pour construire un environnement numérique inclusif et ainsi initier des échanges dédiés avec les acteurs du monde de l’accessibilité et utilisateurs en situation de handicap.
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

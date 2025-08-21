@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Home page should render correctly 1`] = `
 <View
@@ -165,6 +165,7 @@ exports[`Home page should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     numberOfLines={2}
                     style={
                       {

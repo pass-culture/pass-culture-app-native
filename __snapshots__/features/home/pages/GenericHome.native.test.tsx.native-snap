@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`GenericHome With not displayed skeleton by default should display real content 1`] = `
 <View
@@ -127,6 +127,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
             testID="listHeader"
           >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
@@ -197,6 +198,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
   >
     <View>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -4399,6 +4401,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             testID="listHeader"
           >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",

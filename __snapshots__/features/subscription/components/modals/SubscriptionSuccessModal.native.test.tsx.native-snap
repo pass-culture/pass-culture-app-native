@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SubscriptionSuccessModal /> should render correctly for activites_creatives 1`] = `
 <Modal
@@ -209,6 +209,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -798,6 +799,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -1387,6 +1389,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -1976,6 +1979,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -2565,6 +2569,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
@@ -3154,6 +3159,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
           }
         >
           <Text
+            accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
             style={

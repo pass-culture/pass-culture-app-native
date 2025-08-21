@@ -155,6 +155,7 @@ exports[`<MandatoryUpdatePersonalData /> should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -168,6 +169,7 @@ exports[`<MandatoryUpdatePersonalData /> should render correctly 1`] = `
         Mets à jour ton profil
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

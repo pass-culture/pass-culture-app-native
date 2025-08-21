@@ -155,6 +155,7 @@ exports[`<UpdatePersonalDataConfirmation /> should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -168,6 +169,7 @@ exports[`<UpdatePersonalDataConfirmation /> should render correctly 1`] = `
         C’est noté !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

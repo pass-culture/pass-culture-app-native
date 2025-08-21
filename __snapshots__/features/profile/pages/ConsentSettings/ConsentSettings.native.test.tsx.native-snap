@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<ConsentSettings/> should render correctly 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -223,6 +224,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         Tu peux choisir d’accepter ou non l’activation de leur suivi.
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -590,6 +592,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
@@ -949,6 +952,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
@@ -1308,6 +1312,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
@@ -1670,6 +1675,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
@@ -1829,6 +1835,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         }
       />
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

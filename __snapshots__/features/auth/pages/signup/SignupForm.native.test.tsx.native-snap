@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -245,6 +246,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         }
       >
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -893,6 +895,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -1057,6 +1060,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         }
       >
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1795,6 +1799,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -1959,6 +1964,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
         }
       >
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -2946,6 +2952,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -3110,6 +3117,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         }
       >
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",

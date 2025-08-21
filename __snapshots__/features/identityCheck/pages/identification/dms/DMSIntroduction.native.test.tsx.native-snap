@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DMSIntroduction foreign version should render correctly 1`] = `
 <View
@@ -227,6 +227,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -844,6 +845,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

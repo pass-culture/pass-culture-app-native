@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
 <View
@@ -155,6 +155,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -168,6 +169,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
         Ton compte est désactivé
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

@@ -141,6 +141,7 @@ exports[`Accessibility should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {

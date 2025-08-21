@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off should render correctly 1`] = `
 <View
@@ -280,6 +280,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                       }
                     >
                       <Text
+                        accessibilityRole="header"
                         style={
                           {
                             "color": "#161617",
@@ -341,6 +342,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                           }
                         >
                           <Text
+                            accessibilityRole="header"
                             style={
                               {
                                 "color": "#eb0055",
@@ -498,6 +500,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
           </Text>
           <View>
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",

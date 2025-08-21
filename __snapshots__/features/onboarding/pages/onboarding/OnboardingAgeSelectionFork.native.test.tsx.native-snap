@@ -138,6 +138,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
           }
         />
         <Text
+          accessibilityRole="header"
           numberOfLines={3}
           style={
             {
@@ -258,6 +259,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                   >
                     J’ai 
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -380,6 +382,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                   >
                     J’ai 
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -501,6 +504,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                   >
                     J’ai 
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -622,6 +626,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                   >
                     J’ai 
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",

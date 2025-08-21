@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`NotificationsSettings should render correctly when user is logged in 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -206,6 +207,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         }
       >
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -646,6 +648,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             }
           />
           <Text
+            accessibilityRole="header"
             style={
               {
                 "color": "#161617",
@@ -2272,6 +2275,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -2404,6 +2408,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           }
         />
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -2838,6 +2843,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             }
           />
           <Text
+            accessibilityRole="header"
             style={
               {
                 "color": "#161617",

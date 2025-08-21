@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Venue /> should match snapshot 1`] = `
 <View
@@ -158,6 +158,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+                accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
                   {
@@ -755,6 +756,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <Text
                             accessibilityHidden={true}
                             accessibilityLabel="Toutes les offres"
+                            accessibilityRole="header"
                             numberOfLines={2}
                             style={
                               {
@@ -982,6 +984,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           >
                             <View
+                              accessibilityRole="header"
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
                               style={{}}
@@ -1183,6 +1186,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           >
                             <View
+                              accessibilityRole="header"
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
                               style={{}}
@@ -1384,6 +1388,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           >
                             <View
+                              accessibilityRole="header"
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
                               style={{}}
@@ -1773,6 +1778,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     style={
                       {
                         "color": "#161617",
@@ -2895,6 +2901,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+                accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
                   {
@@ -3461,6 +3468,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     style={
                       {
                         "color": "#161617",
@@ -3809,6 +3817,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <Text
                             accessibilityHidden={true}
                             accessibilityLabel="Toutes les offres"
+                            accessibilityRole="header"
                             numberOfLines={2}
                             style={
                               {
@@ -4036,6 +4045,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           >
                             <View
+                              accessibilityRole="header"
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
                               style={{}}
@@ -4237,6 +4247,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           >
                             <View
+                              accessibilityRole="header"
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
                               style={{}}
@@ -4438,6 +4449,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           >
                             <View
+                              accessibilityRole="header"
                               renderToHardwareTextureAndroid={true}
                               shouldRasterizeIOS={true}
                               style={{}}
@@ -4827,6 +4839,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     style={
                       {
                         "color": "#161617",
@@ -5949,6 +5962,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+                accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
                   {
@@ -7868,6 +7882,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     style={
                       {
                         "color": "#161617",

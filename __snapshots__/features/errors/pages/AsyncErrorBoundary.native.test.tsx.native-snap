@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AsyncErrorBoundary component should render 1`] = `
 <View
@@ -129,6 +129,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -142,6 +143,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         Oups !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
 <View
@@ -71,6 +71,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -84,6 +85,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
         Mise à jour requise !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
