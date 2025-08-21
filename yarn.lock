@@ -9915,16 +9915,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mailparser@npm:^3.4.0":
-  version: 3.4.0
-  resolution: "@types/mailparser@npm:3.4.0"
-  dependencies:
-    "@types/node": "*"
-    iconv-lite: ^0.6.3
-  checksum: 05232ba3579b09224e5335848da27817a4cac8cc0eb622202904b62851fd61bbab7b5ca90016531e40098641351d84c2355f10cd9c9fa718da4ea2cb0e637bd0
-  languageName: node
-  linkType: hard
-
 "@types/mdx@npm:^2.0.0":
   version: 2.0.13
   resolution: "@types/mdx@npm:2.0.13"
@@ -11093,7 +11083,6 @@ __metadata:
     "@types/jest": ^29.5.13
     "@types/jest-axe": ^3.5.9
     "@types/lodash": ^4.14.182
-    "@types/mailparser": ^3.4.0
     "@types/node": 18
     "@types/react": 18.2.6
     "@types/react-dom": ^18.0.0
