@@ -11132,7 +11132,6 @@ __metadata:
     algoliasearch: ^4.24.0
     allure-commandline: ^2.33.0
     allure-jest: ^3.2.0
-    allure-js-commons: ^3.2.0
     appcenter-cli: ^2.14.0
     babel-jest: ^30.0.5
     babel-loader: ^8.2.5
@@ -11575,7 +11574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:3.2.0, allure-js-commons@npm:^3.2.0":
+"allure-js-commons@npm:3.2.0":
   version: 3.2.0
   resolution: "allure-js-commons@npm:3.2.0"
   dependencies:

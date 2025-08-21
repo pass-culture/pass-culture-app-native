@@ -255,7 +255,6 @@
     "@welldone-software/why-did-you-render": "^7.0.1",
     "allure-commandline": "^2.33.0",
     "allure-jest": "^3.2.0",
-    "allure-js-commons": "^3.2.0",
     "appcenter-cli": "^2.14.0",
     "babel-jest": "^30.0.5",
     "babel-loader": "^8.2.5",
