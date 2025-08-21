@@ -1,10 +1,14 @@
-import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
-import react from '@vitejs/plugin-react'
-import { createHtmlPlugin } from 'vite-plugin-html'
-import { sentryVitePlugin } from '@sentry/vite-plugin'
-import { whiteListEnv } from './whiteListEnv'
+/* eslint-disable import/no-extraneous-dependencies */
 import { execSync } from 'child_process'
+
+import { sentryVitePlugin } from '@sentry/vite-plugin'
+import react from '@vitejs/plugin-react'
+import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
 import { analyzer } from 'vite-bundle-analyzer'
+import { createHtmlPlugin } from 'vite-plugin-html'
+
+import packageJson from './package.json'
+import { whiteListEnv } from './whiteListEnv.js'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions]
@@ -19,7 +23,7 @@ const libsThatHaveJSFilesContainingJSX = [
   'node_modules/react-native-reanimated',
 ]
 
-const packageJson = require('./package.json')
+// const packageJson = require('./package.json')
 
 function getGitInfo(command) {
   try {
@@ -85,7 +89,7 @@ export default ({ mode }) => {
             AUTHOR: packageJson.author.name,
             TWITTER_SITE: packageJson.author.twitter,
             META_NO_INDEX:
-              env.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
+              env.ENV === 'production' ? '' : `<meta name="robots" content="noindex" />`,
             PUBLIC_URL: isProdMode ? env.APP_PUBLIC_URL : undefined,
             IOS_APP_STORE_ID: env.IOS_APP_STORE_ID,
             ANDROID_APP_ID: env.ANDROID_APP_ID,
