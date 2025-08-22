@@ -93,7 +93,7 @@ export const ThematicSearch: React.FC = () => {
     : undefined
 
   return (
-    <Page>
+    <StyledPage>
       <ThematicSearchBar
         offerCategories={offerCategories}
         placeholder={`${titles[offerCategory]}...`}
@@ -114,9 +114,13 @@ export const ThematicSearch: React.FC = () => {
           {playlistsComponent[offerCategory]}
         </StyledScrollView>
       </ThematicSearchBar>
-    </Page>
+    </StyledPage>
   )
 }
+
+const StyledPage = styled(Page)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
 const StyledScrollView = styled(ScrollView)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,

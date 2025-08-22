@@ -8,6 +8,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginBottom": 32,
     }
   }
 >
