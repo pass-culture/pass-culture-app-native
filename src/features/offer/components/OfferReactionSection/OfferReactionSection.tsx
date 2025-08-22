@@ -6,6 +6,8 @@ import { InfoCounter } from 'features/offer/components/InfoCounter/InfoCounter'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 import { getRecommendationText } from 'features/offer/helpers/getRecommendationText/getRecommendationText'
+import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Star } from 'ui/svg/Star'
@@ -25,6 +27,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
   chronicleVariantInfo,
   chronicles,
 }) => {
+  const scrollToAnchor = useScrollToAnchor()
   const hasPublishedChronicles = (chronicles?.length ?? 0) > 0
   const hasUnpublishedChronicles = (chroniclesCount ?? 0) - (chronicles?.length ?? 0) > 0
 
@@ -32,13 +35,19 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
     <LikesInfoCounter text={formatLikesCounter(likesCount)} />
   ) : null
 
+  const handleChroniclesPress = () => {
+    scrollToAnchor('chronicles-section')
+  }
+
   const getChroniclesCounterElement = (): React.ReactNode => {
     if (hasPublishedChronicles) {
       return (
-        <ChroniclesInfoCounter
-          text={`${chronicles?.length ?? 0} avis`}
-          icon={chronicleVariantInfo.SmallIcon}
-        />
+        <TouchableOpacity onPress={handleChroniclesPress} testID="chroniclesCounter">
+          <ChroniclesInfoCounter
+            text={`${chronicles?.length ?? 0} avis`}
+            icon={chronicleVariantInfo.SmallIcon}
+          />
+        </TouchableOpacity>
       )
     }
     if (hasUnpublishedChronicles) {
