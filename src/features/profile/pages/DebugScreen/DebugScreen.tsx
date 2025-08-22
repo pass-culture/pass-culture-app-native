@@ -28,21 +28,21 @@ export const DebugScreen = () => {
     ? `${Math.round(deviceInfo.screenZoomLevel * 100)}%`
     : undefined
 
+  const undefinedValue = 'Non renseigné'
   const debugData = [
     { label: 'App version', value: fullVersion },
-    { label: 'Device ID', value: deviceInfo?.deviceId },
-    { label: 'Device model', value: deviceInfo?.source },
-    { label: 'Device OS', value: deviceInfo?.os },
-    { label: 'Device resolution', value: deviceInfo?.resolution },
-    { label: 'Device zoom', value: zoomInPercent },
-    { label: 'User ID', value: user?.id },
-    { label: 'Device font scale', value: deviceInfo?.fontScale },
+    { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
+    { label: 'Device model', value: deviceInfo?.source ?? undefinedValue },
+    { label: 'Device OS', value: deviceInfo?.os ?? undefinedValue },
+    { label: 'Device resolution', value: deviceInfo?.resolution ?? undefinedValue },
+    { label: 'Device zoom', value: zoomInPercent ?? undefinedValue },
+    { label: 'User ID', value: user?.id ?? undefinedValue },
+    { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
   ]
 
   const sortedDebugData = [...debugData].sort((a, b) => a.label.localeCompare(b.label))
 
   const debugText = sortedDebugData
-    .filter((item) => item.value !== undefined && item.value !== null)
     .map((item) => `${item.label}\u00a0: ${String(item.value)}`)
     .join(LINE_BREAK)
 
@@ -63,13 +63,11 @@ export const DebugScreen = () => {
       title="Débuggage"
       scrollChildren={
         <ViewGap gap={2}>
-          {sortedDebugData
-            .filter((item) => item.value !== undefined)
-            .map((item) => (
-              <Typo.Button key={item.label}>
-                {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
-              </Typo.Button>
-            ))}
+          {sortedDebugData.map((item) => (
+            <Typo.Button key={item.label}>
+              {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
+            </Typo.Button>
+          ))}
         </ViewGap>
       }
       fixedBottomChildren={

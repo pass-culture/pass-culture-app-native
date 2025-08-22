@@ -401,6 +401,31 @@ exports[`DebugScreen should render correctly 1`] = `
                   }
                 }
               >
+                Device zoom
+                 : 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Non renseigné
+                </Text>
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
                 User ID
                  : 
                 <Text

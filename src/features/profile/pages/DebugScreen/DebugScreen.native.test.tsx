@@ -76,7 +76,7 @@ describe('DebugScreen', () => {
     expect(decodedUrl).toContain('Device resolution : 1080x1920')
     expect(decodedUrl).toContain('User ID : 1234')
     expect(decodedUrl).toContain('Device font scale : 1.5')
-    expect(decodedUrl).not.toContain('Device zoom :')
+    expect(decodedUrl).toContain('Device zoom : Non renseigné')
   })
 
   it('should log ClickCopyDebugInfo event when press "Copier dans le press-papier" button', async () => {

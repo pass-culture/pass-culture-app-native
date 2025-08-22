@@ -329,7 +329,7 @@ const OnlineProfile: React.FC = () => {
                   {version}
                   {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
                 </Version>
-                {enableDebugSection && isLoggedIn ? (
+                {enableDebugSection ? (
                   <DebugButtonContainer>
                     <InternalTouchableLink
                       as={ButtonQuaternaryBlack}
