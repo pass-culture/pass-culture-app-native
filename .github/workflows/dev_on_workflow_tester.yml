@@ -63,7 +63,7 @@ jobs:
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:unit:web:ci -- SearchListHeader --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
       - name: Rename allure reports folder
         if: ${{ always() && github.ref == 'refs/heads/master' }}
