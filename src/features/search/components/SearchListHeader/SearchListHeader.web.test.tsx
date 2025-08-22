@@ -123,7 +123,6 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      // FIXED: Wrapped the assertion in `await waitFor`
       await waitFor(() => {
         expect(
           screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
