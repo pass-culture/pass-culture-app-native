@@ -35,7 +35,7 @@ const defaultParameters = {
   user: { ...nonBeneficiaryUser, bookedOffer: {} },
   userStatus: { statusType: YoungStatusType.non_eligible },
   isBeneficiary: false,
-  hasEnoughCredit: false,
+  hasEnoughCreditData: { hasEnoughCredit: false, message: undefined },
   isUnderageBeneficiary: false,
   bookOffer: jest.fn(),
   isBookingLoading: false,
@@ -352,7 +352,7 @@ describe('getCtaWordingAndAction', () => {
           userStatus: { statusType: YoungStatusType.ex_beneficiary },
           offer,
           subcategory,
-          hasEnoughCredit: true,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
         })
         const { wording, onPress, navigateTo, externalNav } = result?.[0] || {}
 
@@ -407,7 +407,7 @@ describe('getCtaWordingAndAction', () => {
           isBeneficiary: true,
           offer,
           subcategory,
-          hasEnoughCredit: true,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
         })
         const { wording, onPress, navigateTo, externalNav } = result?.[0] || {}
 
@@ -434,7 +434,8 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer: buildOffer({ ...partialOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER }),
         subcategory: buildSubcategory(partialSubcategory || {}),
-        hasEnoughCredit: true,
+        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+
         isUnderageBeneficiary: true,
         ...parameters,
       })
@@ -550,7 +551,7 @@ describe('getCtaWordingAndAction', () => {
       const result = getCta(
         { isDigital: true },
         {
-          hasEnoughCredit: false,
+          hasEnoughCreditData: { hasEnoughCredit: false },
           offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
         }
       )
@@ -574,7 +575,7 @@ describe('getCtaWordingAndAction', () => {
       ({ isDisabled, wording, hasEnoughCredit, isEvent, modalToDisplay }) => {
         const result = getCta(
           { isDigital: true },
-          { hasEnoughCredit, isUnderageBeneficiary: false },
+          { hasEnoughCreditData: { hasEnoughCredit }, isUnderageBeneficiary: false },
           { isEvent }
         )
         const { onPress, movieScreeningUserData } = result?.[0] || {}
@@ -611,7 +612,7 @@ describe('getCtaWordingAndAction', () => {
       }) => {
         const result = getCta(
           { isDigital },
-          { hasEnoughCredit, isUnderageBeneficiary },
+          { hasEnoughCreditData: { hasEnoughCredit }, isUnderageBeneficiary },
           { isEvent: false }
         )
         const { onPress } = result?.[0] || {}
@@ -637,7 +638,7 @@ describe('getCtaWordingAndAction', () => {
     `(
       'check if Credit is enough for the category | $isEvent | creditThing=$creditThing | creditEvent=$creditEvent => $wording',
       ({ isDisabled, wording, hasEnoughCredit, isEvent, modalToDisplay }) => {
-        const result = getCta({}, { hasEnoughCredit }, { isEvent })
+        const result = getCta({}, { hasEnoughCreditData: { hasEnoughCredit } }, { isEvent })
         const { onPress, movieScreeningUserData } = result?.[0] || {
           onPress: undefined,
         }
@@ -664,7 +665,7 @@ describe('getCtaWordingAndAction', () => {
       ({ isDisabled, wording, hasEnoughCredit, modalToDisplay }) => {
         const result = getCta(
           { isDigital: true },
-          { hasEnoughCredit, isUnderageBeneficiary: false },
+          { hasEnoughCreditData: { hasEnoughCredit }, isUnderageBeneficiary: false },
           { isEvent: false }
         )
         const { onPress } = result?.[0] || {}
@@ -756,7 +757,8 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer,
         subcategory,
-        hasEnoughCredit: true,
+        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+
         apiRecoParams: defaultApiRecoParams,
         playlistType: defaultPlaylistType,
       })
@@ -806,7 +808,8 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer,
         subcategory,
-        hasEnoughCredit: true,
+        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+
         isUnderageBeneficiary: false,
         bookOffer: jest.fn(),
         isBookingLoading: false,
@@ -837,7 +840,8 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer,
         subcategory,
-        hasEnoughCredit: true,
+        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+
         booking,
         apiRecoParams: defaultApiRecoParams,
         playlistType: defaultPlaylistType,
@@ -864,7 +868,8 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer,
         subcategory,
-        hasEnoughCredit: true,
+        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+
         apiRecoParams: defaultApiRecoParams,
         playlistType: defaultPlaylistType,
       })
@@ -890,7 +895,8 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer,
         subcategory,
-        hasEnoughCredit: true,
+        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+
         isBookingLoading: false,
       })
       const { onPress } = result?.[0] || {}
@@ -1006,7 +1012,7 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer: CineScreeningOffer,
         subcategory: buildSubcategory({ isEvent: true }),
-        hasEnoughCredit: false,
+        hasEnoughCreditData: { hasEnoughCredit: false },
       })
 
       expect(result).toEqual([
@@ -1032,7 +1038,7 @@ describe('getCtaWordingAndAction', () => {
           isBeneficiary: true,
           offer: CineScreeningOffer,
           subcategory: buildSubcategory(isOfferEvent),
-          hasEnoughCredit: true,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
         })
 
         expect(JSON.stringify(result)).toEqual(
@@ -1125,7 +1131,8 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer: buildOffer({ ...partialOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER }),
         subcategory: buildSubcategory(partialSubcategory || {}),
-        hasEnoughCredit: true,
+        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+
         isUnderageBeneficiary: true,
         featureFlags: { wipEnableLoanFakeDoor: true, enableBookingFreeOfferFifteenSixteen: false },
         ...parameters,

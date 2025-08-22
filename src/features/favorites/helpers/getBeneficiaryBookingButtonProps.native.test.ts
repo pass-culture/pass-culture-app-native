@@ -1,6 +1,6 @@
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { getBeneficiaryBookingButtonProps } from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
-import * as useHasEnoughCreditAPI from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import * as useHasEnoughCreditAPI from 'features/offer/helpers/useHasEnoughCredit/hasEnoughCredit'
 import { beneficiaryUser } from 'fixtures/user'
 
 const favoriteOffer = favoriteOfferResponseSnap

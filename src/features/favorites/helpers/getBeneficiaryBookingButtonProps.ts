@@ -1,5 +1,5 @@
 import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
-import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/hasEnoughCredit'
 
 export const getBeneficiaryBookingButtonProps = (
   offer: FavoriteOfferResponse,
