@@ -12,7 +12,7 @@ import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { render, screen, waitFor } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 
 const searchId = uuidv4()
 
@@ -58,6 +58,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.useFakeTimers()
 
 describe('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
@@ -65,8 +66,7 @@ describe('<SearchListHeader />', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     })
 
-    // FIXED: Made the test async
-    it('should not display see map button when user location mode is around me and there is a venues playlist', async () => {
+    it('should not display see map button when user location mode is around me and there is a venues playlist', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -88,16 +88,14 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      // FIXED: Wrapped the assertion in `await waitFor`
-      await waitFor(() => {
-        expect(
-          screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
-        ).not.toBeOnTheScreen()
-      })
+      jest.advanceTimersByTime(1000)
+
+      expect(
+        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
+      ).not.toBeOnTheScreen()
     })
 
-    // FIXED: Made the test async
-    it('should not display see map button when user location mode is around place and there is a venues playlist', async () => {
+    it('should not display see map button when user location mode is around place and there is a venues playlist', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -123,11 +121,11 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      await waitFor(() => {
-        expect(
-          screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
-        ).not.toBeOnTheScreen()
-      })
+      jest.advanceTimersByTime(1000)
+
+      expect(
+        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
+      ).not.toBeOnTheScreen()
     })
   })
 })
