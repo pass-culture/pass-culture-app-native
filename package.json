@@ -299,6 +299,7 @@
     "jest-silent-reporter": "^0.6.0",
     "jest-styled-components": "^7.0.8",
     "jetifier": "^1.6.5",
+    "json": "^11.0.0",
     "knip": "^5.43.6",
     "mockdate": "^3.0.2",
     "msw": "^2.7.3",
