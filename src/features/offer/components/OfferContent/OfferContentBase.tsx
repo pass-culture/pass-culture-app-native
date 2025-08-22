@@ -24,7 +24,7 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
+import { ChroniclesSectionWithAnchor } from 'features/offer/components/OfferContent/ChronicleSection/ChroniclesSectionWithAnchor'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferContentCTAs } from 'features/offer/components/OfferFooter/OfferContentCTAs'
@@ -294,22 +294,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             </OfferBody>
           </BodyWrapper>
 
-          {chronicles?.length ? (
-            <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
-              <ChronicleSection
-                title={chronicleVariantInfo.titleSection}
-                ctaLabel="Voir tous les avis"
-                subtitle={chronicleVariantInfo.subtitleSection}
-                icon={chronicleVariantInfo.Icon}
-                data={chronicles}
-                // It's dirty but necessary to use from parameter for the logs
-                navigateTo={{
-                  screen: 'Chronicles',
-                  params: { offerId: offer.id, from: 'chronicles' },
-                }}
-                onSeeMoreButtonPress={onSeeMoreButtonPress}
-              />
-            </StyledSectionWithDivider>
+          {chronicleVariantInfo ? (
+            <ChroniclesSectionWithAnchor
+              chronicles={chronicles}
+              chronicleVariantInfo={chronicleVariantInfo}
+              offer={offer}
+              onSeeMoreButtonPress={onSeeMoreButtonPress}
+            />
           ) : null}
           <StyledSectionWithDivider
             visible

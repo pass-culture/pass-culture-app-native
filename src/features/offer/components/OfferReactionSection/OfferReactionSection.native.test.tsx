@@ -6,7 +6,8 @@ import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVa
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
+import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 jest.mock('queries/bookings/useBookingsQuery')
 const mockMutate = jest.fn()
@@ -15,11 +16,16 @@ jest.mock('features/reactions/queries/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate, isSuccess: mockIsSuccess }),
 }))
 
+const mockScrollToAnchor = jest.fn()
+const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+
 describe('<OfferReactionSection />', () => {
   describe('When FF is enabled', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
       mockIsSuccess = true
+      mockScrollToAnchor.mockClear()
+      useScrollToAnchorSpy.mockReturnValue(mockScrollToAnchor)
     })
 
     it('should display likes information when other users have reacted to the offer', async () => {
@@ -114,6 +120,42 @@ describe('<OfferReactionSection />', () => {
       })
 
       expect(await screen.findByText('2 avis')).toBeOnTheScreen()
+    })
+
+    it('should scroll to chronicles section when clicking on published chronicles counter', async () => {
+      const user = userEvent.setup()
+      renderOfferReactionSection({
+        chronicles: [chroniclesSnap[0], chroniclesSnap[1]],
+        chroniclesCount: 2,
+      })
+
+      const chroniclesCounter = screen.getByTestId('chroniclesCounter')
+      await user.press(chroniclesCounter)
+
+      expect(mockScrollToAnchor).toHaveBeenCalledWith('chronicles-section')
+    })
+
+    it('should not be clickable when there are only unpublished chronicles', async () => {
+      renderOfferReactionSection({
+        chronicles: [],
+        chroniclesCount: 5,
+        chronicleVariantInfo: {
+          ...chronicleVariantInfoFixture,
+          labelReaction: 'Book Club',
+        },
+      })
+
+      expect(await screen.findByText('Recommandé par le Book Club')).toBeOnTheScreen()
+      expect(screen.queryByTestId('chroniclesCounter')).not.toBeOnTheScreen()
+    })
+
+    it('should not render clickable element when there are no chronicles', () => {
+      renderOfferReactionSection({
+        chroniclesCount: 0,
+        chronicles: [],
+      })
+
+      expect(screen.queryByTestId('chroniclesCounter')).not.toBeOnTheScreen()
     })
   })
 })
