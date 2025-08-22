@@ -11,10 +11,10 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { MutationKeys } from 'libs/queryKeys'
 
-export function useIdentificationUrlMutation() {
+export const useIdentificationUrlMutation = () => {
   const { data: subscription } = useGetStepperInfoQuery()
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, replace } = useNavigation<UseNavigationType>()
 
   const { mutate: postIdentificationUrl } = useMutation(
     [MutationKeys.IDENTIFICATION_URL],
@@ -28,7 +28,7 @@ export function useIdentificationUrlMutation() {
           navigate(...getSubscriptionHookConfig('IdentityCheckPending'))
         } else {
           const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
-          navigate(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
+          replace(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
         }
       }
     }
