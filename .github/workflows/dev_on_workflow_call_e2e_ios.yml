@@ -26,15 +26,9 @@ permissions:
 jobs:
   build_e2e:
     name: 'Build E2E Staging'
-    runs-on: macos-15
+    runs-on: macos-14
     timeout-minutes: 60
     steps:
-      - run: |
-          echo "This job fails"
-          echo "After many tries to fix it, none succeeded"
-          echo "Skip this job while this issue is open https://github.com/actions/runner-images/issues/12758"
-          echo "TODO(PC-37540): re-enable test end to end on iOS"
-          exit 1
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -58,6 +52,12 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Select XCode version
+        run: |
+          XCODE_VERSION="$(cat ./.xcode-version)"
+          sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
+      - name: Show available XCode's SDKs
+        run: xcodebuild -showsdks
       - name: Install cocoapods
         run: cd ios/ && bundle exec pod install
       - name: Authentification to Google
