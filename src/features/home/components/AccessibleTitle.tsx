@@ -4,6 +4,13 @@ import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
 
+type Props = {
+  title: string
+  testID?: string
+  TitleComponent?: ComponentType<ComponentProps<typeof Typo.Title3>>
+  withMargin?: boolean
+}
+
 export const separateTitleAndEmojis = (title: string) => {
   const titleWithoutEndSpace = title.trimEnd()
   const emojiRegex = /(\p{Emoji})(?=\s*$)/gu
@@ -12,14 +19,11 @@ export const separateTitleAndEmojis = (title: string) => {
   return { titleText, titleEmoji }
 }
 
-export const AccessibleTitle = ({
+export const AccessibleTitle: React.FC<Props> = ({
   title,
   testID,
   TitleComponent = Typo.Title3,
-}: {
-  title: string
-  testID?: string
-  TitleComponent?: ComponentType<ComponentProps<typeof Typo.Title3>>
+  withMargin = true,
 }) => {
   const { width: windowWidth } = useWindowDimensions()
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
@@ -27,7 +31,7 @@ export const AccessibleTitle = ({
   const StyledTitleComponent = styled(TitleComponent || Typo.Title3)({})
 
   return Platform.OS === 'web' ? (
-    <TitleWrapper testID={testID} windowWidth={windowWidth}>
+    <TitleWrapper testID={testID} windowWidth={windowWidth} withMargin={withMargin}>
       <StyledTitleComponent numberOfLines={2}>
         {titleText}
         <span aria-hidden>{titleEmoji}</span>
@@ -43,9 +47,11 @@ export const AccessibleTitle = ({
   )
 }
 
-const TitleWrapper = styled.View<{ windowWidth?: number }>(({ windowWidth, theme }) => {
-  return {
-    marginHorizontal: theme.contentPage.marginHorizontal,
-    width: windowWidth,
+const TitleWrapper = styled.View<{ windowWidth?: number; withMargin?: boolean }>(
+  ({ windowWidth, withMargin, theme }) => {
+    return {
+      marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
+      width: windowWidth,
+    }
   }
-})
+)
