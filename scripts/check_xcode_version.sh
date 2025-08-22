@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit -o nounset -o pipefail
 
-XCODE_SUPPORTED_VERSION="16.2"
+XCODE_SUPPORTED_VERSION="$(cat ./.xcode-version)"
 XCODE_CURRENT_VERSION="$(xcodebuild -version)"
 
 if [[ "${XCODE_CURRENT_VERSION}" != *"Xcode ${XCODE_SUPPORTED_VERSION}"* ]]; then
