@@ -141,6 +141,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -256,6 +257,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               />
               <Text
+                accessibilityRole="header"
                 style={
                   {
                     "color": "#161617",

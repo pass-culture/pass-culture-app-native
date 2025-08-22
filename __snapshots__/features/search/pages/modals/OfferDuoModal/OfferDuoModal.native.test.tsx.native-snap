@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<OfferDuoModal/> should render modal correctly after animation and with enabled submit 1`] = `
 <Modal
@@ -220,6 +220,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               testID="back-button-container"
             />
             <Text
+              accessibilityRole="header"
               nativeID="testUuidV4"
               numberOfLines={1}
               style={
@@ -369,6 +370,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               >
                 <Text
                   accessibilityDescribedBy="testUuidV4"
+                  accessibilityRole="header"
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={

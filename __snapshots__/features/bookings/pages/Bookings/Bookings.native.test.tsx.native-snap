@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Bookings should render correctly 1`] = `
 <View
@@ -41,6 +41,7 @@ exports[`Bookings should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         numberOfLines={1}
         style={
           {

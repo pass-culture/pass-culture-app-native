@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<ChangeStatus/> from mandatory udpate personal data screen should render correctly 1`] = `
 [
@@ -132,6 +132,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -192,7 +193,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
             <Styled(View)
               numberOfSpaces={2}
             />
-            <Styled(Text)>
+            <Styled(Text)
+              accessibilityRole="header"
+            >
               Sélectionne ton statut
             </Styled(Text)>
             <Styled(View)
@@ -317,6 +320,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               }
             />
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
@@ -2188,6 +2192,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -2248,7 +2253,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
             <Styled(View)
               numberOfSpaces={2}
             />
-            <Styled(Text)>
+            <Styled(Text)
+              accessibilityRole="header"
+            >
               Sélectionne ton statut
             </Styled(Text)>
             <Styled(View)
@@ -2373,6 +2380,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               }
             />
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",
@@ -4244,6 +4252,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -4304,7 +4313,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
             <Styled(View)
               numberOfSpaces={2}
             />
-            <Styled(Text)>
+            <Styled(Text)
+              accessibilityRole="header"
+            >
               Sélectionne ton statut
             </Styled(Text)>
             <Styled(View)
@@ -4429,6 +4440,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               }
             />
             <Text
+              accessibilityRole="header"
               style={
                 {
                   "color": "#161617",

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
 <Modal
@@ -220,6 +220,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               testID="back-button-container"
             />
             <Text
+              accessibilityRole="header"
               nativeID="testUuidV4"
               numberOfLines={1}
               style={

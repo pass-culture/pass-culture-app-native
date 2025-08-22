@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ChangeCity from mandatory udpate personal data screen should render correctly 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -247,6 +248,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
               }
             >
               <Text
+                accessibilityRole="header"
                 style={
                   {
                     "color": "#161617",
@@ -805,6 +807,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -911,6 +914,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
               }
             >
               <Text
+                accessibilityRole="header"
                 style={
                   {
                     "color": "#161617",
@@ -1469,6 +1473,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -1575,6 +1580,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityRole="header"
                 style={
                   {
                     "color": "#161617",

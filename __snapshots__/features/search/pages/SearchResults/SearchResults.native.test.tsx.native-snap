@@ -82,6 +82,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
+                  accessibilityRole="header"
                   style={
                     {
                       "alignItems": "center",
@@ -980,6 +981,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     }
                   >
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -1002,6 +1004,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       }
                     >
                       <Text
+                        accessibilityRole="header"
                         style={
                           {
                             "color": "#696a6f",

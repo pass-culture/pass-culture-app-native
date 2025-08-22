@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ThematicHome should render correctly 1`] = `
 <View
@@ -669,6 +669,7 @@ exports[`ThematicHome should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="header"
               numberOfLines={1}
               style={
                 {
@@ -684,6 +685,7 @@ exports[`ThematicHome should render correctly 1`] = `
             </Text>
           </View>
           <Text
+            accessibilityRole="header"
             numberOfLines={2}
             style={
               {

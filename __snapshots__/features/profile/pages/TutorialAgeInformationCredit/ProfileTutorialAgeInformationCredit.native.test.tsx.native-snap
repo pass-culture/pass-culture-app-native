@@ -42,6 +42,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
         }
       />
       <Text
+        accessibilityRole="header"
         numberOfLines={3}
         style={
           {
@@ -63,6 +64,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
         }
       />
       <Text
+        accessibilityRole="header"
         numberOfLines={3}
         style={
           {
@@ -257,6 +259,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       }
                     />
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -270,6 +273,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       Tu reçois
                        
                       <Text
+                        accessibilityRole="header"
                         style={
                           {
                             "color": "#320096",
@@ -574,6 +578,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       }
                     />
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -587,6 +592,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       Tu reçois
                        
                       <Text
+                        accessibilityRole="header"
                         style={
                           {
                             "color": "#320096",

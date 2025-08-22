@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`CulturalSurveyQuestions page should render the page with correct layout 1`] = `
 <View
@@ -203,6 +203,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         </View>
       </View>
       <Text
+        accessibilityRole="header"
         numberOfLines={1}
         style={
           {
@@ -243,6 +244,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
   >
     <View>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

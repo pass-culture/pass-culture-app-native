@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<DeleteProfileReason /> should match snapshot 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -202,7 +203,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           <Styled(View)>
             <Styled(Styled(SadFaceSvg)) />
             <Styled(View)>
-              <Styled(Text)>
+              <Styled(Text)
+                accessibilityRole="header"
+              >
                 Pourquoi souhaites-tu supprimer ton compte ?
               </Styled(Text)>
               <Styled(Text)>
@@ -355,6 +358,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                 }
               >
                 <Text
+                  accessibilityRole="header"
                   style={
                     {
                       "color": "#161617",

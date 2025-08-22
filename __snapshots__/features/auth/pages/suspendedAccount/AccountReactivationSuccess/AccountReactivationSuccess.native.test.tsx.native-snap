@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
 <View
@@ -151,6 +151,7 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -164,6 +165,7 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
         Ton compte a été réactivé
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Stepper navigation should render correctly 1`] = `
 <View
@@ -43,6 +43,7 @@ exports[`Stepper navigation should render correctly 1`] = `
         }
       />
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

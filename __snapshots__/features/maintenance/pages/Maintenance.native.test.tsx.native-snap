@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Maintenance /> should match snapshot with custom message 1`] = `
 <View
@@ -71,6 +71,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -84,6 +85,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
         Maintenance en cours
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -182,6 +184,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -195,6 +198,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
         Maintenance en cours
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

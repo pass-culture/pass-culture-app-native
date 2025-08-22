@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SetBirthday /> should render correctly 1`] = `
 <View
@@ -10,6 +10,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   }
 >
   <Text
+    accessibilityRole="header"
     style={
       {
         "color": "#161617",
@@ -832,6 +833,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
   }
 >
   <Text
+    accessibilityRole="header"
     style={
       {
         "color": "#161617",

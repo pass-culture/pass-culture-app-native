@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = `
 <View
@@ -145,6 +145,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           }
         />
         <Text
+          accessibilityRole="header"
           numberOfLines={3}
           style={
             {
@@ -174,6 +175,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           }
         >
           <Text
+            accessibilityRole="header"
             style={
               {
                 "color": "#161617",
@@ -354,6 +356,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       }
                     />
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -1032,6 +1035,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           }
         />
         <Text
+          accessibilityRole="header"
           numberOfLines={3}
           style={
             {
@@ -1061,6 +1065,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           }
         >
           <Text
+            accessibilityRole="header"
             style={
               {
                 "color": "#161617",
@@ -1456,6 +1461,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       }
                     />
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",

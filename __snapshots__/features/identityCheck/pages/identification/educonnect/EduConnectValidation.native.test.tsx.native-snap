@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<EduConnectValidation /> should render EduConnectValidation component correctly 1`] = `
 <View
@@ -141,6 +141,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           numberOfLines={1}
           style={
             {
@@ -248,6 +249,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
               }
             >
               <Text
+                accessibilityRole="header"
                 style={
                   {
                     "color": "#161617",

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TrackEmailChange v2 account with password should render correctly when choose new email step is active 1`] = `
 <RCTScrollView
@@ -124,6 +124,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       </View>
     </View>
     <Text
+      accessibilityRole="header"
       style={
         {
           "color": "#161617",
@@ -1000,6 +1001,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       </View>
     </View>
     <Text
+      accessibilityRole="header"
       style={
         {
           "color": "#161617",
@@ -1887,6 +1889,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       </View>
     </View>
     <Text
+      accessibilityRole="header"
       style={
         {
           "color": "#161617",
@@ -2752,6 +2755,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       </View>
     </View>
     <Text
+      accessibilityRole="header"
       style={
         {
           "color": "#161617",
@@ -3852,6 +3856,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       </View>
     </View>
     <Text
+      accessibilityRole="header"
       style={
         {
           "color": "#161617",
@@ -4974,6 +4979,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       </View>
     </View>
     <Text
+      accessibilityRole="header"
       style={
         {
           "color": "#161617",
@@ -6085,6 +6091,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       </View>
     </View>
     <Text
+      accessibilityRole="header"
       style={
         {
           "color": "#161617",

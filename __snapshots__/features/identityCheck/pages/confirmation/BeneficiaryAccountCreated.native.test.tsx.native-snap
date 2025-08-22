@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
 <View
@@ -151,6 +151,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -164,6 +165,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
         Bonne nouvelle !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -276,6 +278,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#eb0055",
@@ -564,6 +567,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       }
     >
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -577,6 +581,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
         Bonne nouvelle !
       </Text>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -689,6 +694,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#eb0055",

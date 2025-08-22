@@ -9,5 +9,8 @@ export const getHeadingAttrs = (level: HeadingLevel) => {
         accessibilityRole: AccessibilityRole.HEADING,
         accessibilityLevel: level,
       }
-    : {}
+    : {
+        accessibilityRole: AccessibilityRole.HEADER,
+        accessibilityLevel: undefined,
+      }
 }
