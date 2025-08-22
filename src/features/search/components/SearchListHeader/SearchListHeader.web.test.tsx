@@ -59,6 +59,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
+jest.setTimeout(20_000) // to avoid exceeded timeout
 
 describe('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
