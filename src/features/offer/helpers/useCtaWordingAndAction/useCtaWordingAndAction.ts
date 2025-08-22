@@ -34,6 +34,10 @@ import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getB
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getIsFreeOffer } from 'features/offer/helpers/getIsFreeOffer/getIsFreeOffer'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
+import {
+  HasEnoughCredit,
+  useHasEnoughCredit,
+} from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -47,8 +51,6 @@ import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWord
 import { OfferModal } from 'shared/offer/enums'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
-
-import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
 
 type UseGetCtaWordingAndActionProps = {
   offer: OfferResponseV2
@@ -69,7 +71,7 @@ type Props = {
   isBeneficiary: boolean
   offer: OfferResponseV2
   subcategory: Subcategory
-  hasEnoughCredit: boolean
+  hasEnoughCreditData: HasEnoughCredit
   isUnderageBeneficiary: boolean
   isEndedUsedBooking?: boolean
   bottomBannerText?: string
@@ -107,7 +109,7 @@ export const getCtaWordingAndAction = ({
   isBeneficiary,
   offer,
   subcategory,
-  hasEnoughCredit,
+  hasEnoughCreditData,
   isUnderageBeneficiary,
   isEndedUsedBooking,
   bookOffer,
@@ -130,7 +132,7 @@ export const getCtaWordingAndAction = ({
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER && featureFlags.wipEnableLoanFakeDoor
 
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
-
+  const { hasEnoughCredit, message: hasEnoughCreditMessage } = hasEnoughCreditData
   const wording = enableLoanCTA ? 'Acheter' : 'Réserver l’offre'
 
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
@@ -399,9 +401,29 @@ export const getCtaWordingAndAction = ({
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
       if (offer.isDigital && !isUnderageBeneficiary)
-        return [{ wording: 'Crédit numérique insuffisant', isDisabled: true }]
-      if (enableLoanCTA) return [{ wording: 'Crédit insuffisant', isDisabled: true }, bookLoanModal]
-      return [{ wording: 'Crédit insuffisant', isDisabled: true }]
+        return [
+          {
+            wording: 'Crédit numérique insuffisant',
+            isDisabled: true,
+            bottomBannerText: hasEnoughCreditMessage,
+          },
+        ]
+      if (enableLoanCTA)
+        return [
+          {
+            wording: 'Crédit insuffisant',
+            isDisabled: true,
+            bottomBannerText: hasEnoughCreditMessage,
+          },
+          bookLoanModal,
+        ]
+      return [
+        {
+          wording: 'Crédit insuffisant',
+          isDisabled: true,
+          bottomBannerText: hasEnoughCreditMessage,
+        },
+      ]
     }
 
     if (enableLoanCTA)
@@ -447,7 +469,7 @@ export const getCtaWordingAndAction = ({
           wording: isMovieScreeningOffer ? undefined : 'Crédit insuffisant',
           bottomBannerText: isMovieScreeningOffer
             ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT
-            : undefined,
+            : hasEnoughCreditMessage,
           movieScreeningUserData: { isUserLoggedIn: isLoggedIn, hasEnoughCredit },
           isDisabled: true,
         },
@@ -488,6 +510,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const offerId = offer.id
 
   const { isLoggedIn, user } = useAuthContext()
+
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId)
@@ -566,7 +589,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     isBeneficiary,
     offer,
     subcategory,
-    hasEnoughCredit,
+    hasEnoughCreditData: hasEnoughCredit,
     isEndedUsedBooking: !!endedBooking?.dateUsed,
     isUnderageBeneficiary,
     bookOffer,
@@ -577,10 +600,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     isDepositExpired,
     apiRecoParams,
     playlistType,
-    featureFlags: {
-      enableBookingFreeOfferFifteenSixteen,
-      wipEnableLoanFakeDoor,
-    },
+    featureFlags: { enableBookingFreeOfferFifteenSixteen, wipEnableLoanFakeDoor },
     storedProfileInfos,
   })
 }
