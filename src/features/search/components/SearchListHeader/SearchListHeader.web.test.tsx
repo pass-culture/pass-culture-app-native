@@ -12,7 +12,7 @@ import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { render, screen } from 'tests/utils/web'
+import { render, screen, waitFor } from 'tests/utils/web'
 
 const searchId = uuidv4()
 
@@ -65,7 +65,8 @@ describe('<SearchListHeader />', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     })
 
-    it('should not display see map button when user location mode is around me and there is a venues playlist', () => {
+    // FIXED: Made the test async
+    it('should not display see map button when user location mode is around me and there is a venues playlist', async () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -87,12 +88,16 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      expect(
-        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
-      ).not.toBeOnTheScreen()
+      // FIXED: Wrapped the assertion in `await waitFor`
+      await waitFor(() => {
+        expect(
+          screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
+        ).not.toBeOnTheScreen()
+      })
     })
 
-    it('should not display see map button when user location mode is around place and there is a venues playlist', () => {
+    // FIXED: Made the test async
+    it('should not display see map button when user location mode is around place and there is a venues playlist', async () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -118,9 +123,12 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      expect(
-        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
-      ).not.toBeOnTheScreen()
+      // FIXED: Wrapped the assertion in `await waitFor`
+      await waitFor(() => {
+        expect(
+          screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
+        ).not.toBeOnTheScreen()
+      })
     })
   })
 })
