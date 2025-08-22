@@ -1,4 +1,5 @@
 import React from 'react'
+import { act } from 'react-dom/test-utils'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
@@ -67,7 +68,7 @@ describe('<SearchListHeader />', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     })
 
-    it('should not display see map button when user location mode is around me and there is a venues playlist', () => {
+    it('should not display see map button when user location mode is around me and there is a venues playlist', async () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -89,14 +90,16 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      jest.advanceTimersByTime(1000)
+      await act(async () => {
+        jest.advanceTimersByTime(1000)
+      })
 
       expect(
         screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
       ).not.toBeOnTheScreen()
     })
 
-    it('should not display see map button when user location mode is around place and there is a venues playlist', () => {
+    it('should not display see map button when user location mode is around place and there is a venues playlist', async () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -122,7 +125,9 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      jest.advanceTimersByTime(1000)
+      await act(async () => {
+        jest.advanceTimersByTime(1000)
+      })
 
       expect(
         screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
