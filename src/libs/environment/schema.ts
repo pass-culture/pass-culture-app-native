@@ -23,7 +23,6 @@ export const EnvironmentSchema = yup.object({
   CONTENTFUL_PUBLIC_ACCESS_TOKEN: yup.string().required(),
   CONTENTFUL_SPACE_ID: yup.string().required(),
   COOKIES_POLICY_LINK: yup.string().required(),
-  CULTURAL_SURVEY_TYPEFORM_ID: yup.string().required(),
   DATA_PRIVACY_CHART_LINK: yup.string().required(),
   DMS_FOREIGN_CITIZEN_URL: yup.string().required(),
   DMS_FRENCH_CITIZEN_URL: yup.string().required(),

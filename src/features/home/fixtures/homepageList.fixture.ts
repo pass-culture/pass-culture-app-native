@@ -69,7 +69,6 @@ export const homepageList = toMutable([
         subtitle: 'En répondant à notre rapide questionnaire',
         title: 'Donne ton avis...',
         type: HomepageModuleType.BusinessModule,
-        url: 'https://passculture.typeform.com/to/PYl2WwKC?email={email}',
         localizationArea: undefined,
       },
       {

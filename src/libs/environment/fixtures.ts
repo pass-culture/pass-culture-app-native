@@ -24,7 +24,6 @@ export const env: Environment = {
   CONTENTFUL_PUBLIC_ACCESS_TOKEN: 'accessToken',
   CONTENTFUL_SPACE_ID: 'contentfulSpaceId',
   COOKIES_POLICY_LINK: 'https://passculture.cookies',
-  CULTURAL_SURVEY_TYPEFORM_ID: 'TYPEFORM_FORM_ID',
   DATA_PRIVACY_CHART_LINK: 'https://passculture.data-privacy-chart',
   DMS_FOREIGN_CITIZEN_URL: 'https://dmsforeigncitizen',
   DMS_FRENCH_CITIZEN_URL: 'https://dmsfrenchcitizen',
