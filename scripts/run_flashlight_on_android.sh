@@ -168,6 +168,18 @@ recreate_emulator() {
     echo "Disk usage"
     df -h
 
+    echo "--- Gradle Cache Size ---"
+    du -sh ~/.gradle/caches
+
+    echo "--- Android SDK Size ---"
+    du -sh $ANDROID_SDK_ROOT
+
+    echo "--- System Images Details ---"
+    ls -lh $ANDROID_SDK_ROOT/system-images/
+
+    echo "--- AVDs ---"
+    ls -lh ~/.android/avd/
+
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
     emulator \

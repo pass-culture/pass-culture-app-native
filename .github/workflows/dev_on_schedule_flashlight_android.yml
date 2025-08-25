@@ -84,18 +84,6 @@ jobs:
       - name: Setup android keystore file
         run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/staging.keystore
 
-      - name: Check Disk Usage of Key Directories
-        run: |
-          # echo "--- Gradle Cache Size ---"
-          # du -sh ~/.gradle/caches
-          echo "--- Android SDK Size ---"
-          du -sh $ANDROID_SDK_ROOT
-          echo "--- System Images Details ---"
-          ls -lh $ANDROID_SDK_ROOT/system-images/
-          # Check for any old AVDs that weren't cleaned up
-          echo "--- AVDs ---"
-          ls -lh ~/.android/avd/
-
       - name: Run the full test script
         id: run_test
         run: |
