@@ -96,7 +96,7 @@ describe('<SearchVenueItem />', () => {
     await user.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({
-      venueId: Number(mockAlgoliaVenue.objectID),
+      venueId: mockAlgoliaVenue.objectID,
       searchId,
       from: 'searchVenuePlaylist',
     })

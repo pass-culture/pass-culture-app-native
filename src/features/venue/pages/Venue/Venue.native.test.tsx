@@ -189,7 +189,7 @@ describe('<Venue />', () => {
 
         await waitFor(() => {
           expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-            venueId,
+            venueId: venueId.toString(),
             from,
           })
         })

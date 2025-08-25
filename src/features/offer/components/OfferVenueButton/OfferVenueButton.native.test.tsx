@@ -42,7 +42,7 @@ describe('<OfferVenueButton />', () => {
     await user.press(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE'))
 
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({
-      venueId: offerResponseSnap.venue.id,
+      venueId: offerResponseSnap.venue.id.toString(),
       from: 'offer',
     })
   })

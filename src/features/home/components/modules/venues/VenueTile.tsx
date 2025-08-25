@@ -58,7 +58,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
     analytics.logConsultVenue({
-      venueId: venue.id,
+      venueId: venue.id.toString(),
       moduleId: props.moduleId,
       moduleName: props.moduleName,
       from: 'home',

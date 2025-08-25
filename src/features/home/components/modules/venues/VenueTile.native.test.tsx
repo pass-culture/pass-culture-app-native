@@ -5,7 +5,7 @@ import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
 
@@ -57,7 +57,7 @@ describe('VenueTile component', () => {
     await user.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-      venueId: venue.id,
+      venueId: venue.id.toString(),
       from: 'home',
       moduleName: 'le nom du module',
       moduleId: 'module-id',
@@ -70,7 +70,7 @@ describe('VenueTile component', () => {
     await user.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-      venueId: venue.id,
+      venueId: venue.id.toString(),
       from: 'home',
       moduleName: 'le nom du module',
       moduleId: 'module-id',

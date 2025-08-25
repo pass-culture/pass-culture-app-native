@@ -101,7 +101,7 @@ export const SearchSuggestions = ({
 
   const onVenuePress = (venueId: number) => {
     hideSuggestions()
-    analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
+    analytics.logConsultVenue({ venueId: venueId.toString(), from: 'searchAutoComplete' })
     navigate('Venue', { id: venueId })
   }
 

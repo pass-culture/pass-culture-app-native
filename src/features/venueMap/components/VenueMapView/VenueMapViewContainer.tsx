@@ -183,7 +183,10 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   }
 
   const onNavigateToVenuePress = (venueId: number) => {
-    analytics.logConsultVenue({ venueId, from: camelCase(routeName) as Referrals })
+    analytics.logConsultVenue({
+      venueId: venueId.toString(),
+      from: camelCase(routeName) as Referrals,
+    })
   }
 
   const handleBottomSheetAnimation = useCallback(

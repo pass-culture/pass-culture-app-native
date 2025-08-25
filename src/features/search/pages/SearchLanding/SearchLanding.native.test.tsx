@@ -312,7 +312,7 @@ describe('<SearchLanding />', () => {
 
       expect(analytics.logConsultVenue).toHaveBeenCalledWith({
         from: 'searchAutoComplete',
-        venueId: 1,
+        venueId: '1',
       })
     })
 
