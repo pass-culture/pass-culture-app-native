@@ -1,10 +1,6 @@
 name: 'Flashlight Android Performance Test'
 
-on:
-  schedule:
-    - cron: '0 22 * * 0' # At 10PM every Sunday
-  pull_request:
-    types: [labeled]
+on: push
 
 permissions:
   contents: write
@@ -19,7 +15,6 @@ jobs:
     name: 'Run Flashlight Android Performance Test'
     runs-on: ubuntu-24.04
     timeout-minutes: 120
-    if: github.event_name == 'schedule' || contains(github.event.pull_request.labels.*.name, 'e2e perfs')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
