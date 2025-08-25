@@ -1,12 +1,17 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Accessibilité'
 
+- tapOn: 'Accessibilité'
 - assertVisible: 'Accessibilité'
+
+- tapOn: "Plan du site"
+- assertVisible: "Plan du site"
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
+
 - tapOn:
     text: 'Les engagements du pass Culture'
     index: 0
-
 - assertVisible: 'Les engagements du pass Culture'
 - assertVisible: 'Au pass Culture.*'
 - runFlow:
@@ -18,8 +23,18 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Déclaration d’accessibilité des applications iOS et Android'
-- assertVisible: 'Déclaration d’accessibilité mobile'
+- tapOn: "Déclaration d’accessibilité mobile - Android"
+- assertVisible: "Déclaration d’accessibilité mobile - Android"
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
+
+- tapOn: "Déclaration d’accessibilité mobile - iOS"
+- assertVisible: "Déclaration d’accessibilité mobile - iOS"
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
+
+- tapOn: "Déclaration d’accessibilité de la version web"
+- assertVisible: "Déclaration d’accessibilité web"
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
