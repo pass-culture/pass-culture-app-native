@@ -16,13 +16,15 @@ import {
 } from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 
 export const VenueMap: FunctionComponent = () => {
-  const { geolocPosition, selectedPlace } = useLocation()
+  const { geolocPosition, selectedPlace, selectedLocationMode } = useLocation()
   const { width, height } = useWindowDimensions()
   const { reset } = venuesFilterActions
 
-  const location = selectedPlace?.geolocation ?? geolocPosition
+  const location =
+    selectedLocationMode === LocationMode.AROUND_ME ? geolocPosition : selectedPlace?.geolocation
 
   const ratio = width / height
   const region = useMemo(() => getRegionFromPosition(location, ratio), [ratio, location])
