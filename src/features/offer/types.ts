@@ -74,6 +74,7 @@ export type OfferContentProps = {
   searchGroupList: SearchGroupResponseModelv2[]
   chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory
+  onShowChroniclesWritersModal: () => void
   chronicles?: ChronicleCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null

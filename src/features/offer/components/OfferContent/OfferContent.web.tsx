@@ -25,6 +25,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   chronicleVariantInfo,
   defaultReaction,
   onReactionButtonPress,
+  onShowChroniclesWritersModal,
   headlineOffersCount,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -86,7 +87,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}
-          onLayout={onLayout}>
+          onLayout={onLayout}
+          onShowChroniclesWritersModal={onShowChroniclesWritersModal}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}

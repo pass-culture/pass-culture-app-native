@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
@@ -7,13 +6,12 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 export type ChronicleSectionProps = {
   data: ChronicleCardData[]
-  title: string
-  subtitle?: string
   ctaLabel: string
   navigateTo: InternalNavigationProps['navigateTo']
+  variantInfo: ChronicleVariantInfo
+  onShowChroniclesWritersModal: () => void
   onSeeMoreButtonPress?: (chronicleId: number) => void
   style?: StyleProp<ViewStyle>
-  icon?: ReactNode
 }
 
 export type ChronicleVariantInfo = {
@@ -22,6 +20,7 @@ export type ChronicleVariantInfo = {
   subtitleSection: string
   subtitleItem: string
   Icon?: React.ReactNode
+  modalTitle: string
   modalWording: string
   modalButtonLabel: string
   SmallIcon?: React.ReactNode

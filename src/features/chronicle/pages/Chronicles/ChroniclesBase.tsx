@@ -85,7 +85,9 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
           data={chronicleCardsData}
           horizontal={false}
           separatorSize={6}
-          headerComponent={<ChronicleCardListHeader onPressMoreInfo={showModal} />}
+          headerComponent={
+            <ChronicleCardListHeader variantInfo={variantInfo} onPressMoreInfo={showModal} />
+          }
           ref={chroniclesListRef}
           onScroll={onScroll}
           contentContainerStyle={{

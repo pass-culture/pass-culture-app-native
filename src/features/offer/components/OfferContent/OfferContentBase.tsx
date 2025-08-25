@@ -62,6 +62,7 @@ type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
+    onShowChroniclesWritersModal: () => void
     onSeeVideoPress?: () => void
     chronicles?: ChronicleCardData[]
     likesCount?: number
@@ -88,6 +89,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   contentContainerStyle,
   defaultReaction,
   onReactionButtonPress,
+  onShowChroniclesWritersModal,
   isVideoSectionEnabled,
   BodyWrapper = React.Fragment,
   onLayout,
@@ -297,10 +299,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           {chronicles?.length ? (
             <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
               <ChronicleSection
-                title={chronicleVariantInfo.titleSection}
+                variantInfo={chronicleVariantInfo}
                 ctaLabel="Voir tous les avis"
-                subtitle={chronicleVariantInfo.subtitleSection}
-                icon={chronicleVariantInfo.Icon}
                 data={chronicles}
                 // It's dirty but necessary to use from parameter for the logs
                 navigateTo={{
@@ -308,6 +308,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                   params: { offerId: offer.id, from: 'chronicles' },
                 }}
                 onSeeMoreButtonPress={onSeeMoreButtonPress}
+                onShowChroniclesWritersModal={onShowChroniclesWritersModal}
               />
             </StyledSectionWithDivider>
           ) : null}

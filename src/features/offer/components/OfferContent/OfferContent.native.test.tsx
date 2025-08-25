@@ -914,6 +914,7 @@ function renderOfferContent({
           subcategory={subcategory}
           chronicles={chroniclesData}
           chronicleVariantInfo={chronicleVariantInfoFixture}
+          onShowChroniclesWritersModal={jest.fn()}
         />
       </NavigationContainer>
     ),

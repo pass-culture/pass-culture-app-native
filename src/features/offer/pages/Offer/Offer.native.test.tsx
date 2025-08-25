@@ -206,12 +206,26 @@ describe('<Offer />', () => {
     expect(await screen.findByText('Cinéma plein air')).toBeOnTheScreen()
   })
 
-  it('should display chronicles section when FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION])
+  describe('When wipOfferChronicleSection FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION])
+    })
 
-    renderOfferPage({ mockOffer: offerResponseSnap })
+    it('should display chronicles section', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
 
-    expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
+      expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
+    })
+
+    it('should open chronicles writers modal when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await screen.findByText('La reco du Ciné Club')
+
+      await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+
+      expect(mockShowModal).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should display video section when FF activated', async () => {
