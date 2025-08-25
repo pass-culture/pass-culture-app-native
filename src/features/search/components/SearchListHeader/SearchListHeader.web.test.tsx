@@ -1,5 +1,4 @@
 import React from 'react'
-import { act } from 'react-dom/test-utils'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
@@ -14,6 +13,7 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils/web'
+import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 
 const searchId = uuidv4()
 
@@ -59,8 +59,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.useFakeTimers()
-jest.setTimeout(20_000) // to avoid exceeded timeout
 
 describe('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
@@ -90,9 +88,7 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      await act(async () => {
-        jest.advanceTimersByTime(1000)
-      })
+      await waitForPromiseResolution()
 
       expect(
         screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
@@ -125,9 +121,7 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      await act(async () => {
-        jest.advanceTimersByTime(1000)
-      })
+      await waitForPromiseResolution()
 
       expect(
         screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
