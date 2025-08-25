@@ -165,6 +165,9 @@ recreate_emulator() {
             --device "$DEVICE_NAME" \
             --force
 
+    echo "Disk usage"
+    df -h
+
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
     emulator \
