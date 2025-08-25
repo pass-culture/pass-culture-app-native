@@ -10,13 +10,13 @@ import {
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
   VenueResponse,
+  VenueTypeCodeKey,
 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Artist, Venue } from 'features/venue/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { GtlLevel } from 'shared/gtl/types'
 
@@ -185,7 +185,7 @@ export type VenueHit = Pick<
   | 'postalCode'
   | 'isOpenToPublic'
 > & {
-  venueTypeCode: VenueTypeCode
+  venueTypeCode: VenueTypeCodeKey
 }
 
 export interface AlgoliaQueryParameters {
@@ -235,7 +235,7 @@ export interface AlgoliaVenue {
   postalCode: string | null
   name: string
   offerer_name: string
-  venue_type: VenueTypeCode | null
+  venue_type: VenueTypeCodeKey | null
   description: string
   audio_disability: boolean | null
   mental_disability: boolean | null
