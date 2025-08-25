@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from 'styled-components'
+import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'

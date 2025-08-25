@@ -310,8 +310,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
-                    className="true sc-bRKDuR QRTVA"
                     numberOfLines={1}
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
                   >
                     Accueil
                   </Text>
@@ -441,8 +448,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
-                    className="true sc-hvigdm jlLIpl"
                     numberOfLines={1}
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
                   >
                     Recherche
                   </Text>
@@ -571,8 +585,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-fhHczv bDaHlB"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Explore la carte
                       </Text>
@@ -692,8 +713,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-ggWZvA guOjqe"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Concerts & festivals
                       </Text>
@@ -813,8 +841,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-dTvVRJ XKRQU"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Cinéma
                       </Text>
@@ -934,8 +969,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-jwTyAe fBTwTw"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Films, séries et documentaires
                       </Text>
@@ -1055,8 +1097,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-hjsuWn bSYLrV"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Livres
                       </Text>
@@ -1176,8 +1225,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-jJLAfE cVdPgy"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Musique
                       </Text>
@@ -1297,8 +1353,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-hwkwBN iJciMP"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Arts & loisirs créatifs
                       </Text>
@@ -1418,8 +1481,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-kNOymR gPtsdM"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Spectacles
                       </Text>
@@ -1539,8 +1609,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-dYwGCk dLhmyl"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Musées & visites culturelles
                       </Text>
@@ -1660,8 +1737,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-lgpSej bctjjL"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Jeux & jeux vidéos
                       </Text>
@@ -1781,8 +1865,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-eqYatC gRWorb"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Médias & presse
                       </Text>
@@ -1902,8 +1993,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-kcLKEh iZlODO"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Cartes jeunes
                       </Text>
@@ -2023,8 +2121,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-dntSTA fwGXrs"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Conférences & rencontres
                       </Text>
@@ -2144,8 +2249,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-kvnevz pOocm"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Évènements en ligne
                       </Text>
@@ -2267,8 +2379,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
-                    className="true sc-dFVmKS kUtPRJ"
                     numberOfLines={1}
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
                   >
                     Réservations
                   </Text>
@@ -2398,8 +2517,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
-                    className="true sc-kCuUfV deQnIE"
                     numberOfLines={1}
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
                   >
                     Favoris
                   </Text>
@@ -2529,8 +2655,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
-                    className="true sc-dNdcvo cflpIc"
                     numberOfLines={1}
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
                   >
                     Profil
                   </Text>
@@ -2659,8 +2792,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-fbQrwq tEOtt"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Créer un compte
                       </Text>
@@ -2780,8 +2920,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-gGKoUb lkkppH"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Se connecter
                       </Text>
@@ -2901,8 +3048,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-hwddKA cVTsvx"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Mes succès
                       </Text>
@@ -3022,8 +3176,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-jaXbil dHzHyk"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Notifications
                       </Text>
@@ -3143,8 +3304,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-eqNDNG kLiJUX"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Comment ça marche ?
                       </Text>
@@ -3264,8 +3432,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-fVHBlr bFVCtU"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Informations personnelles
                       </Text>
@@ -3385,8 +3560,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-gLaqbQ eqyNfY"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Préférence d’affichage
                       </Text>
@@ -3506,8 +3688,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-ipUnzB dTIMcS"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Accessibilité
                       </Text>
@@ -3627,8 +3816,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-eQwNpu hLanqw"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Faire une suggestion
                       </Text>
@@ -3748,8 +3944,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-gvqKNf kLtqxH"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Informations légales
                       </Text>
@@ -3869,8 +4072,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-cOpnSz bLVznH"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Confidentialité
                       </Text>
@@ -3990,8 +4200,15 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        className="true sc-kjwdDK feqVQB"
                         numberOfLines={1}
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
                       >
                         Débuggage
                       </Text>
