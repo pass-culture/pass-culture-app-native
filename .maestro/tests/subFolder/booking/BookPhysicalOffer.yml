@@ -23,7 +23,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-      - tapOn: 'Réserver l’offre'
+      - tapOn: 'Acheter'
 
 - runFlow:
     when:
