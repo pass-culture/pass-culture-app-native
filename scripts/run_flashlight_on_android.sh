@@ -5,8 +5,16 @@ set -o errexit -o nounset -o pipefail
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 REPO_ROOT=$(dirname "$SCRIPT_DIR")
 
+get_version() {
+	local FIELD="$1"
+
+	grep "$FIELD" './android/build.gradle' |
+		grep -Eo '[0-9]+(\.[0-9]+)*'
+}
+
 BUNDLE_ID=app.passculture.staging
-MIN_SDK_VERSION="30"
+EMULATOR_NAME="Galaxy Nexus"
+MIN_SDK_VERSION="$(get_version 'minSdkVersion')"
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
@@ -230,7 +238,7 @@ if [ -z "$APK_PATH" ]; then
 fi
 log_success "APK found at: $APK_PATH"
 
-recreate_emulator "SDK_modern_test" "$MIN_SDK_VERSION" "pixel_6"
+recreate_emulator "SDK_modern_test" "$MIN_SDK_VERSION" "$EMULATOR_NAME"
 
 log_and_run "Waiting up to 10 minutes for emulator to fully boot" \
     timeout 600 adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; echo "Emulator booted."'
