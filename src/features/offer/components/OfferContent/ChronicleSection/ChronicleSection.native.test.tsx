@@ -2,6 +2,7 @@ import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { ChronicleSection } from './ChronicleSection'
@@ -20,16 +21,16 @@ describe('ChroniclesSection', () => {
   it('should render correctly', () => {
     render(
       <ChronicleSection
-        title="title"
+        variantInfo={chronicleVariantInfoFixture}
         ctaLabel="Voir tous les avis"
         data={chroniclesSnap}
-        subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        onShowChroniclesWritersModal={jest.fn()}
       />
     )
 
-    expect(screen.getByText('title')).toBeOnTheScreen()
-    expect(screen.getByText('subtitle')).toBeOnTheScreen()
+    expect(screen.getByText(chronicleVariantInfoFixture.titleSection)).toBeOnTheScreen()
+    expect(screen.getByText(chronicleVariantInfoFixture.subtitleSection)).toBeOnTheScreen()
     expect(screen.getByText('Voir tous les avis')).toBeOnTheScreen()
     expect(screen.getAllByTestId(/chronicle-card-*/).length).toBeGreaterThan(0)
   })
@@ -38,11 +39,11 @@ describe('ChroniclesSection', () => {
     jest.useFakeTimers()
     render(
       <ChronicleSection
-        title="title"
+        variantInfo={chronicleVariantInfoFixture}
         ctaLabel="Voir tous les avis"
         data={chroniclesSnap}
-        subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        onShowChroniclesWritersModal={jest.fn()}
       />
     )
 

@@ -2,6 +2,7 @@ import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
+import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { ChronicleSection } from './ChronicleSection'
@@ -16,16 +17,18 @@ describe('ChronicleSection', () => {
   it('should render correctly in mobile', () => {
     render(
       <ChronicleSection
-        title="title"
+        variantInfo={chronicleVariantInfoFixture}
         ctaLabel="Voir tous les avis"
         data={chroniclesSnap}
-        subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        onShowChroniclesWritersModal={jest.fn()}
       />
     )
 
-    expect(screen.getByText('title')).toBeInTheDocument()
-    expect(screen.getByText('subtitle')).toBeInTheDocument()
+    expect(screen.getByText(chronicleVariantInfoFixture.titleSection)).toBeInTheDocument()
+    expect(
+      screen.getByText('Notre communauté de lecteurs te partagent leurs avis sur ce livre !')
+    ).toBeInTheDocument()
     expect(screen.getByText('Voir tous les avis')).toBeInTheDocument()
     expect(screen.getAllByTestId(/chronicle-card-*/).length).toBeGreaterThan(0)
   })
@@ -33,17 +36,19 @@ describe('ChronicleSection', () => {
   it('should render correctly in desktop', () => {
     render(
       <ChronicleSection
-        title="title"
+        variantInfo={chronicleVariantInfoFixture}
         ctaLabel="Voir tous les avis"
         data={chroniclesSnap}
-        subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        onShowChroniclesWritersModal={jest.fn()}
       />,
       { theme: { isDesktopViewport: true } }
     )
 
-    expect(screen.getByText('title')).toBeInTheDocument()
-    expect(screen.getByText('subtitle')).toBeInTheDocument()
+    expect(screen.getByText(chronicleVariantInfoFixture.titleSection)).toBeInTheDocument()
+    expect(
+      screen.getByText('Notre communauté de lecteurs te partagent leurs avis sur ce livre !')
+    ).toBeInTheDocument()
     expect(screen.getByText('Voir tous les avis')).toBeInTheDocument()
     expect(screen.getAllByTestId(/chronicle-card-*/).length).toBeGreaterThan(0)
   })
@@ -51,11 +56,11 @@ describe('ChronicleSection', () => {
   it('should navigate', async () => {
     render(
       <ChronicleSection
-        title="title"
+        variantInfo={chronicleVariantInfoFixture}
         ctaLabel="Voir tous les avis"
         data={chroniclesSnap}
-        subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        onShowChroniclesWritersModal={jest.fn()}
       />
     )
 

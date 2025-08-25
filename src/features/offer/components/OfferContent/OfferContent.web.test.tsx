@@ -176,6 +176,7 @@ const renderOfferContent = ({
         searchGroupList={PLACEHOLDER_DATA.searchGroups}
         subcategory={subcategory}
         chronicleVariantInfo={chronicleVariantInfoFixture}
+        onShowChroniclesWritersModal={jest.fn()}
       />
     ),
     {
