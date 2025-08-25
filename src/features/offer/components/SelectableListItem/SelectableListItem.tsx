@@ -106,7 +106,7 @@ const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected 
   borderStyle: 'solid',
   borderColor: isSelected
     ? theme.designSystem.color.border.brandPrimary
-    : theme.designSystem.color.border.subtle,
+    : theme.designSystem.color.border.default,
   marginRight: theme.designSystem.size.spacing.l,
 }))
 
