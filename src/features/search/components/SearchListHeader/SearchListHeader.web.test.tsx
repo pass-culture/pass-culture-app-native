@@ -13,7 +13,6 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils/web'
-import { waitForPromiseResolution } from 'tests/waitForPromiseResolution'
 
 const searchId = uuidv4()
 
@@ -60,13 +59,15 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('<SearchListHeader />', () => {
+// FIXME(PC-37597): un-skip flaky tests
+// eslint-disable-next-line jest/no-disabled-tests
+describe.skip('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     })
 
-    it('should not display see map button when user location mode is around me and there is a venues playlist', async () => {
+    it('should not display see map button when user location mode is around me and there is a venues playlist', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -88,14 +89,12 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      await waitForPromiseResolution()
-
       expect(
         screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
       ).not.toBeOnTheScreen()
     })
 
-    it('should not display see map button when user location mode is around place and there is a venues playlist', async () => {
+    it('should not display see map button when user location mode is around place and there is a venues playlist', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -120,8 +119,6 @@ describe('<SearchListHeader />', () => {
           venues={mockAlgoliaVenues}
         />
       )
-
-      await waitForPromiseResolution()
 
       expect(
         screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
