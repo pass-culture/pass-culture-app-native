@@ -85,7 +85,7 @@ image_for_sdk() {
     else
         ARCHITECTURE_SUFFIX="x86_64"
     fi
-    echo "system-images;android-$SDK_VERSION;google_apis;$ARCHITECTURE_SUFFIX"
+    echo "system-images;android-$SDK_VERSION;default;$ARCHITECTURE_SUFFIX"
 }
 
 install_flashlight() {

@@ -82,17 +82,6 @@ jobs:
       - name: Setup android keystore file
         run: echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/staging.keystore
 
-      - name: Free up disk space
-        run: |
-          echo "Initial free space:"
-          df -h
-          # Remove large pre-installed packages we don't need so we don't run into "Not enough space" issue
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          echo "Free space after cleanup:"
-          df -h
-
       - name: Run the full test script
         id: run_test
         run: |
