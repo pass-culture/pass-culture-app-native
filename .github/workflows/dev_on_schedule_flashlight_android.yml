@@ -86,8 +86,8 @@ jobs:
 
       - name: Check Disk Usage of Key Directories
         run: |
-          echo "--- Gradle Cache Size ---"
-          du -sh ~/.gradle/caches
+          # echo "--- Gradle Cache Size ---"
+          # du -sh ~/.gradle/caches
           echo "--- Android SDK Size ---"
           du -sh $ANDROID_SDK_ROOT
           echo "--- System Images Details ---"
