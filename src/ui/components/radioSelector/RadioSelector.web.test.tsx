@@ -12,7 +12,7 @@ describe('<RadioSelector />', () => {
   it('should call press when pressing Spacebar', () => {
     render(<RadioSelector label="label" onPress={onPress} checked={false} />)
 
-    const container = screen.getByTestId('label')
+    const container = screen.getByText('label')
 
     fireEvent.focus(container)
     fireEvent.keyDown(container, { key: 'Spacebar' })
@@ -23,7 +23,7 @@ describe('<RadioSelector />', () => {
   it('should not call press when pressing Spacebar if disabled', () => {
     render(<RadioSelector label="label" onPress={onPress} disabled checked={false} />)
 
-    const container = screen.getByTestId('label')
+    const container = screen.getByText('label')
 
     fireEvent.focus(container)
     fireEvent.keyDown(container, { key: 'Spacebar' })
