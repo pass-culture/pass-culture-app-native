@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { MarketingBlockProps } from 'features/home/components/modules/marketing/types'
-import { BlurAmount } from 'ui/components/BlurryWrapper/BlurAmount'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { All } from 'ui/svg/icons/venueAndCategories/All'
@@ -50,10 +49,10 @@ export const MarketingBlockContentDesktop = ({
           <BigImageBackground source={{ uri: backgroundImageUrl }}>
             {withGradient ? (
               <BlackGradient height="100%" testID="black-gradient">
-                <StyledBlurryWrapper blurAmount={BlurAmount.INTENSE} />
+                <StyledBlurryWrapper />
               </BlackGradient>
             ) : (
-              <StyledBlurryWrapper blurAmount={BlurAmount.INTENSE} />
+              <StyledBlurryWrapper />
             )}
           </BigImageBackground>
         ) : (
