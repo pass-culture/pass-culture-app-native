@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { VenueResponse } from 'api/gen'
 import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
@@ -40,10 +40,9 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
     { lat: venue.latitude, lng: venue.longitude },
     { userLocation, selectedPlace, selectedLocationMode }
   )
-  const venueTypeLabel =
-    venue.venueTypeCode && venue.venueTypeCode !== VenueTypeCodeKey.ADMINISTRATIVE
-      ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]
-      : undefined
+  const venueTypeLabel = venue.venueTypeCode
+    ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]
+    : undefined
 
   const venueTags: string[] = []
   venueTypeLabel && venueTags.push(venueTypeLabel)

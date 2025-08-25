@@ -1,11 +1,10 @@
 import { VenueTypeCodeKey } from 'api/gen'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 
 import { getClusterColorByDominantVenueType } from './getClusterColorByDominantVenueType'
 
 describe('getClusterColorByDominantVenueType', () => {
   it('should return the color upon venue type occurences (orange)', () => {
-    const types: VenueTypeCode[] = [
+    const types: VenueTypeCodeKey[] = [
       VenueTypeCodeKey.GAMES,
       VenueTypeCodeKey.VISUAL_ARTS,
       VenueTypeCodeKey.LIBRARY,
@@ -15,7 +14,7 @@ describe('getClusterColorByDominantVenueType', () => {
   })
 
   it('should return the color upon venue type occurences (blue_orange)', () => {
-    const types: VenueTypeCode[] = [
+    const types: VenueTypeCodeKey[] = [
       VenueTypeCodeKey.GAMES,
       VenueTypeCodeKey.VISUAL_ARTS,
       VenueTypeCodeKey.LIBRARY,
@@ -26,7 +25,7 @@ describe('getClusterColorByDominantVenueType', () => {
   })
 
   it('should return the color upon venue type occurences (blue)', () => {
-    const types: VenueTypeCode[] = [
+    const types: VenueTypeCodeKey[] = [
       VenueTypeCodeKey.PATRIMONY_TOURISM,
       VenueTypeCodeKey.CULTURAL_CENTRE,
       VenueTypeCodeKey.OTHER,
@@ -36,7 +35,7 @@ describe('getClusterColorByDominantVenueType', () => {
   })
 
   it('should return the color upon venue type occurences (pink)', () => {
-    const types: VenueTypeCode[] = [
+    const types: VenueTypeCodeKey[] = [
       VenueTypeCodeKey.BOOKSTORE,
       VenueTypeCodeKey.CREATIVE_ARTS_STORE,
       VenueTypeCodeKey.DISTRIBUTION_STORE,
@@ -46,7 +45,7 @@ describe('getClusterColorByDominantVenueType', () => {
   })
 
   it('should return the color upon venue type occurences (orange_pink)', () => {
-    const types: VenueTypeCode[] = [
+    const types: VenueTypeCodeKey[] = [
       VenueTypeCodeKey.GAMES,
       VenueTypeCodeKey.BOOKSTORE,
       VenueTypeCodeKey.CREATIVE_ARTS_STORE,
@@ -57,7 +56,7 @@ describe('getClusterColorByDominantVenueType', () => {
   })
 
   it('should return the color with higher priority (blue_orange_pink)', () => {
-    const types: VenueTypeCode[] = [
+    const types: VenueTypeCodeKey[] = [
       VenueTypeCodeKey.GAMES,
       VenueTypeCodeKey.BOOKSTORE,
       VenueTypeCodeKey.OTHER,
@@ -67,7 +66,7 @@ describe('getClusterColorByDominantVenueType', () => {
   })
 
   it('should return the color with higher priority (blue_pink)', () => {
-    const types: VenueTypeCode[] = [VenueTypeCodeKey.BOOKSTORE, VenueTypeCodeKey.OTHER]
+    const types: VenueTypeCodeKey[] = [VenueTypeCodeKey.BOOKSTORE, VenueTypeCodeKey.OTHER]
 
     expect(getClusterColorByDominantVenueType(types)).toBe('blue_pink')
   })

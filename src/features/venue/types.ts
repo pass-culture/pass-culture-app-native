@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { Geoloc } from 'libs/algolia/types'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Offer } from 'shared/offer/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -12,7 +12,7 @@ export interface Venue {
   venueId: number | null
   _geoloc?: Geoloc
   banner_url?: string | null
-  venue_type?: VenueTypeCode | null
+  venue_type?: VenueTypeCodeKey | null
   postalCode?: string | null
   isPermanent?: boolean | null
   isOpenToPublic: boolean

@@ -2,7 +2,6 @@ import { VenueTypeCodeKey } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export const mapVenueTypeToCategory: Record<VenueTypeCodeKey, SubscriptionTheme | null> = {
-  ADMINISTRATIVE: null,
   ARTISTIC_COURSE: SubscriptionTheme.ACTIVITES,
   BOOKSTORE: SubscriptionTheme.LECTURE,
   CONCERT_HALL: SubscriptionTheme.MUSIQUE,

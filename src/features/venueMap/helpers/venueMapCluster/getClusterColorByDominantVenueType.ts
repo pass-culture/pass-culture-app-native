@@ -1,9 +1,8 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
 import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/constant'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 
-const getClusterColorFromVenueType = (venueType?: VenueTypeCode): ClusterImageColorName => {
+const getClusterColorFromVenueType = (venueType?: VenueTypeCodeKey): ClusterImageColorName => {
   switch (venueType) {
     case VenueTypeCodeKey.MOVIE:
     case VenueTypeCodeKey.TRAVELING_CINEMA:
@@ -27,7 +26,7 @@ const getClusterColorFromVenueType = (venueType?: VenueTypeCode): ClusterImageCo
 }
 
 export const getClusterColorByDominantVenueType = (
-  types: VenueTypeCode[]
+  types: VenueTypeCodeKey[]
 ): ClusterImageColorName | undefined => {
   const occurenceMap = types.reduce(
     (previous, current) => {

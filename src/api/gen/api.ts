@@ -499,6 +499,7 @@ export enum BookingCancellationReasons {
   'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION' = 'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION',
   'BACKOFFICE_OFFERER_BUSINESS_CLOSED' = 'BACKOFFICE_OFFERER_BUSINESS_CLOSED',
   'OFFERER_CONNECT_AS' = 'OFFERER_CONNECT_AS',
+  'OFFERER_CLOSED' = 'OFFERER_CLOSED',
 }
 /**
  * @export
@@ -2777,23 +2778,7 @@ export interface OfferReportReasons {
    * @type {{ [key: string]: ReasonMeta; }}
    * @memberof OfferReportReasons
    */
-  reasons: { [key: string]: ReasonMeta }
-}
-/**
- * @export
- * @interface OfferReportRequest
- */
-export interface OfferReportRequest {
-  /**
-   * @type {string}
-   * @memberof OfferReportRequest
-   */
-  customReason?: string | null
-  /**
-   * @type {Reason}
-   * @memberof OfferReportRequest
-   */
-  reason: Reason
+  reasons: { [key: string]: ReasonMeta; }
 }
 /**
  * @export
@@ -3611,17 +3596,6 @@ export enum ReactionTypeEnum {
   'NO_REACTION' = 'NO_REACTION',
 }
 /**
- * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
- * @export
- * @enum {string}
- */
-export enum Reason {
-  'IMPROPER' = 'IMPROPER',
-  'PRICE_TOO_HIGH' = 'PRICE_TOO_HIGH',
-  'INAPPROPRIATE' = 'INAPPROPRIATE',
-  'OTHER' = 'OTHER',
-}
-/**
  * @export
  * @interface ReasonMeta
  */
@@ -3720,27 +3694,6 @@ export interface ReminderResponse {
    * @memberof ReminderResponse
    */
   offer: ReminderOfferResponse
-}
-/**
- * @export
- * @interface ReportedOffer
- */
-export interface ReportedOffer {
-  /**
-   * @type {number}
-   * @memberof ReportedOffer
-   */
-  offerId: number
-  /**
-   * @type {Reason}
-   * @memberof ReportedOffer
-   */
-  reason: Reason
-  /**
-   * @type {string}
-   * @memberof ReportedOffer
-   */
-  reportedAt: string
 }
 /**
  * @export
@@ -4811,17 +4764,6 @@ export interface UserProfileResponse {
   subscriptions: NotificationSubscriptions
 }
 /**
- * @export
- * @interface UserReportedOffersResponse
- */
-export interface UserReportedOffersResponse {
-  /**
-   * @type {Array<ReportedOffer>}
-   * @memberof UserReportedOffersResponse
-   */
-  reportedOffers: Array<ReportedOffer>
-}
-/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -5117,7 +5059,6 @@ export interface VenueResponse {
  * @enum {string}
  */
 export enum VenueTypeCodeKey {
-  'ADMINISTRATIVE' = 'ADMINISTRATIVE',
   'ARTISTIC_COURSE' = 'ARTISTIC_COURSE',
   'BOOKSTORE' = 'BOOKSTORE',
   'CONCERT_HALL' = 'CONCERT_HALL',
@@ -5668,24 +5609,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(offer_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary user_reported_offers <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OffersReports(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/offers/reports`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6387,45 +6310,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization =
         <any>'GoogleSigninRequest' !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary report_offer <POST>
-     * @param {number} offer_id
-     * @param {OfferReportRequest} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1OfferofferIdReport(
-      offer_id: number,
-      body?: OfferReportRequest,
-      options: any = {}
-    ): Promise<FetchArgs> {
-      // verify required parameter 'offer_id' is not null or undefined
-      if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError(
-          'offer_id',
-          'Required parameter offer_id was null or undefined when calling postNativeV1OfferofferIdReport.'
-        )
-      }
-      let pathname = `/native/v1/offer/{offer_id}/report`.replace(
-        `{${'offer_id'}}`,
-        encodeURIComponent(String(offer_id))
-      )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization =
-        <any>'OfferReportRequest' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
       return {
@@ -7147,22 +7031,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response)
     },
     /**
-     *
-     * @summary get_favorites_count <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1MeFavoritesCount(options?: any): Promise<FavoritesCountResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavoritesCount(options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
      * 
      * @summary get_reminders <GET>
      * @param {*} [options] Override http request option.
@@ -7234,22 +7102,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       const localVarFetchArgs = await DefaultApiFetchParamCreator(
         configuration
       ).getNativeV1OfferofferIdChronicles(offer_id, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary user_reported_offers <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OffersReports(options?: any): Promise<UserReportedOffersResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1OffersReports(options)
       const response = await safeFetch(
         configuration?.basePath + localVarFetchArgs.url,
         localVarFetchArgs.options,
@@ -7635,29 +7487,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       const localVarFetchArgs = await DefaultApiFetchParamCreator(
         configuration
       ).postNativeV1OauthGoogleAuthorize(body, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary report_offer <POST>
-     * @param {number} offer_id
-     * @param {OfferReportRequest} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1OfferofferIdReport(
-      offer_id: number,
-      body?: OfferReportRequest,
-      options?: any
-    ): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(
-        configuration
-      ).postNativeV1OfferofferIdReport(offer_id, body, options)
       const response = await safeFetch(
         configuration?.basePath + localVarFetchArgs.url,
         localVarFetchArgs.options,
@@ -8134,17 +7963,6 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).getNativeV1MeFavorites(options)
   }
   /**
-   *
-   * @summary get_favorites_count <GET>
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async getNativeV1MeFavoritesCount(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1MeFavoritesCount(options)
-  }
-  /**
     * 
     * @summary get_reminders <GET>
     * @param {*} [options] Override http request option.
@@ -8213,17 +8031,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1OfferofferIdChronicles(offer_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OfferofferIdChronicles(offer_id, options)
-  }
-  /**
-   *
-   * @summary user_reported_offers <GET>
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async getNativeV1OffersReports(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OffersReports(options)
   }
   /**
     * 
@@ -8600,23 +8407,6 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1OauthGoogleAuthorize(body, options)
-  }
-  /**
-   *
-   * @summary report_offer <POST>
-   * @param {number} offer_id
-   * @param {OfferReportRequest} [body]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async postNativeV1OfferofferIdReport(
-    offer_id: number,
-    body?: OfferReportRequest,
-    options?: any
-  ) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1OfferofferIdReport(offer_id, body, options)
   }
   /**
    *
