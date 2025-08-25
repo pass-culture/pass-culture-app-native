@@ -6,7 +6,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type RightContentProps =
   | { rightText: string; rightElement?: never }
@@ -47,9 +47,16 @@ export const RadioSelector = ({
 
   useSpaceBarAction(isFocus ? handlePress : undefined)
 
+  const checkedStatus = checked ? 'sélectionné' : 'non sélectionné'
+  const computedAccessibilityLabel = accessibilityLabel
+    ? `${accessibilityLabel} - ${checkedStatus}`
+    : description
+      ? `${label} - ${description} - ${checkedStatus}`
+      : `${label} - ${checkedStatus}`
+
   return (
     <SelectableListItem
-      {...accessibleRadioProps({ label: accessibilityLabel ?? label, checked })}
+      {...accessibleRadioProps({ label: computedAccessibilityLabel, checked })}
       onSelect={handlePress}
       render={({ isHover }) => (
         <Container gap={4}>
@@ -103,7 +110,7 @@ const Label = styled(Typo.BodyAccent)<{ isHover?: boolean }>(({ theme, disabled,
 
 const Description = styled(Typo.BodyAccentXs)<{ isHover?: boolean }>(
   ({ theme, disabled, isHover }) => ({
-    marginTop: getSpacing(1),
+    marginTop: theme.designSystem.size.spacing.xs,
     color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.subtle,
     textDecoration: isHover ? 'underline' : undefined,
   })

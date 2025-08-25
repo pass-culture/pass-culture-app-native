@@ -1,10 +1,12 @@
 import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -18,12 +20,14 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { DarkThemeIllustration } from 'ui/svg/icons/darkTheme/DarkThemeIllustration'
 import { DefaultThemeIllustration } from 'ui/svg/icons/darkTheme/DefaultThemeIllustration'
 import { SystemThemeIllustration } from 'ui/svg/icons/darkTheme/SystemThemeIllustration'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 export const DisplayPreference = () => {
+  const titleID = uuidv4()
   const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
 
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
@@ -56,9 +60,14 @@ export const DisplayPreference = () => {
           )}
           {enableDarkMode ? (
             <DarkThemeContainer>
-              <Typo.BodyAccentS>Thème</Typo.BodyAccentS>
+              <Typo.BodyAccentS nativeID={titleID} id={titleID} {...getHeadingAttrs(2)}>
+                Thème
+              </Typo.BodyAccentS>
               <GreySeparator />
-              <SelectorContainer gap={5}>
+              <SelectorContainer
+                gap={5}
+                accessibilityRole={AccessibilityRole.RADIOGROUP}
+                accessibilityLabelledBy={titleID}>
                 <RadioSelector
                   label="Mode clair"
                   description="Affichage classique"
@@ -96,14 +105,14 @@ export const DisplayPreference = () => {
   )
 }
 
-const DarkThemeContainer = styled.View({
-  marginVertical: getSpacing(10),
-})
+const DarkThemeContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xxxl,
+}))
 
 const GreySeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.designSystem.separator.color.subtle,
 }))
 
-const SelectorContainer = styled(ViewGap)({
-  marginTop: getSpacing(6),
-})
+const SelectorContainer = styled(ViewGap)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
