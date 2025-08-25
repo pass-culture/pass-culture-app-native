@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect } from 'react'
-import styled from 'styled-components/native'
+import { ViewToken } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
+import { ObservedPlaylist } from 'features/home/components/parsers/ObservedPlaylist'
 import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
@@ -16,6 +18,7 @@ type VenuesModuleProps = {
   homeEntryId: string | undefined
   index: number
   data?: ModuleData
+  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
 }
 
 const ITEM_HEIGHT = LENGTH_S
@@ -29,6 +32,7 @@ export const VenuesModule = ({
   index,
   homeEntryId,
   data,
+  onViewableItemsChanged,
 }: VenuesModuleProps) => {
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
@@ -63,21 +67,28 @@ export const VenuesModule = ({
   }, [shouldModuleBeDisplayed])
 
   if (!shouldModuleBeDisplayed) return null
+
   return (
-    <PlaylistContainer>
-      <PassPlaylist
-        testID="offersModuleList"
-        title={displayParameters.title}
-        subtitle={displayParameters.subtitle}
-        data={playlistItems || []}
-        itemHeight={ITEM_HEIGHT}
-        itemWidth={ITEM_WIDTH}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        tileType="venue"
-        withMargin={false}
-      />
-    </PlaylistContainer>
+    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+      {({ listRef, handleViewableItemsChanged }) => (
+        <PlaylistContainer>
+          <PassPlaylist
+            testID="venuesModuleList"
+            title={displayParameters.title}
+            subtitle={displayParameters.subtitle}
+            data={playlistItems || []}
+            itemHeight={ITEM_HEIGHT}
+            itemWidth={ITEM_WIDTH}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            tileType="venue"
+            withMargin={false}
+            onViewableItemsChanged={handleViewableItemsChanged}
+            playlistRef={listRef}
+          />
+        </PlaylistContainer>
+      )}
+    </ObservedPlaylist>
   )
 }
 
