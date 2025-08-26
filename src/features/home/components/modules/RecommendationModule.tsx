@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect } from 'react'
+import { ViewToken } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
+import { ObservedPlaylist } from 'features/home/components/parsers/ObservedPlaylist'
 import { RecommendedOffersModule } from 'features/home/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { analytics } from 'libs/analytics/provider'
@@ -19,12 +21,23 @@ type RecommendationModuleProps = {
   index: number
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
   homeEntryId: string | undefined
+  onViewableItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    callId?: string | null
+  ) => void
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
+  const {
+    displayParameters,
+    index,
+    recommendationParameters,
+    moduleId,
+    homeEntryId,
+    onViewableItemsChanged,
+  } = props
   const { userLocation: position } = useLocation()
   const { user: profile } = useAuthContext()
 
@@ -72,20 +85,30 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     [moduleId, moduleName, recommendationApiParams, homeEntryId]
   )
 
+  const handleOnViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+    onViewableItemsChanged?.(items, recommendationApiParams?.call_id)
+  }
+
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return null
   return (
-    <PassPlaylist
-      testID="recommendationModuleList"
-      title={displayParameters.title}
-      subtitle={displayParameters.subtitle}
-      data={offers}
-      itemHeight={itemHeight}
-      itemWidth={itemWidth}
-      renderItem={renderItem}
-      keyExtractor={keyExtractor}
-      onEndReached={logHasSeenAllTilesOnce}
-    />
+    <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
+      {({ listRef, handleViewableItemsChanged }) => (
+        <PassPlaylist
+          testID="recommendationModuleList"
+          title={displayParameters.title}
+          subtitle={displayParameters.subtitle}
+          data={offers}
+          itemHeight={itemHeight}
+          itemWidth={itemWidth}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          onEndReached={logHasSeenAllTilesOnce}
+          playlistRef={listRef}
+          onViewableItemsChanged={handleViewableItemsChanged}
+        />
+      )}
+    </ObservedPlaylist>
   )
 }
