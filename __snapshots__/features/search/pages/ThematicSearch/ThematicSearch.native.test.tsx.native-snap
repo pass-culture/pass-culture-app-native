@@ -1534,6 +1534,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         }
       >
         <View
+          onLayout={[Function]}
           style={
             {
               "position": "relative",
@@ -1549,11 +1550,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 "left": 0,
                 "position": "absolute",
                 "right": 0,
-                "top": "50%",
+                "top": 50,
               }
             }
             testID="intersectionObserver"
-            threshold="50%"
+            threshold={50}
             triggerOnce={false}
           />
           <View

@@ -11187,7 +11187,7 @@ __metadata:
     react-native-gesture-handler: ^2.26.0
     react-native-get-random-values: ^1.5.1
     react-native-in-app-review: ^4.3.1
-    react-native-intersection-observer: ^0.2.0
+    react-native-intersection-observer: ^0.2.1
     react-native-keychain: ^8.0.0
     react-native-launch-navigator: 1.0.9
     react-native-linear-gradient: ^2.8.3
@@ -24872,12 +24872,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-intersection-observer@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "react-native-intersection-observer@npm:0.2.0"
+"react-native-intersection-observer@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "react-native-intersection-observer@npm:0.2.1"
   dependencies:
     lodash: ^4.0.0
-  checksum: 2bf655c34ea6c5a65811ee0a85a71a500d3fe46a714edc1b917f93d5e17626231dc6cc162e9e8a2a638c7bcbe4e08f108cf4a0982de9d888452fee3a45dee851
+  checksum: a700939e1d906f86453cc5f396aa55be56b1ffff822d6e4bc2d6acc9edd65f8a42229c5a21a45d43fa083bf973392ffe8ead9c6b202754e6ab227abe072dc868
   languageName: node
   linkType: hard
 

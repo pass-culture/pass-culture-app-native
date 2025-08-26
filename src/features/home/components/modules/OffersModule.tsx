@@ -18,6 +18,7 @@ import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylist
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/location'
+import { logPlaylistDebug } from 'shared/analytics/logViewItem'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -182,8 +183,34 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const handleViewableItemsChanged = useCallback(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+      logPlaylistDebug(
+        'OFFERS_MODULE',
+        `handleViewableItemsChanged called for module ${moduleId}`,
+        {
+          isInView: isInView.current,
+          viewableItemsCount: viewableItems.length,
+          viewableItems: viewableItems.map(({ key, index }) => ({ key, index })),
+        }
+      )
       if (isInView.current) {
+        logPlaylistDebug(
+          'OFFERS_MODULE',
+          `✅ Module ${moduleId} IS IN VIEW - sending items to tracking`,
+          {
+            itemsCount: viewableItems.length,
+          }
+        )
         onViewableItemsChanged?.(viewableItems.map(({ key, index }) => ({ key, index })))
+        lastViewableItems.current = viewableItems
+      } else {
+        logPlaylistDebug(
+          'OFFERS_MODULE',
+          `❌ Module ${moduleId} NOT IN VIEW - storing items for later`,
+          {
+            itemsCount: viewableItems.length,
+          }
+        )
+        // Store items even when not in view, so they can be sent when module becomes visible
         lastViewableItems.current = viewableItems
       }
     },
@@ -194,6 +221,11 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const handleIntersectionObserverChange = useCallback(
     (value: boolean) => {
+      logPlaylistDebug('OFFERS_MODULE', `IntersectionObserver changed for module ${moduleId}`, {
+        isInView: value,
+        hasLastViewableItems: !!lastViewableItems.current?.length,
+        lastViewableItemsCount: lastViewableItems.current?.length || 0,
+      })
       isInView.current = value
       if (value) {
         if (lastViewableItems.current?.length) {
@@ -205,11 +237,15 @@ export const OffersModule = (props: OffersModuleProps) => {
         }
       }
     },
-    [handleViewableItemsChanged]
+    [handleViewableItemsChanged, moduleId]
   )
 
   useFocusEffect(
     useCallback(() => {
+      logPlaylistDebug('OFFERS_MODULE', `Focus effect triggered for module ${moduleId}`, {
+        hasLastViewableItems: !!lastViewableItems.current?.length,
+        lastViewableItemsCount: lastViewableItems.current?.length || 0,
+      })
       if (lastViewableItems.current?.length) {
         handleViewableItemsChanged({
           viewableItems: lastViewableItems.current,
@@ -220,6 +256,11 @@ export const OffersModule = (props: OffersModuleProps) => {
   )
 
   if (!shouldModuleBeDisplayed) return null
+
+  logPlaylistDebug('OFFERS_MODULE', `Rendering module ${moduleId} with IntersectionObserver`, {
+    hasData: offersToDisplay.length,
+    currentIsInView: isInView.current,
+  })
 
   return (
     <IntersectionObserver onChange={handleIntersectionObserverChange}>
