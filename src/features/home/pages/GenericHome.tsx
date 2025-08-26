@@ -46,7 +46,7 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMarkScreenInteractive } from 'performance/useMarkScreenInteractive'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
+import { logPlaylistDebug, logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
 import {
   resetPageTrackingInfo,
   setPageTrackingInfo,
@@ -82,7 +82,7 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
   viewableItems,
   homeEntryId,
 }) => {
-  setPlaylistTrackingInfo({
+  const trackingData = {
     index,
     moduleId,
     viewedAt: new Date(),
@@ -90,23 +90,40 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
     itemType: getItemTypeFromModuleType(moduleType),
     extra: { homeEntryId },
     callId: '',
+  }
+
+  logPlaylistDebug('GENERIC_HOME', 'Module viewable items changed', {
+    moduleId,
+    moduleType,
+    index,
+    itemsCount: viewableItems.length,
+    items: viewableItems,
   })
+
+  setPlaylistTrackingInfo(trackingData)
 }
 
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
   homeId: string,
   videoModuleId?: string
-) => (
-  <HomeModule
-    item={item}
-    index={index}
-    homeEntryId={homeId}
-    data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
-    videoModuleId={videoModuleId}
-    onModuleViewableItemsChanged={handleViewableItemsChanged}
-  />
-)
+) => {
+  logPlaylistDebug('GENERIC_HOME', `Rendering module ${item.id} at index ${index}`, {
+    moduleType: item.type,
+    hasData: !!(isOffersModule(item) || isVenuesModule(item)),
+  })
+
+  return (
+    <HomeModule
+      item={item}
+      index={index}
+      homeEntryId={homeId}
+      data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
+      videoModuleId={videoModuleId}
+      onModuleViewableItemsChanged={handleViewableItemsChanged}
+    />
+  )
+}
 
 const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
   if (hasShownAll && Platform.OS === 'web') {
@@ -272,6 +289,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
       if (!homeId || !name) {
         return
       }
+      logPlaylistDebug('GENERIC_HOME', 'Setting page tracking info', {
+        pageId: homeId,
+        pageLocation: name,
+      })
       setPageTrackingInfo({
         pageId: homeId,
         pageLocation: name,
@@ -279,13 +300,49 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }, [homeId, name])
   )
 
-  useAppStateChange(undefined, () => logViewItem(useOfferPlaylistTrackingStore.getState()))
+  useAppStateChange(undefined, () => {
+    const state = useOfferPlaylistTrackingStore.getState()
+
+    if (state?.pageId && state?.pageLocation && state?.playlists) {
+      logPlaylistDebug('GENERIC_HOME', 'App state changed - sending playlist stats', {
+        pageId: state.pageId,
+        pageLocation: state.pageLocation,
+        playlistsCount: state.playlists.length,
+        playlists: state.playlists.map((p) => ({
+          moduleId: p.moduleId,
+          itemType: p.itemType,
+          itemsCount: p.items.length,
+          index: p.index,
+        })),
+      })
+    }
+    logViewItem(state)
+  })
 
   useFocusEffect(
     useCallback(() => {
       return () => {
         setIsLoading(false)
-        logViewItem(useOfferPlaylistTrackingStore.getState())
+        const state = useOfferPlaylistTrackingStore.getState()
+
+        if (state?.pageId && state?.pageLocation && state?.playlists) {
+          logPlaylistDebug('GENERIC_HOME', 'Focus lost - sending final playlist stats', {
+            pageId: state.pageId,
+            pageLocation: state.pageLocation,
+            playlistsCount: state.playlists.length,
+            playlists: state.playlists.map((p) => ({
+              moduleId: p.moduleId,
+              itemType: p.itemType,
+              itemsCount: p.items.length,
+              index: p.index,
+              viewedAt: p.viewedAt,
+            })),
+          })
+        }
+
+        logViewItem(state)
+
+        logPlaylistDebug('GENERIC_HOME', 'Resetting page tracking info')
         resetPageTrackingInfo()
       }
     }, [])
