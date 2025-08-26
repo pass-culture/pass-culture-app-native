@@ -101,8 +101,8 @@ export const logEventAnalytics = {
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
   logBookingConfirmation: (params: {
-    offerId: number
-    bookingId: number
+    offerId: string
+    bookingId: string
     fromOfferId?: number
     fromMultivenueOfferId?: number
     playlistType?: PlaylistType
