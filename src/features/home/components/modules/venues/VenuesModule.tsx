@@ -1,9 +1,10 @@
+import { ObservedList } from 'features/home/components/parsers/ObservedList'
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import { styled } from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
-import { ObservedPlaylist } from 'features/home/components/parsers/ObservedPlaylist'
 import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
@@ -69,7 +70,7 @@ export const VenuesModule = ({
   if (!shouldModuleBeDisplayed) return null
 
   return (
-    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+    <ObservedList<FlatList> onViewableItemsChanged={onViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PlaylistContainer>
           <PassPlaylist
@@ -88,7 +89,7 @@ export const VenuesModule = ({
           />
         </PlaylistContainer>
       )}
-    </ObservedPlaylist>
+    </ObservedList>
   )
 }
 

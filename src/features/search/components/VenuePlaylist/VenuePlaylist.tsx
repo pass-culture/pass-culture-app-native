@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
+import { ObservedList } from 'features/home/components/parsers/ObservedList'
 import React, { useCallback, useEffect } from 'react'
 import { Platform, StyleProp, ViewStyle, ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { ObservedPlaylist } from 'features/home/components/parsers/ObservedPlaylist'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
@@ -155,7 +156,7 @@ export const VenuePlaylist: React.FC<Props> = ({
         ) : (
           <NumberOfResults nbHits={venues?.length ?? 0} />
         )}
-        <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+        <ObservedList<FlatList> onViewableItemsChanged={onViewableItemsChanged}>
           {({ listRef, handleViewableItemsChanged }) => (
             <Playlist
               data={venues ?? []}
@@ -174,7 +175,7 @@ export const VenuePlaylist: React.FC<Props> = ({
               ref={listRef}
             />
           )}
-        </ObservedPlaylist>
+        </ObservedList>
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
       <VenueMapLocationModal

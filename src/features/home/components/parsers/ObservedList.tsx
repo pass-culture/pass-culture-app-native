@@ -1,20 +1,19 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { Ref, useCallback, useRef } from 'react'
 import { ViewToken } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
 
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 
-type ObservedPlaylistProps = {
+type ObservedListProps<T> = {
   children: (props: {
-    listRef: Ref<FlatList>
+    listRef: Ref<T>
     handleViewableItemsChanged: ({ viewableItems }: { viewableItems: ViewToken[] }) => void
   }) => React.ReactNode
   onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
 }
 
-export const ObservedPlaylist = ({ children, onViewableItemsChanged }: ObservedPlaylistProps) => {
-  const listRef = useRef<FlatList>(null)
+export const ObservedList = <T,>({ children, onViewableItemsChanged }: ObservedListProps<T>) => {
+  const listRef = useRef<T>(null)
   const lastViewableItems = useRef<ViewToken[]>([])
   const isInView = useRef(false)
 
@@ -46,7 +45,8 @@ export const ObservedPlaylist = ({ children, onViewableItemsChanged }: ObservedP
         if (lastViewableItems.current?.length) {
           handleViewableItemsChanged({ viewableItems: lastViewableItems.current })
         } else {
-          listRef.current?.recordInteraction()
+          // @ts-expect-error : recordInteraction peut ne pas exister selon la liste
+          listRef.current?.recordInteraction?.()
         }
       }
     },

@@ -1,9 +1,10 @@
+import { ObservedList } from 'features/home/components/parsers/ObservedList'
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
-import { ObservedPlaylist } from 'features/home/components/parsers/ObservedPlaylist'
 import { RecommendedOffersModule } from 'features/home/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { analytics } from 'libs/analytics/provider'
@@ -93,7 +94,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
   return (
-    <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
+    <ObservedList<FlatList> onViewableItemsChanged={handleOnViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           testID="recommendationModuleList"
@@ -109,6 +110,6 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           onViewableItemsChanged={handleViewableItemsChanged}
         />
       )}
-    </ObservedPlaylist>
+    </ObservedList>
   )
 }

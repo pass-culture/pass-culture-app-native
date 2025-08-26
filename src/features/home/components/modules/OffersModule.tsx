@@ -4,7 +4,7 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
-import { ObservedPlaylist } from 'features/home/components/parsers/ObservedPlaylist'
+import { ObservedList } from 'features/home/components/parsers/ObservedList'
 import {
   ModuleData,
   OffersModule as OffersModuleType,
@@ -178,7 +178,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   if (!shouldModuleBeDisplayed) return null
 
   return (
-    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+    <ObservedList<FlatList> onViewableItemsChanged={onViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           title={displayParameters.title}
@@ -197,6 +197,6 @@ export const OffersModule = (props: OffersModuleProps) => {
           onViewableItemsChanged={handleViewableItemsChanged}
         />
       )}
-    </ObservedPlaylist>
+    </ObservedList>
   )
 }
