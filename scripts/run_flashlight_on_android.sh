@@ -180,6 +180,9 @@ recreate_emulator() {
     echo "--- AVDs ---"
     ls -lh ~/.android/avd/ || true
 
+    echo "--- Show available AVDs ---"
+    emulator -list-avds
+
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
     emulator \
