@@ -20,7 +20,7 @@ export type AvatarProps = {
   borderColor?: string
   borderWidth?: number
   rounded?: boolean
-  borderRadius?: number
+  borderRadius?: number | string
 }
 
 export const Avatar = ({

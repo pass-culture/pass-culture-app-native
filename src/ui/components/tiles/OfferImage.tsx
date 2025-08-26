@@ -15,7 +15,7 @@ import { getShadow, getSpacing } from 'ui/theme'
 type SizeProp = keyof AppThemeType['tiles']['sizes']
 type StyleProps = {
   size: SizeProp
-  borderRadius?: number
+  borderRadius?: number | string
   withStroke?: boolean
   withShadow?: boolean
 }
@@ -24,7 +24,7 @@ type Props = {
   imageUrl?: string
   categoryId?: CategoryIdEnum | null
   size?: SizeProp
-  borderRadius?: number
+  borderRadius?: number | string
   withStroke?: boolean
   withContainerStroke?: boolean
   withShadow?: boolean
