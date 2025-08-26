@@ -18,7 +18,7 @@ export const ChronicleCardListHeader: FunctionComponent<Props> = ({
 }) => {
   return (
     <ViewGap gap={2}>
-      <Typo.Title2>Tous les avis</Typo.Title2>
+      <Typo.Title2>Tous les avis du {variantInfo.labelReaction}</Typo.Title2>
       <StyledButtonQuaternaryBlack
         wording={variantInfo.modalTitle}
         icon={InfoPlain}
