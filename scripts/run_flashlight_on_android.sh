@@ -13,9 +13,9 @@ get_version() {
 }
 
 BUNDLE_ID=app.passculture.staging
+ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 EMULATOR_NAME="Galaxy Nexus"
 MIN_SDK_VERSION="$(get_version 'minSdkVersion')"
-ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
