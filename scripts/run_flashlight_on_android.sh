@@ -14,7 +14,7 @@ get_version() {
 
 BUNDLE_ID=app.passculture.staging
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
-EMULATOR_NAME="Galaxy Nexus"
+EMULATOR_NAME="pixel_6"
 MIN_SDK_VERSION="$(get_version 'minSdkVersion')"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
@@ -93,7 +93,7 @@ image_for_sdk() {
     else
         ARCHITECTURE_SUFFIX="x86_64"
     fi
-    echo "system-images;android-$SDK_VERSION;default;$ARCHITECTURE_SUFFIX"
+    echo "system-images;android-$SDK_VERSION;google_apis;$ARCHITECTURE_SUFFIX"
 }
 
 install_flashlight() {
