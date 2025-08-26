@@ -176,6 +176,9 @@ recreate_emulator() {
 
     echo "--- System Images Details ---"
     ls -lh $ANDROID_SDK_ROOT/system-images/ || true
+    
+    echo "--- System Images disk usage ---"
+    du -h -d 1 $ANDROID_SDK_ROOT/system-images | sort -hr || true
 
     echo "--- AVDs ---"
     ls -lh ~/.android/avd/ || true
