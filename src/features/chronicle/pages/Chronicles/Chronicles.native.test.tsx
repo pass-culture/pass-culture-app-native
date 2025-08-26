@@ -66,7 +66,7 @@ describe('Chronicles', () => {
 
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis')
+      await screen.findByText('Tous les avis du Book Club')
 
       expect(screen.getAllByTestId('bookClubIcon')[0]).toBeOnTheScreen()
     })
@@ -79,7 +79,7 @@ describe('Chronicles', () => {
 
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis')
+      await screen.findByText('Tous les avis du Ciné Club')
 
       expect(screen.getAllByTestId('cineClubIcon')[0]).toBeOnTheScreen()
     })
@@ -87,7 +87,7 @@ describe('Chronicles', () => {
     it('should scroll to selected chronicle on layout', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis')
+      await screen.findByText('Tous les avis du Ciné Club')
 
       await act(async () => {
         fireEvent(screen.getByTestId('chronicle-list'), 'onLayout', mockOnLayout)
@@ -124,7 +124,7 @@ describe('Chronicles', () => {
     it('should render correctly', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      expect(await screen.findByText('Tous les avis')).toBeOnTheScreen()
+      expect(await screen.findByText('Tous les avis du Ciné Club')).toBeOnTheScreen()
     })
 
     it('should navigate to offer page without openModalOnNavigation param when pressing back button', async () => {
@@ -141,7 +141,7 @@ describe('Chronicles', () => {
     it('should not scroll to selected chronicle on layout', async () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
-      await screen.findByText('Tous les avis')
+      await screen.findByText('Tous les avis du Ciné Club')
 
       await act(async () => {
         fireEvent(screen.getByTestId('chronicle-list'), 'onLayout', mockOnLayout)
