@@ -107,12 +107,14 @@ export function Offer() {
         bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
       />
 
-      <ChroniclesWritersModal
-        closeModal={hideChroniclesWritersModal}
-        isVisible={chroniclesWritersModalVisible}
-        onShowRecoButtonPress={handleOnShowRecoButtonPress}
-        variantInfo={chronicleVariantInfo}
-      />
+      {chronicleVariantInfo ? (
+        <ChroniclesWritersModal
+          closeModal={hideChroniclesWritersModal}
+          isVisible={chroniclesWritersModalVisible}
+          onShowRecoButtonPress={handleOnShowRecoButtonPress}
+          variantInfo={chronicleVariantInfo}
+        />
+      ) : null}
 
       <OfferContent
         offer={offer}
