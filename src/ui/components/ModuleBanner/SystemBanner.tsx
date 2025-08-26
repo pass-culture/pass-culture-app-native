@@ -43,7 +43,7 @@ type Props = {
   leftIcon: React.FunctionComponent<AccessibleIcon>
   title: string
   subtitle: string | React.ReactNode
-  accessibilityLabel: string
+  accessibilityLabel?: string
   accessibilityRole?: AccessibilityRole
   analyticsParams: {
     type: 'credit' | 'location' | 'remoteActivationBanner' | 'remoteGenericBanner'
@@ -108,12 +108,14 @@ export const SystemBanner: FunctionComponent<Props> = ({
     TouchableComponent = StyledTouchableOpacity
   }
 
+  const subtitleText = typeof subtitle === 'string' ? subtitle : ''
+
   return (
     <TouchableComponent
       {...touchableProps}
       {...focusProps}
       accessibilityRole={accessibilityRole}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={accessibilityLabel ?? `${title} ${subtitleText}`}
       color={
         withBackground ? designSystem.color.text.lockedInverted : designSystem.color.text.default
       }
