@@ -20,17 +20,26 @@ export function BlurryWrapper({ blurAmount = BlurAmount.LIGHT, children }: Props
   return Platform.OS === 'android' ? (
     <TransparentBackground>{children}</TransparentBackground>
   ) : (
-    <StyledBlurry blurType={blurType} blurAmount={blurAmount} testID="blurry-wrapper">
-      {children}
-    </StyledBlurry>
+    <FlexView>
+      <StyledBlurry blurType={blurType} blurAmount={blurAmount} testID="blurry-wrapper" />
+      <FlexView>{children}</FlexView>
+    </FlexView>
   )
 }
+
+const FlexView = styled.View({
+  flex: 1,
+})
 
 const StyledBlurry = styled(BlurView)<{
   blurType: string
   blurAmount: BlurAmount
 }>({
-  flex: 1,
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
 })
 
 const TransparentBackground = styled.View(({ theme }) => ({
