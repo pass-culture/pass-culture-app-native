@@ -4,12 +4,13 @@ import React, { FunctionComponent } from 'react'
 import styled, { ThemeProvider } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFiltersModal/VenueMapFiltersModal'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
-import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
+import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
@@ -57,11 +58,11 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
     toggleMacroFilter(filterGroup, true)
   }
 
-  const venueTypes: VenueTypeCode[] = FILTERS_VENUE_TYPE_MAPPING[filterGroup].filter(
-    (item): item is VenueTypeCode => item in MAP_VENUE_TYPE_TO_LABEL
+  const venueTypes: VenueTypeCodeKey[] = FILTERS_VENUE_TYPE_MAPPING[filterGroup].filter(
+    (item): item is VenueTypeCodeKey => item in MAP_VENUE_TYPE_TO_LABEL
   )
 
-  const handleCheckboxPress = (venueTypeCode: VenueTypeCode) => {
+  const handleCheckboxPress = (venueTypeCode: VenueTypeCodeKey) => {
     const hasFilter = venueFilters.includes(venueTypeCode)
 
     if (hasFilter) {

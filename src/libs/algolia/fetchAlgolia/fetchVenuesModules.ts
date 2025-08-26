@@ -1,3 +1,4 @@
+import { VenueTypeCodeKey } from 'api/gen'
 import { Venue, VenuesModuleParameters } from 'features/home/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
@@ -5,7 +6,6 @@ import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/bui
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 
 export const fetchVenuesModules = async (
   paramsList: (VenuesModuleParameters & BuildLocationParameterParams)[]
@@ -50,7 +50,7 @@ const buildVenue = (venue: AlgoliaVenue): Venue => {
     longitude: venue._geoloc.lng ?? undefined,
     name: venue.name,
     publicName: venue.name,
-    venueTypeCode: venue.venue_type as VenueTypeCode,
+    venueTypeCode: venue.venue_type as VenueTypeCodeKey,
     city: venue.city,
     postalCode: venue.postalCode,
   }
