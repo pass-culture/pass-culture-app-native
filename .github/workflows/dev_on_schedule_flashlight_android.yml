@@ -136,10 +136,3 @@ jobs:
             }
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      - name: Clean up AVD and Build Artifacts
-        if: always() # This ensures cleanup runs even if tests fail
-        run: |
-          echo "--- Deleting AVD ---"
-          avdmanager delete avd -n SDK_modern_test
-          echo "--- Cleaning Gradle project ---"
-          ./gradlew clean
