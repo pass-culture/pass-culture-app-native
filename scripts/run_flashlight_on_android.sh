@@ -186,6 +186,16 @@ recreate_emulator() {
     echo "--- Show available AVDs ---"
     emulator -list-avds
 
+    log_info "Free up space"
+    df -h
+    # Remove .NET SDKs
+    sudo rm -rf /usr/share/dotnet
+    # Remove Swift toolchain
+    sudo rm -rf /usr/share/swift
+    # Remove Haskell (ghc)
+    sudo rm -rf /opt/ghc
+    df -h
+
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
     emulator \
