@@ -27,7 +27,7 @@ export type OfferAnalyticsParams = {
 }
 
 export type ConsultOfferLogParams = {
-  offerId: number
+  offerId: number | string
   from: Referrals
   moduleId?: string
   moduleName?: string

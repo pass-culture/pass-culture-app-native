@@ -276,7 +276,10 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(screen.getByText('Confirmer la réservation'))
 
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({ bookingId: "1", offerId: "20" })
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({
+          bookingId: '1',
+          offerId: '20',
+        })
       })
 
       it('should log conversion booking when is from search', async () => {

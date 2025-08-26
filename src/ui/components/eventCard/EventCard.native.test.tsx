@@ -23,7 +23,7 @@ describe('EventCard', () => {
       await user.press(eventCard)
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-        offerId: 1,
+        offerId: '1',
         from: 'venue',
       })
     })

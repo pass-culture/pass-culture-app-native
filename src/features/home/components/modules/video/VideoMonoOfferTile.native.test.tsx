@@ -66,7 +66,7 @@ describe('VideoMonoOfferTile', () => {
     await user.press(screen.getByText(mockOffer.offer.name))
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      offerId: +mockOffer.objectID,
+      offerId: mockOffer.objectID,
       ...mockAnalyticsParams,
     })
   })

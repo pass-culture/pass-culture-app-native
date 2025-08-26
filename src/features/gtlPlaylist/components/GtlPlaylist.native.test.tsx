@@ -65,7 +65,7 @@ describe('GtlPlaylist', () => {
           from: 'venue',
           index: 0,
           moduleId: '2xUlLBRfxdk6jeYyJszunX',
-          offerId: 12,
+          offerId: '12',
           venueId: 5543,
         })
       )
@@ -135,7 +135,7 @@ describe('GtlPlaylist', () => {
           from: 'thematicsearch',
           index: 0,
           moduleId: '2xUlLBRfxdk6jeYyJszunX',
-          offerId: 12,
+          offerId: '12',
         })
       )
     })

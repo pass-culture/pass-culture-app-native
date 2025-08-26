@@ -10,5 +10,10 @@ export function triggerConsultOfferLog(params: ConsultOfferLogParams) {
     return
   }
 
-  analytics.logConsultOffer(params)
+  const paramsWithStringId: ConsultOfferLogParams = {
+    ...params,
+    offerId: String(params.offerId),
+  }
+
+  analytics.logConsultOffer(paramsWithStringId)
 }

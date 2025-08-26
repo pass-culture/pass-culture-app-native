@@ -324,7 +324,10 @@ describe('BookingDetails', () => {
         id: offerId,
         from: 'bookingdetails',
       })
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: String(offerId),
+        from: 'bookings',
+      })
     })
 
     it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
@@ -690,7 +693,10 @@ describe('BookingDetails', () => {
         id: offerId,
         from: 'bookingdetails',
       })
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: String(offerId),
+        from: 'bookings',
+      })
     })
 
     it('should not redirect to the Offer and showSnackBarError when not connected', async () => {

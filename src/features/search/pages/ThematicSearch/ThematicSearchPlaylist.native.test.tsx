@@ -30,7 +30,7 @@ describe('ThematicSearchPlaylist', () => {
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       from: 'thematicsearch',
       index: 0,
-      offerId: 1,
+      offerId: '1',
     })
   })
 })
