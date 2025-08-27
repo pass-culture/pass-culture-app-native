@@ -183,4 +183,5 @@ const CompletedConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) =
 
 const StyledListContainer = styled.View({
   marginHorizontal: 'auto',
+  width: '100%',
 })
