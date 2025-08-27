@@ -40,7 +40,7 @@ export type AppButtonEventNative = ((e: GestureResponderEvent) => void) | (() =>
 export type AppButtonEventWeb = MouseEventHandler<HTMLButtonElement> | (() => void) | undefined
 
 export interface BaseButtonProps {
-  accessibilityDescribedBy?: string
+  accessibilityHint?: string
   accessibilityLabel?: string
   accessibilityRole?: AccessibilityRole
   adjustsFontSizeToFit?: boolean
