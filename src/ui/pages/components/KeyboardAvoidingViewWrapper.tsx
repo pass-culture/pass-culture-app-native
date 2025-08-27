@@ -4,7 +4,10 @@ import styled from 'styled-components/native'
 
 export const KeyboardAvoidingViewWrapper: React.FC<PropsWithChildren> = ({ children }) => {
   return Platform.OS === 'android' ? (
-    <StyledKeyboardAvoidingView behavior="height" keyboardVerticalOffset={30}>
+    <StyledKeyboardAvoidingView
+      testID="keyboard-avoiding-view"
+      behavior="height"
+      keyboardVerticalOffset={30}>
       {children}
     </StyledKeyboardAvoidingView>
   ) : (
