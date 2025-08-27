@@ -36,4 +36,10 @@ describe('ExternalLink', () => {
 
     expect(openURLSpy).toHaveBeenNthCalledWith(1, someUrl)
   })
+
+  it('should not display Icon when withIcon is false', () => {
+    render(<ExternalLink text="some text with several words" url={someUrl} withIcon={false} />)
+
+    expect(screen.queryByTestId('externalSiteIcon')).not.toBeOnTheScreen()
+  })
 })

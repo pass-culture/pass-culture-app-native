@@ -4,6 +4,7 @@ export type MarkdownPartProps = {
   text: string
   isBold?: boolean
   isItalic?: boolean
+  withIcon?: boolean
 }
 
 export type FirstOrLastProps = {

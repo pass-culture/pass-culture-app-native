@@ -12,9 +12,10 @@ interface Props {
   primary?: boolean
   text?: string
   testID?: string
+  withIcon?: boolean
 }
 
-export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) => {
+export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID, withIcon = true }) => {
   const [firstWord, remainingWords] = extractExternalLinkParts(text || url)
 
   const accessibilityLabel = `Nouvelle fenêtre\u00a0: ${text || url}`
@@ -24,10 +25,10 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
       onPress={() => openUrl(url)}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       <StyledBody>
-        <ExternalSite primary={primary} testID="externalSiteIcon" />
+        {withIcon ? <ExternalSite primary={primary} testID="externalSiteIcon" /> : null}
         {firstWord}
       </StyledBody>
-      {remainingWords}
+      {withIcon ? remainingWords : remainingWords.trim()}
     </ButtonText>
   )
 }
