@@ -158,27 +158,6 @@ recreate_emulator() {
             --device "$DEVICE_NAME" \
             --force
 
-    echo "Disk usage"
-    df -h
-
-    echo "--- Gradle Cache Size ---"
-    du -sh ~/.gradle/caches || true
-
-    echo "--- Android SDK Size ---"
-    du -sh $ANDROID_SDK_ROOT || true
-
-    echo "--- System Images Details ---"
-    ls -lh $ANDROID_SDK_ROOT/system-images/ || true
-    
-    echo "--- System Images disk usage ---"
-    du -h -d 1 $ANDROID_SDK_ROOT/system-images | sort -hr || true
-
-    echo "--- AVDs ---"
-    ls -lh ~/.android/avd/ || true
-
-    echo "--- Show available AVDs ---"
-    emulator -list-avds
-
     log_info "Free up space"
     df -h
     # Remove .NET SDKs
