@@ -67,9 +67,9 @@ jobs:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             **/node_modules
-          key: v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
-            v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+            v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
       - run: yarn install
       - run: yarn build:${{ inputs.ENV }}
         env:
