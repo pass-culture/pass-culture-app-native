@@ -21,12 +21,11 @@ type Props = {
   title: string
   offer: OfferResponseV2
   onSeeVenuePress?: VoidFunction
-  distance?: string | null
 }
 
 const cinemaCTAButtonName = 'Accéder aux séances'
 
-export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer, distance }) => {
+export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
   const theme = useTheme()
   const route = useRoute<UseRouteType<'Chronicles'>>()
   const from = route.params?.from
@@ -63,7 +62,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer, dista
         </InView>
       </Anchor>
       <MovieCalendarProvider initialDates={next15Dates} containerStyle={getCalendarStyle(theme)}>
-        <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} distance={distance} />
+        <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
       </MovieCalendarProvider>
     </Container>
   )
