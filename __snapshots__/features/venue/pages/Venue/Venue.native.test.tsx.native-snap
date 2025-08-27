@@ -746,8 +746,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                         }
                       >
                         <View
-                          style={{}}
+                          style={
+                            {
+                              "marginHorizontal": 24,
+                            }
+                          }
                           testID="playlistTitle"
+                          withMargin={true}
                         >
                           <Text
                             accessibilityHidden={true}
@@ -3803,8 +3808,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         }
                       >
                         <View
-                          style={{}}
+                          style={
+                            {
+                              "marginHorizontal": 24,
+                            }
+                          }
                           testID="playlistTitle"
+                          withMargin={true}
                         >
                           <Text
                             accessibilityHidden={true}

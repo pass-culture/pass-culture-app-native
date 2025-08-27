@@ -38,7 +38,7 @@ export const AccessibleTitle: React.FC<Props> = ({
       </StyledTitleComponent>
     </TitleWrapper>
   ) : (
-    <TitleWrapper testID={testID}>
+    <TitleWrapper testID={testID} withMargin={withMargin}>
       <StyledTitleComponent accessibilityHidden numberOfLines={2} accessibilityLabel={titleText}>
         {titleText}
         {titleEmoji}
