@@ -139,6 +139,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         {
           "marginHorizontal": "auto",
+          "width": "100%",
         }
       }
     >
@@ -1015,6 +1016,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         {
           "marginHorizontal": "auto",
+          "width": "100%",
         }
       }
     >
@@ -1902,6 +1904,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         {
           "marginHorizontal": "auto",
+          "width": "100%",
         }
       }
     >
@@ -2767,6 +2770,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         {
           "marginHorizontal": "auto",
+          "width": "100%",
         }
       }
     >
@@ -3867,6 +3871,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         {
           "marginHorizontal": "auto",
+          "width": "100%",
         }
       }
     >
@@ -4989,6 +4994,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         {
           "marginHorizontal": "auto",
+          "width": "100%",
         }
       }
     >
@@ -6100,6 +6106,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         {
           "marginHorizontal": "auto",
+          "width": "100%",
         }
       }
     >
