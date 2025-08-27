@@ -129,7 +129,7 @@ describe('OfferTile component', () => {
       await user.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        offerId: OFFER_ID,
+        offerId: String(OFFER_ID),
         from: 'home',
         moduleName: props.moduleName,
       })
@@ -152,7 +152,7 @@ describe('OfferTile component', () => {
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         ...apiRecoParams,
-        offerId: OFFER_ID,
+        offerId: String(OFFER_ID),
         from: 'similar_offer',
         moduleName: props.moduleName,
         fromOfferId: 1,
@@ -165,7 +165,7 @@ describe('OfferTile component', () => {
       await user.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        offerId: OFFER_ID,
+        offerId: String(OFFER_ID),
         from: 'home',
         moduleName: props.moduleName,
         homeEntryId: 'abcd',
@@ -195,7 +195,7 @@ describe('OfferTile component', () => {
       await user.press(screen.getByTestId('tileImage'))
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        offerId: OFFER_ID,
+        offerId: String(OFFER_ID),
         from: 'venue',
         venueId: 1,
         searchId,
@@ -217,7 +217,7 @@ describe('OfferTile component', () => {
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         from: 'thematicsearch',
-        offerId: OFFER_ID,
+        offerId: String(OFFER_ID),
         searchId: propsFromThematicSearchGtlPlaylist.searchId,
         moduleName: propsFromThematicSearchGtlPlaylist.moduleName,
         fromOfferId: undefined,
@@ -244,7 +244,7 @@ describe('OfferTile component', () => {
 
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         from: 'artist',
-        offerId: OFFER_ID,
+        offerId: String(OFFER_ID),
         playlistType: propsFromArtistPagePlaylist.playlistType,
         artistName: 'Céline Dion',
         searchId: undefined,

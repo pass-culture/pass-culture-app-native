@@ -51,7 +51,7 @@ describe('VideoMultiOfferTile', () => {
     await user.press(screen.getByText('La nuit des temps'))
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      offerId: +mockOffer.objectID,
+      offerId: mockOffer.objectID,
       ...mockAnalyticsParams,
     })
   })

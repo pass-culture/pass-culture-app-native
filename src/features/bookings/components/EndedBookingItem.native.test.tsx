@@ -113,7 +113,7 @@ describe('EndedBookingItem', () => {
     await userEvent.press(item)
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      offerId: 147874,
+      offerId: '147874',
       from: 'endedbookings',
     })
   })

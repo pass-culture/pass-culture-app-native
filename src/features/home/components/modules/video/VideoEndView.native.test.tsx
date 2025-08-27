@@ -51,7 +51,7 @@ describe('VideoEndView', () => {
     await waitFor(() =>
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
         from: 'video',
-        offerId: +mockOffer.objectID,
+        offerId: mockOffer.objectID,
         moduleId: 'abcd',
         moduleName: 'salut à tous c’est lujipeka',
         homeEntryId: 'xyz',
