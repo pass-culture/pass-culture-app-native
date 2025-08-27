@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { EligibilityType, OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -25,6 +24,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -71,7 +71,6 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const isUserUnderage = useIsUserUnderage()
   const mapping = useSubcategoriesMapping()
   const { quantity } = bookingState
-  const accessibilityDescribedBy = uuidv4()
 
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
 
@@ -271,11 +270,11 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           disabled={isBookingConfirmationButtonDisabled}
           wording="Confirmer la réservation"
           onPress={onPressBookOffer}
-          accessibilityDescribedBy={accessibilityDescribedBy}
+          accessibilityHint={deductedAmount}
         />
       </ButtonContainer>
       {formattedPriceWithEuro && isNotUserFreeStatus ? (
-        <Caption nativeID={accessibilityDescribedBy}>{deductedAmount}</Caption>
+        <Caption {...hiddenFromScreenReader()}>{deductedAmount}</Caption>
       ) : null}
 
       {shouldDisplayOtherVenuesAvailableButton ? (
