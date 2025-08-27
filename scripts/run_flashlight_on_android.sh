@@ -15,7 +15,7 @@ get_version() {
 BUNDLE_ID=app.passculture.staging
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 EMULATOR_NAME="pixel_6"
-MIN_SDK_VERSION="$(get_version 'minSdkVersion')"
+TARGET_SDK_VERSION="$(get_version 'targetSdkVersion')"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
@@ -269,7 +269,7 @@ if [ -z "$APK_PATH" ]; then
 fi
 log_success "APK found at: $APK_PATH"
 
-recreate_emulator "SDK_modern_test" "$MIN_SDK_VERSION" "$EMULATOR_NAME"
+recreate_emulator "SDK_modern_test" "$TARGET_SDK_VERSION" "$EMULATOR_NAME"
 
 log_and_run "Waiting up to 10 minutes for emulator to fully boot" \
     timeout 600 adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; echo "Emulator booted."'
