@@ -2,7 +2,7 @@ import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, useWindowDimensions, View } from 'react-native'
+import { FlatList, Platform, useWindowDimensions, View, ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
@@ -58,6 +58,7 @@ import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
+import { setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { FilterButtonList } from 'ui/components/FilterButtonList'
 import { Li } from 'ui/components/Li'
@@ -350,6 +351,22 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     analytics.logConsultArtist({ artistName, from: 'search' })
   }
 
+  const handleOnViewableItemsChanged = useCallback(
+    (viewableItems: Pick<ViewToken, 'key' | 'index'>[]) => {
+      console.log({ viewableItems })
+      setPlaylistTrackingInfo({
+        index: viewableItems[0]?.index ?? 0,
+        moduleId: 'moduleId', // moduleId and moduleType are not used in search results context
+        viewedAt: new Date(),
+        items: viewableItems,
+        itemType: 'searchResults',
+      })
+    },
+    // Changing onViewableItemsChanged on the fly is not supported
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -397,6 +414,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         isGridLayout={isGridLayout}
         shouldDisplayGridList={shouldDisplayGridList}
         setGridListLayout={setGridListLayout}
+        onViewableItemsChanged={handleOnViewableItemsChanged}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,

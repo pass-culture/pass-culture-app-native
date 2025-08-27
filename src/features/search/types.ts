@@ -1,5 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 import React, { ReactNode } from 'react'
+import { ViewToken } from 'react-native'
 
 import {
   GenreType,
@@ -101,6 +102,7 @@ export interface SearchListProps {
   isGridLayout?: boolean
   shouldDisplayGridList?: boolean
   setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
+  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
 }
 
 export type CreateHistoryItem = {

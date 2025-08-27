@@ -19,6 +19,7 @@ export const analytics: AnalyticsProvider = {
     firebaseAnalytics.logScreenView(screenName, locationType)
   },
   logEvent: async (eventName, params) => {
+    console.log('Logging event:', { eventName, params }) // Debug log
     if (eventName.firebase) {
       const locationType = (await storage.readString('location_type')) ?? 'undefined'
       firebaseAnalytics.logEvent(eventName.firebase, { ...params, locationType })
