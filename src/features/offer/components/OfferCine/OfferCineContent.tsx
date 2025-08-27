@@ -24,10 +24,9 @@ import { Typo } from 'ui/theme'
 type Props = {
   offer: OfferResponseV2
   onSeeVenuePress?: VoidFunction
-  distance?: string | null
 }
 
-export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress, distance }) => {
+export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
   const { designSystem } = useTheme()
 
   const { data: offers, isInitialLoading: isLoading } = useOffersStocksFromOfferQuery(offer)
@@ -57,7 +56,6 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress, distance }
             onSeeVenuePress={onSeeVenuePress}
             nextDate={item.nextDate}
             withDivider
-            distance={distance}
           />
         )}
       />

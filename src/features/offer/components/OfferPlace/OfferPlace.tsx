@@ -162,7 +162,6 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
             title={venueSectionTitle}
             offer={offer}
             onSeeVenuePress={canSeeVenue ? handleOnSeeVenuePress : undefined}
-            distance={distance}
           />
         ) : (
           <OfferVenueBlock
