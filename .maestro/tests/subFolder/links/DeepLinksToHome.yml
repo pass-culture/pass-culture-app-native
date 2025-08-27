@@ -2,8 +2,19 @@ appId: app.passculture.webapp
 ---
 - runFlow: ./../commons/Close.yml
 
-- openLink:
-    link: ${output.links.staging.home}
-    autoVerify: true
+- runFlow:
+    when:
+        platform: Android
+    commands:
+    - openLink:
+        link: ${output.links.staging.android.home}
+        autoVerify: true
+- runFlow:
+    when:
+        platform: iOS
+    commands:
+    - openLink:
+        link: ${output.links.staging.ios.home}
+        autoVerify: true
 - runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
 - assertVisible: "Bienvenue\_!"
