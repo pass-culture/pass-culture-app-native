@@ -5,17 +5,10 @@ set -o errexit -o nounset -o pipefail
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 REPO_ROOT=$(dirname "$SCRIPT_DIR")
 
-get_version() {
-	local FIELD="$1"
-
-	grep "$FIELD" './android/build.gradle' |
-		grep -Eo '[0-9]+(\.[0-9]+)*'
-}
-
 BUNDLE_ID=app.passculture.staging
+TARGET_SDK_VERSION="30"
 ANDROID_SDK_MANAGER_COMMAND_LINE_TOOLS_VERSION="12.0"
 EMULATOR_NAME="pixel_6"
-TARGET_SDK_VERSION="$(get_version 'targetSdkVersion')"
 export ANDROID_HOME="${ANDROID_HOME:-"$HOME/Library/Android/sdk"}"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export ANDROID_AVD_HOME="$ANDROID_HOME/avd"
