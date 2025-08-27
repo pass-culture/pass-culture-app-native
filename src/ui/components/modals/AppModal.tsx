@@ -20,7 +20,8 @@ import { appModalContainerStyle } from 'ui/components/modals/appModalContainerSt
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
-import { getSpacing, Spacer } from 'ui/theme'
+import { KeyboardAvoidingViewWrapper } from 'ui/pages/components/KeyboardAvoidingViewWrapper'
+import { Spacer, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -232,58 +233,60 @@ export const AppModal: FunctionComponent<Props> = ({
       onSwipeComplete={onSwipe}
       swipeDirection={swipeDirection}
       propagateSwipe={propagateSwipe}>
-      <ModalContainer
-        height={maxHeight ? undefined : modalContainerHeight}
-        testID="modalContainer"
-        maxHeight={maxContainerHeight}
-        desktopConstraints={containerDesktopConstraints}
-        onLayout={onLayout}
-        noPadding={noPadding}
-        noPaddingBottom={noPaddingBottom}>
-        {customModalHeader ? (
-          <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
-            {customModalHeader}
-          </CustomModalHeaderContainer>
-        ) : (
-          <ModalHeader
-            title={title}
-            numberOfLines={titleNumberOfLines}
-            onLayout={updateHeaderHeight}
-            titleID={titleId}
-            modalSpacing={modalSpacing}
-            {...iconProps}
-          />
-        )}
-        {isFullscreen || maxHeight || isUpToStatusBar ? (
-          fullscreenModalBody
-        ) : (
-          <React.Fragment>
-            {shouldAddSpacerBetweenHeaderAndContent ? (
-              <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
-            ) : null}
-            <ScrollViewContainer
-              paddingBottom={scrollViewPaddingBottom}
-              modalSpacing={modalSpacing}>
-              <ScrollView
-                contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
-                ref={scrollViewRef}
-                scrollEnabled={scrollEnabled}
-                onContentSizeChange={updateScrollViewContentHeight}
-                testID="modalScrollView">
-                {children}
-              </ScrollView>
-            </ScrollViewContainer>
-          </React.Fragment>
-        )}
-        {fixedModalBottom ? (
-          <React.Fragment>
-            <FixedModalBottomContainer testID="fixedModalBottom">
-              {fixedModalBottom}
-            </FixedModalBottomContainer>
-            <Spacer.BottomScreen />
-          </React.Fragment>
-        ) : null}
-      </ModalContainer>
+      <KeyboardAvoidingViewWrapper>
+        <ModalContainer
+          height={maxHeight ? undefined : modalContainerHeight}
+          testID="modalContainer"
+          maxHeight={maxContainerHeight}
+          desktopConstraints={containerDesktopConstraints}
+          onLayout={onLayout}
+          noPadding={noPadding}
+          noPaddingBottom={noPaddingBottom}>
+          {customModalHeader ? (
+            <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
+              {customModalHeader}
+            </CustomModalHeaderContainer>
+          ) : (
+            <ModalHeader
+              title={title}
+              numberOfLines={titleNumberOfLines}
+              onLayout={updateHeaderHeight}
+              titleID={titleId}
+              modalSpacing={modalSpacing}
+              {...iconProps}
+            />
+          )}
+          {isFullscreen || maxHeight || isUpToStatusBar ? (
+            fullscreenModalBody
+          ) : (
+            <React.Fragment>
+              {shouldAddSpacerBetweenHeaderAndContent ? (
+                <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
+              ) : null}
+              <ScrollViewContainer
+                paddingBottom={scrollViewPaddingBottom}
+                modalSpacing={modalSpacing}>
+                <ScrollView
+                  contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
+                  ref={scrollViewRef}
+                  scrollEnabled={scrollEnabled}
+                  onContentSizeChange={updateScrollViewContentHeight}
+                  testID="modalScrollView">
+                  {children}
+                </ScrollView>
+              </ScrollViewContainer>
+            </React.Fragment>
+          )}
+          {fixedModalBottom ? (
+            <React.Fragment>
+              <FixedModalBottomContainer testID="fixedModalBottom">
+                {fixedModalBottom}
+              </FixedModalBottomContainer>
+              <Spacer.BottomScreen />
+            </React.Fragment>
+          ) : null}
+        </ModalContainer>
+      </KeyboardAvoidingViewWrapper>
     </StyledModal>
   )
 }
