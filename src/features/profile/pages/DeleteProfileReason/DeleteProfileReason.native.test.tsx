@@ -108,7 +108,6 @@ describe('<DeleteProfileReason />', () => {
     `(
       'should redirect to deleteprofileaccountnotdeletable page when clicking on $reason',
       async ({ reason }) => {
-        mockAuthContextWithUser(beneficiaryUser)
         render(<DeleteProfileReason />)
 
         await user.press(screen.getByText(reason))

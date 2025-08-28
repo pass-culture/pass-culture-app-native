@@ -13,7 +13,6 @@ import { FeedbackInApp } from './FeedbackInApp'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
-mockAuthContextWithUser(beneficiaryUser)
 
 jest.mock('libs/firebase/analytics/analytics')
 

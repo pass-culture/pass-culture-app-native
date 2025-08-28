@@ -86,9 +86,7 @@ describe('<OfferDuoModal/>', () => {
   })
 
   describe('when user is logged in and beneficiary with credit', () => {
-    beforeEach(() => {
-      mockAuthContextWithUser(beneficiaryUser)
-    })
+    beforeEach(() => {})
 
     it('should toggle offerIsDuo', async () => {
       renderOfferDuoModal()
