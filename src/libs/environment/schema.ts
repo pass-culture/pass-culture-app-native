@@ -43,7 +43,6 @@ export const EnvironmentSchema = yup.object({
   FIREBASE_API_PUBLIC_KEY: yup.string().required(),
   FIREBASE_APPID: yup.string().required(),
   FIREBASE_AUTHDOMAIN: yup.string().required(),
-  FIREBASE_DYNAMIC_LINK_DOMAIN: yup.string().required(),
   FIREBASE_MESSAGINGSENDERID: yup.string().required(),
   FIREBASE_PROJECTID: yup.string().required(),
   FIREBASE_STORAGEBUCKET: yup.string().required(),
