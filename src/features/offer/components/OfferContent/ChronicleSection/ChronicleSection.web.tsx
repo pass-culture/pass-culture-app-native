@@ -95,7 +95,7 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack)(({ theme }) => ({
-  width: getSpacing(42),
+  width: getSpacing(45),
   marginLeft: theme.designSystem.size.spacing.xl,
   justifyContent: 'left',
 }))
