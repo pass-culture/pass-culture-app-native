@@ -21,6 +21,7 @@ export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerPr
       image={{
         uri: getVenueTypeIconName(isSelected, venue.venue_type),
       }}
+      anchor={{ x: 0.5, y: showLabel ? 0.6 : 1 }}
       testID={`marker-${venue.venueId}${isSelected ? '-selected' : ''}`}
       zIndex={isSelected ? PIN_MAX_Z_INDEX : undefined}
       {...otherProps}>

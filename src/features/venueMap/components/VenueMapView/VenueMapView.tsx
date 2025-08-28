@@ -136,7 +136,6 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
         radius={50}
         animationEnabled={false}
         testID="venue-map-view"
-        showsPointsOfInterest={false}
         customMapStyle={CUSTOM_MAP_STYLES}
         {...mapProps}>
         {venues.map((venue) => (

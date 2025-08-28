@@ -11280,7 +11280,7 @@ __metadata:
     react-native-linear-gradient: ^2.8.3
     react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^3.4.2
-    react-native-maps: ^1.11.3
+    react-native-maps: 1.23.12
     react-native-modal: 13.0.1
     react-native-orientation-locker: ^1.7.0
     react-native-performance: ^5.1.4
@@ -25502,19 +25502,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-maps@npm:^1.11.3":
-  version: 1.11.3
-  resolution: "react-native-maps@npm:1.11.3"
+"react-native-maps@npm:1.23.12":
+  version: 1.23.12
+  resolution: "react-native-maps@npm:1.23.12"
   dependencies:
     "@types/geojson": ^7946.0.13
   peerDependencies:
-    react: ">= 17.0.1"
-    react-native: ">= 0.64.3"
+    react: ">= 18.3.1"
+    react-native: ">= 0.76.0"
     react-native-web: ">= 0.11"
   peerDependenciesMeta:
     react-native-web:
       optional: true
-  checksum: dce53cc7e7a65a8344db82868cc5e8b17ca3471ffd9e6a968545e9f39165b91f67d04211db345dd0f52ead72bc944451693d40e46f580c9a2784c5fc597c6430
+  checksum: 5ee7790fae80691d55974c9bff57f71729b5d6cee70c5239a06067477088bffa5c948270382ecd0f95982eedfcb70e3e21f1b596a098f98c3874f74865ac2c03
   languageName: node
   linkType: hard
 
