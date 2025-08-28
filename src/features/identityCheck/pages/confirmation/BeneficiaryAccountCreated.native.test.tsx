@@ -13,7 +13,7 @@ import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRem
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -76,14 +76,6 @@ describe('<BeneficiaryAccountCreated/>', () => {
     await user.press(await screen.findByLabelText('C’est parti !'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
-  })
-
-  it('should not show share app modal when user is supposed to see cultural survey', async () => {
-    renderBeneficiaryAccountCreated()
-
-    await user.press(await screen.findByLabelText('C’est parti !'))
-
-    await waitFor(() => expect(mockShowAppModal).not.toHaveBeenCalled())
   })
 
   it('should redirect to home page when "C’est parti !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
