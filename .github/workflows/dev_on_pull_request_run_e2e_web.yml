@@ -66,11 +66,48 @@ jobs:
       - name: Start Vite server
         run: yarn start:web:staging --host > /dev/null 2>&1 &
 
-      - name: Run Maestro E2E Tests
+      - name: Run Maestro E2E Tests (multiple runs)
         run: |
-          echo "Running Maestro tests against on web Staging"
+          echo "Running Maestro tests against Staging Web"
+
           export PATH=$HOME/.maestro/bin:$PATH
-          maestro test .maestro/tests/SmokeTestWeb.yaml --headless
+          success=0
+          fail=0
+          total=50
+
+          set +e  # ⬅️ désactive l’arrêt auto sur erreur
+
+          for i in $(seq 1 $total); do
+            echo "➡️ Run $i..."
+            maestro test .maestro/tests/SmokeTestWeb.yaml --headless
+            if [ $? -eq 0 ]; then
+              ((success++))
+            else
+              ((fail++))
+            fi
+          done
+
+          set -e  # ⬅️ on réactive le comportement par défaut
+
+          rate=$(( 100 * success / total ))
+
+          echo "✅ Success: $success"
+          echo "❌ Fail: $fail"
+          echo "📊 Success rate: $rate%"
+
+          {
+            echo "## E2E Web SmokeTest (x$total)"
+            echo ""
+            echo "- ✅ Success: $success"
+            echo "- ❌ Fail: $fail"
+            echo "- 📊 Success rate: $rate%"
+          } >> $GITHUB_STEP_SUMMARY
+
+          if [ $success -eq 0 ]; then
+            echo "All runs failed ❌"
+            exit 1
+          fi
+
           
       - name: Upload Maestro artifacts (logs & screenshots)
         if: failure()
