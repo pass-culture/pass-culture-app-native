@@ -5,13 +5,16 @@ import {
   CurrencyEnum,
   DepositType,
   EligibilityType,
-  UserProfileResponse,
   UserRole,
   YoungStatusType,
 } from 'api/gen'
 import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
-export const nonBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
+export const nonBeneficiaryUser: Omit<
+  UserProfileResponseWithoutSurvey,
+  'needsToFillCulturalSurvey'
+> = {
   bookedOffers: {},
   domainsCredit: {
     all: { initial: 0, remaining: 0 },
@@ -37,31 +40,35 @@ export const nonBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalS
   hasProfileExpired: false,
 }
 
-export const beneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
-  ...nonBeneficiaryUser,
-  domainsCredit: {
-    all: { initial: 300_00, remaining: 250_00 },
-    physical: { initial: 300_00, remaining: 100_00 },
-    digital: { initial: 300_00, remaining: 200_00 },
-  },
-  isBeneficiary: true,
-  roles: [UserRole.BENEFICIARY],
-  isEligibleForBeneficiaryUpgrade: false,
-  status: { statusType: YoungStatusType.beneficiary },
-  depositType: DepositType.GRANT_18,
-  eligibility: EligibilityType['age-18'],
-  depositActivationDate: '2021-11-19T11:00:00Z',
-  eligibilityEndDatetime: '2023-11-19T11:00:00Z',
-  birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
-  firstName: 'Jean',
-  lastName: 'Dupond',
-  city: 'Paris',
-  postalCode: '75001',
-  street: '10 rue du Bonheur',
-  activityId: ActivityIdEnum.STUDENT,
-}
+export const beneficiaryUser: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> =
+  {
+    ...nonBeneficiaryUser,
+    domainsCredit: {
+      all: { initial: 300_00, remaining: 250_00 },
+      physical: { initial: 300_00, remaining: 100_00 },
+      digital: { initial: 300_00, remaining: 200_00 },
+    },
+    isBeneficiary: true,
+    roles: [UserRole.BENEFICIARY],
+    isEligibleForBeneficiaryUpgrade: false,
+    status: { statusType: YoungStatusType.beneficiary },
+    depositType: DepositType.GRANT_18,
+    eligibility: EligibilityType['age-18'],
+    depositActivationDate: '2021-11-19T11:00:00Z',
+    eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+    birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
+    firstName: 'Jean',
+    lastName: 'Dupond',
+    city: 'Paris',
+    postalCode: '75001',
+    street: '10 rue du Bonheur',
+    activityId: ActivityIdEnum.STUDENT,
+  }
 
-export const underageBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
+export const underageBeneficiaryUser: Omit<
+  UserProfileResponseWithoutSurvey,
+  'needsToFillCulturalSurvey'
+> = {
   ...beneficiaryUser,
   isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],

@@ -1,9 +1,10 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { CurrencyEnum, UserProfileResponse, YoungStatusType } from 'api/gen'
+import { CurrencyEnum, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
@@ -15,7 +16,7 @@ jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue(remoteConfigResponseFixture)
 
-const user: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
+const user: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> = {
   bookedOffers: {},
   email: 'email2@domain.ext',
   hasPassword: true,
@@ -42,7 +43,7 @@ const user: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
 
 jest.mock('queries/profile/usePatchProfileMutation')
 
-const exBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
+const exBeneficiaryUser: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> = {
   ...user,
   depositExpirationDate: '2020-01-01T03:04:05',
 }

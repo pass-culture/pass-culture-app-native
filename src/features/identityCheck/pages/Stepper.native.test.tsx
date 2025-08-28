@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { ActivityIdEnum, SubscriptionStep, UserProfileResponse } from 'api/gen'
+import { ActivityIdEnum, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
@@ -11,6 +11,7 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
@@ -33,7 +34,7 @@ jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', 
   })),
 }))
 
-let mockUserProfileData: Partial<UserProfileResponse> = {
+let mockUserProfileData: Partial<UserProfileResponseWithoutSurvey> = {
   email: 'christophe.dupont@example.com',
   firstName: 'Christophe',
   lastName: 'Dupont',

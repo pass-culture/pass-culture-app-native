@@ -4,9 +4,10 @@ import DeviceInfo from 'react-native-device-info'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { UserProfileResponse, ValidateEmailResponse } from 'api/gen'
+import { ValidateEmailResponse } from 'api/gen'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
@@ -63,7 +64,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should login and redirect use on email validation success', async () => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
+      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
 
       renderPage()
 
@@ -101,7 +102,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is expired', () => {
     beforeEach(() => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', {
+      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',
@@ -129,7 +130,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('Email validation API call', () => {
     beforeEach(() => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', {
+      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',

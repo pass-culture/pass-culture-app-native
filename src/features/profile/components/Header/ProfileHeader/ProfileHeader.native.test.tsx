@@ -7,13 +7,13 @@ import {
   CurrencyEnum,
   EligibilityType,
   SubscriptionStepperResponseV2,
-  UserProfileResponse,
   YoungStatusType,
 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
@@ -22,7 +22,7 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const user: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
+const user: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> = {
   bookedOffers: {},
   email: 'email2@domain.ext',
   hasPassword: true,
@@ -48,7 +48,7 @@ const user: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
   hasProfileExpired: false,
 }
 
-const exBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
+const exBeneficiaryUser: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> = {
   ...user,
   depositExpirationDate: '2020-01-01T03:04:05',
 }
@@ -186,5 +186,5 @@ const renderProfileHeader = ({
   user,
 }: {
   featureFlags: { disableActivation: boolean; enablePassForAll: boolean }
-  user?: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'>
+  user?: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'>
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

@@ -13,7 +13,6 @@ import {
   RecommendationApiParams,
   SubcategoryIdEnum,
   SubscriptionStatus,
-  UserProfileResponse,
   YoungStatusResponse,
   YoungStatusType,
 } from 'api/gen'
@@ -41,6 +40,7 @@ import {
 import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -61,12 +61,12 @@ type UseGetCtaWordingAndActionProps = {
 
 const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],
-  bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
+  bookedOffersIds: UserProfileResponseWithoutSurvey['bookedOffers'] = {}
 ): boolean => bookedOffersIds[offerId] !== undefined
 
 type Props = {
   isLoggedIn: boolean
-  user?: UserProfileResponse
+  user?: UserProfileResponseWithoutSurvey
   userStatus: YoungStatusResponse
   isBeneficiary: boolean
   offer: OfferResponseV2

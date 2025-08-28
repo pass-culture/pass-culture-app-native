@@ -1,11 +1,11 @@
 import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
-import { UserProfileResponse } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { simulateBackend } from 'features/favorites/tests/simulateBackend'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -42,7 +42,7 @@ jest.mock('libs/network/NetInfoWrapper')
 describe('<Favorites />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
   })
 
   it('Performance test for Favorites page', async () => {

@@ -1,13 +1,14 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import { shuffle } from 'lodash'
 
-import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
+import { BookingsResponse, EligibilityType, UserRole } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { Homepage, HomepageTag } from 'features/home/types'
 import { UserOnboardingRole } from 'features/onboarding/enums'
 import * as OnboardingRoleAPI from 'features/onboarding/helpers/useUserRoleFromOnboarding'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -213,7 +214,7 @@ describe('useSelectHomepageEntry', () => {
         credit,
         expectedHomepage,
       }: {
-        user: UserProfileResponse
+        user: UserProfileResponseWithoutSurvey
         onboardingRole: UserOnboardingRole
         hasBookings: boolean
         credit: Credit
@@ -260,7 +261,7 @@ describe('useSelectHomepageEntry', () => {
       beforeEach(() => {
         const underageBeneficiaryUser = {
           roles: [UserRole.UNDERAGE_BENEFICIARY],
-        } as UserProfileResponse
+        } as UserProfileResponseWithoutSurvey
         mockUseAuthContext.mockReturnValueOnce({
           isLoggedIn: true,
           user: underageBeneficiaryUser,
@@ -319,57 +320,60 @@ describe('useSelectHomepageEntry', () => {
       ${'eligible 18'}    | ${{ eligibility: EligibilityType['age-18'] }} | ${{ isExpired: false }}
       ${'eligible 15-17'} | ${{ eligibility: EligibilityType.underage }}  | ${{ isExpired: false }}
       ${'general'}        | ${{ eligibility: undefined }}                 | ${{ isExpired: false }}
-    `('$usertype users', ({ user, credit }: { user: UserProfileResponse; credit: Credit }) => {
-      beforeEach(() => {
-        mockUseAuthContext.mockReturnValueOnce({
-          isLoggedIn: true,
-          user,
-          setIsLoggedIn: jest.fn(),
-          refetchUser: jest.fn(),
-          isUserLoading: false,
+    `(
+      '$usertype users',
+      ({ user, credit }: { user: UserProfileResponseWithoutSurvey; credit: Credit }) => {
+        beforeEach(() => {
+          mockUseAuthContext.mockReturnValueOnce({
+            isLoggedIn: true,
+            user,
+            setIsLoggedIn: jest.fn(),
+            refetchUser: jest.fn(),
+            isUserLoading: false,
+          })
+          mockGetAvailableCredit.mockReturnValueOnce(credit)
         })
-        mockGetAvailableCredit.mockReturnValueOnce(credit)
-      })
 
-      it('should retrieve the playlist tagged master+usergrandpublic if available', () => {
-        const { result } = renderHook(useSelectHomepageEntry)
-        const playlist = result.current(shuffle(homepageEntries))
+        it('should retrieve the playlist tagged master+usergrandpublic if available', () => {
+          const { result } = renderHook(useSelectHomepageEntry)
+          const playlist = result.current(shuffle(homepageEntries))
 
-        expect(playlist).toStrictEqual(homeEntryAllMaster)
-      })
+          expect(playlist).toStrictEqual(homeEntryAllMaster)
+        })
 
-      it('should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist', () => {
-        const { result } = renderHook(useSelectHomepageEntry)
-        const playlists = [
-          homeEntryUnderageMaster,
-          homeEntryUnderage,
-          homeEntryAll,
-          homeEntryMaster,
-          adaptedHomepage,
-          homeEntryWithId,
-        ]
+        it('should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist', () => {
+          const { result } = renderHook(useSelectHomepageEntry)
+          const playlists = [
+            homeEntryUnderageMaster,
+            homeEntryUnderage,
+            homeEntryAll,
+            homeEntryMaster,
+            adaptedHomepage,
+            homeEntryWithId,
+          ]
 
-        expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
-      })
+          expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
+        })
 
-      it('should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master', () => {
-        const { result } = renderHook(useSelectHomepageEntry)
-        const playlists = shuffle([
-          homeEntryUnderage,
-          homeEntryAll,
-          adaptedHomepage,
-          homeEntryWithId,
-        ])
+        it('should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master', () => {
+          const { result } = renderHook(useSelectHomepageEntry)
+          const playlists = shuffle([
+            homeEntryUnderage,
+            homeEntryAll,
+            adaptedHomepage,
+            homeEntryWithId,
+          ])
 
-        expect(result.current(playlists)).toStrictEqual(homeEntryAll)
-      })
+          expect(result.current(playlists)).toStrictEqual(homeEntryAll)
+        })
 
-      it('should retrieve the first playlist if no playlist tagged master or usergrandpublic', () => {
-        const { result } = renderHook(useSelectHomepageEntry)
-        const playlists = shuffle([homeEntryUnderage, adaptedHomepage, homeEntryWithId])
+        it('should retrieve the first playlist if no playlist tagged master or usergrandpublic', () => {
+          const { result } = renderHook(useSelectHomepageEntry)
+          const playlists = shuffle([homeEntryUnderage, adaptedHomepage, homeEntryWithId])
 
-        expect(result.current(playlists)).toStrictEqual(playlists[0])
-      })
-    })
+          expect(result.current(playlists)).toStrictEqual(playlists[0])
+        })
+      }
+    )
   })
 })

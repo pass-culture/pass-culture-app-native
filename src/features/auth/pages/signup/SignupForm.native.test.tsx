@@ -11,7 +11,6 @@ import {
   EmailValidationRemainingResendsResponse,
   OauthStateResponse,
   SigninResponse,
-  UserProfileResponse,
 } from 'api/gen'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
@@ -20,6 +19,7 @@ import { SignInResponseFailure } from 'features/auth/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -475,7 +475,7 @@ describe('Signup Form', () => {
         refreshToken: 'refreshToken',
         accountState: AccountState.ACTIVE,
       })
-      mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
       renderSignupForm()
       await screen.findByText('Inscription')

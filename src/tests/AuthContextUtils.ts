@@ -1,5 +1,5 @@
-import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 export const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
@@ -9,7 +9,7 @@ interface MockOptions {
 }
 
 export const mockAuthContextWithUser = (
-  user: UserProfileResponse,
+  user: UserProfileResponseWithoutSurvey,
   { persist = false, refetchUser = jest.fn() }: MockOptions = {}
 ) => {
   const contextFixture = {

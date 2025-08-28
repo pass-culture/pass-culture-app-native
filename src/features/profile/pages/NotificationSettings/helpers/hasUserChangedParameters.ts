@@ -1,5 +1,5 @@
-import { UserProfileResponse } from 'api/gen'
 import { NotificationsSettingsState } from 'features/profile/types'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export const hasUserChangedSubscriptions = ({
@@ -19,7 +19,7 @@ export const hasUserChangedParameters = ({
   user,
   state,
 }: {
-  user?: UserProfileResponse
+  user?: UserProfileResponseWithoutSurvey
   state: NotificationsSettingsState
 }): boolean => {
   if (!user?.subscriptions?.subscribedThemes) return false

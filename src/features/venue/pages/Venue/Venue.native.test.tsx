@@ -4,17 +4,12 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import {
-  OffersStocksResponseV2,
-  SubcategoryIdEnum,
-  UserProfileResponse,
-  VenueResponse,
-  VenueTypeCodeKey,
-} from 'api/gen'
+import { OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
@@ -103,7 +98,7 @@ describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
     getItemSpy.mockReset()
-    mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
+    mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,

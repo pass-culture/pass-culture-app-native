@@ -2,9 +2,9 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { UserProfileResponse } from 'api/gen'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
@@ -51,7 +51,7 @@ describe('ChangeCity', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { type: undefined } })
       mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
     })
 
     it('should render correctly', async () => {
@@ -124,7 +124,7 @@ describe('ChangeCity', () => {
 
     it('should show snackbar on error', async () => {
       const city = mockedSuggestedCities[0]
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', {
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {
         responseOptions: { statusCode: 400 },
       })
       render(reactQueryProviderHOC(<ChangeCity />))
@@ -145,7 +145,7 @@ describe('ChangeCity', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA } })
       mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
     })
 
     it('should render correctly', async () => {
@@ -203,7 +203,7 @@ describe('ChangeCity', () => {
         params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
       })
       mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
     })
 
     it('should render correctly', async () => {

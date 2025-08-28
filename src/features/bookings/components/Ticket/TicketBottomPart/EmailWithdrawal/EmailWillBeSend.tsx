@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UserProfileResponse } from 'api/gen'
 import { getDelayMessage } from 'features/bookings/helpers/getDelayMessage'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { Typo } from 'ui/theme'
 
 export const EmailWillBeSend = ({
@@ -12,7 +12,7 @@ export const EmailWillBeSend = ({
 }: {
   withdrawalDelay?: number | null
   isDuo: boolean
-  userEmail: UserProfileResponse['email']
+  userEmail: UserProfileResponseWithoutSurvey['email']
 }) => {
   const startText = `Tu vas recevoir ${isDuo ? 'tes billets' : 'ton billet'} par e-mail, à l’adresse ${userEmail}, `
   const endText = `avant le début de l’évènement.`

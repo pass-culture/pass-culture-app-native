@@ -2,8 +2,8 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import * as API from 'api/api'
-import { UserProfileResponse } from 'api/gen'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -246,7 +246,7 @@ describe('NotificationsSettings', () => {
 
   describe('When the user saves the changes', () => {
     it('should update profile', async () => {
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', {
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {
         ...beneficiaryUser,
         subscriptions: { marketingEmail: true, marketingPush: false },
       })
@@ -270,7 +270,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should show snackbar on success', async () => {
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
@@ -431,7 +431,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should not log subscription update when user only changes their notifications settings', async () => {
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')

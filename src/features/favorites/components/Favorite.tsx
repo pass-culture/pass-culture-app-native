@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
+import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/hooks/useFavoriteFormattedDate'
@@ -10,6 +10,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
@@ -38,7 +39,7 @@ import { getSpacing, Typo } from 'ui/theme'
 interface Props {
   favorite: FavoriteResponse
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
-  user: UserProfileResponse
+  user: UserProfileResponseWithoutSurvey
 }
 
 const SPACER_BETWEEN_IMAGE_AND_CONTENT = 4

@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
 import { BookingDetailsContent as OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetails/BookingDetailsContent'
@@ -13,6 +12,7 @@ import {
   useOngoingOrEndedBookingQueryV2,
 } from 'features/bookings/queries'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -100,7 +100,7 @@ const BookingDetailsContainer = ({
 }: {
   bookingId: number
   enabledQuery: boolean
-  user: UserProfileResponse | undefined
+  user: UserProfileResponseWithoutSurvey | undefined
 }) => {
   const {
     data: booking,

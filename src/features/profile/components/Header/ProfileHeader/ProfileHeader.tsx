@@ -1,12 +1,13 @@
 import React, { useMemo } from 'react'
 
-import { EligibilityType, UserProfileResponse } from 'api/gen'
+import { EligibilityType } from 'api/gen'
 import { CheatMenuButton } from 'cheatcodes/components/CheatMenuButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BeneficiaryAndEligibleForUpgradeHeader } from 'features/profile/components/Header/BeneficiaryAndEligibleForUpgradeHeader/BeneficiaryAndEligibleForUpgradeHeader'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { getAge } from 'shared/user/getAge'
 import { Spacer } from 'ui/theme'
 
@@ -15,7 +16,7 @@ type ProfileHeaderProps = {
     disableActivation: boolean
     enablePassForAll: boolean
   }
-  user?: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'>
+  user?: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'>
 }
 
 export function ProfileHeader(props: ProfileHeaderProps) {
