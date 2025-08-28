@@ -143,6 +143,8 @@ jest.mock('react-native-intersection-observer', () => {
 })
 
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+const mockRegisterAnchor = jest.fn()
+const useRegisterAnchorSpy = jest.spyOn(AnchorContextModule, 'useRegisterAnchor')
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({
@@ -214,6 +216,8 @@ describe('<OfferContent />', () => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags([RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER])
+    mockRegisterAnchor.mockClear()
+    useRegisterAnchorSpy.mockReturnValue(mockRegisterAnchor)
   })
 
   afterEach(cleanup)
@@ -816,6 +820,22 @@ describe('<OfferContent />', () => {
         expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
           offerId: 116656,
           chronicleId: 1,
+        })
+      })
+
+      it('should register chronicles-section anchor when chronicles are present', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        const anchorView = await screen.findByTestId('chronicles-section-anchor')
+
+        act(() => {
+          anchorView.props.onLayout()
+        })
+
+        await waitFor(() => {
+          expect(mockRegisterAnchor).toHaveBeenCalledWith('chronicles-section', expect.any(Object))
         })
       })
     })
