@@ -53,7 +53,19 @@ If it fails [see troubleshooting](./setup.md#troubleshooting)
 
 ### 🔥 Firebase setup
 
-Download the `google-services.json` file from Keeper and place it inside the `android/app` directory. You can also download this file from the Firebase console.
+Download the `google-services.json` files from Keeper and place them inside the `android/app/src/<env>` directories. You can also download these files from the Firebase console.
+
+```txt
+android/
+    app/
+        src/
+            production/
+                google-services.json
+            staging/
+                google-services.json
+            apptesting/
+                google-services.json
+```
 
 ### 🚀 Run the app
 
