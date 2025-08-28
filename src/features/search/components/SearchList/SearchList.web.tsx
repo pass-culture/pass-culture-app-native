@@ -1,4 +1,11 @@
-import React, { forwardRef, useCallback, useMemo, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Animated, LayoutChangeEvent, useWindowDimensions, View } from 'react-native'
 import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
@@ -112,7 +119,7 @@ const getItemSize = ({
   return LIST_ITEM_HEIGHT
 }
 
-export const SearchList = forwardRef<never, SearchListProps>(
+export const SearchList = forwardRef<VariableSizeList<RowData>, SearchListProps>(
   (
     {
       nbHits,
@@ -124,8 +131,9 @@ export const SearchList = forwardRef<never, SearchListProps>(
       userData,
       venuesUserData,
       artistSection,
+      onViewableItemsChanged,
     },
-    _ref
+    ref
   ) => {
     const [availableHeight, setAvailableHeight] = useState(0)
     const outerListRef = useRef<HTMLDivElement>(null)
@@ -135,6 +143,8 @@ export const SearchList = forwardRef<never, SearchListProps>(
     const previousRoute = usePreviousRoute()
     const hasVenuesPlaylist =
       !searchState.venue && !!hits.venues.length && previousRoute?.name !== SearchView.Thematic
+
+    useImperativeHandle(ref, () => listRef.current as VariableSizeList<RowData>)
 
     /**
      * This method will compute maximum height to set list height programatically.
@@ -223,31 +233,61 @@ export const SearchList = forwardRef<never, SearchListProps>(
       ]
     )
 
+    const handleItemsRendered = useCallback(
+      ({
+        visibleStartIndex,
+        visibleStopIndex,
+      }: {
+        overscanStartIndex: number
+        overscanStopIndex: number
+        visibleStartIndex: number
+        visibleStopIndex: number
+      }) => {
+        if (!onViewableItemsChanged) return
+
+        // on skip header/footer (0 et last index)
+        const visibleOffers = data.items
+          .slice(visibleStartIndex, visibleStopIndex + 1)
+          .map((item, index) => {
+            if (!('objectID' in item)) return null // skip placeholders
+            return {
+              key: item.objectID,
+              index: visibleStartIndex + index - 1, // -1 à cause du header
+            }
+          })
+          .filter(Boolean) as { key: string; index: number }[]
+
+        if (visibleOffers.length > 0) {
+          onViewableItemsChanged(visibleOffers)
+        }
+      },
+      [data.items, onViewableItemsChanged]
+    )
+
     return (
       <SearchResultList onLayout={onLayout} testID="searchResultsList">
-        <React.Fragment>
-          <VariableSizeList
-            ref={listRef}
-            key={rerenderKey}
-            innerElementType="ul"
-            itemData={data}
-            itemSize={itemSizeFn}
-            height={availableHeight}
-            itemCount={data.items.length}
-            outerRef={outerListRef}
-            onScroll={handleScroll}
-            width="100%">
-            {SearchListItem}
-          </VariableSizeList>
+        <VariableSizeList
+          ref={listRef}
+          key={rerenderKey}
+          innerElementType="ul"
+          itemData={data}
+          itemSize={itemSizeFn}
+          height={availableHeight}
+          itemCount={data.items.length}
+          outerRef={outerListRef}
+          onScroll={handleScroll}
+          onItemsRendered={handleItemsRendered} // 🔥 tracking des vues
+          width="100%">
+          {SearchListItem}
+        </VariableSizeList>
 
-          <ScrollToTopContainer style={{ opacity }}>
-            <Container onPress={handleScrollToTopPress}>
-              <StyledView>
-                <ScrollToTopIcon />
-              </StyledView>
-            </Container>
-          </ScrollToTopContainer>
-        </React.Fragment>
+        <ScrollToTopContainer style={{ opacity }}>
+          <Container onPress={handleScrollToTopPress}>
+            <StyledView>
+              <ScrollToTopIcon />
+            </StyledView>
+          </Container>
+        </ScrollToTopContainer>
       </SearchResultList>
     )
   }

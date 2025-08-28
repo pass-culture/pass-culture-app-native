@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
-import { Platform, StyleProp, ViewStyle } from 'react-native'
+import { ObservedList } from 'features/home/components/parsers/ObservedList'
+import React, { useCallback, useEffect } from 'react'
+import { Platform, StyleProp, ViewStyle, ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -19,6 +21,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
@@ -121,6 +124,21 @@ export const VenuePlaylist: React.FC<Props> = ({
     navigate('VenueMap')
   }
 
+  const onViewableItemsChanged = useCallback(
+    (viewableItems: Pick<ViewToken, 'key' | 'index'>[]) => {
+      setPlaylistTrackingInfo({
+        index: viewableItems[0]?.index ?? 0,
+        moduleId: 'moduleId',
+        viewedAt: new Date(),
+        items: viewableItems,
+        itemType: 'venue',
+      })
+    },
+    // Changing onViewableItemsChanged on the fly is not supported
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+
   const shouldDisplaySeeOnMapButton = enabledVenueMap && currentView === 'ThematicSearch' && !isWeb
 
   return (
@@ -138,20 +156,26 @@ export const VenuePlaylist: React.FC<Props> = ({
         ) : (
           <NumberOfResults nbHits={venues?.length ?? 0} />
         )}
-        <Playlist
-          data={venues ?? []}
-          scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
-          itemHeight={VENUE_ITEM_HEIGHT}
-          itemWidth={VENUE_ITEM_WIDTH}
-          renderItem={({ item, height, width }) =>
-            renderVenueItem({ item, height, width }, searchId, searchGroupLabel)
-          }
-          renderHeader={undefined}
-          renderFooter={undefined}
-          keyExtractor={keyExtractor}
-          testID="search-venue-list"
-          onEndReached={logAllTilesSeenOnce}
-        />
+        <ObservedList<FlatList> onViewableItemsChanged={onViewableItemsChanged}>
+          {({ listRef, handleViewableItemsChanged }) => (
+            <Playlist
+              data={venues ?? []}
+              scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
+              itemHeight={VENUE_ITEM_HEIGHT}
+              itemWidth={VENUE_ITEM_WIDTH}
+              renderItem={({ item, height, width }) =>
+                renderVenueItem({ item, height, width }, searchId, searchGroupLabel)
+              }
+              renderHeader={undefined}
+              renderFooter={undefined}
+              keyExtractor={keyExtractor}
+              testID="search-venue-list"
+              onEndReached={logAllTilesSeenOnce}
+              onViewableItemsChanged={handleViewableItemsChanged}
+              ref={listRef}
+            />
+          )}
+        </ObservedList>
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
       <VenueMapLocationModal

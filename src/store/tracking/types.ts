@@ -1,6 +1,6 @@
 export type PlaylistTrackingInfo = {
   moduleId: string
-  itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+  itemType: 'offer' | 'venue' | 'artist' | 'searchResults' | 'unknown'
   callId: string
   index: number
   viewedAt: Date
