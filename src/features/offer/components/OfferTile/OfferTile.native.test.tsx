@@ -155,7 +155,7 @@ describe('OfferTile component', () => {
         offerId: String(OFFER_ID),
         from: 'similar_offer',
         moduleName: props.moduleName,
-        fromOfferId: 1,
+        fromOfferId: '1',
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
       })
     })

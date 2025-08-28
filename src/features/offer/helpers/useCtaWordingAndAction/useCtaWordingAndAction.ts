@@ -555,10 +555,10 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     onSuccess(data) {
       analytics.logBookingConfirmation({
         ...apiRecoParams,
-        offerId: String(offerId),
-        bookingId: String(data.bookingId),
-        fromOfferId,
-        fromMultivenueOfferId,
+        offerId: offerId.toString(),
+        bookingId: data.bookingId.toString(),
+        fromOfferId: fromOfferId?.toString(),
+        fromMultivenueOfferId: fromMultivenueOfferId?.toString(),
         playlistType,
       })
 

@@ -12,7 +12,9 @@ export function triggerConsultOfferLog(params: ConsultOfferLogParams) {
 
   const paramsWithStringId: ConsultOfferLogParams = {
     ...params,
-    offerId: String(params.offerId),
+    offerId: params.offerId.toString(),
+    fromOfferId: params.fromOfferId?.toString(),
+    fromMultivenueOfferId: params.fromMultivenueOfferId?.toString(),
   }
 
   analytics.logConsultOffer(paramsWithStringId)

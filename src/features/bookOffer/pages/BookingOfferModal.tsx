@@ -74,10 +74,10 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       if (offerId) {
         analytics.logBookingConfirmation({
           ...apiRecoParams,
-          offerId: String(offerId),
-          bookingId: String(bookingId),
-          fromOfferId: fromMultivenueOfferId ? undefined : fromOfferId,
-          fromMultivenueOfferId,
+          offerId: offerId.toString(),
+          bookingId: bookingId.toString(),
+          fromOfferId: fromMultivenueOfferId?.toString() ? undefined : fromOfferId?.toString(),
+          fromMultivenueOfferId: fromMultivenueOfferId?.toString(),
           playlistType,
         })
         if (isFromSearch && algoliaOfferId) {
