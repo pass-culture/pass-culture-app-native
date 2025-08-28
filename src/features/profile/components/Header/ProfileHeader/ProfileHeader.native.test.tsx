@@ -22,7 +22,7 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const user: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> = {
+const user: UserProfileResponseWithoutSurvey = {
   bookedOffers: {},
   email: 'email2@domain.ext',
   hasPassword: true,
@@ -48,7 +48,7 @@ const user: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> 
   hasProfileExpired: false,
 }
 
-const exBeneficiaryUser: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'> = {
+const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...user,
   depositExpirationDate: '2020-01-01T03:04:05',
 }
@@ -186,5 +186,5 @@ const renderProfileHeader = ({
   user,
 }: {
   featureFlags: { disableActivation: boolean; enablePassForAll: boolean }
-  user?: Omit<UserProfileResponseWithoutSurvey, 'needsToFillCulturalSurvey'>
+  user?: UserProfileResponseWithoutSurvey
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))
