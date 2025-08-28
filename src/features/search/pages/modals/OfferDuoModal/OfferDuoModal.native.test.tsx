@@ -86,8 +86,6 @@ describe('<OfferDuoModal/>', () => {
   })
 
   describe('when user is logged in and beneficiary with credit', () => {
-    beforeEach(() => {})
-
     it('should toggle offerIsDuo', async () => {
       renderOfferDuoModal()
 
