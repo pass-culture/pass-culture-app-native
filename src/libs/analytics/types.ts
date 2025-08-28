@@ -35,8 +35,8 @@ export type ConsultOfferLogParams = {
   venueId?: number
   homeEntryId?: string
   searchId?: string
-  fromOfferId?: number
-  fromMultivenueOfferId?: number
+  fromOfferId?: number | string
+  fromMultivenueOfferId?: number | string
   playlistType?: PlaylistType
   offer_display_index?: number
   index?: number

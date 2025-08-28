@@ -103,8 +103,8 @@ export const logEventAnalytics = {
   logBookingConfirmation: (params: {
     offerId: string
     bookingId: string
-    fromOfferId?: number
-    fromMultivenueOfferId?: number
+    fromOfferId?: string
+    fromMultivenueOfferId?: string
     playlistType?: PlaylistType
   }) => analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_CONFIRMATION }, params),
   logBookingDetailsScrolledToBottom: (offerId: number) =>

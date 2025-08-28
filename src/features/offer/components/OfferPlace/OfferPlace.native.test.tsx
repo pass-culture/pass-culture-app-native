@@ -326,7 +326,7 @@ describe('<OfferPlace />', () => {
     expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       from: 'offer',
-      fromMultivenueOfferId: 146112,
+      fromMultivenueOfferId: '146112',
       offerId: '2',
     })
   })
