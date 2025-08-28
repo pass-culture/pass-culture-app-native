@@ -15,7 +15,7 @@ jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue(remoteConfigResponseFixture)
 
-const user: UserProfileResponse = {
+const user: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
   bookedOffers: {},
   email: 'email2@domain.ext',
   hasPassword: true,
@@ -27,7 +27,6 @@ const user: UserProfileResponse = {
   lastName: '93 HNMM 2',
   id: 1234,
   isEligibleForBeneficiaryUpgrade: false,
-  needsToFillCulturalSurvey: true,
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
@@ -43,7 +42,7 @@ const user: UserProfileResponse = {
 
 jest.mock('queries/profile/usePatchProfileMutation')
 
-const exBeneficiaryUser: UserProfileResponse = {
+const exBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
   ...user,
   depositExpirationDate: '2020-01-01T03:04:05',
 }

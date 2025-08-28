@@ -93,7 +93,6 @@ describe('<Login/>', () => {
     })
     simulateSignin200(AccountState.ACTIVE)
     mockMeApiCall({
-      needsToFillCulturalSurvey: false,
       showEligibleCard: false,
     } as UserProfileResponse)
     mockUsePreviousRoute.mockReturnValue(null)
@@ -248,13 +247,9 @@ describe('<Login/>', () => {
     expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
   })
 
-  it('should redirect to home WHEN signin is successful and ENABLE_CULTURAL_SURVEY_MANDATORY enabled', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
-      RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY,
-    ])
+  it('should redirect to home WHEN signin is successful with WIP_ENABLE_GOOGLE_SSO', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     mockMeApiCall({
-      needsToFillCulturalSurvey: true,
       showEligibleCard: false,
     } as UserProfileResponse)
     renderLogin()
@@ -268,7 +263,6 @@ describe('<Login/>', () => {
   it('should not redirect to EighteenBirthday WHEN signin is successful and user has already seen eligible card and needs to see it', async () => {
     storage.saveObject('has_seen_eligible_card', true)
     mockMeApiCall({
-      needsToFillCulturalSurvey: false,
       showEligibleCard: true,
     } as UserProfileResponse)
     renderLogin()
@@ -281,7 +275,6 @@ describe('<Login/>', () => {
 
   it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
     mockMeApiCall({
-      needsToFillCulturalSurvey: true,
       showEligibleCard: true,
     } as UserProfileResponse)
     renderLogin()
@@ -294,7 +287,6 @@ describe('<Login/>', () => {
 
   it('should redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow not null', async () => {
     mockMeApiCall({
-      needsToFillCulturalSurvey: true,
       showEligibleCard: true,
       recreditAmountToShow: 3000,
     } as UserProfileResponse)
@@ -308,7 +300,6 @@ describe('<Login/>', () => {
 
   it('should not redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow to null', async () => {
     mockMeApiCall({
-      needsToFillCulturalSurvey: true,
       showEligibleCard: true,
       recreditAmountToShow: null,
     } as UserProfileResponse)

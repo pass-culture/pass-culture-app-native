@@ -1,17 +1,14 @@
 import React from 'react'
 
 import { BatchEvent, BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
-import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
-import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
@@ -63,21 +60,6 @@ describe('<AccountCreated />', () => {
       navigateToHomeConfig.screen,
       navigateToHomeConfig.params
     )
-    expect(navigate).not.toHaveBeenCalledWith('CulturalSurvey', undefined)
-  })
-
-  it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
-    mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: false })
-    mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: false }) // re-render because local storage value has been read and set
-    renderAccountCreated()
-
-    await user.press(await screen.findByLabelText('On y va\u00a0!'))
-
-    expect(navigateFromRef).toHaveBeenCalledWith(
-      navigateToHomeConfig.screen,
-      navigateToHomeConfig.params
-    )
-    expect(navigate).not.toHaveBeenCalledWith('CulturalSurvey', undefined)
   })
 
   it('should track Batch event when "On y va !" button is clicked', async () => {

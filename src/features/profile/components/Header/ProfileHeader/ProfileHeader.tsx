@@ -15,7 +15,7 @@ type ProfileHeaderProps = {
     disableActivation: boolean
     enablePassForAll: boolean
   }
-  user?: UserProfileResponse
+  user?: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'>
 }
 
 export function ProfileHeader(props: ProfileHeaderProps) {

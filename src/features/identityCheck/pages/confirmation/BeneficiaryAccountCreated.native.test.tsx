@@ -70,10 +70,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
   it('should show beneficiary share app modal when button is clicked', async () => {
     // Too many rerenders but we reset the values before each tests
     // eslint-disable-next-line local-rules/independent-mocks
-    mockAuthContextWithUser(
-      { ...beneficiaryUser, needsToFillCulturalSurvey: false },
-      { persist: true }
-    )
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
     renderBeneficiaryAccountCreated()
 
     await user.press(await screen.findByLabelText('C’est parti !'))

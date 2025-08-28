@@ -23,13 +23,12 @@ describe('useInitialScreen()', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
-  it('should return TabNavigator when logged in user has seen tutorials and eligible card without need to fill cultural survey', async () => {
+  it('should return TabNavigator when logged in user has seen tutorials and eligible card', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', true)
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
-        needsToFillCulturalSurvey: false,
         showEligibleCard: false,
         recreditAmountToShow: null,
       },
@@ -51,7 +50,6 @@ describe('useInitialScreen()', () => {
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
-        needsToFillCulturalSurvey: true,
         showEligibleCard: true,
         recreditAmountToShow: null,
       },
@@ -73,7 +71,6 @@ describe('useInitialScreen()', () => {
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
-        needsToFillCulturalSurvey: true,
         showEligibleCard: true,
         recreditAmountToShow: 3000,
       },

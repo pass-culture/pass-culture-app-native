@@ -11,7 +11,7 @@ import {
 } from 'api/gen'
 import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 
-export const nonBeneficiaryUser: UserProfileResponse = {
+export const nonBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
   bookedOffers: {},
   domainsCredit: {
     all: { initial: 0, remaining: 0 },
@@ -22,7 +22,6 @@ export const nonBeneficiaryUser: UserProfileResponse = {
   email: 'email@domain.ext',
   hasPassword: true,
   isBeneficiary: false,
-  needsToFillCulturalSurvey: true,
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
@@ -38,7 +37,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
   hasProfileExpired: false,
 }
 
-export const beneficiaryUser: UserProfileResponse = {
+export const beneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
   ...nonBeneficiaryUser,
   domainsCredit: {
     all: { initial: 300_00, remaining: 250_00 },
@@ -62,7 +61,7 @@ export const beneficiaryUser: UserProfileResponse = {
   activityId: ActivityIdEnum.STUDENT,
 }
 
-export const underageBeneficiaryUser: UserProfileResponse = {
+export const underageBeneficiaryUser: Omit<UserProfileResponse, 'needsToFillCulturalSurvey'> = {
   ...beneficiaryUser,
   isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
