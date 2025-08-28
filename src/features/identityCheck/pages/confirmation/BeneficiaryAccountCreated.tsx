@@ -56,7 +56,6 @@ export function BeneficiaryAccountCreated() {
   return (
     <GenericInfoPage
       animation={TutorialPassLogo}
-      temporarilyDeactivateColors // TODO(PC-37129)
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{

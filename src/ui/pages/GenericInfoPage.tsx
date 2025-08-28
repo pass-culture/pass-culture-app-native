@@ -62,7 +62,6 @@ type Props = PropsWithChildren<
     buttonPrimary: ButtonProps
     buttonSecondary?: ButtonProps
     buttonTertiary?: ButtonProps
-    temporarilyDeactivateColors?: boolean // TODO(PC-37129)
   } & (
     | { illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>; animation?: never }
     | { animation: AnimationObject; illustration?: never }
@@ -80,7 +79,6 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   buttonSecondary,
   buttonTertiary,
   children,
-  temporarilyDeactivateColors,
 }) => {
   const { isDesktopViewport } = useTheme()
 
@@ -106,12 +104,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <IllustrationContainer animation={!!animation}>
           {Illustration ? <Illustration /> : null}
           {animation ? (
-            <ThemedStyledLottieView
-              source={animation}
-              width="100%"
-              height="100%"
-              temporarilyDeactivateColors={temporarilyDeactivateColors}
-            />
+            <ThemedStyledLottieView source={animation} width="100%" height="100%" />
           ) : null}
         </IllustrationContainer>
 
