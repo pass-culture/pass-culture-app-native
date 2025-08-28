@@ -1,53 +1,18 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { CurrencyEnum, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
-import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { profileHeaderUser, profileHeaderUserExBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
-
 jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue(remoteConfigResponseFixture)
-
-const user: UserProfileResponseWithoutSurvey = {
-  bookedOffers: {},
-  email: 'email2@domain.ext',
-  hasPassword: true,
-  firstName: 'Jean',
-  isBeneficiary: true,
-  birthDate: '2003-01-01',
-  depositExpirationDate: '2023-02-09T11:17:14.786670',
-  domainsCredit: domains_credit_v3,
-  lastName: '93 HNMM 2',
-  id: 1234,
-  isEligibleForBeneficiaryUpgrade: false,
-  requiresIdCheck: false,
-  roles: [],
-  showEligibleCard: false,
-  subscriptions: {
-    marketingEmail: true,
-    marketingPush: true,
-  },
-  status: { statusType: YoungStatusType.beneficiary },
-  currency: CurrencyEnum.EUR,
-  achievements: [],
-  hasProfileExpired: false,
-}
-
 jest.mock('queries/profile/usePatchProfileMutation')
-
-const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
-  ...user,
-  depositExpirationDate: '2020-01-01T03:04:05',
-}
-
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
@@ -62,7 +27,7 @@ describe('ProfileHeader', () => {
     render(
       <ProfileHeader
         featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={user}
+        user={profileHeaderUser}
       />
     )
 
@@ -73,7 +38,7 @@ describe('ProfileHeader', () => {
     render(
       <ProfileHeader
         featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={exBeneficiaryUser}
+        user={profileHeaderUserExBeneficiaryUser}
       />
     )
 
@@ -84,7 +49,7 @@ describe('ProfileHeader', () => {
     render(
       <ProfileHeader
         featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={user}
+        user={profileHeaderUser}
       />
     )
 

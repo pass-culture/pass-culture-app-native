@@ -1,63 +1,23 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import {
-  BannerName,
-  BannerResponse,
-  CurrencyEnum,
-  EligibilityType,
-  SubscriptionStepperResponseV2,
-  YoungStatusType,
-} from 'api/gen'
+import { BannerName, BannerResponse, EligibilityType, SubscriptionStepperResponseV2 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
-import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { beneficiaryUser } from 'fixtures/user'
+import {
+  beneficiaryUser,
+  profileHeaderUserExBeneficiaryUser,
+  profileHeaderUserNotBeneficiaryUser,
+  profileHeaderUser,
+} from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
-
-const user: UserProfileResponseWithoutSurvey = {
-  bookedOffers: {},
-  email: 'email2@domain.ext',
-  hasPassword: true,
-  firstName: 'Jean',
-  isBeneficiary: true,
-  birthDate: '2003-01-01',
-  depositExpirationDate: '2023-02-09T11:17:14.786670',
-  domainsCredit: domains_credit_v3,
-  lastName: '93 HNMM 2',
-  id: 1234,
-  isEligibleForBeneficiaryUpgrade: false,
-  requiresIdCheck: false,
-  roles: [],
-  showEligibleCard: false,
-  subscriptions: {
-    marketingEmail: true,
-    marketingPush: true,
-  },
-  status: { statusType: YoungStatusType.beneficiary },
-  currency: CurrencyEnum.EUR,
-  achievements: [],
-  street: '10 rue du Bohneur',
-  hasProfileExpired: false,
-}
-
-const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
-  ...user,
-  depositExpirationDate: '2020-01-01T03:04:05',
-}
-
-const notBeneficiaryUser = {
-  ...user,
-  isBeneficiary: false,
-}
-
 jest.mock('libs/jwt/jwt')
 jest.mock('queries/profile/usePatchProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
@@ -82,7 +42,7 @@ describe('ProfileHeader', () => {
   it('should not display subtitle with passForAll enabled', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: true },
-      user: undefined,
+      user: {} as UserProfileResponseWithoutSurvey,
     })
     await screen.findByText('Cheatcodes')
 
@@ -94,7 +54,7 @@ describe('ProfileHeader', () => {
   it('should display the LoggedOutHeader if no user', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: undefined,
+      user: {} as UserProfileResponseWithoutSurvey,
     })
 
     await screen.findByText('Cheatcodes')
@@ -109,7 +69,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is beneficiary', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user,
+      user: profileHeaderUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -121,7 +81,7 @@ describe('ProfileHeader', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user,
+      user: profileHeaderUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -132,7 +92,7 @@ describe('ProfileHeader', () => {
   it('should display the ExBeneficiary Header if credit is expired', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: exBeneficiaryUser,
+      user: profileHeaderUserExBeneficiaryUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -151,7 +111,7 @@ describe('ProfileHeader', () => {
 
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: notBeneficiaryUser,
+      user: profileHeaderUserNotBeneficiaryUser,
     })
 
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
@@ -186,5 +146,5 @@ const renderProfileHeader = ({
   user,
 }: {
   featureFlags: { disableActivation: boolean; enablePassForAll: boolean }
-  user?: UserProfileResponseWithoutSurvey
+  user: UserProfileResponseWithoutSurvey
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

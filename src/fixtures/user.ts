@@ -9,6 +9,7 @@ import {
   YoungStatusType,
 } from 'api/gen'
 import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
@@ -67,4 +68,40 @@ export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.eligible },
+}
+
+export const profileHeaderUser: UserProfileResponseWithoutSurvey = {
+  bookedOffers: {},
+  email: 'email2@domain.ext',
+  hasPassword: true,
+  firstName: 'Jean',
+  isBeneficiary: true,
+  birthDate: '2003-01-01',
+  depositExpirationDate: '2023-02-09T11:17:14.786670',
+  domainsCredit: domains_credit_v3,
+  lastName: '93 HNMM 2',
+  id: 1234,
+  isEligibleForBeneficiaryUpgrade: false,
+  requiresIdCheck: false,
+  roles: [],
+  showEligibleCard: false,
+  subscriptions: {
+    marketingEmail: true,
+    marketingPush: true,
+  },
+  status: { statusType: YoungStatusType.beneficiary },
+  currency: CurrencyEnum.EUR,
+  achievements: [],
+  street: '10 rue du Bohneur',
+  hasProfileExpired: false,
+}
+
+export const profileHeaderUserExBeneficiaryUser: UserProfileResponseWithoutSurvey = {
+  ...profileHeaderUser,
+  depositExpirationDate: '2020-01-01T03:04:05',
+}
+
+export const profileHeaderUserNotBeneficiaryUser = {
+  ...profileHeaderUser,
+  isBeneficiary: false,
 }
