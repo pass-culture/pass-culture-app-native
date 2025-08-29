@@ -37,13 +37,27 @@ jest.mock('features/offer/queries/useOffersStocksFromOfferQuery', () => ({
   useOffersStocksFromOfferQuery: () => mockuseOffersStocksFromOfferQuery(),
 }))
 
-const mockedMovieOffers = offersStocksResponseSnap.offers.map((offer) => ({
-  offer,
-  isUpcoming: false,
-}))
+const mockedMovieOffers = [
+  ...offersStocksResponseSnap.offers.map((offer) => ({
+    offer: { ...offer, id: offer.id },
+    isUpcoming: false,
+  })),
+  ...offersStocksResponseSnap.offers.map((offer) => ({
+    offer: { ...offer, id: offer.id + 111 },
+    isUpcoming: false,
+  })),
+]
+
+const mockedMovieOffersLongResult = [
+  ...mockedMovieOffers,
+  ...offersStocksResponseSnap.offers.map((offer) => ({
+    offer: { ...offer, id: offer.id + 999 },
+    isUpcoming: false,
+  })),
+]
 
 const mockUseGetVenuesByDay = jest.fn(() => ({
-  movieOffers: [...mockedMovieOffers, ...mockedMovieOffers],
+  movieOffers: mockedMovieOffers,
   hasStocksOnlyAfter15Days: false,
 }))
 
@@ -81,7 +95,6 @@ describe('OfferCineContent', () => {
         ...defaultOffersStocksFromOfferQuery,
         isInitialLoading: true,
       })
-
     renderOfferCineContent()
 
     expect(await screen.findAllByTestId('cine-block-skeleton')).toBeDefined()
@@ -104,18 +117,19 @@ describe('OfferCineContent', () => {
   })
 
   it('should display "Afficher plus de cinémas" when button is clicked and more movie Offers', async () => {
-    mockUseGetVenuesByDay.mockReturnValueOnce({
-      movieOffers: [...mockedMovieOffers, ...mockedMovieOffers, ...mockedMovieOffers],
-      hasStocksOnlyAfter15Days: false,
-    })
-    mockUseGetVenuesByDay.mockReturnValueOnce({
-      movieOffers: [...mockedMovieOffers, ...mockedMovieOffers, ...mockedMovieOffers],
-      hasStocksOnlyAfter15Days: false,
-    })
-    mockUseGetVenuesByDay.mockReturnValueOnce({
-      movieOffers: [...mockedMovieOffers, ...mockedMovieOffers, ...mockedMovieOffers],
-      hasStocksOnlyAfter15Days: false,
-    })
+    mockUseGetVenuesByDay
+      .mockReturnValueOnce({
+        movieOffers: mockedMovieOffersLongResult,
+        hasStocksOnlyAfter15Days: false,
+      })
+      .mockReturnValueOnce({
+        movieOffers: mockedMovieOffersLongResult,
+        hasStocksOnlyAfter15Days: false,
+      })
+      .mockReturnValueOnce({
+        movieOffers: mockedMovieOffersLongResult,
+        hasStocksOnlyAfter15Days: false,
+      })
     renderOfferCineContent()
 
     const moreButton = await screen.findByText('Afficher plus de cinémas')
