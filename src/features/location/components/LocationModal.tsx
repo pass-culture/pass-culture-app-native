@@ -206,7 +206,6 @@ export const LocationModal = ({
   }
 
   if (shouldDisplayEverywhereSection) {
-    listData.push({ id: 'separator2', wrapInLi: false, component: <Separator.Horizontal /> })
     listData.push({
       id: 'everywhereButton',
       wrapInLi: true,
