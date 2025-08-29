@@ -2,6 +2,8 @@ import React, { useCallback, useRef, useState } from 'react'
 import { FlatList, FlatListProps } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
+const keyExtractor = (item) => item.offer.id.toString()
+
 export const ExpandingFlatList = <T,>({
   isLoading,
   renderSkeleton,
@@ -25,6 +27,8 @@ export const ExpandingFlatList = <T,>({
         data={Array(skeletonListLength).fill(undefined)}
         renderItem={renderSkeleton}
         onContentSizeChange={onContentSizeChange}
+        keyExtractor={keyExtractor}
+        initialNumToRender={data?.length}
       />
     )
   }
