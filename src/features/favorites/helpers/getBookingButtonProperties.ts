@@ -1,14 +1,15 @@
-import { FavoriteOfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
+import { FavoriteOfferResponse, YoungStatusType } from 'api/gen'
 import { getBeneficiaryBookingButtonProps } from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
 import { getEligibleBookingButtonProps } from 'features/favorites/helpers/getEligibleBookingButtonProps'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { OfferModal } from 'shared/offer/enums'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 
 interface Props {
   offer: FavoriteOfferResponse
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
-  user: UserProfileResponse
+  user: UserProfileResponseWithoutSurvey
 }
 
 type GetBookingButtonProperties = {
@@ -95,7 +96,7 @@ function getIsFreeOffer(offer: FavoriteOfferResponse): boolean {
 
 function getIsBookedOffer(
   offerId: FavoriteOfferResponse['id'],
-  bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
+  bookedOffersIds: UserProfileResponseWithoutSurvey['bookedOffers'] = {}
 ): boolean {
   return bookedOffersIds[offerId] !== undefined
 }

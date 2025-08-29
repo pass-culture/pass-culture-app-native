@@ -5,13 +5,13 @@ import {
   CurrencyEnum,
   DepositType,
   EligibilityType,
-  UserProfileResponse,
   UserRole,
   YoungStatusType,
 } from 'api/gen'
 import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
-export const nonBeneficiaryUser: UserProfileResponse = {
+export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   bookedOffers: {},
   domainsCredit: {
     all: { initial: 0, remaining: 0 },
@@ -22,7 +22,6 @@ export const nonBeneficiaryUser: UserProfileResponse = {
   email: 'email@domain.ext',
   hasPassword: true,
   isBeneficiary: false,
-  needsToFillCulturalSurvey: true,
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
@@ -38,7 +37,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
   hasProfileExpired: false,
 }
 
-export const beneficiaryUser: UserProfileResponse = {
+export const beneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...nonBeneficiaryUser,
   domainsCredit: {
     all: { initial: 300_00, remaining: 250_00 },
@@ -62,10 +61,15 @@ export const beneficiaryUser: UserProfileResponse = {
   activityId: ActivityIdEnum.STUDENT,
 }
 
-export const underageBeneficiaryUser: UserProfileResponse = {
+export const underageBeneficiaryUser: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
   status: { statusType: YoungStatusType.eligible },
+}
+
+export const exBeneficiaryUser: UserProfileResponseWithoutSurvey = {
+  ...beneficiaryUser,
+  depositExpirationDate: '2020-01-01T03:04:05',
 }

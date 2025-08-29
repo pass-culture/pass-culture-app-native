@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
@@ -40,7 +39,6 @@ describe('<BeneficiaryRequestSent />', () => {
   })
 
   it('should redirect to home page when "On y va !" button is clicked', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     render(<BeneficiaryRequestSent />)
 
     await user.press(await screen.findByLabelText('On y va\u00a0!'))

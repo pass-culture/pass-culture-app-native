@@ -6,7 +6,7 @@ import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function BeneficiaryRequestSent() {
-  const subtitle = `Nous étudions ton dossier...${LINE_BREAK}Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles\u00a0!`
+  const subtitle = `Nous étudions ton dossier...${LINE_BREAK}Tu recevras un e-mail lorsque ta demande sera validée.`
 
   return (
     <GenericInfoPage

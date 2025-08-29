@@ -1,5 +1,5 @@
 import * as API from 'api/api'
-import { UserProfileResponse } from 'api/gen'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import {
   Props as useThematicSubscriptionProps,
@@ -34,7 +34,7 @@ jest
 
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
-const userWithNotificationsAndSubscribed: UserProfileResponse = {
+const userWithNotificationsAndSubscribed: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   subscriptions: {
     marketingEmail: true,
@@ -42,7 +42,7 @@ const userWithNotificationsAndSubscribed: UserProfileResponse = {
     subscribedThemes: [SubscriptionTheme.CINEMA, SubscriptionTheme.ACTIVITES],
   },
 }
-const userWithoutNotificationsButWithSubscriptions: UserProfileResponse = {
+const userWithoutNotificationsButWithSubscriptions: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   subscriptions: {
     marketingEmail: false,
@@ -50,7 +50,7 @@ const userWithoutNotificationsButWithSubscriptions: UserProfileResponse = {
     subscribedThemes: [SubscriptionTheme.CINEMA, SubscriptionTheme.ACTIVITES],
   },
 }
-const userWithNotificationsButNoSubscriptions: UserProfileResponse = {
+const userWithNotificationsButNoSubscriptions: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   subscriptions: {
     marketingEmail: true,
@@ -58,7 +58,7 @@ const userWithNotificationsButNoSubscriptions: UserProfileResponse = {
     subscribedThemes: [],
   },
 }
-const userWithoutNotificationsAndWithoutSubscriptions: UserProfileResponse = {
+const userWithoutNotificationsAndWithoutSubscriptions: UserProfileResponseWithoutSurvey = {
   ...beneficiaryUser,
   subscriptions: {
     marketingEmail: false,

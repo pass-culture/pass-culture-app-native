@@ -1,11 +1,12 @@
-import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
+import { FavoriteOfferResponse } from 'api/gen'
 import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/hasEnoughCredit'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 export const getBeneficiaryBookingButtonProps = (
   offer: FavoriteOfferResponse,
   isFreeOffer: boolean,
   isBookedOffer: boolean,
-  user: UserProfileResponse,
+  user: UserProfileResponseWithoutSurvey,
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
 ) => {
   const doesUserHaveEnoughCredit = hasEnoughCredit(

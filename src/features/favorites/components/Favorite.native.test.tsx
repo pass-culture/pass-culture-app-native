@@ -8,11 +8,11 @@ import {
   ExpenseDomain,
   FavoriteResponse,
   SubcategoriesResponseModelv2,
-  UserProfileResponse,
   YoungStatusType,
 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -36,14 +36,14 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const credit: Credit = { amount: 100, isExpired: false }
 
-const userProfile: UserProfileResponse = {
+const userProfile: UserProfileResponseWithoutSurvey = {
   isBeneficiary: true,
   bookedOffers: {},
   domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
   status: {
     statusType: YoungStatusType.beneficiary,
   },
-} as UserProfileResponse
+} as UserProfileResponseWithoutSurvey
 const onInAppBooking = jest.fn()
 
 const mockFavoritesState = initialFavoritesState
@@ -240,7 +240,7 @@ const DEFAULT_PROPS = {
 
 type RenderFavoriteParams = {
   favorite?: FavoriteResponse
-  user?: UserProfileResponse
+  user?: UserProfileResponseWithoutSurvey
 }
 
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {

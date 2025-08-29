@@ -1,6 +1,6 @@
-import { UserProfileResponse } from 'api/gen'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
-export const getIsProfileIncomplete = (user?: UserProfileResponse): boolean => {
+export const getIsProfileIncomplete = (user?: UserProfileResponseWithoutSurvey): boolean => {
   if (!user) return true
 
   const isEmpty = (field) => field == null || field === ''

@@ -5,12 +5,12 @@ import {
   BookingsResponse,
   GetAvailableReactionsResponse,
   SubcategoriesResponseModelv2,
-  UserProfileResponse,
 } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
@@ -39,7 +39,7 @@ jest.useFakeTimers()
 describe('<Bookings />', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<GetAvailableReactionsResponse>(

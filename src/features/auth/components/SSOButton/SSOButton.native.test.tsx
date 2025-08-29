@@ -4,8 +4,9 @@ import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import * as API from 'api/api'
-import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
+import { AccountState, OauthStateResponse, SigninResponse } from 'api/gen'
 import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -60,7 +61,7 @@ describe('<SSOButton />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
@@ -100,7 +101,7 @@ describe('<SSOButton />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
@@ -115,7 +116,7 @@ describe('<SSOButton />', () => {
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
     renderSSOButton('login')
 

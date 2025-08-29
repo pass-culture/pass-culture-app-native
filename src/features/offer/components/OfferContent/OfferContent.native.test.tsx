@@ -15,7 +15,6 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
-  UserProfileResponse,
 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as useFavorite from 'features/favorites/hooks/useFavorite'
@@ -27,6 +26,7 @@ import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVa
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -226,7 +226,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should remove favorite when press on favorite', async () => {
-      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponse)
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
       renderOfferContent({})
       const button = await screen.findByLabelText('Mettre en favori')
       await user.press(button)
@@ -236,7 +236,7 @@ describe('<OfferContent />', () => {
 
     it('should display snackbar when remove favorite fails', async () => {
       spyApiDeleteFavorite.mockRejectedValueOnce({ status: 400 })
-      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponse)
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
       renderOfferContent({})
       const button = await screen.findByLabelText('Mettre en favori')
       await user.press(button)

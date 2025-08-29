@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SubcategoryIdEnum, TicketDisplayEnum, TicketResponse, UserProfileResponse } from 'api/gen'
+import { SubcategoryIdEnum, TicketDisplayEnum, TicketResponse } from 'api/gen'
 import { CinemaBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/CinemaBookingTicket/CinemaBookingTicket'
 import { DigitalTicket } from 'features/bookings/components/Ticket/TicketBottomPart/DigitalTicket'
 import { EmailWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWithdrawal'
@@ -8,12 +8,13 @@ import { ExternalBookingTicket } from 'features/bookings/components/Ticket/Ticke
 import { NoTicket } from 'features/bookings/components/Ticket/TicketBottomPart/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { PhysicalGoodBookingTicket } from 'features/bookings/components/Ticket/TicketBottomPart/PhysicalGoodBookingTicket/PhysicalGoodBookingTicket'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 type TicketBottomPartProps = {
   isDuo: boolean
   isDigital: boolean
   isEvent: boolean
-  userEmail: UserProfileResponse['email']
+  userEmail: UserProfileResponseWithoutSurvey['email']
   ticket: TicketResponse
   expirationDate?: string
   beginningDateTime?: string

@@ -47,16 +47,15 @@ export function BeneficiaryAccountCreated() {
 
   const onBeforeNavigate = useCallback(() => {
     BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
-    if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
+    showShareAppModal(ShareAppModalType.BENEFICIARY)
     resetRecreditAmountToShow()
-  }, [resetRecreditAmountToShow, showShareAppModal, user?.needsToFillCulturalSurvey])
+  }, [resetRecreditAmountToShow, showShareAppModal])
 
   useEnterKeyAction(navigateToHome)
 
   return (
     <GenericInfoPage
       animation={TutorialPassLogo}
-      temporarilyDeactivateColors // TODO(PC-37129)
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{

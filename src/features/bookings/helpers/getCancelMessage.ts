@@ -1,5 +1,6 @@
-import { BookingReponse, UserProfileResponse } from 'api/gen'
+import { BookingReponse } from 'api/gen'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -14,7 +15,7 @@ export function getCancelMessage({
   expirationDate: string
   isDigitalBooking: boolean
   isFreeOfferToArchive: boolean
-  user?: UserProfileResponse
+  user?: UserProfileResponseWithoutSurvey
 }): string {
   const archiveMessage = `Ta réservation sera archivée le ${expirationDate}`
   const isExBeneficiary = user && isUserExBeneficiary(user)

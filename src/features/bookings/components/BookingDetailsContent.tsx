@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingResponse, TicketDisplayEnum, UserProfileResponse } from 'api/gen'
+import { BookingResponse, TicketDisplayEnum } from 'api/gen'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsContentDesktop } from 'features/bookings/components/BookingDetailsContentDesktop'
@@ -17,6 +17,7 @@ import {
   computeHeaderImageHeight,
 } from 'features/bookings/helpers/computeHeaderImageHeight'
 import { BookingProperties } from 'features/bookings/types'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -37,7 +38,7 @@ export const BookingDetailsContent = ({
   properties: BookingProperties
   booking: BookingResponse
   mapping: SubcategoriesMapping
-  user: UserProfileResponse
+  user: UserProfileResponseWithoutSurvey
 }) => {
   const { isDesktopViewport } = useTheme()
   const { height: windowHeight } = useWindowDimensions()

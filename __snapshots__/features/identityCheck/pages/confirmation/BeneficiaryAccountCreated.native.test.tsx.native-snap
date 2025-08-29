@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
+exports[`BeneficiaryAccountCreated should render correctly for 18 year-old beneficiaries 1`] = `
 <View
   style={
     {
@@ -416,7 +416,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
 </View>
 `;
 
-exports[`<BeneficiaryAccountCreated/> should render correctly for underage beneficiaries 1`] = `
+exports[`BeneficiaryAccountCreated should render correctly for underage beneficiaries 1`] = `
 <View
   style={
     {

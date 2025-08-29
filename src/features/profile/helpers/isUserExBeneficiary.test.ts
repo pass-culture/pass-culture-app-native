@@ -1,4 +1,4 @@
-import { UserProfileResponse } from 'api/gen'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
@@ -22,7 +22,7 @@ describe('isUserExBeneficiary', () => {
       isCreditExpired,
       expected,
     }: {
-      user: UserProfileResponse
+      user: UserProfileResponseWithoutSurvey
       isCreditExpired: boolean
       expected: boolean
     }) => {

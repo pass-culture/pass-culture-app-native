@@ -1,7 +1,6 @@
 import { omit } from 'lodash'
 import { useCallback } from 'react'
 
-import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Homepage } from 'features/home/types'
 import { UserOnboardingRole } from 'features/onboarding/enums'
@@ -9,13 +8,14 @@ import { useUserRoleFromOnboarding } from 'features/onboarding/helpers/useUserRo
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserFreeBeneficiary } from 'features/profile/helpers/isUserFreeBeneficiary'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useUserHasBookingsQuery } from 'queries/bookings'
 
 const scoreHomepageByTags = (
   homepage: Homepage,
-  user?: UserProfileResponse
+  user?: UserProfileResponseWithoutSurvey
 ): Homepage & { score: number } => {
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const tags = homepage.tags

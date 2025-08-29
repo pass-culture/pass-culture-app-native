@@ -1,8 +1,9 @@
-import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
+import { FavoriteOfferResponse } from 'api/gen'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 export function getBookingOfferId(
   offerId: FavoriteOfferResponse['id'],
-  bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
+  bookedOffersIds: UserProfileResponseWithoutSurvey['bookedOffers'] = {}
 ): number | undefined {
   return bookedOffersIds[offerId]
 }

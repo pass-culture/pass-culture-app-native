@@ -310,10 +310,6 @@ describe('SearchResultsContent component', () => {
 
   describe('Offer Duo filter', () => {
     describe('When user is logged in and is benificiary with credit', () => {
-      beforeEach(() => {
-        mockAuthContextWithUser(beneficiaryUser)
-      })
-
       it('should display Duo filter button', async () => {
         renderSearchResultContent()
 

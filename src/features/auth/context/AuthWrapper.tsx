@@ -1,11 +1,11 @@
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { api } from 'api/api'
-import { UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { useConnectServicesRequiringUserId } from 'features/auth/helpers/useConnectServicesRequiringUserId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 // eslint-disable-next-line no-restricted-imports
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useAppStateChange } from 'libs/appState'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt/jwt'
@@ -116,9 +116,13 @@ export const AuthWrapper = memo(function AuthWrapper({
 const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
 function useUserProfileInfo(isLoggedIn: boolean, options = {}) {
   const netInfo = useNetInfoContext()
-  return usePersistQuery<UserProfileResponse>([QueryKeys.USER_PROFILE], () => api.getNativeV1Me(), {
-    enabled: !!netInfo.isConnected && isLoggedIn,
-    staleTime: STALE_TIME_USER_PROFILE,
-    ...options,
-  })
+  return usePersistQuery<UserProfileResponseWithoutSurvey>(
+    [QueryKeys.USER_PROFILE],
+    () => api.getNativeV1Me(),
+    {
+      enabled: !!netInfo.isConnected && isLoggedIn,
+      staleTime: STALE_TIME_USER_PROFILE,
+      ...options,
+    }
+  )
 }

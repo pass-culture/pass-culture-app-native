@@ -71,7 +71,6 @@ describe('BusinessModule component', () => {
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-    mockAuthContextWithUser(beneficiaryUser)
     renderModule({ ...props, shouldTargetNotConnectedUsers: true })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
