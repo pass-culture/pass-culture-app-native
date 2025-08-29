@@ -94,6 +94,21 @@ export const LocationModal = ({
     onTempAroundMeRadiusValueChange &&
     isCurrentLocationMode(LocationMode.AROUND_ME)
 
+  const LOCATION_BUTTON_CONTENT = {
+    aroundMe: {
+      title: 'Utiliser ma position actuelle',
+      subtitle: hasGeolocPosition ? undefined : 'Géolocalisation désactivée',
+    },
+    aroundPlace: {
+      title: 'Choisir une localisation',
+      subtitle: LOCATION_PLACEHOLDER,
+    },
+    everywhere: {
+      title: LocationLabel.everywhereLabel,
+      subtitle: '',
+    },
+  }
+
   const listData: {
     id: string
     wrapInLi: boolean
@@ -104,14 +119,19 @@ export const LocationModal = ({
   listData.push({
     id: 'aroundMeButton',
     wrapInLi: true,
-    accessibilityLabel: 'Utiliser ma position actuelle',
+    accessibilityLabel: [
+      LOCATION_BUTTON_CONTENT.aroundMe.title,
+      LOCATION_BUTTON_CONTENT.aroundMe.subtitle,
+    ]
+      .filter(Boolean)
+      .join(', '),
     component: (
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.AROUND_ME)}
         icon={PositionFilled}
         color={geolocationModeColor}
-        title="Utiliser ma position actuelle"
-        subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
+        title={LOCATION_BUTTON_CONTENT.aroundMe.title}
+        subtitle={LOCATION_BUTTON_CONTENT.aroundMe.subtitle}
       />
     ),
   })
@@ -136,14 +156,19 @@ export const LocationModal = ({
   listData.push({
     id: 'aroundPlaceButton',
     wrapInLi: true,
-    accessibilityLabel: 'Choisir une localisation',
+    accessibilityLabel: [
+      LOCATION_BUTTON_CONTENT.aroundPlace.title,
+      LOCATION_BUTTON_CONTENT.aroundPlace.subtitle,
+    ]
+      .filter(Boolean)
+      .join(', '),
     component: (
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
         icon={MagnifyingGlassFilled}
         color={customLocationModeColor}
-        title="Choisir une localisation"
-        subtitle={LOCATION_PLACEHOLDER}
+        title={LOCATION_BUTTON_CONTENT.aroundPlace.title}
+        subtitle={LOCATION_BUTTON_CONTENT.aroundPlace.subtitle}
       />
     ),
   })
@@ -182,12 +207,15 @@ export const LocationModal = ({
 
   if (shouldDisplayEverywhereSection) {
     listData.push({ id: 'separator2', wrapInLi: false, component: <Separator.Horizontal /> })
-
     listData.push({
       id: 'everywhereButton',
       wrapInLi: true,
-      accessibilityLabel: LocationLabel.everywhereLabel,
-
+      accessibilityLabel: [
+        LOCATION_BUTTON_CONTENT.everywhere.title,
+        LOCATION_BUTTON_CONTENT.everywhere.subtitle,
+      ]
+        .filter(Boolean)
+        .join(', '),
       component: (
         <StyledView>
           <Separator.Horizontal />
@@ -195,7 +223,7 @@ export const LocationModal = ({
             onPress={selectLocationMode(LocationMode.EVERYWHERE)}
             icon={WorldPosition}
             color={everywhereLocationModeColor}
-            title={LocationLabel.everywhereLabel}
+            title={LOCATION_BUTTON_CONTENT.everywhere.title}
           />
         </StyledView>
       ),
