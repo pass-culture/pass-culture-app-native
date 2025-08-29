@@ -11,6 +11,6 @@ create_and_push_tag_from_package_json_version() {
   git push origin "${TAG_PREFIX}${VERSION}" --no-verify
 }
 
-# $1 is the tag used to trigger the ci deployment (see .circleci/config.yml)
+# $1 is the tag used to trigger the ci deployment
 
 create_and_push_tag_from_package_json_version "$1"
