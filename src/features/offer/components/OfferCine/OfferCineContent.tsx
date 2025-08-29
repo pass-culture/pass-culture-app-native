@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -12,10 +12,15 @@ import {
 import { CineBlock } from 'features/offer/components/OfferCine/CineBlock'
 import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
 import {
+  INITIAL_LIST_SIZE,
+  expandList,
+  getListToDisplay,
+  hasReachedEnd,
+} from 'features/offer/helpers/expandableList'
+import {
   getDaysWithNoScreenings,
   useGetVenuesByDay,
 } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
-import { useListExpander } from 'features/offer/helpers/useListExpander/useListExpander'
 import { useOffersStocksFromOfferQuery } from 'features/offer/queries/useOffersStocksFromOfferQuery'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
@@ -33,20 +38,21 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
   const { selectedDate, dates } = useMovieCalendar()
   const { movieOffers, hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offers.offers)
 
-  const { items, hasReachedEnd, showMore } = useListExpander(movieOffers, {
-    initialCount: 6,
-    nextCount: 3,
-  })
+  const [displayedLen, setDisplayedLen] = useState(INITIAL_LIST_SIZE)
 
   const disabledDates = getDaysWithNoScreenings(offers.offers, dates)
 
   useDisplayCalendar(!hasStocksOnlyAfter15Days)
   useDisableCalendarDates(disabledDates)
 
+  useEffect(() => {
+    setDisplayedLen(INITIAL_LIST_SIZE)
+  }, [selectedDate])
+
   return (
     <View>
       <ExpandingFlatList
-        data={items}
+        data={getListToDisplay(movieOffers, displayedLen)}
         isLoading={isLoading}
         skeletonListLength={3}
         renderSkeleton={() => <CineBlockSkeleton />}
@@ -59,14 +65,14 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
           />
         )}
       />
-      {hasReachedEnd ? null : (
+      {hasReachedEnd(movieOffers, displayedLen) ? null : (
         <SeeMoreContainer>
           <Text>Aucune séance ne te correspond&nbsp;?</Text>
           <ButtonSecondary
             mediumWidth
             icon={PlainMore}
             wording="Afficher plus de cinémas"
-            onPress={showMore}
+            onPress={() => setDisplayedLen(expandList(movieOffers, displayedLen))}
             color={designSystem.color.text.default}
           />
         </SeeMoreContainer>

@@ -3,7 +3,7 @@ import { ApiError } from 'api/ApiError'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { OfferNotFoundError, LogTypeEnum } from 'libs/monitoring/errors'
 
-export async function getStocksByOfferIds(offerIds: number[], logType: LogTypeEnum) {
+export const getStocksByOfferIds = async (offerIds: number[], logType: LogTypeEnum) => {
   if (offerIds.length === 0) {
     return { offers: [] }
   }

@@ -2,10 +2,12 @@ import React from 'react'
 
 import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
+import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay')
 jest.mock('libs/firebase/analytics/analytics')
@@ -35,10 +37,32 @@ jest.mock('features/offer/queries/useOffersStocksFromOfferQuery', () => ({
   useOffersStocksFromOfferQuery: () => mockuseOffersStocksFromOfferQuery(),
 }))
 
+const mockedMovieOffers = [
+  ...offersStocksResponseSnap.offers.map((offer) => ({
+    offer: { ...offer, id: offer.id },
+    isUpcoming: false,
+  })),
+  ...offersStocksResponseSnap.offers.map((offer) => ({
+    offer: { ...offer, id: offer.id + 111 },
+    isUpcoming: false,
+  })),
+]
+
+const mockedMovieOffersLongResult = [
+  ...mockedMovieOffers,
+  ...offersStocksResponseSnap.offers.map((offer) => ({
+    offer: { ...offer, id: offer.id + 999 },
+    isUpcoming: false,
+  })),
+]
+
+const mockUseGetVenuesByDay = jest.fn(() => ({
+  movieOffers: mockedMovieOffers,
+  hasStocksOnlyAfter15Days: false,
+}))
+
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay', () => ({
-  useGetVenuesByDay: () => ({
-    movieOffers: [],
-  }),
+  useGetVenuesByDay: () => mockUseGetVenuesByDay(),
   getDaysWithNoScreenings: jest.fn(),
 }))
 
@@ -49,10 +73,18 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
 const mockOffer = mockBuilder.offerResponseV2({})
 
+jest.useFakeTimers()
+
 describe('OfferCineContent', () => {
+  beforeAll(() => {
+    setFeatureFlags()
+  })
+
   it('should display skeleton when data is loading', async () => {
     mockuseOffersStocksFromOfferQuery
       .mockReturnValueOnce({
@@ -63,7 +95,6 @@ describe('OfferCineContent', () => {
         ...defaultOffersStocksFromOfferQuery,
         isInitialLoading: true,
       })
-
     renderOfferCineContent()
 
     expect(await screen.findAllByTestId('cine-block-skeleton')).toBeDefined()
@@ -77,6 +108,47 @@ describe('OfferCineContent', () => {
     renderOfferCineContent()
 
     expect(screen.queryByTestId('cine-block-skeleton')).not.toBeOnTheScreen()
+  })
+
+  it('should display Button "Afficher plus de cinémas" when there is more cinemas', async () => {
+    renderOfferCineContent()
+
+    expect(await screen.findByText('Afficher plus de cinémas')).toBeOnTheScreen()
+  })
+
+  it('should display "Afficher plus de cinémas" when button is clicked and more movie Offers', async () => {
+    mockUseGetVenuesByDay
+      .mockReturnValueOnce({
+        movieOffers: mockedMovieOffersLongResult,
+        hasStocksOnlyAfter15Days: false,
+      })
+      .mockReturnValueOnce({
+        movieOffers: mockedMovieOffersLongResult,
+        hasStocksOnlyAfter15Days: false,
+      })
+      .mockReturnValueOnce({
+        movieOffers: mockedMovieOffersLongResult,
+        hasStocksOnlyAfter15Days: false,
+      })
+    renderOfferCineContent()
+
+    const moreButton = await screen.findByText('Afficher plus de cinémas')
+    await user.press(moreButton)
+
+    await act(async () => {})
+
+    expect(await screen.findByText('Afficher plus de cinémas')).toBeOnTheScreen()
+  })
+
+  it('should not display more cinema when Button "Afficher plus de cinémas" is clicked and end of movie Offers', async () => {
+    renderOfferCineContent()
+
+    const moreButton = await screen.findByText('Afficher plus de cinémas')
+    await user.press(moreButton)
+
+    await act(async () => {})
+
+    expect(screen.queryByText('Afficher plus de cinémas')).not.toBeOnTheScreen()
   })
 })
 
