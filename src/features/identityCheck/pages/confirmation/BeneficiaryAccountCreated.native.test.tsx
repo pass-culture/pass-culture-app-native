@@ -7,7 +7,6 @@ import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { BatchProfile } from 'libs/react-native-batch'
@@ -60,14 +59,14 @@ describe('BeneficiaryAccountCreated', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should track Batch event when button is clicked', async () => {
+  it('should track Batch event when "C’est parti !" button is clicked', async () => {
     renderBeneficiaryAccountCreated()
     await user.press(await screen.findByLabelText('C’est parti !'))
 
     expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_subscription')
   })
 
-  it('should show beneficiary share app modal when button is clicked', async () => {
+  it('should show beneficiary share app modal "C’est parti !" button is clicked', async () => {
     // Too many rerenders but we reset the values before each tests
     // eslint-disable-next-line local-rules/independent-mocks
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
@@ -78,8 +77,7 @@ describe('BeneficiaryAccountCreated', () => {
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 
-  it('should redirect to home page when "C’est parti !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
+  it('should redirect to home page when "C’est parti !" button is clicked', async () => {
     renderBeneficiaryAccountCreated()
 
     await user.press(await screen.findByLabelText('C’est parti !'))
