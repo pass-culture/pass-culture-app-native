@@ -33,6 +33,15 @@ Pour installer Maestro sur Mac OS, Linux ou Windows :
 ```bash
 curl -Ls "https://get.maestro.mobile.dev" | bash
 ```
+### Installer les secrets pour Maestro
+[1]: https://keepersecurity.eu/vault/#
+
+Pour exécuter les tests avec Maestro, vous aurez besoin des secrets utilisés par les scénarios.  
+Ces secrets sont disponibles dans [Keeper][1] sous le nom **`Secrets E2E`**.
+
+Copiez ensuite le contenu dans le fichier `.maestro/.env.secret`  
+(créez ce fichier s’il n’existe pas déjà).
+
 
 ## Mise en place spécifique à Android
 
@@ -327,4 +336,8 @@ Enfin, redémarrer le terminal.
 
 Fermer maestro studio et relancer le test.
 
+</details>
+<details>
+  <summary>Missing api key or any secret while trying to run test in local </summary>
+  Vérifier si vous avez bien les secrets E2E présent dans .maestro/.env.secret
 </details>

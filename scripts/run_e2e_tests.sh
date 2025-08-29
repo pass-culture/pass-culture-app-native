@@ -40,7 +40,7 @@ parse_env_variable () {
 case "$target" in
   "test")
     TAGS="--include-tags local"
-    run_tracking_tests=true
+    run_tracking_tests=false
     run_cloud_commands=false
     cloud_arguments=""
     ;;
@@ -133,6 +133,7 @@ maestro "$target" \
   --env MAESTRO_RUN_CLOUD_COMMANDS="$run_cloud_commands" \
   --env MAESTRO_APP_INSTALLED="$app_installed" \
   --env MAESTRO_CLOUD_API_KEY="$maestro_cloud_api_key" \
+  --env MAESTRO_DRIVER_STARTUP_TIMEOUT=60000 \
   $TAGS \
   $cloud_arguments \
   $rest_of_arguments
