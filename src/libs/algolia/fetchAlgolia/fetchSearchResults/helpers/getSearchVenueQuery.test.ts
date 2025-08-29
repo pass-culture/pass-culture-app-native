@@ -12,7 +12,7 @@ describe('getVenuesQuery', () => {
       }
       const venuesQuery = getSearchVenueQuery(parameters)
 
-      expect(venuesQuery).toEqual('LIVRES_PAPIER')
+      expect(venuesQuery).toEqual(NativeCategoryIdEnumv2.LIVRES_PAPIER)
     })
 
     it('should return the native category when native category is not empty', () => {
@@ -22,7 +22,7 @@ describe('getVenuesQuery', () => {
       }
       const venuesQuery = getSearchVenueQuery(parameters)
 
-      expect(venuesQuery).toEqual('LIVRES_PAPIER')
+      expect(venuesQuery).toEqual(NativeCategoryIdEnumv2.LIVRES_PAPIER)
     })
 
     it('should return the category when category is not empty', () => {
@@ -32,7 +32,7 @@ describe('getVenuesQuery', () => {
       }
       const venuesQuery = getSearchVenueQuery(parameters)
 
-      expect(venuesQuery).toEqual('LIVRES')
+      expect(venuesQuery).toEqual(SearchGroupNameEnumv2.LIVRES)
     })
 
     it('should return an empty string when category and native category are empty', () => {
@@ -45,8 +45,8 @@ describe('getVenuesQuery', () => {
     })
   })
 
-  describe('When query is not empty string', () => {
-    it('should return the native category when category and native category are not empty', () => {
+  describe('When query is not an empty string', () => {
+    it('should only return the native category when the user selected a category + a native category and typed a query', () => {
       const parameters = {
         ...searchQueryParametersFixture,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
@@ -55,10 +55,10 @@ describe('getVenuesQuery', () => {
       }
       const venuesQuery = getSearchVenueQuery(parameters)
 
-      expect(venuesQuery).toEqual('LIVRES_PAPIER fnac')
+      expect(venuesQuery).toEqual(NativeCategoryIdEnumv2.LIVRES_PAPIER)
     })
 
-    it('should return the native category when native category is not empty', () => {
+    it('should only return the native category when the user selected one and typed a query', () => {
       const parameters = {
         ...searchQueryParametersFixture,
         offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
@@ -66,10 +66,10 @@ describe('getVenuesQuery', () => {
       }
       const venuesQuery = getSearchVenueQuery(parameters)
 
-      expect(venuesQuery).toEqual('LIVRES_PAPIER fnac')
+      expect(venuesQuery).toEqual(NativeCategoryIdEnumv2.LIVRES_PAPIER)
     })
 
-    it('should return the category when category is not empty', () => {
+    it('should only return the category when the user selected one and typed a query', () => {
       const parameters = {
         ...searchQueryParametersFixture,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
@@ -77,12 +77,14 @@ describe('getVenuesQuery', () => {
       }
       const venuesQuery = getSearchVenueQuery(parameters)
 
-      expect(venuesQuery).toEqual('LIVRES fnac')
+      expect(venuesQuery).toEqual(`${SearchGroupNameEnumv2.LIVRES}`)
     })
 
-    it('should return an empty string when category and native category are empty', () => {
+    it('should return the query when the user did not select either a category or a native category', () => {
       const parameters = {
         ...searchQueryParametersFixture,
+        offerCategories: [],
+        offerNativeCategories: [],
         query: 'fnac',
       }
       const venuesQuery = getSearchVenueQuery(parameters)
