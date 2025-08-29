@@ -94,31 +94,32 @@ export const LocationModal = ({
     onTempAroundMeRadiusValueChange &&
     isCurrentLocationMode(LocationMode.AROUND_ME)
 
-  const listData: { id: string; component: React.JSX.Element }[] = []
+  const listData: {
+    id: string
+    wrapInLi: boolean
+    accessibilityLabel?: string
+    component: React.JSX.Element
+  }[] = []
 
-  // 1. "Around Me" Button
   listData.push({
     id: 'aroundMeButton',
+    wrapInLi: true,
+    accessibilityLabel: 'Utiliser ma position actuelle',
     component: (
-      <Li
-        key="aroundMeButton"
-        accessibilityRole={AccessibilityRole.RADIOGROUP}
-        accessibilityLabelledBy="Utiliser ma position actuelle">
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.AROUND_ME)}
-          icon={PositionFilled}
-          color={geolocationModeColor}
-          title="Utiliser ma position actuelle"
-          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
-        />
-      </Li>
+      <LocationModalButton
+        onPress={selectLocationMode(LocationMode.AROUND_ME)}
+        icon={PositionFilled}
+        color={geolocationModeColor}
+        title="Utiliser ma position actuelle"
+        subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
+      />
     ),
   })
 
-  // 2. "Around Me" Radius Slider (Conditional)
   if (shouldShowAroundMeRadiusSlider) {
     listData.push({
       id: 'aroundMeSlider',
+      wrapInLi: false,
       component: (
         <SliderContainer>
           <LocationSearchFilters
@@ -130,15 +131,12 @@ export const LocationModal = ({
     })
   }
 
-  // 3. Separator
-  listData.push({
-    id: 'separator1',
-    component: <StyledSeparator />,
-  })
+  listData.push({ id: 'separator1', wrapInLi: false, component: <StyledSeparator /> })
 
-  // 4. "Around Place" Button
   listData.push({
     id: 'aroundPlaceButton',
+    wrapInLi: true,
+    accessibilityLabel: 'Choisir une localisation',
     component: (
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
@@ -150,10 +148,10 @@ export const LocationModal = ({
     ),
   })
 
-  // 5. "Around Place" Input and Slider (Conditional)
   if (isCurrentLocationMode(LocationMode.AROUND_PLACE)) {
     listData.push({
       id: 'placeInput',
+      wrapInLi: false,
       component: (
         <LocationSearchInput
           selectedPlace={selectedPlace}
@@ -169,6 +167,7 @@ export const LocationModal = ({
     if (shouldShowAroundPlaceRadiusSlider) {
       listData.push({
         id: 'aroundPlaceSlider',
+        wrapInLi: false,
         component: (
           <SliderContainer>
             <LocationSearchFilters
@@ -181,10 +180,14 @@ export const LocationModal = ({
     }
   }
 
-  // 6. "Everywhere" Section (Conditional)
   if (shouldDisplayEverywhereSection) {
+    listData.push({ id: 'separator2', wrapInLi: false, component: <Separator.Horizontal /> })
+
     listData.push({
-      id: 'everywhereSection',
+      id: 'everywhereButton',
+      wrapInLi: true,
+      accessibilityLabel: LocationLabel.everywhereLabel,
+
       component: (
         <StyledView>
           <Separator.Horizontal />
@@ -212,7 +215,6 @@ export const LocationModal = ({
     )
   }
 
-  // A function to extract the unique ID for each item
   const keyExtractor = (item) => item.id
 
   return (
@@ -241,82 +243,19 @@ export const LocationModal = ({
           buttonWording={buttonWording}
         />
       }>
-      {/* <StyledScrollView>
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.AROUND_ME)}
-          icon={PositionFilled}
-          color={geolocationModeColor}
-          title="Utiliser ma position actuelle"
-          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
-        />
-        {shouldShowAroundMeRadiusSlider ? (
-          <SliderContainer>
-            <LocationSearchFilters
-              aroundRadius={tempAroundMeRadius}
-              onValuesChange={onTempAroundMeRadiusValueChange}
-            />
-          </SliderContainer>
-        ) : null}
-        <StyledSeparator />
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
-          icon={MagnifyingGlassFilled}
-          color={customLocationModeColor}
-          title="Choisir une localisation"
-          subtitle={LOCATION_PLACEHOLDER}
-        />
-        {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
-          <React.Fragment>
-            <LocationSearchInput
-              selectedPlace={selectedPlace}
-              setSelectedPlace={setSelectedPlace}
-              placeQuery={placeQuery}
-              setPlaceQuery={setPlaceQuery}
-              onResetPlace={onResetPlace}
-              onSetSelectedPlace={onSetSelectedPlace}
-            />
-            {shouldShowAroundPlaceRadiusSlider ? (
-              <SliderContainer>
-                <LocationSearchFilters
-                  aroundRadius={tempAroundPlaceRadius}
-                  onValuesChange={onTempAroundPlaceRadiusValueChange}
-                />
-              </SliderContainer>
-            ) : null}
-          </React.Fragment>
-        ) : null}
-        {shouldDisplayEverywhereSection ? (
-          <StyledView>
-            <Separator.Horizontal />
-            <LocationModalButton
-              onPress={selectLocationMode(LocationMode.EVERYWHERE)}
-              icon={WorldPosition}
-              color={everywhereLocationModeColor}
-              title={LocationLabel.everywhereLabel}
-            />
-          </StyledView>
-        ) : null}
-      </StyledScrollView> */}
-
       <FlatListContainer>
         <FlatList
           listAs="ul"
           data={listData}
           renderItem={renderListItem}
           keyExtractor={keyExtractor}
-          showsVerticalScrollIndicator={false} // A common prop to add
-          // If your StyledScrollView had specific styling for the content, use contentContainerStyle
-          // contentContainerStyle={{ padding: 16 }}
+          showsVerticalScrollIndicator={false}
         />
       </FlatListContainer>
     </AppModal>
   )
 }
 
-const StyledScrollView = styled.ScrollView(({ theme }) => ({
-  paddingHorizontal: theme.designSystem.size.spacing.xl,
-  marginTop: theme.designSystem.size.spacing.xl,
-}))
 const FlatListContainer = styled.View(({ theme }) => ({
   flex: 1,
   paddingHorizontal: theme.designSystem.size.spacing.xl,
