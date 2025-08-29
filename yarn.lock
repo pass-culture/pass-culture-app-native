@@ -8082,19 +8082,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-firebase/dynamic-links@npm:^22.2.1":
-  version: 22.2.1
-  resolution: "@react-native-firebase/dynamic-links@npm:22.2.1"
-  peerDependencies:
-    "@react-native-firebase/app": 22.2.1
-    expo: ">=47.0.0"
-  peerDependenciesMeta:
-    expo:
-      optional: true
-  checksum: b622ebee29a6789c85023dd2808c1c7bb97ead629035f686d2d1fa9442a47b96c2ee16aba3991d778e2beb5f34142aa976d714ffe386cf3c6cbeb3e12d03454e
-  languageName: node
-  linkType: hard
-
 "@react-native-firebase/firestore@npm:^22.2.1":
   version: 22.2.1
   resolution: "@react-native-firebase/firestore@npm:22.2.1"
@@ -11055,7 +11042,6 @@ __metadata:
     "@react-native-community/netinfo": ^11.4.1
     "@react-native-firebase/analytics": ^22.2.1
     "@react-native-firebase/app": ^22.2.1
-    "@react-native-firebase/dynamic-links": ^22.2.1
     "@react-native-firebase/firestore": ^22.2.1
     "@react-native-firebase/perf": ^22.2.1
     "@react-native-firebase/remote-config": ^22.2.1
