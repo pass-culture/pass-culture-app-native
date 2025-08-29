@@ -257,7 +257,6 @@ export const LocationModal = ({
 }
 
 const FlatListContainer = styled.View(({ theme }) => ({
-  flex: 1,
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.xl,
 }))
