@@ -13,18 +13,11 @@ type Props = {
 
 export const CollapsibleTextButton: FunctionComponent<Props> = ({ expanded, onPress }) => {
   const buttonText = expanded ? 'Voir moins' : 'Voir plus'
-  const accessibilityLabel = expanded ? 'Réduire le texte' : 'Étendre le texte'
   const icon = expanded ? ArrowUp : ArrowDown
 
   return (
     <ButtonContainer>
-      <SeeMoreButton
-        wording={buttonText}
-        onPress={onPress}
-        accessibilityLabel={accessibilityLabel}
-        icon={icon}
-        buttonHeight="extraSmall"
-      />
+      <SeeMoreButton wording={buttonText} onPress={onPress} icon={icon} buttonHeight="extraSmall" />
     </ButtonContainer>
   )
 }

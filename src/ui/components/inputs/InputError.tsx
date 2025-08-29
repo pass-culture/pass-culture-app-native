@@ -11,21 +11,30 @@ interface Props {
   visible: boolean
   numberOfSpacesTop: number
   centered?: boolean
-  relatedInputId?: string
+  accessibilityElementsHidden?: boolean
 }
 
-export const InputError: FC<Props> = (props) => {
+export const InputError: FC<Props> = ({
+  messageId,
+  visible,
+  numberOfSpacesTop,
+  centered,
+  accessibilityElementsHidden = true,
+}) => {
   return (
-    <ErrorMessage relatedInputId={props.relatedInputId}>
-      {props.visible && props.messageId ? (
-        <Container numberOfSpacesTop={props.numberOfSpacesTop}>
+    <ErrorMessage>
+      {visible && messageId ? (
+        <Container
+          numberOfSpacesTop={numberOfSpacesTop}
+          accessibilityElementsHidden={accessibilityElementsHidden}
+          importantForAccessibility={accessibilityElementsHidden ? 'no' : 'auto'}>
           <InputRule
-            title={props.messageId}
+            title={messageId}
             type="Error"
             icon={Error}
             testIdSuffix="warn"
             iconSize={16}
-            noFullWidth={props.centered}
+            noFullWidth={centered}
           />
         </Container>
       ) : null}

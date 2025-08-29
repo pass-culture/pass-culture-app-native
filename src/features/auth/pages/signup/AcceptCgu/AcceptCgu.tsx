@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useSignupRecaptcha } from 'features/auth/helpers/useSignupRecaptcha'
@@ -37,7 +36,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
 }) => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
   const networkInfo = useNetInfoContext()
-  const checkCGUErrorId = uuidv4()
 
   const [isFetching, setIsFetching] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -176,20 +174,15 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
         wording="S’inscrire"
-        accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+        accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
         // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
         // Cf. backend logic for token validation
         onPress={handleSubmit(onSubmit)}
         isLoading={isDoingReCaptchaChallenge || isFetching}
         disabled={disabled}
-        accessibilityDescribedBy={checkCGUErrorId}
+        accessibilityHint={errorMessage ?? undefined}
       />
-      <InputError
-        visible={!!errorMessage}
-        messageId={errorMessage}
-        numberOfSpacesTop={5}
-        relatedInputId={checkCGUErrorId}
-      />
+      <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={5} />
       <Spacer.Column numberOfSpaces={4} />
       <CaptionNeutralInfo>
         Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à

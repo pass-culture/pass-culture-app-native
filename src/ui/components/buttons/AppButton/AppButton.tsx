@@ -28,7 +28,7 @@ const _AppButton = <T extends AppButtonProps>({
   buttonHeight = 'small',
   inlineHeight,
   accessibilityLabel,
-  accessibilityDescribedBy: accessibilityHint,
+  accessibilityHint,
   wording,
   adjustsFontSizeToFit,
   justifyContent,
