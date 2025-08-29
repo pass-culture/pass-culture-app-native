@@ -12,9 +12,6 @@ const onBeforeNavigate = () => analytics.logSignUpClicked({ from: 'home' })
 export const SignupBanner: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const title = 'Débloque ton crédit'
-  const subtitle = 'Crée ton compte si tu as 17 ou 18 ans\u00a0!'
-
   const onSystemBannerPress = () => {
     onBeforeNavigate()
     navigate('SignupForm', { from: StepperOrigin.HOME })
@@ -23,10 +20,9 @@ export const SignupBanner: FunctionComponent = () => {
   return (
     <SystemBanner
       leftIcon={StyledUnlock}
-      title={title}
-      subtitle={subtitle}
+      title="Débloque ton crédit"
+      subtitle="Crée ton compte si tu as 17 ou 18 ans&nbsp;!"
       onPress={onSystemBannerPress}
-      accessibilityLabel={subtitle}
       analyticsParams={{ type: 'credit', from: 'home' }}
     />
   )

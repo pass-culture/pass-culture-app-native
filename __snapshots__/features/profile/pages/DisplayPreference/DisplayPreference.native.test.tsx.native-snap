@@ -399,6 +399,9 @@ exports[`DisplayPreference should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityRole="header"
+                id="testUuidV4"
+                nativeID="testUuidV4"
                 style={
                   {
                     "color": "#161617",
@@ -420,16 +423,18 @@ exports[`DisplayPreference should render correctly 1`] = `
                 }
               />
               <View
+                accessibilityLabelledBy="testUuidV4"
+                accessibilityRole="radiogroup"
                 gap={5}
                 style={
                   {
                     "gap": 20,
-                    "marginTop": 24,
+                    "marginVertical": 24,
                   }
                 }
               >
                 <View
-                  accessibilityLabel="Mode clair"
+                  accessibilityLabel="Mode clair - Affichage classique - sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -479,7 +484,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Mode clair"
+                  testID="Mode clair - Affichage classique - sélectionné"
                 >
                   <View
                     isSelected={true}
@@ -587,7 +592,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Mode sombre"
+                  accessibilityLabel="Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -637,7 +642,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Mode sombre"
+                  testID="Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                 >
                   <View
                     isSelected={false}
@@ -745,7 +750,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Réglages appareil"
+                  accessibilityLabel="Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -795,7 +800,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Réglages appareil"
+                  testID="Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
                 >
                   <View
                     isSelected={false}

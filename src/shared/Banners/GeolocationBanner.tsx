@@ -31,7 +31,6 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
   return (
     <SystemBanner
       leftIcon={StyledLocationIcon}
-      accessibilityLabel="Active ta géolocalisation"
       subtitle={subtitle}
       title={title}
       // Possibility to use the onPress externally to avoid opening problems in modals
