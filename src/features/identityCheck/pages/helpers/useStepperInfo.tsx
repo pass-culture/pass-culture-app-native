@@ -13,6 +13,8 @@ import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -33,6 +35,10 @@ type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
+  const enableCulturalSurveyMandatory = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY
+  )
+
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
 
@@ -111,7 +117,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={LegalNotices} testID="confirmation-step-done" />,
         retry: () => <IconStepRetry Icon={LegalNotices} testID="confirmation-retry-step" />,
       },
-      firstScreen: 'IdentityCheckHonor',
+      firstScreen: enableCulturalSurveyMandatory ? 'CulturalSurveyIntro' : 'IdentityCheckHonor',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
     [IdentityCheckStep.PHONE_VALIDATION]: {

@@ -37,7 +37,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('<BeneficiaryAccountCreated/>', () => {
+describe('BeneficiaryAccountCreated', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockAuthContextWithUser(underageBeneficiaryUser, { persist: true })
