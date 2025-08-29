@@ -24,12 +24,15 @@ import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Page } from 'ui/pages/Page'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
   return { ...previousValue, [currentValue.name]: currentValue.value }
 }, {}) as Record<SearchGroupNameEnumv2, string>
 
 export const ThematicSearch: React.FC = () => {
+  const { tabBarHeight } = useCustomSafeInsets()
+
   const { params, name: currentView } = useRoute<UseRouteType<SearchStackRouteName>>()
 
   const isWeb = Platform.OS === 'web'
@@ -93,12 +96,12 @@ export const ThematicSearch: React.FC = () => {
     : undefined
 
   return (
-    <StyledPage>
+    <StyledPage tabBarHeight={tabBarHeight}>
       <ThematicSearchBar
         offerCategories={offerCategories}
         placeholder={`${titles[offerCategory]}...`}
         title={titles[offerCategory]}>
-        <StyledScrollView>
+        <ScrollView>
           <SubcategoryButtonListWrapper offerCategory={offerCategory} />
           {shouldDisplayVenuesPlaylist ? (
             <VenuePlaylist
@@ -112,17 +115,14 @@ export const ThematicSearch: React.FC = () => {
             />
           ) : null}
           {playlistsComponent[offerCategory]}
-        </StyledScrollView>
+        </ScrollView>
       </ThematicSearchBar>
     </StyledPage>
   )
 }
 
-const StyledPage = styled(Page)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
-}))
-
-const StyledScrollView = styled(ScrollView)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xl,
-  paddingBottom: theme.designSystem.size.spacing.xl,
+const StyledPage = styled(Page)<{ tabBarHeight: number }>(({ theme, tabBarHeight }) => ({
+  marginBottom: theme.isDesktopViewport
+    ? theme.contentPage.marginVertical
+    : tabBarHeight + theme.contentPage.marginVertical,
 }))
