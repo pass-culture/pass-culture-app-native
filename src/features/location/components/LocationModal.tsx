@@ -1,15 +1,18 @@
 import React from 'react'
 import { View } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
+import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
@@ -91,6 +94,156 @@ export const LocationModal = ({
     onTempAroundMeRadiusValueChange &&
     isCurrentLocationMode(LocationMode.AROUND_ME)
 
+  const LOCATION_BUTTON_CONTENT = {
+    aroundMe: {
+      title: 'Utiliser ma position actuelle',
+      subtitle: hasGeolocPosition ? undefined : 'Géolocalisation désactivée',
+    },
+    aroundPlace: {
+      title: 'Choisir une localisation',
+      subtitle: LOCATION_PLACEHOLDER,
+    },
+    everywhere: {
+      title: LocationLabel.everywhereLabel,
+      subtitle: '',
+    },
+  }
+
+  const listData: {
+    id: string
+    wrapInLi: boolean
+    accessibilityLabel?: string
+    component: React.JSX.Element
+  }[] = []
+
+  listData.push({
+    id: 'aroundMeButton',
+    wrapInLi: true,
+    accessibilityLabel: [
+      LOCATION_BUTTON_CONTENT.aroundMe.title,
+      LOCATION_BUTTON_CONTENT.aroundMe.subtitle,
+    ]
+      .filter(Boolean)
+      .join(', '),
+    component: (
+      <LocationModalButton
+        onPress={selectLocationMode(LocationMode.AROUND_ME)}
+        icon={PositionFilled}
+        color={geolocationModeColor}
+        title={LOCATION_BUTTON_CONTENT.aroundMe.title}
+        subtitle={LOCATION_BUTTON_CONTENT.aroundMe.subtitle}
+      />
+    ),
+  })
+
+  if (shouldShowAroundMeRadiusSlider) {
+    listData.push({
+      id: 'aroundMeSlider',
+      wrapInLi: false,
+      component: (
+        <SliderContainer>
+          <LocationSearchFilters
+            aroundRadius={tempAroundMeRadius}
+            onValuesChange={onTempAroundMeRadiusValueChange}
+          />
+        </SliderContainer>
+      ),
+    })
+  }
+
+  listData.push({ id: 'separator1', wrapInLi: false, component: <StyledSeparator /> })
+
+  listData.push({
+    id: 'aroundPlaceButton',
+    wrapInLi: true,
+    accessibilityLabel: [
+      LOCATION_BUTTON_CONTENT.aroundPlace.title,
+      LOCATION_BUTTON_CONTENT.aroundPlace.subtitle,
+    ]
+      .filter(Boolean)
+      .join(', '),
+    component: (
+      <LocationModalButton
+        onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
+        icon={MagnifyingGlassFilled}
+        color={customLocationModeColor}
+        title={LOCATION_BUTTON_CONTENT.aroundPlace.title}
+        subtitle={LOCATION_BUTTON_CONTENT.aroundPlace.subtitle}
+      />
+    ),
+  })
+
+  if (isCurrentLocationMode(LocationMode.AROUND_PLACE)) {
+    listData.push({
+      id: 'placeInput',
+      wrapInLi: false,
+      component: (
+        <LocationSearchInput
+          selectedPlace={selectedPlace}
+          setSelectedPlace={setSelectedPlace}
+          placeQuery={placeQuery}
+          setPlaceQuery={setPlaceQuery}
+          onResetPlace={onResetPlace}
+          onSetSelectedPlace={onSetSelectedPlace}
+        />
+      ),
+    })
+
+    if (shouldShowAroundPlaceRadiusSlider) {
+      listData.push({
+        id: 'aroundPlaceSlider',
+        wrapInLi: false,
+        component: (
+          <SliderContainer>
+            <LocationSearchFilters
+              aroundRadius={tempAroundPlaceRadius}
+              onValuesChange={onTempAroundPlaceRadiusValueChange}
+            />
+          </SliderContainer>
+        ),
+      })
+    }
+  }
+
+  if (shouldDisplayEverywhereSection) {
+    listData.push({
+      id: 'everywhereButton',
+      wrapInLi: true,
+      accessibilityLabel: [
+        LOCATION_BUTTON_CONTENT.everywhere.title,
+        LOCATION_BUTTON_CONTENT.everywhere.subtitle,
+      ]
+        .filter(Boolean)
+        .join(', '),
+      component: (
+        <StyledView>
+          <Separator.Horizontal />
+          <LocationModalButton
+            onPress={selectLocationMode(LocationMode.EVERYWHERE)}
+            icon={WorldPosition}
+            color={everywhereLocationModeColor}
+            title={LOCATION_BUTTON_CONTENT.everywhere.title}
+          />
+        </StyledView>
+      ),
+    })
+  }
+
+  const renderListItem = ({ item }) => {
+    if (!item.wrapInLi) {
+      return item.component
+    }
+    return (
+      <Li
+        accessibilityRole={AccessibilityRole.RADIOGROUP}
+        accessibilityLabel={item.accessibilityLabel}>
+        {item.component}
+      </Li>
+    )
+  }
+
+  const keyExtractor = (item) => item.id
+
   return (
     <AppModal
       visible={visible}
@@ -117,67 +270,20 @@ export const LocationModal = ({
           buttonWording={buttonWording}
         />
       }>
-      <StyledScrollView>
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.AROUND_ME)}
-          icon={PositionFilled}
-          color={geolocationModeColor}
-          title="Utiliser ma position actuelle"
-          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
+      <FlatListContainer>
+        <FlatList
+          listAs="ul"
+          data={listData}
+          renderItem={renderListItem}
+          keyExtractor={keyExtractor}
+          showsVerticalScrollIndicator={false}
         />
-        {shouldShowAroundMeRadiusSlider ? (
-          <SliderContainer>
-            <LocationSearchFilters
-              aroundRadius={tempAroundMeRadius}
-              onValuesChange={onTempAroundMeRadiusValueChange}
-            />
-          </SliderContainer>
-        ) : null}
-        <StyledSeparator />
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
-          icon={MagnifyingGlassFilled}
-          color={customLocationModeColor}
-          title="Choisir une localisation"
-          subtitle={LOCATION_PLACEHOLDER}
-        />
-        {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
-          <React.Fragment>
-            <LocationSearchInput
-              selectedPlace={selectedPlace}
-              setSelectedPlace={setSelectedPlace}
-              placeQuery={placeQuery}
-              setPlaceQuery={setPlaceQuery}
-              onResetPlace={onResetPlace}
-              onSetSelectedPlace={onSetSelectedPlace}
-            />
-            {shouldShowAroundPlaceRadiusSlider ? (
-              <SliderContainer>
-                <LocationSearchFilters
-                  aroundRadius={tempAroundPlaceRadius}
-                  onValuesChange={onTempAroundPlaceRadiusValueChange}
-                />
-              </SliderContainer>
-            ) : null}
-          </React.Fragment>
-        ) : null}
-        {shouldDisplayEverywhereSection ? (
-          <StyledView>
-            <Separator.Horizontal />
-            <LocationModalButton
-              onPress={selectLocationMode(LocationMode.EVERYWHERE)}
-              icon={WorldPosition}
-              color={everywhereLocationModeColor}
-              title={LocationLabel.everywhereLabel}
-            />
-          </StyledView>
-        ) : null}
-      </StyledScrollView>
+      </FlatListContainer>
     </AppModal>
   )
 }
 
-const StyledScrollView = styled.ScrollView(({ theme }) => ({
+const FlatListContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.xl,
 }))
