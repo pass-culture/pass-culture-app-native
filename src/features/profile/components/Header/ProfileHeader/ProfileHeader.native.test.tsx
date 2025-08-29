@@ -6,12 +6,7 @@ import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subs
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import {
-  beneficiaryUser,
-  profileHeaderUserExBeneficiaryUser,
-  profileHeaderUserNotBeneficiaryUser,
-  profileHeaderUser,
-} from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -37,12 +32,19 @@ describe('ProfileHeader', () => {
       '/v2/subscription/stepper',
       subscriptionStepperFixture
     )
+    mockServer.getApi<BannerResponse>('/v1/banner', {
+      banner: {
+        name: BannerName.activation_banner,
+        text: 'à dépenser sur l’application',
+        title: 'Débloque tes 1000\u00a0€',
+      },
+    })
   })
 
   it('should not display subtitle with passForAll enabled', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: true },
-      user: {} as UserProfileResponseWithoutSurvey,
+      user: undefined,
     })
     await screen.findByText('Cheatcodes')
 
@@ -54,7 +56,7 @@ describe('ProfileHeader', () => {
   it('should display the LoggedOutHeader if no user', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: {} as UserProfileResponseWithoutSurvey,
+      user: undefined,
     })
 
     await screen.findByText('Cheatcodes')
@@ -69,7 +71,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is beneficiary', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: profileHeaderUser,
+      user: beneficiaryUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -81,7 +83,7 @@ describe('ProfileHeader', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: profileHeaderUser,
+      user: beneficiaryUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -92,7 +94,7 @@ describe('ProfileHeader', () => {
   it('should display the ExBeneficiary Header if credit is expired', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: profileHeaderUserExBeneficiaryUser,
+      user: exBeneficiaryUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -101,31 +103,15 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {
-      banner: {
-        name: BannerName.activation_banner,
-        text: 'à dépenser sur l’application',
-        title: 'Débloque tes 1000\u00a0€',
-      },
-    })
-
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: profileHeaderUserNotBeneficiaryUser,
+      user: nonBeneficiaryUser,
     })
 
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade and eligibility is 18 yo', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {
-      banner: {
-        name: BannerName.activation_banner,
-        text: 'à dépenser sur l’application',
-        title: 'Débloque tes 1000\u00a0€',
-      },
-    })
-
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
       user: {
@@ -146,5 +132,5 @@ const renderProfileHeader = ({
   user,
 }: {
   featureFlags: { disableActivation: boolean; enablePassForAll: boolean }
-  user: UserProfileResponseWithoutSurvey
+  user?: UserProfileResponseWithoutSurvey
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

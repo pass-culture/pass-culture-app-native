@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
-import { profileHeaderUser, profileHeaderUserExBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
@@ -27,7 +27,7 @@ describe('ProfileHeader', () => {
     render(
       <ProfileHeader
         featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={profileHeaderUser}
+        user={beneficiaryUser}
       />
     )
 
@@ -38,7 +38,7 @@ describe('ProfileHeader', () => {
     render(
       <ProfileHeader
         featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={profileHeaderUserExBeneficiaryUser}
+        user={exBeneficiaryUser}
       />
     )
 
@@ -49,7 +49,7 @@ describe('ProfileHeader', () => {
     render(
       <ProfileHeader
         featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={profileHeaderUser}
+        user={beneficiaryUser}
       />
     )
 
