@@ -60,8 +60,8 @@ In order to launch the app in the Simulator or on your external Apple device, yo
       bundle exec fastlane ios download_certificates --env testing
       ```
 
-   1. When required (multiple times), use the git ssh URL of the [private certificates repository](https://github.com/pass-culture/pass-culture-app-native-certificates)
-   1. Get the `match repo passphrase` on [Keeper in the "Tech" vault](https://keepersecurity.eu/vault/#detail/saH6X4El4qtxQQIDI4AzcQ).
+   1. When required (multiple times), use the git ssh URL of the private certificates repository
+   1. Get the `match repo passphrase` on our password manager in the "Tech" vault.
 
    1. It might ask your session password twice to continue, it might also ask you to do the previous step twice.
 
@@ -119,7 +119,7 @@ This error means that the sentry token you generated is invalid. Please run thro
 </details>
 
 <details>
-  <summary><strong>After the `bundle exec fastlane ios download_certificates --env testing` command, you gave the SSH [git repository](https://github.com/pass-culture/pass-culture-app-native-certificates) and it's not doing anything.</strong></summary>
+  <summary><strong>After the `bundle exec fastlane ios download_certificates --env testing` command, you gave the SSH git repository certificates and it's not doing anything.</strong></summary>
 It might be an issue with your ssh (for example if you only cloned the repository through http)
   
 1. Try to clone the repository elsewhere using ssh to see if your ssh key is working if it does try again the command.
