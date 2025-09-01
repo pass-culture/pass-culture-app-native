@@ -6,92 +6,135 @@ import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixt
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
+
+jest.mock('libs/firebase/analytics/analytics')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('CategoryListModule', () => {
-  describe('with FF enableAppV2CategoryBlock false', () => {
-    beforeEach(() => setFeatureFlags())
+  beforeAll(() => setFeatureFlags())
 
-    it('should call analytics when the module is displayed', () => {
-      render(
-        <CategoryListModule
-          id="123"
-          title="module"
-          categoryBlockList={categoryBlockList}
-          index={1}
-          homeEntryId="homeEntryId"
-        />
+  it('should call analytics when the module is displayed', () => {
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="homeEntryId"
+      />
+    )
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      moduleId: '123',
+      moduleType: ContentTypes.CATEGORY_LIST,
+      index: 1,
+      homeEntryId: 'homeEntryId',
+    })
+  })
+
+  it('should call analytics when a categoryBlock is clicked', async () => {
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="homeEntryId"
+      />
+    )
+
+    const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
+
+    await user.press(bloc)
+
+    expect(analytics.logCategoryBlockClicked).toHaveBeenCalledWith({
+      moduleId: '2',
+      moduleListID: '123',
+      entryId: 'homeEntryId',
+      toEntryId: '6DCThxvbPFKAo04SVRZtwY',
+    })
+  })
+
+  it('should navigate to thematic home when a categoryBlock is clicked', async () => {
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
+      />
+    )
+
+    const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
+
+    await user.press(bloc)
+
+    expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+      homeId: '6DCThxvbPFKAo04SVRZtwY',
+      from: 'category_block',
+      moduleId: '2',
+      moduleListId: '123',
+    })
+  })
+
+  it('should NOT display circle nav buttons when feature is disabled', () => {
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
+      />
+    )
+
+    expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
+  })
+
+  it('should not display home satisfaction qualtrics banner when enableHomeSatisfactionQualtrics FF disabled', () => {
+    render(
+      <CategoryListModule
+        id="123"
+        title="Explore les catégories"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
+      />
+    )
+
+    expect(
+      screen.queryByText(
+        'Un avis sur cette page ? Partage-nous tes idées pour nous aider à l’améliorer !'
       )
+    ).not.toBeOnTheScreen()
+  })
 
-      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
-        moduleId: '123',
-        moduleType: ContentTypes.CATEGORY_LIST,
-        index: 1,
-        homeEntryId: 'homeEntryId',
-      })
+  describe('When enableHomeSatisfactionQualtrics FF enabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_HOME_SATISFACTION_QUALTRICS])
     })
 
-    it('should call analytics when a categoryBlock is clicked', async () => {
+    it('should display home satisfaction qualtrics banner', () => {
       render(
         <CategoryListModule
           id="123"
-          title="module"
-          categoryBlockList={categoryBlockList}
-          index={1}
-          homeEntryId="homeEntryId"
-        />
-      )
-
-      const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
-
-      await user.press(bloc)
-
-      expect(analytics.logCategoryBlockClicked).toHaveBeenCalledWith({
-        moduleId: '2',
-        moduleListID: '123',
-        entryId: 'homeEntryId',
-        toEntryId: '6DCThxvbPFKAo04SVRZtwY',
-      })
-    })
-
-    it('should navigate to thematic home when a categoryBlock is clicked', async () => {
-      render(
-        <CategoryListModule
-          id="123"
-          title="module"
+          title="Explore les catégories"
           categoryBlockList={categoryBlockList}
           index={1}
           homeEntryId="6DCThxvbPFKAo04SVRZtwY"
         />
       )
 
-      const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
-
-      await user.press(bloc)
-
-      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-        homeId: '6DCThxvbPFKAo04SVRZtwY',
-        from: 'category_block',
-        moduleId: '2',
-        moduleListId: '123',
-      })
-    })
-
-    it('should NOT display circle nav buttons when feature is disabled', () => {
-      render(
-        <CategoryListModule
-          id="123"
-          title="module"
-          categoryBlockList={categoryBlockList}
-          index={1}
-          homeEntryId="6DCThxvbPFKAo04SVRZtwY"
-        />
-      )
-
-      expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
+      expect(
+        screen.getByText(
+          'Un avis sur cette page ? Partage-nous tes idées pour nous aider à l’améliorer !'
+        )
+      ).toBeOnTheScreen()
     })
   })
 })
