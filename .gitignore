@@ -92,10 +92,6 @@ fastlane/playStoreServiceAccount.json
 .env.*.secret
 .env.secret
 
-# CircleCI
-vendor/
-.bundle/
-
 # local settings
 .env.development
 .env.local
