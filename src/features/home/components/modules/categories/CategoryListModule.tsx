@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, { useEffect, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
@@ -41,6 +42,9 @@ export const CategoryListModule = ({
   const enableHomeSatisfactionQualtrics = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_HOME_SATISFACTION_QUALTRICS
   )
+  const [homeSatisfactionQualtricsPressed, setHomeSatisfactionQualtricsPressed] = useState<
+    string | null
+  >(null)
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
@@ -50,6 +54,24 @@ export const CategoryListModule = ({
       homeEntryId,
     })
   }, [id, homeEntryId, index])
+
+  useEffect(() => {
+    const fetchQualtricsPressed = async () => {
+      const saved = await AsyncStorage.getItem('home_satisfaction_qualtrics_pressed')
+
+      if (saved) {
+        setHomeSatisfactionQualtricsPressed('pressed')
+      } else {
+        setHomeSatisfactionQualtricsPressed(null)
+      }
+    }
+    fetchQualtricsPressed()
+  }, [])
+
+  const handleQualtricsButtonPress = async () => {
+    setHomeSatisfactionQualtricsPressed('pressed')
+    await AsyncStorage.setItem('home_satisfaction_qualtrics_pressed', 'pressed')
+  }
 
   return (
     <Container>
@@ -89,7 +111,7 @@ export const CategoryListModule = ({
           )
         })}
       </StyledView>
-      {enableHomeSatisfactionQualtrics ? (
+      {enableHomeSatisfactionQualtrics && !homeSatisfactionQualtricsPressed ? (
         <BannerContainer>
           <GenericColoredBanner
             message="Un avis sur cette page&nbsp;? Partage-nous tes idées pour nous aider à l’améliorer&nbsp;!"
@@ -99,6 +121,7 @@ export const CategoryListModule = ({
               as={StyledButtonQuaternaryBlack}
               externalNav={{ url: 'https://passculture.qualtrics.com/jfe/form/SV_dgtDyqEDDDlH8xg' }}
               icon={ExternalSiteFilled}
+              onBeforeNavigate={handleQualtricsButtonPress}
             />
           </GenericColoredBanner>
         </BannerContainer>
