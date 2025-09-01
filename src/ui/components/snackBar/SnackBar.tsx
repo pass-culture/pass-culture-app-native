@@ -8,7 +8,7 @@ import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
 import { ColorsType, TextColorKey } from 'theme/types'
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { Close as DefaultClose } from 'ui/svg/icons/Close'
+import { CloseFilled } from 'ui/svg/icons/CloseFilled'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -178,7 +178,7 @@ const StyledBody = styled(Typo.Body)({
 })
 
 const Close = memo(
-  styled(DefaultClose).attrs(({ theme }) => ({
+  styled(CloseFilled).attrs(({ theme }) => ({
     size: theme.icons.sizes.smaller,
   }))``
 )
