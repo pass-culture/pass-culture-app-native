@@ -63,8 +63,8 @@ export function SiteMapScreen() {
   return (
     <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
       <StyledVerticalUl>
-        {listItems.map((item, index) => {
-          return <Li key={index}>{item}</Li>
+        {listItems.map((item) => {
+          return <Li key={item.key}>{item}</Li>
         })}
       </StyledVerticalUl>
     </SecondaryPageWithBlurHeader>
