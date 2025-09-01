@@ -35,6 +35,7 @@ export function SiteMapScreen() {
         accessibilityRole={AccessibilityRole.RADIOGROUP}
         accessibilityLabelledBy={item.wording}>
         <BulletListItem
+          alignBullet
           text={
             <InternalTouchableLink
               as={Button}
