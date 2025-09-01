@@ -27,7 +27,6 @@ export const ExpandingFlatList = <T,>({
         data={Array(skeletonListLength).fill(undefined)}
         renderItem={renderSkeleton}
         onContentSizeChange={onContentSizeChange}
-        initialNumToRender={data?.length}
       />
     )
   }
@@ -40,6 +39,7 @@ export const ExpandingFlatList = <T,>({
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         onContentSizeChange={onContentSizeChange}
+        initialNumToRender={data?.length}
       />
     </Animated.View>
   )

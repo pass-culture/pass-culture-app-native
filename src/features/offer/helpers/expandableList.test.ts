@@ -9,8 +9,6 @@ import {
 const baseList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 describe('expandableList', () => {
-  beforeAll(jest.fn())
-
   describe('expandList', () => {
     it('should return the size of the list to display increased by step value', () => {
       expect(expandList(baseList, INITIAL_LIST_SIZE)).toBe(INITIAL_LIST_SIZE + STEP_LIST_INCREMENT)
@@ -42,7 +40,7 @@ describe('expandableList', () => {
       expect(hasReachedEnd(baseList, 11)).toBe(true)
     })
 
-    it('should return true when displayed list has not reached end of base List', () => {
+    it('should return false when displayed list has not reached end of base List', () => {
       expect(hasReachedEnd(baseList, 3)).toBe(false)
     })
   })
