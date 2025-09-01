@@ -9,7 +9,7 @@ type SubPage = {
   isLoggedIn: boolean
 }
 
-export type SiteMap = SubPage & { subPages: SubPage[] }
+type SiteMap = SubPage & { subPages: SubPage[] }
 
 export const getSiteMapLinks = (
   sortedCategories: Pick<CategoryButtonProps, 'label' | 'navigateTo'>[]
