@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { Venue } from 'features/search/components/sections/Venue/Venue'
 import { initialSearchState } from 'features/search/context/reducer'
 import { render, screen, userEvent } from 'tests/utils'
@@ -26,7 +27,13 @@ describe('Venue component', () => {
   it('should display the venue label when a venue is selected', async () => {
     mockSearchState = {
       ...initialSearchState,
-      venue: { label: 'Venue label', info: 'info', venueId: 123, isOpenToPublic: true },
+      venue: {
+        label: 'Venue label',
+        info: 'info',
+        venueId: 123,
+        isOpenToPublic: true,
+        venue_type: VenueTypeCodeKey.BOOKSTORE,
+      },
     }
     render(<Venue />)
 

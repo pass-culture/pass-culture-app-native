@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
 import { Venue } from 'features/venue/types'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -10,6 +11,7 @@ const firstVenue = {
   label: 'La librairie quantique DATA',
   venueId: 9384,
   isOpenToPublic: true,
+  venue_type: VenueTypeCodeKey.BOOKSTORE,
 }
 const secondVenue = {
   _geoloc: { lat: 48.94083, lng: 2.47987 },
@@ -17,6 +19,7 @@ const secondVenue = {
   label: 'La librairie quantique',
   venueId: 9299,
   isOpenToPublic: true,
+  venue_type: VenueTypeCodeKey.BOOKSTORE,
 }
 const mockedSuggestedVenues: Venue[] = [firstVenue, secondVenue]
 const mockVenues: Venue[] = []

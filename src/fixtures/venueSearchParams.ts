@@ -18,6 +18,7 @@ export default {
     },
     venueId: mockVenueResponse.id,
     isOpenToPublic: true,
+    venue_type: mockVenueResponse.venueTypeCode,
   },
   offerCategories: [],
   offerSubcategories: [],

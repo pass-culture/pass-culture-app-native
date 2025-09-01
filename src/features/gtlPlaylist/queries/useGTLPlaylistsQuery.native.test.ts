@@ -76,6 +76,7 @@ describe('useGTLPlaylistsQuery', () => {
                   isOpenToPublic: true,
                   label: 'Une librairie',
                   venueId: 123,
+                  venue_type: VenueTypeCodeKey.BOOKSTORE,
                 },
               }),
             }),

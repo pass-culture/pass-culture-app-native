@@ -5,7 +5,7 @@ export const transformGeoLocatedVenueToVenueResponse = (
   data?: GeolocatedVenue | null
 ): VenueResponse | undefined => {
   if (data && data !== null) {
-    const { venueId, label, _geoloc, isOpenToPublic } = data
+    const { venueId, label, _geoloc, isOpenToPublic, venue_type } = data
     return {
       id: venueId,
       name: label,
@@ -15,6 +15,7 @@ export const transformGeoLocatedVenueToVenueResponse = (
       timezone: '',
       isVirtual: false,
       isOpenToPublic,
+      venueTypeCode: venue_type,
     }
   }
   return undefined

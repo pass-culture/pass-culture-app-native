@@ -1,5 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
@@ -36,6 +37,7 @@ describe('fetchOffersByGTL', () => {
           info: 'BAYONNE',
           label: 'DARRIEUMERLOU',
           isOpenToPublic: true,
+          venue_type: VenueTypeCodeKey.BOOKSTORE,
         },
       },
       locationParams: {

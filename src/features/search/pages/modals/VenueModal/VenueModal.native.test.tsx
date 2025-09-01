@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from 'react-native'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as SearchWrapper from 'features/search/context/SearchWrapper'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
@@ -17,7 +18,13 @@ jest.useFakeTimers()
 const dismissModalMock = jest.fn()
 
 const mockVenues = [
-  { label: 'venueLabel', info: 'info', venueId: 1234, isOpenToPublic: true },
+  {
+    label: 'venueLabel',
+    info: 'info',
+    venueId: 1234,
+    isOpenToPublic: true,
+    venue_type: VenueTypeCodeKey.BOOKSTORE,
+  },
 ] as const satisfies readonly Venue[]
 
 jest.mock('libs/place/useVenues', () => ({
