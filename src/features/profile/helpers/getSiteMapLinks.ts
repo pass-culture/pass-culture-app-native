@@ -1,5 +1,5 @@
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabPropConfig } from 'features/navigation/TabBar/getTabPropConfig'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -11,23 +11,18 @@ type SubPage = {
 
 export type SiteMap = SubPage & { subPages: SubPage[] }
 
-const toInternalNavigationProps = ([screen, params]: ReturnType<typeof getTabHookConfig>) => ({
-  screen,
-  params,
-})
-
 export const getSiteMapLinks = (
   sortedCategories: Pick<CategoryButtonProps, 'label' | 'navigateTo'>[]
 ): SiteMap[] => [
   {
     wording: 'Accueil',
-    navigateTo: toInternalNavigationProps(getTabHookConfig('Home')),
+    navigateTo: getTabPropConfig('Home'),
     isLoggedIn: false,
     subPages: [],
   },
   {
     wording: 'Recherche',
-    navigateTo: toInternalNavigationProps(getTabHookConfig('SearchStackNavigator')),
+    navigateTo: getTabPropConfig('SearchStackNavigator'),
     isLoggedIn: false,
     subPages: [
       { wording: 'Explore la carte', navigateTo: { screen: 'VenueMap' }, isLoggedIn: false },
@@ -40,19 +35,19 @@ export const getSiteMapLinks = (
   },
   {
     wording: 'Réservations',
-    navigateTo: toInternalNavigationProps(getTabHookConfig('Bookings')),
+    navigateTo: getTabPropConfig('Bookings'),
     isLoggedIn: true,
     subPages: [],
   },
   {
     wording: 'Favoris',
-    navigateTo: toInternalNavigationProps(getTabHookConfig('Favorites')),
+    navigateTo: getTabPropConfig('Favorites'),
     isLoggedIn: true,
     subPages: [],
   },
   {
     wording: 'Profil',
-    navigateTo: toInternalNavigationProps(getTabHookConfig('Profile')),
+    navigateTo: getTabPropConfig('Profile'),
     isLoggedIn: false,
     subPages: [
       {

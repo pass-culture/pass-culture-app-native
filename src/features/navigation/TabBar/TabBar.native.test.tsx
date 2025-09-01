@@ -4,7 +4,7 @@ import React from 'react'
 
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from './getTabHookConfig'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,

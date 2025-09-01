@@ -6,7 +6,7 @@ import {
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from './getTabHookConfig'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { useTabBar } from 'features/navigation/TabBar/useTabBar'
