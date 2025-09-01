@@ -8,7 +8,6 @@ export const queryClient = new QueryClient({
     queries: {
       retry: 0,
       useErrorBoundary: true,
-      refetchOnWindowFocus: false,
     },
   },
 })

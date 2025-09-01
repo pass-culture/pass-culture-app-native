@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import { FlatList, FlatListProps } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
-const keyExtractor = (item) => item?.offer.id.toString()
+const keyExtractor = (item) => item?.offer?.id.toString()
 
 export const ExpandingFlatList = <T,>({
   isLoading,
