@@ -1,19 +1,18 @@
 import React from 'react'
-import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { SiteMap, getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
+import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 import { Typo, getSpacing } from 'ui/theme'
@@ -28,63 +27,46 @@ export function SiteMapScreen() {
     ({ isLoggedIn: required }) => !required || isLoggedIn
   )
 
-  const renderSiteMapItem = ({ item }: { item: SiteMap }) => {
-    const filteredSubPages = item.subPages.filter((subPage) => !subPage.isLoggedIn || isLoggedIn)
-    return (
-      <React.Fragment>
-        <Li
-          key={item.wording}
-          accessibilityRole={AccessibilityRole.RADIOGROUP}
-          accessibilityLabelledBy={item.wording}>
-          <ItemContainer>
-            <BulletContainer>
-              <Bullet />
-            </BulletContainer>
-            <ListText>
-              <InternalTouchableLink
-                as={Button}
-                wording={item.wording}
-                navigateTo={item.navigateTo}
-              />
-            </ListText>
-          </ItemContainer>
-        </Li>
-
-        {filteredSubPages.map(({ wording, navigateTo }) => (
-          <Li
-            key={wording}
-            accessibilityRole={AccessibilityRole.RADIOGROUP}
-            accessibilityLabelledBy={wording}>
-            <NestedItemContainer>
-              <BulletContainer>
-                <NestedBullet />
-              </BulletContainer>
-              <ListText>
-                <InternalTouchableLink
-                  as={Button}
-                  typography="BodyAccentXs"
-                  wording={wording}
-                  navigateTo={navigateTo}
-                />
-              </ListText>
-            </NestedItemContainer>
-          </Li>
-        ))}
-      </React.Fragment>
+  const listItems = visibleSiteMapLinks.flatMap((item) => {
+    const parentJsx = (
+      <ItemContainer key={item.wording}>
+        <BulletContainer>
+          <Bullet />
+        </BulletContainer>
+        <ListText>
+          <InternalTouchableLink as={Button} wording={item.wording} navigateTo={item.navigateTo} />
+        </ListText>
+      </ItemContainer>
     )
-  }
 
-  const keyExtractor = (item: SiteMap) => item.wording
+    const childrenJsx = item.subPages
+      .filter((subPage) => !subPage.isLoggedIn || isLoggedIn)
+      .map((subPage) => (
+        <NestedItemContainer key={subPage.wording}>
+          <BulletContainer>
+            <NestedBullet />
+          </BulletContainer>
+          <ListText>
+            <InternalTouchableLink
+              as={Button}
+              typography="BodyAccentXs"
+              wording={subPage.wording}
+              navigateTo={subPage.navigateTo}
+            />
+          </ListText>
+        </NestedItemContainer>
+      ))
+
+    return [parentJsx, ...childrenJsx]
+  })
 
   return (
     <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
-      <FlatList
-        accessibilityRole={AccessibilityRole.LIST}
-        listAs="ul"
-        data={visibleSiteMapLinks}
-        renderItem={renderSiteMapItem}
-        keyExtractor={keyExtractor}
-      />
+      <StyledVerticalUl>
+        {listItems.map((item, index) => {
+          return <Li key={index}>{item}</Li>
+        })}
+      </StyledVerticalUl>
     </SecondaryPageWithBlurHeader>
   )
 }
@@ -101,16 +83,14 @@ const Button = styledButton(AppButton).attrs<BaseButtonProps>(({ theme }) => {
   }
 })``
 
-const ItemContainer = styled.View<{ spacing?: number }>(({ spacing }) => ({
+const ItemContainer = styled.View<{ spacing?: number }>(() => ({
   flexDirection: 'row',
   marginLeft: getSpacing(3),
-  marginTop: spacing ? getSpacing(spacing) : 0,
 }))
 
-const NestedItemContainer = styled.View<{ spacing?: number }>(({ spacing }) => ({
+const NestedItemContainer = styled.View<{ spacing?: number }>(() => ({
   flexDirection: 'row',
   marginLeft: getSpacing(7),
-  marginTop: spacing ? getSpacing(spacing) : 0,
 }))
 
 const Bullet = styled(Dot).attrs({
@@ -131,4 +111,8 @@ const BulletContainer = styled.View(({ theme }) => ({
 const ListText = styled(Typo.Body)({
   marginLeft: getSpacing(3),
   flex: 1,
+})
+
+const StyledVerticalUl = styled(VerticalUl)({
+  width: '100%',
 })
