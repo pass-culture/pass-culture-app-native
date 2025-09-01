@@ -21,9 +21,11 @@ import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { Check } from 'ui/svg/icons/Check'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
+import { CheckFilled } from 'ui/svg/icons/CheckFilled'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
+import { CloseFilled } from 'ui/svg/icons/CloseFilled'
 import { Code } from 'ui/svg/icons/Code'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
@@ -177,8 +179,10 @@ export const SecondaryAndBiggerIcons = {
   Calendar,
   CalendarS,
   Check,
+  CheckFilled,
   Clock,
   Close,
+  CloseFilled,
   Code,
   Confidentiality,
   Confirmation,

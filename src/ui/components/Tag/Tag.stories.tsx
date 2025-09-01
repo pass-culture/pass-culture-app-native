@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 import { TagVariant } from 'ui/components/Tag/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { Check } from 'ui/svg/icons/Check'
+import { CheckFilled } from 'ui/svg/icons/CheckFilled'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Close } from 'ui/svg/icons/Close'
+import { CloseFilled } from 'ui/svg/icons/CloseFilled'
 import { Star } from 'ui/svg/Star'
 
 import { Tag } from './Tag'
@@ -22,11 +22,11 @@ const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const StyledClose = styled(Close).attrs(({ theme }) => ({
+const StyledClose = styled(CloseFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const StyledCheck = styled(Check).attrs(({ theme }) => ({
+const StyledCheck = styled(CheckFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 

@@ -7,7 +7,7 @@ import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleChe
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { Check as CheckIcon } from 'ui/svg/icons/Check'
+import { CheckFilled } from 'ui/svg/icons/CheckFilled'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
 import { getShadow, getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
@@ -127,7 +127,7 @@ const Lock = styled(LockFilled).attrs(({ theme }) => ({
   accessibilityLabel: 'Désactivé',
 }))``
 
-const Check = styled(CheckIcon).attrs(({ theme }) => ({
+const Check = styled(CheckFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
   size: theme.icons.sizes.extraSmall,
   accessibilityLabel: 'Activé',
