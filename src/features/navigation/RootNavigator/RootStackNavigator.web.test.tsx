@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import { FavoritesCountResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -54,7 +54,6 @@ describe('<RootNavigator />', () => {
 
   beforeEach(() => {
     mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
-    mockServer.getApi<FavoritesCountResponse>('/v1/me/favorites/count', { count: 2 })
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

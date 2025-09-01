@@ -1,3 +1,4 @@
+import { VenueTypeCodeKey } from 'api/gen'
 import * as captureAlgoliaError from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -31,6 +32,7 @@ const mockParams1: PlaylistOffersParams = {
       label: 'Cinéma St André des Arts',
       venueId: 26235,
       isOpenToPublic: true,
+      venue_type: VenueTypeCodeKey.MOVIE,
     },
   },
   locationParams: {

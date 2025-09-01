@@ -21,6 +21,7 @@ const venueSearchParamsMock: SearchState = {
     },
     venueId: venueDataTest.id,
     isOpenToPublic: true,
+    venue_type: venueDataTest.venueTypeCode,
   },
   offerCategories: [],
   offerSubcategories: [],

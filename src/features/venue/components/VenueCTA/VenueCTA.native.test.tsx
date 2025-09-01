@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
+import { VenueTypeCodeKey } from 'api/gen'
 import { SearchState } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
@@ -32,6 +33,7 @@ const defaultParams: SearchState = {
     label: 'Le Petit Rintintin 1',
     venueId: 5543,
     isOpenToPublic: true,
+    venue_type: VenueTypeCodeKey.BOOKSTORE,
   },
 } as SearchState
 
@@ -71,6 +73,7 @@ describe('<VenueCTA />', () => {
               label: 'Le Petit Rintintin 1',
               venueId: 5543,
               isOpenToPublic: true,
+              venue_type: VenueTypeCodeKey.BOOKSTORE,
             },
           },
           screen: 'SearchResults',

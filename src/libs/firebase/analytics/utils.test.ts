@@ -1,7 +1,7 @@
 import { endOfMonth } from 'date-fns'
 import { NativeScrollEvent } from 'react-native'
 
-import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
@@ -511,6 +511,7 @@ describe('[Analytics utils]', () => {
           info: 'Salle de spectacle, Paris',
           venueId: 1,
           isOpenToPublic: true,
+          venue_type: VenueTypeCodeKey.CONCERT_HALL,
         },
       }
       const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)
@@ -528,6 +529,7 @@ describe('[Analytics utils]', () => {
           info: 'Salle de spectacle, Paris',
           venueId: 1,
           isOpenToPublic: true,
+          venue_type: VenueTypeCodeKey.CONCERT_HALL,
         },
       }
       const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)

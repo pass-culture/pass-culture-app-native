@@ -55,6 +55,7 @@ export const getGtlPlaylistsParams = (
               info: venue.city ?? '',
               label: venue.name,
               isOpenToPublic: venue.isOpenToPublic,
+              venue_type: venue.venueTypeCode,
             },
           },
         }
