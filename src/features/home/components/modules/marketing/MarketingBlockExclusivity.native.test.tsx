@@ -66,7 +66,7 @@ describe('MarketingBlockExclusivity', () => {
       moduleId: '1',
       homeEntryId: 'fakeEntryId',
       moduleName: 'La nuit des temps',
-      offerId: 102280,
+      offerId: '102280',
     })
   })
 

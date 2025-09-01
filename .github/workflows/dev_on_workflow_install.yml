@@ -49,9 +49,9 @@ jobs:
           path: |
             node_modules
             ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
-            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           key-file-name: ${{ steps.gcloud-auth.outputs.credentials_file_path }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - name: 'Use the artifact registry'

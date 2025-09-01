@@ -1,12 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import {
-  BookingOfferResponseAddress,
-  BookingResponse,
-  TicketResponse,
-  UserProfileResponse,
-} from 'api/gen'
+import { BookingOfferResponseAddress, BookingResponse, TicketResponse } from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
@@ -17,6 +12,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
@@ -30,7 +26,7 @@ type TicketProps = {
   properties: BookingProperties
   booking: BookingResponse
   mapping: SubcategoriesMapping
-  user: UserProfileResponse
+  user: UserProfileResponseWithoutSurvey
   display: 'punched' | 'full'
   setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
   ticket: TicketResponse

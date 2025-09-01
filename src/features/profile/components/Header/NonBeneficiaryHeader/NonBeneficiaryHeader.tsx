@@ -85,13 +85,19 @@ function SystemBanner({
     navigate(...getSubscriptionHookConfig('Stepper', { from: StepperOrigin.PROFILE }))
   }
 
+  const defaultSubtitle = 'Tu es éligible jusqu’à la veille de tes 19 ans'
+
   const subtitle = formattedEligibilityEndDatetime ? (
     <Typo.Body>
       Tu es éligible jusqu’au <Typo.BodyAccent>{formattedEligibilityEndDatetime}</Typo.BodyAccent>
     </Typo.Body>
   ) : (
-    'Tu es éligible jusqu’à la veille de tes 19 ans'
+    defaultSubtitle
   )
+
+  const subtitleAccessibilityLabel = formattedEligibilityEndDatetime
+    ? `Tu es éligible jusqu’au ${formattedEligibilityEndDatetime}`
+    : defaultSubtitle
 
   if (eligibilityEndDateInSystemBanner) {
     return (
@@ -100,7 +106,7 @@ function SystemBanner({
           leftIcon={Icon}
           title={homeBanner.title}
           subtitle={subtitle}
-          accessibilityLabel={homeBanner.text}
+          accessibilityLabel={`${homeBanner.title} ${subtitleAccessibilityLabel}`}
           onPress={onPress}
           analyticsParams={{ type: 'credit', from: 'profile' }}
         />
@@ -115,7 +121,6 @@ function SystemBanner({
         leftIcon={Icon}
         title={homeBanner.title}
         subtitle={homeBanner.text}
-        accessibilityLabel={homeBanner.text}
         onPress={onPress}
         analyticsParams={{ type: 'credit', from: 'profile' }}
       />

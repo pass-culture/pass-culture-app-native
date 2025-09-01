@@ -70,13 +70,6 @@ export const useStepperInfo = (): StepperInfo => {
     return 'SetPhoneNumberWithoutValidation'
   }
 
-  const getConfirmationFirstScreen = () => {
-    if (enableCulturalSurveyMandatory && !!user?.needsToFillCulturalSurvey) {
-      return 'CulturalSurveyIntro'
-    }
-    return 'IdentityCheckHonor'
-  }
-
   const hasUserCompletedInfo =
     !!user?.firstName &&
     !!user?.lastName &&
@@ -124,7 +117,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={LegalNotices} testID="confirmation-step-done" />,
         retry: () => <IconStepRetry Icon={LegalNotices} testID="confirmation-retry-step" />,
       },
-      firstScreen: getConfirmationFirstScreen(),
+      firstScreen: enableCulturalSurveyMandatory ? 'CulturalSurveyIntro' : 'IdentityCheckHonor',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
     [IdentityCheckStep.PHONE_VALIDATION]: {

@@ -1,11 +1,10 @@
-import Animated from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 import { MARKER_LABEL_MARGIN_TOP, MARKER_SIZE } from 'features/venueMap/constant'
 import { Size } from 'features/venueMap/types'
 import { getSpacing } from 'ui/theme'
 
-export const LabelContainer = styled(Animated.View)<{ labelSize: Size }>(({ theme, labelSize }) => {
+export const LabelContainer = styled.View<{ labelSize: Size }>(({ theme, labelSize }) => {
   return {
     backgroundColor: theme.designSystem.color.background.default,
     borderRadius: theme.borderRadius.checkbox,

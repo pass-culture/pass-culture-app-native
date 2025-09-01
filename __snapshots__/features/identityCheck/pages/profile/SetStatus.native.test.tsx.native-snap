@@ -356,7 +356,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Collégien"
+                accessibilityLabel="Collégien - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -413,7 +413,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Collégien"
+                testID="Collégien - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -422,7 +422,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -522,7 +522,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Lycéen"
+                accessibilityLabel="Lycéen - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -579,7 +579,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Lycéen"
+                testID="Lycéen - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -588,7 +588,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -688,7 +688,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Étudiant"
+                accessibilityLabel="Étudiant - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -745,7 +745,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Étudiant"
+                testID="Étudiant - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -754,7 +754,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -854,7 +854,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Employé"
+                accessibilityLabel="Employé - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -911,7 +911,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Employé"
+                testID="Employé - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -920,7 +920,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -1020,7 +1020,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Apprenti"
+                accessibilityLabel="Apprenti - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1077,7 +1077,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Apprenti"
+                testID="Apprenti - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1086,7 +1086,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -1186,7 +1186,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Alternant"
+                accessibilityLabel="Alternant - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1243,7 +1243,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Alternant"
+                testID="Alternant - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1252,7 +1252,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -1352,7 +1352,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Volontaire"
+                accessibilityLabel="Volontaire - En service civique - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1409,7 +1409,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Volontaire"
+                testID="Volontaire - En service civique - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1418,7 +1418,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -1531,7 +1531,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Inactif"
+                accessibilityLabel="Inactif - En incapacité de travailler - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1588,7 +1588,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Inactif"
+                testID="Inactif - En incapacité de travailler - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1597,7 +1597,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -1710,7 +1710,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Chômeur"
+                accessibilityLabel="Chômeur - En recherche d’emploi - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1767,7 +1767,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Chômeur"
+                testID="Chômeur - En recherche d’emploi - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1776,7 +1776,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,

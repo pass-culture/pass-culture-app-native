@@ -15,7 +15,6 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
-  UserProfileResponse,
 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as useFavorite from 'features/favorites/hooks/useFavorite'
@@ -27,6 +26,7 @@ import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVa
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -143,6 +143,8 @@ jest.mock('react-native-intersection-observer', () => {
 })
 
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+const mockRegisterAnchor = jest.fn()
+const useRegisterAnchorSpy = jest.spyOn(AnchorContextModule, 'useRegisterAnchor')
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({
@@ -214,6 +216,8 @@ describe('<OfferContent />', () => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags([RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER])
+    mockRegisterAnchor.mockClear()
+    useRegisterAnchorSpy.mockReturnValue(mockRegisterAnchor)
   })
 
   afterEach(cleanup)
@@ -226,7 +230,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should remove favorite when press on favorite', async () => {
-      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponse)
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
       renderOfferContent({})
       const button = await screen.findByLabelText('Mettre en favori')
       await user.press(button)
@@ -236,7 +240,7 @@ describe('<OfferContent />', () => {
 
     it('should display snackbar when remove favorite fails', async () => {
       spyApiDeleteFavorite.mockRejectedValueOnce({ status: 400 })
-      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponse)
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
       renderOfferContent({})
       const button = await screen.findByLabelText('Mettre en favori')
       await user.press(button)
@@ -818,6 +822,22 @@ describe('<OfferContent />', () => {
           chronicleId: 1,
         })
       })
+
+      it('should register chronicles-section anchor when chronicles are present', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        const anchorView = await screen.findByTestId('chronicles-section-anchor')
+
+        act(() => {
+          anchorView.props.onLayout()
+        })
+
+        await waitFor(() => {
+          expect(mockRegisterAnchor).toHaveBeenCalledWith('chronicles-section', expect.any(Object))
+        })
+      })
     })
 
     it('should display social network section', async () => {
@@ -914,6 +934,7 @@ function renderOfferContent({
           subcategory={subcategory}
           chronicles={chroniclesData}
           chronicleVariantInfo={chronicleVariantInfoFixture}
+          onShowChroniclesWritersModal={jest.fn()}
         />
       </NavigationContainer>
     ),

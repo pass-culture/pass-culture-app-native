@@ -1,5 +1,5 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
-import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
+import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 import { BackgroundColorKey, BorderColorKey } from 'theme/types'
 import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
 import { Books } from 'ui/svg/icons/categories/Books'
@@ -186,7 +186,7 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
 }
 
 type VenueTypeCriteria = { ALL: { label: string; facetFilter: '' } } & {
-  [venueType in VenueTypeCode]: { label: string; facetFilter: VenueTypeCode }
+  [venueType in VenueTypeCodeKey]: { label: string; facetFilter: VenueTypeCodeKey }
 }
 
 export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {

@@ -8082,19 +8082,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-firebase/dynamic-links@npm:^22.2.1":
-  version: 22.2.1
-  resolution: "@react-native-firebase/dynamic-links@npm:22.2.1"
-  peerDependencies:
-    "@react-native-firebase/app": 22.2.1
-    expo: ">=47.0.0"
-  peerDependenciesMeta:
-    expo:
-      optional: true
-  checksum: b622ebee29a6789c85023dd2808c1c7bb97ead629035f686d2d1fa9442a47b96c2ee16aba3991d778e2beb5f34142aa976d714ffe386cf3c6cbeb3e12d03454e
-  languageName: node
-  linkType: hard
-
 "@react-native-firebase/firestore@npm:^22.2.1":
   version: 22.2.1
   resolution: "@react-native-firebase/firestore@npm:22.2.1"
@@ -8417,6 +8404,19 @@ __metadata:
   peerDependencies:
     react: "*"
   checksum: ecc56be910c2eb98b8bb949db76cb59f0ce4b20479c05058244530383e363a57a4680ae638904810238f6cc29d67a140d0cc25b4cbcbce89808de3529ab45ebb
+  languageName: node
+  linkType: hard
+
+"@react-navigation/devtools@npm:^7.0.38":
+  version: 7.0.38
+  resolution: "@react-navigation/devtools@npm:7.0.38"
+  dependencies:
+    fast-deep-equal: ^3.1.3
+    nanoid: ^3.3.11
+    stacktrace-parser: ^0.1.11
+  peerDependencies:
+    react: ">= 18.2.0"
+  checksum: afc4bdc7802367f116cc6f30405e38430d68a776c02c4e958ffe6a30800bab71e4cb53cc7cef70eb05637e9dc2dfdd05a3192bc120bce91790a96d0a20a5ccd7
   languageName: node
   linkType: hard
 
@@ -11042,7 +11042,6 @@ __metadata:
     "@react-native-community/netinfo": ^11.4.1
     "@react-native-firebase/analytics": ^22.2.1
     "@react-native-firebase/app": ^22.2.1
-    "@react-native-firebase/dynamic-links": ^22.2.1
     "@react-native-firebase/firestore": ^22.2.1
     "@react-native-firebase/perf": ^22.2.1
     "@react-native-firebase/remote-config": ^22.2.1
@@ -11052,6 +11051,7 @@ __metadata:
     "@react-native/metro-config": 0.77.3
     "@react-native/typescript-config": 0.77.3
     "@react-navigation/bottom-tabs": ^6.6.1
+    "@react-navigation/devtools": ^7.0.38
     "@react-navigation/native": ^6.1.17
     "@react-navigation/stack": ^6.4.1
     "@react-oauth/google": ^0.11.1
@@ -11193,7 +11193,7 @@ __metadata:
     react-native-linear-gradient: ^2.8.3
     react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^3.4.2
-    react-native-maps: ^1.11.3
+    react-native-maps: 1.23.12
     react-native-modal: 13.0.1
     react-native-orientation-locker: ^1.7.0
     react-native-performance: ^5.1.4
@@ -24942,19 +24942,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-maps@npm:^1.11.3":
-  version: 1.11.3
-  resolution: "react-native-maps@npm:1.11.3"
+"react-native-maps@npm:1.23.12":
+  version: 1.23.12
+  resolution: "react-native-maps@npm:1.23.12"
   dependencies:
     "@types/geojson": ^7946.0.13
   peerDependencies:
-    react: ">= 17.0.1"
-    react-native: ">= 0.64.3"
+    react: ">= 18.3.1"
+    react-native: ">= 0.76.0"
     react-native-web: ">= 0.11"
   peerDependenciesMeta:
     react-native-web:
       optional: true
-  checksum: dce53cc7e7a65a8344db82868cc5e8b17ca3471ffd9e6a968545e9f39165b91f67d04211db345dd0f52ead72bc944451693d40e46f580c9a2784c5fc597c6430
+  checksum: 5ee7790fae80691d55974c9bff57f71729b5d6cee70c5239a06067477088bffa5c948270382ecd0f95982eedfcb70e3e21f1b596a098f98c3874f74865ac2c03
   languageName: node
   linkType: hard
 
@@ -26874,6 +26874,15 @@ __metadata:
   dependencies:
     type-fest: ^0.7.1
   checksum: f4fbddfc09121d91e587b60de4beb4941108e967d71ad3a171812dc839b010ca374d064ad0a296295fed13acd103609d99a4224a25b4e67de13cae131f1901ee
+  languageName: node
+  linkType: hard
+
+"stacktrace-parser@npm:^0.1.11":
+  version: 0.1.11
+  resolution: "stacktrace-parser@npm:0.1.11"
+  dependencies:
+    type-fest: ^0.7.1
+  checksum: 1120cf716606ec6a8e25cc9b6ada79d7b91e6a599bba1a6664e6badc8b5f37987d7df7d9ad0344f717a042781fd8e1e999de08614a5afea451b68902421036b5
   languageName: node
   linkType: hard
 

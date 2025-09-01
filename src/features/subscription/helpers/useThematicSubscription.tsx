@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Platform } from 'react-native'
 
-import { UserProfileResponse } from 'api/gen'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { SubscriptionAnalyticsParams, SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
@@ -11,7 +11,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 type AnalyticsInfos = { venueId: string; homeId?: never } | { homeId: string; venueId?: never }
 
 export type Props = {
-  user?: UserProfileResponse
+  user?: UserProfileResponseWithoutSurvey
   onUpdateSubscriptionSuccess: (thematic: SubscriptionTheme) => Promise<void>
   thematic?: SubscriptionTheme | null
 } & AnalyticsInfos

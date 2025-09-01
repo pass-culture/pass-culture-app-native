@@ -24,16 +24,12 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
     <AppModal
       animationOutTiming={1}
       visible={isVisible}
-      title="Qui écrit les avis&nbsp;?"
+      title={variantInfo.modalTitle}
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={closeModal}>
       <ViewGap gap={6}>
         <Typo.Body>{variantInfo.modalWording}</Typo.Body>
-        <Typo.Body>
-          Ils sont sélectionnés par le pass Culture pour te faire leurs meilleures recos tous les
-          mois.
-        </Typo.Body>
 
         <ButtonPrimary wording={variantInfo.modalButtonLabel} onPress={onShowRecoButtonPress} />
       </ViewGap>

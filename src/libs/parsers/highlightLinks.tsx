@@ -63,7 +63,7 @@ const normalizeURL = (partialURL: string): string => {
   return `http://${partialURL}`
 }
 
-export const highlightLinks = (description: string): ParsedDescription => {
+export const highlightLinks = (description: string, withIcon?: boolean): ParsedDescription => {
   const chunks = findAll({
     searchWords: [],
     findChunks: customFindUrlChunks,
@@ -73,7 +73,7 @@ export const highlightLinks = (description: string): ParsedDescription => {
   return chunks.map(({ start, end, highlight }, index) => {
     const url = normalizeURL(description.slice(start, end))
     return highlight ? (
-      <ExternalLink key={`external-link-${index}`} url={url} />
+      <ExternalLink key={`external-link-${index}`} url={url} withIcon={withIcon} />
     ) : (
       description.slice(start, end)
     )

@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
-import { Easing, FadeIn, FadeOut } from 'react-native-reanimated'
 
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { Size } from 'features/venueMap/types'
@@ -20,12 +19,7 @@ export const VenueMapLabel: FunctionComponent<Props> = ({ venue }) => {
   }
 
   return (
-    <LabelContainer
-      testID="label-container"
-      onLayout={onLabelLayout}
-      labelSize={labelSize}
-      exiting={FadeOut.easing(Easing.in(Easing.quad)).duration(500)}
-      entering={FadeIn.easing(Easing.out(Easing.quad)).duration(500).delay(200)}>
+    <LabelContainer testID="label-container" onLayout={onLabelLayout} labelSize={labelSize}>
       <Typo.BodyAccentXs numberOfLines={1}>{venue.label}</Typo.BodyAccentXs>
     </LabelContainer>
   )

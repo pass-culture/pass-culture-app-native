@@ -2,8 +2,6 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { beneficiaryUser } from 'fixtures/user'
-import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, fireEvent, act, waitFor, userEvent } from 'tests/utils'
@@ -13,7 +11,6 @@ import { FeedbackInApp } from './FeedbackInApp'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
-mockAuthContextWithUser(beneficiaryUser)
 
 jest.mock('libs/firebase/analytics/analytics')
 

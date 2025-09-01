@@ -3,9 +3,8 @@ import React from 'react'
 import { PaginatedFavoritesResponse } from 'api/gen'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { beneficiaryUser } from 'fixtures/user'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -43,7 +42,6 @@ describe('<Favorites/>', () => {
       '/v1/me/favorites',
       paginatedFavoritesResponseSnap
     )
-    mockAuthContextWithUser(beneficiaryUser)
     render(reactQueryProviderHOC(<Favorites />))
 
     await screen.findByText('Mes favoris')
@@ -60,7 +58,7 @@ describe('<Favorites/>', () => {
 
   it('should render offline page when not connected', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    mockAuthContextWithUser(beneficiaryUser)
+
     render(reactQueryProviderHOC(<Favorites />))
 
     expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()

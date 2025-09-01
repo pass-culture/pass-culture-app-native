@@ -52,4 +52,10 @@ describe('ExternalLink', () => {
     expect(screen.getByText('some')).toBeInTheDocument()
     expect(screen.getByText('text with several words')).toBeInTheDocument()
   })
+
+  it('should not display Icon when withIcon is false', () => {
+    render(<ExternalLink text="some text with several words" url={someUrl} withIcon={false} />)
+
+    expect(screen.queryByTestId('externalSiteIcon')).not.toBeInTheDocument()
+  })
 })

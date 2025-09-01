@@ -233,8 +233,8 @@ describe('<OfferCTAButton />', () => {
 
         await waitFor(() => {
           expect(analytics.logBookingConfirmation).toHaveBeenNthCalledWith(1, {
-            bookingId: 123,
-            offerId: 116656,
+            bookingId: '123',
+            offerId: '116656',
           })
         })
       })

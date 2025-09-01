@@ -257,10 +257,10 @@ describe('<BookingOfferModalComponent />', () => {
 
         expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({
           ...apiRecoParams,
-          bookingId: 1,
-          fromMultivenueOfferId: 1,
+          bookingId: '1',
+          fromMultivenueOfferId: '1',
           fromOfferId: undefined,
-          offerId: 20,
+          offerId: '20',
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         })
       })
@@ -276,7 +276,10 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(screen.getByText('Confirmer la réservation'))
 
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({ bookingId: 1, offerId: 20 })
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({
+          bookingId: '1',
+          offerId: '20',
+        })
       })
 
       it('should log conversion booking when is from search', async () => {

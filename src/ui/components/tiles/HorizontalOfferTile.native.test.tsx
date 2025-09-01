@@ -126,7 +126,7 @@ describe('HorizontalOfferTile component', () => {
 
     expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId,
+      offerId: String(offerId),
       from: 'searchresults',
       query: '',
       index: 0,

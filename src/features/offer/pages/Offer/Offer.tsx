@@ -1,9 +1,10 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
@@ -27,6 +28,7 @@ const ANIMATION_DURATION = 700
 
 export function Offer() {
   const route = useRoute<UseRouteType<'Offer'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
   const hasOfferChronicleSection = useFeatureFlag(
@@ -46,7 +48,16 @@ export function Offer() {
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()
 
-  const { visible, hideModal, showModal } = useModal(false)
+  const {
+    visible: reactionModalVisible,
+    hideModal: hideReactionModal,
+    showModal: showReactionModal,
+  } = useModal(false)
+  const {
+    visible: chroniclesWritersModalVisible,
+    hideModal: hideChroniclesWritersModal,
+    showModal: showChroniclesWritersModal,
+  } = useModal(false)
   const { data: booking } = useEndedBookingFromOfferIdQuery(offer?.id ?? -1, {
     enabled: isLoggedIn && isReactionEnabled && !!offer?.id,
   })
@@ -55,10 +66,15 @@ export function Offer() {
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
       saveReaction({ reactions: [{ offerId, reactionType }] })
-      hideModal()
+      hideReactionModal()
     },
-    [hideModal, saveReaction]
+    [hideReactionModal, saveReaction]
   )
+
+  const handleOnShowRecoButtonPress = () => {
+    hideChroniclesWritersModal()
+    navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+  }
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
@@ -83,13 +99,22 @@ export function Offer() {
       <ReactionChoiceModal
         dateUsed={booking?.dateUsed ?? ''}
         offer={offer}
-        closeModal={hideModal}
-        visible={visible}
+        closeModal={hideReactionModal}
+        visible={reactionModalVisible}
         defaultReaction={booking?.userReaction}
         onSave={handleSaveReaction}
         from={ReactionFromEnum.ENDED_BOOKING}
         bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
       />
+
+      {chronicleVariantInfo ? (
+        <ChroniclesWritersModal
+          closeModal={hideChroniclesWritersModal}
+          isVisible={chroniclesWritersModalVisible}
+          onShowRecoButtonPress={handleOnShowRecoButtonPress}
+          variantInfo={chronicleVariantInfo}
+        />
+      ) : null}
 
       <OfferContent
         offer={offer}
@@ -99,8 +124,9 @@ export function Offer() {
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
-        onReactionButtonPress={booking?.canReact ? showModal : undefined}
+        onReactionButtonPress={booking?.canReact ? showReactionModal : undefined}
         userId={user?.id}
+        onShowChroniclesWritersModal={showChroniclesWritersModal}
       />
     </Page>
   )

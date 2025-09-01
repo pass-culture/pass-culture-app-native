@@ -22,11 +22,9 @@ describe('<VenueModal/>', () => {
 
       await screen.findByText('Trouver un lieu culturel')
 
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
+      const results = await act(async () => checkAccessibilityFor(container))
 
-        expect(results).toHaveNoViolations()
-      })
+      expect(results).toHaveNoViolations()
     })
   })
 })

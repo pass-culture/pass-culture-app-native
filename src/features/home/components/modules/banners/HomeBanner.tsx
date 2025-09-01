@@ -81,7 +81,6 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
           title={title}
           subtitle={subtitle}
           onPress={() => onPressSystemBanner(StepperOrigin.HOME)}
-          accessibilityLabel={subtitle}
           analyticsParams={{ type: systemBannerAnalyticsType, from: 'home' }}
         />
       </BannerContainer>

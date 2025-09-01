@@ -1,64 +1,18 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import {
-  BannerName,
-  BannerResponse,
-  CurrencyEnum,
-  EligibilityType,
-  SubscriptionStepperResponseV2,
-  UserProfileResponse,
-  YoungStatusType,
-} from 'api/gen'
+import { BannerName, BannerResponse, EligibilityType, SubscriptionStepperResponseV2 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
-import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
-import { beneficiaryUser } from 'fixtures/user'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
+import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
-
-const user: UserProfileResponse = {
-  bookedOffers: {},
-  email: 'email2@domain.ext',
-  hasPassword: true,
-  firstName: 'Jean',
-  isBeneficiary: true,
-  birthDate: '2003-01-01',
-  depositExpirationDate: '2023-02-09T11:17:14.786670',
-  domainsCredit: domains_credit_v3,
-  lastName: '93 HNMM 2',
-  id: 1234,
-  needsToFillCulturalSurvey: true,
-  isEligibleForBeneficiaryUpgrade: false,
-  requiresIdCheck: false,
-  roles: [],
-  showEligibleCard: false,
-  subscriptions: {
-    marketingEmail: true,
-    marketingPush: true,
-  },
-  status: { statusType: YoungStatusType.beneficiary },
-  currency: CurrencyEnum.EUR,
-  achievements: [],
-  street: '10 rue du Bohneur',
-  hasProfileExpired: false,
-}
-
-const exBeneficiaryUser: UserProfileResponse = {
-  ...user,
-  depositExpirationDate: '2020-01-01T03:04:05',
-}
-
-const notBeneficiaryUser = {
-  ...user,
-  isBeneficiary: false,
-}
-
 jest.mock('libs/jwt/jwt')
 jest.mock('queries/profile/usePatchProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
@@ -78,6 +32,13 @@ describe('ProfileHeader', () => {
       '/v2/subscription/stepper',
       subscriptionStepperFixture
     )
+    mockServer.getApi<BannerResponse>('/v1/banner', {
+      banner: {
+        name: BannerName.activation_banner,
+        text: 'à dépenser sur l’application',
+        title: 'Débloque tes 1000\u00a0€',
+      },
+    })
   })
 
   it('should not display subtitle with passForAll enabled', async () => {
@@ -110,7 +71,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is beneficiary', async () => {
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user,
+      user: beneficiaryUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -122,7 +83,7 @@ describe('ProfileHeader', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user,
+      user: beneficiaryUser,
     })
 
     await screen.findByText('Cheatcodes')
@@ -142,31 +103,15 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {
-      banner: {
-        name: BannerName.activation_banner,
-        text: 'à dépenser sur l’application',
-        title: 'Débloque tes 1000\u00a0€',
-      },
-    })
-
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
-      user: notBeneficiaryUser,
+      user: nonBeneficiaryUser,
     })
 
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade and eligibility is 18 yo', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {
-      banner: {
-        name: BannerName.activation_banner,
-        text: 'à dépenser sur l’application',
-        title: 'Débloque tes 1000\u00a0€',
-      },
-    })
-
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
       user: {
@@ -187,5 +132,5 @@ const renderProfileHeader = ({
   user,
 }: {
   featureFlags: { disableActivation: boolean; enablePassForAll: boolean }
-  user?: UserProfileResponse
+  user?: UserProfileResponseWithoutSurvey
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

@@ -18,7 +18,7 @@ Finally, open the Android Virtual Devices Manager and select (or create) a Virtu
 
 ### ✍️ Code signing
 
-- Download `testing.keystore` and `testing.keystore.properties` files from Keeper and place it inside the `/android/keystores` directory.
+- Download `testing.keystore` and `testing.keystore.properties` files from our password manager and place it inside the `/android/keystores` directory.
 
   _If you do not find `testing.keystore`, contact an admin._
 
@@ -38,7 +38,7 @@ Finally, open the Android Virtual Devices Manager and select (or create) a Virtu
 In the `.env.local` file (create the file if not exists), add
 
 ```sh
-SECRET_KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper search for "Android keytool password"
+SECRET_KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from our password manager search for "Android keytool password"
 ```
 
 then in your terminal run :
@@ -53,7 +53,19 @@ If it fails [see troubleshooting](./setup.md#troubleshooting)
 
 ### 🔥 Firebase setup
 
-Download the `google-services.json` file from Keeper and place it inside the `android/app` directory. You can also download this file from the Firebase console.
+Download the `google-services.json` files from our password manager and place them inside the `android/app/src/<env>` directories. You can also download these files from the Firebase console.
+
+```txt
+android/
+    app/
+        src/
+            production/
+                google-services.json
+            staging/
+                google-services.json
+            apptesting/
+                google-services.json
+```
 
 ### 🚀 Run the app
 

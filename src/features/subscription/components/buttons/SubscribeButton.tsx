@@ -39,7 +39,7 @@ export const SubscribeButton = ({ active, onPress, label, size }: Props) => {
   const AnimatedBellIcon = useCallback(
     () => (
       <StyledLottieView
-        progress={animationProgress.current as unknown as number}
+        progress={animationProgress.current}
         source={NotificationAnimation}
         loop={false}
       />
@@ -59,7 +59,8 @@ export const SubscribeButton = ({ active, onPress, label, size }: Props) => {
   )
 }
 
-const StyledLottieView = styled(LottieView)(({ theme }) => ({
+const AnimatedLottieView = Animated.createAnimatedComponent(LottieView)
+const StyledLottieView = styled(AnimatedLottieView)(({ theme }) => ({
   width: theme.icons.sizes.small,
   height: theme.icons.sizes.small,
 }))

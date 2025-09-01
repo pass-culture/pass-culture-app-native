@@ -5,11 +5,11 @@ import {
   OfferResponseV2,
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
-  UserProfileResponse,
 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { EmptyResponse } from 'libs/fetch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -38,7 +38,7 @@ export function simulateBackend(options: Options = defaultOptions) {
   }
 
   mockServer.getApi<OfferResponseV2>(`/v2/offer/${id}`, offerResponseSnap)
-  mockServer.getApi<UserProfileResponse>(`/v1/me`, beneficiaryUser)
+  mockServer.getApi<UserProfileResponseWithoutSurvey>(`/v1/me`, beneficiaryUser)
   mockServer.getApi<PaginatedFavoritesResponse>(`/v1/me/favorites`, paginatedFavoritesResponseSnap)
   mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   if (hasAddFavoriteError) {

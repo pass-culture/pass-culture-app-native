@@ -50,7 +50,7 @@ describe('<VenueThematicSection/>', () => {
   })
 
   it('should render null if venue has no thematic', async () => {
-    const venue = { ...venueFixture, venueTypeCode: VenueTypeCodeKey.ADMINISTRATIVE }
+    const venue = { ...venueFixture, venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE }
     render(reactQueryProviderHOC(<VenueThematicSection venue={venue} />))
 
     await waitFor(() => {

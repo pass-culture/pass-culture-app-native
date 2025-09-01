@@ -1,11 +1,20 @@
-import React, { useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, { useEffect, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
+import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Bulb } from 'ui/svg/icons/Bulb'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
@@ -30,6 +39,13 @@ export const CategoryListModule = ({
   homeEntryId,
 }: CategoryListProps) => {
   const { designSystem } = useTheme()
+  const enableHomeSatisfactionQualtrics = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_HOME_SATISFACTION_QUALTRICS
+  )
+  const [homeSatisfactionQualtricsPressed, setHomeSatisfactionQualtricsPressed] = useState<
+    string | null
+  >(null)
+
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
@@ -38,6 +54,24 @@ export const CategoryListModule = ({
       homeEntryId,
     })
   }, [id, homeEntryId, index])
+
+  useEffect(() => {
+    const fetchQualtricsPressed = async () => {
+      const saved = await AsyncStorage.getItem('home_satisfaction_qualtrics_pressed')
+
+      if (saved) {
+        setHomeSatisfactionQualtricsPressed('pressed')
+      } else {
+        setHomeSatisfactionQualtricsPressed(null)
+      }
+    }
+    fetchQualtricsPressed()
+  }, [])
+
+  const handleQualtricsButtonPress = async () => {
+    setHomeSatisfactionQualtricsPressed('pressed')
+    await AsyncStorage.setItem('home_satisfaction_qualtrics_pressed', 'pressed')
+  }
 
   return (
     <Container>
@@ -77,6 +111,21 @@ export const CategoryListModule = ({
           )
         })}
       </StyledView>
+      {enableHomeSatisfactionQualtrics && !homeSatisfactionQualtricsPressed ? (
+        <BannerContainer>
+          <GenericColoredBanner
+            message="Un avis sur cette page&nbsp;? Partage-nous tes idées pour nous aider à l’améliorer&nbsp;!"
+            Icon={Bulb}>
+            <ExternalTouchableLink
+              wording="Répondre au court questionnaire"
+              as={StyledButtonQuaternaryBlack}
+              externalNav={{ url: 'https://passculture.qualtrics.com/jfe/form/SV_dgtDyqEDDDlH8xg' }}
+              icon={ExternalSiteFilled}
+              onBeforeNavigate={handleQualtricsButtonPress}
+            />
+          </GenericColoredBanner>
+        </BannerContainer>
+      ) : null}
     </Container>
   )
 }
@@ -107,4 +156,16 @@ const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
   flexBasis: 0,
   minWidth: theme.isMobileViewport ? '35%' : 'none',
   maxWidth: theme.isMobileViewport ? '50%' : DESKTOP_MAX_WIDTH,
+}))
+
+const BannerContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: theme.designSystem.size.spacing.xxxl,
+}))
+
+const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
+  justifyContent: 'flex-start',
+  inline: true,
+})(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
 }))

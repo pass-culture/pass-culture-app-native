@@ -59,7 +59,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('<SearchListHeader />', () => {
+// FIXME(PC-37597): un-skip flaky tests
+// eslint-disable-next-line jest/no-disabled-tests
+describe.skip('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])

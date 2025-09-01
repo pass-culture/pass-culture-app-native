@@ -46,31 +46,14 @@ type ThemedStyledLottieViewProps = {
   autoPlay?: boolean
   loop?: boolean
   resizeMode?: 'center' | 'contain' | 'cover' | undefined
-  temporarilyDeactivateColors?: boolean
 }
 
 export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyledLottieViewProps>(
-  (
-    {
-      width,
-      height,
-      source,
-      autoPlay = false,
-      loop = false,
-      resizeMode,
-      temporarilyDeactivateColors = false, // TODO(PC-37129)
-    },
-    ref
-  ) => {
+  ({ width, height, source, autoPlay = false, loop = false, resizeMode }, ref) => {
     const { designSystem } = useTheme()
 
     const animationData = useMemo(() => {
-      if (
-        temporarilyDeactivateColors ||
-        typeof source !== 'object' ||
-        source === null ||
-        !('layers' in source)
-      ) {
+      if (typeof source !== 'object' || source === null || !('layers' in source)) {
         return source
       }
 
@@ -86,7 +69,7 @@ export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyled
       })
 
       return newAnimation
-    }, [designSystem.color.background.brandPrimary, source, temporarilyDeactivateColors])
+    }, [designSystem.color.background.brandPrimary, source])
 
     const animationRef = usePartialLottieAnimation(animationData)
 

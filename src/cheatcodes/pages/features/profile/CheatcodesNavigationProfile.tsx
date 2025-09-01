@@ -113,6 +113,11 @@ const profileCheatcodeCategory: CheatcodeCategory = {
       title: 'ProfileInformationValidationUpdate',
       navigationTarget: getProfilePropConfig('ProfileInformationValidationUpdate'),
     },
+    {
+      id: uuidv4(),
+      title: 'TrackEmailChange',
+      navigationTarget: getProfilePropConfig('TrackEmailChange'),
+    },
   ],
 }
 

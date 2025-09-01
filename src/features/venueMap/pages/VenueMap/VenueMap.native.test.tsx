@@ -101,12 +101,6 @@ describe('<VenueMap />', () => {
     expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
   })
 
-  it('should hide POI', async () => {
-    render(reactQueryProviderHOC(<VenueMap />))
-
-    expect(await screen.findByTestId('venue-map-view')).toHaveProp('showsPointsOfInterest', false)
-  })
-
   it('Should handle go back action when pressing go back button', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 

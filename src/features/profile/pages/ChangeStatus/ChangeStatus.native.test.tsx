@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { ActivityIdEnum, UserProfileResponse } from 'api/gen'
+import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
@@ -10,9 +10,9 @@ import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
-import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -83,7 +83,6 @@ const mockedUseIsUserUnderage = jest.spyOn(UnderageUserAPI, 'useIsUserUnderage')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
-mockAuthContextWithUser(beneficiaryUser)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -125,7 +124,7 @@ describe('<ChangeStatus/>', () => {
 
     it('should send analytics event when success', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Continuer'))
@@ -138,7 +137,7 @@ describe('<ChangeStatus/>', () => {
 
     it('should show snackbar on success when clicking on "Valider mon adresse"', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Continuer'))
@@ -169,7 +168,7 @@ describe('<ChangeStatus/>', () => {
 
     it('should not show snackbar on success when clicking on "Valider mon adresse"', async () => {
       renderChangedStatus()
-      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
       await user.press(screen.getByText('Continuer'))

@@ -8,9 +8,10 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginBottom": 32,
+      "marginBottom": 96,
     }
   }
+  tabBarHeight={72}
 >
   <View
     customHeight={16}
@@ -439,12 +440,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
     handlerType="NativeViewGestureHandler"
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
-    style={
-      {
-        "marginBottom": 24,
-        "paddingBottom": 24,
-      }
-    }
   >
     <View>
       <RCTScrollView
@@ -1640,8 +1635,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 }
               >
                 <View
-                  style={{}}
+                  style={
+                    {
+                      "marginHorizontal": 24,
+                    }
+                  }
                   testID="playlistTitle"
+                  withMargin={true}
                 >
                   <Text
                     accessibilityHidden={true}

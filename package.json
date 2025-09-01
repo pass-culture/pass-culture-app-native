@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.355.2",
-  "build": 10355002,
+  "version": "1.356.0",
+  "build": 10356000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -102,12 +102,12 @@
     "@react-native-community/netinfo": "^11.4.1",
     "@react-native-firebase/analytics": "^22.2.1",
     "@react-native-firebase/app": "^22.2.1",
-    "@react-native-firebase/dynamic-links": "^22.2.1",
     "@react-native-firebase/firestore": "^22.2.1",
     "@react-native-firebase/perf": "^22.2.1",
     "@react-native-firebase/remote-config": "^22.2.1",
     "@react-native-google-signin/google-signin": "^10.1.0",
     "@react-navigation/bottom-tabs": "^6.6.1",
+    "@react-navigation/devtools": "^7.0.38",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.4.1",
     "@react-oauth/google": "^0.11.1",
@@ -164,7 +164,7 @@
     "react-native-linear-gradient": "^2.8.3",
     "react-native-lottie-splash-screen": "^1.1.2",
     "react-native-map-clustering": "^3.4.2",
-    "react-native-maps": "^1.11.3",
+    "react-native-maps": "1.23.12",
     "react-native-modal": "13.0.1",
     "react-native-orientation-locker": "^1.7.0",
     "react-native-performance": "^5.1.4",

@@ -181,7 +181,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
         }
       >
         Nous étudions ton dossier...
-Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !
+Tu recevras un e-mail lorsque ta demande sera validée.
       </Text>
     </View>
     <View

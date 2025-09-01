@@ -1,6 +1,5 @@
 import styled from 'styled-components/native'
 
-import { MARKER_LABEL_MARGIN_TOP } from 'features/venueMap/constant'
 import { getSpacing } from 'ui/theme'
 
 export const LabelContainer = styled.View(({ theme }) => {
@@ -11,6 +10,5 @@ export const LabelContainer = styled.View(({ theme }) => {
     maxWidth: getSpacing(40),
     paddingHorizontal: theme.designSystem.size.spacing.s,
     paddingVertical: theme.designSystem.size.spacing.xs,
-    marginTop: MARKER_LABEL_MARGIN_TOP,
   }
 })

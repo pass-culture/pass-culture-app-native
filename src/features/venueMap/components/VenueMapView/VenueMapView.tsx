@@ -11,6 +11,7 @@ import { MapClusteringProps } from 'react-native-map-clustering'
 import styled from 'styled-components/native'
 import Supercluster from 'supercluster'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import {
   VenueMapCluster,
   VenueMapClusterProps,
@@ -20,7 +21,6 @@ import { MARKER_LABEL_VISIBILITY_LIMIT } from 'features/venueMap/constant'
 import { getClusterColorByDominantVenueType } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantVenueType'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import MapView, { Map, MapViewProps } from 'libs/maps/maps'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { Marker } from './Marker/Marker'
@@ -85,7 +85,7 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
               venues.find((venue) => venue.venueId.toString() === leaf.properties.identifier)
                 ?.venue_type
           )
-          .filter((venueType): venueType is VenueTypeCode => !!venueType) ?? []
+          .filter((venueType): venueType is VenueTypeCodeKey => !!venueType) ?? []
       return (
         <VenueMapCluster
           key={clusterProps.properties.cluster_id}
@@ -136,7 +136,6 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
         radius={50}
         animationEnabled={false}
         testID="venue-map-view"
-        showsPointsOfInterest={false}
         customMapStyle={CUSTOM_MAP_STYLES}
         {...mapProps}>
         {venues.map((venue) => (

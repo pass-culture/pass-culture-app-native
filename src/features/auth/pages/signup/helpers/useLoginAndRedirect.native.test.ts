@@ -2,10 +2,11 @@ import { format } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { replace } from '__mocks__/@react-navigation/native'
-import { EligibilityType, UserProfileResponse } from 'api/gen'
+import { EligibilityType } from 'api/gen'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
@@ -42,7 +43,7 @@ describe('useLoginAndRedirect', () => {
 
   it('should login user', async () => {
     mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
-    mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
 
     await loginAndRedirect()
 
@@ -51,7 +52,7 @@ describe('useLoginAndRedirect', () => {
 
   it('should redirect to DisableActivation when disableActivation is true', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
-    mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
     await loginAndRedirect()
 
     jest.advanceTimersByTime(2000)
@@ -63,7 +64,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
-    mockServer.getApi<UserProfileResponse>('/v1/me', {
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -80,7 +81,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade and user is 15 or 16 yo', async () => {
-    mockServer.getApi<UserProfileResponse>('/v1/me', {
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -97,7 +98,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 17 or 18 yo', async () => {
-    mockServer.getApi<UserProfileResponse>('/v1/me', {
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -114,7 +115,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
-    mockServer.getApi<UserProfileResponse>('/v1/me', {
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -129,7 +130,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
-    mockServer.getApi<UserProfileResponse>('/v1/me', {
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -146,7 +147,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated on error', async () => {
-    mockServer.getApi<UserProfileResponse>('/v1/me', {
+    mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
       responseOptions: { statusCode: 404 },
     })
     await loginAndRedirect()
@@ -158,7 +159,7 @@ describe('useLoginAndRedirect', () => {
 
   describe('AppsFlyer events', () => {
     it('should log event when account creation is completed', async () => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
+      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', nonBeneficiaryUser)
       await loginAndRedirect()
 
       expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
@@ -172,7 +173,7 @@ describe('useLoginAndRedirect', () => {
     })
 
     it('should log af_underage_user event when user is underage', async () => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', {
+      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
         ...nonBeneficiaryUser,
         birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
       })
@@ -186,7 +187,7 @@ describe('useLoginAndRedirect', () => {
     })
 
     it('should not log af_underage_user event when user is not underage', async () => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', {
+      mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', {
         ...nonBeneficiaryUser,
         birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
       })

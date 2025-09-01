@@ -1,7 +1,8 @@
-import { OfferResponseV2, UserProfileResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/hasEnoughCredit'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
@@ -55,7 +56,7 @@ export const useHasEnoughCredit = (
     RoundUnit.UNITS
   )
 
-  const userDomaineCreditInPacificFranc: UserProfileResponse['domainsCredit'] = {
+  const userDomaineCreditInPacificFranc: UserProfileResponseWithoutSurvey['domainsCredit'] = {
     all: convertDomainCreditToPacificFranc(user.domainsCredit.all, euroToPacificFrancRate),
   }
 
