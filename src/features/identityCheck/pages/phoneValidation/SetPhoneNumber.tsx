@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
@@ -58,7 +57,6 @@ export const SetPhoneNumber = () => {
     showModal: showTipsModal,
     hideModal: hideTipsModal,
   } = useModal(true)
-  const phoneNumberInputErrorId = uuidv4()
 
   useEffect(() => {
     showTipsModal()
@@ -131,13 +129,12 @@ export const SetPhoneNumber = () => {
                   onChangeText={onChangeText}
                   textContentType="telephoneNumber"
                   onSubmitEditing={requestSendPhoneValidationCode}
-                  accessibilityDescribedBy={phoneNumberInputErrorId}
+                  accessibilityHint={invalidPhoneNumberMessage}
                   leftComponent={<CountryPicker selectedCountry={country} onSelect={setCountry} />}
                   testID="Entrée pour le numéro de téléphone"
                 />
               </InputContainer>
               <InputError
-                relatedInputId={phoneNumberInputErrorId}
                 visible={!!invalidPhoneNumberMessage}
                 messageId={invalidPhoneNumberMessage}
                 numberOfSpacesTop={3}

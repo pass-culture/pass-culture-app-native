@@ -15,7 +15,7 @@ import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 interface FilterSwitchProps {
   active: boolean
   checkboxID?: string
-  accessibilityDescribedBy?: string
+  accessibilityHint?: string
   accessibilityLabel?: string
   accessibilityLabelledBy?: string
   disabled?: boolean
@@ -65,7 +65,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
           checked: active,
           label: props.accessibilityLabel,
         })}
-        accessibilityDescribedBy={props.accessibilityDescribedBy}
+        accessibilityHint={props.accessibilityHint}
         accessibilityLabelledBy={props.accessibilityLabelledBy}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -141,6 +141,6 @@ const propsAreEqual = (
   prevProps.disabled === nextProps.disabled &&
   prevProps.checkboxID === nextProps.checkboxID &&
   prevProps.accessibilityLabelledBy === nextProps.accessibilityLabelledBy &&
-  prevProps.accessibilityDescribedBy === nextProps.accessibilityDescribedBy
+  prevProps.accessibilityHint === nextProps.accessibilityHint
 
 export default memo(FilterSwitch, propsAreEqual)

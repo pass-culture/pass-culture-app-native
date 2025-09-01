@@ -2,7 +2,6 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -35,7 +34,8 @@ export const ChangeAddress = () => {
     buttonWording,
   } = useSubmitChangeAddress()
 
-  const addressInputErrorId = uuidv4()
+  const errorMessage =
+    'Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces.'
 
   return (
     <PageWithHeader
@@ -59,7 +59,7 @@ export const ChangeAddress = () => {
                     format="34 avenue de l’Opéra"
                     autoComplete="street-address"
                     textContentType="fullStreetAddress"
-                    accessibilityDescribedBy={addressInputErrorId}
+                    accessibilityHint={errorMessage}
                     onPressRightIcon={resetSearch}
                     returnKeyType="next"
                     testID="Entrée pour l’adresse"
@@ -67,12 +67,7 @@ export const ChangeAddress = () => {
                   />
                 )}
               />
-              <InputError
-                visible={hasError}
-                messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
-                numberOfSpacesTop={2}
-                relatedInputId={addressInputErrorId}
-              />
+              <InputError visible={hasError} messageId={errorMessage} numberOfSpacesTop={2} />
             </Container>
           </Form.MaxWidth>
           {shouldShowAddressResults ? (

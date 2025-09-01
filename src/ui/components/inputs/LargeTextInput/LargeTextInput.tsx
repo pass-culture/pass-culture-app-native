@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -31,9 +30,10 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
   },
   forwardedRef
 ) => {
-  const feedbackInAppInputErrorId = uuidv4()
-
   const maxValueLength = maxLength ?? 800
+  const computedErrorMessage = showErrorMessage
+    ? (errorMessage ?? 'Tu as atteint le nombre de caractères maximal.')
+    : undefined
 
   return (
     <React.Fragment>
@@ -43,7 +43,7 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
         onChangeText={onChangeText}
         containerStyle={{ height: containerHeight ?? getSpacing(50) }}
         multiline
-        accessibilityDescribedBy={feedbackInAppInputErrorId}
+        accessibilityHint={computedErrorMessage}
         maxLength={maxValueLength + 25}
         ref={forwardedRef}
         {...inputProps}
@@ -52,8 +52,7 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
         <InputErrorContainer>
           <InputError
             visible={!!showErrorMessage}
-            messageId={errorMessage ?? 'Tu as atteint le nombre de caractères maximal.'}
-            relatedInputId={feedbackInAppInputErrorId}
+            messageId={computedErrorMessage}
             numberOfSpacesTop={0}
           />
         </InputErrorContainer>

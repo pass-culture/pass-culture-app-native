@@ -730,7 +730,8 @@ describe('<BookingDetails />', () => {
     })
 
     const deductedAmountMessage = await screen.findByText(
-      '20 € seront déduits de ton crédit pass Culture'
+      '20 € seront déduits de ton crédit pass Culture',
+      { hidden: true }
     )
 
     expect(deductedAmountMessage).toBeOnTheScreen()

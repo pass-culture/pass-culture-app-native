@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import { DateInputDesktop } from 'ui/components/inputs/DateInput/atoms/DateInputDesktop.web'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
@@ -17,8 +16,6 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
   maximumDate,
   errorMessage,
 }) => {
-  const birthdateInputErrorId = uuidv4()
-
   return (
     <React.Fragment>
       <DateInputDesktop
@@ -26,15 +23,9 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
         onChange={onChange}
         minimumDate={minimumDate}
         maximumDate={maximumDate}
-        accessibilityDescribedBy={birthdateInputErrorId}
         errorMessage={errorMessage}
       />
-      <InputError
-        visible={!!errorMessage}
-        messageId={errorMessage}
-        numberOfSpacesTop={2}
-        relatedInputId={birthdateInputErrorId}
-      />
+      <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={2} />
       <Spacer.Column numberOfSpaces={errorMessage ? 10 : 4} />
     </React.Fragment>
   )

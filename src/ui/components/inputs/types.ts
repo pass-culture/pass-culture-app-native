@@ -8,7 +8,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type InputProps = {
   label?: string
-  accessibilityDescribedBy?: string
+  accessibilityHint?: string
   focusOutlineColor?: ColorsType
 }
 
@@ -49,7 +49,7 @@ export type RNTextInputProps = Pick<
   /* react-native-web's TextInput supports the prop "disabled"
    * which adds the web property "disabled" (not focusable) to the input
    * https://github.com/necolas/react-native-web/commit/fc033a3161be76224d120dec7aab7009e9414fa7 */
-  | 'accessibilityDescribedBy'
+  | 'accessibilityHint'
   | 'accessibilityHidden'
   | 'accessibilityLabel'
   | 'accessibilityRequired'
@@ -92,7 +92,7 @@ export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 function getInputProps<Props extends InputProps>(props: Props): InputProps {
   return {
     label: props.label,
-    accessibilityDescribedBy: props.accessibilityDescribedBy,
+    accessibilityHint: props.accessibilityHint,
     focusOutlineColor: props.focusOutlineColor,
   }
 }

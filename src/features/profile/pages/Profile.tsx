@@ -2,7 +2,6 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
@@ -73,7 +72,6 @@ const OnlineProfile: React.FC = () => {
   const signOut = useLogoutRoutine()
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
-  const locationActivationErrorId = uuidv4()
   const userAge = getAge(user?.birthDate)
   const {
     data: { displayInAppFeedback },
@@ -196,7 +194,7 @@ const OnlineProfile: React.FC = () => {
                       iconSize={SECTION_ROW_ICON_SIZE}
                       title="Activer ma géolocalisation"
                       active={isGeolocSwitchActive}
-                      accessibilityDescribedBy={locationActivationErrorId}
+                      accessibilityHint={geolocPositionError?.message}
                       toggle={() => {
                         switchGeolocation()
                         debouncedLogLocationToggle(!isGeolocSwitchActive)
@@ -207,7 +205,6 @@ const OnlineProfile: React.FC = () => {
                       visible={!!geolocPositionError}
                       messageId={geolocPositionError?.message}
                       numberOfSpacesTop={1}
-                      relatedInputId={locationActivationErrorId}
                     />
                   </LiWithMarginVertical>
                 </VerticalUl>

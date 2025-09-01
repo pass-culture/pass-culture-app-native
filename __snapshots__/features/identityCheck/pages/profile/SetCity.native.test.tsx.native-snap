@@ -295,6 +295,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLabel="Indique ton code postal et choisis ta ville"
                           style={
                             {
                               "color": "#161617",
@@ -366,7 +367,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                     testID="styled-input-container"
                   >
                     <TextInput
-                      accessibilityDescribedBy="testUuidV4"
                       accessibilityHidden={false}
                       autoComplete="postal-code"
                       autoCorrect={false}

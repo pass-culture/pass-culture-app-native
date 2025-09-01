@@ -100,7 +100,9 @@ describe('<FavoritesSorts/>', () => {
     await user.press(screen.getByText('Proximité géographique'))
 
     expect(
-      screen.getByText(GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED])
+      screen.getByText(GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED], {
+        hidden: true,
+      })
     ).toBeOnTheScreen()
   })
 

@@ -306,6 +306,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLabel="Ma suggestion"
                         style={
                           {
                             "color": "#161617",
@@ -364,7 +365,6 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     testID="styled-input-container"
                   >
                     <TextInput
-                      accessibilityDescribedBy="testUuidV4"
                       accessibilityRequired={true}
                       editable={true}
                       isEmpty={true}

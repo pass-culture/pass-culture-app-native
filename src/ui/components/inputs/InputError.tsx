@@ -44,4 +44,5 @@ export const InputError: FC<Props> = ({
 
 const Container = styled.View<{ numberOfSpacesTop: number }>(({ numberOfSpacesTop }) => ({
   marginTop: numberOfSpacesTop,
+  width: '100%',
 }))

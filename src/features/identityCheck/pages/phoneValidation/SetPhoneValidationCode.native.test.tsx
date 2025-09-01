@@ -115,7 +115,8 @@ describe('SetPhoneValidationCode', () => {
 
     expect(
       screen.getByText(
-        'Le code est invalide. Saisis le dernier code reçu par SMS. Il te reste 4 tentatives.'
+        'Le code est invalide. Saisis le dernier code reçu par SMS. Il te reste 4 tentatives.',
+        { hidden: true }
       )
     ).toBeOnTheScreen()
   })

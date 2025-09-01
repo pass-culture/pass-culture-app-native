@@ -13,7 +13,6 @@ interface Props<TFieldValues extends FieldValues, TName>
   placeholder?: string
   rightLabel?: string
   isDisabled?: boolean
-  accessibilityId: string
 }
 
 export const PriceInputController = <
@@ -26,7 +25,6 @@ export const PriceInputController = <
   placeholder,
   rightLabel,
   isDisabled,
-  accessibilityId,
   ...textInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   return (
@@ -44,7 +42,7 @@ export const PriceInputController = <
             rightLabel={rightLabel}
             disabled={isDisabled}
             isError={!!error && value.length > 0}
-            accessibilityDescribedBy={accessibilityId}
+            accessibilityHint={error?.message}
             keyboardType="numeric"
             autoCapitalize="none"
             autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
@@ -54,7 +52,6 @@ export const PriceInputController = <
           <InputError
             visible={!!error}
             messageId={error?.message}
-            relatedInputId={accessibilityId}
             numberOfSpacesTop={getSpacing(0.5)}
           />
         </React.Fragment>

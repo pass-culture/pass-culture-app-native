@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`NotificationsSettings should render correctly 1`] = `
 .c4 {
@@ -857,7 +857,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               class="css-view-175oi2r r-height-3da1kt"
             />
             <button
-              aria-label="Enregistrer les modifications"
+              aria-label="Enregistrer"
               class="c4 c5"
               data-testid="Enregistrer les modifications"
               disabled=""

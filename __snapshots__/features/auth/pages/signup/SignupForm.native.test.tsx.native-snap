@@ -298,6 +298,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLabel="Adresse e-mail"
                     style={
                       {
                         "color": "#161617",
@@ -359,7 +360,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 testID="styled-input-container"
               >
                 <TextInput
-                  accessibilityDescribedBy="testUuidV4"
                   autoCapitalize="none"
                   autoComplete="email"
                   editable={true}
@@ -1106,6 +1106,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               }
             >
               <Text
+                accessibilityLabel="Mot de passe"
                 style={
                   {
                     "color": "#161617",
@@ -1147,7 +1148,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             testID="styled-input-container"
           >
             <TextInput
-              accessibilityDescribedBy="testUuidV4"
               accessibilityRequired={false}
               autoCapitalize="none"
               autoFocus={true}
@@ -2124,6 +2124,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
               testID="styled-input-container"
             >
               <Text
+                accessibilityLabel="1er décembre 2006"
                 nativeID="testUuidV4"
                 style={
                   {
@@ -2139,7 +2140,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
             </View>
           </View>
           <RNDatePicker
-            accessibilityDescribedBy="testUuidV4"
             appTheme={
               {
                 "activeOpacity": 0.7,
@@ -3642,8 +3642,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           }
         />
         <View
-          accessibilityHint="testUuidV4"
-          accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+          accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
           accessibilityState={
             {
               "busy": undefined,
@@ -3700,7 +3699,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               },
             ]
           }
-          testID="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+          testID="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
         >
           <View
             style={

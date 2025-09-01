@@ -779,6 +779,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                     >
                       <Text
+                        accessibilityLabel="Prix minimum (en €)"
                         style={
                           {
                             "color": "#161617",
@@ -820,7 +821,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     testID="styled-input-container"
                   >
                     <TextInput
-                      accessibilityDescribedBy="testUuidV4"
                       autoCapitalize="none"
                       autoComplete="off"
                       disabled={false}
@@ -884,6 +884,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     }
                   >
                     <Text
+                      accessibilityLabel="Prix maximum (en €)"
                       style={
                         {
                           "color": "#161617",
@@ -937,7 +938,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   testID="styled-input-container"
                 >
                   <TextInput
-                    accessibilityDescribedBy="testUuidV4"
                     autoCapitalize="none"
                     autoComplete="off"
                     disabled={false}
