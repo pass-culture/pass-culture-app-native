@@ -73,6 +73,7 @@ const NestedBullet = styled(Dot).attrs(({ theme }) => ({
 const BulletContainer = styled.View(({ theme }) => ({
   height: getLineHeightPx(theme.designSystem.typography.body.lineHeight, theme.isDesktopViewport),
   justifyContent: 'center',
+  alignSelf: 'center',
 }))
 
 const ListText = styled(Typo.Body)({

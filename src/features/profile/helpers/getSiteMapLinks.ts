@@ -9,7 +9,7 @@ type SubPage = {
   isLoggedIn: boolean
 }
 
-type SiteMap = SubPage & { subPages: SubPage[] }
+export type SiteMap = SubPage & { subPages: SubPage[] }
 
 const toInternalNavigationProps = ([screen, params]: ReturnType<typeof getTabHookConfig>) => ({
   screen,
