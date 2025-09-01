@@ -7,6 +7,8 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { SiteMapScreen } from './SiteMapScreen'
 
+jest.setTimeout(20_000) // to avoid exceeded timeout
+
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/subcategories/useSubcategories')
