@@ -5,7 +5,7 @@ import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { Marker as MapMarker, MapMarkerProps } from 'libs/maps/maps'
 
-import { MARKER_SIZE } from '../../../constant'
+import { LABEL_HEIGHT, MARKER_SIZE } from '../../../constant'
 import { VenueMapLabel } from '../../VenueMapLabel/VenueMapLabel'
 
 const PIN_MAX_Z_INDEX = 10_000
@@ -32,6 +32,6 @@ export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerPr
 
 const CustomMarker = styled(MapMarker)({
   minWidth: MARKER_SIZE.width,
-  height: MARKER_SIZE.height,
+  height: MARKER_SIZE.height + LABEL_HEIGHT,
   width: 'auto',
 })
