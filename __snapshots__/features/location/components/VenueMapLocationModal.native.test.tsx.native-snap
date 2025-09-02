@@ -391,7 +391,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
           }
           testID="fullscreenModalView"
         >
-          <View
+          <RCTScrollView
             style={
               {
                 "marginTop": 24,
@@ -399,186 +399,97 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
               }
             }
           >
-            <RCTScrollView
-              collapsable={false}
-              data={
-                [
+            <View>
+              <View
+                accessibilityRole="list"
+                style={
                   {
-                    "accessibilityLabel": "Utiliser ma position actuelle",
-                    "component": <LocationModalButton
-                      color="default"
-                      icon={
-                        {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": [
-                            [Function],
-                          ],
-                          "inlineStyle": e {
-                            "rules": [],
-                          },
-                          "render": [Function],
-                          "shouldForwardProp": undefined,
-                          "styledComponentId": true,
-                          "target": [Function],
-                        }
-                      }
-                      onPress={[Function]}
-                      title="Utiliser ma position actuelle"
-                    />,
-                    "id": "aroundMeButton",
-                    "wrapInLi": true,
-                  },
-                  {
-                    "component": <Styled(Styled(View)) />,
-                    "id": "separator1",
-                    "wrapInLi": false,
-                  },
-                  {
-                    "accessibilityLabel": "Choisir une localisation, Ville, code postal, adresse",
-                    "component": <LocationModalButton
-                      color="default"
-                      icon={
-                        {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": [
-                            [Function],
-                          ],
-                          "inlineStyle": e {
-                            "rules": [],
-                          },
-                          "render": [Function],
-                          "shouldForwardProp": undefined,
-                          "styledComponentId": true,
-                          "target": [Function],
-                        }
-                      }
-                      onPress={[Function]}
-                      subtitle="Ville, code postal, adresse"
-                      title="Choisir une localisation"
-                    />,
-                    "id": "aroundPlaceButton",
-                    "wrapInLi": true,
-                  },
-                ]
-              }
-              getItem={[Function]}
-              getItemCount={[Function]}
-              handlerTag={1}
-              handlerType="NativeViewGestureHandler"
-              keyExtractor={[Function]}
-              listAs="ul"
-              onContentSizeChange={[Function]}
-              onGestureHandlerEvent={[Function]}
-              onGestureHandlerStateChange={[Function]}
-              onLayout={[Function]}
-              onMomentumScrollBegin={[Function]}
-              onMomentumScrollEnd={[Function]}
-              onScroll={[Function]}
-              onScrollBeginDrag={[Function]}
-              onScrollEndDrag={[Function]}
-              removeClippedSubviews={false}
-              renderItem={[Function]}
-              renderScrollComponent={[Function]}
-              scrollEventThrottle={0.0001}
-              showsVerticalScrollIndicator={false}
-              stickyHeaderIndices={[]}
-              viewabilityConfigCallbackPairs={[]}
-            >
-              <View>
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
+                }
+              >
                 <View
-                  onFocusCapture={[Function]}
-                  onLayout={[Function]}
-                  style={null}
+                  accessibilityRole="none"
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
                 >
                   <View
-                    accessibilityLabel="Utiliser ma position actuelle"
-                    accessibilityRole="none"
-                    style={
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "display": "flex",
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                   >
                     <View
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
+                      gap={2}
                       style={
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "opacity": 1,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 8,
+                        }
                       }
                     >
                       <View
-                        gap={2}
+                        fill="none"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <Text
+                        color="default"
                         style={
                           {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "gap": 8,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           }
                         }
                       >
-                        <View
-                          fill="none"
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <Text
-                          color="default"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Utiliser ma position actuelle
-                        </Text>
-                      </View>
+                        Utiliser ma position actuelle
+                      </Text>
                     </View>
                   </View>
-                </View>
-                <View
-                  onFocusCapture={[Function]}
-                  onLayout={[Function]}
-                  style={null}
-                >
                   <View
                     style={
                       {
@@ -591,110 +502,103 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   />
                 </View>
                 <View
-                  onFocusCapture={[Function]}
-                  onLayout={[Function]}
-                  style={null}
+                  accessibilityRole="none"
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
                 >
                   <View
-                    accessibilityLabel="Choisir une localisation, Ville, code postal, adresse"
-                    accessibilityRole="none"
-                    style={
+                    accessibilityRole="button"
+                    accessibilityState={
                       {
-                        "display": "flex",
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                   >
                     <View
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
+                      gap={2}
                       style={
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "opacity": 1,
-                          },
-                        ]
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 8,
+                        }
                       }
                     >
                       <View
-                        gap={2}
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "gap": 8,
-                          }
-                        }
+                        fill="none"
+                        height={24}
+                        width={24}
                       >
-                        <View
-                          fill="none"
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <Text
-                          color="default"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Choisir une localisation
+                        <Text>
+                          undefined-SVG-Mock
                         </Text>
                       </View>
                       <Text
+                        color="default"
                         style={
                           {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                            "marginTop": 4,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
                           }
                         }
                       >
-                        Ville, code postal, adresse
+                        Choisir une localisation
                       </Text>
                     </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "marginTop": 4,
+                        }
+                      }
+                    >
+                      Ville, code postal, adresse
+                    </Text>
                   </View>
                 </View>
               </View>
-            </RCTScrollView>
-          </View>
+            </View>
+          </RCTScrollView>
         </View>
         <View
           style={
