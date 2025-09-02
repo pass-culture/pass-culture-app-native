@@ -10,7 +10,7 @@ import { Platform, StatusBar } from 'react-native'
 import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
-import { linking } from 'features/navigation/RootNavigator/linking'
+import { linking } from 'features/navigation/RootNavigator/linking/linking'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { useColorScheme } from 'libs/styled/useColorScheme'
