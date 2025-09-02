@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import {
   FEEDBACK_IN_APP_VALUE_MAX_LENGTH,

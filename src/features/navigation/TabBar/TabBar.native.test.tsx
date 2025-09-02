@@ -4,7 +4,6 @@ import React from 'react'
 
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
@@ -20,6 +19,7 @@ import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
+import { getTabHookConfig } from './getTabHookConfig'
 import { TabBar } from './TabBar'
 
 jest.mock('libs/network/NetInfoWrapper')

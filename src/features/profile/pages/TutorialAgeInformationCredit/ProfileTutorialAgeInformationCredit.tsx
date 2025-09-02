@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { CreditTimelineV3 } from 'features/onboarding/components/CreditTimelineV3'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'

@@ -1,10 +1,10 @@
-jest.mock('features/navigation/TabBar/helpers', () => ({
+jest.mock('features/navigation/TabBar/getTabHookConfig', () => ({
   getTabHookConfig: jest.fn((name, config) => ({ name, config })),
 }))
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { getTabNavigatorConfig } from 'features/navigation/RootNavigator/Header/getTabNavigatorConfig'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { TabStateRoute } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationMode } from 'libs/location/types'

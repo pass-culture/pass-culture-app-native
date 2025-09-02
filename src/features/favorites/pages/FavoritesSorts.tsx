@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
