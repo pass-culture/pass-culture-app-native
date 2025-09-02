@@ -40,8 +40,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn:
-          point: ${output.button.ios.booking}
+      - tapOn: ${output.button.ios.booking}
 - assertVisible: 'Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.'
 
 - waitForAnimationToEnd

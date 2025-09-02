@@ -43,8 +43,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn:
-          point: ${output.button.ios.booking}
+      - tapOn: "Réserver l’offre"
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'

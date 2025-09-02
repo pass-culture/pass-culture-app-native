@@ -15,3 +15,9 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'E-mail ou mot de passe incorrect'
 - tapOn: 'Revenir en arrière' # Permet de réinitialiser les forms
+
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    commands:
+      - tapOn: 'Plus tard'

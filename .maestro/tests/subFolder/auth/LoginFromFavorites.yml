@@ -18,9 +18,9 @@ appId: ${MAESTRO_APP_ID}
 
 - waitForAnimationToEnd
 
-- runFlow: # Si apparition du QPI
+- runFlow:
     when:
-      visible: 'Prends 1 minute'
+      visible: 'Plus tard'
     commands:
       - tapOn: 'Plus tard'
 
