@@ -10,6 +10,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { SearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/SearchInVenueModal'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
 import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
@@ -30,13 +31,18 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
+import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
-
+  const {
+    visible: searchInVenueModalVisible,
+    hideModal: hideSearchInVenueModal,
+    showModal: showSearchInVenueModal,
+  } = useModal(false)
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -106,7 +112,10 @@ export const Venue: FunctionComponent = () => {
 
   return venue ? (
     <OfferCTAProvider>
-      <VenueContent venue={venue} isCTADisplayed={isCTADisplayed}>
+      <VenueContent
+        venue={venue}
+        isCTADisplayed={isCTADisplayed}
+        showSearchInVenueModal={showSearchInVenueModal}>
         <VenueTopComponent venue={venue} />
         <ViewGap gap={isDesktopViewport ? 10 : 6}>
           <Animated.View layout={Layout.duration(200)}>
@@ -128,6 +137,10 @@ export const Venue: FunctionComponent = () => {
           </Animated.View>
         </ViewGap>
       </VenueContent>
+      <SearchInVenueModal
+        visible={searchInVenueModalVisible}
+        dismissModal={hideSearchInVenueModal}
+      />
     </OfferCTAProvider>
   ) : null
 }

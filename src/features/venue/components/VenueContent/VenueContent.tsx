@@ -24,6 +24,7 @@ type Props = {
   venue: VenueResponse
   isCTADisplayed?: boolean
   children: React.ReactNode
+  showSearchInVenueModal: () => void
 }
 
 const trackEventHasSeenVenueForSurvey = () =>
@@ -33,6 +34,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   venue,
   isCTADisplayed,
   children,
+  showSearchInVenueModal,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -83,6 +85,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
       <VenueCTA
         searchNavigationConfig={searchNavigationConfig}
         onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
+        showSearchInVenueModal={showSearchInVenueModal}
       />
     ) : null
   }, [
@@ -92,6 +95,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     venue.id,
     wording.length,
     searchNavigationConfig,
+    showSearchInVenueModal,
   ])
 
   return (
