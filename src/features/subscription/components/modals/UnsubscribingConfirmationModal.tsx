@@ -45,6 +45,7 @@ const StyledButtonContainer = styled(ViewGap)({
   width: '100%',
   marginTop: getSpacing(6),
   marginBottom: getSpacing(4),
+  alignItems: 'center',
 })
 
 const StyledBody = styled(Typo.Body)({

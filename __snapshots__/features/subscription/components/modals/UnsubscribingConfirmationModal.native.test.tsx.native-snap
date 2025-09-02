@@ -367,6 +367,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                   gap={2}
                   style={
                     {
+                      "alignItems": "center",
                       "gap": 8,
                       "marginBottom": 16,
                       "marginTop": 24,
