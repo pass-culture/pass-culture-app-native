@@ -13,12 +13,11 @@ export const BulletListItem: React.FC<{
   spacing?: number
   nestedListTexts?: string[] | React.ReactNode[]
   children?: React.ReactNode
-  alignBullet?: boolean
-}> = ({ text, spacing, nestedListTexts, children, alignBullet }) => {
+}> = ({ text, spacing, nestedListTexts, children }) => {
   return (
     <Li>
       <ItemContainer spacing={spacing}>
-        <BulletContainer alignBullet={alignBullet}>
+        <BulletContainer>
           <Bullet />
         </BulletContainer>
         <ListText>
@@ -32,7 +31,7 @@ export const BulletListItem: React.FC<{
             return (
               <Li key={idx}>
                 <NestedItemContainer spacing={spacing}>
-                  <BulletContainer alignBullet={alignBullet}>
+                  <BulletContainer>
                     <NestedBullet />
                   </BulletContainer>
                   <ListText>{itemText}</ListText>
@@ -71,10 +70,9 @@ const NestedBullet = styled(Dot).attrs(({ theme }) => ({
   fillColor: theme.designSystem.color.icon.lockedInverted,
 }))``
 
-const BulletContainer = styled.View<{ alignBullet?: boolean }>(({ theme, alignBullet }) => ({
+const BulletContainer = styled.View(({ theme }) => ({
   height: getLineHeightPx(theme.designSystem.typography.body.lineHeight, theme.isDesktopViewport),
   justifyContent: 'center',
-  alignSelf: alignBullet ? 'center' : undefined,
 }))
 
 const ListText = styled(Typo.Body)({
