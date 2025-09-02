@@ -7,7 +7,7 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
-import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'

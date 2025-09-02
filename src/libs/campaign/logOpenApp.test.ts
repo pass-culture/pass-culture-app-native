@@ -1,7 +1,7 @@
 import { TrackingStatus } from 'react-native-tracking-transparency'
 
 import { analytics } from 'libs/analytics/provider'
-import { campaignTracker, CampaignEvents } from 'libs/campaign'
+import { campaignTracker, CampaignEvents } from 'libs/campaign/campaign'
 import { logOpenAppRef, logOpenApp } from 'libs/campaign/logOpenApp'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
@@ -9,7 +9,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 const acceptedTracking: TrackingStatus[] = ['unavailable', 'authorized']
 const refusedTracking: TrackingStatus[] = ['denied', 'restricted', 'not-determined']
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 
 jest.mock('libs/firebase/analytics/analytics')
 

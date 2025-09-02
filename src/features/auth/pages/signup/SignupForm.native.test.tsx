@@ -31,7 +31,7 @@ import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
 

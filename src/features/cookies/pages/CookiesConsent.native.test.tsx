@@ -8,7 +8,7 @@ import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTracking
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics/provider'
-import { campaignTracker } from 'libs/campaign/__mocks__'
+import { campaignTracker } from 'libs/campaign/__mocks__/campaign'
 import { EmptyResponse } from 'libs/fetch'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
@@ -16,7 +16,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
