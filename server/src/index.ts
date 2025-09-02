@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-unresolved
 
 import { app } from './app'
-import { env } from './libs/environment/env'
+import { env } from './libs/environment/serverEnv'
 import { logger } from './utils/logging'
 
 const PORT = Number(process.env.PORT) || 8080

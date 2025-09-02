@@ -3,7 +3,7 @@ import { IncomingMessage, ServerResponse } from 'http'
 import { Request } from 'express'
 import { createProxyMiddleware, responseInterceptor } from 'http-proxy-middleware'
 
-import { env } from '../libs/environment/env'
+import { env } from '../libs/environment/serverEnv'
 import { ENTITY_MAP, EntityKeys } from '../services/entities/types'
 import { logger } from '../utils/logging'
 import { replaceHtmlMetas } from '../utils/metas'
