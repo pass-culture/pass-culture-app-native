@@ -11,7 +11,7 @@ import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { useSplashScreenContext } from 'libs/splashscreen'
+import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { useColorScheme } from 'libs/styled/useColorScheme'
 import { LoadingPage } from 'ui/pages/LoadingPage'

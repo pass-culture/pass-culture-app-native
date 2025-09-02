@@ -3,7 +3,7 @@ import { LayoutChangeEvent, Platform } from 'react-native'
 
 import { ScreenOrigin } from 'features/location/enums'
 import { useLocation } from 'libs/location'
-import { useSplashScreenContext } from 'libs/splashscreen'
+import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 
 const START_OFFSET = 1000

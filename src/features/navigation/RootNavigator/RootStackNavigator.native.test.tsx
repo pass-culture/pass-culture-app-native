@@ -3,7 +3,7 @@ import React from 'react'
 
 import { MustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useSplashScreenContext } from 'libs/splashscreen'
+import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
@@ -34,7 +34,8 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 jest.mock('features/navigation/helpers/useCurrentRoute', () => ({
   useCurrentRoute: () => ({ name: 'TabNavigator', key: 'key' }),
 }))
-jest.mock('libs/splashscreen')
+
+jest.mock('libs/splashscreen/splashscreen')
 
 jest.mock('libs/firebase/analytics/analytics')
 

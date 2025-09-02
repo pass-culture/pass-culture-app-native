@@ -7,7 +7,7 @@ import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('@react-navigation/native')
 
-jest.mock('libs/splashscreen')
+jest.mock('libs/splashscreen/splashscreen')
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
   useModal: () => ({
