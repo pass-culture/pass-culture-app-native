@@ -1,4 +1,4 @@
-import { useNavigationState } from '@react-navigation/native'
+import { useFocusEffect, useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
@@ -15,12 +15,19 @@ import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { analytics } from 'libs/analytics/provider'
+import { useAppStateChange } from 'libs/appState'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
+import {
+  resetPageTrackingInfo,
+  setPageTrackingInfo,
+  useOfferPlaylistTrackingStore,
+} from 'store/tracking/playlistTrackingStore'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
 
@@ -72,6 +79,33 @@ export const SearchResults = () => {
       refetch()
     }
   }, [refetch, shouldRefetchResults])
+
+  useEffect(() => {
+    setViewOfferTrackingFn(analytics.logViewItem)
+  }, [])
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!currentRoute) {
+        return
+      }
+      setPageTrackingInfo({
+        pageId: 'SearchResults',
+        pageLocation: currentRoute,
+      })
+    }, [currentRoute])
+  )
+
+  useAppStateChange(undefined, () => logViewItem(useOfferPlaylistTrackingStore.getState()))
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        logViewItem(useOfferPlaylistTrackingStore.getState())
+        resetPageTrackingInfo()
+      }
+    }, [])
+  )
 
   const handleEndReached = useCallback(() => {
     if (data && hasNextPage) {

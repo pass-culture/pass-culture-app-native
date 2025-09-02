@@ -81,6 +81,7 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
   moduleType,
   viewableItems,
   homeEntryId,
+  callId,
 }) => {
   setPlaylistTrackingInfo({
     index,
@@ -89,7 +90,7 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
     items: viewableItems,
     itemType: getItemTypeFromModuleType(moduleType),
     extra: { homeEntryId },
-    callId: '',
+    callId: callId ?? '',
   })
 }
 
