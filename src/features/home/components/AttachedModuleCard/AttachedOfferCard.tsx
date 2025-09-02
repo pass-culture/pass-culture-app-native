@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
 import { AttachedCardImage } from 'features/home/components/AttachedModuleCard/AttachedCardImage'
 import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { getDistance } from 'libs/location/getDistance'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {

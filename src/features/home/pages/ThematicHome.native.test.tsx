@@ -17,7 +17,7 @@ import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/help
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeolocPermissionState, ILocationContext } from 'libs/location'
+import { GeolocPermissionState, ILocationContext } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'

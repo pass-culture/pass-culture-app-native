@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { LayoutChangeEvent, Platform } from 'react-native'
 
 import { ScreenOrigin } from 'features/location/enums'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 

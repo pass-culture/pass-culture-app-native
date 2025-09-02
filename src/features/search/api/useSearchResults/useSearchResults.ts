@@ -18,7 +18,7 @@ import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptA
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 

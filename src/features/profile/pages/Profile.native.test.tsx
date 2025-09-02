@@ -25,7 +25,7 @@ import {
   GeolocPermissionState,
   GeolocPositionError,
   GeolocationError,
-} from 'libs/location'
+} from 'libs/location/location'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

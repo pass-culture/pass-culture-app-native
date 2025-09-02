@@ -4,7 +4,7 @@ import { RADIUS_FILTERS } from 'libs/algolia/enums/radiusFiltersEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 import { LocationMode } from 'libs/algolia/types'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 const { multipleQueries } = algoliasearch()
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }

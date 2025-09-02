@@ -1,7 +1,7 @@
 import { OffersModuleParameters } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { LocationMode } from 'libs/algolia/types'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 export const adaptOffersPlaylistLocationParameters = (
   parameters: OffersModuleParameters,

@@ -3,7 +3,7 @@ import { SearchResponse } from '@algolia/client-search'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 import { buildAlgoliaFilter, fetchOffersByArtist } from './fetchOffersByArtist'
 

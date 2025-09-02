@@ -14,7 +14,7 @@ import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVe
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { Offer } from 'shared/offer/types'

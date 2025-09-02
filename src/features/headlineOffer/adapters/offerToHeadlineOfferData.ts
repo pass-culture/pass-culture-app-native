@@ -1,5 +1,5 @@
 import { HeadlineOfferData } from 'features/headlineOffer/type'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import {
   formatStartPrice,

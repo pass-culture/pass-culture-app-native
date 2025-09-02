@@ -1,6 +1,6 @@
 import { LocationMode } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 export function getCurrentVenuesIndex({
   selectedLocationMode,

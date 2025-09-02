@@ -87,7 +87,7 @@ const mockOnPressBookOffer = jest.fn()
 
 let mockSelectedLocationMode = LocationMode.EVERYWHERE
 let mockPlace: SuggestedPlace | null = null
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: jest.fn(() => ({
     selectedLocationMode: mockSelectedLocationMode,
     place: mockPlace,

@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { Linking } from 'react-native'
 
 import { LocationState } from 'features/location/types'
-import { GeolocPermissionState } from 'libs/location'
+import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 type Props = {

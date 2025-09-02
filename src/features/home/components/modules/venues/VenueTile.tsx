@@ -10,7 +10,7 @@ import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/V
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { getDistance } from 'libs/location/getDistance'
 import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
 import { QueryKeys } from 'libs/queryKeys'

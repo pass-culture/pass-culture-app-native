@@ -1,7 +1,7 @@
 import algoliasearch from '__mocks__/algoliasearch'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { fetchMusicOffers } from 'features/search/pages/ThematicSearch/api/fetchMusicOffers'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 describe('fetchMusicOffers', () => {
   const { multipleQueries } = algoliasearch()

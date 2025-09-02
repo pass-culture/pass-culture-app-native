@@ -6,7 +6,7 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 

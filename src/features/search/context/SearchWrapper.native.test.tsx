@@ -7,7 +7,7 @@ import {
   GeolocPermissionState,
   LocationWrapper,
   useLocation,
-} from 'libs/location'
+} from 'libs/location/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'

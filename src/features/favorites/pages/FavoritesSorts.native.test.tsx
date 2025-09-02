@@ -11,7 +11,7 @@ import {
   GeolocationError,
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-} from 'libs/location'
+} from 'libs/location/location'
 import { render, screen, userEvent } from 'tests/utils'
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null

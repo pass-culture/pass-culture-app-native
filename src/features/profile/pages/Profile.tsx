@@ -20,7 +20,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { ScreenPerformance } from 'performance/ScreenPerformance'

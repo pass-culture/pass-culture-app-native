@@ -3,7 +3,11 @@ import { Button } from 'react-native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics/provider'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
+import {
+  checkGeolocPermission,
+  GeolocPermissionState,
+  LocationWrapper,
+} from 'libs/location/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place/types'

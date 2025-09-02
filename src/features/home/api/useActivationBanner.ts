@@ -1,5 +1,5 @@
 import { useBannerQuery } from 'features/home/queries/useBannerQuery'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 
 export function useActivationBanner() {

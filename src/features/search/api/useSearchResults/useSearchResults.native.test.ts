@@ -14,7 +14,7 @@ import {
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
+import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 

@@ -6,7 +6,7 @@ import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetSte
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { GeolocPermissionState } from 'libs/location'
+import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

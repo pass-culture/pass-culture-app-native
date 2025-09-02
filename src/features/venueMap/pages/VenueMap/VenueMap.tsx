@@ -15,7 +15,7 @@ import {
   setVenues,
 } from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 export const VenueMap: FunctionComponent = () => {

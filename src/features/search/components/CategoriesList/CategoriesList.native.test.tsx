@@ -46,7 +46,7 @@ const mockUseLocation = jest.fn(() => ({
   place: mockedPlace,
   onModalHideRef: jest.fn(),
 }))
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

@@ -21,7 +21,7 @@ import { VenueMapOfferPlaylist } from 'features/venueMap/components/VenueMapBott
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { getDistance } from 'libs/location/getDistance'
 import { parseType } from 'libs/parsers/venueType'
 import { Offer } from 'shared/offer/types'

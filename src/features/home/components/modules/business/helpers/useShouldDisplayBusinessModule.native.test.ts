@@ -1,6 +1,6 @@
 import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
 import { LocationCircleArea } from 'features/home/types'
-import { GeoCoordinates, Position } from 'libs/location'
+import { GeoCoordinates, Position } from 'libs/location/location'
 import { renderHook } from 'tests/utils'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
 import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 
 import { useVenuesQuery } from '../queries/useVenuesQuery'
 

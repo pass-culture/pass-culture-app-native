@@ -11,7 +11,7 @@ import {
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, OfferModuleQuery } from 'libs/algolia/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { Offer } from 'shared/offer/types'
 
 import { useOffersQuery } from '../queries/useOffersQuery'

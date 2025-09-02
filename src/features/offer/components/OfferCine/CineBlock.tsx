@@ -10,7 +10,7 @@ import { OfferEventCardList } from 'features/offer/components/OfferEventCardList
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { getDistance } from 'libs/location/getDistance'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 

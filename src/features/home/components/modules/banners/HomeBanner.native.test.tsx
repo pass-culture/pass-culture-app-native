@@ -6,7 +6,7 @@ import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ILocationContext, useLocation } from 'libs/location'
+import { ILocationContext, useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
@@ -21,7 +21,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 const mockUseGeolocation = jest.mocked(useLocation)
 
 jest.mock('shared/user/useGetDepositAmountsByAge')
