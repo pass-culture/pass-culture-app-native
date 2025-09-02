@@ -11,7 +11,6 @@ interface Props {
   icon?: React.FunctionComponent<AccessibleIcon>
   title: string
   description?: string
-  captionId?: string
   onPress: VoidFunction
   shouldColorIcon?: boolean
   complement?: string
@@ -21,7 +20,6 @@ export const FilterRow = ({
   icon: Icon,
   title,
   description,
-  captionId,
   onPress,
   shouldColorIcon,
   complement,
@@ -36,7 +34,7 @@ export const FilterRow = ({
     : undefined
 
   return (
-    <TouchableRow testID="FilterRow" onPress={onPress} accessibilityDescribedBy={captionId}>
+    <TouchableRow testID="FilterRow" onPress={onPress}>
       {StyledIcon ? (
         <IconContainer>
           <StyledIcon />

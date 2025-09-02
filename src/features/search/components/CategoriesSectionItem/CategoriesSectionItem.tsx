@@ -66,7 +66,6 @@ export const CategoriesSectionItem = <N,>({
             title={item.label}
             description={getDescription(subcategoriesData, descriptionContext, k)}
             onPress={() => handleSelect(itemKey)}
-            captionId={k}
             complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
           />
         </FilterRowContainer>
