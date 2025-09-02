@@ -67,7 +67,7 @@ export const ChangeAddress = () => {
                   />
                 )}
               />
-              <InputError visible={hasError} messageId={errorMessage} numberOfSpacesTop={2} />
+              <InputError visible={hasError} errorMessage={errorMessage} numberOfSpacesTop={2} />
             </Container>
           </Form.MaxWidth>
           {shouldShowAddressResults ? (

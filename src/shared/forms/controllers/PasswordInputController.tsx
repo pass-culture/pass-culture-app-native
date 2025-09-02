@@ -50,7 +50,7 @@ export const PasswordInputController = <
           ) : (
             <InputError
               visible={!!error && value.length > 0}
-              messageId={error?.message}
+              errorMessage={error?.message}
               numberOfSpacesTop={getSpacing(0.5)}
             />
           )}

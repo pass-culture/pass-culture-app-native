@@ -39,7 +39,7 @@ export const EmailInputController = <
             onSpellingHelpPress={onSpellingHelpPress}
             {...otherEmailInputProps}
           />
-          <InputError visible={!!error} messageId={error?.message} numberOfSpacesTop={2} />
+          <InputError visible={!!error} errorMessage={error?.message} numberOfSpacesTop={2} />
         </React.Fragment>
       )}
     />

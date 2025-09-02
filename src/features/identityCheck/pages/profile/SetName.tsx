@@ -101,7 +101,7 @@ export const SetName = () => {
                 />
                 <InputError
                   visible={firstName.length > 0 && !!error}
-                  messageId={error?.message}
+                  errorMessage={error?.message}
                   numberOfSpacesTop={2}
                 />
               </React.Fragment>
@@ -126,7 +126,7 @@ export const SetName = () => {
                 />
                 <InputError
                   visible={lastName.length > 0 && !!error}
-                  messageId={error?.message}
+                  errorMessage={error?.message}
                   numberOfSpacesTop={2}
                 />
               </React.Fragment>

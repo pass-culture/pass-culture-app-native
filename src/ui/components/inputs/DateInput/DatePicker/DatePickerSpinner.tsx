@@ -19,7 +19,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   return (
     <React.Fragment>
       <DateInputDisplay date={date} errorMessage={errorMessage} />
-      <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={2} />
+      <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={2} />
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
         date={date}

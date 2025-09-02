@@ -166,7 +166,11 @@ export const SetPhoneValidationCode = () => {
                 testID="Entrée pour le code reçu par sms"
               />
             </InputContainer>
-            <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={3} />
+            <InputError
+              visible={!!errorMessage}
+              errorMessage={errorMessage}
+              numberOfSpacesTop={3}
+            />
             <Spacer.Column numberOfSpaces={4} />
             <ButtonContainer>
               <ButtonTertiaryBlack

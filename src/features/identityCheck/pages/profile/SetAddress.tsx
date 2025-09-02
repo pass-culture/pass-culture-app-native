@@ -141,7 +141,7 @@ export const SetAddress = () => {
                 testID="Entrée pour l’adresse"
                 searchInputID="street-address-input"
               />
-              <InputError visible={hasError} messageId={errorMessage} numberOfSpacesTop={2} />
+              <InputError visible={hasError} errorMessage={errorMessage} numberOfSpacesTop={2} />
             </Container>
           </Form.MaxWidth>
           {isLoading ? <Spinner /> : null}

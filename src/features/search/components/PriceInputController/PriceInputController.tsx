@@ -51,7 +51,7 @@ export const PriceInputController = <
           />
           <InputError
             visible={!!error}
-            messageId={error?.message}
+            errorMessage={error?.message}
             numberOfSpacesTop={getSpacing(0.5)}
           />
         </React.Fragment>
