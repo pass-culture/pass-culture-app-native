@@ -23,7 +23,7 @@ describe('<PriceInputController />', () => {
       error: { type: 'custom', message: 'error' },
     })
 
-    expect(screen.getByText('error')).toBeOnTheScreen()
+    expect(screen.getByText('error', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should display custom error message when error is set', async () => {
@@ -34,7 +34,7 @@ describe('<PriceInputController />', () => {
     const input = screen.getByPlaceholderText('Prix')
     await user.type(input, 'abc')
 
-    expect(screen.getByText('Prix invalide')).toBeOnTheScreen()
+    expect(screen.getByText('Prix invalide', { hidden: true })).toBeOnTheScreen()
   })
 })
 
@@ -57,7 +57,6 @@ const renderPriceInputController = ({
         name="price"
         label="Prix"
         placeholder="Prix"
-        accessibilityId="price-input"
         isDisabled={isDisabled}
       />
     )

@@ -103,7 +103,9 @@ describe('<ForgottenPassword />', () => {
     await user.press(screen.getByText('Valider'))
 
     expect(recaptchaWebviewModal).not.toBeOnTheScreen()
-    expect(screen.getByText('Hors connexion : en attente du réseau.')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Hors connexion : en attente du réseau.', { hidden: true })
+    ).toBeOnTheScreen()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
@@ -176,7 +178,8 @@ describe('<ForgottenPassword />', () => {
 
     expect(
       screen.getByText(
-        'Un problème est survenu pendant la réinitialisation, vérifie ta connexion internet et réessaie plus tard.'
+        'Un problème est survenu pendant la réinitialisation, vérifie ta connexion internet et réessaie plus tard.',
+        { hidden: true }
       )
     ).toBeOnTheScreen()
   })
@@ -191,7 +194,9 @@ describe('<ForgottenPassword />', () => {
     await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     expect(
-      screen.getByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
+      screen.getByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.', {
+        hidden: true,
+      })
     ).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
@@ -211,7 +216,10 @@ describe('<ForgottenPassword />', () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
+        screen.getByText(
+          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.',
+          { hidden: true }
+        )
       ).toBeOnTheScreen()
       expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,
@@ -253,7 +261,8 @@ describe('<ForgottenPassword />', () => {
       expect(isEmailValid).toHaveReturnedWith(true)
       expect(
         screen.queryByText(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+          { hidden: true }
         )
       ).not.toBeOnTheScreen()
     })
@@ -269,7 +278,8 @@ describe('<ForgottenPassword />', () => {
 
       expect(
         screen.getByText(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+          { hidden: true }
         )
       ).toBeOnTheScreen()
     })

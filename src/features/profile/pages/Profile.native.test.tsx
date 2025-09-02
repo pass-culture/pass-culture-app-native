@@ -212,7 +212,8 @@ describe('Profile component', () => {
 
         expect(
           await screen.findByText(
-            GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED]
+            GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
+            { hidden: true }
           )
         ).toBeOnTheScreen()
       })

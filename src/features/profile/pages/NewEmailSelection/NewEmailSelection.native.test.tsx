@@ -170,7 +170,8 @@ describe('<NewEmailSelection />', () => {
 
       expect(
         screen.queryByText(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+          { hidden: true }
         )
       ).not.toBeOnTheScreen()
     })
@@ -184,7 +185,8 @@ describe('<NewEmailSelection />', () => {
 
       expect(
         screen.getByText(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+          { hidden: true }
         )
       ).toBeOnTheScreen()
     })

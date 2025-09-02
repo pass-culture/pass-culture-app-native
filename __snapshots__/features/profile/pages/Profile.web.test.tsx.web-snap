@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Profile/> should render correctly on desktop 1`] = `
 .c0 {
@@ -399,7 +399,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           </div>
                           <div
                             aria-checked="false"
-                            aria-describedby="testUuidV4"
                             aria-labelledby="testUuidV4"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                             data-testid="Interrupteur Activer ma géolocalisation"
@@ -426,7 +425,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      id="testUuidV4"
                       role="alert"
                     />
                   </li>
@@ -1485,7 +1483,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           </div>
                           <div
                             aria-checked="false"
-                            aria-describedby="testUuidV4"
                             aria-labelledby="testUuidV4"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                             data-testid="Interrupteur Activer ma géolocalisation"
@@ -1512,7 +1509,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      id="testUuidV4"
                       role="alert"
                     />
                   </li>

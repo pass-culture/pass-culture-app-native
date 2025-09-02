@@ -463,7 +463,8 @@ describe('<PriceModal/>', () => {
     await user.type(minPriceInput, '10,559')
 
     const inputError = screen.getByText(
-      `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
+      `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`,
+      { hidden: true }
     )
 
     expect(inputError).toBeOnTheScreen()
@@ -476,7 +477,8 @@ describe('<PriceModal/>', () => {
     await user.type(maxPriceInput, '10,559')
 
     const inputError = screen.getByText(
-      `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
+      `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`,
+      { hidden: true }
     )
 
     expect(inputError).toBeOnTheScreen()
@@ -543,12 +545,14 @@ describe('<PriceModal/>', () => {
 
     await user.type(minPriceInput, '9999')
 
-    expect(screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
+    ).toBeOnTheScreen()
 
     await user.press(onlyFreeOffersToggle)
 
     expect(
-      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
     ).not.toBeOnTheScreen()
   })
 
@@ -558,13 +562,15 @@ describe('<PriceModal/>', () => {
     const maxPriceInput = screen.getByPlaceholderText('80')
     await user.type(maxPriceInput, '9999')
 
-    expect(screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
+    ).toBeOnTheScreen()
 
     const onlyFreeOffersToggle = screen.getByTestId('Interrupteur onlyFreeOffers')
     await user.press(onlyFreeOffersToggle)
 
     expect(
-      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
     ).not.toBeOnTheScreen()
   })
 
@@ -574,13 +580,15 @@ describe('<PriceModal/>', () => {
     const maxPriceInput = screen.getByPlaceholderText('80')
     await user.type(maxPriceInput, '9999')
 
-    expect(screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
+    ).toBeOnTheScreen()
 
     const limitCreditSearchToggle = screen.getByTestId('Interrupteur limitCreditSearch')
     await user.press(limitCreditSearchToggle)
 
     expect(
-      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
     ).not.toBeOnTheScreen()
   })
 

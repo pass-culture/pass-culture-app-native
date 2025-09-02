@@ -37,7 +37,7 @@ export const PasswordInputController = <
             onChangeText={onChange}
             onBlur={onBlur}
             isRequiredField
-            accessibilityDescribedBy={passwordInputErrorId}
+            accessibilityHint={error?.message}
             isError={error && value.length > 0}
             {...otherPasswordInputProps}
           />
@@ -52,7 +52,6 @@ export const PasswordInputController = <
               visible={!!error && value.length > 0}
               messageId={error?.message}
               numberOfSpacesTop={getSpacing(0.5)}
-              relatedInputId={passwordInputErrorId}
             />
           )}
         </React.Fragment>

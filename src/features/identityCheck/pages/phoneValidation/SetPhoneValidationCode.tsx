@@ -3,7 +3,6 @@ import { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -96,8 +95,6 @@ export const SetPhoneValidationCode = () => {
   })
   const [errorMessage, setErrorMessage] = useState('')
 
-  const validationCodeInputErrorId = uuidv4()
-
   const { visible: isCodeNotReceivedModalVisible, hideModal, showModal } = useModal(false)
 
   const openMissingCodeModal = useCallback(() => {
@@ -165,16 +162,11 @@ export const SetPhoneValidationCode = () => {
                 autoComplete="one-time-code"
                 textContentType="oneTimeCode"
                 onSubmitEditing={validateCode}
-                accessibilityDescribedBy={validationCodeInputErrorId}
+                accessibilityHint={errorMessage}
                 testID="Entrée pour le code reçu par sms"
               />
             </InputContainer>
-            <InputError
-              visible={!!errorMessage}
-              messageId={errorMessage}
-              numberOfSpacesTop={3}
-              relatedInputId={validationCodeInputErrorId}
-            />
+            <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={3} />
             <Spacer.Column numberOfSpaces={4} />
             <ButtonContainer>
               <ButtonTertiaryBlack

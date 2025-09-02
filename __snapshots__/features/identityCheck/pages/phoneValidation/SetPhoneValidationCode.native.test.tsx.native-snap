@@ -325,6 +325,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLabel="Code de validation"
                           style={
                             {
                               "color": "#161617",
@@ -378,7 +379,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
-                        accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"
                         autoComplete="one-time-code"
                         editable={true}

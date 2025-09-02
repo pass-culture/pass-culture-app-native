@@ -288,6 +288,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                       }
                     >
                       <Text
+                        accessibilityLabel="Entre ton adresse - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                         style={
                           {
                             "color": "#161617",
@@ -359,7 +360,6 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                   testID="styled-input-container"
                 >
                   <TextInput
-                    accessibilityDescribedBy="testUuidV4"
                     accessibilityHidden={false}
                     autoComplete="street-address"
                     autoCorrect={false}
@@ -898,6 +898,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLabel="Entre ton adresse - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                         style={
                           {
                             "color": "#161617",
@@ -969,7 +970,6 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                   testID="styled-input-container"
                 >
                   <TextInput
-                    accessibilityDescribedBy="testUuidV4"
                     accessibilityHidden={false}
                     autoComplete="street-address"
                     autoCorrect={false}

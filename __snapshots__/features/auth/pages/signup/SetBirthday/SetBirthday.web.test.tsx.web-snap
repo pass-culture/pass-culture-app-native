@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 .c8 {
@@ -195,7 +195,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         class="css-view-175oi2r r-height-eu3ka"
       />
       <div
-        aria-describedby="testUuidV4"
         class="css-view-175oi2r r-flexDirection-18u37iz r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         data-testid="date-picker-dropdown"
       >
@@ -1380,7 +1379,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         </div>
       </div>
       <div
-        id="testUuidV4"
         role="alert"
       />
       <div
@@ -1534,6 +1532,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           data-testid="styled-input-container"
         >
           <div
+            aria-label="1er décembre 2006"
             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
             dir="ltr"
             id="testUuidV4"
@@ -1543,7 +1542,6 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         </div>
       </div>
       <div
-        id="testUuidV4"
         role="alert"
       />
       <div

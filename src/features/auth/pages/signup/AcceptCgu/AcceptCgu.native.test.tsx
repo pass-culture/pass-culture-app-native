@@ -203,7 +203,10 @@ describe('<AcceptCgu/>', () => {
     await waitFor(() => {
       expect(props.signUp).toHaveBeenCalledWith('fakeToken', false)
       expect(
-        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
+        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.', {
+          exact: false,
+          hidden: true,
+        })
       ).toBeOnTheScreen()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
@@ -222,7 +225,10 @@ describe('<AcceptCgu/>', () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
+        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.', {
+          exact: false,
+          hidden: true,
+        })
       ).toBeOnTheScreen()
       expect(props.signUp).not.toHaveBeenCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
@@ -243,7 +249,9 @@ describe('<AcceptCgu/>', () => {
     simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
     await waitFor(() => {
-      expect(screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeOnTheScreen()
+      expect(
+        screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.', { hidden: true })
+      ).toBeOnTheScreen()
       expect(props.signUp).not.toHaveBeenCalled()
       expect(navigate).not.toHaveBeenCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()

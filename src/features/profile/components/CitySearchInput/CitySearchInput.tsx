@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 import { object, string } from 'yup'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -60,7 +59,6 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
         })
     },
   })
-  const postalCodeInputId = uuidv4()
 
   const {
     control,
@@ -127,18 +125,13 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 format="75017"
                 onPressRightIcon={resetSearch}
                 keyboardType="number-pad"
-                accessibilityDescribedBy={postalCodeInputId}
+                accessibilityHint={error?.message}
                 testID="Entrée pour la ville"
                 autoComplete="postal-code"
                 textContentType="postalCode"
                 searchInputID="postal-code-input"
               />
-              <InputError
-                messageId={error?.message}
-                numberOfSpacesTop={2}
-                visible={!!error}
-                relatedInputId={postalCodeInputId}
-              />
+              <InputError messageId={error?.message} numberOfSpacesTop={2} visible={!!error} />
             </StyledView>
           )}
         />

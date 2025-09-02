@@ -170,6 +170,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         testID="styled-input-container"
       >
         <Text
+          accessibilityLabel="1er décembre 2006"
           nativeID="testUuidV4"
           style={
             {
@@ -185,7 +186,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       </View>
     </View>
     <RNDatePicker
-      accessibilityDescribedBy="testUuidV4"
       appTheme={
         {
           "activeOpacity": 0.7,
@@ -1015,6 +1015,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
         testID="styled-input-container"
       >
         <Text
+          accessibilityLabel="1er décembre 2006"
           nativeID="testUuidV4"
           style={
             {
@@ -1030,7 +1031,6 @@ exports[`<SetBirthday /> should render correctly when account creation token and
       </View>
     </View>
     <RNDatePicker
-      accessibilityDescribedBy="testUuidV4"
       appTheme={
         {
           "activeOpacity": 0.7,

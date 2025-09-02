@@ -86,7 +86,9 @@ describe('<ChangeEmailSetPassword />', () => {
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY321')
 
-    expect(await screen.findByText('Les mots de passe ne concordent pas')).toBeOnTheScreen()
+    expect(
+      await screen.findByText('Les mots de passe ne concordent pas', { hidden: true })
+    ).toBeOnTheScreen()
   })
 
   it('should navigate to email selection step on password creation success', async () => {

@@ -103,7 +103,9 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, '123456--')
     })
 
-    const notMatchingErrorText = screen.queryByText('Les mots de passe ne concordent pas')
+    const notMatchingErrorText = screen.queryByText('Les mots de passe ne concordent pas', {
+      hidden: true,
+    })
 
     expect(notMatchingErrorText).toBeOnTheScreen()
   })

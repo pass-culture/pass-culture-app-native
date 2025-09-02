@@ -122,7 +122,7 @@ describe('<SetEmail />', () => {
     })
     await user.press(screen.getByText('Continuer'))
 
-    expect(screen.queryByText(INCORRECT_EMAIL_MESSAGE)).not.toBeOnTheScreen()
+    expect(screen.queryByText(INCORRECT_EMAIL_MESSAGE, { hidden: true })).not.toBeOnTheScreen()
   })
 
   it('should reject invalid email when trying to submit', async () => {
@@ -135,7 +135,7 @@ describe('<SetEmail />', () => {
 
     await user.press(screen.getByText('Continuer'))
 
-    expect(screen.getByText(INCORRECT_EMAIL_MESSAGE)).toBeOnTheScreen()
+    expect(screen.getByText(INCORRECT_EMAIL_MESSAGE, { hidden: true })).toBeOnTheScreen()
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {

@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { v4 as uuidv4 } from 'uuid'
 
 import { isApiError } from 'api/apiHelpers'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
@@ -30,7 +29,6 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SetPhoneNumberWithoutValidation = () => {
-  const phoneNumberInputErrorId = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
   const { control, handleSubmit, getValues, setError, formState } = useForm<PhoneNumberFormValues>({
     resolver: yupResolver(phoneNumberSchema),
@@ -108,7 +106,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                     onChangeText={field.onChange}
                     onSubmitEditing={submit}
                     textContentType="telephoneNumber"
-                    accessibilityDescribedBy={phoneNumberInputErrorId}
+                    accessibilityHint={fieldState.error?.message}
                     leftComponent={
                       <Controller
                         name="countryId"
@@ -131,7 +129,6 @@ export const SetPhoneNumberWithoutValidation = () => {
                     visible={!!fieldState.error}
                     messageId={fieldState.error?.message}
                     numberOfSpacesTop={0}
-                    relatedInputId={phoneNumberInputErrorId}
                   />
                 </ViewGap>
               )}

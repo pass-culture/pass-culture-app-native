@@ -3,7 +3,6 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { v4 as uuidv4 } from 'uuid'
 
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
@@ -65,8 +64,6 @@ export const SetName = () => {
   const { firstName, lastName } = watch()
 
   const disabled = !formState.isValid
-  const firstNameInputErrorId = uuidv4()
-  const lastNameInputErrorId = uuidv4()
 
   async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
@@ -97,7 +94,7 @@ export const SetName = () => {
                   onChangeText={onChange}
                   placeholder="Ton prénom"
                   isRequiredField
-                  accessibilityDescribedBy={firstNameInputErrorId}
+                  accessibilityHint={error?.message}
                   testID="Entrée pour le prénom"
                   textContentType="givenName"
                   autoComplete="given-name"
@@ -106,7 +103,6 @@ export const SetName = () => {
                   visible={firstName.length > 0 && !!error}
                   messageId={error?.message}
                   numberOfSpacesTop={2}
-                  relatedInputId={firstNameInputErrorId}
                 />
               </React.Fragment>
             )}
@@ -123,7 +119,7 @@ export const SetName = () => {
                   onChangeText={onChange}
                   placeholder="Ton nom"
                   isRequiredField
-                  accessibilityDescribedBy={lastNameInputErrorId}
+                  accessibilityHint={error?.message}
                   testID="Entrée pour le nom"
                   textContentType="familyName"
                   autoComplete="family-name"
@@ -132,7 +128,6 @@ export const SetName = () => {
                   visible={lastName.length > 0 && !!error}
                   messageId={error?.message}
                   numberOfSpacesTop={2}
-                  relatedInputId={lastNameInputErrorId}
                 />
               </React.Fragment>
             )}

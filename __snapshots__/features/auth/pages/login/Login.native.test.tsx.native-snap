@@ -260,6 +260,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 }
               >
                 <Text
+                  accessibilityLabel="Adresse e-mail"
                   style={
                     {
                       "color": "#161617",
@@ -333,7 +334,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               testID="styled-input-container"
             >
               <TextInput
-                accessibilityDescribedBy="testUuidV4"
                 accessibilityRequired={true}
                 autoCapitalize="none"
                 autoComplete="email"
@@ -398,6 +398,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               }
             >
               <Text
+                accessibilityLabel="Mot de passe"
                 style={
                   {
                     "color": "#161617",
@@ -451,7 +452,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             testID="styled-input-container"
           >
             <TextInput
-              accessibilityDescribedBy="testUuidV4"
               accessibilityRequired={true}
               autoCapitalize="none"
               editable={true}

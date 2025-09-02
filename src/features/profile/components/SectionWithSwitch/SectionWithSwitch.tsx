@@ -10,7 +10,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 interface Props {
-  accessibilityDescribedBy?: string
+  accessibilityHint?: string
   title: string
   iconSize?: number
   icon?: FunctionComponent<AccessibleIcon>
@@ -32,7 +32,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
     toggle = () => null,
     toggleLabel,
     disabled,
-    accessibilityDescribedBy,
+    accessibilityHint,
   } = props
   const Icon = icon
 
@@ -56,7 +56,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           toggle={toggle}
           disabled={disabled}
           accessibilityLabelledBy={labelID}
-          accessibilityDescribedBy={accessibilityDescribedBy}
+          accessibilityHint={accessibilityHint}
           testID={title}
         />
       </FilterSwitchLabelContainer>

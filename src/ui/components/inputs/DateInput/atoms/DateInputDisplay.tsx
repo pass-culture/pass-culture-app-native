@@ -10,19 +10,25 @@ import { Typo } from 'ui/theme'
 
 interface Props {
   date: Date
-  isError?: boolean
+  errorMessage?: string
 }
 
-export function DateInputDisplay({ date, isError }: Props) {
+export function DateInputDisplay({ date, errorMessage }: Props) {
   const dateInputID = uuidv4()
   const label = 'Date de naissance'
+  const formatDate = formatToFrenchDate(date)
+
+  const computedAccessibilityLabel = [formatDate, errorMessage].filter(Boolean).join(' - ')
+
   return (
     <ContainerWithMaxWidth gap={2}>
       <LabelContainer>
         <InputLabel htmlFor={dateInputID}>{label}</InputLabel>
       </LabelContainer>
-      <InputContainer isError={isError}>
-        <Typo.Body nativeID={dateInputID}>{formatToFrenchDate(date)}</Typo.Body>
+      <InputContainer isError={!!errorMessage}>
+        <Typo.Body nativeID={dateInputID} accessibilityLabel={computedAccessibilityLabel}>
+          {formatDate}
+        </Typo.Body>
       </InputContainer>
     </ContainerWithMaxWidth>
   )

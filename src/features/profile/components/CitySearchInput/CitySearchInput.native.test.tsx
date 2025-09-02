@@ -39,7 +39,8 @@ describe('<CitySearchInput />', () => {
 
     expect(
       await screen.findByText(
-        'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
+        'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).',
+        { hidden: true }
       )
     ).toBeOnTheScreen()
   })

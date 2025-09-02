@@ -211,7 +211,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                     </View>
                     <TextInput
-                      accessibilityDescribedBy="testUuidV4"
                       accessibilityHidden={true}
                       autoCorrect={false}
                       autoFocus={false}

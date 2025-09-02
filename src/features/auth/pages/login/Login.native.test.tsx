@@ -375,7 +375,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    const errorMessage = screen.getByText('Ton compte à été supprimé')
+    const errorMessage = screen.getByText('Ton compte à été supprimé', { hidden: true })
 
     expect(errorMessage).toBeTruthy()
   })
@@ -387,7 +387,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    const errorMessage = screen.getByText('Ton compte à été supprimé')
+    const errorMessage = screen.getByText('Ton compte à été supprimé', { hidden: true })
 
     expect(errorMessage).toBeTruthy()
   })
@@ -402,7 +402,8 @@ describe('<Login/>', () => {
 
     expect(
       await screen.findByText(
-        'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+        'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+        { hidden: true }
       )
     ).toBeOnTheScreen()
   })
@@ -414,7 +415,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeOnTheScreen()
+    expect(screen.getByText('E-mail ou mot de passe incorrect', { hidden: true })).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
   })
 
@@ -429,7 +430,9 @@ describe('<Login/>', () => {
     await user.press(screen.getByText('Se connecter'))
 
     expect(
-      screen.getByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
+      screen.getByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie', {
+        hidden: true,
+      })
     ).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
   })
@@ -442,7 +445,7 @@ describe('<Login/>', () => {
     await user.press(screen.getByText('Se connecter'))
 
     expect(
-      screen.getByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
+      screen.getByText('Nombre de tentatives dépassé. Réessaye dans 1 minute', { hidden: true })
     ).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
   })
@@ -663,7 +666,9 @@ describe('<Login/>', () => {
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
-      expect(screen.getByText('Un problème est survenu, réessaie plus tard.')).toBeOnTheScreen()
+      expect(
+        screen.getByText('Un problème est survenu, réessaie plus tard.', { hidden: true })
+      ).toBeOnTheScreen()
     })
 
     it('should not login user on reCAPTCHA failure', async () => {
@@ -716,7 +721,8 @@ describe('<Login/>', () => {
 
       expect(
         screen.getByText(
-          'Un problème est survenu, vérifie ta connexion internet avant de rééssayer.'
+          'Un problème est survenu, vérifie ta connexion internet avant de rééssayer.',
+          { hidden: true }
         )
       ).toBeOnTheScreen()
     })
@@ -730,7 +736,9 @@ describe('<Login/>', () => {
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
-      expect(screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeOnTheScreen()
+      expect(
+        screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.', { hidden: true })
+      ).toBeOnTheScreen()
     })
 
     it('should not login user when reCAPTCHA token has expired', async () => {

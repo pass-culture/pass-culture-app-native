@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ChangeCity should render correctly 1`] = `
 .c0 {
@@ -207,6 +207,7 @@ exports[`ChangeCity should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                       >
                         <div
+                          aria-label="Indique ton code postal et choisis ta ville"
                           class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                           dir="ltr"
                         >

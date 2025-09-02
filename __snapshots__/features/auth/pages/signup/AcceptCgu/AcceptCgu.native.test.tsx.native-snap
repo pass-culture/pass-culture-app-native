@@ -535,8 +535,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
   />
   <View
-    accessibilityHint="testUuidV4"
-    accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+    accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
     accessibilityState={
       {
         "busy": undefined,
@@ -593,7 +592,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-    testID="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+    testID="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
   >
     <View
       style={
@@ -1326,8 +1325,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     }
   />
   <View
-    accessibilityHint="testUuidV4"
-    accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+    accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
     accessibilityState={
       {
         "busy": undefined,
@@ -1384,7 +1382,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         },
       ]
     }
-    testID="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+    testID="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
   >
     <View
       style={

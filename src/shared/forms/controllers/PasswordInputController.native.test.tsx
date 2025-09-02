@@ -15,7 +15,7 @@ describe('<PasswordInputController />', () => {
         error: { type: 'custom', message: 'error' },
       })
 
-      expect(screen.queryByText('error')).not.toBeOnTheScreen()
+      expect(screen.queryByText('error', { hidden: true })).not.toBeOnTheScreen()
     })
 
     it('should show error when form is invalid and password is not empty', async () => {
@@ -26,7 +26,7 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'pass')
 
-      expect(screen.getByText('error')).toBeOnTheScreen()
+      expect(screen.getByText('error', { hidden: true })).toBeOnTheScreen()
     })
 
     it('should show that password is mandatory', async () => {

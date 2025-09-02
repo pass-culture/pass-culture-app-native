@@ -235,6 +235,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
               }
             >
               <Text
+                accessibilityLabel="Nouvelle adresse e-mail"
                 style={
                   {
                     "color": "#161617",
@@ -296,7 +297,6 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             testID="styled-input-container"
           >
             <TextInput
-              accessibilityDescribedBy="testUuidV4"
               autoCapitalize="none"
               autoComplete="email"
               editable={true}

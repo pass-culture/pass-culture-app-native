@@ -41,12 +41,18 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
     }
   }
 
+  const computedAccessibilityLabel = [customProps?.label, customProps?.accessibilityHint]
+    .filter(Boolean)
+    .join(' - ')
+
   return (
     <ContainerWithMaxWidth gap={0}>
       {customProps.label ? (
         <FlexInputLabel htmlFor={textInputID}>
           <StyledLabelContainer>
-            <Typo.Body>{customProps.label}</Typo.Body>
+            <Typo.Body accessibilityLabel={computedAccessibilityLabel}>
+              {customProps.label}
+            </Typo.Body>
             <RightLabel
               isRequiredField={customProps.isRequiredField}
               rightLabel={customProps.rightLabel}
@@ -72,7 +78,6 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           onFocus={onFocus}
           onBlur={onBlur}
           accessibilityRequired={customProps.isRequiredField}
-          accessibilityDescribedBy={customProps.accessibilityDescribedBy}
           multiline={props.multiline}
         />
         {customProps.rightButton && StyledIcon ? (

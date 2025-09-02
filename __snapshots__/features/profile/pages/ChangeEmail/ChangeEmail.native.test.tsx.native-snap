@@ -303,6 +303,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLabel="Adresse e-mail actuelle"
                     style={
                       {
                         "color": "#161617",
