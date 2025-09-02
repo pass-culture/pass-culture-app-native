@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { VenueResponse } from 'api/gen'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import useSearchInVenueModal from 'features/search/pages/modals/SearchInVenueModal/useSearchInVenueModal'
@@ -13,22 +14,19 @@ import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 interface Props extends VenueModalHookProps {
   visible: boolean
+  venueSelected: VenueResponse
 }
 
-export const SearchInVenueModal = ({ visible, dismissModal }: Props) => {
+export const SearchInVenueModal = ({ visible, dismissModal, venueSelected }: Props) => {
   const {
-    doChangeVenue,
-    doResetVenue,
     doApplySearch,
     searchInVenueQuery,
     isSearchButtonDisabled,
     isResetButtonDisabled,
     onClose,
-  } = useSearchInVenueModal({ dismissModal })
+  } = useSearchInVenueModal({ dismissModal, venueSelected })
 
-  const onResetPress = () => {
-    doResetVenue()
-  }
+  console.log({ searchInVenueQuery })
 
   return (
     <AppModal
@@ -49,6 +47,7 @@ export const SearchInVenueModal = ({ visible, dismissModal }: Props) => {
         </HeaderContainer>
       }
       fixedModalBottom={
+        // pas besoin de ce SearchFixedModalBottom ? On devrait pouvoir mettre le buttonPrimary directement
         <SearchFixedModalBottom
           onSearchPress={doApplySearch}
           onResetPress={onResetPress}
@@ -63,8 +62,7 @@ export const SearchInVenueModal = ({ visible, dismissModal }: Props) => {
             autoFocus
             LeftIcon={StyledMagnifyingGlass}
             inputHeight="regular"
-            onChangeText={doChangeVenue}
-            onPressRightIcon={doResetVenue}
+            onChangeText={() => console.log('toto')}
             value={searchInVenueQuery}
             label="Rechercher dans ce lieu"
             disableClearButton

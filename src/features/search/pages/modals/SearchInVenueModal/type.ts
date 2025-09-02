@@ -1,13 +1,11 @@
-import { Venue } from 'features/venue/types'
+import { VenueResponse } from 'api/gen'
 
 export type SearchInVenueModalHookProps = {
   dismissModal: VoidFunction
+  venueSelected: VenueResponse
 }
 
 export type SearchInVenueModalHook = {
-  doChangeVenue: (text: string) => void
-  doResetVenue: VoidFunction
-  doSetSelectedVenue: (venue: Venue) => void
   doApplySearch: VoidFunction
   isQueryProvided: boolean
   searchInVenueQuery: string

@@ -140,6 +140,7 @@ export const Venue: FunctionComponent = () => {
       <SearchInVenueModal
         visible={searchInVenueModalVisible}
         dismissModal={hideSearchInVenueModal}
+        venueSelected={venue}
       />
     </OfferCTAProvider>
   ) : null
