@@ -39,7 +39,10 @@ describe('getStateFromPath()', () => {
 
     await waitFor(() => {
       expect(state).toEqual(expectedState)
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId: '777', from: 'deeplink' })
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: '777',
+        from: 'deeplink',
+      })
     })
   })
 
