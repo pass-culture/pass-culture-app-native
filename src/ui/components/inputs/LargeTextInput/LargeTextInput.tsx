@@ -52,7 +52,7 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
         <InputErrorContainer>
           <InputError
             visible={!!showErrorMessage}
-            messageId={errorMessage ?? 'Tu as atteint le nombre de caractères maximal.'}
+            errorMessage={errorMessage ?? 'Tu as atteint le nombre de caractères maximal.'}
             relatedInputId={feedbackInAppInputErrorId}
             numberOfSpacesTop={0}
           />

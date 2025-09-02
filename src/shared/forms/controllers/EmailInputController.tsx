@@ -43,7 +43,7 @@ export const EmailInputController = <
           />
           <InputError
             visible={!!error}
-            messageId={error?.message}
+            errorMessage={error?.message}
             numberOfSpacesTop={2}
             relatedInputId={emailInputErrorId}
           />

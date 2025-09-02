@@ -52,7 +52,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
       <DateInputDisplay date={birthdate} isError={!!errorMessage} />
       <InputError
         visible={!!errorMessage}
-        messageId={errorMessage}
+        errorMessage={errorMessage}
         numberOfSpacesTop={2}
         relatedInputId={birthdateInputErrorId}
       />

@@ -134,7 +134,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 searchInputID="postal-code-input"
               />
               <InputError
-                messageId={error?.message}
+                errorMessage={error?.message}
                 numberOfSpacesTop={2}
                 visible={!!error}
                 relatedInputId={postalCodeInputId}

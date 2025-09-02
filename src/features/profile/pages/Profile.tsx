@@ -205,7 +205,7 @@ const OnlineProfile: React.FC = () => {
                     />
                     <InputError
                       visible={!!geolocPositionError}
-                      messageId={geolocPositionError?.message}
+                      errorMessage={geolocPositionError?.message}
                       numberOfSpacesTop={1}
                       relatedInputId={locationActivationErrorId}
                     />

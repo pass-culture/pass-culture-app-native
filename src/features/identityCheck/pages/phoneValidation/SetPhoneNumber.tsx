@@ -139,7 +139,7 @@ export const SetPhoneNumber = () => {
               <InputError
                 relatedInputId={phoneNumberInputErrorId}
                 visible={!!invalidPhoneNumberMessage}
-                messageId={invalidPhoneNumberMessage}
+                errorMessage={invalidPhoneNumberMessage}
                 numberOfSpacesTop={3}
               />
               {invalidPhoneNumberMessage ? (

@@ -171,7 +171,7 @@ export const SetPhoneValidationCode = () => {
             </InputContainer>
             <InputError
               visible={!!errorMessage}
-              messageId={errorMessage}
+              errorMessage={errorMessage}
               numberOfSpacesTop={3}
               relatedInputId={validationCodeInputErrorId}
             />

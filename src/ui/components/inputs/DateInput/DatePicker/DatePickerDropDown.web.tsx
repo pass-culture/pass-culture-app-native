@@ -31,7 +31,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
       />
       <InputError
         visible={!!errorMessage}
-        messageId={errorMessage}
+        errorMessage={errorMessage}
         numberOfSpacesTop={2}
         relatedInputId={birthdateInputErrorId}
       />

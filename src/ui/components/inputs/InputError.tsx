@@ -7,7 +7,7 @@ import { ErrorMessage } from 'ui/web/errors/ErrorMessage'
 import { InputRule } from './rules/InputRule'
 
 interface Props {
-  messageId?: string | null
+  errorMessage?: string | null
   visible: boolean
   numberOfSpacesTop: number
   centered?: boolean
@@ -17,10 +17,10 @@ interface Props {
 export const InputError: FC<Props> = (props) => {
   return (
     <ErrorMessage relatedInputId={props.relatedInputId}>
-      {props.visible && props.messageId ? (
+      {props.visible && props.errorMessage ? (
         <Container numberOfSpacesTop={props.numberOfSpacesTop}>
           <InputRule
-            title={props.messageId}
+            title={props.errorMessage}
             type="Error"
             icon={Error}
             testIdSuffix="warn"

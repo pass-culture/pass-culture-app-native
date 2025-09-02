@@ -9,7 +9,7 @@ describe('InputError Component', () => {
     render(
       <InputError
         visible
-        messageId="message"
+        errorMessage="message"
         numberOfSpacesTop={1}
         relatedInputId="relatedInputId"
       />
@@ -24,7 +24,7 @@ describe('InputError Component', () => {
     render(
       <InputError
         visible={false}
-        messageId="message"
+        errorMessage="message"
         numberOfSpacesTop={1}
         relatedInputId="relatedInputId"
       />

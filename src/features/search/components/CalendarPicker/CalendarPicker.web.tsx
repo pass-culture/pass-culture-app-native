@@ -175,7 +175,7 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
         />
         <InputError
           visible={isMobileDateInvalid}
-          messageId="Choisis une date dans le futur"
+          errorMessage="Choisis une date dans le futur"
           numberOfSpacesTop={2}
           relatedInputId={bookingDateChoiceErrorId}
         />

@@ -186,7 +186,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       />
       <InputError
         visible={!!errorMessage}
-        messageId={errorMessage}
+        errorMessage={errorMessage}
         numberOfSpacesTop={5}
         relatedInputId={checkCGUErrorId}
       />

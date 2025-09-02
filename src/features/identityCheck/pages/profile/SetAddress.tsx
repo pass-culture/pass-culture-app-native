@@ -142,7 +142,7 @@ export const SetAddress = () => {
               />
               <InputError
                 visible={hasError}
-                messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+                errorMessage="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                 numberOfSpacesTop={2}
                 relatedInputId={addressInputErrorId}
               />
