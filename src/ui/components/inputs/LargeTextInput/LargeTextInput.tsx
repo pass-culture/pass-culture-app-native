@@ -52,7 +52,7 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
         <InputErrorContainer>
           <InputError
             visible={!!showErrorMessage}
-            messageId={computedErrorMessage}
+            errorMessage={computedErrorMessage}
             numberOfSpacesTop={0}
           />
         </InputErrorContainer>

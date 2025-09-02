@@ -173,7 +173,11 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
           onPress={onValidate}
           adjustsFontSizeToFit
         />
-        <InputError visible={isMobileDateInvalid} messageId={errorMessage} numberOfSpacesTop={2} />
+        <InputError
+          visible={isMobileDateInvalid}
+          errorMessage={errorMessage}
+          numberOfSpacesTop={2}
+        />
         {isMobileDateInvalid ? (
           <Spacer.Column numberOfSpaces={1} />
         ) : (

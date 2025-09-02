@@ -86,7 +86,7 @@ export const FavoritesSorts: React.FC = () => {
                   />
                   <InputError
                     visible={!!(sortBy === 'AROUND_ME' && geolocPositionError)}
-                    messageId={geolocPositionError?.message}
+                    errorMessage={geolocPositionError?.message}
                     numberOfSpacesTop={1}
                   />
                 </Li>

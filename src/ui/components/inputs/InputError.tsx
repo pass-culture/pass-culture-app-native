@@ -7,7 +7,7 @@ import { ErrorMessage } from 'ui/web/errors/ErrorMessage'
 import { InputRule } from './rules/InputRule'
 
 interface Props {
-  messageId?: string | null
+  errorMessage?: string | null
   visible: boolean
   numberOfSpacesTop: number
   centered?: boolean
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const InputError: FC<Props> = ({
-  messageId,
+  errorMessage: messageId,
   visible,
   numberOfSpacesTop,
   centered,

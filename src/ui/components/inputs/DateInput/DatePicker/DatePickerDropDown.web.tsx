@@ -25,7 +25,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
         maximumDate={maximumDate}
         errorMessage={errorMessage}
       />
-      <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={2} />
+      <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={2} />
       <Spacer.Column numberOfSpaces={errorMessage ? 10 : 4} />
     </React.Fragment>
   )

@@ -217,7 +217,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         <Form.MaxWidth>
           <InputError
             visible={!!errorMessage}
-            messageId={errorMessage}
+            errorMessage={errorMessage}
             numberOfSpacesTop={5}
             centered
           />

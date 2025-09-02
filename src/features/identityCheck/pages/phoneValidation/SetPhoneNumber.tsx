@@ -136,7 +136,7 @@ export const SetPhoneNumber = () => {
               </InputContainer>
               <InputError
                 visible={!!invalidPhoneNumberMessage}
-                messageId={invalidPhoneNumberMessage}
+                errorMessage={invalidPhoneNumberMessage}
                 numberOfSpacesTop={3}
               />
               {invalidPhoneNumberMessage ? (

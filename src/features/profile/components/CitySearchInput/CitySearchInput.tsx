@@ -131,7 +131,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 textContentType="postalCode"
                 searchInputID="postal-code-input"
               />
-              <InputError messageId={error?.message} numberOfSpacesTop={2} visible={!!error} />
+              <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
             </StyledView>
           )}
         />

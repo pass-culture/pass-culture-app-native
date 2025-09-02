@@ -43,7 +43,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   return (
     <React.Fragment>
       <DateInputDisplay date={birthdate} errorMessage={errorMessage} />
-      <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={2} />
+      <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={2} />
       <SpinnerPickerWrapper testID="date-picker-spinner-touch">
         <StyledPicker valueGroups={date} optionGroups={optionGroups} onChange={onDateChange} />
       </SpinnerPickerWrapper>

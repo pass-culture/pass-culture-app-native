@@ -182,7 +182,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         disabled={disabled}
         accessibilityHint={errorMessage ?? undefined}
       />
-      <InputError visible={!!errorMessage} messageId={errorMessage} numberOfSpacesTop={5} />
+      <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={5} />
       <Spacer.Column numberOfSpaces={4} />
       <CaptionNeutralInfo>
         Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à

@@ -127,7 +127,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                   />
                   <InputError
                     visible={!!fieldState.error}
-                    messageId={fieldState.error?.message}
+                    errorMessage={fieldState.error?.message}
                     numberOfSpacesTop={0}
                   />
                 </ViewGap>
