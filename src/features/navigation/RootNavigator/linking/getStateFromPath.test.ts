@@ -1,6 +1,6 @@
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { linking } from 'features/navigation/RootNavigator/linking/linking'
 import { customGetStateFromPath } from 'features/navigation/RootNavigator/linking/getStateFromPath'
+import { linking } from 'features/navigation/RootNavigator/linking/linking'
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'

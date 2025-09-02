@@ -2,8 +2,8 @@
 import { Platform } from 'react-native'
 import * as RNPermissions from 'react-native-permissions'
 
-import { GeolocPermissionState } from 'libs/location/location'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission.android'
+import { GeolocPermissionState } from 'libs/location/location'
 
 const permissionsCheckSpy = jest.spyOn(RNPermissions, 'check')
 

@@ -9,8 +9,8 @@ import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOf
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useLocation } from 'libs/location/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import {
   formatPrice,
