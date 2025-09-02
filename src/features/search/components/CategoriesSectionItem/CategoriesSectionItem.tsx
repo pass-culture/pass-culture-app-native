@@ -13,7 +13,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { RadioButtonDeprecated } from 'ui/components/radioButtons/RadioButtonDeprecated'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type CategoriesMappingItem = {
@@ -51,7 +51,7 @@ export const CategoriesSectionItem = <N,>({
   return (
     <ListItem>
       {shouldHideArrow ? (
-        <RadioButton
+        <RadioButtonDeprecated
           label={item.label}
           isSelected={itemKey === value}
           onSelect={() => handleSelect(itemKey)}

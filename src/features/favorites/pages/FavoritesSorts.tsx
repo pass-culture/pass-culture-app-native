@@ -13,7 +13,7 @@ import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { RadioButtonDeprecated } from 'ui/components/radioButtons/RadioButtonDeprecated'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -78,7 +78,7 @@ export const FavoritesSorts: React.FC = () => {
             {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
               return (
                 <Li key={sortBy}>
-                  <RadioButton
+                  <RadioButtonDeprecated
                     label={label}
                     isSelected={stagedSelectedSortBy === sortBy}
                     onSelect={() => onSortBySelection(sortBy)}
