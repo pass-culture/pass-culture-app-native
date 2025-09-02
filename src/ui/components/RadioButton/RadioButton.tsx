@@ -1,48 +1,41 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import { Platform } from 'react-native'
-import styled, { useTheme, DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { getCheckboxColors } from 'ui/components/inputs/Checkbox/getCheckboxColors'
-import { getCheckboxState } from 'ui/components/inputs/Checkbox/getCheckboxState'
+import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { SelectableAsset } from 'ui/components/inputs/SelectableAsset'
 import {
-  CheckboxState,
   SelectableAssetProps,
   SelectableDisplay,
   SelectableVariant,
 } from 'ui/components/inputs/types'
+import { getRadioButtonColors } from 'ui/components/RadioButton/getRadioButtonColors'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
-import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
 import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 const isWeb = Platform.OS === 'web'
 
-type CheckboxBaseCheckedOnly = {
-  isChecked: boolean
-  indeterminate?: false
+export type RadioButtonState = {
+  selected: boolean
+  error?: boolean
+  disabled?: boolean
+  default: boolean
 }
 
-type CheckboxBaseIndeterminateOnly = {
-  isChecked: false
-  indeterminate: true
-}
-
-type CheckboxBase = {
+type RadioButtonBase = {
   label: string
-  onPress: (isChecked: boolean) => void
-  required?: boolean
+  onSelect: (isSelected: boolean) => void
   hasError?: boolean
   disabled?: boolean
-} & (CheckboxBaseCheckedOnly | CheckboxBaseIndeterminateOnly)
+  isSelected: boolean
+}
 
-type Props = CheckboxBase &
+type Props = RadioButtonBase &
   (
     | {
         asset?: never
@@ -67,46 +60,40 @@ type Props = CheckboxBase &
       }
   )
 
-export const Checkbox: FunctionComponent<Props> = ({
+export const RadioButton: FunctionComponent<Props> = ({
   asset,
   collapsed,
   description,
   disabled,
   display,
   hasError,
-  indeterminate,
-  isChecked,
+  isSelected,
   label,
-  onPress,
-  required,
+  onSelect,
   variant = 'default',
 }) => {
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
-
-  const { designSystem, checkbox } = useTheme()
-
   const onToggle = useCallback(() => {
-    onPress(!isChecked)
-  }, [isChecked, onPress])
+    onSelect(!isSelected)
+  }, [isSelected, onSelect])
 
   useSpaceBarAction(focusProps.isFocus ? onToggle : undefined)
 
   const effectiveDisplay: SelectableDisplay = display ?? (variant === 'detailed' ? 'fill' : 'hug')
 
-  const state = getCheckboxState(isChecked, indeterminate, hasError, disabled)
-  const isDisabled = state.includes('disabled')
-  const isCheckedState = state.includes('checked')
-  const isIndeterminate = state.includes('indeterminate')
+  const state = {
+    selected: isSelected,
+    error: hasError,
+    disabled,
+    default: !!isSelected && !!hasError && !!disabled,
+  }
 
-  const colorMark = disabled ? designSystem.color.icon.disabled : designSystem.color.icon.inverted
-  const checkboxMarkSize = checkbox.size / 1.75 // Parent padding doesn't have effect on CheckboxMarkIndeterminate
-
-  const Label = isCheckedState || isIndeterminate ? StyledBodyAccent : StyledBody
+  const Label = state.selected ? StyledBodyAccent : StyledBody
 
   return (
-    <CheckboxContainer
-      {...accessibleCheckboxProps({ checked: isChecked, label, required })}
+    <RadioButtonContainer
+      {...accessibleRadioProps({ checked: state.selected, label })}
       state={state}
       variant={variant}
       display={effectiveDisplay}
@@ -115,25 +102,12 @@ export const Checkbox: FunctionComponent<Props> = ({
       {...focusProps}
       {...hoverProps}>
       <ContentContainer>
-        <LeftBox state={state} variant={variant} disabled={isDisabled} {...hoverProps}>
-          {isIndeterminate ? (
-            <CheckboxMarkIndeterminate
-              color={colorMark}
-              width={checkboxMarkSize}
-              height={checkboxMarkSize}
-            />
-          ) : isCheckedState ? (
-            <CheckboxMarkChecked
-              color={colorMark}
-              width={checkboxMarkSize}
-              height={checkboxMarkSize}
-            />
-          ) : null}
+        <LeftBox state={state} variant={variant} {...hoverProps}>
+          {state.selected ? <Round state={state} variant={variant} {...hoverProps} /> : null}
         </LeftBox>
         <RightBox>
           <Label state={state} {...hoverProps}>
             {label}
-            {required ? '*' : null}
           </Label>
           {description ? (
             <StyledBodyAccentXs state={state} {...hoverProps}>
@@ -143,17 +117,17 @@ export const Checkbox: FunctionComponent<Props> = ({
         </RightBox>
         {asset ? (
           <BottomBox>
-            <SelectableAsset {...asset} disable={isDisabled} />
+            <SelectableAsset {...asset} disable={state.disabled} />
           </BottomBox>
         ) : null}
       </ContentContainer>
       {collapsed ? <CollapsedContainer>{collapsed}</CollapsedContainer> : null}
-    </CheckboxContainer>
+    </RadioButtonContainer>
   )
 }
 
 type ContainerProps = {
-  state: CheckboxState[]
+  state: RadioButtonState
   variant: SelectableVariant
   collapsed?: React.ReactNode
   display?: SelectableDisplay
@@ -161,14 +135,12 @@ type ContainerProps = {
   isFocus?: boolean
 }
 
-const getBoderHoverStyle = ({ theme, state, isHover }: LabelHoverStyleParams) => {
-  const disabled = state.includes('disabled')
-  const error = state.includes('error')
-  if (disabled || error) return {}
+const getBorderHoverStyle = ({ theme, state, isHover }: LabelHoverStyleParams) => {
+  if (state.disabled || state.error) return {}
   return getHoverStyle({ borderColor: theme.designSystem.color.border.brandPrimary, isHover })
 }
 
-const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
+const RadioButtonContainer = styled(TouchableOpacity)<ContainerProps>(({
   theme,
   state,
   variant,
@@ -177,21 +149,19 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
   isHover,
   collapsed,
 }) => {
-  const { borderColor, backgroundColor } = getCheckboxColors({
+  const { borderColor, backgroundColor } = getRadioButtonColors({
     state,
     variant,
     collapsed: !!collapsed,
     theme,
     componentType: 'container',
   })
-  const isDetailed = variant === 'detailed'
-  const isDisabled = state.includes('disabled')
 
   return {
-    cursor: isDisabled ? 'default' : 'pointer',
+    cursor: state.disabled ? 'default' : 'pointer',
     width: display === 'fill' ? '100%' : undefined,
     alignSelf: display === 'hug' && isWeb ? 'flex-start' : undefined,
-    ...(isDetailed && {
+    ...(variant === 'detailed' && {
       backgroundColor,
       border: 1,
       borderColor,
@@ -199,7 +169,7 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
       padding: getSpacing(4),
     }),
     ...customFocusOutline({ isFocus }),
-    ...getBoderHoverStyle({ state, theme, isHover }),
+    ...getBorderHoverStyle({ state, theme, isHover }),
   }
 })
 
@@ -209,42 +179,61 @@ const ContentContainer = styled.View({
   columnGap: getSpacing(3),
 })
 
-type LeftBoxProps = {
+type NewProps = {
   variant: SelectableVariant
-  state: CheckboxState[]
+  state: RadioButtonState
   isHover?: boolean
-  disabled?: boolean
 }
 
-const LeftBox = styled.View<LeftBoxProps>(({ theme, variant, isHover, state }) => {
-  const { borderColor, backgroundColor } = getCheckboxColors({
+const LeftBox = styled.View<NewProps>(({ theme, variant, isHover, state }) => {
+  const { borderColor, backgroundColor } = getRadioButtonColors({
     state,
     variant,
     collapsed: false,
     theme,
-    componentType: 'mark',
+    componentType: 'circle',
   })
   return {
-    width: theme.checkbox.size,
-    height: theme.checkbox.size,
+    width: theme.radioButton.size,
+    height: theme.radioButton.size,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: theme.borderRadius.checkbox,
-    border: theme.checkbox.border.size,
+    borderRadius: theme.borderRadius.radioButton,
+    border: theme.radioButton.border.size,
     borderColor,
     backgroundColor,
-    ...getBoderHoverStyle({ state, theme, isHover }),
+    ...getBorderHoverStyle({ state, theme, isHover }),
+  }
+})
+
+const Round = styled.View<NewProps>(({ theme, variant, isHover, state }) => {
+  const { backgroundColor } = getRadioButtonColors({
+    state,
+    variant,
+    collapsed: false,
+    theme,
+    componentType: 'round',
+  })
+  return {
+    width: getSpacing(2.5),
+    height: getSpacing(2.5),
+    borderRadius: getSpacing(2.5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor,
+    ...getBorderHoverStyle({ state, theme, isHover }),
   }
 })
 
 type LabelColorParams = {
   theme: DefaultTheme
-  state: CheckboxState[]
+  state: RadioButtonState
 }
 
 const getLabelColor = ({ state, theme }: LabelColorParams) => {
-  const isDisabled = state.includes('disabled')
-  return isDisabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default
+  return state.disabled
+    ? theme.designSystem.color.text.disabled
+    : theme.designSystem.color.text.default
 }
 
 type LabelHoverStyleParams = LabelColorParams & {
@@ -252,20 +241,18 @@ type LabelHoverStyleParams = LabelColorParams & {
 }
 
 const getTextHoverStyle = ({ theme, state, isHover }: LabelHoverStyleParams) => {
-  const isDisabled = state.includes('disabled')
-  const error = state.includes('error')
-  if (isDisabled || error) return {}
+  if (state.disabled || state.error) return {}
   return getHoverStyle({ textColor: theme.designSystem.color.text.brandPrimary, isHover })
 }
 
-const StyledBody = styled(Typo.Body)<{ state: CheckboxState[]; isHover?: boolean }>(
+const StyledBody = styled(Typo.Body)<{ state: RadioButtonState; isHover?: boolean }>(
   ({ state, theme, isHover }) => ({
     color: getLabelColor({ state, theme }),
     ...getTextHoverStyle({ state, theme, isHover }),
   })
 )
 
-const StyledBodyAccent = styled(Typo.BodyAccent)<{ state: CheckboxState[]; isHover?: boolean }>(
+const StyledBodyAccent = styled(Typo.BodyAccent)<{ state: RadioButtonState; isHover?: boolean }>(
   ({ state, theme, isHover }) => ({
     color: getLabelColor({ state, theme }),
     ...getTextHoverStyle({ state, theme, isHover }),
@@ -273,12 +260,11 @@ const StyledBodyAccent = styled(Typo.BodyAccent)<{ state: CheckboxState[]; isHov
 )
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)<{
-  state: CheckboxState[]
+  state: RadioButtonState
   isHover?: boolean
 }>(({ state, isHover, theme }) => {
-  const isDisable = state.includes('disabled')
   return {
-    color: isDisable
+    color: state.disabled
       ? theme.designSystem.color.text.disabled
       : theme.designSystem.color.text.default,
     ...getTextHoverStyle({ state, theme, isHover }),
