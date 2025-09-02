@@ -7,11 +7,11 @@ import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 import { VideoGame } from 'ui/svg/icons/venueAndCategories/VideoGame'
 
-import { RadioButton } from './RadioButton'
+import { RadioButtonDeprecated } from './RadioButtonDeprecated'
 
-const meta: Meta<typeof RadioButton> = {
+const meta: Meta<typeof RadioButtonDeprecated> = {
   title: 'ui/inputs/RadioButton',
-  component: RadioButton,
+  component: RadioButtonDeprecated,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -36,13 +36,13 @@ const meta: Meta<typeof RadioButton> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof RadioButton> = [
+const variantConfig: Variants<typeof RadioButtonDeprecated> = [
   {
-    label: 'RadioButton',
+    label: 'RadioButtonDeprecated',
     props: { label: 'label 1', isSelected: false },
   },
   {
-    label: 'RadioButton with description',
+    label: 'RadioButtonDeprecated with description',
     props: {
       label: 'label 1',
       description: 'description label 1',
@@ -50,15 +50,15 @@ const variantConfig: Variants<typeof RadioButton> = [
     },
   },
   {
-    label: 'Selected RadioButton',
+    label: 'Selected RadioButtonDeprecated',
     props: { label: 'label 1', isSelected: true },
   },
   {
-    label: 'Selected RadioButton with description',
+    label: 'Selected RadioButtonDeprecated with description',
     props: { label: 'label 1', description: 'description item 1', isSelected: true },
   },
   {
-    label: 'RadioButton with icon',
+    label: 'RadioButtonDeprecated with icon',
     props: {
       label: 'label 1',
       description: 'description item 1',
@@ -68,12 +68,12 @@ const variantConfig: Variants<typeof RadioButton> = [
   },
 ]
 
-export const Template: VariantsStory<typeof RadioButton> = {
-  name: 'RadioButton',
+export const Template: VariantsStory<typeof RadioButtonDeprecated> = {
+  name: 'RadioButtonDeprecated',
   render: (props) => (
     <VariantsTemplate
       variants={variantConfig}
-      Component={RadioButton}
+      Component={RadioButtonDeprecated}
       defaultProps={{ ...props }}
     />
   ),

@@ -22,7 +22,7 @@ import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { RadioButtonDeprecated } from 'ui/components/radioButtons/RadioButtonDeprecated'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
@@ -266,7 +266,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                       <StyledVerticalUl>
                         {DATE_TYPES.map((item) => (
                           <Li key={item.label}>
-                            <RadioButton
+                            <RadioButtonDeprecated
                               label={item.label}
                               isSelected={value === item.type}
                               onSelect={selectDateFilterOption(item.type)}

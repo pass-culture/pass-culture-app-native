@@ -9,7 +9,7 @@ import {
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { RadioButtonDeprecated } from 'ui/components/radioButtons/RadioButtonDeprecated'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { Typo } from 'ui/theme'
@@ -53,7 +53,7 @@ export function BookCategoriesSection<
   return (
     <VerticalUl>
       <ListItem>
-        <RadioButton
+        <RadioButtonDeprecated
           label={allLabel}
           isSelected={value === allValue}
           onSelect={() => onSelect(allValue)}

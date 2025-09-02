@@ -13,7 +13,7 @@ import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { getSpacing } from 'ui/theme'
 import { Typo } from 'ui/theme/typography'
 
-interface RadioButtonProps {
+interface RadioButtonPropsDeprecated {
   label: string
   description?: string
   complement?: string
@@ -24,12 +24,12 @@ interface RadioButtonProps {
   isLoading?: boolean
 }
 
-type RadioButtonIconProps = {
+type RadioButtonIconPropsDeprecated = {
   isSelected?: boolean
   isLoading?: boolean
 }
 
-function RadioButtonIcon({ isSelected, isLoading }: RadioButtonIconProps) {
+function RadioButtonIconDeprecated({ isSelected, isLoading }: RadioButtonIconPropsDeprecated) {
   const { isMobileViewport, icons } = useTheme()
   const ValidateOff = isMobileViewport ? ValidateOffIcon : Fragment
 
@@ -44,7 +44,7 @@ function RadioButtonIcon({ isSelected, isLoading }: RadioButtonIconProps) {
   return <ValidateOff />
 }
 
-export function RadioButton(props: RadioButtonProps) {
+export function RadioButtonDeprecated(props: RadioButtonPropsDeprecated) {
   const containerRef = useRef(null)
   const { isMobileViewport } = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
@@ -98,7 +98,7 @@ export function RadioButton(props: RadioButtonProps) {
         </LabelWrapper>
       </LabelContainer>
       <IconContainer>
-        <RadioButtonIcon isSelected={props.isSelected} isLoading={props.isLoading} />
+        <RadioButtonIconDeprecated isSelected={props.isSelected} isLoading={props.isLoading} />
       </IconContainer>
     </StyledTouchableOpacity>
   )
