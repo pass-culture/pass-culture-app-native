@@ -37,7 +37,7 @@ curl -Ls "https://get.maestro.mobile.dev" | bash
 [1]: https://keepersecurity.eu/vault/#
 
 Pour exécuter les tests avec Maestro, vous aurez besoin des secrets utilisés par les scénarios.  
-Ces secrets sont disponibles dans [Keeper][1] sous le nom **`Secrets E2E`**.
+Ces secrets sont disponibles dans notre password manager sous le nom **`Secrets E2E`**.
 
 Copiez ensuite le contenu dans le fichier `.maestro/.env.secret`  
 (créez ce fichier s’il n’existe pas déjà).
