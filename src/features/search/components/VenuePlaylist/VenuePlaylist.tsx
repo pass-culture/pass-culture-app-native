@@ -24,7 +24,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Map } from 'ui/svg/icons/Map'
-import { LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
+import { getSpacing, LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
 
 export const VENUE_ITEM_HEIGHT = LENGTH_XXS
 export const VENUE_ITEM_WIDTH = LENGTH_XS
@@ -126,18 +126,20 @@ export const VenuePlaylist: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Container style={style}>
-        <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
-        {shouldDisplaySeeOnMapButton ? (
-          <ButtonContainer>
-            <ButtonTertiaryBlack
-              icon={Map}
-              wording="Voir sur la carte"
-              onPress={handleSeeMapPress}
-            />
-          </ButtonContainer>
-        ) : (
-          <NumberOfResults nbHits={venues?.length ?? 0} />
-        )}
+        <HeaderPlaylistContainer>
+          <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
+          {shouldDisplaySeeOnMapButton ? (
+            <ButtonContainer>
+              <ButtonTertiaryBlack
+                icon={Map}
+                wording="Voir sur la carte"
+                onPress={handleSeeMapPress}
+              />
+            </ButtonContainer>
+          ) : (
+            <NumberOfResults nbHits={venues?.length ?? 0} />
+          )}
+        </HeaderPlaylistContainer>
         <Playlist
           data={venues ?? []}
           scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
@@ -151,6 +153,7 @@ export const VenuePlaylist: React.FC<Props> = ({
           keyExtractor={keyExtractor}
           testID="search-venue-list"
           onEndReached={logAllTilesSeenOnce}
+          contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
         />
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
@@ -165,7 +168,10 @@ export const VenuePlaylist: React.FC<Props> = ({
 
 const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
-  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
+
+const HeaderPlaylistContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xl,
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
