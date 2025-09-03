@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from 'react'
-import styled from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { ModuleData } from 'features/home/types'
@@ -8,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
-import { LENGTH_S } from 'ui/theme'
+import { LENGTH_S, getSpacing } from 'ui/theme'
 
 type VenuesModuleProps = {
   moduleId: string
@@ -64,23 +63,18 @@ export const VenuesModule = ({
 
   if (!shouldModuleBeDisplayed) return null
   return (
-    <PlaylistContainer>
-      <PassPlaylist
-        testID="offersModuleList"
-        title={displayParameters.title}
-        subtitle={displayParameters.subtitle}
-        data={playlistItems || []}
-        itemHeight={ITEM_HEIGHT}
-        itemWidth={ITEM_WIDTH}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        tileType="venue"
-        withMargin={false}
-      />
-    </PlaylistContainer>
+    <PassPlaylist
+      testID="offersModuleList"
+      title={displayParameters.title}
+      subtitle={displayParameters.subtitle}
+      data={playlistItems || []}
+      itemHeight={ITEM_HEIGHT}
+      itemWidth={ITEM_WIDTH}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      tileType="venue"
+      withMargin
+      contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
+    />
   )
 }
-
-const PlaylistContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
-}))

@@ -1,8 +1,15 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ListRenderItemInfo, FlashList } from '@shopify/flash-list'
+import { FlashList, ListRenderItemInfo } from '@shopify/flash-list'
 import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef } from 'react'
-import { FlatListProps, Platform, useWindowDimensions, ViewabilityConfig } from 'react-native'
+import {
+  FlatListProps,
+  Platform,
+  StyleProp,
+  useWindowDimensions,
+  ViewabilityConfig,
+  ViewStyle,
+} from 'react-native'
 import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -43,6 +50,7 @@ type Props = Pick<FlatListProps<unknown>, 'onViewableItemsChanged'> & {
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
   itemSeparatorSize?: number
   horizontalMargin?: number
+  contentContainerStyle?: StyleProp<ViewStyle>
 }
 
 const isWeb = Platform.OS === 'web' ? true : undefined
@@ -73,6 +81,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
     tileType = 'offer',
     itemSeparatorSize = ITEM_SEPARATOR_WIDTH,
     horizontalMargin = HORIZONTAL_MARGIN,
+    contentContainerStyle,
   } = props
 
   const { isTouch, tiles } = useTheme()
@@ -203,6 +212,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
         onEndReachedThreshold={0.2}
         viewabilityConfig={PLAYLIST_VIEWABILITY_CONFIG}
         onViewableItemsChanged={onViewableItemsChanged}
+        contentContainerStyle={contentContainerStyle}
       />
     </FlatListContainer>
   )
