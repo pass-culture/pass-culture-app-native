@@ -41,7 +41,7 @@ describe('AccessibilityDeclarationWeb', () => {
   `('should open $url when $title is clicked', async ({ url, title }) => {
     render(<AccessibilityDeclarationWeb />)
 
-    const link = screen.getByTestId(title)
+    const link = screen.getByText(title)
     await user.press(link)
 
     expect(openURLSpy).toHaveBeenCalledWith(url, undefined, true)

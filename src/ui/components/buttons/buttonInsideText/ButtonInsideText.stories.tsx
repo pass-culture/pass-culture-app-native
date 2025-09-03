@@ -57,6 +57,6 @@ const RandomText = (props: ButtonInsideTexteProps) => {
 export const Template: VariantsStory<typeof RandomText> = {
   name: 'ButtonInsideText',
   render: (props) => (
-    <VariantsTemplate variants={variantConfig} Component={ButtonInsideText} defaultProps={props} />
+    <VariantsTemplate variants={variantConfig} Component={RandomText} defaultProps={props} />
   ),
 }
