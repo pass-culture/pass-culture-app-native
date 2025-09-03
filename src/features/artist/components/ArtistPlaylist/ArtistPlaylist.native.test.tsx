@@ -17,6 +17,7 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -28,7 +29,11 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {
-    render(reactQueryProviderHOC(<ArtistPlaylist artistName="Céline Dion" items={[]} />))
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist artistName="Céline Dion" items={[]} onViewableItemsChanged={jest.fn()} />
+      )
+    )
 
     await waitFor(() =>
       expect(screen.queryByLabelText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
@@ -41,6 +46,7 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -56,6 +62,7 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
         />
       )
     )
