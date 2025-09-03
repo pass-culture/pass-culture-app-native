@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -95,20 +96,26 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   return (
     <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
-        <PassPlaylist
-          testID="recommendationModuleList"
-          title={displayParameters.title}
-          subtitle={displayParameters.subtitle}
-          data={offers}
-          itemHeight={itemHeight}
-          itemWidth={itemWidth}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          onEndReached={logHasSeenAllTilesOnce}
-          playlistRef={listRef}
-          onViewableItemsChanged={handleViewableItemsChanged}
-        />
+        <PlaylistContainer>
+          <PassPlaylist
+            testID="recommendationModuleList"
+            title={displayParameters.title}
+            subtitle={displayParameters.subtitle}
+            data={offers}
+            itemHeight={itemHeight}
+            itemWidth={itemWidth}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            onEndReached={logHasSeenAllTilesOnce}
+            playlistRef={listRef}
+            onViewableItemsChanged={handleViewableItemsChanged}
+          />
+        </PlaylistContainer>
       )}
     </ObservedPlaylist>
   )
 }
+
+const PlaylistContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
