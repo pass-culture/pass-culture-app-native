@@ -9,7 +9,7 @@ const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient)
 interface DimensionProps {
   height: number
   width: number
-  borderRadius: number
+  borderRadius: number | string
   fullWidth?: boolean
 }
 

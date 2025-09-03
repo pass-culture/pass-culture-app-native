@@ -72,7 +72,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
     justifyContent: 'flex-start',
     borderColor: theme.designSystem.color.border.default,
     borderWidth: disabled ? 0 : BORDER_WIDTH,
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
     backgroundColor: disabled
       ? theme.designSystem.color.background.disabled
       : theme.designSystem.color.background.default,

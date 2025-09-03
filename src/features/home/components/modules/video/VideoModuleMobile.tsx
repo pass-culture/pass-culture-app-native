@@ -107,7 +107,7 @@ const StyledTitleContainer = styled.View({
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   underlayColor: theme.designSystem.color.background.lockedInverted,
 }))(({ theme }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
 const Thumbnail = styled.ImageBackground({

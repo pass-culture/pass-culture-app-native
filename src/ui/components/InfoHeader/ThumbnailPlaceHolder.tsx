@@ -6,7 +6,7 @@ import { All } from 'ui/svg/icons/venueAndCategories/All'
 
 const ThumbnailPlaceholderContainer = styled.View<{ height: number; width: number }>(
   ({ theme, height, width }) => ({
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
     height,
     width,
     alignItems: 'center',

@@ -46,7 +46,7 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from }) => {
 const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
   ({ theme, isFocus }) => ({
     overflow: 'hidden',
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
     borderColor: theme.designSystem.color.border.default,
     borderWidth: 1,
     marginTop: theme.designSystem.size.spacing.s,
@@ -56,7 +56,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: bo
 
 const StyledTouchable = styled(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   overflow: 'hidden',
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
   marginTop: theme.designSystem.size.spacing.s,
@@ -65,7 +65,7 @@ const StyledTouchable = styled(Touchable)<{ isFocus?: boolean }>(({ theme, isFoc
 
 const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
   imageStyle: {
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
   },
 }))({
   width: '100%',

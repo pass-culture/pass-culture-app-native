@@ -19,10 +19,10 @@ describe('<OfferImageBody />', () => {
 
     await waitFor(() =>
       expect(container).toHaveStyle({
-        borderTopLeftRadius: theme.borderRadius.radius + 'px',
-        borderTopRightRadius: theme.borderRadius.radius + 'px',
-        borderBottomRightRadius: theme.borderRadius.radius + 'px',
-        borderBottomLeftRadius: theme.borderRadius.radius + 'px',
+        borderTopLeftRadius: theme.designSystem.size.borderRadius.m + 'px',
+        borderTopRightRadius: theme.designSystem.size.borderRadius.m + 'px',
+        borderBottomRightRadius: theme.designSystem.size.borderRadius.m + 'px',
+        borderBottomLeftRadius: theme.designSystem.size.borderRadius.m + 'px',
       })
     )
   })

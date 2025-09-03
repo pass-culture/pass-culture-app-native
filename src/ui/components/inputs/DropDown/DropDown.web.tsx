@@ -98,10 +98,12 @@ type SelectProps = {
 
 const StyledSelect = styled.select<SelectProps>`
   ${({ theme, noBorderRadiusRight, noBorderRadiusLeft, isEmpty, isError }) => {
-    const borderRadiusLeft = noBorderRadiusLeft ? noBorderRadius : `${theme.borderRadius.button}px`
+    const borderRadiusLeft = noBorderRadiusLeft
+      ? noBorderRadius
+      : `${theme.designSystem.size.borderRadius.xl}px`
     const borderRadiusRight = noBorderRadiusRight
       ? noBorderRadius
-      : `${theme.borderRadius.button}px`
+      : `${theme.designSystem.size.borderRadius.xl}px`
 
     const typography = isEmpty
       ? theme.designSystem.typography.bodyItalic

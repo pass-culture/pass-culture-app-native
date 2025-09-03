@@ -36,7 +36,7 @@ const ProgressBarContainer = styled.View<{ height?: number }>(({ theme, height }
   flex: 1,
   border: 1,
   borderColor: theme.designSystem.color.border.disabled,
-  borderRadius: getSpacing(12),
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   height: getSpacing(height ?? 1.5),
   zIndex: theme.zIndex.progressbar,
 }))

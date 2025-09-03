@@ -45,7 +45,7 @@ const AchievementContainer = styled.View<{ isCompleted: boolean }>(({ theme, isC
   paddingVertical: getSpacing(6),
   paddingHorizontal: getSpacing(2),
   border: `1px solid ${theme.designSystem.color.border.default}`,
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   alignItems: 'center',
   backgroundColor: isCompleted
     ? theme.designSystem.color.background.default

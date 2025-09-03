@@ -15,7 +15,7 @@ import { getShadow, getSpacing } from 'ui/theme'
 type SizeProp = keyof AppThemeType['tiles']['sizes']
 type StyleProps = {
   size: SizeProp
-  borderRadius?: number
+  borderRadius?: number | string
   withStroke?: boolean
   withShadow?: boolean
 }
@@ -24,7 +24,7 @@ type Props = {
   imageUrl?: string
   categoryId?: CategoryIdEnum | null
   size?: SizeProp
-  borderRadius?: number
+  borderRadius?: number | string
   withStroke?: boolean
   withContainerStroke?: boolean
   withShadow?: boolean
@@ -67,7 +67,7 @@ const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, siz
 }))<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
   ...theme.tiles.sizes[size],
-  borderRadius: borderRadius || theme.tiles.borderRadius,
+  borderRadius: borderRadius || theme.designSystem.size.borderRadius.s,
   ...(withStroke
     ? {
         borderWidth: 1,
@@ -78,12 +78,12 @@ const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, siz
 
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs<{ size?: number }>(({ theme }) => ({
   size: theme.icons.sizes.standard,
-  borderRadius: theme.tiles.borderRadius,
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))``
 
 const Container = styled.View<StyleProps>(
   ({ theme, size, borderRadius, withStroke, withShadow }) => ({
-    borderRadius: borderRadius || theme.tiles.borderRadius,
+    borderRadius: borderRadius || theme.designSystem.size.borderRadius.s,
     ...theme.tiles.sizes[size],
     ...(!withShadow || Platform.OS === 'web'
       ? {}

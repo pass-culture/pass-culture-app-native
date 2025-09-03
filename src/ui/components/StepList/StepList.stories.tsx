@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderColor: theme.designSystem.color.border.default,
     borderWidth: 2,
     borderStyle: 'solid',
-    borderRadius: 4,
+    borderRadius: theme.designSystem.size.borderRadius.s,
     height: 100,
     padding: 24,
     marginVertical: 12,

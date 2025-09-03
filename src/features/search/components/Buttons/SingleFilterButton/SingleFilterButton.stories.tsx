@@ -18,11 +18,11 @@ const GradientBullet = styled(LinearGradient).attrs<{ colors?: string[] }>(({ th
     theme.designSystem.color.background.brandPrimary,
     theme.designSystem.color.background.brandPrimaryHover,
   ],
-}))({
+}))(({ theme }) => ({
   width: 10,
   height: 10,
-  borderRadius: 5,
-})
+  borderRadius: theme.designSystem.size.borderRadius.s,
+}))
 
 const variantConfig: Variants<typeof SingleFilterButton> = [
   {
