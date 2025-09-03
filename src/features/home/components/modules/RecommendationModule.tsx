@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
+import { ViewToken } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -9,6 +11,7 @@ import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylist
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -19,12 +22,23 @@ type RecommendationModuleProps = {
   index: number
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
   homeEntryId: string | undefined
+  onViewableItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    callId?: string | null
+  ) => void
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
+  const {
+    displayParameters,
+    index,
+    recommendationParameters,
+    moduleId,
+    homeEntryId,
+    onViewableItemsChanged,
+  } = props
   const { userLocation: position } = useLocation()
   const { user: profile } = useAuthContext()
 
@@ -72,20 +86,36 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     [moduleId, moduleName, recommendationApiParams, homeEntryId]
   )
 
+  const handleOnViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+    onViewableItemsChanged?.(items, recommendationApiParams?.call_id)
+  }
+
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return null
   return (
-    <PassPlaylist
-      testID="recommendationModuleList"
-      title={displayParameters.title}
-      subtitle={displayParameters.subtitle}
-      data={offers}
-      itemHeight={itemHeight}
-      itemWidth={itemWidth}
-      renderItem={renderItem}
-      keyExtractor={keyExtractor}
-      onEndReached={logHasSeenAllTilesOnce}
-    />
+    <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
+      {({ listRef, handleViewableItemsChanged }) => (
+        <PlaylistContainer>
+          <PassPlaylist
+            testID="recommendationModuleList"
+            title={displayParameters.title}
+            subtitle={displayParameters.subtitle}
+            data={offers}
+            itemHeight={itemHeight}
+            itemWidth={itemWidth}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            onEndReached={logHasSeenAllTilesOnce}
+            playlistRef={listRef}
+            onViewableItemsChanged={handleViewableItemsChanged}
+          />
+        </PlaylistContainer>
+      )}
+    </ObservedPlaylist>
   )
 }
+
+const PlaylistContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
