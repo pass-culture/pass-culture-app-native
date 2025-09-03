@@ -2,10 +2,8 @@ import React, { PropsWithChildren } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 

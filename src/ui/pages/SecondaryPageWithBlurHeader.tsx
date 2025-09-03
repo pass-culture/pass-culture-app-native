@@ -2,11 +2,9 @@ import React, { PropsWithChildren, ReactNode } from 'react'
 import { ScrollViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Page } from 'ui/pages/Page'
 
 type Props = PropsWithChildren<{

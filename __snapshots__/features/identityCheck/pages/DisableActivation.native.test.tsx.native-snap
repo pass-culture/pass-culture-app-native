@@ -44,54 +44,45 @@ exports[`<DisableActivation/> should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
             "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-start",
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
-      >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
+        testID="back-button-container"
+      />
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
-          testID="back-button-container"
-        />
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
-      </View>
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
@@ -412,54 +403,45 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
             "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-start",
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
-      >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
+        testID="back-button-container"
+      />
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
-          testID="back-button-container"
-        />
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
-      </View>
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View

@@ -2,11 +2,9 @@ import React, { FunctionComponent, ReactNode, useState } from 'react'
 import { LayoutChangeEvent, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { CustomKeyboardAvoidingView } from 'ui/pages/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'ui/pages/helpers/useShouldEnableScrollView'
 import { Page } from 'ui/pages/Page'

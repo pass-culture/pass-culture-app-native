@@ -2,6 +2,7 @@ import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject } from 'ui/animations/type'
@@ -9,10 +10,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'

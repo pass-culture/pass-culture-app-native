@@ -39,40 +39,39 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
             "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-start",
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
+          }
+        }
+        testID="back-button-container"
+      />
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        />
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -85,23 +84,23 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
         >
           Informations personnelles
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
