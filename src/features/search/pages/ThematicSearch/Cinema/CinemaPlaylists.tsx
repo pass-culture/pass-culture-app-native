@@ -5,7 +5,7 @@ import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 
 const CINEMA_PLAYLISTS_TITLES = ['Films à l’affiche', 'Films de la semaine', 'Cartes ciné']

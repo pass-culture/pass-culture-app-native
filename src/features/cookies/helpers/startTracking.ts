@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { campaignTracker } from 'libs/campaign'
+import { campaignTracker } from 'libs/campaign/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'

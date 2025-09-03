@@ -4,7 +4,7 @@ import {
   distanceToLatitudeDelta,
   distanceToLongitudeDelta,
 } from 'features/venueMap/helpers/calculateDistanceMap'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { Region } from 'libs/maps/maps'
 
 const RADIUS_IN_METERS = 10_000

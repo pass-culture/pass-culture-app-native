@@ -32,7 +32,7 @@ jest.mock('uuid', () => ({
 
 const venueId = venueDataTest.id
 
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: jest.fn().mockReturnValue({
     userLocation: {
       latitude: 2,

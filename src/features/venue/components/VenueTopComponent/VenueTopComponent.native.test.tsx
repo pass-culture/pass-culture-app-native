@@ -8,12 +8,12 @@ import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/V
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { ILocationContext, useLocation } from 'libs/location'
+import { ILocationContext, useLocation } from 'libs/location/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }

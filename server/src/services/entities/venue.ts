@@ -1,4 +1,4 @@
-import { env } from '../../libs/environment/env'
+import { env } from '../../libs/environment/serverEnv'
 
 import { EntityType, TwitterCard, VenueData } from './types'
 

@@ -1,15 +1,18 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeolocPermissionState, useLocation } from 'libs/location'
-import { requestGeolocPermission, showGeolocPermissionModal } from 'libs/location/__mocks__'
+import {
+  requestGeolocPermission,
+  showGeolocPermissionModal,
+} from 'libs/location/__mocks__/location'
+import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 const mockUseLocation = useLocation as jest.Mock
 
 const user = userEvent.setup()

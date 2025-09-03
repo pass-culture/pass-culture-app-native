@@ -2,7 +2,7 @@ import { CookieNameEnum } from 'features/cookies/enums'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { Cookies } from 'features/cookies/types'
 // eslint-disable-next-line no-restricted-imports
-import { campaignTracker } from 'libs/campaign'
+import { campaignTracker } from 'libs/campaign/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'

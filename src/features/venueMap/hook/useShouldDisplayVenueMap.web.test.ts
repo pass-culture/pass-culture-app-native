@@ -16,7 +16,7 @@ const mockUseLocation = jest.fn(() => ({
   selectedLocationMode: LocationMode.AROUND_ME,
   place: mockedPlace,
 }))
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

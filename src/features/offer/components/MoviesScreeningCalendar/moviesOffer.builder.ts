@@ -9,7 +9,7 @@ import {
 
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
-import { GeoCoordinates } from 'libs/location'
+import { GeoCoordinates } from 'libs/location/location'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
 export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => {

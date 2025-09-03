@@ -93,7 +93,7 @@ const AROUND_ME_POSITION = {
 }
 
 const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

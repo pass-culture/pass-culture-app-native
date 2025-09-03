@@ -3,7 +3,7 @@ import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { ILocationContext } from 'libs/location/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -26,7 +26,7 @@ const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetc
 
 const mockOffers = mockedAlgoliaResponse.hits
 
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 const mockUseLocation = jest.mocked(useLocation)
 
 jest.mock('libs/firebase/analytics/analytics')

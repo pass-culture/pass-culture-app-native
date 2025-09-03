@@ -1,7 +1,7 @@
 import React from 'react'
 import { LogBox } from 'react-native'
 
-import { campaignTracker } from 'libs/campaign'
+import { campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
@@ -16,7 +16,7 @@ jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => (
 jest.mock('libs/e2e/getIsMaestro', () => ({
   getIsMaestro: () => Promise.resolve(true),
 }))
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 jest.mock('@hot-updater/react-native')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 

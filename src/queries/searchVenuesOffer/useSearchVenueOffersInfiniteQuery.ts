@@ -10,7 +10,7 @@ import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsW
 import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, Geoloc } from 'libs/algolia/types'
-import { Position, useLocation } from 'libs/location'
+import { Position, useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'

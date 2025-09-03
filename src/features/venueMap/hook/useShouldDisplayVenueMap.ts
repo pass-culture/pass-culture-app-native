@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 const isWeb = Platform.OS === 'web'

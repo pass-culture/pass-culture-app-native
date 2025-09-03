@@ -6,8 +6,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistCardOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import {
   formatPrice,
   getDisplayedPrice,

@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
-import { env } from '../src/libs/environment/env'
+import { env } from '../src/libs/environment/serverEnv'
 
 import {
   OFFER_RESPONSE_SNAPSHOT,

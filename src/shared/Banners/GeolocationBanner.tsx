@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 

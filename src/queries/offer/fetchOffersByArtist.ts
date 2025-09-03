@@ -5,7 +5,7 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 type BuildAlgoliaFilterType = {
   artistId?: string

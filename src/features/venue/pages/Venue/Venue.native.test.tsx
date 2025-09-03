@@ -45,7 +45,7 @@ jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper')
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 
 jest.mock('libs/subcategories/useSubcategories')
 const venueId = venueDataTest.id

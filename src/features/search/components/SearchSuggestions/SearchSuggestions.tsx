@@ -21,7 +21,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 
 type SearchSuggestionsParams = {
   queryHistory: string

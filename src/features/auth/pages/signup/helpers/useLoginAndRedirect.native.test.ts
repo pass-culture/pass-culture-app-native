@@ -8,7 +8,7 @@ import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -21,7 +21,7 @@ jest.useFakeTimers()
 
 mockdate.set(CURRENT_DATE)
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 jest.mock('features/auth/helpers/useLoginRoutine')
 const loginRoutine = jest.fn()
 const mockUseLoginRoutine = Login.useLoginRoutine as jest.Mock

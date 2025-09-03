@@ -8,9 +8,13 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  checkGeolocPermission,
+  GeolocPermissionState,
+  LocationWrapper,
+} from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'

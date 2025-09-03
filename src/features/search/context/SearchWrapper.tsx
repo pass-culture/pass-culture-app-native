@@ -10,7 +10,7 @@ import React, {
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 export interface ISearchContext {

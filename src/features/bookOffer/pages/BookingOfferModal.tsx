@@ -19,7 +19,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
-import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { AppModal } from 'ui/components/modals/AppModal'

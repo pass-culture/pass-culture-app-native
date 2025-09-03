@@ -1,4 +1,4 @@
-import { GeolocPermissionState } from 'libs/location/__mocks__'
+import { GeolocPermissionState } from 'libs/location/__mocks__/location'
 import { AskGeolocPermission } from 'libs/location/types'
 
 export const requestGeolocPermission: AskGeolocPermission = jest

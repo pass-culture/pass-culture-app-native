@@ -10,7 +10,7 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
 }))
 
 const mockPosition = undefined
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: jest.fn(() => ({ geolocPosition: mockPosition })),
 }))
 

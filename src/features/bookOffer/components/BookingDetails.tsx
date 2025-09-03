@@ -21,7 +21,7 @@ import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueS
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'

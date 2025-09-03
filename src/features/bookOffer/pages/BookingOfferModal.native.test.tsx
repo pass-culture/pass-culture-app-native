@@ -13,7 +13,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
-import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,7 +24,7 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()

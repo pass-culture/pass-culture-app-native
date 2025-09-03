@@ -1,10 +1,10 @@
 /* eslint-disable no-restricted-imports */
 import { startTracking } from 'features/cookies/helpers/startTracking'
-import { campaignTracker } from 'libs/campaign'
+import { campaignTracker } from 'libs/campaign/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 
 jest.mock('libs/firebase/analytics/analytics')
 

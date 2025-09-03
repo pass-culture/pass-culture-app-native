@@ -2,7 +2,12 @@ import React from 'react'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { GeoCoordinates, GeolocationError, GeolocPermissionState, Position } from 'libs/location'
+import {
+  GeoCoordinates,
+  GeolocationError,
+  GeolocPermissionState,
+  Position,
+} from 'libs/location/location'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates

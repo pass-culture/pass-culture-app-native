@@ -1,4 +1,4 @@
-import { linking } from 'features/navigation/RootNavigator/linking'
+import { linking } from 'features/navigation/RootNavigator/linking/linking'
 
 export const isAppUrl = (url: string) => {
   for (const prefix of linking.prefixes) {

@@ -4,7 +4,7 @@ import { useGetGTLPlaylistsConfigByLabelQuery } from 'features/gtlPlaylist/queri
 import { OffersModuleParameters } from 'features/home/types'
 import { AlgoliaOffer, HitOffer, PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 

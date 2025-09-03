@@ -6,7 +6,7 @@ import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/co
 import { RecommendedOffersModule } from 'features/home/types'
 import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { useHomeRecommendedIdsQuery } from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'

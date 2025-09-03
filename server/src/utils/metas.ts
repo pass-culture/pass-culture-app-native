@@ -1,6 +1,6 @@
 import { encode } from 'html-entities'
 
-import { env } from '../libs/environment/env'
+import { env } from '../libs/environment/serverEnv'
 import { apiClient } from '../services/apiClient'
 import {
   ENTITY_METAS_CONFIG_MAP,

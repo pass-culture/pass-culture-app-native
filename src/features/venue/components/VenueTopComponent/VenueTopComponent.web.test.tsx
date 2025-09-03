@@ -3,13 +3,13 @@ import React from 'react'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 

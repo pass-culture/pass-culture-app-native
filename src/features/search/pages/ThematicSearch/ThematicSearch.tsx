@@ -19,7 +19,7 @@ import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/Films
 import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'

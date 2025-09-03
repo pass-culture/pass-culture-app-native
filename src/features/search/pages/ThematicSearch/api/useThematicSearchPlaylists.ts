@@ -7,7 +7,7 @@ import {
   filterOfferHitWithImage,
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { Position, useLocation } from 'libs/location'
+import { Position, useLocation } from 'libs/location/location'
 import { Offer } from 'shared/offer/types'
 
 type ThematicSearchPlaylists = {

@@ -1,6 +1,6 @@
 import { isScreen } from 'features/navigation/RootNavigator/types'
 
-import { linking } from './index'
+import { linking } from './linking'
 
 type NavigationState = Parameters<typeof linking.getPathFromState>[0]
 

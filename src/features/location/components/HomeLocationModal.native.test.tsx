@@ -3,9 +3,13 @@ import { Button } from 'react-native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics/provider'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  checkGeolocPermission,
+  GeolocPermissionState,
+  LocationWrapper,
+} from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'

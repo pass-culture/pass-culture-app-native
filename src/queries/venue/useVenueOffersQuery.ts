@@ -13,7 +13,7 @@ import {
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, HitOffer, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 

@@ -11,7 +11,7 @@ import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffe
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'

@@ -15,7 +15,7 @@ import { render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)

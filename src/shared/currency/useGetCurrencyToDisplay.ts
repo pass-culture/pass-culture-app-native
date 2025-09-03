@@ -3,7 +3,7 @@ import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 export enum Currency {

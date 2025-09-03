@@ -21,7 +21,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
-import { LocationWrapper } from 'libs/location'
+import { LocationWrapper } from 'libs/location/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'

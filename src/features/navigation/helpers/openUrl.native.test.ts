@@ -11,7 +11,7 @@ import { act } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/navigation/RootNavigator/linking')
+jest.mock('features/navigation/RootNavigator/linking/linking')
 jest.mock('libs/firebase/analytics/analytics')
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')
