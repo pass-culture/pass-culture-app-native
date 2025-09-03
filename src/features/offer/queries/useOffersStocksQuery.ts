@@ -5,10 +5,15 @@ import { getStocksByOfferIds } from 'features/offer/api/getStocksByOfferIds'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useOffersStocksQuery = ({ offerIds }: { offerIds: number[] }) => {
+export const useOffersStocksQuery = <TData = OffersStocksResponseV2>(
+  { offerIds }: { offerIds: number[] },
+  select?: (data: OffersStocksResponseV2) => TData
+) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useQuery<OffersStocksResponseV2>([QueryKeys.OFFER, offerIds], () =>
-    getStocksByOfferIds(offerIds, logType)
-  )
+  return useQuery<OffersStocksResponseV2, Error, TData>({
+    queryKey: [QueryKeys.OFFER, offerIds],
+    queryFn: () => getStocksByOfferIds(offerIds, logType),
+    select,
+  })
 }
