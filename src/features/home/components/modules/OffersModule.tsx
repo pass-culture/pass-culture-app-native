@@ -1,5 +1,4 @@
-import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
@@ -19,7 +18,7 @@ import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/location'
 import { logPlaylistDebug } from 'shared/analytics/logViewItem'
-import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
@@ -52,7 +51,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { user } = useAuthContext()
   const { userLocation } = useLocation()
-  const isInView = useRef(false)
 
   const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(
     userLocation,
@@ -178,108 +176,32 @@ export const OffersModule = (props: OffersModuleProps) => {
     shouldModuleBeDisplayed,
   ])
 
-  const listRef = useRef<FlatList>(null)
-  const lastViewableItems = useRef<ViewToken[]>([])
-
-  const handleViewableItemsChanged = useCallback(
-    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-      logPlaylistDebug(
-        'OFFERS_MODULE',
-        `handleViewableItemsChanged called for module ${moduleId}`,
-        {
-          isInView: isInView.current,
-          viewableItemsCount: viewableItems.length,
-          viewableItems: viewableItems.map(({ key, index }) => ({ key, index })),
-        }
-      )
-      if (isInView.current) {
-        logPlaylistDebug(
-          'OFFERS_MODULE',
-          `✅ Module ${moduleId} IS IN VIEW - sending items to tracking`,
-          {
-            itemsCount: viewableItems.length,
-          }
-        )
-        onViewableItemsChanged?.(viewableItems.map(({ key, index }) => ({ key, index })))
-        lastViewableItems.current = viewableItems
-      } else {
-        logPlaylistDebug(
-          'OFFERS_MODULE',
-          `❌ Module ${moduleId} NOT IN VIEW - storing items for later`,
-          {
-            itemsCount: viewableItems.length,
-          }
-        )
-        // Store items even when not in view, so they can be sent when module becomes visible
-        lastViewableItems.current = viewableItems
-      }
-    },
-    // We cannot change onViewableItemsChanged on the fly
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  )
-
-  const handleIntersectionObserverChange = useCallback(
-    (value: boolean) => {
-      logPlaylistDebug('OFFERS_MODULE', `IntersectionObserver changed for module ${moduleId}`, {
-        isInView: value,
-        hasLastViewableItems: !!lastViewableItems.current?.length,
-        lastViewableItemsCount: lastViewableItems.current?.length || 0,
-      })
-      isInView.current = value
-      if (value) {
-        if (lastViewableItems.current?.length) {
-          handleViewableItemsChanged({
-            viewableItems: lastViewableItems.current,
-          })
-        } else {
-          listRef.current?.recordInteraction()
-        }
-      }
-    },
-    [handleViewableItemsChanged, moduleId]
-  )
-
-  useFocusEffect(
-    useCallback(() => {
-      logPlaylistDebug('OFFERS_MODULE', `Focus effect triggered for module ${moduleId}`, {
-        hasLastViewableItems: !!lastViewableItems.current?.length,
-        lastViewableItemsCount: lastViewableItems.current?.length || 0,
-      })
-      if (lastViewableItems.current?.length) {
-        handleViewableItemsChanged({
-          viewableItems: lastViewableItems.current,
-        })
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-  )
-
   if (!shouldModuleBeDisplayed) return null
 
   logPlaylistDebug('OFFERS_MODULE', `Rendering module ${moduleId} with IntersectionObserver`, {
     hasData: offersToDisplay.length,
-    currentIsInView: isInView.current,
   })
 
   return (
-    <IntersectionObserver onChange={handleIntersectionObserverChange}>
-      <PassPlaylist
-        title={displayParameters.title}
-        subtitle={displayParameters.subtitle}
-        data={offersToDisplay}
-        itemHeight={itemHeight}
-        itemWidth={itemWidth}
-        onPressSeeMore={onPressSeeMore}
-        titleSeeMoreLink={{ ...searchTabConfig }}
-        renderItem={renderItem}
-        renderFooter={renderFooter}
-        keyExtractor={keyExtractor}
-        onEndReached={logHasSeenAllTilesOnce}
-        playlistRef={listRef}
-        FlatListComponent={FlatList}
-        onViewableItemsChanged={handleViewableItemsChanged}
-      />
-    </IntersectionObserver>
+    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+      {({ listRef, handleViewableItemsChanged }) => (
+        <PassPlaylist
+          title={displayParameters.title}
+          subtitle={displayParameters.subtitle}
+          data={offersToDisplay}
+          itemHeight={itemHeight}
+          itemWidth={itemWidth}
+          onPressSeeMore={onPressSeeMore}
+          titleSeeMoreLink={{ ...searchTabConfig }}
+          renderItem={renderItem}
+          renderFooter={renderFooter}
+          keyExtractor={keyExtractor}
+          onEndReached={logHasSeenAllTilesOnce}
+          playlistRef={listRef}
+          FlatListComponent={FlatList}
+          onViewableItemsChanged={handleViewableItemsChanged}
+        />
+      )}
+    </ObservedPlaylist>
   )
 }
