@@ -8,7 +8,7 @@ import { SingleFilterButton } from 'features/search/components/Buttons/SingleFil
 import { FILTER_BANNER_HEIGHT, filterGroups } from 'features/venueMap/constant'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
 import { FilterGroupKey } from 'features/venueMap/types'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 
 const BULLET_SIZE = 12
 

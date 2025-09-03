@@ -107,55 +107,55 @@ exports[`ChangeCity should render correctly 1`] = `
         class="css-view-175oi2r r-height-10ptun7"
       />
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-minHeight-1pl7oy7 r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-maxWidth-i8lcd2 r-paddingInline-cxgwc0"
+          data-testid="back-button-container"
         >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="back-button-container"
+          <button
+            aria-label="Revenir en arrière"
+            class="c0 c1"
+            data-testid="Revenir en arrière"
+            tabindex="0"
+            title="Revenir en arrière"
+            type="button"
           >
-            <button
-              aria-label="Revenir en arrière"
-              class="c0 c1"
-              data-testid="Revenir en arrière"
-              tabindex="0"
-              title="Revenir en arrière"
-              type="button"
+            <div
+              class="css-view-175oi2r"
+              data-testid="icon-back"
             >
               <div
-                class="css-view-175oi2r"
-                data-testid="icon-back"
-              >
-                <div
-                  class="css-text-146c3p1"
-                  dir="ltr"
-                >
-                  icon-back-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                class="css-text-146c3p1"
                 dir="ltr"
               >
-                Retour
+                icon-back-SVG-Mock
               </div>
-            </button>
-          </div>
+            </div>
+            <div
+              class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+              dir="ltr"
+            >
+              Retour
+            </div>
+          </button>
+        </div>
+        <div
+          class="css-view-175oi2r r-flexShrink-1wbh5a2"
+        >
           <h1
             aria-level="1"
-            class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
             Modifier ma ville de résidence
           </h1>
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="close-button-container"
-          />
         </div>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-maxWidth-i8lcd2 r-paddingInline-cxgwc0"
+          data-testid="close-button-container"
+        />
       </div>
     </header>
     <div

@@ -16,9 +16,9 @@ import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 type Props = {
   venue: VenueResponse

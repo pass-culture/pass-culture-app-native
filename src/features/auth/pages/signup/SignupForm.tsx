@@ -20,11 +20,9 @@ import { analytics } from 'libs/analytics/provider'
 import { campaignTracker } from 'libs/campaign/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
