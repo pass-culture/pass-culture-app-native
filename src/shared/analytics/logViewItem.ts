@@ -61,13 +61,14 @@ export const logViewItem = async (trackingInfo: PageTrackingInfo) => {
   try {
     const { playlists, pageLocation } = trackingInfo
     for (const current of playlists) {
-      const { items, extra, moduleId, index, viewedAt, itemType } = current
+      const { items, extra, moduleId, index, viewedAt, itemType, callId } = current
       const data = {
         origin: pageLocation.toLowerCase(),
         viewedAt: viewedAt.toISOString(),
         moduleId,
         itemType,
         index,
+        callId,
         ...getItemStringChunks(items.map((item) => `${item.index ?? -1}:${item.key}`)),
         ...extra,
       }

@@ -3,7 +3,7 @@ import { Animated, ViewToken } from 'react-native'
 import { VenueAccessibilityModel, VenueContactModel, VenueTypeCodeKey } from 'api/gen'
 import { PlaylistOffersParams, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { ContentfulLabelCategories, ContentTypes, Layout } from 'libs/contentful/types'
+import { ContentTypes, ContentfulLabelCategories, Layout } from 'libs/contentful/types'
 import { GtlLevel } from 'shared/gtl/types'
 import { Offer } from 'shared/offer/types'
 
@@ -368,12 +368,14 @@ export type ModuleViewableItemsChangedHandler = ({
   index,
   viewableItems,
   homeEntryId,
+  callId,
 }: {
   homeEntryId: string
   index: number
   moduleId: string
   viewableItems: Pick<ViewToken, 'key' | 'index'>[]
   moduleType: string
+  callId?: string
 }) => void
 
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
