@@ -49,13 +49,14 @@ const UnmemoizedModule = ({
   onModuleViewableItemsChanged?: ModuleViewableItemsChangedHandler
 }) => {
   const handleOnViewableItemsChanged = useCallback(
-    (viewableItems: Pick<ViewToken, 'key' | 'index'>[]) => {
+    (viewableItems: Pick<ViewToken, 'key' | 'index'>[], callId?: string) => {
       onModuleViewableItemsChanged?.({
         index,
         moduleId: item.id,
         moduleType: item.type,
         viewableItems,
         homeEntryId,
+        callId,
       })
     },
     // Changing onViewableItemsChanged on the fly is not supported
