@@ -73,7 +73,6 @@ const Header = styled(View)(({ theme }) => ({
 }))
 
 const TitleContainer = styled.View({
-  flexGrow: 1,
   flexShrink: 1,
 })
 

@@ -124,7 +124,6 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }

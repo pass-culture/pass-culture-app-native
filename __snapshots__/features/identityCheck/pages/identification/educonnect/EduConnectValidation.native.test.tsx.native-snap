@@ -133,7 +133,6 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }

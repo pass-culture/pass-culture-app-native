@@ -125,7 +125,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           </button>
         </div>
         <div
-          class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          class="css-view-175oi2r r-flexShrink-1wbh5a2"
         >
           <h1
             aria-level="1"

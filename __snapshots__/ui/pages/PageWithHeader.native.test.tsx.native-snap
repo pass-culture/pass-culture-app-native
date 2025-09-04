@@ -133,7 +133,6 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -438,7 +437,6 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
