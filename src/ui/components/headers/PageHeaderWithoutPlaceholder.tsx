@@ -94,7 +94,6 @@ const Container = styled.View({
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   ({ positionInHeader = 'left', theme }) => ({
     alignItems: 'center',
-    flexDirection: 'row',
     justifyContent: positionInHeader === 'left' ? 'flex-start' : 'flex-end',
     paddingHorizontal: theme.contentPage.marginHorizontal,
     maxWidth: BACK_BUTTON_MAX_SIZE,
