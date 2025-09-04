@@ -183,14 +183,22 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       ) : null}
       {playlists.length
         ? playlists.map((playlist) => (
-            <GtlPlaylist
+            <ObservedPlaylist
               key={playlist.entryId}
-              venue={venue}
-              playlist={playlist}
-              analyticsFrom="venue"
-              route="Venue"
-              onViewableItemsChanged={onViewableItemsChanged}
-            />
+              onViewableItemsChanged={(items) =>
+                onViewableItemsChanged(items, playlist.title, 'offer')
+              }>
+              {({ listRef, handleViewableItemsChanged }) => (
+                <GtlPlaylist
+                  venue={venue}
+                  playlist={playlist}
+                  analyticsFrom="venue"
+                  route="Venue"
+                  onViewableItemsChanged={handleViewableItemsChanged}
+                  playlistRef={listRef}
+                />
+              )}
+            </ObservedPlaylist>
           ))
         : null}
     </Container>
