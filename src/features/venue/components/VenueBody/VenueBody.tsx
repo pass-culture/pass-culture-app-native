@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { View, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -29,6 +29,11 @@ interface Props {
   headlineOfferData?: HeadlineOfferData | null
   arePlaylistsLoading: boolean
   enableAccesLibre?: boolean
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+  ) => void
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -39,6 +44,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   headlineOfferData,
   arePlaylistsLoading,
   enableAccesLibre,
+  onViewableItemsChanged,
 }) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -82,6 +88,7 @@ export const VenueBody: FunctionComponent<Props> = ({
           currency={currency}
           euroToPacificFrancRate={euroToPacificFrancRate}
           arePlaylistsLoading={arePlaylistsLoading}
+          onViewableItemsChanged={onViewableItemsChanged}
         />
       </React.Fragment>
     ),
