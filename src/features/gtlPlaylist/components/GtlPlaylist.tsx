@@ -1,5 +1,5 @@
 import { Hit } from '@algolia/client-search'
-import React, { useCallback } from 'react'
+import React, { Ref } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
@@ -11,7 +11,6 @@ import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFunctionOnce } from 'libs/hooks'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
-import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { useRenderPassPlaylist } from 'shared/renderPassPlaylist'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -22,11 +21,8 @@ export interface GtlPlaylistProps {
   playlist: GtlPlaylistData
   venue?: VenueResponse
   noMarginBottom?: boolean
-  onViewableItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
-  ) => void
+  playlistRef?: Ref<FlatList>
+  onViewableItemsChanged?: (info: { viewableItems: ViewToken<unknown>[] }) => void
 }
 
 export function GtlPlaylist({
@@ -36,6 +32,7 @@ export function GtlPlaylist({
   route,
   noMarginBottom,
   onViewableItemsChanged,
+  playlistRef,
 }: Readonly<GtlPlaylistProps>) {
   const entryId = playlist.entryId
 
@@ -61,35 +58,24 @@ export function GtlPlaylist({
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)
 
-  const handleGtlPlaylistViewableItemsChanged = useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      onViewableItemsChanged?.(items, playlist.title, 'offer')
-    },
-    [onViewableItemsChanged, playlist.title]
-  )
-
   return (
     <IntersectionObserver
       onChange={handleLogModuleDisplayedScrolling}
       threshold="50%"
       key={entryId}>
-      <ObservedPlaylist onViewableItemsChanged={handleGtlPlaylistViewableItemsChanged}>
-        {({ listRef, handleViewableItemsChanged }) => (
-          <PassPlaylist
-            data={playlist.offers.hits}
-            itemWidth={itemWidth}
-            itemHeight={itemHeight}
-            renderItem={renderPassPlaylist}
-            keyExtractor={(item: Hit<Offer>) => item.objectID}
-            title={playlist.title}
-            onEndReached={logHasSeenAllTilesOnce}
-            noMarginBottom={noMarginBottom}
-            FlatListComponent={FlatList}
-            playlistRef={listRef}
-            onViewableItemsChanged={handleViewableItemsChanged}
-          />
-        )}
-      </ObservedPlaylist>
+      <PassPlaylist
+        data={playlist.offers.hits}
+        itemWidth={itemWidth}
+        itemHeight={itemHeight}
+        renderItem={renderPassPlaylist}
+        keyExtractor={(item: Hit<Offer>) => item.objectID}
+        title={playlist.title}
+        onEndReached={logHasSeenAllTilesOnce}
+        noMarginBottom={noMarginBottom}
+        FlatListComponent={FlatList}
+        playlistRef={playlistRef}
+        onViewableItemsChanged={onViewableItemsChanged}
+      />
     </IntersectionObserver>
   )
 }
