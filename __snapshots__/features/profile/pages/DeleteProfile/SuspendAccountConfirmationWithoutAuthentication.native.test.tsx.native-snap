@@ -47,7 +47,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -56,11 +55,13 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -133,10 +134,12 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"

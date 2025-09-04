@@ -47,7 +47,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -56,11 +55,13 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -70,10 +71,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -689,7 +692,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -698,11 +700,13 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -712,10 +716,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -1242,7 +1248,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -1251,11 +1256,13 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -1265,10 +1272,12 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"

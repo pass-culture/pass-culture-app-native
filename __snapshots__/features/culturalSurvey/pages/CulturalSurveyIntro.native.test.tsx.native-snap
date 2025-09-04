@@ -47,7 +47,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -56,11 +55,13 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -70,10 +71,12 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -546,7 +549,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -555,11 +557,13 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -569,10 +573,12 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"

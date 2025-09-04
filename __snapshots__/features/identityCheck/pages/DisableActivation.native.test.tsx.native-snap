@@ -47,7 +47,6 @@ exports[`<DisableActivation/> should render correctly 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -56,11 +55,13 @@ exports[`<DisableActivation/> should render correctly 1`] = `
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -70,10 +71,12 @@ exports[`<DisableActivation/> should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -401,7 +404,6 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -410,11 +412,13 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -424,10 +428,12 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"

@@ -42,7 +42,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -51,11 +50,13 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -133,7 +134,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -159,10 +159,12 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -2171,7 +2173,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -2180,11 +2181,13 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -2262,7 +2265,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -2288,10 +2290,12 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"

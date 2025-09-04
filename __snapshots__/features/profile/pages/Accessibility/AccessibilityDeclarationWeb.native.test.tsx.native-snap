@@ -42,7 +42,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -51,11 +50,13 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -133,7 +134,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -159,10 +159,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -281,23 +283,90 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Schéma pluriannuel d’accessibilité 2022 - 2025"
-                    accessibilityRole="button"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Schéma pluriannuel d’accessibilité 2022 - 2025"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Schéma pluriannuel d’accessibilité 2022 - 2025
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Schéma pluriannuel d’accessibilité 2022 - 2025"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Schéma pluriannuel d’accessibilité 2022 - 2025
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -362,23 +431,90 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Actions réalisées depuis 2022"
-                    accessibilityRole="button"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Actions réalisées depuis 2022"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Actions réalisées depuis 2022
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Actions réalisées depuis 2022"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Actions réalisées depuis 2022
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -443,23 +579,90 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Plan d’actions 2024"
-                    accessibilityRole="button"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Plan d’actions 2024"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Plan d’actions 2024
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Plan d’actions 2024"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Plan d’actions 2024
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -478,23 +681,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       >
         Cette déclaration d’accessibilité s’applique au site internet
          
-        <Text
-          accessibilityLabel="https://passculture.app/, lien externe"
-          accessibilityRole="link"
-          onPress={[Function]}
-          style={
-            {
-              "color": "#eb0055",
-              "cursor": "pointer",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textDecorationLine": "underline",
+        <View>
+          <View
+            accessibilityLabel="https://passculture.app/"
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
-          }
-        >
-          https://passculture.app/
-        </Text>
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "top": 3,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="https://passculture.app/"
+          >
+            <View
+              gap={1}
+              paddingForIcon={0}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                  "top": 0,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+                typography="Button"
+              >
+                https://passculture.app/
+              </Text>
+            </View>
+          </View>
+        </View>
       </Text>
       <View
         style={
@@ -2498,23 +2769,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Accueil, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Accueil"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Accueil
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Accueil"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Accueil
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -2579,23 +2918,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Connexion, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Connexion"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Connexion
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Connexion"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Connexion
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -2660,23 +3067,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Inscription - Date de naissance, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Inscription - Date de naissance"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Inscription - Date de naissance
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Inscription - Date de naissance"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Inscription - Date de naissance
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -2741,23 +3216,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Vérification d’identité, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Vérification d’identité"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Vérification d’identité
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Vérification d’identité"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Vérification d’identité
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -2822,23 +3365,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Profil, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Profil"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Profil
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Profil"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Profil
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -2903,23 +3514,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Modification de mot de passe, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Modification de mot de passe"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Modification de mot de passe
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Modification de mot de passe"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Modification de mot de passe
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -2984,23 +3663,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Recherche, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Recherche"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Recherche
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Recherche"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Recherche
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -3065,23 +3812,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Filtres, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Filtres"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Filtres
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Filtres"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Filtres
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -3146,23 +3961,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Résultats de recherche, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Résultats de recherche"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Résultats de recherche
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Résultats de recherche"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Résultats de recherche
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -3227,23 +4110,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Favoris, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Favoris"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Favoris
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Favoris"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Favoris
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -3308,23 +4259,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Détails d’une offre, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Détails d’une offre"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Détails d’une offre
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Détails d’une offre"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Détails d’une offre
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -3389,23 +4408,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Déclaration d’accessibilité, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                  <View>
+                    <View
+                      accessibilityLabel="Déclaration d’accessibilité"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                    }
-                  >
-                    Déclaration d’accessibilité
-                  </Text>
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "top": 3,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Déclaration d’accessibilité"
+                    >
+                      <View
+                        gap={1}
+                        paddingForIcon={0}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 4,
+                            "top": 0,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                          typography="Button"
+                        >
+                          Déclaration d’accessibilité
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </Text>
               </Text>
             </View>
@@ -3462,23 +4549,90 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       >
         Contacter l’équipe support à l’adresse
          
-        <Text
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
-          accessibilityRole="link"
-          onPress={[Function]}
-          style={
-            {
-              "color": "#eb0055",
-              "cursor": "pointer",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textDecorationLine": "underline",
+        <View>
+          <View
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
-          }
-        >
-          support@passculture.app
-        </Text>
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "top": 3,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Ouvrir le gestionnaire mail pour contacter le support"
+          >
+            <View
+              gap={1}
+              paddingForIcon={0}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                  "top": 0,
+                }
+              }
+            >
+              <View
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+                typography="Button"
+              >
+                support@passculture.app
+              </Text>
+            </View>
+          </View>
+        </View>
       </Text>
       <View
         style={
@@ -3547,23 +4701,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           >
             Écrire un message au
              
-            <Text
-              accessibilityLabel="Défenseur des droits, lien externe"
-              accessibilityRole="link"
-              onPress={[Function]}
-              style={
-                {
-                  "color": "#eb0055",
-                  "cursor": "pointer",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textDecorationLine": "underline",
+            <View>
+              <View
+                accessibilityLabel="Défenseur des droits"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Défenseur des droits
-            </Text>
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "top": 3,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Défenseur des droits"
+              >
+                <View
+                  gap={1}
+                  paddingForIcon={0}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
+                      "top": 0,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                    typography="Button"
+                  >
+                    Défenseur des droits
+                  </Text>
+                </View>
+              </View>
+            </View>
           </Text>
           <Text
             style={
@@ -3577,23 +4799,91 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           >
             Contacter le délégué du
              
-            <Text
-              accessibilityLabel="Défenseur des droits dans votre région, lien externe"
-              accessibilityRole="link"
-              onPress={[Function]}
-              style={
-                {
-                  "color": "#eb0055",
-                  "cursor": "pointer",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textDecorationLine": "underline",
+            <View>
+              <View
+                accessibilityLabel="Défenseur des droits dans votre région"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Défenseur des droits dans votre région
-            </Text>
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "top": 3,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Défenseur des droits dans votre région"
+              >
+                <View
+                  gap={1}
+                  paddingForIcon={0}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
+                      "top": 0,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                    typography="Button"
+                  >
+                    Défenseur des droits dans votre région
+                  </Text>
+                </View>
+              </View>
+            </View>
           </Text>
           <Text
             style={

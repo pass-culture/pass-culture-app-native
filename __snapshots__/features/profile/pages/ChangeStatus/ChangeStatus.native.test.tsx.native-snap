@@ -33,7 +33,6 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -42,11 +41,13 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -124,7 +125,6 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -150,10 +150,12 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -2088,7 +2090,6 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -2097,11 +2098,13 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -2179,7 +2182,6 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -2205,10 +2207,12 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -4143,7 +4147,6 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -4152,11 +4155,13 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -4234,7 +4239,6 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -4260,10 +4264,12 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"

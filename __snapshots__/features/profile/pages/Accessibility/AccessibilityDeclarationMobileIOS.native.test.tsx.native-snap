@@ -42,7 +42,6 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
-          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -51,11 +50,13 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
         positionInHeader="left"
         style={
           {
-            "alignItems": "flex-start",
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-start",
-            "marginLeft": 0,
-            "marginRight": 8,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="back-button-container"
@@ -133,7 +134,6 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -159,10 +159,12 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "marginLeft": 8,
-            "marginRight": 0,
-            "minWidth": 40,
+            "maxWidth": 40,
+            "paddingHorizontal": 24,
           }
         }
         testID="close-button-container"
@@ -224,23 +226,91 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
         >
           La présente déclaration d’accessibilité s’applique à
            
-          <Text
-            accessibilityLabel="l’application iOS, lien externe"
-            accessibilityRole="link"
-            onPress={[Function]}
-            style={
-              {
-                "color": "#eb0055",
-                "cursor": "pointer",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "textDecorationLine": "underline",
+          <View>
+            <View
+              accessibilityLabel="l’application iOS"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
               }
-            }
-          >
-            l’application iOS
-          </Text>
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "top": 3,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="l’application iOS"
+            >
+              <View
+                gap={1}
+                paddingForIcon={0}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                  typography="Button"
+                >
+                  l’application iOS
+                </Text>
+              </View>
+            </View>
+          </View>
            
           version 1.348.8 du pass Culture.
         </Text>
@@ -2261,23 +2331,90 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
         >
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
            
-          <Text
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
-            accessibilityRole="link"
-            onPress={[Function]}
-            style={
-              {
-                "color": "#eb0055",
-                "cursor": "pointer",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "textDecorationLine": "underline",
+          <View>
+            <View
+              accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
               }
-            }
-          >
-            support@passculture.app
-          </Text>
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "top": 3,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Ouvrir le gestionnaire mail pour contacter le support"
+            >
+              <View
+                gap={1}
+                paddingForIcon={0}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 4,
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                  typography="Button"
+                >
+                  support@passculture.app
+                </Text>
+              </View>
+            </View>
+          </View>
         </Text>
       </View>
       <View
@@ -2343,23 +2480,91 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           >
             Écrire un message au
              
-            <Text
-              accessibilityLabel="Défenseur des droits, lien externe"
-              accessibilityRole="link"
-              onPress={[Function]}
-              style={
-                {
-                  "color": "#eb0055",
-                  "cursor": "pointer",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textDecorationLine": "underline",
+            <View>
+              <View
+                accessibilityLabel="Défenseur des droits"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Défenseur des droits
-            </Text>
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "top": 3,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Défenseur des droits"
+              >
+                <View
+                  gap={1}
+                  paddingForIcon={0}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
+                      "top": 0,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                    typography="Button"
+                  >
+                    Défenseur des droits
+                  </Text>
+                </View>
+              </View>
+            </View>
           </Text>
           <Text
             style={
@@ -2373,23 +2578,91 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           >
             Contacter le délégué du
              
-            <Text
-              accessibilityLabel="Défenseur des droits dans votre région, lien externe"
-              accessibilityRole="link"
-              onPress={[Function]}
-              style={
-                {
-                  "color": "#eb0055",
-                  "cursor": "pointer",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textDecorationLine": "underline",
+            <View>
+              <View
+                accessibilityLabel="Défenseur des droits dans votre région"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Défenseur des droits dans votre région
-            </Text>
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "top": 3,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Défenseur des droits dans votre région"
+              >
+                <View
+                  gap={1}
+                  paddingForIcon={0}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
+                      "top": 0,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                    typography="Button"
+                  >
+                    Défenseur des droits dans votre région
+                  </Text>
+                </View>
+              </View>
+            </View>
           </Text>
           <Text
             style={
