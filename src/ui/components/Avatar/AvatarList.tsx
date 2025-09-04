@@ -1,5 +1,6 @@
 import { mergeWith } from 'lodash'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, Ref, useCallback } from 'react'
+import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { Artist } from 'features/venue/types'
@@ -12,6 +13,8 @@ type AvatarListProps = {
   data: Artist[]
   avatarConfig?: AvatarProps
   onItemPress: (id: string, name: string) => void
+  onViewableItemsChanged?: ({ viewableItems }: { viewableItems: ViewToken[] }) => void
+  listRef?: Ref<FlatList>
 }
 
 const AVATAR_DEFAULT_CONFIG = {
@@ -23,6 +26,8 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
   data,
   onItemPress,
   avatarConfig = {},
+  listRef,
+  onViewableItemsChanged,
 }) => {
   const mergedAvatarConfig = mergeWith(
     avatarConfig,
@@ -52,6 +57,10 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
       itemHeight={size}
       itemWidth={size}
       FlatListComponent={FlatList}
+      ref={listRef}
+      onViewableItemsChanged={(info) =>
+        onViewableItemsChanged?.({ viewableItems: info.viewableItems })
+      }
     />
   )
 }

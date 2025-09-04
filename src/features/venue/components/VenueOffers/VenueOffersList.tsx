@@ -138,31 +138,47 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     [onViewableItemsChanged]
   )
 
+  const handleArtistsViewableItemsChanged = useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      onViewableItemsChanged(items, 'venue_artists_carousel', 'artist')
+    },
+    [onViewableItemsChanged]
+  )
+
   return (
     <Container>
       <ObservedPlaylist onViewableItemsChanged={handleAllOffersViewableItemsChanged}>
         {({ listRef, handleViewableItemsChanged }) => (
-      <PassPlaylist
-        testID="offersModuleList"
-        title="Toutes les offres"
-        data={hits}
-        itemHeight={LENGTH_M}
-        itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
-        onPressSeeMore={onPressSeeMore}
-        renderItem={renderItem}
-        titleSeeMoreLink={showSeeMore ? searchNavigationConfig : undefined}
-        renderFooter={renderFooter}
-        keyExtractor={keyExtractor}
-        FlatListComponent={FlatList}
+          <PassPlaylist
+            testID="offersModuleList"
+            title="Toutes les offres"
+            data={hits}
+            itemHeight={LENGTH_M}
+            itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
+            onPressSeeMore={onPressSeeMore}
+            renderItem={renderItem}
+            titleSeeMoreLink={showSeeMore ? searchNavigationConfig : undefined}
+            renderFooter={renderFooter}
+            keyExtractor={keyExtractor}
+            FlatListComponent={FlatList}
             playlistRef={listRef}
             onViewableItemsChanged={handleViewableItemsChanged}
-      />
+          />
         )}
       </ObservedPlaylist>
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
-          <AvatarList data={artists} onItemPress={handleArtistsPlaylistPress} />
+          <ObservedPlaylist onViewableItemsChanged={handleArtistsViewableItemsChanged}>
+            {({ listRef, handleViewableItemsChanged }) => (
+              <AvatarList
+                data={artists}
+                onItemPress={handleArtistsPlaylistPress}
+                onViewableItemsChanged={handleViewableItemsChanged}
+                listRef={listRef}
+              />
+            )}
+          </ObservedPlaylist>
         </ArtistsPlaylistContainer>
       ) : null}
       {playlists.length
