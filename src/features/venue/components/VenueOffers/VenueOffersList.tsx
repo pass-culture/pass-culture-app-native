@@ -168,6 +168,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
               playlist={playlist}
               analyticsFrom="venue"
               route="Venue"
+              onViewableItemsChanged={onViewableItemsChanged}
             />
           ))
         : null}
