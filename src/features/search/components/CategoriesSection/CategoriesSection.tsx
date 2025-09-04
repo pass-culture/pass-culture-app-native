@@ -11,7 +11,7 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
-import { RadioButtonDeprecated } from 'ui/components/radioButtons/RadioButtonDeprecated'
+import { RadioButton } from 'ui/components/RadioButton/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -61,11 +61,10 @@ export function CategoriesSection<
   return (
     <VerticalUl>
       <ListItem>
-        <RadioButtonDeprecated
+        <RadioButton
           label={allLabel}
           isSelected={value === allValue}
           onSelect={() => onSelect(allValue)}
-          icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
         />
       </ListItem>
       {entries.map(([k, item]) => (

@@ -29,7 +29,7 @@ import { Accordion } from 'ui/components/Accordion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { RadioButtonDeprecated } from 'ui/components/radioButtons/RadioButtonDeprecated'
+import { RadioButton } from 'ui/components/RadioButton/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -75,7 +75,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     return (
       <React.Fragment key={screenName}>
-        <RadioButtonDeprecated
+        <RadioButton
           label={screenName}
           isSelected={selectedScreen === screenName}
           onSelect={onSelectScreenName}

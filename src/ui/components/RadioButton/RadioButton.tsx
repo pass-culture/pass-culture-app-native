@@ -33,6 +33,7 @@ type RadioButtonBase = {
   hasError?: boolean
   disabled?: boolean
   isSelected: boolean
+  accessibilityLabel?: string
 }
 
 type Props = RadioButtonBase &
@@ -69,6 +70,7 @@ export const RadioButton: FunctionComponent<Props> = ({
   hasError,
   isSelected,
   label,
+  accessibilityLabel,
   onSelect,
   variant = 'default',
 }) => {
@@ -95,6 +97,7 @@ export const RadioButton: FunctionComponent<Props> = ({
     <RadioButtonContainer
       {...accessibleRadioProps({ checked: state.selected, label })}
       state={state}
+      accessibilityLabel={accessibilityLabel}
       variant={variant}
       display={effectiveDisplay}
       collapsed={collapsed}

@@ -13,10 +13,10 @@ import { GeolocPermissionState, useLocation } from 'libs/location'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
-import { RadioButtonDeprecated } from 'ui/components/radioButtons/RadioButtonDeprecated'
+import { RadioButton } from 'ui/components/RadioButton/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
@@ -68,7 +68,7 @@ export const FavoritesSorts: React.FC = () => {
     <SecondaryPageWithBlurHeader title="Trier" onGoBack={goBack}>
       <View>
         <TitleContainer>
-          <Spacer.Column numberOfSpaces={12} />
+          <View style={{ height: getSpacing(12) }} />
           <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>
             Trier par
           </Typo.Title4>
@@ -78,7 +78,7 @@ export const FavoritesSorts: React.FC = () => {
             {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
               return (
                 <Li key={sortBy}>
-                  <RadioButtonDeprecated
+                  <RadioButton
                     label={label}
                     isSelected={stagedSelectedSortBy === sortBy}
                     onSelect={() => onSortBySelection(sortBy)}
