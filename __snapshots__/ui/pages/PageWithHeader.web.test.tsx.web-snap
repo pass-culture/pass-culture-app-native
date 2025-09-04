@@ -52,10 +52,10 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         class="css-view-175oi2r r-height-10ptun7"
       />
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-minHeight-1pl7oy7 r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-minHeight-1pl7oy7 r-paddingInline-cxgwc0 r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-maxWidth-i8lcd2 r-paddingInline-cxgwc0"
+          class="css-view-175oi2r r-alignItems-1habvwh r-justifyContent-1h0z5md r-marginLeft-11wrixw r-marginRight-uyseuv r-minWidth-vkv6oe"
           data-testid="back-button-container"
         >
           <button
@@ -86,7 +86,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           </button>
         </div>
         <div
-          class="css-view-175oi2r r-flexShrink-1wbh5a2"
+          class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <h1
             aria-level="1"
@@ -98,7 +98,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           </h1>
         </div>
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-maxWidth-i8lcd2 r-paddingInline-cxgwc0"
+          class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-17s6mgv r-marginLeft-18ry08z r-marginRight-61z16t r-minWidth-vkv6oe"
           data-testid="close-button-container"
         />
       </div>
