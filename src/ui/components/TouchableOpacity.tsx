@@ -66,7 +66,7 @@ const addStyled = (Component: typeof RNTouchableOpacity | typeof GestureTouchabl
     activeOpacity: activeOpacity ?? theme.activeOpacity,
   }))<StyledProps>(({ theme, unselectable, isFocus }) => ({
     userSelect: unselectable ? 'none' : 'auto',
-    ...touchableFocusOutline(theme, isFocus),
+    ...touchableFocusOutline({ theme, isFocus }),
   }))
 const StyledRNTouchableOpacity = addStyled(RNTouchableOpacity)
 const StyledGestureTouchableOpacity = addStyled(GestureTouchableOpacity)
