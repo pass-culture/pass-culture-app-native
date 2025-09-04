@@ -48,6 +48,7 @@ LogBox.ignoreLogs([
   // of TabNavigator. As of today, no bug has been observed which seems related to the warning.
   'Cannot update a component',
   'EventEmitter.removeListener',
+  'to contain units', // TODO(PC-37747): remove this temporary ignore warnings
 ])
 
 const App: FunctionComponent = function () {
