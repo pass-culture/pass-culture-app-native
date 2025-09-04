@@ -4,15 +4,14 @@ import styled from 'styled-components/native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -54,10 +53,10 @@ export function AccessibilityDeclarationMobileBase({
         <Typo.Body>
           La présente déclaration d’accessibilité s’applique à{SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideText}
+            as={ButtonInsideTextV2}
             wording={`l’application ${platformName}`}
-            icon={ExternalSiteFilled}
             externalNav={storeLink}
+            type={AccessibilityRole.LINK}
           />
           {SPACE}version 1.348.8 du pass Culture.
         </Typo.Body>
@@ -170,12 +169,12 @@ export function AccessibilityDeclarationMobileBase({
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter
           afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideText}
+            as={ButtonInsideTextV2}
             wording="support@passculture.app"
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             justifyContent="flex-start"
             externalNav={contactSupport.forGenericQuestion}
-            icon={EmailFilled}
+            type={AccessibilityRole.LINK}
           />
         </Typo.Body>
       </ViewGap>
@@ -194,19 +193,19 @@ export function AccessibilityDeclarationMobileBase({
           <Typo.Body>
             Écrire un message au{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideText}
+              as={ButtonInsideTextV2}
               wording="Défenseur des droits"
-              icon={ExternalSiteFilled}
               externalNav={rightsDefenderUrl}
+              type={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
             Contacter le délégué du{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideText}
+              as={ButtonInsideTextV2}
               wording="Défenseur des droits dans votre région"
-              icon={ExternalSiteFilled}
               externalNav={rightsDelegateUrl}
+              type={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
