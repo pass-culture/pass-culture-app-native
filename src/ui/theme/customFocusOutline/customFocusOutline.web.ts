@@ -3,7 +3,7 @@ import { isSafari, browserVersion } from 'react-device-detect'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
-import { Argument } from 'ui/theme/customFocusOutline/type'
+import { CustomFocusOutlineProps } from 'ui/theme/customFocusOutline/type'
 
 /*
  * The ':focus-visible' pseudo-class support starting with Safari 15.4 (https://caniuse.com/css-focus-visible)
@@ -12,7 +12,12 @@ import { Argument } from 'ui/theme/customFocusOutline/type'
  */
 const focus = isSafari && Number(browserVersion) < 15.4 ? '&:focus' : '&:focus-visible'
 
-export function customFocusOutline({ color, width, isFocus, noOffset = false }: Argument) {
+export function customFocusOutline({
+  color,
+  width,
+  isFocus,
+  noOffset = false,
+}: CustomFocusOutlineProps) {
   const outlineRules = {
     outlineColor: color ?? theme.designSystem.color.outline.default,
     outlineWidth: width ?? theme.outline.width,

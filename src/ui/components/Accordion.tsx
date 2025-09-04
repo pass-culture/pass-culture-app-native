@@ -165,17 +165,26 @@ const SwitchContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledTouchableOpacity = styled(TouchableOpacity).attrs({ activeOpacity: 1 })<{
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs({
+  activeOpacity: 1,
+})<{
   isFocus?: boolean
-}>(({ theme, isFocus }) => ({ flex: 1, ...touchableFocusOutline(theme, isFocus) }))
+}>(({ theme, isFocus }) => ({
+  flex: 1,
+  ...touchableFocusOutline({ theme, isFocus }),
+}))
 
-const StyledTitle = styled(Typo.Title4)({ flexShrink: 1 })
+const StyledTitle = styled(Typo.Title4)({
+  flexShrink: 1,
+})
 
 const StyledArrowAnimatedView = styled(Animated.View)({
   marginLeft: getSpacing(2),
 })
 
-const StyledAnimatedView = styled(Animated.View)({ overflow: 'hidden' })
+const StyledAnimatedView = styled(Animated.View)({
+  overflow: 'hidden',
+})
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

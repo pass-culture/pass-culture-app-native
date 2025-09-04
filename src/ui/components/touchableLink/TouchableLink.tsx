@@ -105,7 +105,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   isHover?: boolean
   hoverUnderlineColor?: ColorsType
 }>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
-  ...touchableFocusOutline(theme, isFocus),
+  ...touchableFocusOutline({ theme, isFocus }),
   ...getHoverStyle({
     underlineColor: hoverUnderlineColor ?? theme.designSystem.color.text.default,
     isHover,
@@ -118,7 +118,7 @@ const StyledTouchableHighlight = styled.TouchableHighlight<{
   hoverUnderlineColor?: ColorsType
 }>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
   textDecoration: 'none',
-  ...touchableFocusOutline(theme, isFocus),
+  ...touchableFocusOutline({ theme, isFocus }),
   ...getHoverStyle({
     underlineColor: hoverUnderlineColor ?? theme.designSystem.color.text.default,
     isHover,
