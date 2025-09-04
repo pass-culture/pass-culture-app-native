@@ -133,7 +133,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -794,7 +793,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -1455,7 +1453,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
       <View
         style={
           {
-            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
