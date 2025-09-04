@@ -1,3 +1,5 @@
+import { ParamListBase, RouteProp, useRoute } from '@react-navigation/native'
+
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
@@ -17,6 +19,14 @@ const PARIS_DEFAULT_POSITION = { latitude: 48.859, longitude: 2.347 }
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = jest.mocked(useAuthContext)
 
+jest.mock('@react-navigation/native')
+const mockUseRoute = jest.mocked(useRoute)
+const createRoute = (params): RouteProp<ParamListBase> => ({
+  key: 'test-key',
+  name: 'TestScreen',
+  params,
+})
+
 describe('useGetCurrencyToDisplay', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -34,6 +44,40 @@ describe('useGetCurrencyToDisplay', () => {
     const { result } = renderHook(() => useGetCurrencyToDisplay())
 
     expect(result.current).toBe('€')
+  })
+
+  describe('when currency params is provided', () => {
+    it('should return Euro if currency param is EUR', () => {
+      mockUseRoute.mockReturnValueOnce(createRoute({ currency: CurrencyEnum.EUR }))
+
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+      expect(result.current).toBe('€')
+    })
+
+    it('should return Pacific Franc short if currency param is XPF', () => {
+      mockUseRoute.mockReturnValueOnce(createRoute({ currency: CurrencyEnum.XPF }))
+
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+      expect(result.current).toBe('F')
+    })
+
+    it('should return Euro if currency param is missing', () => {
+      mockUseRoute.mockReturnValueOnce(createRoute({}))
+
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+      expect(result.current).toBe('€')
+    })
+
+    it('should return Euro if params is undefined', () => {
+      mockUseRoute.mockReturnValueOnce(createRoute(undefined))
+
+      const { result } = renderHook(() => useGetCurrencyToDisplay('short'))
+
+      expect(result.current).toBe('€')
+    })
   })
 
   describe('when location mode is EVERYWHERE', () => {

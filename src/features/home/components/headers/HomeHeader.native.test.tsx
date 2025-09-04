@@ -20,6 +20,11 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('shared/user/useAvailableCredit')
 
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useRoute: jest.fn(() => ({ params: { currency: 'EUR' } })),
+}))
+
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 mockdate.set(new Date('2022-12-01T00:00:00Z'))
 
