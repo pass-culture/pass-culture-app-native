@@ -43,7 +43,6 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -152,7 +151,6 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",

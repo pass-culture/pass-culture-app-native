@@ -57,7 +57,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -136,7 +135,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",

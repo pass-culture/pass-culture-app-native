@@ -52,7 +52,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -161,7 +160,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -805,7 +803,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -914,7 +911,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -1708,7 +1704,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -1817,7 +1812,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -2860,7 +2854,6 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -2969,7 +2962,6 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",

@@ -52,7 +52,6 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -161,7 +160,6 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -661,7 +659,6 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -770,7 +767,6 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",

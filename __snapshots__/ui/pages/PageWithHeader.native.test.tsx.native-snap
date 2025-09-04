@@ -52,7 +52,6 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -161,7 +160,6 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -361,7 +359,6 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -470,7 +467,6 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",

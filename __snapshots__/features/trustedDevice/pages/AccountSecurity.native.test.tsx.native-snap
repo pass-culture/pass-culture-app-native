@@ -57,7 +57,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -73,7 +72,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -704,7 +702,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -720,7 +717,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -1262,7 +1258,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -1278,7 +1273,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",

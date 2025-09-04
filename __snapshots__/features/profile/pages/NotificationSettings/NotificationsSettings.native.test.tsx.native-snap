@@ -52,7 +52,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -161,7 +160,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -2185,7 +2183,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -2294,7 +2291,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",

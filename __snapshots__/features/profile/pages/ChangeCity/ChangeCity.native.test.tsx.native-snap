@@ -52,7 +52,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -161,7 +160,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -717,7 +715,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -826,7 +823,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
@@ -1382,7 +1378,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-start",
@@ -1491,7 +1486,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
           {
             "alignItems": "center",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "flex-end",
