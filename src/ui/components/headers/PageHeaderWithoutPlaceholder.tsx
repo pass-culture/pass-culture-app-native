@@ -73,6 +73,7 @@ const Header = styled(View)(({ theme }) => ({
 }))
 
 const TitleContainer = styled.View({
+  flexGrow: 1,
   flexShrink: 1,
 })
 
@@ -83,20 +84,25 @@ const Title = styled(Typo.Title4).attrs(() => ({
   textAlign: 'center',
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   alignItems: 'center',
   flexDirection: 'row',
   justifyContent: 'space-between',
   minHeight: HEADER_HEIGHT,
   width: '100%',
-})
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
-  ({ positionInHeader = 'left', theme }) => ({
-    alignItems: 'center',
-    justifyContent: positionInHeader === 'left' ? 'flex-start' : 'flex-end',
-    paddingHorizontal: theme.contentPage.marginHorizontal,
-    maxWidth: BACK_BUTTON_MAX_SIZE,
-    flex: 1,
-  })
+  ({ positionInHeader = 'left', theme }) => {
+    const isLeftComponent = positionInHeader === 'left'
+    const marginHorizontal = theme.designSystem.size.spacing.s
+    return {
+      alignItems: isLeftComponent ? 'flex-start' : 'center',
+      justifyContent: isLeftComponent ? 'flex-start' : 'flex-end',
+      minWidth: BACK_BUTTON_MAX_SIZE,
+      marginLeft: isLeftComponent ? 0 : marginHorizontal,
+      marginRight: isLeftComponent ? marginHorizontal : 0,
+    }
+  }
 )
