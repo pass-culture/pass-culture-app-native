@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
+import React, { FunctionComponent, useCallback } from 'react'
+import { Platform, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -23,13 +23,14 @@ import {
 } from 'libs/parsers/getDisplayedPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { LENGTH_M, RATIO_HOME_IMAGE, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -41,6 +42,11 @@ type VenueOffersListProps = VenueOffersProps & {
   labelMapping: CategoryHomeLabelMapping
   currency: Currency
   euroToPacificFrancRate: number
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+  ) => void
 }
 
 export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
@@ -52,6 +58,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   labelMapping,
   currency,
   euroToPacificFrancRate,
+  onViewableItemsChanged,
 }) => {
   const theme = useTheme()
   const { user } = useAuthContext()
@@ -119,36 +126,74 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     analytics.logConsultArtist({ artistName, from: 'venue', venueId: venue.id })
   }
 
+  const handleAllOffersViewableItemsChanged = useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      onViewableItemsChanged(items, 'venue_offers_list', 'offer')
+    },
+    [onViewableItemsChanged]
+  )
+
+  const handleArtistsViewableItemsChanged = useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      onViewableItemsChanged(items, 'venue_artists_carousel', 'artist')
+    },
+    [onViewableItemsChanged]
+  )
+
   return (
     <Container>
-      <PassPlaylist
-        testID="offersModuleList"
-        title="Toutes les offres"
-        data={hits}
-        itemHeight={LENGTH_M}
-        itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
-        onPressSeeMore={onPressSeeMore}
-        renderItem={renderItem}
-        titleSeeMoreLink={showSeeMore ? searchNavigationConfig : undefined}
-        renderFooter={renderFooter}
-        keyExtractor={keyExtractor}
-        FlatListComponent={FlatList}
-      />
+      <ObservedPlaylist onViewableItemsChanged={handleAllOffersViewableItemsChanged}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <PassPlaylist
+            testID="offersModuleList"
+            title="Toutes les offres"
+            data={hits}
+            itemHeight={LENGTH_M}
+            itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
+            onPressSeeMore={onPressSeeMore}
+            renderItem={renderItem}
+            titleSeeMoreLink={showSeeMore ? searchNavigationConfig : undefined}
+            renderFooter={renderFooter}
+            keyExtractor={keyExtractor}
+            FlatListComponent={FlatList}
+            playlistRef={listRef}
+            onViewableItemsChanged={handleViewableItemsChanged}
+          />
+        )}
+      </ObservedPlaylist>
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
-          <AvatarList data={artists} onItemPress={handleArtistsPlaylistPress} />
+          <ObservedPlaylist onViewableItemsChanged={handleArtistsViewableItemsChanged}>
+            {({ listRef, handleViewableItemsChanged }) => (
+              <AvatarList
+                data={artists}
+                onItemPress={handleArtistsPlaylistPress}
+                onViewableItemsChanged={handleViewableItemsChanged}
+                listRef={listRef}
+              />
+            )}
+          </ObservedPlaylist>
         </ArtistsPlaylistContainer>
       ) : null}
       {playlists.length
         ? playlists.map((playlist) => (
-            <GtlPlaylist
+            <ObservedPlaylist
               key={playlist.entryId}
-              venue={venue}
-              playlist={playlist}
-              analyticsFrom="venue"
-              route="Venue"
-            />
+              onViewableItemsChanged={(items) =>
+                onViewableItemsChanged(items, playlist.title, 'offer')
+              }>
+              {({ listRef, handleViewableItemsChanged }) => (
+                <GtlPlaylist
+                  venue={venue}
+                  playlist={playlist}
+                  analyticsFrom="venue"
+                  route="Venue"
+                  onViewableItemsChanged={handleViewableItemsChanged}
+                  playlistRef={listRef}
+                />
+              )}
+            </ObservedPlaylist>
           ))
         : null}
     </Container>
