@@ -47,6 +47,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
+          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -55,13 +56,11 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
         positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "alignItems": "flex-start",
             "justifyContent": "flex-start",
-            "maxWidth": 40,
-            "paddingHorizontal": 24,
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
           }
         }
         testID="back-button-container"
@@ -71,12 +70,10 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
         style={
           {
             "alignItems": "center",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "maxWidth": 40,
-            "paddingHorizontal": 24,
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
           }
         }
         testID="close-button-container"
@@ -452,6 +449,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
           "flexDirection": "row",
           "justifyContent": "space-between",
           "minHeight": 48,
+          "paddingHorizontal": 24,
           "width": "100%",
         }
       }
@@ -460,13 +458,11 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
         positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "alignItems": "flex-start",
             "justifyContent": "flex-start",
-            "maxWidth": 40,
-            "paddingHorizontal": 24,
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
           }
         }
         testID="back-button-container"
@@ -476,12 +472,10 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
         style={
           {
             "alignItems": "center",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
             "justifyContent": "flex-end",
-            "maxWidth": 40,
-            "paddingHorizontal": 24,
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
           }
         }
         testID="close-button-container"
