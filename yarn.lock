@@ -11180,7 +11180,7 @@ __metadata:
     react-native-calendars: 1.1312.0
     react-native-code-push: ^8.3.1
     react-native-date-picker: ^5.0.13
-    react-native-device-info: ^11.1.0
+    react-native-device-info: ^14.0.4
     react-native-email-link: ^1.10.0
     react-native-fast-image: ^8.6.3
     react-native-geolocation-service: 5.3.1
@@ -24804,12 +24804,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-device-info@npm:^11.1.0":
-  version: 11.1.0
-  resolution: "react-native-device-info@npm:11.1.0"
+"react-native-device-info@npm:^14.0.4":
+  version: 14.0.4
+  resolution: "react-native-device-info@npm:14.0.4"
   peerDependencies:
     react-native: "*"
-  checksum: 272cab82573933a1f3a9bc394b82a387ccbdf9fbef131fc1f04b8ff78b36f581931b5c643f5aa278f28577cbc320ef2ac588cafdb73292e9b0cf4427d54c44ce
+  checksum: aa839dbe7df1246a4b5f9bcfeb3d4cc4be585f13a0d3ff6a03f57a0c2cfe7590291ac292dda4c51fd8765f94c870857676463e8e2f1660b057f3ae2b4335db29
   languageName: node
   linkType: hard
 
