@@ -85,13 +85,13 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   ...customFocusOutline({ isFocus }),
   textAlign: 'left',
   alignItems: 'center',
-  padding: getSpacing(2),
+  ...(Platform.OS === 'web' && { padding: getSpacing(2) }),
 }))
 
 const StyledText = styledButton(Typo.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
   numberOfLines: 2,
-  ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
+  marginHorizontal: Number(theme.designSystem.size.spacing.s),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
 }))
