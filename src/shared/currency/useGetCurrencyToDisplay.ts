@@ -14,16 +14,17 @@ export enum Currency {
   PACIFIC_FRANC_FULL = 'francs\u00a0Pacifique',
 }
 
+type CurrencyRouteParams = {
+  currency?: CurrencyEnum.EUR | CurrencyEnum.XPF
+}
+
 type CurrencyDisplayFormat = 'short' | 'full'
 
 export const useGetCurrencyToDisplay = (
   displayFormat: CurrencyDisplayFormat = 'short'
 ): Currency => {
-  const route =
-    useRoute<
-      RouteProp<Record<string, { currency?: CurrencyEnum.EUR | CurrencyEnum.XPF }>, string>
-    >()
-  const currencyParam = route.params?.currency
+  const { params } = useRoute<RouteProp<Record<string, Partial<CurrencyRouteParams>>, string>>()
+  const currencyParam = params?.currency
 
   const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
   const disablePacificFrancCurrency = !enablePacificFrancCurrency

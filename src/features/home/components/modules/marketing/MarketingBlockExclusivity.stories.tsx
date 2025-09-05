@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -12,13 +11,7 @@ import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 const meta: Meta<typeof MarketingBlockExclusivity> = {
   title: 'features/home/MarketingBlock/MarketingBlockExclusivity',
   component: MarketingBlockExclusivity,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
+
   parameters: {
     useQuery: {
       subcategories: PLACEHOLDER_DATA,

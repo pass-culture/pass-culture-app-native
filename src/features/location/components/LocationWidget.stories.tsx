@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -9,13 +8,6 @@ import { LocationWidget } from './LocationWidget'
 const meta: Meta<typeof LocationWidget> = {
   title: 'Features/location/LocationWidget',
   component: LocationWidget,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

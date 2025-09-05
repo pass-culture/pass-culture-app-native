@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -9,13 +8,6 @@ import { EditableField } from './EditableField'
 const meta: Meta<typeof EditableField> = {
   title: 'Features/Profile/EditableField',
   component: EditableField,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

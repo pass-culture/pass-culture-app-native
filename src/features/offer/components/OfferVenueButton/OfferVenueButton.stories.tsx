@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -9,13 +8,6 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 const meta: Meta<typeof OfferVenueButton> = {
   title: 'features/offer/OfferVenueButton',
   component: OfferVenueButton,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

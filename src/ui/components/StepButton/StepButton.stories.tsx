@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -19,13 +18,6 @@ const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
 const meta: Meta<typeof StepButton> = {
   title: 'ui/StepButton',
   component: StepButton,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

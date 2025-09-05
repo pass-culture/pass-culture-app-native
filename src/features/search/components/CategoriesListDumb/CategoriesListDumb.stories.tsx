@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import { View } from 'react-native'
@@ -26,11 +25,9 @@ export const Default: Story = {
   name: 'CategoriesButtons',
   render: (props) => (
     <BodyWrapper>
-      <NavigationContainer>
-        <Container>
-          <CategoriesListDumb {...props} />
-        </Container>
-      </NavigationContainer>
+      <Container>
+        <CategoriesListDumb {...props} />
+      </Container>
     </BodyWrapper>
   ),
   args: {

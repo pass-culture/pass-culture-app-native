@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -9,13 +8,6 @@ import FilterSwitch from './FilterSwitch'
 const meta: Meta<typeof FilterSwitch> = {
   title: 'ui/FilterSwitch',
   component: FilterSwitch,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 
