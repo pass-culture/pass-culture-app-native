@@ -15,8 +15,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFunctionOnce } from 'libs/hooks'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
@@ -50,6 +51,7 @@ export const Accordion = ({
   onOpen,
   accessibilityLabel,
 }: AccordionProps) => {
+  const focusProps = useHandleFocus()
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
@@ -111,6 +113,8 @@ export const Accordion = ({
           onPress={toggleListItem}
           accessibilityControls={accordionBodyId}
           testID="accordionTouchable"
+          onMouseDown={(e) => e.preventDefault()}
+          {...focusProps}
           {...accessibilityProps}>
           <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
             <Title {...getHeadingAttrs(2)}>{title}</Title>
@@ -165,13 +169,12 @@ const SwitchContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledTouchableOpacity = styled(TouchableOpacity).attrs({
-  activeOpacity: 1,
-})<{
+const StyledTouchableOpacity = styled(TouchableOpacity)<{
+  onMouseDown: (e: Event) => void
   isFocus?: boolean
-}>(({ theme, isFocus }) => ({
+}>(({ isFocus }) => ({
   flex: 1,
-  ...touchableFocusOutline({ theme, isFocus }),
+  ...customFocusOutline({ isFocus }),
 }))
 
 const StyledTitle = styled(Typo.Title4)({
