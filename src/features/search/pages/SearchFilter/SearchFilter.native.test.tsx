@@ -79,6 +79,7 @@ jest.useFakeTimers()
 
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
+    useRoute.mockReturnValueOnce({ params: { currency: 'EUR' } })
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
   })
@@ -134,6 +135,7 @@ describe('<SearchFilter/>', () => {
 
     useRoute.mockReturnValueOnce({
       params: {
+        currency: 'EUR',
         locationFilter: {
           locationType: LocationMode.AROUND_ME,
         },
@@ -160,11 +162,7 @@ describe('<SearchFilter/>', () => {
       selectedLocationMode: LocationMode.EVERYWHERE,
     })
     useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.AROUND_ME,
-        },
-      },
+      params: { locationFilter: { locationType: LocationMode.AROUND_ME } },
     })
 
     renderSearchFilter()

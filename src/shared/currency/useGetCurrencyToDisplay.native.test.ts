@@ -16,9 +16,6 @@ const mockUseGeolocation = jest.mocked(useLocation)
 const NOUMEA_DEFAULT_POSITION = { longitude: 166.445742, latitude: -22.26308 }
 const PARIS_DEFAULT_POSITION = { latitude: 48.859, longitude: 2.347 }
 
-jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = jest.mocked(useAuthContext)
-
 jest.mock('@react-navigation/native')
 const mockUseRoute = jest.mocked(useRoute)
 const createRoute = (params): RouteProp<ParamListBase> => ({
@@ -26,6 +23,9 @@ const createRoute = (params): RouteProp<ParamListBase> => ({
   name: 'TestScreen',
   params,
 })
+
+jest.mock('features/auth/context/AuthContext')
+const mockUseAuthContext = jest.mocked(useAuthContext)
 
 describe('useGetCurrencyToDisplay', () => {
   beforeEach(() => {
