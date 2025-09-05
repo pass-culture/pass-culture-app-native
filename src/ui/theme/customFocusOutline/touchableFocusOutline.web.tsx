@@ -3,15 +3,9 @@ import { isFirefox, isSafari } from 'react-device-detect'
 
 import { TouchableFocusOutlineProps } from 'ui/theme/customFocusOutline/type'
 
-const defaultFocus = {
-  outlineOffset: 0,
-}
-const firefoxFocus = {
-  outlineOffset: '-2px',
-}
-const safariFocus = {
-  outlineOffset: '-3px',
-}
+const defaultFocus = { outlineOffset: '-1px' }
+const firefoxFocus = { outlineOffset: '-2px' }
+const safariFocus = { outlineOffset: '-3px' }
 
 const focusStyle = () => {
   if (isFirefox) return firefoxFocus
@@ -20,11 +14,4 @@ const focusStyle = () => {
 }
 
 export const touchableFocusOutline = ({ theme, isFocus }: TouchableFocusOutlineProps) =>
-  isFocus
-    ? {
-        ...focusStyle(),
-        outlineColor: theme.designSystem.color.outline.default,
-        outlineStyle: 'solid',
-        outlineWidth: 2,
-      }
-    : {}
+  isFocus ? { ...focusStyle(), outlineColor: theme.designSystem.color.outline.default } : {}
