@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
-import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -15,6 +14,7 @@ import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
+import { getSpacing } from 'ui/theme'
 
 type RecommendationModuleProps = {
   moduleId: string
@@ -96,26 +96,22 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   return (
     <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
-        <PlaylistContainer>
-          <PassPlaylist
-            testID="recommendationModuleList"
-            title={displayParameters.title}
-            subtitle={displayParameters.subtitle}
-            data={offers}
-            itemHeight={itemHeight}
-            itemWidth={itemWidth}
-            renderItem={renderItem}
-            keyExtractor={keyExtractor}
-            onEndReached={logHasSeenAllTilesOnce}
-            playlistRef={listRef}
-            onViewableItemsChanged={handleViewableItemsChanged}
-          />
-        </PlaylistContainer>
+        <PassPlaylist
+          testID="recommendationModuleList"
+          title={displayParameters.title}
+          subtitle={displayParameters.subtitle}
+          data={offers}
+          itemHeight={itemHeight}
+          itemWidth={itemWidth}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          onEndReached={logHasSeenAllTilesOnce}
+          playlistRef={listRef}
+          onViewableItemsChanged={handleViewableItemsChanged}
+          withMargin
+          contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
+        />
       )}
     </ObservedPlaylist>
   )
 }
-
-const PlaylistContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
-}))
