@@ -138,7 +138,7 @@ const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) 
 const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.default,
   borderWidth: getSpacing(0.25),
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
   padding: getSpacing(4),
   overflow: 'hidden',
 }))

@@ -22,7 +22,7 @@ export const useOfferImageContainerDimensions = (
   subcategoryId?: SubcategoryIdEnum
 ): OfferImageContainerDimensions => {
   const { top } = useCustomSafeInsets()
-  const { appContentWidth, borderRadius } = useTheme()
+  const { appContentWidth, designSystem } = useTheme()
   const fullWidth = appContentWidth - 2 * MARGIN_DP
 
   const isMusicSupport = subcategoryId
@@ -45,6 +45,6 @@ export const useOfferImageContainerDimensions = (
 
   return {
     backgroundHeight: top + HEADER_HEIGHT,
-    imageStyle: getImageStyle(borderRadius.radius),
+    imageStyle: getImageStyle(designSystem.size.borderRadius.m),
   }
 }

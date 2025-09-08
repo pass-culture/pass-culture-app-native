@@ -27,7 +27,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
   padding: getSpacingString(4),
   background: theme.designSystem.color.background.subtle,
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
 const StyledClock = styled(Clock).attrs(({ theme }) => ({

@@ -73,7 +73,7 @@ const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.success,
   backgroundColor: theme.designSystem.color.background.default,
   padding: getSpacing(2),
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
   zIndex: 1,
 }))
 

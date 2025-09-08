@@ -33,7 +33,7 @@ const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
 const StyledView = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandSecondary,
-  borderRadius: theme.borderRadius.button,
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',

@@ -63,9 +63,9 @@ export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
 }
 
 const ShareContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
 }))
 
 const ReactionContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
 }))

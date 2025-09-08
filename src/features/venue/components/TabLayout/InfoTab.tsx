@@ -86,13 +86,13 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
   height: theme.designSystem.size.spacing.xs,
   width: '100%',
   backgroundColor: isSelected ? theme.designSystem.color.background.brandPrimary : 'transparent',
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 
 const PastilleContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: getSpacing(3.25),
   paddingHorizontal: theme.designSystem.size.spacing.xs,
+  borderRadius: theme.designSystem.size.borderRadius.l,
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({

@@ -6,7 +6,6 @@ import { Badge } from 'ui/components/Badge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   activeFilters?: number
@@ -51,7 +50,7 @@ const RoundContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
   width: theme.designSystem.size.spacing.xxl,
   height: theme.designSystem.size.spacing.xxl,
-  borderRadius: getSpacing(4),
+  borderRadius: theme.designSystem.size.borderRadius.l,
   borderWidth: 1,
   borderColor: theme.designSystem.color.border.default,
 }))

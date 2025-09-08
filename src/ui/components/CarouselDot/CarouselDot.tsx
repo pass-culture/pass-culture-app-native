@@ -41,7 +41,7 @@ export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }
 }
 
 const Dot = styled(Animated.View)(({ theme }) => ({
-  borderRadius: BIG_DOT_SIZE,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   backgroundColor: theme.designSystem.color.background.inverted,
   overflow: 'hidden',
 }))
