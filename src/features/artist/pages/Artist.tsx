@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import { ViewToken } from 'react-native'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
@@ -21,7 +21,7 @@ export const Artist: FunctionComponent = () => {
   })
   const { data: artist } = useArtistQuery(params.id)
 
-  const handleViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+  const handleViewableItemsChanged = useCallback((items: Pick<ViewToken, 'key' | 'index'>[]) => {
     setPlaylistTrackingInfo({
       index: items[0]?.index ?? 0,
       moduleId: 'all_offers',
@@ -29,7 +29,7 @@ export const Artist: FunctionComponent = () => {
       items,
       itemType: 'offer',
     })
-  }
+  }, [])
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
   if (!artist || !enableArtistPage) return null
