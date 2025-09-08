@@ -11,7 +11,8 @@ export const BookingPrecisions: React.FC<{
   withdrawalDetails?: string | null
   bookingContactEmail?: string | null
   onEmailPress: () => void
-}> = ({ bookingContactEmail, withdrawalDetails, onEmailPress }) => (
+  hasTicket: boolean
+}> = ({ bookingContactEmail, withdrawalDetails, onEmailPress, hasTicket }) => (
   <ViewGap gap={6}>
     {withdrawalDetails ? (
       <ViewGap gap={4}>
@@ -19,9 +20,16 @@ export const BookingPrecisions: React.FC<{
         <Typo.BodyS testID="withdrawalDetails">{withdrawalDetails}</Typo.BodyS>
       </ViewGap>
     ) : null}
+
     {bookingContactEmail ? (
       <EmailContainer gap={2}>
-        <CaptionNeutralInfo numberOfLines={2}>{bookingContactEmail}</CaptionNeutralInfo>
+        {hasTicket ? (
+          <CaptionNeutralInfo numberOfLines={4}>
+            {`Si tu n’as pas reçu tes billets, contacte l’organisateur\u00a0:\n${bookingContactEmail}`}
+          </CaptionNeutralInfo>
+        ) : (
+          <CaptionNeutralInfo numberOfLines={2}>{bookingContactEmail}</CaptionNeutralInfo>
+        )}
         <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           inline

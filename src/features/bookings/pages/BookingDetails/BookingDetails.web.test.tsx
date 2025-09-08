@@ -84,13 +84,20 @@ describe('BookingDetails', () => {
         })
       })
 
-      it('should display details section when there is a organizer contact', async () => {
+      it('should display organizer contact when there is a organizer contact', async () => {
         renderBookingDetailsV2({
           booking: {
             ...ongoingBookingV2,
             stock: {
               ...ongoingBookingV2.stock,
               offer: { ...ongoingBookingV2.stock.offer, bookingContact: 'toto@monemail.com' },
+            },
+            ticket: {
+              ...ongoingBookingV2.ticket,
+              display: TicketDisplayEnum.no_ticket,
+              withdrawal: {
+                type: WithdrawalTypeEnum.no_ticket,
+              },
             },
           },
 
