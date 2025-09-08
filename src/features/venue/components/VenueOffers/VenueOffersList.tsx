@@ -140,6 +140,13 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     [onViewableItemsChanged]
   )
 
+  const handleGtlViewableItemsChanged = useCallback(
+    (playlistTitle: string) => (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      onViewableItemsChanged(items, playlistTitle, 'offer')
+    },
+    [onViewableItemsChanged]
+  )
+
   return (
     <Container>
       <ObservedPlaylist onViewableItemsChanged={handleAllOffersViewableItemsChanged}>
@@ -180,9 +187,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         ? playlists.map((playlist) => (
             <ObservedPlaylist
               key={playlist.entryId}
-              onViewableItemsChanged={(items) =>
-                onViewableItemsChanged(items, playlist.title, 'offer')
-              }>
+              onViewableItemsChanged={handleGtlViewableItemsChanged(playlist.title)}>
               {({ listRef, handleViewableItemsChanged }) => (
                 <GtlPlaylist
                   venue={venue}
