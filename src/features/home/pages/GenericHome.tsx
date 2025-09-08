@@ -99,6 +99,7 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
     index,
     itemsCount: viewableItems.length,
     items: viewableItems,
+    callId: callId ?? '',
   })
 
   setPlaylistTrackingInfo(trackingData)

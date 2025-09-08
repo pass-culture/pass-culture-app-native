@@ -81,6 +81,7 @@ export const logViewItem = async (trackingInfo: PageTrackingInfo) => {
         origin: data.origin,
         viewedAt: data.viewedAt,
         itemKeys: items.map((item) => `${item.index ?? -1}:${item.key}`),
+        callId: callId ?? '',
       })
 
       await trackingFn(
