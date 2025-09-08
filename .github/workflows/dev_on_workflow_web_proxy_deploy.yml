@@ -26,7 +26,7 @@ jobs:
         run: corepack enable
       - uses: actions/checkout@v4
       - name: Set up Cloud SDK to get gsutils
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
         with:
           version: '>= 416.0.0'
       - uses: actions/setup-node@v4
@@ -40,7 +40,7 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
       - name: Cache the proxy node_modules
         id: yarn-modules-cache-proxy
         uses: pass-culture-github-actions/cache@v1.0.0
