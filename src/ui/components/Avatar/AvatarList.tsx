@@ -49,6 +49,13 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 
   const size = mergedAvatarConfig.size
 
+  const handleViewableItemsChanged = useCallback(
+    (info: { viewableItems: ViewToken[] }) => {
+      onViewableItemsChanged?.({ viewableItems: info.viewableItems })
+    },
+    [onViewableItemsChanged]
+  )
+
   return (
     <Playlist
       data={data}
@@ -58,9 +65,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
       itemWidth={size}
       FlatListComponent={FlatList}
       ref={listRef}
-      onViewableItemsChanged={(info) =>
-        onViewableItemsChanged?.({ viewableItems: info.viewableItems })
-      }
+      onViewableItemsChanged={handleViewableItemsChanged}
     />
   )
 }
