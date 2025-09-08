@@ -1,35 +1,41 @@
-import React, { ReactNode } from 'react'
+import React, { useState } from 'react'
+import { LayoutChangeEvent } from 'react-native'
 import { InView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
-type Percent = `${number}%`
+import { logPlaylistDebug } from 'shared/analytics/logViewItem'
 
-interface Props {
-  children: ReactNode
-  onChange: (inView: boolean) => void
-  /**
-   * You can define a threshold before `onChange` is triggered.
-   * If `threshold` is a number, it will be triggered when `X` pixels are visible.
-   * If `threshold` is a percent, it will be triggered when `X` percents of element are visible.
-   * @example With percent
-   * <IntersectionObserver threshold="10%" />
-   *
-   * @example With fix number
-   * <IntersectionObserver threshold={20} />
-   */
-  threshold?: Percent | number
-}
+import { parseThreshold } from './helpers'
+import { IntersectionObserverProps } from './types'
 
-/**
- * This component must be used in an IOScrollView or an IOFlatList
- * https://github.com/zhbhun/react-native-intersection-observer#usage
- * This component is a hack because the lib doesn't purpose the possibility of adding a threshold for the moment
- * An issue is open here : https://github.com/zhbhun/react-native-intersection-observer/issues/14
- */
-export function IntersectionObserver({ children, onChange, threshold = 0 }: Readonly<Props>) {
+export function IntersectionObserver({
+  children,
+  onChange,
+  threshold = 0,
+}: Readonly<IntersectionObserverProps>) {
+  const [containerHeight, setContainerHeight] = useState<number>(0)
+
+  const handleChange = (inView: boolean) => {
+    logPlaylistDebug('INTERSECTION_OBSERVER_NATIVE', 'IntersectionObserver state changed', {
+      inView,
+      threshold,
+    })
+    onChange(inView)
+  }
+
+  const handleLayout = (event: LayoutChangeEvent) => {
+    const { height } = event.nativeEvent.layout
+    setContainerHeight(height)
+  }
+
+  const thresholdConfig = parseThreshold(threshold, containerHeight)
+
   return (
-    <Container>
-      <StyledInView testID="intersectionObserver" onChange={onChange} threshold={threshold}>
+    <Container onLayout={handleLayout}>
+      <StyledInView
+        testID="intersectionObserver"
+        onChange={handleChange}
+        threshold={thresholdConfig.value}>
         {null}
       </StyledInView>
       {children}
@@ -42,7 +48,7 @@ const Container = styled.View({
 })
 
 const StyledInView = styled(InView).attrs<{ testID?: string }>({})<{
-  threshold: Percent | number
+  threshold: number
 }>(({ threshold }) => ({
   position: 'absolute',
   bottom: 0,
