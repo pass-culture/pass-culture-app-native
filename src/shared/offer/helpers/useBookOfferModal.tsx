@@ -91,10 +91,9 @@ export const useBookOfferModal = ({
             visible={visible}
             hideModal={hideModal}
             title="Encore un peu de patience..."
-            surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_e3SRK0UKgVgJasu"
             Icon={Clock}
             complementaryDescription="Tu peux toujours emprunter un livre en te rendant à la bibliothèque la plus proche de chez toi&nbsp;!"
-            surveyDescription="Cette fonctionnalité n’est pas encore disponible. Aide-nous à la mettre en place en répondant au questionnaire. "
+            surveyDescription="Cette fonctionnalité n’est pas encore disponible. "
           />
         ),
         showModal,
