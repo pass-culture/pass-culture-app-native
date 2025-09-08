@@ -722,6 +722,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
+                    onLayout={[Function]}
                     style={
                       {
                         "position": "relative",
@@ -3820,6 +3821,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 >
                   <View
+                    onLayout={[Function]}
                     style={
                       {
                         "position": "relative",
