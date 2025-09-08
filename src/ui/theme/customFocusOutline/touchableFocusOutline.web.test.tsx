@@ -19,9 +19,7 @@ describe('touchableFocusOutline (web)', () => {
 
     expect(result).toMatchObject({
       outlineColor: theme.designSystem.color.outline.default,
-      outlineStyle: 'solid',
-      outlineWidth: 2,
-      outlineOffset: 0,
+      outlineOffset: '-1px',
     })
   })
 })
