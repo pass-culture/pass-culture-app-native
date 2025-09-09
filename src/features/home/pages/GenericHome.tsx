@@ -81,6 +81,7 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
   moduleType,
   viewableItems,
   homeEntryId,
+  callId,
 }) => {
   const trackingData = {
     index,
@@ -89,7 +90,7 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
     items: viewableItems,
     itemType: getItemTypeFromModuleType(moduleType),
     extra: { homeEntryId },
-    callId: '',
+    callId: callId ?? '',
   }
 
   logPlaylistDebug('GENERIC_HOME', 'Module viewable items changed', {
@@ -98,6 +99,7 @@ const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
     index,
     itemsCount: viewableItems.length,
     items: viewableItems,
+    callId: callId ?? '',
   })
 
   setPlaylistTrackingInfo(trackingData)

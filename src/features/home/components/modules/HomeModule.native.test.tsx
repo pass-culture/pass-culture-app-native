@@ -205,8 +205,7 @@ describe('<HomeModule />', () => {
     expect(await screen.findByText('Cette semaine sur le pass')).toBeOnTheScreen()
   })
 
-  //TODO(PC-36585): unskip this test
-  it.skip('should display RecommendationModule', async () => {
+  it('should display RecommendationModule', async () => {
     const recommendedOffers: SimilarOffersResponse = {
       params: {
         call_id: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
@@ -223,6 +222,8 @@ describe('<HomeModule />', () => {
     mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
     renderHomeModule(formattedRecommendedOffersModule)
+
+    await act(async () => {})
 
     expect(await screen.findByText('Tes évènements en ligne')).toBeOnTheScreen()
   })
