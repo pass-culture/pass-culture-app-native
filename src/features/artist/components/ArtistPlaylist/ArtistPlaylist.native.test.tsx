@@ -15,7 +15,7 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          artistName="Céline Dion"
+          artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
           onViewableItemsChanged={jest.fn()}
         />
@@ -31,7 +31,11 @@ describe('ArtistPlaylist', () => {
   it('should not display artist playlist when there is not some offer from this artist', async () => {
     render(
       reactQueryProviderHOC(
-        <ArtistPlaylist artistName="Céline Dion" items={[]} onViewableItemsChanged={jest.fn()} />
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[]}
+          onViewableItemsChanged={jest.fn()}
+        />
       )
     )
 
@@ -44,7 +48,7 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          artistName="Céline Dion"
+          artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
           onViewableItemsChanged={jest.fn()}
         />
@@ -60,7 +64,7 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          artistName="Céline Dion"
+          artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
           onViewableItemsChanged={jest.fn()}
         />

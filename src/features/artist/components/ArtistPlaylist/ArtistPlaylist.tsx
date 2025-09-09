@@ -1,8 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components/native'
 
+import { ArtistResponse } from 'api/gen'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
@@ -21,15 +22,20 @@ import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
 type ArtistPlaylistProps = {
-  artistName: string
+  artist: ArtistResponse
   items: AlgoliaOfferWithArtistAndEan[]
-  onViewableItemsChanged: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    artistId: string
+  ) => void
 }
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
 export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
-  artistName,
+  artist,
   items,
   onViewableItemsChanged,
 }) => {
@@ -40,8 +46,16 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const labelMapping = useSubcategoryOfferLabelMapping()
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
 
+  const handleArtistOffersViewableItemsChanged = useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      onViewableItemsChanged(items, 'all_offers', 'offer', artist.id)
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+
   return items.length > 0 ? (
-    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+    <ObservedPlaylist onViewableItemsChanged={handleArtistOffersViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
@@ -54,7 +68,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
             currency,
             euroToPacificFrancRate,
             analyticsFrom: 'artist',
-            artistName,
+            artistName: artist.name,
             theme,
             hasSmallLayout: true,
             priceDisplay: (item: Offer) =>

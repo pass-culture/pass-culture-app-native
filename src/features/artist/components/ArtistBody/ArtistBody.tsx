@@ -29,7 +29,12 @@ type Props = {
   artist: ArtistResponse
   artistPlaylist: AlgoliaOfferWithArtistAndEan[]
   artistTopOffers: AlgoliaOfferWithArtistAndEan[]
-  onViewableItemsChanged: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    artistId: string
+  ) => void
 }
 
 export const ArtistBody: FunctionComponent<Props> = ({
@@ -81,7 +86,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
           </ViewGap>
           <ArtistTopOffers artistName={name} items={artistTopOffers} />
           <ArtistPlaylist
-            artistName={name}
+            artist={artist}
             items={artistPlaylist}
             onViewableItemsChanged={onViewableItemsChanged}
           />
