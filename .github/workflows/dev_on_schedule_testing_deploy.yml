@@ -1,23 +1,29 @@
-name: '[Daily] Deploy to testing'
+name: '[Daily] Deploy testing'
 
 on:
   schedule:
-    # Exécution tous les jours à 7h du matin heure de Paris (5h UTC)
-    - cron: '15 15 * * 1-5'
+    - cron: '50 15 9 9 *' # aujourd'hui à 17h50 heure de Paris (15h50 UTC le 9 sept.)
+  workflow_dispatch: # ✅ Allow to trigger job manually
+  workflow_call: # To be able to call this workflow from another
 
 permissions:
-  contents: write # nécessaire pour push/tag
+  contents: write # Mandatory to push tag
   id-token: write
 
 jobs:
-  nightly-deploy:
+  daily-deploy-testing:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # nécessaire pour les tags
+          fetch-depth: 0
+
+      - name: Enable Corepack (Yarn 3.x)
+        run: |
+          corepack enable
+          corepack prepare yarn@3.6.4 --activate
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,3 +41,46 @@ jobs:
 
       - name: Trigger testing deploy
         run: yarn trigger:testing:deploy
+
+  slack_notify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    if: ${{ always() && (contains(needs.sentry_and_deploy.result, 'success') || contains(needs.sentry_and_deploy.result, 'failure'))}}
+    needs: sentry_and_deploy
+    steps:
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for Slack
+        id: 'slack_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: 'C0309RP8K42'
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]') }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "PCAPPNATIVE Daily Testing Deployment",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Le hard deploy Android/iOS sur `Testing` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]') }}"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
