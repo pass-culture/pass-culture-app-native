@@ -104,7 +104,7 @@ Ajout d’informations dans certains `accessibilityLabel` et/ou suppression d’
 Lorsqu'on navigue sur l'élément `Accordion` le focus n'était pas visible car on utilisait `touchableFocusOutline()` dans un composant `TouchableOpacity`
 
 **Correction** 💡  
-L'utilisation de `customFocusOutline()` plutôt que `touchableFocusOutline()` dans le composant `Accordion` 
+L'utilisation de `customFocusOutline()` plutôt que `touchableFocusOutline()` dans le composant `Accordion`
 
 </details>
 
@@ -143,6 +143,34 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 ## ✅ Corrections 19 novembre → 12 décembre
 
 <br>
+
+## Questions
+
+<summary> ⏳ Critère 9.12 - Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
+
+**RAAM** : [Critère 9.12](https://accessibilite.public.lu/fr/raam1/referentiel-technique.html#crit-9-12)  
+**Ticket** : [PC-37497](https://passculture.atlassian.net/browse/PC-37497)  
+**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
+
+| iOS Version | TextInput Type | Contact Menu AutoFill | Direct Email Suggestion AutoFill | Typing Contact Name AutoFill |
+| ----------- | -------------- | --------------------- | -------------------------------- | ---------------------------- |
+| 16.4        | Multi-layer    | ❌ Doesn't work       | ❌ Doesn't work                  | ❌ Doesn't work              |
+| 16.4        | Basic          | ❌ Doesn't work       | ✅ Works                         | ❌ Doesn't work              |
+| 18.3.1      | Multi-layer    | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
+| 18.3.1      | Basic          | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
+
+Legend:
+`TextInput` Type Basic = a generic `TextInput` imported directly from `react-native`, with accessibility props:
+
+```ts
+<TextInput
+ style={{ backgroundColor: 'yellow', height: 40 }}
+ textContentType="emailAddress"
+ autoComplete="email"
+/>
+```
+
+`TextInput` Type Multi-layer = our custom input component `EmailInputController`.
 
 ## 📂 Template
 
