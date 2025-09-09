@@ -4,5 +4,10 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: "native-category-value"
 
-- assertVisible: "Accéder à l’offre en ligne.*"
+- tapOn: "Réserver l’offre"
 
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - assertVisible: "Tu y es presque"

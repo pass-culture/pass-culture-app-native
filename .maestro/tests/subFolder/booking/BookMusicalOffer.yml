@@ -16,12 +16,8 @@ appId: ${MAESTRO_APP_ID}
       - swipe:
           start: 50%, 49%
           end: 50%, 37%
-          
-- tapOn:
-    label: 'Sélection de la 1ère offre disponible'
-    below:
-      text: .*résultats
-      index: 1
+
+- tapOn: 'CD'
 
 - runFlow:
     when:
