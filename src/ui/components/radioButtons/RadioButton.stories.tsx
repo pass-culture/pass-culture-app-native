@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -12,13 +11,7 @@ import { RadioButton } from './RadioButton'
 const meta: Meta<typeof RadioButton> = {
   title: 'ui/inputs/RadioButton',
   component: RadioButton,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
+
   argTypes: {
     icon: {
       options: ['Email', 'EditPen', 'VideoGame'],

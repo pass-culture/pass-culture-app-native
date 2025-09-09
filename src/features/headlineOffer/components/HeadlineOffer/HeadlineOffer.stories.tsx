@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 
@@ -9,13 +8,6 @@ import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 const meta: Meta<typeof HeadlineOffer> = {
   title: 'ui/HeadlineOffer',
   component: HeadlineOffer,
-  decorators: [
-    (Story: React.ComponentType) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

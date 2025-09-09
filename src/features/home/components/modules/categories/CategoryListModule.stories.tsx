@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -10,13 +9,6 @@ import { CategoryListModule } from './CategoryListModule'
 const meta: Meta<typeof CategoryListModule> = {
   title: 'features/home/CategoryListModule',
   component: CategoryListModule,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

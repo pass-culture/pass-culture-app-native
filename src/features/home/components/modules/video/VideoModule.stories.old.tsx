@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react'
 import React from 'react'
 
@@ -13,9 +12,7 @@ const meta: Meta<typeof VideoModule> = {
   decorators: [
     (Story: React.ComponentType) => (
       <ReactQueryClientProvider>
-        <NavigationContainer>
-          <Story />
-        </NavigationContainer>
+        <Story />
       </ReactQueryClientProvider>
     ),
   ],

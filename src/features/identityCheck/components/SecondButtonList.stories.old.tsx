@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react'
 import React from 'react'
 
@@ -8,13 +7,6 @@ import { Smartphone } from 'ui/svg/icons/Smartphone'
 const meta: Meta<typeof SecondButtonList> = {
   title: 'ui/SecondButtonList',
   component: SecondButtonList,
-  decorators: [
-    (Story: React.ComponentType) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

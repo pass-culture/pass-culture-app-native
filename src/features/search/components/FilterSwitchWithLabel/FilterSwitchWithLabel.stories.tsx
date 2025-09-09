@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -8,13 +7,6 @@ import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/Variants
 const meta: Meta<typeof FilterSwitchWithLabel> = {
   title: 'Features/search/FilterSwitchWithLabel',
   component: FilterSwitchWithLabel,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

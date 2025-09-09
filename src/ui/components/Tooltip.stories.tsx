@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 
@@ -11,13 +10,6 @@ const TOOLTIP_WIDTH = getSpacing(58)
 const meta: Meta<typeof Tooltip> = {
   title: 'ui/Tooltip',
   component: Tooltip,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 
