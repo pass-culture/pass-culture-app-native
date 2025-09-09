@@ -1,0 +1,37 @@
+name: '[Daily] Deploy to testing'
+
+on:
+  schedule:
+    # Exécution tous les jours à 7h du matin heure de Paris (5h UTC)
+    - cron: '15 15 * * 1-5'
+
+permissions:
+  contents: write # nécessaire pour push/tag
+  id-token: write
+
+jobs:
+  nightly-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # nécessaire pour les tags
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Trigger testing deploy
+        run: yarn trigger:testing:deploy
