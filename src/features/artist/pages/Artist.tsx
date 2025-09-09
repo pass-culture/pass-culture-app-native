@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent } from 'react'
 import { ViewToken } from 'react-native'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
@@ -11,6 +11,22 @@ import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { useViewItemTracking } from 'shared/hook/useViewItemTracking'
 import { setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
 
+const handleViewableItemsChanged = (
+  items: Pick<ViewToken, 'key' | 'index'>[],
+  moduleId: string,
+  itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+  artistId: string
+) => {
+  setPlaylistTrackingInfo({
+    index: items[0]?.index ?? 0,
+    moduleId,
+    viewedAt: new Date(),
+    items,
+    itemType,
+    artistId,
+  })
+}
+
 export const Artist: FunctionComponent = () => {
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params, name } = useRoute<UseRouteType<'Artist'>>()
@@ -20,16 +36,6 @@ export const Artist: FunctionComponent = () => {
     artistId: params.id,
   })
   const { data: artist } = useArtistQuery(params.id)
-
-  const handleViewableItemsChanged = useCallback((items: Pick<ViewToken, 'key' | 'index'>[]) => {
-    setPlaylistTrackingInfo({
-      index: items[0]?.index ?? 0,
-      moduleId: 'all_offers',
-      viewedAt: new Date(),
-      items,
-      itemType: 'offer',
-    })
-  }, [])
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
   if (!artist || !enableArtistPage) return null

@@ -6,6 +6,7 @@ export type PlaylistTrackingInfo = {
   viewedAt: Date
   items: { key: string; index: number | null }[]
   extra?: Record<string, string | undefined>
+  artistId?: string
 }
 
 export type PageTrackingInfo = {
