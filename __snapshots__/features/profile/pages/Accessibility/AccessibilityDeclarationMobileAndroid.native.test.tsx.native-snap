@@ -224,91 +224,23 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
         >
           La présente déclaration d’accessibilité s’applique à
            
-          <View>
-            <View
-              accessibilityLabel="l’application Android"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
+          <Text
+            accessibilityLabel="l’application Android, lien externe"
+            accessibilityRole="link"
+            onPress={[Function]}
+            style={
+              {
+                "color": "#eb0055",
+                "cursor": "pointer",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textDecorationLine": "underline",
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "top": 3,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="l’application Android"
-            >
-              <View
-                gap={1}
-                paddingForIcon={0}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                  typography="Button"
-                >
-                  l’application Android
-                </Text>
-              </View>
-            </View>
-          </View>
+            }
+          >
+            l’application Android
+          </Text>
            
           version 1.348.8 du pass Culture.
         </Text>
@@ -2275,90 +2207,23 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
         >
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
            
-          <View>
-            <View
-              accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
+          <Text
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityRole="link"
+            onPress={[Function]}
+            style={
+              {
+                "color": "#eb0055",
+                "cursor": "pointer",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textDecorationLine": "underline",
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "top": 3,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Ouvrir le gestionnaire mail pour contacter le support"
-            >
-              <View
-                gap={1}
-                paddingForIcon={0}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  }
-                }
-              >
-                <View
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                  typography="Button"
-                >
-                  support@passculture.app
-                </Text>
-              </View>
-            </View>
-          </View>
+            }
+          >
+            support@passculture.app
+          </Text>
         </Text>
       </View>
       <View
@@ -2424,91 +2289,23 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           >
             Écrire un message au
              
-            <View>
-              <View
-                accessibilityLabel="Défenseur des droits"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+            <Text
+              accessibilityLabel="Défenseur des droits, lien externe"
+              accessibilityRole="link"
+              onPress={[Function]}
+              style={
+                {
+                  "color": "#eb0055",
+                  "cursor": "pointer",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textDecorationLine": "underline",
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "top": 3,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Défenseur des droits"
-              >
-                <View
-                  gap={1}
-                  paddingForIcon={0}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 4,
-                      "top": 0,
-                    }
-                  }
-                >
-                  <View
-                    accessibilityLabel="Nouvelle fenêtre"
-                    height={20}
-                    testID="button-icon"
-                    width={20}
-                  >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                    typography="Button"
-                  >
-                    Défenseur des droits
-                  </Text>
-                </View>
-              </View>
-            </View>
+              }
+            >
+              Défenseur des droits
+            </Text>
           </Text>
           <Text
             style={
@@ -2522,91 +2319,23 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           >
             Contacter le délégué du
              
-            <View>
-              <View
-                accessibilityLabel="Défenseur des droits dans votre région"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+            <Text
+              accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+              accessibilityRole="link"
+              onPress={[Function]}
+              style={
+                {
+                  "color": "#eb0055",
+                  "cursor": "pointer",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textDecorationLine": "underline",
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "top": 3,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Défenseur des droits dans votre région"
-              >
-                <View
-                  gap={1}
-                  paddingForIcon={0}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 4,
-                      "top": 0,
-                    }
-                  }
-                >
-                  <View
-                    accessibilityLabel="Nouvelle fenêtre"
-                    height={20}
-                    testID="button-icon"
-                    width={20}
-                  >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                    typography="Button"
-                  >
-                    Défenseur des droits dans votre région
-                  </Text>
-                </View>
-              </View>
-            </View>
+              }
+            >
+              Défenseur des droits dans votre région
+            </Text>
           </Text>
           <Text
             style={
