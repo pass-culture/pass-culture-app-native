@@ -185,6 +185,10 @@ type VenueParams = {
   fromThematicSearch?: ContentfulLabelCategories
 }
 
+type PartnerParams = {
+  id: number
+}
+
 type VenuePreviewCarouselParams = {
   id: number
   defaultIndex?: number
@@ -283,6 +287,7 @@ export type RootStackParamList = {
   UTMParameters: undefined
   ValidateEmailChange: { token: string }
   Venue: VenueParams
+  Partner: PartnerParams
   _DeeplinkOnlyVenue1: VenueParams
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined

@@ -20,6 +20,7 @@ export interface Venue {
 
 export enum Tab {
   OFFERS = 'Offres disponibles',
+  CALENDAR = 'Calendrier',
   INFOS = 'Infos pratiques',
 }
 

@@ -25,11 +25,10 @@ const getVenueById = async (venueId: number, logType: LogTypeEnum) => {
 export const useVenueQuery = (venueId: number, options?: { enabled?: boolean }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useQuery<VenueResponse | undefined>(
-    [QueryKeys.VENUE, venueId],
-    () => getVenueById(venueId, logType),
-    {
-      enabled: options?.enabled ?? true,
-    }
-  )
+  return useQuery<VenueResponse | undefined>({
+    queryKey: [QueryKeys.VENUE, venueId],
+    queryFn: () => getVenueById(venueId, logType),
+    enabled: options?.enabled ?? true,
+    staleTime: 3600 * 1000,
+  })
 }

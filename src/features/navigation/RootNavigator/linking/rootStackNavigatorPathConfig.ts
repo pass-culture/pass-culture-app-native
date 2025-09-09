@@ -322,6 +322,10 @@ export const rootStackNavigatorPathConfig = {
     path: 'lieu/:id',
     parse: screenParamsParser['Venue'],
   },
+  Partner: {
+    path: 'partenaire/:id',
+    parse: screenParamsParser['Partner'],
+  },
   _DeeplinkOnlyVenue1: {
     path: 'venue/:id',
     parse: screenParamsParser['Venue'],

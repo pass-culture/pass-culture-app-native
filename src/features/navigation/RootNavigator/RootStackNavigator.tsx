@@ -54,6 +54,7 @@ import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFilte
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
+import { Partner } from 'features/partner/Partner'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
@@ -253,6 +254,7 @@ const rootScreens: RouteConfig[] = [
     options: { title: 'Filtres de recherche' },
   },
   { name: 'Venue', component: Venue, options: { title: 'Lieu' } },
+  { name: 'Partner', component: Partner, options: { title: 'Partenaire' } },
   { name: '_DeeplinkOnlyVenue1', component: Venue, options: { title: 'Lieu' } },
   {
     name: 'VenuePreviewCarousel',

@@ -16,6 +16,7 @@ type ScreensRequiringParsing = Extract<
   | 'ReinitializePassword'
   | 'ResetPasswordExpiredLink'
   | 'Venue'
+  | 'Partner'
   | 'VenuePreviewCarousel'
   | 'SearchFilter'
   | 'SuspensionChoice'
@@ -145,6 +146,9 @@ export const screenParamsParser: ParamsParsers = {
     from: identityFn,
     searchId: identityFn,
     fromThematicSearch: identityFn,
+  },
+  Partner: {
+    id: Number,
   },
   VenuePreviewCarousel: {
     id: Number,

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -86,13 +86,23 @@ export const VenueBody: FunctionComponent<Props> = ({
       </React.Fragment>
     ),
     [Tab.INFOS]: <PracticalInformation venue={venue} enableAccesLibre={enableAccesLibre} />,
+    [Tab.CALENDAR]: (
+      <View>
+        <Text>Calendrier de la page partenaire</Text>
+        {playlists[0]?.offers.hits.map((hit) => (
+          <View key={hit.objectID}>
+            <Text>{hit.offer.name}</Text>
+          </View>
+        ))}
+      </View>
+    ),
   }
 
   return (
     <SectionContainer visible gap={6}>
       <TabLayout
         tabPanels={tabPanels}
-        tabs={[{ key: Tab.OFFERS }, { key: Tab.INFOS }]}
+        tabs={[{ key: Tab.OFFERS }, { key: Tab.CALENDAR }, { key: Tab.INFOS }]}
         defaultTab={Tab.OFFERS}
         onTabChange={{
           'Offres disponibles': () =>
