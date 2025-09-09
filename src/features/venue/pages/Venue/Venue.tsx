@@ -47,11 +47,13 @@ const handleViewableItemsChanged = (
     viewedAt: new Date(),
     items,
     itemType,
+    pageLocation: 'venue',
   })
 }
 
 export const Venue: FunctionComponent = () => {
   const { params, name } = useRoute<UseRouteType<'Venue'>>()
+  useViewItemTracking(name)
   const { data: venue } = useVenueQuery(params.id)
 
   const { userLocation, selectedLocationMode } = useLocation()
@@ -97,7 +99,6 @@ export const Venue: FunctionComponent = () => {
     RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER
   )
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
-  useViewItemTracking(name)
 
   const headlineOfferData = isVenueHeadlineOfferActive
     ? offerToHeadlineOfferData({

@@ -24,6 +24,7 @@ const handleViewableItemsChanged = (
     items,
     itemType,
     artistId,
+    pageLocation: 'artist',
   })
 }
 

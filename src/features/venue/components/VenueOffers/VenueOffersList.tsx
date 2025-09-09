@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -65,6 +65,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
+  const isFocused = useIsFocused()
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
   const { artists = [] } = venueArtists ?? {}
@@ -133,23 +134,26 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   const handleAllOffersViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
       onViewableItemsChanged(items, 'venue_offers_list', 'offer')
     },
-    [onViewableItemsChanged]
+    [isFocused, onViewableItemsChanged]
   )
 
   const handleArtistsViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
       onViewableItemsChanged(items, 'venue_artists_carousel', 'artist')
     },
-    [onViewableItemsChanged]
+    [isFocused, onViewableItemsChanged]
   )
 
   const handleGtlViewableItemsChanged = useCallback(
     (playlistTitle: string) => (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
       onViewableItemsChanged(items, playlistTitle, 'offer')
     },
-    [onViewableItemsChanged]
+    [isFocused, onViewableItemsChanged]
   )
 
   return (

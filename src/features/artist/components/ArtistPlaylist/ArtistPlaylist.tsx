@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -45,9 +46,11 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useSubcategoryOfferLabelMapping()
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
+  const isFocused = useIsFocused()
 
   const handleArtistOffersViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
       onViewableItemsChanged(items, 'all_offers', 'offer', artist.id)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps

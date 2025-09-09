@@ -7,6 +7,7 @@ export type PlaylistTrackingInfo = {
   items: { key: string; index: number | null }[]
   extra?: Record<string, string | undefined>
   artistId?: string
+  pageLocation?: string
 }
 
 export type PageTrackingInfo = {
