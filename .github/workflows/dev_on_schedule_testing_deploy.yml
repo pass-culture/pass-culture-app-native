@@ -2,7 +2,7 @@ name: '[Daily] Deploy testing'
 
 on:
   schedule:
-    - cron: '50 15 9 9 *' # aujourd'hui à 17h50 heure de Paris (15h50 UTC le 9 sept.)
+    - cron: '08 16 9 9 *' # aujourd'hui à 18h05 heure de Paris (18h05 UTC le 9 sept.)
   workflow_dispatch: # ✅ Allow to trigger job manually
   workflow_call: # To be able to call this workflow from another
 
@@ -45,8 +45,6 @@ jobs:
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    if: ${{ always() && (contains(needs.sentry_and_deploy.result, 'success') || contains(needs.sentry_and_deploy.result, 'failure'))}}
-    needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager
         uses: 'google-github-actions/auth@v2'
