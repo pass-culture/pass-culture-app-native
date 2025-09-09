@@ -296,6 +296,12 @@ describe('<Venue />', () => {
       })
     })
   })
+
+  describe('wipSearchInVenueModal is on', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE])
+    })
+  })
 })
 
 async function renderVenue(id: number, from?: Referrals) {
