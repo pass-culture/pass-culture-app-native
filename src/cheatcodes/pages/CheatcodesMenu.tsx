@@ -119,6 +119,16 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationErrorsButtons,
     ...cheatcodesNavigationGenericPagesButtons,
     ...cheatcodesNavigationSignUpButtons,
+
+    {
+      id: uuidv4(),
+      title: 'Campagne MAJ données 🔥',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenMandatoryUpdate' },
+      },
+      subscreens: [],
+    },
     {
       id: uuidv4(),
       title: 'AccesLibre 🌈',
