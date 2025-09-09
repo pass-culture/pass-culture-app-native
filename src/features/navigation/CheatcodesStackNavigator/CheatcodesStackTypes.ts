@@ -35,16 +35,17 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationNotScreensPages: undefined
   CheatcodesNavigationSignUp: undefined
   CheatcodesScreenAccesLibre: undefined
-  CheatcodesScreenLayoutExpiredLink: undefined
   CheatcodesScreenDebugInformations: undefined
   CheatcodesScreenFeatureFlags: undefined
-  CheatcodesScreenGenericInfoPage: undefined
   CheatcodesScreenGenericErrorPage: undefined
-  CheatcodesScreenSecondaryPageWithBlurHeader: undefined
+  CheatcodesScreenGenericInfoPage: undefined
   CheatcodesScreenGenericOfficialPage: undefined
-  CheatcodesScreenPageWithHeader: undefined
+  CheatcodesScreenLayoutExpiredLink: undefined
+  CheatcodesScreenMandatoryUpdate: undefined
   CheatcodesScreenNewCaledonia: undefined
+  CheatcodesScreenPageWithHeader: undefined
   CheatcodesScreenRemoteConfig: undefined
+  CheatcodesScreenSecondaryPageWithBlurHeader: undefined
 }
 
 export type CheatcodesStackRouteName = keyof CheatcodesStackParamList
