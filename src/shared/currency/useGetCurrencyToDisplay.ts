@@ -1,12 +1,11 @@
 /* eslint-disable local-rules/no-currency-symbols */
-import { RouteProp, useRoute } from '@react-navigation/native'
-
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { getCurrencyFromParam } from 'shared/currency/useCurrencyParam'
 
 export enum Currency {
   EURO = '€',
@@ -14,18 +13,11 @@ export enum Currency {
   PACIFIC_FRANC_FULL = 'francs\u00a0Pacifique',
 }
 
-type CurrencyRouteParams = {
-  currency?: CurrencyEnum.EUR | CurrencyEnum.XPF
-}
-
 type CurrencyDisplayFormat = 'short' | 'full'
 
 export const useGetCurrencyToDisplay = (
   displayFormat: CurrencyDisplayFormat = 'short'
 ): Currency => {
-  const { params } = useRoute<RouteProp<Record<string, Partial<CurrencyRouteParams>>, string>>()
-  const currencyParam = params?.currency
-
   const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
   const disablePacificFrancCurrency = !enablePacificFrancCurrency
 
@@ -35,6 +27,7 @@ export const useGetCurrencyToDisplay = (
   const pacificFrancCurrency =
     displayFormat === 'full' ? Currency.PACIFIC_FRANC_FULL : Currency.PACIFIC_FRANC_SHORT
 
+  const currencyParam = getCurrencyFromParam()
   if (currencyParam === CurrencyEnum.EUR) return Currency.EURO
   if (currencyParam === CurrencyEnum.XPF) return pacificFrancCurrency
 

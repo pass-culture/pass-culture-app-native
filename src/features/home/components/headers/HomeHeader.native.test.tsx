@@ -14,6 +14,7 @@ import { render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
+jest.unmock('@react-navigation/native')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
@@ -21,11 +22,6 @@ jest.mock('shared/user/useAvailableCredit')
 
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 mockdate.set(new Date('2022-12-01T00:00:00Z'))
-
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useRoute: jest.fn(() => ({ params: { currency: 'EUR' } })),
-}))
 
 describe('HomeHeader', () => {
   beforeEach(() => {
