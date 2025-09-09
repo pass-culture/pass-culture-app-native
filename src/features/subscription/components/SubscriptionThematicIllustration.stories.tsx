@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -11,13 +10,6 @@ import { SubscriptionThematicIllustration } from './SubscriptionThematicIllustra
 const meta: Meta<typeof SubscriptionThematicIllustration> = {
   title: 'Features/subscription/SubscriptionThematicIllustration',
   component: SubscriptionThematicIllustration,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

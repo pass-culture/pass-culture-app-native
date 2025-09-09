@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -9,13 +8,6 @@ import { EditButton } from './EditButton'
 const meta: Meta<typeof EditButton> = {
   title: 'features/profile/buttons/EditButton',
   component: EditButton,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

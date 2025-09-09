@@ -5,6 +5,7 @@ import { ThemeProvider } from '../src/libs/styled'
 import { SafeAreaProvider } from '../src/libs/react-native-save-area-provider'
 import { theme } from '../src/theme'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { NavigationContainer } from '@react-navigation/native'
 
 const preview: Preview = {
   parameters: {
@@ -35,6 +36,11 @@ const preview: Preview = {
       <QueryClientProvider client={new QueryClient()}>
         <Story />
       </QueryClientProvider>
+    ),
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
     ),
   ],
 }

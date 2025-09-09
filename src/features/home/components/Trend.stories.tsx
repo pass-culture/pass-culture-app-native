@@ -1,7 +1,6 @@
 // @ts-ignore import is unresolved
 // eslint-disable-next-line import/no-unresolved
 
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 
@@ -12,13 +11,6 @@ import { Trend } from './Trend'
 const meta: Meta<typeof Trend> = {
   title: 'features/home/Trend',
   component: Trend,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 
 export default meta

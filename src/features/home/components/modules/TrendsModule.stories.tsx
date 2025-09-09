@@ -1,7 +1,6 @@
 // @ts-ignore import is unresolved
 // eslint-disable-next-line import/no-unresolved
 
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -14,13 +13,7 @@ import { TrendsModule } from './TrendsModule'
 const meta: Meta<typeof TrendsModule> = {
   title: 'features/home/TrendsModule',
   component: TrendsModule,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
+
   parameters: {
     useQuery: {
       featureFlags: { get: () => ({ minimalBuildNumber: 1000000 }) },

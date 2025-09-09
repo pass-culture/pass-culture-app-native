@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -12,13 +11,6 @@ import { Checkbox } from './Checkbox'
 const meta: Meta<typeof Checkbox> = {
   title: 'design system/inputs/Checkbox',
   component: Checkbox,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -10,11 +9,9 @@ const meta: Meta<typeof LocationSearchWidget> = {
   component: LocationSearchWidget,
   decorators: [
     (Story) => (
-      <NavigationContainer>
-        <SearchWrapper>
-          <Story />
-        </SearchWrapper>
-      </NavigationContainer>
+      <SearchWrapper>
+        <Story />
+      </SearchWrapper>
     ),
   ],
 }

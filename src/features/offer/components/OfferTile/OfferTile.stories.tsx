@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -12,13 +11,6 @@ import { OfferTile } from './OfferTile'
 const meta: Meta<typeof OfferTile> = {
   title: 'ui/tiles/OfferTile',
   component: OfferTile,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 
