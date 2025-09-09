@@ -20,7 +20,7 @@ const updatePlaylistInfo = (
     callId: data.callId ?? playlist.callId,
     index: data.index === undefined || data.index === -1 ? playlist.index : data.index,
     extra: data.extra ?? playlist.extra,
-    artistId: data.artistId,
+    ...(data.artistId ? { artistId: data.artistId } : {}),
   }
 }
 
@@ -43,6 +43,7 @@ export const setPlaylistTrackingInfo = ({
   index = -1,
   extra = {},
   artistId,
+  pageLocation,
 }: Partial<PlaylistTrackingInfo>) => {
   if (!moduleId) {
     return
@@ -66,7 +67,11 @@ export const setPlaylistTrackingInfo = ({
     updatedPlaylist,
   ]
 
-  useOfferPlaylistTrackingStore.setState({ playlists })
+  useOfferPlaylistTrackingStore.setState({
+    playlists,
+    ...(pageLocation ? { pageLocation } : {}),
+    ...(artistId ? { artistId } : {}),
+  })
 }
 
 // Reset store to default state

@@ -3,36 +3,61 @@ import { useCallback, useEffect } from 'react'
 
 import { analytics } from 'libs/analytics/provider'
 import { useAppStateChange } from 'libs/appState'
-import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
+import { logPlaylistDebug, logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
 import {
   resetPageTrackingInfo,
-  setPageTrackingInfo,
   useOfferPlaylistTrackingStore,
 } from 'store/tracking/playlistTrackingStore'
 
 export function useViewItemTracking(name: string) {
-  // 1. Initialization on mount
   useEffect(() => {
     setViewOfferTrackingFn(analytics.logViewItem)
   }, [])
 
-  // 2. Screen focus/blur
+  useAppStateChange(undefined, () => {
+    const state = useOfferPlaylistTrackingStore.getState()
+
+    if (state?.pageId && state?.pageLocation && state?.playlists) {
+      logPlaylistDebug(name, 'App state changed - sending playlist stats', {
+        pageId: state.pageId,
+        pageLocation: state.pageLocation,
+        playlistsCount: state.playlists.length,
+        playlists: state.playlists.map((p) => ({
+          moduleId: p.moduleId,
+          itemType: p.itemType,
+          itemsCount: p.items.length,
+          index: p.index,
+        })),
+      })
+    }
+    logViewItem(state)
+  })
+
   useFocusEffect(
     useCallback(() => {
-      if (name) {
-        setPageTrackingInfo({
-          pageId: '',
-          pageLocation: name,
-        })
-      }
-
       return () => {
-        logViewItem(useOfferPlaylistTrackingStore.getState())
+        const state = useOfferPlaylistTrackingStore.getState()
+
+        if (state?.pageId && state?.pageLocation && state?.playlists) {
+          logPlaylistDebug(name, 'Focus lost - sending final playlist stats', {
+            pageId: state.pageId,
+            pageLocation: state.pageLocation,
+            playlistsCount: state.playlists.length,
+            playlists: state.playlists.map((p) => ({
+              moduleId: p.moduleId,
+              itemType: p.itemType,
+              itemsCount: p.items.length,
+              index: p.index,
+              viewedAt: p.viewedAt,
+            })),
+          })
+        }
+
+        logViewItem(state)
+
+        logPlaylistDebug(name, 'Resetting page tracking info')
         resetPageTrackingInfo()
       }
     }, [name])
   )
-
-  // 3. Switch to background
-  useAppStateChange(undefined, () => logViewItem(useOfferPlaylistTrackingStore.getState()))
 }
