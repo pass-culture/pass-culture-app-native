@@ -11,9 +11,9 @@ export const AccessibleSvg: React.FunctionComponent<SvgProps> = ({
 }) => {
   return (
     <Svg
+      accessible={!!accessibilityLabel}
       accessibilityLabel={accessibilityLabel}
       accessibilityRole={accessibilityLabel ? AccessibilityRole.IMAGE : undefined}
-      accessibilityHidden={!accessibilityLabel}
       {...props}>
       {children}
     </Svg>
