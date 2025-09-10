@@ -7,7 +7,7 @@ import {
 import {
   theme as themeDarkWeb,
   ColorsType as ColorsTypeDarkWeb,
-} from '@pass-culture/design-system/lib/jeune/dark.web'
+} from '@pass-culture/design-system/lib/jeune/dark.web_typo_rem'
 import {
   theme as themeLightMobile,
   ColorsType as ColorsTypeLightMobile,
@@ -15,7 +15,7 @@ import {
 import {
   theme as themeLightWeb,
   ColorsType as ColorsTypeLightWeb,
-} from '@pass-culture/design-system/lib/jeune/light.web'
+} from '@pass-culture/design-system/lib/jeune/light.web_typo_rem'
 
 export type ColorsType =
   | ColorsTypeDarkMobile
