@@ -8,11 +8,10 @@ import {
   useCheatcodesFeatureFlagQuery,
 } from 'cheatcodes/queries/useCheatcodesFeatureFlagQuery'
 import { env } from 'libs/environment/env'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenFeatureFlags = () => {
   const featureFlags = useCheatcodesFeatureFlagQuery()
@@ -42,7 +41,6 @@ export const CheatcodesScreenFeatureFlags = () => {
         <ExternalTouchableLink
           as={ButtonInsideTextBlack}
           buttonHeight="extraSmall"
-          icon={ExternalSiteFilled}
           wording="Voir les feature flags testing"
           externalNav={{
             url: 'https://app.testing.passculture.team/cheatcodes/other/feature-flags',
@@ -53,7 +51,6 @@ export const CheatcodesScreenFeatureFlags = () => {
         <ExternalTouchableLink
           as={ButtonInsideTextBlack}
           buttonHeight="extraSmall"
-          icon={ExternalSiteFilled}
           wording="Voir les feature flags staging"
           externalNav={{
             url: 'https://app.staging.passculture.team/cheatcodes/other/feature-flags',
@@ -64,7 +61,6 @@ export const CheatcodesScreenFeatureFlags = () => {
         <ExternalTouchableLink
           as={ButtonInsideTextBlack}
           buttonHeight="extraSmall"
-          icon={ExternalSiteFilled}
           wording="Voir les feature flags production"
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/feature-flags' }}
         />
@@ -85,7 +81,7 @@ export const CheatcodesScreenFeatureFlags = () => {
         renderItem={({ item, index, section }) => (
           <React.Fragment>
             <StyledFeatureFlag isLastItem={index === section.data.length - 1}>
-              <Typo.Body numberOfLines={1}>{item.featureFlag}</Typo.Body>
+              <Value numberOfLines={1}>{item.featureFlag}</Value>
               <StyledTitle4 active={!!item.isFeatureFlagActive}>
                 {item.isFeatureFlagActive ? 'Actif' : 'Inactif'}
               </StyledTitle4>
@@ -98,31 +94,35 @@ export const CheatcodesScreenFeatureFlags = () => {
   )
 }
 
-const NbFeatureFlagText = styled(Typo.BodyItalicAccent)({
-  marginTop: getSpacing(6),
-})
+const NbFeatureFlagText = styled(Typo.BodyItalicAccent)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledTitle2 = styled(Typo.Title2)({
-  marginBottom: getSpacing(5),
-})
+const StyledTitle2 = styled(Typo.Title2)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
-const StyledFeatureFlag = styled.View<{ isLastItem: boolean }>(({ isLastItem }) => ({
+const StyledFeatureFlag = styled.View<{ isLastItem: boolean }>(({ theme, isLastItem }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginBottom: isLastItem ? getSpacing(10) : undefined,
+  marginBottom: isLastItem ? theme.designSystem.size.spacing.xxxl : undefined,
 }))
 
 const StyledTitle4 = styled(Typo.Title4)<{ active: boolean }>(({ theme, active }) => ({
   color: active ? theme.designSystem.color.text.success : theme.designSystem.color.text.error,
 }))
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(2),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
 
-const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.designSystem.color.text.default,
+const ButtonInsideTextBlack = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
 }))``
+
+const Value = styled(Typo.Body)({
+  flexShrink: 1,
+})
 
 const ItemSeparator = () => <StyledSeparator />

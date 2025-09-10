@@ -3,11 +3,10 @@ import React from 'react'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
@@ -32,10 +31,9 @@ export function RecommendedPaths() {
         <BulletListItem text="en présentant sa carte d’identité" />
         <BulletListItem text="en remplissant un formulaire sur ">
           <ExternalTouchableLink
-            as={ButtonInsideText}
+            as={ButtonInsideTextV2}
             typography="BodyAccentXs"
             wording="Démarches simplifiées"
-            icon={ExternalSiteFilled}
             externalNav={{ url: 'https://www.demarches-simplifiees.fr/' }}
           />
         </BulletListItem>

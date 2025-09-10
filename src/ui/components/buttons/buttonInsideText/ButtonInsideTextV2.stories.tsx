@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
+import { theme } from 'theme'
 import { ButtonInsideTextV2Props } from 'ui/components/buttons/buttonInsideText/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Typo } from 'ui/theme'
@@ -19,10 +20,19 @@ const variantConfig: Variants<typeof ButtonInsideTextV2> = [
     props: { wording: 'wording' },
   },
   {
+    label: 'ButtonInsideTextV2 default with custom color',
+    props: { wording: 'wording', color: theme.designSystem.color.text.brandSecondary },
+  },
+  {
     label: 'ButtonInsideTextV2 BodyAccentXs',
+    props: { wording: 'wording', typography: 'BodyAccentXs' },
+  },
+  {
+    label: 'ButtonInsideTextV2 BodyAccentXs with custom color',
     props: {
       wording: 'wording',
       typography: 'BodyAccentXs',
+      color: theme.designSystem.color.text.brandSecondary,
     },
   },
 ]

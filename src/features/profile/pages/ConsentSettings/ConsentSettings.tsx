@@ -13,13 +13,12 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -76,10 +75,9 @@ export const ConsentSettings = () => {
         Pour plus d’informations, nous t’invitons à consulter notre
         <Spacer.Row numberOfSpaces={1} />
         <ExternalTouchableLink
-          as={ButtonInsideText}
-          wording="Politique de gestion des cookies"
+          as={ButtonInsideTextV2}
+          wording="politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
-          icon={ExternalSiteFilled}
           typography="BodyAccentXs"
         />
       </StyledBodyAccentXs>

@@ -11,13 +11,12 @@ import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { UserError } from 'ui/svg/UserError'
 import { getSpacing, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -81,7 +80,6 @@ export const SuspensionChoice = () => {
             <ExternalTouchableLink
               as={StyledButtonInsideText}
               wording="conditions générales d’utilisation"
-              icon={ExternalSiteFilled}
               externalNav={{ url: env.CGU_LINK }}
             />
           </Typo.Body>
@@ -98,8 +96,8 @@ export const SuspensionChoice = () => {
   )
 }
 
-const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.designSystem.color.text.default,
+const StyledButtonInsideText = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
 }))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)({

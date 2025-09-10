@@ -9,10 +9,9 @@ import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 
 const getStorageKey = (offerId: number) => `feedback_reaction_${offerId}`
@@ -98,7 +97,6 @@ export function FeedBackVideo({ offerId, offerSubcategory, userId }: Props) {
           as={ButtonInsideTextPrimary}
           externalNav={{ url }}
           typography="BodyAccentXs"
-          icon={ExternalSiteFilled}
         />
       </Container>
     )
@@ -125,6 +123,6 @@ const Container = styled(ViewGap)({
   maxWidth: MAX_WIDTH_VIDEO,
 })
 
-const ButtonInsideTextPrimary = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.designSystem.color.text.brandPrimary,
+const ButtonInsideTextPrimary = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
+  color: theme.designSystem.color.text.brandPrimary,
 }))``
