@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { ColorsType } from 'theme/types'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Connect } from 'ui/svg/icons/Connect'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
@@ -46,7 +46,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
       <ButtonContainer>
         {isLogin ? <Connect color={linkColor} /> : <ProfileFilled color={linkColor} />}
         <InternalTouchableLink
-          as={ButtonInsideTextV2}
+          as={LinkInsideText}
           navigateTo={nextNavigation}
           wording={wording}
           color={linkColor}

@@ -3,7 +3,7 @@ import React from 'react'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -31,7 +31,7 @@ export function RecommendedPaths() {
         <BulletListItem text="en présentant sa carte d’identité" />
         <BulletListItem text="en remplissant un formulaire sur ">
           <ExternalTouchableLink
-            as={ButtonInsideTextV2}
+            as={LinkInsideText}
             typography="BodyAccentXs"
             wording="Démarches simplifiées"
             externalNav={{ url: 'https://www.demarches-simplifiees.fr/' }}

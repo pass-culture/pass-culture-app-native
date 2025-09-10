@@ -9,7 +9,7 @@ import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -94,7 +94,7 @@ export function FeedBackVideo({ offerId, offerSubcategory, userId }: Props) {
         </Typo.BodyAccent>
         <ExternalTouchableLink
           wording="Répondre au court questionnaire"
-          as={ButtonInsideTextPrimary}
+          as={LinkInsideText}
           externalNav={{ url }}
           typography="BodyAccentXs"
         />
@@ -122,7 +122,3 @@ export function FeedBackVideo({ offerId, offerSubcategory, userId }: Props) {
 const Container = styled(ViewGap)({
   maxWidth: MAX_WIDTH_VIDEO,
 })
-
-const ButtonInsideTextPrimary = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
-  color: theme.designSystem.color.text.brandPrimary,
-}))``

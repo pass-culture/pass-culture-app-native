@@ -8,7 +8,7 @@ import {
   useCheatcodesFeatureFlagQuery,
 } from 'cheatcodes/queries/useCheatcodesFeatureFlagQuery'
 import { env } from 'libs/environment/env'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Typo } from 'ui/theme'
@@ -39,7 +39,7 @@ export const CheatcodesScreenFeatureFlags = () => {
     <CheatcodesTemplateScreen title={title} flexDirection="column">
       {showTestingFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
           wording="Voir les feature flags testing"
           externalNav={{
@@ -49,7 +49,7 @@ export const CheatcodesScreenFeatureFlags = () => {
       ) : null}
       {showStagingFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
           wording="Voir les feature flags staging"
           externalNav={{
@@ -59,7 +59,7 @@ export const CheatcodesScreenFeatureFlags = () => {
       ) : null}
       {showProductionFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
           wording="Voir les feature flags production"
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/feature-flags' }}
@@ -117,7 +117,7 @@ const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.s,
 }))
 
-const ButtonInsideTextBlack = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
   color: theme.designSystem.color.text.default,
 }))``
 

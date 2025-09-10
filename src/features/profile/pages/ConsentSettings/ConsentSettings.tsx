@@ -13,8 +13,8 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -75,7 +75,7 @@ export const ConsentSettings = () => {
         Pour plus d’informations, nous t’invitons à consulter notre
         <Spacer.Row numberOfSpaces={1} />
         <ExternalTouchableLink
-          as={ButtonInsideTextV2}
+          as={LinkInsideText}
           wording="politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
           typography="BodyAccentXs"

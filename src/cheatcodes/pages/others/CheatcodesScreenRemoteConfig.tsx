@@ -7,7 +7,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GenericRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Typo, getSpacing } from 'ui/theme'
@@ -56,7 +56,7 @@ export const CheatcodesScreenRemoteConfig = () => {
     <CheatcodesTemplateScreen title={title} flexDirection="column">
       {showTestingFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
           wording="Voir les feature flags testing"
           externalNav={{
@@ -66,7 +66,7 @@ export const CheatcodesScreenRemoteConfig = () => {
       ) : null}
       {showStagingFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
           wording="Voir les feature flags staging"
           externalNav={{
@@ -76,7 +76,7 @@ export const CheatcodesScreenRemoteConfig = () => {
       ) : null}
       {showProductionFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
           wording="Voir les feature flags production"
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/remote-config' }}
@@ -98,7 +98,7 @@ const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.s,
 }))
 
-const ButtonInsideTextBlack = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
   color: theme.designSystem.color.text.default,
 }))``
 

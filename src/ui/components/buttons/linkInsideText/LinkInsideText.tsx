@@ -4,10 +4,10 @@ import styled, { DefaultTheme } from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ColorsType } from 'theme/types'
 import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
-import { ButtonInsideTextV2Props } from 'ui/components/buttons/buttonInsideText/types'
+import { LinkInsideTextProps } from 'ui/components/buttons/linkInsideText/types'
 import { Typo } from 'ui/theme'
 
-export function ButtonInsideTextV2({
+export function LinkInsideText({
   wording,
   typography = 'Button',
   onPress,
@@ -15,7 +15,7 @@ export function ButtonInsideTextV2({
   accessibilityLabel,
   color,
   type = AccessibilityRole.BUTTON,
-}: ButtonInsideTextV2Props) {
+}: LinkInsideTextProps) {
   const Text = typography === 'BodyAccentXs' ? StyledBodyAccentXs : StyledBody
   const accessibilityLabelLink = type === AccessibilityRole.LINK ? ', lien externe' : ''
   const computedAccessibilityLabel = `${accessibilityLabel ?? wording}${accessibilityLabelLink}`

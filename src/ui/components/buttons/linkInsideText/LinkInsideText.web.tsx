@@ -7,10 +7,10 @@ import {
   AppButtonEventWeb,
   TouchableOpacityButtonProps,
 } from 'ui/components/buttons/AppButton/types'
-import { ButtonInsideTextV2Props } from 'ui/components/buttons/buttonInsideText/types'
+import { LinkInsideTextProps } from 'ui/components/buttons/linkInsideText/types'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-export function ButtonInsideTextV2({
+export function LinkInsideText({
   wording,
   typography = 'Button',
   onPress,
@@ -20,7 +20,7 @@ export function ButtonInsideTextV2({
   type = AccessibilityRole.BUTTON,
   accessibilityLabel,
   color,
-}: ButtonInsideTextV2Props) {
+}: LinkInsideTextProps) {
   const Text = (href ? Link : Button) as React.ElementType
 
   const pressHandler = onPress as AppButtonEventWeb
@@ -80,10 +80,8 @@ const webStyle = ({
       : theme.designSystem.typography.button),
   }) as CSSObject
 
-const Button = styled.button<TouchableOpacityButtonProps & Pick<ButtonInsideTextV2Props, 'color'>>(
+const Button = styled.button<TouchableOpacityButtonProps & Pick<LinkInsideTextProps, 'color'>>(
   webStyle
 )
 
-const Link = styled.a<TouchableOpacityButtonProps & Pick<ButtonInsideTextV2Props, 'color'>>(
-  webStyle
-)
+const Link = styled.a<TouchableOpacityButtonProps & Pick<LinkInsideTextProps, 'color'>>(webStyle)

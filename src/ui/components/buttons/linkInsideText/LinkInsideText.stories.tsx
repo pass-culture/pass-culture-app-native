@@ -2,33 +2,33 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { theme } from 'theme'
-import { ButtonInsideTextV2Props } from 'ui/components/buttons/buttonInsideText/types'
+import { LinkInsideTextProps } from 'ui/components/buttons/linkInsideText/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Typo } from 'ui/theme'
 
-import { ButtonInsideTextV2 } from './ButtonInsideTextV2'
+import { LinkInsideText } from './LinkInsideText'
 
-const meta: Meta<typeof ButtonInsideTextV2> = {
-  title: 'ui/buttons/ButtonInsideTextV2',
-  component: ButtonInsideTextV2,
+const meta: Meta<typeof LinkInsideText> = {
+  title: 'ui/buttons/LinkInsideText',
+  component: LinkInsideText,
 }
 export default meta
 
-const variantConfig: Variants<typeof ButtonInsideTextV2> = [
+const variantConfig: Variants<typeof LinkInsideText> = [
   {
-    label: 'ButtonInsideTextV2 default',
+    label: 'LinkInsideText default',
     props: { wording: 'wording' },
   },
   {
-    label: 'ButtonInsideTextV2 default with custom color',
+    label: 'LinkInsideText default with custom color',
     props: { wording: 'wording', color: theme.designSystem.color.text.brandSecondary },
   },
   {
-    label: 'ButtonInsideTextV2 BodyAccentXs',
+    label: 'LinkInsideText BodyAccentXs',
     props: { wording: 'wording', typography: 'BodyAccentXs' },
   },
   {
-    label: 'ButtonInsideTextV2 BodyAccentXs with custom color',
+    label: 'LinkInsideText BodyAccentXs with custom color',
     props: {
       wording: 'wording',
       typography: 'BodyAccentXs',
@@ -37,7 +37,7 @@ const variantConfig: Variants<typeof ButtonInsideTextV2> = [
   },
 ]
 
-const RandomText = (props: ButtonInsideTextV2Props) => {
+const RandomText = (props: LinkInsideTextProps) => {
   const startText = 'Lorem ipsum dolor '
   const endText = ' sit amet consectetur adipisicing elit.'
   const TypoComponent = props.typography ? Typo[props.typography] : Typo.Body
@@ -45,14 +45,14 @@ const RandomText = (props: ButtonInsideTextV2Props) => {
   return (
     <TypoComponent>
       {startText}
-      <ButtonInsideTextV2 {...props} />
+      <LinkInsideText {...props} />
       {endText}
     </TypoComponent>
   )
 }
 
 export const Template: VariantsStory<typeof RandomText> = {
-  name: 'ButtonInsideTextV2',
+  name: 'LinkInsideText',
   render: (props) => (
     <VariantsTemplate variants={variantConfig} Component={RandomText} defaultProps={props} />
   ),

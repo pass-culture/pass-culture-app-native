@@ -6,7 +6,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { env } from 'libs/environment/env'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -41,7 +41,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
           À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour
           anonymiser tes données. Tu peux en savoir plus en{SPACE}
           <ExternalTouchableLink
-            as={StyledButtonInsideText}
+            as={LinkInsideTextBlack}
             wording="consultant cette page."
             externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
           />
@@ -55,6 +55,6 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
   )
 }
 
-const StyledButtonInsideText = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
   color: theme.designSystem.color.text.default,
 }))``

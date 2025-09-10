@@ -8,7 +8,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -52,7 +52,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <InternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
               />
@@ -61,7 +61,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <InternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Actions réalisées depuis 2022"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
               />
@@ -70,7 +70,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <InternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Plan d’actions 2024"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
               />
@@ -81,7 +81,7 @@ export function AccessibilityDeclarationWeb() {
       <Typo.Body>
         Cette déclaration d’accessibilité s’applique au site internet{SPACE}
         <ExternalTouchableLink
-          as={ButtonInsideTextV2}
+          as={LinkInsideText}
           wording="https://passculture.app/"
           externalNav={webappUrl}
           type={AccessibilityRole.LINK}
@@ -205,7 +205,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Accueil"
                 externalNav={homeUrl}
                 type={AccessibilityRole.LINK}
@@ -215,7 +215,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Connexion"
                 externalNav={loginUrl}
                 type={AccessibilityRole.LINK}
@@ -225,7 +225,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Inscription - Date de naissance"
                 externalNav={signupUrl}
                 type={AccessibilityRole.LINK}
@@ -235,7 +235,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Vérification d’identité"
                 externalNav={identityCheckUrl}
                 type={AccessibilityRole.LINK}
@@ -245,7 +245,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Profil"
                 externalNav={profileUrl}
                 type={AccessibilityRole.LINK}
@@ -255,7 +255,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Modification de mot de passe"
                 externalNav={changePasswordUrl}
                 type={AccessibilityRole.LINK}
@@ -265,7 +265,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Recherche"
                 externalNav={searchUrl}
                 type={AccessibilityRole.LINK}
@@ -275,7 +275,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Filtres"
                 externalNav={filterUrl}
                 type={AccessibilityRole.LINK}
@@ -285,7 +285,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Résultats de recherche"
                 externalNav={searchResultsUrl}
                 type={AccessibilityRole.LINK}
@@ -295,7 +295,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Favoris"
                 externalNav={favoritesUrl}
                 type={AccessibilityRole.LINK}
@@ -305,7 +305,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Détails d’une offre"
                 externalNav={offerUrl}
                 type={AccessibilityRole.LINK}
@@ -315,7 +315,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideTextV2}
+                as={LinkInsideText}
                 wording="Déclaration d’accessibilité"
                 externalNav={accessibilityUrl}
                 type={AccessibilityRole.LINK}
@@ -338,7 +338,7 @@ export function AccessibilityDeclarationWeb() {
       <Typo.Body>
         Contacter l’équipe support à l’adresse{SPACE}
         <ExternalTouchableLink
-          as={ButtonInsideTextV2}
+          as={LinkInsideText}
           wording="support@passculture.app"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           justifyContent="flex-start"
@@ -362,7 +362,7 @@ export function AccessibilityDeclarationWeb() {
           <Typo.Body>
             Écrire un message au{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideTextV2}
+              as={LinkInsideText}
               wording="Défenseur des droits"
               externalNav={rightsDefenderUrl}
               type={AccessibilityRole.LINK}
@@ -371,7 +371,7 @@ export function AccessibilityDeclarationWeb() {
           <Typo.Body>
             Contacter le délégué du{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideTextV2}
+              as={LinkInsideText}
               wording="Défenseur des droits dans votre région"
               externalNav={rightsDelegateUrl}
               type={AccessibilityRole.LINK}

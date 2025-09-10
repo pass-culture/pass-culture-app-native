@@ -7,7 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
@@ -60,7 +60,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
           <Typo.Body>
             tes réservations seront annulées sauf pour certains cas précisés dans les{SPACE}
             <ExternalTouchableLink
-              as={StyledButtonInsideText}
+              as={LinkInsideTextBlack}
               wording="conditions générales d’utilisation"
               externalNav={{ url: env.CGU_LINK }}
             />
@@ -78,7 +78,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
   )
 }
 
-const StyledButtonInsideText = styled(ButtonInsideTextV2).attrs(({ theme }) => ({
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
   color: theme.designSystem.color.text.default,
 }))``
 
