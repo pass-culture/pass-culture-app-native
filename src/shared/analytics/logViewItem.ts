@@ -6,7 +6,7 @@ type TrackingFunction<P = unknown> = (params: P) => Promise<void>
 
 // Feature flag pour les logs de debug du tracking des playlists
 // Mettre \u00e0 true pour activer tous les logs de debug, false pour d\u00e9sactiver
-const DEBUG_PLAYLIST_TRACKING = false
+const DEBUG_PLAYLIST_TRACKING = true
 
 export const logPlaylistDebug = (component: string, message: string, data?: unknown) => {
   if (DEBUG_PLAYLIST_TRACKING) {

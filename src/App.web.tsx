@@ -4,8 +4,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 // import './why-did-you-render'
 import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
 import 'react-app-polyfill/stable'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
@@ -19,6 +19,7 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
+import { useAppStateChange } from 'libs/appState'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
 import { LocationWrapper } from 'libs/location/location'
@@ -26,12 +27,14 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { StylesheetManagerWrapper } from 'libs/styled/StyleSheetManagerWrapper'
-import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
+import 'reset-css'
+import 'resize-observer-polyfill/dist/ResizeObserver.global'
+import { logPlaylistDebug, logViewItem } from 'shared/analytics/logViewItem'
+import { useOfferPlaylistTrackingStore } from 'store/tracking/playlistTrackingStore'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
-import 'reset-css'
 
 globalThisShim()
 
@@ -52,6 +55,26 @@ export function App() {
       })
     }
   }, [])
+
+  useAppStateChange(undefined, () => {
+    const state = useOfferPlaylistTrackingStore.getState()
+
+    if (state?.pageId && state?.pageLocation && state?.playlists) {
+      logPlaylistDebug(state.pageLocation, 'App state changed - sending playlist stats', {
+        pageId: state.pageId,
+        pageLocation: state.pageLocation,
+        playlistsCount: state.playlists.length,
+        playlists: state.playlists.map((p) => ({
+          moduleId: p.moduleId,
+          itemType: p.itemType,
+          itemsCount: p.items.length,
+          index: p.index,
+        })),
+      })
+    }
+    console.log('logViewItem useAppStateChange', state.pageLocation)
+    logViewItem(state)
+  })
 
   return (
     <ReactQueryClientProvider>
