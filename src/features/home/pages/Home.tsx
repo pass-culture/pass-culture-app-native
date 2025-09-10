@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { RenderProfiler, useRenderTracking } from 'features/debugPerformance'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
@@ -35,6 +36,7 @@ export const Home: FunctionComponent = () => {
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
   const { isLoggedIn, user } = useAuthContext()
+  const { startTracking } = useRenderTracking()
 
   const {
     visible: onboardingSubscriptionModalVisible,
@@ -70,6 +72,10 @@ export const Home: FunctionComponent = () => {
       analytics.logConsultHome({ homeEntryId: id })
     }
   }, [id])
+
+  useEffect(() => {
+    startTracking()
+  }, [startTracking])
 
   // This effect was made for the use of the marketing team (internal usage)
   useEffect(() => {
@@ -116,26 +122,42 @@ export const Home: FunctionComponent = () => {
 
   return (
     <React.Fragment>
-      <GenericHome
-        modules={modules}
-        homeId={id}
-        Header={<Header />}
-        HomeBanner={<HomeBanner isLoggedIn={isLoggedIn} />}
-        videoModuleId={params?.videoModuleId}
-        statusBar={<StatusBarBlurredBackground />}
-      />
-      <OnboardingSubscriptionModal
-        visible={onboardingSubscriptionModalVisible}
-        dismissModal={hideOnboardingSubscriptionModal}
-      />
+      <RenderProfiler id="GenericHome">
+        <GenericHome
+          modules={modules}
+          homeId={id}
+          Header={
+            <RenderProfiler id="HomeHeader">
+              <Header />
+            </RenderProfiler>
+          }
+          HomeBanner={
+            <RenderProfiler id="HomeBanner">
+              <HomeBanner isLoggedIn={isLoggedIn} />
+            </RenderProfiler>
+          }
+          videoModuleId={params?.videoModuleId}
+          statusBar={<StatusBarBlurredBackground />}
+        />
+      </RenderProfiler>
+      <RenderProfiler id="OnboardingSubscriptionModal">
+        <OnboardingSubscriptionModal
+          visible={onboardingSubscriptionModalVisible}
+          dismissModal={hideOnboardingSubscriptionModal}
+        />
+      </RenderProfiler>
       {modalToShow === ModalToShow.REACTION ? (
-        <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsEligibleToReaction} />
+        <RenderProfiler id="IncomingReactionModalContainer">
+          <IncomingReactionModalContainer bookingsEligibleToReaction={bookingsEligibleToReaction} />
+        </RenderProfiler>
       ) : null}
-      <AchievementSuccessModal
-        achievementsToShow={achievementsToShow}
-        visible={visibleAchievementModal}
-        hideModal={hideAchievementModal}
-      />
+      <RenderProfiler id="AchievementSuccessModal">
+        <AchievementSuccessModal
+          achievementsToShow={achievementsToShow}
+          visible={visibleAchievementModal}
+          hideModal={hideAchievementModal}
+        />
+      </RenderProfiler>
     </React.Fragment>
   )
 }

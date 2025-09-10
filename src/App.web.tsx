@@ -11,6 +11,9 @@ import { AccessibilityFiltersWrapper } from 'features/accessibility/context/Acce
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
+import { DebugPerformanceProvider } from 'features/debugPerformance'
+// Import pour rendre disponibles les fonctions de debug dans la console
+import 'features/debugPerformance/utils/startNetworkInterception'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
@@ -62,8 +65,9 @@ export function App() {
               <SettingsWrapper>
                 <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
                   <AuthWrapper>
-                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                      <LocationWrapper>
+                    <DebugPerformanceProvider>
+                      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                        <LocationWrapper>
                         <AccessibilityFiltersWrapper>
                           <FavoritesWrapper>
                             <SearchAnalyticsWrapper>
@@ -76,16 +80,17 @@ export function App() {
                                         <Suspense fallback={<LoadingPage />}>
                                           <AppNavigationContainer />
                                         </Suspense>
-                                      </ScreenErrorProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </ErrorBoundary>
+                                        </ScreenErrorProvider>
+                                      </SubscriptionContextProvider>
+                                    </CulturalSurveyContextProvider>
+                                  </SnackBarProvider>
+                                </SearchWrapper>
+                              </SearchAnalyticsWrapper>
+                            </FavoritesWrapper>
+                          </AccessibilityFiltersWrapper>
+                        </LocationWrapper>
+                      </ErrorBoundary>
+                    </DebugPerformanceProvider>
                   </AuthWrapper>
                 </GoogleOAuthProvider>
               </SettingsWrapper>
