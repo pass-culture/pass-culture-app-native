@@ -22,7 +22,7 @@ describe('VenuePreviewCarousel', () => {
 
     render(<VenuePreviewCarousel />)
 
-    expect(screen.getByText('1/1')).toBeOnTheScreen()
+    expect(screen.getByText('Illustration 1 sur 1')).toBeOnTheScreen()
   })
 
   it('should render null when bannerUrl not defined', () => {
@@ -33,6 +33,6 @@ describe('VenuePreviewCarousel', () => {
 
     render(<VenuePreviewCarousel />)
 
-    expect(screen.queryByText('1/1')).toBeNull()
+    expect(screen.queryByText('Illustration 1 sur 1')).toBeNull()
   })
 })

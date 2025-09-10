@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getSpacing } from 'ui/theme'
 
 const QR_CODE_SIZE = getSpacing(50)
@@ -12,7 +13,11 @@ type Props = {
 }
 
 export const QrCode: FunctionComponent<Props> = ({ qrCode }) => (
-  <QrCodeContainer testID="qr-code">
+  <QrCodeContainer
+    testID="qr-code"
+    accessible
+    accessibilityLabel="Code QR"
+    accessibilityRole={AccessibilityRole.IMAGE}>
     <StyledQRCode value={qrCode} />
   </QrCodeContainer>
 )

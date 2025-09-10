@@ -1,31 +1,31 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: "Livre"
+- tapOn: 'Livre'
 
 - tapOn:
     id: offerBodyImage
 
 - runFlow:
     when:
-        visible: "1/2"
+      visible: 'Illustration 1 sur 2'
     commands:
-    - assertVisible:
-        text: 1/2
-        index: 1
-    - swipe:
-        direction: LEFT
-    - assertVisible:
-        text: 2/2
-        index: 1
-    - swipe:
-        direction: RIGHT
+      - assertVisible:
+          text: Illustration 1 sur 2
+          index: 1
+      - swipe:
+          direction: LEFT
+      - assertVisible:
+          text: Illustration 2 sur 2
+          index: 1
+      - swipe:
+          direction: RIGHT
 
 - runFlow:
     when:
-        notVisible: "1/2"
+      notVisible: 'Illustration 1 sur 2'
     commands:
-    - assertVisible:
-        text: 1/1
+      - assertVisible:
+          text: Illustration 1 sur 1
 
 - tapOn: Revenir en arrière
 - tapOn: Revenir en arrière

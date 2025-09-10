@@ -29,13 +29,13 @@ describe('<OfferPreview />', () => {
   it('should display offer preview page', () => {
     render(<OfferPreview />)
 
-    expect(screen.getByText('1/2')).toBeOnTheScreen()
+    expect(screen.getByText('Illustration 1 sur 2')).toBeOnTheScreen()
   })
 
   it('should display the right image in carousel when a default index is provided', () => {
     useRoute.mockReturnValueOnce({ params: { id: '1', defaultIndex: 1 } })
     render(<OfferPreview />)
 
-    expect(screen.getByText('2/2')).toBeOnTheScreen()
+    expect(screen.getByText('Illustration 2 sur 2')).toBeOnTheScreen()
   })
 })

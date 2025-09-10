@@ -255,7 +255,7 @@ describe('<OfferContent />', () => {
   it('should navigate to offer preview screen when clicking on image offer', async () => {
     renderOfferContent({})
 
-    await user.press(await screen.findByLabelText('Carousel image 1'))
+    await user.press(await screen.findByLabelText('Voir l’illustration en plein écran'))
 
     expect(mockNavigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
   })
@@ -267,7 +267,7 @@ describe('<OfferContent />', () => {
     }
     renderOfferContent({ offer })
 
-    await user.press(await screen.findByLabelText('Carousel image 1'))
+    await user.press(await screen.findByLabelText('Voir l’illustration en plein écran'))
 
     await waitFor(() => expect(mockNavigate).not.toHaveBeenCalled())
   })

@@ -27,7 +27,7 @@ describe('<ImagesCarousel />', () => {
   it('should display the correct index in the header', () => {
     render(<ImagesCarousel images={images} goBack={jest.fn()} defaultIndex={1} />)
 
-    expect(screen.getByText('2/2')).toBeOnTheScreen()
+    expect(screen.getByText('Illustration 2 sur 2')).toBeOnTheScreen()
   })
 
   it('should not render dots when there is only one image', () => {

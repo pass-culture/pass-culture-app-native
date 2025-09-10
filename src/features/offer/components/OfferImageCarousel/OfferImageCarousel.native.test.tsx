@@ -20,7 +20,7 @@ describe('OfferImageCarousel', () => {
       />
     )
 
-    await screen.findByLabelText('Carousel image 1')
+    await screen.findByLabelText('Voir l’illustration en plein écran')
 
     expect(screen.queryByTestId('carousel-dot')).not.toBeOnTheScreen()
   })
@@ -40,9 +40,8 @@ describe('OfferImageCarousel', () => {
       />
     )
 
-    await screen.findByLabelText('Carousel image 1')
+    await screen.findByLabelText('Voir le carousel de 3 illustrations en plein écran')
 
-    expect(screen.getAllByLabelText(/Carousel image/)).toHaveLength(3)
     expect(screen.getAllByTestId('carousel-dot')).toHaveLength(3)
   })
 
@@ -63,7 +62,7 @@ describe('OfferImageCarousel', () => {
       />
     )
 
-    await user.press(screen.getByLabelText('Carousel image 3'))
+    await user.press(screen.getByLabelText('Voir le carousel de 3 illustrations en plein écran'))
 
     expect(mockOnItemPress).toHaveBeenCalledWith(2)
 

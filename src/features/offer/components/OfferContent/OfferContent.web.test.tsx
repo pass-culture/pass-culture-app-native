@@ -150,7 +150,7 @@ describe('<OfferContent />', () => {
     }
     const { unmount } = renderOfferContent({ offer })
 
-    user.click(await screen.findByLabelText('Carousel image 1'))
+    user.click(await screen.findByLabelText('Voir l’illustration en plein écran'))
 
     expect(mockShowModal).not.toHaveBeenCalled()
 
