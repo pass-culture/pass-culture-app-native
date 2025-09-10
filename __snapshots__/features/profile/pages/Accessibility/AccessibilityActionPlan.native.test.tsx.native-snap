@@ -3739,91 +3739,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Publier la déclaration d’accessibilité du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://pass.culture.fr/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://pass.culture.fr/"
+                  accessibilityRole="button"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://pass.culture.fr/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://pass.culture.fr/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://pass.culture.fr/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -3912,91 +3844,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Formation des Product Manager du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.pro/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.pro/"
+                  accessibilityRole="button"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.pro/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.pro/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.pro/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -4172,91 +4036,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Rendre le site 100% accessible
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.app/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.app/"
+                  accessibilityRole="button"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.app/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.app/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.app/
+                </Text>
                  
                 <View
                   backgroundColor="#f1f1f4"
@@ -4822,91 +4618,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Formation des développeurs du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.pro/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.pro/"
+                  accessibilityRole="button"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.pro/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.pro/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.pro/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -4995,91 +4723,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Réalisation d’un audit d’accessibilité du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.pro/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.pro/"
+                  accessibilityRole="button"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.pro/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.pro/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.pro/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -5255,91 +4915,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Maquettage d’un nouveau site 100% accessible
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://pass.culture.fr/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://pass.culture.fr/"
+                  accessibilityRole="button"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#eb0055",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://pass.culture.fr/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://pass.culture.fr/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://pass.culture.fr/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"

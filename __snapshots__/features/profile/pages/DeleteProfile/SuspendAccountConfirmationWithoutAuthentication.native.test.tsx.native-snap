@@ -308,85 +308,24 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               >
                 tes réservations seront annulées sauf pour certains cas précisés dans les
                  
-                <View>
-                  <View
-                    accessibilityLabel="conditions générales d’utilisation"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="conditions générales d’utilisation"
+                  accessibilityRole="button"
+                  color="#161617"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#161617",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="conditions générales d’utilisation"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        color="#161617"
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        conditions générales d’utilisation
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  conditions générales d’utilisation
+                </Text>
               </Text>
             </Text>
           </View>

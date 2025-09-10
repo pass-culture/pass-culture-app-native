@@ -383,91 +383,23 @@ exports[`RecommendedPaths should render correctly 1`] = `
               }
             >
               en remplissant un formulaire sur 
-              <View>
-                <View
-                  accessibilityLabel="Démarches simplifiées"
-                  accessibilityRole="link"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
+              <Text
+                accessibilityLabel="Démarches simplifiées"
+                accessibilityRole="button"
+                onPress={[Function]}
+                style={
+                  {
+                    "color": "#eb0055",
+                    "cursor": "pointer",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "textDecorationLine": "underline",
                   }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "top": 3,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="Démarches simplifiées"
-                >
-                  <View
-                    gap={1}
-                    paddingForIcon={0}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "gap": 4,
-                        "top": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={16}
-                      testID="button-icon"
-                      width={16}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                      typography="BodyAccentXs"
-                    >
-                      Démarches simplifiées
-                    </Text>
-                  </View>
-                </View>
-              </View>
+                }
+              >
+                Démarches simplifiées
+              </Text>
             </Text>
           </View>
         </View>
