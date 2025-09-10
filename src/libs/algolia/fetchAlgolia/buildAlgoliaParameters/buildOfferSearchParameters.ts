@@ -1,6 +1,5 @@
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import {
   buildLocationParameterForSearch,
   BuildLocationParameterParams,
@@ -12,7 +11,6 @@ import { buildNumericFilters } from './buildNumericFilters'
 
 type Parameters = SearchQueryParameters & {
   objectIds?: string[]
-  excludedObjectIds?: string[]
   aroundRadius?: number
 }
 
@@ -24,7 +22,6 @@ export const buildOfferSearchParameters = (
     date = null,
     eanList = [],
     endingDatetime = undefined,
-    excludedObjectIds = [],
     isFullyDigitalOffersCategory = false,
     isHeadline = false,
     maxPossiblePrice = '',
@@ -95,6 +92,5 @@ export const buildOfferSearchParameters = (
       isUsedFromSearch
     ),
     ...locationParameter,
-    ...buildFilters({ excludedObjectIds }),
   }
 }

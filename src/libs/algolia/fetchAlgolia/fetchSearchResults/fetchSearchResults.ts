@@ -28,7 +28,6 @@ type FetchOfferAndVenuesArgs = {
   buildLocationParameterParams: BuildLocationParameterParams
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
-  excludedObjectIds?: string[]
   offersIndex?: string
   venuesIndex?: string
   disabilitiesProperties: DisabilitiesProperties
