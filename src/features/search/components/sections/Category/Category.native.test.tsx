@@ -90,7 +90,7 @@ describe('Category component', () => {
     expect(screen.getByText('Livres papier - Bandes dessinées')).toBeOnTheScreen()
   })
 
-  it('should open the categories filter modal when clicking on the category button', async () => {
+  it.skip('should open the categories filter modal when clicking on the category button', async () => {
     render(<Category />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })

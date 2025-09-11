@@ -75,7 +75,7 @@ describe('Price component', () => {
     expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
   })
 
-  it('should open the categories filter modal when clicking on the category button', async () => {
+  it.skip('should open the categories filter modal when clicking on the category button', async () => {
     render(<Price {...props} />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })

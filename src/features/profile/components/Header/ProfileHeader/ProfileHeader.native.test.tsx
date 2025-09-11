@@ -17,6 +17,7 @@ jest.mock('libs/jwt/jwt')
 jest.mock('queries/profile/usePatchProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
 const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary)
+jest.useFakeTimers()
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),

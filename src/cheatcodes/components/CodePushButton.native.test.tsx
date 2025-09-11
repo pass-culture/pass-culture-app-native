@@ -1,9 +1,7 @@
 import React from 'react'
 import CodePush, { LocalPackage, RemotePackage } from 'react-native-code-push' // @codepush
-import TestRenderer from 'react-test-renderer'
 
-import { tick } from 'libs/tick'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { CodePushButton } from './CodePushButton'
 
@@ -15,51 +13,38 @@ describe('CodePushButton', () => {
   })
 
   it('gets the metadata on mount', async () => {
-    // We fake CodePush update metdata
     CodePush.getUpdateMetadata = jest.fn(() =>
       Promise.resolve({ label: 'V4', description: 'New Release !' } as LocalPackage)
     )
-    const testRenderer = TestRenderer.create(<CodePushButton />)
 
-    expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
+    render(<CodePushButton />)
 
-    await tick()
+    await waitFor(() => expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1))
 
-    // We expect that our state has those metadata
-    expect(testRenderer.root.instance.state.info).toEqual('V4 (New Release !)')
-    expect.assertions(2)
+    await screen.findByText('V4 (New Release !)')
   })
 
-  it('gets the partial metadata when CodePush update metdata with partial information', async () => {
+  it('gets the partial metadata when CodePush update metadata has partial information', async () => {
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve({ label: 'V5' } as LocalPackage))
-    const testRenderer = TestRenderer.create(<CodePushButton />)
 
-    expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
+    render(<CodePushButton />)
 
-    await tick()
+    await waitFor(() => expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1))
 
-    // We expect that our state has those metadata
-    expect(testRenderer.root.instance.state.info).toEqual('V5')
-    expect.assertions(2)
+    await screen.findByText('V5')
   })
 
-  it('gets the partial metadata when CodePush update metdata with null information', async () => {
+  it('does not display info when CodePush update metadata is null', async () => {
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve(null))
-    const testRenderer = TestRenderer.create(<CodePushButton />)
 
-    expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
+    render(<CodePushButton />)
 
-    await tick()
+    await waitFor(() => expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1))
 
-    // We expect that our state has not changed
-    expect(testRenderer.root.instance.state.info).toBeUndefined()
-    expect.assertions(2)
+    expect(screen.queryByText(/V\d/)).toBeNull()
   })
 
   it('prints that a new version is available if version mismatches', async () => {
-    jest.useFakeTimers()
-
-    // We fake that a new version is available
     CodePush.sync = jest.fn((_, __, ___, mismatchCb) => {
       if (mismatchCb) {
         mismatchCb({} as RemotePackage)
@@ -68,14 +53,11 @@ describe('CodePushButton', () => {
     })
 
     render(<CodePushButton />)
-    await user.press(screen.getByTestId('Check update'))
+    await user.press(screen.getByLabelText('Check update'))
 
     expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
-    // We expect our component to render that a new version is available
-    const text = 'Nouvelle version sur AppCenter'
-
-    expect(screen.getByText(text).props.children).toBe(text)
+    await screen.findByText('Nouvelle version sur AppCenter')
   })
 
   it.each`
@@ -94,8 +76,6 @@ describe('CodePushButton', () => {
       status: CodePush.SyncStatus
       displayStatusMessage: string
     }) => {
-      jest.useFakeTimers()
-
       // We fake that a new version is available
       CodePush.sync = jest.fn((_options, syncCb) => {
         if (syncCb) {
@@ -106,14 +86,12 @@ describe('CodePushButton', () => {
 
       // We press the sync button
       render(<CodePushButton />)
-      await user.press(screen.getByTestId('Check update'))
+      await user.press(screen.getByLabelText('Check update'))
 
       expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
-      // We expect our component to render that the corresponding message status
-      const messageStatus = screen.getByTestId('status')
-
-      expect(messageStatus.props.children).toEqual(displayStatusMessage)
+      // We expect our component to render the corresponding message status
+      expect(screen.getByText(displayStatusMessage)).toBeTruthy()
     }
   )
 })

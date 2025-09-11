@@ -28,6 +28,9 @@ describe('Accordion', () => {
     expect(screen.queryByTestId('accordion-child-view')).not.toBeOnTheScreen()
 
     await user.press(screen.getByText('accordion title'))
+    await act(async () => {
+      jest.runAllTimers()
+    })
 
     expect(screen.getByTestId('accordion-child-view')).toBeOnTheScreen()
   })
@@ -38,7 +41,7 @@ describe('Accordion', () => {
     expect(screen.getByTestId('accordionTouchable')).toHaveAccessibilityState({ expanded: false })
 
     await user.press(screen.getByText('accordion title'))
-    act(() => {
+    await act(async () => {
       jest.runAllTimers()
     })
 
@@ -53,7 +56,7 @@ describe('Accordion', () => {
     expect(accordionArrow.props.style.transform[0]).toEqual({ rotateZ: `${Math.PI / 2}rad` })
 
     await user.press(screen.getByText('accordion title'))
-    act(() => {
+    await act(async () => {
       jest.runAllTimers()
     })
 

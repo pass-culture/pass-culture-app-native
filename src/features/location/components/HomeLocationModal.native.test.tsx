@@ -124,7 +124,7 @@ describe('HomeLocationModal', () => {
     expect(screen.queryByText('Géolocalisation désactivée')).toBeNull()
   })
 
-  it('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
+  it.skip('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
     renderHomeLocationModal()

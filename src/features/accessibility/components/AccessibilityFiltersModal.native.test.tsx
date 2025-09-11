@@ -4,7 +4,7 @@ import { Button } from 'react-native'
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { AccessibilityFiltersModal, AccessibilityModalProps } from './AccessibilityFiltersModal'
 
@@ -42,7 +42,9 @@ describe('<AccessibilityFiltersModal />', () => {
     await user.press(openModalButton)
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
-    expect(audioCheckbox).toHaveAccessibilityState({ checked: true })
+    await waitFor(() => {
+      expect(audioCheckbox).toHaveAccessibilityState({ checked: true })
+    })
   })
 
   it('should apply default disabilities when reset button is pressed', async () => {

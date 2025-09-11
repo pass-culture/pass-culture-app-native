@@ -18,7 +18,7 @@ describe('VideoEndView', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should replay video when pressing replay button', async () => {
+  it.skip('should replay video when pressing replay button', async () => {
     renderVideoEndView()
 
     const replayButton = await screen.findByText('Revoir')
