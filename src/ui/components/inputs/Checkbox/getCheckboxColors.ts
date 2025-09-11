@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components/native'
 
-import { CheckboxState, CheckboxVariant } from 'ui/components/inputs/Checkbox/types'
+import { CheckboxState, SelectableVariant } from 'ui/components/inputs/types'
 
 const hasState = (state: CheckboxState[], target: CheckboxState) => state.includes(target)
 
@@ -14,7 +14,7 @@ const getBorderColor = (state: CheckboxState[], color: DefaultTheme['designSyste
 
 type CheckboxParams = {
   state: CheckboxState[]
-  variant: CheckboxVariant
+  variant: SelectableVariant
   collapsed: boolean
   componentType?: 'container' | 'mark'
 }

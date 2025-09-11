@@ -2,8 +2,9 @@ import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
+import { AppThemeType, theme } from 'theme'
 import { ColorsType } from 'theme/types'
+import { TagProps } from 'ui/components/Tag/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type InputProps = {
@@ -155,3 +156,56 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     nativeAutoFocus: props.nativeAutoFocus,
   }
 }
+
+export type SizeProp = keyof AppThemeType['image']['square']['sizes']
+
+export type SelectableVariant = 'default' | 'detailed'
+
+export type CheckboxState = 'default' | 'disabled' | 'error' | 'checked' | 'indeterminate'
+
+export type RadioButtonState = {
+  selected: boolean
+  error?: boolean
+  disabled?: boolean
+  default: boolean
+}
+
+export type SelectableDisplay = 'hug' | 'fill'
+
+export type SelectableAssetProps =
+  | {
+      variant: 'icon'
+      Icon: React.FC<AccessibleIcon>
+      disable?: boolean
+      src?: never
+      size?: never
+      text?: never
+      tag?: never
+    }
+  | {
+      variant: 'tag'
+      tag: TagProps
+      disable?: boolean
+      src?: never
+      size?: never
+      text?: never
+      Icon?: never
+    }
+  | {
+      variant: 'text'
+      text: string
+      disable?: boolean
+      src?: never
+      size?: never
+      Icon?: never
+      tag?: never
+    }
+  | {
+      variant: 'image'
+      src: string
+      disable?: boolean
+      size?: SizeProp
+      Icon?: never
+      text?: never
+      tag?: never
+    }

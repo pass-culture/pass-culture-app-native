@@ -5,15 +5,15 @@ import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { CheckboxAsset } from 'ui/components/inputs/Checkbox/CheckboxAsset'
 import { getCheckboxColors } from 'ui/components/inputs/Checkbox/getCheckboxColors'
 import { getCheckboxState } from 'ui/components/inputs/Checkbox/getCheckboxState'
+import { SelectableAsset } from 'ui/components/inputs/SelectableAsset'
 import {
-  CheckboxAssetProps,
-  CheckboxDisplay,
   CheckboxState,
-  CheckboxVariant,
-} from 'ui/components/inputs/Checkbox/types'
+  SelectableAssetProps,
+  SelectableDisplay,
+  SelectableVariant,
+} from 'ui/components/inputs/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
@@ -48,21 +48,21 @@ type Props = CheckboxBase &
         asset?: never
         collapsed?: never
         description?: never
-        display?: CheckboxDisplay
+        display?: SelectableDisplay
         variant?: 'default'
       }
     | {
-        asset?: CheckboxAssetProps
+        asset?: SelectableAssetProps
         collapsed?: never
         description?: string
-        display?: CheckboxDisplay
+        display?: SelectableDisplay
         variant?: 'detailed'
       }
     | {
-        asset?: CheckboxAssetProps
+        asset?: SelectableAssetProps
         collapsed: React.ReactNode
         description?: string
-        display?: Extract<CheckboxDisplay, 'fill'>
+        display?: Extract<SelectableDisplay, 'fill'>
         variant?: 'detailed'
       }
   )
@@ -92,7 +92,7 @@ export const Checkbox: FunctionComponent<Props> = ({
 
   useSpaceBarAction(focusProps.isFocus ? onToggle : undefined)
 
-  const effectiveDisplay: CheckboxDisplay = display ?? (variant === 'detailed' ? 'fill' : 'hug')
+  const effectiveDisplay: SelectableDisplay = display ?? (variant === 'detailed' ? 'fill' : 'hug')
 
   const state = getCheckboxState(isChecked, indeterminate, hasError, disabled)
   const isDisabled = state.includes('disabled')
@@ -143,7 +143,7 @@ export const Checkbox: FunctionComponent<Props> = ({
         </RightBox>
         {asset ? (
           <BottomBox>
-            <CheckboxAsset {...asset} disable={isDisabled} />
+            <SelectableAsset {...asset} disable={isDisabled} />
           </BottomBox>
         ) : null}
       </ContentContainer>
@@ -154,9 +154,9 @@ export const Checkbox: FunctionComponent<Props> = ({
 
 type ContainerProps = {
   state: CheckboxState[]
-  variant: CheckboxVariant
+  variant: SelectableVariant
   collapsed?: React.ReactNode
-  display?: CheckboxDisplay
+  display?: SelectableDisplay
   isHover?: boolean
   isFocus?: boolean
 }
@@ -210,7 +210,7 @@ const ContentContainer = styled.View({
 })
 
 type LeftBoxProps = {
-  variant: CheckboxVariant
+  variant: SelectableVariant
   state: CheckboxState[]
   isHover?: boolean
   disabled?: boolean
