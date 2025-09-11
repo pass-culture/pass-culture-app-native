@@ -11,7 +11,6 @@
 
 ## 📋 Légende
 
-⏳ : En cours de développement  
 🟠 : Correction disponible à la vérification  
 🟢 : Correction validée  
 🔴 : Correction invalidée
@@ -19,6 +18,28 @@
 <br>
 
 ## ✅ Corrections 26 août → 26 septembre
+
+<details>
+
+<summary> 🟠 Critère 1.2 - Chaque élément graphique porteur d’information possède-t-il une alternative accessible aux technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 1.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-2)  
+**Ticket** : [PC-37462](https://passculture.atlassian.net/browse/PC-37462)  
+**PR** : [#8653](https://github.com/pass-culture/pass-culture-app-native/pull/8653)
+
+**Problème** 😱  
+- Pour les SVG, `accessiblityHidden` ne fonctionne pas (car n'existe pas en `react-native`).
+- Pour le QR code, il n'est pas accessible au lecteur d'écrans.
+- Pour les illustrations des offres et lieux, `accessibilityLabel` n'est pas très clair et compréhensible. 
+
+**Correction** 💡  
+- Pour les SVG, utiliser `accessible` plutôt que `accessiblityHidden`, qui rend disponible l'élément aux lecteurs d'écrans.
+- Pour le QR code, il faut ajouter un `accessibilityLabel`, un `accessibilityRole` image et un `accessible` pour rendre la view disponible aux lecteurs d'écrans.
+- Pour les illustrations des offres et lieux, il faut simplement changer `accessibilityLabel` pour qu'il soit plus explicite. 
+
+</details>
+
+<br>
 
 <details>
 
@@ -144,7 +165,7 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <br>
 
-## Questions
+## 💡 Questions
 
 <details>
 
@@ -175,6 +196,8 @@ Legend:
 `TextInput` Type Multi-layer = our custom input component `EmailInputController`.
 
 </details>
+
+<br>
 
 ## 📂 Template
 
