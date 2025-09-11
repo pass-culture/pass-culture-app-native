@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { ColorsType } from 'theme/types'
@@ -31,6 +31,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   params = {},
   onAdditionalPress: onPress,
 }) => {
+  const { designSystem } = useTheme()
   const isLogin = type === 'login'
   const nextNavigation: {
     screen: RootNavigateParams[0]
@@ -39,17 +40,18 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const wording = isLogin ? 'Se connecter' : 'Créer un compte'
+  const color = linkColor ?? designSystem.color.icon.brandPrimary
 
   return (
     <AuthenticationContainer>
       <StyledBody>{text}</StyledBody>
       <ButtonContainer>
-        {isLogin ? <Connect color={linkColor} /> : <ProfileFilled color={linkColor} />}
+        {isLogin ? <Connect color={color} /> : <ProfileFilled color={color} />}
         <InternalTouchableLink
           as={LinkInsideText}
           navigateTo={nextNavigation}
           wording={wording}
-          color={linkColor}
+          color={color}
           onBeforeNavigate={onPress}
         />
       </ButtonContainer>
