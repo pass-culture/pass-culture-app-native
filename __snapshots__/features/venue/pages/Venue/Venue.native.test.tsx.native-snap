@@ -3645,13 +3645,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 "borderTopLeftRadius": 4,
                                 "borderTopRightRadius": 4,
                                 "height": 96,
-                                "shadowColor": "#696A6F",
-                                "shadowOffset": {
-                                  "height": 4,
-                                  "width": 0,
-                                },
-                                "shadowOpacity": 0.2,
-                                "shadowRadius": 4,
                                 "width": 64,
                               }
                             }

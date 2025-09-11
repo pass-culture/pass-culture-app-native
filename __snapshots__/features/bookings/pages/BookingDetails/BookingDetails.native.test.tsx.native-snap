@@ -225,13 +225,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                     "alignItems": "center",
                     "flexDirection": "column",
                     "justifyContent": "center",
-                    "shadowColor": "#161617",
-                    "shadowOffset": {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.1,
-                    "shadowRadius": 3,
                   }
                 }
                 testID="ticket-without-external-bookings-information"

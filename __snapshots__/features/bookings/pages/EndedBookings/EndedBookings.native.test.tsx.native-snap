@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`EndedBookings should render correctly 1`] = `
 <RCTScrollView
@@ -271,13 +271,6 @@ exports[`EndedBookings should render correctly 1`] = `
                   "borderTopLeftRadius": 4,
                   "borderTopRightRadius": 4,
                   "height": 96,
-                  "shadowColor": "#696A6F",
-                  "shadowOffset": {
-                    "height": 4,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.2,
-                  "shadowRadius": 4,
                   "width": 64,
                 }
               }
@@ -687,13 +680,6 @@ exports[`EndedBookings should render correctly 1`] = `
                   "borderTopLeftRadius": 4,
                   "borderTopRightRadius": 4,
                   "height": 96,
-                  "shadowColor": "#696A6F",
-                  "shadowOffset": {
-                    "height": 4,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.2,
-                  "shadowRadius": 4,
                   "width": 64,
                 }
               }

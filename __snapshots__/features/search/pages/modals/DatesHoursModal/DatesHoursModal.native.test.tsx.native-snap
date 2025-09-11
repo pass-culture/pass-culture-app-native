@@ -499,13 +499,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                                 "borderTopRightRadius": 28,
                                 "height": 28,
                                 "justifyContent": "center",
-                                "shadowColor": "#161617",
-                                "shadowOffset": {
-                                  "height": 2,
-                                  "width": 0,
-                                },
-                                "shadowOpacity": 0.2,
-                                "shadowRadius": 2.5,
                                 "width": 28,
                               },
                               {
@@ -673,13 +666,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                                 "borderTopRightRadius": 28,
                                 "height": 28,
                                 "justifyContent": "center",
-                                "shadowColor": "#161617",
-                                "shadowOffset": {
-                                  "height": 2,
-                                  "width": 0,
-                                },
-                                "shadowOpacity": 0.2,
-                                "shadowRadius": 2.5,
                                 "width": 28,
                               },
                               {
