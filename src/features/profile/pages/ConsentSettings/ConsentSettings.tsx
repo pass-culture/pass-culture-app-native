@@ -19,7 +19,8 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
@@ -73,7 +74,7 @@ export const ConsentSettings = () => {
       <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
       <StyledBodyAccentXs>
         Pour plus d’informations, nous t’invitons à consulter notre
-        <Spacer.Row numberOfSpaces={1} />
+        {SPACE}
         <ExternalTouchableLink
           as={LinkInsideText}
           wording="politique de gestion des cookies"

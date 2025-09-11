@@ -1873,16 +1873,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       }
     >
       Pour plus d’informations, nous t’invitons à consulter notre
-      <View
-        numberOfSpaces={1}
-        style={
-          {
-            "width": 4,
-          }
-        }
-      />
+       
       <Text
-        accessibilityLabel="Politique de gestion des cookies"
+        accessibilityLabel="politique de gestion des cookies"
         accessibilityRole="button"
         onPress={[Function]}
         style={
@@ -1896,7 +1889,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         }
       >
-        Politique de gestion des cookies
+        politique de gestion des cookies
       </Text>
     </Text>
   </View>

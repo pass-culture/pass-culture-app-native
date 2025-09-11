@@ -1880,14 +1880,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         }
       >
         Pour plus d’informations, nous t’invitons à consulter notre
-        <View
-          numberOfSpaces={1}
-          style={
-            {
-              "width": 4,
-            }
-          }
-        />
+         
         <Text
           accessibilityLabel="politique de gestion des cookies"
           accessibilityRole="button"

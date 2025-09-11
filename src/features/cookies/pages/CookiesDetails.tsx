@@ -8,11 +8,11 @@ import { Accordion } from 'ui/components/Accordion'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {
-  const buttonText = 'Pour plus d’informations, nous t’invitons à consulter notre'
   return (
     <StyledView>
       <AccordionContainer>
@@ -37,11 +37,11 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
           On te redemandera bien sûr ton consentement si notre politique évolue.
         </Typo.Body>
         <StyledBodyAccentXs>
-          {buttonText}
-          <Spacer.Row numberOfSpaces={1} />
+          Pour plus d’informations, nous t’invitons à consulter notre
+          {SPACE}
           <ExternalTouchableLink
             as={LinkInsideText}
-            wording="Politique de gestion des cookies"
+            wording="politique de gestion des cookies"
             externalNav={{ url: env.COOKIES_POLICY_LINK }}
             typography="BodyAccentXs"
           />
