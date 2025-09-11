@@ -1,5 +1,4 @@
 import React from 'react'
-import { Platform } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import FastImage from 'react-native-fast-image'
@@ -10,7 +9,6 @@ import { mapCategoryToIcon } from 'libs/parsers/category'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { AppThemeType } from 'theme'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { getShadow, getSpacing } from 'ui/theme'
 
 type SizeProp = keyof AppThemeType['tiles']['sizes']
 type StyleProps = {
@@ -81,24 +79,14 @@ const StyledImagePlaceholder = styled(ImagePlaceholder).attrs<{ size?: number }>
   borderRadius: theme.tiles.borderRadius,
 }))``
 
-const Container = styled.View<StyleProps>(
-  ({ theme, size, borderRadius, withStroke, withShadow }) => ({
-    borderRadius: borderRadius || theme.tiles.borderRadius,
-    ...theme.tiles.sizes[size],
-    ...(!withShadow || Platform.OS === 'web'
-      ? {}
-      : getShadow({
-          shadowOffset: { width: 0, height: getSpacing(1) },
-          shadowRadius: getSpacing(1),
-          shadowColor: theme.colors.greyDark,
-          shadowOpacity: 0.2,
-        })),
-    backgroundColor: theme.designSystem.color.background.default,
-    ...(withStroke
-      ? {
-          borderWidth: 1,
-          borderColor: theme.designSystem.color.border.default,
-        }
-      : {}),
-  })
-)
+const Container = styled.View<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
+  borderRadius: borderRadius || theme.tiles.borderRadius,
+  ...theme.tiles.sizes[size],
+  backgroundColor: theme.designSystem.color.background.default,
+  ...(withStroke
+    ? {
+        borderWidth: 1,
+        borderColor: theme.designSystem.color.border.default,
+      }
+    : {}),
+}))

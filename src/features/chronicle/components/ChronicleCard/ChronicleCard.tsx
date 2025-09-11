@@ -7,7 +7,7 @@ import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getShadow, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
 
@@ -89,12 +89,6 @@ const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
     ...(width === undefined ? undefined : { width }),
     height: shouldTruncate ? CHRONICLE_CARD_HEIGHT : undefined,
     backgroundColor: theme.designSystem.color.background.default,
-    ...getShadow({
-      shadowOffset: { width: 0, height: getSpacing(1) },
-      shadowRadius: getSpacing(1),
-      shadowColor: theme.colors.black,
-      shadowOpacity: 0.15,
-    }),
   })
 )
 

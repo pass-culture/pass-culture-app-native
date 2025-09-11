@@ -5,7 +5,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getShadow, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 const BORDER_WIDTH = getSpacing(0.25)
 export const EVENT_CARD_HEIGHT = getSpacing(19)
@@ -76,14 +76,6 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
     backgroundColor: disabled
       ? theme.designSystem.color.background.disabled
       : theme.designSystem.color.background.default,
-    ...(disabled
-      ? {}
-      : getShadow({
-          shadowOffset: { width: 0, height: getSpacing(1) },
-          shadowRadius: getSpacing(1),
-          shadowColor: theme.colors.greyDark,
-          shadowOpacity: 0.2,
-        })),
   })
 )
 

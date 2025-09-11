@@ -4,7 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
-import { getShadow } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   testID?: string
@@ -25,26 +24,11 @@ export function ThreeShapesTicket(props: Props) {
   )
 }
 
-const Container = styled.View(({ theme }) => {
-  let shadows = {}
-  if (!isWeb) {
-    shadows = getShadow({
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowRadius: 3,
-      shadowColor: theme.designSystem.color.background.lockedInverted,
-      shadowOpacity: 0.1,
-    })
-  }
-  return {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...shadows,
-  }
-})
+const Container = styled.View(() => ({
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+}))
 
 const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
   return {
