@@ -78,8 +78,9 @@ export const BookingDetailsContent = ({
   const onEmailPress = () => {
     analytics.logClickEmailOrganizer()
   }
-
   const isNoTicket = booking.ticket.display === TicketDisplayEnum.no_ticket
+  const hasTicket = !isNoTicket
+
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
   return booking.ticket ? (
     <MainContainer>
@@ -117,6 +118,7 @@ export const BookingDetailsContent = ({
                     bookingContactEmail={booking.stock.offer.bookingContact}
                     withdrawalDetails={booking.ticket.withdrawal.details}
                     onEmailPress={onEmailPress}
+                    hasTicket={hasTicket}
                   />
                 ) : null}
                 <BookingDetailsCancelButton
@@ -146,6 +148,7 @@ export const BookingDetailsContent = ({
             errorBannerMessage={isNoTicket ? null : errorBannerMessage}
             cancelBooking={cancelBooking}
             showArchiveModal={showArchiveModal}
+            hasTicket={hasTicket}
           />
         )}
         <CancelBookingModal

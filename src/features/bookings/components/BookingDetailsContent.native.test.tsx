@@ -265,6 +265,80 @@ describe('<BookingDetailsContent />', () => {
       screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
     ).toBeOnTheScreen()
   })
+
+  it('should display message to contact organizer when booking has a ticket', async () => {
+    renderBookingDetailsContent({
+      properties: { ...mockProperties, isEvent: false },
+      booking: {
+        ...bookingsSnapV2.ongoingBookings[0],
+        stock: {
+          ...bookingsSnapV2.ongoingBookings[0].stock,
+          offer: {
+            ...bookingsSnapV2.ongoingBookings[0].stock.offer,
+            bookingContact: 'emailDeLorganisateur@emailSchema.com',
+          },
+        },
+        ticket: {
+          ...bookingsSnapV2.ongoingBookings[0].ticket,
+          display: TicketDisplayEnum.ticket,
+        },
+      },
+    })
+
+    expect(
+      screen.getByText(
+        `Si tu n’as pas reçu tes billets, contacte l’organisateur\u00a0:\n emailDeLorganisateur@emailSchema.com`
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should not display message to contact organizer when booking has no ticket', async () => {
+    renderBookingDetailsContent({
+      properties: { ...mockProperties, isEvent: false },
+      booking: {
+        ...bookingsSnapV2.ongoingBookings[0],
+        stock: {
+          ...bookingsSnapV2.ongoingBookings[0].stock,
+          offer: {
+            ...bookingsSnapV2.ongoingBookings[0].stock.offer,
+            bookingContact: 'emailDeLorganisateur@emailSchema.com',
+          },
+        },
+        ticket: {
+          ...bookingsSnapV2.ongoingBookings[0].ticket,
+          display: TicketDisplayEnum.no_ticket,
+        },
+      },
+    })
+
+    expect(
+      screen.queryByText(
+        `Si tu n’as pas reçu tes billets, contacte l’organisateur\u00a0:\n emailDeLorganisateur@emailSchema.com`
+      )
+    ).not.toBeOnTheScreen()
+  })
+
+  it('should display organizer email when booking has no ticket', async () => {
+    renderBookingDetailsContent({
+      properties: { ...mockProperties, isEvent: false },
+      booking: {
+        ...bookingsSnapV2.ongoingBookings[0],
+        stock: {
+          ...bookingsSnapV2.ongoingBookings[0].stock,
+          offer: {
+            ...bookingsSnapV2.ongoingBookings[0].stock.offer,
+            bookingContact: 'emailDeLorganisateur@emailSchema.com',
+          },
+        },
+        ticket: {
+          ...bookingsSnapV2.ongoingBookings[0].ticket,
+          display: TicketDisplayEnum.no_ticket,
+        },
+      },
+    })
+
+    expect(screen.getByText(`emailDeLorganisateur@emailSchema.com`)).toBeOnTheScreen()
+  })
 })
 
 const renderBookingDetailsContent = ({
