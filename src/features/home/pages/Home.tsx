@@ -17,9 +17,10 @@ import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/us
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
-import { useBookingsQuery } from 'queries/bookings'
+import { useBookingsQueryV2 } from 'queries/bookings'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -35,6 +36,8 @@ export const Home: FunctionComponent = () => {
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
   const { isLoggedIn, user } = useAuthContext()
+  const netInfo = useNetInfoContext()
+  const isQueryEnabled = !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn
 
   const {
     visible: onboardingSubscriptionModalVisible,
@@ -46,7 +49,7 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isInitialLoading: isBookingsLoading } = useBookingsQuery()
+  const { data: bookings, isInitialLoading: isBookingsLoading } = useBookingsQueryV2(isQueryEnabled)
 
   const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
     bookings,
@@ -102,7 +105,7 @@ export const Home: FunctionComponent = () => {
     const editor = BatchProfile.editor()
     editor.setAttribute('app_version', getAppVersion())
 
-    const allBookings = [...(bookings?.ongoing_bookings || []), ...(bookings?.ended_bookings || [])]
+    const allBookings = [...(bookings?.ongoingBookings || []), ...(bookings?.endedBookings || [])]
     const lastBooking = maxBy(allBookings, (booking) => booking?.dateCreated)
     if (lastBooking) {
       editor.setAttribute('last_booking_date', lastBooking.dateCreated)

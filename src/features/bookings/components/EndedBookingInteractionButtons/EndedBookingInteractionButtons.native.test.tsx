@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { BookingReponse, ReactionTypeEnum } from 'api/gen'
+import { BookingResponse, ReactionTypeEnum } from 'api/gen'
 import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -16,7 +16,7 @@ describe('EndedBookingInteractionButtons', () => {
   })
 
   it('should not display reaction button when reaction feature flag deactivated', async () => {
-    renderEndedBookingInteractionButtons(bookingsSnap.ended_bookings[1])
+    renderEndedBookingInteractionButtons(bookingsSnapV2.endedBookings[1])
 
     await screen.findByLabelText('Partager l’offre Avez-vous déjà vu ?')
 
@@ -29,7 +29,7 @@ describe('EndedBookingInteractionButtons', () => {
     })
 
     it('should not display reaction button when native category id not included', async () => {
-      renderEndedBookingInteractionButtons(bookingsSnap.ended_bookings[1])
+      renderEndedBookingInteractionButtons(bookingsSnapV2.endedBookings[1])
 
       await screen.findByLabelText('Partager l’offre Avez-vous déjà vu ?')
 
@@ -37,7 +37,7 @@ describe('EndedBookingInteractionButtons', () => {
     })
 
     it('should display reaction button', async () => {
-      renderEndedBookingInteractionButtons({ ...bookingsSnap.ended_bookings[1], canReact: true })
+      renderEndedBookingInteractionButtons({ ...bookingsSnapV2.endedBookings[1], canReact: true })
 
       expect(await screen.findByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
     })
@@ -50,7 +50,7 @@ describe('EndedBookingInteractionButtons', () => {
       'should display correct icon and correct a11y label when data has reaction %s',
       async (userReaction, labelRegex) => {
         renderEndedBookingInteractionButtons({
-          ...bookingsSnap.ended_bookings[1],
+          ...bookingsSnapV2.endedBookings[1],
           userReaction,
           canReact: true,
         })
@@ -61,7 +61,7 @@ describe('EndedBookingInteractionButtons', () => {
 
     it('should display a small badge when offer is waiting for a reaction', async () => {
       renderEndedBookingInteractionButtons({
-        ...bookingsSnap.ended_bookings[1],
+        ...bookingsSnapV2.endedBookings[1],
         userReaction: null,
         canReact: true,
       })
@@ -71,7 +71,7 @@ describe('EndedBookingInteractionButtons', () => {
   })
 })
 
-function renderEndedBookingInteractionButtons(booking: BookingReponse) {
+function renderEndedBookingInteractionButtons(booking: BookingResponse) {
   return render(
     reactQueryProviderHOC(
       <EndedBookingInteractionButtons

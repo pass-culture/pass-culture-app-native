@@ -4,10 +4,9 @@ import React from 'react'
 import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
+import { BookingResponse, WithdrawalTypeEnum } from 'api/gen'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
-import { bookingsSnap } from 'features/bookings/fixtures'
-import { Booking } from 'features/bookings/types'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { analytics } from 'libs/analytics/provider'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -23,9 +22,9 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 describe('OnGoingBookingItem', () => {
-  const bookings = bookingsSnap.ongoing_bookings
+  const bookings = bookingsSnapV2.ongoingBookings
 
-  const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]
+  const initialBooking: BookingResponse = bookingsSnapV2.ongoingBookings[0]
 
   it('should navigate to the booking details page', async () => {
     renderOnGoingBookingItem(initialBooking)
@@ -51,16 +50,16 @@ describe('OnGoingBookingItem', () => {
   describe('should be on site withdrawal ticket event', () => {
     const booking = {
       ...initialBooking,
-      stock: {
-        ...initialBooking.stock,
-        beginningDatetime: formatISO(addDays(new Date(), 1)).slice(0, -1),
-        offer: {
-          ...initialBooking.stock.offer,
-          subcategoryId: SubcategoryIdEnum.CONCERT,
-          withdrawalType: WithdrawalTypeEnum.on_site,
+      ticket: {
+        ...initialBooking.ticket,
+        withdrawal: {
+          ...initialBooking.ticket.withdrawal,
+          type: WithdrawalTypeEnum.on_site,
         },
       },
     }
+
+    beforeEach(() => mockdate.set(new Date(booking.stock.beginningDatetime as string)))
 
     it('should display withdrawal reminder', () => {
       renderOnGoingBookingItem(booking)
@@ -81,13 +80,17 @@ describe('OnGoingBookingItem', () => {
       stock: {
         ...initialBooking.stock,
         beginningDatetime: formatISO(addDays(new Date(), 1)).slice(0, -1),
-        offer: {
-          ...initialBooking.stock.offer,
-          subcategoryId: SubcategoryIdEnum.CONCERT,
-          withdrawalType: WithdrawalTypeEnum.no_ticket,
+        ticket: {
+          ...initialBooking.ticket,
+          withdrawal: {
+            ...initialBooking.ticket.withdrawal,
+            type: WithdrawalTypeEnum.no_ticket,
+          },
         },
       },
     }
+
+    beforeEach(() => mockdate.set(new Date(booking.stock.beginningDatetime)))
 
     it('should not display withdrawal reminder', () => {
       renderOnGoingBookingItem(booking)
@@ -213,7 +216,10 @@ describe('OnGoingBookingItem', () => {
   })
 })
 
-function renderOnGoingBookingItem(booking: Booking, eligibleBookingsForArchive: Booking[] = []) {
+function renderOnGoingBookingItem(
+  booking: BookingResponse,
+  eligibleBookingsForArchive: BookingResponse[] = []
+) {
   return render(
     <OnGoingBookingItem booking={booking} eligibleBookingsForArchive={eligibleBookingsForArchive} />
   )

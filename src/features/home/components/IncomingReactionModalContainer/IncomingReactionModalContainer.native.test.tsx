@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ReactionTypeEnum, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -74,7 +74,7 @@ describe('IncomingReactionModalContainer', () => {
     expect(mockMutate).toHaveBeenNthCalledWith(1, {
       reactions: [
         {
-          offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+          offerId: bookingsSnapV2.endedBookings[0].stock.offer.id,
           reactionType: ReactionTypeEnum.LIKE,
         },
       ],
@@ -101,7 +101,7 @@ describe('IncomingReactionModalContainer', () => {
     expect(mockMutate).toHaveBeenNthCalledWith(1, {
       reactions: [
         {
-          offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+          offerId: bookingsSnapV2.endedBookings[0].stock.offer.id,
           reactionType: ReactionTypeEnum.NO_REACTION,
         },
       ],
@@ -131,13 +131,13 @@ const moreThan24hAfterCurrentDate = new Date(
 
 const endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate = [
   {
-    ...bookingsSnap.ended_bookings[0],
+    ...bookingsSnapV2.endedBookings[0],
     userReaction: null,
     dateUsed: moreThan24hAfterCurrentDate,
     stock: {
-      ...bookingsSnap.ended_bookings[0].stock,
+      ...bookingsSnapV2.endedBookings[0].stock,
       offer: {
-        ...bookingsSnap.ended_bookings[0].stock.offer,
+        ...bookingsSnapV2.endedBookings[0].stock.offer,
         subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       },
     },
@@ -146,25 +146,25 @@ const endedBookingWithoutReactionAndDateUsedMoreThan24hAfterCurrentDate = [
 
 const bookingsWith2EndedBookings = [
   {
-    ...bookingsSnap.ended_bookings[0],
+    ...bookingsSnapV2.endedBookings[0],
     userReaction: null,
     dateUsed: moreThan24hAfterCurrentDate,
     stock: {
-      ...bookingsSnap.ended_bookings[0].stock,
+      ...bookingsSnapV2.endedBookings[0].stock,
       offer: {
-        ...bookingsSnap.ended_bookings[0].stock.offer,
+        ...bookingsSnapV2.endedBookings[0].stock.offer,
         subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       },
     },
   },
   {
-    ...bookingsSnap.ended_bookings[0],
+    ...bookingsSnapV2.endedBookings[0],
     userReaction: null,
     dateUsed: moreThan24hAfterCurrentDate,
     stock: {
-      ...bookingsSnap.ended_bookings[0].stock,
+      ...bookingsSnapV2.endedBookings[0].stock,
       offer: {
-        ...bookingsSnap.ended_bookings[0].stock.offer,
+        ...bookingsSnapV2.endedBookings[0].stock.offer,
         subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       },
     },

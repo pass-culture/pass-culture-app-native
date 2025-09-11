@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { BookingResponse } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
-import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
+import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
-import { Booking } from 'features/bookings/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
@@ -23,8 +23,8 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  booking: Booking
-  handleShowReactionModal: (booking: Booking) => void
+  booking: BookingResponse
+  handleShowReactionModal: (booking: BookingResponse) => void
   handleShowShareOfferModal: (shareContent: ShareContent | null) => void
 }
 
@@ -40,7 +40,8 @@ export const EndedBookingItem = ({
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
+  const isEligibleBookingsForArchiveValue =
+    expirationDateUtilsV2.isEligibleBookingsForArchive(booking)
 
   const shouldRedirectToBooking = isEligibleBookingsForArchiveValue && !cancellationReason
 
@@ -119,7 +120,7 @@ export const EndedBookingItem = ({
       <EndedBookingInteractionButtons
         booking={booking}
         handlePressShareOffer={pressShareOffer}
-        handleShowReactionModal={() => handleShowReactionModal && handleShowReactionModal(booking)}
+        handleShowReactionModal={() => handleShowReactionModal?.(booking)}
       />
     </Container>
   )

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponseV2 } from 'api/gen'
 import { useShouldShowAchievementSuccessModal } from 'features/achievements/hooks/useShouldShowAchievementSuccessModal'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import {
@@ -16,7 +16,7 @@ export enum ModalToShow {
 }
 
 export const useWhichModalToShow = (
-  bookings: BookingsResponse | undefined,
+  bookings: BookingsResponseV2 | undefined,
   isBookingsLoading: boolean
 ) => {
   const [modalToShow, setModalToShow] = useState<ModalToShow>(ModalToShow.PENDING)
