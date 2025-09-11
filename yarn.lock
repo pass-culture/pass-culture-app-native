@@ -11197,6 +11197,7 @@ __metadata:
     react-native-modal: 13.0.1
     react-native-orientation-locker: ^1.7.0
     react-native-performance: ^5.1.4
+    react-native-performances-logger: ../react-native-performances-logger
     react-native-permissions: ^5.4.1
     react-native-qrcode-svg: ^6.1.2
     react-native-reanimated: ^3.15.0
@@ -24991,6 +24992,16 @@ __metadata:
   peerDependencies:
     react-native: "*"
   checksum: 74c92b7051cb97993e5753406a5203e1a39cdc71c7d79da3998ce2ab4e061f3ae04b0e5520a803d55854baf042bbc36c19fcfc5480fd7c04f01dd28006bfaf49
+  languageName: node
+  linkType: hard
+
+"react-native-performances-logger@file:../react-native-performances-logger::locator=PassCulture%40workspace%3A.":
+  version: 0.1.0
+  resolution: "react-native-performances-logger@file:../react-native-performances-logger#../react-native-performances-logger::hash=5f2274&locator=PassCulture%40workspace%3A."
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 8d8ec9adec511ccb179be6f99d0e50c4481c8546f813e231ee9f5b2cd6a84d04d179638417d89de3f427c6a354465279ee98932c9837c3eed7e0a91fcbf3106e
   languageName: node
   linkType: hard
 

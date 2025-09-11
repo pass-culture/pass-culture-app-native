@@ -3,7 +3,8 @@ import 'intl/locale-data/jsonp/en'
 import { HotUpdater, getUpdateSource } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { LogBox } from 'react-native'
+import { EventSubscription, LogBox } from 'react-native'
+
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 
@@ -41,6 +42,8 @@ import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceOb
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
+import PerformanceLogger from '../../react-native-performances-logger/src/index'
+
 LogBox.ignoreLogs([
   'Setting a timer',
   'OfferNotFoundError', // custom error
@@ -51,10 +54,40 @@ LogBox.ignoreLogs([
   'to contain units', // TODO(PC-37747): remove this temporary ignore warnings
 ])
 
+type PerformanceLoggerStats = {
+  uiFps: number
+  jsFps: number
+  shutters: number
+  usedRam: number
+  usedCpu: number
+}
+
 const App: FunctionComponent = function () {
   useLaunchPerformanceObserver()
 
   useOrientationLocked()
+
+  const listenerSubscription = React.useRef<null | EventSubscription>(null)
+
+  useEffect(() => {
+    listenerSubscription.current = PerformanceLogger.addListener(
+      (stats: PerformanceLoggerStats) => {
+        // eslint-disable-next-line no-console
+        console.log(stats)
+      }
+    )
+
+    // you must call .start(true) to get CPU as well
+    PerformanceLogger.start()
+
+    // ... at some later point you could call:
+    // PerformanceStats.stop();
+
+    return () => {
+      listenerSubscription.current?.remove()
+      listenerSubscription.current = null
+    }
+  }, [])
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })

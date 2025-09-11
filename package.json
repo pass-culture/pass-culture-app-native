@@ -168,6 +168,7 @@
     "react-native-modal": "13.0.1",
     "react-native-orientation-locker": "^1.7.0",
     "react-native-performance": "^5.1.4",
+    "react-native-performances-logger": "../react-native-performances-logger",
     "react-native-permissions": "^5.4.1",
     "react-native-qrcode-svg": "^6.1.2",
     "react-native-reanimated": "^3.15.0",
