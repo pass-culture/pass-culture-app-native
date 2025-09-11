@@ -27,8 +27,8 @@ import { Range } from 'libs/typesUtils/typeHelpers'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputText } from 'ui/components/inputs/InputText/InputText'
 import { Slider } from 'ui/components/inputs/Slider'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -195,7 +195,8 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     return (
       <TextInputContainer key={name}>
         {config.type === 'string' ? (
-          <TextInput
+          <InputText
+            label=""
             placeholder={placeholder}
             onBlur={onBlurValidate}
             onChangeText={onChangeText}
@@ -203,7 +204,8 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           />
         ) : null}
         {config.type === 'stringArray' ? (
-          <TextInput
+          <InputText
+            label=""
             placeholder={placeholder}
             onBlur={onBlurValidate}
             onChangeText={onChangeStringArray}

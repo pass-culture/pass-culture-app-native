@@ -121,6 +121,7 @@ function getInputProps<Props extends InputProps>(props: Props): InputProps {
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
   return {
     ...getInputProps(props),
+    label: props.label,
     isError: props.isError,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
@@ -149,6 +150,7 @@ export function getCustomInputTextProps(props: InputTextProps): CustomInputTextP
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
   return {
     ...getInputProps(props),
+    label: props.label,
     inputHeight: props.inputHeight,
     LeftIcon: props.LeftIcon,
     onPressRightIcon: props.onPressRightIcon,
