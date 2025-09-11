@@ -6,7 +6,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
@@ -53,7 +53,7 @@ export function AccessibilityDeclarationMobileBase({
         <Typo.Body>
           La présente déclaration d’accessibilité s’applique à{SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideTextV2}
+            as={LinkInsideText}
             wording={`l’application ${platformName}`}
             externalNav={storeLink}
             type={AccessibilityRole.LINK}
@@ -169,7 +169,7 @@ export function AccessibilityDeclarationMobileBase({
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter
           afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideTextV2}
+            as={LinkInsideText}
             wording="support@passculture.app"
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             justifyContent="flex-start"
@@ -193,7 +193,7 @@ export function AccessibilityDeclarationMobileBase({
           <Typo.Body>
             Écrire un message au{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideTextV2}
+              as={LinkInsideText}
               wording="Défenseur des droits"
               externalNav={rightsDefenderUrl}
               type={AccessibilityRole.LINK}
@@ -202,7 +202,7 @@ export function AccessibilityDeclarationMobileBase({
           <Typo.Body>
             Contacter le délégué du{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideTextV2}
+              as={LinkInsideText}
               wording="Défenseur des droits dans votre région"
               externalNav={rightsDelegateUrl}
               type={AccessibilityRole.LINK}

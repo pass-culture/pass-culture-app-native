@@ -264,92 +264,24 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
         >
           À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour anonymiser tes données. Tu peux en savoir plus en
            
-          <View>
-            <View
-              accessibilityLabel="consultant cette page."
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
+          <Text
+            accessibilityLabel="consultant cette page."
+            accessibilityRole="button"
+            color="#161617"
+            onPress={[Function]}
+            style={
+              {
+                "color": "#161617",
+                "cursor": "pointer",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textDecorationLine": "underline",
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "top": 3,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="consultant cette page."
-            >
-              <View
-                gap={1}
-                paddingForIcon={0}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  color="#161617"
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                  typography="Button"
-                >
-                  consultant cette page.
-                </Text>
-              </View>
-            </View>
-          </View>
+            }
+          >
+            consultant cette page.
+          </Text>
         </Text>
         <Text
           style={

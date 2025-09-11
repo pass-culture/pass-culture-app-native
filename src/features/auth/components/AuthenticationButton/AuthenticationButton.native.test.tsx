@@ -15,7 +15,7 @@ describe('<AuthenticationButton />', () => {
   it('should navigate to the login page when is type login', async () => {
     render(<AuthenticationButton type="login" />)
 
-    const connectButton = screen.getByRole('link')
+    const connectButton = screen.getByText('Se connecter')
     await user.press(connectButton)
 
     expect(navigate).toHaveBeenCalledWith('Login', {})
@@ -24,7 +24,7 @@ describe('<AuthenticationButton />', () => {
   it('should navigate to the signup page when is type signup', async () => {
     render(<AuthenticationButton type="signup" />)
 
-    const connectButton = screen.getByRole('link')
+    const connectButton = screen.getByText('Créer un compte')
     await user.press(connectButton)
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', {})
@@ -33,7 +33,7 @@ describe('<AuthenticationButton />', () => {
   it('should navigate with additional params when defined for login', async () => {
     render(<AuthenticationButton type="login" params={NAV_PARAMS_LOGIN} />)
 
-    const connectButton = screen.getByRole('link')
+    const connectButton = screen.getByText('Se connecter')
     await user.press(connectButton)
 
     expect(navigate).toHaveBeenCalledWith('Login', NAV_PARAMS_LOGIN)
@@ -42,7 +42,7 @@ describe('<AuthenticationButton />', () => {
   it('should navigate with additional params when defined for signup', async () => {
     render(<AuthenticationButton type="signup" params={NAV_PARAMS_SIGNUP} />)
 
-    const connectButton = screen.getByRole('link')
+    const connectButton = screen.getByText('Créer un compte')
     await user.press(connectButton)
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', NAV_PARAMS_SIGNUP)

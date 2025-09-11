@@ -6,7 +6,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
-import { ButtonInsideTextV2 } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextV2'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -87,7 +87,7 @@ export function AccessibilityEngagement() {
         Vous pouvez retrouver également toutes nos fiches d’aide pour vous inscrire sur le pass
         Culture directement dans{' '}
         <ExternalTouchableLink
-          as={ButtonInsideTextV2}
+          as={LinkInsideText}
           wording="notre centre d’aide"
           typography="BodyAccentXs"
           externalNav={{ url: env.FAQ_LINK }}

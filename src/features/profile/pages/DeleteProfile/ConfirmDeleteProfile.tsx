@@ -7,13 +7,12 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -68,9 +67,8 @@ export function ConfirmDeleteProfile() {
         <BulletListItem text="tes réservations sont annulées sauf pour certains cas précisés dans les ">
           {LINE_BREAK}
           <ExternalTouchableLink
-            as={StyledButtonInsideText}
+            as={LinkInsideTextBlack}
             wording="conditions générales d’utilisation"
-            icon={ExternalSiteFilled}
             externalNav={{ url: env.CGU_LINK }}
           />
         </BulletListItem>
@@ -86,8 +84,8 @@ export function ConfirmDeleteProfile() {
   )
 }
 
-const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.designSystem.color.text.default,
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
 }))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)({

@@ -2,18 +2,20 @@ import React from 'react'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { ColorsType } from 'theme/types'
 import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
-import { ButtonInsideTextV2Props } from 'ui/components/buttons/buttonInsideText/types'
+import { LinkInsideTextProps } from 'ui/components/buttons/linkInsideText/types'
 import { Typo } from 'ui/theme'
 
-export function ButtonInsideTextV2({
+export function LinkInsideText({
   wording,
   typography = 'Button',
   onPress,
   onLongPress,
   accessibilityLabel,
+  color,
   type = AccessibilityRole.BUTTON,
-}: ButtonInsideTextV2Props) {
+}: LinkInsideTextProps) {
   const Text = typography === 'BodyAccentXs' ? StyledBodyAccentXs : StyledBody
   const accessibilityLabelLink = type === AccessibilityRole.LINK ? ', lien externe' : ''
   const computedAccessibilityLabel = `${accessibilityLabel ?? wording}${accessibilityLabelLink}`
@@ -23,17 +25,24 @@ export function ButtonInsideTextV2({
       onPress={onPress as AppButtonEventNative}
       onLongPress={onLongPress as AppButtonEventNative}
       accessibilityRole={type}
-      accessibilityLabel={computedAccessibilityLabel}>
+      accessibilityLabel={computedAccessibilityLabel}
+      color={color}>
       {wording}
     </Text>
   )
 }
 
-const commonTextStyle = ({ theme }: { theme: DefaultTheme }) => ({
-  color: theme.designSystem.color.icon.brandPrimary,
-  textDecorationLine: 'underline',
-  cursor: 'pointer',
+const commonTextStyle = { textDecorationLine: 'underline', cursor: 'pointer' }
+const withDefaultColor = (props: { color?: ColorsType; theme: DefaultTheme }) => ({
+  color: props.color ?? props.theme.designSystem.color.icon.brandPrimary,
 })
 
-const StyledBody = styled(Typo.Button)(commonTextStyle)
-const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(commonTextStyle)
+const StyledBody = styled(Typo.Button)<{ color?: ColorsType }>((props) => ({
+  ...withDefaultColor(props),
+  ...commonTextStyle,
+}))
+
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)<{ color?: ColorsType }>((props) => ({
+  ...withDefaultColor(props),
+  ...commonTextStyle,
+}))

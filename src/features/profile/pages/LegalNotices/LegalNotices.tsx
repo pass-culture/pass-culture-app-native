@@ -5,13 +5,12 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment/env'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -28,7 +27,7 @@ export function LegalNotices() {
           Éditeur du site&nbsp;:
           {SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideTextBlack}
+            as={LinkInsideTextBlack}
             wording="https://passculture.app/accueil"
             externalNav={{ url: 'https://passculture.app/accueil' }}
             icon={ExternalSiteFilled}
@@ -52,11 +51,10 @@ export function LegalNotices() {
           Nous contacter&nbsp;:
           {SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideTextBlack}
+            as={LinkInsideTextBlack}
             wording="support@passculture.app"
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             externalNav={contactSupport.forGenericQuestion}
-            icon={EmailFilled}
           />
         </Typo.Body>
 
@@ -84,6 +82,6 @@ export function LegalNotices() {
   )
 }
 
-const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.designSystem.color.text.default,
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
 }))``

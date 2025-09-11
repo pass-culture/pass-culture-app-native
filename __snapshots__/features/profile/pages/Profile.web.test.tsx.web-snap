@@ -70,7 +70,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   text-decoration: none;
 }
 
-.c5 {
+.c6 {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -93,17 +93,17 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c6:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:hover {
+.c6:hover {
   text-decoration: underline;
   text-decoration-color: #696a6f;
 }
 
-.c5:hover:disabled {
+.c6:hover:disabled {
   text-decoration: none;
 }
 
@@ -116,13 +116,29 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 }
 
 .c4 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  color: #320096;
+  font-family: Montserrat-Bold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c5 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
   cursor: pointer;
 }
 
-.c6 {
+.c7 {
   background-color: transparent;
 }
 
@@ -241,33 +257,25 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     Déjà un compte ?
                   </div>
                   <div
-                    aria-label="Se connecter"
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                    data-testid="Se connecter"
-                    style="transition-duration: 0s;"
-                    tabindex="0"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-top-ipm5af"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-view-175oi2r"
-                        data-testid="button-icon"
-                      >
-                        <div
-                          class="css-text-146c3p1"
-                          dir="ltr"
-                        >
-                          button-icon-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        class="css-text-146c3p1"
                         dir="ltr"
                       >
-                        Se connecter
+                        undefined-SVG-Mock
                       </div>
                     </div>
+                    <button
+                      class="c4"
+                      color="#320096"
+                      type="button"
+                    >
+                      Se connecter
+                    </button>
                   </div>
                 </div>
               </div>
@@ -372,7 +380,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c4"
+                          class="c5"
                           for="testUuidV4"
                         >
                           <div
@@ -984,7 +992,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -1019,7 +1027,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"
@@ -1154,7 +1162,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   text-decoration: none;
 }
 
-.c5 {
+.c6 {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -1177,17 +1185,17 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c6:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:hover {
+.c6:hover {
   text-decoration: underline;
   text-decoration-color: #696a6f;
 }
 
-.c5:hover:disabled {
+.c6:hover:disabled {
   text-decoration: none;
 }
 
@@ -1200,13 +1208,29 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 }
 
 .c4 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  color: #320096;
+  font-family: Montserrat-Bold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c5 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
   cursor: pointer;
 }
 
-.c6 {
+.c7 {
   background-color: transparent;
 }
 
@@ -1325,33 +1349,25 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     Déjà un compte ?
                   </div>
                   <div
-                    aria-label="Se connecter"
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                    data-testid="Se connecter"
-                    style="transition-duration: 0s;"
-                    tabindex="0"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-top-ipm5af"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-view-175oi2r"
-                        data-testid="button-icon"
-                      >
-                        <div
-                          class="css-text-146c3p1"
-                          dir="ltr"
-                        >
-                          button-icon-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        class="css-text-146c3p1"
                         dir="ltr"
                       >
-                        Se connecter
+                        undefined-SVG-Mock
                       </div>
                     </div>
+                    <button
+                      class="c4"
+                      color="#320096"
+                      type="button"
+                    >
+                      Se connecter
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1456,7 +1472,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c4"
+                          class="c5"
                           for="testUuidV4"
                         >
                           <div
@@ -2068,7 +2084,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -2103,7 +2119,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"

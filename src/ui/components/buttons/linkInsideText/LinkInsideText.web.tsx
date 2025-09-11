@@ -2,14 +2,15 @@ import React, { MouseEventHandler, useCallback } from 'react'
 import styled, { CSSObject, DefaultTheme } from 'styled-components'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { ColorsType } from 'theme/types'
 import {
   AppButtonEventWeb,
   TouchableOpacityButtonProps,
 } from 'ui/components/buttons/AppButton/types'
-import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
+import { LinkInsideTextProps } from 'ui/components/buttons/linkInsideText/types'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-export function ButtonInsideTextV2({
+export function LinkInsideText({
   wording,
   typography = 'Button',
   onPress,
@@ -18,25 +19,24 @@ export function ButtonInsideTextV2({
   target,
   type = AccessibilityRole.BUTTON,
   accessibilityLabel,
-}: ButtonInsideTexteProps) {
+  color,
+}: LinkInsideTextProps) {
   const Text = (href ? Link : Button) as React.ElementType
 
   const pressHandler = onPress as AppButtonEventWeb
   const onClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if (type === 'submit' && pressHandler) event.preventDefault()
       if (pressHandler) pressHandler(event)
     },
-    [type, pressHandler]
+    [pressHandler]
   )
 
   const longPressHandler = onLongPress as AppButtonEventWeb
   const onDoubleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if (type === 'submit' && longPressHandler) event.preventDefault()
       if (longPressHandler) longPressHandler(event)
     },
-    [type, longPressHandler]
+    [longPressHandler]
   )
 
   return (
@@ -47,13 +47,22 @@ export function ButtonInsideTextV2({
       href={href}
       target={target}
       accessibilityLabel={accessibilityLabel}
-      typography={typography}>
+      typography={typography}
+      color={color}>
       {wording}
     </Text>
   )
 }
 
-const webStyle = ({ theme, typography }: { theme: DefaultTheme; typography?: string }) =>
+const webStyle = ({
+  theme,
+  typography,
+  color,
+}: {
+  theme: DefaultTheme
+  typography?: string
+  color?: ColorsType
+}) =>
   ({
     border: 'none',
     cursor: 'pointer',
@@ -63,17 +72,16 @@ const webStyle = ({ theme, typography }: { theme: DefaultTheme; typography?: str
     width: 'fit-content',
     margin: 0,
     padding: 0,
-    color: theme.designSystem.color.text.brandPrimary,
-    ...customFocusOutline({ color: theme.designSystem.color.text.brandPrimary }),
+    textDecoration: 'underline',
+    color: color ?? theme.designSystem.color.text.brandPrimary,
+    ...customFocusOutline({ color: color ?? theme.designSystem.color.text.brandPrimary }),
     ...(typography === 'BodyAccentXs'
       ? theme.designSystem.typography.bodyAccentXs
       : theme.designSystem.typography.button),
   }) as CSSObject
 
-const Button = styled.button<
-  TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>
->(webStyle)
-
-const Link = styled.a<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>>(
+const Button = styled.button<TouchableOpacityButtonProps & Pick<LinkInsideTextProps, 'color'>>(
   webStyle
 )
+
+const Link = styled.a<TouchableOpacityButtonProps & Pick<LinkInsideTextProps, 'color'>>(webStyle)

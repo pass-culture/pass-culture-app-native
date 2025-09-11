@@ -4,14 +4,14 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 
-import { ButtonInsideTextV2 } from './ButtonInsideTextV2'
+import { LinkInsideText } from './LinkInsideText'
 
 const wording = 'Wording'
 
-describe('ButtonInsideTextV2', () => {
+describe('LinkInsideText', () => {
   describe('* typography property', () => {
     it('should display ButtonText font family when not provided', () => {
-      render(<ButtonInsideTextV2 wording={wording} />)
+      render(<LinkInsideText wording={wording} />)
 
       expect(screen.getByText(wording)).toHaveStyle({
         fontFamily: theme.designSystem.typography.button.fontFamily,
@@ -19,7 +19,7 @@ describe('ButtonInsideTextV2', () => {
     })
 
     it('should display Caption font family when Caption provided', () => {
-      render(<ButtonInsideTextV2 wording={wording} typography="BodyAccentXs" />)
+      render(<LinkInsideText wording={wording} typography="BodyAccentXs" />)
 
       expect(screen.getByText(wording)).toHaveStyle({
         fontFamily: theme.designSystem.typography.bodyAccentXs.fontFamily,
@@ -29,7 +29,7 @@ describe('ButtonInsideTextV2', () => {
 
   describe('* role property', () => {
     it('should have correct accessibilityRole when not provided', async () => {
-      render(<ButtonInsideTextV2 wording={wording} />)
+      render(<LinkInsideText wording={wording} />)
 
       const linkBanner = await screen.findByRole(AccessibilityRole.BUTTON)
 
@@ -37,7 +37,7 @@ describe('ButtonInsideTextV2', () => {
     })
 
     it('should have correct accessibilityRole role when link type provided', async () => {
-      render(<ButtonInsideTextV2 wording={wording} type={AccessibilityRole.LINK} />)
+      render(<LinkInsideText wording={wording} type={AccessibilityRole.LINK} />)
 
       const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 
