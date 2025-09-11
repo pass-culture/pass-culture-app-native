@@ -104,7 +104,7 @@ describe('Bookings', () => {
     expect(await screen.findByText('Terminées')).toBeOnTheScreen()
   })
 
-  it.only('should display list of bookings by default', async () => {
+  it('should display list of bookings by default', async () => {
     renderBookings()
 
     expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
