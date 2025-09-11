@@ -146,6 +146,8 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 ## Questions
 
+<details>
+
 <summary> ⏳ Critère 9.12 - Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
 
 **RAAM** : [Critère 9.12](https://accessibilite.public.lu/fr/raam1/referentiel-technique.html#crit-9-12)  
@@ -171,6 +173,8 @@ Legend:
 ```
 
 `TextInput` Type Multi-layer = our custom input component `EmailInputController`.
+
+</details>
 
 ## 📂 Template
 
