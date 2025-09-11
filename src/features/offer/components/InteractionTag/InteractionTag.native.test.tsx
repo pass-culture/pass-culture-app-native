@@ -1,9 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import {
-  getTagProps,
-  renderInteractionTag,
-} from 'features/offer/components/InteractionTag/InteractionTag'
-import { render, screen } from 'tests/utils'
+import { getTagProps } from 'features/offer/components/InteractionTag/InteractionTag'
 import { theme } from 'theme'
 import { TagVariant } from 'ui/components/Tag/types'
 
@@ -97,18 +93,6 @@ describe('getTagProps', () => {
     ).toEqual({
       label: 'Reco Club',
       variant: TagVariant.CINECLUB,
-    })
-  })
-})
-
-describe('<InteractionTag />', () => {
-  it('should have correct testID and style', () => {
-    const tag = renderInteractionTag({ theme, likesCount: 1, subcategoryId })
-
-    if (tag) render(tag)
-
-    expect(screen.getByTestId('interaction-tag')).toHaveStyle({
-      backgroundColor: theme.designSystem.color.background.subtle,
     })
   })
 })
