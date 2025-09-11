@@ -992,7 +992,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -1027,7 +1027,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
@@ -1194,7 +1194,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -1229,7 +1229,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
@@ -1396,7 +1396,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -1431,7 +1431,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
@@ -4054,7 +4054,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -4089,7 +4089,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre "Titane - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
@@ -4256,7 +4256,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -4291,7 +4291,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre "Bac Nord - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
@@ -4458,7 +4458,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -4493,7 +4493,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre "Black Widow - VF", de la catégorie "Cinéma",  Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}

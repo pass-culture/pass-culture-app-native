@@ -29,10 +29,10 @@ function getOfferAccessibilityLabel(offer: Offer) {
   const categoryLabel = category ? `de la catégorie "${category}",` : ''
   const distanceLabel = distance ? `à une distance de ${distance},` : ''
   const datePrefix = date?.match(/^\d/) ? `le` : ''
-  const dateLabel = date ? datePrefix + `${date}` : ''
-  const priceLabel = price === 'Gratuit' ? price : `prix ${price},`
+  const dateLabel = date ? datePrefix + `${date},` : ''
+  const priceLabel = price === 'Gratuit' ? price : `prix ${price}`
   const duoLabel = isDuo ? 'Possibilité de réserver 2 places.' : ''
-  return `${tagLabel}Offre ${nameLabel} ${categoryLabel} ${priceLabel} ${distanceLabel} ${dateLabel}. ${duoLabel}`
+  return `${tagLabel}Offre ${nameLabel} ${categoryLabel} ${distanceLabel} ${dateLabel} ${priceLabel}. ${duoLabel}`
 }
 
 function getVenueAccessibilityLabel(venue: Venue) {
