@@ -1,4 +1,4 @@
-# v1.357.0
+# v1.358.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
