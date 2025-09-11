@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
 import { BookingsTab } from 'features/bookings/enum'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
@@ -12,7 +13,8 @@ import { useReactionMutation } from 'features/reactions/queries/useReactionMutat
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useBookingsQuery } from 'queries/bookings'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { useBookingsQueryV2 } from 'queries/bookings'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -22,10 +24,13 @@ export function Bookings() {
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
-  const { data: bookings } = useBookingsQuery()
+  const { isLoggedIn } = useAuthContext()
+  const netInfo = useNetInfoContext()
+  const isQueryEnabled = !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn
+  const { data: bookings } = useBookingsQueryV2(isQueryEnabled)
   const { mutate: addReaction } = useReactionMutation()
 
-  const { ended_bookings: endedBookings = [] } = bookings ?? {}
+  const { endedBookings = [] } = bookings ?? {}
 
   const { data: availableReactions } = useAvailableReactionQuery()
   const numberOfReactableBookings = availableReactions?.numberOfReactableBookings ?? 0
@@ -62,8 +67,8 @@ export function Bookings() {
   )
 
   const tabPanels = {
-    [BookingsTab.CURRENT]: <OnGoingBookingsList />,
-    [BookingsTab.COMPLETED]: <EndedBookings />,
+    [BookingsTab.CURRENT]: <OnGoingBookingsList isQueryEnabled={isQueryEnabled} />,
+    [BookingsTab.COMPLETED]: <EndedBookings isQueryEnabled={isQueryEnabled} />,
   }
 
   const shouldDisplayPastille = enableReactionFeature && numberOfReactableBookings > 0

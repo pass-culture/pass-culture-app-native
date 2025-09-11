@@ -1,13 +1,13 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnap as mockBookings } from 'features/bookings/fixtures'
+import { BookingsResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { bookingsSnapV2 as mockBookings } from 'features/bookings/fixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { useBookingsQuery } from 'queries/bookings'
+import { useBookingsQueryV2 } from 'queries/bookings'
 import { act, render, screen } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -15,12 +15,12 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
 jest.mock('queries/bookings/useBookingsQuery')
-const mockUseBookings = jest.mocked(useBookingsQuery)
+const mockUseBookings = jest.mocked(useBookingsQueryV2)
 mockUseBookings.mockReturnValue({
   data: mockBookings,
   isLoading: false,
   isFetching: false,
-} as unknown as UseQueryResult<BookingsResponse, unknown>)
+} as unknown as UseQueryResult<BookingsResponseV2, Error>)
 
 jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = jest.mocked(useSubcategories)
@@ -71,14 +71,14 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
       const refetch = jest.fn()
       const loadingBookings = {
         data: {
-          ended_bookings: [],
-          ongoing_bookings: [],
+          endedBookings: [],
+          ongoingBookings: [],
           hasBookingsAfter18: false,
-        } as BookingsResponse,
+        } as BookingsResponseV2,
         isLoading: false,
         isFetching: false,
         refetch: refetch as unknown,
-      } as UseQueryResult<BookingsResponse, unknown>
+      } as UseQueryResult<BookingsResponseV2, Error>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
       renderOnGoingBookingsList()
 
@@ -96,14 +96,14 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
       const refetch = jest.fn()
       const loadingBookings = {
         data: {
-          ended_bookings: [],
-          ongoing_bookings: [],
+          endedBookings: [],
+          ongoingBookings: [],
           hasBookingsAfter18: false,
-        } as BookingsResponse,
+        } as BookingsResponseV2,
         isLoading: false,
         isFetching: false,
         refetch: refetch as unknown,
-      } as UseQueryResult<BookingsResponse, unknown>
+      } as UseQueryResult<BookingsResponseV2, Error>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
       renderOnGoingBookingsList()
 
@@ -128,7 +128,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         data: undefined,
         isInitialLoading: true,
         isFetching: false,
-      } as UseQueryResult<BookingsResponse, unknown>
+      } as UseQueryResult<BookingsResponseV2, Error>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
       renderOnGoingBookingsList()
 
@@ -181,5 +181,5 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 })
 
 function renderOnGoingBookingsList() {
-  render(<OnGoingBookingsList />)
+  render(<OnGoingBookingsList isQueryEnabled />)
 }

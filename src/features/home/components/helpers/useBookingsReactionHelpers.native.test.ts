@@ -1,5 +1,5 @@
-import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { BookingsResponseV2, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import {
   ModalDisplayState,
   useBookingsReactionHelpers,
@@ -51,32 +51,32 @@ describe('useBookingsReactionHelpers', () => {
 
       expect(result.current.shouldShowReactionModal).toEqual(ModalDisplayState.SHOULD_SHOW)
       expect(result.current.bookingsEligibleToReaction).toEqual(
-        endedBookingWithoutReaction.ended_bookings
+        endedBookingWithoutReaction.endedBookings
       )
     })
   })
 })
 
-const endedBookingWithoutReaction: BookingsResponse = {
-  ended_bookings: [
+const endedBookingWithoutReaction: BookingsResponseV2 = {
+  endedBookings: [
     {
-      ...bookingsSnap.ended_bookings[0],
+      ...bookingsSnapV2.endedBookings[0],
       userReaction: null,
       enablePopUpReaction: true,
     },
   ],
-  ongoing_bookings: [],
+  ongoingBookings: [],
   hasBookingsAfter18: false,
 }
 
-const endedBookingWithReaction: BookingsResponse = {
-  ended_bookings: [
+const endedBookingWithReaction: BookingsResponseV2 = {
+  endedBookings: [
     {
-      ...bookingsSnap.ended_bookings[0],
+      ...bookingsSnapV2.endedBookings[0],
       userReaction: ReactionTypeEnum.LIKE,
       enablePopUpReaction: true,
     },
   ],
-  ongoing_bookings: [],
+  ongoingBookings: [],
   hasBookingsAfter18: false,
 }

@@ -1,12 +1,13 @@
-import { QueryObserverResult } from '@tanstack/react-query'
+import { QueryObserverResult, UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures'
+import { BookingsResponseV2, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
+import { bookingsSnapV2, emptyBookingsSnap } from 'features/bookings/fixtures'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
 import { mockServer } from 'tests/mswServer'
@@ -15,14 +16,18 @@ import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
-jest.mock('libs/network/NetInfoWrapper')
+jest.mock('libs/jwt/jwt')
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
 
-const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookingsQueryV1')
+const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookingsQuery')
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 useBookingsSpy.mockReturnValue({
-  data: bookingsSnap,
+  data: bookingsSnapV2,
   isFetching: false,
-} as unknown as QueryObserverResult<BookingsResponse, unknown>)
+} as unknown as UseQueryResult<BookingsResponseV2, Error>)
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -55,6 +60,7 @@ jest.useFakeTimers()
 
 describe('Bookings', () => {
   beforeEach(() => {
+    mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
   })
@@ -71,7 +77,6 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {}) // Without this act the test is flaky
 
-    //Due to multiple renders useBookingsQuery is called two times
     expect(useBookingsSpy).toHaveBeenCalledTimes(2)
   })
 
@@ -79,7 +84,7 @@ describe('Bookings', () => {
     const useBookingsResultMock = {
       data: emptyBookingsSnap,
       isFetching: false,
-    } as unknown as QueryObserverResult<BookingsResponse, unknown>
+    } as unknown as QueryObserverResult<BookingsResponseV2, Error>
     // Due to multiple renders we need to mock useBookingsQuery six times
     useBookingsSpy
       .mockReturnValueOnce(useBookingsResultMock)
@@ -164,12 +169,12 @@ describe('Bookings', () => {
     const useBookingsResultMock = {
       data: {
         ended_bookings: [
-          { ...bookingsSnap.ended_bookings[1], userReaction: ReactionTypeEnum.LIKE },
+          { ...bookingsSnapV2.endedBookings[1], userReaction: ReactionTypeEnum.LIKE },
         ],
-        ongoing_bookings: bookingsSnap.ongoing_bookings,
+        ongoing_bookings: bookingsSnapV2.ongoingBookings,
       },
       isFetching: false,
-    } as unknown as QueryObserverResult<BookingsResponse, unknown>
+    } as unknown as QueryObserverResult<BookingsResponseV2, Error>
     // Due to multiple renders we need to mock useBookingsQuery three times
     useBookingsSpy
       .mockReturnValueOnce(useBookingsResultMock)

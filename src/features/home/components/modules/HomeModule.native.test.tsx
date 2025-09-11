@@ -236,7 +236,9 @@ describe('<HomeModule />', () => {
 
     await screen.findByText('Découvre Lujipeka')
 
-    expect(await screen.findByTestId('mobile-video-module')).toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(await screen.findByTestId('mobile-video-module')).toBeOnTheScreen()
+    })
   })
 
   it('should display ThematicHighlightModule', async () => {

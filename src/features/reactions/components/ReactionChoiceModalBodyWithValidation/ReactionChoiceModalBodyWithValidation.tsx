@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { FlexStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponse, OfferResponse, ReactionTypeEnum } from 'api/gen'
+import { BookingOfferResponseV2, OfferResponse, ReactionTypeEnum } from 'api/gen'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { useSubcategory } from 'libs/subcategories'
 import { Separator } from 'ui/components/Separator'
@@ -13,7 +13,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  offer: OfferResponse | BookingOfferResponse
+  offer: OfferResponse | BookingOfferResponseV2
   dateUsed: string
   handleOnPressReactionButton: (reactionType: ReactionTypeEnum) => void
   reactionStatus?: ReactionTypeEnum | null

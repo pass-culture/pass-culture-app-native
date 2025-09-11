@@ -1,5 +1,5 @@
-import { AchievementEnum, AchievementResponse, BookingsResponse, ReactionTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { AchievementEnum, AchievementResponse, BookingsResponseV2, ReactionTypeEnum } from 'api/gen'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { beneficiaryUser } from 'fixtures/user'
@@ -67,15 +67,15 @@ describe('useWhichModalToShow', () => {
   })
 })
 
-const endedBookingWithoutReaction: BookingsResponse = {
-  ended_bookings: [
+const endedBookingWithoutReaction: BookingsResponseV2 = {
+  endedBookings: [
     {
-      ...bookingsSnap.ended_bookings[0],
+      ...bookingsSnapV2.endedBookings[0],
       userReaction: null,
       enablePopUpReaction: true,
     },
   ],
-  ongoing_bookings: [],
+  ongoingBookings: [],
   hasBookingsAfter18: false,
 }
 
@@ -88,15 +88,15 @@ const achievements: AchievementResponse[] = [
   },
 ]
 
-const endedBookingWithReaction: BookingsResponse = {
-  ended_bookings: [
+const endedBookingWithReaction: BookingsResponseV2 = {
+  endedBookings: [
     {
-      ...bookingsSnap.ended_bookings[0],
+      ...bookingsSnapV2.endedBookings[0],
       userReaction: ReactionTypeEnum.LIKE,
       enablePopUpReaction: true,
     },
   ],
-  ongoing_bookings: [],
+  ongoingBookings: [],
   hasBookingsAfter18: false,
 }
 

@@ -4,7 +4,7 @@ import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
-  BookingOfferResponse,
+  BookingOfferResponseV2,
   OfferResponse,
   PostOneReactionRequest,
   ReactionTypeEnum,
@@ -26,7 +26,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
-  offer: OfferResponse | BookingOfferResponse
+  offer: OfferResponse | BookingOfferResponseV2
   dateUsed: string
   visible: boolean
   defaultReaction?: ReactionTypeEnum | null

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { BookingsResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -55,7 +55,7 @@ describe('EndedBookings', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
-    mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi('/v1/reaction/available', availableReactionsSnap)
   })
@@ -87,5 +87,5 @@ describe('EndedBookings', () => {
 })
 
 const renderEndedBookings = () => {
-  return render(reactQueryProviderHOC(<EndedBookings />))
+  return render(reactQueryProviderHOC(<EndedBookings isQueryEnabled />))
 }
