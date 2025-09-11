@@ -7,12 +7,12 @@ import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type InputProps = {
-  label?: string
   accessibilityHint?: string
   focusOutlineColor?: ColorsType
 }
 
 type CustomTextInputProps = InputProps & {
+  label?: string
   isError?: boolean
   format?: string
   disabled?: boolean
@@ -27,9 +27,29 @@ type CustomTextInputProps = InputProps & {
     accessibilityLabel: string
     testID?: string
   }
+  Icon?: React.FC
+}
+
+type CustomInputTextProps = InputProps & {
+  label: string
+  errorMessage?: string
+  format?: string
+  disabled?: boolean
+  containerStyle?: ViewStyle
+  isRequiredField?: boolean
+  leftIcon?: React.FC
+  showSoftInputOnFocus?: boolean
+  rightButton?: {
+    icon: FunctionComponent<AccessibleIcon>
+    onPress: () => void
+    accessibilityLabel: string
+    testID?: string
+  }
+  characterCount?: number
 }
 
 type CustomSearchInputProps = InputProps & {
+  label?: string
   inputHeight?: 'small' | 'regular' | 'tall'
   format?: string
   LeftIcon?: React.FC
@@ -87,11 +107,12 @@ export type RNTextInputProps = Pick<
 
 export type TextInputProps = CustomTextInputProps & RNTextInputProps
 
+export type InputTextProps = CustomInputTextProps & RNTextInputProps
+
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
 function getInputProps<Props extends InputProps>(props: Props): InputProps {
   return {
-    label: props.label,
     accessibilityHint: props.accessibilityHint,
     focusOutlineColor: props.focusOutlineColor,
   }
@@ -107,6 +128,21 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     leftComponent: props.leftComponent,
     rightLabel: props.rightLabel,
     rightButton: props.rightButton,
+  }
+}
+
+export function getCustomInputTextProps(props: InputTextProps): CustomInputTextProps {
+  return {
+    ...getInputProps(props),
+    label: props.label,
+    errorMessage: props.errorMessage,
+    disabled: props.disabled,
+    containerStyle: props.containerStyle,
+    isRequiredField: props.isRequiredField,
+    leftIcon: props.leftIcon,
+    rightButton: props.rightButton,
+    format: props.format,
+    characterCount: props.characterCount,
   }
 }
 
