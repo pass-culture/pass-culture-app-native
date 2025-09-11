@@ -42,7 +42,7 @@ jest.mock('libs/subcategories/mappings', () => ({
 
 describe('EndedBookings', () => {
   beforeEach(() => {
-    mockServer.universalGet<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
 
     setFeatureFlags()
   })

@@ -77,7 +77,7 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {}) // Without this act the test is flaky
 
-    expect(useBookingsSpy).toHaveBeenCalledTimes(1)
+    expect(useBookingsSpy).toHaveBeenCalledTimes(2)
   })
 
   it('should display the empty bookings dedicated view', async () => {

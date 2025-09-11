@@ -311,9 +311,7 @@ exports[`Bookings should render correctly 1`] = `
               "dateUsed": null,
               "enablePopUpReaction": false,
               "expirationDate": null,
-              "externalBookings": [],
               "id": 123,
-              "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
               "quantity": 10,
               "stock": {
                 "beginningDatetime": "2021-03-15T20:00:00",
@@ -330,6 +328,7 @@ exports[`Bookings should render correctly 1`] = `
                       "latitude": 48.91683,
                       "longitude": 2.43884,
                     },
+                    "id": 115,
                     "postalCode": "93700",
                     "street": "1 boulevard de la brique",
                     "timezone": "Europe/Paris",
@@ -339,29 +338,39 @@ exports[`Bookings should render correctly 1`] = `
                     "ean": "123456789",
                   },
                   "id": 147874,
-                  "isDigital": true,
+                  "isDigital": false,
                   "isPermanent": false,
                   "name": "Avez-vous déjà vu ?",
                   "subcategoryId": "EVENEMENT_PATRIMOINE",
                   "venue": {
-                    "address": "1 boulevard de la brique",
-                    "city": "Drancy",
-                    "coordinates": {
-                      "latitude": 48.91683,
-                      "longitude": 2.43884,
+                    "address": {
+                      "id": 116,
                     },
                     "id": 2185,
                     "isOpenToPublic": true,
                     "name": "Maison de la Brique",
-                    "postalCode": "93700",
                     "timezone": "Europe/Paris",
                   },
-                  "withdrawalDetails": null,
                 },
                 "price": 400,
                 "priceCategoryLabel": "Cat 4",
               },
-              "token": "352UW4",
+              "ticket": {
+                "activationCode": null,
+                "display": "qr_code",
+                "externalBooking": null,
+                "token": {
+                  "data": "352UW4",
+                },
+                "voucher": {
+                  "data": "PASSCULTURE:v3;TOKEN:352UW4",
+                },
+                "withdrawal": {
+                  "delay": null,
+                  "details": null,
+                  "type": "in_app",
+                },
+              },
               "totalAmount": 1900,
             },
             {
@@ -373,18 +382,7 @@ exports[`Bookings should render correctly 1`] = `
               "dateUsed": null,
               "enablePopUpReaction": false,
               "expirationDate": null,
-              "externalBookings": [
-                {
-                  "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
-                  "seat": "A12",
-                },
-                {
-                  "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
-                  "seat": "A13",
-                },
-              ],
               "id": 124,
-              "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
               "quantity": 10,
               "stock": {
                 "beginningDatetime": "2021-03-15T20:00:00",
@@ -401,6 +399,7 @@ exports[`Bookings should render correctly 1`] = `
                       "latitude": 48.91683,
                       "longitude": 2.43884,
                     },
+                    "id": 117,
                     "label": null,
                     "postalCode": "93700",
                     "street": "1 boulevard de la brique",
@@ -416,25 +415,41 @@ exports[`Bookings should render correctly 1`] = `
                   "name": "Avez-vous déjà vu ?",
                   "subcategoryId": "EVENEMENT_PATRIMOINE",
                   "venue": {
-                    "address": "1 boulevard de la brique",
-                    "city": "Drancy",
-                    "coordinates": {
-                      "latitude": 48.91683,
-                      "longitude": 2.43884,
+                    "address": {
+                      "id": 118,
                     },
                     "id": 2185,
                     "isOpenToPublic": true,
                     "name": "Maison de la Brique",
-                    "postalCode": "93700",
                     "timezone": "Europe/Paris",
                   },
-                  "withdrawalDetails": null,
-                  "withdrawalType": "on_site",
                 },
                 "price": 400,
                 "priceCategoryLabel": "Cat 4",
               },
-              "token": "352UW4",
+              "ticket": {
+                "activationCode": null,
+                "display": "qr_code",
+                "externalBooking": {
+                  "data": [
+                    {
+                      "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
+                      "seat": "A12",
+                    },
+                    {
+                      "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
+                      "seat": "A13",
+                    },
+                  ],
+                },
+                "token": null,
+                "voucher": null,
+                "withdrawal": {
+                  "delay": null,
+                  "details": null,
+                  "type": "on_site",
+                },
+              },
               "totalAmount": 1900,
             },
             {
@@ -446,18 +461,7 @@ exports[`Bookings should render correctly 1`] = `
               "dateUsed": null,
               "enablePopUpReaction": false,
               "expirationDate": null,
-              "externalBookings": [
-                {
-                  "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
-                  "seat": "A12",
-                },
-                {
-                  "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
-                  "seat": "A13",
-                },
-              ],
               "id": 125,
-              "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
               "quantity": 100,
               "stock": {
                 "beginningDatetime": "2021-03-15T20:00:00",
@@ -470,6 +474,7 @@ exports[`Bookings should render correctly 1`] = `
                       "latitude": 50.3588,
                       "longitude": 3.5217,
                     },
+                    "id": 119,
                     "label": null,
                     "postalCode": "59300",
                     "street": "45 rue de Paris",
@@ -485,25 +490,41 @@ exports[`Bookings should render correctly 1`] = `
                   "name": "Un titre de livre",
                   "subcategoryId": "LIVRE_PAPIER",
                   "venue": {
-                    "address": "45 rue de Paris",
-                    "city": "Valenciennes",
-                    "coordinates": {
-                      "latitude": 50.3588,
-                      "longitude": 3.5217,
+                    "address": {
+                      "id": 120,
                     },
                     "id": 2185,
                     "isOpenToPublic": true,
                     "name": "Libraire du Petit Prince",
-                    "postalCode": "59300",
                     "timezone": "Europe/Paris",
                   },
-                  "withdrawalDetails": "How to withdraw, https://test.com",
-                  "withdrawalType": "on_site",
                 },
                 "price": 100,
                 "priceCategoryLabel": "Cat 4",
               },
-              "token": "352UW4",
+              "ticket": {
+                "activationCode": null,
+                "display": "qr_code",
+                "externalBooking": {
+                  "data": [
+                    {
+                      "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
+                      "seat": "A12",
+                    },
+                    {
+                      "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
+                      "seat": "A13",
+                    },
+                  ],
+                },
+                "token": null,
+                "voucher": null,
+                "withdrawal": {
+                  "delay": null,
+                  "details": "How to withdraw, https://test.com",
+                  "type": "on_site",
+                },
+              },
               "totalAmount": 1900,
             },
           ]
