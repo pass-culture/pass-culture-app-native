@@ -25,6 +25,11 @@ describe('useResetOnMinimalBuild', () => {
     })
 
   it('should call resetErrorBoundary on component unmount', () => {
+    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
+      minimalBuildNumber: undefined,
+      isLoading: false,
+      error: null,
+    })
     const { unmount } = renderHookWithProvider(() => useResetOnMinimalBuild(mockResetErrorBoundary))
     unmount()
 
