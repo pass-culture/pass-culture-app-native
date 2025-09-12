@@ -46,8 +46,8 @@ type UsePersistQueryResult<TData, TError> = UseQueryResult<TData, TError> & {
 }
 
 export function usePersistQuery<
-  TQueryFnData = unknown,
-  TError = unknown,
+  TQueryFnData,
+  TError = Error,
   TData = TQueryFnData,
   TQueryKey extends QueryKey = QueryKey,
 >(
@@ -60,10 +60,7 @@ export function usePersistQuery<
 ): UsePersistQueryResult<TData, TError> {
   const persistData = useGetPersistData(queryKey)
 
-  const query = useQuery(queryKey, queryFn, {
-    ...options,
-    enabled: options?.enabled,
-  })
+  const query = useQuery({ queryKey, queryFn, ...options, enabled: options?.enabled })
 
   const persistQuery = useMemo<UsePersistQueryResult<TData, TError>>(
     () =>

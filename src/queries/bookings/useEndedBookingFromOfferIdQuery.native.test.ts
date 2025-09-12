@@ -29,9 +29,12 @@ describe('useEndedBookingFromOfferIdQuery', () => {
 
   it('should return an ended booking if existing', async () => {
     const booking = bookingsSnap.ended_bookings[0]
-    const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(booking.stock.offer.id), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(
+      () => useEndedBookingFromOfferIdQuery(booking.stock.offer.id, true),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
@@ -41,7 +44,7 @@ describe('useEndedBookingFromOfferIdQuery', () => {
 
   it('should not return an ended booking if not existing', async () => {
     const unknownOfferId = 91919191
-    const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(unknownOfferId), {
+    const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(unknownOfferId, true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
