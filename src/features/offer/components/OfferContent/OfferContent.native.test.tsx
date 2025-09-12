@@ -6,6 +6,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { api } from 'api/api'
 import {
+  BookingsResponse,
   FavoriteResponse,
   GetRemindersResponse,
   NativeCategoryIdEnumv2,
@@ -212,6 +213,7 @@ describe('<OfferContent />', () => {
     spyApiDeleteFavorite.mockResolvedValue({})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
