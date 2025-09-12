@@ -14,5 +14,5 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'Interrupteur Tout accepter'
 - scroll
-- assertVisible: 'politique de gestion des cookies'
+- assertVisible: '.*politique de gestion des cookies'
 - tapOn: 'Enregistrer mes choix'
