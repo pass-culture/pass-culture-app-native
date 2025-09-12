@@ -29,15 +29,17 @@
 **Ticket** : [PC-37462](https://passculture.atlassian.net/browse/PC-37462)  
 **PR** : [#8653](https://github.com/pass-culture/pass-culture-app-native/pull/8653)
 
-**Problème** 😱  
+**Problème** 😱
+
 - Pour les SVG, `accessiblityHidden` ne fonctionne pas (car n'existe pas en `react-native`).
 - Pour le QR code, il n'est pas accessible au lecteur d'écrans.
-- Pour les illustrations des offres et lieux, `accessibilityLabel` n'est pas très clair et compréhensible. 
+- Pour les illustrations des offres et lieux, `accessibilityLabel` n'est pas très clair et compréhensible.
 
-**Correction** 💡  
+**Correction** 💡
+
 - Pour les SVG, utiliser `accessible` plutôt que `accessiblityHidden`, qui rend disponible l'élément aux lecteurs d'écrans.
 - Pour le QR code, il faut ajouter un `accessibilityLabel`, un `accessibilityRole` image et un `accessible` pour rendre la view disponible aux lecteurs d'écrans.
-- Pour les illustrations des offres et lieux, il faut simplement changer `accessibilityLabel` pour qu'il soit plus explicite. 
+- Pour les illustrations des offres et lieux, il faut simplement changer `accessibilityLabel` pour qu'il soit plus explicite.
 
 </details>
 
@@ -211,6 +213,41 @@ Legend:
 ```
 
 `TextInput` Type Multi-layer = our custom input component `EmailInputController`.
+
+</details>
+
+<details>
+
+<summary> ⏳ Critère 1.1 - Android - Chaque élément graphique de décoration est-il ignoré par les technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 1.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-1)  
+**Ticket** : [PC-37377](https://passculture.atlassian.net/browse/PC-37377)  
+**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
+
+**Problème** 😱  
+Lorsque je démarre TalkBack sur la home, toute la home est restitué en Français.
+Si je vais dans `HomeModule.tsx` et que je retire `BusinessModule` de l'array de modules, lorsque je démarre Talkback, cette fois-ci il ne restitura que "Bienvenue" et ça sera lu comme si c'était de l'anglais.
+Dans tous les cas (si la home est restitué en entièrété en français, ou juste le titre es restitué), lorsque j'appuies manuellement sur un élément de la home, c'est restitué comme si c'était de l'anglais.
+
+En ce qui concerne la restitution non-voulu des emojis contenus dans les titres des divers modules, pour constater ce problème, il faut que l'entièrété de la page soit restitué.
+
+J'ai remarqué qu'il semble y avoir 2 modes de restitution par TalkBack:
+
+- Une automatique qui se déclenche au démarrage de TalkBack quand on est sur la Home
+- Une manuelle lorsqu'on appuies sur un élément
+
+C'est dans le premier mode seulement que j'arrive à reproduire la lecture non-voulue des emojis.
+
+Pourquoi la lecture automatique se déclenche seulement sur certaines écrans?
+
+J'ai remarqué que c'était sur les écrans sans entête `headerShown: false` que tout la page est lu. Ou autre hypothèse: la liste de la home est un composant et est lu enitèrement et que le TalkBack ne lit que le premier élément lors de son activation. Peut être que le header prévient la lecture de la liste de la home.
+
+Lors d'une lecture manuelle des éléments de la home, les emojis ne sont pas lus grâce au code existant dans `AccessibleTitle` ou le titre est séparé des emojis qu'il pourrait contenir, et le `accessibilityLabel` est défini à `titleText` (sans l'emoji).
+
+Si je supprime ce `accessibilityLabel`, les emojis dans le titre sont lus, même en lecture manuelle, ce qui me permet de conclure que ce code fonctionne correctement.
+
+**Correction** 💡  
+Texte
 
 </details>
 
