@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -32,6 +33,8 @@ export const useSubmitChangeCity = () => {
     type === PersonalDataTypes.PROFIL_PERSONAL_DATA ||
     type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
 
+  const isPostalCodeResetRef = useRef(false)
+
   const {
     control,
     formState: { isValid },
@@ -45,7 +48,12 @@ export const useSubmitChangeCity = () => {
   const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isFromProfileUpdateFlow) {
-        navigate(...getProfileHookConfig('ChangeAddress', { type }))
+        navigate(
+          ...getProfileHookConfig('ChangeAddress', {
+            type,
+            isPostalCodeReset: isPostalCodeResetRef.current,
+          })
+        )
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
@@ -69,6 +77,9 @@ export const useSubmitChangeCity = () => {
   })
 
   const onSubmit = ({ city }: CityForm) => {
+    const hasPostalCodeChanged = !!storedCity && storedCity.postalCode !== city.postalCode
+    isPostalCodeResetRef.current = isFromProfileUpdateFlow && hasPostalCodeChanged
+
     setCity(city)
     patchProfile({ city: city.name, postalCode: city.postalCode })
   }
