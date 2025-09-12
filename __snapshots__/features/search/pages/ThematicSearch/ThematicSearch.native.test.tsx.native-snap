@@ -2348,7 +2348,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       testID="OfferTile"
                     >
                       <View
-                        accessibilityLabel="Offre Mon abonnement bibliothèque de la catégorie Livre,   prix . "
+                        accessibilityLabel="Offre "Mon abonnement bibliothèque", de la catégorie "Livre",   prix . "
                         accessibilityRole="link"
                         accessibilityValue={
                           {
@@ -2383,7 +2383,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             },
                           ]
                         }
-                        testID="Offre Mon abonnement bibliothèque de la catégorie Livre,   prix . "
+                        testID="Offre "Mon abonnement bibliothèque", de la catégorie "Livre",   prix . "
                       >
                         <View
                           gap={2}
@@ -2632,7 +2632,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       testID="OfferTile"
                     >
                       <View
-                        accessibilityLabel="Offre Mon abonnement médiathèque de la catégorie Films,   prix . "
+                        accessibilityLabel="Offre "Mon abonnement médiathèque", de la catégorie "Films",   prix . "
                         accessibilityRole="link"
                         accessibilityValue={
                           {
@@ -2667,7 +2667,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             },
                           ]
                         }
-                        testID="Offre Mon abonnement médiathèque de la catégorie Films,   prix . "
+                        testID="Offre "Mon abonnement médiathèque", de la catégorie "Films",   prix . "
                       >
                         <View
                           gap={2}
@@ -2916,7 +2916,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       testID="OfferTile"
                     >
                       <View
-                        accessibilityLabel="Offre Mon abonnement livres numériques de la catégorie Livre,   prix . "
+                        accessibilityLabel="Offre "Mon abonnement livres numériques", de la catégorie "Livre",   prix . "
                         accessibilityRole="link"
                         accessibilityValue={
                           {
@@ -2951,7 +2951,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             },
                           ]
                         }
-                        testID="Offre Mon abonnement livres numériques de la catégorie Livre,   prix . "
+                        testID="Offre "Mon abonnement livres numériques", de la catégorie "Livre",   prix . "
                       >
                         <View
                           gap={2}
@@ -3200,7 +3200,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       testID="OfferTile"
                     >
                       <View
-                        accessibilityLabel="Offre Mon abonnement ludothèque de la catégorie Jeux,   prix . "
+                        accessibilityLabel="Offre "Mon abonnement ludothèque", de la catégorie "Jeux",   prix . "
                         accessibilityRole="link"
                         accessibilityValue={
                           {
@@ -3235,7 +3235,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             },
                           ]
                         }
-                        testID="Offre Mon abonnement ludothèque de la catégorie Jeux,   prix . "
+                        testID="Offre "Mon abonnement ludothèque", de la catégorie "Jeux",   prix . "
                       >
                         <View
                           gap={2}

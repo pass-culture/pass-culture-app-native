@@ -2,6 +2,7 @@ import React, { memo, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
 import { OfferTileProps } from 'features/offer/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -50,10 +51,12 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     selectedLocationMode,
   })
 
+  const interactionTagLabel = getInteractionTagLabel(interactionTag)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
     categoryLabel,
     distance: distanceFromOffer,
+    interactionTagLabel,
   })
 
   useEffect(() => {

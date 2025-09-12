@@ -4,6 +4,7 @@ import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
@@ -108,14 +109,6 @@ export const HorizontalOfferTile = ({
     })
   )
 
-  const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
-    ...offerDetails,
-    categoryLabel: appLabel,
-    distance: distanceToOffer,
-    date: formattedDate,
-    price: formattedPrice,
-  })
-
   const generatedSubtitles = useMemo(() => {
     return subtitles ?? [appLabel, formattedDate].filter((subtitle) => !!subtitle)
   }, [formattedDate, appLabel, subtitles])
@@ -149,6 +142,16 @@ export const HorizontalOfferTile = ({
     isComingSoonOffer: isAComingSoonOffer,
     subcategoryId,
     withColor: !isAComingSoonOffer,
+  })
+
+  const interactionTagLabel = getInteractionTagLabel(interactionTag)
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
+    ...offerDetails,
+    categoryLabel: appLabel,
+    distance: distanceToOffer,
+    date: formattedDate,
+    price: formattedPrice,
+    interactionTagLabel,
   })
 
   return (

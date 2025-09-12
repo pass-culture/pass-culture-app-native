@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
@@ -25,7 +25,7 @@ type TagProps = {
   withColor?: boolean
 }
 
-export const renderInteractionTag = (params: InteractionTagParams): ReactElement | undefined => {
+export const renderInteractionTag = (params: InteractionTagParams): ReactNode | undefined => {
   const tagProps = getTagProps(params)
   if (!tagProps) return undefined
 
