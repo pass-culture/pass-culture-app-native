@@ -551,7 +551,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     }
   }
 
-  const { mutate: bookOffer, isLoading: isBookingLoading } = useBookOfferMutation({
+  const { mutate: bookOffer, isPending: isBookingLoading } = useBookOfferMutation({
     onSuccess(data) {
       analytics.logBookingConfirmation({
         ...apiRecoParams,

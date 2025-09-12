@@ -66,7 +66,7 @@ export const SetPhoneNumber = () => {
     setPhoneNumber(value)
   }
 
-  const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
+  const { mutate: sendPhoneValidationCode, isPending } = useSendPhoneValidationMutation({
     onSuccess: () => {
       dispatch({
         type: 'SET_PHONE_NUMBER',
@@ -77,7 +77,7 @@ export const SetPhoneNumber = () => {
       })
       saveStep(IdentityCheckStep.PHONE_VALIDATION)
       navigate(...getSubscriptionHookConfig('SetPhoneValidationCode'))
-      queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS] })
     },
     onError: (error: unknown) => {
       dispatch({
@@ -159,7 +159,7 @@ export const SetPhoneNumber = () => {
             wording="Continuer"
             accessibilityLabel="Continuer vers l’étape suivante"
             disabled={!isContinueButtonEnabled}
-            isLoading={isLoading}
+            isLoading={isPending}
           />
         </BottomContentContainer>
       }

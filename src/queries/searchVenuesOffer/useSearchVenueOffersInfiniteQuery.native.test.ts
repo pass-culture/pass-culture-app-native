@@ -162,7 +162,7 @@ describe('useSearchVenueOffersInfiniteQuery', () => {
             venueId: 1,
             query: '9782070584628',
             geolocation: { latitude: 48.94374, longitude: 2.48171 },
-            queryOptions: { enabled: true },
+            enabled: true,
           }),
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -181,7 +181,7 @@ describe('useSearchVenueOffersInfiniteQuery', () => {
             venueId: 1,
             query: '9782070584628',
             geolocation: { latitude: 48.94374, longitude: 2.48171 },
-            queryOptions: { enabled: false },
+            enabled: false,
           }),
         {
           wrapper: ({ children }) => reactQueryProviderHOC(children),

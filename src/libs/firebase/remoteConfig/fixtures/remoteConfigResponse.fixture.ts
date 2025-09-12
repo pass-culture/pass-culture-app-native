@@ -25,7 +25,7 @@ export const remoteConfigResponseFixture = {
   isStale: false,
   refetch: jest.fn(),
   fetchStatus: 'idle',
-  failureReason: '',
+  failureReason: Error(''),
   errorUpdateCount: 0,
   isInitialLoading: false,
   isRefetching: false,

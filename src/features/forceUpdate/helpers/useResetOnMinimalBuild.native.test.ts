@@ -35,7 +35,7 @@ describe('useResetOnMinimalBuild', () => {
     jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
       minimalBuildNumber: undefined,
       isLoading: false,
-      error: undefined,
+      error: null,
     })
     jest.spyOn(packageJson, 'getAppBuildVersion').mockReturnValueOnce(123)
 
@@ -48,7 +48,7 @@ describe('useResetOnMinimalBuild', () => {
     jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
       minimalBuildNumber: 200,
       isLoading: false,
-      error: undefined,
+      error: null,
     })
     jest.spyOn(packageJson, 'getAppBuildVersion').mockReturnValueOnce(123)
 
@@ -61,7 +61,7 @@ describe('useResetOnMinimalBuild', () => {
     jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
       minimalBuildNumber: 100,
       isLoading: false,
-      error: undefined,
+      error: null,
     })
     jest.spyOn(packageJson, 'getAppBuildVersion').mockReturnValueOnce(123)
 

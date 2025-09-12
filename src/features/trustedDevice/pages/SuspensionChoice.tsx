@@ -28,7 +28,7 @@ export const SuspensionChoice = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { logType } = useLogTypeFromRemoteConfig()
 
-  const { mutate: suspendAccountForSuspiciousLogin, isLoading } =
+  const { mutate: suspendAccountForSuspiciousLogin, isPending } =
     useSuspendForSuspiciousLoginMutation({
       onSuccess: () => {
         navigate('SuspiciousLoginSuspendedAccount')
@@ -65,7 +65,7 @@ export const SuspensionChoice = () => {
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',
         onPress: onPressContinue,
-        isLoading,
+        isLoading: isPending,
       }}
       buttonTertiary={{
         icon: EmailFilled,

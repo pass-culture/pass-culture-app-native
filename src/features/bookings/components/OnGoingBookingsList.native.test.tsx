@@ -27,7 +27,7 @@ jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = jest.mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
-} as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
+} as UseQueryResult<SubcategoriesResponseModelv2, Error>)
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 

@@ -45,7 +45,7 @@ export const NewEmailSelection = () => {
     mode: 'all',
   })
 
-  const { mutate: selectNewEmail, isLoading } = useNewEmailSelectionMutation({
+  const { mutate: selectNewEmail, isPending } = useNewEmailSelectionMutation({
     onSuccess: () => {
       showSuccessSnackBar({
         message:
@@ -88,7 +88,7 @@ export const NewEmailSelection = () => {
         </Container>
         <ButtonPrimary
           wording="Modifier mon adresse e-mail"
-          disabled={!isValid || isLoading}
+          disabled={!isValid || isPending}
           onPress={onSubmit}
         />
       </Form.MaxWidth>
