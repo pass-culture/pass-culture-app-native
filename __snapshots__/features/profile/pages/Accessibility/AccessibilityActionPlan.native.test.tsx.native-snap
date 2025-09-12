@@ -3740,8 +3740,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Publier la déclaration d’accessibilité du site
                  
                 <Text
-                  accessibilityLabel="https://pass.culture.fr/"
-                  accessibilityRole="button"
+                  accessibilityLabel="https://pass.culture.fr/, lien externe"
+                  accessibilityRole="link"
                   onPress={[Function]}
                   style={
                     {
@@ -3845,8 +3845,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Formation des Product Manager du site
                  
                 <Text
-                  accessibilityLabel="https://passculture.pro/"
-                  accessibilityRole="button"
+                  accessibilityLabel="https://passculture.pro/, lien externe"
+                  accessibilityRole="link"
                   onPress={[Function]}
                   style={
                     {
@@ -4037,8 +4037,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Rendre le site 100% accessible
                  
                 <Text
-                  accessibilityLabel="https://passculture.app/"
-                  accessibilityRole="button"
+                  accessibilityLabel="https://passculture.app/, lien externe"
+                  accessibilityRole="link"
                   onPress={[Function]}
                   style={
                     {
@@ -4619,8 +4619,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Formation des développeurs du site
                  
                 <Text
-                  accessibilityLabel="https://passculture.pro/"
-                  accessibilityRole="button"
+                  accessibilityLabel="https://passculture.pro/, lien externe"
+                  accessibilityRole="link"
                   onPress={[Function]}
                   style={
                     {
@@ -4724,8 +4724,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Réalisation d’un audit d’accessibilité du site
                  
                 <Text
-                  accessibilityLabel="https://passculture.pro/"
-                  accessibilityRole="button"
+                  accessibilityLabel="https://passculture.pro/, lien externe"
+                  accessibilityRole="link"
                   onPress={[Function]}
                   style={
                     {
@@ -4916,8 +4916,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Maquettage d’un nouveau site 100% accessible
                  
                 <Text
-                  accessibilityLabel="https://pass.culture.fr/"
-                  accessibilityRole="button"
+                  accessibilityLabel="https://pass.culture.fr/, lien externe"
+                  accessibilityRole="link"
                   onPress={[Function]}
                   style={
                     {

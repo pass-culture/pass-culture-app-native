@@ -2,6 +2,7 @@ import React from 'react'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -35,6 +36,7 @@ export function RecommendedPaths() {
             typography="BodyAccentXs"
             wording="Démarches simplifiées"
             externalNav={{ url: 'https://www.demarches-simplifiees.fr/' }}
+            type={AccessibilityRole.LINK}
           />
         </BulletListItem>
       </VerticalUl>

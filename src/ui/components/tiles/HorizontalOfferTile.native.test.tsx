@@ -103,7 +103,7 @@ describe('HorizontalOfferTile component', () => {
   it('should navigate to the offer when pressing an offer', async () => {
     renderHorizontalOfferTile(defaultProps)
 
-    user.press(screen.getByRole('link'))
+    user.press(screen.getByText('La nuit des temps'))
 
     await screen.findByText(mockOffer.offer.name)
 
@@ -120,7 +120,7 @@ describe('HorizontalOfferTile component', () => {
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
-    user.press(screen.getByRole('link'))
+    user.press(screen.getByText('La nuit des temps'))
 
     await screen.findByText(mockOffer.offer.name)
 
@@ -137,7 +137,7 @@ describe('HorizontalOfferTile component', () => {
   it('should notify Algolia when pressing an offer', async () => {
     renderHorizontalOfferTile(defaultProps)
 
-    const hitComponent = screen.getByRole('link')
+    const hitComponent = screen.getByText('La nuit des temps')
     user.press(hitComponent)
 
     await screen.findByText(mockOffer.offer.name)
@@ -157,7 +157,7 @@ describe('HorizontalOfferTile component', () => {
         analyticsParams: mockAnalyticsParams,
       })
 
-      user.press(screen.getByRole('link'))
+      user.press(screen.getByText('La nuit des temps'))
 
       await screen.findByText(mockOffer.offer.name)
 
@@ -170,7 +170,7 @@ describe('HorizontalOfferTile component', () => {
         analyticsParams: mockAnalyticsParams,
       })
 
-      user.press(screen.getByRole('link'))
+      user.press(screen.getByText('La nuit des temps'))
 
       await screen.findByText(mockOffer.offer.name)
 

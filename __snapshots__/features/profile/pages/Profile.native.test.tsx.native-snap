@@ -247,7 +247,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Informations personnelles"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -374,7 +374,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Notifications"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -731,7 +731,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Comment ça marche ?"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1008,7 +1008,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Préférences d’affichage"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1134,7 +1134,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Accessibilité"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1261,7 +1261,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Faire une suggestion"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1387,7 +1387,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Informations légales"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1513,7 +1513,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Confidentialité"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,

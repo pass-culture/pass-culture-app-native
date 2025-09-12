@@ -312,6 +312,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Notifications"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Notifications"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -464,6 +465,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Comment ça marche ?"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Comment ça marche ?"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -520,6 +522,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Nouvelle fenêtre : Centre d’aide"
                       href="https://passculture.faq"
+                      role="link"
                       style="transition-duration: 0s;"
                     >
                       <div
@@ -580,6 +583,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Accessibilité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Accessibilité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -635,6 +639,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Informations légales"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Informations légales"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -690,6 +695,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Confidentialité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Confidentialité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -770,6 +776,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -805,6 +812,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://twitter.com/pass_Culture"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -840,6 +848,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.tiktok.com/@passcultureofficiel"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -875,6 +884,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.facebook.com/passCultureofficiel/"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -956,6 +966,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -968,6 +979,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -980,6 +992,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -1404,6 +1417,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Notifications"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Notifications"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1556,6 +1570,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Comment ça marche ?"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Comment ça marche ?"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1612,6 +1627,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Nouvelle fenêtre : Centre d’aide"
                       href="https://passculture.faq"
+                      role="link"
                       style="transition-duration: 0s;"
                     >
                       <div
@@ -1672,6 +1688,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Accessibilité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Accessibilité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1727,6 +1744,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Informations légales"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Informations légales"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1782,6 +1800,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Confidentialité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Confidentialité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1862,6 +1881,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -1897,6 +1917,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://twitter.com/pass_Culture"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -1932,6 +1953,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.tiktok.com/@passcultureofficiel"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -1967,6 +1989,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.facebook.com/passCultureofficiel/"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -2048,6 +2071,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -2060,6 +2084,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -2072,6 +2097,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >

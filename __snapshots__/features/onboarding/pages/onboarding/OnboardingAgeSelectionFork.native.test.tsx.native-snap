@@ -182,7 +182,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
           >
             <View
               accessibilityLabel="J’ai 16 ans ou moins"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -305,7 +305,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
           >
             <View
               accessibilityLabel="J’ai 17 ans"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -427,7 +427,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
           >
             <View
               accessibilityLabel="J’ai 18 ans"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -549,7 +549,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
           >
             <View
               accessibilityLabel="J’ai 19 ans ou plus"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

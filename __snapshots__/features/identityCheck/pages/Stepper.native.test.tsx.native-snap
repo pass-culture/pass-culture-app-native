@@ -207,7 +207,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Numéro de téléphone complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -449,7 +449,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Identification non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -708,7 +708,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Profil non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -948,7 +948,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Confirmation non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
