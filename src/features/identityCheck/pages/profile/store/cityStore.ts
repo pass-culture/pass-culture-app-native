@@ -12,12 +12,8 @@ const cityStore = createStore({
     setCity: (city: SuggestedCity) => set({ city }),
     resetCity: () => set(defaultState),
   }),
-  selectors: {
-    selectCity: () => (state) => state.city,
-  },
-  options: {
-    persist: true,
-  },
+  selectors: { selectCity: () => (state) => state.city },
+  options: { persist: true },
 })
 
 export const cityActions = cityStore.actions

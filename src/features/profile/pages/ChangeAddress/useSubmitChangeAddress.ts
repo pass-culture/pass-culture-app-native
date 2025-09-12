@@ -9,6 +9,10 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import {
+  resetCityActions,
+  useIsResetCity,
+} from 'features/identityCheck/pages/profile/store/resetCityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -31,6 +35,7 @@ type AddressForm = {
 export const useSubmitChangeAddress = () => {
   const { params } = useRoute<UseRouteType<'ChangeAddress'>>()
   const type = params?.type
+
   const isMandatoryUpdatePersonalData = type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
 
@@ -40,7 +45,12 @@ export const useSubmitChangeAddress = () => {
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
   const storedAddress = useAddress()
+
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const isCityReset = useIsResetCity()
+  const { setResetCity } = resetCityActions
+  const initialCity = isCityReset ? '' : (storedAddress ?? user?.street ?? '')
 
   const {
     control,
@@ -50,7 +60,7 @@ export const useSubmitChangeAddress = () => {
     formState: { isValid },
   } = useForm<AddressForm>({
     mode: 'onChange',
-    defaultValues: { address: storedAddress ?? user?.street ?? '' },
+    defaultValues: { address: initialCity },
   })
 
   const query = watch('address')
@@ -106,6 +116,7 @@ export const useSubmitChangeAddress = () => {
     onSuccess: (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
+        setResetCity(false)
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
