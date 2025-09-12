@@ -1,8 +1,8 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from '@algolia/client-search'
 import { onlineManager, useInfiniteQuery } from '@tanstack/react-query'
 import { uniqBy } from 'lodash'
 import flatten from 'lodash/flatten'
-import { useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -44,7 +44,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
-  const previousPageObjectIds = useRef<string[]>([])
   const {
     data: { aroundPrecision },
   } = useRemoteConfigQuery()
@@ -77,12 +76,9 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
-        excludedObjectIds: previousPageObjectIds.current,
         disabilitiesProperties: disabilities,
         aroundPrecision,
       })
-
-      previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
 
       return {
         offers: offersResponse,
