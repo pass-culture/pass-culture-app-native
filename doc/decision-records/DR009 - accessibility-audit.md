@@ -11,9 +11,11 @@
 
 ## 📋 Légende
 
+
 🟠 : Correction disponible à la vérification  
 🟢 : Correction validée  
-🔴 : Correction invalidée
+🔴 : Correction invalidée  
+⏳ : Questions en attente de réponse
 
 <br>
 
@@ -97,17 +99,18 @@ Utilisation des composants `Li` associés à des `AccessibilityRole.LIST`.
 
 <details>
 
-<summary> 🟠 Critère 8.1 - Dans chaque écran, le contenu visible porteur d’information est-il accessible aux technologies d’assistance ? - Partie 1</summary>
+<summary> 🟠 Critère 8.1 - Dans chaque écran, le contenu visible porteur d’information est-il accessible aux technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 8.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-1)  
 **Ticket** : [PC-37483](https://passculture.atlassian.net/browse/PC-37483)  
-**PR** : [#8579](https://github.com/pass-culture/pass-culture-app-native/pull/8579)
+**PR** : [#8579](https://github.com/pass-culture/pass-culture-app-native/pull/8579), [#8662](https://github.com/pass-culture/pass-culture-app-native/pull/8662)
 
 **Problème** 😱  
 Certains textes n’étaient pas vocalisés car ils n’étaient pas inclus dans les labels.
 
 **Correction** 💡  
-Ajout d’informations dans certains `accessibilityLabel` et/ou suppression d’`accessibilityLabel` inutiles afin d’éviter toute confusion.
+- Ajout d’informations dans certains `accessibilityLabel` et/ou suppression d’`accessibilityLabel` inutiles afin d’éviter toute confusion.
+- Modification de `tileAccessibilityLabel` pour prendre en compte les tags.
 
 </details>
 
@@ -166,6 +169,20 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 <br>
 
 ## 💡 Questions
+
+<details>
+
+<summary> ⏳ Critère 8.1 - Dans chaque écran, le contenu visible porteur d’information est-il accessible aux technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 8.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-1)  
+**Ticket** : [PC-37483](https://passculture.atlassian.net/browse/PC-37483)  
+**PR** : [#8579](https://github.com/pass-culture/pass-culture-app-native/pull/8579), [#8662](https://github.com/pass-culture/pass-culture-app-native/pull/8662)
+
+Pour les écrans E09, E015 et E016, nous n'arrivons pas à reproduire les non-conformités, est-ce qu'il s'agissait de tuiles d’offres avec des tags (non vocalisé) ?
+
+</details>
+
+<br>
 
 <details>
 
