@@ -33,14 +33,10 @@ export const SetCity = () => {
   const { params } = useRoute<UseRouteType<'SetCity'>>()
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
 
-  const identityCheckAndRecapExistingDataConfig = {
-    headerTitle: 'Profil',
-  }
+  const identityCheckAndRecapExistingDataConfig = { headerTitle: 'Profil' }
   const pageConfigByType = {
     [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
-    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: {
-      headerTitle: 'Informations personnelles',
-    },
+    [ProfileTypes.BOOKING_FREE_OFFER_15_16]: { headerTitle: 'Informations personnelles' },
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
 
