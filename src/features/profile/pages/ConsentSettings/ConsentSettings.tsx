@@ -11,6 +11,7 @@ import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -80,6 +81,7 @@ export const ConsentSettings = () => {
           wording="politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
           typography="BodyAccentXs"
+          type={AccessibilityRole.LINK}
         />
       </StyledBodyAccentXs>
       <SaveButton wording="Enregistrer mes choix" onPress={saveChoice} center />

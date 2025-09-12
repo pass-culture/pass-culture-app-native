@@ -8,6 +8,7 @@ import { ReactionTypeEnum, SubcategoryIdEnum } from 'api/gen'
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { ReactionFromEnum } from 'features/reactions/enum'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -97,6 +98,7 @@ export function FeedBackVideo({ offerId, offerSubcategory, userId }: Props) {
           as={LinkInsideText}
           externalNav={{ url }}
           typography="BodyAccentXs"
+          type={AccessibilityRole.LINK}
         />
       </Container>
     )

@@ -353,7 +353,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               />
               <View
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -585,7 +585,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Je n’ai pas ma pièce d’identité originale avec moi"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -716,7 +716,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Ma pièce d’identité est expirée ou perdue"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,

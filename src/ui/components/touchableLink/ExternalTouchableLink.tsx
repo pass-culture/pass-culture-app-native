@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
@@ -21,6 +22,7 @@ export function ExternalTouchableLink({
   }, [externalNav, openInNewWindow, navigateToItinerary])
   return (
     <TouchableLink
+      accessibilityRole={AccessibilityRole.LINK}
       handleNavigation={handleNavigation}
       linkProps={{ href: externalNav.url, target: '_blank' }}
       {...rest}

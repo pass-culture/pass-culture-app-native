@@ -384,8 +384,8 @@ exports[`RecommendedPaths should render correctly 1`] = `
             >
               en remplissant un formulaire sur 
               <Text
-                accessibilityLabel="Démarches simplifiées"
-                accessibilityRole="button"
+                accessibilityLabel="Démarches simplifiées, lien externe"
+                accessibilityRole="link"
                 onPress={[Function]}
                 style={
                   {
