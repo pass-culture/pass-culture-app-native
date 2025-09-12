@@ -1,11 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { resetCityActions } from 'features/identityCheck/pages/profile/store/resetCityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -23,6 +23,7 @@ export const useSubmitChangeCity = () => {
 
   const storedCity = useCity()
   const { setCity } = cityActions
+  const { setResetCity } = resetCityActions
 
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -32,8 +33,6 @@ export const useSubmitChangeCity = () => {
   const isFromProfileUpdateFlow =
     type === PersonalDataTypes.PROFIL_PERSONAL_DATA ||
     type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
-
-  const isPostalCodeResetRef = useRef(false)
 
   const {
     control,
@@ -48,12 +47,7 @@ export const useSubmitChangeCity = () => {
   const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isFromProfileUpdateFlow) {
-        navigate(
-          ...getProfileHookConfig('ChangeAddress', {
-            type,
-            isPostalCodeReset: isPostalCodeResetRef.current,
-          })
-        )
+        navigate(...getProfileHookConfig('ChangeAddress', { type }))
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
@@ -61,6 +55,7 @@ export const useSubmitChangeCity = () => {
           timeout: SNACK_BAR_TIME_OUT,
         })
       }
+
       analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',
         oldCity: user?.city ?? '',
@@ -77,8 +72,8 @@ export const useSubmitChangeCity = () => {
   })
 
   const onSubmit = ({ city }: CityForm) => {
-    const hasPostalCodeChanged = !!storedCity && storedCity.postalCode !== city.postalCode
-    isPostalCodeResetRef.current = isFromProfileUpdateFlow && hasPostalCodeChanged
+    const hasCityChanged = !!storedCity && storedCity.postalCode !== city.postalCode
+    setResetCity(isFromProfileUpdateFlow && hasCityChanged)
 
     setCity(city)
     patchProfile({ city: city.name, postalCode: city.postalCode })
