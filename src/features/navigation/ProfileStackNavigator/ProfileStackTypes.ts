@@ -6,7 +6,7 @@ interface PersonalDataType {
 }
 
 export type ProfileStackParamList = {
-  ChangeAddress: (PersonalDataType & { isPostalCodeReset?: boolean }) | undefined
+  ChangeAddress: PersonalDataType | undefined
   ChangeCity: PersonalDataType | undefined
   ChangeEmail: { showModal: boolean } | undefined
   ChangePassword: undefined

@@ -1,5 +1,4 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
 import { debounce } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -10,9 +9,12 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import {
+  resetCityActions,
+  useIsResetCity,
+} from 'features/identityCheck/pages/profile/store/resetCityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -32,9 +34,7 @@ type AddressForm = {
 
 export const useSubmitChangeAddress = () => {
   const { params } = useRoute<UseRouteType<'ChangeAddress'>>()
-
   const type = params?.type
-  const isPostalCodeReset = params?.isPostalCodeReset ?? false
 
   const isMandatoryUpdatePersonalData = type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
@@ -46,9 +46,11 @@ export const useSubmitChangeAddress = () => {
   const storedCity = useCity()
   const storedAddress = useAddress()
 
-  const { setParams } = useNavigation<StackNavigationProp<ProfileStackParamList, 'ChangeAddress'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const initialAddress = isPostalCodeReset ? '' : (storedAddress ?? user?.street ?? '')
+
+  const isCityReset = useIsResetCity()
+  const { setResetCity } = resetCityActions
+  const initialCity = isCityReset ? '' : (storedAddress ?? user?.street ?? '')
 
   const {
     control,
@@ -58,7 +60,7 @@ export const useSubmitChangeAddress = () => {
     formState: { isValid },
   } = useForm<AddressForm>({
     mode: 'onChange',
-    defaultValues: { address: initialAddress },
+    defaultValues: { address: initialCity },
   })
 
   const query = watch('address')
@@ -113,8 +115,8 @@ export const useSubmitChangeAddress = () => {
   const { mutate: patchProfile } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
-        setParams({ isPostalCodeReset: undefined }) // clean params if user go back to changeAddress
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
+        setResetCity(false)
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
