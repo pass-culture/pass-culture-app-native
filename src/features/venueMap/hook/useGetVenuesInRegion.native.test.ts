@@ -38,7 +38,7 @@ describe('useGetVenuesInRegion', () => {
   })
 
   it('should return undefined if no venues are retrieved', async () => {
-    mockFetchVenues.mockResolvedValueOnce(undefined)
+    mockFetchVenues.mockResolvedValueOnce(null)
 
     const { result } = renderHook(() => useGetVenuesInRegion(mockRegion), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
