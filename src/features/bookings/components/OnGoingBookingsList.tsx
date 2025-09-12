@@ -30,13 +30,8 @@ export const OnGoingBookingsList: FunctionComponent<{ isQueryEnabled: boolean }>
 }) => {
   const netInfo = useNetInfoContext()
 
-  const {
-    data: bookings,
-    isInitialLoading: isLoading,
-    isFetching,
-    refetch,
-  } = useBookingsQueryV2(isQueryEnabled)
-  const { isInitialLoading: subcategoriesIsLoading } = useSubcategories()
+  const { data: bookings, isLoading, isFetching, refetch } = useBookingsQueryV2(isQueryEnabled)
+  const { isLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()

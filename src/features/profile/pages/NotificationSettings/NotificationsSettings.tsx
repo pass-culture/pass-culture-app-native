@@ -59,7 +59,7 @@ export const NotificationsSettings = () => {
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
-  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfileMutation({
+  const { mutate: patchProfile, isPending: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',

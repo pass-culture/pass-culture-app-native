@@ -21,7 +21,7 @@ describe('<ForceUpdateWithResetErrorBoundary/>', () => {
     jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
       minimalBuildNumber: 10_304_000,
       isLoading: false,
-      error: undefined,
+      error: null,
     })
 
     render(<ForceUpdateWithResetErrorBoundary resetErrorBoundary={() => null} />)

@@ -89,7 +89,7 @@ const mockUseVenueOffers = (emptyResponse = false) => {
   useVenueOffersSpy.mockReturnValue({
     isLoading: false,
     data: { hits: emptyResponse ? [] : VenueOffersResponseSnap, nbHits: emptyResponse ? 0 : 10 },
-  } as unknown as UseQueryResult<VenueOffers, unknown>)
+  } as unknown as UseQueryResult<VenueOffers, Error>)
 }
 
 const pressVenueMarker = (venue: GeolocatedVenue, forcedVenueId?: string) => {

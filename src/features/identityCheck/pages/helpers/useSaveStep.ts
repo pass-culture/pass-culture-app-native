@@ -8,7 +8,7 @@ export const useSaveStep = () => {
   const { dispatch } = useSubscriptionContext()
 
   return async (step: IdentityCheckStep) => {
-    await queryClient.invalidateQueries([QueryKeys.NEXT_SUBSCRIPTION_STEP])
+    await queryClient.invalidateQueries({ queryKey: [QueryKeys.NEXT_SUBSCRIPTION_STEP] })
     await invalidateStepperInfoQueries()
     dispatch({ type: 'SET_STEP', payload: step })
   }

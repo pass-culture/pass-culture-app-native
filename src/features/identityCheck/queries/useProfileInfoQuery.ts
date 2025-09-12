@@ -15,7 +15,10 @@ async function getProfileInfo() {
 export const useProfileInfoQuery = (): {
   profileInfo: RehydrationProfile | null
 } => {
-  const { data } = useQuery([QueryKeys.SUBSCRIPTION_PROFILE_INFO], () => getProfileInfo())
+  const { data } = useQuery({
+    queryKey: [QueryKeys.SUBSCRIPTION_PROFILE_INFO],
+    queryFn: () => getProfileInfo(),
+  })
 
   return { profileInfo: data?.profile ?? null }
 }

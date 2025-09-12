@@ -46,20 +46,21 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   isFetched: true,
   isFetchedAfterMount: true,
   isFetching: false,
+  isPending: false,
+  isEnabled: false,
+  isInitialLoading: false,
   isLoadingError: false,
   isPlaceholderData: false,
-  isPreviousData: false,
   isRefetchError: false,
   isStale: false,
-  remove: jest.fn(),
   dataUpdatedAt: Date.now(),
   errorUpdatedAt: 0,
   errorUpdateCount: 0,
   isRefetching: false,
   failureReason: new Error(),
-  isInitialLoading: false,
   isPaused: false,
   fetchStatus: 'fetching',
+  promise: Promise.resolve(gtlPlaylistAlgoliaSnapshot),
 }
 
 const mockUseGtlPlaylist = jest
@@ -138,7 +139,7 @@ describe('<ThematicSearch/>', () => {
     it('should render skeleton when playlists are loading', async () => {
       mockUseGtlPlaylist.mockReturnValueOnce({
         data: [],
-        isInitialLoading: true,
+        isLoading: true,
       } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
       render(reactQueryProviderHOC(<ThematicSearch />))

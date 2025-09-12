@@ -130,14 +130,14 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     [showErrorSnackBar, navigate, email, setFormErrors, setErrorMessage]
   )
 
-  const { mutate: signIn, isLoading } = useSignInMutation({
+  const { mutate: signIn, isPending } = useSignInMutation({
     doNotNavigateOnSigninSuccess: props.doNotNavigateOnSigninSuccess,
     params,
     setErrorMessage,
     onFailure: handleSigninFailure,
   })
 
-  const shouldDisableLoginButton = !isValid || isLoading || isDoingReCaptchaChallenge
+  const shouldDisableLoginButton = !isValid || isPending || isDoingReCaptchaChallenge
 
   const openReCaptchaChallenge = useCallback(() => {
     setIsDoingReCaptchaChallenge(true)

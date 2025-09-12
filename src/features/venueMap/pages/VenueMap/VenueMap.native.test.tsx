@@ -28,7 +28,7 @@ mockUseRoute.mockReturnValue({ name: 'venueMap' })
 jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
   isLoading: false,
   data: { hits: [], nbHits: 0 },
-} as unknown as UseQueryResult<VenueOffers, unknown>)
+} as unknown as UseQueryResult<VenueOffers, Error>)
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({

@@ -42,8 +42,7 @@ export const useFilterCount = (searchState: SearchState): number => {
     // Uniquement les offres duo
     +offerIsDuo +
     // Date & heure
-    +hasDatesHours +
-    //
+    +hasDatesHours + //
     +hasActivatedAccessibility
   )
 }

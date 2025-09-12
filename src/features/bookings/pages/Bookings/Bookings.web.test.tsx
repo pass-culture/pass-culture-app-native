@@ -22,7 +22,7 @@ jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = jest.mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
-} as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
+} as UseQueryResult<SubcategoriesResponseModelv2, Error>)
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -86,7 +86,7 @@ const renderBookings = (bookings: BookingsResponse) => {
     .spyOn(bookingsAPI, 'useBookingsQueryV1')
     .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
       BookingsResponse,
-      unknown
+      Error
     >)
 
   return render(reactQueryProviderHOC(<Bookings />))
