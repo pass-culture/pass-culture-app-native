@@ -37,7 +37,7 @@ export function Offer() {
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const { isLoggedIn, user } = useAuthContext()
-  const { data: offer, isInitialLoading: isLoading } = useOfferQuery({
+  const { data: offer, isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({
       ...data,

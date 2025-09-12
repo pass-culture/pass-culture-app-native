@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -17,26 +17,35 @@ export function ResetPasswordExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { email } = props.route.params
-  const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
-    [QueryKeys.RESET_PASSWORD_EXPIRED_LINK],
-    () => {
+  const {
+    refetch: resetPasswordEmailQuery,
+    isFetching,
+    isError,
+    isSuccess,
+  } = useQuery({
+    queryKey: [QueryKeys.RESET_PASSWORD_EXPIRED_LINK],
+
+    queryFn: () => {
       analytics.logResendEmailResetPasswordExpiredLink()
       return api.postNativeV1RequestPasswordReset({ email })
     },
-    {
-      onSuccess: () => {
-        navigate('ResetPasswordEmailSent', { email })
-      },
-      onError: () => {
-        throw new AsyncError('NETWORK_REQUEST_FAILED', {
-          retry: resetPasswordEmailQuery,
-          logType: LogTypeEnum.ERROR,
-        })
-      },
-      cacheTime: 0,
-      enabled: false,
-    }
-  )
+    gcTime: 0,
+    enabled: false,
+    retry: (failureCount) => failureCount <= 1,
+  })
+
+  // FIXME (reac-query-v5): check if not retried for ever...
+  useEffect(() => {
+    if (isError)
+      throw new AsyncError('NETWORK_REQUEST_FAILED', {
+        retry: resetPasswordEmailQuery,
+        logType: LogTypeEnum.ERROR,
+      })
+  }, [isError, resetPasswordEmailQuery])
+
+  useEffect(() => {
+    if (isSuccess) navigate('ResetPasswordEmailSent', { email })
+  }, [email, isSuccess, navigate])
 
   const renderCustomButton = {
     wording: 'Renvoyer l’email',

@@ -22,9 +22,9 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
 
-  return useQuery(
-    [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
-    async () => {
+  return useQuery({
+    queryKey: [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
+    queryFn: async () => {
       try {
         return await api.postNativeV1RecommendationPlaylist(
           playlistRequestBody,
@@ -44,16 +44,14 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         return { playlistRecommendedOffers: [], params: undefined }
       }
     },
-    {
-      staleTime: 1000 * 60 * 5,
-      enabled:
-        isLoggedIn &&
-        !!userId &&
-        !!netInfo.isConnected &&
-        !!netInfo.isInternetReachable &&
-        shouldFetch,
-    }
-  )
+    staleTime: 1000 * 60 * 5,
+    enabled:
+      isLoggedIn &&
+      !!userId &&
+      !!netInfo.isConnected &&
+      !!netInfo.isInternetReachable &&
+      shouldFetch,
+  })
 }
 
 const logError = (err: unknown, parameters: Parameters): void => {

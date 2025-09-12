@@ -27,9 +27,11 @@ export const useCheatcodesFeatureFlagQuery = () => {
   const appBuildVersion = getAppBuildVersion()
   const {
     data: docSnapshot,
-    isInitialLoading: isLoading,
+    isLoading,
     error,
-  } = useQuery(['FEATURE_FLAGS'], getAllFeatureFlags, {
+  } = useQuery({
+    queryKey: ['FEATURE_FLAGS'],
+    queryFn: getAllFeatureFlags,
     staleTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
   })

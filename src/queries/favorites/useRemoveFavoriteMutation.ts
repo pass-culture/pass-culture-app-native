@@ -9,12 +9,15 @@ interface RemoveFavorite {
   onError?: (error?: Error, favoriteId?: number, context?: FavoriteMutationContext) => void
 }
 
-export function useRemoveFavoriteMutation({ onError }: RemoveFavorite) {
+export const useRemoveFavoriteMutation = ({ onError }: RemoveFavorite) => {
   const queryClient = useQueryClient()
 
-  return useMutation((favoriteId: number) => api.deleteNativeV1MeFavoritesfavoriteId(favoriteId), {
+  return useMutation({
+    mutationFn: (favoriteId: number) => api.deleteNativeV1MeFavoritesfavoriteId(favoriteId),
     onMutate: async (favoriteId) => {
-      await queryClient.cancelQueries([QueryKeys.FAVORITES])
+      await queryClient.cancelQueries({
+        queryKey: [QueryKeys.FAVORITES],
+      })
       // Snapshot the previous value
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
         QueryKeys.FAVORITES,

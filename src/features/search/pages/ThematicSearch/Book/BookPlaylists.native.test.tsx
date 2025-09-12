@@ -53,7 +53,6 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   errorUpdateCount: 0,
   isRefetching: false,
   failureReason: new Error(),
-  isInitialLoading: false,
   isPaused: false,
   fetchStatus: 'fetching',
 }
@@ -78,7 +77,7 @@ describe('BookPlaylists', () => {
   it('should render skeleton when playlists are still loading', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
       ...defaultResponse,
-      isInitialLoading: true,
+      isLoading: true,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
@@ -89,7 +88,7 @@ describe('BookPlaylists', () => {
 
   it('should not render gtl playlists when algolia does not return offers', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
-      isInitialLoading: false,
+      isLoading: false,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
