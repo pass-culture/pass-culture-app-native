@@ -24,7 +24,7 @@ export function getDigitalBookingsWithoutExpirationDate(bookings: Booking[]) {
 }
 
 export function isBookingInList(booking: Booking, eligibleBookingsForArchive?: Booking[]) {
-  return eligibleBookingsForArchive?.some((b) => b.id === booking.id) ?? false
+  return !!eligibleBookingsForArchive?.some((b) => b.id === booking.id)
 }
 
 const expirationMessages = {

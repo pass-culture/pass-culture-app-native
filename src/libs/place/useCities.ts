@@ -21,8 +21,10 @@ export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
 const STALE_TIME_CITIES = 5 * 60 * 1000
 
-export const useCities = (postalCode: string, options?: Options) => {
-  return useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
+export const useCities = (postalCode: string, options?: Options) =>
+  useQuery({
+    queryKey: [QueryKeys.CITIES, postalCode],
+    queryFn: () => fetchCities(postalCode),
     staleTime: STALE_TIME_CITIES,
     enabled: postalCode.length >= 5,
     select: (data: CitiesResponse) =>
@@ -31,7 +33,5 @@ export const useCities = (postalCode: string, options?: Options) => {
         code,
         postalCode,
       })) as SuggestedCity[],
-    onError: options?.onError,
-    onSuccess: options?.onSuccess,
+    ...options,
   })
-}

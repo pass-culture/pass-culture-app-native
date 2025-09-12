@@ -1,11 +1,12 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 
 export const Artist: FunctionComponent = () => {
@@ -15,10 +16,14 @@ export const Artist: FunctionComponent = () => {
   const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({
     artistId: params.id,
   })
-  const { data: artist } = useArtistQuery(params.id)
+  const { data: artist, isError, error, isLoading } = useArtistQuery(params.id)
+
+  useEffect(() => {
+    if (isError) eventMonitoring.captureException(error)
+  }, [error, isError])
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
-  if (!artist || !enableArtistPage) return null
+  if (isLoading || !artist || !enableArtistPage) return null
 
   return (
     <ArtistBody artist={artist} artistPlaylist={artistPlaylist} artistTopOffers={artistTopOffers} />

@@ -36,7 +36,7 @@ export const AuthWrapper = memo(function AuthWrapper({
   const {
     data: user,
     refetch: refetchUser,
-    isInitialLoading: isUserLoading,
+    isLoading: isUserLoading,
   } = useUserProfileInfo(isLoggedIn)
 
   const readTokenAndConnectUser = useCallback(async () => {

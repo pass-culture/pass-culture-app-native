@@ -64,7 +64,7 @@ export const SetAddress = () => {
 
   const {
     data: addresses = [],
-    isInitialLoading: isLoading,
+    isLoading,
     isError,
   } = useAddresses({
     query: debouncedQuery,

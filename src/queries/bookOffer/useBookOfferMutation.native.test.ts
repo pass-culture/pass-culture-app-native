@@ -22,15 +22,15 @@ describe('useBookOfferMutation', () => {
 
     const { result } = renderUseBookOfferMutation()
 
-    expect(queryCache.find(['userProfile'])).toBeDefined()
-    expect(queryCache.find(['userProfile'])?.state.isInvalidated).toBeFalsy()
+    expect(queryCache.find({ queryKey: ['userProfile'] })).toBeDefined()
+    expect(queryCache.find({ queryKey: ['userProfile'] })?.state.isInvalidated).toBeFalsy()
 
     await act(async () => result.current.mutate({ quantity: 1, stockId: 10 }))
 
     await waitFor(() => {
       expect(props.onSuccess).toHaveBeenCalledTimes(1)
       expect(props.onError).not.toHaveBeenCalled()
-      expect(queryCache.find(['userProfile'])?.state.isInvalidated).toBe(true)
+      expect(queryCache.find({ queryKey: ['userProfile'] })?.state.isInvalidated).toBe(true)
     })
   })
 
@@ -39,15 +39,15 @@ describe('useBookOfferMutation', () => {
 
     const { result } = renderUseBookOfferMutation()
 
-    expect(queryCache.find(['userProfile'])).toBeDefined()
-    expect(queryCache.find(['userProfile'])?.state.isInvalidated).toBeFalsy()
+    expect(queryCache.find({ queryKey: ['userProfile'] })).toBeDefined()
+    expect(queryCache.find({ queryKey: ['userProfile'] })?.state.isInvalidated).toBeFalsy()
 
     result.current.mutate({ quantity: 1, stockId: 10 })
 
     await waitFor(() => {
       expect(props.onSuccess).not.toHaveBeenCalled()
       expect(props.onError).toHaveBeenCalledTimes(1)
-      expect(queryCache.find(['userProfile'])?.state.isInvalidated).toBeFalsy()
+      expect(queryCache.find({ queryKey: ['userProfile'] })?.state.isInvalidated).toBeFalsy()
     })
   })
 })
