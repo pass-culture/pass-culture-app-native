@@ -74,7 +74,3 @@ function buildThemeShadowInput(theme: DefaultTheme): InputShadow {
 export function getShadow(theme: DefaultTheme) {
   return buildShadow(buildThemeShadowInput(theme))
 }
-
-export function getDropShadow(theme: DefaultTheme) {
-  return buildShadow(buildThemeShadowInput(theme), true)
-}

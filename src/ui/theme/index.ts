@@ -1,4 +1,4 @@
-export { getShadow, getDropShadow } from './shadow'
+export { getShadow } from './shadow'
 export { padding } from './padding'
 export { getSpacing, getSpacingString } from './spacing'
 export { Spacer } from '../components/spacer/Spacer'
