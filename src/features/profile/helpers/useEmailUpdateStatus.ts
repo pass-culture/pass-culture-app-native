@@ -7,11 +7,9 @@ import { QueryKeys } from 'libs/queryKeys'
 export const useEmailUpdateStatus = () => {
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery(
-    [QueryKeys.EMAIL_UPDATE_STATUS_V2],
-    () => api.getNativeV2ProfileEmailUpdateStatus(),
-    {
-      enabled: isLoggedIn,
-    }
-  )
+  return useQuery({
+    queryKey: [QueryKeys.EMAIL_UPDATE_STATUS_V2],
+    queryFn: () => api.getNativeV2ProfileEmailUpdateStatus(),
+    enabled: isLoggedIn,
+  })
 }

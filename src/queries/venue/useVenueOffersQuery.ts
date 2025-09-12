@@ -74,33 +74,34 @@ export const useVenueOffersQuery = ({
     headlineOfferQueryParams,
   ]
 
-  return useQuery(
-    [QueryKeys.VENUE_OFFERS, venue?.id, userLocation, selectedLocationMode],
-    () =>
+  return useQuery({
+    queryKey: [QueryKeys.VENUE_OFFERS, venue?.id, userLocation, selectedLocationMode],
+
+    queryFn: () =>
       fetchMultipleOffers({
         paramsList: venueOffersQueriesParamsList,
         isUserUnderage,
       }),
-    {
-      enabled: !!venue,
-      select: ([venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults]) => {
-        const filterFn = includeHitsWithoutImage ? filterValidOfferHit : filterOfferHitWithImage
-        const hits = [venueSearchedOffersResults, venueTopOffersResults]
-          .flatMap((result) => result?.hits)
-          .filter(filterFn)
-          .map(transformHits)
 
-        const uniqHits = uniqBy(hits, 'objectID')
+    enabled: !!venue,
 
-        const headlineOfferHit = headlineOfferResults?.hits[0]
-        const headlineOffer = headlineOfferHit ? transformHits(headlineOfferHit) : undefined
+    select: ([venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults]) => {
+      const filterFn = includeHitsWithoutImage ? filterValidOfferHit : filterOfferHitWithImage
+      const hits = [venueSearchedOffersResults, venueTopOffersResults]
+        .flatMap((result) => result?.hits)
+        .filter(filterFn)
+        .map(transformHits)
 
-        return {
-          hits: uniqHits,
-          nbHits: uniqHits.length,
-          headlineOffer,
-        }
-      },
-    }
-  )
+      const uniqHits = uniqBy(hits, 'objectID')
+
+      const headlineOfferHit = headlineOfferResults?.hits[0]
+      const headlineOffer = headlineOfferHit ? transformHits(headlineOfferHit) : undefined
+
+      return {
+        hits: uniqHits,
+        nbHits: uniqHits.length,
+        headlineOffer,
+      }
+    },
+  })
 }

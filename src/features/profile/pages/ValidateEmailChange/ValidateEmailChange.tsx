@@ -25,8 +25,7 @@ type ValidateEmailChangeProps = NativeStackScreenProps<
 >
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
-  const { data: emailUpdateStatus, isInitialLoading: isLoadingEmailUpdateStatus } =
-    useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)

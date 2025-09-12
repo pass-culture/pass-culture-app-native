@@ -32,11 +32,11 @@ export const OnGoingBookingsList: FunctionComponent<{ isQueryEnabled: boolean }>
 
   const {
     data: bookings,
-    isInitialLoading: isLoading,
+    isLoading,
     isFetching,
     refetch,
   } = useBookingsV2WithConvertedTimezoneQuery(isQueryEnabled)
-  const { isInitialLoading: subcategoriesIsLoading } = useSubcategories()
+  const { isLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()

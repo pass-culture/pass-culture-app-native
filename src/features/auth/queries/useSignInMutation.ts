@@ -38,32 +38,32 @@ export const useSignInMutation = ({
   const onSuccess = useHandleSigninSuccess(params, doNotNavigateOnSigninSuccess, setErrorMessage)
   const deviceInfo = useDeviceInfo()
 
-  return useMutation(
-    async (body: LoginRequest) => {
+  return useMutation({
+    mutationFn: async (body: LoginRequest) => {
       const requestBody = { ...body, deviceInfo }
       if ('authorizationCode' in requestBody) {
         return api.postNativeV1OauthGoogleAuthorize(requestBody)
       }
       return api.postNativeV1Signin(requestBody, { credentials: 'omit' })
     },
-    {
-      onSuccess: async (response, body) => {
-        const loginAnalyticsType = 'authorizationCode' in body ? 'SSO_login' : undefined
-        await loginRoutine(response, analyticsMethod, analyticsType || loginAnalyticsType)
-        onSuccess(response.accountState)
-      },
-      onError: (error) => {
-        const errorResponse: SignInResponseFailure = { isSuccess: false }
-        if (isApiError(error)) {
-          errorResponse.statusCode = error.statusCode
-          errorResponse.content = error.content
-        } else {
-          errorResponse.content = { code: 'NETWORK_REQUEST_FAILED', general: [] }
-        }
-        onFailure(errorResponse)
-      },
-    }
-  )
+
+    onSuccess: async (response, body) => {
+      const loginAnalyticsType = 'authorizationCode' in body ? 'SSO_login' : undefined
+      await loginRoutine(response, analyticsMethod, analyticsType || loginAnalyticsType)
+      onSuccess(response.accountState)
+    },
+
+    onError: (error) => {
+      const errorResponse: SignInResponseFailure = { isSuccess: false }
+      if (isApiError(error)) {
+        errorResponse.statusCode = error.statusCode
+        errorResponse.content = error.content
+      } else {
+        errorResponse.content = { code: 'NETWORK_REQUEST_FAILED', general: [] }
+      }
+      onFailure(errorResponse)
+    },
+  })
 }
 
 const useHandleSigninSuccess = (

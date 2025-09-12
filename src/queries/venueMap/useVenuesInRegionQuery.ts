@@ -17,9 +17,9 @@ export function useVenuesInRegionQuery<TData = Awaited<ReturnType<typeof fetchVe
   radius = DEFAULT_RADIUS,
   select,
 }: Props & { select?: (data?: Venue[]) => TData }) {
-  return useQuery(
-    [QueryKeys.VENUES, JSON.stringify(region), radius],
-    () =>
+  return useQuery({
+    queryKey: [QueryKeys.VENUES, JSON.stringify(region), radius],
+    queryFn: () =>
       fetchVenues({
         query: '',
         buildLocationParameterParams: {
@@ -32,9 +32,7 @@ export function useVenuesInRegionQuery<TData = Awaited<ReturnType<typeof fetchVe
           hitsPerPage: 1000, // the maximum, cf.: https://www.algolia.com/doc/api-reference/api-parameters/hitsPerPage/#usage-notes
         },
       }),
-    {
-      enabled: Object.keys(region).length > 0,
-      select,
-    }
-  )
+    enabled: Object.keys(region).length > 0,
+    select,
+  })
 }

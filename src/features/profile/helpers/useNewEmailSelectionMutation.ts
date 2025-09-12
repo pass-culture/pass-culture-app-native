@@ -9,9 +9,10 @@ export const useNewEmailSelectionMutation = ({
 }: {
   onSuccess: () => void
   onError: () => void
-}) => {
-  return useMutation(
-    (body: NewEmailSelectionRequest) => api.postNativeV2ProfileEmailUpdateNewEmail(body),
-    { onSuccess, onError }
-  )
-}
+}) =>
+  useMutation({
+    mutationFn: (body: NewEmailSelectionRequest) =>
+      api.postNativeV2ProfileEmailUpdateNewEmail(body),
+    onSuccess,
+    onError,
+  })

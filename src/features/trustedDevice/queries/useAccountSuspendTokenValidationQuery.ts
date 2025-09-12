@@ -12,10 +12,11 @@ export enum AccountSecurityStatus {
 
 export const useAccountSuspendTokenValidationQuery = (
   token: string
-): UseQueryResult<AccountSecurityStatus, ApiError> => {
-  return useQuery(
-    [QueryKeys.ACCOUNT_SUSPEND_TOKEN_VALIDATION, token],
-    async () => {
+): UseQueryResult<AccountSecurityStatus, ApiError> =>
+  useQuery({
+    queryKey: [QueryKeys.ACCOUNT_SUSPEND_TOKEN_VALIDATION, token],
+
+    queryFn: async () => {
       try {
         await api.getNativeV1AccountSuspendTokenValidationtoken(token)
         return AccountSecurityStatus.VALID_TOKEN
@@ -29,9 +30,7 @@ export const useAccountSuspendTokenValidationQuery = (
         throw error
       }
     },
-    {
-      useErrorBoundary: true,
-      retry: false,
-    }
-  )
-}
+
+    throwOnError: true,
+    retry: false,
+  })

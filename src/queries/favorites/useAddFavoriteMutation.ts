@@ -13,14 +13,15 @@ import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export function useAddFavoriteMutation({
+export const useAddFavoriteMutation = ({
   onSuccess,
 }: {
   onSuccess?: (data?: FavoriteResponse) => void
-}) {
+}) => {
   const queryClient = useQueryClient()
   const { showErrorSnackBar } = useSnackBarContext()
-  return useMutation((body: FavoriteRequest) => api.postNativeV1MeFavorites(body), {
+  return useMutation({
+    mutationFn: (body: FavoriteRequest) => api.postNativeV1MeFavorites(body),
     onSuccess: (data: FavoriteResponse) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
         QueryKeys.FAVORITES,
@@ -34,8 +35,12 @@ export function useAddFavoriteMutation({
         queryClient.setQueryData([QueryKeys.FAVORITES], { ...previousFavorites, favorites })
         queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], { count: favorites.length })
       } else {
-        queryClient.invalidateQueries([QueryKeys.FAVORITES])
-        queryClient.invalidateQueries([QueryKeys.FAVORITES_COUNT])
+        queryClient.invalidateQueries({
+          queryKey: [QueryKeys.FAVORITES],
+        })
+        queryClient.invalidateQueries({
+          queryKey: [QueryKeys.FAVORITES_COUNT],
+        })
       }
       if (onSuccess) {
         onSuccess(data)

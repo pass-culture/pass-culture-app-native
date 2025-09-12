@@ -16,7 +16,7 @@ const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
 jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => ({
     data: mockedOffer,
-    isInitialLoading: false,
+    isLoading: false,
   }),
 }))
 

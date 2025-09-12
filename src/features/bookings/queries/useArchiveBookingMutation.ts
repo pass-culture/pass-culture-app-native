@@ -16,14 +16,14 @@ export const useArchiveBookingMutation = ({
 }: ArchiveBookingMutationOptions) => {
   const queryClient = useQueryClient()
 
-  return useMutation(
-    () => api.postNativeV1BookingsbookingIdToggleDisplay(bookingId, { ended: true }),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries([QueryKeys.BOOKINGS])
-        onSuccess()
-      },
-      onError,
-    }
-  )
+  return useMutation({
+    mutationFn: () => api.postNativeV1BookingsbookingIdToggleDisplay(bookingId, { ended: true }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.BOOKINGS],
+      })
+      onSuccess()
+    },
+    onError,
+  })
 }
