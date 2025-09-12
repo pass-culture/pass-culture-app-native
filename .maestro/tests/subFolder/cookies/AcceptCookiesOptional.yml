@@ -1,5 +1,7 @@
 appId: app.passculture.webapp
 ---
+- waitForAnimationToEnd
+
 - runFlow:
     when:
       visible: "Respect de ta vie privée"
@@ -7,8 +9,6 @@ appId: app.passculture.webapp
       - tapOn:
           text: 'Tout accepter'
           optional: true
-
-- waitForAnimationToEnd
 
 - runFlow:
     when:
