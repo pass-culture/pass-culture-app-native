@@ -4,6 +4,9 @@ import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/us
 import { analytics } from 'libs/analytics/provider'
 import { renderHook } from 'tests/utils'
 
+type UseLogPlaylistReturn = ReturnType<typeof useLogPlaylist>
+type HorizontalProps = { fromOfferId: number }
+
 const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
   filtered: true,
@@ -16,7 +19,7 @@ const apiRecoParams: RecommendationApiParams = {
 
 describe('useLogPlaylist', () => {
   it('should logSameCategoryPlaylistVerticalScroll correctly', () => {
-    const { result } = renderHook(() =>
+    const { result } = renderHook<UseLogPlaylistReturn, void>(() =>
       useLogPlaylist({
         offerId: 1,
         nbSameCategorySimilarOffers: 5,
@@ -38,7 +41,7 @@ describe('useLogPlaylist', () => {
   })
 
   it('should log only once logSameCategoryPlaylistVerticalScroll', () => {
-    const { result } = renderHook(() =>
+    const { result } = renderHook<UseLogPlaylistReturn, void>(() =>
       useLogPlaylist({
         offerId: 1,
         nbSameCategorySimilarOffers: 5,
@@ -58,7 +61,7 @@ describe('useLogPlaylist', () => {
   })
 
   it('should logOtherCategoriesPlaylistVerticalScroll correctly', () => {
-    const { result } = renderHook(() =>
+    const { result } = renderHook<UseLogPlaylistReturn, void>(() =>
       useLogPlaylist({
         offerId: 1,
         nbSameCategorySimilarOffers: 0,
@@ -80,7 +83,7 @@ describe('useLogPlaylist', () => {
   })
 
   it('should log only once logOtherCategoriesPlaylistVerticalScroll', () => {
-    const { result } = renderHook(() =>
+    const { result } = renderHook<UseLogPlaylistReturn, void>(() =>
       useLogPlaylist({
         offerId: 1,
         nbSameCategorySimilarOffers: 0,
@@ -100,7 +103,7 @@ describe('useLogPlaylist', () => {
   })
 
   it('should logPlaylistHorizontalScroll correctly', () => {
-    const { result, rerender } = renderHook(
+    const { result, rerender } = renderHook<UseLogPlaylistReturn, HorizontalProps>(
       ({ fromOfferId }) =>
         useLogPlaylist({
           offerId: 1,
@@ -108,9 +111,7 @@ describe('useLogPlaylist', () => {
           nbSameCategorySimilarOffers: 0,
           fromOfferId,
         }),
-      {
-        initialProps: { fromOfferId: 2 },
-      }
+      { initialProps: { fromOfferId: 2 } }
     )
 
     result.current.logPlaylistHorizontalScroll()
@@ -119,7 +120,6 @@ describe('useLogPlaylist', () => {
 
     // Testing with a different fromOfferId
     rerender({ fromOfferId: 3 })
-
     result.current.logPlaylistHorizontalScroll()
 
     expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledWith(3)
