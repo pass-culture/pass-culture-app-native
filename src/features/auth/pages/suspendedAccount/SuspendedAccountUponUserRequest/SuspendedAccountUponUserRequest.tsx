@@ -39,7 +39,7 @@ export const SuspendedAccountUponUserRequest = () => {
     })
   }
 
-  const { mutate: unsuspendAccount, isLoading: unsuspendIsLoading } = useAccountUnsuspendMutation(
+  const { mutate: unsuspendAccount, isPending: unsuspendIsLoading } = useAccountUnsuspendMutation(
     onAccountUnsuspendSuccess,
     onAccountUnsuspendFailure
   )

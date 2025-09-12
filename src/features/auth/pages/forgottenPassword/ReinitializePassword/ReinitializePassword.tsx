@@ -72,7 +72,7 @@ export const ReinitializePassword = () => {
     trigger('confirmedPassword')
   }, [password, trigger])
 
-  const { mutate: resetPassword, isLoading } = useResetPasswordMutation({
+  const { mutate: resetPassword, isPending } = useResetPasswordMutation({
     onSuccess: (response: ResetPasswordResponse) => {
       showSuccessSnackBar({
         message: 'Ton mot de passe est modifié\u00a0!',
@@ -148,8 +148,8 @@ export const ReinitializePassword = () => {
           <ButtonPrimary
             wording="Se connecter"
             onPress={handleSubmit(submitPassword)}
-            disabled={!isValid || isLoading}
-            isLoading={isLoading}
+            disabled={!isValid || isPending}
+            isLoading={isPending}
             accessibilityLabel="Valider le nouveau mot de passe et se connecter"
           />
         </Container>

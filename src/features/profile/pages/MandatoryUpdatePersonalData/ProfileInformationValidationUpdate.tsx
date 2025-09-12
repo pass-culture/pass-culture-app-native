@@ -24,8 +24,8 @@ export const ProfileInformationValidationUpdate = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
-  const { mutateAsync: postProfile } = usePostProfileMutation({
-    onSuccess: async () => {
+  const { mutate: postProfile, isPending } = usePostProfileMutation({
+    onSuccess: () => {
       reset({
         index: 1,
         routes: [
@@ -98,7 +98,7 @@ export const ProfileInformationValidationUpdate = () => {
         type="submit"
         wording="Confirmer"
         onPress={onSubmitProfile}
-        isLoading={isLoading}
+        isLoading={isPending}
       />
     </ViewGap>
   )

@@ -32,7 +32,7 @@ describe('useHomeRecommendedOffers', () => {
       .spyOn(recommendedIdsAPI, 'useHomeRecommendedIdsQuery')
       .mockReturnValueOnce({ data: { playlistRecommendedOffers: ['1234'] } } as UseQueryResult<
         PlaylistResponse,
-        unknown
+        Error
       >)
 
     const algoliaSpy = jest

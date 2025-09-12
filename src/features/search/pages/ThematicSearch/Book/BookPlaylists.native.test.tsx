@@ -42,12 +42,13 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   isFetched: true,
   isFetchedAfterMount: true,
   isFetching: false,
+  isPending: false,
+  isInitialLoading: false,
+  isEnabled: true,
   isLoadingError: false,
   isPlaceholderData: false,
-  isPreviousData: false,
   isRefetchError: false,
   isStale: false,
-  remove: jest.fn(),
   dataUpdatedAt: Date.now(),
   errorUpdatedAt: 0,
   errorUpdateCount: 0,
@@ -55,6 +56,7 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   failureReason: new Error(),
   isPaused: false,
   fetchStatus: 'fetching',
+  promise: Promise.resolve([]),
 }
 
 const useGTLPlaylistsSpy = jest

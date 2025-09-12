@@ -9,7 +9,7 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 0,
-      useErrorBoundary: true,
+      throwOnError: true,
       refetchOnWindowFocus: !(__DEV__ || env.ENV !== 'testing'),
     },
   },
