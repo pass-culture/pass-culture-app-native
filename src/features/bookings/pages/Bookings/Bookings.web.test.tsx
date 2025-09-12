@@ -86,7 +86,7 @@ const renderBookings = (bookings: BookingsResponse) => {
     .spyOn(bookingsAPI, 'useBookingsQueryV1')
     .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
       BookingsResponse,
-      unknown
+      Error
     >)
 
   return render(reactQueryProviderHOC(<Bookings />))

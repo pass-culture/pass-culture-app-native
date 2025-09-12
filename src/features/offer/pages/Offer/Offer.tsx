@@ -58,9 +58,10 @@ export function Offer() {
     hideModal: hideChroniclesWritersModal,
     showModal: showChroniclesWritersModal,
   } = useModal(false)
-  const { data: booking } = useEndedBookingFromOfferIdQuery(offer?.id ?? -1, {
-    enabled: isLoggedIn && isReactionEnabled && !!offer?.id,
-  })
+  const { data: booking } = useEndedBookingFromOfferIdQuery(
+    offer?.id ?? -1,
+    isLoggedIn && isReactionEnabled && !!offer?.id
+  )
   const { mutate: saveReaction } = useReactionMutation()
 
   const handleSaveReaction = useCallback(

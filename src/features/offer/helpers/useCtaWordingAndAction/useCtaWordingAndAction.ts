@@ -513,7 +513,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
 
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId)
+  const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId, true)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
