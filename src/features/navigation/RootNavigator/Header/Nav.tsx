@@ -11,18 +11,17 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
-import { Spacer, getShadow, getSpacing } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 import { NavItem } from './NavItem'
 
 type Props = {
   maxWidth?: number
   height?: number
-  noShadow?: boolean
   routeBadgeMap?: Partial<Record<keyof TabParamList, number>>
 }
 
-export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap }) => {
+export const Nav: React.FC<Props> = ({ maxWidth, height, routeBadgeMap }) => {
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, hideSuggestions } = useSearch()
@@ -31,8 +30,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow, routeBadgeMap
     <NavItemsContainer
       accessibilityRole={AccessibilityRole.NAVIGATION}
       maxWidth={maxWidth}
-      navHeight={height}
-      noShadow={noShadow}>
+      navHeight={height}>
       <Ul>
         {tabRoutes.map((route, index) => {
           const tabNavigationConfig = getTabNavigatorConfig(route, searchState)
@@ -65,7 +63,7 @@ const NavItemsContainer = styled.View<{
   maxWidth?: number
   navHeight?: number
   noShadow?: boolean
-}>(({ theme, maxWidth, navHeight, noShadow }) => ({
+}>(({ theme, maxWidth, navHeight }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -75,14 +73,6 @@ const NavItemsContainer = styled.View<{
   maxWidth,
   position: 'absolute',
   zIndex: theme.zIndex.headerNav,
-  ...(noShadow
-    ? {}
-    : getShadow({
-        shadowOffset: { width: 0, height: getSpacing(1 / 4) },
-        shadowRadius: getSpacing(1),
-        shadowColor: theme.colors.black,
-        shadowOpacity: 0.2,
-      })),
 }))
 
 const StyledLi = styled(Li)({

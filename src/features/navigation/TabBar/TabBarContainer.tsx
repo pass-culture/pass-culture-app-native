@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getSpacing, getShadow } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
@@ -35,10 +35,6 @@ const MainContainer = styled.View(({ theme }) => ({
   width: '100%',
   position: 'absolute',
   bottom: 0,
-  ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(1 / 4) },
-    shadowRadius: getSpacing(1),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 1,
-  }),
+
+  ...getShadow(theme),
 }))

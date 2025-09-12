@@ -626,13 +626,6 @@ exports[`Bookings should render correctly 1`] = `
                     "borderTopLeftRadius": 4,
                     "borderTopRightRadius": 4,
                     "height": 120,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
                     "width": 80,
                   }
                 }
@@ -907,13 +900,6 @@ exports[`Bookings should render correctly 1`] = `
                     "borderTopLeftRadius": 4,
                     "borderTopRightRadius": 4,
                     "height": 120,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
                     "width": 80,
                   }
                 }
@@ -1188,13 +1174,6 @@ exports[`Bookings should render correctly 1`] = `
                     "borderTopLeftRadius": 4,
                     "borderTopRightRadius": 4,
                     "height": 120,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
                     "width": 80,
                   }
                 }

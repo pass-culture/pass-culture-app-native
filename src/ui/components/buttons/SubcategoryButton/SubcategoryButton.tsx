@@ -9,7 +9,7 @@ import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getShadow, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 import { getSpacing } from 'ui/theme/spacing'
@@ -76,12 +76,6 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderWidth: 1.6,
   borderStyle: 'solid',
   borderRadius: theme.borderRadius.radius,
-  ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(1) },
-    shadowRadius: getSpacing(1),
-    shadowColor: theme.colors.greyDark,
-    shadowOpacity: 0.2,
-  }),
   ...customFocusOutline({ isFocus }),
   textAlign: 'left',
   alignItems: 'center',

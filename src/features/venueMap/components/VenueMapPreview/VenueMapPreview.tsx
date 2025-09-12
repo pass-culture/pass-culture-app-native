@@ -55,15 +55,7 @@ const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
   padding: theme.designSystem.size.spacing.l,
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(1),
-    },
-    shadowRadius: getSpacing(4),
-    shadowColor: theme.colors.secondaryDark,
-    shadowOpacity: 0.2,
-  }),
+  ...getShadow(theme),
 }))
 
 const Row = styled.View({

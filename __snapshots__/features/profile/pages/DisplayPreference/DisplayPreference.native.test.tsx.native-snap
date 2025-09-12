@@ -369,13 +369,6 @@ exports[`DisplayPreference should render correctly 1`] = `
                             "height": 28,
                             "justifyContent": "center",
                             "marginLeft": 2,
-                            "shadowColor": "#161617",
-                            "shadowOffset": {
-                              "height": 2,
-                              "width": 0,
-                            },
-                            "shadowOpacity": 0.2,
-                            "shadowRadius": 2.5,
                             "width": 28,
                           }
                         }

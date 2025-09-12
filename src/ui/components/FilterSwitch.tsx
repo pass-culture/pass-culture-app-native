@@ -9,7 +9,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckFilled } from 'ui/svg/icons/CheckFilled'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface FilterSwitchProps {
@@ -98,7 +98,7 @@ const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active 
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disabled }) => ({
+const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme }) => ({
   aspectRatio: '1',
   width: TOGGLE_WIDTH,
   height: getSpacing(7),
@@ -106,19 +106,6 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
   borderRadius: getSpacing(7),
   alignItems: 'center',
   justifyContent: 'center',
-  ...(disabled
-    ? {}
-    : {
-        ...getShadow({
-          shadowOffset: {
-            width: 0,
-            height: getSpacing(0.5),
-          },
-          shadowRadius: 2.5,
-          shadowColor: theme.designSystem.color.background.lockedInverted,
-          shadowOpacity: 0.2,
-        }),
-      }),
 }))
 
 const Lock = styled(LockFilled).attrs(({ theme }) => ({

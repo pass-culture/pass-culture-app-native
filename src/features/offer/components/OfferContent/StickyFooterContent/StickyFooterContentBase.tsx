@@ -6,7 +6,7 @@ import { FavoritesCTA } from 'features/offer/components/OfferContent/ComingSoonC
 import { FavoriteProps } from 'features/offer/types'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getShadow } from 'ui/theme'
 
 export type StickyFooterContentProps = {
   offerId: number
@@ -36,10 +36,5 @@ const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.xl,
   gap: theme.designSystem.size.spacing.s,
-  ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(1) },
-    shadowRadius: getSpacing(5),
-    shadowColor: theme.designSystem.color.background.lockedInverted,
-    shadowOpacity: 0.25,
-  }),
+  ...getShadow(theme),
 }))
