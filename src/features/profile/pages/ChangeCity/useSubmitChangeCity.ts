@@ -42,7 +42,7 @@ export const useSubmitChangeCity = () => {
     defaultValues: { city: storedCity ?? userCity },
   })
 
-  const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
+  const { mutate: patchProfile, isPending } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isFromProfileUpdateFlow) {
         navigate(...getProfileHookConfig('ChangeAddress', { type }))
@@ -81,6 +81,6 @@ export const useSubmitChangeCity = () => {
     handleSubmit,
     onSubmit,
     buttonWording,
-    isLoading,
+    isPending,
   }
 }

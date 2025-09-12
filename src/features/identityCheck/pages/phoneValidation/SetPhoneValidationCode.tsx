@@ -102,7 +102,7 @@ export const SetPhoneValidationCode = () => {
     showModal()
   }, [showModal])
 
-  const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
+  const { mutate: validatePhoneNumber, isPending } = useValidatePhoneNumberMutation({
     onSuccess: async () => {
       invalidateStepperInfoQueries()
       navigateForwardToStepper()
@@ -191,7 +191,7 @@ export const SetPhoneValidationCode = () => {
         <ButtonPrimary
           type="submit"
           wording="Continuer"
-          isLoading={isLoading}
+          isLoading={isPending}
           disabled={!codeInputState.isValid}
           onPress={validateCode}
         />
