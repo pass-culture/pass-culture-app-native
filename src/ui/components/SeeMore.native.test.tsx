@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { SeeMore } from './SeeMore'
@@ -23,11 +22,5 @@ describe('<SeeMore />', () => {
     await user.press(screen.getByText('En voir plus'))
 
     expect(props.onPress).toHaveBeenCalledTimes(1)
-  })
-
-  it('is a link when navigateTo is given', () => {
-    render(<SeeMore {...props} navigateTo={getProfilePropConfig('Accessibility')} />)
-
-    expect(screen.getByRole('link')).toBeOnTheScreen()
   })
 })

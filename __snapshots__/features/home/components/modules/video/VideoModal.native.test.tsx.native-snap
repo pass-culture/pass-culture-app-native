@@ -410,7 +410,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               }
             />
             <View
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

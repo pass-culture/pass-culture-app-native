@@ -302,7 +302,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             >
               <View
                 accessibilityLabel="Voir tous les filtres : 3 filtres actifs"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1059,7 +1059,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               >
                 <View
                   accessibilityLabel="Offre "La nuit des temps", de la catégorie "Livre", à une distance de 900+ km,  prix 28 €. "
-                  accessibilityRole="link"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -1388,7 +1388,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               >
                 <View
                   accessibilityLabel="Offre "I want something more", de la catégorie "Concert", à une distance de 900+ km,  prix Dès 23 €. "
-                  accessibilityRole="link"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -1713,7 +1713,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               >
                 <View
                   accessibilityLabel="Offre "Un lit sous une rivière", de la catégorie "Concert", à une distance de 49 km,  prix Dès 34 €. Possibilité de réserver 2 places."
-                  accessibilityRole="link"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -2038,7 +2038,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               >
                 <View
                   accessibilityLabel="Offre "I want something more", de la catégorie "Concert", à une distance de 49 km,  prix Dès 28 €. "
-                  accessibilityRole="link"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

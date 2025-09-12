@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookiesChoiceSettings } from 'features/cookies/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { Accordion } from 'ui/components/Accordion'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
@@ -44,6 +45,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
             wording="politique de gestion des cookies"
             externalNav={{ url: env.COOKIES_POLICY_LINK }}
             typography="BodyAccentXs"
+            type={AccessibilityRole.LINK}
           />
         </StyledBodyAccentXs>
       </ViewGap>

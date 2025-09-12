@@ -170,6 +170,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                     <div
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68"
                       data-testid="HeroButtonList"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -232,6 +233,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                     <div
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68"
                       data-testid="HeroButtonList"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >

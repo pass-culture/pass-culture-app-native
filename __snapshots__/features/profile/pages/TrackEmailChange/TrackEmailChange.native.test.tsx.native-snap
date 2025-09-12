@@ -501,7 +501,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               />
               <View
                 accessibilityLabel="Choisis ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1406,7 +1406,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2251,7 +2251,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3118,7 +3118,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Création de ton mot de passe complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3359,7 +3359,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               />
               <View
                 accessibilityLabel="Choisis ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4264,7 +4264,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Création de ton mot de passe non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4499,7 +4499,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5361,7 +5361,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               />
               <View
                 accessibilityLabel="Crée ton mot de passe non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5612,7 +5612,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -6457,7 +6457,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Création de ton mot de passe complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -6681,7 +6681,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
