@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
+import { ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -30,11 +31,29 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
+import { useViewItemTracking } from 'shared/hook/useViewItemTracking'
+import { setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
+const handleViewableItemsChanged = (
+  items: Pick<ViewToken, 'key' | 'index'>[],
+  moduleId: string,
+  itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+) => {
+  setPlaylistTrackingInfo({
+    index: items[0]?.index ?? 0,
+    moduleId,
+    viewedAt: new Date(),
+    items,
+    itemType,
+    pageLocation: 'venue',
+  })
+}
+
 export const Venue: FunctionComponent = () => {
-  const { params } = useRoute<UseRouteType<'Venue'>>()
+  const { params, name } = useRoute<UseRouteType<'Venue'>>()
+  useViewItemTracking(name)
   const { data: venue } = useVenueQuery(params.id)
 
   const { userLocation, selectedLocationMode } = useLocation()
@@ -118,6 +137,7 @@ export const Venue: FunctionComponent = () => {
               headlineOfferData={headlineOfferData}
               arePlaylistsLoading={arePlaylistsLoading}
               enableAccesLibre={enableAccesLibre}
+              onViewableItemsChanged={handleViewableItemsChanged}
             />
 
             <VenueThematicSection venue={venue} />
