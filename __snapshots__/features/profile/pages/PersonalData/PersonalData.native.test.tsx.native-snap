@@ -1074,7 +1074,7 @@ exports[`PersonalData should render personal data success 1`] = `
         </View>
         <View
           accessibilityLabel="Supprimer mon compte"
-          accessibilityRole="link"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

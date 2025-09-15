@@ -393,7 +393,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             >
               <View
                 accessibilityLabel="J’aimerais créer un compte avec une adresse e-mail différente"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -518,7 +518,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             >
               <View
                 accessibilityLabel="Je n’utilise plus l’application"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -643,7 +643,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             >
               <View
                 accessibilityLabel="Je n’ai plus de crédit ou très peu de crédit restant"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -768,7 +768,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             >
               <View
                 accessibilityLabel="Je souhaite supprimer mes données personnelles"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -893,7 +893,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             >
               <View
                 accessibilityLabel="Je pense que quelqu’un d’autre a accès à mon compte"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1018,7 +1018,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
             >
               <View
                 accessibilityLabel="Autre"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

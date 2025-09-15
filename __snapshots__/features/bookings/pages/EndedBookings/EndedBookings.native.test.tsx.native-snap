@@ -222,7 +222,7 @@ exports[`EndedBookings should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
-          accessibilityRole="link"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -642,7 +642,7 @@ exports[`EndedBookings should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Réservation utilisée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
-          accessibilityRole="link"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

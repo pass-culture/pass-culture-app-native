@@ -312,7 +312,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
               />
               <View
                 accessibilityLabel="J’ai une carte d’identité ou un passeport français"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -517,7 +517,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
               />
               <View
                 accessibilityLabel="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

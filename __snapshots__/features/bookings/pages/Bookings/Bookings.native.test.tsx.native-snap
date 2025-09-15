@@ -569,7 +569,7 @@ exports[`Bookings should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -843,7 +843,7 @@ exports[`Bookings should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1117,7 +1117,7 @@ exports[`Bookings should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Réservation de l’offre Un titre de livre, "
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

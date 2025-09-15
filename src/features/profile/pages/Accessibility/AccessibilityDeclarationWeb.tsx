@@ -55,6 +55,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
+                type={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -64,6 +65,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Actions réalisées depuis 2022"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
+                type={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -73,6 +75,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Plan d’actions 2024"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
+                type={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
