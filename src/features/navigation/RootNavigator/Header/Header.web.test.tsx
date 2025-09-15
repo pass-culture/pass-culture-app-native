@@ -3,14 +3,12 @@ import React from 'react'
 import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
-import { FavoritesCountResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen } from 'tests/utils/web'
 import { theme } from 'theme'
@@ -37,7 +35,6 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('Header', () => {
   beforeEach(() => {
-    mockServer.getApi<FavoritesCountResponse>(`/v1/me/favorites/count`, { count: 2 })
     setFeatureFlags()
   })
 

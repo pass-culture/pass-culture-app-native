@@ -4,7 +4,7 @@ import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { OfferResponseV2, SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
@@ -33,17 +33,15 @@ export type OfferPlaceProps = {
   distance?: string | null
 }
 
-type PartialVenue = Pick<
-  VenueResponse,
-  'id' | 'venueTypeCode' | 'name' | 'description' | 'isOpenToPublic'
->
+type PartialVenue = Pick<VenueResponse, 'id' | 'name' | 'description' | 'isOpenToPublic'>
 
 const mergeVenueData =
   (venue: PartialVenue) =>
   (prevData: VenueResponse | undefined): VenueResponse => ({
     id: venue.id,
     name: venue.name,
-    venueTypeCode: venue.venueTypeCode,
+    // Info not available in OfferVenueResponse so we fallback to OTHER
+    venueTypeCode: VenueTypeCodeKey.OTHER,
     isVirtual: false,
     description: venue.description,
     accessibility: {},
