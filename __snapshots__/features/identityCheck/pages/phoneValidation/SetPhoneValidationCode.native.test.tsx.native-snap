@@ -337,10 +337,10 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       Format : 6 chiffres
                     </Text>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",

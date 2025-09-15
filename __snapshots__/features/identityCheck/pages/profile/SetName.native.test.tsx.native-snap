@@ -370,10 +370,10 @@ exports[`<SetName/> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  height="small"
                   isDisabled={false}
                   isError={false}
-                  isFocus={false}
+                  isFocused={false}
+                  size="small"
                   style={
                     {
                       "alignItems": "center",
@@ -480,10 +480,10 @@ exports[`<SetName/> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  height="small"
                   isDisabled={false}
                   isError={false}
-                  isFocus={false}
+                  isFocused={false}
+                  size="small"
                   style={
                     {
                       "alignItems": "center",

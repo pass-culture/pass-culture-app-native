@@ -779,10 +779,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     </View>
                   </View>
                   <View
-                    height="small"
                     isDisabled={false}
                     isError={false}
-                    isFocus={false}
+                    isFocused={false}
+                    size="small"
                     style={
                       {
                         "alignItems": "center",
@@ -896,10 +896,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   max : 80 €
                 </Text>
                 <View
-                  height="small"
                   isDisabled={false}
                   isError={false}
-                  isFocus={false}
+                  isFocused={false}
+                  size="small"
                   style={
                     {
                       "alignItems": "center",

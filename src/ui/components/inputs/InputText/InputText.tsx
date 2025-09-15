@@ -65,7 +65,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
       </FlexInputLabel>
       {customProps.format ? <Description>{customProps.format}</Description> : null}
       <InputTextContainer
-        isFocus={isFocus}
+        isFocused={isFocus}
         isError={!!customProps.errorMessage}
         isDisabled={customProps.disabled}
         style={customProps.containerStyle}>

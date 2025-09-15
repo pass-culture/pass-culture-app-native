@@ -314,10 +314,10 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     </View>
                   </View>
                   <View
-                    height="small"
                     isDisabled={false}
                     isError={false}
-                    isFocus={false}
+                    isFocused={false}
+                    size="small"
                     style={
                       [
                         {

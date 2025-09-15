@@ -321,10 +321,10 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       </View>
                     </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",

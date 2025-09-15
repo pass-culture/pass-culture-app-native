@@ -2,30 +2,37 @@ import React from 'react'
 import { View, ViewStyle } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { ColorsType } from 'theme/types'
 import { getSpacing, padding } from 'ui/theme'
+
+type InputSize = 'small' | 'regular' | 'tall'
+
+const SIZE_TO_HEIGHT = (theme: DefaultTheme) => ({
+  small: theme.inputs.height.small,
+  regular: theme.inputs.height.regular,
+  tall: theme.inputs.height.tall,
+})
 
 type Props = {
   isError?: boolean
-  isFocus?: boolean
+  isFocused?: boolean
   isDisabled?: boolean
-  inputHeight?: 'small' | 'regular' | 'tall'
+  inputSize?: InputSize
   style?: ViewStyle
   children?: React.ReactNode
 }
 
 export const InputTextContainer: React.FC<Props> = ({
   children,
-  inputHeight = 'small',
+  inputSize = 'small',
   isDisabled = false,
   isError = false,
-  isFocus = false,
+  isFocused = false,
   style,
 }) => (
   <StyledView
     testID="styled-input-container"
-    height={inputHeight}
-    isFocus={isFocus}
+    size={inputSize}
+    isFocused={isFocused}
     isError={isError}
     isDisabled={isDisabled}
     style={style}>
@@ -35,14 +42,14 @@ export const InputTextContainer: React.FC<Props> = ({
 
 const getBorderColor = (
   theme: DefaultTheme,
-  isFocus?: boolean,
+  isFocused?: boolean,
   isDisabled?: boolean,
   isError?: boolean
 ) => {
   if (isDisabled) {
     return theme.designSystem.color.border.disabled
   }
-  if (isFocus) {
+  if (isFocused) {
     // maybe we need another semantic color.text.focused
     return theme.designSystem.color.outline.default
   }
@@ -53,28 +60,21 @@ const getBorderColor = (
 }
 
 const StyledView = styled(View)<{
-  height: Props['inputHeight']
-  isFocus?: boolean
+  size: InputSize
+  isFocused?: boolean
   isError?: boolean
   isDisabled?: boolean
-  focusOutlineColor?: ColorsType
-}>(({ height, isFocus, isError, isDisabled, theme }) => {
-  const getHeightValue = () => {
-    if (height === 'small') {
-      return theme.inputs.height.small
-    }
-    return height === 'regular' ? theme.inputs.height.regular : theme.inputs.height.tall
-  }
-
+}>(({ size, isFocused, isError, isDisabled, theme }) => {
+  const heights = SIZE_TO_HEIGHT(theme)
   const horizontalPadding = 3
 
   return {
-    height: getHeightValue(),
+    height: heights[size],
     width: '100%',
     flexDirection: 'row',
     borderStyle: 'solid',
     borderWidth: getSpacing(0.25),
-    borderColor: getBorderColor(theme, isFocus, isDisabled, isError),
+    borderColor: getBorderColor(theme, isFocused, isDisabled, isError),
     backgroundColor: isDisabled
       ? theme.designSystem.color.background.disabled
       : theme.designSystem.color.background.default,

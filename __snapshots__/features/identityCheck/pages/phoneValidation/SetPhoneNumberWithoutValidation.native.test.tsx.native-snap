@@ -384,10 +384,10 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       0639980123
                     </Text>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
