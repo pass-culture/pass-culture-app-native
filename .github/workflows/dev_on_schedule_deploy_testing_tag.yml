@@ -66,39 +66,58 @@ jobs:
             echo "Aucun nouveau commit sur master depuis le dernier tag testing, rien à déployer."
             exit 0
           fi
-          VERSION=${TAG#testing/v}
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+          VERSION_TAG=${TAG#testing/v}
+          echo "Dernier tag: $TAG (version: $VERSION_TAG)"
+          VERSION_PKG=$(jq -r .version package.json)
+          echo "Version actuelle dans package.json: $VERSION_PKG"
+          if [ "$VERSION_TAG" != "$VERSION_PKG" ]; then
+            echo "ERREUR: La version du dernier tag ne correspond pas à celle du package.json."
+            exit 1
+          fi
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION_TAG"
           PATCH=$((PATCH + 1))
-          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          echo "NEW_TAG=testing/v${NEW_VERSION}" >> $GITHUB_ENV
+          EXPECTED_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          echo "Version attendue après bump: $EXPECTED_VERSION"
+          echo "EXPECTED_VERSION=$EXPECTED_VERSION" >> $GITHUB_ENV
+          echo "EXPECTED_TAG=testing/v${EXPECTED_VERSION}" >> $GITHUB_ENV
       - name: Bump patch version
         run: |
-          yarn version patch --no-git-tag-version
-          cd server
-          yarn version patch --no-git-tag-version
-          cd ..
+          # echo "Avant bump: $(jq -r .version package.json)"
+          # yarn version patch --deferred
+          # yarn version apply
+          # echo "Après bump: $(jq -r .version package.json)"
 
       - name: Update build number
         run: |
-          VERSION=$(jq -r .version package.json)
-          MAJOR=$(echo $VERSION | cut -d. -f1)
-          MINOR=$(echo $VERSION | cut -d. -f2)
-          PATCH=$(echo $VERSION | cut -d. -f3)
-          BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
-          jq ".build = $BUILD_NUMBER" package.json > tmp && mv tmp package.json
-          jq ".build = $BUILD_NUMBER" server/package.json > tmp && mv tmp server/package.json
+          # VERSION=$(jq -r .version package.json)
+          # MAJOR=$(echo $VERSION | cut -d. -f1)
+          # MINOR=$(echo $VERSION | cut -d. -f2)
+          # PATCH=$(echo $VERSION | cut -d. -f3)
+          # BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
+          # jq ".build = $BUILD_NUMBER" package.json > tmp && mv tmp package.json
 
       - name: Commit version and build number
         run: |
           VERSION=$(jq -r .version package.json)
-          git add package.json server/package.json
-          git commit -m "testing/v$VERSION"
-          git push origin master
+          # git add package.json server/package.json .yarn/versions || true
+          # git commit -m "testing/v$VERSION"
+          # git push origin master
+          echo "[DRY RUN] Le commit serait : testing/v$VERSION"
+          echo "[DRY RUN] git add package.json server/package.json .yarn/versions || true"
+          echo "[DRY RUN] git commit -m 'testing/v$VERSION'"
+          echo "[DRY RUN] git push origin master"
 
       - name: Create and push testing tag
         run: |
           VERSION=$(jq -r .version package.json)
+          EXPECTED_VERSION=$EXPECTED_VERSION
           TAG="testing/v$VERSION"
-          git tag --annotate "$TAG" --message "🚀 $TAG"
-          git push origin "$TAG"
+          if [ "$VERSION" != "$EXPECTED_VERSION" ]; then
+            echo "ERREUR: La version bumpée ($VERSION) ne correspond pas à la version attendue ($EXPECTED_VERSION)."
+            exit 1
+          fi
+          # git tag --annotate "$TAG" --message "🚀 $TAG"
+          # git push origin "$TAG"
+          echo "[DRY RUN] Le tag serait : $TAG"
+          echo "[DRY RUN] git tag --annotate '$TAG' --message '🚀 $TAG'"
+          echo "[DRY RUN] git push origin '$TAG'"
